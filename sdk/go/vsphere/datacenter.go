@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VMware vSphere datacenter resource. This can be used as the primary
@@ -249,12 +248,6 @@ func (i *Datacenter) ToDatacenterOutputWithContext(ctx context.Context) Datacent
 	return pulumi.ToOutputWithContext(ctx, i).(DatacenterOutput)
 }
 
-func (i *Datacenter) ToOutput(ctx context.Context) pulumix.Output[*Datacenter] {
-	return pulumix.Output[*Datacenter]{
-		OutputState: i.ToDatacenterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatacenterArrayInput is an input type that accepts DatacenterArray and DatacenterArrayOutput values.
 // You can construct a concrete instance of `DatacenterArrayInput` via:
 //
@@ -278,12 +271,6 @@ func (i DatacenterArray) ToDatacenterArrayOutput() DatacenterArrayOutput {
 
 func (i DatacenterArray) ToDatacenterArrayOutputWithContext(ctx context.Context) DatacenterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatacenterArrayOutput)
-}
-
-func (i DatacenterArray) ToOutput(ctx context.Context) pulumix.Output[[]*Datacenter] {
-	return pulumix.Output[[]*Datacenter]{
-		OutputState: i.ToDatacenterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatacenterMapInput is an input type that accepts DatacenterMap and DatacenterMapOutput values.
@@ -311,12 +298,6 @@ func (i DatacenterMap) ToDatacenterMapOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DatacenterMapOutput)
 }
 
-func (i DatacenterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Datacenter] {
-	return pulumix.Output[map[string]*Datacenter]{
-		OutputState: i.ToDatacenterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatacenterOutput struct{ *pulumi.OutputState }
 
 func (DatacenterOutput) ElementType() reflect.Type {
@@ -329,12 +310,6 @@ func (o DatacenterOutput) ToDatacenterOutput() DatacenterOutput {
 
 func (o DatacenterOutput) ToDatacenterOutputWithContext(ctx context.Context) DatacenterOutput {
 	return o
-}
-
-func (o DatacenterOutput) ToOutput(ctx context.Context) pulumix.Output[*Datacenter] {
-	return pulumix.Output[*Datacenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Map of custom attribute ids to value
@@ -389,12 +364,6 @@ func (o DatacenterArrayOutput) ToDatacenterArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DatacenterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Datacenter] {
-	return pulumix.Output[[]*Datacenter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatacenterArrayOutput) Index(i pulumi.IntInput) DatacenterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Datacenter {
 		return vs[0].([]*Datacenter)[vs[1].(int)]
@@ -413,12 +382,6 @@ func (o DatacenterMapOutput) ToDatacenterMapOutput() DatacenterMapOutput {
 
 func (o DatacenterMapOutput) ToDatacenterMapOutputWithContext(ctx context.Context) DatacenterMapOutput {
 	return o
-}
-
-func (o DatacenterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Datacenter] {
-	return pulumix.Output[map[string]*Datacenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatacenterMapOutput) MapIndex(k pulumi.StringInput) DatacenterOutput {

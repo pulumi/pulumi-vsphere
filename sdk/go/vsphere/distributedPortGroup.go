@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DistributedPortGroup struct {
@@ -745,12 +744,6 @@ func (i *DistributedPortGroup) ToDistributedPortGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedPortGroupOutput)
 }
 
-func (i *DistributedPortGroup) ToOutput(ctx context.Context) pulumix.Output[*DistributedPortGroup] {
-	return pulumix.Output[*DistributedPortGroup]{
-		OutputState: i.ToDistributedPortGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DistributedPortGroupArrayInput is an input type that accepts DistributedPortGroupArray and DistributedPortGroupArrayOutput values.
 // You can construct a concrete instance of `DistributedPortGroupArrayInput` via:
 //
@@ -774,12 +767,6 @@ func (i DistributedPortGroupArray) ToDistributedPortGroupArrayOutput() Distribut
 
 func (i DistributedPortGroupArray) ToDistributedPortGroupArrayOutputWithContext(ctx context.Context) DistributedPortGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedPortGroupArrayOutput)
-}
-
-func (i DistributedPortGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*DistributedPortGroup] {
-	return pulumix.Output[[]*DistributedPortGroup]{
-		OutputState: i.ToDistributedPortGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DistributedPortGroupMapInput is an input type that accepts DistributedPortGroupMap and DistributedPortGroupMapOutput values.
@@ -807,12 +794,6 @@ func (i DistributedPortGroupMap) ToDistributedPortGroupMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedPortGroupMapOutput)
 }
 
-func (i DistributedPortGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DistributedPortGroup] {
-	return pulumix.Output[map[string]*DistributedPortGroup]{
-		OutputState: i.ToDistributedPortGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DistributedPortGroupOutput struct{ *pulumi.OutputState }
 
 func (DistributedPortGroupOutput) ElementType() reflect.Type {
@@ -825,12 +806,6 @@ func (o DistributedPortGroupOutput) ToDistributedPortGroupOutput() DistributedPo
 
 func (o DistributedPortGroupOutput) ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput {
 	return o
-}
-
-func (o DistributedPortGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributedPortGroup] {
-	return pulumix.Output[*DistributedPortGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
@@ -1124,12 +1099,6 @@ func (o DistributedPortGroupArrayOutput) ToDistributedPortGroupArrayOutputWithCo
 	return o
 }
 
-func (o DistributedPortGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DistributedPortGroup] {
-	return pulumix.Output[[]*DistributedPortGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DistributedPortGroupArrayOutput) Index(i pulumi.IntInput) DistributedPortGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DistributedPortGroup {
 		return vs[0].([]*DistributedPortGroup)[vs[1].(int)]
@@ -1148,12 +1117,6 @@ func (o DistributedPortGroupMapOutput) ToDistributedPortGroupMapOutput() Distrib
 
 func (o DistributedPortGroupMapOutput) ToDistributedPortGroupMapOutputWithContext(ctx context.Context) DistributedPortGroupMapOutput {
 	return o
-}
-
-func (o DistributedPortGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DistributedPortGroup] {
-	return pulumix.Output[map[string]*DistributedPortGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DistributedPortGroupMapOutput) MapIndex(k pulumi.StringInput) DistributedPortGroupOutput {

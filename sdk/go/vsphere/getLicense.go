@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `License` data source can be used to get the general attributes of
@@ -108,12 +107,6 @@ func (o LookupLicenseResultOutput) ToLookupLicenseResultOutput() LookupLicenseRe
 
 func (o LookupLicenseResultOutput) ToLookupLicenseResultOutputWithContext(ctx context.Context) LookupLicenseResultOutput {
 	return o
-}
-
-func (o LookupLicenseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLicenseResult] {
-	return pulumix.Output[LookupLicenseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The product edition of the license key.

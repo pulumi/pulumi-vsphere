@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type VappEntity struct {
@@ -248,12 +247,6 @@ func (i *VappEntity) ToVappEntityOutputWithContext(ctx context.Context) VappEnti
 	return pulumi.ToOutputWithContext(ctx, i).(VappEntityOutput)
 }
 
-func (i *VappEntity) ToOutput(ctx context.Context) pulumix.Output[*VappEntity] {
-	return pulumix.Output[*VappEntity]{
-		OutputState: i.ToVappEntityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VappEntityArrayInput is an input type that accepts VappEntityArray and VappEntityArrayOutput values.
 // You can construct a concrete instance of `VappEntityArrayInput` via:
 //
@@ -277,12 +270,6 @@ func (i VappEntityArray) ToVappEntityArrayOutput() VappEntityArrayOutput {
 
 func (i VappEntityArray) ToVappEntityArrayOutputWithContext(ctx context.Context) VappEntityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VappEntityArrayOutput)
-}
-
-func (i VappEntityArray) ToOutput(ctx context.Context) pulumix.Output[[]*VappEntity] {
-	return pulumix.Output[[]*VappEntity]{
-		OutputState: i.ToVappEntityArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VappEntityMapInput is an input type that accepts VappEntityMap and VappEntityMapOutput values.
@@ -310,12 +297,6 @@ func (i VappEntityMap) ToVappEntityMapOutputWithContext(ctx context.Context) Vap
 	return pulumi.ToOutputWithContext(ctx, i).(VappEntityMapOutput)
 }
 
-func (i VappEntityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VappEntity] {
-	return pulumix.Output[map[string]*VappEntity]{
-		OutputState: i.ToVappEntityMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VappEntityOutput struct{ *pulumi.OutputState }
 
 func (VappEntityOutput) ElementType() reflect.Type {
@@ -328,12 +309,6 @@ func (o VappEntityOutput) ToVappEntityOutput() VappEntityOutput {
 
 func (o VappEntityOutput) ToVappEntityOutputWithContext(ctx context.Context) VappEntityOutput {
 	return o
-}
-
-func (o VappEntityOutput) ToOutput(ctx context.Context) pulumix.Output[*VappEntity] {
-	return pulumix.Output[*VappEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed object ID of the vApp
@@ -411,12 +386,6 @@ func (o VappEntityArrayOutput) ToVappEntityArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o VappEntityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VappEntity] {
-	return pulumix.Output[[]*VappEntity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VappEntityArrayOutput) Index(i pulumi.IntInput) VappEntityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VappEntity {
 		return vs[0].([]*VappEntity)[vs[1].(int)]
@@ -435,12 +404,6 @@ func (o VappEntityMapOutput) ToVappEntityMapOutput() VappEntityMapOutput {
 
 func (o VappEntityMapOutput) ToVappEntityMapOutputWithContext(ctx context.Context) VappEntityMapOutput {
 	return o
-}
-
-func (o VappEntityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VappEntity] {
-	return pulumix.Output[map[string]*VappEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VappEntityMapOutput) MapIndex(k pulumi.StringInput) VappEntityOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ContentLibraryItem` data source can be used to discover the ID
@@ -86,12 +85,6 @@ func (o LookupContentLibraryItemResultOutput) ToLookupContentLibraryItemResultOu
 
 func (o LookupContentLibraryItemResultOutput) ToLookupContentLibraryItemResultOutputWithContext(ctx context.Context) LookupContentLibraryItemResultOutput {
 	return o
-}
-
-func (o LookupContentLibraryItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentLibraryItemResult] {
-	return pulumix.Output[LookupContentLibraryItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ComputeClusterVmHostRule struct {
@@ -248,12 +247,6 @@ func (i *ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmHostRuleOutput)
 }
 
-func (i *ComputeClusterVmHostRule) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmHostRule] {
-	return pulumix.Output[*ComputeClusterVmHostRule]{
-		OutputState: i.ToComputeClusterVmHostRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ComputeClusterVmHostRuleArrayInput is an input type that accepts ComputeClusterVmHostRuleArray and ComputeClusterVmHostRuleArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmHostRuleArrayInput` via:
 //
@@ -277,12 +270,6 @@ func (i ComputeClusterVmHostRuleArray) ToComputeClusterVmHostRuleArrayOutput() C
 
 func (i ComputeClusterVmHostRuleArray) ToComputeClusterVmHostRuleArrayOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmHostRuleArrayOutput)
-}
-
-func (i ComputeClusterVmHostRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmHostRule] {
-	return pulumix.Output[[]*ComputeClusterVmHostRule]{
-		OutputState: i.ToComputeClusterVmHostRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ComputeClusterVmHostRuleMapInput is an input type that accepts ComputeClusterVmHostRuleMap and ComputeClusterVmHostRuleMapOutput values.
@@ -310,12 +297,6 @@ func (i ComputeClusterVmHostRuleMap) ToComputeClusterVmHostRuleMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmHostRuleMapOutput)
 }
 
-func (i ComputeClusterVmHostRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmHostRule] {
-	return pulumix.Output[map[string]*ComputeClusterVmHostRule]{
-		OutputState: i.ToComputeClusterVmHostRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComputeClusterVmHostRuleOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmHostRuleOutput) ElementType() reflect.Type {
@@ -328,12 +309,6 @@ func (o ComputeClusterVmHostRuleOutput) ToComputeClusterVmHostRuleOutput() Compu
 
 func (o ComputeClusterVmHostRuleOutput) ToComputeClusterVmHostRuleOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleOutput {
 	return o
-}
-
-func (o ComputeClusterVmHostRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmHostRule] {
-	return pulumix.Output[*ComputeClusterVmHostRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When this field is used, the virtual
@@ -402,12 +377,6 @@ func (o ComputeClusterVmHostRuleArrayOutput) ToComputeClusterVmHostRuleArrayOutp
 	return o
 }
 
-func (o ComputeClusterVmHostRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmHostRule] {
-	return pulumix.Output[[]*ComputeClusterVmHostRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeClusterVmHostRuleArrayOutput) Index(i pulumi.IntInput) ComputeClusterVmHostRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeClusterVmHostRule {
 		return vs[0].([]*ComputeClusterVmHostRule)[vs[1].(int)]
@@ -426,12 +395,6 @@ func (o ComputeClusterVmHostRuleMapOutput) ToComputeClusterVmHostRuleMapOutput()
 
 func (o ComputeClusterVmHostRuleMapOutput) ToComputeClusterVmHostRuleMapOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleMapOutput {
 	return o
-}
-
-func (o ComputeClusterVmHostRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmHostRule] {
-	return pulumix.Output[map[string]*ComputeClusterVmHostRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeClusterVmHostRuleMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterVmHostRuleOutput {

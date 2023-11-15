@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type HostVirtualSwitch struct {
@@ -461,12 +460,6 @@ func (i *HostVirtualSwitch) ToHostVirtualSwitchOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(HostVirtualSwitchOutput)
 }
 
-func (i *HostVirtualSwitch) ToOutput(ctx context.Context) pulumix.Output[*HostVirtualSwitch] {
-	return pulumix.Output[*HostVirtualSwitch]{
-		OutputState: i.ToHostVirtualSwitchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostVirtualSwitchArrayInput is an input type that accepts HostVirtualSwitchArray and HostVirtualSwitchArrayOutput values.
 // You can construct a concrete instance of `HostVirtualSwitchArrayInput` via:
 //
@@ -490,12 +483,6 @@ func (i HostVirtualSwitchArray) ToHostVirtualSwitchArrayOutput() HostVirtualSwit
 
 func (i HostVirtualSwitchArray) ToHostVirtualSwitchArrayOutputWithContext(ctx context.Context) HostVirtualSwitchArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostVirtualSwitchArrayOutput)
-}
-
-func (i HostVirtualSwitchArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostVirtualSwitch] {
-	return pulumix.Output[[]*HostVirtualSwitch]{
-		OutputState: i.ToHostVirtualSwitchArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostVirtualSwitchMapInput is an input type that accepts HostVirtualSwitchMap and HostVirtualSwitchMapOutput values.
@@ -523,12 +510,6 @@ func (i HostVirtualSwitchMap) ToHostVirtualSwitchMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HostVirtualSwitchMapOutput)
 }
 
-func (i HostVirtualSwitchMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostVirtualSwitch] {
-	return pulumix.Output[map[string]*HostVirtualSwitch]{
-		OutputState: i.ToHostVirtualSwitchMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostVirtualSwitchOutput struct{ *pulumi.OutputState }
 
 func (HostVirtualSwitchOutput) ElementType() reflect.Type {
@@ -541,12 +522,6 @@ func (o HostVirtualSwitchOutput) ToHostVirtualSwitchOutput() HostVirtualSwitchOu
 
 func (o HostVirtualSwitchOutput) ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput {
 	return o
-}
-
-func (o HostVirtualSwitchOutput) ToOutput(ctx context.Context) pulumix.Output[*HostVirtualSwitch] {
-	return pulumix.Output[*HostVirtualSwitch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of active network adapters used for load
@@ -699,12 +674,6 @@ func (o HostVirtualSwitchArrayOutput) ToHostVirtualSwitchArrayOutputWithContext(
 	return o
 }
 
-func (o HostVirtualSwitchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostVirtualSwitch] {
-	return pulumix.Output[[]*HostVirtualSwitch]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostVirtualSwitchArrayOutput) Index(i pulumi.IntInput) HostVirtualSwitchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostVirtualSwitch {
 		return vs[0].([]*HostVirtualSwitch)[vs[1].(int)]
@@ -723,12 +692,6 @@ func (o HostVirtualSwitchMapOutput) ToHostVirtualSwitchMapOutput() HostVirtualSw
 
 func (o HostVirtualSwitchMapOutput) ToHostVirtualSwitchMapOutputWithContext(ctx context.Context) HostVirtualSwitchMapOutput {
 	return o
-}
-
-func (o HostVirtualSwitchMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostVirtualSwitch] {
-	return pulumix.Output[map[string]*HostVirtualSwitch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostVirtualSwitchMapOutput) MapIndex(k pulumi.StringInput) HostVirtualSwitchOutput {

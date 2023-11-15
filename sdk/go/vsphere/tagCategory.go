@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type TagCategory struct {
@@ -173,12 +172,6 @@ func (i *TagCategory) ToTagCategoryOutputWithContext(ctx context.Context) TagCat
 	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryOutput)
 }
 
-func (i *TagCategory) ToOutput(ctx context.Context) pulumix.Output[*TagCategory] {
-	return pulumix.Output[*TagCategory]{
-		OutputState: i.ToTagCategoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TagCategoryArrayInput is an input type that accepts TagCategoryArray and TagCategoryArrayOutput values.
 // You can construct a concrete instance of `TagCategoryArrayInput` via:
 //
@@ -202,12 +195,6 @@ func (i TagCategoryArray) ToTagCategoryArrayOutput() TagCategoryArrayOutput {
 
 func (i TagCategoryArray) ToTagCategoryArrayOutputWithContext(ctx context.Context) TagCategoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryArrayOutput)
-}
-
-func (i TagCategoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagCategory] {
-	return pulumix.Output[[]*TagCategory]{
-		OutputState: i.ToTagCategoryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TagCategoryMapInput is an input type that accepts TagCategoryMap and TagCategoryMapOutput values.
@@ -235,12 +222,6 @@ func (i TagCategoryMap) ToTagCategoryMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryMapOutput)
 }
 
-func (i TagCategoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagCategory] {
-	return pulumix.Output[map[string]*TagCategory]{
-		OutputState: i.ToTagCategoryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagCategoryOutput struct{ *pulumi.OutputState }
 
 func (TagCategoryOutput) ElementType() reflect.Type {
@@ -253,12 +234,6 @@ func (o TagCategoryOutput) ToTagCategoryOutput() TagCategoryOutput {
 
 func (o TagCategoryOutput) ToTagCategoryOutputWithContext(ctx context.Context) TagCategoryOutput {
 	return o
-}
-
-func (o TagCategoryOutput) ToOutput(ctx context.Context) pulumix.Output[*TagCategory] {
-	return pulumix.Output[*TagCategory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list object types that this category is
@@ -303,12 +278,6 @@ func (o TagCategoryArrayOutput) ToTagCategoryArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o TagCategoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagCategory] {
-	return pulumix.Output[[]*TagCategory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagCategoryArrayOutput) Index(i pulumi.IntInput) TagCategoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagCategory {
 		return vs[0].([]*TagCategory)[vs[1].(int)]
@@ -327,12 +296,6 @@ func (o TagCategoryMapOutput) ToTagCategoryMapOutput() TagCategoryMapOutput {
 
 func (o TagCategoryMapOutput) ToTagCategoryMapOutputWithContext(ctx context.Context) TagCategoryMapOutput {
 	return o
-}
-
-func (o TagCategoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagCategory] {
-	return pulumix.Output[map[string]*TagCategory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagCategoryMapOutput) MapIndex(k pulumi.StringInput) TagCategoryOutput {

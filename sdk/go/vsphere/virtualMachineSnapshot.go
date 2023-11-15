@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `VirtualMachineSnapshot` resource can be used to manage snapshots
@@ -254,12 +253,6 @@ func (i *VirtualMachineSnapshot) ToVirtualMachineSnapshotOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotOutput)
 }
 
-func (i *VirtualMachineSnapshot) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSnapshot] {
-	return pulumix.Output[*VirtualMachineSnapshot]{
-		OutputState: i.ToVirtualMachineSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualMachineSnapshotArrayInput is an input type that accepts VirtualMachineSnapshotArray and VirtualMachineSnapshotArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineSnapshotArrayInput` via:
 //
@@ -283,12 +276,6 @@ func (i VirtualMachineSnapshotArray) ToVirtualMachineSnapshotArrayOutput() Virtu
 
 func (i VirtualMachineSnapshotArray) ToVirtualMachineSnapshotArrayOutputWithContext(ctx context.Context) VirtualMachineSnapshotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotArrayOutput)
-}
-
-func (i VirtualMachineSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualMachineSnapshot] {
-	return pulumix.Output[[]*VirtualMachineSnapshot]{
-		OutputState: i.ToVirtualMachineSnapshotArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VirtualMachineSnapshotMapInput is an input type that accepts VirtualMachineSnapshotMap and VirtualMachineSnapshotMapOutput values.
@@ -316,12 +303,6 @@ func (i VirtualMachineSnapshotMap) ToVirtualMachineSnapshotMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotMapOutput)
 }
 
-func (i VirtualMachineSnapshotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualMachineSnapshot] {
-	return pulumix.Output[map[string]*VirtualMachineSnapshot]{
-		OutputState: i.ToVirtualMachineSnapshotMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineSnapshotOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineSnapshotOutput) ElementType() reflect.Type {
@@ -334,12 +315,6 @@ func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotOutput() VirtualMa
 
 func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotOutputWithContext(ctx context.Context) VirtualMachineSnapshotOutput {
 	return o
-}
-
-func (o VirtualMachineSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSnapshot] {
-	return pulumix.Output[*VirtualMachineSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If set to `true`, the delta disks involved in this
@@ -397,12 +372,6 @@ func (o VirtualMachineSnapshotArrayOutput) ToVirtualMachineSnapshotArrayOutputWi
 	return o
 }
 
-func (o VirtualMachineSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualMachineSnapshot] {
-	return pulumix.Output[[]*VirtualMachineSnapshot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualMachineSnapshotArrayOutput) Index(i pulumi.IntInput) VirtualMachineSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualMachineSnapshot {
 		return vs[0].([]*VirtualMachineSnapshot)[vs[1].(int)]
@@ -421,12 +390,6 @@ func (o VirtualMachineSnapshotMapOutput) ToVirtualMachineSnapshotMapOutput() Vir
 
 func (o VirtualMachineSnapshotMapOutput) ToVirtualMachineSnapshotMapOutputWithContext(ctx context.Context) VirtualMachineSnapshotMapOutput {
 	return o
-}
-
-func (o VirtualMachineSnapshotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualMachineSnapshot] {
-	return pulumix.Output[map[string]*VirtualMachineSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineSnapshotMapOutput) MapIndex(k pulumi.StringInput) VirtualMachineSnapshotOutput {
