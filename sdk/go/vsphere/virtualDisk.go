@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type VirtualDisk struct {
@@ -291,12 +290,6 @@ func (i *VirtualDisk) ToVirtualDiskOutputWithContext(ctx context.Context) Virtua
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskOutput)
 }
 
-func (i *VirtualDisk) ToOutput(ctx context.Context) pulumix.Output[*VirtualDisk] {
-	return pulumix.Output[*VirtualDisk]{
-		OutputState: i.ToVirtualDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualDiskArrayInput is an input type that accepts VirtualDiskArray and VirtualDiskArrayOutput values.
 // You can construct a concrete instance of `VirtualDiskArrayInput` via:
 //
@@ -320,12 +313,6 @@ func (i VirtualDiskArray) ToVirtualDiskArrayOutput() VirtualDiskArrayOutput {
 
 func (i VirtualDiskArray) ToVirtualDiskArrayOutputWithContext(ctx context.Context) VirtualDiskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskArrayOutput)
-}
-
-func (i VirtualDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualDisk] {
-	return pulumix.Output[[]*VirtualDisk]{
-		OutputState: i.ToVirtualDiskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VirtualDiskMapInput is an input type that accepts VirtualDiskMap and VirtualDiskMapOutput values.
@@ -353,12 +340,6 @@ func (i VirtualDiskMap) ToVirtualDiskMapOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskMapOutput)
 }
 
-func (i VirtualDiskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualDisk] {
-	return pulumix.Output[map[string]*VirtualDisk]{
-		OutputState: i.ToVirtualDiskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualDiskOutput struct{ *pulumi.OutputState }
 
 func (VirtualDiskOutput) ElementType() reflect.Type {
@@ -371,12 +352,6 @@ func (o VirtualDiskOutput) ToVirtualDiskOutput() VirtualDiskOutput {
 
 func (o VirtualDiskOutput) ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput {
 	return o
-}
-
-func (o VirtualDiskOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualDisk] {
-	return pulumix.Output[*VirtualDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The adapter type for this virtual disk. Can be
@@ -453,12 +428,6 @@ func (o VirtualDiskArrayOutput) ToVirtualDiskArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o VirtualDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualDisk] {
-	return pulumix.Output[[]*VirtualDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualDiskArrayOutput) Index(i pulumi.IntInput) VirtualDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualDisk {
 		return vs[0].([]*VirtualDisk)[vs[1].(int)]
@@ -477,12 +446,6 @@ func (o VirtualDiskMapOutput) ToVirtualDiskMapOutput() VirtualDiskMapOutput {
 
 func (o VirtualDiskMapOutput) ToVirtualDiskMapOutputWithContext(ctx context.Context) VirtualDiskMapOutput {
 	return o
-}
-
-func (o VirtualDiskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualDisk] {
-	return pulumix.Output[map[string]*VirtualDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualDiskMapOutput) MapIndex(k pulumi.StringInput) VirtualDiskOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ComputeClusterVmAffinityRule` resource can be used to
@@ -344,12 +343,6 @@ func (i *ComputeClusterVmAffinityRule) ToComputeClusterVmAffinityRuleOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAffinityRuleOutput)
 }
 
-func (i *ComputeClusterVmAffinityRule) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmAffinityRule] {
-	return pulumix.Output[*ComputeClusterVmAffinityRule]{
-		OutputState: i.ToComputeClusterVmAffinityRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ComputeClusterVmAffinityRuleArrayInput is an input type that accepts ComputeClusterVmAffinityRuleArray and ComputeClusterVmAffinityRuleArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmAffinityRuleArrayInput` via:
 //
@@ -373,12 +366,6 @@ func (i ComputeClusterVmAffinityRuleArray) ToComputeClusterVmAffinityRuleArrayOu
 
 func (i ComputeClusterVmAffinityRuleArray) ToComputeClusterVmAffinityRuleArrayOutputWithContext(ctx context.Context) ComputeClusterVmAffinityRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAffinityRuleArrayOutput)
-}
-
-func (i ComputeClusterVmAffinityRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmAffinityRule] {
-	return pulumix.Output[[]*ComputeClusterVmAffinityRule]{
-		OutputState: i.ToComputeClusterVmAffinityRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ComputeClusterVmAffinityRuleMapInput is an input type that accepts ComputeClusterVmAffinityRuleMap and ComputeClusterVmAffinityRuleMapOutput values.
@@ -406,12 +393,6 @@ func (i ComputeClusterVmAffinityRuleMap) ToComputeClusterVmAffinityRuleMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAffinityRuleMapOutput)
 }
 
-func (i ComputeClusterVmAffinityRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmAffinityRule] {
-	return pulumix.Output[map[string]*ComputeClusterVmAffinityRule]{
-		OutputState: i.ToComputeClusterVmAffinityRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComputeClusterVmAffinityRuleOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmAffinityRuleOutput) ElementType() reflect.Type {
@@ -424,12 +405,6 @@ func (o ComputeClusterVmAffinityRuleOutput) ToComputeClusterVmAffinityRuleOutput
 
 func (o ComputeClusterVmAffinityRuleOutput) ToComputeClusterVmAffinityRuleOutputWithContext(ctx context.Context) ComputeClusterVmAffinityRuleOutput {
 	return o
-}
-
-func (o ComputeClusterVmAffinityRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmAffinityRule] {
-	return pulumix.Output[*ComputeClusterVmAffinityRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed object reference
@@ -479,12 +454,6 @@ func (o ComputeClusterVmAffinityRuleArrayOutput) ToComputeClusterVmAffinityRuleA
 	return o
 }
 
-func (o ComputeClusterVmAffinityRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmAffinityRule] {
-	return pulumix.Output[[]*ComputeClusterVmAffinityRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeClusterVmAffinityRuleArrayOutput) Index(i pulumi.IntInput) ComputeClusterVmAffinityRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeClusterVmAffinityRule {
 		return vs[0].([]*ComputeClusterVmAffinityRule)[vs[1].(int)]
@@ -503,12 +472,6 @@ func (o ComputeClusterVmAffinityRuleMapOutput) ToComputeClusterVmAffinityRuleMap
 
 func (o ComputeClusterVmAffinityRuleMapOutput) ToComputeClusterVmAffinityRuleMapOutputWithContext(ctx context.Context) ComputeClusterVmAffinityRuleMapOutput {
 	return o
-}
-
-func (o ComputeClusterVmAffinityRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmAffinityRule] {
-	return pulumix.Output[map[string]*ComputeClusterVmAffinityRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeClusterVmAffinityRuleMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterVmAffinityRuleOutput {

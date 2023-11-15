@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ComputeClusterHostGroup struct {
@@ -165,12 +164,6 @@ func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostGroupOutput)
 }
 
-func (i *ComputeClusterHostGroup) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterHostGroup] {
-	return pulumix.Output[*ComputeClusterHostGroup]{
-		OutputState: i.ToComputeClusterHostGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ComputeClusterHostGroupArrayInput is an input type that accepts ComputeClusterHostGroupArray and ComputeClusterHostGroupArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterHostGroupArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i ComputeClusterHostGroupArray) ToComputeClusterHostGroupArrayOutput() Com
 
 func (i ComputeClusterHostGroupArray) ToComputeClusterHostGroupArrayOutputWithContext(ctx context.Context) ComputeClusterHostGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostGroupArrayOutput)
-}
-
-func (i ComputeClusterHostGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterHostGroup] {
-	return pulumix.Output[[]*ComputeClusterHostGroup]{
-		OutputState: i.ToComputeClusterHostGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ComputeClusterHostGroupMapInput is an input type that accepts ComputeClusterHostGroupMap and ComputeClusterHostGroupMapOutput values.
@@ -227,12 +214,6 @@ func (i ComputeClusterHostGroupMap) ToComputeClusterHostGroupMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostGroupMapOutput)
 }
 
-func (i ComputeClusterHostGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterHostGroup] {
-	return pulumix.Output[map[string]*ComputeClusterHostGroup]{
-		OutputState: i.ToComputeClusterHostGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComputeClusterHostGroupOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterHostGroupOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupOutput() Compute
 
 func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupOutputWithContext(ctx context.Context) ComputeClusterHostGroupOutput {
 	return o
-}
-
-func (o ComputeClusterHostGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterHostGroup] {
-	return pulumix.Output[*ComputeClusterHostGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed object reference
@@ -291,12 +266,6 @@ func (o ComputeClusterHostGroupArrayOutput) ToComputeClusterHostGroupArrayOutput
 	return o
 }
 
-func (o ComputeClusterHostGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterHostGroup] {
-	return pulumix.Output[[]*ComputeClusterHostGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeClusterHostGroupArrayOutput) Index(i pulumi.IntInput) ComputeClusterHostGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeClusterHostGroup {
 		return vs[0].([]*ComputeClusterHostGroup)[vs[1].(int)]
@@ -315,12 +284,6 @@ func (o ComputeClusterHostGroupMapOutput) ToComputeClusterHostGroupMapOutput() C
 
 func (o ComputeClusterHostGroupMapOutput) ToComputeClusterHostGroupMapOutputWithContext(ctx context.Context) ComputeClusterHostGroupMapOutput {
 	return o
-}
-
-func (o ComputeClusterHostGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterHostGroup] {
-	return pulumix.Output[map[string]*ComputeClusterHostGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeClusterHostGroupMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterHostGroupOutput {

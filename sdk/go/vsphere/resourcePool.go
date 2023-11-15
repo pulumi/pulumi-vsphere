@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ResourcePool` resource can be used to create and manage
@@ -514,12 +513,6 @@ func (i *ResourcePool) ToResourcePoolOutputWithContext(ctx context.Context) Reso
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolOutput)
 }
 
-func (i *ResourcePool) ToOutput(ctx context.Context) pulumix.Output[*ResourcePool] {
-	return pulumix.Output[*ResourcePool]{
-		OutputState: i.ToResourcePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourcePoolArrayInput is an input type that accepts ResourcePoolArray and ResourcePoolArrayOutput values.
 // You can construct a concrete instance of `ResourcePoolArrayInput` via:
 //
@@ -543,12 +536,6 @@ func (i ResourcePoolArray) ToResourcePoolArrayOutput() ResourcePoolArrayOutput {
 
 func (i ResourcePoolArray) ToResourcePoolArrayOutputWithContext(ctx context.Context) ResourcePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolArrayOutput)
-}
-
-func (i ResourcePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResourcePool] {
-	return pulumix.Output[[]*ResourcePool]{
-		OutputState: i.ToResourcePoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ResourcePoolMapInput is an input type that accepts ResourcePoolMap and ResourcePoolMapOutput values.
@@ -576,12 +563,6 @@ func (i ResourcePoolMap) ToResourcePoolMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolMapOutput)
 }
 
-func (i ResourcePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourcePool] {
-	return pulumix.Output[map[string]*ResourcePool]{
-		OutputState: i.ToResourcePoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourcePoolOutput struct{ *pulumi.OutputState }
 
 func (ResourcePoolOutput) ElementType() reflect.Type {
@@ -594,12 +575,6 @@ func (o ResourcePoolOutput) ToResourcePoolOutput() ResourcePoolOutput {
 
 func (o ResourcePoolOutput) ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput {
 	return o
-}
-
-func (o ResourcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePool] {
-	return pulumix.Output[*ResourcePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines if the reservation on a resource
@@ -720,12 +695,6 @@ func (o ResourcePoolArrayOutput) ToResourcePoolArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ResourcePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResourcePool] {
-	return pulumix.Output[[]*ResourcePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourcePoolArrayOutput) Index(i pulumi.IntInput) ResourcePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourcePool {
 		return vs[0].([]*ResourcePool)[vs[1].(int)]
@@ -744,12 +713,6 @@ func (o ResourcePoolMapOutput) ToResourcePoolMapOutput() ResourcePoolMapOutput {
 
 func (o ResourcePoolMapOutput) ToResourcePoolMapOutputWithContext(ctx context.Context) ResourcePoolMapOutput {
 	return o
-}
-
-func (o ResourcePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourcePool] {
-	return pulumix.Output[map[string]*ResourcePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourcePoolMapOutput) MapIndex(k pulumi.StringInput) ResourcePoolOutput {

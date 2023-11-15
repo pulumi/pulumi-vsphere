@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type StorageDrsVmOverride struct {
@@ -203,12 +202,6 @@ func (i *StorageDrsVmOverride) ToStorageDrsVmOverrideOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(StorageDrsVmOverrideOutput)
 }
 
-func (i *StorageDrsVmOverride) ToOutput(ctx context.Context) pulumix.Output[*StorageDrsVmOverride] {
-	return pulumix.Output[*StorageDrsVmOverride]{
-		OutputState: i.ToStorageDrsVmOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StorageDrsVmOverrideArrayInput is an input type that accepts StorageDrsVmOverrideArray and StorageDrsVmOverrideArrayOutput values.
 // You can construct a concrete instance of `StorageDrsVmOverrideArrayInput` via:
 //
@@ -232,12 +225,6 @@ func (i StorageDrsVmOverrideArray) ToStorageDrsVmOverrideArrayOutput() StorageDr
 
 func (i StorageDrsVmOverrideArray) ToStorageDrsVmOverrideArrayOutputWithContext(ctx context.Context) StorageDrsVmOverrideArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageDrsVmOverrideArrayOutput)
-}
-
-func (i StorageDrsVmOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]*StorageDrsVmOverride] {
-	return pulumix.Output[[]*StorageDrsVmOverride]{
-		OutputState: i.ToStorageDrsVmOverrideArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StorageDrsVmOverrideMapInput is an input type that accepts StorageDrsVmOverrideMap and StorageDrsVmOverrideMapOutput values.
@@ -265,12 +252,6 @@ func (i StorageDrsVmOverrideMap) ToStorageDrsVmOverrideMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(StorageDrsVmOverrideMapOutput)
 }
 
-func (i StorageDrsVmOverrideMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageDrsVmOverride] {
-	return pulumix.Output[map[string]*StorageDrsVmOverride]{
-		OutputState: i.ToStorageDrsVmOverrideMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageDrsVmOverrideOutput struct{ *pulumi.OutputState }
 
 func (StorageDrsVmOverrideOutput) ElementType() reflect.Type {
@@ -283,12 +264,6 @@ func (o StorageDrsVmOverrideOutput) ToStorageDrsVmOverrideOutput() StorageDrsVmO
 
 func (o StorageDrsVmOverrideOutput) ToStorageDrsVmOverrideOutputWithContext(ctx context.Context) StorageDrsVmOverrideOutput {
 	return o
-}
-
-func (o StorageDrsVmOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageDrsVmOverride] {
-	return pulumix.Output[*StorageDrsVmOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed object reference
@@ -342,12 +317,6 @@ func (o StorageDrsVmOverrideArrayOutput) ToStorageDrsVmOverrideArrayOutputWithCo
 	return o
 }
 
-func (o StorageDrsVmOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StorageDrsVmOverride] {
-	return pulumix.Output[[]*StorageDrsVmOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StorageDrsVmOverrideArrayOutput) Index(i pulumi.IntInput) StorageDrsVmOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageDrsVmOverride {
 		return vs[0].([]*StorageDrsVmOverride)[vs[1].(int)]
@@ -366,12 +335,6 @@ func (o StorageDrsVmOverrideMapOutput) ToStorageDrsVmOverrideMapOutput() Storage
 
 func (o StorageDrsVmOverrideMapOutput) ToStorageDrsVmOverrideMapOutputWithContext(ctx context.Context) StorageDrsVmOverrideMapOutput {
 	return o
-}
-
-func (o StorageDrsVmOverrideMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageDrsVmOverride] {
-	return pulumix.Output[map[string]*StorageDrsVmOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageDrsVmOverrideMapOutput) MapIndex(k pulumi.StringInput) StorageDrsVmOverrideOutput {

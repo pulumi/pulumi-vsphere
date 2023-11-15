@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ComputeClusterHostGroup` data source can be used to discover
@@ -136,12 +135,6 @@ func (o LookupComputeClusterHostGroupResultOutput) ToLookupComputeClusterHostGro
 
 func (o LookupComputeClusterHostGroupResultOutput) ToLookupComputeClusterHostGroupResultOutputWithContext(ctx context.Context) LookupComputeClusterHostGroupResultOutput {
 	return o
-}
-
-func (o LookupComputeClusterHostGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComputeClusterHostGroupResult] {
-	return pulumix.Output[LookupComputeClusterHostGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupComputeClusterHostGroupResultOutput) ComputeClusterId() pulumi.StringOutput {

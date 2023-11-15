@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getNetwork` data source can be used to discover the ID of a network
@@ -136,12 +135,6 @@ func (o GetNetworkResultOutput) ToGetNetworkResultOutput() GetNetworkResultOutpu
 
 func (o GetNetworkResultOutput) ToGetNetworkResultOutputWithContext(ctx context.Context) GetNetworkResultOutput {
 	return o
-}
-
-func (o GetNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkResult] {
-	return pulumix.Output[GetNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNetworkResultOutput) DatacenterId() pulumi.StringPtrOutput {
