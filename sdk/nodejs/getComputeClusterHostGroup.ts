@@ -49,8 +49,6 @@ export interface GetComputeClusterHostGroupArgs {
     /**
      * The [managed object reference ID][docs-about-morefs]
      * of the compute cluster for the host group.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: string;
     /**
@@ -115,8 +113,6 @@ export interface GetComputeClusterHostGroupOutputArgs {
     /**
      * The [managed object reference ID][docs-about-morefs]
      * of the compute cluster for the host group.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: pulumi.Input<string>;
     /**

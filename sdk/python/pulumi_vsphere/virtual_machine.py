@@ -120,7 +120,9 @@ class VirtualMachineArgs:
                > **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
                
                > **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
-        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] datastore_id: The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+               
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
                
@@ -136,12 +138,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-               
-               [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-               
-               [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-               [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
         :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
@@ -154,11 +151,9 @@ class VirtualMachineArgs:
                
                > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
                
-               [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+               
                
                > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-               
-               [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
@@ -584,7 +579,9 @@ class VirtualMachineArgs:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+
+        > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -721,8 +718,6 @@ class VirtualMachineArgs:
     def guest_id(self) -> Optional[pulumi.Input[str]]:
         """
         The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-
-        [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         """
         return pulumi.get(self, "guest_id")
 
@@ -735,9 +730,6 @@ class VirtualMachineArgs:
     def hardware_version(self) -> Optional[pulumi.Input[int]]:
         """
         The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-
-        [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-        [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
         """
         return pulumi.get(self, "hardware_version")
 
@@ -827,11 +819,9 @@ class VirtualMachineArgs:
 
         > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 
-        [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+
 
         > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-
-        [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         """
         return pulumi.get(self, "memory_hot_add_enabled")
 
@@ -1398,7 +1388,9 @@ class _VirtualMachineState:
                > **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
                
                > **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
-        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] datastore_id: The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+               
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         :param pulumi.Input[str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
@@ -1415,13 +1407,8 @@ class _VirtualMachineState:
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-               
-               [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-               
-               [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-               [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
         :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
@@ -1435,11 +1422,9 @@ class _VirtualMachineState:
                
                > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
                
-               [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+               
                
                > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-               
-               [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
@@ -1896,7 +1881,9 @@ class _VirtualMachineState:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+
+        > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -2045,8 +2032,6 @@ class _VirtualMachineState:
     def guest_id(self) -> Optional[pulumi.Input[str]]:
         """
         The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-
-        [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         """
         return pulumi.get(self, "guest_id")
 
@@ -2071,9 +2056,6 @@ class _VirtualMachineState:
     def hardware_version(self) -> Optional[pulumi.Input[int]]:
         """
         The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-
-        [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-        [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
         """
         return pulumi.get(self, "hardware_version")
 
@@ -2175,11 +2157,9 @@ class _VirtualMachineState:
 
         > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 
-        [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+
 
         > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-
-        [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         """
         return pulumi.get(self, "memory_hot_add_enabled")
 
@@ -2837,7 +2817,9 @@ class VirtualMachine(pulumi.CustomResource):
                > **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
                
                > **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
-        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] datastore_id: The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+               
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
                
@@ -2853,12 +2835,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-               
-               [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-               
-               [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-               [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
         :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
@@ -2871,11 +2848,9 @@ class VirtualMachine(pulumi.CustomResource):
                
                > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
                
-               [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+               
                
                > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-               
-               [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
@@ -3247,7 +3222,9 @@ class VirtualMachine(pulumi.CustomResource):
                > **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
                
                > **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
-        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] datastore_id: The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+               
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         :param pulumi.Input[str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
@@ -3264,13 +3241,8 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-               
-               [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-               
-               [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-               [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
         :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
@@ -3284,11 +3256,9 @@ class VirtualMachine(pulumi.CustomResource):
                
                > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
                
-               [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+               
                
                > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-               
-               [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
@@ -3593,7 +3563,9 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> pulumi.Output[str]:
         """
-        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+
+        > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -3694,8 +3666,6 @@ class VirtualMachine(pulumi.CustomResource):
     def guest_id(self) -> pulumi.Output[str]:
         """
         The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-
-        [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
         """
         return pulumi.get(self, "guest_id")
 
@@ -3712,9 +3682,6 @@ class VirtualMachine(pulumi.CustomResource):
     def hardware_version(self) -> pulumi.Output[int]:
         """
         The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-
-        [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-        [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
         """
         return pulumi.get(self, "hardware_version")
 
@@ -3784,11 +3751,9 @@ class VirtualMachine(pulumi.CustomResource):
 
         > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 
-        [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+
 
         > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-
-        [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         """
         return pulumi.get(self, "memory_hot_add_enabled")
 

@@ -82,8 +82,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
      * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
-     * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<Map<String,String>> customAttributes;
@@ -96,8 +94,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -405,8 +401,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
          * connections and require vCenter Server.
          * 
-         * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
-         * 
          * @return builder
          * 
          */
@@ -423,8 +417,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
          * connections and require vCenter Server.
-         * 
-         * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
          * 
          * @return builder
          * 

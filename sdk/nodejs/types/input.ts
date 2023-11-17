@@ -47,11 +47,11 @@ export interface ComputeClusterVsanDiskGroup {
 
 export interface ContentLibraryPublication {
     /**
-     * Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+     * Method to authenticate users. Must be `NONE` or `BASIC`.
      */
     authenticationMethod?: pulumi.Input<string>;
     /**
-     * Password used for authentication.
+     * Password used by subscribers to authenticate.
      */
     password?: pulumi.Input<string>;
     /**
@@ -63,7 +63,7 @@ export interface ContentLibraryPublication {
      */
     published?: pulumi.Input<boolean>;
     /**
-     * Username used for authentication.
+     * Username used by subscribers to authenticate. Currently can only be `vcsp`.
      */
     username?: pulumi.Input<string>;
 }
@@ -178,7 +178,9 @@ export interface VirtualMachineCdrom {
      */
     clientDevice?: pulumi.Input<boolean>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     *
+     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
      */
     datastoreId?: pulumi.Input<string>;
     deviceAddress?: pulumi.Input<string>;
@@ -187,11 +189,7 @@ export interface VirtualMachineCdrom {
      */
     key?: pulumi.Input<number>;
     /**
-     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-     *
-     * > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     *
-     * > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      */
     path?: pulumi.Input<string>;
 }
@@ -265,14 +263,14 @@ export interface VirtualMachineDisk {
      */
     controllerType?: pulumi.Input<string>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     *
+     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
      */
     datastoreId?: pulumi.Input<string>;
     deviceAddress?: pulumi.Input<string>;
     /**
      * The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-     *
-     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
      */
     diskMode?: pulumi.Input<string>;
     /**
@@ -311,11 +309,7 @@ export interface VirtualMachineDisk {
     key?: pulumi.Input<number>;
     label: pulumi.Input<string>;
     /**
-     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-     *
-     * > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     *
-     * > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      */
     path?: pulumi.Input<string>;
     /**

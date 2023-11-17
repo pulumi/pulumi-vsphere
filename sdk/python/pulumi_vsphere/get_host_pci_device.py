@@ -121,7 +121,7 @@ def get_host_pci_device(class_id: Optional[str] = None,
 
     :param str class_id: The hexadecimal PCI device class ID
            
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+           
            
            > **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
     :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.
@@ -176,7 +176,7 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
 
     :param str class_id: The hexadecimal PCI device class ID
            
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+           
            
            > **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
     :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.

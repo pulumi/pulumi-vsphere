@@ -20,8 +20,6 @@ type DatastoreCluster struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
@@ -157,8 +155,6 @@ type datastoreClusterState struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -261,8 +257,6 @@ type DatastoreClusterState struct {
 	// value strings to set for the datastore cluster. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -371,8 +365,6 @@ type datastoreClusterArgs struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -476,8 +468,6 @@ type DatastoreClusterArgs struct {
 	// value strings to set for the datastore cluster. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -667,8 +657,6 @@ func (o DatastoreClusterOutput) ToDatastoreClusterOutputWithContext(ctx context.
 // value strings to set for the datastore cluster. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
-//
-// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 //
 // > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 // and require vCenter.

@@ -50,8 +50,6 @@ class HostArgs:
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -190,8 +188,6 @@ class HostArgs:
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
-
-        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -332,8 +328,6 @@ class _HostState:
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -442,8 +436,6 @@ class _HostState:
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
-
-        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -679,8 +671,6 @@ class Host(pulumi.CustomResource):
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -874,8 +864,6 @@ class Host(pulumi.CustomResource):
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -963,8 +951,6 @@ class Host(pulumi.CustomResource):
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
-
-        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 

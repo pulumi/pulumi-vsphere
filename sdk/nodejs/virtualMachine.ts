@@ -115,7 +115,9 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     *
+     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
@@ -168,8 +170,6 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly forcePowerOff!: pulumi.Output<boolean | undefined>;
     /**
      * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     *
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
      */
     public readonly guestId!: pulumi.Output<string>;
     /**
@@ -178,9 +178,6 @@ export class VirtualMachine extends pulumi.CustomResource {
     public /*out*/ readonly guestIpAddresses!: pulumi.Output<string[]>;
     /**
      * The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     *
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
      */
     public readonly hardwareVersion!: pulumi.Output<number>;
     /**
@@ -218,11 +215,9 @@ export class VirtualMachine extends pulumi.CustomResource {
      *
      * > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
      *
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+     *
      *
      * > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     *
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
      */
     public readonly memoryHotAddEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -693,7 +688,9 @@ export interface VirtualMachineState {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     *
+     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -746,8 +743,6 @@ export interface VirtualMachineState {
     forcePowerOff?: pulumi.Input<boolean>;
     /**
      * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     *
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
      */
     guestId?: pulumi.Input<string>;
     /**
@@ -756,9 +751,6 @@ export interface VirtualMachineState {
     guestIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     *
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
      */
     hardwareVersion?: pulumi.Input<number>;
     /**
@@ -796,11 +788,9 @@ export interface VirtualMachineState {
      *
      * > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
      *
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+     *
      *
      * > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     *
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
      */
     memoryHotAddEnabled?: pulumi.Input<boolean>;
     /**
@@ -1074,7 +1064,9 @@ export interface VirtualMachineArgs {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     *
+     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -1123,15 +1115,10 @@ export interface VirtualMachineArgs {
     forcePowerOff?: pulumi.Input<boolean>;
     /**
      * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     *
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
      */
     guestId?: pulumi.Input<string>;
     /**
      * The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     *
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
      */
     hardwareVersion?: pulumi.Input<number>;
     /**
@@ -1165,11 +1152,9 @@ export interface VirtualMachineArgs {
      *
      * > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
      *
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+     *
      *
      * > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     *
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
      */
     memoryHotAddEnabled?: pulumi.Input<boolean>;
     /**

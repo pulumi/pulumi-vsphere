@@ -51,13 +51,13 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// Map of custom attribute ids to value 
-        /// strings to set for datacenter resource. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
+        /// strings to set for datacenter resource. See 
+        /// [here][docs-setting-custom-attributes] for a reference on how to set values 
         /// for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         [Output("customAttributes")]
@@ -143,13 +143,13 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to value 
-        /// strings to set for datacenter resource. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
+        /// strings to set for datacenter resource. See 
+        /// [here][docs-setting-custom-attributes] for a reference on how to set values 
         /// for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
@@ -200,13 +200,13 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to value 
-        /// strings to set for datacenter resource. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
+        /// strings to set for datacenter resource. See 
+        /// [here][docs-setting-custom-attributes] for a reference on how to set values 
         /// for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes

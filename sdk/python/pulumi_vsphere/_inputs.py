@@ -139,11 +139,11 @@ class ContentLibraryPublicationArgs:
                  published: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] authentication_method: Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
-        :param pulumi.Input[str] password: Password used for authentication.
+        :param pulumi.Input[str] authentication_method: Method to authenticate users. Must be `NONE` or `BASIC`.
+        :param pulumi.Input[str] password: Password used by subscribers to authenticate.
         :param pulumi.Input[str] publish_url: The URL of the published content library.
         :param pulumi.Input[bool] published: Publish the content library. Default `false`.
-        :param pulumi.Input[str] username: Username used for authentication.
+        :param pulumi.Input[str] username: Username used by subscribers to authenticate. Currently can only be `vcsp`.
         """
         if authentication_method is not None:
             pulumi.set(__self__, "authentication_method", authentication_method)
@@ -160,7 +160,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+        Method to authenticate users. Must be `NONE` or `BASIC`.
         """
         return pulumi.get(self, "authentication_method")
 
@@ -172,7 +172,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password used for authentication.
+        Password used by subscribers to authenticate.
         """
         return pulumi.get(self, "password")
 
@@ -208,7 +208,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        Username used for authentication.
+        Username used by subscribers to authenticate. Currently can only be `vcsp`.
         """
         return pulumi.get(self, "username")
 
@@ -598,13 +598,11 @@ class VirtualMachineCdromArgs:
                  path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] client_device: Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
-        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] datastore_id: The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+               
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         :param pulumi.Input[int] key: The ID of the device within the virtual machine.
-        :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-               
-               > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-               
-               > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        :param pulumi.Input[str] path: When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
         """
         if client_device is not None:
             pulumi.set(__self__, "client_device", client_device)
@@ -633,7 +631,9 @@ class VirtualMachineCdromArgs:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+
+        > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -666,11 +666,7 @@ class VirtualMachineCdromArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-
-        > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-
-        > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
         """
         return pulumi.get(self, "path")
 
@@ -1203,10 +1199,10 @@ class VirtualMachineDiskArgs:
                
                > **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
         :param pulumi.Input[str] controller_type: The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
-        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
-        :param pulumi.Input[str] disk_mode: The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+        :param pulumi.Input[str] datastore_id: The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
                
-               [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+        :param pulumi.Input[str] disk_mode: The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
         :param pulumi.Input[str] disk_sharing: The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
                
                > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
@@ -1217,11 +1213,7 @@ class VirtualMachineDiskArgs:
         :param pulumi.Input[str] io_share_level: The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         :param pulumi.Input[bool] keep_on_remove: Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
         :param pulumi.Input[int] key: The ID of the device within the virtual machine.
-        :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-               
-               > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-               
-               > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        :param pulumi.Input[str] path: When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
         :param pulumi.Input[int] size: The size of the disk, in GB. Must be a whole number.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[bool] thin_provisioned: If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
@@ -1310,7 +1302,9 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+
+        > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -1332,8 +1326,6 @@ class VirtualMachineDiskArgs:
     def disk_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-
-        [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
         """
         return pulumi.get(self, "disk_mode")
 
@@ -1443,11 +1435,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-
-        > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-
-        > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
         """
         return pulumi.get(self, "path")
 

@@ -116,8 +116,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The [managed object reference ID][docs-about-morefs]
         /// of the compute cluster for the host group.
-        /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId", required: true)]
         public string ComputeClusterId { get; set; } = null!;
@@ -139,8 +137,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The [managed object reference ID][docs-about-morefs]
         /// of the compute cluster for the host group.
-        /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId", required: true)]
         public Input<string> ComputeClusterId { get; set; } = null!;

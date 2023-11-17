@@ -38,9 +38,9 @@ export class DatastoreCluster extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -169,7 +169,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
     public readonly sdrsSpaceBalanceAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * Runtime thresholds govern 
-     * when Storage DRS performs or recommends migrations
+     * when Storage DRS performs or recommends migrations 
      * (based on the selected automation level). Default: `80` percent.
      */
     public readonly sdrsSpaceUtilizationThreshold!: pulumi.Output<number | undefined>;
@@ -269,9 +269,9 @@ export interface DatastoreClusterState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -400,7 +400,7 @@ export interface DatastoreClusterState {
     sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
      * Runtime thresholds govern 
-     * when Storage DRS performs or recommends migrations
+     * when Storage DRS performs or recommends migrations 
      * (based on the selected automation level). Default: `80` percent.
      */
     sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
@@ -427,9 +427,9 @@ export interface DatastoreClusterArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -558,7 +558,7 @@ export interface DatastoreClusterArgs {
     sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
      * Runtime thresholds govern 
-     * when Storage DRS performs or recommends migrations
+     * when Storage DRS performs or recommends migrations 
      * (based on the selected automation level). Default: `80` percent.
      */
     sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;

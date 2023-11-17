@@ -59,7 +59,9 @@ type VirtualMachine struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringOutput `pulumi:"defaultIpAddress"`
@@ -88,15 +90,10 @@ type VirtualMachine struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff pulumi.BoolPtrOutput `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-	//
-	// [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId pulumi.StringOutput `pulumi:"guestId"`
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayOutput `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-	//
-	// [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion pulumi.IntOutput `pulumi:"hardwareVersion"`
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
@@ -118,11 +115,7 @@ type VirtualMachine struct {
 	//
 	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 	//
-	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-	//
 	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-	//
-	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled pulumi.BoolPtrOutput `pulumi:"memoryHotAddEnabled"`
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
@@ -303,7 +296,9 @@ type virtualMachineState struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress *string `pulumi:"defaultIpAddress"`
@@ -332,15 +327,10 @@ type virtualMachineState struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff *bool `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-	//
-	// [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId *string `pulumi:"guestId"`
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-	//
-	// [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId *string `pulumi:"hostSystemId"`
@@ -362,11 +352,7 @@ type virtualMachineState struct {
 	//
 	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 	//
-	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-	//
 	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-	//
-	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled *bool `pulumi:"memoryHotAddEnabled"`
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit *int `pulumi:"memoryLimit"`
@@ -515,7 +501,9 @@ type VirtualMachineState struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId pulumi.StringPtrInput
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringPtrInput
@@ -544,15 +532,10 @@ type VirtualMachineState struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff pulumi.BoolPtrInput
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-	//
-	// [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId pulumi.StringPtrInput
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayInput
 	// The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-	//
-	// [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion pulumi.IntPtrInput
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId pulumi.StringPtrInput
@@ -574,11 +557,7 @@ type VirtualMachineState struct {
 	//
 	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 	//
-	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-	//
 	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-	//
-	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled pulumi.BoolPtrInput
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit pulumi.IntPtrInput
@@ -729,7 +708,9 @@ type virtualMachineArgs struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks []VirtualMachineDisk `pulumi:"disks"`
@@ -756,13 +737,8 @@ type virtualMachineArgs struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff *bool `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-	//
-	// [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId *string `pulumi:"guestId"`
 	// The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-	//
-	// [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId *string `pulumi:"hostSystemId"`
@@ -782,11 +758,7 @@ type virtualMachineArgs struct {
 	//
 	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 	//
-	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-	//
 	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-	//
-	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled *bool `pulumi:"memoryHotAddEnabled"`
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit *int `pulumi:"memoryLimit"`
@@ -920,7 +892,9 @@ type VirtualMachineArgs struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId pulumi.StringPtrInput
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks VirtualMachineDiskArrayInput
@@ -947,13 +921,8 @@ type VirtualMachineArgs struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff pulumi.BoolPtrInput
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-	//
-	// [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId pulumi.StringPtrInput
 	// The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-	//
-	// [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion pulumi.IntPtrInput
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId pulumi.StringPtrInput
@@ -973,11 +942,7 @@ type VirtualMachineArgs struct {
 	//
 	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 	//
-	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-	//
 	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-	//
-	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled pulumi.BoolPtrInput
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit pulumi.IntPtrInput
@@ -1252,7 +1217,9 @@ func (o VirtualMachineOutput) DatastoreClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
 }
 
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+//
+// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 func (o VirtualMachineOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
@@ -1317,8 +1284,6 @@ func (o VirtualMachineOutput) ForcePowerOff() pulumi.BoolPtrOutput {
 }
 
 // The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-//
-// [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 func (o VirtualMachineOutput) GuestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.GuestId }).(pulumi.StringOutput)
 }
@@ -1329,9 +1294,6 @@ func (o VirtualMachineOutput) GuestIpAddresses() pulumi.StringArrayOutput {
 }
 
 // The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-//
-// [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 func (o VirtualMachineOutput) HardwareVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.HardwareVersion }).(pulumi.IntOutput)
 }
@@ -1378,9 +1340,6 @@ func (o VirtualMachineOutput) Memory() pulumi.IntPtrOutput {
 // > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
 //
 // > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-//
-// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 func (o VirtualMachineOutput) MemoryHotAddEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.MemoryHotAddEnabled }).(pulumi.BoolPtrOutput)
 }

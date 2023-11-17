@@ -160,8 +160,6 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. &lt;sup&gt;\*&lt;/sup&gt;
      * 
-     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
-     * 
      */
     @Import(name="drsEnablePredictiveDrs")
     private @Nullable Output<Boolean> drsEnablePredictiveDrs;
@@ -170,8 +168,6 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
      * @return When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. &lt;sup&gt;\*&lt;/sup&gt;
-     * 
-     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      * 
      */
     public Optional<Output<Boolean>> drsEnablePredictiveDrs() {
@@ -1603,8 +1599,6 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
          * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
          * recommendations. &lt;sup&gt;\*&lt;/sup&gt;
          * 
-         * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
-         * 
          * @return builder
          * 
          */
@@ -1617,8 +1611,6 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
          * @param drsEnablePredictiveDrs When `true`, enables DRS to use data
          * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
          * recommendations. &lt;sup&gt;\*&lt;/sup&gt;
-         * 
-         * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
          * 
          * @return builder
          * 

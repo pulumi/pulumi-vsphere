@@ -73,8 +73,6 @@ namespace Pulumi.VSphere
         /// When `true`, enables DRS to use data
         /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
-        /// 
-        /// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         /// </summary>
         [Output("drsEnablePredictiveDrs")]
         public Output<bool?> DrsEnablePredictiveDrs { get; private set; } = null!;
@@ -688,8 +686,6 @@ namespace Pulumi.VSphere
         /// When `true`, enables DRS to use data
         /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
-        /// 
-        /// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         /// </summary>
         [Input("drsEnablePredictiveDrs")]
         public Input<bool>? DrsEnablePredictiveDrs { get; set; }
@@ -1303,8 +1299,6 @@ namespace Pulumi.VSphere
         /// When `true`, enables DRS to use data
         /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
-        /// 
-        /// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         /// </summary>
         [Input("drsEnablePredictiveDrs")]
         public Input<bool>? DrsEnablePredictiveDrs { get; set; }

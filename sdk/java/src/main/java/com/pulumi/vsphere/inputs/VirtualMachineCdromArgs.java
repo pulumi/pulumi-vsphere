@@ -33,14 +33,18 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -70,22 +74,14 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     public Optional<Output<String>> path() {
@@ -142,7 +138,9 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+         * 
+         * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
          * 
          * @return builder
          * 
@@ -153,7 +151,9 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+         * 
+         * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
          * 
          * @return builder
          * 
@@ -193,11 +193,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-         * 
-         * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-         * 
-         * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+         * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
          * 
          * @return builder
          * 
@@ -208,11 +204,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-         * 
-         * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-         * 
-         * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+         * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
          * 
          * @return builder
          * 

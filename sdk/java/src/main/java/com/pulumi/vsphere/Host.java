@@ -215,8 +215,6 @@ public class Host extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
      * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
-     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -229,8 +227,6 @@ public class Host extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {

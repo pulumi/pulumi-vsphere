@@ -295,14 +295,18 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.datastoreClusterId);
     }
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     @Export(name="datastoreId", type=String.class, parameters={})
     private Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     public Output<String> datastoreId() {
@@ -473,16 +477,12 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
      * 
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
-     * 
      */
     @Export(name="guestId", type=String.class, parameters={})
     private Output<String> guestId;
 
     /**
      * @return The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     * 
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
      * 
      */
     public Output<String> guestId() {
@@ -505,18 +505,12 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
      * 
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
-     * 
      */
     @Export(name="hardwareVersion", type=Integer.class, parameters={})
     private Output<Integer> hardwareVersion;
 
     /**
      * @return The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     * 
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
      * 
      */
     public Output<Integer> hardwareVersion() {
@@ -629,11 +623,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
      * 
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-     * 
      * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     * 
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
      * 
      */
     @Export(name="memoryHotAddEnabled", type=Boolean.class, parameters={})
@@ -644,11 +634,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
      * 
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-     * 
      * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     * 
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
      * 
      */
     public Output<Optional<Boolean>> memoryHotAddEnabled() {

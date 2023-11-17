@@ -45,7 +45,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * Map of custom attribute ids to attribute 
      * value string to set on datastore resource.
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -96,7 +96,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -184,7 +184,7 @@ export interface VmfsDatastoreState {
      * Map of custom attribute ids to attribute 
      * value string to set on datastore resource.
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -235,7 +235,7 @@ export interface VmfsDatastoreState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -260,7 +260,7 @@ export interface VmfsDatastoreArgs {
      * Map of custom attribute ids to attribute 
      * value string to set on datastore resource.
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -298,7 +298,7 @@ export interface VmfsDatastoreArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.

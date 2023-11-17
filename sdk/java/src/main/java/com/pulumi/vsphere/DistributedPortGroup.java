@@ -544,8 +544,6 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
      * 
-     * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
-     * 
      */
     @Export(name="portNameFormat", type=String.class, parameters={})
     private Output</* @Nullable */ String> portNameFormat;
@@ -554,8 +552,6 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * @return An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
-     * 
-     * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
      * 
      */
     public Output<Optional<String>> portNameFormat() {

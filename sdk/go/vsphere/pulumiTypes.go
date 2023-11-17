@@ -33,7 +33,7 @@ type ComputeClusterVsanDiskGroup struct {
 	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
 	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
 	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,20-47),
 	// },
 	// DrsEnabled: pulumi.Bool(true),
 	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
@@ -95,7 +95,7 @@ type ComputeClusterVsanDiskGroupArgs struct {
 	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
 	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
 	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,20-47),
 	// },
 	// DrsEnabled: pulumi.Bool(true),
 	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
@@ -201,7 +201,7 @@ func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
 // _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
 // DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
 // HostSystemIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,20-47),
 // },
 // DrsEnabled: pulumi.Bool(true),
 // DrsAutomationLevel: pulumi.String("fullyAutomated"),
@@ -254,15 +254,15 @@ func (o ComputeClusterVsanDiskGroupArrayOutput) Index(i pulumi.IntInput) Compute
 }
 
 type ContentLibraryPublication struct {
-	// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+	// Method to authenticate users. Must be `NONE` or `BASIC`.
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
-	// Password used for authentication.
+	// Password used by subscribers to authenticate.
 	Password *string `pulumi:"password"`
 	// The URL of the published content library.
 	PublishUrl *string `pulumi:"publishUrl"`
 	// Publish the content library. Default `false`.
 	Published *bool `pulumi:"published"`
-	// Username used for authentication.
+	// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 	Username *string `pulumi:"username"`
 }
 
@@ -278,15 +278,15 @@ type ContentLibraryPublicationInput interface {
 }
 
 type ContentLibraryPublicationArgs struct {
-	// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+	// Method to authenticate users. Must be `NONE` or `BASIC`.
 	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
-	// Password used for authentication.
+	// Password used by subscribers to authenticate.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The URL of the published content library.
 	PublishUrl pulumi.StringPtrInput `pulumi:"publishUrl"`
 	// Publish the content library. Default `false`.
 	Published pulumi.BoolPtrInput `pulumi:"published"`
-	// Username used for authentication.
+	// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -367,12 +367,12 @@ func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationPtrOutputWit
 	}).(ContentLibraryPublicationPtrOutput)
 }
 
-// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+// Method to authenticate users. Must be `NONE` or `BASIC`.
 func (o ContentLibraryPublicationOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
-// Password used for authentication.
+// Password used by subscribers to authenticate.
 func (o ContentLibraryPublicationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -387,7 +387,7 @@ func (o ContentLibraryPublicationOutput) Published() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *bool { return v.Published }).(pulumi.BoolPtrOutput)
 }
 
-// Username used for authentication.
+// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 func (o ContentLibraryPublicationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -416,7 +416,7 @@ func (o ContentLibraryPublicationPtrOutput) Elem() ContentLibraryPublicationOutp
 	}).(ContentLibraryPublicationOutput)
 }
 
-// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+// Method to authenticate users. Must be `NONE` or `BASIC`.
 func (o ContentLibraryPublicationPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLibraryPublication) *string {
 		if v == nil {
@@ -426,7 +426,7 @@ func (o ContentLibraryPublicationPtrOutput) AuthenticationMethod() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Password used for authentication.
+// Password used by subscribers to authenticate.
 func (o ContentLibraryPublicationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLibraryPublication) *string {
 		if v == nil {
@@ -456,7 +456,7 @@ func (o ContentLibraryPublicationPtrOutput) Published() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Username used for authentication.
+// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 func (o ContentLibraryPublicationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLibraryPublication) *string {
 		if v == nil {
@@ -1370,16 +1370,14 @@ func (o HostPortGroupPortArrayOutput) Index(i pulumi.IntInput) HostPortGroupPort
 type VirtualMachineCdrom struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice *bool `pulumi:"clientDevice"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   *string `pulumi:"datastoreId"`
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path *string `pulumi:"path"`
 }
 
@@ -1397,16 +1395,14 @@ type VirtualMachineCdromInput interface {
 type VirtualMachineCdromArgs struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice pulumi.BoolPtrInput `pulumi:"clientDevice"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -1466,7 +1462,9 @@ func (o VirtualMachineCdromOutput) ClientDevice() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *bool { return v.ClientDevice }).(pulumi.BoolPtrOutput)
 }
 
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+//
+// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 func (o VirtualMachineCdromOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -1480,11 +1478,7 @@ func (o VirtualMachineCdromOutput) Key() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *int { return v.Key }).(pulumi.IntPtrOutput)
 }
 
-// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-//
-// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-//
-// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 func (o VirtualMachineCdromOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -2615,12 +2609,12 @@ type VirtualMachineDisk struct {
 	Attach *bool `pulumi:"attach"`
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType *string `pulumi:"controllerType"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   *string `pulumi:"datastoreId"`
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-	//
-	// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
 	DiskMode *string `pulumi:"diskMode"`
 	// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
 	//
@@ -2641,11 +2635,7 @@ type VirtualMachineDisk struct {
 	// The ID of the device within the virtual machine.
 	Key   *int   `pulumi:"key"`
 	Label string `pulumi:"label"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path *string `pulumi:"path"`
 	// The size of the disk, in GB. Must be a whole number.
 	Size *int `pulumi:"size"`
@@ -2679,12 +2669,12 @@ type VirtualMachineDiskArgs struct {
 	Attach pulumi.BoolPtrInput `pulumi:"attach"`
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType pulumi.StringPtrInput `pulumi:"controllerType"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-	//
-	// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
 	DiskMode pulumi.StringPtrInput `pulumi:"diskMode"`
 	// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
 	//
@@ -2705,11 +2695,7 @@ type VirtualMachineDiskArgs struct {
 	// The ID of the device within the virtual machine.
 	Key   pulumi.IntPtrInput `pulumi:"key"`
 	Label pulumi.StringInput `pulumi:"label"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The size of the disk, in GB. Must be a whole number.
 	Size pulumi.IntPtrInput `pulumi:"size"`
@@ -2788,7 +2774,9 @@ func (o VirtualMachineDiskOutput) ControllerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.ControllerType }).(pulumi.StringPtrOutput)
 }
 
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+//
+// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -2798,8 +2786,6 @@ func (o VirtualMachineDiskOutput) DeviceAddress() pulumi.StringPtrOutput {
 }
 
 // The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-//
-// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
 func (o VirtualMachineDiskOutput) DiskMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DiskMode }).(pulumi.StringPtrOutput)
 }
@@ -2850,11 +2836,7 @@ func (o VirtualMachineDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-//
-// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-//
-// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 func (o VirtualMachineDiskOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Path }).(pulumi.StringPtrOutput)
 }

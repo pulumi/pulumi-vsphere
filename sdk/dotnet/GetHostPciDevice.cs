@@ -140,7 +140,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The hexadecimal PCI device class ID
         /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
         /// 
         /// &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
         /// </summary>
@@ -177,7 +177,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The hexadecimal PCI device class ID
         /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
         /// 
         /// &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
         /// </summary>

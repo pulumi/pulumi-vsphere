@@ -19,8 +19,6 @@ type Folder struct {
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
@@ -92,8 +90,6 @@ type folderState struct {
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -129,8 +125,6 @@ type FolderState struct {
 	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -172,8 +166,6 @@ type folderArgs struct {
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -210,8 +202,6 @@ type FolderArgs struct {
 	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -334,8 +324,6 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 // Map of custom attribute ids to attribute
 // value strings to set for folder. See [here][docs-setting-custom-attributes]
 // for a reference on how to set values for custom attributes.
-//
-// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 //
 // > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 // and require vCenter.

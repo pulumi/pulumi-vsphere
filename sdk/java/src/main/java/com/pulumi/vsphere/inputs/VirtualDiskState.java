@@ -140,8 +140,6 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
@@ -151,8 +149,6 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
-     * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
      * 
      */
     public Optional<Output<String>> type() {
@@ -359,8 +355,6 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * information on what each kind of disk provisioning policy means, click
          * [here][docs-vmware-vm-disk-provisioning].
          * 
-         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
-         * 
          * @return builder
          * 
          */
@@ -374,8 +368,6 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
          * information on what each kind of disk provisioning policy means, click
          * [here][docs-vmware-vm-disk-provisioning].
-         * 
-         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
          * 
          * @return builder
          * 

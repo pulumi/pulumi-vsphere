@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContentLibraryPublication {
     /**
-     * @return Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+     * @return Method to authenticate users. Must be `NONE` or `BASIC`.
      * 
      */
     private @Nullable String authenticationMethod;
     /**
-     * @return Password used for authentication.
+     * @return Password used by subscribers to authenticate.
      * 
      */
     private @Nullable String password;
@@ -33,21 +33,21 @@ public final class ContentLibraryPublication {
      */
     private @Nullable Boolean published;
     /**
-     * @return Username used for authentication.
+     * @return Username used by subscribers to authenticate. Currently can only be `vcsp`.
      * 
      */
     private @Nullable String username;
 
     private ContentLibraryPublication() {}
     /**
-     * @return Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+     * @return Method to authenticate users. Must be `NONE` or `BASIC`.
      * 
      */
     public Optional<String> authenticationMethod() {
         return Optional.ofNullable(this.authenticationMethod);
     }
     /**
-     * @return Password used for authentication.
+     * @return Password used by subscribers to authenticate.
      * 
      */
     public Optional<String> password() {
@@ -68,7 +68,7 @@ public final class ContentLibraryPublication {
         return Optional.ofNullable(this.published);
     }
     /**
-     * @return Username used for authentication.
+     * @return Username used by subscribers to authenticate. Currently can only be `vcsp`.
      * 
      */
     public Optional<String> username() {

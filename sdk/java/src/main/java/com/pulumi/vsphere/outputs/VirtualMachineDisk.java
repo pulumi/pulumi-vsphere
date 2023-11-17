@@ -26,15 +26,15 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String controllerType;
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     private @Nullable String datastoreId;
     private @Nullable String deviceAddress;
     /**
      * @return The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-     * 
-     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
      * 
      */
     private @Nullable String diskMode;
@@ -82,11 +82,7 @@ public final class VirtualMachineDisk {
     private @Nullable Integer key;
     private String label;
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     private @Nullable String path;
@@ -139,7 +135,9 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.controllerType);
     }
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     public Optional<String> datastoreId() {
@@ -150,8 +148,6 @@ public final class VirtualMachineDisk {
     }
     /**
      * @return The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-     * 
-     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
      * 
      */
     public Optional<String> diskMode() {
@@ -219,11 +215,7 @@ public final class VirtualMachineDisk {
         return this.label;
     }
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     public Optional<String> path() {

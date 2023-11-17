@@ -71,8 +71,6 @@ type Datacenter struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
@@ -126,8 +124,6 @@ type datacenterState struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -151,8 +147,6 @@ type DatacenterState struct {
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -182,8 +176,6 @@ type datacenterArgs struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -206,8 +198,6 @@ type DatacenterArgs struct {
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -316,8 +306,6 @@ func (o DatacenterOutput) ToDatacenterOutputWithContext(ctx context.Context) Dat
 // strings to set for datacenter resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
-//
-// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 //
 // > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 // and require vCenter.

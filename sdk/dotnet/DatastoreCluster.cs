@@ -18,9 +18,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         [Output("customAttributes")]
@@ -193,7 +193,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Runtime thresholds govern 
-        /// when Storage DRS performs or recommends migrations
+        /// when Storage DRS performs or recommends migrations 
         /// (based on the selected automation level). Default: `80` percent.
         /// </summary>
         [Output("sdrsSpaceUtilizationThreshold")]
@@ -269,9 +269,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
@@ -453,7 +453,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Runtime thresholds govern 
-        /// when Storage DRS performs or recommends migrations
+        /// when Storage DRS performs or recommends migrations 
         /// (based on the selected automation level). Default: `80` percent.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]
@@ -497,9 +497,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
@@ -681,7 +681,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Runtime thresholds govern 
-        /// when Storage DRS performs or recommends migrations
+        /// when Storage DRS performs or recommends migrations 
         /// (based on the selected automation level). Default: `80` percent.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]

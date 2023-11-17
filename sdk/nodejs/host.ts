@@ -123,8 +123,6 @@ export class Host extends pulumi.CustomResource {
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     *
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -273,8 +271,6 @@ export interface HostState {
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     *
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -364,8 +360,6 @@ export interface HostArgs {
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     *
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -139,8 +139,6 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
         /// connections and require vCenter Server.
-        /// 
-        /// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -305,8 +303,6 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
         /// connections and require vCenter Server.
-        /// 
-        /// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -448,8 +444,6 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
         /// connections and require vCenter Server.
-        /// 
-        /// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         /// </summary>
         public InputMap<string> CustomAttributes
         {

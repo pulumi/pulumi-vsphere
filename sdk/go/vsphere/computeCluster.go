@@ -47,8 +47,6 @@ type ComputeCluster struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
-	//
-	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs pulumi.BoolPtrOutput `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -375,8 +373,6 @@ type computeClusterState struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
-	//
-	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs *bool `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -671,8 +667,6 @@ type ComputeClusterState struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
-	//
-	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs pulumi.BoolPtrInput
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -971,8 +965,6 @@ type computeClusterArgs struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
-	//
-	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs *bool `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -1262,8 +1254,6 @@ type ComputeClusterArgs struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
-	//
-	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs pulumi.BoolPtrInput
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -1659,8 +1649,6 @@ func (o ComputeClusterOutput) DrsAutomationLevel() pulumi.StringPtrOutput {
 // When `true`, enables DRS to use data
 // from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 // recommendations. <sup>\*</sup>
-//
-// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 func (o ComputeClusterOutput) DrsEnablePredictiveDrs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.DrsEnablePredictiveDrs }).(pulumi.BoolPtrOutput)
 }

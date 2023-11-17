@@ -34,12 +34,12 @@ export class Folder extends pulumi.CustomResource {
 
     /**
      * Map of custom attribute ids to attribute 
-     * value strings to set for folder. See [here][docs-setting-custom-attributes]
+     * value strings to set for folder. See [here][docs-setting-custom-attributes] 
      * for a reference on how to set values for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -121,12 +121,12 @@ export class Folder extends pulumi.CustomResource {
 export interface FolderState {
     /**
      * Map of custom attribute ids to attribute 
-     * value strings to set for folder. See [here][docs-setting-custom-attributes]
+     * value strings to set for folder. See [here][docs-setting-custom-attributes] 
      * for a reference on how to set values for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -172,12 +172,12 @@ export interface FolderState {
 export interface FolderArgs {
     /**
      * Map of custom attribute ids to attribute 
-     * value strings to set for folder. See [here][docs-setting-custom-attributes]
+     * value strings to set for folder. See [here][docs-setting-custom-attributes] 
      * for a reference on how to set values for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

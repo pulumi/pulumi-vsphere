@@ -21,13 +21,13 @@ class DatacenterArgs:
         """
         The set of arguments for constructing a Datacenter resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to value 
-               strings to set for datacenter resource. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               strings to set for datacenter resource. See 
+               [here][docs-setting-custom-attributes] for a reference on how to set values 
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
@@ -52,13 +52,13 @@ class DatacenterArgs:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of custom attribute ids to value 
-        strings to set for datacenter resource. See
-        [here][docs-setting-custom-attributes] for a reference on how to set values
+        strings to set for datacenter resource. See 
+        [here][docs-setting-custom-attributes] for a reference on how to set values 
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -120,13 +120,13 @@ class _DatacenterState:
         """
         Input properties used for looking up and filtering Datacenter resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to value 
-               strings to set for datacenter resource. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               strings to set for datacenter resource. See 
+               [here][docs-setting-custom-attributes] for a reference on how to set values 
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
@@ -154,13 +154,13 @@ class _DatacenterState:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of custom attribute ids to value 
-        strings to set for datacenter resource. See
-        [here][docs-setting-custom-attributes] for a reference on how to set values
+        strings to set for datacenter resource. See 
+        [here][docs-setting-custom-attributes] for a reference on how to set values 
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -258,13 +258,13 @@ class Datacenter(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to value 
-               strings to set for datacenter resource. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               strings to set for datacenter resource. See 
+               [here][docs-setting-custom-attributes] for a reference on how to set values 
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
@@ -359,13 +359,13 @@ class Datacenter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to value 
-               strings to set for datacenter resource. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               strings to set for datacenter resource. See 
+               [here][docs-setting-custom-attributes] for a reference on how to set values 
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
@@ -393,13 +393,13 @@ class Datacenter(pulumi.CustomResource):
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to value 
-        strings to set for datacenter resource. See
-        [here][docs-setting-custom-attributes] for a reference on how to set values
+        strings to set for datacenter resource. See 
+        [here][docs-setting-custom-attributes] for a reference on how to set values 
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")

@@ -132,8 +132,6 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
-     * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
@@ -143,8 +141,6 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
-     * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
      * 
      */
     public Output<Optional<String>> type() {

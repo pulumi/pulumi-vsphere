@@ -107,8 +107,6 @@ type DistributedPortGroup struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat pulumi.StringPtrOutput `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
@@ -275,8 +273,6 @@ type distributedPortGroupState struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -411,8 +407,6 @@ type DistributedPortGroupState struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -546,8 +540,6 @@ type distributedPortGroupArgs struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -678,8 +670,6 @@ type DistributedPortGroupArgs struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -1002,8 +992,6 @@ func (o DistributedPortGroupOutput) PortConfigResetAtDisconnect() pulumi.BoolPtr
 // An optional formatting policy for naming of
 // the ports in this port group. See the `portNameFormat` attribute listed
 // [here][ext-vsphere-portname-format] for details on the format syntax.
-//
-// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 func (o DistributedPortGroupOutput) PortNameFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.PortNameFormat }).(pulumi.StringPtrOutput)
 }

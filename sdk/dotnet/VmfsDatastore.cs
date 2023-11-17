@@ -29,7 +29,7 @@ namespace Pulumi.VSphere
         /// Map of custom attribute ids to attribute 
         /// value string to set on datastore resource.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         [Output("customAttributes")]
@@ -98,7 +98,7 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// 
         /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
         /// requires vCenter 6.0 or higher.
@@ -172,7 +172,7 @@ namespace Pulumi.VSphere
         /// Map of custom attribute ids to attribute 
         /// value string to set on datastore resource.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
@@ -234,7 +234,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// 
         /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
         /// requires vCenter 6.0 or higher.
@@ -273,7 +273,7 @@ namespace Pulumi.VSphere
         /// Map of custom attribute ids to attribute 
         /// value string to set on datastore resource.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
@@ -354,7 +354,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// 
         /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
         /// requires vCenter 6.0 or higher.

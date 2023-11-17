@@ -49,7 +49,7 @@ export interface GetHostPciDeviceArgs {
     /**
      * The hexadecimal PCI device class ID
      *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     *
      *
      * > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
      */
@@ -124,7 +124,7 @@ export interface GetHostPciDeviceOutputArgs {
     /**
      * The hexadecimal PCI device class ID
      *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     *
      *
      * > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
      */

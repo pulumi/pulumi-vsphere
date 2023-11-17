@@ -32,7 +32,7 @@ class VmfsDatastoreArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
@@ -46,7 +46,7 @@ class VmfsDatastoreArgs:
                `datastore_cluster_id`.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -99,7 +99,7 @@ class VmfsDatastoreArgs:
         Map of custom attribute ids to attribute 
         value string to set on datastore resource.
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -157,7 +157,7 @@ class VmfsDatastoreArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource.
 
         > **NOTE:** Tagging support is unsupported on direct ESXi connections and
         requires vCenter 6.0 or higher.
@@ -194,7 +194,7 @@ class _VmfsDatastoreState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
@@ -218,7 +218,7 @@ class _VmfsDatastoreState:
                been configured with access to the datastore.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -287,7 +287,7 @@ class _VmfsDatastoreState:
         Map of custom attribute ids to attribute 
         value string to set on datastore resource.
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -410,7 +410,7 @@ class _VmfsDatastoreState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource.
 
         > **NOTE:** Tagging support is unsupported on direct ESXi connections and
         requires vCenter 6.0 or higher.
@@ -467,7 +467,7 @@ class VmfsDatastore(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
@@ -487,7 +487,7 @@ class VmfsDatastore(pulumi.CustomResource):
                new resource if changed.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -586,7 +586,7 @@ class VmfsDatastore(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
@@ -610,7 +610,7 @@ class VmfsDatastore(pulumi.CustomResource):
                been configured with access to the datastore.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -662,7 +662,7 @@ class VmfsDatastore(pulumi.CustomResource):
         Map of custom attribute ids to attribute 
         value string to set on datastore resource.
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -749,7 +749,7 @@ class VmfsDatastore(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource.
 
         > **NOTE:** Tagging support is unsupported on direct ESXi connections and
         requires vCenter 6.0 or higher.

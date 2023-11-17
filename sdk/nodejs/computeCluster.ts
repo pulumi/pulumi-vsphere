@@ -81,8 +81,6 @@ export class ComputeCluster extends pulumi.CustomResource {
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
-     *
-     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      */
     public readonly drsEnablePredictiveDrs!: pulumi.Output<boolean | undefined>;
     /**
@@ -667,8 +665,6 @@ export interface ComputeClusterState {
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
-     *
-     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      */
     drsEnablePredictiveDrs?: pulumi.Input<boolean>;
     /**
@@ -1098,8 +1094,6 @@ export interface ComputeClusterArgs {
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
-     *
-     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      */
     drsEnablePredictiveDrs?: pulumi.Input<boolean>;
     /**

@@ -49,9 +49,9 @@ class DatastoreClusterArgs:
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] folder: The relative path to a folder to put this datastore
                cluster in.  This is a path relative to the datacenter you are deploying the
@@ -111,7 +111,7 @@ class DatastoreClusterArgs:
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
         :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
-               when Storage DRS performs or recommends migrations
+               when Storage DRS performs or recommends migrations 
                (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
@@ -192,9 +192,9 @@ class DatastoreClusterArgs:
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -485,7 +485,7 @@ class DatastoreClusterArgs:
     def sdrs_space_utilization_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         Runtime thresholds govern 
-        when Storage DRS performs or recommends migrations
+        when Storage DRS performs or recommends migrations 
         (based on the selected automation level). Default: `80` percent.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")
@@ -557,9 +557,9 @@ class _DatastoreClusterState:
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the datastore cluster in. Forces a new resource if
@@ -622,7 +622,7 @@ class _DatastoreClusterState:
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
         :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
-               when Storage DRS performs or recommends migrations
+               when Storage DRS performs or recommends migrations 
                (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
@@ -690,9 +690,9 @@ class _DatastoreClusterState:
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -997,7 +997,7 @@ class _DatastoreClusterState:
     def sdrs_space_utilization_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         Runtime thresholds govern 
-        when Storage DRS performs or recommends migrations
+        when Storage DRS performs or recommends migrations 
         (based on the selected automation level). Default: `80` percent.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")
@@ -1074,9 +1074,9 @@ class DatastoreCluster(pulumi.CustomResource):
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the datastore cluster in. Forces a new resource if
@@ -1139,7 +1139,7 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
         :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
-               when Storage DRS performs or recommends migrations
+               when Storage DRS performs or recommends migrations 
                (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
@@ -1278,9 +1278,9 @@ class DatastoreCluster(pulumi.CustomResource):
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
                and require vCenter.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the datastore cluster in. Forces a new resource if
@@ -1343,7 +1343,7 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
         :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
-               when Storage DRS performs or recommends migrations
+               when Storage DRS performs or recommends migrations 
                (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
@@ -1391,9 +1391,9 @@ class DatastoreCluster(pulumi.CustomResource):
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
@@ -1610,7 +1610,7 @@ class DatastoreCluster(pulumi.CustomResource):
     def sdrs_space_utilization_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         Runtime thresholds govern 
-        when Storage DRS performs or recommends migrations
+        when Storage DRS performs or recommends migrations 
         (based on the selected automation level). Default: `80` percent.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")

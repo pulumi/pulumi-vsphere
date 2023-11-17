@@ -108,8 +108,6 @@ class ComputeClusterArgs:
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
-               
-               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -542,8 +540,6 @@ class ComputeClusterArgs:
         When `true`, enables DRS to use data
         from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\\*</sup>
-
-        [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 
@@ -1470,8 +1466,6 @@ class _ComputeClusterState:
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
-               
-               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -1912,8 +1906,6 @@ class _ComputeClusterState:
         When `true`, enables DRS to use data
         from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\\*</sup>
-
-        [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 
@@ -2860,8 +2852,6 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
-               
-               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -3331,8 +3321,6 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
-               
-               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -3684,8 +3672,6 @@ class ComputeCluster(pulumi.CustomResource):
         When `true`, enables DRS to use data
         from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\\*</sup>
-
-        [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 

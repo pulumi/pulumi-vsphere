@@ -155,8 +155,6 @@ type Host struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -260,8 +258,6 @@ type hostState struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -320,8 +316,6 @@ type HostState struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -384,8 +378,6 @@ type hostArgs struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -445,8 +437,6 @@ type HostArgs struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -600,8 +590,6 @@ func (o HostOutput) Connected() pulumi.BoolPtrOutput {
 //
 // > **NOTE:** Custom attributes are not supported on direct ESXi host
 // connections and require vCenter Server.
-//
-// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 func (o HostOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }

@@ -52,7 +52,7 @@ export class NasDatastore extends pulumi.CustomResource {
      * Map of custom attribute ids to attribute 
      * value strings to set on datasource resource.
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -118,7 +118,7 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     public readonly securityType!: pulumi.Output<string | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -232,7 +232,7 @@ export interface NasDatastoreState {
      * Map of custom attribute ids to attribute 
      * value strings to set on datasource resource.
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -298,7 +298,7 @@ export interface NasDatastoreState {
      */
     securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -336,7 +336,7 @@ export interface NasDatastoreArgs {
      * Map of custom attribute ids to attribute 
      * value strings to set on datasource resource.
      *
-     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -384,7 +384,7 @@ export interface NasDatastoreArgs {
      */
     securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.

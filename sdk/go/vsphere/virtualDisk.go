@@ -48,8 +48,6 @@ type VirtualDisk struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
-	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -128,8 +126,6 @@ type virtualDiskState struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
-	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type *string `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -170,8 +166,6 @@ type VirtualDiskState struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
-	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrInput
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -216,8 +210,6 @@ type virtualDiskArgs struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
-	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type *string `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -259,8 +251,6 @@ type VirtualDiskArgs struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
-	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrInput
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -402,8 +392,6 @@ func (o VirtualDiskOutput) Size() pulumi.IntOutput {
 // `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 // information on what each kind of disk provisioning policy means, click
 // [here][docs-vmware-vm-disk-provisioning].
-//
-// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 func (o VirtualDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

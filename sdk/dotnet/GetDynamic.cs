@@ -147,7 +147,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The managed object type the returned object must match.
-        /// The managed object types can be found in the managed object type section
+        /// The managed object types can be found in the managed object type section 
         /// [here](https://developer.vmware.com/apis/968/vsphere).
         /// </summary>
         [Input("type")]
@@ -183,7 +183,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The managed object type the returned object must match.
-        /// The managed object types can be found in the managed object type section
+        /// The managed object types can be found in the managed object type section 
         /// [here](https://developer.vmware.com/apis/968/vsphere).
         /// </summary>
         [Input("type")]

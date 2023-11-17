@@ -13,13 +13,13 @@ namespace Pulumi.VSphere.Inputs
     public sealed class ContentLibraryPublicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+        /// Method to authenticate users. Must be `NONE` or `BASIC`.
         /// </summary>
         [Input("authenticationMethod")]
         public Input<string>? AuthenticationMethod { get; set; }
 
         /// <summary>
-        /// Password used for authentication.
+        /// Password used by subscribers to authenticate.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? Published { get; set; }
 
         /// <summary>
-        /// Username used for authentication.
+        /// Username used by subscribers to authenticate. Currently can only be `vcsp`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
