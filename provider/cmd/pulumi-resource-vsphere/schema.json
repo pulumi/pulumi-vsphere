@@ -165,7 +165,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of disk canonical names for vSAN storage.\n\n\u003e **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.\nYou can enable or re-enable vSphere HA after vSAN is configured.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst computeCluster = new vsphere.ComputeCluster(\"computeCluster\", {\n    datacenterId: data.vsphere_datacenter.datacenter.id,\n    hostSystemIds: [data.vsphere_host.host.map(__item =\u003e __item.id)],\n    drsEnabled: true,\n    drsAutomationLevel: \"fullyAutomated\",\n    haEnabled: false,\n    vsanEnabled: true,\n    vsanDedupEnabled: true,\n    vsanCompressionEnabled: true,\n    vsanPerformanceEnabled: true,\n    vsanVerboseModeEnabled: true,\n    vsanNetworkDiagnosticModeEnabled: true,\n    vsanUnmapEnabled: true,\n    vsanDitEncryptionEnabled: true,\n    vsanDitRekeyInterval: 1800,\n    vsanDiskGroups: [{\n        cache: data.vsphere_vmfs_disks.cache_disks[0],\n        storages: data.vsphere_vmfs_disks.storage_disks,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncompute_cluster = vsphere.ComputeCluster(\"computeCluster\",\n    datacenter_id=data[\"vsphere_datacenter\"][\"datacenter\"][\"id\"],\n    host_system_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"host\"]]],\n    drs_enabled=True,\n    drs_automation_level=\"fullyAutomated\",\n    ha_enabled=False,\n    vsan_enabled=True,\n    vsan_dedup_enabled=True,\n    vsan_compression_enabled=True,\n    vsan_performance_enabled=True,\n    vsan_verbose_mode_enabled=True,\n    vsan_network_diagnostic_mode_enabled=True,\n    vsan_unmap_enabled=True,\n    vsan_dit_encryption_enabled=True,\n    vsan_dit_rekey_interval=1800,\n    vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(\n        cache=data[\"vsphere_vmfs_disks\"][\"cache_disks\"],\n        storages=data[\"vsphere_vmfs_disks\"][\"storage_disks\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var computeCluster = new VSphere.ComputeCluster(\"computeCluster\", new()\n    {\n        DatacenterId = data.Vsphere_datacenter.Datacenter.Id,\n        HostSystemIds = new[]\n        {\n            data.Vsphere_host.Host.Select(__item =\u003e __item.Id).ToList(),\n        },\n        DrsEnabled = true,\n        DrsAutomationLevel = \"fullyAutomated\",\n        HaEnabled = false,\n        VsanEnabled = true,\n        VsanDedupEnabled = true,\n        VsanCompressionEnabled = true,\n        VsanPerformanceEnabled = true,\n        VsanVerboseModeEnabled = true,\n        VsanNetworkDiagnosticModeEnabled = true,\n        VsanUnmapEnabled = true,\n        VsanDitEncryptionEnabled = true,\n        VsanDitRekeyInterval = 1800,\n        VsanDiskGroups = new[]\n        {\n            new VSphere.Inputs.ComputeClusterVsanDiskGroupArgs\n            {\n                Cache = data.Vsphere_vmfs_disks.Cache_disks[0],\n                Storages = data.Vsphere_vmfs_disks.Storage_disks,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := vsphere.NewComputeCluster(ctx, \"computeCluster\", \u0026vsphere.ComputeClusterArgs{\nDatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),\nHostSystemIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),\n},\nDrsEnabled: pulumi.Bool(true),\nDrsAutomationLevel: pulumi.String(\"fullyAutomated\"),\nHaEnabled: pulumi.Bool(false),\nVsanEnabled: pulumi.Bool(true),\nVsanDedupEnabled: pulumi.Bool(true),\nVsanCompressionEnabled: pulumi.Bool(true),\nVsanPerformanceEnabled: pulumi.Bool(true),\nVsanVerboseModeEnabled: pulumi.Bool(true),\nVsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),\nVsanUnmapEnabled: pulumi.Bool(true),\nVsanDitEncryptionEnabled: pulumi.Bool(true),\nVsanDitRekeyInterval: pulumi.Int(1800),\nVsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{\n\u0026vsphere.ComputeClusterVsanDiskGroupArgs{\nCache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),\nStorages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),\n},\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.ComputeCluster;\nimport com.pulumi.vsphere.ComputeClusterArgs;\nimport com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var computeCluster = new ComputeCluster(\"computeCluster\", ComputeClusterArgs.builder()        \n            .datacenterId(data.vsphere_datacenter().datacenter().id())\n            .hostSystemIds(data.vsphere_host().host().stream().map(element -\u003e element.id()).collect(toList()))\n            .drsEnabled(true)\n            .drsAutomationLevel(\"fullyAutomated\")\n            .haEnabled(false)\n            .vsanEnabled(true)\n            .vsanDedupEnabled(true)\n            .vsanCompressionEnabled(true)\n            .vsanPerformanceEnabled(true)\n            .vsanVerboseModeEnabled(true)\n            .vsanNetworkDiagnosticModeEnabled(true)\n            .vsanUnmapEnabled(true)\n            .vsanDitEncryptionEnabled(true)\n            .vsanDitRekeyInterval(1800)\n            .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()\n                .cache(data.vsphere_vmfs_disks().cache_disks()[0])\n                .storages(data.vsphere_vmfs_disks().storage_disks())\n                .build())\n            .build());\n\n    }\n}\n```\n"
+                    "description": "An array of disk canonical names for vSAN storage.\n\n\u003e **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.\nYou can enable or re-enable vSphere HA after vSAN is configured.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst computeCluster = new vsphere.ComputeCluster(\"computeCluster\", {\n    datacenterId: data.vsphere_datacenter.datacenter.id,\n    hostSystemIds: [data.vsphere_host.host.map(__item =\u003e __item.id)],\n    drsEnabled: true,\n    drsAutomationLevel: \"fullyAutomated\",\n    haEnabled: false,\n    vsanEnabled: true,\n    vsanDedupEnabled: true,\n    vsanCompressionEnabled: true,\n    vsanPerformanceEnabled: true,\n    vsanVerboseModeEnabled: true,\n    vsanNetworkDiagnosticModeEnabled: true,\n    vsanUnmapEnabled: true,\n    vsanDitEncryptionEnabled: true,\n    vsanDitRekeyInterval: 1800,\n    vsanDiskGroups: [{\n        cache: data.vsphere_vmfs_disks.cache_disks[0],\n        storages: data.vsphere_vmfs_disks.storage_disks,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncompute_cluster = vsphere.ComputeCluster(\"computeCluster\",\n    datacenter_id=data[\"vsphere_datacenter\"][\"datacenter\"][\"id\"],\n    host_system_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"host\"]]],\n    drs_enabled=True,\n    drs_automation_level=\"fullyAutomated\",\n    ha_enabled=False,\n    vsan_enabled=True,\n    vsan_dedup_enabled=True,\n    vsan_compression_enabled=True,\n    vsan_performance_enabled=True,\n    vsan_verbose_mode_enabled=True,\n    vsan_network_diagnostic_mode_enabled=True,\n    vsan_unmap_enabled=True,\n    vsan_dit_encryption_enabled=True,\n    vsan_dit_rekey_interval=1800,\n    vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(\n        cache=data[\"vsphere_vmfs_disks\"][\"cache_disks\"],\n        storages=data[\"vsphere_vmfs_disks\"][\"storage_disks\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var computeCluster = new VSphere.ComputeCluster(\"computeCluster\", new()\n    {\n        DatacenterId = data.Vsphere_datacenter.Datacenter.Id,\n        HostSystemIds = new[]\n        {\n            data.Vsphere_host.Host.Select(__item =\u003e __item.Id).ToList(),\n        },\n        DrsEnabled = true,\n        DrsAutomationLevel = \"fullyAutomated\",\n        HaEnabled = false,\n        VsanEnabled = true,\n        VsanDedupEnabled = true,\n        VsanCompressionEnabled = true,\n        VsanPerformanceEnabled = true,\n        VsanVerboseModeEnabled = true,\n        VsanNetworkDiagnosticModeEnabled = true,\n        VsanUnmapEnabled = true,\n        VsanDitEncryptionEnabled = true,\n        VsanDitRekeyInterval = 1800,\n        VsanDiskGroups = new[]\n        {\n            new VSphere.Inputs.ComputeClusterVsanDiskGroupArgs\n            {\n                Cache = data.Vsphere_vmfs_disks.Cache_disks[0],\n                Storages = data.Vsphere_vmfs_disks.Storage_disks,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := vsphere.NewComputeCluster(ctx, \"computeCluster\", \u0026vsphere.ComputeClusterArgs{\nDatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),\nHostSystemIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,20-47),\n},\nDrsEnabled: pulumi.Bool(true),\nDrsAutomationLevel: pulumi.String(\"fullyAutomated\"),\nHaEnabled: pulumi.Bool(false),\nVsanEnabled: pulumi.Bool(true),\nVsanDedupEnabled: pulumi.Bool(true),\nVsanCompressionEnabled: pulumi.Bool(true),\nVsanPerformanceEnabled: pulumi.Bool(true),\nVsanVerboseModeEnabled: pulumi.Bool(true),\nVsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),\nVsanUnmapEnabled: pulumi.Bool(true),\nVsanDitEncryptionEnabled: pulumi.Bool(true),\nVsanDitRekeyInterval: pulumi.Int(1800),\nVsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{\n\u0026vsphere.ComputeClusterVsanDiskGroupArgs{\nCache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),\nStorages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),\n},\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.ComputeCluster;\nimport com.pulumi.vsphere.ComputeClusterArgs;\nimport com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var computeCluster = new ComputeCluster(\"computeCluster\", ComputeClusterArgs.builder()        \n            .datacenterId(data.vsphere_datacenter().datacenter().id())\n            .hostSystemIds(data.vsphere_host().host().stream().map(element -\u003e element.id()).collect(toList()))\n            .drsEnabled(true)\n            .drsAutomationLevel(\"fullyAutomated\")\n            .haEnabled(false)\n            .vsanEnabled(true)\n            .vsanDedupEnabled(true)\n            .vsanCompressionEnabled(true)\n            .vsanPerformanceEnabled(true)\n            .vsanVerboseModeEnabled(true)\n            .vsanNetworkDiagnosticModeEnabled(true)\n            .vsanUnmapEnabled(true)\n            .vsanDitEncryptionEnabled(true)\n            .vsanDitRekeyInterval(1800)\n            .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()\n                .cache(data.vsphere_vmfs_disks().cache_disks()[0])\n                .storages(data.vsphere_vmfs_disks().storage_disks())\n                .build())\n            .build());\n\n    }\n}\n```\n"
                 }
             },
             "type": "object"
@@ -174,12 +174,12 @@
             "properties": {
                 "authenticationMethod": {
                     "type": "string",
-                    "description": "Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.\n",
+                    "description": "Method to authenticate users. Must be `NONE` or `BASIC`.\n",
                     "willReplaceOnChanges": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password used for authentication.\n",
+                    "description": "Password used by subscribers to authenticate.\n",
                     "willReplaceOnChanges": true
                 },
                 "publishUrl": {
@@ -194,7 +194,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username used for authentication.\n",
+                    "description": "Username used by subscribers to authenticate. Currently can only be `vcsp`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -385,7 +385,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
+                    "description": "The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
                 },
                 "deviceAddress": {
                     "type": "string"
@@ -396,7 +396,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.\n\n\u003e **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .\n\n\u003e **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.\n"
+                    "description": "When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.\n"
                 }
             },
             "type": "object",
@@ -600,14 +600,14 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
+                    "description": "The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
                 },
                 "deviceAddress": {
                     "type": "string"
                 },
                 "diskMode": {
                     "type": "string",
-                    "description": "The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].\n\n[vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html\n"
+                    "description": "The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].\n"
                 },
                 "diskSharing": {
                     "type": "string",
@@ -646,7 +646,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.\n\n\u003e **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .\n\n\u003e **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.\n"
+                    "description": "When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -1168,7 +1168,7 @@
                 },
                 "drsEnablePredictiveDrs": {
                     "type": "boolean",
-                    "description": "When `true`, enables DRS to use data\nfrom [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS\nrecommendations. \u003csup\u003e\\*\u003c/sup\u003e\n\n[ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html\n"
+                    "description": "When `true`, enables DRS to use data\nfrom [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS\nrecommendations. \u003csup\u003e\\*\u003c/sup\u003e\n"
                 },
                 "drsEnableVmOverrides": {
                     "type": "boolean",
@@ -1472,7 +1472,7 @@
                 },
                 "drsEnablePredictiveDrs": {
                     "type": "boolean",
-                    "description": "When `true`, enables DRS to use data\nfrom [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS\nrecommendations. \u003csup\u003e\\*\u003c/sup\u003e\n\n[ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html\n"
+                    "description": "When `true`, enables DRS to use data\nfrom [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS\nrecommendations. \u003csup\u003e\\*\u003c/sup\u003e\n"
                 },
                 "drsEnableVmOverrides": {
                     "type": "boolean",
@@ -1770,7 +1770,7 @@
                     },
                     "drsEnablePredictiveDrs": {
                         "type": "boolean",
-                        "description": "When `true`, enables DRS to use data\nfrom [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS\nrecommendations. \u003csup\u003e\\*\u003c/sup\u003e\n\n[ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html\n"
+                        "description": "When `true`, enables DRS to use data\nfrom [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS\nrecommendations. \u003csup\u003e\\*\u003c/sup\u003e\n"
                     },
                     "drsEnableVmOverrides": {
                         "type": "boolean",
@@ -2808,7 +2808,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to value \nstrings to set for datacenter resource. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to value \nstrings to set for datacenter resource. See \n[here][docs-setting-custom-attributes] for a reference on how to set values \nfor custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "folder": {
                     "type": "string",
@@ -2840,7 +2840,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to value \nstrings to set for datacenter resource. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to value \nstrings to set for datacenter resource. See \n[here][docs-setting-custom-attributes] for a reference on how to set values \nfor custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "folder": {
                     "type": "string",
@@ -2868,7 +2868,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of custom attribute ids to value \nstrings to set for datacenter resource. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                        "description": "Map of custom attribute ids to value \nstrings to set for datacenter resource. See \n[here][docs-setting-custom-attributes] for a reference on how to set values \nfor custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                     },
                     "folder": {
                         "type": "string",
@@ -2903,7 +2903,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of custom attribute ids to attribute\nvalue strings to set for the datastore cluster. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "A map of custom attribute ids to attribute\nvalue strings to set for the datastore cluster. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datacenterId": {
                     "type": "string",
@@ -2994,7 +2994,7 @@
                 },
                 "sdrsSpaceUtilizationThreshold": {
                     "type": "integer",
-                    "description": "Runtime thresholds govern \nwhen Storage DRS performs or recommends migrations\n(based on the selected automation level). Default: `80` percent.\n"
+                    "description": "Runtime thresholds govern \nwhen Storage DRS performs or recommends migrations \n(based on the selected automation level). Default: `80` percent.\n"
                 },
                 "sdrsVmEvacuationAutomationLevel": {
                     "type": "string",
@@ -3018,7 +3018,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of custom attribute ids to attribute\nvalue strings to set for the datastore cluster. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "A map of custom attribute ids to attribute\nvalue strings to set for the datastore cluster. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datacenterId": {
                     "type": "string",
@@ -3110,7 +3110,7 @@
                 },
                 "sdrsSpaceUtilizationThreshold": {
                     "type": "integer",
-                    "description": "Runtime thresholds govern \nwhen Storage DRS performs or recommends migrations\n(based on the selected automation level). Default: `80` percent.\n"
+                    "description": "Runtime thresholds govern \nwhen Storage DRS performs or recommends migrations \n(based on the selected automation level). Default: `80` percent.\n"
                 },
                 "sdrsVmEvacuationAutomationLevel": {
                     "type": "string",
@@ -3135,7 +3135,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of custom attribute ids to attribute\nvalue strings to set for the datastore cluster. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                        "description": "A map of custom attribute ids to attribute\nvalue strings to set for the datastore cluster. See\n[here][docs-setting-custom-attributes] for a reference on how to set values\nfor custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                     },
                     "datacenterId": {
                         "type": "string",
@@ -3227,7 +3227,7 @@
                     },
                     "sdrsSpaceUtilizationThreshold": {
                         "type": "integer",
-                        "description": "Runtime thresholds govern \nwhen Storage DRS performs or recommends migrations\n(based on the selected automation level). Default: `80` percent.\n"
+                        "description": "Runtime thresholds govern \nwhen Storage DRS performs or recommends migrations \n(based on the selected automation level). Default: `80` percent.\n"
                     },
                     "sdrsVmEvacuationAutomationLevel": {
                         "type": "string",
@@ -3482,7 +3482,7 @@
                 },
                 "portNameFormat": {
                     "type": "string",
-                    "description": "An optional formatting policy for naming of\nthe ports in this port group. See the `portNameFormat` attribute listed\n[here][ext-vsphere-portname-format] for details on the format syntax.\n\n[ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat\n"
+                    "description": "An optional formatting policy for naming of\nthe ports in this port group. See the `portNameFormat` attribute listed\n[here][ext-vsphere-portname-format] for details on the format syntax.\n"
                 },
                 "portPrivateSecondaryVlanId": {
                     "type": "integer",
@@ -3717,7 +3717,7 @@
                 },
                 "portNameFormat": {
                     "type": "string",
-                    "description": "An optional formatting policy for naming of\nthe ports in this port group. See the `portNameFormat` attribute listed\n[here][ext-vsphere-portname-format] for details on the format syntax.\n\n[ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat\n"
+                    "description": "An optional formatting policy for naming of\nthe ports in this port group. See the `portNameFormat` attribute listed\n[here][ext-vsphere-portname-format] for details on the format syntax.\n"
                 },
                 "portPrivateSecondaryVlanId": {
                     "type": "integer",
@@ -3932,7 +3932,7 @@
                     },
                     "portNameFormat": {
                         "type": "string",
-                        "description": "An optional formatting policy for naming of\nthe ports in this port group. See the `portNameFormat` attribute listed\n[here][ext-vsphere-portname-format] for details on the format syntax.\n\n[ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat\n"
+                        "description": "An optional formatting policy for naming of\nthe ports in this port group. See the `portNameFormat` attribute listed\n[here][ext-vsphere-portname-format] for details on the format syntax.\n"
                     },
                     "portPrivateSecondaryVlanId": {
                         "type": "integer",
@@ -5631,7 +5631,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes] \nfor a reference on how to set values for custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datacenterId": {
                     "type": "string",
@@ -5663,7 +5663,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes] \nfor a reference on how to set values for custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datacenterId": {
                     "type": "string",
@@ -5699,7 +5699,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                        "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes] \nfor a reference on how to set values for custom attributes.\n\n\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                     },
                     "datacenterId": {
                         "type": "string",
@@ -5950,7 +5950,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of custom attribute IDs and string\nvalues to apply to the resource. Please refer to the\n`vsphere_custom_attributes` resource for more information on applying\ntags to resources.\n\n\u003e **NOTE:** Custom attributes are not supported on direct ESXi host\nconnections and require vCenter Server.\n\n[docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html\n"
+                    "description": "A map of custom attribute IDs and string\nvalues to apply to the resource. Please refer to the\n`vsphere_custom_attributes` resource for more information on applying\ntags to resources.\n\n\u003e **NOTE:** Custom attributes are not supported on direct ESXi host\nconnections and require vCenter Server.\n"
                 },
                 "datacenter": {
                     "type": "string",
@@ -6020,7 +6020,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of custom attribute IDs and string\nvalues to apply to the resource. Please refer to the\n`vsphere_custom_attributes` resource for more information on applying\ntags to resources.\n\n\u003e **NOTE:** Custom attributes are not supported on direct ESXi host\nconnections and require vCenter Server.\n\n[docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html\n"
+                    "description": "A map of custom attribute IDs and string\nvalues to apply to the resource. Please refer to the\n`vsphere_custom_attributes` resource for more information on applying\ntags to resources.\n\n\u003e **NOTE:** Custom attributes are not supported on direct ESXi host\nconnections and require vCenter Server.\n"
                 },
                 "datacenter": {
                     "type": "string",
@@ -6092,7 +6092,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of custom attribute IDs and string\nvalues to apply to the resource. Please refer to the\n`vsphere_custom_attributes` resource for more information on applying\ntags to resources.\n\n\u003e **NOTE:** Custom attributes are not supported on direct ESXi host\nconnections and require vCenter Server.\n\n[docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html\n"
+                        "description": "A map of custom attribute IDs and string\nvalues to apply to the resource. Please refer to the\n`vsphere_custom_attributes` resource for more information on applying\ntags to resources.\n\n\u003e **NOTE:** Custom attributes are not supported on direct ESXi host\nconnections and require vCenter Server.\n"
                     },
                     "datacenter": {
                         "type": "string",
@@ -6846,7 +6846,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue strings to set on datasource resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute \nvalue strings to set on datasource resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datastoreClusterId": {
                     "type": "string",
@@ -6903,7 +6903,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of any tags to attach to this resource. \n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
+                    "description": "The IDs of any tags to attach to this resource.\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
                 },
                 "type": {
                     "type": "string",
@@ -6943,7 +6943,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue strings to set on datasource resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute \nvalue strings to set on datasource resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datastoreClusterId": {
                     "type": "string",
@@ -6987,7 +6987,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of any tags to attach to this resource. \n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
+                    "description": "The IDs of any tags to attach to this resource.\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
                 },
                 "type": {
                     "type": "string",
@@ -7021,7 +7021,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of custom attribute ids to attribute \nvalue strings to set on datasource resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                        "description": "Map of custom attribute ids to attribute \nvalue strings to set on datasource resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                     },
                     "datastoreClusterId": {
                         "type": "string",
@@ -7081,7 +7081,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IDs of any tags to attach to this resource. \n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
+                        "description": "The IDs of any tags to attach to this resource.\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
                     },
                     "type": {
                         "type": "string",
@@ -8004,7 +8004,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of disk to create. Can be one of\n`eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For\ninformation on what each kind of disk provisioning policy means, click\n[here][docs-vmware-vm-disk-provisioning].\n\n[docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html\n"
+                    "description": "The type of disk to create. Can be one of\n`eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For\ninformation on what each kind of disk provisioning policy means, click\n[here][docs-vmware-vm-disk-provisioning].\n"
                 },
                 "vmdkPath": {
                     "type": "string",
@@ -8045,7 +8045,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of disk to create. Can be one of\n`eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For\ninformation on what each kind of disk provisioning policy means, click\n[here][docs-vmware-vm-disk-provisioning].\n\n[docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html\n",
+                    "description": "The type of disk to create. Can be one of\n`eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For\ninformation on what each kind of disk provisioning policy means, click\n[here][docs-vmware-vm-disk-provisioning].\n",
                     "willReplaceOnChanges": true
                 },
                 "vmdkPath": {
@@ -8090,7 +8090,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of disk to create. Can be one of\n`eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For\ninformation on what each kind of disk provisioning policy means, click\n[here][docs-vmware-vm-disk-provisioning].\n\n[docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html\n",
+                        "description": "The type of disk to create. Can be one of\n`eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For\ninformation on what each kind of disk provisioning policy means, click\n[here][docs-vmware-vm-disk-provisioning].\n",
                         "willReplaceOnChanges": true
                     },
                     "vmdkPath": {
@@ -8184,7 +8184,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
+                    "description": "The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
                 },
                 "defaultIpAddress": {
                     "type": "string",
@@ -8238,7 +8238,7 @@
                 },
                 "guestId": {
                     "type": "string",
-                    "description": "The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.\n\n[vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html\n"
+                    "description": "The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.\n"
                 },
                 "guestIpAddresses": {
                     "type": "array",
@@ -8249,7 +8249,7 @@
                 },
                 "hardwareVersion": {
                     "type": "integer",
-                    "description": "The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.\n\n[virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746\n[virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240\n"
+                    "description": "The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.\n"
                 },
                 "hostSystemId": {
                     "type": "string",
@@ -8284,7 +8284,7 @@
                 },
                 "memoryHotAddEnabled": {
                     "type": "boolean",
-                    "description": "Allow memory to be added to the virtual machine while it is powered on.\n\n\u003e **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.\n\n[vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf\n\n\u003e **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].\n\n[vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405\n"
+                    "description": "Allow memory to be added to the virtual machine while it is powered on.\n\n\u003e **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.\n\n\n\n\u003e **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].\n"
                 },
                 "memoryLimit": {
                     "type": "integer",
@@ -8576,7 +8576,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
+                    "description": "The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
                 },
                 "disks": {
                     "type": "array",
@@ -8626,11 +8626,11 @@
                 },
                 "guestId": {
                     "type": "string",
-                    "description": "The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.\n\n[vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html\n"
+                    "description": "The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.\n"
                 },
                 "hardwareVersion": {
                     "type": "integer",
-                    "description": "The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.\n\n[virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746\n[virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240\n"
+                    "description": "The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.\n"
                 },
                 "hostSystemId": {
                     "type": "string",
@@ -8661,7 +8661,7 @@
                 },
                 "memoryHotAddEnabled": {
                     "type": "boolean",
-                    "description": "Allow memory to be added to the virtual machine while it is powered on.\n\n\u003e **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.\n\n[vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf\n\n\u003e **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].\n\n[vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405\n"
+                    "description": "Allow memory to be added to the virtual machine while it is powered on.\n\n\u003e **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.\n\n\n\n\u003e **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].\n"
                 },
                 "memoryLimit": {
                     "type": "integer",
@@ -8908,7 +8908,7 @@
                     },
                     "datastoreId": {
                         "type": "string",
-                        "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
+                        "description": "The [managed object reference ID][docs-about-morefs] for the datastore on which the virtual disk is placed. The default is to use the datastore of the virtual machine. See the section on virtual machine migration for information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
                     },
                     "defaultIpAddress": {
                         "type": "string",
@@ -8962,7 +8962,7 @@
                     },
                     "guestId": {
                         "type": "string",
-                        "description": "The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.\n\n[vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html\n"
+                        "description": "The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.\n"
                     },
                     "guestIpAddresses": {
                         "type": "array",
@@ -8973,7 +8973,7 @@
                     },
                     "hardwareVersion": {
                         "type": "integer",
-                        "description": "The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.\n\n[virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746\n[virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240\n"
+                        "description": "The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.\n"
                     },
                     "hostSystemId": {
                         "type": "string",
@@ -9008,7 +9008,7 @@
                     },
                     "memoryHotAddEnabled": {
                         "type": "boolean",
-                        "description": "Allow memory to be added to the virtual machine while it is powered on.\n\n\u003e **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.\n\n[vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf\n\n\u003e **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].\n\n[vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405\n"
+                        "description": "Allow memory to be added to the virtual machine while it is powered on.\n\n\u003e **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.\n\n\n\n\u003e **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].\n"
                     },
                     "memoryLimit": {
                         "type": "integer",
@@ -9408,7 +9408,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue string to set on datastore resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute \nvalue string to set on datastore resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datastoreClusterId": {
                     "type": "string",
@@ -9450,7 +9450,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of any tags to attach to this resource. \n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
+                    "description": "The IDs of any tags to attach to this resource.\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
                 },
                 "uncommittedSpace": {
                     "type": "integer",
@@ -9479,7 +9479,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue string to set on datastore resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute \nvalue string to set on datastore resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                 },
                 "datastoreClusterId": {
                     "type": "string",
@@ -9510,7 +9510,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of any tags to attach to this resource. \n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
+                    "description": "The IDs of any tags to attach to this resource.\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
                 }
             },
             "requiredInputs": [
@@ -9533,7 +9533,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of custom attribute ids to attribute \nvalue string to set on datastore resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                        "description": "Map of custom attribute ids to attribute \nvalue string to set on datastore resource.\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections \nand require vCenter.\n"
                     },
                     "datastoreClusterId": {
                         "type": "string",
@@ -9576,7 +9576,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IDs of any tags to attach to this resource. \n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
+                        "description": "The IDs of any tags to attach to this resource.\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n"
                     },
                     "uncommittedSpace": {
                         "type": "integer",
@@ -9798,7 +9798,7 @@
                 "properties": {
                     "computeClusterId": {
                         "type": "string",
-                        "description": "The [managed object reference ID][docs-about-morefs]\nof the compute cluster for the host group.\n\n[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider\n"
+                        "description": "The [managed object reference ID][docs-about-morefs]\nof the compute cluster for the host group.\n"
                     },
                     "name": {
                         "type": "string",
@@ -10140,7 +10140,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The managed object type the returned object must match.\nThe managed object types can be found in the managed object type section\n[here](https://developer.vmware.com/apis/968/vsphere).\n"
+                        "description": "The managed object type the returned object must match.\nThe managed object types can be found in the managed object type section \n[here](https://developer.vmware.com/apis/968/vsphere).\n"
                     }
                 },
                 "type": "object",
@@ -10260,7 +10260,7 @@
                 "properties": {
                     "classId": {
                         "type": "string",
-                        "description": "The hexadecimal PCI device class ID\n\n[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider\n\n\u003e **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.\n"
+                        "description": "The hexadecimal PCI device class ID\n\n\n\n\u003e **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.\n"
                     },
                     "hostId": {
                         "type": "string",
