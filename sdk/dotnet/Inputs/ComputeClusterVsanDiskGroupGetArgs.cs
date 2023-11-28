@@ -23,49 +23,6 @@ namespace Pulumi.VSphere.Inputs
 
         /// <summary>
         /// An array of disk canonical names for vSAN storage.
-        /// 
-        /// &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-        /// You can enable or re-enable vSphere HA after vSAN is configured.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var computeCluster = new VSphere.ComputeCluster("computeCluster", new()
-        ///     {
-        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
-        ///         HostSystemIds = new[]
-        ///         {
-        ///             data.Vsphere_host.Host.Select(__item =&gt; __item.Id).ToList(),
-        ///         },
-        ///         DrsEnabled = true,
-        ///         DrsAutomationLevel = "fullyAutomated",
-        ///         HaEnabled = false,
-        ///         VsanEnabled = true,
-        ///         VsanDedupEnabled = true,
-        ///         VsanCompressionEnabled = true,
-        ///         VsanPerformanceEnabled = true,
-        ///         VsanVerboseModeEnabled = true,
-        ///         VsanNetworkDiagnosticModeEnabled = true,
-        ///         VsanUnmapEnabled = true,
-        ///         VsanDitEncryptionEnabled = true,
-        ///         VsanDitRekeyInterval = 1800,
-        ///         VsanDiskGroups = new[]
-        ///         {
-        ///             new VSphere.Inputs.ComputeClusterVsanDiskGroupArgs
-        ///             {
-        ///                 Cache = data.Vsphere_vmfs_disks.Cache_disks[0],
-        ///                 Storages = data.Vsphere_vmfs_disks.Storage_disks,
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public InputList<string> Storages
         {

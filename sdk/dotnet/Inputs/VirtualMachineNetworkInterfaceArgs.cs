@@ -13,13 +13,13 @@ namespace Pulumi.VSphere.Inputs
     public sealed class VirtualMachineNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+        /// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
         /// </summary>
         [Input("adapterType")]
         public Input<string>? AdapterType { get; set; }
 
         /// <summary>
-        /// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+        /// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
         /// </summary>
         [Input("bandwidthLimit")]
         public Input<int>? BandwidthLimit { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.VSphere.Inputs
         public Input<int>? BandwidthReservation { get; set; }
 
         /// <summary>
-        /// The share count for the network interface when the share level is `custom`.
+        /// The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
         /// </summary>
         [Input("bandwidthShareCount")]
         public Input<int>? BandwidthShareCount { get; set; }
 
         /// <summary>
-        /// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        /// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
         /// </summary>
         [Input("bandwidthShareLevel")]
         public Input<string>? BandwidthShareLevel { get; set; }
@@ -68,6 +68,9 @@ namespace Pulumi.VSphere.Inputs
         /// </summary>
         [Input("ovfMapping")]
         public Input<string>? OvfMapping { get; set; }
+
+        [Input("physicalFunction")]
+        public Input<string>? PhysicalFunction { get; set; }
 
         /// <summary>
         /// If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.

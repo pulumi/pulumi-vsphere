@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineNetworkInterface {
     /**
-     * @return The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+     * @return The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
      * 
      */
     private @Nullable String adapterType;
     /**
-     * @return The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+     * @return The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     private @Nullable Integer bandwidthLimit;
@@ -29,12 +29,12 @@ public final class VirtualMachineNetworkInterface {
      */
     private @Nullable Integer bandwidthReservation;
     /**
-     * @return The share count for the network interface when the share level is `custom`.
+     * @return The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     private @Nullable Integer bandwidthShareCount;
     /**
-     * @return The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * @return The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     private @Nullable String bandwidthShareLevel;
@@ -59,6 +59,7 @@ public final class VirtualMachineNetworkInterface {
      * 
      */
     private @Nullable String ovfMapping;
+    private @Nullable String physicalFunction;
     /**
      * @return If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
      * 
@@ -67,14 +68,14 @@ public final class VirtualMachineNetworkInterface {
 
     private VirtualMachineNetworkInterface() {}
     /**
-     * @return The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+     * @return The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
      * 
      */
     public Optional<String> adapterType() {
         return Optional.ofNullable(this.adapterType);
     }
     /**
-     * @return The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+     * @return The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     public Optional<Integer> bandwidthLimit() {
@@ -88,14 +89,14 @@ public final class VirtualMachineNetworkInterface {
         return Optional.ofNullable(this.bandwidthReservation);
     }
     /**
-     * @return The share count for the network interface when the share level is `custom`.
+     * @return The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     public Optional<Integer> bandwidthShareCount() {
         return Optional.ofNullable(this.bandwidthShareCount);
     }
     /**
-     * @return The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * @return The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     public Optional<String> bandwidthShareLevel() {
@@ -132,6 +133,9 @@ public final class VirtualMachineNetworkInterface {
     public Optional<String> ovfMapping() {
         return Optional.ofNullable(this.ovfMapping);
     }
+    public Optional<String> physicalFunction() {
+        return Optional.ofNullable(this.physicalFunction);
+    }
     /**
      * @return If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
      * 
@@ -159,6 +163,7 @@ public final class VirtualMachineNetworkInterface {
         private @Nullable String macAddress;
         private String networkId;
         private @Nullable String ovfMapping;
+        private @Nullable String physicalFunction;
         private @Nullable Boolean useStaticMac;
         public Builder() {}
         public Builder(VirtualMachineNetworkInterface defaults) {
@@ -173,6 +178,7 @@ public final class VirtualMachineNetworkInterface {
     	      this.macAddress = defaults.macAddress;
     	      this.networkId = defaults.networkId;
     	      this.ovfMapping = defaults.ovfMapping;
+    	      this.physicalFunction = defaults.physicalFunction;
     	      this.useStaticMac = defaults.useStaticMac;
         }
 
@@ -227,6 +233,11 @@ public final class VirtualMachineNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder physicalFunction(@Nullable String physicalFunction) {
+            this.physicalFunction = physicalFunction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useStaticMac(@Nullable Boolean useStaticMac) {
             this.useStaticMac = useStaticMac;
             return this;
@@ -243,6 +254,7 @@ public final class VirtualMachineNetworkInterface {
             o.macAddress = macAddress;
             o.networkId = networkId;
             o.ovfMapping = ovfMapping;
+            o.physicalFunction = physicalFunction;
             o.useStaticMac = useStaticMac;
             return o;
         }

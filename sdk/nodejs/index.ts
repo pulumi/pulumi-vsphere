@@ -160,6 +160,11 @@ export const getFolder: typeof import("./getFolder").getFolder = null as any;
 export const getFolderOutput: typeof import("./getFolder").getFolderOutput = null as any;
 utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
 
+export { GetGuestOsCustomizationArgs, GetGuestOsCustomizationResult, GetGuestOsCustomizationOutputArgs } from "./getGuestOsCustomization";
+export const getGuestOsCustomization: typeof import("./getGuestOsCustomization").getGuestOsCustomization = null as any;
+export const getGuestOsCustomizationOutput: typeof import("./getGuestOsCustomization").getGuestOsCustomizationOutput = null as any;
+utilities.lazyLoad(exports, ["getGuestOsCustomization","getGuestOsCustomizationOutput"], () => require("./getGuestOsCustomization"));
+
 export { GetHostArgs, GetHostResult, GetHostOutputArgs } from "./getHost";
 export const getHost: typeof import("./getHost").getHost = null as any;
 export const getHostOutput: typeof import("./getHost").getHostOutput = null as any;
@@ -229,6 +234,11 @@ export { GetVmfsDisksArgs, GetVmfsDisksResult, GetVmfsDisksOutputArgs } from "./
 export const getVmfsDisks: typeof import("./getVmfsDisks").getVmfsDisks = null as any;
 export const getVmfsDisksOutput: typeof import("./getVmfsDisks").getVmfsDisksOutput = null as any;
 utilities.lazyLoad(exports, ["getVmfsDisks","getVmfsDisksOutput"], () => require("./getVmfsDisks"));
+
+export { GuestOsCustomizationArgs, GuestOsCustomizationState } from "./guestOsCustomization";
+export type GuestOsCustomization = import("./guestOsCustomization").GuestOsCustomization;
+export const GuestOsCustomization: typeof import("./guestOsCustomization").GuestOsCustomization = null as any;
+utilities.lazyLoad(exports, ["GuestOsCustomization"], () => require("./guestOsCustomization"));
 
 export { HaVmOverrideArgs, HaVmOverrideState } from "./haVmOverride";
 export type HaVmOverride = import("./haVmOverride").HaVmOverride;
@@ -384,6 +394,8 @@ const _module = {
                 return new File(name, <any>undefined, { urn })
             case "vsphere:index/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "vsphere:index/guestOsCustomization:GuestOsCustomization":
+                return new GuestOsCustomization(name, <any>undefined, { urn })
             case "vsphere:index/haVmOverride:HaVmOverride":
                 return new HaVmOverride(name, <any>undefined, { urn })
             case "vsphere:index/host:Host":
@@ -447,6 +459,7 @@ pulumi.runtime.registerResourceModule("vsphere", "index/drsVmOverride", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/entityPermissions", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/file", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/folder", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/guestOsCustomization", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/haVmOverride", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/host", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/hostPortGroup", _module)

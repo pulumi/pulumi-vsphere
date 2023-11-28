@@ -61,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &File{}
 	case "vsphere:index/folder:Folder":
 		r = &Folder{}
+	case "vsphere:index/guestOsCustomization:GuestOsCustomization":
+		r = &GuestOsCustomization{}
 	case "vsphere:index/haVmOverride:HaVmOverride":
 		r = &HaVmOverride{}
 	case "vsphere:index/host:Host":
@@ -228,6 +230,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/folder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/guestOsCustomization",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

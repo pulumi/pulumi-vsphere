@@ -12,6 +12,43 @@ export interface ComputeClusterVsanDiskGroup {
     cache?: string;
     /**
      * An array of disk canonical names for vSAN storage.
+     */
+    storages?: string[];
+}
+
+export interface ComputeClusterVsanFaultDomain {
+    /**
+     * The configuration for single fault domain.
+     */
+    faultDomains?: outputs.ComputeClusterVsanFaultDomainFaultDomain[];
+}
+
+export interface ComputeClusterVsanFaultDomainFaultDomain {
+    /**
+     * The managed object IDs of the hosts to put in the fault domain.
+     */
+    hostIds: string[];
+    /**
+     * The name of the cluster.
+     */
+    name: string;
+}
+
+export interface ComputeClusterVsanStretchedCluster {
+    /**
+     * The managed object IDs of the hosts to put in the first fault domain.
+     */
+    preferredFaultDomainHostIds: string[];
+    /**
+     * The name of first fault domain. Default is `Preferred`.
+     */
+    preferredFaultDomainName?: string;
+    /**
+     * The managed object IDs of the hosts to put in the second fault domain.
+     */
+    secondaryFaultDomainHostIds: string[];
+    /**
+     * The name of second fault domain. Default is `Secondary`.
      *
      * > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
@@ -27,6 +64,7 @@ export interface ComputeClusterVsanDiskGroup {
      *     drsAutomationLevel: "fullyAutomated",
      *     haEnabled: false,
      *     vsanEnabled: true,
+     *     vsanEsaEnabled: true,
      *     vsanDedupEnabled: true,
      *     vsanCompressionEnabled: true,
      *     vsanPerformanceEnabled: true,
@@ -39,10 +77,31 @@ export interface ComputeClusterVsanDiskGroup {
      *         cache: data.vsphere_vmfs_disks.cache_disks[0],
      *         storages: data.vsphere_vmfs_disks.storage_disks,
      *     }],
+     *     vsanFaultDomains: [{
+     *         faultDomains: [
+     *             {
+     *                 name: "fd1",
+     *                 hostIds: [data.vsphere_host.faultdomain1_hosts.map(__item => __item.id)],
+     *             },
+     *             {
+     *                 name: "fd2",
+     *                 hostIds: [data.vsphere_host.faultdomain2_hosts.map(__item => __item.id)],
+     *             },
+     *         ],
+     *     }],
+     *     vsanStretchedCluster: {
+     *         preferredFaultDomainHostIds: [data.vsphere_host.preferred_fault_domain_host.map(__item => __item.id)],
+     *         secondaryFaultDomainHostIds: [data.vsphere_host.secondary_fault_domain_host.map(__item => __item.id)],
+     *         witnessNode: data.vsphere_host.witness_host.id,
+     *     },
      * });
      * ```
      */
-    storages?: string[];
+    secondaryFaultDomainName?: string;
+    /**
+     * The managed object IDs of the host selected as witness node when enable stretched cluster.
+     */
+    witnessNode: string;
 }
 
 export interface ContentLibraryPublication {
@@ -155,6 +214,45 @@ export interface EntityPermissionsPermission {
     userOrGroup: string;
 }
 
+export interface GetGuestOsCustomizationSpec {
+    dnsServerLists: string[];
+    dnsSuffixLists: string[];
+    linuxOptions: outputs.GetGuestOsCustomizationSpecLinuxOption[];
+    networkInterfaces: outputs.GetGuestOsCustomizationSpecNetworkInterface[];
+    windowsOptions: outputs.GetGuestOsCustomizationSpecWindowsOption[];
+    windowsSysprepText: string;
+}
+
+export interface GetGuestOsCustomizationSpecLinuxOption {
+    domain: string;
+    hostName: string;
+    hwClockUtc: boolean;
+    scriptText: string;
+    timeZone: string;
+}
+
+export interface GetGuestOsCustomizationSpecNetworkInterface {
+    dnsDomain: string;
+    dnsServerLists: string[];
+    ipv4Address: string;
+    ipv4Netmask: number;
+    ipv6Address: string;
+    ipv6Netmask: number;
+}
+
+export interface GetGuestOsCustomizationSpecWindowsOption {
+    adminPassword: string;
+    autoLogon: boolean;
+    autoLogonCount: number;
+    computerName: string;
+    domainAdminPassword?: string;
+    domainAdminUser: string;
+    joinDomain: string;
+    runOnceCommandLists: string[];
+    timeZone: number;
+    workgroup: string;
+}
+
 export interface GetVirtualMachineDisk {
     /**
      * Set to `true` if the disk has been eager zeroed.
@@ -220,6 +318,50 @@ export interface GetVirtualMachineVapp {
     properties?: {[key: string]: string};
 }
 
+export interface GuestOsCustomizationSpec {
+    dnsServerLists?: string[];
+    dnsSuffixLists?: string[];
+    ipv4Gateway?: string;
+    ipv6Gateway?: string;
+    linuxOptions?: outputs.GuestOsCustomizationSpecLinuxOptions;
+    networkInterfaces?: outputs.GuestOsCustomizationSpecNetworkInterface[];
+    windowsOptions?: outputs.GuestOsCustomizationSpecWindowsOptions;
+    windowsSysprepText?: string;
+}
+
+export interface GuestOsCustomizationSpecLinuxOptions {
+    domain: string;
+    hostName: string;
+    hwClockUtc?: boolean;
+    scriptText?: string;
+    timeZone?: string;
+}
+
+export interface GuestOsCustomizationSpecNetworkInterface {
+    dnsDomain?: string;
+    dnsServerLists?: string[];
+    ipv4Address?: string;
+    ipv4Netmask?: number;
+    ipv6Address?: string;
+    ipv6Netmask?: number;
+}
+
+export interface GuestOsCustomizationSpecWindowsOptions {
+    adminPassword?: string;
+    autoLogon?: boolean;
+    autoLogonCount?: number;
+    computerName: string;
+    domainAdminPassword?: string;
+    domainAdminUser?: string;
+    fullName?: string;
+    joinDomain?: string;
+    organizationName?: string;
+    productKey?: string;
+    runOnceCommandLists?: string[];
+    timeZone?: number;
+    workgroup?: string;
+}
+
 export interface HostPortGroupPort {
     /**
      * The key for this port group as returned from the vSphere API.
@@ -254,11 +396,20 @@ export interface VirtualMachineCdrom {
 }
 
 export interface VirtualMachineClone {
+    customizationSpec?: outputs.VirtualMachineCloneCustomizationSpec;
     customize?: outputs.VirtualMachineCloneCustomize;
     linkedClone?: boolean;
     ovfNetworkMap?: {[key: string]: string};
     ovfStorageMap?: {[key: string]: string};
     templateUuid: string;
+    timeout?: number;
+}
+
+export interface VirtualMachineCloneCustomizationSpec {
+    /**
+     * The UUID of the virtual machine.
+     */
+    id: string;
     timeout?: number;
 }
 
@@ -403,11 +554,11 @@ export interface VirtualMachineDisk {
 
 export interface VirtualMachineNetworkInterface {
     /**
-     * The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+     * The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
      */
     adapterType?: string;
     /**
-     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
      */
     bandwidthLimit?: number;
     /**
@@ -415,11 +566,11 @@ export interface VirtualMachineNetworkInterface {
      */
     bandwidthReservation?: number;
     /**
-     * The share count for the network interface when the share level is `custom`.
+     * The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
      */
     bandwidthShareCount: number;
     /**
-     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
      */
     bandwidthShareLevel?: string;
     deviceAddress: string;
@@ -439,6 +590,7 @@ export interface VirtualMachineNetworkInterface {
      * Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
      */
     ovfMapping?: string;
+    physicalFunction?: string;
     /**
      * If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
      */

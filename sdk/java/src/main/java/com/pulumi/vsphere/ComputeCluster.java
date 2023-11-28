@@ -11,6 +11,8 @@ import com.pulumi.vsphere.ComputeClusterArgs;
 import com.pulumi.vsphere.Utilities;
 import com.pulumi.vsphere.inputs.ComputeClusterState;
 import com.pulumi.vsphere.outputs.ComputeClusterVsanDiskGroup;
+import com.pulumi.vsphere.outputs.ComputeClusterVsanFaultDomain;
+import com.pulumi.vsphere.outputs.ComputeClusterVsanStretchedCluster;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1101,7 +1103,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enables vSAN deduplication on the cluster.
-     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
      * compression must also be enabled.
      * 
      */
@@ -1110,7 +1112,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enables vSAN deduplication on the cluster.
-     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
      * compression must also be enabled.
      * 
      */
@@ -1186,6 +1188,34 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vsanEnabled);
     }
     /**
+     * Enables vSAN ESA on the cluster.
+     * 
+     */
+    @Export(name="vsanEsaEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanEsaEnabled;
+
+    /**
+     * @return Enables vSAN ESA on the cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanEsaEnabled() {
+        return Codegen.optional(this.vsanEsaEnabled);
+    }
+    /**
+     * Configurations of vSAN fault domains.
+     * 
+     */
+    @Export(name="vsanFaultDomains", type=List.class, parameters={ComputeClusterVsanFaultDomain.class})
+    private Output</* @Nullable */ List<ComputeClusterVsanFaultDomain>> vsanFaultDomains;
+
+    /**
+     * @return Configurations of vSAN fault domains.
+     * 
+     */
+    public Output<Optional<List<ComputeClusterVsanFaultDomain>>> vsanFaultDomains() {
+        return Codegen.optional(this.vsanFaultDomains);
+    }
+    /**
      * Enables network
      * diagnostic mode for vSAN performance service on the cluster.
      * 
@@ -1238,7 +1268,22 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vsanRemoteDatastoreIds);
     }
     /**
+     * Configurations of vSAN stretched cluster.
+     * 
+     */
+    @Export(name="vsanStretchedCluster", type=ComputeClusterVsanStretchedCluster.class, parameters={})
+    private Output</* @Nullable */ ComputeClusterVsanStretchedCluster> vsanStretchedCluster;
+
+    /**
+     * @return Configurations of vSAN stretched cluster.
+     * 
+     */
+    public Output<Optional<ComputeClusterVsanStretchedCluster>> vsanStretchedCluster() {
+        return Codegen.optional(this.vsanStretchedCluster);
+    }
+    /**
      * Enables vSAN unmap on the cluster.
+     * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      * 
      */
     @Export(name="vsanUnmapEnabled", type=Boolean.class, parameters={})
@@ -1246,6 +1291,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enables vSAN unmap on the cluster.
+     * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      * 
      */
     public Output<Optional<Boolean>> vsanUnmapEnabled() {

@@ -12,6 +12,43 @@ export interface ComputeClusterVsanDiskGroup {
     cache?: pulumi.Input<string>;
     /**
      * An array of disk canonical names for vSAN storage.
+     */
+    storages?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ComputeClusterVsanFaultDomain {
+    /**
+     * The configuration for single fault domain.
+     */
+    faultDomains?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanFaultDomainFaultDomain>[]>;
+}
+
+export interface ComputeClusterVsanFaultDomainFaultDomain {
+    /**
+     * The managed object IDs of the hosts to put in the fault domain.
+     */
+    hostIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the cluster.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ComputeClusterVsanStretchedCluster {
+    /**
+     * The managed object IDs of the hosts to put in the first fault domain.
+     */
+    preferredFaultDomainHostIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of first fault domain. Default is `Preferred`.
+     */
+    preferredFaultDomainName?: pulumi.Input<string>;
+    /**
+     * The managed object IDs of the hosts to put in the second fault domain.
+     */
+    secondaryFaultDomainHostIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of second fault domain. Default is `Secondary`.
      *
      * > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
@@ -27,6 +64,7 @@ export interface ComputeClusterVsanDiskGroup {
      *     drsAutomationLevel: "fullyAutomated",
      *     haEnabled: false,
      *     vsanEnabled: true,
+     *     vsanEsaEnabled: true,
      *     vsanDedupEnabled: true,
      *     vsanCompressionEnabled: true,
      *     vsanPerformanceEnabled: true,
@@ -39,10 +77,31 @@ export interface ComputeClusterVsanDiskGroup {
      *         cache: data.vsphere_vmfs_disks.cache_disks[0],
      *         storages: data.vsphere_vmfs_disks.storage_disks,
      *     }],
+     *     vsanFaultDomains: [{
+     *         faultDomains: [
+     *             {
+     *                 name: "fd1",
+     *                 hostIds: [data.vsphere_host.faultdomain1_hosts.map(__item => __item.id)],
+     *             },
+     *             {
+     *                 name: "fd2",
+     *                 hostIds: [data.vsphere_host.faultdomain2_hosts.map(__item => __item.id)],
+     *             },
+     *         ],
+     *     }],
+     *     vsanStretchedCluster: {
+     *         preferredFaultDomainHostIds: [data.vsphere_host.preferred_fault_domain_host.map(__item => __item.id)],
+     *         secondaryFaultDomainHostIds: [data.vsphere_host.secondary_fault_domain_host.map(__item => __item.id)],
+     *         witnessNode: data.vsphere_host.witness_host.id,
+     *     },
      * });
      * ```
      */
-    storages?: pulumi.Input<pulumi.Input<string>[]>;
+    secondaryFaultDomainName?: pulumi.Input<string>;
+    /**
+     * The managed object IDs of the host selected as witness node when enable stretched cluster.
+     */
+    witnessNode: pulumi.Input<string>;
 }
 
 export interface ContentLibraryPublication {
@@ -163,6 +222,50 @@ export interface GetVirtualMachineVappArgs {
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface GuestOsCustomizationSpec {
+    dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Gateway?: pulumi.Input<string>;
+    ipv6Gateway?: pulumi.Input<string>;
+    linuxOptions?: pulumi.Input<inputs.GuestOsCustomizationSpecLinuxOptions>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.GuestOsCustomizationSpecNetworkInterface>[]>;
+    windowsOptions?: pulumi.Input<inputs.GuestOsCustomizationSpecWindowsOptions>;
+    windowsSysprepText?: pulumi.Input<string>;
+}
+
+export interface GuestOsCustomizationSpecLinuxOptions {
+    domain: pulumi.Input<string>;
+    hostName: pulumi.Input<string>;
+    hwClockUtc?: pulumi.Input<boolean>;
+    scriptText?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string>;
+}
+
+export interface GuestOsCustomizationSpecNetworkInterface {
+    dnsDomain?: pulumi.Input<string>;
+    dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Address?: pulumi.Input<string>;
+    ipv4Netmask?: pulumi.Input<number>;
+    ipv6Address?: pulumi.Input<string>;
+    ipv6Netmask?: pulumi.Input<number>;
+}
+
+export interface GuestOsCustomizationSpecWindowsOptions {
+    adminPassword?: pulumi.Input<string>;
+    autoLogon?: pulumi.Input<boolean>;
+    autoLogonCount?: pulumi.Input<number>;
+    computerName: pulumi.Input<string>;
+    domainAdminPassword?: pulumi.Input<string>;
+    domainAdminUser?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string>;
+    joinDomain?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string>;
+    productKey?: pulumi.Input<string>;
+    runOnceCommandLists?: pulumi.Input<pulumi.Input<string>[]>;
+    timeZone?: pulumi.Input<number>;
+    workgroup?: pulumi.Input<string>;
+}
+
 export interface HostPortGroupPort {
     /**
      * The key for this port group as returned from the vSphere API.
@@ -197,11 +300,20 @@ export interface VirtualMachineCdrom {
 }
 
 export interface VirtualMachineClone {
+    customizationSpec?: pulumi.Input<inputs.VirtualMachineCloneCustomizationSpec>;
     customize?: pulumi.Input<inputs.VirtualMachineCloneCustomize>;
     linkedClone?: pulumi.Input<boolean>;
     ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     ovfStorageMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     templateUuid: pulumi.Input<string>;
+    timeout?: pulumi.Input<number>;
+}
+
+export interface VirtualMachineCloneCustomizationSpec {
+    /**
+     * The UUID of the virtual machine.
+     */
+    id: pulumi.Input<string>;
     timeout?: pulumi.Input<number>;
 }
 
@@ -346,11 +458,11 @@ export interface VirtualMachineDisk {
 
 export interface VirtualMachineNetworkInterface {
     /**
-     * The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+     * The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
      */
     adapterType?: pulumi.Input<string>;
     /**
-     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
      */
     bandwidthLimit?: pulumi.Input<number>;
     /**
@@ -358,11 +470,11 @@ export interface VirtualMachineNetworkInterface {
      */
     bandwidthReservation?: pulumi.Input<number>;
     /**
-     * The share count for the network interface when the share level is `custom`.
+     * The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
      */
     bandwidthShareCount?: pulumi.Input<number>;
     /**
-     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
      */
     bandwidthShareLevel?: pulumi.Input<string>;
     deviceAddress?: pulumi.Input<string>;
@@ -382,6 +494,7 @@ export interface VirtualMachineNetworkInterface {
      * Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
      */
     ovfMapping?: pulumi.Input<string>;
+    physicalFunction?: pulumi.Input<string>;
     /**
      * If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
      */

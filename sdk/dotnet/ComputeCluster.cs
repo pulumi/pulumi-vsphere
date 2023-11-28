@@ -497,7 +497,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enables vSAN deduplication on the cluster.
-        /// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+        /// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
         /// compression must also be enabled.
         /// </summary>
         [Output("vsanDedupEnabled")]
@@ -534,6 +534,18 @@ namespace Pulumi.VSphere
         public Output<bool?> VsanEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enables vSAN ESA on the cluster.
+        /// </summary>
+        [Output("vsanEsaEnabled")]
+        public Output<bool?> VsanEsaEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Configurations of vSAN fault domains.
+        /// </summary>
+        [Output("vsanFaultDomains")]
+        public Output<ImmutableArray<Outputs.ComputeClusterVsanFaultDomain>> VsanFaultDomains { get; private set; } = null!;
+
+        /// <summary>
         /// Enables network
         /// diagnostic mode for vSAN performance service on the cluster.
         /// </summary>
@@ -557,7 +569,14 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> VsanRemoteDatastoreIds { get; private set; } = null!;
 
         /// <summary>
+        /// Configurations of vSAN stretched cluster.
+        /// </summary>
+        [Output("vsanStretchedCluster")]
+        public Output<Outputs.ComputeClusterVsanStretchedCluster?> VsanStretchedCluster { get; private set; } = null!;
+
+        /// <summary>
         /// Enables vSAN unmap on the cluster.
+        /// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         /// </summary>
         [Output("vsanUnmapEnabled")]
         public Output<bool?> VsanUnmapEnabled { get; private set; } = null!;
@@ -1138,7 +1157,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enables vSAN deduplication on the cluster.
-        /// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+        /// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
         /// compression must also be enabled.
         /// </summary>
         [Input("vsanDedupEnabled")]
@@ -1181,6 +1200,24 @@ namespace Pulumi.VSphere
         public Input<bool>? VsanEnabled { get; set; }
 
         /// <summary>
+        /// Enables vSAN ESA on the cluster.
+        /// </summary>
+        [Input("vsanEsaEnabled")]
+        public Input<bool>? VsanEsaEnabled { get; set; }
+
+        [Input("vsanFaultDomains")]
+        private InputList<Inputs.ComputeClusterVsanFaultDomainArgs>? _vsanFaultDomains;
+
+        /// <summary>
+        /// Configurations of vSAN fault domains.
+        /// </summary>
+        public InputList<Inputs.ComputeClusterVsanFaultDomainArgs> VsanFaultDomains
+        {
+            get => _vsanFaultDomains ?? (_vsanFaultDomains = new InputList<Inputs.ComputeClusterVsanFaultDomainArgs>());
+            set => _vsanFaultDomains = value;
+        }
+
+        /// <summary>
         /// Enables network
         /// diagnostic mode for vSAN performance service on the cluster.
         /// </summary>
@@ -1210,7 +1247,14 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
+        /// Configurations of vSAN stretched cluster.
+        /// </summary>
+        [Input("vsanStretchedCluster")]
+        public Input<Inputs.ComputeClusterVsanStretchedClusterArgs>? VsanStretchedCluster { get; set; }
+
+        /// <summary>
         /// Enables vSAN unmap on the cluster.
+        /// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         /// </summary>
         [Input("vsanUnmapEnabled")]
         public Input<bool>? VsanUnmapEnabled { get; set; }
@@ -1763,7 +1807,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enables vSAN deduplication on the cluster.
-        /// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+        /// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
         /// compression must also be enabled.
         /// </summary>
         [Input("vsanDedupEnabled")]
@@ -1806,6 +1850,24 @@ namespace Pulumi.VSphere
         public Input<bool>? VsanEnabled { get; set; }
 
         /// <summary>
+        /// Enables vSAN ESA on the cluster.
+        /// </summary>
+        [Input("vsanEsaEnabled")]
+        public Input<bool>? VsanEsaEnabled { get; set; }
+
+        [Input("vsanFaultDomains")]
+        private InputList<Inputs.ComputeClusterVsanFaultDomainGetArgs>? _vsanFaultDomains;
+
+        /// <summary>
+        /// Configurations of vSAN fault domains.
+        /// </summary>
+        public InputList<Inputs.ComputeClusterVsanFaultDomainGetArgs> VsanFaultDomains
+        {
+            get => _vsanFaultDomains ?? (_vsanFaultDomains = new InputList<Inputs.ComputeClusterVsanFaultDomainGetArgs>());
+            set => _vsanFaultDomains = value;
+        }
+
+        /// <summary>
         /// Enables network
         /// diagnostic mode for vSAN performance service on the cluster.
         /// </summary>
@@ -1835,7 +1897,14 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
+        /// Configurations of vSAN stretched cluster.
+        /// </summary>
+        [Input("vsanStretchedCluster")]
+        public Input<Inputs.ComputeClusterVsanStretchedClusterGetArgs>? VsanStretchedCluster { get; set; }
+
+        /// <summary>
         /// Enables vSAN unmap on the cluster.
+        /// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         /// </summary>
         [Input("vsanUnmapEnabled")]
         public Input<bool>? VsanUnmapEnabled { get; set; }

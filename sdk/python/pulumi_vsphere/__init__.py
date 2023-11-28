@@ -36,6 +36,7 @@ from .get_datastore_cluster import *
 from .get_distributed_virtual_switch import *
 from .get_dynamic import *
 from .get_folder import *
+from .get_guest_os_customization import *
 from .get_host import *
 from .get_host_pci_device import *
 from .get_host_thumbprint import *
@@ -50,6 +51,7 @@ from .get_tag_category import *
 from .get_vapp_container import *
 from .get_virtual_machine import *
 from .get_vmfs_disks import *
+from .guest_os_customization import *
 from .ha_vm_override import *
 from .host import *
 from .host_port_group import *
@@ -241,6 +243,14 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/folder:Folder": "Folder"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/guestOsCustomization",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/guestOsCustomization:GuestOsCustomization": "GuestOsCustomization"
   }
  },
  {

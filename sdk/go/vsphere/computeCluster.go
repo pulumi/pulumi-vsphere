@@ -275,7 +275,7 @@ type ComputeCluster struct {
 	// cluster.
 	VsanCompressionEnabled pulumi.BoolPtrOutput `pulumi:"vsanCompressionEnabled"`
 	// Enables vSAN deduplication on the cluster.
-	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
 	// compression must also be enabled.
 	VsanDedupEnabled pulumi.BoolPtrOutput `pulumi:"vsanDedupEnabled"`
 	// Represents the configuration of a host disk
@@ -292,6 +292,10 @@ type ComputeCluster struct {
 	VsanDitRekeyInterval pulumi.IntOutput `pulumi:"vsanDitRekeyInterval"`
 	// Enables vSAN on the cluster.
 	VsanEnabled pulumi.BoolPtrOutput `pulumi:"vsanEnabled"`
+	// Enables vSAN ESA on the cluster.
+	VsanEsaEnabled pulumi.BoolPtrOutput `pulumi:"vsanEsaEnabled"`
+	// Configurations of vSAN fault domains.
+	VsanFaultDomains ComputeClusterVsanFaultDomainArrayOutput `pulumi:"vsanFaultDomains"`
 	// Enables network
 	// diagnostic mode for vSAN performance service on the cluster.
 	VsanNetworkDiagnosticModeEnabled pulumi.BoolPtrOutput `pulumi:"vsanNetworkDiagnosticModeEnabled"`
@@ -303,7 +307,10 @@ type ComputeCluster struct {
 	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
 	// data-in-transit encryption feature at the same time.
 	VsanRemoteDatastoreIds pulumi.StringArrayOutput `pulumi:"vsanRemoteDatastoreIds"`
+	// Configurations of vSAN stretched cluster.
+	VsanStretchedCluster ComputeClusterVsanStretchedClusterPtrOutput `pulumi:"vsanStretchedCluster"`
 	// Enables vSAN unmap on the cluster.
+	// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
 	VsanUnmapEnabled pulumi.BoolPtrOutput `pulumi:"vsanUnmapEnabled"`
 	// Enables verbose mode for vSAN
 	// performance service on the cluster.
@@ -603,7 +610,7 @@ type computeClusterState struct {
 	// cluster.
 	VsanCompressionEnabled *bool `pulumi:"vsanCompressionEnabled"`
 	// Enables vSAN deduplication on the cluster.
-	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
 	// compression must also be enabled.
 	VsanDedupEnabled *bool `pulumi:"vsanDedupEnabled"`
 	// Represents the configuration of a host disk
@@ -620,6 +627,10 @@ type computeClusterState struct {
 	VsanDitRekeyInterval *int `pulumi:"vsanDitRekeyInterval"`
 	// Enables vSAN on the cluster.
 	VsanEnabled *bool `pulumi:"vsanEnabled"`
+	// Enables vSAN ESA on the cluster.
+	VsanEsaEnabled *bool `pulumi:"vsanEsaEnabled"`
+	// Configurations of vSAN fault domains.
+	VsanFaultDomains []ComputeClusterVsanFaultDomain `pulumi:"vsanFaultDomains"`
 	// Enables network
 	// diagnostic mode for vSAN performance service on the cluster.
 	VsanNetworkDiagnosticModeEnabled *bool `pulumi:"vsanNetworkDiagnosticModeEnabled"`
@@ -631,7 +642,10 @@ type computeClusterState struct {
 	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
 	// data-in-transit encryption feature at the same time.
 	VsanRemoteDatastoreIds []string `pulumi:"vsanRemoteDatastoreIds"`
+	// Configurations of vSAN stretched cluster.
+	VsanStretchedCluster *ComputeClusterVsanStretchedCluster `pulumi:"vsanStretchedCluster"`
 	// Enables vSAN unmap on the cluster.
+	// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
 	VsanUnmapEnabled *bool `pulumi:"vsanUnmapEnabled"`
 	// Enables verbose mode for vSAN
 	// performance service on the cluster.
@@ -899,7 +913,7 @@ type ComputeClusterState struct {
 	// cluster.
 	VsanCompressionEnabled pulumi.BoolPtrInput
 	// Enables vSAN deduplication on the cluster.
-	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
 	// compression must also be enabled.
 	VsanDedupEnabled pulumi.BoolPtrInput
 	// Represents the configuration of a host disk
@@ -916,6 +930,10 @@ type ComputeClusterState struct {
 	VsanDitRekeyInterval pulumi.IntPtrInput
 	// Enables vSAN on the cluster.
 	VsanEnabled pulumi.BoolPtrInput
+	// Enables vSAN ESA on the cluster.
+	VsanEsaEnabled pulumi.BoolPtrInput
+	// Configurations of vSAN fault domains.
+	VsanFaultDomains ComputeClusterVsanFaultDomainArrayInput
 	// Enables network
 	// diagnostic mode for vSAN performance service on the cluster.
 	VsanNetworkDiagnosticModeEnabled pulumi.BoolPtrInput
@@ -927,7 +945,10 @@ type ComputeClusterState struct {
 	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
 	// data-in-transit encryption feature at the same time.
 	VsanRemoteDatastoreIds pulumi.StringArrayInput
+	// Configurations of vSAN stretched cluster.
+	VsanStretchedCluster ComputeClusterVsanStretchedClusterPtrInput
 	// Enables vSAN unmap on the cluster.
+	// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
 	VsanUnmapEnabled pulumi.BoolPtrInput
 	// Enables verbose mode for vSAN
 	// performance service on the cluster.
@@ -1193,7 +1214,7 @@ type computeClusterArgs struct {
 	// cluster.
 	VsanCompressionEnabled *bool `pulumi:"vsanCompressionEnabled"`
 	// Enables vSAN deduplication on the cluster.
-	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
 	// compression must also be enabled.
 	VsanDedupEnabled *bool `pulumi:"vsanDedupEnabled"`
 	// Represents the configuration of a host disk
@@ -1210,6 +1231,10 @@ type computeClusterArgs struct {
 	VsanDitRekeyInterval *int `pulumi:"vsanDitRekeyInterval"`
 	// Enables vSAN on the cluster.
 	VsanEnabled *bool `pulumi:"vsanEnabled"`
+	// Enables vSAN ESA on the cluster.
+	VsanEsaEnabled *bool `pulumi:"vsanEsaEnabled"`
+	// Configurations of vSAN fault domains.
+	VsanFaultDomains []ComputeClusterVsanFaultDomain `pulumi:"vsanFaultDomains"`
 	// Enables network
 	// diagnostic mode for vSAN performance service on the cluster.
 	VsanNetworkDiagnosticModeEnabled *bool `pulumi:"vsanNetworkDiagnosticModeEnabled"`
@@ -1221,7 +1246,10 @@ type computeClusterArgs struct {
 	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
 	// data-in-transit encryption feature at the same time.
 	VsanRemoteDatastoreIds []string `pulumi:"vsanRemoteDatastoreIds"`
+	// Configurations of vSAN stretched cluster.
+	VsanStretchedCluster *ComputeClusterVsanStretchedCluster `pulumi:"vsanStretchedCluster"`
 	// Enables vSAN unmap on the cluster.
+	// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
 	VsanUnmapEnabled *bool `pulumi:"vsanUnmapEnabled"`
 	// Enables verbose mode for vSAN
 	// performance service on the cluster.
@@ -1484,7 +1512,7 @@ type ComputeClusterArgs struct {
 	// cluster.
 	VsanCompressionEnabled pulumi.BoolPtrInput
 	// Enables vSAN deduplication on the cluster.
-	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
 	// compression must also be enabled.
 	VsanDedupEnabled pulumi.BoolPtrInput
 	// Represents the configuration of a host disk
@@ -1501,6 +1529,10 @@ type ComputeClusterArgs struct {
 	VsanDitRekeyInterval pulumi.IntPtrInput
 	// Enables vSAN on the cluster.
 	VsanEnabled pulumi.BoolPtrInput
+	// Enables vSAN ESA on the cluster.
+	VsanEsaEnabled pulumi.BoolPtrInput
+	// Configurations of vSAN fault domains.
+	VsanFaultDomains ComputeClusterVsanFaultDomainArrayInput
 	// Enables network
 	// diagnostic mode for vSAN performance service on the cluster.
 	VsanNetworkDiagnosticModeEnabled pulumi.BoolPtrInput
@@ -1512,7 +1544,10 @@ type ComputeClusterArgs struct {
 	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
 	// data-in-transit encryption feature at the same time.
 	VsanRemoteDatastoreIds pulumi.StringArrayInput
+	// Configurations of vSAN stretched cluster.
+	VsanStretchedCluster ComputeClusterVsanStretchedClusterPtrInput
 	// Enables vSAN unmap on the cluster.
+	// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
 	VsanUnmapEnabled pulumi.BoolPtrInput
 	// Enables verbose mode for vSAN
 	// performance service on the cluster.
@@ -2034,7 +2069,7 @@ func (o ComputeClusterOutput) VsanCompressionEnabled() pulumi.BoolPtrOutput {
 }
 
 // Enables vSAN deduplication on the cluster.
-// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+// Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
 // compression must also be enabled.
 func (o ComputeClusterOutput) VsanDedupEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanDedupEnabled }).(pulumi.BoolPtrOutput)
@@ -2066,6 +2101,16 @@ func (o ComputeClusterOutput) VsanEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Enables vSAN ESA on the cluster.
+func (o ComputeClusterOutput) VsanEsaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanEsaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Configurations of vSAN fault domains.
+func (o ComputeClusterOutput) VsanFaultDomains() ComputeClusterVsanFaultDomainArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) ComputeClusterVsanFaultDomainArrayOutput { return v.VsanFaultDomains }).(ComputeClusterVsanFaultDomainArrayOutput)
+}
+
 // Enables network
 // diagnostic mode for vSAN performance service on the cluster.
 func (o ComputeClusterOutput) VsanNetworkDiagnosticModeEnabled() pulumi.BoolPtrOutput {
@@ -2086,7 +2131,13 @@ func (o ComputeClusterOutput) VsanRemoteDatastoreIds() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.VsanRemoteDatastoreIds }).(pulumi.StringArrayOutput)
 }
 
+// Configurations of vSAN stretched cluster.
+func (o ComputeClusterOutput) VsanStretchedCluster() ComputeClusterVsanStretchedClusterPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) ComputeClusterVsanStretchedClusterPtrOutput { return v.VsanStretchedCluster }).(ComputeClusterVsanStretchedClusterPtrOutput)
+}
+
 // Enables vSAN unmap on the cluster.
+// You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
 func (o ComputeClusterOutput) VsanUnmapEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanUnmapEnabled }).(pulumi.BoolPtrOutput)
 }

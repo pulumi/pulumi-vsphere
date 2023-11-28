@@ -13,6 +13,7 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class VirtualMachineClone
     {
+        public readonly Outputs.VirtualMachineCloneCustomizationSpec? CustomizationSpec;
         public readonly Outputs.VirtualMachineCloneCustomize? Customize;
         public readonly bool? LinkedClone;
         public readonly ImmutableDictionary<string, string>? OvfNetworkMap;
@@ -22,6 +23,8 @@ namespace Pulumi.VSphere.Outputs
 
         [OutputConstructor]
         private VirtualMachineClone(
+            Outputs.VirtualMachineCloneCustomizationSpec? customizationSpec,
+
             Outputs.VirtualMachineCloneCustomize? customize,
 
             bool? linkedClone,
@@ -34,6 +37,7 @@ namespace Pulumi.VSphere.Outputs
 
             int? timeout)
         {
+            CustomizationSpec = customizationSpec;
             Customize = customize;
             LinkedClone = linkedClone;
             OvfNetworkMap = ovfNetworkMap;
