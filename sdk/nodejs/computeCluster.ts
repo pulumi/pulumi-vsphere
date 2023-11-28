@@ -407,7 +407,7 @@ export class ComputeCluster extends pulumi.CustomResource {
     public readonly vsanCompressionEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Enables vSAN deduplication on the cluster.
-     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
      * compression must also be enabled.
      */
     public readonly vsanDedupEnabled!: pulumi.Output<boolean | undefined>;
@@ -434,6 +434,14 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     public readonly vsanEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Enables vSAN ESA on the cluster.
+     */
+    public readonly vsanEsaEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Configurations of vSAN fault domains.
+     */
+    public readonly vsanFaultDomains!: pulumi.Output<outputs.ComputeClusterVsanFaultDomain[] | undefined>;
+    /**
      * Enables network
      * diagnostic mode for vSAN performance service on the cluster.
      */
@@ -451,7 +459,12 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     public readonly vsanRemoteDatastoreIds!: pulumi.Output<string[] | undefined>;
     /**
+     * Configurations of vSAN stretched cluster.
+     */
+    public readonly vsanStretchedCluster!: pulumi.Output<outputs.ComputeClusterVsanStretchedCluster | undefined>;
+    /**
      * Enables vSAN unmap on the cluster.
+     * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      */
     public readonly vsanUnmapEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -534,9 +547,12 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["vsanDitEncryptionEnabled"] = state ? state.vsanDitEncryptionEnabled : undefined;
             resourceInputs["vsanDitRekeyInterval"] = state ? state.vsanDitRekeyInterval : undefined;
             resourceInputs["vsanEnabled"] = state ? state.vsanEnabled : undefined;
+            resourceInputs["vsanEsaEnabled"] = state ? state.vsanEsaEnabled : undefined;
+            resourceInputs["vsanFaultDomains"] = state ? state.vsanFaultDomains : undefined;
             resourceInputs["vsanNetworkDiagnosticModeEnabled"] = state ? state.vsanNetworkDiagnosticModeEnabled : undefined;
             resourceInputs["vsanPerformanceEnabled"] = state ? state.vsanPerformanceEnabled : undefined;
             resourceInputs["vsanRemoteDatastoreIds"] = state ? state.vsanRemoteDatastoreIds : undefined;
+            resourceInputs["vsanStretchedCluster"] = state ? state.vsanStretchedCluster : undefined;
             resourceInputs["vsanUnmapEnabled"] = state ? state.vsanUnmapEnabled : undefined;
             resourceInputs["vsanVerboseModeEnabled"] = state ? state.vsanVerboseModeEnabled : undefined;
         } else {
@@ -604,9 +620,12 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["vsanDitEncryptionEnabled"] = args ? args.vsanDitEncryptionEnabled : undefined;
             resourceInputs["vsanDitRekeyInterval"] = args ? args.vsanDitRekeyInterval : undefined;
             resourceInputs["vsanEnabled"] = args ? args.vsanEnabled : undefined;
+            resourceInputs["vsanEsaEnabled"] = args ? args.vsanEsaEnabled : undefined;
+            resourceInputs["vsanFaultDomains"] = args ? args.vsanFaultDomains : undefined;
             resourceInputs["vsanNetworkDiagnosticModeEnabled"] = args ? args.vsanNetworkDiagnosticModeEnabled : undefined;
             resourceInputs["vsanPerformanceEnabled"] = args ? args.vsanPerformanceEnabled : undefined;
             resourceInputs["vsanRemoteDatastoreIds"] = args ? args.vsanRemoteDatastoreIds : undefined;
+            resourceInputs["vsanStretchedCluster"] = args ? args.vsanStretchedCluster : undefined;
             resourceInputs["vsanUnmapEnabled"] = args ? args.vsanUnmapEnabled : undefined;
             resourceInputs["vsanVerboseModeEnabled"] = args ? args.vsanVerboseModeEnabled : undefined;
             resourceInputs["resourcePoolId"] = undefined /*out*/;
@@ -993,7 +1012,7 @@ export interface ComputeClusterState {
     vsanCompressionEnabled?: pulumi.Input<boolean>;
     /**
      * Enables vSAN deduplication on the cluster.
-     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
      * compression must also be enabled.
      */
     vsanDedupEnabled?: pulumi.Input<boolean>;
@@ -1020,6 +1039,14 @@ export interface ComputeClusterState {
      */
     vsanEnabled?: pulumi.Input<boolean>;
     /**
+     * Enables vSAN ESA on the cluster.
+     */
+    vsanEsaEnabled?: pulumi.Input<boolean>;
+    /**
+     * Configurations of vSAN fault domains.
+     */
+    vsanFaultDomains?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanFaultDomain>[]>;
+    /**
      * Enables network
      * diagnostic mode for vSAN performance service on the cluster.
      */
@@ -1037,7 +1064,12 @@ export interface ComputeClusterState {
      */
     vsanRemoteDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Configurations of vSAN stretched cluster.
+     */
+    vsanStretchedCluster?: pulumi.Input<inputs.ComputeClusterVsanStretchedCluster>;
+    /**
      * Enables vSAN unmap on the cluster.
+     * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      */
     vsanUnmapEnabled?: pulumi.Input<boolean>;
     /**
@@ -1416,7 +1448,7 @@ export interface ComputeClusterArgs {
     vsanCompressionEnabled?: pulumi.Input<boolean>;
     /**
      * Enables vSAN deduplication on the cluster.
-     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
      * compression must also be enabled.
      */
     vsanDedupEnabled?: pulumi.Input<boolean>;
@@ -1443,6 +1475,14 @@ export interface ComputeClusterArgs {
      */
     vsanEnabled?: pulumi.Input<boolean>;
     /**
+     * Enables vSAN ESA on the cluster.
+     */
+    vsanEsaEnabled?: pulumi.Input<boolean>;
+    /**
+     * Configurations of vSAN fault domains.
+     */
+    vsanFaultDomains?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanFaultDomain>[]>;
+    /**
      * Enables network
      * diagnostic mode for vSAN performance service on the cluster.
      */
@@ -1460,7 +1500,12 @@ export interface ComputeClusterArgs {
      */
     vsanRemoteDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Configurations of vSAN stretched cluster.
+     */
+    vsanStretchedCluster?: pulumi.Input<inputs.ComputeClusterVsanStretchedCluster>;
+    /**
      * Enables vSAN unmap on the cluster.
+     * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      */
     vsanUnmapEnabled?: pulumi.Input<boolean>;
     /**

@@ -20,55 +20,6 @@ public final class ComputeClusterVsanDiskGroup {
     /**
      * @return An array of disk canonical names for vSAN storage.
      * 
-     * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-     * You can enable or re-enable vSphere HA after vSAN is configured.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.ComputeCluster;
-     * import com.pulumi.vsphere.ComputeClusterArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var computeCluster = new ComputeCluster(&#34;computeCluster&#34;, ComputeClusterArgs.builder()        
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
-     *             .hostSystemIds(data.vsphere_host().host().stream().map(element -&gt; element.id()).collect(toList()))
-     *             .drsEnabled(true)
-     *             .drsAutomationLevel(&#34;fullyAutomated&#34;)
-     *             .haEnabled(false)
-     *             .vsanEnabled(true)
-     *             .vsanDedupEnabled(true)
-     *             .vsanCompressionEnabled(true)
-     *             .vsanPerformanceEnabled(true)
-     *             .vsanVerboseModeEnabled(true)
-     *             .vsanNetworkDiagnosticModeEnabled(true)
-     *             .vsanUnmapEnabled(true)
-     *             .vsanDitEncryptionEnabled(true)
-     *             .vsanDitRekeyInterval(1800)
-     *             .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()
-     *                 .cache(data.vsphere_vmfs_disks().cache_disks()[0])
-     *                 .storages(data.vsphere_vmfs_disks().storage_disks())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     private @Nullable List<String> storages;
 
@@ -82,55 +33,6 @@ public final class ComputeClusterVsanDiskGroup {
     }
     /**
      * @return An array of disk canonical names for vSAN storage.
-     * 
-     * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-     * You can enable or re-enable vSphere HA after vSAN is configured.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.ComputeCluster;
-     * import com.pulumi.vsphere.ComputeClusterArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var computeCluster = new ComputeCluster(&#34;computeCluster&#34;, ComputeClusterArgs.builder()        
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
-     *             .hostSystemIds(data.vsphere_host().host().stream().map(element -&gt; element.id()).collect(toList()))
-     *             .drsEnabled(true)
-     *             .drsAutomationLevel(&#34;fullyAutomated&#34;)
-     *             .haEnabled(false)
-     *             .vsanEnabled(true)
-     *             .vsanDedupEnabled(true)
-     *             .vsanCompressionEnabled(true)
-     *             .vsanPerformanceEnabled(true)
-     *             .vsanVerboseModeEnabled(true)
-     *             .vsanNetworkDiagnosticModeEnabled(true)
-     *             .vsanUnmapEnabled(true)
-     *             .vsanDitEncryptionEnabled(true)
-     *             .vsanDitRekeyInterval(1800)
-     *             .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()
-     *                 .cache(data.vsphere_vmfs_disks().cache_disks()[0])
-     *                 .storages(data.vsphere_vmfs_disks().storage_disks())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public List<String> storages() {

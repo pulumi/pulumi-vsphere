@@ -12,6 +12,9 @@ namespace Pulumi.VSphere.Inputs
 
     public sealed class VirtualMachineCloneArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customizationSpec")]
+        public Input<Inputs.VirtualMachineCloneCustomizationSpecArgs>? CustomizationSpec { get; set; }
+
         [Input("customize")]
         public Input<Inputs.VirtualMachineCloneCustomizeArgs>? Customize { get; set; }
 

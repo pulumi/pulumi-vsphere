@@ -11,6 +11,9 @@ from . import _utilities
 
 __all__ = [
     'ComputeClusterVsanDiskGroupArgs',
+    'ComputeClusterVsanFaultDomainArgs',
+    'ComputeClusterVsanFaultDomainFaultDomainArgs',
+    'ComputeClusterVsanStretchedClusterArgs',
     'ContentLibraryPublicationArgs',
     'ContentLibrarySubscriptionArgs',
     'DistributedPortGroupVlanRangeArgs',
@@ -18,9 +21,14 @@ __all__ = [
     'DistributedVirtualSwitchPvlanMappingArgs',
     'DistributedVirtualSwitchVlanRangeArgs',
     'EntityPermissionsPermissionArgs',
+    'GuestOsCustomizationSpecArgs',
+    'GuestOsCustomizationSpecLinuxOptionsArgs',
+    'GuestOsCustomizationSpecNetworkInterfaceArgs',
+    'GuestOsCustomizationSpecWindowsOptionsArgs',
     'HostPortGroupPortArgs',
     'VirtualMachineCdromArgs',
     'VirtualMachineCloneArgs',
+    'VirtualMachineCloneCustomizationSpecArgs',
     'VirtualMachineCloneCustomizeArgs',
     'VirtualMachineCloneCustomizeLinuxOptionsArgs',
     'VirtualMachineCloneCustomizeNetworkInterfaceArgs',
@@ -43,34 +51,6 @@ class ComputeClusterVsanDiskGroupArgs:
         """
         :param pulumi.Input[str] cache: The canonical name of the disk to use for vSAN cache.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storages: An array of disk canonical names for vSAN storage.
-               
-               > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-               You can enable or re-enable vSphere HA after vSAN is configured.
-               
-               ```python
-               import pulumi
-               import pulumi_vsphere as vsphere
-               
-               compute_cluster = vsphere.ComputeCluster("computeCluster",
-                   datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
-                   host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
-                   drs_enabled=True,
-                   drs_automation_level="fullyAutomated",
-                   ha_enabled=False,
-                   vsan_enabled=True,
-                   vsan_dedup_enabled=True,
-                   vsan_compression_enabled=True,
-                   vsan_performance_enabled=True,
-                   vsan_verbose_mode_enabled=True,
-                   vsan_network_diagnostic_mode_enabled=True,
-                   vsan_unmap_enabled=True,
-                   vsan_dit_encryption_enabled=True,
-                   vsan_dit_rekey_interval=1800,
-                   vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
-                       cache=data["vsphere_vmfs_disks"]["cache_disks"],
-                       storages=data["vsphere_vmfs_disks"]["storage_disks"],
-                   )])
-               ```
         """
         if cache is not None:
             pulumi.set(__self__, "cache", cache)
@@ -94,6 +74,196 @@ class ComputeClusterVsanDiskGroupArgs:
     def storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An array of disk canonical names for vSAN storage.
+        """
+        return pulumi.get(self, "storages")
+
+    @storages.setter
+    def storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storages", value)
+
+
+@pulumi.input_type
+class ComputeClusterVsanFaultDomainArgs:
+    def __init__(__self__, *,
+                 fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgs']]] fault_domains: The configuration for single fault domain.
+        """
+        if fault_domains is not None:
+            pulumi.set(__self__, "fault_domains", fault_domains)
+
+    @property
+    @pulumi.getter(name="faultDomains")
+    def fault_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgs']]]]:
+        """
+        The configuration for single fault domain.
+        """
+        return pulumi.get(self, "fault_domains")
+
+    @fault_domains.setter
+    def fault_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgs']]]]):
+        pulumi.set(self, "fault_domains", value)
+
+
+@pulumi.input_type
+class ComputeClusterVsanFaultDomainFaultDomainArgs:
+    def __init__(__self__, *,
+                 host_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_ids: The managed object IDs of the hosts to put in the fault domain.
+        :param pulumi.Input[str] name: The name of the cluster.
+        """
+        pulumi.set(__self__, "host_ids", host_ids)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="hostIds")
+    def host_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The managed object IDs of the hosts to put in the fault domain.
+        """
+        return pulumi.get(self, "host_ids")
+
+    @host_ids.setter
+    def host_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "host_ids", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class ComputeClusterVsanStretchedClusterArgs:
+    def __init__(__self__, *,
+                 preferred_fault_domain_host_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 secondary_fault_domain_host_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 witness_node: pulumi.Input[str],
+                 preferred_fault_domain_name: Optional[pulumi.Input[str]] = None,
+                 secondary_fault_domain_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_fault_domain_host_ids: The managed object IDs of the hosts to put in the first fault domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_fault_domain_host_ids: The managed object IDs of the hosts to put in the second fault domain.
+        :param pulumi.Input[str] witness_node: The managed object IDs of the host selected as witness node when enable stretched cluster.
+        :param pulumi.Input[str] preferred_fault_domain_name: The name of first fault domain. Default is `Preferred`.
+        :param pulumi.Input[str] secondary_fault_domain_name: The name of second fault domain. Default is `Secondary`.
+               
+               > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+               You can enable or re-enable vSphere HA after vSAN is configured.
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               compute_cluster = vsphere.ComputeCluster("computeCluster",
+                   datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
+                   host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
+                   drs_enabled=True,
+                   drs_automation_level="fullyAutomated",
+                   ha_enabled=False,
+                   vsan_enabled=True,
+                   vsan_esa_enabled=True,
+                   vsan_dedup_enabled=True,
+                   vsan_compression_enabled=True,
+                   vsan_performance_enabled=True,
+                   vsan_verbose_mode_enabled=True,
+                   vsan_network_diagnostic_mode_enabled=True,
+                   vsan_unmap_enabled=True,
+                   vsan_dit_encryption_enabled=True,
+                   vsan_dit_rekey_interval=1800,
+                   vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
+                       cache=data["vsphere_vmfs_disks"]["cache_disks"],
+                       storages=data["vsphere_vmfs_disks"]["storage_disks"],
+                   )],
+                   vsan_fault_domains=[vsphere.ComputeClusterVsanFaultDomainArgs(
+                       fault_domains=[
+                           vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
+                               name="fd1",
+                               host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain1_hosts"]]],
+                           ),
+                           vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
+                               name="fd2",
+                               host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain2_hosts"]]],
+                           ),
+                       ],
+                   )],
+                   vsan_stretched_cluster=vsphere.ComputeClusterVsanStretchedClusterArgs(
+                       preferred_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["preferred_fault_domain_host"]]],
+                       secondary_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["secondary_fault_domain_host"]]],
+                       witness_node=data["vsphere_host"]["witness_host"]["id"],
+                   ))
+               ```
+        """
+        pulumi.set(__self__, "preferred_fault_domain_host_ids", preferred_fault_domain_host_ids)
+        pulumi.set(__self__, "secondary_fault_domain_host_ids", secondary_fault_domain_host_ids)
+        pulumi.set(__self__, "witness_node", witness_node)
+        if preferred_fault_domain_name is not None:
+            pulumi.set(__self__, "preferred_fault_domain_name", preferred_fault_domain_name)
+        if secondary_fault_domain_name is not None:
+            pulumi.set(__self__, "secondary_fault_domain_name", secondary_fault_domain_name)
+
+    @property
+    @pulumi.getter(name="preferredFaultDomainHostIds")
+    def preferred_fault_domain_host_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The managed object IDs of the hosts to put in the first fault domain.
+        """
+        return pulumi.get(self, "preferred_fault_domain_host_ids")
+
+    @preferred_fault_domain_host_ids.setter
+    def preferred_fault_domain_host_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "preferred_fault_domain_host_ids", value)
+
+    @property
+    @pulumi.getter(name="secondaryFaultDomainHostIds")
+    def secondary_fault_domain_host_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The managed object IDs of the hosts to put in the second fault domain.
+        """
+        return pulumi.get(self, "secondary_fault_domain_host_ids")
+
+    @secondary_fault_domain_host_ids.setter
+    def secondary_fault_domain_host_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "secondary_fault_domain_host_ids", value)
+
+    @property
+    @pulumi.getter(name="witnessNode")
+    def witness_node(self) -> pulumi.Input[str]:
+        """
+        The managed object IDs of the host selected as witness node when enable stretched cluster.
+        """
+        return pulumi.get(self, "witness_node")
+
+    @witness_node.setter
+    def witness_node(self, value: pulumi.Input[str]):
+        pulumi.set(self, "witness_node", value)
+
+    @property
+    @pulumi.getter(name="preferredFaultDomainName")
+    def preferred_fault_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of first fault domain. Default is `Preferred`.
+        """
+        return pulumi.get(self, "preferred_fault_domain_name")
+
+    @preferred_fault_domain_name.setter
+    def preferred_fault_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_fault_domain_name", value)
+
+    @property
+    @pulumi.getter(name="secondaryFaultDomainName")
+    def secondary_fault_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of second fault domain. Default is `Secondary`.
 
         > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
         You can enable or re-enable vSphere HA after vSAN is configured.
@@ -109,6 +279,7 @@ class ComputeClusterVsanDiskGroupArgs:
             drs_automation_level="fullyAutomated",
             ha_enabled=False,
             vsan_enabled=True,
+            vsan_esa_enabled=True,
             vsan_dedup_enabled=True,
             vsan_compression_enabled=True,
             vsan_performance_enabled=True,
@@ -120,14 +291,31 @@ class ComputeClusterVsanDiskGroupArgs:
             vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
                 cache=data["vsphere_vmfs_disks"]["cache_disks"],
                 storages=data["vsphere_vmfs_disks"]["storage_disks"],
-            )])
+            )],
+            vsan_fault_domains=[vsphere.ComputeClusterVsanFaultDomainArgs(
+                fault_domains=[
+                    vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
+                        name="fd1",
+                        host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain1_hosts"]]],
+                    ),
+                    vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
+                        name="fd2",
+                        host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain2_hosts"]]],
+                    ),
+                ],
+            )],
+            vsan_stretched_cluster=vsphere.ComputeClusterVsanStretchedClusterArgs(
+                preferred_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["preferred_fault_domain_host"]]],
+                secondary_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["secondary_fault_domain_host"]]],
+                witness_node=data["vsphere_host"]["witness_host"]["id"],
+            ))
         ```
         """
-        return pulumi.get(self, "storages")
+        return pulumi.get(self, "secondary_fault_domain_name")
 
-    @storages.setter
-    def storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "storages", value)
+    @secondary_fault_domain_name.setter
+    def secondary_fault_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_fault_domain_name", value)
 
 
 @pulumi.input_type
@@ -542,6 +730,407 @@ class EntityPermissionsPermissionArgs:
 
 
 @pulumi.input_type
+class GuestOsCustomizationSpecArgs:
+    def __init__(__self__, *,
+                 dns_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_suffix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ipv4_gateway: Optional[pulumi.Input[str]] = None,
+                 ipv6_gateway: Optional[pulumi.Input[str]] = None,
+                 linux_options: Optional[pulumi.Input['GuestOsCustomizationSpecLinuxOptionsArgs']] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsCustomizationSpecNetworkInterfaceArgs']]]] = None,
+                 windows_options: Optional[pulumi.Input['GuestOsCustomizationSpecWindowsOptionsArgs']] = None,
+                 windows_sysprep_text: Optional[pulumi.Input[str]] = None):
+        if dns_server_lists is not None:
+            pulumi.set(__self__, "dns_server_lists", dns_server_lists)
+        if dns_suffix_lists is not None:
+            pulumi.set(__self__, "dns_suffix_lists", dns_suffix_lists)
+        if ipv4_gateway is not None:
+            pulumi.set(__self__, "ipv4_gateway", ipv4_gateway)
+        if ipv6_gateway is not None:
+            pulumi.set(__self__, "ipv6_gateway", ipv6_gateway)
+        if linux_options is not None:
+            pulumi.set(__self__, "linux_options", linux_options)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if windows_options is not None:
+            pulumi.set(__self__, "windows_options", windows_options)
+        if windows_sysprep_text is not None:
+            pulumi.set(__self__, "windows_sysprep_text", windows_sysprep_text)
+
+    @property
+    @pulumi.getter(name="dnsServerLists")
+    def dns_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dns_server_lists")
+
+    @dns_server_lists.setter
+    def dns_server_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_server_lists", value)
+
+    @property
+    @pulumi.getter(name="dnsSuffixLists")
+    def dns_suffix_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dns_suffix_lists")
+
+    @dns_suffix_lists.setter
+    def dns_suffix_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_suffix_lists", value)
+
+    @property
+    @pulumi.getter(name="ipv4Gateway")
+    def ipv4_gateway(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv4_gateway")
+
+    @ipv4_gateway.setter
+    def ipv4_gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_gateway", value)
+
+    @property
+    @pulumi.getter(name="ipv6Gateway")
+    def ipv6_gateway(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv6_gateway")
+
+    @ipv6_gateway.setter
+    def ipv6_gateway(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_gateway", value)
+
+    @property
+    @pulumi.getter(name="linuxOptions")
+    def linux_options(self) -> Optional[pulumi.Input['GuestOsCustomizationSpecLinuxOptionsArgs']]:
+        return pulumi.get(self, "linux_options")
+
+    @linux_options.setter
+    def linux_options(self, value: Optional[pulumi.Input['GuestOsCustomizationSpecLinuxOptionsArgs']]):
+        pulumi.set(self, "linux_options", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsCustomizationSpecNetworkInterfaceArgs']]]]:
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsCustomizationSpecNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="windowsOptions")
+    def windows_options(self) -> Optional[pulumi.Input['GuestOsCustomizationSpecWindowsOptionsArgs']]:
+        return pulumi.get(self, "windows_options")
+
+    @windows_options.setter
+    def windows_options(self, value: Optional[pulumi.Input['GuestOsCustomizationSpecWindowsOptionsArgs']]):
+        pulumi.set(self, "windows_options", value)
+
+    @property
+    @pulumi.getter(name="windowsSysprepText")
+    def windows_sysprep_text(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "windows_sysprep_text")
+
+    @windows_sysprep_text.setter
+    def windows_sysprep_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "windows_sysprep_text", value)
+
+
+@pulumi.input_type
+class GuestOsCustomizationSpecLinuxOptionsArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str],
+                 host_name: pulumi.Input[str],
+                 hw_clock_utc: Optional[pulumi.Input[bool]] = None,
+                 script_text: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "host_name", host_name)
+        if hw_clock_utc is not None:
+            pulumi.set(__self__, "hw_clock_utc", hw_clock_utc)
+        if script_text is not None:
+            pulumi.set(__self__, "script_text", script_text)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "host_name")
+
+    @host_name.setter
+    def host_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="hwClockUtc")
+    def hw_clock_utc(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "hw_clock_utc")
+
+    @hw_clock_utc.setter
+    def hw_clock_utc(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hw_clock_utc", value)
+
+    @property
+    @pulumi.getter(name="scriptText")
+    def script_text(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "script_text")
+
+    @script_text.setter
+    def script_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script_text", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+
+@pulumi.input_type
+class GuestOsCustomizationSpecNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 dns_domain: Optional[pulumi.Input[str]] = None,
+                 dns_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ipv4_address: Optional[pulumi.Input[str]] = None,
+                 ipv4_netmask: Optional[pulumi.Input[int]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
+                 ipv6_netmask: Optional[pulumi.Input[int]] = None):
+        if dns_domain is not None:
+            pulumi.set(__self__, "dns_domain", dns_domain)
+        if dns_server_lists is not None:
+            pulumi.set(__self__, "dns_server_lists", dns_server_lists)
+        if ipv4_address is not None:
+            pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if ipv4_netmask is not None:
+            pulumi.set(__self__, "ipv4_netmask", ipv4_netmask)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if ipv6_netmask is not None:
+            pulumi.set(__self__, "ipv6_netmask", ipv6_netmask)
+
+    @property
+    @pulumi.getter(name="dnsDomain")
+    def dns_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dns_domain")
+
+    @dns_domain.setter
+    def dns_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_domain", value)
+
+    @property
+    @pulumi.getter(name="dnsServerLists")
+    def dns_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dns_server_lists")
+
+    @dns_server_lists.setter
+    def dns_server_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_server_lists", value)
+
+    @property
+    @pulumi.getter(name="ipv4Address")
+    def ipv4_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv4_address")
+
+    @ipv4_address.setter
+    def ipv4_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_address", value)
+
+    @property
+    @pulumi.getter(name="ipv4Netmask")
+    def ipv4_netmask(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ipv4_netmask")
+
+    @ipv4_netmask.setter
+    def ipv4_netmask(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv4_netmask", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
+
+    @property
+    @pulumi.getter(name="ipv6Netmask")
+    def ipv6_netmask(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ipv6_netmask")
+
+    @ipv6_netmask.setter
+    def ipv6_netmask(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_netmask", value)
+
+
+@pulumi.input_type
+class GuestOsCustomizationSpecWindowsOptionsArgs:
+    def __init__(__self__, *,
+                 computer_name: pulumi.Input[str],
+                 admin_password: Optional[pulumi.Input[str]] = None,
+                 auto_logon: Optional[pulumi.Input[bool]] = None,
+                 auto_logon_count: Optional[pulumi.Input[int]] = None,
+                 domain_admin_password: Optional[pulumi.Input[str]] = None,
+                 domain_admin_user: Optional[pulumi.Input[str]] = None,
+                 full_name: Optional[pulumi.Input[str]] = None,
+                 join_domain: Optional[pulumi.Input[str]] = None,
+                 organization_name: Optional[pulumi.Input[str]] = None,
+                 product_key: Optional[pulumi.Input[str]] = None,
+                 run_once_command_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_zone: Optional[pulumi.Input[int]] = None,
+                 workgroup: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "computer_name", computer_name)
+        if admin_password is not None:
+            pulumi.set(__self__, "admin_password", admin_password)
+        if auto_logon is not None:
+            pulumi.set(__self__, "auto_logon", auto_logon)
+        if auto_logon_count is not None:
+            pulumi.set(__self__, "auto_logon_count", auto_logon_count)
+        if domain_admin_password is not None:
+            pulumi.set(__self__, "domain_admin_password", domain_admin_password)
+        if domain_admin_user is not None:
+            pulumi.set(__self__, "domain_admin_user", domain_admin_user)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if join_domain is not None:
+            pulumi.set(__self__, "join_domain", join_domain)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+        if product_key is not None:
+            pulumi.set(__self__, "product_key", product_key)
+        if run_once_command_lists is not None:
+            pulumi.set(__self__, "run_once_command_lists", run_once_command_lists)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if workgroup is not None:
+            pulumi.set(__self__, "workgroup", workgroup)
+
+    @property
+    @pulumi.getter(name="computerName")
+    def computer_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "computer_name")
+
+    @computer_name.setter
+    def computer_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "computer_name", value)
+
+    @property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "admin_password")
+
+    @admin_password.setter
+    def admin_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "admin_password", value)
+
+    @property
+    @pulumi.getter(name="autoLogon")
+    def auto_logon(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_logon")
+
+    @auto_logon.setter
+    def auto_logon(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_logon", value)
+
+    @property
+    @pulumi.getter(name="autoLogonCount")
+    def auto_logon_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "auto_logon_count")
+
+    @auto_logon_count.setter
+    def auto_logon_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_logon_count", value)
+
+    @property
+    @pulumi.getter(name="domainAdminPassword")
+    def domain_admin_password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "domain_admin_password")
+
+    @domain_admin_password.setter
+    def domain_admin_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_admin_password", value)
+
+    @property
+    @pulumi.getter(name="domainAdminUser")
+    def domain_admin_user(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "domain_admin_user")
+
+    @domain_admin_user.setter
+    def domain_admin_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_admin_user", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "full_name", value)
+
+    @property
+    @pulumi.getter(name="joinDomain")
+    def join_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "join_domain")
+
+    @join_domain.setter
+    def join_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "join_domain", value)
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "organization_name")
+
+    @organization_name.setter
+    def organization_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_name", value)
+
+    @property
+    @pulumi.getter(name="productKey")
+    def product_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "product_key")
+
+    @product_key.setter
+    def product_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_key", value)
+
+    @property
+    @pulumi.getter(name="runOnceCommandLists")
+    def run_once_command_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "run_once_command_lists")
+
+    @run_once_command_lists.setter
+    def run_once_command_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "run_once_command_lists", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter
+    def workgroup(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workgroup")
+
+    @workgroup.setter
+    def workgroup(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workgroup", value)
+
+
+@pulumi.input_type
 class HostPortGroupPortArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -683,12 +1272,15 @@ class VirtualMachineCdromArgs:
 class VirtualMachineCloneArgs:
     def __init__(__self__, *,
                  template_uuid: pulumi.Input[str],
+                 customization_spec: Optional[pulumi.Input['VirtualMachineCloneCustomizationSpecArgs']] = None,
                  customize: Optional[pulumi.Input['VirtualMachineCloneCustomizeArgs']] = None,
                  linked_clone: Optional[pulumi.Input[bool]] = None,
                  ovf_network_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ovf_storage_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "template_uuid", template_uuid)
+        if customization_spec is not None:
+            pulumi.set(__self__, "customization_spec", customization_spec)
         if customize is not None:
             pulumi.set(__self__, "customize", customize)
         if linked_clone is not None:
@@ -708,6 +1300,15 @@ class VirtualMachineCloneArgs:
     @template_uuid.setter
     def template_uuid(self, value: pulumi.Input[str]):
         pulumi.set(self, "template_uuid", value)
+
+    @property
+    @pulumi.getter(name="customizationSpec")
+    def customization_spec(self) -> Optional[pulumi.Input['VirtualMachineCloneCustomizationSpecArgs']]:
+        return pulumi.get(self, "customization_spec")
+
+    @customization_spec.setter
+    def customization_spec(self, value: Optional[pulumi.Input['VirtualMachineCloneCustomizationSpecArgs']]):
+        pulumi.set(self, "customization_spec", value)
 
     @property
     @pulumi.getter
@@ -744,6 +1345,40 @@ class VirtualMachineCloneArgs:
     @ovf_storage_map.setter
     def ovf_storage_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "ovf_storage_map", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
+
+
+@pulumi.input_type
+class VirtualMachineCloneCustomizationSpecArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] id: The UUID of the virtual machine.
+        """
+        pulumi.set(__self__, "id", id)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The UUID of the virtual machine.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -1541,14 +2176,15 @@ class VirtualMachineNetworkInterfaceArgs:
                  key: Optional[pulumi.Input[int]] = None,
                  mac_address: Optional[pulumi.Input[str]] = None,
                  ovf_mapping: Optional[pulumi.Input[str]] = None,
+                 physical_function: Optional[pulumi.Input[str]] = None,
                  use_static_mac: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] network_id: The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
-        :param pulumi.Input[str] adapter_type: The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
-        :param pulumi.Input[int] bandwidth_limit: The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+        :param pulumi.Input[str] adapter_type: The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+        :param pulumi.Input[int] bandwidth_limit: The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
         :param pulumi.Input[int] bandwidth_reservation: The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
-        :param pulumi.Input[int] bandwidth_share_count: The share count for the network interface when the share level is `custom`.
-        :param pulumi.Input[str] bandwidth_share_level: The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        :param pulumi.Input[int] bandwidth_share_count: The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
+        :param pulumi.Input[str] bandwidth_share_level: The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
         :param pulumi.Input[int] key: The ID of the device within the virtual machine.
         :param pulumi.Input[str] mac_address: The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
         :param pulumi.Input[str] ovf_mapping: Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
@@ -1573,6 +2209,8 @@ class VirtualMachineNetworkInterfaceArgs:
             pulumi.set(__self__, "mac_address", mac_address)
         if ovf_mapping is not None:
             pulumi.set(__self__, "ovf_mapping", ovf_mapping)
+        if physical_function is not None:
+            pulumi.set(__self__, "physical_function", physical_function)
         if use_static_mac is not None:
             pulumi.set(__self__, "use_static_mac", use_static_mac)
 
@@ -1592,7 +2230,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="adapterType")
     def adapter_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+        The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
         """
         return pulumi.get(self, "adapter_type")
 
@@ -1604,7 +2242,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="bandwidthLimit")
     def bandwidth_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+        The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
         """
         return pulumi.get(self, "bandwidth_limit")
 
@@ -1628,7 +2266,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="bandwidthShareCount")
     def bandwidth_share_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The share count for the network interface when the share level is `custom`.
+        The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
         """
         return pulumi.get(self, "bandwidth_share_count")
 
@@ -1640,7 +2278,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="bandwidthShareLevel")
     def bandwidth_share_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
         """
         return pulumi.get(self, "bandwidth_share_level")
 
@@ -1692,6 +2330,15 @@ class VirtualMachineNetworkInterfaceArgs:
     @ovf_mapping.setter
     def ovf_mapping(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ovf_mapping", value)
+
+    @property
+    @pulumi.getter(name="physicalFunction")
+    def physical_function(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "physical_function")
+
+    @physical_function.setter
+    def physical_function(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "physical_function", value)
 
     @property
     @pulumi.getter(name="useStaticMac")

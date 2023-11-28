@@ -18,14 +18,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     public static final VirtualMachineNetworkInterfaceArgs Empty = new VirtualMachineNetworkInterfaceArgs();
 
     /**
-     * The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+     * The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
      * 
      */
     @Import(name="adapterType")
     private @Nullable Output<String> adapterType;
 
     /**
-     * @return The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+     * @return The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
      * 
      */
     public Optional<Output<String>> adapterType() {
@@ -33,14 +33,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     @Import(name="bandwidthLimit")
     private @Nullable Output<Integer> bandwidthLimit;
 
     /**
-     * @return The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+     * @return The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     public Optional<Output<Integer>> bandwidthLimit() {
@@ -63,14 +63,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The share count for the network interface when the share level is `custom`.
+     * The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     @Import(name="bandwidthShareCount")
     private @Nullable Output<Integer> bandwidthShareCount;
 
     /**
-     * @return The share count for the network interface when the share level is `custom`.
+     * @return The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     public Optional<Output<Integer>> bandwidthShareCount() {
@@ -78,14 +78,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     @Import(name="bandwidthShareLevel")
     private @Nullable Output<String> bandwidthShareLevel;
 
     /**
-     * @return The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * @return The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
      * 
      */
     public Optional<Output<String>> bandwidthShareLevel() {
@@ -159,6 +159,13 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.ovfMapping);
     }
 
+    @Import(name="physicalFunction")
+    private @Nullable Output<String> physicalFunction;
+
+    public Optional<Output<String>> physicalFunction() {
+        return Optional.ofNullable(this.physicalFunction);
+    }
+
     /**
      * If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
      * 
@@ -187,6 +194,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         this.macAddress = $.macAddress;
         this.networkId = $.networkId;
         this.ovfMapping = $.ovfMapping;
+        this.physicalFunction = $.physicalFunction;
         this.useStaticMac = $.useStaticMac;
     }
 
@@ -209,7 +217,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param adapterType The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+         * @param adapterType The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
          * 
          * @return builder
          * 
@@ -220,7 +228,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param adapterType The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+         * @param adapterType The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
          * 
          * @return builder
          * 
@@ -230,7 +238,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthLimit The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+         * @param bandwidthLimit The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
          * 
          * @return builder
          * 
@@ -241,7 +249,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthLimit The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+         * @param bandwidthLimit The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
          * 
          * @return builder
          * 
@@ -272,7 +280,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareCount The share count for the network interface when the share level is `custom`.
+         * @param bandwidthShareCount The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
          * 
          * @return builder
          * 
@@ -283,7 +291,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareCount The share count for the network interface when the share level is `custom`.
+         * @param bandwidthShareCount The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
          * 
          * @return builder
          * 
@@ -293,7 +301,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareLevel The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+         * @param bandwidthShareLevel The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
          * 
          * @return builder
          * 
@@ -304,7 +312,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareLevel The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+         * @param bandwidthShareLevel The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
          * 
          * @return builder
          * 
@@ -404,6 +412,15 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
          */
         public Builder ovfMapping(String ovfMapping) {
             return ovfMapping(Output.of(ovfMapping));
+        }
+
+        public Builder physicalFunction(@Nullable Output<String> physicalFunction) {
+            $.physicalFunction = physicalFunction;
+            return this;
+        }
+
+        public Builder physicalFunction(String physicalFunction) {
+            return physicalFunction(Output.of(physicalFunction));
         }
 
         /**

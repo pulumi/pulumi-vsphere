@@ -76,9 +76,12 @@ class ComputeClusterArgs:
                  vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
                  vsan_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]] = None,
                  vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vsan_stretched_cluster: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']] = None,
                  vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -282,7 +285,7 @@ class ComputeClusterArgs:
         :param pulumi.Input[bool] vsan_compression_enabled: Enables vSAN compression on the
                cluster.
         :param pulumi.Input[bool] vsan_dedup_enabled: Enables vSAN deduplication on the cluster.
-               Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+               Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
                compression must also be enabled.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]] vsan_disk_groups: Represents the configuration of a host disk
                group in the cluster.
@@ -294,6 +297,8 @@ class ComputeClusterArgs:
                minutes for data-in-transit encryption. The valid rekey interval is 30 to
                10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
         :param pulumi.Input[bool] vsan_enabled: Enables vSAN on the cluster.
+        :param pulumi.Input[bool] vsan_esa_enabled: Enables vSAN ESA on the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]] vsan_fault_domains: Configurations of vSAN fault domains.
         :param pulumi.Input[bool] vsan_network_diagnostic_mode_enabled: Enables network
                diagnostic mode for vSAN performance service on the cluster.
         :param pulumi.Input[bool] vsan_performance_enabled: Enables vSAN performance service on
@@ -302,7 +307,9 @@ class ComputeClusterArgs:
                mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
                `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
                data-in-transit encryption feature at the same time.
+        :param pulumi.Input['ComputeClusterVsanStretchedClusterArgs'] vsan_stretched_cluster: Configurations of vSAN stretched cluster.
         :param pulumi.Input[bool] vsan_unmap_enabled: Enables vSAN unmap on the cluster.
+               You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Enables verbose mode for vSAN
                performance service on the cluster.
         """
@@ -425,12 +432,18 @@ class ComputeClusterArgs:
             pulumi.set(__self__, "vsan_dit_rekey_interval", vsan_dit_rekey_interval)
         if vsan_enabled is not None:
             pulumi.set(__self__, "vsan_enabled", vsan_enabled)
+        if vsan_esa_enabled is not None:
+            pulumi.set(__self__, "vsan_esa_enabled", vsan_esa_enabled)
+        if vsan_fault_domains is not None:
+            pulumi.set(__self__, "vsan_fault_domains", vsan_fault_domains)
         if vsan_network_diagnostic_mode_enabled is not None:
             pulumi.set(__self__, "vsan_network_diagnostic_mode_enabled", vsan_network_diagnostic_mode_enabled)
         if vsan_performance_enabled is not None:
             pulumi.set(__self__, "vsan_performance_enabled", vsan_performance_enabled)
         if vsan_remote_datastore_ids is not None:
             pulumi.set(__self__, "vsan_remote_datastore_ids", vsan_remote_datastore_ids)
+        if vsan_stretched_cluster is not None:
+            pulumi.set(__self__, "vsan_stretched_cluster", vsan_stretched_cluster)
         if vsan_unmap_enabled is not None:
             pulumi.set(__self__, "vsan_unmap_enabled", vsan_unmap_enabled)
         if vsan_verbose_mode_enabled is not None:
@@ -1244,7 +1257,7 @@ class ComputeClusterArgs:
     def vsan_dedup_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enables vSAN deduplication on the cluster.
-        Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+        Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
         compression must also be enabled.
         """
         return pulumi.get(self, "vsan_dedup_enabled")
@@ -1308,6 +1321,30 @@ class ComputeClusterArgs:
         pulumi.set(self, "vsan_enabled", value)
 
     @property
+    @pulumi.getter(name="vsanEsaEnabled")
+    def vsan_esa_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables vSAN ESA on the cluster.
+        """
+        return pulumi.get(self, "vsan_esa_enabled")
+
+    @vsan_esa_enabled.setter
+    def vsan_esa_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vsan_esa_enabled", value)
+
+    @property
+    @pulumi.getter(name="vsanFaultDomains")
+    def vsan_fault_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]:
+        """
+        Configurations of vSAN fault domains.
+        """
+        return pulumi.get(self, "vsan_fault_domains")
+
+    @vsan_fault_domains.setter
+    def vsan_fault_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]):
+        pulumi.set(self, "vsan_fault_domains", value)
+
+    @property
     @pulumi.getter(name="vsanNetworkDiagnosticModeEnabled")
     def vsan_network_diagnostic_mode_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1349,10 +1386,23 @@ class ComputeClusterArgs:
         pulumi.set(self, "vsan_remote_datastore_ids", value)
 
     @property
+    @pulumi.getter(name="vsanStretchedCluster")
+    def vsan_stretched_cluster(self) -> Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]:
+        """
+        Configurations of vSAN stretched cluster.
+        """
+        return pulumi.get(self, "vsan_stretched_cluster")
+
+    @vsan_stretched_cluster.setter
+    def vsan_stretched_cluster(self, value: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]):
+        pulumi.set(self, "vsan_stretched_cluster", value)
+
+    @property
     @pulumi.getter(name="vsanUnmapEnabled")
     def vsan_unmap_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enables vSAN unmap on the cluster.
+        You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         """
         return pulumi.get(self, "vsan_unmap_enabled")
 
@@ -1438,9 +1488,12 @@ class _ComputeClusterState:
                  vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
                  vsan_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]] = None,
                  vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vsan_stretched_cluster: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']] = None,
                  vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -1649,7 +1702,7 @@ class _ComputeClusterState:
         :param pulumi.Input[bool] vsan_compression_enabled: Enables vSAN compression on the
                cluster.
         :param pulumi.Input[bool] vsan_dedup_enabled: Enables vSAN deduplication on the cluster.
-               Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+               Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
                compression must also be enabled.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]] vsan_disk_groups: Represents the configuration of a host disk
                group in the cluster.
@@ -1661,6 +1714,8 @@ class _ComputeClusterState:
                minutes for data-in-transit encryption. The valid rekey interval is 30 to
                10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
         :param pulumi.Input[bool] vsan_enabled: Enables vSAN on the cluster.
+        :param pulumi.Input[bool] vsan_esa_enabled: Enables vSAN ESA on the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]] vsan_fault_domains: Configurations of vSAN fault domains.
         :param pulumi.Input[bool] vsan_network_diagnostic_mode_enabled: Enables network
                diagnostic mode for vSAN performance service on the cluster.
         :param pulumi.Input[bool] vsan_performance_enabled: Enables vSAN performance service on
@@ -1669,7 +1724,9 @@ class _ComputeClusterState:
                mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
                `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
                data-in-transit encryption feature at the same time.
+        :param pulumi.Input['ComputeClusterVsanStretchedClusterArgs'] vsan_stretched_cluster: Configurations of vSAN stretched cluster.
         :param pulumi.Input[bool] vsan_unmap_enabled: Enables vSAN unmap on the cluster.
+               You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Enables verbose mode for vSAN
                performance service on the cluster.
         """
@@ -1795,12 +1852,18 @@ class _ComputeClusterState:
             pulumi.set(__self__, "vsan_dit_rekey_interval", vsan_dit_rekey_interval)
         if vsan_enabled is not None:
             pulumi.set(__self__, "vsan_enabled", vsan_enabled)
+        if vsan_esa_enabled is not None:
+            pulumi.set(__self__, "vsan_esa_enabled", vsan_esa_enabled)
+        if vsan_fault_domains is not None:
+            pulumi.set(__self__, "vsan_fault_domains", vsan_fault_domains)
         if vsan_network_diagnostic_mode_enabled is not None:
             pulumi.set(__self__, "vsan_network_diagnostic_mode_enabled", vsan_network_diagnostic_mode_enabled)
         if vsan_performance_enabled is not None:
             pulumi.set(__self__, "vsan_performance_enabled", vsan_performance_enabled)
         if vsan_remote_datastore_ids is not None:
             pulumi.set(__self__, "vsan_remote_datastore_ids", vsan_remote_datastore_ids)
+        if vsan_stretched_cluster is not None:
+            pulumi.set(__self__, "vsan_stretched_cluster", vsan_stretched_cluster)
         if vsan_unmap_enabled is not None:
             pulumi.set(__self__, "vsan_unmap_enabled", vsan_unmap_enabled)
         if vsan_verbose_mode_enabled is not None:
@@ -2630,7 +2693,7 @@ class _ComputeClusterState:
     def vsan_dedup_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enables vSAN deduplication on the cluster.
-        Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+        Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
         compression must also be enabled.
         """
         return pulumi.get(self, "vsan_dedup_enabled")
@@ -2694,6 +2757,30 @@ class _ComputeClusterState:
         pulumi.set(self, "vsan_enabled", value)
 
     @property
+    @pulumi.getter(name="vsanEsaEnabled")
+    def vsan_esa_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables vSAN ESA on the cluster.
+        """
+        return pulumi.get(self, "vsan_esa_enabled")
+
+    @vsan_esa_enabled.setter
+    def vsan_esa_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vsan_esa_enabled", value)
+
+    @property
+    @pulumi.getter(name="vsanFaultDomains")
+    def vsan_fault_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]:
+        """
+        Configurations of vSAN fault domains.
+        """
+        return pulumi.get(self, "vsan_fault_domains")
+
+    @vsan_fault_domains.setter
+    def vsan_fault_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainArgs']]]]):
+        pulumi.set(self, "vsan_fault_domains", value)
+
+    @property
     @pulumi.getter(name="vsanNetworkDiagnosticModeEnabled")
     def vsan_network_diagnostic_mode_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2735,10 +2822,23 @@ class _ComputeClusterState:
         pulumi.set(self, "vsan_remote_datastore_ids", value)
 
     @property
+    @pulumi.getter(name="vsanStretchedCluster")
+    def vsan_stretched_cluster(self) -> Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]:
+        """
+        Configurations of vSAN stretched cluster.
+        """
+        return pulumi.get(self, "vsan_stretched_cluster")
+
+    @vsan_stretched_cluster.setter
+    def vsan_stretched_cluster(self, value: Optional[pulumi.Input['ComputeClusterVsanStretchedClusterArgs']]):
+        pulumi.set(self, "vsan_stretched_cluster", value)
+
+    @property
     @pulumi.getter(name="vsanUnmapEnabled")
     def vsan_unmap_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enables vSAN unmap on the cluster.
+        You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         """
         return pulumi.get(self, "vsan_unmap_enabled")
 
@@ -2825,9 +2925,12 @@ class ComputeCluster(pulumi.CustomResource):
                  vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
                  vsan_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]]] = None,
                  vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vsan_stretched_cluster: Optional[pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']]] = None,
                  vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -3034,7 +3137,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] vsan_compression_enabled: Enables vSAN compression on the
                cluster.
         :param pulumi.Input[bool] vsan_dedup_enabled: Enables vSAN deduplication on the cluster.
-               Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+               Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
                compression must also be enabled.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: Represents the configuration of a host disk
                group in the cluster.
@@ -3046,6 +3149,8 @@ class ComputeCluster(pulumi.CustomResource):
                minutes for data-in-transit encryption. The valid rekey interval is 30 to
                10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
         :param pulumi.Input[bool] vsan_enabled: Enables vSAN on the cluster.
+        :param pulumi.Input[bool] vsan_esa_enabled: Enables vSAN ESA on the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]] vsan_fault_domains: Configurations of vSAN fault domains.
         :param pulumi.Input[bool] vsan_network_diagnostic_mode_enabled: Enables network
                diagnostic mode for vSAN performance service on the cluster.
         :param pulumi.Input[bool] vsan_performance_enabled: Enables vSAN performance service on
@@ -3054,7 +3159,9 @@ class ComputeCluster(pulumi.CustomResource):
                mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
                `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
                data-in-transit encryption feature at the same time.
+        :param pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']] vsan_stretched_cluster: Configurations of vSAN stretched cluster.
         :param pulumi.Input[bool] vsan_unmap_enabled: Enables vSAN unmap on the cluster.
+               You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Enables verbose mode for vSAN
                performance service on the cluster.
         """
@@ -3141,9 +3248,12 @@ class ComputeCluster(pulumi.CustomResource):
                  vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
                  vsan_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
+                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]]] = None,
                  vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vsan_stretched_cluster: Optional[pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']]] = None,
                  vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -3217,9 +3327,12 @@ class ComputeCluster(pulumi.CustomResource):
             __props__.__dict__["vsan_dit_encryption_enabled"] = vsan_dit_encryption_enabled
             __props__.__dict__["vsan_dit_rekey_interval"] = vsan_dit_rekey_interval
             __props__.__dict__["vsan_enabled"] = vsan_enabled
+            __props__.__dict__["vsan_esa_enabled"] = vsan_esa_enabled
+            __props__.__dict__["vsan_fault_domains"] = vsan_fault_domains
             __props__.__dict__["vsan_network_diagnostic_mode_enabled"] = vsan_network_diagnostic_mode_enabled
             __props__.__dict__["vsan_performance_enabled"] = vsan_performance_enabled
             __props__.__dict__["vsan_remote_datastore_ids"] = vsan_remote_datastore_ids
+            __props__.__dict__["vsan_stretched_cluster"] = vsan_stretched_cluster
             __props__.__dict__["vsan_unmap_enabled"] = vsan_unmap_enabled
             __props__.__dict__["vsan_verbose_mode_enabled"] = vsan_verbose_mode_enabled
             __props__.__dict__["resource_pool_id"] = None
@@ -3294,9 +3407,12 @@ class ComputeCluster(pulumi.CustomResource):
             vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
             vsan_enabled: Optional[pulumi.Input[bool]] = None,
+            vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
+            vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]]] = None,
             vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vsan_stretched_cluster: Optional[pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']]] = None,
             vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None) -> 'ComputeCluster':
         """
@@ -3510,7 +3626,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] vsan_compression_enabled: Enables vSAN compression on the
                cluster.
         :param pulumi.Input[bool] vsan_dedup_enabled: Enables vSAN deduplication on the cluster.
-               Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+               Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
                compression must also be enabled.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: Represents the configuration of a host disk
                group in the cluster.
@@ -3522,6 +3638,8 @@ class ComputeCluster(pulumi.CustomResource):
                minutes for data-in-transit encryption. The valid rekey interval is 30 to
                10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
         :param pulumi.Input[bool] vsan_enabled: Enables vSAN on the cluster.
+        :param pulumi.Input[bool] vsan_esa_enabled: Enables vSAN ESA on the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]] vsan_fault_domains: Configurations of vSAN fault domains.
         :param pulumi.Input[bool] vsan_network_diagnostic_mode_enabled: Enables network
                diagnostic mode for vSAN performance service on the cluster.
         :param pulumi.Input[bool] vsan_performance_enabled: Enables vSAN performance service on
@@ -3530,7 +3648,9 @@ class ComputeCluster(pulumi.CustomResource):
                mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
                `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
                data-in-transit encryption feature at the same time.
+        :param pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']] vsan_stretched_cluster: Configurations of vSAN stretched cluster.
         :param pulumi.Input[bool] vsan_unmap_enabled: Enables vSAN unmap on the cluster.
+               You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Enables verbose mode for vSAN
                performance service on the cluster.
         """
@@ -3599,9 +3719,12 @@ class ComputeCluster(pulumi.CustomResource):
         __props__.__dict__["vsan_dit_encryption_enabled"] = vsan_dit_encryption_enabled
         __props__.__dict__["vsan_dit_rekey_interval"] = vsan_dit_rekey_interval
         __props__.__dict__["vsan_enabled"] = vsan_enabled
+        __props__.__dict__["vsan_esa_enabled"] = vsan_esa_enabled
+        __props__.__dict__["vsan_fault_domains"] = vsan_fault_domains
         __props__.__dict__["vsan_network_diagnostic_mode_enabled"] = vsan_network_diagnostic_mode_enabled
         __props__.__dict__["vsan_performance_enabled"] = vsan_performance_enabled
         __props__.__dict__["vsan_remote_datastore_ids"] = vsan_remote_datastore_ids
+        __props__.__dict__["vsan_stretched_cluster"] = vsan_stretched_cluster
         __props__.__dict__["vsan_unmap_enabled"] = vsan_unmap_enabled
         __props__.__dict__["vsan_verbose_mode_enabled"] = vsan_verbose_mode_enabled
         return ComputeCluster(resource_name, opts=opts, __props__=__props__)
@@ -4206,7 +4329,7 @@ class ComputeCluster(pulumi.CustomResource):
     def vsan_dedup_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enables vSAN deduplication on the cluster.
-        Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+        Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
         compression must also be enabled.
         """
         return pulumi.get(self, "vsan_dedup_enabled")
@@ -4250,6 +4373,22 @@ class ComputeCluster(pulumi.CustomResource):
         return pulumi.get(self, "vsan_enabled")
 
     @property
+    @pulumi.getter(name="vsanEsaEnabled")
+    def vsan_esa_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables vSAN ESA on the cluster.
+        """
+        return pulumi.get(self, "vsan_esa_enabled")
+
+    @property
+    @pulumi.getter(name="vsanFaultDomains")
+    def vsan_fault_domains(self) -> pulumi.Output[Optional[Sequence['outputs.ComputeClusterVsanFaultDomain']]]:
+        """
+        Configurations of vSAN fault domains.
+        """
+        return pulumi.get(self, "vsan_fault_domains")
+
+    @property
     @pulumi.getter(name="vsanNetworkDiagnosticModeEnabled")
     def vsan_network_diagnostic_mode_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -4279,10 +4418,19 @@ class ComputeCluster(pulumi.CustomResource):
         return pulumi.get(self, "vsan_remote_datastore_ids")
 
     @property
+    @pulumi.getter(name="vsanStretchedCluster")
+    def vsan_stretched_cluster(self) -> pulumi.Output[Optional['outputs.ComputeClusterVsanStretchedCluster']]:
+        """
+        Configurations of vSAN stretched cluster.
+        """
+        return pulumi.get(self, "vsan_stretched_cluster")
+
+    @property
     @pulumi.getter(name="vsanUnmapEnabled")
     def vsan_unmap_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enables vSAN unmap on the cluster.
+        You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
         """
         return pulumi.get(self, "vsan_unmap_enabled")
 

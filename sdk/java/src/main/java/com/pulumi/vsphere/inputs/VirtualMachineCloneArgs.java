@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizationSpecArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class VirtualMachineCloneArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final VirtualMachineCloneArgs Empty = new VirtualMachineCloneArgs();
+
+    @Import(name="customizationSpec")
+    private @Nullable Output<VirtualMachineCloneCustomizationSpecArgs> customizationSpec;
+
+    public Optional<Output<VirtualMachineCloneCustomizationSpecArgs>> customizationSpec() {
+        return Optional.ofNullable(this.customizationSpec);
+    }
 
     @Import(name="customize")
     private @Nullable Output<VirtualMachineCloneCustomizeArgs> customize;
@@ -64,6 +72,7 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
     private VirtualMachineCloneArgs() {}
 
     private VirtualMachineCloneArgs(VirtualMachineCloneArgs $) {
+        this.customizationSpec = $.customizationSpec;
         this.customize = $.customize;
         this.linkedClone = $.linkedClone;
         this.ovfNetworkMap = $.ovfNetworkMap;
@@ -88,6 +97,15 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
 
         public Builder(VirtualMachineCloneArgs defaults) {
             $ = new VirtualMachineCloneArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder customizationSpec(@Nullable Output<VirtualMachineCloneCustomizationSpecArgs> customizationSpec) {
+            $.customizationSpec = customizationSpec;
+            return this;
+        }
+
+        public Builder customizationSpec(VirtualMachineCloneCustomizationSpecArgs customizationSpec) {
+            return customizationSpec(Output.of(customizationSpec));
         }
 
         public Builder customize(@Nullable Output<VirtualMachineCloneCustomizeArgs> customize) {

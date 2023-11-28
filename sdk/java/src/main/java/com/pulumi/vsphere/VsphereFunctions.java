@@ -30,6 +30,8 @@ import com.pulumi.vsphere.inputs.GetDynamicArgs;
 import com.pulumi.vsphere.inputs.GetDynamicPlainArgs;
 import com.pulumi.vsphere.inputs.GetFolderArgs;
 import com.pulumi.vsphere.inputs.GetFolderPlainArgs;
+import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+import com.pulumi.vsphere.inputs.GetGuestOsCustomizationPlainArgs;
 import com.pulumi.vsphere.inputs.GetHostArgs;
 import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
 import com.pulumi.vsphere.inputs.GetHostPciDevicePlainArgs;
@@ -69,6 +71,7 @@ import com.pulumi.vsphere.outputs.GetDatastoreResult;
 import com.pulumi.vsphere.outputs.GetDistributedVirtualSwitchResult;
 import com.pulumi.vsphere.outputs.GetDynamicResult;
 import com.pulumi.vsphere.outputs.GetFolderResult;
+import com.pulumi.vsphere.outputs.GetGuestOsCustomizationResult;
 import com.pulumi.vsphere.outputs.GetHostPciDeviceResult;
 import com.pulumi.vsphere.outputs.GetHostResult;
 import com.pulumi.vsphere.outputs.GetHostThumbprintResult;
@@ -2157,6 +2160,166 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
+     * 
+     * Suggested change
+     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name(&#34;linux-spec&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args) {
+        return getGuestOsCustomization(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
+     * 
+     * Suggested change
+     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name(&#34;linux-spec&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args) {
+        return getGuestOsCustomizationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
+     * 
+     * Suggested change
+     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name(&#34;linux-spec&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
+     * 
+     * Suggested change
+     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name(&#34;linux-spec&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.

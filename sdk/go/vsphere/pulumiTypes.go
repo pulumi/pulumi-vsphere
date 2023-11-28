@@ -17,50 +17,6 @@ type ComputeClusterVsanDiskGroup struct {
 	// The canonical name of the disk to use for vSAN cache.
 	Cache *string `pulumi:"cache"`
 	// An array of disk canonical names for vSAN storage.
-	//
-	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-	// You can enable or re-enable vSphere HA after vSAN is configured.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	// func main() {
-	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
-	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
-	// },
-	// DrsEnabled: pulumi.Bool(true),
-	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-	// HaEnabled: pulumi.Bool(false),
-	// VsanEnabled: pulumi.Bool(true),
-	// VsanDedupEnabled: pulumi.Bool(true),
-	// VsanCompressionEnabled: pulumi.Bool(true),
-	// VsanPerformanceEnabled: pulumi.Bool(true),
-	// VsanVerboseModeEnabled: pulumi.Bool(true),
-	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-	// VsanUnmapEnabled: pulumi.Bool(true),
-	// VsanDitEncryptionEnabled: pulumi.Bool(true),
-	// VsanDitRekeyInterval: pulumi.Int(1800),
-	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
-	// },
-	// },
-	// })
-	// if err != nil {
-	// return err
-	// }
-	// return nil
-	// })
-	// }
-	// ```
 	Storages []string `pulumi:"storages"`
 }
 
@@ -79,50 +35,6 @@ type ComputeClusterVsanDiskGroupArgs struct {
 	// The canonical name of the disk to use for vSAN cache.
 	Cache pulumi.StringPtrInput `pulumi:"cache"`
 	// An array of disk canonical names for vSAN storage.
-	//
-	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-	// You can enable or re-enable vSphere HA after vSAN is configured.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	// func main() {
-	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
-	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
-	// },
-	// DrsEnabled: pulumi.Bool(true),
-	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-	// HaEnabled: pulumi.Bool(false),
-	// VsanEnabled: pulumi.Bool(true),
-	// VsanDedupEnabled: pulumi.Bool(true),
-	// VsanCompressionEnabled: pulumi.Bool(true),
-	// VsanPerformanceEnabled: pulumi.Bool(true),
-	// VsanVerboseModeEnabled: pulumi.Bool(true),
-	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-	// VsanUnmapEnabled: pulumi.Bool(true),
-	// VsanDitEncryptionEnabled: pulumi.Bool(true),
-	// VsanDitRekeyInterval: pulumi.Int(1800),
-	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
-	// },
-	// },
-	// })
-	// if err != nil {
-	// return err
-	// }
-	// return nil
-	// })
-	// }
-	// ```
 	Storages pulumi.StringArrayInput `pulumi:"storages"`
 }
 
@@ -183,52 +95,6 @@ func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
 }
 
 // An array of disk canonical names for vSAN storage.
-//
-// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-// You can enable or re-enable vSphere HA after vSAN is configured.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
-// HostSystemIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
-// },
-// DrsEnabled: pulumi.Bool(true),
-// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-// HaEnabled: pulumi.Bool(false),
-// VsanEnabled: pulumi.Bool(true),
-// VsanDedupEnabled: pulumi.Bool(true),
-// VsanCompressionEnabled: pulumi.Bool(true),
-// VsanPerformanceEnabled: pulumi.Bool(true),
-// VsanVerboseModeEnabled: pulumi.Bool(true),
-// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-// VsanUnmapEnabled: pulumi.Bool(true),
-// VsanDitEncryptionEnabled: pulumi.Bool(true),
-// VsanDitRekeyInterval: pulumi.Int(1800),
-// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-// &vsphere.ComputeClusterVsanDiskGroupArgs{
-// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 func (o ComputeClusterVsanDiskGroupOutput) Storages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) []string { return v.Storages }).(pulumi.StringArrayOutput)
 }
@@ -251,6 +117,716 @@ func (o ComputeClusterVsanDiskGroupArrayOutput) Index(i pulumi.IntInput) Compute
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterVsanDiskGroup {
 		return vs[0].([]ComputeClusterVsanDiskGroup)[vs[1].(int)]
 	}).(ComputeClusterVsanDiskGroupOutput)
+}
+
+type ComputeClusterVsanFaultDomain struct {
+	// The configuration for single fault domain.
+	FaultDomains []ComputeClusterVsanFaultDomainFaultDomain `pulumi:"faultDomains"`
+}
+
+// ComputeClusterVsanFaultDomainInput is an input type that accepts ComputeClusterVsanFaultDomainArgs and ComputeClusterVsanFaultDomainOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanFaultDomainInput` via:
+//
+//	ComputeClusterVsanFaultDomainArgs{...}
+type ComputeClusterVsanFaultDomainInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanFaultDomainOutput() ComputeClusterVsanFaultDomainOutput
+	ToComputeClusterVsanFaultDomainOutputWithContext(context.Context) ComputeClusterVsanFaultDomainOutput
+}
+
+type ComputeClusterVsanFaultDomainArgs struct {
+	// The configuration for single fault domain.
+	FaultDomains ComputeClusterVsanFaultDomainFaultDomainArrayInput `pulumi:"faultDomains"`
+}
+
+func (ComputeClusterVsanFaultDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanFaultDomain)(nil)).Elem()
+}
+
+func (i ComputeClusterVsanFaultDomainArgs) ToComputeClusterVsanFaultDomainOutput() ComputeClusterVsanFaultDomainOutput {
+	return i.ToComputeClusterVsanFaultDomainOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanFaultDomainArgs) ToComputeClusterVsanFaultDomainOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanFaultDomainOutput)
+}
+
+// ComputeClusterVsanFaultDomainArrayInput is an input type that accepts ComputeClusterVsanFaultDomainArray and ComputeClusterVsanFaultDomainArrayOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanFaultDomainArrayInput` via:
+//
+//	ComputeClusterVsanFaultDomainArray{ ComputeClusterVsanFaultDomainArgs{...} }
+type ComputeClusterVsanFaultDomainArrayInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanFaultDomainArrayOutput() ComputeClusterVsanFaultDomainArrayOutput
+	ToComputeClusterVsanFaultDomainArrayOutputWithContext(context.Context) ComputeClusterVsanFaultDomainArrayOutput
+}
+
+type ComputeClusterVsanFaultDomainArray []ComputeClusterVsanFaultDomainInput
+
+func (ComputeClusterVsanFaultDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVsanFaultDomain)(nil)).Elem()
+}
+
+func (i ComputeClusterVsanFaultDomainArray) ToComputeClusterVsanFaultDomainArrayOutput() ComputeClusterVsanFaultDomainArrayOutput {
+	return i.ToComputeClusterVsanFaultDomainArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanFaultDomainArray) ToComputeClusterVsanFaultDomainArrayOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanFaultDomainArrayOutput)
+}
+
+type ComputeClusterVsanFaultDomainOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanFaultDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanFaultDomain)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanFaultDomainOutput) ToComputeClusterVsanFaultDomainOutput() ComputeClusterVsanFaultDomainOutput {
+	return o
+}
+
+func (o ComputeClusterVsanFaultDomainOutput) ToComputeClusterVsanFaultDomainOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainOutput {
+	return o
+}
+
+// The configuration for single fault domain.
+func (o ComputeClusterVsanFaultDomainOutput) FaultDomains() ComputeClusterVsanFaultDomainFaultDomainArrayOutput {
+	return o.ApplyT(func(v ComputeClusterVsanFaultDomain) []ComputeClusterVsanFaultDomainFaultDomain {
+		return v.FaultDomains
+	}).(ComputeClusterVsanFaultDomainFaultDomainArrayOutput)
+}
+
+type ComputeClusterVsanFaultDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanFaultDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVsanFaultDomain)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanFaultDomainArrayOutput) ToComputeClusterVsanFaultDomainArrayOutput() ComputeClusterVsanFaultDomainArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVsanFaultDomainArrayOutput) ToComputeClusterVsanFaultDomainArrayOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVsanFaultDomainArrayOutput) Index(i pulumi.IntInput) ComputeClusterVsanFaultDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterVsanFaultDomain {
+		return vs[0].([]ComputeClusterVsanFaultDomain)[vs[1].(int)]
+	}).(ComputeClusterVsanFaultDomainOutput)
+}
+
+type ComputeClusterVsanFaultDomainFaultDomain struct {
+	// The managed object IDs of the hosts to put in the fault domain.
+	HostIds []string `pulumi:"hostIds"`
+	// The name of the cluster.
+	Name string `pulumi:"name"`
+}
+
+// ComputeClusterVsanFaultDomainFaultDomainInput is an input type that accepts ComputeClusterVsanFaultDomainFaultDomainArgs and ComputeClusterVsanFaultDomainFaultDomainOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanFaultDomainFaultDomainInput` via:
+//
+//	ComputeClusterVsanFaultDomainFaultDomainArgs{...}
+type ComputeClusterVsanFaultDomainFaultDomainInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanFaultDomainFaultDomainOutput() ComputeClusterVsanFaultDomainFaultDomainOutput
+	ToComputeClusterVsanFaultDomainFaultDomainOutputWithContext(context.Context) ComputeClusterVsanFaultDomainFaultDomainOutput
+}
+
+type ComputeClusterVsanFaultDomainFaultDomainArgs struct {
+	// The managed object IDs of the hosts to put in the fault domain.
+	HostIds pulumi.StringArrayInput `pulumi:"hostIds"`
+	// The name of the cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ComputeClusterVsanFaultDomainFaultDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanFaultDomainFaultDomain)(nil)).Elem()
+}
+
+func (i ComputeClusterVsanFaultDomainFaultDomainArgs) ToComputeClusterVsanFaultDomainFaultDomainOutput() ComputeClusterVsanFaultDomainFaultDomainOutput {
+	return i.ToComputeClusterVsanFaultDomainFaultDomainOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanFaultDomainFaultDomainArgs) ToComputeClusterVsanFaultDomainFaultDomainOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainFaultDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanFaultDomainFaultDomainOutput)
+}
+
+// ComputeClusterVsanFaultDomainFaultDomainArrayInput is an input type that accepts ComputeClusterVsanFaultDomainFaultDomainArray and ComputeClusterVsanFaultDomainFaultDomainArrayOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanFaultDomainFaultDomainArrayInput` via:
+//
+//	ComputeClusterVsanFaultDomainFaultDomainArray{ ComputeClusterVsanFaultDomainFaultDomainArgs{...} }
+type ComputeClusterVsanFaultDomainFaultDomainArrayInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanFaultDomainFaultDomainArrayOutput() ComputeClusterVsanFaultDomainFaultDomainArrayOutput
+	ToComputeClusterVsanFaultDomainFaultDomainArrayOutputWithContext(context.Context) ComputeClusterVsanFaultDomainFaultDomainArrayOutput
+}
+
+type ComputeClusterVsanFaultDomainFaultDomainArray []ComputeClusterVsanFaultDomainFaultDomainInput
+
+func (ComputeClusterVsanFaultDomainFaultDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVsanFaultDomainFaultDomain)(nil)).Elem()
+}
+
+func (i ComputeClusterVsanFaultDomainFaultDomainArray) ToComputeClusterVsanFaultDomainFaultDomainArrayOutput() ComputeClusterVsanFaultDomainFaultDomainArrayOutput {
+	return i.ToComputeClusterVsanFaultDomainFaultDomainArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanFaultDomainFaultDomainArray) ToComputeClusterVsanFaultDomainFaultDomainArrayOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainFaultDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanFaultDomainFaultDomainArrayOutput)
+}
+
+type ComputeClusterVsanFaultDomainFaultDomainOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanFaultDomainFaultDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanFaultDomainFaultDomain)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanFaultDomainFaultDomainOutput) ToComputeClusterVsanFaultDomainFaultDomainOutput() ComputeClusterVsanFaultDomainFaultDomainOutput {
+	return o
+}
+
+func (o ComputeClusterVsanFaultDomainFaultDomainOutput) ToComputeClusterVsanFaultDomainFaultDomainOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainFaultDomainOutput {
+	return o
+}
+
+// The managed object IDs of the hosts to put in the fault domain.
+func (o ComputeClusterVsanFaultDomainFaultDomainOutput) HostIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeClusterVsanFaultDomainFaultDomain) []string { return v.HostIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of the cluster.
+func (o ComputeClusterVsanFaultDomainFaultDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeClusterVsanFaultDomainFaultDomain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ComputeClusterVsanFaultDomainFaultDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanFaultDomainFaultDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVsanFaultDomainFaultDomain)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanFaultDomainFaultDomainArrayOutput) ToComputeClusterVsanFaultDomainFaultDomainArrayOutput() ComputeClusterVsanFaultDomainFaultDomainArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVsanFaultDomainFaultDomainArrayOutput) ToComputeClusterVsanFaultDomainFaultDomainArrayOutputWithContext(ctx context.Context) ComputeClusterVsanFaultDomainFaultDomainArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVsanFaultDomainFaultDomainArrayOutput) Index(i pulumi.IntInput) ComputeClusterVsanFaultDomainFaultDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterVsanFaultDomainFaultDomain {
+		return vs[0].([]ComputeClusterVsanFaultDomainFaultDomain)[vs[1].(int)]
+	}).(ComputeClusterVsanFaultDomainFaultDomainOutput)
+}
+
+type ComputeClusterVsanStretchedCluster struct {
+	// The managed object IDs of the hosts to put in the first fault domain.
+	PreferredFaultDomainHostIds []string `pulumi:"preferredFaultDomainHostIds"`
+	// The name of first fault domain. Default is `Preferred`.
+	PreferredFaultDomainName *string `pulumi:"preferredFaultDomainName"`
+	// The managed object IDs of the hosts to put in the second fault domain.
+	SecondaryFaultDomainHostIds []string `pulumi:"secondaryFaultDomainHostIds"`
+	// The name of second fault domain. Default is `Secondary`.
+	//
+	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+	// You can enable or re-enable vSphere HA after vSAN is configured.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	// func main() {
+	// pulumi.Run(func(ctx *pulumi.Context) error {
+	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
+	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+	// HostSystemIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+	// },
+	// DrsEnabled: pulumi.Bool(true),
+	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
+	// HaEnabled: pulumi.Bool(false),
+	// VsanEnabled: pulumi.Bool(true),
+	// VsanEsaEnabled: pulumi.Bool(true),
+	// VsanDedupEnabled: pulumi.Bool(true),
+	// VsanCompressionEnabled: pulumi.Bool(true),
+	// VsanPerformanceEnabled: pulumi.Bool(true),
+	// VsanVerboseModeEnabled: pulumi.Bool(true),
+	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
+	// VsanUnmapEnabled: pulumi.Bool(true),
+	// VsanDitEncryptionEnabled: pulumi.Bool(true),
+	// VsanDitRekeyInterval: pulumi.Int(1800),
+	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
+	// &vsphere.ComputeClusterVsanDiskGroupArgs{
+	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
+	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+	// },
+	// },
+	// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
+	// &vsphere.ComputeClusterVsanFaultDomainArgs{
+	// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
+	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+	// Name: pulumi.String("fd1"),
+	// HostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+	// },
+	// },
+	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+	// Name: pulumi.String("fd2"),
+	// HostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+	// },
+	// },
+	// },
+	// },
+	// },
+	// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
+	// PreferredFaultDomainHostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+	// },
+	// SecondaryFaultDomainHostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+	// },
+	// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+	// },
+	// })
+	// if err != nil {
+	// return err
+	// }
+	// return nil
+	// })
+	// }
+	// ```
+	SecondaryFaultDomainName *string `pulumi:"secondaryFaultDomainName"`
+	// The managed object IDs of the host selected as witness node when enable stretched cluster.
+	WitnessNode string `pulumi:"witnessNode"`
+}
+
+// ComputeClusterVsanStretchedClusterInput is an input type that accepts ComputeClusterVsanStretchedClusterArgs and ComputeClusterVsanStretchedClusterOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanStretchedClusterInput` via:
+//
+//	ComputeClusterVsanStretchedClusterArgs{...}
+type ComputeClusterVsanStretchedClusterInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanStretchedClusterOutput() ComputeClusterVsanStretchedClusterOutput
+	ToComputeClusterVsanStretchedClusterOutputWithContext(context.Context) ComputeClusterVsanStretchedClusterOutput
+}
+
+type ComputeClusterVsanStretchedClusterArgs struct {
+	// The managed object IDs of the hosts to put in the first fault domain.
+	PreferredFaultDomainHostIds pulumi.StringArrayInput `pulumi:"preferredFaultDomainHostIds"`
+	// The name of first fault domain. Default is `Preferred`.
+	PreferredFaultDomainName pulumi.StringPtrInput `pulumi:"preferredFaultDomainName"`
+	// The managed object IDs of the hosts to put in the second fault domain.
+	SecondaryFaultDomainHostIds pulumi.StringArrayInput `pulumi:"secondaryFaultDomainHostIds"`
+	// The name of second fault domain. Default is `Secondary`.
+	//
+	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+	// You can enable or re-enable vSphere HA after vSAN is configured.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	// func main() {
+	// pulumi.Run(func(ctx *pulumi.Context) error {
+	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
+	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+	// HostSystemIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+	// },
+	// DrsEnabled: pulumi.Bool(true),
+	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
+	// HaEnabled: pulumi.Bool(false),
+	// VsanEnabled: pulumi.Bool(true),
+	// VsanEsaEnabled: pulumi.Bool(true),
+	// VsanDedupEnabled: pulumi.Bool(true),
+	// VsanCompressionEnabled: pulumi.Bool(true),
+	// VsanPerformanceEnabled: pulumi.Bool(true),
+	// VsanVerboseModeEnabled: pulumi.Bool(true),
+	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
+	// VsanUnmapEnabled: pulumi.Bool(true),
+	// VsanDitEncryptionEnabled: pulumi.Bool(true),
+	// VsanDitRekeyInterval: pulumi.Int(1800),
+	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
+	// &vsphere.ComputeClusterVsanDiskGroupArgs{
+	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
+	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+	// },
+	// },
+	// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
+	// &vsphere.ComputeClusterVsanFaultDomainArgs{
+	// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
+	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+	// Name: pulumi.String("fd1"),
+	// HostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+	// },
+	// },
+	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+	// Name: pulumi.String("fd2"),
+	// HostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+	// },
+	// },
+	// },
+	// },
+	// },
+	// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
+	// PreferredFaultDomainHostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+	// },
+	// SecondaryFaultDomainHostIds: pulumi.StringArray{
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+	// },
+	// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+	// },
+	// })
+	// if err != nil {
+	// return err
+	// }
+	// return nil
+	// })
+	// }
+	// ```
+	SecondaryFaultDomainName pulumi.StringPtrInput `pulumi:"secondaryFaultDomainName"`
+	// The managed object IDs of the host selected as witness node when enable stretched cluster.
+	WitnessNode pulumi.StringInput `pulumi:"witnessNode"`
+}
+
+func (ComputeClusterVsanStretchedClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanStretchedCluster)(nil)).Elem()
+}
+
+func (i ComputeClusterVsanStretchedClusterArgs) ToComputeClusterVsanStretchedClusterOutput() ComputeClusterVsanStretchedClusterOutput {
+	return i.ToComputeClusterVsanStretchedClusterOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanStretchedClusterArgs) ToComputeClusterVsanStretchedClusterOutputWithContext(ctx context.Context) ComputeClusterVsanStretchedClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanStretchedClusterOutput)
+}
+
+func (i ComputeClusterVsanStretchedClusterArgs) ToComputeClusterVsanStretchedClusterPtrOutput() ComputeClusterVsanStretchedClusterPtrOutput {
+	return i.ToComputeClusterVsanStretchedClusterPtrOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanStretchedClusterArgs) ToComputeClusterVsanStretchedClusterPtrOutputWithContext(ctx context.Context) ComputeClusterVsanStretchedClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanStretchedClusterOutput).ToComputeClusterVsanStretchedClusterPtrOutputWithContext(ctx)
+}
+
+// ComputeClusterVsanStretchedClusterPtrInput is an input type that accepts ComputeClusterVsanStretchedClusterArgs, ComputeClusterVsanStretchedClusterPtr and ComputeClusterVsanStretchedClusterPtrOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanStretchedClusterPtrInput` via:
+//
+//	        ComputeClusterVsanStretchedClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ComputeClusterVsanStretchedClusterPtrInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanStretchedClusterPtrOutput() ComputeClusterVsanStretchedClusterPtrOutput
+	ToComputeClusterVsanStretchedClusterPtrOutputWithContext(context.Context) ComputeClusterVsanStretchedClusterPtrOutput
+}
+
+type computeClusterVsanStretchedClusterPtrType ComputeClusterVsanStretchedClusterArgs
+
+func ComputeClusterVsanStretchedClusterPtr(v *ComputeClusterVsanStretchedClusterArgs) ComputeClusterVsanStretchedClusterPtrInput {
+	return (*computeClusterVsanStretchedClusterPtrType)(v)
+}
+
+func (*computeClusterVsanStretchedClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterVsanStretchedCluster)(nil)).Elem()
+}
+
+func (i *computeClusterVsanStretchedClusterPtrType) ToComputeClusterVsanStretchedClusterPtrOutput() ComputeClusterVsanStretchedClusterPtrOutput {
+	return i.ToComputeClusterVsanStretchedClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *computeClusterVsanStretchedClusterPtrType) ToComputeClusterVsanStretchedClusterPtrOutputWithContext(ctx context.Context) ComputeClusterVsanStretchedClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanStretchedClusterPtrOutput)
+}
+
+type ComputeClusterVsanStretchedClusterOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanStretchedClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanStretchedCluster)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanStretchedClusterOutput) ToComputeClusterVsanStretchedClusterOutput() ComputeClusterVsanStretchedClusterOutput {
+	return o
+}
+
+func (o ComputeClusterVsanStretchedClusterOutput) ToComputeClusterVsanStretchedClusterOutputWithContext(ctx context.Context) ComputeClusterVsanStretchedClusterOutput {
+	return o
+}
+
+func (o ComputeClusterVsanStretchedClusterOutput) ToComputeClusterVsanStretchedClusterPtrOutput() ComputeClusterVsanStretchedClusterPtrOutput {
+	return o.ToComputeClusterVsanStretchedClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeClusterVsanStretchedClusterOutput) ToComputeClusterVsanStretchedClusterPtrOutputWithContext(ctx context.Context) ComputeClusterVsanStretchedClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeClusterVsanStretchedCluster) *ComputeClusterVsanStretchedCluster {
+		return &v
+	}).(ComputeClusterVsanStretchedClusterPtrOutput)
+}
+
+// The managed object IDs of the hosts to put in the first fault domain.
+func (o ComputeClusterVsanStretchedClusterOutput) PreferredFaultDomainHostIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) []string { return v.PreferredFaultDomainHostIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of first fault domain. Default is `Preferred`.
+func (o ComputeClusterVsanStretchedClusterOutput) PreferredFaultDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) *string { return v.PreferredFaultDomainName }).(pulumi.StringPtrOutput)
+}
+
+// The managed object IDs of the hosts to put in the second fault domain.
+func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) []string { return v.SecondaryFaultDomainHostIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of second fault domain. Default is `Secondary`.
+//
+// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+// You can enable or re-enable vSphere HA after vSAN is configured.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
+// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+// HostSystemIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+// },
+// DrsEnabled: pulumi.Bool(true),
+// DrsAutomationLevel: pulumi.String("fullyAutomated"),
+// HaEnabled: pulumi.Bool(false),
+// VsanEnabled: pulumi.Bool(true),
+// VsanEsaEnabled: pulumi.Bool(true),
+// VsanDedupEnabled: pulumi.Bool(true),
+// VsanCompressionEnabled: pulumi.Bool(true),
+// VsanPerformanceEnabled: pulumi.Bool(true),
+// VsanVerboseModeEnabled: pulumi.Bool(true),
+// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
+// VsanUnmapEnabled: pulumi.Bool(true),
+// VsanDitEncryptionEnabled: pulumi.Bool(true),
+// VsanDitRekeyInterval: pulumi.Int(1800),
+// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
+// &vsphere.ComputeClusterVsanDiskGroupArgs{
+// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
+// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+// },
+// },
+// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
+// &vsphere.ComputeClusterVsanFaultDomainArgs{
+// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
+// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+// Name: pulumi.String("fd1"),
+// HostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+// },
+// },
+// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+// Name: pulumi.String("fd2"),
+// HostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+// },
+// },
+// },
+// },
+// },
+// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
+// PreferredFaultDomainHostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+// },
+// SecondaryFaultDomainHostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+// },
+// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) *string { return v.SecondaryFaultDomainName }).(pulumi.StringPtrOutput)
+}
+
+// The managed object IDs of the host selected as witness node when enable stretched cluster.
+func (o ComputeClusterVsanStretchedClusterOutput) WitnessNode() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) string { return v.WitnessNode }).(pulumi.StringOutput)
+}
+
+type ComputeClusterVsanStretchedClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanStretchedClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterVsanStretchedCluster)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanStretchedClusterPtrOutput) ToComputeClusterVsanStretchedClusterPtrOutput() ComputeClusterVsanStretchedClusterPtrOutput {
+	return o
+}
+
+func (o ComputeClusterVsanStretchedClusterPtrOutput) ToComputeClusterVsanStretchedClusterPtrOutputWithContext(ctx context.Context) ComputeClusterVsanStretchedClusterPtrOutput {
+	return o
+}
+
+func (o ComputeClusterVsanStretchedClusterPtrOutput) Elem() ComputeClusterVsanStretchedClusterOutput {
+	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) ComputeClusterVsanStretchedCluster {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeClusterVsanStretchedCluster
+		return ret
+	}).(ComputeClusterVsanStretchedClusterOutput)
+}
+
+// The managed object IDs of the hosts to put in the first fault domain.
+func (o ComputeClusterVsanStretchedClusterPtrOutput) PreferredFaultDomainHostIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredFaultDomainHostIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of first fault domain. Default is `Preferred`.
+func (o ComputeClusterVsanStretchedClusterPtrOutput) PreferredFaultDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredFaultDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The managed object IDs of the hosts to put in the second fault domain.
+func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryFaultDomainHostIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of second fault domain. Default is `Secondary`.
+//
+// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+// You can enable or re-enable vSphere HA after vSAN is configured.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
+// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+// HostSystemIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+// },
+// DrsEnabled: pulumi.Bool(true),
+// DrsAutomationLevel: pulumi.String("fullyAutomated"),
+// HaEnabled: pulumi.Bool(false),
+// VsanEnabled: pulumi.Bool(true),
+// VsanEsaEnabled: pulumi.Bool(true),
+// VsanDedupEnabled: pulumi.Bool(true),
+// VsanCompressionEnabled: pulumi.Bool(true),
+// VsanPerformanceEnabled: pulumi.Bool(true),
+// VsanVerboseModeEnabled: pulumi.Bool(true),
+// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
+// VsanUnmapEnabled: pulumi.Bool(true),
+// VsanDitEncryptionEnabled: pulumi.Bool(true),
+// VsanDitRekeyInterval: pulumi.Int(1800),
+// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
+// &vsphere.ComputeClusterVsanDiskGroupArgs{
+// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
+// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+// },
+// },
+// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
+// &vsphere.ComputeClusterVsanFaultDomainArgs{
+// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
+// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+// Name: pulumi.String("fd1"),
+// HostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+// },
+// },
+// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
+// Name: pulumi.String("fd2"),
+// HostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+// },
+// },
+// },
+// },
+// },
+// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
+// PreferredFaultDomainHostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+// },
+// SecondaryFaultDomainHostIds: pulumi.StringArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+// },
+// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryFaultDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The managed object IDs of the host selected as witness node when enable stretched cluster.
+func (o ComputeClusterVsanStretchedClusterPtrOutput) WitnessNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WitnessNode
+	}).(pulumi.StringPtrOutput)
 }
 
 type ContentLibraryPublication struct {
@@ -1258,6 +1834,876 @@ func (o EntityPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) EntityP
 	}).(EntityPermissionsPermissionOutput)
 }
 
+type GuestOsCustomizationSpec struct {
+	DnsServerLists     []string                                   `pulumi:"dnsServerLists"`
+	DnsSuffixLists     []string                                   `pulumi:"dnsSuffixLists"`
+	Ipv4Gateway        *string                                    `pulumi:"ipv4Gateway"`
+	Ipv6Gateway        *string                                    `pulumi:"ipv6Gateway"`
+	LinuxOptions       *GuestOsCustomizationSpecLinuxOptions      `pulumi:"linuxOptions"`
+	NetworkInterfaces  []GuestOsCustomizationSpecNetworkInterface `pulumi:"networkInterfaces"`
+	WindowsOptions     *GuestOsCustomizationSpecWindowsOptions    `pulumi:"windowsOptions"`
+	WindowsSysprepText *string                                    `pulumi:"windowsSysprepText"`
+}
+
+// GuestOsCustomizationSpecInput is an input type that accepts GuestOsCustomizationSpecArgs and GuestOsCustomizationSpecOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecInput` via:
+//
+//	GuestOsCustomizationSpecArgs{...}
+type GuestOsCustomizationSpecInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecOutput() GuestOsCustomizationSpecOutput
+	ToGuestOsCustomizationSpecOutputWithContext(context.Context) GuestOsCustomizationSpecOutput
+}
+
+type GuestOsCustomizationSpecArgs struct {
+	DnsServerLists     pulumi.StringArrayInput                            `pulumi:"dnsServerLists"`
+	DnsSuffixLists     pulumi.StringArrayInput                            `pulumi:"dnsSuffixLists"`
+	Ipv4Gateway        pulumi.StringPtrInput                              `pulumi:"ipv4Gateway"`
+	Ipv6Gateway        pulumi.StringPtrInput                              `pulumi:"ipv6Gateway"`
+	LinuxOptions       GuestOsCustomizationSpecLinuxOptionsPtrInput       `pulumi:"linuxOptions"`
+	NetworkInterfaces  GuestOsCustomizationSpecNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	WindowsOptions     GuestOsCustomizationSpecWindowsOptionsPtrInput     `pulumi:"windowsOptions"`
+	WindowsSysprepText pulumi.StringPtrInput                              `pulumi:"windowsSysprepText"`
+}
+
+func (GuestOsCustomizationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (i GuestOsCustomizationSpecArgs) ToGuestOsCustomizationSpecOutput() GuestOsCustomizationSpecOutput {
+	return i.ToGuestOsCustomizationSpecOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecArgs) ToGuestOsCustomizationSpecOutputWithContext(ctx context.Context) GuestOsCustomizationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecOutput)
+}
+
+func (i GuestOsCustomizationSpecArgs) ToGuestOsCustomizationSpecPtrOutput() GuestOsCustomizationSpecPtrOutput {
+	return i.ToGuestOsCustomizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecArgs) ToGuestOsCustomizationSpecPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecOutput).ToGuestOsCustomizationSpecPtrOutputWithContext(ctx)
+}
+
+// GuestOsCustomizationSpecPtrInput is an input type that accepts GuestOsCustomizationSpecArgs, GuestOsCustomizationSpecPtr and GuestOsCustomizationSpecPtrOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecPtrInput` via:
+//
+//	        GuestOsCustomizationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuestOsCustomizationSpecPtrInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecPtrOutput() GuestOsCustomizationSpecPtrOutput
+	ToGuestOsCustomizationSpecPtrOutputWithContext(context.Context) GuestOsCustomizationSpecPtrOutput
+}
+
+type guestOsCustomizationSpecPtrType GuestOsCustomizationSpecArgs
+
+func GuestOsCustomizationSpecPtr(v *GuestOsCustomizationSpecArgs) GuestOsCustomizationSpecPtrInput {
+	return (*guestOsCustomizationSpecPtrType)(v)
+}
+
+func (*guestOsCustomizationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (i *guestOsCustomizationSpecPtrType) ToGuestOsCustomizationSpecPtrOutput() GuestOsCustomizationSpecPtrOutput {
+	return i.ToGuestOsCustomizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *guestOsCustomizationSpecPtrType) ToGuestOsCustomizationSpecPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecPtrOutput)
+}
+
+type GuestOsCustomizationSpecOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecOutput) ToGuestOsCustomizationSpecOutput() GuestOsCustomizationSpecOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecOutput) ToGuestOsCustomizationSpecOutputWithContext(ctx context.Context) GuestOsCustomizationSpecOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecOutput) ToGuestOsCustomizationSpecPtrOutput() GuestOsCustomizationSpecPtrOutput {
+	return o.ToGuestOsCustomizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GuestOsCustomizationSpecOutput) ToGuestOsCustomizationSpecPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestOsCustomizationSpec) *GuestOsCustomizationSpec {
+		return &v
+	}).(GuestOsCustomizationSpecPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) DnsServerLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) DnsSuffixLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) []string { return v.DnsSuffixLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) Ipv4Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) *string { return v.Ipv4Gateway }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) Ipv6Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) *string { return v.Ipv6Gateway }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) LinuxOptions() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) *GuestOsCustomizationSpecLinuxOptions { return v.LinuxOptions }).(GuestOsCustomizationSpecLinuxOptionsPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) NetworkInterfaces() GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) []GuestOsCustomizationSpecNetworkInterface {
+		return v.NetworkInterfaces
+	}).(GuestOsCustomizationSpecNetworkInterfaceArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) WindowsOptions() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) *GuestOsCustomizationSpecWindowsOptions { return v.WindowsOptions }).(GuestOsCustomizationSpecWindowsOptionsPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecOutput) WindowsSysprepText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpec) *string { return v.WindowsSysprepText }).(pulumi.StringPtrOutput)
+}
+
+type GuestOsCustomizationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) ToGuestOsCustomizationSpecPtrOutput() GuestOsCustomizationSpecPtrOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) ToGuestOsCustomizationSpecPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecPtrOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) Elem() GuestOsCustomizationSpecOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) GuestOsCustomizationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GuestOsCustomizationSpec
+		return ret
+	}).(GuestOsCustomizationSpecOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) DnsServerLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServerLists
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) DnsSuffixLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSuffixLists
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) Ipv4Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) Ipv6Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) LinuxOptions() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) *GuestOsCustomizationSpecLinuxOptions {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxOptions
+	}).(GuestOsCustomizationSpecLinuxOptionsPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) NetworkInterfaces() GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) []GuestOsCustomizationSpecNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(GuestOsCustomizationSpecNetworkInterfaceArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) WindowsOptions() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) *GuestOsCustomizationSpecWindowsOptions {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsOptions
+	}).(GuestOsCustomizationSpecWindowsOptionsPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecPtrOutput) WindowsSysprepText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsSysprepText
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestOsCustomizationSpecLinuxOptions struct {
+	Domain     string  `pulumi:"domain"`
+	HostName   string  `pulumi:"hostName"`
+	HwClockUtc *bool   `pulumi:"hwClockUtc"`
+	ScriptText *string `pulumi:"scriptText"`
+	TimeZone   *string `pulumi:"timeZone"`
+}
+
+// GuestOsCustomizationSpecLinuxOptionsInput is an input type that accepts GuestOsCustomizationSpecLinuxOptionsArgs and GuestOsCustomizationSpecLinuxOptionsOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecLinuxOptionsInput` via:
+//
+//	GuestOsCustomizationSpecLinuxOptionsArgs{...}
+type GuestOsCustomizationSpecLinuxOptionsInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecLinuxOptionsOutput() GuestOsCustomizationSpecLinuxOptionsOutput
+	ToGuestOsCustomizationSpecLinuxOptionsOutputWithContext(context.Context) GuestOsCustomizationSpecLinuxOptionsOutput
+}
+
+type GuestOsCustomizationSpecLinuxOptionsArgs struct {
+	Domain     pulumi.StringInput    `pulumi:"domain"`
+	HostName   pulumi.StringInput    `pulumi:"hostName"`
+	HwClockUtc pulumi.BoolPtrInput   `pulumi:"hwClockUtc"`
+	ScriptText pulumi.StringPtrInput `pulumi:"scriptText"`
+	TimeZone   pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (GuestOsCustomizationSpecLinuxOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpecLinuxOptions)(nil)).Elem()
+}
+
+func (i GuestOsCustomizationSpecLinuxOptionsArgs) ToGuestOsCustomizationSpecLinuxOptionsOutput() GuestOsCustomizationSpecLinuxOptionsOutput {
+	return i.ToGuestOsCustomizationSpecLinuxOptionsOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecLinuxOptionsArgs) ToGuestOsCustomizationSpecLinuxOptionsOutputWithContext(ctx context.Context) GuestOsCustomizationSpecLinuxOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecLinuxOptionsOutput)
+}
+
+func (i GuestOsCustomizationSpecLinuxOptionsArgs) ToGuestOsCustomizationSpecLinuxOptionsPtrOutput() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return i.ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecLinuxOptionsArgs) ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecLinuxOptionsOutput).ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(ctx)
+}
+
+// GuestOsCustomizationSpecLinuxOptionsPtrInput is an input type that accepts GuestOsCustomizationSpecLinuxOptionsArgs, GuestOsCustomizationSpecLinuxOptionsPtr and GuestOsCustomizationSpecLinuxOptionsPtrOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecLinuxOptionsPtrInput` via:
+//
+//	        GuestOsCustomizationSpecLinuxOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuestOsCustomizationSpecLinuxOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecLinuxOptionsPtrOutput() GuestOsCustomizationSpecLinuxOptionsPtrOutput
+	ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(context.Context) GuestOsCustomizationSpecLinuxOptionsPtrOutput
+}
+
+type guestOsCustomizationSpecLinuxOptionsPtrType GuestOsCustomizationSpecLinuxOptionsArgs
+
+func GuestOsCustomizationSpecLinuxOptionsPtr(v *GuestOsCustomizationSpecLinuxOptionsArgs) GuestOsCustomizationSpecLinuxOptionsPtrInput {
+	return (*guestOsCustomizationSpecLinuxOptionsPtrType)(v)
+}
+
+func (*guestOsCustomizationSpecLinuxOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestOsCustomizationSpecLinuxOptions)(nil)).Elem()
+}
+
+func (i *guestOsCustomizationSpecLinuxOptionsPtrType) ToGuestOsCustomizationSpecLinuxOptionsPtrOutput() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return i.ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *guestOsCustomizationSpecLinuxOptionsPtrType) ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecLinuxOptionsPtrOutput)
+}
+
+type GuestOsCustomizationSpecLinuxOptionsOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecLinuxOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpecLinuxOptions)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) ToGuestOsCustomizationSpecLinuxOptionsOutput() GuestOsCustomizationSpecLinuxOptionsOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) ToGuestOsCustomizationSpecLinuxOptionsOutputWithContext(ctx context.Context) GuestOsCustomizationSpecLinuxOptionsOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) ToGuestOsCustomizationSpecLinuxOptionsPtrOutput() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return o.ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestOsCustomizationSpecLinuxOptions) *GuestOsCustomizationSpecLinuxOptions {
+		return &v
+	}).(GuestOsCustomizationSpecLinuxOptionsPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) HwClockUtc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) *bool { return v.HwClockUtc }).(pulumi.BoolPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) ScriptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) *string { return v.ScriptText }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type GuestOsCustomizationSpecLinuxOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecLinuxOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestOsCustomizationSpecLinuxOptions)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) ToGuestOsCustomizationSpecLinuxOptionsPtrOutput() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) ToGuestOsCustomizationSpecLinuxOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecLinuxOptionsPtrOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) Elem() GuestOsCustomizationSpecLinuxOptionsOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) GuestOsCustomizationSpecLinuxOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GuestOsCustomizationSpecLinuxOptions
+		return ret
+	}).(GuestOsCustomizationSpecLinuxOptionsOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) HwClockUtc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HwClockUtc
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) ScriptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptText
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestOsCustomizationSpecNetworkInterface struct {
+	DnsDomain      *string  `pulumi:"dnsDomain"`
+	DnsServerLists []string `pulumi:"dnsServerLists"`
+	Ipv4Address    *string  `pulumi:"ipv4Address"`
+	Ipv4Netmask    *int     `pulumi:"ipv4Netmask"`
+	Ipv6Address    *string  `pulumi:"ipv6Address"`
+	Ipv6Netmask    *int     `pulumi:"ipv6Netmask"`
+}
+
+// GuestOsCustomizationSpecNetworkInterfaceInput is an input type that accepts GuestOsCustomizationSpecNetworkInterfaceArgs and GuestOsCustomizationSpecNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecNetworkInterfaceInput` via:
+//
+//	GuestOsCustomizationSpecNetworkInterfaceArgs{...}
+type GuestOsCustomizationSpecNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecNetworkInterfaceOutput() GuestOsCustomizationSpecNetworkInterfaceOutput
+	ToGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(context.Context) GuestOsCustomizationSpecNetworkInterfaceOutput
+}
+
+type GuestOsCustomizationSpecNetworkInterfaceArgs struct {
+	DnsDomain      pulumi.StringPtrInput   `pulumi:"dnsDomain"`
+	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
+	Ipv4Address    pulumi.StringPtrInput   `pulumi:"ipv4Address"`
+	Ipv4Netmask    pulumi.IntPtrInput      `pulumi:"ipv4Netmask"`
+	Ipv6Address    pulumi.StringPtrInput   `pulumi:"ipv6Address"`
+	Ipv6Netmask    pulumi.IntPtrInput      `pulumi:"ipv6Netmask"`
+}
+
+func (GuestOsCustomizationSpecNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (i GuestOsCustomizationSpecNetworkInterfaceArgs) ToGuestOsCustomizationSpecNetworkInterfaceOutput() GuestOsCustomizationSpecNetworkInterfaceOutput {
+	return i.ToGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecNetworkInterfaceArgs) ToGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(ctx context.Context) GuestOsCustomizationSpecNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecNetworkInterfaceOutput)
+}
+
+// GuestOsCustomizationSpecNetworkInterfaceArrayInput is an input type that accepts GuestOsCustomizationSpecNetworkInterfaceArray and GuestOsCustomizationSpecNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecNetworkInterfaceArrayInput` via:
+//
+//	GuestOsCustomizationSpecNetworkInterfaceArray{ GuestOsCustomizationSpecNetworkInterfaceArgs{...} }
+type GuestOsCustomizationSpecNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecNetworkInterfaceArrayOutput() GuestOsCustomizationSpecNetworkInterfaceArrayOutput
+	ToGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(context.Context) GuestOsCustomizationSpecNetworkInterfaceArrayOutput
+}
+
+type GuestOsCustomizationSpecNetworkInterfaceArray []GuestOsCustomizationSpecNetworkInterfaceInput
+
+func (GuestOsCustomizationSpecNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (i GuestOsCustomizationSpecNetworkInterfaceArray) ToGuestOsCustomizationSpecNetworkInterfaceArrayOutput() GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return i.ToGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecNetworkInterfaceArray) ToGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(ctx context.Context) GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecNetworkInterfaceArrayOutput)
+}
+
+type GuestOsCustomizationSpecNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) ToGuestOsCustomizationSpecNetworkInterfaceOutput() GuestOsCustomizationSpecNetworkInterfaceOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) ToGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(ctx context.Context) GuestOsCustomizationSpecNetworkInterfaceOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) DnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *string { return v.DnsDomain }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) DnsServerLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Netmask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *int { return v.Ipv4Netmask }).(pulumi.IntPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Netmask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *int { return v.Ipv6Netmask }).(pulumi.IntPtrOutput)
+}
+
+type GuestOsCustomizationSpecNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceArrayOutput) ToGuestOsCustomizationSpecNetworkInterfaceArrayOutput() GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceArrayOutput) ToGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(ctx context.Context) GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GuestOsCustomizationSpecNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestOsCustomizationSpecNetworkInterface {
+		return vs[0].([]GuestOsCustomizationSpecNetworkInterface)[vs[1].(int)]
+	}).(GuestOsCustomizationSpecNetworkInterfaceOutput)
+}
+
+type GuestOsCustomizationSpecWindowsOptions struct {
+	AdminPassword       *string  `pulumi:"adminPassword"`
+	AutoLogon           *bool    `pulumi:"autoLogon"`
+	AutoLogonCount      *int     `pulumi:"autoLogonCount"`
+	ComputerName        string   `pulumi:"computerName"`
+	DomainAdminPassword *string  `pulumi:"domainAdminPassword"`
+	DomainAdminUser     *string  `pulumi:"domainAdminUser"`
+	FullName            *string  `pulumi:"fullName"`
+	JoinDomain          *string  `pulumi:"joinDomain"`
+	OrganizationName    *string  `pulumi:"organizationName"`
+	ProductKey          *string  `pulumi:"productKey"`
+	RunOnceCommandLists []string `pulumi:"runOnceCommandLists"`
+	TimeZone            *int     `pulumi:"timeZone"`
+	Workgroup           *string  `pulumi:"workgroup"`
+}
+
+// GuestOsCustomizationSpecWindowsOptionsInput is an input type that accepts GuestOsCustomizationSpecWindowsOptionsArgs and GuestOsCustomizationSpecWindowsOptionsOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecWindowsOptionsInput` via:
+//
+//	GuestOsCustomizationSpecWindowsOptionsArgs{...}
+type GuestOsCustomizationSpecWindowsOptionsInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecWindowsOptionsOutput() GuestOsCustomizationSpecWindowsOptionsOutput
+	ToGuestOsCustomizationSpecWindowsOptionsOutputWithContext(context.Context) GuestOsCustomizationSpecWindowsOptionsOutput
+}
+
+type GuestOsCustomizationSpecWindowsOptionsArgs struct {
+	AdminPassword       pulumi.StringPtrInput   `pulumi:"adminPassword"`
+	AutoLogon           pulumi.BoolPtrInput     `pulumi:"autoLogon"`
+	AutoLogonCount      pulumi.IntPtrInput      `pulumi:"autoLogonCount"`
+	ComputerName        pulumi.StringInput      `pulumi:"computerName"`
+	DomainAdminPassword pulumi.StringPtrInput   `pulumi:"domainAdminPassword"`
+	DomainAdminUser     pulumi.StringPtrInput   `pulumi:"domainAdminUser"`
+	FullName            pulumi.StringPtrInput   `pulumi:"fullName"`
+	JoinDomain          pulumi.StringPtrInput   `pulumi:"joinDomain"`
+	OrganizationName    pulumi.StringPtrInput   `pulumi:"organizationName"`
+	ProductKey          pulumi.StringPtrInput   `pulumi:"productKey"`
+	RunOnceCommandLists pulumi.StringArrayInput `pulumi:"runOnceCommandLists"`
+	TimeZone            pulumi.IntPtrInput      `pulumi:"timeZone"`
+	Workgroup           pulumi.StringPtrInput   `pulumi:"workgroup"`
+}
+
+func (GuestOsCustomizationSpecWindowsOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpecWindowsOptions)(nil)).Elem()
+}
+
+func (i GuestOsCustomizationSpecWindowsOptionsArgs) ToGuestOsCustomizationSpecWindowsOptionsOutput() GuestOsCustomizationSpecWindowsOptionsOutput {
+	return i.ToGuestOsCustomizationSpecWindowsOptionsOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecWindowsOptionsArgs) ToGuestOsCustomizationSpecWindowsOptionsOutputWithContext(ctx context.Context) GuestOsCustomizationSpecWindowsOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecWindowsOptionsOutput)
+}
+
+func (i GuestOsCustomizationSpecWindowsOptionsArgs) ToGuestOsCustomizationSpecWindowsOptionsPtrOutput() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return i.ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GuestOsCustomizationSpecWindowsOptionsArgs) ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecWindowsOptionsOutput).ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(ctx)
+}
+
+// GuestOsCustomizationSpecWindowsOptionsPtrInput is an input type that accepts GuestOsCustomizationSpecWindowsOptionsArgs, GuestOsCustomizationSpecWindowsOptionsPtr and GuestOsCustomizationSpecWindowsOptionsPtrOutput values.
+// You can construct a concrete instance of `GuestOsCustomizationSpecWindowsOptionsPtrInput` via:
+//
+//	        GuestOsCustomizationSpecWindowsOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuestOsCustomizationSpecWindowsOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGuestOsCustomizationSpecWindowsOptionsPtrOutput() GuestOsCustomizationSpecWindowsOptionsPtrOutput
+	ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(context.Context) GuestOsCustomizationSpecWindowsOptionsPtrOutput
+}
+
+type guestOsCustomizationSpecWindowsOptionsPtrType GuestOsCustomizationSpecWindowsOptionsArgs
+
+func GuestOsCustomizationSpecWindowsOptionsPtr(v *GuestOsCustomizationSpecWindowsOptionsArgs) GuestOsCustomizationSpecWindowsOptionsPtrInput {
+	return (*guestOsCustomizationSpecWindowsOptionsPtrType)(v)
+}
+
+func (*guestOsCustomizationSpecWindowsOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestOsCustomizationSpecWindowsOptions)(nil)).Elem()
+}
+
+func (i *guestOsCustomizationSpecWindowsOptionsPtrType) ToGuestOsCustomizationSpecWindowsOptionsPtrOutput() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return i.ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *guestOsCustomizationSpecWindowsOptionsPtrType) ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsCustomizationSpecWindowsOptionsPtrOutput)
+}
+
+type GuestOsCustomizationSpecWindowsOptionsOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecWindowsOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsCustomizationSpecWindowsOptions)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) ToGuestOsCustomizationSpecWindowsOptionsOutput() GuestOsCustomizationSpecWindowsOptionsOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) ToGuestOsCustomizationSpecWindowsOptionsOutputWithContext(ctx context.Context) GuestOsCustomizationSpecWindowsOptionsOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) ToGuestOsCustomizationSpecWindowsOptionsPtrOutput() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return o.ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestOsCustomizationSpecWindowsOptions) *GuestOsCustomizationSpecWindowsOptions {
+		return &v
+	}).(GuestOsCustomizationSpecWindowsOptionsPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) AutoLogon() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *bool { return v.AutoLogon }).(pulumi.BoolPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) AutoLogonCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *int { return v.AutoLogonCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) ComputerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) string { return v.ComputerName }).(pulumi.StringOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) DomainAdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.DomainAdminPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) DomainAdminUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.DomainAdminUser }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) JoinDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.JoinDomain }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) ProductKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.ProductKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) []string { return v.RunOnceCommandLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) TimeZone() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *int { return v.TimeZone }).(pulumi.IntPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) Workgroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.Workgroup }).(pulumi.StringPtrOutput)
+}
+
+type GuestOsCustomizationSpecWindowsOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestOsCustomizationSpecWindowsOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestOsCustomizationSpecWindowsOptions)(nil)).Elem()
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ToGuestOsCustomizationSpecWindowsOptionsPtrOutput() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ToGuestOsCustomizationSpecWindowsOptionsPtrOutputWithContext(ctx context.Context) GuestOsCustomizationSpecWindowsOptionsPtrOutput {
+	return o
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) Elem() GuestOsCustomizationSpecWindowsOptionsOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) GuestOsCustomizationSpecWindowsOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GuestOsCustomizationSpecWindowsOptions
+		return ret
+	}).(GuestOsCustomizationSpecWindowsOptionsOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AutoLogon() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogon
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AutoLogonCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogonCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComputerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainAdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainAdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainAdminUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainAdminUser
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) JoinDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JoinDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ProductKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RunOnceCommandLists
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) TimeZone() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) Workgroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Workgroup
+	}).(pulumi.StringPtrOutput)
+}
+
 type HostPortGroupPort struct {
 	// The key for this port group as returned from the vSphere API.
 	Key          *string  `pulumi:"key"`
@@ -1510,12 +2956,13 @@ func (o VirtualMachineCdromArrayOutput) Index(i pulumi.IntInput) VirtualMachineC
 }
 
 type VirtualMachineClone struct {
-	Customize     *VirtualMachineCloneCustomize `pulumi:"customize"`
-	LinkedClone   *bool                         `pulumi:"linkedClone"`
-	OvfNetworkMap map[string]string             `pulumi:"ovfNetworkMap"`
-	OvfStorageMap map[string]string             `pulumi:"ovfStorageMap"`
-	TemplateUuid  string                        `pulumi:"templateUuid"`
-	Timeout       *int                          `pulumi:"timeout"`
+	CustomizationSpec *VirtualMachineCloneCustomizationSpec `pulumi:"customizationSpec"`
+	Customize         *VirtualMachineCloneCustomize         `pulumi:"customize"`
+	LinkedClone       *bool                                 `pulumi:"linkedClone"`
+	OvfNetworkMap     map[string]string                     `pulumi:"ovfNetworkMap"`
+	OvfStorageMap     map[string]string                     `pulumi:"ovfStorageMap"`
+	TemplateUuid      string                                `pulumi:"templateUuid"`
+	Timeout           *int                                  `pulumi:"timeout"`
 }
 
 // VirtualMachineCloneInput is an input type that accepts VirtualMachineCloneArgs and VirtualMachineCloneOutput values.
@@ -1530,12 +2977,13 @@ type VirtualMachineCloneInput interface {
 }
 
 type VirtualMachineCloneArgs struct {
-	Customize     VirtualMachineCloneCustomizePtrInput `pulumi:"customize"`
-	LinkedClone   pulumi.BoolPtrInput                  `pulumi:"linkedClone"`
-	OvfNetworkMap pulumi.StringMapInput                `pulumi:"ovfNetworkMap"`
-	OvfStorageMap pulumi.StringMapInput                `pulumi:"ovfStorageMap"`
-	TemplateUuid  pulumi.StringInput                   `pulumi:"templateUuid"`
-	Timeout       pulumi.IntPtrInput                   `pulumi:"timeout"`
+	CustomizationSpec VirtualMachineCloneCustomizationSpecPtrInput `pulumi:"customizationSpec"`
+	Customize         VirtualMachineCloneCustomizePtrInput         `pulumi:"customize"`
+	LinkedClone       pulumi.BoolPtrInput                          `pulumi:"linkedClone"`
+	OvfNetworkMap     pulumi.StringMapInput                        `pulumi:"ovfNetworkMap"`
+	OvfStorageMap     pulumi.StringMapInput                        `pulumi:"ovfStorageMap"`
+	TemplateUuid      pulumi.StringInput                           `pulumi:"templateUuid"`
+	Timeout           pulumi.IntPtrInput                           `pulumi:"timeout"`
 }
 
 func (VirtualMachineCloneArgs) ElementType() reflect.Type {
@@ -1615,6 +3063,10 @@ func (o VirtualMachineCloneOutput) ToVirtualMachineClonePtrOutputWithContext(ctx
 	}).(VirtualMachineClonePtrOutput)
 }
 
+func (o VirtualMachineCloneOutput) CustomizationSpec() VirtualMachineCloneCustomizationSpecPtrOutput {
+	return o.ApplyT(func(v VirtualMachineClone) *VirtualMachineCloneCustomizationSpec { return v.CustomizationSpec }).(VirtualMachineCloneCustomizationSpecPtrOutput)
+}
+
 func (o VirtualMachineCloneOutput) Customize() VirtualMachineCloneCustomizePtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *VirtualMachineCloneCustomize { return v.Customize }).(VirtualMachineCloneCustomizePtrOutput)
 }
@@ -1661,6 +3113,15 @@ func (o VirtualMachineClonePtrOutput) Elem() VirtualMachineCloneOutput {
 		var ret VirtualMachineClone
 		return ret
 	}).(VirtualMachineCloneOutput)
+}
+
+func (o VirtualMachineClonePtrOutput) CustomizationSpec() VirtualMachineCloneCustomizationSpecPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineClone) *VirtualMachineCloneCustomizationSpec {
+		if v == nil {
+			return nil
+		}
+		return v.CustomizationSpec
+	}).(VirtualMachineCloneCustomizationSpecPtrOutput)
 }
 
 func (o VirtualMachineClonePtrOutput) Customize() VirtualMachineCloneCustomizePtrOutput {
@@ -1710,6 +3171,158 @@ func (o VirtualMachineClonePtrOutput) TemplateUuid() pulumi.StringPtrOutput {
 
 func (o VirtualMachineClonePtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachineCloneCustomizationSpec struct {
+	// The UUID of the virtual machine.
+	Id      string `pulumi:"id"`
+	Timeout *int   `pulumi:"timeout"`
+}
+
+// VirtualMachineCloneCustomizationSpecInput is an input type that accepts VirtualMachineCloneCustomizationSpecArgs and VirtualMachineCloneCustomizationSpecOutput values.
+// You can construct a concrete instance of `VirtualMachineCloneCustomizationSpecInput` via:
+//
+//	VirtualMachineCloneCustomizationSpecArgs{...}
+type VirtualMachineCloneCustomizationSpecInput interface {
+	pulumi.Input
+
+	ToVirtualMachineCloneCustomizationSpecOutput() VirtualMachineCloneCustomizationSpecOutput
+	ToVirtualMachineCloneCustomizationSpecOutputWithContext(context.Context) VirtualMachineCloneCustomizationSpecOutput
+}
+
+type VirtualMachineCloneCustomizationSpecArgs struct {
+	// The UUID of the virtual machine.
+	Id      pulumi.StringInput `pulumi:"id"`
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (VirtualMachineCloneCustomizationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineCloneCustomizationSpec)(nil)).Elem()
+}
+
+func (i VirtualMachineCloneCustomizationSpecArgs) ToVirtualMachineCloneCustomizationSpecOutput() VirtualMachineCloneCustomizationSpecOutput {
+	return i.ToVirtualMachineCloneCustomizationSpecOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineCloneCustomizationSpecArgs) ToVirtualMachineCloneCustomizationSpecOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCloneCustomizationSpecOutput)
+}
+
+func (i VirtualMachineCloneCustomizationSpecArgs) ToVirtualMachineCloneCustomizationSpecPtrOutput() VirtualMachineCloneCustomizationSpecPtrOutput {
+	return i.ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineCloneCustomizationSpecArgs) ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCloneCustomizationSpecOutput).ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineCloneCustomizationSpecPtrInput is an input type that accepts VirtualMachineCloneCustomizationSpecArgs, VirtualMachineCloneCustomizationSpecPtr and VirtualMachineCloneCustomizationSpecPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineCloneCustomizationSpecPtrInput` via:
+//
+//	        VirtualMachineCloneCustomizationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineCloneCustomizationSpecPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineCloneCustomizationSpecPtrOutput() VirtualMachineCloneCustomizationSpecPtrOutput
+	ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(context.Context) VirtualMachineCloneCustomizationSpecPtrOutput
+}
+
+type virtualMachineCloneCustomizationSpecPtrType VirtualMachineCloneCustomizationSpecArgs
+
+func VirtualMachineCloneCustomizationSpecPtr(v *VirtualMachineCloneCustomizationSpecArgs) VirtualMachineCloneCustomizationSpecPtrInput {
+	return (*virtualMachineCloneCustomizationSpecPtrType)(v)
+}
+
+func (*virtualMachineCloneCustomizationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineCloneCustomizationSpec)(nil)).Elem()
+}
+
+func (i *virtualMachineCloneCustomizationSpecPtrType) ToVirtualMachineCloneCustomizationSpecPtrOutput() VirtualMachineCloneCustomizationSpecPtrOutput {
+	return i.ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineCloneCustomizationSpecPtrType) ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCloneCustomizationSpecPtrOutput)
+}
+
+type VirtualMachineCloneCustomizationSpecOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineCloneCustomizationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineCloneCustomizationSpec)(nil)).Elem()
+}
+
+func (o VirtualMachineCloneCustomizationSpecOutput) ToVirtualMachineCloneCustomizationSpecOutput() VirtualMachineCloneCustomizationSpecOutput {
+	return o
+}
+
+func (o VirtualMachineCloneCustomizationSpecOutput) ToVirtualMachineCloneCustomizationSpecOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizationSpecOutput {
+	return o
+}
+
+func (o VirtualMachineCloneCustomizationSpecOutput) ToVirtualMachineCloneCustomizationSpecPtrOutput() VirtualMachineCloneCustomizationSpecPtrOutput {
+	return o.ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineCloneCustomizationSpecOutput) ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCloneCustomizationSpec) *VirtualMachineCloneCustomizationSpec {
+		return &v
+	}).(VirtualMachineCloneCustomizationSpecPtrOutput)
+}
+
+// The UUID of the virtual machine.
+func (o VirtualMachineCloneCustomizationSpecOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineCloneCustomizationSpec) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o VirtualMachineCloneCustomizationSpecOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineCloneCustomizationSpec) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type VirtualMachineCloneCustomizationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineCloneCustomizationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineCloneCustomizationSpec)(nil)).Elem()
+}
+
+func (o VirtualMachineCloneCustomizationSpecPtrOutput) ToVirtualMachineCloneCustomizationSpecPtrOutput() VirtualMachineCloneCustomizationSpecPtrOutput {
+	return o
+}
+
+func (o VirtualMachineCloneCustomizationSpecPtrOutput) ToVirtualMachineCloneCustomizationSpecPtrOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizationSpecPtrOutput {
+	return o
+}
+
+func (o VirtualMachineCloneCustomizationSpecPtrOutput) Elem() VirtualMachineCloneCustomizationSpecOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizationSpec) VirtualMachineCloneCustomizationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineCloneCustomizationSpec
+		return ret
+	}).(VirtualMachineCloneCustomizationSpecOutput)
+}
+
+// The UUID of the virtual machine.
+func (o VirtualMachineCloneCustomizationSpecPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineCloneCustomizationSpecPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizationSpec) *int {
 		if v == nil {
 			return nil
 		}
@@ -2910,15 +4523,15 @@ func (o VirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) VirtualMachineDi
 }
 
 type VirtualMachineNetworkInterface struct {
-	// The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+	// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
 	AdapterType *string `pulumi:"adapterType"`
-	// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+	// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
 	BandwidthLimit *int `pulumi:"bandwidthLimit"`
 	// The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
 	BandwidthReservation *int `pulumi:"bandwidthReservation"`
-	// The share count for the network interface when the share level is `custom`.
+	// The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
 	BandwidthShareCount *int `pulumi:"bandwidthShareCount"`
-	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
 	DeviceAddress       *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
@@ -2928,7 +4541,8 @@ type VirtualMachineNetworkInterface struct {
 	// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
 	NetworkId string `pulumi:"networkId"`
 	// Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
-	OvfMapping *string `pulumi:"ovfMapping"`
+	OvfMapping       *string `pulumi:"ovfMapping"`
+	PhysicalFunction *string `pulumi:"physicalFunction"`
 	// If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
 	UseStaticMac *bool `pulumi:"useStaticMac"`
 }
@@ -2945,15 +4559,15 @@ type VirtualMachineNetworkInterfaceInput interface {
 }
 
 type VirtualMachineNetworkInterfaceArgs struct {
-	// The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+	// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
 	AdapterType pulumi.StringPtrInput `pulumi:"adapterType"`
-	// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+	// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
 	BandwidthLimit pulumi.IntPtrInput `pulumi:"bandwidthLimit"`
 	// The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
 	BandwidthReservation pulumi.IntPtrInput `pulumi:"bandwidthReservation"`
-	// The share count for the network interface when the share level is `custom`.
+	// The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
 	BandwidthShareCount pulumi.IntPtrInput `pulumi:"bandwidthShareCount"`
-	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
 	DeviceAddress       pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
@@ -2963,7 +4577,8 @@ type VirtualMachineNetworkInterfaceArgs struct {
 	// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
-	OvfMapping pulumi.StringPtrInput `pulumi:"ovfMapping"`
+	OvfMapping       pulumi.StringPtrInput `pulumi:"ovfMapping"`
+	PhysicalFunction pulumi.StringPtrInput `pulumi:"physicalFunction"`
 	// If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
 	UseStaticMac pulumi.BoolPtrInput `pulumi:"useStaticMac"`
 }
@@ -3019,12 +4634,12 @@ func (o VirtualMachineNetworkInterfaceOutput) ToVirtualMachineNetworkInterfaceOu
 	return o
 }
 
-// The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
 func (o VirtualMachineNetworkInterfaceOutput) AdapterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.AdapterType }).(pulumi.StringPtrOutput)
 }
 
-// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
 func (o VirtualMachineNetworkInterfaceOutput) BandwidthLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *int { return v.BandwidthLimit }).(pulumi.IntPtrOutput)
 }
@@ -3034,12 +4649,12 @@ func (o VirtualMachineNetworkInterfaceOutput) BandwidthReservation() pulumi.IntP
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *int { return v.BandwidthReservation }).(pulumi.IntPtrOutput)
 }
 
-// The share count for the network interface when the share level is `custom`.
+// The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
 func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *int { return v.BandwidthShareCount }).(pulumi.IntPtrOutput)
 }
 
-// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
 func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
 }
@@ -3066,6 +4681,10 @@ func (o VirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
 // Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
 func (o VirtualMachineNetworkInterfaceOutput) OvfMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.OvfMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineNetworkInterfaceOutput) PhysicalFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.PhysicalFunction }).(pulumi.StringPtrOutput)
 }
 
 // If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
@@ -3982,6 +5601,524 @@ func (o VnicIpv6PtrOutput) Gw() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetGuestOsCustomizationSpec struct {
+	DnsServerLists     []string                                      `pulumi:"dnsServerLists"`
+	DnsSuffixLists     []string                                      `pulumi:"dnsSuffixLists"`
+	LinuxOptions       []GetGuestOsCustomizationSpecLinuxOption      `pulumi:"linuxOptions"`
+	NetworkInterfaces  []GetGuestOsCustomizationSpecNetworkInterface `pulumi:"networkInterfaces"`
+	WindowsOptions     []GetGuestOsCustomizationSpecWindowsOption    `pulumi:"windowsOptions"`
+	WindowsSysprepText string                                        `pulumi:"windowsSysprepText"`
+}
+
+// GetGuestOsCustomizationSpecInput is an input type that accepts GetGuestOsCustomizationSpecArgs and GetGuestOsCustomizationSpecOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecInput` via:
+//
+//	GetGuestOsCustomizationSpecArgs{...}
+type GetGuestOsCustomizationSpecInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecOutput() GetGuestOsCustomizationSpecOutput
+	ToGetGuestOsCustomizationSpecOutputWithContext(context.Context) GetGuestOsCustomizationSpecOutput
+}
+
+type GetGuestOsCustomizationSpecArgs struct {
+	DnsServerLists     pulumi.StringArrayInput                               `pulumi:"dnsServerLists"`
+	DnsSuffixLists     pulumi.StringArrayInput                               `pulumi:"dnsSuffixLists"`
+	LinuxOptions       GetGuestOsCustomizationSpecLinuxOptionArrayInput      `pulumi:"linuxOptions"`
+	NetworkInterfaces  GetGuestOsCustomizationSpecNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	WindowsOptions     GetGuestOsCustomizationSpecWindowsOptionArrayInput    `pulumi:"windowsOptions"`
+	WindowsSysprepText pulumi.StringInput                                    `pulumi:"windowsSysprepText"`
+}
+
+func (GetGuestOsCustomizationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecArgs) ToGetGuestOsCustomizationSpecOutput() GetGuestOsCustomizationSpecOutput {
+	return i.ToGetGuestOsCustomizationSpecOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecArgs) ToGetGuestOsCustomizationSpecOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecOutput)
+}
+
+// GetGuestOsCustomizationSpecArrayInput is an input type that accepts GetGuestOsCustomizationSpecArray and GetGuestOsCustomizationSpecArrayOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecArrayInput` via:
+//
+//	GetGuestOsCustomizationSpecArray{ GetGuestOsCustomizationSpecArgs{...} }
+type GetGuestOsCustomizationSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecArrayOutput() GetGuestOsCustomizationSpecArrayOutput
+	ToGetGuestOsCustomizationSpecArrayOutputWithContext(context.Context) GetGuestOsCustomizationSpecArrayOutput
+}
+
+type GetGuestOsCustomizationSpecArray []GetGuestOsCustomizationSpecInput
+
+func (GetGuestOsCustomizationSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecArray) ToGetGuestOsCustomizationSpecArrayOutput() GetGuestOsCustomizationSpecArrayOutput {
+	return i.ToGetGuestOsCustomizationSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecArray) ToGetGuestOsCustomizationSpecArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecArrayOutput)
+}
+
+type GetGuestOsCustomizationSpecOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecOutput) ToGetGuestOsCustomizationSpecOutput() GetGuestOsCustomizationSpecOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecOutput) ToGetGuestOsCustomizationSpecOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecOutput) DnsServerLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGuestOsCustomizationSpecOutput) DnsSuffixLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []string { return v.DnsSuffixLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGuestOsCustomizationSpecOutput) LinuxOptions() GetGuestOsCustomizationSpecLinuxOptionArrayOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []GetGuestOsCustomizationSpecLinuxOption { return v.LinuxOptions }).(GetGuestOsCustomizationSpecLinuxOptionArrayOutput)
+}
+
+func (o GetGuestOsCustomizationSpecOutput) NetworkInterfaces() GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []GetGuestOsCustomizationSpecNetworkInterface {
+		return v.NetworkInterfaces
+	}).(GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput)
+}
+
+func (o GetGuestOsCustomizationSpecOutput) WindowsOptions() GetGuestOsCustomizationSpecWindowsOptionArrayOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []GetGuestOsCustomizationSpecWindowsOption {
+		return v.WindowsOptions
+	}).(GetGuestOsCustomizationSpecWindowsOptionArrayOutput)
+}
+
+func (o GetGuestOsCustomizationSpecOutput) WindowsSysprepText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpec) string { return v.WindowsSysprepText }).(pulumi.StringOutput)
+}
+
+type GetGuestOsCustomizationSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpec)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecArrayOutput) ToGetGuestOsCustomizationSpecArrayOutput() GetGuestOsCustomizationSpecArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecArrayOutput) ToGetGuestOsCustomizationSpecArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecArrayOutput) Index(i pulumi.IntInput) GetGuestOsCustomizationSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGuestOsCustomizationSpec {
+		return vs[0].([]GetGuestOsCustomizationSpec)[vs[1].(int)]
+	}).(GetGuestOsCustomizationSpecOutput)
+}
+
+type GetGuestOsCustomizationSpecLinuxOption struct {
+	Domain     string `pulumi:"domain"`
+	HostName   string `pulumi:"hostName"`
+	HwClockUtc bool   `pulumi:"hwClockUtc"`
+	ScriptText string `pulumi:"scriptText"`
+	TimeZone   string `pulumi:"timeZone"`
+}
+
+// GetGuestOsCustomizationSpecLinuxOptionInput is an input type that accepts GetGuestOsCustomizationSpecLinuxOptionArgs and GetGuestOsCustomizationSpecLinuxOptionOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecLinuxOptionInput` via:
+//
+//	GetGuestOsCustomizationSpecLinuxOptionArgs{...}
+type GetGuestOsCustomizationSpecLinuxOptionInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecLinuxOptionOutput() GetGuestOsCustomizationSpecLinuxOptionOutput
+	ToGetGuestOsCustomizationSpecLinuxOptionOutputWithContext(context.Context) GetGuestOsCustomizationSpecLinuxOptionOutput
+}
+
+type GetGuestOsCustomizationSpecLinuxOptionArgs struct {
+	Domain     pulumi.StringInput `pulumi:"domain"`
+	HostName   pulumi.StringInput `pulumi:"hostName"`
+	HwClockUtc pulumi.BoolInput   `pulumi:"hwClockUtc"`
+	ScriptText pulumi.StringInput `pulumi:"scriptText"`
+	TimeZone   pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (GetGuestOsCustomizationSpecLinuxOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpecLinuxOption)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecLinuxOptionArgs) ToGetGuestOsCustomizationSpecLinuxOptionOutput() GetGuestOsCustomizationSpecLinuxOptionOutput {
+	return i.ToGetGuestOsCustomizationSpecLinuxOptionOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecLinuxOptionArgs) ToGetGuestOsCustomizationSpecLinuxOptionOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecLinuxOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecLinuxOptionOutput)
+}
+
+// GetGuestOsCustomizationSpecLinuxOptionArrayInput is an input type that accepts GetGuestOsCustomizationSpecLinuxOptionArray and GetGuestOsCustomizationSpecLinuxOptionArrayOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecLinuxOptionArrayInput` via:
+//
+//	GetGuestOsCustomizationSpecLinuxOptionArray{ GetGuestOsCustomizationSpecLinuxOptionArgs{...} }
+type GetGuestOsCustomizationSpecLinuxOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecLinuxOptionArrayOutput() GetGuestOsCustomizationSpecLinuxOptionArrayOutput
+	ToGetGuestOsCustomizationSpecLinuxOptionArrayOutputWithContext(context.Context) GetGuestOsCustomizationSpecLinuxOptionArrayOutput
+}
+
+type GetGuestOsCustomizationSpecLinuxOptionArray []GetGuestOsCustomizationSpecLinuxOptionInput
+
+func (GetGuestOsCustomizationSpecLinuxOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpecLinuxOption)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecLinuxOptionArray) ToGetGuestOsCustomizationSpecLinuxOptionArrayOutput() GetGuestOsCustomizationSpecLinuxOptionArrayOutput {
+	return i.ToGetGuestOsCustomizationSpecLinuxOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecLinuxOptionArray) ToGetGuestOsCustomizationSpecLinuxOptionArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecLinuxOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecLinuxOptionArrayOutput)
+}
+
+type GetGuestOsCustomizationSpecLinuxOptionOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecLinuxOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpecLinuxOption)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionOutput) ToGetGuestOsCustomizationSpecLinuxOptionOutput() GetGuestOsCustomizationSpecLinuxOptionOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionOutput) ToGetGuestOsCustomizationSpecLinuxOptionOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecLinuxOptionOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionOutput) HwClockUtc() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) bool { return v.HwClockUtc }).(pulumi.BoolOutput)
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionOutput) ScriptText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.ScriptText }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type GetGuestOsCustomizationSpecLinuxOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecLinuxOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpecLinuxOption)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionArrayOutput) ToGetGuestOsCustomizationSpecLinuxOptionArrayOutput() GetGuestOsCustomizationSpecLinuxOptionArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionArrayOutput) ToGetGuestOsCustomizationSpecLinuxOptionArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecLinuxOptionArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecLinuxOptionArrayOutput) Index(i pulumi.IntInput) GetGuestOsCustomizationSpecLinuxOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGuestOsCustomizationSpecLinuxOption {
+		return vs[0].([]GetGuestOsCustomizationSpecLinuxOption)[vs[1].(int)]
+	}).(GetGuestOsCustomizationSpecLinuxOptionOutput)
+}
+
+type GetGuestOsCustomizationSpecNetworkInterface struct {
+	DnsDomain      string   `pulumi:"dnsDomain"`
+	DnsServerLists []string `pulumi:"dnsServerLists"`
+	Ipv4Address    string   `pulumi:"ipv4Address"`
+	Ipv4Netmask    int      `pulumi:"ipv4Netmask"`
+	Ipv6Address    string   `pulumi:"ipv6Address"`
+	Ipv6Netmask    int      `pulumi:"ipv6Netmask"`
+}
+
+// GetGuestOsCustomizationSpecNetworkInterfaceInput is an input type that accepts GetGuestOsCustomizationSpecNetworkInterfaceArgs and GetGuestOsCustomizationSpecNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecNetworkInterfaceInput` via:
+//
+//	GetGuestOsCustomizationSpecNetworkInterfaceArgs{...}
+type GetGuestOsCustomizationSpecNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecNetworkInterfaceOutput() GetGuestOsCustomizationSpecNetworkInterfaceOutput
+	ToGetGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(context.Context) GetGuestOsCustomizationSpecNetworkInterfaceOutput
+}
+
+type GetGuestOsCustomizationSpecNetworkInterfaceArgs struct {
+	DnsDomain      pulumi.StringInput      `pulumi:"dnsDomain"`
+	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
+	Ipv4Address    pulumi.StringInput      `pulumi:"ipv4Address"`
+	Ipv4Netmask    pulumi.IntInput         `pulumi:"ipv4Netmask"`
+	Ipv6Address    pulumi.StringInput      `pulumi:"ipv6Address"`
+	Ipv6Netmask    pulumi.IntInput         `pulumi:"ipv6Netmask"`
+}
+
+func (GetGuestOsCustomizationSpecNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecNetworkInterfaceArgs) ToGetGuestOsCustomizationSpecNetworkInterfaceOutput() GetGuestOsCustomizationSpecNetworkInterfaceOutput {
+	return i.ToGetGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecNetworkInterfaceArgs) ToGetGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecNetworkInterfaceOutput)
+}
+
+// GetGuestOsCustomizationSpecNetworkInterfaceArrayInput is an input type that accepts GetGuestOsCustomizationSpecNetworkInterfaceArray and GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecNetworkInterfaceArrayInput` via:
+//
+//	GetGuestOsCustomizationSpecNetworkInterfaceArray{ GetGuestOsCustomizationSpecNetworkInterfaceArgs{...} }
+type GetGuestOsCustomizationSpecNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecNetworkInterfaceArrayOutput() GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput
+	ToGetGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(context.Context) GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput
+}
+
+type GetGuestOsCustomizationSpecNetworkInterfaceArray []GetGuestOsCustomizationSpecNetworkInterfaceInput
+
+func (GetGuestOsCustomizationSpecNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecNetworkInterfaceArray) ToGetGuestOsCustomizationSpecNetworkInterfaceArrayOutput() GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return i.ToGetGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecNetworkInterfaceArray) ToGetGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput)
+}
+
+type GetGuestOsCustomizationSpecNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) ToGetGuestOsCustomizationSpecNetworkInterfaceOutput() GetGuestOsCustomizationSpecNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) ToGetGuestOsCustomizationSpecNetworkInterfaceOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) DnsDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) string { return v.DnsDomain }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) DnsServerLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Netmask() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) int { return v.Ipv4Netmask }).(pulumi.IntOutput)
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Netmask() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) int { return v.Ipv6Netmask }).(pulumi.IntOutput)
+}
+
+type GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpecNetworkInterface)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput) ToGetGuestOsCustomizationSpecNetworkInterfaceArrayOutput() GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput) ToGetGuestOsCustomizationSpecNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetGuestOsCustomizationSpecNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGuestOsCustomizationSpecNetworkInterface {
+		return vs[0].([]GetGuestOsCustomizationSpecNetworkInterface)[vs[1].(int)]
+	}).(GetGuestOsCustomizationSpecNetworkInterfaceOutput)
+}
+
+type GetGuestOsCustomizationSpecWindowsOption struct {
+	AdminPassword       string   `pulumi:"adminPassword"`
+	AutoLogon           bool     `pulumi:"autoLogon"`
+	AutoLogonCount      int      `pulumi:"autoLogonCount"`
+	ComputerName        string   `pulumi:"computerName"`
+	DomainAdminPassword *string  `pulumi:"domainAdminPassword"`
+	DomainAdminUser     string   `pulumi:"domainAdminUser"`
+	JoinDomain          string   `pulumi:"joinDomain"`
+	RunOnceCommandLists []string `pulumi:"runOnceCommandLists"`
+	TimeZone            int      `pulumi:"timeZone"`
+	Workgroup           string   `pulumi:"workgroup"`
+}
+
+// GetGuestOsCustomizationSpecWindowsOptionInput is an input type that accepts GetGuestOsCustomizationSpecWindowsOptionArgs and GetGuestOsCustomizationSpecWindowsOptionOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecWindowsOptionInput` via:
+//
+//	GetGuestOsCustomizationSpecWindowsOptionArgs{...}
+type GetGuestOsCustomizationSpecWindowsOptionInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecWindowsOptionOutput() GetGuestOsCustomizationSpecWindowsOptionOutput
+	ToGetGuestOsCustomizationSpecWindowsOptionOutputWithContext(context.Context) GetGuestOsCustomizationSpecWindowsOptionOutput
+}
+
+type GetGuestOsCustomizationSpecWindowsOptionArgs struct {
+	AdminPassword       pulumi.StringInput      `pulumi:"adminPassword"`
+	AutoLogon           pulumi.BoolInput        `pulumi:"autoLogon"`
+	AutoLogonCount      pulumi.IntInput         `pulumi:"autoLogonCount"`
+	ComputerName        pulumi.StringInput      `pulumi:"computerName"`
+	DomainAdminPassword pulumi.StringPtrInput   `pulumi:"domainAdminPassword"`
+	DomainAdminUser     pulumi.StringInput      `pulumi:"domainAdminUser"`
+	JoinDomain          pulumi.StringInput      `pulumi:"joinDomain"`
+	RunOnceCommandLists pulumi.StringArrayInput `pulumi:"runOnceCommandLists"`
+	TimeZone            pulumi.IntInput         `pulumi:"timeZone"`
+	Workgroup           pulumi.StringInput      `pulumi:"workgroup"`
+}
+
+func (GetGuestOsCustomizationSpecWindowsOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOption)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecWindowsOptionArgs) ToGetGuestOsCustomizationSpecWindowsOptionOutput() GetGuestOsCustomizationSpecWindowsOptionOutput {
+	return i.ToGetGuestOsCustomizationSpecWindowsOptionOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecWindowsOptionArgs) ToGetGuestOsCustomizationSpecWindowsOptionOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecWindowsOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecWindowsOptionOutput)
+}
+
+// GetGuestOsCustomizationSpecWindowsOptionArrayInput is an input type that accepts GetGuestOsCustomizationSpecWindowsOptionArray and GetGuestOsCustomizationSpecWindowsOptionArrayOutput values.
+// You can construct a concrete instance of `GetGuestOsCustomizationSpecWindowsOptionArrayInput` via:
+//
+//	GetGuestOsCustomizationSpecWindowsOptionArray{ GetGuestOsCustomizationSpecWindowsOptionArgs{...} }
+type GetGuestOsCustomizationSpecWindowsOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetGuestOsCustomizationSpecWindowsOptionArrayOutput() GetGuestOsCustomizationSpecWindowsOptionArrayOutput
+	ToGetGuestOsCustomizationSpecWindowsOptionArrayOutputWithContext(context.Context) GetGuestOsCustomizationSpecWindowsOptionArrayOutput
+}
+
+type GetGuestOsCustomizationSpecWindowsOptionArray []GetGuestOsCustomizationSpecWindowsOptionInput
+
+func (GetGuestOsCustomizationSpecWindowsOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpecWindowsOption)(nil)).Elem()
+}
+
+func (i GetGuestOsCustomizationSpecWindowsOptionArray) ToGetGuestOsCustomizationSpecWindowsOptionArrayOutput() GetGuestOsCustomizationSpecWindowsOptionArrayOutput {
+	return i.ToGetGuestOsCustomizationSpecWindowsOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGuestOsCustomizationSpecWindowsOptionArray) ToGetGuestOsCustomizationSpecWindowsOptionArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecWindowsOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGuestOsCustomizationSpecWindowsOptionArrayOutput)
+}
+
+type GetGuestOsCustomizationSpecWindowsOptionOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecWindowsOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOption)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) ToGetGuestOsCustomizationSpecWindowsOptionOutput() GetGuestOsCustomizationSpecWindowsOptionOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) ToGetGuestOsCustomizationSpecWindowsOptionOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecWindowsOptionOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) AdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.AdminPassword }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) AutoLogon() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) bool { return v.AutoLogon }).(pulumi.BoolOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) AutoLogonCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) int { return v.AutoLogonCount }).(pulumi.IntOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) ComputerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.ComputerName }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainAdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) *string { return v.DomainAdminPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainAdminUser() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.DomainAdminUser }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) JoinDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.JoinDomain }).(pulumi.StringOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) []string { return v.RunOnceCommandLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) TimeZone() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) int { return v.TimeZone }).(pulumi.IntOutput)
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) Workgroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.Workgroup }).(pulumi.StringOutput)
+}
+
+type GetGuestOsCustomizationSpecWindowsOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGuestOsCustomizationSpecWindowsOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGuestOsCustomizationSpecWindowsOption)(nil)).Elem()
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionArrayOutput) ToGetGuestOsCustomizationSpecWindowsOptionArrayOutput() GetGuestOsCustomizationSpecWindowsOptionArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionArrayOutput) ToGetGuestOsCustomizationSpecWindowsOptionArrayOutputWithContext(ctx context.Context) GetGuestOsCustomizationSpecWindowsOptionArrayOutput {
+	return o
+}
+
+func (o GetGuestOsCustomizationSpecWindowsOptionArrayOutput) Index(i pulumi.IntInput) GetGuestOsCustomizationSpecWindowsOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGuestOsCustomizationSpecWindowsOption {
+		return vs[0].([]GetGuestOsCustomizationSpecWindowsOption)[vs[1].(int)]
+	}).(GetGuestOsCustomizationSpecWindowsOptionOutput)
+}
+
 type GetVirtualMachineDisk struct {
 	// Set to `true` if the disk has been eager zeroed.
 	EagerlyScrub bool `pulumi:"eagerlyScrub"`
@@ -4423,6 +6560,12 @@ func (o GetVirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanDiskGroupInput)(nil)).Elem(), ComputeClusterVsanDiskGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanDiskGroupArrayInput)(nil)).Elem(), ComputeClusterVsanDiskGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanFaultDomainInput)(nil)).Elem(), ComputeClusterVsanFaultDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanFaultDomainArrayInput)(nil)).Elem(), ComputeClusterVsanFaultDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanFaultDomainFaultDomainInput)(nil)).Elem(), ComputeClusterVsanFaultDomainFaultDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanFaultDomainFaultDomainArrayInput)(nil)).Elem(), ComputeClusterVsanFaultDomainFaultDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanStretchedClusterInput)(nil)).Elem(), ComputeClusterVsanStretchedClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanStretchedClusterPtrInput)(nil)).Elem(), ComputeClusterVsanStretchedClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryPublicationInput)(nil)).Elem(), ContentLibraryPublicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryPublicationPtrInput)(nil)).Elem(), ContentLibraryPublicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibrarySubscriptionInput)(nil)).Elem(), ContentLibrarySubscriptionArgs{})
@@ -4437,12 +6580,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchVlanRangeArrayInput)(nil)).Elem(), DistributedVirtualSwitchVlanRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsPermissionInput)(nil)).Elem(), EntityPermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsPermissionArrayInput)(nil)).Elem(), EntityPermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecInput)(nil)).Elem(), GuestOsCustomizationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecPtrInput)(nil)).Elem(), GuestOsCustomizationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecLinuxOptionsInput)(nil)).Elem(), GuestOsCustomizationSpecLinuxOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecLinuxOptionsPtrInput)(nil)).Elem(), GuestOsCustomizationSpecLinuxOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecNetworkInterfaceInput)(nil)).Elem(), GuestOsCustomizationSpecNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecNetworkInterfaceArrayInput)(nil)).Elem(), GuestOsCustomizationSpecNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecWindowsOptionsInput)(nil)).Elem(), GuestOsCustomizationSpecWindowsOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecWindowsOptionsPtrInput)(nil)).Elem(), GuestOsCustomizationSpecWindowsOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortInput)(nil)).Elem(), HostPortGroupPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortArrayInput)(nil)).Elem(), HostPortGroupPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromInput)(nil)).Elem(), VirtualMachineCdromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromArrayInput)(nil)).Elem(), VirtualMachineCdromArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneInput)(nil)).Elem(), VirtualMachineCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineClonePtrInput)(nil)).Elem(), VirtualMachineCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizationSpecInput)(nil)).Elem(), VirtualMachineCloneCustomizationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizationSpecPtrInput)(nil)).Elem(), VirtualMachineCloneCustomizationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeInput)(nil)).Elem(), VirtualMachineCloneCustomizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizePtrInput)(nil)).Elem(), VirtualMachineCloneCustomizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeLinuxOptionsInput)(nil)).Elem(), VirtualMachineCloneCustomizeLinuxOptionsArgs{})
@@ -4465,6 +6618,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv4PtrInput)(nil)).Elem(), VnicIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv6Input)(nil)).Elem(), VnicIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv6PtrInput)(nil)).Elem(), VnicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecInput)(nil)).Elem(), GetGuestOsCustomizationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecLinuxOptionInput)(nil)).Elem(), GetGuestOsCustomizationSpecLinuxOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecLinuxOptionArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecLinuxOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecNetworkInterfaceInput)(nil)).Elem(), GetGuestOsCustomizationSpecNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecNetworkInterfaceArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOptionInput)(nil)).Elem(), GetGuestOsCustomizationSpecWindowsOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOptionArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecWindowsOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskInput)(nil)).Elem(), GetVirtualMachineDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskArrayInput)(nil)).Elem(), GetVirtualMachineDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArgs{})
@@ -4473,6 +6634,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVappPtrInput)(nil)).Elem(), GetVirtualMachineVappArgs{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupArrayOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVsanFaultDomainOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVsanFaultDomainArrayOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVsanFaultDomainFaultDomainOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVsanFaultDomainFaultDomainArrayOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVsanStretchedClusterOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVsanStretchedClusterPtrOutput{})
 	pulumi.RegisterOutputType(ContentLibraryPublicationOutput{})
 	pulumi.RegisterOutputType(ContentLibraryPublicationPtrOutput{})
 	pulumi.RegisterOutputType(ContentLibrarySubscriptionOutput{})
@@ -4487,12 +6654,22 @@ func init() {
 	pulumi.RegisterOutputType(DistributedVirtualSwitchVlanRangeArrayOutput{})
 	pulumi.RegisterOutputType(EntityPermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(EntityPermissionsPermissionArrayOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecPtrOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecLinuxOptionsOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecLinuxOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecWindowsOptionsOutput{})
+	pulumi.RegisterOutputType(GuestOsCustomizationSpecWindowsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneOutput{})
 	pulumi.RegisterOutputType(VirtualMachineClonePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineCloneCustomizationSpecOutput{})
+	pulumi.RegisterOutputType(VirtualMachineCloneCustomizationSpecPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneCustomizeOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneCustomizePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneCustomizeLinuxOptionsOutput{})
@@ -4515,6 +6692,14 @@ func init() {
 	pulumi.RegisterOutputType(VnicIpv4PtrOutput{})
 	pulumi.RegisterOutputType(VnicIpv6Output{})
 	pulumi.RegisterOutputType(VnicIpv6PtrOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecLinuxOptionOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecLinuxOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecWindowsOptionOutput{})
+	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecWindowsOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceOutput{})

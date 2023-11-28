@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.vsphere.outputs.VirtualMachineCloneCustomizationSpec;
 import com.pulumi.vsphere.outputs.VirtualMachineCloneCustomize;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineClone {
+    private @Nullable VirtualMachineCloneCustomizationSpec customizationSpec;
     private @Nullable VirtualMachineCloneCustomize customize;
     private @Nullable Boolean linkedClone;
     private @Nullable Map<String,String> ovfNetworkMap;
@@ -23,6 +25,9 @@ public final class VirtualMachineClone {
     private @Nullable Integer timeout;
 
     private VirtualMachineClone() {}
+    public Optional<VirtualMachineCloneCustomizationSpec> customizationSpec() {
+        return Optional.ofNullable(this.customizationSpec);
+    }
     public Optional<VirtualMachineCloneCustomize> customize() {
         return Optional.ofNullable(this.customize);
     }
@@ -51,6 +56,7 @@ public final class VirtualMachineClone {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable VirtualMachineCloneCustomizationSpec customizationSpec;
         private @Nullable VirtualMachineCloneCustomize customize;
         private @Nullable Boolean linkedClone;
         private @Nullable Map<String,String> ovfNetworkMap;
@@ -60,6 +66,7 @@ public final class VirtualMachineClone {
         public Builder() {}
         public Builder(VirtualMachineClone defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customizationSpec = defaults.customizationSpec;
     	      this.customize = defaults.customize;
     	      this.linkedClone = defaults.linkedClone;
     	      this.ovfNetworkMap = defaults.ovfNetworkMap;
@@ -68,6 +75,11 @@ public final class VirtualMachineClone {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
+        public Builder customizationSpec(@Nullable VirtualMachineCloneCustomizationSpec customizationSpec) {
+            this.customizationSpec = customizationSpec;
+            return this;
+        }
         @CustomType.Setter
         public Builder customize(@Nullable VirtualMachineCloneCustomize customize) {
             this.customize = customize;
@@ -100,6 +112,7 @@ public final class VirtualMachineClone {
         }
         public VirtualMachineClone build() {
             final var o = new VirtualMachineClone();
+            o.customizationSpec = customizationSpec;
             o.customize = customize;
             o.linkedClone = linkedClone;
             o.ovfNetworkMap = ovfNetworkMap;

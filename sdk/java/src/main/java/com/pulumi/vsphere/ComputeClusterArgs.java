@@ -6,6 +6,8 @@ package com.pulumi.vsphere;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;
+import com.pulumi.vsphere.inputs.ComputeClusterVsanFaultDomainArgs;
+import com.pulumi.vsphere.inputs.ComputeClusterVsanStretchedClusterArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1133,7 +1135,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Enables vSAN deduplication on the cluster.
-     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
      * compression must also be enabled.
      * 
      */
@@ -1142,7 +1144,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Enables vSAN deduplication on the cluster.
-     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
      * compression must also be enabled.
      * 
      */
@@ -1223,6 +1225,36 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Enables vSAN ESA on the cluster.
+     * 
+     */
+    @Import(name="vsanEsaEnabled")
+    private @Nullable Output<Boolean> vsanEsaEnabled;
+
+    /**
+     * @return Enables vSAN ESA on the cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanEsaEnabled() {
+        return Optional.ofNullable(this.vsanEsaEnabled);
+    }
+
+    /**
+     * Configurations of vSAN fault domains.
+     * 
+     */
+    @Import(name="vsanFaultDomains")
+    private @Nullable Output<List<ComputeClusterVsanFaultDomainArgs>> vsanFaultDomains;
+
+    /**
+     * @return Configurations of vSAN fault domains.
+     * 
+     */
+    public Optional<Output<List<ComputeClusterVsanFaultDomainArgs>>> vsanFaultDomains() {
+        return Optional.ofNullable(this.vsanFaultDomains);
+    }
+
+    /**
      * Enables network
      * diagnostic mode for vSAN performance service on the cluster.
      * 
@@ -1278,7 +1310,23 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Configurations of vSAN stretched cluster.
+     * 
+     */
+    @Import(name="vsanStretchedCluster")
+    private @Nullable Output<ComputeClusterVsanStretchedClusterArgs> vsanStretchedCluster;
+
+    /**
+     * @return Configurations of vSAN stretched cluster.
+     * 
+     */
+    public Optional<Output<ComputeClusterVsanStretchedClusterArgs>> vsanStretchedCluster() {
+        return Optional.ofNullable(this.vsanStretchedCluster);
+    }
+
+    /**
      * Enables vSAN unmap on the cluster.
+     * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      * 
      */
     @Import(name="vsanUnmapEnabled")
@@ -1286,6 +1334,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Enables vSAN unmap on the cluster.
+     * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      * 
      */
     public Optional<Output<Boolean>> vsanUnmapEnabled() {
@@ -1372,9 +1421,12 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         this.vsanDitEncryptionEnabled = $.vsanDitEncryptionEnabled;
         this.vsanDitRekeyInterval = $.vsanDitRekeyInterval;
         this.vsanEnabled = $.vsanEnabled;
+        this.vsanEsaEnabled = $.vsanEsaEnabled;
+        this.vsanFaultDomains = $.vsanFaultDomains;
         this.vsanNetworkDiagnosticModeEnabled = $.vsanNetworkDiagnosticModeEnabled;
         this.vsanPerformanceEnabled = $.vsanPerformanceEnabled;
         this.vsanRemoteDatastoreIds = $.vsanRemoteDatastoreIds;
+        this.vsanStretchedCluster = $.vsanStretchedCluster;
         this.vsanUnmapEnabled = $.vsanUnmapEnabled;
         this.vsanVerboseModeEnabled = $.vsanVerboseModeEnabled;
     }
@@ -2900,7 +2952,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vsanDedupEnabled Enables vSAN deduplication on the cluster.
-         * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+         * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
          * compression must also be enabled.
          * 
          * @return builder
@@ -2913,7 +2965,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vsanDedupEnabled Enables vSAN deduplication on the cluster.
-         * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+         * Cannot be independently set to `true`. When vSAN deduplication is enabled, vSAN
          * compression must also be enabled.
          * 
          * @return builder
@@ -3031,6 +3083,58 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param vsanEsaEnabled Enables vSAN ESA on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanEsaEnabled(@Nullable Output<Boolean> vsanEsaEnabled) {
+            $.vsanEsaEnabled = vsanEsaEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanEsaEnabled Enables vSAN ESA on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanEsaEnabled(Boolean vsanEsaEnabled) {
+            return vsanEsaEnabled(Output.of(vsanEsaEnabled));
+        }
+
+        /**
+         * @param vsanFaultDomains Configurations of vSAN fault domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanFaultDomains(@Nullable Output<List<ComputeClusterVsanFaultDomainArgs>> vsanFaultDomains) {
+            $.vsanFaultDomains = vsanFaultDomains;
+            return this;
+        }
+
+        /**
+         * @param vsanFaultDomains Configurations of vSAN fault domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanFaultDomains(List<ComputeClusterVsanFaultDomainArgs> vsanFaultDomains) {
+            return vsanFaultDomains(Output.of(vsanFaultDomains));
+        }
+
+        /**
+         * @param vsanFaultDomains Configurations of vSAN fault domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanFaultDomains(ComputeClusterVsanFaultDomainArgs... vsanFaultDomains) {
+            return vsanFaultDomains(List.of(vsanFaultDomains));
+        }
+
+        /**
          * @param vsanNetworkDiagnosticModeEnabled Enables network
          * diagnostic mode for vSAN performance service on the cluster.
          * 
@@ -3117,7 +3221,29 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param vsanStretchedCluster Configurations of vSAN stretched cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanStretchedCluster(@Nullable Output<ComputeClusterVsanStretchedClusterArgs> vsanStretchedCluster) {
+            $.vsanStretchedCluster = vsanStretchedCluster;
+            return this;
+        }
+
+        /**
+         * @param vsanStretchedCluster Configurations of vSAN stretched cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanStretchedCluster(ComputeClusterVsanStretchedClusterArgs vsanStretchedCluster) {
+            return vsanStretchedCluster(Output.of(vsanStretchedCluster));
+        }
+
+        /**
          * @param vsanUnmapEnabled Enables vSAN unmap on the cluster.
+         * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
          * 
          * @return builder
          * 
@@ -3129,6 +3255,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vsanUnmapEnabled Enables vSAN unmap on the cluster.
+         * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
          * 
          * @return builder
          * 

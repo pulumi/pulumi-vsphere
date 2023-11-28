@@ -14,11 +14,11 @@ namespace Pulumi.VSphere.Outputs
     public sealed class VirtualMachineNetworkInterface
     {
         /// <summary>
-        /// The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+        /// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
         /// </summary>
         public readonly string? AdapterType;
         /// <summary>
-        /// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+        /// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
         /// </summary>
         public readonly int? BandwidthLimit;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly int? BandwidthReservation;
         /// <summary>
-        /// The share count for the network interface when the share level is `custom`.
+        /// The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
         /// </summary>
         public readonly int? BandwidthShareCount;
         /// <summary>
-        /// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        /// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
         /// </summary>
         public readonly string? BandwidthShareLevel;
         public readonly string? DeviceAddress;
@@ -50,6 +50,7 @@ namespace Pulumi.VSphere.Outputs
         /// Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
         /// </summary>
         public readonly string? OvfMapping;
+        public readonly string? PhysicalFunction;
         /// <summary>
         /// If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
         /// </summary>
@@ -77,6 +78,8 @@ namespace Pulumi.VSphere.Outputs
 
             string? ovfMapping,
 
+            string? physicalFunction,
+
             bool? useStaticMac)
         {
             AdapterType = adapterType;
@@ -89,6 +92,7 @@ namespace Pulumi.VSphere.Outputs
             MacAddress = macAddress;
             NetworkId = networkId;
             OvfMapping = ovfMapping;
+            PhysicalFunction = physicalFunction;
             UseStaticMac = useStaticMac;
         }
     }
