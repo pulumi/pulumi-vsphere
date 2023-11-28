@@ -165,10 +165,78 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of disk canonical names for vSAN storage.\n\n\u003e **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.\nYou can enable or re-enable vSphere HA after vSAN is configured.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst computeCluster = new vsphere.ComputeCluster(\"computeCluster\", {\n    datacenterId: data.vsphere_datacenter.datacenter.id,\n    hostSystemIds: [data.vsphere_host.host.map(__item =\u003e __item.id)],\n    drsEnabled: true,\n    drsAutomationLevel: \"fullyAutomated\",\n    haEnabled: false,\n    vsanEnabled: true,\n    vsanDedupEnabled: true,\n    vsanCompressionEnabled: true,\n    vsanPerformanceEnabled: true,\n    vsanVerboseModeEnabled: true,\n    vsanNetworkDiagnosticModeEnabled: true,\n    vsanUnmapEnabled: true,\n    vsanDitEncryptionEnabled: true,\n    vsanDitRekeyInterval: 1800,\n    vsanDiskGroups: [{\n        cache: data.vsphere_vmfs_disks.cache_disks[0],\n        storages: data.vsphere_vmfs_disks.storage_disks,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncompute_cluster = vsphere.ComputeCluster(\"computeCluster\",\n    datacenter_id=data[\"vsphere_datacenter\"][\"datacenter\"][\"id\"],\n    host_system_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"host\"]]],\n    drs_enabled=True,\n    drs_automation_level=\"fullyAutomated\",\n    ha_enabled=False,\n    vsan_enabled=True,\n    vsan_dedup_enabled=True,\n    vsan_compression_enabled=True,\n    vsan_performance_enabled=True,\n    vsan_verbose_mode_enabled=True,\n    vsan_network_diagnostic_mode_enabled=True,\n    vsan_unmap_enabled=True,\n    vsan_dit_encryption_enabled=True,\n    vsan_dit_rekey_interval=1800,\n    vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(\n        cache=data[\"vsphere_vmfs_disks\"][\"cache_disks\"],\n        storages=data[\"vsphere_vmfs_disks\"][\"storage_disks\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var computeCluster = new VSphere.ComputeCluster(\"computeCluster\", new()\n    {\n        DatacenterId = data.Vsphere_datacenter.Datacenter.Id,\n        HostSystemIds = new[]\n        {\n            data.Vsphere_host.Host.Select(__item =\u003e __item.Id).ToList(),\n        },\n        DrsEnabled = true,\n        DrsAutomationLevel = \"fullyAutomated\",\n        HaEnabled = false,\n        VsanEnabled = true,\n        VsanDedupEnabled = true,\n        VsanCompressionEnabled = true,\n        VsanPerformanceEnabled = true,\n        VsanVerboseModeEnabled = true,\n        VsanNetworkDiagnosticModeEnabled = true,\n        VsanUnmapEnabled = true,\n        VsanDitEncryptionEnabled = true,\n        VsanDitRekeyInterval = 1800,\n        VsanDiskGroups = new[]\n        {\n            new VSphere.Inputs.ComputeClusterVsanDiskGroupArgs\n            {\n                Cache = data.Vsphere_vmfs_disks.Cache_disks[0],\n                Storages = data.Vsphere_vmfs_disks.Storage_disks,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := vsphere.NewComputeCluster(ctx, \"computeCluster\", \u0026vsphere.ComputeClusterArgs{\nDatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),\nHostSystemIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),\n},\nDrsEnabled: pulumi.Bool(true),\nDrsAutomationLevel: pulumi.String(\"fullyAutomated\"),\nHaEnabled: pulumi.Bool(false),\nVsanEnabled: pulumi.Bool(true),\nVsanDedupEnabled: pulumi.Bool(true),\nVsanCompressionEnabled: pulumi.Bool(true),\nVsanPerformanceEnabled: pulumi.Bool(true),\nVsanVerboseModeEnabled: pulumi.Bool(true),\nVsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),\nVsanUnmapEnabled: pulumi.Bool(true),\nVsanDitEncryptionEnabled: pulumi.Bool(true),\nVsanDitRekeyInterval: pulumi.Int(1800),\nVsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{\n\u0026vsphere.ComputeClusterVsanDiskGroupArgs{\nCache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),\nStorages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),\n},\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.ComputeCluster;\nimport com.pulumi.vsphere.ComputeClusterArgs;\nimport com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var computeCluster = new ComputeCluster(\"computeCluster\", ComputeClusterArgs.builder()        \n            .datacenterId(data.vsphere_datacenter().datacenter().id())\n            .hostSystemIds(data.vsphere_host().host().stream().map(element -\u003e element.id()).collect(toList()))\n            .drsEnabled(true)\n            .drsAutomationLevel(\"fullyAutomated\")\n            .haEnabled(false)\n            .vsanEnabled(true)\n            .vsanDedupEnabled(true)\n            .vsanCompressionEnabled(true)\n            .vsanPerformanceEnabled(true)\n            .vsanVerboseModeEnabled(true)\n            .vsanNetworkDiagnosticModeEnabled(true)\n            .vsanUnmapEnabled(true)\n            .vsanDitEncryptionEnabled(true)\n            .vsanDitRekeyInterval(1800)\n            .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()\n                .cache(data.vsphere_vmfs_disks().cache_disks()[0])\n                .storages(data.vsphere_vmfs_disks().storage_disks())\n                .build())\n            .build());\n\n    }\n}\n```\n"
+                    "description": "An array of disk canonical names for vSAN storage.\n"
                 }
             },
             "type": "object"
+        },
+        "vsphere:index/ComputeClusterVsanFaultDomain:ComputeClusterVsanFaultDomain": {
+            "properties": {
+                "faultDomains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/ComputeClusterVsanFaultDomainFaultDomain:ComputeClusterVsanFaultDomainFaultDomain"
+                    },
+                    "description": "The configuration for single fault domain.\n"
+                }
+            },
+            "type": "object"
+        },
+        "vsphere:index/ComputeClusterVsanFaultDomainFaultDomain:ComputeClusterVsanFaultDomainFaultDomain": {
+            "properties": {
+                "hostIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The managed object IDs of the hosts to put in the fault domain.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the cluster.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostIds",
+                "name"
+            ]
+        },
+        "vsphere:index/ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster": {
+            "properties": {
+                "preferredFaultDomainHostIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The managed object IDs of the hosts to put in the first fault domain.\n"
+                },
+                "preferredFaultDomainName": {
+                    "type": "string",
+                    "description": "The name of first fault domain. Default is `Preferred`.\n"
+                },
+                "secondaryFaultDomainHostIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The managed object IDs of the hosts to put in the second fault domain.\n"
+                },
+                "secondaryFaultDomainName": {
+                    "type": "string",
+                    "description": "The name of second fault domain. Default is `Secondary`.\n\n\u003e **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.\nYou can enable or re-enable vSphere HA after vSAN is configured.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst computeCluster = new vsphere.ComputeCluster(\"computeCluster\", {\n    datacenterId: data.vsphere_datacenter.datacenter.id,\n    hostSystemIds: [data.vsphere_host.host.map(__item =\u003e __item.id)],\n    drsEnabled: true,\n    drsAutomationLevel: \"fullyAutomated\",\n    haEnabled: false,\n    vsanEnabled: true,\n    vsanEsaEnabled: true,\n    vsanDedupEnabled: true,\n    vsanCompressionEnabled: true,\n    vsanPerformanceEnabled: true,\n    vsanVerboseModeEnabled: true,\n    vsanNetworkDiagnosticModeEnabled: true,\n    vsanUnmapEnabled: true,\n    vsanDitEncryptionEnabled: true,\n    vsanDitRekeyInterval: 1800,\n    vsanDiskGroups: [{\n        cache: data.vsphere_vmfs_disks.cache_disks[0],\n        storages: data.vsphere_vmfs_disks.storage_disks,\n    }],\n    vsanFaultDomains: [{\n        faultDomains: [\n            {\n                name: \"fd1\",\n                hostIds: [data.vsphere_host.faultdomain1_hosts.map(__item =\u003e __item.id)],\n            },\n            {\n                name: \"fd2\",\n                hostIds: [data.vsphere_host.faultdomain2_hosts.map(__item =\u003e __item.id)],\n            },\n        ],\n    }],\n    vsanStretchedCluster: {\n        preferredFaultDomainHostIds: [data.vsphere_host.preferred_fault_domain_host.map(__item =\u003e __item.id)],\n        secondaryFaultDomainHostIds: [data.vsphere_host.secondary_fault_domain_host.map(__item =\u003e __item.id)],\n        witnessNode: data.vsphere_host.witness_host.id,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncompute_cluster = vsphere.ComputeCluster(\"computeCluster\",\n    datacenter_id=data[\"vsphere_datacenter\"][\"datacenter\"][\"id\"],\n    host_system_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"host\"]]],\n    drs_enabled=True,\n    drs_automation_level=\"fullyAutomated\",\n    ha_enabled=False,\n    vsan_enabled=True,\n    vsan_esa_enabled=True,\n    vsan_dedup_enabled=True,\n    vsan_compression_enabled=True,\n    vsan_performance_enabled=True,\n    vsan_verbose_mode_enabled=True,\n    vsan_network_diagnostic_mode_enabled=True,\n    vsan_unmap_enabled=True,\n    vsan_dit_encryption_enabled=True,\n    vsan_dit_rekey_interval=1800,\n    vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(\n        cache=data[\"vsphere_vmfs_disks\"][\"cache_disks\"],\n        storages=data[\"vsphere_vmfs_disks\"][\"storage_disks\"],\n    )],\n    vsan_fault_domains=[vsphere.ComputeClusterVsanFaultDomainArgs(\n        fault_domains=[\n            vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(\n                name=\"fd1\",\n                host_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"faultdomain1_hosts\"]]],\n            ),\n            vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(\n                name=\"fd2\",\n                host_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"faultdomain2_hosts\"]]],\n            ),\n        ],\n    )],\n    vsan_stretched_cluster=vsphere.ComputeClusterVsanStretchedClusterArgs(\n        preferred_fault_domain_host_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"preferred_fault_domain_host\"]]],\n        secondary_fault_domain_host_ids=[[__item[\"id\"] for __item in data[\"vsphere_host\"][\"secondary_fault_domain_host\"]]],\n        witness_node=data[\"vsphere_host\"][\"witness_host\"][\"id\"],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var computeCluster = new VSphere.ComputeCluster(\"computeCluster\", new()\n    {\n        DatacenterId = data.Vsphere_datacenter.Datacenter.Id,\n        HostSystemIds = new[]\n        {\n            data.Vsphere_host.Host.Select(__item =\u003e __item.Id).ToList(),\n        },\n        DrsEnabled = true,\n        DrsAutomationLevel = \"fullyAutomated\",\n        HaEnabled = false,\n        VsanEnabled = true,\n        VsanEsaEnabled = true,\n        VsanDedupEnabled = true,\n        VsanCompressionEnabled = true,\n        VsanPerformanceEnabled = true,\n        VsanVerboseModeEnabled = true,\n        VsanNetworkDiagnosticModeEnabled = true,\n        VsanUnmapEnabled = true,\n        VsanDitEncryptionEnabled = true,\n        VsanDitRekeyInterval = 1800,\n        VsanDiskGroups = new[]\n        {\n            new VSphere.Inputs.ComputeClusterVsanDiskGroupArgs\n            {\n                Cache = data.Vsphere_vmfs_disks.Cache_disks[0],\n                Storages = data.Vsphere_vmfs_disks.Storage_disks,\n            },\n        },\n        VsanFaultDomains = new[]\n        {\n            new VSphere.Inputs.ComputeClusterVsanFaultDomainArgs\n            {\n                FaultDomains = new[]\n                {\n                    new VSphere.Inputs.ComputeClusterVsanFaultDomainFaultDomainArgs\n                    {\n                        Name = \"fd1\",\n                        HostIds = new[]\n                        {\n                            data.Vsphere_host.Faultdomain1_hosts.Select(__item =\u003e __item.Id).ToList(),\n                        },\n                    },\n                    new VSphere.Inputs.ComputeClusterVsanFaultDomainFaultDomainArgs\n                    {\n                        Name = \"fd2\",\n                        HostIds = new[]\n                        {\n                            data.Vsphere_host.Faultdomain2_hosts.Select(__item =\u003e __item.Id).ToList(),\n                        },\n                    },\n                },\n            },\n        },\n        VsanStretchedCluster = new VSphere.Inputs.ComputeClusterVsanStretchedClusterArgs\n        {\n            PreferredFaultDomainHostIds = new[]\n            {\n                data.Vsphere_host.Preferred_fault_domain_host.Select(__item =\u003e __item.Id).ToList(),\n            },\n            SecondaryFaultDomainHostIds = new[]\n            {\n                data.Vsphere_host.Secondary_fault_domain_host.Select(__item =\u003e __item.Id).ToList(),\n            },\n            WitnessNode = data.Vsphere_host.Witness_host.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := vsphere.NewComputeCluster(ctx, \"computeCluster\", \u0026vsphere.ComputeClusterArgs{\nDatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),\nHostSystemIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),\n},\nDrsEnabled: pulumi.Bool(true),\nDrsAutomationLevel: pulumi.String(\"fullyAutomated\"),\nHaEnabled: pulumi.Bool(false),\nVsanEnabled: pulumi.Bool(true),\nVsanEsaEnabled: pulumi.Bool(true),\nVsanDedupEnabled: pulumi.Bool(true),\nVsanCompressionEnabled: pulumi.Bool(true),\nVsanPerformanceEnabled: pulumi.Bool(true),\nVsanVerboseModeEnabled: pulumi.Bool(true),\nVsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),\nVsanUnmapEnabled: pulumi.Bool(true),\nVsanDitEncryptionEnabled: pulumi.Bool(true),\nVsanDitRekeyInterval: pulumi.Int(1800),\nVsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{\n\u0026vsphere.ComputeClusterVsanDiskGroupArgs{\nCache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),\nStorages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),\n},\n},\nVsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{\n\u0026vsphere.ComputeClusterVsanFaultDomainArgs{\nFaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{\n\u0026vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{\nName: pulumi.String(\"fd1\"),\nHostIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),\n},\n},\n\u0026vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{\nName: pulumi.String(\"fd2\"),\nHostIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),\n},\n},\n},\n},\n},\nVsanStretchedCluster: \u0026vsphere.ComputeClusterVsanStretchedClusterArgs{\nPreferredFaultDomainHostIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),\n},\nSecondaryFaultDomainHostIds: pulumi.StringArray{\n%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),\n},\nWitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.ComputeCluster;\nimport com.pulumi.vsphere.ComputeClusterArgs;\nimport com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;\nimport com.pulumi.vsphere.inputs.ComputeClusterVsanFaultDomainArgs;\nimport com.pulumi.vsphere.inputs.ComputeClusterVsanStretchedClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var computeCluster = new ComputeCluster(\"computeCluster\", ComputeClusterArgs.builder()        \n            .datacenterId(data.vsphere_datacenter().datacenter().id())\n            .hostSystemIds(data.vsphere_host().host().stream().map(element -\u003e element.id()).collect(toList()))\n            .drsEnabled(true)\n            .drsAutomationLevel(\"fullyAutomated\")\n            .haEnabled(false)\n            .vsanEnabled(true)\n            .vsanEsaEnabled(true)\n            .vsanDedupEnabled(true)\n            .vsanCompressionEnabled(true)\n            .vsanPerformanceEnabled(true)\n            .vsanVerboseModeEnabled(true)\n            .vsanNetworkDiagnosticModeEnabled(true)\n            .vsanUnmapEnabled(true)\n            .vsanDitEncryptionEnabled(true)\n            .vsanDitRekeyInterval(1800)\n            .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()\n                .cache(data.vsphere_vmfs_disks().cache_disks()[0])\n                .storages(data.vsphere_vmfs_disks().storage_disks())\n                .build())\n            .vsanFaultDomains(ComputeClusterVsanFaultDomainArgs.builder()\n                .faultDomains(                \n                    ComputeClusterVsanFaultDomainFaultDomainArgs.builder()\n                        .name(\"fd1\")\n                        .hostIds(data.vsphere_host().faultdomain1_hosts().stream().map(element -\u003e element.id()).collect(toList()))\n                        .build(),\n                    ComputeClusterVsanFaultDomainFaultDomainArgs.builder()\n                        .name(\"fd2\")\n                        .hostIds(data.vsphere_host().faultdomain2_hosts().stream().map(element -\u003e element.id()).collect(toList()))\n                        .build())\n                .build())\n            .vsanStretchedCluster(ComputeClusterVsanStretchedClusterArgs.builder()\n                .preferredFaultDomainHostIds(data.vsphere_host().preferred_fault_domain_host().stream().map(element -\u003e element.id()).collect(toList()))\n                .secondaryFaultDomainHostIds(data.vsphere_host().secondary_fault_domain_host().stream().map(element -\u003e element.id()).collect(toList()))\n                .witnessNode(data.vsphere_host().witness_host().id())\n                .build())\n            .build());\n\n    }\n}\n```\n"
+                },
+                "witnessNode": {
+                    "type": "string",
+                    "description": "The managed object IDs of the host selected as witness node when enable stretched cluster.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "preferredFaultDomainHostIds",
+                "secondaryFaultDomainHostIds",
+                "witnessNode"
+            ]
         },
         "vsphere:index/ContentLibraryPublication:ContentLibraryPublication": {
             "properties": {
@@ -350,6 +418,149 @@
                 "userOrGroup"
             ]
         },
+        "vsphere:index/GuestOsCustomizationSpec:GuestOsCustomizationSpec": {
+            "properties": {
+                "dnsServerLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dnsSuffixLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ipv4Gateway": {
+                    "type": "string"
+                },
+                "ipv6Gateway": {
+                    "type": "string"
+                },
+                "linuxOptions": {
+                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecLinuxOptions:GuestOsCustomizationSpecLinuxOptions"
+                },
+                "networkInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecNetworkInterface:GuestOsCustomizationSpecNetworkInterface"
+                    }
+                },
+                "windowsOptions": {
+                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecWindowsOptions:GuestOsCustomizationSpecWindowsOptions"
+                },
+                "windowsSysprepText": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "type": "object"
+        },
+        "vsphere:index/GuestOsCustomizationSpecLinuxOptions:GuestOsCustomizationSpecLinuxOptions": {
+            "properties": {
+                "domain": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "hwClockUtc": {
+                    "type": "boolean"
+                },
+                "scriptText": {
+                    "type": "string",
+                    "secret": true
+                },
+                "timeZone": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "hostName"
+            ]
+        },
+        "vsphere:index/GuestOsCustomizationSpecNetworkInterface:GuestOsCustomizationSpecNetworkInterface": {
+            "properties": {
+                "dnsDomain": {
+                    "type": "string"
+                },
+                "dnsServerLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ipv4Address": {
+                    "type": "string"
+                },
+                "ipv4Netmask": {
+                    "type": "integer"
+                },
+                "ipv6Address": {
+                    "type": "string"
+                },
+                "ipv6Netmask": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "vsphere:index/GuestOsCustomizationSpecWindowsOptions:GuestOsCustomizationSpecWindowsOptions": {
+            "properties": {
+                "adminPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "autoLogon": {
+                    "type": "boolean"
+                },
+                "autoLogonCount": {
+                    "type": "integer"
+                },
+                "computerName": {
+                    "type": "string"
+                },
+                "domainAdminPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "domainAdminUser": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "joinDomain": {
+                    "type": "string"
+                },
+                "organizationName": {
+                    "type": "string"
+                },
+                "productKey": {
+                    "type": "string",
+                    "secret": true
+                },
+                "runOnceCommandLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "timeZone": {
+                    "type": "integer"
+                },
+                "workgroup": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "computerName"
+            ]
+        },
         "vsphere:index/HostPortGroupPort:HostPortGroupPort": {
             "properties": {
                 "key": {
@@ -411,6 +622,9 @@
         },
         "vsphere:index/VirtualMachineClone:VirtualMachineClone": {
             "properties": {
+                "customizationSpec": {
+                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomizationSpec:VirtualMachineCloneCustomizationSpec"
+                },
                 "customize": {
                     "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomize:VirtualMachineCloneCustomize"
                 },
@@ -439,6 +653,21 @@
             "type": "object",
             "required": [
                 "templateUuid"
+            ]
+        },
+        "vsphere:index/VirtualMachineCloneCustomizationSpec:VirtualMachineCloneCustomizationSpec": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The UUID of the virtual machine.\n"
+                },
+                "timeout": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
             ]
         },
         "vsphere:index/VirtualMachineCloneCustomize:VirtualMachineCloneCustomize": {
@@ -695,11 +924,11 @@
             "properties": {
                 "adapterType": {
                     "type": "string",
-                    "description": "The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.\n"
+                    "description": "The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.\n"
                 },
                 "bandwidthLimit": {
                     "type": "integer",
-                    "description": "The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.\n"
+                    "description": "The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.\n"
                 },
                 "bandwidthReservation": {
                     "type": "integer",
@@ -707,11 +936,11 @@
                 },
                 "bandwidthShareCount": {
                     "type": "integer",
-                    "description": "The share count for the network interface when the share level is `custom`.\n"
+                    "description": "The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.\n"
                 },
                 "bandwidthShareLevel": {
                     "type": "string",
-                    "description": "The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.\n"
+                    "description": "The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.\n"
                 },
                 "deviceAddress": {
                     "type": "string"
@@ -732,6 +961,9 @@
                     "type": "string",
                     "description": "Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.\n",
                     "willReplaceOnChanges": true
+                },
+                "physicalFunction": {
+                    "type": "string"
                 },
                 "useStaticMac": {
                     "type": "boolean",
@@ -876,6 +1108,186 @@
                 }
             },
             "type": "object"
+        },
+        "vsphere:index/getGuestOsCustomizationSpec:getGuestOsCustomizationSpec": {
+            "properties": {
+                "dnsServerLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dnsSuffixLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "linuxOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/getGuestOsCustomizationSpecLinuxOption:getGuestOsCustomizationSpecLinuxOption"
+                    }
+                },
+                "networkInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/getGuestOsCustomizationSpecNetworkInterface:getGuestOsCustomizationSpecNetworkInterface"
+                    }
+                },
+                "windowsOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/getGuestOsCustomizationSpecWindowsOption:getGuestOsCustomizationSpecWindowsOption"
+                    }
+                },
+                "windowsSysprepText": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "dnsServerLists",
+                "dnsSuffixLists",
+                "linuxOptions",
+                "networkInterfaces",
+                "windowsOptions",
+                "windowsSysprepText"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getGuestOsCustomizationSpecLinuxOption:getGuestOsCustomizationSpecLinuxOption": {
+            "properties": {
+                "domain": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "hwClockUtc": {
+                    "type": "boolean"
+                },
+                "scriptText": {
+                    "type": "string",
+                    "secret": true
+                },
+                "timeZone": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "hostName",
+                "hwClockUtc",
+                "scriptText",
+                "timeZone"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getGuestOsCustomizationSpecNetworkInterface:getGuestOsCustomizationSpecNetworkInterface": {
+            "properties": {
+                "dnsDomain": {
+                    "type": "string"
+                },
+                "dnsServerLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ipv4Address": {
+                    "type": "string"
+                },
+                "ipv4Netmask": {
+                    "type": "integer"
+                },
+                "ipv6Address": {
+                    "type": "string"
+                },
+                "ipv6Netmask": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dnsDomain",
+                "dnsServerLists",
+                "ipv4Address",
+                "ipv4Netmask",
+                "ipv6Address",
+                "ipv6Netmask"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "vsphere:index/getGuestOsCustomizationSpecWindowsOption:getGuestOsCustomizationSpecWindowsOption": {
+            "properties": {
+                "adminPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "autoLogon": {
+                    "type": "boolean"
+                },
+                "autoLogonCount": {
+                    "type": "integer"
+                },
+                "computerName": {
+                    "type": "string"
+                },
+                "domainAdminPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "domainAdminUser": {
+                    "type": "string"
+                },
+                "joinDomain": {
+                    "type": "string"
+                },
+                "runOnceCommandLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "timeZone": {
+                    "type": "integer"
+                },
+                "workgroup": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "adminPassword",
+                "autoLogon",
+                "autoLogonCount",
+                "computerName",
+                "domainAdminUser",
+                "joinDomain",
+                "runOnceCommandLists",
+                "timeZone",
+                "workgroup"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "vsphere:index/getVirtualMachineDisk:getVirtualMachineDisk": {
             "properties": {
@@ -1382,7 +1794,7 @@
                 },
                 "vsanDedupEnabled": {
                     "type": "boolean",
-                    "description": "Enables vSAN deduplication on the cluster.\nCannot be independently set to true. When vSAN deduplication is enabled, vSAN\ncompression must also be enabled.\n"
+                    "description": "Enables vSAN deduplication on the cluster.\nCannot be independently set to `true`. When vSAN deduplication is enabled, vSAN\ncompression must also be enabled.\n"
                 },
                 "vsanDiskGroups": {
                     "type": "array",
@@ -1403,6 +1815,17 @@
                     "type": "boolean",
                     "description": "Enables vSAN on the cluster.\n"
                 },
+                "vsanEsaEnabled": {
+                    "type": "boolean",
+                    "description": "Enables vSAN ESA on the cluster.\n"
+                },
+                "vsanFaultDomains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/ComputeClusterVsanFaultDomain:ComputeClusterVsanFaultDomain"
+                    },
+                    "description": "Configurations of vSAN fault domains.\n"
+                },
                 "vsanNetworkDiagnosticModeEnabled": {
                     "type": "boolean",
                     "description": "Enables network\ndiagnostic mode for vSAN performance service on the cluster.\n"
@@ -1418,9 +1841,13 @@
                     },
                     "description": "The remote vSAN datastore IDs to be\nmounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and\n`vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with\ndata-in-transit encryption feature at the same time.\n"
                 },
+                "vsanStretchedCluster": {
+                    "$ref": "#/types/vsphere:index/ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster",
+                    "description": "Configurations of vSAN stretched cluster.\n"
+                },
                 "vsanUnmapEnabled": {
                     "type": "boolean",
-                    "description": "Enables vSAN unmap on the cluster.\n"
+                    "description": "Enables vSAN unmap on the cluster.\nYou must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.\n"
                 },
                 "vsanVerboseModeEnabled": {
                     "type": "boolean",
@@ -1682,7 +2109,7 @@
                 },
                 "vsanDedupEnabled": {
                     "type": "boolean",
-                    "description": "Enables vSAN deduplication on the cluster.\nCannot be independently set to true. When vSAN deduplication is enabled, vSAN\ncompression must also be enabled.\n"
+                    "description": "Enables vSAN deduplication on the cluster.\nCannot be independently set to `true`. When vSAN deduplication is enabled, vSAN\ncompression must also be enabled.\n"
                 },
                 "vsanDiskGroups": {
                     "type": "array",
@@ -1703,6 +2130,17 @@
                     "type": "boolean",
                     "description": "Enables vSAN on the cluster.\n"
                 },
+                "vsanEsaEnabled": {
+                    "type": "boolean",
+                    "description": "Enables vSAN ESA on the cluster.\n"
+                },
+                "vsanFaultDomains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/ComputeClusterVsanFaultDomain:ComputeClusterVsanFaultDomain"
+                    },
+                    "description": "Configurations of vSAN fault domains.\n"
+                },
                 "vsanNetworkDiagnosticModeEnabled": {
                     "type": "boolean",
                     "description": "Enables network\ndiagnostic mode for vSAN performance service on the cluster.\n"
@@ -1718,9 +2156,13 @@
                     },
                     "description": "The remote vSAN datastore IDs to be\nmounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and\n`vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with\ndata-in-transit encryption feature at the same time.\n"
                 },
+                "vsanStretchedCluster": {
+                    "$ref": "#/types/vsphere:index/ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster",
+                    "description": "Configurations of vSAN stretched cluster.\n"
+                },
                 "vsanUnmapEnabled": {
                     "type": "boolean",
-                    "description": "Enables vSAN unmap on the cluster.\n"
+                    "description": "Enables vSAN unmap on the cluster.\nYou must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.\n"
                 },
                 "vsanVerboseModeEnabled": {
                     "type": "boolean",
@@ -1984,7 +2426,7 @@
                     },
                     "vsanDedupEnabled": {
                         "type": "boolean",
-                        "description": "Enables vSAN deduplication on the cluster.\nCannot be independently set to true. When vSAN deduplication is enabled, vSAN\ncompression must also be enabled.\n"
+                        "description": "Enables vSAN deduplication on the cluster.\nCannot be independently set to `true`. When vSAN deduplication is enabled, vSAN\ncompression must also be enabled.\n"
                     },
                     "vsanDiskGroups": {
                         "type": "array",
@@ -2005,6 +2447,17 @@
                         "type": "boolean",
                         "description": "Enables vSAN on the cluster.\n"
                     },
+                    "vsanEsaEnabled": {
+                        "type": "boolean",
+                        "description": "Enables vSAN ESA on the cluster.\n"
+                    },
+                    "vsanFaultDomains": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/ComputeClusterVsanFaultDomain:ComputeClusterVsanFaultDomain"
+                        },
+                        "description": "Configurations of vSAN fault domains.\n"
+                    },
                     "vsanNetworkDiagnosticModeEnabled": {
                         "type": "boolean",
                         "description": "Enables network\ndiagnostic mode for vSAN performance service on the cluster.\n"
@@ -2020,9 +2473,13 @@
                         },
                         "description": "The remote vSAN datastore IDs to be\nmounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and\n`vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with\ndata-in-transit encryption feature at the same time.\n"
                     },
+                    "vsanStretchedCluster": {
+                        "$ref": "#/types/vsphere:index/ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster",
+                        "description": "Configurations of vSAN stretched cluster.\n"
+                    },
                     "vsanUnmapEnabled": {
                         "type": "boolean",
-                        "description": "Enables vSAN unmap on the cluster.\n"
+                        "description": "Enables vSAN unmap on the cluster.\nYou must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.\n"
                     },
                     "vsanVerboseModeEnabled": {
                         "type": "boolean",
@@ -5721,6 +6178,94 @@
                         "type": "string",
                         "description": "The type of folder to create. Allowed options are\n`datacenter` for datacenter folders, `host` for host and cluster folders,\n`vm` for virtual machine folders, `datastore` for datastore folders, and\n`network` for network folders. Forces a new resource if changed.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "vsphere:index/guestOsCustomization:GuestOsCustomization": {
+            "description": "The `vsphere.GuestOsCustomization` resource can be used to a customization specification for a guest operating system.\n\n\u003e **NOTE:** The name attribute is unique identifier for the guest OS spec per VC.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.GuestOsCustomization;\nimport com.pulumi.vsphere.GuestOsCustomizationArgs;\nimport com.pulumi.vsphere.inputs.GuestOsCustomizationSpecArgs;\nimport com.pulumi.vsphere.inputs.GuestOsCustomizationSpecWindowsOptionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var windowsCustomization = new GuestOsCustomization(\"windowsCustomization\", GuestOsCustomizationArgs.builder()        \n            .spec(GuestOsCustomizationSpecArgs.builder()\n                .windowsOptions(GuestOsCustomizationSpecWindowsOptionsArgs.builder()\n                    .adminPassword(\"VMware1!\")\n                    .autoLogon(false)\n                    .autoLogonCount(0)\n                    .computerName(\"windows\")\n                    .runOnceCommandList(                    \n                        \"command-1\",\n                        \"command-2\")\n                    .timeZone(4)\n                    .workgroup(\"workgroup\")\n                    .build())\n                .build())\n            .type(\"Windows\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  windowsCustomization:\n    type: vsphere:GuestOsCustomization\n    properties:\n      spec:\n        windowsOptions:\n          adminPassword: VMware1!\n          autoLogon: false\n          autoLogonCount: 0\n          computerName: windows\n          runOnceCommandList:\n            - command-1\n            - command-2\n          timeZone: 4\n          workgroup: workgroup\n      type: Windows\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "changeVersion": {
+                    "type": "string",
+                    "description": "The number of last changed version to the customization specification.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description for the customization specification.\n"
+                },
+                "lastUpdateTime": {
+                    "type": "string",
+                    "description": "The time of last modification to the customization specification.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the customization specification is the unique identifier per vCenter Server instance.\n"
+                },
+                "spec": {
+                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpec:GuestOsCustomizationSpec",
+                    "description": "Container object for the Guest OS properties about to be customized . See virtual machine customizations\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of customization specification: One among: Windows, Linux.\n"
+                }
+            },
+            "required": [
+                "changeVersion",
+                "lastUpdateTime",
+                "name",
+                "spec",
+                "type"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description for the customization specification.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the customization specification is the unique identifier per vCenter Server instance.\n"
+                },
+                "spec": {
+                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpec:GuestOsCustomizationSpec",
+                    "description": "Container object for the Guest OS properties about to be customized . See virtual machine customizations\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of customization specification: One among: Windows, Linux.\n"
+                }
+            },
+            "requiredInputs": [
+                "spec",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GuestOsCustomization resources.\n",
+                "properties": {
+                    "changeVersion": {
+                        "type": "string",
+                        "description": "The number of last changed version to the customization specification.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for the customization specification.\n"
+                    },
+                    "lastUpdateTime": {
+                        "type": "string",
+                        "description": "The time of last modification to the customization specification.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the customization specification is the unique identifier per vCenter Server instance.\n"
+                    },
+                    "spec": {
+                        "$ref": "#/types/vsphere:index/GuestOsCustomizationSpec:GuestOsCustomizationSpec",
+                        "description": "Container object for the Guest OS properties about to be customized . See virtual machine customizations\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of customization specification: One among: Windows, Linux.\n"
                     }
                 },
                 "type": "object"
@@ -10204,6 +10749,67 @@
                 "type": "object",
                 "required": [
                     "path",
+                    "id"
+                ]
+            }
+        },
+        "vsphere:index/getGuestOsCustomization:getGuestOsCustomization": {
+            "description": "The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.\n\nSuggested change\n\u003e **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst gosc1 = vsphere.getGuestOsCustomization({\n    name: \"linux-spec\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ngosc1 = vsphere.get_guest_os_customization(name=\"linux-spec\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gosc1 = VSphere.GetGuestOsCustomization.Invoke(new()\n    {\n        Name = \"linux-spec\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.LookupGuestOsCustomization(ctx, \u0026vsphere.LookupGuestOsCustomizationArgs{\n\t\t\tName: \"linux-spec\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()\n            .name(\"linux-spec\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  gosc1:\n    fn::invoke:\n      Function: vsphere:getGuestOsCustomization\n      Arguments:\n        name: linux-spec\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGuestOsCustomization.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the customization specification is the unique identifier per vCenter Server instance.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGuestOsCustomization.\n",
+                "properties": {
+                    "changeVersion": {
+                        "type": "string",
+                        "description": "The number of last changed version to the customization specification.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for the customization specification.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "lastUpdateTime": {
+                        "type": "string",
+                        "description": "The time of last modification to the customization specification.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "specs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getGuestOsCustomizationSpec:getGuestOsCustomizationSpec"
+                        },
+                        "description": "Container object for the guest operating system properties to be customized. See virtual machine customizations\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of customization specification: One among: Windows, Linux.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "changeVersion",
+                    "description",
+                    "lastUpdateTime",
+                    "name",
+                    "specs",
+                    "type",
                     "id"
                 ]
             }
