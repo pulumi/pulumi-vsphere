@@ -111,14 +111,14 @@ public final class GetHostPciDeviceResult {
             return this;
         }
         public GetHostPciDeviceResult build() {
-            final var o = new GetHostPciDeviceResult();
-            o.classId = classId;
-            o.hostId = hostId;
-            o.id = id;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.vendorId = vendorId;
-            return o;
+            final var _resultValue = new GetHostPciDeviceResult();
+            _resultValue.classId = classId;
+            _resultValue.hostId = hostId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.vendorId = vendorId;
+            return _resultValue;
         }
     }
 }

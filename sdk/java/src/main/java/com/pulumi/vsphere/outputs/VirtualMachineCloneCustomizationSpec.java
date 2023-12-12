@@ -60,10 +60,10 @@ public final class VirtualMachineCloneCustomizationSpec {
             return this;
         }
         public VirtualMachineCloneCustomizationSpec build() {
-            final var o = new VirtualMachineCloneCustomizationSpec();
-            o.id = id;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new VirtualMachineCloneCustomizationSpec();
+            _resultValue.id = id;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

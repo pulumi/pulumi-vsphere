@@ -99,12 +99,12 @@ public final class GetDistributedVirtualSwitchResult {
             return uplinks(List.of(uplinks));
         }
         public GetDistributedVirtualSwitchResult build() {
-            final var o = new GetDistributedVirtualSwitchResult();
-            o.datacenterId = datacenterId;
-            o.id = id;
-            o.name = name;
-            o.uplinks = uplinks;
-            return o;
+            final var _resultValue = new GetDistributedVirtualSwitchResult();
+            _resultValue.datacenterId = datacenterId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.uplinks = uplinks;
+            return _resultValue;
         }
     }
 }

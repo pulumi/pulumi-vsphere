@@ -49,10 +49,10 @@ public final class DistributedVirtualSwitchVlanRange {
             return this;
         }
         public DistributedVirtualSwitchVlanRange build() {
-            final var o = new DistributedVirtualSwitchVlanRange();
-            o.maxVlan = maxVlan;
-            o.minVlan = minVlan;
-            return o;
+            final var _resultValue = new DistributedVirtualSwitchVlanRange();
+            _resultValue.maxVlan = maxVlan;
+            _resultValue.minVlan = minVlan;
+            return _resultValue;
         }
     }
 }

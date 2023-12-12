@@ -25,7 +25,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      * 
      */
-    @Export(name="activeUplinks", type=List.class, parameters={String.class})
+    @Export(name="activeUplinks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> activeUplinks;
 
     /**
@@ -40,7 +40,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * that of its own.
      * 
      */
-    @Export(name="allowForgedTransmits", type=Boolean.class, parameters={})
+    @Export(name="allowForgedTransmits", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowForgedTransmits;
 
     /**
@@ -55,7 +55,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      * 
      */
-    @Export(name="allowMacChanges", type=Boolean.class, parameters={})
+    @Export(name="allowMacChanges", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowMacChanges;
 
     /**
@@ -69,7 +69,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      * 
      */
-    @Export(name="allowPromiscuous", type=Boolean.class, parameters={})
+    @Export(name="allowPromiscuous", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowPromiscuous;
 
     /**
@@ -88,7 +88,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
      * 
      */
-    @Export(name="autoExpand", type=Boolean.class, parameters={})
+    @Export(name="autoExpand", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoExpand;
 
     /**
@@ -107,7 +107,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Indicates whether to block all ports by default.
      * 
      */
-    @Export(name="blockAllPorts", type=Boolean.class, parameters={})
+    @Export(name="blockAllPorts", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> blockAllPorts;
 
     /**
@@ -122,7 +122,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * policy to be overridden on an individual port.
      * 
      */
-    @Export(name="blockOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="blockOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockOverrideAllowed;
 
     /**
@@ -137,7 +137,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Enable beacon probing on the ports this policy applies to.
      * 
      */
-    @Export(name="checkBeacon", type=Boolean.class, parameters={})
+    @Export(name="checkBeacon", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> checkBeacon;
 
     /**
@@ -152,7 +152,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * incremented by subsequent updates to the port group.
      * 
      */
-    @Export(name="configVersion", type=String.class, parameters={})
+    @Export(name="configVersion", refs={String.class}, tree="[0]")
     private Output<String> configVersion;
 
     /**
@@ -171,7 +171,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * connections and require vCenter Server.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -189,7 +189,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * An optional description for the port group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -203,7 +203,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Allow VMDirectPath Gen2 on the ports this policy applies to.
      * 
      */
-    @Export(name="directpathGen2Allowed", type=Boolean.class, parameters={})
+    @Export(name="directpathGen2Allowed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> directpathGen2Allowed;
 
     /**
@@ -218,7 +218,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * port group to. Forces a new resource if changed.
      * 
      */
-    @Export(name="distributedVirtualSwitchUuid", type=String.class, parameters={})
+    @Export(name="distributedVirtualSwitchUuid", refs={String.class}, tree="[0]")
     private Output<String> distributedVirtualSwitchUuid;
 
     /**
@@ -233,7 +233,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      * 
      */
-    @Export(name="egressShapingAverageBandwidth", type=Integer.class, parameters={})
+    @Export(name="egressShapingAverageBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> egressShapingAverageBandwidth;
 
     /**
@@ -247,7 +247,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      * 
      */
-    @Export(name="egressShapingBurstSize", type=Integer.class, parameters={})
+    @Export(name="egressShapingBurstSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> egressShapingBurstSize;
 
     /**
@@ -261,7 +261,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * True if the traffic shaper is enabled for egress traffic on the port.
      * 
      */
-    @Export(name="egressShapingEnabled", type=Boolean.class, parameters={})
+    @Export(name="egressShapingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> egressShapingEnabled;
 
     /**
@@ -275,7 +275,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="egressShapingPeakBandwidth", type=Integer.class, parameters={})
+    @Export(name="egressShapingPeakBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> egressShapingPeakBandwidth;
 
     /**
@@ -289,7 +289,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      * 
      */
-    @Export(name="failback", type=Boolean.class, parameters={})
+    @Export(name="failback", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> failback;
 
     /**
@@ -303,7 +303,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      * 
      */
-    @Export(name="ingressShapingAverageBandwidth", type=Integer.class, parameters={})
+    @Export(name="ingressShapingAverageBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> ingressShapingAverageBandwidth;
 
     /**
@@ -317,7 +317,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      * 
      */
-    @Export(name="ingressShapingBurstSize", type=Integer.class, parameters={})
+    @Export(name="ingressShapingBurstSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> ingressShapingBurstSize;
 
     /**
@@ -331,7 +331,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * True if the traffic shaper is enabled for ingress traffic on the port.
      * 
      */
-    @Export(name="ingressShapingEnabled", type=Boolean.class, parameters={})
+    @Export(name="ingressShapingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ingressShapingEnabled;
 
     /**
@@ -345,7 +345,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="ingressShapingPeakBandwidth", type=Integer.class, parameters={})
+    @Export(name="ingressShapingPeakBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> ingressShapingPeakBandwidth;
 
     /**
@@ -359,7 +359,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The generated UUID of the port group.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -373,7 +373,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Whether or not to enable LACP on all uplink ports.
      * 
      */
-    @Export(name="lacpEnabled", type=Boolean.class, parameters={})
+    @Export(name="lacpEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> lacpEnabled;
 
     /**
@@ -387,7 +387,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The uplink LACP mode to use. Can be one of active or passive.
      * 
      */
-    @Export(name="lacpMode", type=String.class, parameters={})
+    @Export(name="lacpMode", refs={String.class}, tree="[0]")
     private Output<String> lacpMode;
 
     /**
@@ -402,7 +402,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * moved to another port group while it is connected.
      * 
      */
-    @Export(name="livePortMovingAllowed", type=Boolean.class, parameters={})
+    @Export(name="livePortMovingAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> livePortMovingAllowed;
 
     /**
@@ -417,7 +417,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The name of the port group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -431,7 +431,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Indicates whether to enable netflow on all ports.
      * 
      */
-    @Export(name="netflowEnabled", type=Boolean.class, parameters={})
+    @Export(name="netflowEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> netflowEnabled;
 
     /**
@@ -447,7 +447,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * individual port.
      * 
      */
-    @Export(name="netflowOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="netflowOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> netflowOverrideAllowed;
 
     /**
@@ -465,7 +465,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * association.
      * 
      */
-    @Export(name="networkResourcePoolKey", type=String.class, parameters={})
+    @Export(name="networkResourcePoolKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkResourcePoolKey;
 
     /**
@@ -482,7 +482,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * resource pool set on this port group to be overridden on an individual port.
      * 
      */
-    @Export(name="networkResourcePoolOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="networkResourcePoolOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> networkResourcePoolOverrideAllowed;
 
     /**
@@ -497,7 +497,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      * 
      */
-    @Export(name="notifySwitches", type=Boolean.class, parameters={})
+    @Export(name="notifySwitches", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> notifySwitches;
 
     /**
@@ -512,7 +512,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * group. Cannot be decreased below the amount of used ports on the port group.
      * 
      */
-    @Export(name="numberOfPorts", type=Integer.class, parameters={})
+    @Export(name="numberOfPorts", refs={Integer.class}, tree="[0]")
     private Output<Integer> numberOfPorts;
 
     /**
@@ -528,7 +528,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * settings defined on this port group policy when the port disconnects.
      * 
      */
-    @Export(name="portConfigResetAtDisconnect", type=Boolean.class, parameters={})
+    @Export(name="portConfigResetAtDisconnect", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> portConfigResetAtDisconnect;
 
     /**
@@ -547,7 +547,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
      * 
      */
-    @Export(name="portNameFormat", type=String.class, parameters={})
+    @Export(name="portNameFormat", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> portNameFormat;
 
     /**
@@ -565,7 +565,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The secondary VLAN ID for this port.
      * 
      */
-    @Export(name="portPrivateSecondaryVlanId", type=Integer.class, parameters={})
+    @Export(name="portPrivateSecondaryVlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> portPrivateSecondaryVlanId;
 
     /**
@@ -581,7 +581,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * policy to be overridden on an individual port.
      * 
      */
-    @Export(name="securityPolicyOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="securityPolicyOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> securityPolicyOverrideAllowed;
 
     /**
@@ -599,7 +599,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * to be overridden on an individual port.
      * 
      */
-    @Export(name="shapingOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="shapingOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shapingOverrideAllowed;
 
     /**
@@ -615,7 +615,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      * 
      */
-    @Export(name="standbyUplinks", type=List.class, parameters={String.class})
+    @Export(name="standbyUplinks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> standbyUplinks;
 
     /**
@@ -629,7 +629,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * A list of tag IDs to apply to this object.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -644,7 +644,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * failover_explicit, or loadbalance_loadbased.
      * 
      */
-    @Export(name="teamingPolicy", type=String.class, parameters={})
+    @Export(name="teamingPolicy", refs={String.class}, tree="[0]")
     private Output<String> teamingPolicy;
 
     /**
@@ -660,7 +660,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * this port group to be overridden on an individual port.
      * 
      */
-    @Export(name="trafficFilterOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="trafficFilterOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> trafficFilterOverrideAllowed;
 
     /**
@@ -676,7 +676,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * forwarded done by the switch.
      * 
      */
-    @Export(name="txUplink", type=Boolean.class, parameters={})
+    @Export(name="txUplink", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> txUplink;
 
     /**
@@ -692,7 +692,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * binding) or `ephemeral`. Default: `earlyBinding`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -709,7 +709,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * overridden on an individual port.
      * 
      */
-    @Export(name="uplinkTeamingOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="uplinkTeamingOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> uplinkTeamingOverrideAllowed;
 
     /**
@@ -725,7 +725,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      * 
      */
-    @Export(name="vlanId", type=Integer.class, parameters={})
+    @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlanId;
 
     /**
@@ -741,7 +741,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * individual port.
      * 
      */
-    @Export(name="vlanOverrideAllowed", type=Boolean.class, parameters={})
+    @Export(name="vlanOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vlanOverrideAllowed;
 
     /**
@@ -757,7 +757,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      * 
      */
-    @Export(name="vlanRanges", type=List.class, parameters={DistributedPortGroupVlanRange.class})
+    @Export(name="vlanRanges", refs={List.class,DistributedPortGroupVlanRange.class}, tree="[0,1]")
     private Output<List<DistributedPortGroupVlanRange>> vlanRanges;
 
     /**

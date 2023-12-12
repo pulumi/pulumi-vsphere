@@ -79,12 +79,12 @@ public final class GetContentLibraryItemResult {
             return this;
         }
         public GetContentLibraryItemResult build() {
-            final var o = new GetContentLibraryItemResult();
-            o.id = id;
-            o.libraryId = libraryId;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetContentLibraryItemResult();
+            _resultValue.id = id;
+            _resultValue.libraryId = libraryId;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

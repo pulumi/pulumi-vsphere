@@ -21,7 +21,7 @@ public class EntityPermissions extends com.pulumi.resources.CustomResource {
      * The managed object id (uuid for some entities) on which permissions are to be created.
      * 
      */
-    @Export(name="entityId", type=String.class, parameters={})
+    @Export(name="entityId", refs={String.class}, tree="[0]")
     private Output<String> entityId;
 
     /**
@@ -36,7 +36,7 @@ public class EntityPermissions extends com.pulumi.resources.CustomResource {
      * [here](https://developer.vmware.com/apis/968/vsphere).
      * 
      */
-    @Export(name="entityType", type=String.class, parameters={})
+    @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
@@ -52,7 +52,7 @@ public class EntityPermissions extends com.pulumi.resources.CustomResource {
      * alphabetically on `user_or_group` for a better user experience.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={EntityPermissionsPermission.class})
+    @Export(name="permissions", refs={List.class,EntityPermissionsPermission.class}, tree="[0,1]")
     private Output<List<EntityPermissionsPermission>> permissions;
 
     /**

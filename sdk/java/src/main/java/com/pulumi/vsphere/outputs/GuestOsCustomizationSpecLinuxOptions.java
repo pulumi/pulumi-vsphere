@@ -85,13 +85,13 @@ public final class GuestOsCustomizationSpecLinuxOptions {
             return this;
         }
         public GuestOsCustomizationSpecLinuxOptions build() {
-            final var o = new GuestOsCustomizationSpecLinuxOptions();
-            o.domain = domain;
-            o.hostName = hostName;
-            o.hwClockUtc = hwClockUtc;
-            o.scriptText = scriptText;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new GuestOsCustomizationSpecLinuxOptions();
+            _resultValue.domain = domain;
+            _resultValue.hostName = hostName;
+            _resultValue.hwClockUtc = hwClockUtc;
+            _resultValue.scriptText = scriptText;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

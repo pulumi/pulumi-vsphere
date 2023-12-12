@@ -24,7 +24,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * balancing.
      * 
      */
-    @Export(name="activeNics", type=List.class, parameters={String.class})
+    @Export(name="activeNics", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> activeNics;
 
     /**
@@ -41,7 +41,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * address than that of its own. Default: `true`.
      * 
      */
-    @Export(name="allowForgedTransmits", type=Boolean.class, parameters={})
+    @Export(name="allowForgedTransmits", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowForgedTransmits;
 
     /**
@@ -58,7 +58,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * Control (MAC) address can be changed. Default: `true`.
      * 
      */
-    @Export(name="allowMacChanges", type=Boolean.class, parameters={})
+    @Export(name="allowMacChanges", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowMacChanges;
 
     /**
@@ -75,7 +75,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * `false`.
      * 
      */
-    @Export(name="allowPromiscuous", type=Boolean.class, parameters={})
+    @Export(name="allowPromiscuous", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowPromiscuous;
 
     /**
@@ -93,7 +93,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * offer link failure capability beyond link status only. Default: `1`.
      * 
      */
-    @Export(name="beaconInterval", type=Integer.class, parameters={})
+    @Export(name="beaconInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> beaconInterval;
 
     /**
@@ -112,7 +112,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * failed NICs.  Default: `false`.
      * 
      */
-    @Export(name="checkBeacon", type=Boolean.class, parameters={})
+    @Export(name="checkBeacon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> checkBeacon;
 
     /**
@@ -131,7 +131,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * `true`.
      * 
      */
-    @Export(name="failback", type=Boolean.class, parameters={})
+    @Export(name="failback", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> failback;
 
     /**
@@ -148,7 +148,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * the host to set the virtual switch up on. Forces a new resource if changed.
      * 
      */
-    @Export(name="hostSystemId", type=String.class, parameters={})
+    @Export(name="hostSystemId", refs={String.class}, tree="[0]")
     private Output<String> hostSystemId;
 
     /**
@@ -164,7 +164,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * for link discovery traffic. Default: `listen`.
      * 
      */
-    @Export(name="linkDiscoveryOperation", type=String.class, parameters={})
+    @Export(name="linkDiscoveryOperation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> linkDiscoveryOperation;
 
     /**
@@ -180,7 +180,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * types are `cpd` and `lldp`. Default: `cdp`.
      * 
      */
-    @Export(name="linkDiscoveryProtocol", type=String.class, parameters={})
+    @Export(name="linkDiscoveryProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> linkDiscoveryProtocol;
 
     /**
@@ -196,7 +196,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * switch. Default: `1500`.
      * 
      */
-    @Export(name="mtu", type=Integer.class, parameters={})
+    @Export(name="mtu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> mtu;
 
     /**
@@ -212,7 +212,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * changed.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -227,7 +227,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * The network interfaces to bind to the bridge.
      * 
      */
-    @Export(name="networkAdapters", type=List.class, parameters={String.class})
+    @Export(name="networkAdapters", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> networkAdapters;
 
     /**
@@ -243,7 +243,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * Default: `true`.
      * 
      */
-    @Export(name="notifySwitches", type=Boolean.class, parameters={})
+    @Export(name="notifySwitches", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> notifySwitches;
 
     /**
@@ -263,7 +263,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * will not restart the host for you.
      * 
      */
-    @Export(name="numberOfPorts", type=Integer.class, parameters={})
+    @Export(name="numberOfPorts", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numberOfPorts;
 
     /**
@@ -282,7 +282,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * second if traffic shaping is enabled. Default: `0`
      * 
      */
-    @Export(name="shapingAverageBandwidth", type=Integer.class, parameters={})
+    @Export(name="shapingAverageBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shapingAverageBandwidth;
 
     /**
@@ -298,7 +298,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * shaping is enabled. Default: `0`
      * 
      */
-    @Export(name="shapingBurstSize", type=Integer.class, parameters={})
+    @Export(name="shapingBurstSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shapingBurstSize;
 
     /**
@@ -314,7 +314,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * ports managed by this virtual switch. Default: `false`.
      * 
      */
-    @Export(name="shapingEnabled", type=Boolean.class, parameters={})
+    @Export(name="shapingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shapingEnabled;
 
     /**
@@ -330,7 +330,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * bits per second if traffic shaping is enabled. Default: `0`
      * 
      */
-    @Export(name="shapingPeakBandwidth", type=Integer.class, parameters={})
+    @Export(name="shapingPeakBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shapingPeakBandwidth;
 
     /**
@@ -346,7 +346,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * failover.
      * 
      */
-    @Export(name="standbyNics", type=List.class, parameters={String.class})
+    @Export(name="standbyNics", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> standbyNics;
 
     /**
@@ -363,7 +363,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * `failover_explicit`. Default: `loadbalance_srcid`.
      * 
      */
-    @Export(name="teamingPolicy", type=String.class, parameters={})
+    @Export(name="teamingPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> teamingPolicy;
 
     /**

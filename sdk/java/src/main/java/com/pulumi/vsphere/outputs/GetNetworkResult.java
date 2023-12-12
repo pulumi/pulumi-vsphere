@@ -106,13 +106,13 @@ public final class GetNetworkResult {
             return this;
         }
         public GetNetworkResult build() {
-            final var o = new GetNetworkResult();
-            o.datacenterId = datacenterId;
-            o.distributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
-            o.id = id;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetNetworkResult();
+            _resultValue.datacenterId = datacenterId;
+            _resultValue.distributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

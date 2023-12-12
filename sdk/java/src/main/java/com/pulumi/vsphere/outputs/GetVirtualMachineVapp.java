@@ -40,9 +40,9 @@ public final class GetVirtualMachineVapp {
             return this;
         }
         public GetVirtualMachineVapp build() {
-            final var o = new GetVirtualMachineVapp();
-            o.properties = properties;
-            return o;
+            final var _resultValue = new GetVirtualMachineVapp();
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

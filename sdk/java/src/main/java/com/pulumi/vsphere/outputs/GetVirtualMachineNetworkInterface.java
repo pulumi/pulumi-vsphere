@@ -177,15 +177,15 @@ public final class GetVirtualMachineNetworkInterface {
             return this;
         }
         public GetVirtualMachineNetworkInterface build() {
-            final var o = new GetVirtualMachineNetworkInterface();
-            o.adapterType = adapterType;
-            o.bandwidthLimit = bandwidthLimit;
-            o.bandwidthReservation = bandwidthReservation;
-            o.bandwidthShareCount = bandwidthShareCount;
-            o.bandwidthShareLevel = bandwidthShareLevel;
-            o.macAddress = macAddress;
-            o.networkId = networkId;
-            return o;
+            final var _resultValue = new GetVirtualMachineNetworkInterface();
+            _resultValue.adapterType = adapterType;
+            _resultValue.bandwidthLimit = bandwidthLimit;
+            _resultValue.bandwidthReservation = bandwidthReservation;
+            _resultValue.bandwidthShareCount = bandwidthShareCount;
+            _resultValue.bandwidthShareLevel = bandwidthShareLevel;
+            _resultValue.macAddress = macAddress;
+            _resultValue.networkId = networkId;
+            return _resultValue;
         }
     }
 }

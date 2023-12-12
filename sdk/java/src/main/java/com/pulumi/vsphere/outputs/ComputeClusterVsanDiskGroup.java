@@ -71,10 +71,10 @@ public final class ComputeClusterVsanDiskGroup {
             return storages(List.of(storages));
         }
         public ComputeClusterVsanDiskGroup build() {
-            final var o = new ComputeClusterVsanDiskGroup();
-            o.cache = cache;
-            o.storages = storages;
-            return o;
+            final var _resultValue = new ComputeClusterVsanDiskGroup();
+            _resultValue.cache = cache;
+            _resultValue.storages = storages;
+            return _resultValue;
         }
     }
 }

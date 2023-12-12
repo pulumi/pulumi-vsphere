@@ -120,13 +120,13 @@ public final class GetRoleResult {
             return rolePrivileges(List.of(rolePrivileges));
         }
         public GetRoleResult build() {
-            final var o = new GetRoleResult();
-            o.description = description;
-            o.id = id;
-            o.label = label;
-            o.name = name;
-            o.rolePrivileges = rolePrivileges;
-            return o;
+            final var _resultValue = new GetRoleResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.label = label;
+            _resultValue.name = name;
+            _resultValue.rolePrivileges = rolePrivileges;
+            return _resultValue;
         }
     }
 }

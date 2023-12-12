@@ -91,12 +91,12 @@ public final class GetHostResult {
             return this;
         }
         public GetHostResult build() {
-            final var o = new GetHostResult();
-            o.datacenterId = datacenterId;
-            o.id = id;
-            o.name = name;
-            o.resourcePoolId = resourcePoolId;
-            return o;
+            final var _resultValue = new GetHostResult();
+            _resultValue.datacenterId = datacenterId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.resourcePoolId = resourcePoolId;
+            return _resultValue;
         }
     }
 }

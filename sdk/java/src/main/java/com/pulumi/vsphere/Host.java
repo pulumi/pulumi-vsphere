@@ -160,7 +160,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * `cluster_managed`.
      * 
      */
-    @Export(name="cluster", type=String.class, parameters={})
+    @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cluster;
 
     /**
@@ -178,7 +178,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * than the`host` resource. Conflicts with: `cluster`.
      * 
      */
-    @Export(name="clusterManaged", type=Boolean.class, parameters={})
+    @Export(name="clusterManaged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> clusterManaged;
 
     /**
@@ -195,7 +195,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Default is `false`.
      * 
      */
-    @Export(name="connected", type=Boolean.class, parameters={})
+    @Export(name="connected", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> connected;
 
     /**
@@ -218,7 +218,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -241,7 +241,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * be added to. This should not be set if `cluster` is set.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenter;
 
     /**
@@ -258,7 +258,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Default is `false`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -274,7 +274,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * FQDN or IP address of the host to be added.
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -289,7 +289,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * The license key is expected to be present in vSphere.
      * 
      */
-    @Export(name="license", type=String.class, parameters={})
+    @Export(name="license", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> license;
 
     /**
@@ -305,7 +305,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * `disabled`, `normal`, and `strict`. Default is `disabled`.
      * 
      */
-    @Export(name="lockdown", type=String.class, parameters={})
+    @Export(name="lockdown", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lockdown;
 
     /**
@@ -321,7 +321,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Default is `false`.
      * 
      */
-    @Export(name="maintenance", type=Boolean.class, parameters={})
+    @Export(name="maintenance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> maintenance;
 
     /**
@@ -337,7 +337,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * to the host.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -357,7 +357,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * connections and require vCenter Server.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -379,7 +379,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      * 
      */
-    @Export(name="thumbprint", type=String.class, parameters={})
+    @Export(name="thumbprint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> thumbprint;
 
     /**
@@ -397,7 +397,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * to the host.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

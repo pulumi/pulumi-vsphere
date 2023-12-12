@@ -85,12 +85,12 @@ public final class GetDynamicResult {
             return this;
         }
         public GetDynamicResult build() {
-            final var o = new GetDynamicResult();
-            o.filters = filters;
-            o.id = id;
-            o.nameRegex = nameRegex;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDynamicResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

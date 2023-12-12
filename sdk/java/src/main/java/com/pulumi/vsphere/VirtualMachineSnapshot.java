@@ -83,7 +83,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * destroyed.
      * 
      */
-    @Export(name="consolidate", type=Boolean.class, parameters={})
+    @Export(name="consolidate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> consolidate;
 
     /**
@@ -99,7 +99,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * A description for the snapshot.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -114,7 +114,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * virtual machine is included in the snapshot.
      * 
      */
-    @Export(name="memory", type=Boolean.class, parameters={})
+    @Export(name="memory", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> memory;
 
     /**
@@ -131,7 +131,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * system in the virtual machine.
      * 
      */
-    @Export(name="quiesce", type=Boolean.class, parameters={})
+    @Export(name="quiesce", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> quiesce;
 
     /**
@@ -148,7 +148,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * is removed when this resource is destroyed.
      * 
      */
-    @Export(name="removeChildren", type=Boolean.class, parameters={})
+    @Export(name="removeChildren", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> removeChildren;
 
     /**
@@ -163,7 +163,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * The name of the snapshot.
      * 
      */
-    @Export(name="snapshotName", type=String.class, parameters={})
+    @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output<String> snapshotName;
 
     /**
@@ -177,7 +177,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * The virtual machine UUID.
      * 
      */
-    @Export(name="virtualMachineUuid", type=String.class, parameters={})
+    @Export(name="virtualMachineUuid", refs={String.class}, tree="[0]")
     private Output<String> virtualMachineUuid;
 
     /**

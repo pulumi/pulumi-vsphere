@@ -51,9 +51,9 @@ public final class ComputeClusterVsanFaultDomain {
             return faultDomains(List.of(faultDomains));
         }
         public ComputeClusterVsanFaultDomain build() {
-            final var o = new ComputeClusterVsanFaultDomain();
-            o.faultDomains = faultDomains;
-            return o;
+            final var _resultValue = new ComputeClusterVsanFaultDomain();
+            _resultValue.faultDomains = faultDomains;
+            return _resultValue;
         }
     }
 }

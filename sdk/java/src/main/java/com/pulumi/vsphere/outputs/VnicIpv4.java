@@ -106,12 +106,12 @@ public final class VnicIpv4 {
             return this;
         }
         public VnicIpv4 build() {
-            final var o = new VnicIpv4();
-            o.dhcp = dhcp;
-            o.gw = gw;
-            o.ip = ip;
-            o.netmask = netmask;
-            return o;
+            final var _resultValue = new VnicIpv4();
+            _resultValue.dhcp = dhcp;
+            _resultValue.gw = gw;
+            _resultValue.ip = ip;
+            _resultValue.netmask = netmask;
+            return _resultValue;
         }
     }
 }

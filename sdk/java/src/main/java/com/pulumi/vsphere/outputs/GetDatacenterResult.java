@@ -59,10 +59,10 @@ public final class GetDatacenterResult {
             return this;
         }
         public GetDatacenterResult build() {
-            final var o = new GetDatacenterResult();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetDatacenterResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

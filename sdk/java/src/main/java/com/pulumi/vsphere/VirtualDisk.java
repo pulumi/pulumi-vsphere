@@ -34,7 +34,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead */
-    @Export(name="adapterType", type=String.class, parameters={})
+    @Export(name="adapterType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> adapterType;
 
     /**
@@ -62,7 +62,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * destroyed.
      * 
      */
-    @Export(name="createDirectories", type=Boolean.class, parameters={})
+    @Export(name="createDirectories", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createDirectories;
 
     /**
@@ -84,7 +84,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * your infrastructure.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenter;
 
     /**
@@ -101,7 +101,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * disk.
      * 
      */
-    @Export(name="datastore", type=String.class, parameters={})
+    @Export(name="datastore", refs={String.class}, tree="[0]")
     private Output<String> datastore;
 
     /**
@@ -116,7 +116,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * Size of the disk (in GB).
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -135,7 +135,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -155,7 +155,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * be created.  This needs to end in `.vmdk`.
      * 
      */
-    @Export(name="vmdkPath", type=String.class, parameters={})
+    @Export(name="vmdkPath", refs={String.class}, tree="[0]")
     private Output<String> vmdkPath;
 
     /**

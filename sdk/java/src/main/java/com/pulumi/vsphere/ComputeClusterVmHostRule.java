@@ -23,7 +23,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * hosts defined in this host group.
      * 
      */
-    @Export(name="affinityHostGroupName", type=String.class, parameters={})
+    @Export(name="affinityHostGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> affinityHostGroupName;
 
     /**
@@ -41,7 +41,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * run on the hosts defined in this host group.
      * 
      */
-    @Export(name="antiAffinityHostGroupName", type=String.class, parameters={})
+    @Export(name="antiAffinityHostGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> antiAffinityHostGroupName;
 
     /**
@@ -59,7 +59,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -75,7 +75,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * Enable this rule in the cluster. Default: `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -98,7 +98,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * this when naming your rules.
      * 
      */
-    @Export(name="mandatory", type=Boolean.class, parameters={})
+    @Export(name="mandatory", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mandatory;
 
     /**
@@ -122,7 +122,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -138,7 +138,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * with this rule.
      * 
      */
-    @Export(name="vmGroupName", type=String.class, parameters={})
+    @Export(name="vmGroupName", refs={String.class}, tree="[0]")
     private Output<String> vmGroupName;
 
     /**

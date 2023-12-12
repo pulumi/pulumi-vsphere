@@ -24,7 +24,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -40,7 +40,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * Enable this rule in the cluster. Default: `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -59,7 +59,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * this when naming your rules.
      * 
      */
-    @Export(name="mandatory", type=Boolean.class, parameters={})
+    @Export(name="mandatory", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mandatory;
 
     /**
@@ -78,7 +78,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * The name of the rule. This must be unique in the cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -93,7 +93,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * on hosts different from each other.
      * 
      */
-    @Export(name="virtualMachineIds", type=List.class, parameters={String.class})
+    @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> virtualMachineIds;
 
     /**

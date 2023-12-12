@@ -31,7 +31,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * and require vCenter Server.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -50,7 +50,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * the datacenter to create the cluster in. Forces a new resource if changed.
      * 
      */
-    @Export(name="datacenterId", type=String.class, parameters={})
+    @Export(name="datacenterId", refs={String.class}, tree="[0]")
     private Output<String> datacenterId;
 
     /**
@@ -67,7 +67,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `manual`.
      * 
      */
-    @Export(name="dpmAutomationLevel", type=String.class, parameters={})
+    @Export(name="dpmAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dpmAutomationLevel;
 
     /**
@@ -85,7 +85,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * Default: `false`.
      * 
      */
-    @Export(name="dpmEnabled", type=Boolean.class, parameters={})
+    @Export(name="dpmEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dpmEnabled;
 
     /**
@@ -104,7 +104,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * tolerate more of a surplus/deficit than a higher setting. Default: `3`.
      * 
      */
-    @Export(name="dpmThreshold", type=Integer.class, parameters={})
+    @Export(name="dpmThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dpmThreshold;
 
     /**
@@ -122,7 +122,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * options for DRS and DPM.
      * 
      */
-    @Export(name="drsAdvancedOptions", type=Map.class, parameters={String.class, String.class})
+    @Export(name="drsAdvancedOptions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> drsAdvancedOptions;
 
     /**
@@ -139,7 +139,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
      * 
      */
-    @Export(name="drsAutomationLevel", type=String.class, parameters={})
+    @Export(name="drsAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> drsAutomationLevel;
 
     /**
@@ -159,7 +159,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      * 
      */
-    @Export(name="drsEnablePredictiveDrs", type=Boolean.class, parameters={})
+    @Export(name="drsEnablePredictiveDrs", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> drsEnablePredictiveDrs;
 
     /**
@@ -178,7 +178,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * set for virtual machines in the cluster. Default: `true`.
      * 
      */
-    @Export(name="drsEnableVmOverrides", type=Boolean.class, parameters={})
+    @Export(name="drsEnableVmOverrides", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> drsEnableVmOverrides;
 
     /**
@@ -193,7 +193,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * Enable DRS for this cluster. Default: `false`.
      * 
      */
-    @Export(name="drsEnabled", type=Boolean.class, parameters={})
+    @Export(name="drsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> drsEnabled;
 
     /**
@@ -210,7 +210,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `3`.
      * 
      */
-    @Export(name="drsMigrationThreshold", type=Integer.class, parameters={})
+    @Export(name="drsMigrationThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> drsMigrationThreshold;
 
     /**
@@ -229,7 +229,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `scaleCpuAndMemoryShares`. Default: `disabled`.
      * 
      */
-    @Export(name="drsScaleDescendantsShares", type=String.class, parameters={})
+    @Export(name="drsScaleDescendantsShares", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> drsScaleDescendantsShares;
 
     /**
@@ -250,7 +250,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * being `/dc1/host/foo/bar/datastore-cluster-test`.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
@@ -280,7 +280,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * the `host_system_ids` attribute.
      * 
      */
-    @Export(name="forceEvacuateOnDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceEvacuateOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceEvacuateOnDestroy;
 
     /**
@@ -309,7 +309,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * recommendations.
      * 
      */
-    @Export(name="haAdmissionControlFailoverHostSystemIds", type=List.class, parameters={String.class})
+    @Export(name="haAdmissionControlFailoverHostSystemIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> haAdmissionControlFailoverHostSystemIds;
 
     /**
@@ -331,7 +331,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haAdmissionControlHostFailureTolerance", type=Integer.class, parameters={})
+    @Export(name="haAdmissionControlHostFailureTolerance", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlHostFailureTolerance;
 
     /**
@@ -352,7 +352,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * disables the setting. Default: `100` (disabled).
      * 
      */
-    @Export(name="haAdmissionControlPerformanceTolerance", type=Integer.class, parameters={})
+    @Export(name="haAdmissionControlPerformanceTolerance", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlPerformanceTolerance;
 
     /**
@@ -371,7 +371,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
      * 
      */
-    @Export(name="haAdmissionControlPolicy", type=String.class, parameters={})
+    @Export(name="haAdmissionControlPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haAdmissionControlPolicy;
 
     /**
@@ -392,7 +392,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haAdmissionControlResourcePercentageAutoCompute", type=Boolean.class, parameters={})
+    @Export(name="haAdmissionControlResourcePercentageAutoCompute", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> haAdmissionControlResourcePercentageAutoCompute;
 
     /**
@@ -413,7 +413,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * failover. Default: `100`.
      * 
      */
-    @Export(name="haAdmissionControlResourcePercentageCpu", type=Integer.class, parameters={})
+    @Export(name="haAdmissionControlResourcePercentageCpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlResourcePercentageCpu;
 
     /**
@@ -431,7 +431,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * failover. Default: `100`.
      * 
      */
-    @Export(name="haAdmissionControlResourcePercentageMemory", type=Integer.class, parameters={})
+    @Export(name="haAdmissionControlResourcePercentageMemory", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlResourcePercentageMemory;
 
     /**
@@ -448,7 +448,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * user-defined CPU slot size, in MHz. Default: `32`.
      * 
      */
-    @Export(name="haAdmissionControlSlotPolicyExplicitCpu", type=Integer.class, parameters={})
+    @Export(name="haAdmissionControlSlotPolicyExplicitCpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlSlotPolicyExplicitCpu;
 
     /**
@@ -464,7 +464,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * user-defined memory slot size, in MB. Default: `100`.
      * 
      */
-    @Export(name="haAdmissionControlSlotPolicyExplicitMemory", type=Integer.class, parameters={})
+    @Export(name="haAdmissionControlSlotPolicyExplicitMemory", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlSlotPolicyExplicitMemory;
 
     /**
@@ -482,7 +482,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * average based on all powered-on virtual machines currently in the cluster.
      * 
      */
-    @Export(name="haAdmissionControlSlotPolicyUseExplicitSize", type=Boolean.class, parameters={})
+    @Export(name="haAdmissionControlSlotPolicyUseExplicitSize", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> haAdmissionControlSlotPolicyUseExplicitSize;
 
     /**
@@ -500,7 +500,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * options for vSphere HA.
      * 
      */
-    @Export(name="haAdvancedOptions", type=Map.class, parameters={String.class, String.class})
+    @Export(name="haAdvancedOptions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> haAdvancedOptions;
 
     /**
@@ -518,7 +518,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haDatastoreApdRecoveryAction", type=String.class, parameters={})
+    @Export(name="haDatastoreApdRecoveryAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdRecoveryAction;
 
     /**
@@ -539,7 +539,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haDatastoreApdResponse", type=String.class, parameters={})
+    @Export(name="haDatastoreApdResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdResponse;
 
     /**
@@ -560,7 +560,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * seconds (3 minutes). &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haDatastoreApdResponseDelay", type=Integer.class, parameters={})
+    @Export(name="haDatastoreApdResponseDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haDatastoreApdResponseDelay;
 
     /**
@@ -581,7 +581,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haDatastorePdlResponse", type=String.class, parameters={})
+    @Export(name="haDatastorePdlResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastorePdlResponse;
 
     /**
@@ -600,7 +600,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `false`.
      * 
      */
-    @Export(name="haEnabled", type=Boolean.class, parameters={})
+    @Export(name="haEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> haEnabled;
 
     /**
@@ -618,7 +618,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
      * 
      */
-    @Export(name="haHeartbeatDatastoreIds", type=List.class, parameters={String.class})
+    @Export(name="haHeartbeatDatastoreIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> haHeartbeatDatastoreIds;
 
     /**
@@ -638,7 +638,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `allFeasibleDsWithUserPreference`.
      * 
      */
-    @Export(name="haHeartbeatDatastorePolicy", type=String.class, parameters={})
+    @Export(name="haHeartbeatDatastorePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haHeartbeatDatastorePolicy;
 
     /**
@@ -658,7 +658,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `none`.
      * 
      */
-    @Export(name="haHostIsolationResponse", type=String.class, parameters={})
+    @Export(name="haHostIsolationResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haHostIsolationResponse;
 
     /**
@@ -677,7 +677,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * or `disabled`. Default: `enabled`.
      * 
      */
-    @Export(name="haHostMonitoring", type=String.class, parameters={})
+    @Export(name="haHostMonitoring", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haHostMonitoring;
 
     /**
@@ -696,7 +696,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haVmComponentProtection", type=String.class, parameters={})
+    @Export(name="haVmComponentProtection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmComponentProtection;
 
     /**
@@ -719,7 +719,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haVmDependencyRestartCondition", type=String.class, parameters={})
+    @Export(name="haVmDependencyRestartCondition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmDependencyRestartCondition;
 
     /**
@@ -741,7 +741,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * the virtual machine is marked as failed. Default: `30` seconds.
      * 
      */
-    @Export(name="haVmFailureInterval", type=Integer.class, parameters={})
+    @Export(name="haVmFailureInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmFailureInterval;
 
     /**
@@ -761,7 +761,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * unlimited reset time is allotted. Default: `-1` (no window).
      * 
      */
-    @Export(name="haVmMaximumFailureWindow", type=Integer.class, parameters={})
+    @Export(name="haVmMaximumFailureWindow", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumFailureWindow;
 
     /**
@@ -780,7 +780,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * perform to a virtual machine when responding to a failure event. Default: `3`
      * 
      */
-    @Export(name="haVmMaximumResets", type=Integer.class, parameters={})
+    @Export(name="haVmMaximumResets", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumResets;
 
     /**
@@ -797,7 +797,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `120` seconds (2 minutes).
      * 
      */
-    @Export(name="haVmMinimumUptime", type=Integer.class, parameters={})
+    @Export(name="haVmMinimumUptime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMinimumUptime;
 
     /**
@@ -815,7 +815,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
      * 
      */
-    @Export(name="haVmMonitoring", type=String.class, parameters={})
+    @Export(name="haVmMonitoring", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmMonitoring;
 
     /**
@@ -833,7 +833,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * Default: `0` seconds (no delay). &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haVmRestartAdditionalDelay", type=Integer.class, parameters={})
+    @Export(name="haVmRestartAdditionalDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmRestartAdditionalDelay;
 
     /**
@@ -851,7 +851,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
      * 
      */
-    @Export(name="haVmRestartPriority", type=String.class, parameters={})
+    @Export(name="haVmRestartPriority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmRestartPriority;
 
     /**
@@ -870,7 +870,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="haVmRestartTimeout", type=Integer.class, parameters={})
+    @Export(name="haVmRestartTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmRestartTimeout;
 
     /**
@@ -888,7 +888,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
      * 
      */
-    @Export(name="hostClusterExitTimeout", type=Integer.class, parameters={})
+    @Export(name="hostClusterExitTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> hostClusterExitTimeout;
 
     /**
@@ -905,7 +905,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `compute_cluster` resource. Conflicts with: `host_system_ids`.
      * 
      */
-    @Export(name="hostManaged", type=Boolean.class, parameters={})
+    @Export(name="hostManaged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hostManaged;
 
     /**
@@ -922,7 +922,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * the hosts to put in the cluster. Conflicts with: `host_managed`.
      * 
      */
-    @Export(name="hostSystemIds", type=List.class, parameters={String.class})
+    @Export(name="hostSystemIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> hostSystemIds;
 
     /**
@@ -937,7 +937,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -954,7 +954,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `Manual`. Default: `Manual`. &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="proactiveHaAutomationLevel", type=String.class, parameters={})
+    @Export(name="proactiveHaAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proactiveHaAutomationLevel;
 
     /**
@@ -972,7 +972,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="proactiveHaEnabled", type=Boolean.class, parameters={})
+    @Export(name="proactiveHaEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> proactiveHaEnabled;
 
     /**
@@ -992,7 +992,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="proactiveHaModerateRemediation", type=String.class, parameters={})
+    @Export(name="proactiveHaModerateRemediation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proactiveHaModerateRemediation;
 
     /**
@@ -1013,7 +1013,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="proactiveHaProviderIds", type=List.class, parameters={String.class})
+    @Export(name="proactiveHaProviderIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> proactiveHaProviderIds;
 
     /**
@@ -1034,7 +1034,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * &lt;sup&gt;\*&lt;/sup&gt;
      * 
      */
-    @Export(name="proactiveHaSevereRemediation", type=String.class, parameters={})
+    @Export(name="proactiveHaSevereRemediation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proactiveHaSevereRemediation;
 
     /**
@@ -1057,7 +1057,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * `vsphere.VirtualMachine` resource.
      * 
      */
-    @Export(name="resourcePoolId", type=String.class, parameters={})
+    @Export(name="resourcePoolId", refs={String.class}, tree="[0]")
     private Output<String> resourcePoolId;
 
     /**
@@ -1075,7 +1075,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * The IDs of any tags to attach to this resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -1090,7 +1090,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * cluster.
      * 
      */
-    @Export(name="vsanCompressionEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanCompressionEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanCompressionEnabled;
 
     /**
@@ -1107,7 +1107,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * compression must also be enabled.
      * 
      */
-    @Export(name="vsanDedupEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanDedupEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanDedupEnabled;
 
     /**
@@ -1124,7 +1124,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * group in the cluster.
      * 
      */
-    @Export(name="vsanDiskGroups", type=List.class, parameters={ComputeClusterVsanDiskGroup.class})
+    @Export(name="vsanDiskGroups", refs={List.class,ComputeClusterVsanDiskGroup.class}, tree="[0,1]")
     private Output<List<ComputeClusterVsanDiskGroup>> vsanDiskGroups;
 
     /**
@@ -1142,7 +1142,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * at the same time.
      * 
      */
-    @Export(name="vsanDitEncryptionEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanDitEncryptionEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanDitEncryptionEnabled;
 
     /**
@@ -1161,7 +1161,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * 10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
      * 
      */
-    @Export(name="vsanDitRekeyInterval", type=Integer.class, parameters={})
+    @Export(name="vsanDitRekeyInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> vsanDitRekeyInterval;
 
     /**
@@ -1177,7 +1177,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * Enables vSAN on the cluster.
      * 
      */
-    @Export(name="vsanEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanEnabled;
 
     /**
@@ -1191,7 +1191,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * Enables vSAN ESA on the cluster.
      * 
      */
-    @Export(name="vsanEsaEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanEsaEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanEsaEnabled;
 
     /**
@@ -1205,7 +1205,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * Configurations of vSAN fault domains.
      * 
      */
-    @Export(name="vsanFaultDomains", type=List.class, parameters={ComputeClusterVsanFaultDomain.class})
+    @Export(name="vsanFaultDomains", refs={List.class,ComputeClusterVsanFaultDomain.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ComputeClusterVsanFaultDomain>> vsanFaultDomains;
 
     /**
@@ -1220,7 +1220,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * diagnostic mode for vSAN performance service on the cluster.
      * 
      */
-    @Export(name="vsanNetworkDiagnosticModeEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanNetworkDiagnosticModeEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanNetworkDiagnosticModeEnabled;
 
     /**
@@ -1236,7 +1236,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * the cluster. Default: `true`.
      * 
      */
-    @Export(name="vsanPerformanceEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanPerformanceEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanPerformanceEnabled;
 
     /**
@@ -1254,7 +1254,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * data-in-transit encryption feature at the same time.
      * 
      */
-    @Export(name="vsanRemoteDatastoreIds", type=List.class, parameters={String.class})
+    @Export(name="vsanRemoteDatastoreIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vsanRemoteDatastoreIds;
 
     /**
@@ -1271,7 +1271,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * Configurations of vSAN stretched cluster.
      * 
      */
-    @Export(name="vsanStretchedCluster", type=ComputeClusterVsanStretchedCluster.class, parameters={})
+    @Export(name="vsanStretchedCluster", refs={ComputeClusterVsanStretchedCluster.class}, tree="[0]")
     private Output</* @Nullable */ ComputeClusterVsanStretchedCluster> vsanStretchedCluster;
 
     /**
@@ -1286,7 +1286,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * You must explicitly enable vSAN unmap when you enable vSAN ESA on the cluster.
      * 
      */
-    @Export(name="vsanUnmapEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanUnmapEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanUnmapEnabled;
 
     /**
@@ -1302,7 +1302,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * performance service on the cluster.
      * 
      */
-    @Export(name="vsanVerboseModeEnabled", type=Boolean.class, parameters={})
+    @Export(name="vsanVerboseModeEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vsanVerboseModeEnabled;
 
     /**

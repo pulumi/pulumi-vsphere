@@ -130,16 +130,16 @@ public final class GuestOsCustomizationSpec {
             return this;
         }
         public GuestOsCustomizationSpec build() {
-            final var o = new GuestOsCustomizationSpec();
-            o.dnsServerLists = dnsServerLists;
-            o.dnsSuffixLists = dnsSuffixLists;
-            o.ipv4Gateway = ipv4Gateway;
-            o.ipv6Gateway = ipv6Gateway;
-            o.linuxOptions = linuxOptions;
-            o.networkInterfaces = networkInterfaces;
-            o.windowsOptions = windowsOptions;
-            o.windowsSysprepText = windowsSysprepText;
-            return o;
+            final var _resultValue = new GuestOsCustomizationSpec();
+            _resultValue.dnsServerLists = dnsServerLists;
+            _resultValue.dnsSuffixLists = dnsSuffixLists;
+            _resultValue.ipv4Gateway = ipv4Gateway;
+            _resultValue.ipv6Gateway = ipv6Gateway;
+            _resultValue.linuxOptions = linuxOptions;
+            _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.windowsOptions = windowsOptions;
+            _resultValue.windowsSysprepText = windowsSysprepText;
+            return _resultValue;
         }
     }
 }

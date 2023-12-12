@@ -74,11 +74,11 @@ public final class HostPortGroupPort {
             return this;
         }
         public HostPortGroupPort build() {
-            final var o = new HostPortGroupPort();
-            o.key = key;
-            o.macAddresses = macAddresses;
-            o.type = type;
-            return o;
+            final var _resultValue = new HostPortGroupPort();
+            _resultValue.key = key;
+            _resultValue.macAddresses = macAddresses;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

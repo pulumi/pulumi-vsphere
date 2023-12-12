@@ -124,13 +124,13 @@ public final class GetVirtualMachineDisk {
             return this;
         }
         public GetVirtualMachineDisk build() {
-            final var o = new GetVirtualMachineDisk();
-            o.eagerlyScrub = eagerlyScrub;
-            o.label = label;
-            o.size = size;
-            o.thinProvisioned = thinProvisioned;
-            o.unitNumber = unitNumber;
-            return o;
+            final var _resultValue = new GetVirtualMachineDisk();
+            _resultValue.eagerlyScrub = eagerlyScrub;
+            _resultValue.label = label;
+            _resultValue.size = size;
+            _resultValue.thinProvisioned = thinProvisioned;
+            _resultValue.unitNumber = unitNumber;
+            return _resultValue;
         }
     }
 }

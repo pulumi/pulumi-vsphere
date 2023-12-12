@@ -91,11 +91,11 @@ public final class DistributedVirtualSwitchPvlanMapping {
             return this;
         }
         public DistributedVirtualSwitchPvlanMapping build() {
-            final var o = new DistributedVirtualSwitchPvlanMapping();
-            o.primaryVlanId = primaryVlanId;
-            o.pvlanType = pvlanType;
-            o.secondaryVlanId = secondaryVlanId;
-            return o;
+            final var _resultValue = new DistributedVirtualSwitchPvlanMapping();
+            _resultValue.primaryVlanId = primaryVlanId;
+            _resultValue.pvlanType = pvlanType;
+            _resultValue.secondaryVlanId = secondaryVlanId;
+            return _resultValue;
         }
     }
 }

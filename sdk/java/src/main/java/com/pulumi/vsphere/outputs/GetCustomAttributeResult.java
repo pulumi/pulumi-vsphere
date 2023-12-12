@@ -68,11 +68,11 @@ public final class GetCustomAttributeResult {
             return this;
         }
         public GetCustomAttributeResult build() {
-            final var o = new GetCustomAttributeResult();
-            o.id = id;
-            o.managedObjectType = managedObjectType;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetCustomAttributeResult();
+            _resultValue.id = id;
+            _resultValue.managedObjectType = managedObjectType;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

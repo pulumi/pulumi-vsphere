@@ -23,7 +23,7 @@ public class TagCategory extends com.pulumi.resources.CustomResource {
      * here.
      * 
      */
-    @Export(name="associableTypes", type=List.class, parameters={String.class})
+    @Export(name="associableTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> associableTypes;
 
     /**
@@ -42,7 +42,7 @@ public class TagCategory extends com.pulumi.resources.CustomResource {
      * multiple tags in this category). Forces a new resource if changed.
      * 
      */
-    @Export(name="cardinality", type=String.class, parameters={})
+    @Export(name="cardinality", refs={String.class}, tree="[0]")
     private Output<String> cardinality;
 
     /**
@@ -62,7 +62,7 @@ public class TagCategory extends com.pulumi.resources.CustomResource {
      * them. Attempting to do so will result in an error.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -79,7 +79,7 @@ public class TagCategory extends com.pulumi.resources.CustomResource {
      * The name of the category.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

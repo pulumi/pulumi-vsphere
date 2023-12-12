@@ -57,10 +57,10 @@ public final class GetFolderResult {
             return this;
         }
         public GetFolderResult build() {
-            final var o = new GetFolderResult();
-            o.id = id;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetFolderResult();
+            _resultValue.id = id;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

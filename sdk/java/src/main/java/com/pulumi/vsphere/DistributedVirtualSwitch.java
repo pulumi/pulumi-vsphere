@@ -30,7 +30,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * here for more details.
      * 
      */
-    @Export(name="activeUplinks", type=List.class, parameters={String.class})
+    @Export(name="activeUplinks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> activeUplinks;
 
     /**
@@ -49,7 +49,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * address than that of its own.
      * 
      */
-    @Export(name="allowForgedTransmits", type=Boolean.class, parameters={})
+    @Export(name="allowForgedTransmits", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowForgedTransmits;
 
     /**
@@ -66,7 +66,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * Control (MAC) address can be changed.
      * 
      */
-    @Export(name="allowMacChanges", type=Boolean.class, parameters={})
+    @Export(name="allowMacChanges", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowMacChanges;
 
     /**
@@ -82,7 +82,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * flag indicates whether or not all traffic is seen on a given port.
      * 
      */
-    @Export(name="allowPromiscuous", type=Boolean.class, parameters={})
+    @Export(name="allowPromiscuous", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowPromiscuous;
 
     /**
@@ -97,7 +97,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="backupnfcMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="backupnfcMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupnfcMaximumMbit;
 
     /**
@@ -111,7 +111,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="backupnfcReservationMbit", type=Integer.class, parameters={})
+    @Export(name="backupnfcReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupnfcReservationMbit;
 
     /**
@@ -125,7 +125,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the backupNfc traffic class for a custom share level.
      * 
      */
-    @Export(name="backupnfcShareCount", type=Integer.class, parameters={})
+    @Export(name="backupnfcShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupnfcShareCount;
 
     /**
@@ -139,7 +139,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="backupnfcShareLevel", type=String.class, parameters={})
+    @Export(name="backupnfcShareLevel", refs={String.class}, tree="[0]")
     private Output<String> backupnfcShareLevel;
 
     /**
@@ -155,7 +155,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * virtual devices.
      * 
      */
-    @Export(name="blockAllPorts", type=Boolean.class, parameters={})
+    @Export(name="blockAllPorts", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> blockAllPorts;
 
     /**
@@ -175,7 +175,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * probing.
      * 
      */
-    @Export(name="checkBeacon", type=Boolean.class, parameters={})
+    @Export(name="checkBeacon", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> checkBeacon;
 
     /**
@@ -194,7 +194,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * by subsequent updates to the VDS.
      * 
      */
-    @Export(name="configVersion", type=String.class, parameters={})
+    @Export(name="configVersion", refs={String.class}, tree="[0]")
     private Output<String> configVersion;
 
     /**
@@ -210,7 +210,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * who is responsible for the VDS.
      * 
      */
-    @Export(name="contactDetail", type=String.class, parameters={})
+    @Export(name="contactDetail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contactDetail;
 
     /**
@@ -226,7 +226,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * VDS.
      * 
      */
-    @Export(name="contactName", type=String.class, parameters={})
+    @Export(name="contactName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contactName;
 
     /**
@@ -245,7 +245,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * and requires vCenter Server.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -264,7 +264,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * created. Forces a new resource if changed.
      * 
      */
-    @Export(name="datacenterId", type=String.class, parameters={})
+    @Export(name="datacenterId", refs={String.class}, tree="[0]")
     private Output<String> datacenterId;
 
     /**
@@ -279,7 +279,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * A detailed description for the VDS.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -294,7 +294,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * for which this policy applies to.
      * 
      */
-    @Export(name="directpathGen2Allowed", type=Boolean.class, parameters={})
+    @Export(name="directpathGen2Allowed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> directpathGen2Allowed;
 
     /**
@@ -310,7 +310,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * per second if egress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="egressShapingAverageBandwidth", type=Integer.class, parameters={})
+    @Export(name="egressShapingAverageBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> egressShapingAverageBandwidth;
 
     /**
@@ -326,7 +326,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * bytes if egress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="egressShapingBurstSize", type=Integer.class, parameters={})
+    @Export(name="egressShapingBurstSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> egressShapingBurstSize;
 
     /**
@@ -342,7 +342,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * on the port for egress traffic.
      * 
      */
-    @Export(name="egressShapingEnabled", type=Boolean.class, parameters={})
+    @Export(name="egressShapingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> egressShapingEnabled;
 
     /**
@@ -358,7 +358,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * in bits per second if egress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="egressShapingPeakBandwidth", type=Integer.class, parameters={})
+    @Export(name="egressShapingPeakBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> egressShapingPeakBandwidth;
 
     /**
@@ -374,7 +374,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * uplinks higher in precedence when they come back up.
      * 
      */
-    @Export(name="failback", type=Boolean.class, parameters={})
+    @Export(name="failback", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> failback;
 
     /**
@@ -389,7 +389,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="faulttoleranceMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="faulttoleranceMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> faulttoleranceMaximumMbit;
 
     /**
@@ -403,7 +403,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="faulttoleranceReservationMbit", type=Integer.class, parameters={})
+    @Export(name="faulttoleranceReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> faulttoleranceReservationMbit;
 
     /**
@@ -417,7 +417,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
      * 
      */
-    @Export(name="faulttoleranceShareCount", type=Integer.class, parameters={})
+    @Export(name="faulttoleranceShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> faulttoleranceShareCount;
 
     /**
@@ -431,7 +431,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="faulttoleranceShareLevel", type=String.class, parameters={})
+    @Export(name="faulttoleranceShareLevel", refs={String.class}, tree="[0]")
     private Output<String> faulttoleranceShareLevel;
 
     /**
@@ -446,7 +446,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * Forces a new resource if changed.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
@@ -461,7 +461,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the hbr traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="hbrMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="hbrMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> hbrMaximumMbit;
 
     /**
@@ -475,7 +475,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="hbrReservationMbit", type=Integer.class, parameters={})
+    @Export(name="hbrReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> hbrReservationMbit;
 
     /**
@@ -489,7 +489,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the hbr traffic class for a custom share level.
      * 
      */
-    @Export(name="hbrShareCount", type=Integer.class, parameters={})
+    @Export(name="hbrShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> hbrShareCount;
 
     /**
@@ -503,7 +503,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="hbrShareLevel", type=String.class, parameters={})
+    @Export(name="hbrShareLevel", refs={String.class}, tree="[0]")
     private Output<String> hbrShareLevel;
 
     /**
@@ -518,7 +518,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * options are:
      * 
      */
-    @Export(name="hosts", type=List.class, parameters={DistributedVirtualSwitchHost.class})
+    @Export(name="hosts", refs={List.class,DistributedVirtualSwitchHost.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DistributedVirtualSwitchHost>> hosts;
 
     /**
@@ -534,7 +534,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * mappings not managed by this resource. Defaults to false.
      * 
      */
-    @Export(name="ignoreOtherPvlanMappings", type=Boolean.class, parameters={})
+    @Export(name="ignoreOtherPvlanMappings", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ignoreOtherPvlanMappings;
 
     /**
@@ -550,7 +550,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * bits per second if ingress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="ingressShapingAverageBandwidth", type=Integer.class, parameters={})
+    @Export(name="ingressShapingAverageBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> ingressShapingAverageBandwidth;
 
     /**
@@ -566,7 +566,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * bytes if ingress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="ingressShapingBurstSize", type=Integer.class, parameters={})
+    @Export(name="ingressShapingBurstSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> ingressShapingBurstSize;
 
     /**
@@ -582,7 +582,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * enabled on the port for ingress traffic.
      * 
      */
-    @Export(name="ingressShapingEnabled", type=Boolean.class, parameters={})
+    @Export(name="ingressShapingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ingressShapingEnabled;
 
     /**
@@ -598,7 +598,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * bursts in bits per second if ingress traffic shaping is enabled on the port.
      * 
      */
-    @Export(name="ingressShapingPeakBandwidth", type=Integer.class, parameters={})
+    @Export(name="ingressShapingPeakBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> ingressShapingPeakBandwidth;
 
     /**
@@ -614,7 +614,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * mostly useful when used with the Netflow arguments.
      * 
      */
-    @Export(name="ipv4Address", type=String.class, parameters={})
+    @Export(name="ipv4Address", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv4Address;
 
     /**
@@ -629,7 +629,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="iscsiMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="iscsiMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> iscsiMaximumMbit;
 
     /**
@@ -643,7 +643,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="iscsiReservationMbit", type=Integer.class, parameters={})
+    @Export(name="iscsiReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> iscsiReservationMbit;
 
     /**
@@ -657,7 +657,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the iSCSI traffic class for a custom share level.
      * 
      */
-    @Export(name="iscsiShareCount", type=Integer.class, parameters={})
+    @Export(name="iscsiShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> iscsiShareCount;
 
     /**
@@ -671,7 +671,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="iscsiShareLevel", type=String.class, parameters={})
+    @Export(name="iscsiShareLevel", refs={String.class}, tree="[0]")
     private Output<String> iscsiShareLevel;
 
     /**
@@ -687,7 +687,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * `multipleLag`.
      * 
      */
-    @Export(name="lacpApiVersion", type=String.class, parameters={})
+    @Export(name="lacpApiVersion", refs={String.class}, tree="[0]")
     private Output<String> lacpApiVersion;
 
     /**
@@ -704,7 +704,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * applies to.
      * 
      */
-    @Export(name="lacpEnabled", type=Boolean.class, parameters={})
+    @Export(name="lacpEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> lacpEnabled;
 
     /**
@@ -719,7 +719,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The LACP mode. Can be one of `active` or `passive`.
      * 
      */
-    @Export(name="lacpMode", type=String.class, parameters={})
+    @Export(name="lacpMode", refs={String.class}, tree="[0]")
     private Output<String> lacpMode;
 
     /**
@@ -734,7 +734,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * for link discovery traffic.
      * 
      */
-    @Export(name="linkDiscoveryOperation", type=String.class, parameters={})
+    @Export(name="linkDiscoveryOperation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> linkDiscoveryOperation;
 
     /**
@@ -750,7 +750,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * types are `cdp` and `lldp`.
      * 
      */
-    @Export(name="linkDiscoveryProtocol", type=String.class, parameters={})
+    @Export(name="linkDiscoveryProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> linkDiscoveryProtocol;
 
     /**
@@ -765,7 +765,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the management traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="managementMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="managementMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> managementMaximumMbit;
 
     /**
@@ -779,7 +779,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="managementReservationMbit", type=Integer.class, parameters={})
+    @Export(name="managementReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> managementReservationMbit;
 
     /**
@@ -793,7 +793,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the management traffic class for a custom share level.
      * 
      */
-    @Export(name="managementShareCount", type=Integer.class, parameters={})
+    @Export(name="managementShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> managementShareCount;
 
     /**
@@ -807,7 +807,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="managementShareLevel", type=String.class, parameters={})
+    @Export(name="managementShareLevel", refs={String.class}, tree="[0]")
     private Output<String> managementShareLevel;
 
     /**
@@ -821,7 +821,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum transmission unit (MTU) for the VDS.
      * 
      */
-    @Export(name="maxMtu", type=Integer.class, parameters={})
+    @Export(name="maxMtu", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxMtu;
 
     /**
@@ -836,7 +836,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * with the VDS. Can be one of `legacyFiltering` or `snooping`.
      * 
      */
-    @Export(name="multicastFilteringMode", type=String.class, parameters={})
+    @Export(name="multicastFilteringMode", refs={String.class}, tree="[0]")
     private Output<String> multicastFilteringMode;
 
     /**
@@ -851,7 +851,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The name of the VDS.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -867,7 +867,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * `60` to `3600`. Default: `60`.
      * 
      */
-    @Export(name="netflowActiveFlowTimeout", type=Integer.class, parameters={})
+    @Export(name="netflowActiveFlowTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> netflowActiveFlowTimeout;
 
     /**
@@ -885,7 +885,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * Must be set before Netflow can be enabled.
      * 
      */
-    @Export(name="netflowCollectorIpAddress", type=String.class, parameters={})
+    @Export(name="netflowCollectorIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netflowCollectorIpAddress;
 
     /**
@@ -902,7 +902,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * must be set before Netflow can be enabled.
      * 
      */
-    @Export(name="netflowCollectorPort", type=Integer.class, parameters={})
+    @Export(name="netflowCollectorPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> netflowCollectorPort;
 
     /**
@@ -918,7 +918,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * applies to.
      * 
      */
-    @Export(name="netflowEnabled", type=Boolean.class, parameters={})
+    @Export(name="netflowEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> netflowEnabled;
 
     /**
@@ -935,7 +935,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * to `600`. Default: `15`.
      * 
      */
-    @Export(name="netflowIdleFlowTimeout", type=Integer.class, parameters={})
+    @Export(name="netflowIdleFlowTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> netflowIdleFlowTimeout;
 
     /**
@@ -953,7 +953,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * Default: `false`.
      * 
      */
-    @Export(name="netflowInternalFlowsOnly", type=Boolean.class, parameters={})
+    @Export(name="netflowInternalFlowsOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> netflowInternalFlowsOnly;
 
     /**
@@ -970,7 +970,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * the Netflow collector.
      * 
      */
-    @Export(name="netflowObservationDomainId", type=Integer.class, parameters={})
+    @Export(name="netflowObservationDomainId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> netflowObservationDomainId;
 
     /**
@@ -988,7 +988,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * indicates an analysis rate of 0.001%.
      * 
      */
-    @Export(name="netflowSamplingRate", type=Integer.class, parameters={})
+    @Export(name="netflowSamplingRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> netflowSamplingRate;
 
     /**
@@ -1006,7 +1006,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * network I/O control. Default: `false`.
      * 
      */
-    @Export(name="networkResourceControlEnabled", type=Boolean.class, parameters={})
+    @Export(name="networkResourceControlEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> networkResourceControlEnabled;
 
     /**
@@ -1022,7 +1022,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * control to use. Can be one of `version2` or `version3`. Default: `version2`.
      * 
      */
-    @Export(name="networkResourceControlVersion", type=String.class, parameters={})
+    @Export(name="networkResourceControlVersion", refs={String.class}, tree="[0]")
     private Output<String> networkResourceControlVersion;
 
     /**
@@ -1037,7 +1037,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the nfs traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="nfsMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="nfsMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> nfsMaximumMbit;
 
     /**
@@ -1051,7 +1051,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="nfsReservationMbit", type=Integer.class, parameters={})
+    @Export(name="nfsReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> nfsReservationMbit;
 
     /**
@@ -1065,7 +1065,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the nfs traffic class for a custom share level.
      * 
      */
-    @Export(name="nfsShareCount", type=Integer.class, parameters={})
+    @Export(name="nfsShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nfsShareCount;
 
     /**
@@ -1079,7 +1079,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="nfsShareLevel", type=String.class, parameters={})
+    @Export(name="nfsShareLevel", refs={String.class}, tree="[0]")
     private Output<String> nfsShareLevel;
 
     /**
@@ -1094,7 +1094,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * broadcast network of an uplink failover, triggering cache updates.
      * 
      */
-    @Export(name="notifySwitches", type=Boolean.class, parameters={})
+    @Export(name="notifySwitches", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> notifySwitches;
 
     /**
@@ -1110,7 +1110,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * ID when using private VLANs.
      * 
      */
-    @Export(name="portPrivateSecondaryVlanId", type=Integer.class, parameters={})
+    @Export(name="portPrivateSecondaryVlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> portPrivateSecondaryVlanId;
 
     /**
@@ -1126,7 +1126,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * private VLAN mapping. The options are:
      * 
      */
-    @Export(name="pvlanMappings", type=List.class, parameters={DistributedVirtualSwitchPvlanMapping.class})
+    @Export(name="pvlanMappings", refs={List.class,DistributedVirtualSwitchPvlanMapping.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DistributedVirtualSwitchPvlanMapping>> pvlanMappings;
 
     /**
@@ -1144,7 +1144,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * here for more details.
      * 
      */
-    @Export(name="standbyUplinks", type=List.class, parameters={String.class})
+    @Export(name="standbyUplinks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> standbyUplinks;
 
     /**
@@ -1163,7 +1163,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -1181,7 +1181,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * `failover_explicit`, or `loadbalance_loadbased`.
      * 
      */
-    @Export(name="teamingPolicy", type=String.class, parameters={})
+    @Export(name="teamingPolicy", refs={String.class}, tree="[0]")
     private Output<String> teamingPolicy;
 
     /**
@@ -1198,7 +1198,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * this policy applies to its VDS uplinks.
      * 
      */
-    @Export(name="txUplink", type=Boolean.class, parameters={})
+    @Export(name="txUplink", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> txUplink;
 
     /**
@@ -1217,7 +1217,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * use this option.
      * 
      */
-    @Export(name="uplinks", type=List.class, parameters={String.class})
+    @Export(name="uplinks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> uplinks;
 
     /**
@@ -1235,7 +1235,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the vdp traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="vdpMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="vdpMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> vdpMaximumMbit;
 
     /**
@@ -1249,7 +1249,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="vdpReservationMbit", type=Integer.class, parameters={})
+    @Export(name="vdpReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> vdpReservationMbit;
 
     /**
@@ -1263,7 +1263,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the vdp traffic class for a custom share level.
      * 
      */
-    @Export(name="vdpShareCount", type=Integer.class, parameters={})
+    @Export(name="vdpShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> vdpShareCount;
 
     /**
@@ -1277,7 +1277,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="vdpShareLevel", type=String.class, parameters={})
+    @Export(name="vdpShareLevel", refs={String.class}, tree="[0]")
     private Output<String> vdpShareLevel;
 
     /**
@@ -1293,7 +1293,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
@@ -1309,7 +1309,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="virtualmachineMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="virtualmachineMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> virtualmachineMaximumMbit;
 
     /**
@@ -1323,7 +1323,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="virtualmachineReservationMbit", type=Integer.class, parameters={})
+    @Export(name="virtualmachineReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> virtualmachineReservationMbit;
 
     /**
@@ -1337,7 +1337,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
      * 
      */
-    @Export(name="virtualmachineShareCount", type=Integer.class, parameters={})
+    @Export(name="virtualmachineShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> virtualmachineShareCount;
 
     /**
@@ -1351,7 +1351,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="virtualmachineShareLevel", type=String.class, parameters={})
+    @Export(name="virtualmachineShareLevel", refs={String.class}, tree="[0]")
     private Output<String> virtualmachineShareLevel;
 
     /**
@@ -1365,7 +1365,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      * 
      */
-    @Export(name="vlanId", type=Integer.class, parameters={})
+    @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlanId;
 
     /**
@@ -1419,7 +1419,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * ```
      * 
      */
-    @Export(name="vlanRanges", type=List.class, parameters={DistributedVirtualSwitchVlanRange.class})
+    @Export(name="vlanRanges", refs={List.class,DistributedVirtualSwitchVlanRange.class}, tree="[0,1]")
     private Output<List<DistributedVirtualSwitchVlanRange>> vlanRanges;
 
     /**
@@ -1473,7 +1473,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="vmotionMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="vmotionMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> vmotionMaximumMbit;
 
     /**
@@ -1487,7 +1487,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="vmotionReservationMbit", type=Integer.class, parameters={})
+    @Export(name="vmotionReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> vmotionReservationMbit;
 
     /**
@@ -1501,7 +1501,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the vmotion traffic class for a custom share level.
      * 
      */
-    @Export(name="vmotionShareCount", type=Integer.class, parameters={})
+    @Export(name="vmotionShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> vmotionShareCount;
 
     /**
@@ -1515,7 +1515,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="vmotionShareLevel", type=String.class, parameters={})
+    @Export(name="vmotionShareLevel", refs={String.class}, tree="[0]")
     private Output<String> vmotionShareLevel;
 
     /**
@@ -1529,7 +1529,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The maximum allowed usage for the vsan traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="vsanMaximumMbit", type=Integer.class, parameters={})
+    @Export(name="vsanMaximumMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> vsanMaximumMbit;
 
     /**
@@ -1543,7 +1543,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
      * 
      */
-    @Export(name="vsanReservationMbit", type=Integer.class, parameters={})
+    @Export(name="vsanReservationMbit", refs={Integer.class}, tree="[0]")
     private Output<Integer> vsanReservationMbit;
 
     /**
@@ -1557,7 +1557,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The amount of shares to allocate to the vsan traffic class for a custom share level.
      * 
      */
-    @Export(name="vsanShareCount", type=Integer.class, parameters={})
+    @Export(name="vsanShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> vsanShareCount;
 
     /**
@@ -1571,7 +1571,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
      * 
      */
-    @Export(name="vsanShareLevel", type=String.class, parameters={})
+    @Export(name="vsanShareLevel", refs={String.class}, tree="[0]")
     private Output<String> vsanShareLevel;
 
     /**

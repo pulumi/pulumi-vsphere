@@ -112,14 +112,14 @@ public final class GetGuestOsCustomizationSpec {
             return this;
         }
         public GetGuestOsCustomizationSpec build() {
-            final var o = new GetGuestOsCustomizationSpec();
-            o.dnsServerLists = dnsServerLists;
-            o.dnsSuffixLists = dnsSuffixLists;
-            o.linuxOptions = linuxOptions;
-            o.networkInterfaces = networkInterfaces;
-            o.windowsOptions = windowsOptions;
-            o.windowsSysprepText = windowsSysprepText;
-            return o;
+            final var _resultValue = new GetGuestOsCustomizationSpec();
+            _resultValue.dnsServerLists = dnsServerLists;
+            _resultValue.dnsSuffixLists = dnsSuffixLists;
+            _resultValue.linuxOptions = linuxOptions;
+            _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.windowsOptions = windowsOptions;
+            _resultValue.windowsSysprepText = windowsSysprepText;
+            return _resultValue;
         }
     }
 }

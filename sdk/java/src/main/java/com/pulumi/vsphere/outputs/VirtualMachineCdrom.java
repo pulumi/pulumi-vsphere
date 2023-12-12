@@ -126,13 +126,13 @@ public final class VirtualMachineCdrom {
             return this;
         }
         public VirtualMachineCdrom build() {
-            final var o = new VirtualMachineCdrom();
-            o.clientDevice = clientDevice;
-            o.datastoreId = datastoreId;
-            o.deviceAddress = deviceAddress;
-            o.key = key;
-            o.path = path;
-            return o;
+            final var _resultValue = new VirtualMachineCdrom();
+            _resultValue.clientDevice = clientDevice;
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.deviceAddress = deviceAddress;
+            _resultValue.key = key;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }
