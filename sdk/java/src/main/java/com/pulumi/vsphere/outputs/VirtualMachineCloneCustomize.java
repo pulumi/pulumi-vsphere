@@ -150,17 +150,17 @@ public final class VirtualMachineCloneCustomize {
             return this;
         }
         public VirtualMachineCloneCustomize build() {
-            final var o = new VirtualMachineCloneCustomize();
-            o.dnsServerLists = dnsServerLists;
-            o.dnsSuffixLists = dnsSuffixLists;
-            o.ipv4Gateway = ipv4Gateway;
-            o.ipv6Gateway = ipv6Gateway;
-            o.linuxOptions = linuxOptions;
-            o.networkInterfaces = networkInterfaces;
-            o.timeout = timeout;
-            o.windowsOptions = windowsOptions;
-            o.windowsSysprepText = windowsSysprepText;
-            return o;
+            final var _resultValue = new VirtualMachineCloneCustomize();
+            _resultValue.dnsServerLists = dnsServerLists;
+            _resultValue.dnsSuffixLists = dnsSuffixLists;
+            _resultValue.ipv4Gateway = ipv4Gateway;
+            _resultValue.ipv6Gateway = ipv6Gateway;
+            _resultValue.linuxOptions = linuxOptions;
+            _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.timeout = timeout;
+            _resultValue.windowsOptions = windowsOptions;
+            _resultValue.windowsSysprepText = windowsSysprepText;
+            return _resultValue;
         }
     }
 }

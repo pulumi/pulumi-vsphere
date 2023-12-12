@@ -434,29 +434,29 @@ public final class VirtualMachineDisk {
             return this;
         }
         public VirtualMachineDisk build() {
-            final var o = new VirtualMachineDisk();
-            o.attach = attach;
-            o.controllerType = controllerType;
-            o.datastoreId = datastoreId;
-            o.deviceAddress = deviceAddress;
-            o.diskMode = diskMode;
-            o.diskSharing = diskSharing;
-            o.eagerlyScrub = eagerlyScrub;
-            o.ioLimit = ioLimit;
-            o.ioReservation = ioReservation;
-            o.ioShareCount = ioShareCount;
-            o.ioShareLevel = ioShareLevel;
-            o.keepOnRemove = keepOnRemove;
-            o.key = key;
-            o.label = label;
-            o.path = path;
-            o.size = size;
-            o.storagePolicyId = storagePolicyId;
-            o.thinProvisioned = thinProvisioned;
-            o.unitNumber = unitNumber;
-            o.uuid = uuid;
-            o.writeThrough = writeThrough;
-            return o;
+            final var _resultValue = new VirtualMachineDisk();
+            _resultValue.attach = attach;
+            _resultValue.controllerType = controllerType;
+            _resultValue.datastoreId = datastoreId;
+            _resultValue.deviceAddress = deviceAddress;
+            _resultValue.diskMode = diskMode;
+            _resultValue.diskSharing = diskSharing;
+            _resultValue.eagerlyScrub = eagerlyScrub;
+            _resultValue.ioLimit = ioLimit;
+            _resultValue.ioReservation = ioReservation;
+            _resultValue.ioShareCount = ioShareCount;
+            _resultValue.ioShareLevel = ioShareLevel;
+            _resultValue.keepOnRemove = keepOnRemove;
+            _resultValue.key = key;
+            _resultValue.label = label;
+            _resultValue.path = path;
+            _resultValue.size = size;
+            _resultValue.storagePolicyId = storagePolicyId;
+            _resultValue.thinProvisioned = thinProvisioned;
+            _resultValue.unitNumber = unitNumber;
+            _resultValue.uuid = uuid;
+            _resultValue.writeThrough = writeThrough;
+            return _resultValue;
         }
     }
 }

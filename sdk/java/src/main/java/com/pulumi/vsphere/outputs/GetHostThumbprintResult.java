@@ -82,12 +82,12 @@ public final class GetHostThumbprintResult {
             return this;
         }
         public GetHostThumbprintResult build() {
-            final var o = new GetHostThumbprintResult();
-            o.address = address;
-            o.id = id;
-            o.insecure = insecure;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetHostThumbprintResult();
+            _resultValue.address = address;
+            _resultValue.id = id;
+            _resultValue.insecure = insecure;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

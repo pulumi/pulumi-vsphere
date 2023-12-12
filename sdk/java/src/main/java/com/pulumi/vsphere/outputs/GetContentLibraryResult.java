@@ -57,10 +57,10 @@ public final class GetContentLibraryResult {
             return this;
         }
         public GetContentLibraryResult build() {
-            final var o = new GetContentLibraryResult();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetContentLibraryResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

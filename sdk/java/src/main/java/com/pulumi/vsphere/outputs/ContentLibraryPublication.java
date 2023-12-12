@@ -125,13 +125,13 @@ public final class ContentLibraryPublication {
             return this;
         }
         public ContentLibraryPublication build() {
-            final var o = new ContentLibraryPublication();
-            o.authenticationMethod = authenticationMethod;
-            o.password = password;
-            o.publishUrl = publishUrl;
-            o.published = published;
-            o.username = username;
-            return o;
+            final var _resultValue = new ContentLibraryPublication();
+            _resultValue.authenticationMethod = authenticationMethod;
+            _resultValue.password = password;
+            _resultValue.publishUrl = publishUrl;
+            _resultValue.published = published;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

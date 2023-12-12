@@ -243,20 +243,20 @@ public final class VirtualMachineNetworkInterface {
             return this;
         }
         public VirtualMachineNetworkInterface build() {
-            final var o = new VirtualMachineNetworkInterface();
-            o.adapterType = adapterType;
-            o.bandwidthLimit = bandwidthLimit;
-            o.bandwidthReservation = bandwidthReservation;
-            o.bandwidthShareCount = bandwidthShareCount;
-            o.bandwidthShareLevel = bandwidthShareLevel;
-            o.deviceAddress = deviceAddress;
-            o.key = key;
-            o.macAddress = macAddress;
-            o.networkId = networkId;
-            o.ovfMapping = ovfMapping;
-            o.physicalFunction = physicalFunction;
-            o.useStaticMac = useStaticMac;
-            return o;
+            final var _resultValue = new VirtualMachineNetworkInterface();
+            _resultValue.adapterType = adapterType;
+            _resultValue.bandwidthLimit = bandwidthLimit;
+            _resultValue.bandwidthReservation = bandwidthReservation;
+            _resultValue.bandwidthShareCount = bandwidthShareCount;
+            _resultValue.bandwidthShareLevel = bandwidthShareLevel;
+            _resultValue.deviceAddress = deviceAddress;
+            _resultValue.key = key;
+            _resultValue.macAddress = macAddress;
+            _resultValue.networkId = networkId;
+            _resultValue.ovfMapping = ovfMapping;
+            _resultValue.physicalFunction = physicalFunction;
+            _resultValue.useStaticMac = useStaticMac;
+            return _resultValue;
         }
     }
 }

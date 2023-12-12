@@ -49,10 +49,10 @@ public final class DistributedPortGroupVlanRange {
             return this;
         }
         public DistributedPortGroupVlanRange build() {
-            final var o = new DistributedPortGroupVlanRange();
-            o.maxVlan = maxVlan;
-            o.minVlan = minVlan;
-            return o;
+            final var _resultValue = new DistributedPortGroupVlanRange();
+            _resultValue.maxVlan = maxVlan;
+            _resultValue.minVlan = minVlan;
+            return _resultValue;
         }
     }
 }

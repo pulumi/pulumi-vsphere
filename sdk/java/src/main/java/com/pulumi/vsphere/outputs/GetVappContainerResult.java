@@ -68,11 +68,11 @@ public final class GetVappContainerResult {
             return this;
         }
         public GetVappContainerResult build() {
-            final var o = new GetVappContainerResult();
-            o.datacenterId = datacenterId;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetVappContainerResult();
+            _resultValue.datacenterId = datacenterId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

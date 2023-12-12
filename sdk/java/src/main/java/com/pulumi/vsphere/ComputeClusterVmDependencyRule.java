@@ -23,7 +23,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -42,7 +42,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * group are started.
      * 
      */
-    @Export(name="dependencyVmGroupName", type=String.class, parameters={})
+    @Export(name="dependencyVmGroupName", refs={String.class}, tree="[0]")
     private Output<String> dependencyVmGroupName;
 
     /**
@@ -59,7 +59,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * Enable this rule in the cluster. Default: `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -78,7 +78,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * this when naming your rules.
      * 
      */
-    @Export(name="mandatory", type=Boolean.class, parameters={})
+    @Export(name="mandatory", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mandatory;
 
     /**
@@ -98,7 +98,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -116,7 +116,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * `dependency_vm_group_name` are started.
      * 
      */
-    @Export(name="vmGroupName", type=String.class, parameters={})
+    @Export(name="vmGroupName", refs={String.class}, tree="[0]")
     private Output<String> vmGroupName;
 
     /**

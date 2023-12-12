@@ -27,7 +27,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * actual share. Default: `readWrite`. Forces a new resource if changed.
      * 
      */
-    @Export(name="accessMode", type=String.class, parameters={})
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessMode;
 
     /**
@@ -45,7 +45,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * some other computed attributes may be out of date.
      * 
      */
-    @Export(name="accessible", type=Boolean.class, parameters={})
+    @Export(name="accessible", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accessible;
 
     /**
@@ -60,7 +60,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * Maximum capacity of the datastore, in megabytes.
      * 
      */
-    @Export(name="capacity", type=Integer.class, parameters={})
+    @Export(name="capacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacity;
 
     /**
@@ -78,7 +78,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * and require vCenter.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -98,7 +98,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * Conflicts with `folder`.
      * 
      */
-    @Export(name="datastoreClusterId", type=String.class, parameters={})
+    @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datastoreClusterId;
 
     /**
@@ -120,7 +120,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * `datastore_cluster_id`.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
@@ -140,7 +140,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * Available space of this datastore, in megabytes.
      * 
      */
-    @Export(name="freeSpace", type=Integer.class, parameters={})
+    @Export(name="freeSpace", refs={Integer.class}, tree="[0]")
     private Output<Integer> freeSpace;
 
     /**
@@ -155,7 +155,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * the hosts to mount the datastore on.
      * 
      */
-    @Export(name="hostSystemIds", type=List.class, parameters={String.class})
+    @Export(name="hostSystemIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> hostSystemIds;
 
     /**
@@ -170,7 +170,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * The current maintenance mode state of the datastore.
      * 
      */
-    @Export(name="maintenanceMode", type=String.class, parameters={})
+    @Export(name="maintenanceMode", refs={String.class}, tree="[0]")
     private Output<String> maintenanceMode;
 
     /**
@@ -185,7 +185,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * been configured with access to the datastore.
      * 
      */
-    @Export(name="multipleHostAccess", type=Boolean.class, parameters={})
+    @Export(name="multipleHostAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> multipleHostAccess;
 
     /**
@@ -201,7 +201,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * changed.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -217,7 +217,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * This field is only populated if the host supports virtual datastores.
      * 
      */
-    @Export(name="protocolEndpoint", type=Boolean.class, parameters={})
+    @Export(name="protocolEndpoint", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> protocolEndpoint;
 
     /**
@@ -234,7 +234,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * can be present for NFS v4.1. Forces a new resource if changed.
      * 
      */
-    @Export(name="remoteHosts", type=List.class, parameters={String.class})
+    @Export(name="remoteHosts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> remoteHosts;
 
     /**
@@ -251,7 +251,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * resource if changed.
      * 
      */
-    @Export(name="remotePath", type=String.class, parameters={})
+    @Export(name="remotePath", refs={String.class}, tree="[0]")
     private Output<String> remotePath;
 
     /**
@@ -268,7 +268,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * if changed.
      * 
      */
-    @Export(name="securityType", type=String.class, parameters={})
+    @Export(name="securityType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityType;
 
     /**
@@ -287,7 +287,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * requires vCenter 6.0 or higher.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -306,7 +306,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * changed.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -323,7 +323,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * potentially used by all virtual machines on this datastore.
      * 
      */
-    @Export(name="uncommittedSpace", type=Integer.class, parameters={})
+    @Export(name="uncommittedSpace", refs={Integer.class}, tree="[0]")
     private Output<Integer> uncommittedSpace;
 
     /**
@@ -338,7 +338,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * The unique locator for the datastore.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

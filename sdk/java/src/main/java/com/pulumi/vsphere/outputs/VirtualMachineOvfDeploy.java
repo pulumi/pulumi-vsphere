@@ -130,17 +130,17 @@ public final class VirtualMachineOvfDeploy {
             return this;
         }
         public VirtualMachineOvfDeploy build() {
-            final var o = new VirtualMachineOvfDeploy();
-            o.allowUnverifiedSslCert = allowUnverifiedSslCert;
-            o.deploymentOption = deploymentOption;
-            o.diskProvisioning = diskProvisioning;
-            o.enableHiddenProperties = enableHiddenProperties;
-            o.ipAllocationPolicy = ipAllocationPolicy;
-            o.ipProtocol = ipProtocol;
-            o.localOvfPath = localOvfPath;
-            o.ovfNetworkMap = ovfNetworkMap;
-            o.remoteOvfUrl = remoteOvfUrl;
-            return o;
+            final var _resultValue = new VirtualMachineOvfDeploy();
+            _resultValue.allowUnverifiedSslCert = allowUnverifiedSslCert;
+            _resultValue.deploymentOption = deploymentOption;
+            _resultValue.diskProvisioning = diskProvisioning;
+            _resultValue.enableHiddenProperties = enableHiddenProperties;
+            _resultValue.ipAllocationPolicy = ipAllocationPolicy;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.localOvfPath = localOvfPath;
+            _resultValue.ovfNetworkMap = ovfNetworkMap;
+            _resultValue.remoteOvfUrl = remoteOvfUrl;
+            return _resultValue;
         }
     }
 }

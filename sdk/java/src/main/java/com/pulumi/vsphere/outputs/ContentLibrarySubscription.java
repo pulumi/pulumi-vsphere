@@ -144,14 +144,14 @@ public final class ContentLibrarySubscription {
             return this;
         }
         public ContentLibrarySubscription build() {
-            final var o = new ContentLibrarySubscription();
-            o.authenticationMethod = authenticationMethod;
-            o.automaticSync = automaticSync;
-            o.onDemand = onDemand;
-            o.password = password;
-            o.subscriptionUrl = subscriptionUrl;
-            o.username = username;
-            return o;
+            final var _resultValue = new ContentLibrarySubscription();
+            _resultValue.authenticationMethod = authenticationMethod;
+            _resultValue.automaticSync = automaticSync;
+            _resultValue.onDemand = onDemand;
+            _resultValue.password = password;
+            _resultValue.subscriptionUrl = subscriptionUrl;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

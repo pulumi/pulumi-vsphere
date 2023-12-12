@@ -104,12 +104,12 @@ public final class EntityPermissionsPermission {
             return this;
         }
         public EntityPermissionsPermission build() {
-            final var o = new EntityPermissionsPermission();
-            o.isGroup = isGroup;
-            o.propagate = propagate;
-            o.roleId = roleId;
-            o.userOrGroup = userOrGroup;
-            return o;
+            final var _resultValue = new EntityPermissionsPermission();
+            _resultValue.isGroup = isGroup;
+            _resultValue.propagate = propagate;
+            _resultValue.roleId = roleId;
+            _resultValue.userOrGroup = userOrGroup;
+            return _resultValue;
         }
     }
 }

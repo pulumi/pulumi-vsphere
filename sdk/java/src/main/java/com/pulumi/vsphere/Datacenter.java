@@ -92,7 +92,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * and require vCenter.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -115,7 +115,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * Forces a new resource if changed.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
@@ -130,7 +130,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * Managed object ID of this datacenter.
      * 
      */
-    @Export(name="moid", type=String.class, parameters={})
+    @Export(name="moid", refs={String.class}, tree="[0]")
     private Output<String> moid;
 
     /**
@@ -145,7 +145,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * within the folder. Forces a new resource if changed.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -163,7 +163,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * requires vCenter 6.0 or higher.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

@@ -157,15 +157,15 @@ public final class GetGuestOsCustomizationResult {
             return this;
         }
         public GetGuestOsCustomizationResult build() {
-            final var o = new GetGuestOsCustomizationResult();
-            o.changeVersion = changeVersion;
-            o.description = description;
-            o.id = id;
-            o.lastUpdateTime = lastUpdateTime;
-            o.name = name;
-            o.specs = specs;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetGuestOsCustomizationResult();
+            _resultValue.changeVersion = changeVersion;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.lastUpdateTime = lastUpdateTime;
+            _resultValue.name = name;
+            _resultValue.specs = specs;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

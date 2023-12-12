@@ -60,7 +60,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The product edition of the license key.
      * 
      */
-    @Export(name="editionKey", type=String.class, parameters={})
+    @Export(name="editionKey", refs={String.class}, tree="[0]")
     private Output<String> editionKey;
 
     /**
@@ -74,7 +74,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * A map of key/value pairs to be attached as labels (tags) to the license key.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -88,7 +88,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The license key to add.
      * 
      */
-    @Export(name="licenseKey", type=String.class, parameters={})
+    @Export(name="licenseKey", refs={String.class}, tree="[0]")
     private Output<String> licenseKey;
 
     /**
@@ -102,7 +102,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The display name for the license.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -116,7 +116,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * Total number of units (example: CPUs) contained in the license.
      * 
      */
-    @Export(name="total", type=Integer.class, parameters={})
+    @Export(name="total", refs={Integer.class}, tree="[0]")
     private Output<Integer> total;
 
     /**
@@ -130,7 +130,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The number of units (example: CPUs) assigned to this license.
      * 
      */
-    @Export(name="used", type=Integer.class, parameters={})
+    @Export(name="used", refs={Integer.class}, tree="[0]")
     private Output<Integer> used;
 
     /**

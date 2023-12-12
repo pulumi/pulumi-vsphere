@@ -73,7 +73,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * The number of last changed version to the customization specification.
      * 
      */
-    @Export(name="changeVersion", type=String.class, parameters={})
+    @Export(name="changeVersion", refs={String.class}, tree="[0]")
     private Output<String> changeVersion;
 
     /**
@@ -87,7 +87,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * The description for the customization specification.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -101,7 +101,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * The time of last modification to the customization specification.
      * 
      */
-    @Export(name="lastUpdateTime", type=String.class, parameters={})
+    @Export(name="lastUpdateTime", refs={String.class}, tree="[0]")
     private Output<String> lastUpdateTime;
 
     /**
@@ -115,7 +115,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * The name of the customization specification is the unique identifier per vCenter Server instance.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -129,7 +129,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * Container object for the Guest OS properties about to be customized . See virtual machine customizations
      * 
      */
-    @Export(name="spec", type=GuestOsCustomizationSpec.class, parameters={})
+    @Export(name="spec", refs={GuestOsCustomizationSpec.class}, tree="[0]")
     private Output<GuestOsCustomizationSpec> spec;
 
     /**
@@ -143,7 +143,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * The type of customization specification: One among: Windows, Linux.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

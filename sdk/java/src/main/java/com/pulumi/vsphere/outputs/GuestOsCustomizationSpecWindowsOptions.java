@@ -178,21 +178,21 @@ public final class GuestOsCustomizationSpecWindowsOptions {
             return this;
         }
         public GuestOsCustomizationSpecWindowsOptions build() {
-            final var o = new GuestOsCustomizationSpecWindowsOptions();
-            o.adminPassword = adminPassword;
-            o.autoLogon = autoLogon;
-            o.autoLogonCount = autoLogonCount;
-            o.computerName = computerName;
-            o.domainAdminPassword = domainAdminPassword;
-            o.domainAdminUser = domainAdminUser;
-            o.fullName = fullName;
-            o.joinDomain = joinDomain;
-            o.organizationName = organizationName;
-            o.productKey = productKey;
-            o.runOnceCommandLists = runOnceCommandLists;
-            o.timeZone = timeZone;
-            o.workgroup = workgroup;
-            return o;
+            final var _resultValue = new GuestOsCustomizationSpecWindowsOptions();
+            _resultValue.adminPassword = adminPassword;
+            _resultValue.autoLogon = autoLogon;
+            _resultValue.autoLogonCount = autoLogonCount;
+            _resultValue.computerName = computerName;
+            _resultValue.domainAdminPassword = domainAdminPassword;
+            _resultValue.domainAdminUser = domainAdminUser;
+            _resultValue.fullName = fullName;
+            _resultValue.joinDomain = joinDomain;
+            _resultValue.organizationName = organizationName;
+            _resultValue.productKey = productKey;
+            _resultValue.runOnceCommandLists = runOnceCommandLists;
+            _resultValue.timeZone = timeZone;
+            _resultValue.workgroup = workgroup;
+            return _resultValue;
         }
     }
 }

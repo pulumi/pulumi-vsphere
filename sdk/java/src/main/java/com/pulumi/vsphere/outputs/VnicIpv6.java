@@ -110,12 +110,12 @@ public final class VnicIpv6 {
             return this;
         }
         public VnicIpv6 build() {
-            final var o = new VnicIpv6();
-            o.addresses = addresses;
-            o.autoconfig = autoconfig;
-            o.dhcp = dhcp;
-            o.gw = gw;
-            return o;
+            final var _resultValue = new VnicIpv6();
+            _resultValue.addresses = addresses;
+            _resultValue.autoconfig = autoconfig;
+            _resultValue.dhcp = dhcp;
+            _resultValue.gw = gw;
+            return _resultValue;
         }
     }
 }

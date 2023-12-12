@@ -267,13 +267,13 @@ public final class ComputeClusterVsanStretchedCluster {
             return this;
         }
         public ComputeClusterVsanStretchedCluster build() {
-            final var o = new ComputeClusterVsanStretchedCluster();
-            o.preferredFaultDomainHostIds = preferredFaultDomainHostIds;
-            o.preferredFaultDomainName = preferredFaultDomainName;
-            o.secondaryFaultDomainHostIds = secondaryFaultDomainHostIds;
-            o.secondaryFaultDomainName = secondaryFaultDomainName;
-            o.witnessNode = witnessNode;
-            return o;
+            final var _resultValue = new ComputeClusterVsanStretchedCluster();
+            _resultValue.preferredFaultDomainHostIds = preferredFaultDomainHostIds;
+            _resultValue.preferredFaultDomainName = preferredFaultDomainName;
+            _resultValue.secondaryFaultDomainHostIds = secondaryFaultDomainHostIds;
+            _resultValue.secondaryFaultDomainName = secondaryFaultDomainName;
+            _resultValue.witnessNode = witnessNode;
+            return _resultValue;
         }
     }
 }

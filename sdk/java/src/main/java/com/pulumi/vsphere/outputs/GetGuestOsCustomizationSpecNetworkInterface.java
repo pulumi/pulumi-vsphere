@@ -98,14 +98,14 @@ public final class GetGuestOsCustomizationSpecNetworkInterface {
             return this;
         }
         public GetGuestOsCustomizationSpecNetworkInterface build() {
-            final var o = new GetGuestOsCustomizationSpecNetworkInterface();
-            o.dnsDomain = dnsDomain;
-            o.dnsServerLists = dnsServerLists;
-            o.ipv4Address = ipv4Address;
-            o.ipv4Netmask = ipv4Netmask;
-            o.ipv6Address = ipv6Address;
-            o.ipv6Netmask = ipv6Netmask;
-            return o;
+            final var _resultValue = new GetGuestOsCustomizationSpecNetworkInterface();
+            _resultValue.dnsDomain = dnsDomain;
+            _resultValue.dnsServerLists = dnsServerLists;
+            _resultValue.ipv4Address = ipv4Address;
+            _resultValue.ipv4Netmask = ipv4Netmask;
+            _resultValue.ipv6Address = ipv6Address;
+            _resultValue.ipv6Netmask = ipv6Netmask;
+            return _resultValue;
         }
     }
 }

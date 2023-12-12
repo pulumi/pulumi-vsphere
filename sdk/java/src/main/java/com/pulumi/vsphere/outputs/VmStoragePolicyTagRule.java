@@ -91,11 +91,11 @@ public final class VmStoragePolicyTagRule {
             return tags(List.of(tags));
         }
         public VmStoragePolicyTagRule build() {
-            final var o = new VmStoragePolicyTagRule();
-            o.includeDatastoresWithTags = includeDatastoresWithTags;
-            o.tagCategory = tagCategory;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new VmStoragePolicyTagRule();
+            _resultValue.includeDatastoresWithTags = includeDatastoresWithTags;
+            _resultValue.tagCategory = tagCategory;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

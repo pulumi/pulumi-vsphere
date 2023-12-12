@@ -69,10 +69,10 @@ public final class ComputeClusterVsanFaultDomainFaultDomain {
             return this;
         }
         public ComputeClusterVsanFaultDomainFaultDomain build() {
-            final var o = new ComputeClusterVsanFaultDomainFaultDomain();
-            o.hostIds = hostIds;
-            o.name = name;
-            return o;
+            final var _resultValue = new ComputeClusterVsanFaultDomainFaultDomain();
+            _resultValue.hostIds = hostIds;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

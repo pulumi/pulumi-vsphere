@@ -111,15 +111,15 @@ public final class VirtualMachineClone {
             return this;
         }
         public VirtualMachineClone build() {
-            final var o = new VirtualMachineClone();
-            o.customizationSpec = customizationSpec;
-            o.customize = customize;
-            o.linkedClone = linkedClone;
-            o.ovfNetworkMap = ovfNetworkMap;
-            o.ovfStorageMap = ovfStorageMap;
-            o.templateUuid = templateUuid;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new VirtualMachineClone();
+            _resultValue.customizationSpec = customizationSpec;
+            _resultValue.customize = customize;
+            _resultValue.linkedClone = linkedClone;
+            _resultValue.ovfNetworkMap = ovfNetworkMap;
+            _resultValue.ovfStorageMap = ovfStorageMap;
+            _resultValue.templateUuid = templateUuid;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

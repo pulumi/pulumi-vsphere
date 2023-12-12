@@ -79,12 +79,12 @@ public final class GetTagResult {
             return this;
         }
         public GetTagResult build() {
-            final var o = new GetTagResult();
-            o.categoryId = categoryId;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetTagResult();
+            _resultValue.categoryId = categoryId;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

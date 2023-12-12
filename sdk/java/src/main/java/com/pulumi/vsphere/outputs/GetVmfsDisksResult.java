@@ -107,13 +107,13 @@ public final class GetVmfsDisksResult {
             return this;
         }
         public GetVmfsDisksResult build() {
-            final var o = new GetVmfsDisksResult();
-            o.disks = disks;
-            o.filter = filter;
-            o.hostSystemId = hostSystemId;
-            o.id = id;
-            o.rescan = rescan;
-            return o;
+            final var _resultValue = new GetVmfsDisksResult();
+            _resultValue.disks = disks;
+            _resultValue.filter = filter;
+            _resultValue.hostSystemId = hostSystemId;
+            _resultValue.id = id;
+            _resultValue.rescan = rescan;
+            return _resultValue;
         }
     }
 }

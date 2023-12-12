@@ -74,10 +74,10 @@ public final class DistributedVirtualSwitchHost {
             return this;
         }
         public DistributedVirtualSwitchHost build() {
-            final var o = new DistributedVirtualSwitchHost();
-            o.devices = devices;
-            o.hostSystemId = hostSystemId;
-            return o;
+            final var _resultValue = new DistributedVirtualSwitchHost();
+            _resultValue.devices = devices;
+            _resultValue.hostSystemId = hostSystemId;
+            return _resultValue;
         }
     }
 }

@@ -26,7 +26,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * unreserved resources. Default: `true`
      * 
      */
-    @Export(name="cpuExpandable", type=Boolean.class, parameters={})
+    @Export(name="cpuExpandable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuExpandable;
 
     /**
@@ -45,7 +45,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * Default: `-1`
      * 
      */
-    @Export(name="cpuLimit", type=Integer.class, parameters={})
+    @Export(name="cpuLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuLimit;
 
     /**
@@ -63,7 +63,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * available to the vApp container. Default: `0`
      * 
      */
-    @Export(name="cpuReservation", type=Integer.class, parameters={})
+    @Export(name="cpuReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuReservation;
 
     /**
@@ -82,7 +82,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * ignored.  Default: `normal`
      * 
      */
-    @Export(name="cpuShareLevel", type=String.class, parameters={})
+    @Export(name="cpuShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cpuShareLevel;
 
     /**
@@ -102,7 +102,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * `cpu_share_level` must be `custom`.
      * 
      */
-    @Export(name="cpuShares", type=Integer.class, parameters={})
+    @Export(name="cpuShares", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpuShares;
 
     /**
@@ -118,7 +118,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * A list of custom attributes to set on this resource.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -134,7 +134,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * unreserved resources. Default: `true`
      * 
      */
-    @Export(name="memoryExpandable", type=Boolean.class, parameters={})
+    @Export(name="memoryExpandable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> memoryExpandable;
 
     /**
@@ -152,7 +152,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * unlimited. Default: `-1`
      * 
      */
-    @Export(name="memoryLimit", type=Integer.class, parameters={})
+    @Export(name="memoryLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryLimit;
 
     /**
@@ -169,7 +169,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * available to the vApp container. Default: `0`
      * 
      */
-    @Export(name="memoryReservation", type=Integer.class, parameters={})
+    @Export(name="memoryReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryReservation;
 
     /**
@@ -188,7 +188,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * ignored.  Default: `normal`
      * 
      */
-    @Export(name="memoryShareLevel", type=String.class, parameters={})
+    @Export(name="memoryShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memoryShareLevel;
 
     /**
@@ -208,7 +208,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * `memory_share_level` must be `custom`.
      * 
      */
-    @Export(name="memoryShares", type=Integer.class, parameters={})
+    @Export(name="memoryShares", refs={Integer.class}, tree="[0]")
     private Output<Integer> memoryShares;
 
     /**
@@ -224,7 +224,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * The name of the vApp container.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -239,7 +239,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * the vApp container&#39;s parent folder.
      * 
      */
-    @Export(name="parentFolderId", type=String.class, parameters={})
+    @Export(name="parentFolderId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentFolderId;
 
     /**
@@ -258,7 +258,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * resource pool or the move will fail.
      * 
      */
-    @Export(name="parentResourcePoolId", type=String.class, parameters={})
+    @Export(name="parentResourcePoolId", refs={String.class}, tree="[0]")
     private Output<String> parentResourcePoolId;
 
     /**
@@ -276,7 +276,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * The IDs of any tags to attach to this resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

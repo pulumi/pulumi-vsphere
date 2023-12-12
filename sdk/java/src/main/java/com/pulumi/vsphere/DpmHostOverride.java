@@ -23,7 +23,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -45,7 +45,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * for both options.
      * 
      */
-    @Export(name="dpmAutomationLevel", type=String.class, parameters={})
+    @Export(name="dpmAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dpmAutomationLevel;
 
     /**
@@ -66,7 +66,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * `false`.
      * 
      */
-    @Export(name="dpmEnabled", type=Boolean.class, parameters={})
+    @Export(name="dpmEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dpmEnabled;
 
     /**
@@ -81,7 +81,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * The managed object ID of the host.
      * 
      */
-    @Export(name="hostSystemId", type=String.class, parameters={})
+    @Export(name="hostSystemId", refs={String.class}, tree="[0]")
     private Output<String> hostSystemId;
 
     /**

@@ -25,7 +25,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * some other computed attributes may be out of date.
      * 
      */
-    @Export(name="accessible", type=Boolean.class, parameters={})
+    @Export(name="accessible", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accessible;
 
     /**
@@ -40,7 +40,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * Maximum capacity of the datastore, in megabytes.
      * 
      */
-    @Export(name="capacity", type=Integer.class, parameters={})
+    @Export(name="capacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacity;
 
     /**
@@ -58,7 +58,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * and require vCenter.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -78,7 +78,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * Conflicts with `folder`.
      * 
      */
-    @Export(name="datastoreClusterId", type=String.class, parameters={})
+    @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datastoreClusterId;
 
     /**
@@ -94,7 +94,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * The disks to use with the datastore.
      * 
      */
-    @Export(name="disks", type=List.class, parameters={String.class})
+    @Export(name="disks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> disks;
 
     /**
@@ -114,7 +114,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * `datastore_cluster_id`.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
@@ -134,7 +134,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * Available space of this datastore, in megabytes.
      * 
      */
-    @Export(name="freeSpace", type=Integer.class, parameters={})
+    @Export(name="freeSpace", refs={Integer.class}, tree="[0]")
     private Output<Integer> freeSpace;
 
     /**
@@ -152,7 +152,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * new resource if changed.
      * 
      */
-    @Export(name="hostSystemId", type=String.class, parameters={})
+    @Export(name="hostSystemId", refs={String.class}, tree="[0]")
     private Output<String> hostSystemId;
 
     /**
@@ -170,7 +170,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * The current maintenance mode state of the datastore.
      * 
      */
-    @Export(name="maintenanceMode", type=String.class, parameters={})
+    @Export(name="maintenanceMode", refs={String.class}, tree="[0]")
     private Output<String> maintenanceMode;
 
     /**
@@ -185,7 +185,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * been configured with access to the datastore.
      * 
      */
-    @Export(name="multipleHostAccess", type=Boolean.class, parameters={})
+    @Export(name="multipleHostAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> multipleHostAccess;
 
     /**
@@ -201,7 +201,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * changed.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -219,7 +219,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * requires vCenter 6.0 or higher.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -237,7 +237,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * potentially used by all virtual machines on this datastore.
      * 
      */
-    @Export(name="uncommittedSpace", type=Integer.class, parameters={})
+    @Export(name="uncommittedSpace", refs={Integer.class}, tree="[0]")
     private Output<Integer> uncommittedSpace;
 
     /**
@@ -252,7 +252,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * The unique locator for the datastore.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

@@ -85,13 +85,13 @@ public final class VirtualMachineCloneCustomizeLinuxOptions {
             return this;
         }
         public VirtualMachineCloneCustomizeLinuxOptions build() {
-            final var o = new VirtualMachineCloneCustomizeLinuxOptions();
-            o.domain = domain;
-            o.hostName = hostName;
-            o.hwClockUtc = hwClockUtc;
-            o.scriptText = scriptText;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new VirtualMachineCloneCustomizeLinuxOptions();
+            _resultValue.domain = domain;
+            _resultValue.hostName = hostName;
+            _resultValue.hwClockUtc = hwClockUtc;
+            _resultValue.scriptText = scriptText;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

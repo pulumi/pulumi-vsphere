@@ -70,11 +70,11 @@ public final class GetDatastoreClusterResult {
             return this;
         }
         public GetDatastoreClusterResult build() {
-            final var o = new GetDatastoreClusterResult();
-            o.datacenterId = datacenterId;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetDatastoreClusterResult();
+            _resultValue.datacenterId = datacenterId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

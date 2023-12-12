@@ -146,15 +146,15 @@ public final class GetLicenseResult {
             return this;
         }
         public GetLicenseResult build() {
-            final var o = new GetLicenseResult();
-            o.editionKey = editionKey;
-            o.id = id;
-            o.labels = labels;
-            o.licenseKey = licenseKey;
-            o.name = name;
-            o.total = total;
-            o.used = used;
-            return o;
+            final var _resultValue = new GetLicenseResult();
+            _resultValue.editionKey = editionKey;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.licenseKey = licenseKey;
+            _resultValue.name = name;
+            _resultValue.total = total;
+            _resultValue.used = used;
+            return _resultValue;
         }
     }
 }

@@ -32,7 +32,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * and require vCenter.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -56,7 +56,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * changed.
      * 
      */
-    @Export(name="datacenterId", type=String.class, parameters={})
+    @Export(name="datacenterId", refs={String.class}, tree="[0]")
     private Output<String> datacenterId;
 
     /**
@@ -78,7 +78,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * `/dc1/datastore/foo/bar/datastore-cluster-test`.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
@@ -98,7 +98,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * The name of the datastore cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -113,7 +113,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * settings that are not exposed via the provider or the vSphere client.
      * 
      */
-    @Export(name="sdrsAdvancedOptions", type=Map.class, parameters={String.class, String.class})
+    @Export(name="sdrsAdvancedOptions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> sdrsAdvancedOptions;
 
     /**
@@ -129,7 +129,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * virtual machines in this datastore cluster. Default: `manual`.
      * 
      */
-    @Export(name="sdrsAutomationLevel", type=String.class, parameters={})
+    @Export(name="sdrsAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsAutomationLevel;
 
     /**
@@ -145,7 +145,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * single virtual machine will be kept on the same datastore. Default: `true`.
      * 
      */
-    @Export(name="sdrsDefaultIntraVmAffinity", type=Boolean.class, parameters={})
+    @Export(name="sdrsDefaultIntraVmAffinity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sdrsDefaultIntraVmAffinity;
 
     /**
@@ -161,7 +161,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * Default: `false`.
      * 
      */
-    @Export(name="sdrsEnabled", type=Boolean.class, parameters={})
+    @Export(name="sdrsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sdrsEnabled;
 
     /**
@@ -179,7 +179,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * `utilization`.
      * 
      */
-    @Export(name="sdrsFreeSpaceThreshold", type=Integer.class, parameters={})
+    @Export(name="sdrsFreeSpaceThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsFreeSpaceThreshold;
 
     /**
@@ -197,7 +197,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * freeSpace, drs_free_space_threshold is used.
      * 
      */
-    @Export(name="sdrsFreeSpaceThresholdMode", type=String.class, parameters={})
+    @Export(name="sdrsFreeSpaceThresholdMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsFreeSpaceThresholdMode;
 
     /**
@@ -214,7 +214,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * DRS makes decisions to balance the space. Default: `5` percent.
      * 
      */
-    @Export(name="sdrsFreeSpaceUtilizationDifference", type=Integer.class, parameters={})
+    @Export(name="sdrsFreeSpaceUtilizationDifference", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsFreeSpaceUtilizationDifference;
 
     /**
@@ -231,7 +231,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * automation settings when correcting I/O load imbalances.
      * 
      */
-    @Export(name="sdrsIoBalanceAutomationLevel", type=String.class, parameters={})
+    @Export(name="sdrsIoBalanceAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsIoBalanceAutomationLevel;
 
     /**
@@ -248,7 +248,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * from this datastore. Default: `15` seconds.
      * 
      */
-    @Export(name="sdrsIoLatencyThreshold", type=Integer.class, parameters={})
+    @Export(name="sdrsIoLatencyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoLatencyThreshold;
 
     /**
@@ -265,7 +265,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * this datastore cluster. Default: `true`.
      * 
      */
-    @Export(name="sdrsIoLoadBalanceEnabled", type=Boolean.class, parameters={})
+    @Export(name="sdrsIoLoadBalanceEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sdrsIoLoadBalanceEnabled;
 
     /**
@@ -282,7 +282,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * balance the load. Default: `5` percent.
      * 
      */
-    @Export(name="sdrsIoLoadImbalanceThreshold", type=Integer.class, parameters={})
+    @Export(name="sdrsIoLoadImbalanceThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoLoadImbalanceThreshold;
 
     /**
@@ -303,7 +303,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      * 
      */
-    @Export(name="sdrsIoReservableIopsThreshold", type=Integer.class, parameters={})
+    @Export(name="sdrsIoReservableIopsThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoReservableIopsThreshold;
 
     /**
@@ -325,7 +325,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * the total reservable IOPS exceeds the threshold. Default: `60` percent.
      * 
      */
-    @Export(name="sdrsIoReservablePercentThreshold", type=Integer.class, parameters={})
+    @Export(name="sdrsIoReservablePercentThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoReservablePercentThreshold;
 
     /**
@@ -345,7 +345,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * `manual`. Default: `automatic`.
      * 
      */
-    @Export(name="sdrsIoReservableThresholdMode", type=String.class, parameters={})
+    @Export(name="sdrsIoReservableThresholdMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsIoReservableThresholdMode;
 
     /**
@@ -363,7 +363,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * minutes. Default: `480` minutes.
      * 
      */
-    @Export(name="sdrsLoadBalanceInterval", type=Integer.class, parameters={})
+    @Export(name="sdrsLoadBalanceInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsLoadBalanceInterval;
 
     /**
@@ -379,7 +379,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * automation settings when correcting storage and VM policy violations.
      * 
      */
-    @Export(name="sdrsPolicyEnforcementAutomationLevel", type=String.class, parameters={})
+    @Export(name="sdrsPolicyEnforcementAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsPolicyEnforcementAutomationLevel;
 
     /**
@@ -395,7 +395,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * automation settings when correcting affinity rule violations.
      * 
      */
-    @Export(name="sdrsRuleEnforcementAutomationLevel", type=String.class, parameters={})
+    @Export(name="sdrsRuleEnforcementAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsRuleEnforcementAutomationLevel;
 
     /**
@@ -411,7 +411,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * automation settings when correcting disk space imbalances.
      * 
      */
-    @Export(name="sdrsSpaceBalanceAutomationLevel", type=String.class, parameters={})
+    @Export(name="sdrsSpaceBalanceAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsSpaceBalanceAutomationLevel;
 
     /**
@@ -428,7 +428,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * (based on the selected automation level). Default: `80` percent.
      * 
      */
-    @Export(name="sdrsSpaceUtilizationThreshold", type=Integer.class, parameters={})
+    @Export(name="sdrsSpaceUtilizationThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsSpaceUtilizationThreshold;
 
     /**
@@ -445,7 +445,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * automation settings when generating recommendations for datastore evacuation.
      * 
      */
-    @Export(name="sdrsVmEvacuationAutomationLevel", type=String.class, parameters={})
+    @Export(name="sdrsVmEvacuationAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsVmEvacuationAutomationLevel;
 
     /**
@@ -462,7 +462,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

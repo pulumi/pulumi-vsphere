@@ -24,7 +24,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -43,7 +43,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `reset`.  Default: `useClusterDefault`.
      * 
      */
-    @Export(name="haDatastoreApdRecoveryAction", type=String.class, parameters={})
+    @Export(name="haDatastoreApdRecoveryAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdRecoveryAction;
 
     /**
@@ -63,7 +63,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
      * 
      */
-    @Export(name="haDatastoreApdResponse", type=String.class, parameters={})
+    @Export(name="haDatastoreApdResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdResponse;
 
     /**
@@ -83,7 +83,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * the cluster default. Default: `-1`.
      * 
      */
-    @Export(name="haDatastoreApdResponseDelay", type=Integer.class, parameters={})
+    @Export(name="haDatastoreApdResponseDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haDatastoreApdResponseDelay;
 
     /**
@@ -103,7 +103,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `restartAggressive`. Default: `clusterDefault`.
      * 
      */
-    @Export(name="haDatastorePdlResponse", type=String.class, parameters={})
+    @Export(name="haDatastorePdlResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastorePdlResponse;
 
     /**
@@ -123,7 +123,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `shutdown`. Default: `clusterIsolationResponse`.
      * 
      */
-    @Export(name="haHostIsolationResponse", type=String.class, parameters={})
+    @Export(name="haHostIsolationResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haHostIsolationResponse;
 
     /**
@@ -142,7 +142,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * is marked as failed. The value is in seconds. Default: `30`.
      * 
      */
-    @Export(name="haVmFailureInterval", type=Integer.class, parameters={})
+    @Export(name="haVmFailureInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmFailureInterval;
 
     /**
@@ -163,7 +163,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `-1` (no window).
      * 
      */
-    @Export(name="haVmMaximumFailureWindow", type=Integer.class, parameters={})
+    @Export(name="haVmMaximumFailureWindow", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumFailureWindow;
 
     /**
@@ -184,7 +184,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `3`
      * 
      */
-    @Export(name="haVmMaximumResets", type=Integer.class, parameters={})
+    @Export(name="haVmMaximumResets", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumResets;
 
     /**
@@ -202,7 +202,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `120` (2 minutes).
      * 
      */
-    @Export(name="haVmMinimumUptime", type=Integer.class, parameters={})
+    @Export(name="haVmMinimumUptime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMinimumUptime;
 
     /**
@@ -220,7 +220,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
      * 
      */
-    @Export(name="haVmMonitoring", type=String.class, parameters={})
+    @Export(name="haVmMonitoring", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmMonitoring;
 
     /**
@@ -239,7 +239,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * (use cluster defaults) - set to `false` to have overrides take effect.
      * 
      */
-    @Export(name="haVmMonitoringUseClusterDefaults", type=Boolean.class, parameters={})
+    @Export(name="haVmMonitoringUseClusterDefaults", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> haVmMonitoringUseClusterDefaults;
 
     /**
@@ -259,7 +259,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * Default: `clusterRestartPriority`.
      * 
      */
-    @Export(name="haVmRestartPriority", type=String.class, parameters={})
+    @Export(name="haVmRestartPriority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmRestartPriority;
 
     /**
@@ -278,7 +278,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * specify the cluster default.  Default: `-1`.
      * 
      */
-    @Export(name="haVmRestartTimeout", type=Integer.class, parameters={})
+    @Export(name="haVmRestartTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmRestartTimeout;
 
     /**
@@ -295,7 +295,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * the override for.  Forces a new resource if changed.
      * 
      */
-    @Export(name="virtualMachineId", type=String.class, parameters={})
+    @Export(name="virtualMachineId", refs={String.class}, tree="[0]")
     private Output<String> virtualMachineId;
 
     /**

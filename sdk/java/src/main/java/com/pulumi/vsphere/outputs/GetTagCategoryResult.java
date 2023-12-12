@@ -94,13 +94,13 @@ public final class GetTagCategoryResult {
             return this;
         }
         public GetTagCategoryResult build() {
-            final var o = new GetTagCategoryResult();
-            o.associableTypes = associableTypes;
-            o.cardinality = cardinality;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetTagCategoryResult();
+            _resultValue.associableTypes = associableTypes;
+            _resultValue.cardinality = cardinality;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

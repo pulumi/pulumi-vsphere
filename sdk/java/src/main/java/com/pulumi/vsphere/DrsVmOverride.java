@@ -23,7 +23,7 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -45,7 +45,7 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * for both options.
      * 
      */
-    @Export(name="drsAutomationLevel", type=String.class, parameters={})
+    @Export(name="drsAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> drsAutomationLevel;
 
     /**
@@ -66,7 +66,7 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * machine. Can be either `true` or `false`. Default: `false`.
      * 
      */
-    @Export(name="drsEnabled", type=Boolean.class, parameters={})
+    @Export(name="drsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> drsEnabled;
 
     /**
@@ -82,7 +82,7 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * the override for.  Forces a new resource if changed.
      * 
      */
-    @Export(name="virtualMachineId", type=String.class, parameters={})
+    @Export(name="virtualMachineId", refs={String.class}, tree="[0]")
     private Output<String> virtualMachineId;
 
     /**

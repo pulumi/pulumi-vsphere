@@ -195,7 +195,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * Key of the distributed portgroup the nic will connect to.
      * 
      */
-    @Export(name="distributedPortGroup", type=String.class, parameters={})
+    @Export(name="distributedPortGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> distributedPortGroup;
 
     /**
@@ -209,7 +209,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
      * 
      */
-    @Export(name="distributedSwitchPort", type=String.class, parameters={})
+    @Export(name="distributedSwitchPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> distributedSwitchPort;
 
     /**
@@ -223,7 +223,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * ESX host the interface belongs to
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -237,7 +237,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      * 
      */
-    @Export(name="ipv4", type=VnicIpv4.class, parameters={})
+    @Export(name="ipv4", refs={VnicIpv4.class}, tree="[0]")
     private Output</* @Nullable */ VnicIpv4> ipv4;
 
     /**
@@ -251,7 +251,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      * 
      */
-    @Export(name="ipv6", type=VnicIpv6.class, parameters={})
+    @Export(name="ipv6", refs={VnicIpv6.class}, tree="[0]")
     private Output</* @Nullable */ VnicIpv6> ipv6;
 
     /**
@@ -265,7 +265,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * MAC address of the interface.
      * 
      */
-    @Export(name="mac", type=String.class, parameters={})
+    @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
@@ -279,7 +279,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * MTU of the interface.
      * 
      */
-    @Export(name="mtu", type=Integer.class, parameters={})
+    @Export(name="mtu", refs={Integer.class}, tree="[0]")
     private Output<Integer> mtu;
 
     /**
@@ -293,7 +293,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      * 
      */
-    @Export(name="netstack", type=String.class, parameters={})
+    @Export(name="netstack", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netstack;
 
     /**
@@ -307,7 +307,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      * 
      */
-    @Export(name="portgroup", type=String.class, parameters={})
+    @Export(name="portgroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> portgroup;
 
     /**
@@ -321,7 +321,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      * 
      */
-    @Export(name="services", type=List.class, parameters={String.class})
+    @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> services;
 
     /**

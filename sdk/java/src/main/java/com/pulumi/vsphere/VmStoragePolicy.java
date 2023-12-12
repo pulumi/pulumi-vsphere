@@ -240,7 +240,7 @@ public class VmStoragePolicy extends com.pulumi.resources.CustomResource {
      * Description of the storage policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -254,7 +254,7 @@ public class VmStoragePolicy extends com.pulumi.resources.CustomResource {
      * The name of the storage policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -268,7 +268,7 @@ public class VmStoragePolicy extends com.pulumi.resources.CustomResource {
      * List of tag rules. The tag category and tags to be associated to this storage policy.
      * 
      */
-    @Export(name="tagRules", type=List.class, parameters={VmStoragePolicyTagRule.class})
+    @Export(name="tagRules", refs={List.class,VmStoragePolicyTagRule.class}, tree="[0,1]")
     private Output<List<VmStoragePolicyTagRule>> tagRules;
 
     /**

@@ -24,7 +24,7 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
      * a new resource if changed.
      * 
      */
-    @Export(name="datastoreClusterId", type=String.class, parameters={})
+    @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output<String> datastoreClusterId;
 
     /**
@@ -40,7 +40,7 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
      * Enable this rule in the cluster. Default: `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -55,7 +55,7 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
      * machine operations that may violate this rule. Default: `false`.
      * 
      */
-    @Export(name="mandatory", type=Boolean.class, parameters={})
+    @Export(name="mandatory", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mandatory;
 
     /**
@@ -70,7 +70,7 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
      * The name of the rule. This must be unique in the cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -87,7 +87,7 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
      * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
      * 
      */
-    @Export(name="virtualMachineIds", type=List.class, parameters={String.class})
+    @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> virtualMachineIds;
 
     /**

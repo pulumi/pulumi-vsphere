@@ -50,7 +50,7 @@ public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomRes
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -66,7 +66,7 @@ public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomRes
      * Enable this rule in the cluster. Default: `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -85,7 +85,7 @@ public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomRes
      * this when naming your rules.
      * 
      */
-    @Export(name="mandatory", type=Boolean.class, parameters={})
+    @Export(name="mandatory", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mandatory;
 
     /**
@@ -104,7 +104,7 @@ public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomRes
      * The name of the rule. This must be unique in the cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomRes
      * on the same host together.
      * 
      */
-    @Export(name="virtualMachineIds", type=List.class, parameters={String.class})
+    @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> virtualMachineIds;
 
     /**

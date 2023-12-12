@@ -93,12 +93,12 @@ public final class GetComputeClusterHostGroupResult {
             return this;
         }
         public GetComputeClusterHostGroupResult build() {
-            final var o = new GetComputeClusterHostGroupResult();
-            o.computeClusterId = computeClusterId;
-            o.hostSystemIds = hostSystemIds;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetComputeClusterHostGroupResult();
+            _resultValue.computeClusterId = computeClusterId;
+            _resultValue.hostSystemIds = hostSystemIds;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

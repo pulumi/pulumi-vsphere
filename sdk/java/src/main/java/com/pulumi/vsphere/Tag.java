@@ -21,7 +21,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * which this tag will be created. Forces a new resource if changed.
      * 
      */
-    @Export(name="categoryId", type=String.class, parameters={})
+    @Export(name="categoryId", refs={String.class}, tree="[0]")
     private Output<String> categoryId;
 
     /**
@@ -36,7 +36,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * A description for the tag.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -51,7 +51,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * within its category.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

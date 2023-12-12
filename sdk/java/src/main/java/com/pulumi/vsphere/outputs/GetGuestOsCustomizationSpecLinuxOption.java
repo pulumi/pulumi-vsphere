@@ -83,13 +83,13 @@ public final class GetGuestOsCustomizationSpecLinuxOption {
             return this;
         }
         public GetGuestOsCustomizationSpecLinuxOption build() {
-            final var o = new GetGuestOsCustomizationSpecLinuxOption();
-            o.domain = domain;
-            o.hostName = hostName;
-            o.hwClockUtc = hwClockUtc;
-            o.scriptText = scriptText;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new GetGuestOsCustomizationSpecLinuxOption();
+            _resultValue.domain = domain;
+            _resultValue.hostName = hostName;
+            _resultValue.hwClockUtc = hwClockUtc;
+            _resultValue.scriptText = scriptText;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }
