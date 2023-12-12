@@ -54,6 +54,7 @@ public final class GetVirtualMachineNetworkInterface {
      * 
      */
     private String networkId;
+    private String physicalFunction;
 
     private GetVirtualMachineNetworkInterface() {}
     /**
@@ -112,6 +113,9 @@ public final class GetVirtualMachineNetworkInterface {
     public String networkId() {
         return this.networkId;
     }
+    public String physicalFunction() {
+        return this.physicalFunction;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -129,6 +133,7 @@ public final class GetVirtualMachineNetworkInterface {
         private @Nullable String bandwidthShareLevel;
         private String macAddress;
         private String networkId;
+        private String physicalFunction;
         public Builder() {}
         public Builder(GetVirtualMachineNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -139,6 +144,7 @@ public final class GetVirtualMachineNetworkInterface {
     	      this.bandwidthShareLevel = defaults.bandwidthShareLevel;
     	      this.macAddress = defaults.macAddress;
     	      this.networkId = defaults.networkId;
+    	      this.physicalFunction = defaults.physicalFunction;
         }
 
         @CustomType.Setter
@@ -176,6 +182,11 @@ public final class GetVirtualMachineNetworkInterface {
             this.networkId = Objects.requireNonNull(networkId);
             return this;
         }
+        @CustomType.Setter
+        public Builder physicalFunction(String physicalFunction) {
+            this.physicalFunction = Objects.requireNonNull(physicalFunction);
+            return this;
+        }
         public GetVirtualMachineNetworkInterface build() {
             final var o = new GetVirtualMachineNetworkInterface();
             o.adapterType = adapterType;
@@ -185,6 +196,7 @@ public final class GetVirtualMachineNetworkInterface {
             o.bandwidthShareLevel = bandwidthShareLevel;
             o.macAddress = macAddress;
             o.networkId = networkId;
+            o.physicalFunction = physicalFunction;
             return o;
         }
     }

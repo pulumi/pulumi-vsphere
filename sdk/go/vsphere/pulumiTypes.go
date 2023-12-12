@@ -6273,7 +6273,8 @@ type GetVirtualMachineNetworkInterface struct {
 	MacAddress string `pulumi:"macAddress"`
 	// The managed object reference ID of the network this interface is
 	// connected to.
-	NetworkId string `pulumi:"networkId"`
+	NetworkId        string `pulumi:"networkId"`
+	PhysicalFunction string `pulumi:"physicalFunction"`
 }
 
 // GetVirtualMachineNetworkInterfaceInput is an input type that accepts GetVirtualMachineNetworkInterfaceArgs and GetVirtualMachineNetworkInterfaceOutput values.
@@ -6308,7 +6309,8 @@ type GetVirtualMachineNetworkInterfaceArgs struct {
 	MacAddress pulumi.StringInput `pulumi:"macAddress"`
 	// The managed object reference ID of the network this interface is
 	// connected to.
-	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	NetworkId        pulumi.StringInput `pulumi:"networkId"`
+	PhysicalFunction pulumi.StringInput `pulumi:"physicalFunction"`
 }
 
 func (GetVirtualMachineNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -6402,6 +6404,10 @@ func (o GetVirtualMachineNetworkInterfaceOutput) MacAddress() pulumi.StringOutpu
 // connected to.
 func (o GetVirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+func (o GetVirtualMachineNetworkInterfaceOutput) PhysicalFunction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.PhysicalFunction }).(pulumi.StringOutput)
 }
 
 type GetVirtualMachineNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }

@@ -2919,6 +2919,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
                  bandwidth_share_count: int,
                  mac_address: str,
                  network_id: str,
+                 physical_function: str,
                  bandwidth_limit: Optional[int] = None,
                  bandwidth_reservation: Optional[int] = None,
                  bandwidth_share_level: Optional[str] = None):
@@ -2942,6 +2943,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
         pulumi.set(__self__, "bandwidth_share_count", bandwidth_share_count)
         pulumi.set(__self__, "mac_address", mac_address)
         pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "physical_function", physical_function)
         if bandwidth_limit is not None:
             pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
         if bandwidth_reservation is not None:
@@ -2984,6 +2986,11 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
         connected to.
         """
         return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="physicalFunction")
+    def physical_function(self) -> str:
+        return pulumi.get(self, "physical_function")
 
     @property
     @pulumi.getter(name="bandwidthLimit")
