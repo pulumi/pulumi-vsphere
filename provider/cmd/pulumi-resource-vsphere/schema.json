@@ -1355,6 +1355,9 @@
                 "networkId": {
                     "type": "string",
                     "description": "The managed object reference ID of the network this interface is\nconnected to.\n"
+                },
+                "physicalFunction": {
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1362,7 +1365,8 @@
                 "adapterType",
                 "bandwidthShareCount",
                 "macAddress",
-                "networkId"
+                "networkId",
+                "physicalFunction"
             ],
             "language": {
                 "nodejs": {
