@@ -48,6 +48,7 @@ namespace Pulumi.VSphere.Outputs
         /// connected to.
         /// </summary>
         public readonly string NetworkId;
+        public readonly string PhysicalFunction;
 
         [OutputConstructor]
         private GetVirtualMachineNetworkInterfaceResult(
@@ -63,7 +64,9 @@ namespace Pulumi.VSphere.Outputs
 
             string macAddress,
 
-            string networkId)
+            string networkId,
+
+            string physicalFunction)
         {
             AdapterType = adapterType;
             BandwidthLimit = bandwidthLimit;
@@ -72,6 +75,7 @@ namespace Pulumi.VSphere.Outputs
             BandwidthShareLevel = bandwidthShareLevel;
             MacAddress = macAddress;
             NetworkId = networkId;
+            PhysicalFunction = physicalFunction;
         }
     }
 }
