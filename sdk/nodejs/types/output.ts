@@ -312,6 +312,7 @@ export interface GetVirtualMachineNetworkInterface {
      * connected to.
      */
     networkId: string;
+    physicalFunction: string;
 }
 
 export interface GetVirtualMachineVapp {
