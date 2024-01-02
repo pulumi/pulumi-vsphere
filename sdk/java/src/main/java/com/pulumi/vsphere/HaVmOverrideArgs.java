@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -752,8 +753,12 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HaVmOverrideArgs build() {
-            $.computeClusterId = Objects.requireNonNull($.computeClusterId, "expected parameter 'computeClusterId' to be non-null");
-            $.virtualMachineId = Objects.requireNonNull($.virtualMachineId, "expected parameter 'virtualMachineId' to be non-null");
+            if ($.computeClusterId == null) {
+                throw new MissingRequiredPropertyException("HaVmOverrideArgs", "computeClusterId");
+            }
+            if ($.virtualMachineId == null) {
+                throw new MissingRequiredPropertyException("HaVmOverrideArgs", "virtualMachineId");
+            }
             return $;
         }
     }

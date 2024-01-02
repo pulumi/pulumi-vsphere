@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -269,8 +270,12 @@ public final class ComputeClusterVmAntiAffinityRuleArgs extends com.pulumi.resou
         }
 
         public ComputeClusterVmAntiAffinityRuleArgs build() {
-            $.computeClusterId = Objects.requireNonNull($.computeClusterId, "expected parameter 'computeClusterId' to be non-null");
-            $.virtualMachineIds = Objects.requireNonNull($.virtualMachineIds, "expected parameter 'virtualMachineIds' to be non-null");
+            if ($.computeClusterId == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVmAntiAffinityRuleArgs", "computeClusterId");
+            }
+            if ($.virtualMachineIds == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVmAntiAffinityRuleArgs", "virtualMachineIds");
+            }
             return $;
         }
     }

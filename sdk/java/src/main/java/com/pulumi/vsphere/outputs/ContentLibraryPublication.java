@@ -101,26 +101,31 @@ public final class ContentLibraryPublication {
 
         @CustomType.Setter
         public Builder authenticationMethod(@Nullable String authenticationMethod) {
+
             this.authenticationMethod = authenticationMethod;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder publishUrl(@Nullable String publishUrl) {
+
             this.publishUrl = publishUrl;
             return this;
         }
         @CustomType.Setter
         public Builder published(@Nullable Boolean published) {
+
             this.published = published;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

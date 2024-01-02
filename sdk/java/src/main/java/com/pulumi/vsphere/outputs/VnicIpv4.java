@@ -87,21 +87,25 @@ public final class VnicIpv4 {
 
         @CustomType.Setter
         public Builder dhcp(@Nullable Boolean dhcp) {
+
             this.dhcp = dhcp;
             return this;
         }
         @CustomType.Setter
         public Builder gw(@Nullable String gw) {
+
             this.gw = gw;
             return this;
         }
         @CustomType.Setter
         public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder netmask(@Nullable String netmask) {
+
             this.netmask = netmask;
             return this;
         }

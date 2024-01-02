@@ -36,6 +36,7 @@ public final class VirtualMachineVapp {
 
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
+
             this.properties = properties;
             return this;
         }

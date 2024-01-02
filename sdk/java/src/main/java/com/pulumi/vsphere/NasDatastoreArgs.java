@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -592,9 +593,15 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NasDatastoreArgs build() {
-            $.hostSystemIds = Objects.requireNonNull($.hostSystemIds, "expected parameter 'hostSystemIds' to be non-null");
-            $.remoteHosts = Objects.requireNonNull($.remoteHosts, "expected parameter 'remoteHosts' to be non-null");
-            $.remotePath = Objects.requireNonNull($.remotePath, "expected parameter 'remotePath' to be non-null");
+            if ($.hostSystemIds == null) {
+                throw new MissingRequiredPropertyException("NasDatastoreArgs", "hostSystemIds");
+            }
+            if ($.remoteHosts == null) {
+                throw new MissingRequiredPropertyException("NasDatastoreArgs", "remoteHosts");
+            }
+            if ($.remotePath == null) {
+                throw new MissingRequiredPropertyException("NasDatastoreArgs", "remotePath");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -186,10 +187,18 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         public EntityPermissionsPermissionArgs build() {
-            $.isGroup = Objects.requireNonNull($.isGroup, "expected parameter 'isGroup' to be non-null");
-            $.propagate = Objects.requireNonNull($.propagate, "expected parameter 'propagate' to be non-null");
-            $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");
-            $.userOrGroup = Objects.requireNonNull($.userOrGroup, "expected parameter 'userOrGroup' to be non-null");
+            if ($.isGroup == null) {
+                throw new MissingRequiredPropertyException("EntityPermissionsPermissionArgs", "isGroup");
+            }
+            if ($.propagate == null) {
+                throw new MissingRequiredPropertyException("EntityPermissionsPermissionArgs", "propagate");
+            }
+            if ($.roleId == null) {
+                throw new MissingRequiredPropertyException("EntityPermissionsPermissionArgs", "roleId");
+            }
+            if ($.userOrGroup == null) {
+                throw new MissingRequiredPropertyException("EntityPermissionsPermissionArgs", "userOrGroup");
+            }
             return $;
         }
     }

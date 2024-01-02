@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -466,9 +467,15 @@ public final class GetOvfVmTemplatePlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetOvfVmTemplatePlainArgs build() {
-            $.hostSystemId = Objects.requireNonNull($.hostSystemId, "expected parameter 'hostSystemId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.resourcePoolId = Objects.requireNonNull($.resourcePoolId, "expected parameter 'resourcePoolId' to be non-null");
+            if ($.hostSystemId == null) {
+                throw new MissingRequiredPropertyException("GetOvfVmTemplatePlainArgs", "hostSystemId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetOvfVmTemplatePlainArgs", "name");
+            }
+            if ($.resourcePoolId == null) {
+                throw new MissingRequiredPropertyException("GetOvfVmTemplatePlainArgs", "resourcePoolId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.VnicIpv4Args;
 import com.pulumi.vsphere.inputs.VnicIpv6Args;
 import java.lang.Integer;
@@ -423,7 +424,9 @@ public final class VnicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VnicArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("VnicArgs", "host");
+            }
             return $;
         }
     }

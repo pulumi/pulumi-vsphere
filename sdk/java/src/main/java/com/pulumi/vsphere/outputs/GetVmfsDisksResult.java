@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -80,7 +81,10 @@ public final class GetVmfsDisksResult {
 
         @CustomType.Setter
         public Builder disks(List<String> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetVmfsDisksResult", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(String... disks) {
@@ -88,21 +92,29 @@ public final class GetVmfsDisksResult {
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder hostSystemId(String hostSystemId) {
-            this.hostSystemId = Objects.requireNonNull(hostSystemId);
+            if (hostSystemId == null) {
+              throw new MissingRequiredPropertyException("GetVmfsDisksResult", "hostSystemId");
+            }
+            this.hostSystemId = hostSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVmfsDisksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder rescan(@Nullable Boolean rescan) {
+
             this.rescan = rescan;
             return this;
         }

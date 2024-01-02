@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,42 +150,60 @@ public final class GetVirtualMachineNetworkInterface {
 
         @CustomType.Setter
         public Builder adapterType(String adapterType) {
-            this.adapterType = Objects.requireNonNull(adapterType);
+            if (adapterType == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineNetworkInterface", "adapterType");
+            }
+            this.adapterType = adapterType;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthLimit(@Nullable Integer bandwidthLimit) {
+
             this.bandwidthLimit = bandwidthLimit;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthReservation(@Nullable Integer bandwidthReservation) {
+
             this.bandwidthReservation = bandwidthReservation;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthShareCount(Integer bandwidthShareCount) {
-            this.bandwidthShareCount = Objects.requireNonNull(bandwidthShareCount);
+            if (bandwidthShareCount == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineNetworkInterface", "bandwidthShareCount");
+            }
+            this.bandwidthShareCount = bandwidthShareCount;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthShareLevel(@Nullable String bandwidthShareLevel) {
+
             this.bandwidthShareLevel = bandwidthShareLevel;
             return this;
         }
         @CustomType.Setter
         public Builder macAddress(String macAddress) {
-            this.macAddress = Objects.requireNonNull(macAddress);
+            if (macAddress == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineNetworkInterface", "macAddress");
+            }
+            this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(String networkId) {
-            this.networkId = Objects.requireNonNull(networkId);
+            if (networkId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineNetworkInterface", "networkId");
+            }
+            this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder physicalFunction(String physicalFunction) {
-            this.physicalFunction = Objects.requireNonNull(physicalFunction);
+            if (physicalFunction == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineNetworkInterface", "physicalFunction");
+            }
+            this.physicalFunction = physicalFunction;
             return this;
         }
         public GetVirtualMachineNetworkInterface build() {

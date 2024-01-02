@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,27 +101,42 @@ public final class GetVirtualMachineDisk {
 
         @CustomType.Setter
         public Builder eagerlyScrub(Boolean eagerlyScrub) {
-            this.eagerlyScrub = Objects.requireNonNull(eagerlyScrub);
+            if (eagerlyScrub == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineDisk", "eagerlyScrub");
+            }
+            this.eagerlyScrub = eagerlyScrub;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineDisk", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder thinProvisioned(Boolean thinProvisioned) {
-            this.thinProvisioned = Objects.requireNonNull(thinProvisioned);
+            if (thinProvisioned == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineDisk", "thinProvisioned");
+            }
+            this.thinProvisioned = thinProvisioned;
             return this;
         }
         @CustomType.Setter
         public Builder unitNumber(Integer unitNumber) {
-            this.unitNumber = Objects.requireNonNull(unitNumber);
+            if (unitNumber == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineDisk", "unitNumber");
+            }
+            this.unitNumber = unitNumber;
             return this;
         }
         public GetVirtualMachineDisk build() {

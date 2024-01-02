@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -272,8 +273,12 @@ public final class StorageDrsVmOverrideArgs extends com.pulumi.resources.Resourc
         }
 
         public StorageDrsVmOverrideArgs build() {
-            $.datastoreClusterId = Objects.requireNonNull($.datastoreClusterId, "expected parameter 'datastoreClusterId' to be non-null");
-            $.virtualMachineId = Objects.requireNonNull($.virtualMachineId, "expected parameter 'virtualMachineId' to be non-null");
+            if ($.datastoreClusterId == null) {
+                throw new MissingRequiredPropertyException("StorageDrsVmOverrideArgs", "datastoreClusterId");
+            }
+            if ($.virtualMachineId == null) {
+                throw new MissingRequiredPropertyException("StorageDrsVmOverrideArgs", "virtualMachineId");
+            }
             return $;
         }
     }

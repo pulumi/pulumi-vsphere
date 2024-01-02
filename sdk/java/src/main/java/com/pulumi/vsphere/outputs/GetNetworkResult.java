@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,27 +83,38 @@ public final class GetNetworkResult {
 
         @CustomType.Setter
         public Builder datacenterId(@Nullable String datacenterId) {
+
             this.datacenterId = datacenterId;
             return this;
         }
         @CustomType.Setter
         public Builder distributedVirtualSwitchUuid(@Nullable String distributedVirtualSwitchUuid) {
+
             this.distributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetNetworkResult build() {

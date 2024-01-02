@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -330,106 +331,129 @@ public final class VirtualMachineDisk {
 
         @CustomType.Setter
         public Builder attach(@Nullable Boolean attach) {
+
             this.attach = attach;
             return this;
         }
         @CustomType.Setter
         public Builder controllerType(@Nullable String controllerType) {
+
             this.controllerType = controllerType;
             return this;
         }
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder deviceAddress(@Nullable String deviceAddress) {
+
             this.deviceAddress = deviceAddress;
             return this;
         }
         @CustomType.Setter
         public Builder diskMode(@Nullable String diskMode) {
+
             this.diskMode = diskMode;
             return this;
         }
         @CustomType.Setter
         public Builder diskSharing(@Nullable String diskSharing) {
+
             this.diskSharing = diskSharing;
             return this;
         }
         @CustomType.Setter
         public Builder eagerlyScrub(@Nullable Boolean eagerlyScrub) {
+
             this.eagerlyScrub = eagerlyScrub;
             return this;
         }
         @CustomType.Setter
         public Builder ioLimit(@Nullable Integer ioLimit) {
+
             this.ioLimit = ioLimit;
             return this;
         }
         @CustomType.Setter
         public Builder ioReservation(@Nullable Integer ioReservation) {
+
             this.ioReservation = ioReservation;
             return this;
         }
         @CustomType.Setter
         public Builder ioShareCount(@Nullable Integer ioShareCount) {
+
             this.ioShareCount = ioShareCount;
             return this;
         }
         @CustomType.Setter
         public Builder ioShareLevel(@Nullable String ioShareLevel) {
+
             this.ioShareLevel = ioShareLevel;
             return this;
         }
         @CustomType.Setter
         public Builder keepOnRemove(@Nullable Boolean keepOnRemove) {
+
             this.keepOnRemove = keepOnRemove;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable Integer key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineDisk", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable Integer size) {
+
             this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder storagePolicyId(@Nullable String storagePolicyId) {
+
             this.storagePolicyId = storagePolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder thinProvisioned(@Nullable Boolean thinProvisioned) {
+
             this.thinProvisioned = thinProvisioned;
             return this;
         }
         @CustomType.Setter
         public Builder unitNumber(@Nullable Integer unitNumber) {
+
             this.unitNumber = unitNumber;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder writeThrough(@Nullable Boolean writeThrough) {
+
             this.writeThrough = writeThrough;
             return this;
         }

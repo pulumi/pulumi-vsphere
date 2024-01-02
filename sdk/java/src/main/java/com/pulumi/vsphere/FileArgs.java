@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -319,9 +320,15 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FileArgs build() {
-            $.datastore = Objects.requireNonNull($.datastore, "expected parameter 'datastore' to be non-null");
-            $.destinationFile = Objects.requireNonNull($.destinationFile, "expected parameter 'destinationFile' to be non-null");
-            $.sourceFile = Objects.requireNonNull($.sourceFile, "expected parameter 'sourceFile' to be non-null");
+            if ($.datastore == null) {
+                throw new MissingRequiredPropertyException("FileArgs", "datastore");
+            }
+            if ($.destinationFile == null) {
+                throw new MissingRequiredPropertyException("FileArgs", "destinationFile");
+            }
+            if ($.sourceFile == null) {
+                throw new MissingRequiredPropertyException("FileArgs", "sourceFile");
+            }
             return $;
         }
     }

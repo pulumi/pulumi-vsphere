@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -228,8 +229,12 @@ public final class DrsVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DrsVmOverrideArgs build() {
-            $.computeClusterId = Objects.requireNonNull($.computeClusterId, "expected parameter 'computeClusterId' to be non-null");
-            $.virtualMachineId = Objects.requireNonNull($.virtualMachineId, "expected parameter 'virtualMachineId' to be non-null");
+            if ($.computeClusterId == null) {
+                throw new MissingRequiredPropertyException("DrsVmOverrideArgs", "computeClusterId");
+            }
+            if ($.virtualMachineId == null) {
+                throw new MissingRequiredPropertyException("DrsVmOverrideArgs", "virtualMachineId");
+            }
             return $;
         }
     }

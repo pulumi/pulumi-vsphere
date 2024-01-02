@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class DistributedVirtualSwitchVlanRange {
 
         @CustomType.Setter
         public Builder maxVlan(Integer maxVlan) {
-            this.maxVlan = Objects.requireNonNull(maxVlan);
+            if (maxVlan == null) {
+              throw new MissingRequiredPropertyException("DistributedVirtualSwitchVlanRange", "maxVlan");
+            }
+            this.maxVlan = maxVlan;
             return this;
         }
         @CustomType.Setter
         public Builder minVlan(Integer minVlan) {
-            this.minVlan = Objects.requireNonNull(minVlan);
+            if (minVlan == null) {
+              throw new MissingRequiredPropertyException("DistributedVirtualSwitchVlanRange", "minVlan");
+            }
+            this.minVlan = minVlan;
             return this;
         }
         public DistributedVirtualSwitchVlanRange build() {

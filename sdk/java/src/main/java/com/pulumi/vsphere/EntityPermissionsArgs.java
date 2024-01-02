@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.EntityPermissionsPermissionArgs;
 import java.lang.String;
 import java.util.List;
@@ -169,9 +170,15 @@ public final class EntityPermissionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         public EntityPermissionsArgs build() {
-            $.entityId = Objects.requireNonNull($.entityId, "expected parameter 'entityId' to be non-null");
-            $.entityType = Objects.requireNonNull($.entityType, "expected parameter 'entityType' to be non-null");
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
+            if ($.entityId == null) {
+                throw new MissingRequiredPropertyException("EntityPermissionsArgs", "entityId");
+            }
+            if ($.entityType == null) {
+                throw new MissingRequiredPropertyException("EntityPermissionsArgs", "entityType");
+            }
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("EntityPermissionsArgs", "permissions");
+            }
             return $;
         }
     }

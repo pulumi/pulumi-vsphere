@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class ComputeClusterVsanFaultDomainFaultDomain {
 
         @CustomType.Setter
         public Builder hostIds(List<String> hostIds) {
-            this.hostIds = Objects.requireNonNull(hostIds);
+            if (hostIds == null) {
+              throw new MissingRequiredPropertyException("ComputeClusterVsanFaultDomainFaultDomain", "hostIds");
+            }
+            this.hostIds = hostIds;
             return this;
         }
         public Builder hostIds(String... hostIds) {
@@ -65,7 +69,10 @@ public final class ComputeClusterVsanFaultDomainFaultDomain {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ComputeClusterVsanFaultDomainFaultDomain", "name");
+            }
+            this.name = name;
             return this;
         }
         public ComputeClusterVsanFaultDomainFaultDomain build() {

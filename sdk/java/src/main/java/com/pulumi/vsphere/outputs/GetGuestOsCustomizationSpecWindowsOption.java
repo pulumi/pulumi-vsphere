@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -93,42 +94,64 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
 
         @CustomType.Setter
         public Builder adminPassword(String adminPassword) {
-            this.adminPassword = Objects.requireNonNull(adminPassword);
+            if (adminPassword == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "adminPassword");
+            }
+            this.adminPassword = adminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder autoLogon(Boolean autoLogon) {
-            this.autoLogon = Objects.requireNonNull(autoLogon);
+            if (autoLogon == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "autoLogon");
+            }
+            this.autoLogon = autoLogon;
             return this;
         }
         @CustomType.Setter
         public Builder autoLogonCount(Integer autoLogonCount) {
-            this.autoLogonCount = Objects.requireNonNull(autoLogonCount);
+            if (autoLogonCount == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "autoLogonCount");
+            }
+            this.autoLogonCount = autoLogonCount;
             return this;
         }
         @CustomType.Setter
         public Builder computerName(String computerName) {
-            this.computerName = Objects.requireNonNull(computerName);
+            if (computerName == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "computerName");
+            }
+            this.computerName = computerName;
             return this;
         }
         @CustomType.Setter
         public Builder domainAdminPassword(@Nullable String domainAdminPassword) {
+
             this.domainAdminPassword = domainAdminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder domainAdminUser(String domainAdminUser) {
-            this.domainAdminUser = Objects.requireNonNull(domainAdminUser);
+            if (domainAdminUser == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "domainAdminUser");
+            }
+            this.domainAdminUser = domainAdminUser;
             return this;
         }
         @CustomType.Setter
         public Builder joinDomain(String joinDomain) {
-            this.joinDomain = Objects.requireNonNull(joinDomain);
+            if (joinDomain == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "joinDomain");
+            }
+            this.joinDomain = joinDomain;
             return this;
         }
         @CustomType.Setter
         public Builder runOnceCommandLists(List<String> runOnceCommandLists) {
-            this.runOnceCommandLists = Objects.requireNonNull(runOnceCommandLists);
+            if (runOnceCommandLists == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "runOnceCommandLists");
+            }
+            this.runOnceCommandLists = runOnceCommandLists;
             return this;
         }
         public Builder runOnceCommandLists(String... runOnceCommandLists) {
@@ -136,12 +159,18 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
         }
         @CustomType.Setter
         public Builder timeZone(Integer timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder workgroup(String workgroup) {
-            this.workgroup = Objects.requireNonNull(workgroup);
+            if (workgroup == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "workgroup");
+            }
+            this.workgroup = workgroup;
             return this;
         }
         public GetGuestOsCustomizationSpecWindowsOption build() {

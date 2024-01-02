@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,7 +64,10 @@ public final class GetDynamicResult {
 
         @CustomType.Setter
         public Builder filters(List<String> filters) {
-            this.filters = Objects.requireNonNull(filters);
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("GetDynamicResult", "filters");
+            }
+            this.filters = filters;
             return this;
         }
         public Builder filters(String... filters) {
@@ -71,16 +75,21 @@ public final class GetDynamicResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDynamicResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

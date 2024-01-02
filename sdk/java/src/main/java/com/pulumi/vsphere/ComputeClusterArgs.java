@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;
 import com.pulumi.vsphere.inputs.ComputeClusterVsanFaultDomainArgs;
 import com.pulumi.vsphere.inputs.ComputeClusterVsanStretchedClusterArgs;
@@ -3288,7 +3289,9 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ComputeClusterArgs build() {
-            $.datacenterId = Objects.requireNonNull($.datacenterId, "expected parameter 'datacenterId' to be non-null");
+            if ($.datacenterId == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterArgs", "datacenterId");
+            }
             return $;
         }
     }

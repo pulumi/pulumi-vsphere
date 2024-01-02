@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GetContentLibraryItemArgs extends com.pulumi.resources.Invoke
         }
 
         public GetContentLibraryItemArgs build() {
-            $.libraryId = Objects.requireNonNull($.libraryId, "expected parameter 'libraryId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.libraryId == null) {
+                throw new MissingRequiredPropertyException("GetContentLibraryItemArgs", "libraryId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetContentLibraryItemArgs", "name");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetContentLibraryItemArgs", "type");
+            }
             return $;
         }
     }
