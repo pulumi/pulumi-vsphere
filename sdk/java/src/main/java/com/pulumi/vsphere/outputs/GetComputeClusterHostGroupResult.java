@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,12 +72,18 @@ public final class GetComputeClusterHostGroupResult {
 
         @CustomType.Setter
         public Builder computeClusterId(String computeClusterId) {
-            this.computeClusterId = Objects.requireNonNull(computeClusterId);
+            if (computeClusterId == null) {
+              throw new MissingRequiredPropertyException("GetComputeClusterHostGroupResult", "computeClusterId");
+            }
+            this.computeClusterId = computeClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder hostSystemIds(List<String> hostSystemIds) {
-            this.hostSystemIds = Objects.requireNonNull(hostSystemIds);
+            if (hostSystemIds == null) {
+              throw new MissingRequiredPropertyException("GetComputeClusterHostGroupResult", "hostSystemIds");
+            }
+            this.hostSystemIds = hostSystemIds;
             return this;
         }
         public Builder hostSystemIds(String... hostSystemIds) {
@@ -84,12 +91,18 @@ public final class GetComputeClusterHostGroupResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetComputeClusterHostGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetComputeClusterHostGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetComputeClusterHostGroupResult build() {

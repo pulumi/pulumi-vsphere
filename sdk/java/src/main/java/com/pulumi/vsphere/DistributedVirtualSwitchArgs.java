@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.DistributedVirtualSwitchHostArgs;
 import com.pulumi.vsphere.inputs.DistributedVirtualSwitchPvlanMappingArgs;
 import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
@@ -4100,7 +4101,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         public DistributedVirtualSwitchArgs build() {
-            $.datacenterId = Objects.requireNonNull($.datacenterId, "expected parameter 'datacenterId' to be non-null");
+            if ($.datacenterId == null) {
+                throw new MissingRequiredPropertyException("DistributedVirtualSwitchArgs", "datacenterId");
+            }
             return $;
         }
     }

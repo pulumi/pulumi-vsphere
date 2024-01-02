@@ -88,6 +88,7 @@ public final class VnicIpv6 {
 
         @CustomType.Setter
         public Builder addresses(@Nullable List<String> addresses) {
+
             this.addresses = addresses;
             return this;
         }
@@ -96,16 +97,19 @@ public final class VnicIpv6 {
         }
         @CustomType.Setter
         public Builder autoconfig(@Nullable Boolean autoconfig) {
+
             this.autoconfig = autoconfig;
             return this;
         }
         @CustomType.Setter
         public Builder dhcp(@Nullable Boolean dhcp) {
+
             this.dhcp = dhcp;
             return this;
         }
         @CustomType.Setter
         public Builder gw(@Nullable String gw) {
+
             this.gw = gw;
             return this;
         }

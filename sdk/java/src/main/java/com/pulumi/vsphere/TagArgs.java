@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,7 +159,9 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagArgs build() {
-            $.categoryId = Objects.requireNonNull($.categoryId, "expected parameter 'categoryId' to be non-null");
+            if ($.categoryId == null) {
+                throw new MissingRequiredPropertyException("TagArgs", "categoryId");
+            }
             return $;
         }
     }

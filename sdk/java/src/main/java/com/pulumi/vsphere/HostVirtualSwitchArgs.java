@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -975,9 +976,15 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         public HostVirtualSwitchArgs build() {
-            $.activeNics = Objects.requireNonNull($.activeNics, "expected parameter 'activeNics' to be non-null");
-            $.hostSystemId = Objects.requireNonNull($.hostSystemId, "expected parameter 'hostSystemId' to be non-null");
-            $.networkAdapters = Objects.requireNonNull($.networkAdapters, "expected parameter 'networkAdapters' to be non-null");
+            if ($.activeNics == null) {
+                throw new MissingRequiredPropertyException("HostVirtualSwitchArgs", "activeNics");
+            }
+            if ($.hostSystemId == null) {
+                throw new MissingRequiredPropertyException("HostVirtualSwitchArgs", "hostSystemId");
+            }
+            if ($.networkAdapters == null) {
+                throw new MissingRequiredPropertyException("HostVirtualSwitchArgs", "networkAdapters");
+            }
             return $;
         }
     }

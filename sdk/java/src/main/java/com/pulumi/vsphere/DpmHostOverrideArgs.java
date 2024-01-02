@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -224,8 +225,12 @@ public final class DpmHostOverrideArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DpmHostOverrideArgs build() {
-            $.computeClusterId = Objects.requireNonNull($.computeClusterId, "expected parameter 'computeClusterId' to be non-null");
-            $.hostSystemId = Objects.requireNonNull($.hostSystemId, "expected parameter 'hostSystemId' to be non-null");
+            if ($.computeClusterId == null) {
+                throw new MissingRequiredPropertyException("DpmHostOverrideArgs", "computeClusterId");
+            }
+            if ($.hostSystemId == null) {
+                throw new MissingRequiredPropertyException("DpmHostOverrideArgs", "hostSystemId");
+            }
             return $;
         }
     }

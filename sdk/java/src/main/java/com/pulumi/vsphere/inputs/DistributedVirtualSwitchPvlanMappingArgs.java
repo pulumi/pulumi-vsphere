@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -161,9 +162,15 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
         }
 
         public DistributedVirtualSwitchPvlanMappingArgs build() {
-            $.primaryVlanId = Objects.requireNonNull($.primaryVlanId, "expected parameter 'primaryVlanId' to be non-null");
-            $.pvlanType = Objects.requireNonNull($.pvlanType, "expected parameter 'pvlanType' to be non-null");
-            $.secondaryVlanId = Objects.requireNonNull($.secondaryVlanId, "expected parameter 'secondaryVlanId' to be non-null");
+            if ($.primaryVlanId == null) {
+                throw new MissingRequiredPropertyException("DistributedVirtualSwitchPvlanMappingArgs", "primaryVlanId");
+            }
+            if ($.pvlanType == null) {
+                throw new MissingRequiredPropertyException("DistributedVirtualSwitchPvlanMappingArgs", "pvlanType");
+            }
+            if ($.secondaryVlanId == null) {
+                throw new MissingRequiredPropertyException("DistributedVirtualSwitchPvlanMappingArgs", "secondaryVlanId");
+            }
             return $;
         }
     }

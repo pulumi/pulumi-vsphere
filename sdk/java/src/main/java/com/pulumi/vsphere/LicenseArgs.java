@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class LicenseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LicenseArgs build() {
-            $.licenseKey = Objects.requireNonNull($.licenseKey, "expected parameter 'licenseKey' to be non-null");
+            if ($.licenseKey == null) {
+                throw new MissingRequiredPropertyException("LicenseArgs", "licenseKey");
+            }
             return $;
         }
     }

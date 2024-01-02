@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.VmStoragePolicyTagRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -162,7 +163,9 @@ public final class VmStoragePolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public VmStoragePolicyArgs build() {
-            $.tagRules = Objects.requireNonNull($.tagRules, "expected parameter 'tagRules' to be non-null");
+            if ($.tagRules == null) {
+                throw new MissingRequiredPropertyException("VmStoragePolicyArgs", "tagRules");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.outputs.GetVirtualMachineDisk;
 import com.pulumi.vsphere.outputs.GetVirtualMachineNetworkInterface;
 import com.pulumi.vsphere.outputs.GetVirtualMachineVapp;
@@ -597,82 +598,108 @@ public final class GetVirtualMachineResult {
 
         @CustomType.Setter
         public Builder alternateGuestName(@Nullable String alternateGuestName) {
+
             this.alternateGuestName = alternateGuestName;
             return this;
         }
         @CustomType.Setter
         public Builder annotation(String annotation) {
-            this.annotation = Objects.requireNonNull(annotation);
+            if (annotation == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "annotation");
+            }
+            this.annotation = annotation;
             return this;
         }
         @CustomType.Setter
         public Builder bootDelay(@Nullable Integer bootDelay) {
+
             this.bootDelay = bootDelay;
             return this;
         }
         @CustomType.Setter
         public Builder bootRetryDelay(@Nullable Integer bootRetryDelay) {
+
             this.bootRetryDelay = bootRetryDelay;
             return this;
         }
         @CustomType.Setter
         public Builder bootRetryEnabled(@Nullable Boolean bootRetryEnabled) {
+
             this.bootRetryEnabled = bootRetryEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder changeVersion(String changeVersion) {
-            this.changeVersion = Objects.requireNonNull(changeVersion);
+            if (changeVersion == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "changeVersion");
+            }
+            this.changeVersion = changeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder cpuHotAddEnabled(@Nullable Boolean cpuHotAddEnabled) {
+
             this.cpuHotAddEnabled = cpuHotAddEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder cpuHotRemoveEnabled(@Nullable Boolean cpuHotRemoveEnabled) {
+
             this.cpuHotRemoveEnabled = cpuHotRemoveEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder cpuLimit(@Nullable Integer cpuLimit) {
+
             this.cpuLimit = cpuLimit;
             return this;
         }
         @CustomType.Setter
         public Builder cpuPerformanceCountersEnabled(@Nullable Boolean cpuPerformanceCountersEnabled) {
+
             this.cpuPerformanceCountersEnabled = cpuPerformanceCountersEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder cpuReservation(@Nullable Integer cpuReservation) {
+
             this.cpuReservation = cpuReservation;
             return this;
         }
         @CustomType.Setter
         public Builder cpuShareCount(Integer cpuShareCount) {
-            this.cpuShareCount = Objects.requireNonNull(cpuShareCount);
+            if (cpuShareCount == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "cpuShareCount");
+            }
+            this.cpuShareCount = cpuShareCount;
             return this;
         }
         @CustomType.Setter
         public Builder cpuShareLevel(@Nullable String cpuShareLevel) {
+
             this.cpuShareLevel = cpuShareLevel;
             return this;
         }
         @CustomType.Setter
         public Builder datacenterId(@Nullable String datacenterId) {
+
             this.datacenterId = datacenterId;
             return this;
         }
         @CustomType.Setter
         public Builder defaultIpAddress(String defaultIpAddress) {
-            this.defaultIpAddress = Objects.requireNonNull(defaultIpAddress);
+            if (defaultIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "defaultIpAddress");
+            }
+            this.defaultIpAddress = defaultIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder disks(List<GetVirtualMachineDisk> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(GetVirtualMachineDisk... disks) {
@@ -680,47 +707,60 @@ public final class GetVirtualMachineResult {
         }
         @CustomType.Setter
         public Builder efiSecureBootEnabled(@Nullable Boolean efiSecureBootEnabled) {
+
             this.efiSecureBootEnabled = efiSecureBootEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder enableDiskUuid(@Nullable Boolean enableDiskUuid) {
+
             this.enableDiskUuid = enableDiskUuid;
             return this;
         }
         @CustomType.Setter
         public Builder enableLogging(@Nullable Boolean enableLogging) {
+
             this.enableLogging = enableLogging;
             return this;
         }
         @CustomType.Setter
         public Builder eptRviMode(@Nullable String eptRviMode) {
+
             this.eptRviMode = eptRviMode;
             return this;
         }
         @CustomType.Setter
         public Builder extraConfig(@Nullable Map<String,String> extraConfig) {
+
             this.extraConfig = extraConfig;
             return this;
         }
         @CustomType.Setter
         public Builder extraConfigRebootRequired(@Nullable Boolean extraConfigRebootRequired) {
+
             this.extraConfigRebootRequired = extraConfigRebootRequired;
             return this;
         }
         @CustomType.Setter
         public Builder firmware(@Nullable String firmware) {
+
             this.firmware = firmware;
             return this;
         }
         @CustomType.Setter
         public Builder guestId(String guestId) {
-            this.guestId = Objects.requireNonNull(guestId);
+            if (guestId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "guestId");
+            }
+            this.guestId = guestId;
             return this;
         }
         @CustomType.Setter
         public Builder guestIpAddresses(List<String> guestIpAddresses) {
-            this.guestIpAddresses = Objects.requireNonNull(guestIpAddresses);
+            if (guestIpAddresses == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "guestIpAddresses");
+            }
+            this.guestIpAddresses = guestIpAddresses;
             return this;
         }
         public Builder guestIpAddresses(String... guestIpAddresses) {
@@ -728,77 +768,102 @@ public final class GetVirtualMachineResult {
         }
         @CustomType.Setter
         public Builder hardwareVersion(Integer hardwareVersion) {
-            this.hardwareVersion = Objects.requireNonNull(hardwareVersion);
+            if (hardwareVersion == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "hardwareVersion");
+            }
+            this.hardwareVersion = hardwareVersion;
             return this;
         }
         @CustomType.Setter
         public Builder hvMode(@Nullable String hvMode) {
+
             this.hvMode = hvMode;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ideControllerScanCount(@Nullable Integer ideControllerScanCount) {
+
             this.ideControllerScanCount = ideControllerScanCount;
             return this;
         }
         @CustomType.Setter
         public Builder latencySensitivity(@Nullable String latencySensitivity) {
+
             this.latencySensitivity = latencySensitivity;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable Integer memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder memoryHotAddEnabled(@Nullable Boolean memoryHotAddEnabled) {
+
             this.memoryHotAddEnabled = memoryHotAddEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder memoryLimit(@Nullable Integer memoryLimit) {
+
             this.memoryLimit = memoryLimit;
             return this;
         }
         @CustomType.Setter
         public Builder memoryReservation(@Nullable Integer memoryReservation) {
+
             this.memoryReservation = memoryReservation;
             return this;
         }
         @CustomType.Setter
         public Builder memoryShareCount(Integer memoryShareCount) {
-            this.memoryShareCount = Objects.requireNonNull(memoryShareCount);
+            if (memoryShareCount == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "memoryShareCount");
+            }
+            this.memoryShareCount = memoryShareCount;
             return this;
         }
         @CustomType.Setter
         public Builder memoryShareLevel(@Nullable String memoryShareLevel) {
+
             this.memoryShareLevel = memoryShareLevel;
             return this;
         }
         @CustomType.Setter
         public Builder moid(String moid) {
-            this.moid = Objects.requireNonNull(moid);
+            if (moid == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "moid");
+            }
+            this.moid = moid;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nestedHvEnabled(@Nullable Boolean nestedHvEnabled) {
+
             this.nestedHvEnabled = nestedHvEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceTypes(List<String> networkInterfaceTypes) {
-            this.networkInterfaceTypes = Objects.requireNonNull(networkInterfaceTypes);
+            if (networkInterfaceTypes == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "networkInterfaceTypes");
+            }
+            this.networkInterfaceTypes = networkInterfaceTypes;
             return this;
         }
         public Builder networkInterfaceTypes(String... networkInterfaceTypes) {
@@ -806,7 +871,10 @@ public final class GetVirtualMachineResult {
         }
         @CustomType.Setter
         public Builder networkInterfaces(List<GetVirtualMachineNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(GetVirtualMachineNetworkInterface... networkInterfaces) {
@@ -814,102 +882,132 @@ public final class GetVirtualMachineResult {
         }
         @CustomType.Setter
         public Builder numCoresPerSocket(@Nullable Integer numCoresPerSocket) {
+
             this.numCoresPerSocket = numCoresPerSocket;
             return this;
         }
         @CustomType.Setter
         public Builder numCpus(@Nullable Integer numCpus) {
+
             this.numCpus = numCpus;
             return this;
         }
         @CustomType.Setter
         public Builder replaceTrigger(@Nullable String replaceTrigger) {
+
             this.replaceTrigger = replaceTrigger;
             return this;
         }
         @CustomType.Setter
         public Builder runToolsScriptsAfterPowerOn(@Nullable Boolean runToolsScriptsAfterPowerOn) {
+
             this.runToolsScriptsAfterPowerOn = runToolsScriptsAfterPowerOn;
             return this;
         }
         @CustomType.Setter
         public Builder runToolsScriptsAfterResume(@Nullable Boolean runToolsScriptsAfterResume) {
+
             this.runToolsScriptsAfterResume = runToolsScriptsAfterResume;
             return this;
         }
         @CustomType.Setter
         public Builder runToolsScriptsBeforeGuestReboot(@Nullable Boolean runToolsScriptsBeforeGuestReboot) {
+
             this.runToolsScriptsBeforeGuestReboot = runToolsScriptsBeforeGuestReboot;
             return this;
         }
         @CustomType.Setter
         public Builder runToolsScriptsBeforeGuestShutdown(@Nullable Boolean runToolsScriptsBeforeGuestShutdown) {
+
             this.runToolsScriptsBeforeGuestShutdown = runToolsScriptsBeforeGuestShutdown;
             return this;
         }
         @CustomType.Setter
         public Builder runToolsScriptsBeforeGuestStandby(@Nullable Boolean runToolsScriptsBeforeGuestStandby) {
+
             this.runToolsScriptsBeforeGuestStandby = runToolsScriptsBeforeGuestStandby;
             return this;
         }
         @CustomType.Setter
         public Builder sataControllerScanCount(@Nullable Integer sataControllerScanCount) {
+
             this.sataControllerScanCount = sataControllerScanCount;
             return this;
         }
         @CustomType.Setter
         public Builder scsiBusSharing(String scsiBusSharing) {
-            this.scsiBusSharing = Objects.requireNonNull(scsiBusSharing);
+            if (scsiBusSharing == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "scsiBusSharing");
+            }
+            this.scsiBusSharing = scsiBusSharing;
             return this;
         }
         @CustomType.Setter
         public Builder scsiControllerScanCount(@Nullable Integer scsiControllerScanCount) {
+
             this.scsiControllerScanCount = scsiControllerScanCount;
             return this;
         }
         @CustomType.Setter
         public Builder scsiType(String scsiType) {
-            this.scsiType = Objects.requireNonNull(scsiType);
+            if (scsiType == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "scsiType");
+            }
+            this.scsiType = scsiType;
             return this;
         }
         @CustomType.Setter
         public Builder storagePolicyId(String storagePolicyId) {
-            this.storagePolicyId = Objects.requireNonNull(storagePolicyId);
+            if (storagePolicyId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "storagePolicyId");
+            }
+            this.storagePolicyId = storagePolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder swapPlacementPolicy(@Nullable String swapPlacementPolicy) {
+
             this.swapPlacementPolicy = swapPlacementPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder syncTimeWithHost(@Nullable Boolean syncTimeWithHost) {
+
             this.syncTimeWithHost = syncTimeWithHost;
             return this;
         }
         @CustomType.Setter
         public Builder syncTimeWithHostPeriodically(@Nullable Boolean syncTimeWithHostPeriodically) {
+
             this.syncTimeWithHostPeriodically = syncTimeWithHostPeriodically;
             return this;
         }
         @CustomType.Setter
         public Builder toolsUpgradePolicy(@Nullable String toolsUpgradePolicy) {
+
             this.toolsUpgradePolicy = toolsUpgradePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder vapp(@Nullable GetVirtualMachineVapp vapp) {
+
             this.vapp = vapp;
             return this;
         }
         @CustomType.Setter
         public Builder vappTransports(List<String> vappTransports) {
-            this.vappTransports = Objects.requireNonNull(vappTransports);
+            if (vappTransports == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "vappTransports");
+            }
+            this.vappTransports = vappTransports;
             return this;
         }
         public Builder vappTransports(String... vappTransports) {
@@ -917,11 +1015,13 @@ public final class GetVirtualMachineResult {
         }
         @CustomType.Setter
         public Builder vbsEnabled(@Nullable Boolean vbsEnabled) {
+
             this.vbsEnabled = vbsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder vvtdEnabled(@Nullable Boolean vvtdEnabled) {
+
             this.vvtdEnabled = vvtdEnabled;
             return this;
         }

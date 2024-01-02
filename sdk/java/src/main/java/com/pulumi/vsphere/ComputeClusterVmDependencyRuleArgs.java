@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -318,9 +319,15 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
         }
 
         public ComputeClusterVmDependencyRuleArgs build() {
-            $.computeClusterId = Objects.requireNonNull($.computeClusterId, "expected parameter 'computeClusterId' to be non-null");
-            $.dependencyVmGroupName = Objects.requireNonNull($.dependencyVmGroupName, "expected parameter 'dependencyVmGroupName' to be non-null");
-            $.vmGroupName = Objects.requireNonNull($.vmGroupName, "expected parameter 'vmGroupName' to be non-null");
+            if ($.computeClusterId == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVmDependencyRuleArgs", "computeClusterId");
+            }
+            if ($.dependencyVmGroupName == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVmDependencyRuleArgs", "dependencyVmGroupName");
+            }
+            if ($.vmGroupName == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVmDependencyRuleArgs", "vmGroupName");
+            }
             return $;
         }
     }

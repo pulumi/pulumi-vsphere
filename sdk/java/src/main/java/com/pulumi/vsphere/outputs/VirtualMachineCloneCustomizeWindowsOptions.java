@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -111,56 +112,69 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
 
         @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
+
             this.adminPassword = adminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder autoLogon(@Nullable Boolean autoLogon) {
+
             this.autoLogon = autoLogon;
             return this;
         }
         @CustomType.Setter
         public Builder autoLogonCount(@Nullable Integer autoLogonCount) {
+
             this.autoLogonCount = autoLogonCount;
             return this;
         }
         @CustomType.Setter
         public Builder computerName(String computerName) {
-            this.computerName = Objects.requireNonNull(computerName);
+            if (computerName == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineCloneCustomizeWindowsOptions", "computerName");
+            }
+            this.computerName = computerName;
             return this;
         }
         @CustomType.Setter
         public Builder domainAdminPassword(@Nullable String domainAdminPassword) {
+
             this.domainAdminPassword = domainAdminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder domainAdminUser(@Nullable String domainAdminUser) {
+
             this.domainAdminUser = domainAdminUser;
             return this;
         }
         @CustomType.Setter
         public Builder fullName(@Nullable String fullName) {
+
             this.fullName = fullName;
             return this;
         }
         @CustomType.Setter
         public Builder joinDomain(@Nullable String joinDomain) {
+
             this.joinDomain = joinDomain;
             return this;
         }
         @CustomType.Setter
         public Builder organizationName(@Nullable String organizationName) {
+
             this.organizationName = organizationName;
             return this;
         }
         @CustomType.Setter
         public Builder productKey(@Nullable String productKey) {
+
             this.productKey = productKey;
             return this;
         }
         @CustomType.Setter
         public Builder runOnceCommandLists(@Nullable List<String> runOnceCommandLists) {
+
             this.runOnceCommandLists = runOnceCommandLists;
             return this;
         }
@@ -169,11 +183,13 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable Integer timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder workgroup(@Nullable String workgroup) {
+
             this.workgroup = workgroup;
             return this;
         }

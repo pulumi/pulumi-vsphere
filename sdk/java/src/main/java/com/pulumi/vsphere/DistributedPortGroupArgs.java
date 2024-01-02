@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.DistributedPortGroupVlanRangeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -1930,7 +1931,9 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         public DistributedPortGroupArgs build() {
-            $.distributedVirtualSwitchUuid = Objects.requireNonNull($.distributedVirtualSwitchUuid, "expected parameter 'distributedVirtualSwitchUuid' to be non-null");
+            if ($.distributedVirtualSwitchUuid == null) {
+                throw new MissingRequiredPropertyException("DistributedPortGroupArgs", "distributedVirtualSwitchUuid");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -237,7 +238,10 @@ public final class ComputeClusterVsanStretchedCluster {
 
         @CustomType.Setter
         public Builder preferredFaultDomainHostIds(List<String> preferredFaultDomainHostIds) {
-            this.preferredFaultDomainHostIds = Objects.requireNonNull(preferredFaultDomainHostIds);
+            if (preferredFaultDomainHostIds == null) {
+              throw new MissingRequiredPropertyException("ComputeClusterVsanStretchedCluster", "preferredFaultDomainHostIds");
+            }
+            this.preferredFaultDomainHostIds = preferredFaultDomainHostIds;
             return this;
         }
         public Builder preferredFaultDomainHostIds(String... preferredFaultDomainHostIds) {
@@ -245,12 +249,16 @@ public final class ComputeClusterVsanStretchedCluster {
         }
         @CustomType.Setter
         public Builder preferredFaultDomainName(@Nullable String preferredFaultDomainName) {
+
             this.preferredFaultDomainName = preferredFaultDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryFaultDomainHostIds(List<String> secondaryFaultDomainHostIds) {
-            this.secondaryFaultDomainHostIds = Objects.requireNonNull(secondaryFaultDomainHostIds);
+            if (secondaryFaultDomainHostIds == null) {
+              throw new MissingRequiredPropertyException("ComputeClusterVsanStretchedCluster", "secondaryFaultDomainHostIds");
+            }
+            this.secondaryFaultDomainHostIds = secondaryFaultDomainHostIds;
             return this;
         }
         public Builder secondaryFaultDomainHostIds(String... secondaryFaultDomainHostIds) {
@@ -258,12 +266,16 @@ public final class ComputeClusterVsanStretchedCluster {
         }
         @CustomType.Setter
         public Builder secondaryFaultDomainName(@Nullable String secondaryFaultDomainName) {
+
             this.secondaryFaultDomainName = secondaryFaultDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder witnessNode(String witnessNode) {
-            this.witnessNode = Objects.requireNonNull(witnessNode);
+            if (witnessNode == null) {
+              throw new MissingRequiredPropertyException("ComputeClusterVsanStretchedCluster", "witnessNode");
+            }
+            this.witnessNode = witnessNode;
             return this;
         }
         public ComputeClusterVsanStretchedCluster build() {

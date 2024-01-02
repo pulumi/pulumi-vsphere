@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizationSpecArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineCloneCustomizeArgs;
 import java.lang.Boolean;
@@ -163,7 +164,9 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
         }
 
         public VirtualMachineCloneArgs build() {
-            $.templateUuid = Objects.requireNonNull($.templateUuid, "expected parameter 'templateUuid' to be non-null");
+            if ($.templateUuid == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineCloneArgs", "templateUuid");
+            }
             return $;
         }
     }

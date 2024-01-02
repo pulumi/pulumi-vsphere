@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.outputs.VirtualMachineCloneCustomizationSpec;
 import com.pulumi.vsphere.outputs.VirtualMachineCloneCustomize;
 import java.lang.Boolean;
@@ -77,36 +78,45 @@ public final class VirtualMachineClone {
 
         @CustomType.Setter
         public Builder customizationSpec(@Nullable VirtualMachineCloneCustomizationSpec customizationSpec) {
+
             this.customizationSpec = customizationSpec;
             return this;
         }
         @CustomType.Setter
         public Builder customize(@Nullable VirtualMachineCloneCustomize customize) {
+
             this.customize = customize;
             return this;
         }
         @CustomType.Setter
         public Builder linkedClone(@Nullable Boolean linkedClone) {
+
             this.linkedClone = linkedClone;
             return this;
         }
         @CustomType.Setter
         public Builder ovfNetworkMap(@Nullable Map<String,String> ovfNetworkMap) {
+
             this.ovfNetworkMap = ovfNetworkMap;
             return this;
         }
         @CustomType.Setter
         public Builder ovfStorageMap(@Nullable Map<String,String> ovfStorageMap) {
+
             this.ovfStorageMap = ovfStorageMap;
             return this;
         }
         @CustomType.Setter
         public Builder templateUuid(String templateUuid) {
-            this.templateUuid = Objects.requireNonNull(templateUuid);
+            if (templateUuid == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineClone", "templateUuid");
+            }
+            this.templateUuid = templateUuid;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }

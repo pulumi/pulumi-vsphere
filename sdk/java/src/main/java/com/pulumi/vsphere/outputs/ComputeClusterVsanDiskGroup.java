@@ -59,11 +59,13 @@ public final class ComputeClusterVsanDiskGroup {
 
         @CustomType.Setter
         public Builder cache(@Nullable String cache) {
+
             this.cache = cache;
             return this;
         }
         @CustomType.Setter
         public Builder storages(@Nullable List<String> storages) {
+
             this.storages = storages;
             return this;
         }

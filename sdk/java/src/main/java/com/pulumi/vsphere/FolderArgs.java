@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -339,8 +340,12 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FolderArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("FolderArgs", "path");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("FolderArgs", "type");
+            }
             return $;
         }
     }

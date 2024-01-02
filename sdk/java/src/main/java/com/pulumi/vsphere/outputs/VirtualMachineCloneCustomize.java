@@ -97,6 +97,7 @@ public final class VirtualMachineCloneCustomize {
 
         @CustomType.Setter
         public Builder dnsServerLists(@Nullable List<String> dnsServerLists) {
+
             this.dnsServerLists = dnsServerLists;
             return this;
         }
@@ -105,6 +106,7 @@ public final class VirtualMachineCloneCustomize {
         }
         @CustomType.Setter
         public Builder dnsSuffixLists(@Nullable List<String> dnsSuffixLists) {
+
             this.dnsSuffixLists = dnsSuffixLists;
             return this;
         }
@@ -113,21 +115,25 @@ public final class VirtualMachineCloneCustomize {
         }
         @CustomType.Setter
         public Builder ipv4Gateway(@Nullable String ipv4Gateway) {
+
             this.ipv4Gateway = ipv4Gateway;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Gateway(@Nullable String ipv6Gateway) {
+
             this.ipv6Gateway = ipv6Gateway;
             return this;
         }
         @CustomType.Setter
         public Builder linuxOptions(@Nullable VirtualMachineCloneCustomizeLinuxOptions linuxOptions) {
+
             this.linuxOptions = linuxOptions;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(@Nullable List<VirtualMachineCloneCustomizeNetworkInterface> networkInterfaces) {
+
             this.networkInterfaces = networkInterfaces;
             return this;
         }
@@ -136,16 +142,19 @@ public final class VirtualMachineCloneCustomize {
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder windowsOptions(@Nullable VirtualMachineCloneCustomizeWindowsOptions windowsOptions) {
+
             this.windowsOptions = windowsOptions;
             return this;
         }
         @CustomType.Setter
         public Builder windowsSysprepText(@Nullable String windowsSysprepText) {
+
             this.windowsSysprepText = windowsSysprepText;
             return this;
         }

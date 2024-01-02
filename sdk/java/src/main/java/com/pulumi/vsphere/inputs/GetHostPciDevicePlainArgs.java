@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -161,7 +162,9 @@ public final class GetHostPciDevicePlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetHostPciDevicePlainArgs build() {
-            $.hostId = Objects.requireNonNull($.hostId, "expected parameter 'hostId' to be non-null");
+            if ($.hostId == null) {
+                throw new MissingRequiredPropertyException("GetHostPciDevicePlainArgs", "hostId");
+            }
             return $;
         }
     }

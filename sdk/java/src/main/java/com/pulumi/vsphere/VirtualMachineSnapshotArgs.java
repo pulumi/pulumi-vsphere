@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -323,11 +324,21 @@ public final class VirtualMachineSnapshotArgs extends com.pulumi.resources.Resou
         }
 
         public VirtualMachineSnapshotArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.memory = Objects.requireNonNull($.memory, "expected parameter 'memory' to be non-null");
-            $.quiesce = Objects.requireNonNull($.quiesce, "expected parameter 'quiesce' to be non-null");
-            $.snapshotName = Objects.requireNonNull($.snapshotName, "expected parameter 'snapshotName' to be non-null");
-            $.virtualMachineUuid = Objects.requireNonNull($.virtualMachineUuid, "expected parameter 'virtualMachineUuid' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineSnapshotArgs", "description");
+            }
+            if ($.memory == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineSnapshotArgs", "memory");
+            }
+            if ($.quiesce == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineSnapshotArgs", "quiesce");
+            }
+            if ($.snapshotName == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineSnapshotArgs", "snapshotName");
+            }
+            if ($.virtualMachineUuid == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineSnapshotArgs", "virtualMachineUuid");
+            }
             return $;
         }
     }

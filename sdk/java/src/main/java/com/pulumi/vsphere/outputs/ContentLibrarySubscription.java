@@ -115,31 +115,37 @@ public final class ContentLibrarySubscription {
 
         @CustomType.Setter
         public Builder authenticationMethod(@Nullable String authenticationMethod) {
+
             this.authenticationMethod = authenticationMethod;
             return this;
         }
         @CustomType.Setter
         public Builder automaticSync(@Nullable Boolean automaticSync) {
+
             this.automaticSync = automaticSync;
             return this;
         }
         @CustomType.Setter
         public Builder onDemand(@Nullable Boolean onDemand) {
+
             this.onDemand = onDemand;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionUrl(@Nullable String subscriptionUrl) {
+
             this.subscriptionUrl = subscriptionUrl;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

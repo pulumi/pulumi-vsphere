@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -77,22 +78,32 @@ public final class GetDistributedVirtualSwitchResult {
 
         @CustomType.Setter
         public Builder datacenterId(@Nullable String datacenterId) {
+
             this.datacenterId = datacenterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDistributedVirtualSwitchResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDistributedVirtualSwitchResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder uplinks(List<String> uplinks) {
-            this.uplinks = Objects.requireNonNull(uplinks);
+            if (uplinks == null) {
+              throw new MissingRequiredPropertyException("GetDistributedVirtualSwitchResult", "uplinks");
+            }
+            this.uplinks = uplinks;
             return this;
         }
         public Builder uplinks(String... uplinks) {

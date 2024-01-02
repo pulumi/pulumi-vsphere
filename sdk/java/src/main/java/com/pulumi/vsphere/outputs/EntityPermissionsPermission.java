@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class EntityPermissionsPermission {
 
         @CustomType.Setter
         public Builder isGroup(Boolean isGroup) {
-            this.isGroup = Objects.requireNonNull(isGroup);
+            if (isGroup == null) {
+              throw new MissingRequiredPropertyException("EntityPermissionsPermission", "isGroup");
+            }
+            this.isGroup = isGroup;
             return this;
         }
         @CustomType.Setter
         public Builder propagate(Boolean propagate) {
-            this.propagate = Objects.requireNonNull(propagate);
+            if (propagate == null) {
+              throw new MissingRequiredPropertyException("EntityPermissionsPermission", "propagate");
+            }
+            this.propagate = propagate;
             return this;
         }
         @CustomType.Setter
         public Builder roleId(String roleId) {
-            this.roleId = Objects.requireNonNull(roleId);
+            if (roleId == null) {
+              throw new MissingRequiredPropertyException("EntityPermissionsPermission", "roleId");
+            }
+            this.roleId = roleId;
             return this;
         }
         @CustomType.Setter
         public Builder userOrGroup(String userOrGroup) {
-            this.userOrGroup = Objects.requireNonNull(userOrGroup);
+            if (userOrGroup == null) {
+              throw new MissingRequiredPropertyException("EntityPermissionsPermission", "userOrGroup");
+            }
+            this.userOrGroup = userOrGroup;
             return this;
         }
         public EntityPermissionsPermission build() {

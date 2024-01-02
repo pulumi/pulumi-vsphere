@@ -102,26 +102,31 @@ public final class VirtualMachineCdrom {
 
         @CustomType.Setter
         public Builder clientDevice(@Nullable Boolean clientDevice) {
+
             this.clientDevice = clientDevice;
             return this;
         }
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder deviceAddress(@Nullable String deviceAddress) {
+
             this.deviceAddress = deviceAddress;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable Integer key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

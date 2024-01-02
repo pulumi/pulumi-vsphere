@@ -68,11 +68,13 @@ public final class VirtualMachineCloneCustomizeNetworkInterface {
 
         @CustomType.Setter
         public Builder dnsDomain(@Nullable String dnsDomain) {
+
             this.dnsDomain = dnsDomain;
             return this;
         }
         @CustomType.Setter
         public Builder dnsServerLists(@Nullable List<String> dnsServerLists) {
+
             this.dnsServerLists = dnsServerLists;
             return this;
         }
@@ -81,21 +83,25 @@ public final class VirtualMachineCloneCustomizeNetworkInterface {
         }
         @CustomType.Setter
         public Builder ipv4Address(@Nullable String ipv4Address) {
+
             this.ipv4Address = ipv4Address;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4Netmask(@Nullable Integer ipv4Netmask) {
+
             this.ipv4Netmask = ipv4Netmask;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(@Nullable String ipv6Address) {
+
             this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Netmask(@Nullable Integer ipv6Netmask) {
+
             this.ipv6Netmask = ipv6Netmask;
             return this;
         }

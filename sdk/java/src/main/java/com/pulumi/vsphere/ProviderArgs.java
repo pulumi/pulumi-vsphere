@@ -6,6 +6,7 @@ package com.pulumi.vsphere;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -535,10 +536,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             $.clientDebug = Codegen.booleanProp("clientDebug").output().arg($.clientDebug).env("VSPHERE_CLIENT_DEBUG").getNullable();
             $.clientDebugPath = Codegen.stringProp("clientDebugPath").output().arg($.clientDebugPath).env("VSPHERE_CLIENT_DEBUG_PATH").getNullable();
             $.clientDebugPathRun = Codegen.stringProp("clientDebugPathRun").output().arg($.clientDebugPathRun).env("VSPHERE_CLIENT_DEBUG_PATH_RUN").getNullable();
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "password");
+            }
             $.persistSession = Codegen.booleanProp("persistSession").output().arg($.persistSession).env("VSPHERE_PERSIST_SESSION").getNullable();
             $.restSessionPath = Codegen.stringProp("restSessionPath").output().arg($.restSessionPath).env("VSPHERE_REST_SESSION_PATH").getNullable();
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "user");
+            }
             $.vimKeepAlive = Codegen.integerProp("vimKeepAlive").output().arg($.vimKeepAlive).env("VSPHERE_VIM_KEEP_ALIVE").getNullable();
             $.vimSessionPath = Codegen.stringProp("vimSessionPath").output().arg($.vimSessionPath).env("VSPHERE_VIM_SESSION_PATH").getNullable();
             return $;

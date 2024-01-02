@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -203,7 +204,9 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
         }
 
         public ComputeClusterHostGroupArgs build() {
-            $.computeClusterId = Objects.requireNonNull($.computeClusterId, "expected parameter 'computeClusterId' to be non-null");
+            if ($.computeClusterId == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterHostGroupArgs", "computeClusterId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -126,7 +127,9 @@ public final class GetHostThumbprintPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetHostThumbprintPlainArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("GetHostThumbprintPlainArgs", "address");
+            }
             return $;
         }
     }

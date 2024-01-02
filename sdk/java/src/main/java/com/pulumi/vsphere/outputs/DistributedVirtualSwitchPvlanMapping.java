@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -77,17 +78,26 @@ public final class DistributedVirtualSwitchPvlanMapping {
 
         @CustomType.Setter
         public Builder primaryVlanId(Integer primaryVlanId) {
-            this.primaryVlanId = Objects.requireNonNull(primaryVlanId);
+            if (primaryVlanId == null) {
+              throw new MissingRequiredPropertyException("DistributedVirtualSwitchPvlanMapping", "primaryVlanId");
+            }
+            this.primaryVlanId = primaryVlanId;
             return this;
         }
         @CustomType.Setter
         public Builder pvlanType(String pvlanType) {
-            this.pvlanType = Objects.requireNonNull(pvlanType);
+            if (pvlanType == null) {
+              throw new MissingRequiredPropertyException("DistributedVirtualSwitchPvlanMapping", "pvlanType");
+            }
+            this.pvlanType = pvlanType;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryVlanId(Integer secondaryVlanId) {
-            this.secondaryVlanId = Objects.requireNonNull(secondaryVlanId);
+            if (secondaryVlanId == null) {
+              throw new MissingRequiredPropertyException("DistributedVirtualSwitchPvlanMapping", "secondaryVlanId");
+            }
+            this.secondaryVlanId = secondaryVlanId;
             return this;
         }
         public DistributedVirtualSwitchPvlanMapping build() {

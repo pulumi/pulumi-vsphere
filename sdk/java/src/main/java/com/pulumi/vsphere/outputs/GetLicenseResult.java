@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -112,37 +113,58 @@ public final class GetLicenseResult {
 
         @CustomType.Setter
         public Builder editionKey(String editionKey) {
-            this.editionKey = Objects.requireNonNull(editionKey);
+            if (editionKey == null) {
+              throw new MissingRequiredPropertyException("GetLicenseResult", "editionKey");
+            }
+            this.editionKey = editionKey;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLicenseResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetLicenseResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder licenseKey(String licenseKey) {
-            this.licenseKey = Objects.requireNonNull(licenseKey);
+            if (licenseKey == null) {
+              throw new MissingRequiredPropertyException("GetLicenseResult", "licenseKey");
+            }
+            this.licenseKey = licenseKey;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetLicenseResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder total(Integer total) {
-            this.total = Objects.requireNonNull(total);
+            if (total == null) {
+              throw new MissingRequiredPropertyException("GetLicenseResult", "total");
+            }
+            this.total = total;
             return this;
         }
         @CustomType.Setter
         public Builder used(Integer used) {
-            this.used = Objects.requireNonNull(used);
+            if (used == null) {
+              throw new MissingRequiredPropertyException("GetLicenseResult", "used");
+            }
+            this.used = used;
             return this;
         }
         public GetLicenseResult build() {
