@@ -44,6 +44,7 @@ public final class ComputeClusterVsanFaultDomain {
 
         @CustomType.Setter
         public Builder faultDomains(@Nullable List<ComputeClusterVsanFaultDomainFaultDomain> faultDomains) {
+
             this.faultDomains = faultDomains;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.ContentLibraryPublicationArgs;
 import com.pulumi.vsphere.inputs.ContentLibrarySubscriptionArgs;
 import java.lang.String;
@@ -237,7 +238,9 @@ public final class ContentLibraryArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ContentLibraryArgs build() {
-            $.storageBackings = Objects.requireNonNull($.storageBackings, "expected parameter 'storageBackings' to be non-null");
+            if ($.storageBackings == null) {
+                throw new MissingRequiredPropertyException("ContentLibraryArgs", "storageBackings");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class ComputeClusterVsanFaultDomainFaultDomainArgs extends com.pulu
         }
 
         public ComputeClusterVsanFaultDomainFaultDomainArgs build() {
-            $.hostIds = Objects.requireNonNull($.hostIds, "expected parameter 'hostIds' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.hostIds == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVsanFaultDomainFaultDomainArgs", "hostIds");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVsanFaultDomainFaultDomainArgs", "name");
+            }
             return $;
         }
     }

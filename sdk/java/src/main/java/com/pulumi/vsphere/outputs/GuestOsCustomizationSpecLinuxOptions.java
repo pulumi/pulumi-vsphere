@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -61,26 +62,35 @@ public final class GuestOsCustomizationSpecLinuxOptions {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GuestOsCustomizationSpecLinuxOptions", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder hostName(String hostName) {
-            this.hostName = Objects.requireNonNull(hostName);
+            if (hostName == null) {
+              throw new MissingRequiredPropertyException("GuestOsCustomizationSpecLinuxOptions", "hostName");
+            }
+            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
         public Builder hwClockUtc(@Nullable Boolean hwClockUtc) {
+
             this.hwClockUtc = hwClockUtc;
             return this;
         }
         @CustomType.Setter
         public Builder scriptText(@Nullable String scriptText) {
+
             this.scriptText = scriptText;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }

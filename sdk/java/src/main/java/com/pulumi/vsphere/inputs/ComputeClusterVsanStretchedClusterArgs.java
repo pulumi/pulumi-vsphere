@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -517,9 +518,15 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
         }
 
         public ComputeClusterVsanStretchedClusterArgs build() {
-            $.preferredFaultDomainHostIds = Objects.requireNonNull($.preferredFaultDomainHostIds, "expected parameter 'preferredFaultDomainHostIds' to be non-null");
-            $.secondaryFaultDomainHostIds = Objects.requireNonNull($.secondaryFaultDomainHostIds, "expected parameter 'secondaryFaultDomainHostIds' to be non-null");
-            $.witnessNode = Objects.requireNonNull($.witnessNode, "expected parameter 'witnessNode' to be non-null");
+            if ($.preferredFaultDomainHostIds == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVsanStretchedClusterArgs", "preferredFaultDomainHostIds");
+            }
+            if ($.secondaryFaultDomainHostIds == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVsanStretchedClusterArgs", "secondaryFaultDomainHostIds");
+            }
+            if ($.witnessNode == null) {
+                throw new MissingRequiredPropertyException("ComputeClusterVsanStretchedClusterArgs", "witnessNode");
+            }
             return $;
         }
     }

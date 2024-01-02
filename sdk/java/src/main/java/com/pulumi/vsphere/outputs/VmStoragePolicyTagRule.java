@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -74,17 +75,24 @@ public final class VmStoragePolicyTagRule {
 
         @CustomType.Setter
         public Builder includeDatastoresWithTags(@Nullable Boolean includeDatastoresWithTags) {
+
             this.includeDatastoresWithTags = includeDatastoresWithTags;
             return this;
         }
         @CustomType.Setter
         public Builder tagCategory(String tagCategory) {
-            this.tagCategory = Objects.requireNonNull(tagCategory);
+            if (tagCategory == null) {
+              throw new MissingRequiredPropertyException("VmStoragePolicyTagRule", "tagCategory");
+            }
+            this.tagCategory = tagCategory;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("VmStoragePolicyTagRule", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {

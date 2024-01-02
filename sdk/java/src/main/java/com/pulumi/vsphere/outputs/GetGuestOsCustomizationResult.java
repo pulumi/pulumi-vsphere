@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.outputs.GetGuestOsCustomizationSpec;
 import java.lang.String;
 import java.util.List;
@@ -120,32 +121,50 @@ public final class GetGuestOsCustomizationResult {
 
         @CustomType.Setter
         public Builder changeVersion(String changeVersion) {
-            this.changeVersion = Objects.requireNonNull(changeVersion);
+            if (changeVersion == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationResult", "changeVersion");
+            }
+            this.changeVersion = changeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdateTime(String lastUpdateTime) {
-            this.lastUpdateTime = Objects.requireNonNull(lastUpdateTime);
+            if (lastUpdateTime == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationResult", "lastUpdateTime");
+            }
+            this.lastUpdateTime = lastUpdateTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder specs(List<GetGuestOsCustomizationSpec> specs) {
-            this.specs = Objects.requireNonNull(specs);
+            if (specs == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationResult", "specs");
+            }
+            this.specs = specs;
             return this;
         }
         public Builder specs(GetGuestOsCustomizationSpec... specs) {
@@ -153,7 +172,10 @@ public final class GetGuestOsCustomizationResult {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetGuestOsCustomizationResult build() {

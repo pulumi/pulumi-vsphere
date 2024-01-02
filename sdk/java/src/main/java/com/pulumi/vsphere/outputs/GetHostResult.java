@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,22 +73,32 @@ public final class GetHostResult {
 
         @CustomType.Setter
         public Builder datacenterId(String datacenterId) {
-            this.datacenterId = Objects.requireNonNull(datacenterId);
+            if (datacenterId == null) {
+              throw new MissingRequiredPropertyException("GetHostResult", "datacenterId");
+            }
+            this.datacenterId = datacenterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourcePoolId(String resourcePoolId) {
-            this.resourcePoolId = Objects.requireNonNull(resourcePoolId);
+            if (resourcePoolId == null) {
+              throw new MissingRequiredPropertyException("GetHostResult", "resourcePoolId");
+            }
+            this.resourcePoolId = resourcePoolId;
             return this;
         }
         public GetHostResult build() {

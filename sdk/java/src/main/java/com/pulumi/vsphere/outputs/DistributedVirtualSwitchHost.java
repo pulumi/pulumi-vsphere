@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -62,6 +63,7 @@ public final class DistributedVirtualSwitchHost {
 
         @CustomType.Setter
         public Builder devices(@Nullable List<String> devices) {
+
             this.devices = devices;
             return this;
         }
@@ -70,7 +72,10 @@ public final class DistributedVirtualSwitchHost {
         }
         @CustomType.Setter
         public Builder hostSystemId(String hostSystemId) {
-            this.hostSystemId = Objects.requireNonNull(hostSystemId);
+            if (hostSystemId == null) {
+              throw new MissingRequiredPropertyException("DistributedVirtualSwitchHost", "hostSystemId");
+            }
+            this.hostSystemId = hostSystemId;
             return this;
         }
         public DistributedVirtualSwitchHost build() {

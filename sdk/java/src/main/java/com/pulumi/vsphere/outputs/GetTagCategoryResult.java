@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -67,7 +68,10 @@ public final class GetTagCategoryResult {
 
         @CustomType.Setter
         public Builder associableTypes(List<String> associableTypes) {
-            this.associableTypes = Objects.requireNonNull(associableTypes);
+            if (associableTypes == null) {
+              throw new MissingRequiredPropertyException("GetTagCategoryResult", "associableTypes");
+            }
+            this.associableTypes = associableTypes;
             return this;
         }
         public Builder associableTypes(String... associableTypes) {
@@ -75,22 +79,34 @@ public final class GetTagCategoryResult {
         }
         @CustomType.Setter
         public Builder cardinality(String cardinality) {
-            this.cardinality = Objects.requireNonNull(cardinality);
+            if (cardinality == null) {
+              throw new MissingRequiredPropertyException("GetTagCategoryResult", "cardinality");
+            }
+            this.cardinality = cardinality;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTagCategoryResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTagCategoryResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTagCategoryResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetTagCategoryResult build() {

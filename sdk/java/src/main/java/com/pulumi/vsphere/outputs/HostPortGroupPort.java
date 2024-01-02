@@ -57,11 +57,13 @@ public final class HostPortGroupPort {
 
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder macAddresses(@Nullable List<String> macAddresses) {
+
             this.macAddresses = macAddresses;
             return this;
         }
@@ -70,6 +72,7 @@ public final class HostPortGroupPort {
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

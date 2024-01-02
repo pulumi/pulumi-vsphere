@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetGuestOsCustomizationSpecLinuxOption {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecLinuxOption", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder hostName(String hostName) {
-            this.hostName = Objects.requireNonNull(hostName);
+            if (hostName == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecLinuxOption", "hostName");
+            }
+            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
         public Builder hwClockUtc(Boolean hwClockUtc) {
-            this.hwClockUtc = Objects.requireNonNull(hwClockUtc);
+            if (hwClockUtc == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecLinuxOption", "hwClockUtc");
+            }
+            this.hwClockUtc = hwClockUtc;
             return this;
         }
         @CustomType.Setter
         public Builder scriptText(String scriptText) {
-            this.scriptText = Objects.requireNonNull(scriptText);
+            if (scriptText == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecLinuxOption", "scriptText");
+            }
+            this.scriptText = scriptText;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(String timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecLinuxOption", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         public GetGuestOsCustomizationSpecLinuxOption build() {

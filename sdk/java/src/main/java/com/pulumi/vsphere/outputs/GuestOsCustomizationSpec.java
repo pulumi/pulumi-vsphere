@@ -82,6 +82,7 @@ public final class GuestOsCustomizationSpec {
 
         @CustomType.Setter
         public Builder dnsServerLists(@Nullable List<String> dnsServerLists) {
+
             this.dnsServerLists = dnsServerLists;
             return this;
         }
@@ -90,6 +91,7 @@ public final class GuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder dnsSuffixLists(@Nullable List<String> dnsSuffixLists) {
+
             this.dnsSuffixLists = dnsSuffixLists;
             return this;
         }
@@ -98,21 +100,25 @@ public final class GuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder ipv4Gateway(@Nullable String ipv4Gateway) {
+
             this.ipv4Gateway = ipv4Gateway;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Gateway(@Nullable String ipv6Gateway) {
+
             this.ipv6Gateway = ipv6Gateway;
             return this;
         }
         @CustomType.Setter
         public Builder linuxOptions(@Nullable GuestOsCustomizationSpecLinuxOptions linuxOptions) {
+
             this.linuxOptions = linuxOptions;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(@Nullable List<GuestOsCustomizationSpecNetworkInterface> networkInterfaces) {
+
             this.networkInterfaces = networkInterfaces;
             return this;
         }
@@ -121,11 +127,13 @@ public final class GuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder windowsOptions(@Nullable GuestOsCustomizationSpecWindowsOptions windowsOptions) {
+
             this.windowsOptions = windowsOptions;
             return this;
         }
         @CustomType.Setter
         public Builder windowsSysprepText(@Nullable String windowsSysprepText) {
+
             this.windowsSysprepText = windowsSysprepText;
             return this;
         }

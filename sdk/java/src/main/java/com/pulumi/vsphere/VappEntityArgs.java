@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -467,8 +468,12 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VappEntityArgs build() {
-            $.containerId = Objects.requireNonNull($.containerId, "expected parameter 'containerId' to be non-null");
-            $.targetId = Objects.requireNonNull($.targetId, "expected parameter 'targetId' to be non-null");
+            if ($.containerId == null) {
+                throw new MissingRequiredPropertyException("VappEntityArgs", "containerId");
+            }
+            if ($.targetId == null) {
+                throw new MissingRequiredPropertyException("VappEntityArgs", "targetId");
+            }
             return $;
         }
     }

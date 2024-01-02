@@ -86,46 +86,55 @@ public final class VirtualMachineOvfDeploy {
 
         @CustomType.Setter
         public Builder allowUnverifiedSslCert(@Nullable Boolean allowUnverifiedSslCert) {
+
             this.allowUnverifiedSslCert = allowUnverifiedSslCert;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentOption(@Nullable String deploymentOption) {
+
             this.deploymentOption = deploymentOption;
             return this;
         }
         @CustomType.Setter
         public Builder diskProvisioning(@Nullable String diskProvisioning) {
+
             this.diskProvisioning = diskProvisioning;
             return this;
         }
         @CustomType.Setter
         public Builder enableHiddenProperties(@Nullable Boolean enableHiddenProperties) {
+
             this.enableHiddenProperties = enableHiddenProperties;
             return this;
         }
         @CustomType.Setter
         public Builder ipAllocationPolicy(@Nullable String ipAllocationPolicy) {
+
             this.ipAllocationPolicy = ipAllocationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
+
             this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder localOvfPath(@Nullable String localOvfPath) {
+
             this.localOvfPath = localOvfPath;
             return this;
         }
         @CustomType.Setter
         public Builder ovfNetworkMap(@Nullable Map<String,String> ovfNetworkMap) {
+
             this.ovfNetworkMap = ovfNetworkMap;
             return this;
         }
         @CustomType.Setter
         public Builder remoteOvfUrl(@Nullable String remoteOvfUrl) {
+
             this.remoteOvfUrl = remoteOvfUrl;
             return this;
         }

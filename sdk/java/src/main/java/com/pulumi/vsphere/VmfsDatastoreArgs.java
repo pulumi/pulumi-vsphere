@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -403,8 +404,12 @@ public final class VmfsDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VmfsDatastoreArgs build() {
-            $.disks = Objects.requireNonNull($.disks, "expected parameter 'disks' to be non-null");
-            $.hostSystemId = Objects.requireNonNull($.hostSystemId, "expected parameter 'hostSystemId' to be non-null");
+            if ($.disks == null) {
+                throw new MissingRequiredPropertyException("VmfsDatastoreArgs", "disks");
+            }
+            if ($.hostSystemId == null) {
+                throw new MissingRequiredPropertyException("VmfsDatastoreArgs", "hostSystemId");
+            }
             return $;
         }
     }

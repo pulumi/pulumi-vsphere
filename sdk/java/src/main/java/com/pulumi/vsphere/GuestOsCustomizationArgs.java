@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.GuestOsCustomizationSpecArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class GuestOsCustomizationArgs extends com.pulumi.resources.Resourc
         }
 
         public GuestOsCustomizationArgs build() {
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("GuestOsCustomizationArgs", "spec");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GuestOsCustomizationArgs", "type");
+            }
             return $;
         }
     }

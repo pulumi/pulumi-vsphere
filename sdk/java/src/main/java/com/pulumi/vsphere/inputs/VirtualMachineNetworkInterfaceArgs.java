@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -445,7 +446,9 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         public VirtualMachineNetworkInterfaceArgs build() {
-            $.networkId = Objects.requireNonNull($.networkId, "expected parameter 'networkId' to be non-null");
+            if ($.networkId == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineNetworkInterfaceArgs", "networkId");
+            }
             return $;
         }
     }

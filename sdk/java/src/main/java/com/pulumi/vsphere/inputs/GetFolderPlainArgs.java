@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -75,7 +76,9 @@ public final class GetFolderPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetFolderPlainArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetFolderPlainArgs", "path");
+            }
             return $;
         }
     }

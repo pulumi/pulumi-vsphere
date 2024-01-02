@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -184,61 +185,75 @@ public final class VirtualMachineNetworkInterface {
 
         @CustomType.Setter
         public Builder adapterType(@Nullable String adapterType) {
+
             this.adapterType = adapterType;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthLimit(@Nullable Integer bandwidthLimit) {
+
             this.bandwidthLimit = bandwidthLimit;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthReservation(@Nullable Integer bandwidthReservation) {
+
             this.bandwidthReservation = bandwidthReservation;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthShareCount(@Nullable Integer bandwidthShareCount) {
+
             this.bandwidthShareCount = bandwidthShareCount;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthShareLevel(@Nullable String bandwidthShareLevel) {
+
             this.bandwidthShareLevel = bandwidthShareLevel;
             return this;
         }
         @CustomType.Setter
         public Builder deviceAddress(@Nullable String deviceAddress) {
+
             this.deviceAddress = deviceAddress;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable Integer key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
+
             this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(String networkId) {
-            this.networkId = Objects.requireNonNull(networkId);
+            if (networkId == null) {
+              throw new MissingRequiredPropertyException("VirtualMachineNetworkInterface", "networkId");
+            }
+            this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder ovfMapping(@Nullable String ovfMapping) {
+
             this.ovfMapping = ovfMapping;
             return this;
         }
         @CustomType.Setter
         public Builder physicalFunction(@Nullable String physicalFunction) {
+
             this.physicalFunction = physicalFunction;
             return this;
         }
         @CustomType.Setter
         public Builder useStaticMac(@Nullable Boolean useStaticMac) {
+
             this.useStaticMac = useStaticMac;
             return this;
         }

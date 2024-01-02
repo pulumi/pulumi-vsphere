@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -341,162 +342,236 @@ public final class GetOvfVmTemplateResult {
 
         @CustomType.Setter
         public Builder allowUnverifiedSslCert(@Nullable Boolean allowUnverifiedSslCert) {
+
             this.allowUnverifiedSslCert = allowUnverifiedSslCert;
             return this;
         }
         @CustomType.Setter
         public Builder alternateGuestName(String alternateGuestName) {
-            this.alternateGuestName = Objects.requireNonNull(alternateGuestName);
+            if (alternateGuestName == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "alternateGuestName");
+            }
+            this.alternateGuestName = alternateGuestName;
             return this;
         }
         @CustomType.Setter
         public Builder annotation(String annotation) {
-            this.annotation = Objects.requireNonNull(annotation);
+            if (annotation == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "annotation");
+            }
+            this.annotation = annotation;
             return this;
         }
         @CustomType.Setter
         public Builder cpuHotAddEnabled(Boolean cpuHotAddEnabled) {
-            this.cpuHotAddEnabled = Objects.requireNonNull(cpuHotAddEnabled);
+            if (cpuHotAddEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "cpuHotAddEnabled");
+            }
+            this.cpuHotAddEnabled = cpuHotAddEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder cpuHotRemoveEnabled(Boolean cpuHotRemoveEnabled) {
-            this.cpuHotRemoveEnabled = Objects.requireNonNull(cpuHotRemoveEnabled);
+            if (cpuHotRemoveEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "cpuHotRemoveEnabled");
+            }
+            this.cpuHotRemoveEnabled = cpuHotRemoveEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder cpuPerformanceCountersEnabled(Boolean cpuPerformanceCountersEnabled) {
-            this.cpuPerformanceCountersEnabled = Objects.requireNonNull(cpuPerformanceCountersEnabled);
+            if (cpuPerformanceCountersEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "cpuPerformanceCountersEnabled");
+            }
+            this.cpuPerformanceCountersEnabled = cpuPerformanceCountersEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder datastoreId(@Nullable String datastoreId) {
+
             this.datastoreId = datastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentOption(@Nullable String deploymentOption) {
+
             this.deploymentOption = deploymentOption;
             return this;
         }
         @CustomType.Setter
         public Builder diskProvisioning(@Nullable String diskProvisioning) {
+
             this.diskProvisioning = diskProvisioning;
             return this;
         }
         @CustomType.Setter
         public Builder enableHiddenProperties(@Nullable Boolean enableHiddenProperties) {
+
             this.enableHiddenProperties = enableHiddenProperties;
             return this;
         }
         @CustomType.Setter
         public Builder firmware(String firmware) {
-            this.firmware = Objects.requireNonNull(firmware);
+            if (firmware == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "firmware");
+            }
+            this.firmware = firmware;
             return this;
         }
         @CustomType.Setter
         public Builder folder(@Nullable String folder) {
+
             this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder guestId(String guestId) {
-            this.guestId = Objects.requireNonNull(guestId);
+            if (guestId == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "guestId");
+            }
+            this.guestId = guestId;
             return this;
         }
         @CustomType.Setter
         public Builder hostSystemId(String hostSystemId) {
-            this.hostSystemId = Objects.requireNonNull(hostSystemId);
+            if (hostSystemId == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "hostSystemId");
+            }
+            this.hostSystemId = hostSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ideControllerCount(Integer ideControllerCount) {
-            this.ideControllerCount = Objects.requireNonNull(ideControllerCount);
+            if (ideControllerCount == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "ideControllerCount");
+            }
+            this.ideControllerCount = ideControllerCount;
             return this;
         }
         @CustomType.Setter
         public Builder ipAllocationPolicy(@Nullable String ipAllocationPolicy) {
+
             this.ipAllocationPolicy = ipAllocationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
+
             this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder localOvfPath(@Nullable String localOvfPath) {
+
             this.localOvfPath = localOvfPath;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder memoryHotAddEnabled(Boolean memoryHotAddEnabled) {
-            this.memoryHotAddEnabled = Objects.requireNonNull(memoryHotAddEnabled);
+            if (memoryHotAddEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "memoryHotAddEnabled");
+            }
+            this.memoryHotAddEnabled = memoryHotAddEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nestedHvEnabled(Boolean nestedHvEnabled) {
-            this.nestedHvEnabled = Objects.requireNonNull(nestedHvEnabled);
+            if (nestedHvEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "nestedHvEnabled");
+            }
+            this.nestedHvEnabled = nestedHvEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder numCoresPerSocket(Integer numCoresPerSocket) {
-            this.numCoresPerSocket = Objects.requireNonNull(numCoresPerSocket);
+            if (numCoresPerSocket == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "numCoresPerSocket");
+            }
+            this.numCoresPerSocket = numCoresPerSocket;
             return this;
         }
         @CustomType.Setter
         public Builder numCpus(Integer numCpus) {
-            this.numCpus = Objects.requireNonNull(numCpus);
+            if (numCpus == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "numCpus");
+            }
+            this.numCpus = numCpus;
             return this;
         }
         @CustomType.Setter
         public Builder ovfNetworkMap(@Nullable Map<String,String> ovfNetworkMap) {
+
             this.ovfNetworkMap = ovfNetworkMap;
             return this;
         }
         @CustomType.Setter
         public Builder remoteOvfUrl(@Nullable String remoteOvfUrl) {
+
             this.remoteOvfUrl = remoteOvfUrl;
             return this;
         }
         @CustomType.Setter
         public Builder resourcePoolId(String resourcePoolId) {
-            this.resourcePoolId = Objects.requireNonNull(resourcePoolId);
+            if (resourcePoolId == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "resourcePoolId");
+            }
+            this.resourcePoolId = resourcePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder sataControllerCount(Integer sataControllerCount) {
-            this.sataControllerCount = Objects.requireNonNull(sataControllerCount);
+            if (sataControllerCount == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "sataControllerCount");
+            }
+            this.sataControllerCount = sataControllerCount;
             return this;
         }
         @CustomType.Setter
         public Builder scsiControllerCount(Integer scsiControllerCount) {
-            this.scsiControllerCount = Objects.requireNonNull(scsiControllerCount);
+            if (scsiControllerCount == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "scsiControllerCount");
+            }
+            this.scsiControllerCount = scsiControllerCount;
             return this;
         }
         @CustomType.Setter
         public Builder scsiType(String scsiType) {
-            this.scsiType = Objects.requireNonNull(scsiType);
+            if (scsiType == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "scsiType");
+            }
+            this.scsiType = scsiType;
             return this;
         }
         @CustomType.Setter
         public Builder swapPlacementPolicy(String swapPlacementPolicy) {
-            this.swapPlacementPolicy = Objects.requireNonNull(swapPlacementPolicy);
+            if (swapPlacementPolicy == null) {
+              throw new MissingRequiredPropertyException("GetOvfVmTemplateResult", "swapPlacementPolicy");
+            }
+            this.swapPlacementPolicy = swapPlacementPolicy;
             return this;
         }
         public GetOvfVmTemplateResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -818,7 +819,9 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         public VirtualMachineDiskArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineDiskArgs", "label");
+            }
             return $;
         }
     }

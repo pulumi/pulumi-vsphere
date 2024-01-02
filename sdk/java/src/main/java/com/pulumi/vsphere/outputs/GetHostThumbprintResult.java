@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -63,21 +64,29 @@ public final class GetHostThumbprintResult {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetHostThumbprintResult", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostThumbprintResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder insecure(@Nullable Boolean insecure) {
+
             this.insecure = insecure;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }

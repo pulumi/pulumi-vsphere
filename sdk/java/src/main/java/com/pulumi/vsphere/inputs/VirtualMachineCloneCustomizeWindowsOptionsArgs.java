@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -267,7 +268,9 @@ public final class VirtualMachineCloneCustomizeWindowsOptionsArgs extends com.pu
         }
 
         public VirtualMachineCloneCustomizeWindowsOptionsArgs build() {
-            $.computerName = Objects.requireNonNull($.computerName, "expected parameter 'computerName' to be non-null");
+            if ($.computerName == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineCloneCustomizeWindowsOptionsArgs", "computerName");
+            }
             return $;
         }
     }

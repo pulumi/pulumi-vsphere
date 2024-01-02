@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.VirtualMachineCdromArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineCloneArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
@@ -3007,7 +3008,9 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public VirtualMachineArgs build() {
-            $.resourcePoolId = Objects.requireNonNull($.resourcePoolId, "expected parameter 'resourcePoolId' to be non-null");
+            if ($.resourcePoolId == null) {
+                throw new MissingRequiredPropertyException("VirtualMachineArgs", "resourcePoolId");
+            }
             return $;
         }
     }

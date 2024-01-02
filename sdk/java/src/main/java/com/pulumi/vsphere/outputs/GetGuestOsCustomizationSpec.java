@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.outputs.GetGuestOsCustomizationSpecLinuxOption;
 import com.pulumi.vsphere.outputs.GetGuestOsCustomizationSpecNetworkInterface;
 import com.pulumi.vsphere.outputs.GetGuestOsCustomizationSpecWindowsOption;
@@ -68,7 +69,10 @@ public final class GetGuestOsCustomizationSpec {
 
         @CustomType.Setter
         public Builder dnsServerLists(List<String> dnsServerLists) {
-            this.dnsServerLists = Objects.requireNonNull(dnsServerLists);
+            if (dnsServerLists == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpec", "dnsServerLists");
+            }
+            this.dnsServerLists = dnsServerLists;
             return this;
         }
         public Builder dnsServerLists(String... dnsServerLists) {
@@ -76,7 +80,10 @@ public final class GetGuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder dnsSuffixLists(List<String> dnsSuffixLists) {
-            this.dnsSuffixLists = Objects.requireNonNull(dnsSuffixLists);
+            if (dnsSuffixLists == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpec", "dnsSuffixLists");
+            }
+            this.dnsSuffixLists = dnsSuffixLists;
             return this;
         }
         public Builder dnsSuffixLists(String... dnsSuffixLists) {
@@ -84,7 +91,10 @@ public final class GetGuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder linuxOptions(List<GetGuestOsCustomizationSpecLinuxOption> linuxOptions) {
-            this.linuxOptions = Objects.requireNonNull(linuxOptions);
+            if (linuxOptions == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpec", "linuxOptions");
+            }
+            this.linuxOptions = linuxOptions;
             return this;
         }
         public Builder linuxOptions(GetGuestOsCustomizationSpecLinuxOption... linuxOptions) {
@@ -92,7 +102,10 @@ public final class GetGuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder networkInterfaces(List<GetGuestOsCustomizationSpecNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpec", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(GetGuestOsCustomizationSpecNetworkInterface... networkInterfaces) {
@@ -100,7 +113,10 @@ public final class GetGuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder windowsOptions(List<GetGuestOsCustomizationSpecWindowsOption> windowsOptions) {
-            this.windowsOptions = Objects.requireNonNull(windowsOptions);
+            if (windowsOptions == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpec", "windowsOptions");
+            }
+            this.windowsOptions = windowsOptions;
             return this;
         }
         public Builder windowsOptions(GetGuestOsCustomizationSpecWindowsOption... windowsOptions) {
@@ -108,7 +124,10 @@ public final class GetGuestOsCustomizationSpec {
         }
         @CustomType.Setter
         public Builder windowsSysprepText(String windowsSysprepText) {
-            this.windowsSysprepText = Objects.requireNonNull(windowsSysprepText);
+            if (windowsSysprepText == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpec", "windowsSysprepText");
+            }
+            this.windowsSysprepText = windowsSysprepText;
             return this;
         }
         public GetGuestOsCustomizationSpec build() {

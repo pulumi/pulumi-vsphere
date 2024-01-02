@@ -4,6 +4,7 @@
 package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -66,12 +67,18 @@ public final class GetGuestOsCustomizationSpecNetworkInterface {
 
         @CustomType.Setter
         public Builder dnsDomain(String dnsDomain) {
-            this.dnsDomain = Objects.requireNonNull(dnsDomain);
+            if (dnsDomain == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecNetworkInterface", "dnsDomain");
+            }
+            this.dnsDomain = dnsDomain;
             return this;
         }
         @CustomType.Setter
         public Builder dnsServerLists(List<String> dnsServerLists) {
-            this.dnsServerLists = Objects.requireNonNull(dnsServerLists);
+            if (dnsServerLists == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecNetworkInterface", "dnsServerLists");
+            }
+            this.dnsServerLists = dnsServerLists;
             return this;
         }
         public Builder dnsServerLists(String... dnsServerLists) {
@@ -79,22 +86,34 @@ public final class GetGuestOsCustomizationSpecNetworkInterface {
         }
         @CustomType.Setter
         public Builder ipv4Address(String ipv4Address) {
-            this.ipv4Address = Objects.requireNonNull(ipv4Address);
+            if (ipv4Address == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecNetworkInterface", "ipv4Address");
+            }
+            this.ipv4Address = ipv4Address;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4Netmask(Integer ipv4Netmask) {
-            this.ipv4Netmask = Objects.requireNonNull(ipv4Netmask);
+            if (ipv4Netmask == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecNetworkInterface", "ipv4Netmask");
+            }
+            this.ipv4Netmask = ipv4Netmask;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
-            this.ipv6Address = Objects.requireNonNull(ipv6Address);
+            if (ipv6Address == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecNetworkInterface", "ipv6Address");
+            }
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Netmask(Integer ipv6Netmask) {
-            this.ipv6Netmask = Objects.requireNonNull(ipv6Netmask);
+            if (ipv6Netmask == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecNetworkInterface", "ipv6Netmask");
+            }
+            this.ipv6Netmask = ipv6Netmask;
             return this;
         }
         public GetGuestOsCustomizationSpecNetworkInterface build() {

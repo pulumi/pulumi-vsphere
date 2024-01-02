@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -727,8 +728,12 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HostPortGroupArgs build() {
-            $.hostSystemId = Objects.requireNonNull($.hostSystemId, "expected parameter 'hostSystemId' to be non-null");
-            $.virtualSwitchName = Objects.requireNonNull($.virtualSwitchName, "expected parameter 'virtualSwitchName' to be non-null");
+            if ($.hostSystemId == null) {
+                throw new MissingRequiredPropertyException("HostPortGroupArgs", "hostSystemId");
+            }
+            if ($.virtualSwitchName == null) {
+                throw new MissingRequiredPropertyException("HostPortGroupArgs", "virtualSwitchName");
+            }
             return $;
         }
     }

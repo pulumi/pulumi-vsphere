@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -232,8 +233,12 @@ public final class TagCategoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagCategoryArgs build() {
-            $.associableTypes = Objects.requireNonNull($.associableTypes, "expected parameter 'associableTypes' to be non-null");
-            $.cardinality = Objects.requireNonNull($.cardinality, "expected parameter 'cardinality' to be non-null");
+            if ($.associableTypes == null) {
+                throw new MissingRequiredPropertyException("TagCategoryArgs", "associableTypes");
+            }
+            if ($.cardinality == null) {
+                throw new MissingRequiredPropertyException("TagCategoryArgs", "cardinality");
+            }
             return $;
         }
     }

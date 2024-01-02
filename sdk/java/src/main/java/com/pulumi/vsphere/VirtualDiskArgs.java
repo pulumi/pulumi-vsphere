@@ -5,6 +5,7 @@ package com.pulumi.vsphere;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -408,9 +409,15 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VirtualDiskArgs build() {
-            $.datastore = Objects.requireNonNull($.datastore, "expected parameter 'datastore' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.vmdkPath = Objects.requireNonNull($.vmdkPath, "expected parameter 'vmdkPath' to be non-null");
+            if ($.datastore == null) {
+                throw new MissingRequiredPropertyException("VirtualDiskArgs", "datastore");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("VirtualDiskArgs", "size");
+            }
+            if ($.vmdkPath == null) {
+                throw new MissingRequiredPropertyException("VirtualDiskArgs", "vmdkPath");
+            }
             return $;
         }
     }

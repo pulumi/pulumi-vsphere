@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -125,8 +126,12 @@ public final class GuestOsCustomizationSpecLinuxOptionsArgs extends com.pulumi.r
         }
 
         public GuestOsCustomizationSpecLinuxOptionsArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.hostName = Objects.requireNonNull($.hostName, "expected parameter 'hostName' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("GuestOsCustomizationSpecLinuxOptionsArgs", "domain");
+            }
+            if ($.hostName == null) {
+                throw new MissingRequiredPropertyException("GuestOsCustomizationSpecLinuxOptionsArgs", "hostName");
+            }
             return $;
         }
     }
