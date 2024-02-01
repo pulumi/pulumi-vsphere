@@ -32,6 +32,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
+        /// <summary>
+        /// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        /// </summary>
         [Input("deviceAddress")]
         public Input<string>? DeviceAddress { get; set; }
 
@@ -93,6 +96,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("key")]
         public Input<int>? Key { get; set; }
 
+        /// <summary>
+        /// A unique label for this disk.
+        /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 

@@ -67,9 +67,17 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.datastoreId);
     }
 
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     @Import(name="deviceAddress")
     private @Nullable Output<String> deviceAddress;
 
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     public Optional<Output<String>> deviceAddress() {
         return Optional.ofNullable(this.deviceAddress);
     }
@@ -217,9 +225,17 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * A unique label for this disk.
+     * 
+     */
     @Import(name="label", required=true)
     private Output<String> label;
 
+    /**
+     * @return A unique label for this disk.
+     * 
+     */
     public Output<String> label() {
         return this.label;
     }
@@ -448,11 +464,23 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
             return datastoreId(Output.of(datastoreId));
         }
 
+        /**
+         * @param deviceAddress The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAddress(@Nullable Output<String> deviceAddress) {
             $.deviceAddress = deviceAddress;
             return this;
         }
 
+        /**
+         * @param deviceAddress The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAddress(String deviceAddress) {
             return deviceAddress(Output.of(deviceAddress));
         }
@@ -654,11 +682,23 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
             return key(Output.of(key));
         }
 
+        /**
+         * @param label A unique label for this disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label A unique label for this disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }

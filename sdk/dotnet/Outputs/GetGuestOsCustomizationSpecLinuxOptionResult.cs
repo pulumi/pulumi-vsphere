@@ -13,10 +13,25 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class GetGuestOsCustomizationSpecLinuxOptionResult
     {
+        /// <summary>
+        /// The domain name for this virtual machine.
+        /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// The hostname for this virtual machine.
+        /// </summary>
         public readonly string HostName;
+        /// <summary>
+        /// Specifies whether or not the hardware clock should be in UTC or not.
+        /// </summary>
         public readonly bool HwClockUtc;
+        /// <summary>
+        /// The customization script to run before and or after guest customization.
+        /// </summary>
         public readonly string ScriptText;
+        /// <summary>
+        /// Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+        /// </summary>
         public readonly string TimeZone;
 
         [OutputConstructor]

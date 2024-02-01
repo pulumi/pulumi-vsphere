@@ -14,6 +14,10 @@ namespace Pulumi.VSphere.Inputs
     {
         [Input("properties")]
         private Dictionary<string, string>? _properties;
+
+        /// <summary>
+        /// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+        /// </summary>
         public Dictionary<string, string> Properties
         {
             get => _properties ?? (_properties = new Dictionary<string, string>());

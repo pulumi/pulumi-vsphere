@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuestOsCustomizationSpecNetworkInterface {
+    /**
+     * @return A DNS search domain to add to the DNS configuration on the virtual machine.
+     * 
+     */
     private @Nullable String dnsDomain;
+    /**
+     * @return Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+     * 
+     */
     private @Nullable List<String> dnsServerLists;
+    /**
+     * @return The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+     * 
+     */
     private @Nullable String ipv4Address;
+    /**
+     * @return The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+     * 
+     */
     private @Nullable Integer ipv4Netmask;
+    /**
+     * @return The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+     * 
+     */
     private @Nullable String ipv6Address;
+    /**
+     * @return The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+     * 
+     */
     private @Nullable Integer ipv6Netmask;
 
     private GuestOsCustomizationSpecNetworkInterface() {}
+    /**
+     * @return A DNS search domain to add to the DNS configuration on the virtual machine.
+     * 
+     */
     public Optional<String> dnsDomain() {
         return Optional.ofNullable(this.dnsDomain);
     }
+    /**
+     * @return Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+     * 
+     */
     public List<String> dnsServerLists() {
         return this.dnsServerLists == null ? List.of() : this.dnsServerLists;
     }
+    /**
+     * @return The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+     * 
+     */
     public Optional<String> ipv4Address() {
         return Optional.ofNullable(this.ipv4Address);
     }
+    /**
+     * @return The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+     * 
+     */
     public Optional<Integer> ipv4Netmask() {
         return Optional.ofNullable(this.ipv4Netmask);
     }
+    /**
+     * @return The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+     * 
+     */
     public Optional<String> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
     }
+    /**
+     * @return The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+     * 
+     */
     public Optional<Integer> ipv6Netmask() {
         return Optional.ofNullable(this.ipv6Netmask);
     }

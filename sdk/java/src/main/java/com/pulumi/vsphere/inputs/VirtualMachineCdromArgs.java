@@ -47,9 +47,17 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.datastoreId);
     }
 
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     @Import(name="deviceAddress")
     private @Nullable Output<String> deviceAddress;
 
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     public Optional<Output<String>> deviceAddress() {
         return Optional.ofNullable(this.deviceAddress);
     }
@@ -162,11 +170,23 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
             return datastoreId(Output.of(datastoreId));
         }
 
+        /**
+         * @param deviceAddress The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAddress(@Nullable Output<String> deviceAddress) {
             $.deviceAddress = deviceAddress;
             return this;
         }
 
+        /**
+         * @param deviceAddress The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAddress(String deviceAddress) {
             return deviceAddress(Output.of(deviceAddress));
         }

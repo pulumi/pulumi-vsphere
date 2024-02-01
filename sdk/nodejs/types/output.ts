@@ -155,7 +155,13 @@ export interface ContentLibrarySubscription {
 }
 
 export interface DistributedPortGroupVlanRange {
+    /**
+     * The minimum VLAN to use in the range.
+     */
     maxVlan: number;
+    /**
+     * The minimum VLAN to use in the range.
+     */
     minVlan: number;
 }
 
@@ -191,7 +197,13 @@ export interface DistributedVirtualSwitchPvlanMapping {
 }
 
 export interface DistributedVirtualSwitchVlanRange {
+    /**
+     * The minimum VLAN to use in the range.
+     */
     maxVlan: number;
+    /**
+     * The minimum VLAN to use in the range.
+     */
     minVlan: number;
 }
 
@@ -215,41 +227,122 @@ export interface EntityPermissionsPermission {
 }
 
 export interface GetGuestOsCustomizationSpec {
+    /**
+     * A list of DNS servers for a virtual network adapter with a static IP address.
+     */
     dnsServerLists: string[];
+    /**
+     * A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     */
     dnsSuffixLists: string[];
+    /**
+     * A list of configuration options specific to Linux.
+     */
     linuxOptions: outputs.GetGuestOsCustomizationSpecLinuxOption[];
+    /**
+     * A specification of network interface configuration options.
+     */
     networkInterfaces: outputs.GetGuestOsCustomizationSpecNetworkInterface[];
+    /**
+     * A list of configuration options specific to Windows.
+     */
     windowsOptions: outputs.GetGuestOsCustomizationSpecWindowsOption[];
+    /**
+     * Use this option to specify use of a Windows Sysprep file.
+     */
     windowsSysprepText: string;
 }
 
 export interface GetGuestOsCustomizationSpecLinuxOption {
+    /**
+     * The domain name for this virtual machine.
+     */
     domain: string;
+    /**
+     * The hostname for this virtual machine.
+     */
     hostName: string;
+    /**
+     * Specifies whether or not the hardware clock should be in UTC or not.
+     */
     hwClockUtc: boolean;
+    /**
+     * The customization script to run before and or after guest customization.
+     */
     scriptText: string;
+    /**
+     * Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+     */
     timeZone: string;
 }
 
 export interface GetGuestOsCustomizationSpecNetworkInterface {
+    /**
+     * A DNS search domain to add to the DNS configuration on the virtual machine.
+     */
     dnsDomain: string;
+    /**
+     * Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+     */
     dnsServerLists: string[];
+    /**
+     * The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+     */
     ipv4Address: string;
+    /**
+     * The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+     */
     ipv4Netmask: number;
+    /**
+     * The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+     */
     ipv6Address: string;
+    /**
+     * The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+     */
     ipv6Netmask: number;
 }
 
 export interface GetGuestOsCustomizationSpecWindowsOption {
+    /**
+     * The new administrator password for this virtual machine.
+     */
     adminPassword: string;
+    /**
+     * Specifies whether or not the guest operating system automatically logs on as Administrator.
+     */
     autoLogon: boolean;
+    /**
+     * Specifies how many times the guest operating system should auto-logon the Administrator account when `autoLogon` is `true`.
+     */
     autoLogonCount: number;
+    /**
+     * The hostname for this virtual machine.
+     */
     computerName: string;
+    /**
+     * The user account used to join this virtual machine to the Active Directory domain.
+     */
     domainAdminPassword?: string;
+    /**
+     * The user account of the domain administrator used to join this virtual machine to the domain.
+     */
     domainAdminUser: string;
+    /**
+     * The Active Directory domain for the virtual machine to join.
+     */
     joinDomain: string;
+    /**
+     * A list of commands to run at first user logon, after guest customization.
+     */
     runOnceCommandLists: string[];
+    /**
+     * The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+     */
     timeZone: number;
+    /**
+     * The workgroup for this virtual machine if not joining an Active Directory domain.
+     */
     workgroup: string;
 }
 
@@ -312,54 +405,156 @@ export interface GetVirtualMachineNetworkInterface {
      * connected to.
      */
     networkId: string;
+    /**
+     * The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+     */
     physicalFunction: string;
 }
 
 export interface GetVirtualMachineVapp {
+    /**
+     * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     */
     properties?: {[key: string]: string};
 }
 
 export interface GuestOsCustomizationSpec {
+    /**
+     * The list of DNS servers for a virtual network adapter with a static IP address.
+     */
     dnsServerLists?: string[];
+    /**
+     * A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     */
     dnsSuffixLists?: string[];
+    /**
+     * The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     */
     ipv4Gateway?: string;
+    /**
+     * The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     */
     ipv6Gateway?: string;
+    /**
+     * A list of configuration options specific to Linux virtual machines.
+     */
     linuxOptions?: outputs.GuestOsCustomizationSpecLinuxOptions;
+    /**
+     * A specification of network interface configuration options.
+     */
     networkInterfaces?: outputs.GuestOsCustomizationSpecNetworkInterface[];
+    /**
+     * A list of configuration options specific to Windows virtual machines.
+     */
     windowsOptions?: outputs.GuestOsCustomizationSpecWindowsOptions;
+    /**
+     * Use this option to specify a windows sysprep file directly.
+     */
     windowsSysprepText?: string;
 }
 
 export interface GuestOsCustomizationSpecLinuxOptions {
+    /**
+     * The domain name for this virtual machine.
+     */
     domain: string;
+    /**
+     * The hostname for this virtual machine.
+     */
     hostName: string;
+    /**
+     * Specifies whether or not the hardware clock should be in UTC or not.
+     */
     hwClockUtc?: boolean;
+    /**
+     * The customization script to run before and or after guest customization
+     */
     scriptText?: string;
+    /**
+     * Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+     */
     timeZone?: string;
 }
 
 export interface GuestOsCustomizationSpecNetworkInterface {
+    /**
+     * A DNS search domain to add to the DNS configuration on the virtual machine.
+     */
     dnsDomain?: string;
+    /**
+     * Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+     */
     dnsServerLists?: string[];
+    /**
+     * The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+     */
     ipv4Address?: string;
+    /**
+     * The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+     */
     ipv4Netmask?: number;
+    /**
+     * The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+     */
     ipv6Address?: string;
+    /**
+     * The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+     */
     ipv6Netmask?: number;
 }
 
 export interface GuestOsCustomizationSpecWindowsOptions {
+    /**
+     * The new administrator password for this virtual machine.
+     */
     adminPassword?: string;
+    /**
+     * Specifies whether or not the VM automatically logs on as Administrator.
+     */
     autoLogon?: boolean;
+    /**
+     * Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
+     */
     autoLogonCount?: number;
+    /**
+     * The host name for this virtual machine.
+     */
     computerName: string;
+    /**
+     * The password of the domain administrator used to join this virtual machine to the domain.
+     */
     domainAdminPassword?: string;
+    /**
+     * The user account of the domain administrator used to join this virtual machine to the domain.
+     */
     domainAdminUser?: string;
+    /**
+     * The full name of the user of this virtual machine.
+     */
     fullName?: string;
+    /**
+     * The domain that the virtual machine should join.
+     */
     joinDomain?: string;
+    /**
+     * The organization name this virtual machine is being installed for.
+     */
     organizationName?: string;
+    /**
+     * The product key for this virtual machine.
+     */
     productKey?: string;
+    /**
+     * A list of commands to run at first user logon, after guest customization.
+     */
     runOnceCommandLists?: string[];
+    /**
+     * The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+     */
     timeZone?: number;
+    /**
+     * The workgroup for this virtual machine if not joining a domain.
+     */
     workgroup?: string;
 }
 
@@ -368,7 +563,13 @@ export interface HostPortGroupPort {
      * The key for this port group as returned from the vSphere API.
      */
     key: string;
+    /**
+     * The MAC addresses of the network service of the virtual machine connected on this port.
+     */
     macAddresses: string[];
+    /**
+     * Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+     */
     type: string;
 }
 
@@ -381,6 +582,9 @@ export interface VirtualMachineCdrom {
      * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: string;
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     */
     deviceAddress: string;
     /**
      * The ID of the device within the virtual machine.
@@ -397,12 +601,33 @@ export interface VirtualMachineCdrom {
 }
 
 export interface VirtualMachineClone {
+    /**
+     * The customization specification for the virtual machine post-clone.
+     */
     customizationSpec?: outputs.VirtualMachineCloneCustomizationSpec;
+    /**
+     * The customization specification for the virtual machine post-clone.
+     */
     customize?: outputs.VirtualMachineCloneCustomize;
+    /**
+     * Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+     */
     linkedClone?: boolean;
+    /**
+     * Mapping of ovf networks to the networks to use in vSphere.
+     */
     ovfNetworkMap?: {[key: string]: string};
+    /**
+     * Mapping of ovf storage to the datastores to use in vSphere.
+     */
     ovfStorageMap?: {[key: string]: string};
+    /**
+     * The UUID of the source virtual machine or template.
+     */
     templateUuid: string;
+    /**
+     * The timeout, in minutes, to wait for the virtual machine clone to complete.
+     */
     timeout?: number;
 }
 
@@ -411,54 +636,153 @@ export interface VirtualMachineCloneCustomizationSpec {
      * The UUID of the virtual machine.
      */
     id: string;
+    /**
+     * The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+     */
     timeout?: number;
 }
 
 export interface VirtualMachineCloneCustomize {
+    /**
+     * The list of DNS servers for a virtual network adapter with a static IP address.
+     */
     dnsServerLists?: string[];
+    /**
+     * A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     */
     dnsSuffixLists?: string[];
+    /**
+     * The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     */
     ipv4Gateway?: string;
+    /**
+     * The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     */
     ipv6Gateway?: string;
+    /**
+     * A list of configuration options specific to Linux virtual machines.
+     */
     linuxOptions?: outputs.VirtualMachineCloneCustomizeLinuxOptions;
     /**
      * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
      */
     networkInterfaces?: outputs.VirtualMachineCloneCustomizeNetworkInterface[];
+    /**
+     * The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+     */
     timeout?: number;
+    /**
+     * A list of configuration options specific to Windows virtual machines.
+     */
     windowsOptions?: outputs.VirtualMachineCloneCustomizeWindowsOptions;
+    /**
+     * Use this option to specify a windows sysprep file directly.
+     */
     windowsSysprepText?: string;
 }
 
 export interface VirtualMachineCloneCustomizeLinuxOptions {
+    /**
+     * The domain name for this virtual machine.
+     */
     domain: string;
+    /**
+     * The hostname for this virtual machine.
+     */
     hostName: string;
+    /**
+     * Specifies whether or not the hardware clock should be in UTC or not.
+     */
     hwClockUtc?: boolean;
+    /**
+     * The customization script to run before and or after guest customization
+     */
     scriptText?: string;
+    /**
+     * Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+     */
     timeZone?: string;
 }
 
 export interface VirtualMachineCloneCustomizeNetworkInterface {
+    /**
+     * A DNS search domain to add to the DNS configuration on the virtual machine.
+     */
     dnsDomain?: string;
+    /**
+     * Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+     */
     dnsServerLists?: string[];
+    /**
+     * The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+     */
     ipv4Address?: string;
+    /**
+     * The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+     */
     ipv4Netmask?: number;
+    /**
+     * The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+     */
     ipv6Address?: string;
+    /**
+     * The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+     */
     ipv6Netmask?: number;
 }
 
 export interface VirtualMachineCloneCustomizeWindowsOptions {
+    /**
+     * The new administrator password for this virtual machine.
+     */
     adminPassword?: string;
+    /**
+     * Specifies whether or not the VM automatically logs on as Administrator.
+     */
     autoLogon?: boolean;
+    /**
+     * Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
+     */
     autoLogonCount?: number;
+    /**
+     * The host name for this virtual machine.
+     */
     computerName: string;
+    /**
+     * The password of the domain administrator used to join this virtual machine to the domain.
+     */
     domainAdminPassword?: string;
+    /**
+     * The user account of the domain administrator used to join this virtual machine to the domain.
+     */
     domainAdminUser?: string;
+    /**
+     * The full name of the user of this virtual machine.
+     */
     fullName?: string;
+    /**
+     * The domain that the virtual machine should join.
+     */
     joinDomain?: string;
+    /**
+     * The organization name this virtual machine is being installed for.
+     */
     organizationName?: string;
+    /**
+     * The product key for this virtual machine.
+     */
     productKey?: string;
+    /**
+     * A list of commands to run at first user logon, after guest customization.
+     */
     runOnceCommandLists?: string[];
+    /**
+     * The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+     */
     timeZone?: number;
+    /**
+     * The workgroup for this virtual machine if not joining a domain.
+     */
     workgroup?: string;
 }
 
@@ -477,6 +801,9 @@ export interface VirtualMachineDisk {
      * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId: string;
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     */
     deviceAddress: string;
     /**
      * The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
@@ -518,6 +845,9 @@ export interface VirtualMachineDisk {
      * The ID of the device within the virtual machine.
      */
     key: number;
+    /**
+     * A unique label for this disk.
+     */
     label: string;
     /**
      * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
@@ -574,6 +904,9 @@ export interface VirtualMachineNetworkInterface {
      * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
      */
     bandwidthShareLevel?: string;
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     */
     deviceAddress: string;
     /**
      * The ID of the device within the virtual machine.
@@ -591,6 +924,9 @@ export interface VirtualMachineNetworkInterface {
      * Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
      */
     ovfMapping?: string;
+    /**
+     * The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+     */
     physicalFunction?: string;
     /**
      * If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
@@ -599,18 +935,48 @@ export interface VirtualMachineNetworkInterface {
 }
 
 export interface VirtualMachineOvfDeploy {
+    /**
+     * Allow unverified ssl certificates while deploying ovf/ova from url.
+     */
     allowUnverifiedSslCert?: boolean;
+    /**
+     * The Deployment option to be chosen. If empty, the default option is used.
+     */
     deploymentOption?: string;
+    /**
+     * An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+     */
     diskProvisioning?: string;
+    /**
+     * Allow properties with ovf:userConfigurable=false to be set.
+     */
     enableHiddenProperties?: boolean;
+    /**
+     * The IP allocation policy.
+     */
     ipAllocationPolicy?: string;
+    /**
+     * The IP protocol.
+     */
     ipProtocol?: string;
+    /**
+     * The absolute path to the ovf/ova file in the local system.
+     */
     localOvfPath?: string;
+    /**
+     * The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+     */
     ovfNetworkMap?: {[key: string]: string};
+    /**
+     * URL to the remote ovf/ova file to be deployed.
+     */
     remoteOvfUrl?: string;
 }
 
 export interface VirtualMachineVapp {
+    /**
+     * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     */
     properties?: {[key: string]: string};
 }
 

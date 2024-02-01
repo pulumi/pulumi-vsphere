@@ -19,58 +19,122 @@ public final class GuestOsCustomizationSpecArgs extends com.pulumi.resources.Res
 
     public static final GuestOsCustomizationSpecArgs Empty = new GuestOsCustomizationSpecArgs();
 
+    /**
+     * The list of DNS servers for a virtual network adapter with a static IP address.
+     * 
+     */
     @Import(name="dnsServerLists")
     private @Nullable Output<List<String>> dnsServerLists;
 
+    /**
+     * @return The list of DNS servers for a virtual network adapter with a static IP address.
+     * 
+     */
     public Optional<Output<List<String>>> dnsServerLists() {
         return Optional.ofNullable(this.dnsServerLists);
     }
 
+    /**
+     * A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     * 
+     */
     @Import(name="dnsSuffixLists")
     private @Nullable Output<List<String>> dnsSuffixLists;
 
+    /**
+     * @return A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     * 
+     */
     public Optional<Output<List<String>>> dnsSuffixLists() {
         return Optional.ofNullable(this.dnsSuffixLists);
     }
 
+    /**
+     * The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     @Import(name="ipv4Gateway")
     private @Nullable Output<String> ipv4Gateway;
 
+    /**
+     * @return The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     public Optional<Output<String>> ipv4Gateway() {
         return Optional.ofNullable(this.ipv4Gateway);
     }
 
+    /**
+     * The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     @Import(name="ipv6Gateway")
     private @Nullable Output<String> ipv6Gateway;
 
+    /**
+     * @return The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     public Optional<Output<String>> ipv6Gateway() {
         return Optional.ofNullable(this.ipv6Gateway);
     }
 
+    /**
+     * A list of configuration options specific to Linux virtual machines.
+     * 
+     */
     @Import(name="linuxOptions")
     private @Nullable Output<GuestOsCustomizationSpecLinuxOptionsArgs> linuxOptions;
 
+    /**
+     * @return A list of configuration options specific to Linux virtual machines.
+     * 
+     */
     public Optional<Output<GuestOsCustomizationSpecLinuxOptionsArgs>> linuxOptions() {
         return Optional.ofNullable(this.linuxOptions);
     }
 
+    /**
+     * A specification of network interface configuration options.
+     * 
+     */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<GuestOsCustomizationSpecNetworkInterfaceArgs>> networkInterfaces;
 
+    /**
+     * @return A specification of network interface configuration options.
+     * 
+     */
     public Optional<Output<List<GuestOsCustomizationSpecNetworkInterfaceArgs>>> networkInterfaces() {
         return Optional.ofNullable(this.networkInterfaces);
     }
 
+    /**
+     * A list of configuration options specific to Windows virtual machines.
+     * 
+     */
     @Import(name="windowsOptions")
     private @Nullable Output<GuestOsCustomizationSpecWindowsOptionsArgs> windowsOptions;
 
+    /**
+     * @return A list of configuration options specific to Windows virtual machines.
+     * 
+     */
     public Optional<Output<GuestOsCustomizationSpecWindowsOptionsArgs>> windowsOptions() {
         return Optional.ofNullable(this.windowsOptions);
     }
 
+    /**
+     * Use this option to specify a windows sysprep file directly.
+     * 
+     */
     @Import(name="windowsSysprepText")
     private @Nullable Output<String> windowsSysprepText;
 
+    /**
+     * @return Use this option to specify a windows sysprep file directly.
+     * 
+     */
     public Optional<Output<String>> windowsSysprepText() {
         return Optional.ofNullable(this.windowsSysprepText);
     }
@@ -106,86 +170,200 @@ public final class GuestOsCustomizationSpecArgs extends com.pulumi.resources.Res
             $ = new GuestOsCustomizationSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dnsServerLists The list of DNS servers for a virtual network adapter with a static IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsServerLists(@Nullable Output<List<String>> dnsServerLists) {
             $.dnsServerLists = dnsServerLists;
             return this;
         }
 
+        /**
+         * @param dnsServerLists The list of DNS servers for a virtual network adapter with a static IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsServerLists(List<String> dnsServerLists) {
             return dnsServerLists(Output.of(dnsServerLists));
         }
 
+        /**
+         * @param dnsServerLists The list of DNS servers for a virtual network adapter with a static IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsServerLists(String... dnsServerLists) {
             return dnsServerLists(List.of(dnsServerLists));
         }
 
+        /**
+         * @param dnsSuffixLists A list of DNS search domains to add to the DNS configuration on the virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsSuffixLists(@Nullable Output<List<String>> dnsSuffixLists) {
             $.dnsSuffixLists = dnsSuffixLists;
             return this;
         }
 
+        /**
+         * @param dnsSuffixLists A list of DNS search domains to add to the DNS configuration on the virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsSuffixLists(List<String> dnsSuffixLists) {
             return dnsSuffixLists(Output.of(dnsSuffixLists));
         }
 
+        /**
+         * @param dnsSuffixLists A list of DNS search domains to add to the DNS configuration on the virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsSuffixLists(String... dnsSuffixLists) {
             return dnsSuffixLists(List.of(dnsSuffixLists));
         }
 
+        /**
+         * @param ipv4Gateway The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Gateway(@Nullable Output<String> ipv4Gateway) {
             $.ipv4Gateway = ipv4Gateway;
             return this;
         }
 
+        /**
+         * @param ipv4Gateway The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Gateway(String ipv4Gateway) {
             return ipv4Gateway(Output.of(ipv4Gateway));
         }
 
+        /**
+         * @param ipv6Gateway The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Gateway(@Nullable Output<String> ipv6Gateway) {
             $.ipv6Gateway = ipv6Gateway;
             return this;
         }
 
+        /**
+         * @param ipv6Gateway The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Gateway(String ipv6Gateway) {
             return ipv6Gateway(Output.of(ipv6Gateway));
         }
 
+        /**
+         * @param linuxOptions A list of configuration options specific to Linux virtual machines.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linuxOptions(@Nullable Output<GuestOsCustomizationSpecLinuxOptionsArgs> linuxOptions) {
             $.linuxOptions = linuxOptions;
             return this;
         }
 
+        /**
+         * @param linuxOptions A list of configuration options specific to Linux virtual machines.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linuxOptions(GuestOsCustomizationSpecLinuxOptionsArgs linuxOptions) {
             return linuxOptions(Output.of(linuxOptions));
         }
 
+        /**
+         * @param networkInterfaces A specification of network interface configuration options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaces(@Nullable Output<List<GuestOsCustomizationSpecNetworkInterfaceArgs>> networkInterfaces) {
             $.networkInterfaces = networkInterfaces;
             return this;
         }
 
+        /**
+         * @param networkInterfaces A specification of network interface configuration options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaces(List<GuestOsCustomizationSpecNetworkInterfaceArgs> networkInterfaces) {
             return networkInterfaces(Output.of(networkInterfaces));
         }
 
+        /**
+         * @param networkInterfaces A specification of network interface configuration options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaces(GuestOsCustomizationSpecNetworkInterfaceArgs... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
         }
 
+        /**
+         * @param windowsOptions A list of configuration options specific to Windows virtual machines.
+         * 
+         * @return builder
+         * 
+         */
         public Builder windowsOptions(@Nullable Output<GuestOsCustomizationSpecWindowsOptionsArgs> windowsOptions) {
             $.windowsOptions = windowsOptions;
             return this;
         }
 
+        /**
+         * @param windowsOptions A list of configuration options specific to Windows virtual machines.
+         * 
+         * @return builder
+         * 
+         */
         public Builder windowsOptions(GuestOsCustomizationSpecWindowsOptionsArgs windowsOptions) {
             return windowsOptions(Output.of(windowsOptions));
         }
 
+        /**
+         * @param windowsSysprepText Use this option to specify a windows sysprep file directly.
+         * 
+         * @return builder
+         * 
+         */
         public Builder windowsSysprepText(@Nullable Output<String> windowsSysprepText) {
             $.windowsSysprepText = windowsSysprepText;
             return this;
         }
 
+        /**
+         * @param windowsSysprepText Use this option to specify a windows sysprep file directly.
+         * 
+         * @return builder
+         * 
+         */
         public Builder windowsSysprepText(String windowsSysprepText) {
             return windowsSysprepText(Output.of(windowsSysprepText));
         }

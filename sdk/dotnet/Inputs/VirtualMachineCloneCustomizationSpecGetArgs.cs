@@ -18,6 +18,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 

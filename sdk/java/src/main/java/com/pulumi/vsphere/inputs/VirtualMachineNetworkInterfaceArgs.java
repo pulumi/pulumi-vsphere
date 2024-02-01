@@ -93,9 +93,17 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.bandwidthShareLevel);
     }
 
+    /**
+     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     @Import(name="deviceAddress")
     private @Nullable Output<String> deviceAddress;
 
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     public Optional<Output<String>> deviceAddress() {
         return Optional.ofNullable(this.deviceAddress);
     }
@@ -160,9 +168,17 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.ovfMapping);
     }
 
+    /**
+     * The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+     * 
+     */
     @Import(name="physicalFunction")
     private @Nullable Output<String> physicalFunction;
 
+    /**
+     * @return The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+     * 
+     */
     public Optional<Output<String>> physicalFunction() {
         return Optional.ofNullable(this.physicalFunction);
     }
@@ -322,11 +338,23 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
             return bandwidthShareLevel(Output.of(bandwidthShareLevel));
         }
 
+        /**
+         * @param deviceAddress The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAddress(@Nullable Output<String> deviceAddress) {
             $.deviceAddress = deviceAddress;
             return this;
         }
 
+        /**
+         * @param deviceAddress The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAddress(String deviceAddress) {
             return deviceAddress(Output.of(deviceAddress));
         }
@@ -415,11 +443,23 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
             return ovfMapping(Output.of(ovfMapping));
         }
 
+        /**
+         * @param physicalFunction The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+         * 
+         * @return builder
+         * 
+         */
         public Builder physicalFunction(@Nullable Output<String> physicalFunction) {
             $.physicalFunction = physicalFunction;
             return this;
         }
 
+        /**
+         * @param physicalFunction The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+         * 
+         * @return builder
+         * 
+         */
         public Builder physicalFunction(String physicalFunction) {
             return physicalFunction(Output.of(physicalFunction));
         }

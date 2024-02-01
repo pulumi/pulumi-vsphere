@@ -17,33 +17,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineClone {
+    /**
+     * @return The customization specification for the virtual machine post-clone.
+     * 
+     */
     private @Nullable VirtualMachineCloneCustomizationSpec customizationSpec;
+    /**
+     * @return The customization specification for the virtual machine post-clone.
+     * 
+     */
     private @Nullable VirtualMachineCloneCustomize customize;
+    /**
+     * @return Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+     * 
+     */
     private @Nullable Boolean linkedClone;
+    /**
+     * @return Mapping of ovf networks to the networks to use in vSphere.
+     * 
+     */
     private @Nullable Map<String,String> ovfNetworkMap;
+    /**
+     * @return Mapping of ovf storage to the datastores to use in vSphere.
+     * 
+     */
     private @Nullable Map<String,String> ovfStorageMap;
+    /**
+     * @return The UUID of the source virtual machine or template.
+     * 
+     */
     private String templateUuid;
+    /**
+     * @return The timeout, in minutes, to wait for the virtual machine clone to complete.
+     * 
+     */
     private @Nullable Integer timeout;
 
     private VirtualMachineClone() {}
+    /**
+     * @return The customization specification for the virtual machine post-clone.
+     * 
+     */
     public Optional<VirtualMachineCloneCustomizationSpec> customizationSpec() {
         return Optional.ofNullable(this.customizationSpec);
     }
+    /**
+     * @return The customization specification for the virtual machine post-clone.
+     * 
+     */
     public Optional<VirtualMachineCloneCustomize> customize() {
         return Optional.ofNullable(this.customize);
     }
+    /**
+     * @return Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+     * 
+     */
     public Optional<Boolean> linkedClone() {
         return Optional.ofNullable(this.linkedClone);
     }
+    /**
+     * @return Mapping of ovf networks to the networks to use in vSphere.
+     * 
+     */
     public Map<String,String> ovfNetworkMap() {
         return this.ovfNetworkMap == null ? Map.of() : this.ovfNetworkMap;
     }
+    /**
+     * @return Mapping of ovf storage to the datastores to use in vSphere.
+     * 
+     */
     public Map<String,String> ovfStorageMap() {
         return this.ovfStorageMap == null ? Map.of() : this.ovfStorageMap;
     }
+    /**
+     * @return The UUID of the source virtual machine or template.
+     * 
+     */
     public String templateUuid() {
         return this.templateUuid;
     }
+    /**
+     * @return The timeout, in minutes, to wait for the virtual machine clone to complete.
+     * 
+     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

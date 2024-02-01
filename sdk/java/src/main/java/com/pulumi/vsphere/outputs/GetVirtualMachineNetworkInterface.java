@@ -55,6 +55,10 @@ public final class GetVirtualMachineNetworkInterface {
      * 
      */
     private String networkId;
+    /**
+     * @return The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+     * 
+     */
     private String physicalFunction;
 
     private GetVirtualMachineNetworkInterface() {}
@@ -114,6 +118,10 @@ public final class GetVirtualMachineNetworkInterface {
     public String networkId() {
         return this.networkId;
     }
+    /**
+     * @return The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+     * 
+     */
     public String physicalFunction() {
         return this.physicalFunction;
     }

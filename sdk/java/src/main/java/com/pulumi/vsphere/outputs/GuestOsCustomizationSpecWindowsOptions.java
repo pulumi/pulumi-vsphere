@@ -15,57 +15,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuestOsCustomizationSpecWindowsOptions {
+    /**
+     * @return The new administrator password for this virtual machine.
+     * 
+     */
     private @Nullable String adminPassword;
+    /**
+     * @return Specifies whether or not the VM automatically logs on as Administrator.
+     * 
+     */
     private @Nullable Boolean autoLogon;
+    /**
+     * @return Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+     * 
+     */
     private @Nullable Integer autoLogonCount;
+    /**
+     * @return The host name for this virtual machine.
+     * 
+     */
     private String computerName;
+    /**
+     * @return The password of the domain administrator used to join this virtual machine to the domain.
+     * 
+     */
     private @Nullable String domainAdminPassword;
+    /**
+     * @return The user account of the domain administrator used to join this virtual machine to the domain.
+     * 
+     */
     private @Nullable String domainAdminUser;
+    /**
+     * @return The full name of the user of this virtual machine.
+     * 
+     */
     private @Nullable String fullName;
+    /**
+     * @return The domain that the virtual machine should join.
+     * 
+     */
     private @Nullable String joinDomain;
+    /**
+     * @return The organization name this virtual machine is being installed for.
+     * 
+     */
     private @Nullable String organizationName;
+    /**
+     * @return The product key for this virtual machine.
+     * 
+     */
     private @Nullable String productKey;
+    /**
+     * @return A list of commands to run at first user logon, after guest customization.
+     * 
+     */
     private @Nullable List<String> runOnceCommandLists;
+    /**
+     * @return The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+     * 
+     */
     private @Nullable Integer timeZone;
+    /**
+     * @return The workgroup for this virtual machine if not joining a domain.
+     * 
+     */
     private @Nullable String workgroup;
 
     private GuestOsCustomizationSpecWindowsOptions() {}
+    /**
+     * @return The new administrator password for this virtual machine.
+     * 
+     */
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
+    /**
+     * @return Specifies whether or not the VM automatically logs on as Administrator.
+     * 
+     */
     public Optional<Boolean> autoLogon() {
         return Optional.ofNullable(this.autoLogon);
     }
+    /**
+     * @return Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+     * 
+     */
     public Optional<Integer> autoLogonCount() {
         return Optional.ofNullable(this.autoLogonCount);
     }
+    /**
+     * @return The host name for this virtual machine.
+     * 
+     */
     public String computerName() {
         return this.computerName;
     }
+    /**
+     * @return The password of the domain administrator used to join this virtual machine to the domain.
+     * 
+     */
     public Optional<String> domainAdminPassword() {
         return Optional.ofNullable(this.domainAdminPassword);
     }
+    /**
+     * @return The user account of the domain administrator used to join this virtual machine to the domain.
+     * 
+     */
     public Optional<String> domainAdminUser() {
         return Optional.ofNullable(this.domainAdminUser);
     }
+    /**
+     * @return The full name of the user of this virtual machine.
+     * 
+     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
+    /**
+     * @return The domain that the virtual machine should join.
+     * 
+     */
     public Optional<String> joinDomain() {
         return Optional.ofNullable(this.joinDomain);
     }
+    /**
+     * @return The organization name this virtual machine is being installed for.
+     * 
+     */
     public Optional<String> organizationName() {
         return Optional.ofNullable(this.organizationName);
     }
+    /**
+     * @return The product key for this virtual machine.
+     * 
+     */
     public Optional<String> productKey() {
         return Optional.ofNullable(this.productKey);
     }
+    /**
+     * @return A list of commands to run at first user logon, after guest customization.
+     * 
+     */
     public List<String> runOnceCommandLists() {
         return this.runOnceCommandLists == null ? List.of() : this.runOnceCommandLists;
     }
+    /**
+     * @return The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+     * 
+     */
     public Optional<Integer> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
+    /**
+     * @return The workgroup for this virtual machine if not joining a domain.
+     * 
+     */
     public Optional<String> workgroup() {
         return Optional.ofNullable(this.workgroup);
     }

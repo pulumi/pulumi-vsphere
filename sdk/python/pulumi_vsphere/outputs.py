@@ -556,17 +556,27 @@ class DistributedPortGroupVlanRange(dict):
     def __init__(__self__, *,
                  max_vlan: int,
                  min_vlan: int):
+        """
+        :param int max_vlan: The minimum VLAN to use in the range.
+        :param int min_vlan: The minimum VLAN to use in the range.
+        """
         pulumi.set(__self__, "max_vlan", max_vlan)
         pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
     def max_vlan(self) -> int:
+        """
+        The minimum VLAN to use in the range.
+        """
         return pulumi.get(self, "max_vlan")
 
     @property
     @pulumi.getter(name="minVlan")
     def min_vlan(self) -> int:
+        """
+        The minimum VLAN to use in the range.
+        """
         return pulumi.get(self, "min_vlan")
 
 
@@ -712,17 +722,27 @@ class DistributedVirtualSwitchVlanRange(dict):
     def __init__(__self__, *,
                  max_vlan: int,
                  min_vlan: int):
+        """
+        :param int max_vlan: The minimum VLAN to use in the range.
+        :param int min_vlan: The minimum VLAN to use in the range.
+        """
         pulumi.set(__self__, "max_vlan", max_vlan)
         pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
     def max_vlan(self) -> int:
+        """
+        The minimum VLAN to use in the range.
+        """
         return pulumi.get(self, "max_vlan")
 
     @property
     @pulumi.getter(name="minVlan")
     def min_vlan(self) -> int:
+        """
+        The minimum VLAN to use in the range.
+        """
         return pulumi.get(self, "min_vlan")
 
 
@@ -840,6 +860,16 @@ class GuestOsCustomizationSpec(dict):
                  network_interfaces: Optional[Sequence['outputs.GuestOsCustomizationSpecNetworkInterface']] = None,
                  windows_options: Optional['outputs.GuestOsCustomizationSpecWindowsOptions'] = None,
                  windows_sysprep_text: Optional[str] = None):
+        """
+        :param Sequence[str] dns_server_lists: The list of DNS servers for a virtual network adapter with a static IP address.
+        :param Sequence[str] dns_suffix_lists: A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        :param str ipv4_gateway: The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        :param str ipv6_gateway: The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        :param 'GuestOsCustomizationSpecLinuxOptionsArgs' linux_options: A list of configuration options specific to Linux virtual machines.
+        :param Sequence['GuestOsCustomizationSpecNetworkInterfaceArgs'] network_interfaces: A specification of network interface configuration options.
+        :param 'GuestOsCustomizationSpecWindowsOptionsArgs' windows_options: A list of configuration options specific to Windows virtual machines.
+        :param str windows_sysprep_text: Use this option to specify a windows sysprep file directly.
+        """
         if dns_server_lists is not None:
             pulumi.set(__self__, "dns_server_lists", dns_server_lists)
         if dns_suffix_lists is not None:
@@ -860,41 +890,65 @@ class GuestOsCustomizationSpec(dict):
     @property
     @pulumi.getter(name="dnsServerLists")
     def dns_server_lists(self) -> Optional[Sequence[str]]:
+        """
+        The list of DNS servers for a virtual network adapter with a static IP address.
+        """
         return pulumi.get(self, "dns_server_lists")
 
     @property
     @pulumi.getter(name="dnsSuffixLists")
     def dns_suffix_lists(self) -> Optional[Sequence[str]]:
+        """
+        A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        """
         return pulumi.get(self, "dns_suffix_lists")
 
     @property
     @pulumi.getter(name="ipv4Gateway")
     def ipv4_gateway(self) -> Optional[str]:
+        """
+        The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        """
         return pulumi.get(self, "ipv4_gateway")
 
     @property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> Optional[str]:
+        """
+        The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        """
         return pulumi.get(self, "ipv6_gateway")
 
     @property
     @pulumi.getter(name="linuxOptions")
     def linux_options(self) -> Optional['outputs.GuestOsCustomizationSpecLinuxOptions']:
+        """
+        A list of configuration options specific to Linux virtual machines.
+        """
         return pulumi.get(self, "linux_options")
 
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[Sequence['outputs.GuestOsCustomizationSpecNetworkInterface']]:
+        """
+        A specification of network interface configuration options.
+        """
         return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="windowsOptions")
     def windows_options(self) -> Optional['outputs.GuestOsCustomizationSpecWindowsOptions']:
+        """
+        A list of configuration options specific to Windows virtual machines.
+        """
         return pulumi.get(self, "windows_options")
 
     @property
     @pulumi.getter(name="windowsSysprepText")
     def windows_sysprep_text(self) -> Optional[str]:
+        """
+        Use this option to specify a windows sysprep file directly.
+        """
         return pulumi.get(self, "windows_sysprep_text")
 
 
@@ -929,6 +983,13 @@ class GuestOsCustomizationSpecLinuxOptions(dict):
                  hw_clock_utc: Optional[bool] = None,
                  script_text: Optional[str] = None,
                  time_zone: Optional[str] = None):
+        """
+        :param str domain: The domain name for this virtual machine.
+        :param str host_name: The hostname for this virtual machine.
+        :param bool hw_clock_utc: Specifies whether or not the hardware clock should be in UTC or not.
+        :param str script_text: The customization script to run before and or after guest customization
+        :param str time_zone: Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+        """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "host_name", host_name)
         if hw_clock_utc is not None:
@@ -941,26 +1002,41 @@ class GuestOsCustomizationSpecLinuxOptions(dict):
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        The domain name for this virtual machine.
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> str:
+        """
+        The hostname for this virtual machine.
+        """
         return pulumi.get(self, "host_name")
 
     @property
     @pulumi.getter(name="hwClockUtc")
     def hw_clock_utc(self) -> Optional[bool]:
+        """
+        Specifies whether or not the hardware clock should be in UTC or not.
+        """
         return pulumi.get(self, "hw_clock_utc")
 
     @property
     @pulumi.getter(name="scriptText")
     def script_text(self) -> Optional[str]:
+        """
+        The customization script to run before and or after guest customization
+        """
         return pulumi.get(self, "script_text")
 
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[str]:
+        """
+        Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+        """
         return pulumi.get(self, "time_zone")
 
 
@@ -1000,6 +1076,14 @@ class GuestOsCustomizationSpecNetworkInterface(dict):
                  ipv4_netmask: Optional[int] = None,
                  ipv6_address: Optional[str] = None,
                  ipv6_netmask: Optional[int] = None):
+        """
+        :param str dns_domain: A DNS search domain to add to the DNS configuration on the virtual machine.
+        :param Sequence[str] dns_server_lists: Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+        :param str ipv4_address: The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+        :param int ipv4_netmask: The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+        :param str ipv6_address: The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+        :param int ipv6_netmask: The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+        """
         if dns_domain is not None:
             pulumi.set(__self__, "dns_domain", dns_domain)
         if dns_server_lists is not None:
@@ -1016,31 +1100,49 @@ class GuestOsCustomizationSpecNetworkInterface(dict):
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> Optional[str]:
+        """
+        A DNS search domain to add to the DNS configuration on the virtual machine.
+        """
         return pulumi.get(self, "dns_domain")
 
     @property
     @pulumi.getter(name="dnsServerLists")
     def dns_server_lists(self) -> Optional[Sequence[str]]:
+        """
+        Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+        """
         return pulumi.get(self, "dns_server_lists")
 
     @property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> Optional[str]:
+        """
+        The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+        """
         return pulumi.get(self, "ipv4_address")
 
     @property
     @pulumi.getter(name="ipv4Netmask")
     def ipv4_netmask(self) -> Optional[int]:
+        """
+        The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+        """
         return pulumi.get(self, "ipv4_netmask")
 
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[str]:
+        """
+        The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter(name="ipv6Netmask")
     def ipv6_netmask(self) -> Optional[int]:
+        """
+        The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+        """
         return pulumi.get(self, "ipv6_netmask")
 
 
@@ -1099,6 +1201,21 @@ class GuestOsCustomizationSpecWindowsOptions(dict):
                  run_once_command_lists: Optional[Sequence[str]] = None,
                  time_zone: Optional[int] = None,
                  workgroup: Optional[str] = None):
+        """
+        :param str computer_name: The host name for this virtual machine.
+        :param str admin_password: The new administrator password for this virtual machine.
+        :param bool auto_logon: Specifies whether or not the VM automatically logs on as Administrator.
+        :param int auto_logon_count: Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+        :param str domain_admin_password: The password of the domain administrator used to join this virtual machine to the domain.
+        :param str domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param str full_name: The full name of the user of this virtual machine.
+        :param str join_domain: The domain that the virtual machine should join.
+        :param str organization_name: The organization name this virtual machine is being installed for.
+        :param str product_key: The product key for this virtual machine.
+        :param Sequence[str] run_once_command_lists: A list of commands to run at first user logon, after guest customization.
+        :param int time_zone: The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+        :param str workgroup: The workgroup for this virtual machine if not joining a domain.
+        """
         pulumi.set(__self__, "computer_name", computer_name)
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
@@ -1128,66 +1245,105 @@ class GuestOsCustomizationSpecWindowsOptions(dict):
     @property
     @pulumi.getter(name="computerName")
     def computer_name(self) -> str:
+        """
+        The host name for this virtual machine.
+        """
         return pulumi.get(self, "computer_name")
 
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
+        """
+        The new administrator password for this virtual machine.
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter(name="autoLogon")
     def auto_logon(self) -> Optional[bool]:
+        """
+        Specifies whether or not the VM automatically logs on as Administrator.
+        """
         return pulumi.get(self, "auto_logon")
 
     @property
     @pulumi.getter(name="autoLogonCount")
     def auto_logon_count(self) -> Optional[int]:
+        """
+        Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+        """
         return pulumi.get(self, "auto_logon_count")
 
     @property
     @pulumi.getter(name="domainAdminPassword")
     def domain_admin_password(self) -> Optional[str]:
+        """
+        The password of the domain administrator used to join this virtual machine to the domain.
+        """
         return pulumi.get(self, "domain_admin_password")
 
     @property
     @pulumi.getter(name="domainAdminUser")
     def domain_admin_user(self) -> Optional[str]:
+        """
+        The user account of the domain administrator used to join this virtual machine to the domain.
+        """
         return pulumi.get(self, "domain_admin_user")
 
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> Optional[str]:
+        """
+        The full name of the user of this virtual machine.
+        """
         return pulumi.get(self, "full_name")
 
     @property
     @pulumi.getter(name="joinDomain")
     def join_domain(self) -> Optional[str]:
+        """
+        The domain that the virtual machine should join.
+        """
         return pulumi.get(self, "join_domain")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[str]:
+        """
+        The organization name this virtual machine is being installed for.
+        """
         return pulumi.get(self, "organization_name")
 
     @property
     @pulumi.getter(name="productKey")
     def product_key(self) -> Optional[str]:
+        """
+        The product key for this virtual machine.
+        """
         return pulumi.get(self, "product_key")
 
     @property
     @pulumi.getter(name="runOnceCommandLists")
     def run_once_command_lists(self) -> Optional[Sequence[str]]:
+        """
+        A list of commands to run at first user logon, after guest customization.
+        """
         return pulumi.get(self, "run_once_command_lists")
 
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[int]:
+        """
+        The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+        """
         return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter
     def workgroup(self) -> Optional[str]:
+        """
+        The workgroup for this virtual machine if not joining a domain.
+        """
         return pulumi.get(self, "workgroup")
 
 
@@ -1216,6 +1372,8 @@ class HostPortGroupPort(dict):
                  type: Optional[str] = None):
         """
         :param str key: The key for this port group as returned from the vSphere API.
+        :param Sequence[str] mac_addresses: The MAC addresses of the network service of the virtual machine connected on this port.
+        :param str type: Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1235,11 +1393,17 @@ class HostPortGroupPort(dict):
     @property
     @pulumi.getter(name="macAddresses")
     def mac_addresses(self) -> Optional[Sequence[str]]:
+        """
+        The MAC addresses of the network service of the virtual machine connected on this port.
+        """
         return pulumi.get(self, "mac_addresses")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+        """
         return pulumi.get(self, "type")
 
 
@@ -1275,6 +1439,7 @@ class VirtualMachineCdrom(dict):
         """
         :param bool client_device: Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
         :param str datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
         :param int key: The ID of the device within the virtual machine.
         :param str path: The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
                
@@ -1312,6 +1477,9 @@ class VirtualMachineCdrom(dict):
     @property
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[str]:
+        """
+        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        """
         return pulumi.get(self, "device_address")
 
     @property
@@ -1370,6 +1538,15 @@ class VirtualMachineClone(dict):
                  ovf_network_map: Optional[Mapping[str, str]] = None,
                  ovf_storage_map: Optional[Mapping[str, str]] = None,
                  timeout: Optional[int] = None):
+        """
+        :param str template_uuid: The UUID of the source virtual machine or template.
+        :param 'VirtualMachineCloneCustomizationSpecArgs' customization_spec: The customization specification for the virtual machine post-clone.
+        :param 'VirtualMachineCloneCustomizeArgs' customize: The customization specification for the virtual machine post-clone.
+        :param bool linked_clone: Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+        :param Mapping[str, str] ovf_network_map: Mapping of ovf networks to the networks to use in vSphere.
+        :param Mapping[str, str] ovf_storage_map: Mapping of ovf storage to the datastores to use in vSphere.
+        :param int timeout: The timeout, in minutes, to wait for the virtual machine clone to complete.
+        """
         pulumi.set(__self__, "template_uuid", template_uuid)
         if customization_spec is not None:
             pulumi.set(__self__, "customization_spec", customization_spec)
@@ -1387,36 +1564,57 @@ class VirtualMachineClone(dict):
     @property
     @pulumi.getter(name="templateUuid")
     def template_uuid(self) -> str:
+        """
+        The UUID of the source virtual machine or template.
+        """
         return pulumi.get(self, "template_uuid")
 
     @property
     @pulumi.getter(name="customizationSpec")
     def customization_spec(self) -> Optional['outputs.VirtualMachineCloneCustomizationSpec']:
+        """
+        The customization specification for the virtual machine post-clone.
+        """
         return pulumi.get(self, "customization_spec")
 
     @property
     @pulumi.getter
     def customize(self) -> Optional['outputs.VirtualMachineCloneCustomize']:
+        """
+        The customization specification for the virtual machine post-clone.
+        """
         return pulumi.get(self, "customize")
 
     @property
     @pulumi.getter(name="linkedClone")
     def linked_clone(self) -> Optional[bool]:
+        """
+        Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+        """
         return pulumi.get(self, "linked_clone")
 
     @property
     @pulumi.getter(name="ovfNetworkMap")
     def ovf_network_map(self) -> Optional[Mapping[str, str]]:
+        """
+        Mapping of ovf networks to the networks to use in vSphere.
+        """
         return pulumi.get(self, "ovf_network_map")
 
     @property
     @pulumi.getter(name="ovfStorageMap")
     def ovf_storage_map(self) -> Optional[Mapping[str, str]]:
+        """
+        Mapping of ovf storage to the datastores to use in vSphere.
+        """
         return pulumi.get(self, "ovf_storage_map")
 
     @property
     @pulumi.getter
     def timeout(self) -> Optional[int]:
+        """
+        The timeout, in minutes, to wait for the virtual machine clone to complete.
+        """
         return pulumi.get(self, "timeout")
 
 
@@ -1427,6 +1625,7 @@ class VirtualMachineCloneCustomizationSpec(dict):
                  timeout: Optional[int] = None):
         """
         :param str id: The UUID of the virtual machine.
+        :param int timeout: The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
         """
         pulumi.set(__self__, "id", id)
         if timeout is not None:
@@ -1443,6 +1642,9 @@ class VirtualMachineCloneCustomizationSpec(dict):
     @property
     @pulumi.getter
     def timeout(self) -> Optional[int]:
+        """
+        The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+        """
         return pulumi.get(self, "timeout")
 
 
@@ -1490,7 +1692,15 @@ class VirtualMachineCloneCustomize(dict):
                  windows_options: Optional['outputs.VirtualMachineCloneCustomizeWindowsOptions'] = None,
                  windows_sysprep_text: Optional[str] = None):
         """
+        :param Sequence[str] dns_server_lists: The list of DNS servers for a virtual network adapter with a static IP address.
+        :param Sequence[str] dns_suffix_lists: A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        :param str ipv4_gateway: The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        :param str ipv6_gateway: The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        :param 'VirtualMachineCloneCustomizeLinuxOptionsArgs' linux_options: A list of configuration options specific to Linux virtual machines.
         :param Sequence['VirtualMachineCloneCustomizeNetworkInterfaceArgs'] network_interfaces: A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+        :param int timeout: The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+        :param 'VirtualMachineCloneCustomizeWindowsOptionsArgs' windows_options: A list of configuration options specific to Windows virtual machines.
+        :param str windows_sysprep_text: Use this option to specify a windows sysprep file directly.
         """
         if dns_server_lists is not None:
             pulumi.set(__self__, "dns_server_lists", dns_server_lists)
@@ -1514,26 +1724,41 @@ class VirtualMachineCloneCustomize(dict):
     @property
     @pulumi.getter(name="dnsServerLists")
     def dns_server_lists(self) -> Optional[Sequence[str]]:
+        """
+        The list of DNS servers for a virtual network adapter with a static IP address.
+        """
         return pulumi.get(self, "dns_server_lists")
 
     @property
     @pulumi.getter(name="dnsSuffixLists")
     def dns_suffix_lists(self) -> Optional[Sequence[str]]:
+        """
+        A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        """
         return pulumi.get(self, "dns_suffix_lists")
 
     @property
     @pulumi.getter(name="ipv4Gateway")
     def ipv4_gateway(self) -> Optional[str]:
+        """
+        The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        """
         return pulumi.get(self, "ipv4_gateway")
 
     @property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> Optional[str]:
+        """
+        The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        """
         return pulumi.get(self, "ipv6_gateway")
 
     @property
     @pulumi.getter(name="linuxOptions")
     def linux_options(self) -> Optional['outputs.VirtualMachineCloneCustomizeLinuxOptions']:
+        """
+        A list of configuration options specific to Linux virtual machines.
+        """
         return pulumi.get(self, "linux_options")
 
     @property
@@ -1547,16 +1772,25 @@ class VirtualMachineCloneCustomize(dict):
     @property
     @pulumi.getter
     def timeout(self) -> Optional[int]:
+        """
+        The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter(name="windowsOptions")
     def windows_options(self) -> Optional['outputs.VirtualMachineCloneCustomizeWindowsOptions']:
+        """
+        A list of configuration options specific to Windows virtual machines.
+        """
         return pulumi.get(self, "windows_options")
 
     @property
     @pulumi.getter(name="windowsSysprepText")
     def windows_sysprep_text(self) -> Optional[str]:
+        """
+        Use this option to specify a windows sysprep file directly.
+        """
         return pulumi.get(self, "windows_sysprep_text")
 
 
@@ -1591,6 +1825,13 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
                  hw_clock_utc: Optional[bool] = None,
                  script_text: Optional[str] = None,
                  time_zone: Optional[str] = None):
+        """
+        :param str domain: The domain name for this virtual machine.
+        :param str host_name: The hostname for this virtual machine.
+        :param bool hw_clock_utc: Specifies whether or not the hardware clock should be in UTC or not.
+        :param str script_text: The customization script to run before and or after guest customization
+        :param str time_zone: Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+        """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "host_name", host_name)
         if hw_clock_utc is not None:
@@ -1603,26 +1844,41 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        The domain name for this virtual machine.
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> str:
+        """
+        The hostname for this virtual machine.
+        """
         return pulumi.get(self, "host_name")
 
     @property
     @pulumi.getter(name="hwClockUtc")
     def hw_clock_utc(self) -> Optional[bool]:
+        """
+        Specifies whether or not the hardware clock should be in UTC or not.
+        """
         return pulumi.get(self, "hw_clock_utc")
 
     @property
     @pulumi.getter(name="scriptText")
     def script_text(self) -> Optional[str]:
+        """
+        The customization script to run before and or after guest customization
+        """
         return pulumi.get(self, "script_text")
 
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[str]:
+        """
+        Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+        """
         return pulumi.get(self, "time_zone")
 
 
@@ -1662,6 +1918,14 @@ class VirtualMachineCloneCustomizeNetworkInterface(dict):
                  ipv4_netmask: Optional[int] = None,
                  ipv6_address: Optional[str] = None,
                  ipv6_netmask: Optional[int] = None):
+        """
+        :param str dns_domain: A DNS search domain to add to the DNS configuration on the virtual machine.
+        :param Sequence[str] dns_server_lists: Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+        :param str ipv4_address: The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+        :param int ipv4_netmask: The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+        :param str ipv6_address: The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+        :param int ipv6_netmask: The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+        """
         if dns_domain is not None:
             pulumi.set(__self__, "dns_domain", dns_domain)
         if dns_server_lists is not None:
@@ -1678,31 +1942,49 @@ class VirtualMachineCloneCustomizeNetworkInterface(dict):
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> Optional[str]:
+        """
+        A DNS search domain to add to the DNS configuration on the virtual machine.
+        """
         return pulumi.get(self, "dns_domain")
 
     @property
     @pulumi.getter(name="dnsServerLists")
     def dns_server_lists(self) -> Optional[Sequence[str]]:
+        """
+        Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+        """
         return pulumi.get(self, "dns_server_lists")
 
     @property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> Optional[str]:
+        """
+        The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+        """
         return pulumi.get(self, "ipv4_address")
 
     @property
     @pulumi.getter(name="ipv4Netmask")
     def ipv4_netmask(self) -> Optional[int]:
+        """
+        The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+        """
         return pulumi.get(self, "ipv4_netmask")
 
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[str]:
+        """
+        The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter(name="ipv6Netmask")
     def ipv6_netmask(self) -> Optional[int]:
+        """
+        The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+        """
         return pulumi.get(self, "ipv6_netmask")
 
 
@@ -1761,6 +2043,21 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
                  run_once_command_lists: Optional[Sequence[str]] = None,
                  time_zone: Optional[int] = None,
                  workgroup: Optional[str] = None):
+        """
+        :param str computer_name: The host name for this virtual machine.
+        :param str admin_password: The new administrator password for this virtual machine.
+        :param bool auto_logon: Specifies whether or not the VM automatically logs on as Administrator.
+        :param int auto_logon_count: Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+        :param str domain_admin_password: The password of the domain administrator used to join this virtual machine to the domain.
+        :param str domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param str full_name: The full name of the user of this virtual machine.
+        :param str join_domain: The domain that the virtual machine should join.
+        :param str organization_name: The organization name this virtual machine is being installed for.
+        :param str product_key: The product key for this virtual machine.
+        :param Sequence[str] run_once_command_lists: A list of commands to run at first user logon, after guest customization.
+        :param int time_zone: The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+        :param str workgroup: The workgroup for this virtual machine if not joining a domain.
+        """
         pulumi.set(__self__, "computer_name", computer_name)
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
@@ -1790,66 +2087,105 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
     @property
     @pulumi.getter(name="computerName")
     def computer_name(self) -> str:
+        """
+        The host name for this virtual machine.
+        """
         return pulumi.get(self, "computer_name")
 
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[str]:
+        """
+        The new administrator password for this virtual machine.
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter(name="autoLogon")
     def auto_logon(self) -> Optional[bool]:
+        """
+        Specifies whether or not the VM automatically logs on as Administrator.
+        """
         return pulumi.get(self, "auto_logon")
 
     @property
     @pulumi.getter(name="autoLogonCount")
     def auto_logon_count(self) -> Optional[int]:
+        """
+        Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+        """
         return pulumi.get(self, "auto_logon_count")
 
     @property
     @pulumi.getter(name="domainAdminPassword")
     def domain_admin_password(self) -> Optional[str]:
+        """
+        The password of the domain administrator used to join this virtual machine to the domain.
+        """
         return pulumi.get(self, "domain_admin_password")
 
     @property
     @pulumi.getter(name="domainAdminUser")
     def domain_admin_user(self) -> Optional[str]:
+        """
+        The user account of the domain administrator used to join this virtual machine to the domain.
+        """
         return pulumi.get(self, "domain_admin_user")
 
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> Optional[str]:
+        """
+        The full name of the user of this virtual machine.
+        """
         return pulumi.get(self, "full_name")
 
     @property
     @pulumi.getter(name="joinDomain")
     def join_domain(self) -> Optional[str]:
+        """
+        The domain that the virtual machine should join.
+        """
         return pulumi.get(self, "join_domain")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[str]:
+        """
+        The organization name this virtual machine is being installed for.
+        """
         return pulumi.get(self, "organization_name")
 
     @property
     @pulumi.getter(name="productKey")
     def product_key(self) -> Optional[str]:
+        """
+        The product key for this virtual machine.
+        """
         return pulumi.get(self, "product_key")
 
     @property
     @pulumi.getter(name="runOnceCommandLists")
     def run_once_command_lists(self) -> Optional[Sequence[str]]:
+        """
+        A list of commands to run at first user logon, after guest customization.
+        """
         return pulumi.get(self, "run_once_command_lists")
 
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[int]:
+        """
+        The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+        """
         return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter
     def workgroup(self) -> Optional[str]:
+        """
+        The workgroup for this virtual machine if not joining a domain.
+        """
         return pulumi.get(self, "workgroup")
 
 
@@ -1923,11 +2259,13 @@ class VirtualMachineDisk(dict):
                  uuid: Optional[str] = None,
                  write_through: Optional[bool] = None):
         """
+        :param str label: A unique label for this disk.
         :param bool attach: Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
                
                > **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
         :param str controller_type: The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
         :param str datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
         :param str disk_mode: The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
                
                [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
@@ -1998,6 +2336,9 @@ class VirtualMachineDisk(dict):
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        A unique label for this disk.
+        """
         return pulumi.get(self, "label")
 
     @property
@@ -2029,6 +2370,9 @@ class VirtualMachineDisk(dict):
     @property
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[str]:
+        """
+        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        """
         return pulumi.get(self, "device_address")
 
     @property
@@ -2227,9 +2571,11 @@ class VirtualMachineNetworkInterface(dict):
         :param int bandwidth_reservation: The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
         :param int bandwidth_share_count: The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
         :param str bandwidth_share_level: The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+        :param str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
         :param int key: The ID of the device within the virtual machine.
         :param str mac_address: The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
         :param str ovf_mapping: Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+        :param str physical_function: The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
         :param bool use_static_mac: If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
         """
         pulumi.set(__self__, "network_id", network_id)
@@ -2307,6 +2653,9 @@ class VirtualMachineNetworkInterface(dict):
     @property
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[str]:
+        """
+        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        """
         return pulumi.get(self, "device_address")
 
     @property
@@ -2336,6 +2685,9 @@ class VirtualMachineNetworkInterface(dict):
     @property
     @pulumi.getter(name="physicalFunction")
     def physical_function(self) -> Optional[str]:
+        """
+        The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+        """
         return pulumi.get(self, "physical_function")
 
     @property
@@ -2392,6 +2744,17 @@ class VirtualMachineOvfDeploy(dict):
                  local_ovf_path: Optional[str] = None,
                  ovf_network_map: Optional[Mapping[str, str]] = None,
                  remote_ovf_url: Optional[str] = None):
+        """
+        :param bool allow_unverified_ssl_cert: Allow unverified ssl certificates while deploying ovf/ova from url.
+        :param str deployment_option: The Deployment option to be chosen. If empty, the default option is used.
+        :param str disk_provisioning: An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+        :param bool enable_hidden_properties: Allow properties with ovf:userConfigurable=false to be set.
+        :param str ip_allocation_policy: The IP allocation policy.
+        :param str ip_protocol: The IP protocol.
+        :param str local_ovf_path: The absolute path to the ovf/ova file in the local system.
+        :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+        :param str remote_ovf_url: URL to the remote ovf/ova file to be deployed.
+        """
         if allow_unverified_ssl_cert is not None:
             pulumi.set(__self__, "allow_unverified_ssl_cert", allow_unverified_ssl_cert)
         if deployment_option is not None:
@@ -2414,46 +2777,73 @@ class VirtualMachineOvfDeploy(dict):
     @property
     @pulumi.getter(name="allowUnverifiedSslCert")
     def allow_unverified_ssl_cert(self) -> Optional[bool]:
+        """
+        Allow unverified ssl certificates while deploying ovf/ova from url.
+        """
         return pulumi.get(self, "allow_unverified_ssl_cert")
 
     @property
     @pulumi.getter(name="deploymentOption")
     def deployment_option(self) -> Optional[str]:
+        """
+        The Deployment option to be chosen. If empty, the default option is used.
+        """
         return pulumi.get(self, "deployment_option")
 
     @property
     @pulumi.getter(name="diskProvisioning")
     def disk_provisioning(self) -> Optional[str]:
+        """
+        An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+        """
         return pulumi.get(self, "disk_provisioning")
 
     @property
     @pulumi.getter(name="enableHiddenProperties")
     def enable_hidden_properties(self) -> Optional[bool]:
+        """
+        Allow properties with ovf:userConfigurable=false to be set.
+        """
         return pulumi.get(self, "enable_hidden_properties")
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
     def ip_allocation_policy(self) -> Optional[str]:
+        """
+        The IP allocation policy.
+        """
         return pulumi.get(self, "ip_allocation_policy")
 
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[str]:
+        """
+        The IP protocol.
+        """
         return pulumi.get(self, "ip_protocol")
 
     @property
     @pulumi.getter(name="localOvfPath")
     def local_ovf_path(self) -> Optional[str]:
+        """
+        The absolute path to the ovf/ova file in the local system.
+        """
         return pulumi.get(self, "local_ovf_path")
 
     @property
     @pulumi.getter(name="ovfNetworkMap")
     def ovf_network_map(self) -> Optional[Mapping[str, str]]:
+        """
+        The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+        """
         return pulumi.get(self, "ovf_network_map")
 
     @property
     @pulumi.getter(name="remoteOvfUrl")
     def remote_ovf_url(self) -> Optional[str]:
+        """
+        URL to the remote ovf/ova file to be deployed.
+        """
         return pulumi.get(self, "remote_ovf_url")
 
 
@@ -2461,12 +2851,18 @@ class VirtualMachineOvfDeploy(dict):
 class VirtualMachineVapp(dict):
     def __init__(__self__, *,
                  properties: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] properties: A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+        """
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
 
     @property
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+        """
         return pulumi.get(self, "properties")
 
 
@@ -2649,6 +3045,14 @@ class GetGuestOsCustomizationSpecResult(dict):
                  network_interfaces: Sequence['outputs.GetGuestOsCustomizationSpecNetworkInterfaceResult'],
                  windows_options: Sequence['outputs.GetGuestOsCustomizationSpecWindowsOptionResult'],
                  windows_sysprep_text: str):
+        """
+        :param Sequence[str] dns_server_lists: A list of DNS servers for a virtual network adapter with a static IP address.
+        :param Sequence[str] dns_suffix_lists: A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        :param Sequence['GetGuestOsCustomizationSpecLinuxOptionArgs'] linux_options: A list of configuration options specific to Linux.
+        :param Sequence['GetGuestOsCustomizationSpecNetworkInterfaceArgs'] network_interfaces: A specification of network interface configuration options.
+        :param Sequence['GetGuestOsCustomizationSpecWindowsOptionArgs'] windows_options: A list of configuration options specific to Windows.
+        :param str windows_sysprep_text: Use this option to specify use of a Windows Sysprep file.
+        """
         pulumi.set(__self__, "dns_server_lists", dns_server_lists)
         pulumi.set(__self__, "dns_suffix_lists", dns_suffix_lists)
         pulumi.set(__self__, "linux_options", linux_options)
@@ -2659,31 +3063,49 @@ class GetGuestOsCustomizationSpecResult(dict):
     @property
     @pulumi.getter(name="dnsServerLists")
     def dns_server_lists(self) -> Sequence[str]:
+        """
+        A list of DNS servers for a virtual network adapter with a static IP address.
+        """
         return pulumi.get(self, "dns_server_lists")
 
     @property
     @pulumi.getter(name="dnsSuffixLists")
     def dns_suffix_lists(self) -> Sequence[str]:
+        """
+        A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        """
         return pulumi.get(self, "dns_suffix_lists")
 
     @property
     @pulumi.getter(name="linuxOptions")
     def linux_options(self) -> Sequence['outputs.GetGuestOsCustomizationSpecLinuxOptionResult']:
+        """
+        A list of configuration options specific to Linux.
+        """
         return pulumi.get(self, "linux_options")
 
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.GetGuestOsCustomizationSpecNetworkInterfaceResult']:
+        """
+        A specification of network interface configuration options.
+        """
         return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="windowsOptions")
     def windows_options(self) -> Sequence['outputs.GetGuestOsCustomizationSpecWindowsOptionResult']:
+        """
+        A list of configuration options specific to Windows.
+        """
         return pulumi.get(self, "windows_options")
 
     @property
     @pulumi.getter(name="windowsSysprepText")
     def windows_sysprep_text(self) -> str:
+        """
+        Use this option to specify use of a Windows Sysprep file.
+        """
         return pulumi.get(self, "windows_sysprep_text")
 
 
@@ -2695,6 +3117,13 @@ class GetGuestOsCustomizationSpecLinuxOptionResult(dict):
                  hw_clock_utc: bool,
                  script_text: str,
                  time_zone: str):
+        """
+        :param str domain: The domain name for this virtual machine.
+        :param str host_name: The hostname for this virtual machine.
+        :param bool hw_clock_utc: Specifies whether or not the hardware clock should be in UTC or not.
+        :param str script_text: The customization script to run before and or after guest customization.
+        :param str time_zone: Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+        """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "hw_clock_utc", hw_clock_utc)
@@ -2704,26 +3133,41 @@ class GetGuestOsCustomizationSpecLinuxOptionResult(dict):
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        The domain name for this virtual machine.
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> str:
+        """
+        The hostname for this virtual machine.
+        """
         return pulumi.get(self, "host_name")
 
     @property
     @pulumi.getter(name="hwClockUtc")
     def hw_clock_utc(self) -> bool:
+        """
+        Specifies whether or not the hardware clock should be in UTC or not.
+        """
         return pulumi.get(self, "hw_clock_utc")
 
     @property
     @pulumi.getter(name="scriptText")
     def script_text(self) -> str:
+        """
+        The customization script to run before and or after guest customization.
+        """
         return pulumi.get(self, "script_text")
 
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> str:
+        """
+        Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+        """
         return pulumi.get(self, "time_zone")
 
 
@@ -2736,6 +3180,14 @@ class GetGuestOsCustomizationSpecNetworkInterfaceResult(dict):
                  ipv4_netmask: int,
                  ipv6_address: str,
                  ipv6_netmask: int):
+        """
+        :param str dns_domain: A DNS search domain to add to the DNS configuration on the virtual machine.
+        :param Sequence[str] dns_server_lists: Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+        :param str ipv4_address: The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+        :param int ipv4_netmask: The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+        :param str ipv6_address: The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+        :param int ipv6_netmask: The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+        """
         pulumi.set(__self__, "dns_domain", dns_domain)
         pulumi.set(__self__, "dns_server_lists", dns_server_lists)
         pulumi.set(__self__, "ipv4_address", ipv4_address)
@@ -2746,31 +3198,49 @@ class GetGuestOsCustomizationSpecNetworkInterfaceResult(dict):
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> str:
+        """
+        A DNS search domain to add to the DNS configuration on the virtual machine.
+        """
         return pulumi.get(self, "dns_domain")
 
     @property
     @pulumi.getter(name="dnsServerLists")
     def dns_server_lists(self) -> Sequence[str]:
+        """
+        Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+        """
         return pulumi.get(self, "dns_server_lists")
 
     @property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> str:
+        """
+        The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+        """
         return pulumi.get(self, "ipv4_address")
 
     @property
     @pulumi.getter(name="ipv4Netmask")
     def ipv4_netmask(self) -> int:
+        """
+        The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+        """
         return pulumi.get(self, "ipv4_netmask")
 
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> str:
+        """
+        The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter(name="ipv6Netmask")
     def ipv6_netmask(self) -> int:
+        """
+        The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+        """
         return pulumi.get(self, "ipv6_netmask")
 
 
@@ -2787,6 +3257,18 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
                  time_zone: int,
                  workgroup: str,
                  domain_admin_password: Optional[str] = None):
+        """
+        :param str admin_password: The new administrator password for this virtual machine.
+        :param bool auto_logon: Specifies whether or not the guest operating system automatically logs on as Administrator.
+        :param int auto_logon_count: Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
+        :param str computer_name: The hostname for this virtual machine.
+        :param str domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param str join_domain: The Active Directory domain for the virtual machine to join.
+        :param Sequence[str] run_once_command_lists: A list of commands to run at first user logon, after guest customization.
+        :param int time_zone: The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+        :param str workgroup: The workgroup for this virtual machine if not joining an Active Directory domain.
+        :param str domain_admin_password: The user account used to join this virtual machine to the Active Directory domain.
+        """
         pulumi.set(__self__, "admin_password", admin_password)
         pulumi.set(__self__, "auto_logon", auto_logon)
         pulumi.set(__self__, "auto_logon_count", auto_logon_count)
@@ -2802,51 +3284,81 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> str:
+        """
+        The new administrator password for this virtual machine.
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter(name="autoLogon")
     def auto_logon(self) -> bool:
+        """
+        Specifies whether or not the guest operating system automatically logs on as Administrator.
+        """
         return pulumi.get(self, "auto_logon")
 
     @property
     @pulumi.getter(name="autoLogonCount")
     def auto_logon_count(self) -> int:
+        """
+        Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
+        """
         return pulumi.get(self, "auto_logon_count")
 
     @property
     @pulumi.getter(name="computerName")
     def computer_name(self) -> str:
+        """
+        The hostname for this virtual machine.
+        """
         return pulumi.get(self, "computer_name")
 
     @property
     @pulumi.getter(name="domainAdminUser")
     def domain_admin_user(self) -> str:
+        """
+        The user account of the domain administrator used to join this virtual machine to the domain.
+        """
         return pulumi.get(self, "domain_admin_user")
 
     @property
     @pulumi.getter(name="joinDomain")
     def join_domain(self) -> str:
+        """
+        The Active Directory domain for the virtual machine to join.
+        """
         return pulumi.get(self, "join_domain")
 
     @property
     @pulumi.getter(name="runOnceCommandLists")
     def run_once_command_lists(self) -> Sequence[str]:
+        """
+        A list of commands to run at first user logon, after guest customization.
+        """
         return pulumi.get(self, "run_once_command_lists")
 
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> int:
+        """
+        The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+        """
         return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter
     def workgroup(self) -> str:
+        """
+        The workgroup for this virtual machine if not joining an Active Directory domain.
+        """
         return pulumi.get(self, "workgroup")
 
     @property
     @pulumi.getter(name="domainAdminPassword")
     def domain_admin_password(self) -> Optional[str]:
+        """
+        The user account used to join this virtual machine to the Active Directory domain.
+        """
         return pulumi.get(self, "domain_admin_password")
 
 
@@ -2932,6 +3444,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
         :param str mac_address: The MAC address of this network interface.
         :param str network_id: The managed object reference ID of the network this interface is
                connected to.
+        :param str physical_function: The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
         :param int bandwidth_limit: The upper bandwidth limit of this network interface, 
                in Mbits/sec.
         :param int bandwidth_reservation: The bandwidth reservation of this network interface,
@@ -2990,6 +3503,9 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @property
     @pulumi.getter(name="physicalFunction")
     def physical_function(self) -> str:
+        """
+        The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+        """
         return pulumi.get(self, "physical_function")
 
     @property
@@ -3024,12 +3540,18 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
 class GetVirtualMachineVappResult(dict):
     def __init__(__self__, *,
                  properties: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] properties: A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+        """
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
 
     @property
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+        """
         return pulumi.get(self, "properties")
 
 

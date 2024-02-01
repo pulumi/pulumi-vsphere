@@ -31,6 +31,10 @@ public final class VirtualMachineDisk {
      * 
      */
     private @Nullable String datastoreId;
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     private @Nullable String deviceAddress;
     /**
      * @return The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
@@ -81,6 +85,10 @@ public final class VirtualMachineDisk {
      * 
      */
     private @Nullable Integer key;
+    /**
+     * @return A unique label for this disk.
+     * 
+     */
     private String label;
     /**
      * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
@@ -146,6 +154,10 @@ public final class VirtualMachineDisk {
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     public Optional<String> deviceAddress() {
         return Optional.ofNullable(this.deviceAddress);
     }
@@ -216,6 +228,10 @@ public final class VirtualMachineDisk {
     public Optional<Integer> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return A unique label for this disk.
+     * 
+     */
     public String label() {
         return this.label;
     }

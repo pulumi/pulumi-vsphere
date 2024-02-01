@@ -15,9 +15,17 @@ public final class GetVirtualMachineVapp extends com.pulumi.resources.InvokeArgs
 
     public static final GetVirtualMachineVapp Empty = new GetVirtualMachineVapp();
 
+    /**
+     * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     * 
+     */
     @Import(name="properties")
     private @Nullable Map<String,String> properties;
 
+    /**
+     * @return A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     * 
+     */
     public Optional<Map<String,String>> properties() {
         return Optional.ofNullable(this.properties);
     }
@@ -46,6 +54,12 @@ public final class GetVirtualMachineVapp extends com.pulumi.resources.InvokeArgs
             $ = new GetVirtualMachineVapp(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param properties A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(@Nullable Map<String,String> properties) {
             $.properties = properties;
             return this;

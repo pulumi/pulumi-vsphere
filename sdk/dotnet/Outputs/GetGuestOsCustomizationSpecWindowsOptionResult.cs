@@ -13,15 +13,45 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class GetGuestOsCustomizationSpecWindowsOptionResult
     {
+        /// <summary>
+        /// The new administrator password for this virtual machine.
+        /// </summary>
         public readonly string AdminPassword;
+        /// <summary>
+        /// Specifies whether or not the guest operating system automatically logs on as Administrator.
+        /// </summary>
         public readonly bool AutoLogon;
+        /// <summary>
+        /// Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
+        /// </summary>
         public readonly int AutoLogonCount;
+        /// <summary>
+        /// The hostname for this virtual machine.
+        /// </summary>
         public readonly string ComputerName;
+        /// <summary>
+        /// The user account used to join this virtual machine to the Active Directory domain.
+        /// </summary>
         public readonly string? DomainAdminPassword;
+        /// <summary>
+        /// The user account of the domain administrator used to join this virtual machine to the domain.
+        /// </summary>
         public readonly string DomainAdminUser;
+        /// <summary>
+        /// The Active Directory domain for the virtual machine to join.
+        /// </summary>
         public readonly string JoinDomain;
+        /// <summary>
+        /// A list of commands to run at first user logon, after guest customization.
+        /// </summary>
         public readonly ImmutableArray<string> RunOnceCommandLists;
+        /// <summary>
+        /// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+        /// </summary>
         public readonly int TimeZone;
+        /// <summary>
+        /// The workgroup for this virtual machine if not joining an Active Directory domain.
+        /// </summary>
         public readonly string Workgroup;
 
         [OutputConstructor]

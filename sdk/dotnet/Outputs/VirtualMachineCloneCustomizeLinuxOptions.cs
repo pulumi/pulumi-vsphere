@@ -13,10 +13,25 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class VirtualMachineCloneCustomizeLinuxOptions
     {
+        /// <summary>
+        /// The domain name for this virtual machine.
+        /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// The hostname for this virtual machine.
+        /// </summary>
         public readonly string HostName;
+        /// <summary>
+        /// Specifies whether or not the hardware clock should be in UTC or not.
+        /// </summary>
         public readonly bool? HwClockUtc;
+        /// <summary>
+        /// The customization script to run before and or after guest customization
+        /// </summary>
         public readonly string? ScriptText;
+        /// <summary>
+        /// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+        /// </summary>
         public readonly string? TimeZone;
 
         [OutputConstructor]

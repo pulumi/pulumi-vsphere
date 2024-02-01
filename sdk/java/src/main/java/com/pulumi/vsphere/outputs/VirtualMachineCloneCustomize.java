@@ -16,33 +16,85 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineCloneCustomize {
+    /**
+     * @return The list of DNS servers for a virtual network adapter with a static IP address.
+     * 
+     */
     private @Nullable List<String> dnsServerLists;
+    /**
+     * @return A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     * 
+     */
     private @Nullable List<String> dnsSuffixLists;
+    /**
+     * @return The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     private @Nullable String ipv4Gateway;
+    /**
+     * @return The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     private @Nullable String ipv6Gateway;
+    /**
+     * @return A list of configuration options specific to Linux virtual machines.
+     * 
+     */
     private @Nullable VirtualMachineCloneCustomizeLinuxOptions linuxOptions;
     /**
      * @return A specification for a virtual NIC on the virtual machine. See network interface options for more information.
      * 
      */
     private @Nullable List<VirtualMachineCloneCustomizeNetworkInterface> networkInterfaces;
+    /**
+     * @return The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+     * 
+     */
     private @Nullable Integer timeout;
+    /**
+     * @return A list of configuration options specific to Windows virtual machines.
+     * 
+     */
     private @Nullable VirtualMachineCloneCustomizeWindowsOptions windowsOptions;
+    /**
+     * @return Use this option to specify a windows sysprep file directly.
+     * 
+     */
     private @Nullable String windowsSysprepText;
 
     private VirtualMachineCloneCustomize() {}
+    /**
+     * @return The list of DNS servers for a virtual network adapter with a static IP address.
+     * 
+     */
     public List<String> dnsServerLists() {
         return this.dnsServerLists == null ? List.of() : this.dnsServerLists;
     }
+    /**
+     * @return A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     * 
+     */
     public List<String> dnsSuffixLists() {
         return this.dnsSuffixLists == null ? List.of() : this.dnsSuffixLists;
     }
+    /**
+     * @return The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     public Optional<String> ipv4Gateway() {
         return Optional.ofNullable(this.ipv4Gateway);
     }
+    /**
+     * @return The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * 
+     */
     public Optional<String> ipv6Gateway() {
         return Optional.ofNullable(this.ipv6Gateway);
     }
+    /**
+     * @return A list of configuration options specific to Linux virtual machines.
+     * 
+     */
     public Optional<VirtualMachineCloneCustomizeLinuxOptions> linuxOptions() {
         return Optional.ofNullable(this.linuxOptions);
     }
@@ -53,12 +105,24 @@ public final class VirtualMachineCloneCustomize {
     public List<VirtualMachineCloneCustomizeNetworkInterface> networkInterfaces() {
         return this.networkInterfaces == null ? List.of() : this.networkInterfaces;
     }
+    /**
+     * @return The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+     * 
+     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }
+    /**
+     * @return A list of configuration options specific to Windows virtual machines.
+     * 
+     */
     public Optional<VirtualMachineCloneCustomizeWindowsOptions> windowsOptions() {
         return Optional.ofNullable(this.windowsOptions);
     }
+    /**
+     * @return Use this option to specify a windows sysprep file directly.
+     * 
+     */
     public Optional<String> windowsSysprepText() {
         return Optional.ofNullable(this.windowsSysprepText);
     }

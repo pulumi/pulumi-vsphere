@@ -13,11 +13,29 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class GetGuestOsCustomizationSpecResult
     {
+        /// <summary>
+        /// A list of DNS servers for a virtual network adapter with a static IP address.
+        /// </summary>
         public readonly ImmutableArray<string> DnsServerLists;
+        /// <summary>
+        /// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        /// </summary>
         public readonly ImmutableArray<string> DnsSuffixLists;
+        /// <summary>
+        /// A list of configuration options specific to Linux.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGuestOsCustomizationSpecLinuxOptionResult> LinuxOptions;
+        /// <summary>
+        /// A specification of network interface configuration options.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGuestOsCustomizationSpecNetworkInterfaceResult> NetworkInterfaces;
+        /// <summary>
+        /// A list of configuration options specific to Windows.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGuestOsCustomizationSpecWindowsOptionResult> WindowsOptions;
+        /// <summary>
+        /// Use this option to specify use of a Windows Sysprep file.
+        /// </summary>
         public readonly string WindowsSysprepText;
 
         [OutputConstructor]

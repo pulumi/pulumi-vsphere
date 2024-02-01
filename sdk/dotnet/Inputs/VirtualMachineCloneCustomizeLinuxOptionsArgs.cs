@@ -12,17 +12,30 @@ namespace Pulumi.VSphere.Inputs
 
     public sealed class VirtualMachineCloneCustomizeLinuxOptionsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The domain name for this virtual machine.
+        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
+        /// <summary>
+        /// The hostname for this virtual machine.
+        /// </summary>
         [Input("hostName", required: true)]
         public Input<string> HostName { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies whether or not the hardware clock should be in UTC or not.
+        /// </summary>
         [Input("hwClockUtc")]
         public Input<bool>? HwClockUtc { get; set; }
 
         [Input("scriptText")]
         private Input<string>? _scriptText;
+
+        /// <summary>
+        /// The customization script to run before and or after guest customization
+        /// </summary>
         public Input<string>? ScriptText
         {
             get => _scriptText;
@@ -33,6 +46,9 @@ namespace Pulumi.VSphere.Inputs
             }
         }
 
+        /// <summary>
+        /// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+        /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 
