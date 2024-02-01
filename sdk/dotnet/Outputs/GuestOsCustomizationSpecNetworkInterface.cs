@@ -13,11 +13,29 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class GuestOsCustomizationSpecNetworkInterface
     {
+        /// <summary>
+        /// A DNS search domain to add to the DNS configuration on the virtual machine.
+        /// </summary>
         public readonly string? DnsDomain;
+        /// <summary>
+        /// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+        /// </summary>
         public readonly ImmutableArray<string> DnsServerLists;
+        /// <summary>
+        /// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+        /// </summary>
         public readonly string? Ipv4Address;
+        /// <summary>
+        /// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+        /// </summary>
         public readonly int? Ipv4Netmask;
+        /// <summary>
+        /// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+        /// </summary>
         public readonly string? Ipv6Address;
+        /// <summary>
+        /// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+        /// </summary>
         public readonly int? Ipv6Netmask;
 
         [OutputConstructor]

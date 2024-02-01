@@ -21,51 +21,107 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
 
     public static final VirtualMachineCloneArgs Empty = new VirtualMachineCloneArgs();
 
+    /**
+     * The customization specification for the virtual machine post-clone.
+     * 
+     */
     @Import(name="customizationSpec")
     private @Nullable Output<VirtualMachineCloneCustomizationSpecArgs> customizationSpec;
 
+    /**
+     * @return The customization specification for the virtual machine post-clone.
+     * 
+     */
     public Optional<Output<VirtualMachineCloneCustomizationSpecArgs>> customizationSpec() {
         return Optional.ofNullable(this.customizationSpec);
     }
 
+    /**
+     * The customization specification for the virtual machine post-clone.
+     * 
+     */
     @Import(name="customize")
     private @Nullable Output<VirtualMachineCloneCustomizeArgs> customize;
 
+    /**
+     * @return The customization specification for the virtual machine post-clone.
+     * 
+     */
     public Optional<Output<VirtualMachineCloneCustomizeArgs>> customize() {
         return Optional.ofNullable(this.customize);
     }
 
+    /**
+     * Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+     * 
+     */
     @Import(name="linkedClone")
     private @Nullable Output<Boolean> linkedClone;
 
+    /**
+     * @return Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+     * 
+     */
     public Optional<Output<Boolean>> linkedClone() {
         return Optional.ofNullable(this.linkedClone);
     }
 
+    /**
+     * Mapping of ovf networks to the networks to use in vSphere.
+     * 
+     */
     @Import(name="ovfNetworkMap")
     private @Nullable Output<Map<String,String>> ovfNetworkMap;
 
+    /**
+     * @return Mapping of ovf networks to the networks to use in vSphere.
+     * 
+     */
     public Optional<Output<Map<String,String>>> ovfNetworkMap() {
         return Optional.ofNullable(this.ovfNetworkMap);
     }
 
+    /**
+     * Mapping of ovf storage to the datastores to use in vSphere.
+     * 
+     */
     @Import(name="ovfStorageMap")
     private @Nullable Output<Map<String,String>> ovfStorageMap;
 
+    /**
+     * @return Mapping of ovf storage to the datastores to use in vSphere.
+     * 
+     */
     public Optional<Output<Map<String,String>>> ovfStorageMap() {
         return Optional.ofNullable(this.ovfStorageMap);
     }
 
+    /**
+     * The UUID of the source virtual machine or template.
+     * 
+     */
     @Import(name="templateUuid", required=true)
     private Output<String> templateUuid;
 
+    /**
+     * @return The UUID of the source virtual machine or template.
+     * 
+     */
     public Output<String> templateUuid() {
         return this.templateUuid;
     }
 
+    /**
+     * The timeout, in minutes, to wait for the virtual machine clone to complete.
+     * 
+     */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
+    /**
+     * @return The timeout, in minutes, to wait for the virtual machine clone to complete.
+     * 
+     */
     public Optional<Output<Integer>> timeout() {
         return Optional.ofNullable(this.timeout);
     }
@@ -100,65 +156,149 @@ public final class VirtualMachineCloneArgs extends com.pulumi.resources.Resource
             $ = new VirtualMachineCloneArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customizationSpec The customization specification for the virtual machine post-clone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customizationSpec(@Nullable Output<VirtualMachineCloneCustomizationSpecArgs> customizationSpec) {
             $.customizationSpec = customizationSpec;
             return this;
         }
 
+        /**
+         * @param customizationSpec The customization specification for the virtual machine post-clone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customizationSpec(VirtualMachineCloneCustomizationSpecArgs customizationSpec) {
             return customizationSpec(Output.of(customizationSpec));
         }
 
+        /**
+         * @param customize The customization specification for the virtual machine post-clone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customize(@Nullable Output<VirtualMachineCloneCustomizeArgs> customize) {
             $.customize = customize;
             return this;
         }
 
+        /**
+         * @param customize The customization specification for the virtual machine post-clone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customize(VirtualMachineCloneCustomizeArgs customize) {
             return customize(Output.of(customize));
         }
 
+        /**
+         * @param linkedClone Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkedClone(@Nullable Output<Boolean> linkedClone) {
             $.linkedClone = linkedClone;
             return this;
         }
 
+        /**
+         * @param linkedClone Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkedClone(Boolean linkedClone) {
             return linkedClone(Output.of(linkedClone));
         }
 
+        /**
+         * @param ovfNetworkMap Mapping of ovf networks to the networks to use in vSphere.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ovfNetworkMap(@Nullable Output<Map<String,String>> ovfNetworkMap) {
             $.ovfNetworkMap = ovfNetworkMap;
             return this;
         }
 
+        /**
+         * @param ovfNetworkMap Mapping of ovf networks to the networks to use in vSphere.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ovfNetworkMap(Map<String,String> ovfNetworkMap) {
             return ovfNetworkMap(Output.of(ovfNetworkMap));
         }
 
+        /**
+         * @param ovfStorageMap Mapping of ovf storage to the datastores to use in vSphere.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ovfStorageMap(@Nullable Output<Map<String,String>> ovfStorageMap) {
             $.ovfStorageMap = ovfStorageMap;
             return this;
         }
 
+        /**
+         * @param ovfStorageMap Mapping of ovf storage to the datastores to use in vSphere.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ovfStorageMap(Map<String,String> ovfStorageMap) {
             return ovfStorageMap(Output.of(ovfStorageMap));
         }
 
+        /**
+         * @param templateUuid The UUID of the source virtual machine or template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateUuid(Output<String> templateUuid) {
             $.templateUuid = templateUuid;
             return this;
         }
 
+        /**
+         * @param templateUuid The UUID of the source virtual machine or template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateUuid(String templateUuid) {
             return templateUuid(Output.of(templateUuid));
         }
 
+        /**
+         * @param timeout The timeout, in minutes, to wait for the virtual machine clone to complete.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(@Nullable Output<Integer> timeout) {
             $.timeout = timeout;
             return this;
         }
 
+        /**
+         * @param timeout The timeout, in minutes, to wait for the virtual machine clone to complete.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
         }

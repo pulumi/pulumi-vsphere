@@ -13,14 +13,41 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class VirtualMachineOvfDeploy
     {
+        /// <summary>
+        /// Allow unverified ssl certificates while deploying ovf/ova from url.
+        /// </summary>
         public readonly bool? AllowUnverifiedSslCert;
+        /// <summary>
+        /// The Deployment option to be chosen. If empty, the default option is used.
+        /// </summary>
         public readonly string? DeploymentOption;
+        /// <summary>
+        /// An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+        /// </summary>
         public readonly string? DiskProvisioning;
+        /// <summary>
+        /// Allow properties with ovf:userConfigurable=false to be set.
+        /// </summary>
         public readonly bool? EnableHiddenProperties;
+        /// <summary>
+        /// The IP allocation policy.
+        /// </summary>
         public readonly string? IpAllocationPolicy;
+        /// <summary>
+        /// The IP protocol.
+        /// </summary>
         public readonly string? IpProtocol;
+        /// <summary>
+        /// The absolute path to the ovf/ova file in the local system.
+        /// </summary>
         public readonly string? LocalOvfPath;
+        /// <summary>
+        /// The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? OvfNetworkMap;
+        /// <summary>
+        /// URL to the remote ovf/ova file to be deployed.
+        /// </summary>
         public readonly string? RemoteOvfUrl;
 
         [OutputConstructor]

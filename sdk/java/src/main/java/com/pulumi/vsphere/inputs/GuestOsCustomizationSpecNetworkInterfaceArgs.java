@@ -17,44 +17,92 @@ public final class GuestOsCustomizationSpecNetworkInterfaceArgs extends com.pulu
 
     public static final GuestOsCustomizationSpecNetworkInterfaceArgs Empty = new GuestOsCustomizationSpecNetworkInterfaceArgs();
 
+    /**
+     * A DNS search domain to add to the DNS configuration on the virtual machine.
+     * 
+     */
     @Import(name="dnsDomain")
     private @Nullable Output<String> dnsDomain;
 
+    /**
+     * @return A DNS search domain to add to the DNS configuration on the virtual machine.
+     * 
+     */
     public Optional<Output<String>> dnsDomain() {
         return Optional.ofNullable(this.dnsDomain);
     }
 
+    /**
+     * Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+     * 
+     */
     @Import(name="dnsServerLists")
     private @Nullable Output<List<String>> dnsServerLists;
 
+    /**
+     * @return Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+     * 
+     */
     public Optional<Output<List<String>>> dnsServerLists() {
         return Optional.ofNullable(this.dnsServerLists);
     }
 
+    /**
+     * The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+     * 
+     */
     @Import(name="ipv4Address")
     private @Nullable Output<String> ipv4Address;
 
+    /**
+     * @return The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+     * 
+     */
     public Optional<Output<String>> ipv4Address() {
         return Optional.ofNullable(this.ipv4Address);
     }
 
+    /**
+     * The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+     * 
+     */
     @Import(name="ipv4Netmask")
     private @Nullable Output<Integer> ipv4Netmask;
 
+    /**
+     * @return The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+     * 
+     */
     public Optional<Output<Integer>> ipv4Netmask() {
         return Optional.ofNullable(this.ipv4Netmask);
     }
 
+    /**
+     * The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+     * 
+     */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
+    /**
+     * @return The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+     * 
+     */
     public Optional<Output<String>> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
     }
 
+    /**
+     * The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+     * 
+     */
     @Import(name="ipv6Netmask")
     private @Nullable Output<Integer> ipv6Netmask;
 
+    /**
+     * @return The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+     * 
+     */
     public Optional<Output<Integer>> ipv6Netmask() {
         return Optional.ofNullable(this.ipv6Netmask);
     }
@@ -88,60 +136,138 @@ public final class GuestOsCustomizationSpecNetworkInterfaceArgs extends com.pulu
             $ = new GuestOsCustomizationSpecNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dnsDomain A DNS search domain to add to the DNS configuration on the virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsDomain(@Nullable Output<String> dnsDomain) {
             $.dnsDomain = dnsDomain;
             return this;
         }
 
+        /**
+         * @param dnsDomain A DNS search domain to add to the DNS configuration on the virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsDomain(String dnsDomain) {
             return dnsDomain(Output.of(dnsDomain));
         }
 
+        /**
+         * @param dnsServerLists Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsServerLists(@Nullable Output<List<String>> dnsServerLists) {
             $.dnsServerLists = dnsServerLists;
             return this;
         }
 
+        /**
+         * @param dnsServerLists Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsServerLists(List<String> dnsServerLists) {
             return dnsServerLists(Output.of(dnsServerLists));
         }
 
+        /**
+         * @param dnsServerLists Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsServerLists(String... dnsServerLists) {
             return dnsServerLists(List.of(dnsServerLists));
         }
 
+        /**
+         * @param ipv4Address The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Address(@Nullable Output<String> ipv4Address) {
             $.ipv4Address = ipv4Address;
             return this;
         }
 
+        /**
+         * @param ipv4Address The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Address(String ipv4Address) {
             return ipv4Address(Output.of(ipv4Address));
         }
 
+        /**
+         * @param ipv4Netmask The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Netmask(@Nullable Output<Integer> ipv4Netmask) {
             $.ipv4Netmask = ipv4Netmask;
             return this;
         }
 
+        /**
+         * @param ipv4Netmask The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Netmask(Integer ipv4Netmask) {
             return ipv4Netmask(Output.of(ipv4Netmask));
         }
 
+        /**
+         * @param ipv6Address The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
             $.ipv6Address = ipv6Address;
             return this;
         }
 
+        /**
+         * @param ipv6Address The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Address(String ipv6Address) {
             return ipv6Address(Output.of(ipv6Address));
         }
 
+        /**
+         * @param ipv6Netmask The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Netmask(@Nullable Output<Integer> ipv6Netmask) {
             $.ipv6Netmask = ipv6Netmask;
             return this;
         }
 
+        /**
+         * @param ipv6Netmask The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Netmask(Integer ipv6Netmask) {
             return ipv6Netmask(Output.of(ipv6Netmask));
         }

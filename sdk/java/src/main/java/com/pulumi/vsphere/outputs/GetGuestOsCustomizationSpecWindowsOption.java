@@ -15,45 +15,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGuestOsCustomizationSpecWindowsOption {
+    /**
+     * @return The new administrator password for this virtual machine.
+     * 
+     */
     private String adminPassword;
+    /**
+     * @return Specifies whether or not the guest operating system automatically logs on as Administrator.
+     * 
+     */
     private Boolean autoLogon;
+    /**
+     * @return Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
+     * 
+     */
     private Integer autoLogonCount;
+    /**
+     * @return The hostname for this virtual machine.
+     * 
+     */
     private String computerName;
+    /**
+     * @return The user account used to join this virtual machine to the Active Directory domain.
+     * 
+     */
     private @Nullable String domainAdminPassword;
+    /**
+     * @return The user account of the domain administrator used to join this virtual machine to the domain.
+     * 
+     */
     private String domainAdminUser;
+    /**
+     * @return The Active Directory domain for the virtual machine to join.
+     * 
+     */
     private String joinDomain;
+    /**
+     * @return A list of commands to run at first user logon, after guest customization.
+     * 
+     */
     private List<String> runOnceCommandLists;
+    /**
+     * @return The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+     * 
+     */
     private Integer timeZone;
+    /**
+     * @return The workgroup for this virtual machine if not joining an Active Directory domain.
+     * 
+     */
     private String workgroup;
 
     private GetGuestOsCustomizationSpecWindowsOption() {}
+    /**
+     * @return The new administrator password for this virtual machine.
+     * 
+     */
     public String adminPassword() {
         return this.adminPassword;
     }
+    /**
+     * @return Specifies whether or not the guest operating system automatically logs on as Administrator.
+     * 
+     */
     public Boolean autoLogon() {
         return this.autoLogon;
     }
+    /**
+     * @return Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
+     * 
+     */
     public Integer autoLogonCount() {
         return this.autoLogonCount;
     }
+    /**
+     * @return The hostname for this virtual machine.
+     * 
+     */
     public String computerName() {
         return this.computerName;
     }
+    /**
+     * @return The user account used to join this virtual machine to the Active Directory domain.
+     * 
+     */
     public Optional<String> domainAdminPassword() {
         return Optional.ofNullable(this.domainAdminPassword);
     }
+    /**
+     * @return The user account of the domain administrator used to join this virtual machine to the domain.
+     * 
+     */
     public String domainAdminUser() {
         return this.domainAdminUser;
     }
+    /**
+     * @return The Active Directory domain for the virtual machine to join.
+     * 
+     */
     public String joinDomain() {
         return this.joinDomain;
     }
+    /**
+     * @return A list of commands to run at first user logon, after guest customization.
+     * 
+     */
     public List<String> runOnceCommandLists() {
         return this.runOnceCommandLists;
     }
+    /**
+     * @return The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+     * 
+     */
     public Integer timeZone() {
         return this.timeZone;
     }
+    /**
+     * @return The workgroup for this virtual machine if not joining an Active Directory domain.
+     * 
+     */
     public String workgroup() {
         return this.workgroup;
     }

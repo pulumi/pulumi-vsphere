@@ -17,6 +17,9 @@ namespace Pulumi.VSphere.Outputs
         /// The UUID of the virtual machine.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

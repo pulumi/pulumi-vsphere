@@ -12,9 +12,15 @@ namespace Pulumi.VSphere.Inputs
 
     public sealed class DistributedPortGroupVlanRangeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The minimum VLAN to use in the range.
+        /// </summary>
         [Input("maxVlan", required: true)]
         public Input<int> MaxVlan { get; set; } = null!;
 
+        /// <summary>
+        /// The minimum VLAN to use in the range.
+        /// </summary>
         [Input("minVlan", required: true)]
         public Input<int> MinVlan { get; set; } = null!;
 

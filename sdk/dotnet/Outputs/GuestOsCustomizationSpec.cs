@@ -13,13 +13,37 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class GuestOsCustomizationSpec
     {
+        /// <summary>
+        /// The list of DNS servers for a virtual network adapter with a static IP address.
+        /// </summary>
         public readonly ImmutableArray<string> DnsServerLists;
+        /// <summary>
+        /// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        /// </summary>
         public readonly ImmutableArray<string> DnsSuffixLists;
+        /// <summary>
+        /// The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// </summary>
         public readonly string? Ipv4Gateway;
+        /// <summary>
+        /// The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// </summary>
         public readonly string? Ipv6Gateway;
+        /// <summary>
+        /// A list of configuration options specific to Linux virtual machines.
+        /// </summary>
         public readonly Outputs.GuestOsCustomizationSpecLinuxOptions? LinuxOptions;
+        /// <summary>
+        /// A specification of network interface configuration options.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsCustomizationSpecNetworkInterface> NetworkInterfaces;
+        /// <summary>
+        /// A list of configuration options specific to Windows virtual machines.
+        /// </summary>
         public readonly Outputs.GuestOsCustomizationSpecWindowsOptions? WindowsOptions;
+        /// <summary>
+        /// Use this option to specify a windows sysprep file directly.
+        /// </summary>
         public readonly string? WindowsSysprepText;
 
         [OutputConstructor]

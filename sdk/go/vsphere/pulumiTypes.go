@@ -1275,7 +1275,9 @@ func (o ContentLibrarySubscriptionPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type DistributedPortGroupVlanRange struct {
+	// The minimum VLAN to use in the range.
 	MaxVlan int `pulumi:"maxVlan"`
+	// The minimum VLAN to use in the range.
 	MinVlan int `pulumi:"minVlan"`
 }
 
@@ -1291,7 +1293,9 @@ type DistributedPortGroupVlanRangeInput interface {
 }
 
 type DistributedPortGroupVlanRangeArgs struct {
+	// The minimum VLAN to use in the range.
 	MaxVlan pulumi.IntInput `pulumi:"maxVlan"`
+	// The minimum VLAN to use in the range.
 	MinVlan pulumi.IntInput `pulumi:"minVlan"`
 }
 
@@ -1346,10 +1350,12 @@ func (o DistributedPortGroupVlanRangeOutput) ToDistributedPortGroupVlanRangeOutp
 	return o
 }
 
+// The minimum VLAN to use in the range.
 func (o DistributedPortGroupVlanRangeOutput) MaxVlan() pulumi.IntOutput {
 	return o.ApplyT(func(v DistributedPortGroupVlanRange) int { return v.MaxVlan }).(pulumi.IntOutput)
 }
 
+// The minimum VLAN to use in the range.
 func (o DistributedPortGroupVlanRangeOutput) MinVlan() pulumi.IntOutput {
 	return o.ApplyT(func(v DistributedPortGroupVlanRange) int { return v.MinVlan }).(pulumi.IntOutput)
 }
@@ -1611,7 +1617,9 @@ func (o DistributedVirtualSwitchPvlanMappingArrayOutput) Index(i pulumi.IntInput
 }
 
 type DistributedVirtualSwitchVlanRange struct {
+	// The minimum VLAN to use in the range.
 	MaxVlan int `pulumi:"maxVlan"`
+	// The minimum VLAN to use in the range.
 	MinVlan int `pulumi:"minVlan"`
 }
 
@@ -1627,7 +1635,9 @@ type DistributedVirtualSwitchVlanRangeInput interface {
 }
 
 type DistributedVirtualSwitchVlanRangeArgs struct {
+	// The minimum VLAN to use in the range.
 	MaxVlan pulumi.IntInput `pulumi:"maxVlan"`
+	// The minimum VLAN to use in the range.
 	MinVlan pulumi.IntInput `pulumi:"minVlan"`
 }
 
@@ -1682,10 +1692,12 @@ func (o DistributedVirtualSwitchVlanRangeOutput) ToDistributedVirtualSwitchVlanR
 	return o
 }
 
+// The minimum VLAN to use in the range.
 func (o DistributedVirtualSwitchVlanRangeOutput) MaxVlan() pulumi.IntOutput {
 	return o.ApplyT(func(v DistributedVirtualSwitchVlanRange) int { return v.MaxVlan }).(pulumi.IntOutput)
 }
 
+// The minimum VLAN to use in the range.
 func (o DistributedVirtualSwitchVlanRangeOutput) MinVlan() pulumi.IntOutput {
 	return o.ApplyT(func(v DistributedVirtualSwitchVlanRange) int { return v.MinVlan }).(pulumi.IntOutput)
 }
@@ -1835,14 +1847,22 @@ func (o EntityPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) EntityP
 }
 
 type GuestOsCustomizationSpec struct {
-	DnsServerLists     []string                                   `pulumi:"dnsServerLists"`
-	DnsSuffixLists     []string                                   `pulumi:"dnsSuffixLists"`
-	Ipv4Gateway        *string                                    `pulumi:"ipv4Gateway"`
-	Ipv6Gateway        *string                                    `pulumi:"ipv6Gateway"`
-	LinuxOptions       *GuestOsCustomizationSpecLinuxOptions      `pulumi:"linuxOptions"`
-	NetworkInterfaces  []GuestOsCustomizationSpecNetworkInterface `pulumi:"networkInterfaces"`
-	WindowsOptions     *GuestOsCustomizationSpecWindowsOptions    `pulumi:"windowsOptions"`
-	WindowsSysprepText *string                                    `pulumi:"windowsSysprepText"`
+	// The list of DNS servers for a virtual network adapter with a static IP address.
+	DnsServerLists []string `pulumi:"dnsServerLists"`
+	// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+	DnsSuffixLists []string `pulumi:"dnsSuffixLists"`
+	// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
+	// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv6Gateway *string `pulumi:"ipv6Gateway"`
+	// A list of configuration options specific to Linux virtual machines.
+	LinuxOptions *GuestOsCustomizationSpecLinuxOptions `pulumi:"linuxOptions"`
+	// A specification of network interface configuration options.
+	NetworkInterfaces []GuestOsCustomizationSpecNetworkInterface `pulumi:"networkInterfaces"`
+	// A list of configuration options specific to Windows virtual machines.
+	WindowsOptions *GuestOsCustomizationSpecWindowsOptions `pulumi:"windowsOptions"`
+	// Use this option to specify a windows sysprep file directly.
+	WindowsSysprepText *string `pulumi:"windowsSysprepText"`
 }
 
 // GuestOsCustomizationSpecInput is an input type that accepts GuestOsCustomizationSpecArgs and GuestOsCustomizationSpecOutput values.
@@ -1857,14 +1877,22 @@ type GuestOsCustomizationSpecInput interface {
 }
 
 type GuestOsCustomizationSpecArgs struct {
-	DnsServerLists     pulumi.StringArrayInput                            `pulumi:"dnsServerLists"`
-	DnsSuffixLists     pulumi.StringArrayInput                            `pulumi:"dnsSuffixLists"`
-	Ipv4Gateway        pulumi.StringPtrInput                              `pulumi:"ipv4Gateway"`
-	Ipv6Gateway        pulumi.StringPtrInput                              `pulumi:"ipv6Gateway"`
-	LinuxOptions       GuestOsCustomizationSpecLinuxOptionsPtrInput       `pulumi:"linuxOptions"`
-	NetworkInterfaces  GuestOsCustomizationSpecNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	WindowsOptions     GuestOsCustomizationSpecWindowsOptionsPtrInput     `pulumi:"windowsOptions"`
-	WindowsSysprepText pulumi.StringPtrInput                              `pulumi:"windowsSysprepText"`
+	// The list of DNS servers for a virtual network adapter with a static IP address.
+	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
+	// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+	DnsSuffixLists pulumi.StringArrayInput `pulumi:"dnsSuffixLists"`
+	// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv4Gateway pulumi.StringPtrInput `pulumi:"ipv4Gateway"`
+	// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv6Gateway pulumi.StringPtrInput `pulumi:"ipv6Gateway"`
+	// A list of configuration options specific to Linux virtual machines.
+	LinuxOptions GuestOsCustomizationSpecLinuxOptionsPtrInput `pulumi:"linuxOptions"`
+	// A specification of network interface configuration options.
+	NetworkInterfaces GuestOsCustomizationSpecNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// A list of configuration options specific to Windows virtual machines.
+	WindowsOptions GuestOsCustomizationSpecWindowsOptionsPtrInput `pulumi:"windowsOptions"`
+	// Use this option to specify a windows sysprep file directly.
+	WindowsSysprepText pulumi.StringPtrInput `pulumi:"windowsSysprepText"`
 }
 
 func (GuestOsCustomizationSpecArgs) ElementType() reflect.Type {
@@ -1944,36 +1972,44 @@ func (o GuestOsCustomizationSpecOutput) ToGuestOsCustomizationSpecPtrOutputWithC
 	}).(GuestOsCustomizationSpecPtrOutput)
 }
 
+// The list of DNS servers for a virtual network adapter with a static IP address.
 func (o GuestOsCustomizationSpecOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
 }
 
+// A list of DNS search domains to add to the DNS configuration on the virtual machine.
 func (o GuestOsCustomizationSpecOutput) DnsSuffixLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) []string { return v.DnsSuffixLists }).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o GuestOsCustomizationSpecOutput) Ipv4Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) *string { return v.Ipv4Gateway }).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o GuestOsCustomizationSpecOutput) Ipv6Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) *string { return v.Ipv6Gateway }).(pulumi.StringPtrOutput)
 }
 
+// A list of configuration options specific to Linux virtual machines.
 func (o GuestOsCustomizationSpecOutput) LinuxOptions() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) *GuestOsCustomizationSpecLinuxOptions { return v.LinuxOptions }).(GuestOsCustomizationSpecLinuxOptionsPtrOutput)
 }
 
+// A specification of network interface configuration options.
 func (o GuestOsCustomizationSpecOutput) NetworkInterfaces() GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) []GuestOsCustomizationSpecNetworkInterface {
 		return v.NetworkInterfaces
 	}).(GuestOsCustomizationSpecNetworkInterfaceArrayOutput)
 }
 
+// A list of configuration options specific to Windows virtual machines.
 func (o GuestOsCustomizationSpecOutput) WindowsOptions() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) *GuestOsCustomizationSpecWindowsOptions { return v.WindowsOptions }).(GuestOsCustomizationSpecWindowsOptionsPtrOutput)
 }
 
+// Use this option to specify a windows sysprep file directly.
 func (o GuestOsCustomizationSpecOutput) WindowsSysprepText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpec) *string { return v.WindowsSysprepText }).(pulumi.StringPtrOutput)
 }
@@ -2002,6 +2038,7 @@ func (o GuestOsCustomizationSpecPtrOutput) Elem() GuestOsCustomizationSpecOutput
 	}).(GuestOsCustomizationSpecOutput)
 }
 
+// The list of DNS servers for a virtual network adapter with a static IP address.
 func (o GuestOsCustomizationSpecPtrOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) []string {
 		if v == nil {
@@ -2011,6 +2048,7 @@ func (o GuestOsCustomizationSpecPtrOutput) DnsServerLists() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of DNS search domains to add to the DNS configuration on the virtual machine.
 func (o GuestOsCustomizationSpecPtrOutput) DnsSuffixLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) []string {
 		if v == nil {
@@ -2020,6 +2058,7 @@ func (o GuestOsCustomizationSpecPtrOutput) DnsSuffixLists() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o GuestOsCustomizationSpecPtrOutput) Ipv4Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) *string {
 		if v == nil {
@@ -2029,6 +2068,7 @@ func (o GuestOsCustomizationSpecPtrOutput) Ipv4Gateway() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o GuestOsCustomizationSpecPtrOutput) Ipv6Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) *string {
 		if v == nil {
@@ -2038,6 +2078,7 @@ func (o GuestOsCustomizationSpecPtrOutput) Ipv6Gateway() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// A list of configuration options specific to Linux virtual machines.
 func (o GuestOsCustomizationSpecPtrOutput) LinuxOptions() GuestOsCustomizationSpecLinuxOptionsPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) *GuestOsCustomizationSpecLinuxOptions {
 		if v == nil {
@@ -2047,6 +2088,7 @@ func (o GuestOsCustomizationSpecPtrOutput) LinuxOptions() GuestOsCustomizationSp
 	}).(GuestOsCustomizationSpecLinuxOptionsPtrOutput)
 }
 
+// A specification of network interface configuration options.
 func (o GuestOsCustomizationSpecPtrOutput) NetworkInterfaces() GuestOsCustomizationSpecNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) []GuestOsCustomizationSpecNetworkInterface {
 		if v == nil {
@@ -2056,6 +2098,7 @@ func (o GuestOsCustomizationSpecPtrOutput) NetworkInterfaces() GuestOsCustomizat
 	}).(GuestOsCustomizationSpecNetworkInterfaceArrayOutput)
 }
 
+// A list of configuration options specific to Windows virtual machines.
 func (o GuestOsCustomizationSpecPtrOutput) WindowsOptions() GuestOsCustomizationSpecWindowsOptionsPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) *GuestOsCustomizationSpecWindowsOptions {
 		if v == nil {
@@ -2065,6 +2108,7 @@ func (o GuestOsCustomizationSpecPtrOutput) WindowsOptions() GuestOsCustomization
 	}).(GuestOsCustomizationSpecWindowsOptionsPtrOutput)
 }
 
+// Use this option to specify a windows sysprep file directly.
 func (o GuestOsCustomizationSpecPtrOutput) WindowsSysprepText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpec) *string {
 		if v == nil {
@@ -2075,11 +2119,16 @@ func (o GuestOsCustomizationSpecPtrOutput) WindowsSysprepText() pulumi.StringPtr
 }
 
 type GuestOsCustomizationSpecLinuxOptions struct {
-	Domain     string  `pulumi:"domain"`
-	HostName   string  `pulumi:"hostName"`
-	HwClockUtc *bool   `pulumi:"hwClockUtc"`
+	// The domain name for this virtual machine.
+	Domain string `pulumi:"domain"`
+	// The hostname for this virtual machine.
+	HostName string `pulumi:"hostName"`
+	// Specifies whether or not the hardware clock should be in UTC or not.
+	HwClockUtc *bool `pulumi:"hwClockUtc"`
+	// The customization script to run before and or after guest customization
 	ScriptText *string `pulumi:"scriptText"`
-	TimeZone   *string `pulumi:"timeZone"`
+	// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 // GuestOsCustomizationSpecLinuxOptionsInput is an input type that accepts GuestOsCustomizationSpecLinuxOptionsArgs and GuestOsCustomizationSpecLinuxOptionsOutput values.
@@ -2094,11 +2143,16 @@ type GuestOsCustomizationSpecLinuxOptionsInput interface {
 }
 
 type GuestOsCustomizationSpecLinuxOptionsArgs struct {
-	Domain     pulumi.StringInput    `pulumi:"domain"`
-	HostName   pulumi.StringInput    `pulumi:"hostName"`
-	HwClockUtc pulumi.BoolPtrInput   `pulumi:"hwClockUtc"`
+	// The domain name for this virtual machine.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The hostname for this virtual machine.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Specifies whether or not the hardware clock should be in UTC or not.
+	HwClockUtc pulumi.BoolPtrInput `pulumi:"hwClockUtc"`
+	// The customization script to run before and or after guest customization
 	ScriptText pulumi.StringPtrInput `pulumi:"scriptText"`
-	TimeZone   pulumi.StringPtrInput `pulumi:"timeZone"`
+	// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
 func (GuestOsCustomizationSpecLinuxOptionsArgs) ElementType() reflect.Type {
@@ -2178,22 +2232,27 @@ func (o GuestOsCustomizationSpecLinuxOptionsOutput) ToGuestOsCustomizationSpecLi
 	}).(GuestOsCustomizationSpecLinuxOptionsPtrOutput)
 }
 
+// The domain name for this virtual machine.
 func (o GuestOsCustomizationSpecLinuxOptionsOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// The hostname for this virtual machine.
 func (o GuestOsCustomizationSpecLinuxOptionsOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// Specifies whether or not the hardware clock should be in UTC or not.
 func (o GuestOsCustomizationSpecLinuxOptionsOutput) HwClockUtc() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) *bool { return v.HwClockUtc }).(pulumi.BoolPtrOutput)
 }
 
+// The customization script to run before and or after guest customization
 func (o GuestOsCustomizationSpecLinuxOptionsOutput) ScriptText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) *string { return v.ScriptText }).(pulumi.StringPtrOutput)
 }
 
+// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
 func (o GuestOsCustomizationSpecLinuxOptionsOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecLinuxOptions) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -2222,6 +2281,7 @@ func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) Elem() GuestOsCustomizati
 	}).(GuestOsCustomizationSpecLinuxOptionsOutput)
 }
 
+// The domain name for this virtual machine.
 func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
 		if v == nil {
@@ -2231,6 +2291,7 @@ func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) Domain() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hostname for this virtual machine.
 func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
 		if v == nil {
@@ -2240,6 +2301,7 @@ func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) HostName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the hardware clock should be in UTC or not.
 func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) HwClockUtc() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *bool {
 		if v == nil {
@@ -2249,6 +2311,7 @@ func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) HwClockUtc() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The customization script to run before and or after guest customization
 func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) ScriptText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
 		if v == nil {
@@ -2258,6 +2321,7 @@ func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) ScriptText() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
 func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecLinuxOptions) *string {
 		if v == nil {
@@ -2268,12 +2332,18 @@ func (o GuestOsCustomizationSpecLinuxOptionsPtrOutput) TimeZone() pulumi.StringP
 }
 
 type GuestOsCustomizationSpecNetworkInterface struct {
-	DnsDomain      *string  `pulumi:"dnsDomain"`
+	// A DNS search domain to add to the DNS configuration on the virtual machine.
+	DnsDomain *string `pulumi:"dnsDomain"`
+	// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 	DnsServerLists []string `pulumi:"dnsServerLists"`
-	Ipv4Address    *string  `pulumi:"ipv4Address"`
-	Ipv4Netmask    *int     `pulumi:"ipv4Netmask"`
-	Ipv6Address    *string  `pulumi:"ipv6Address"`
-	Ipv6Netmask    *int     `pulumi:"ipv6Netmask"`
+	// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+	Ipv4Address *string `pulumi:"ipv4Address"`
+	// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+	Ipv4Netmask *int `pulumi:"ipv4Netmask"`
+	// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+	Ipv6Address *string `pulumi:"ipv6Address"`
+	// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+	Ipv6Netmask *int `pulumi:"ipv6Netmask"`
 }
 
 // GuestOsCustomizationSpecNetworkInterfaceInput is an input type that accepts GuestOsCustomizationSpecNetworkInterfaceArgs and GuestOsCustomizationSpecNetworkInterfaceOutput values.
@@ -2288,12 +2358,18 @@ type GuestOsCustomizationSpecNetworkInterfaceInput interface {
 }
 
 type GuestOsCustomizationSpecNetworkInterfaceArgs struct {
-	DnsDomain      pulumi.StringPtrInput   `pulumi:"dnsDomain"`
+	// A DNS search domain to add to the DNS configuration on the virtual machine.
+	DnsDomain pulumi.StringPtrInput `pulumi:"dnsDomain"`
+	// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
-	Ipv4Address    pulumi.StringPtrInput   `pulumi:"ipv4Address"`
-	Ipv4Netmask    pulumi.IntPtrInput      `pulumi:"ipv4Netmask"`
-	Ipv6Address    pulumi.StringPtrInput   `pulumi:"ipv6Address"`
-	Ipv6Netmask    pulumi.IntPtrInput      `pulumi:"ipv6Netmask"`
+	// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
+	// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+	Ipv4Netmask pulumi.IntPtrInput `pulumi:"ipv4Netmask"`
+	// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+	Ipv6Netmask pulumi.IntPtrInput `pulumi:"ipv6Netmask"`
 }
 
 func (GuestOsCustomizationSpecNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -2347,26 +2423,32 @@ func (o GuestOsCustomizationSpecNetworkInterfaceOutput) ToGuestOsCustomizationSp
 	return o
 }
 
+// A DNS search domain to add to the DNS configuration on the virtual machine.
 func (o GuestOsCustomizationSpecNetworkInterfaceOutput) DnsDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *string { return v.DnsDomain }).(pulumi.StringPtrOutput)
 }
 
+// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 func (o GuestOsCustomizationSpecNetworkInterfaceOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
 func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
 }
 
+// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
 func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Netmask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *int { return v.Ipv4Netmask }).(pulumi.IntPtrOutput)
 }
 
+// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
 func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
 func (o GuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Netmask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecNetworkInterface) *int { return v.Ipv6Netmask }).(pulumi.IntPtrOutput)
 }
@@ -2392,19 +2474,32 @@ func (o GuestOsCustomizationSpecNetworkInterfaceArrayOutput) Index(i pulumi.IntI
 }
 
 type GuestOsCustomizationSpecWindowsOptions struct {
-	AdminPassword       *string  `pulumi:"adminPassword"`
-	AutoLogon           *bool    `pulumi:"autoLogon"`
-	AutoLogonCount      *int     `pulumi:"autoLogonCount"`
-	ComputerName        string   `pulumi:"computerName"`
-	DomainAdminPassword *string  `pulumi:"domainAdminPassword"`
-	DomainAdminUser     *string  `pulumi:"domainAdminUser"`
-	FullName            *string  `pulumi:"fullName"`
-	JoinDomain          *string  `pulumi:"joinDomain"`
-	OrganizationName    *string  `pulumi:"organizationName"`
-	ProductKey          *string  `pulumi:"productKey"`
+	// The new administrator password for this virtual machine.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Specifies whether or not the VM automatically logs on as Administrator.
+	AutoLogon *bool `pulumi:"autoLogon"`
+	// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
+	AutoLogonCount *int `pulumi:"autoLogonCount"`
+	// The host name for this virtual machine.
+	ComputerName string `pulumi:"computerName"`
+	// The password of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminPassword *string `pulumi:"domainAdminPassword"`
+	// The user account of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminUser *string `pulumi:"domainAdminUser"`
+	// The full name of the user of this virtual machine.
+	FullName *string `pulumi:"fullName"`
+	// The domain that the virtual machine should join.
+	JoinDomain *string `pulumi:"joinDomain"`
+	// The organization name this virtual machine is being installed for.
+	OrganizationName *string `pulumi:"organizationName"`
+	// The product key for this virtual machine.
+	ProductKey *string `pulumi:"productKey"`
+	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists []string `pulumi:"runOnceCommandLists"`
-	TimeZone            *int     `pulumi:"timeZone"`
-	Workgroup           *string  `pulumi:"workgroup"`
+	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+	TimeZone *int `pulumi:"timeZone"`
+	// The workgroup for this virtual machine if not joining a domain.
+	Workgroup *string `pulumi:"workgroup"`
 }
 
 // GuestOsCustomizationSpecWindowsOptionsInput is an input type that accepts GuestOsCustomizationSpecWindowsOptionsArgs and GuestOsCustomizationSpecWindowsOptionsOutput values.
@@ -2419,19 +2514,32 @@ type GuestOsCustomizationSpecWindowsOptionsInput interface {
 }
 
 type GuestOsCustomizationSpecWindowsOptionsArgs struct {
-	AdminPassword       pulumi.StringPtrInput   `pulumi:"adminPassword"`
-	AutoLogon           pulumi.BoolPtrInput     `pulumi:"autoLogon"`
-	AutoLogonCount      pulumi.IntPtrInput      `pulumi:"autoLogonCount"`
-	ComputerName        pulumi.StringInput      `pulumi:"computerName"`
-	DomainAdminPassword pulumi.StringPtrInput   `pulumi:"domainAdminPassword"`
-	DomainAdminUser     pulumi.StringPtrInput   `pulumi:"domainAdminUser"`
-	FullName            pulumi.StringPtrInput   `pulumi:"fullName"`
-	JoinDomain          pulumi.StringPtrInput   `pulumi:"joinDomain"`
-	OrganizationName    pulumi.StringPtrInput   `pulumi:"organizationName"`
-	ProductKey          pulumi.StringPtrInput   `pulumi:"productKey"`
+	// The new administrator password for this virtual machine.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Specifies whether or not the VM automatically logs on as Administrator.
+	AutoLogon pulumi.BoolPtrInput `pulumi:"autoLogon"`
+	// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
+	AutoLogonCount pulumi.IntPtrInput `pulumi:"autoLogonCount"`
+	// The host name for this virtual machine.
+	ComputerName pulumi.StringInput `pulumi:"computerName"`
+	// The password of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminPassword pulumi.StringPtrInput `pulumi:"domainAdminPassword"`
+	// The user account of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminUser pulumi.StringPtrInput `pulumi:"domainAdminUser"`
+	// The full name of the user of this virtual machine.
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// The domain that the virtual machine should join.
+	JoinDomain pulumi.StringPtrInput `pulumi:"joinDomain"`
+	// The organization name this virtual machine is being installed for.
+	OrganizationName pulumi.StringPtrInput `pulumi:"organizationName"`
+	// The product key for this virtual machine.
+	ProductKey pulumi.StringPtrInput `pulumi:"productKey"`
+	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists pulumi.StringArrayInput `pulumi:"runOnceCommandLists"`
-	TimeZone            pulumi.IntPtrInput      `pulumi:"timeZone"`
-	Workgroup           pulumi.StringPtrInput   `pulumi:"workgroup"`
+	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+	TimeZone pulumi.IntPtrInput `pulumi:"timeZone"`
+	// The workgroup for this virtual machine if not joining a domain.
+	Workgroup pulumi.StringPtrInput `pulumi:"workgroup"`
 }
 
 func (GuestOsCustomizationSpecWindowsOptionsArgs) ElementType() reflect.Type {
@@ -2511,54 +2619,67 @@ func (o GuestOsCustomizationSpecWindowsOptionsOutput) ToGuestOsCustomizationSpec
 	}).(GuestOsCustomizationSpecWindowsOptionsPtrOutput)
 }
 
+// The new administrator password for this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the VM automatically logs on as Administrator.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) AutoLogon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *bool { return v.AutoLogon }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) AutoLogonCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *int { return v.AutoLogonCount }).(pulumi.IntPtrOutput)
 }
 
+// The host name for this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) ComputerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) string { return v.ComputerName }).(pulumi.StringOutput)
 }
 
+// The password of the domain administrator used to join this virtual machine to the domain.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) DomainAdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.DomainAdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// The user account of the domain administrator used to join this virtual machine to the domain.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) DomainAdminUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.DomainAdminUser }).(pulumi.StringPtrOutput)
 }
 
+// The full name of the user of this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// The domain that the virtual machine should join.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) JoinDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.JoinDomain }).(pulumi.StringPtrOutput)
 }
 
+// The organization name this virtual machine is being installed for.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) OrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
 }
 
+// The product key for this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) ProductKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.ProductKey }).(pulumi.StringPtrOutput)
 }
 
+// A list of commands to run at first user logon, after guest customization.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) []string { return v.RunOnceCommandLists }).(pulumi.StringArrayOutput)
 }
 
+// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) TimeZone() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *int { return v.TimeZone }).(pulumi.IntPtrOutput)
 }
 
+// The workgroup for this virtual machine if not joining a domain.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) Workgroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.Workgroup }).(pulumi.StringPtrOutput)
 }
@@ -2587,6 +2708,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) Elem() GuestOsCustomiza
 	}).(GuestOsCustomizationSpecWindowsOptionsOutput)
 }
 
+// The new administrator password for this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2596,6 +2718,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AdminPassword() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the VM automatically logs on as Administrator.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AutoLogon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *bool {
 		if v == nil {
@@ -2605,6 +2728,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AutoLogon() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AutoLogonCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *int {
 		if v == nil {
@@ -2614,6 +2738,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) AutoLogonCount() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// The host name for this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ComputerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2623,6 +2748,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ComputerName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The password of the domain administrator used to join this virtual machine to the domain.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainAdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2632,6 +2758,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainAdminPassword() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// The user account of the domain administrator used to join this virtual machine to the domain.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainAdminUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2641,6 +2768,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainAdminUser() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The full name of the user of this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2650,6 +2778,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) FullName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The domain that the virtual machine should join.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) JoinDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2659,6 +2788,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) JoinDomain() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The organization name this virtual machine is being installed for.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) OrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2668,6 +2798,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) OrganizationName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The product key for this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ProductKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2677,6 +2808,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) ProductKey() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// A list of commands to run at first user logon, after guest customization.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) []string {
 		if v == nil {
@@ -2686,6 +2818,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) RunOnceCommandLists() p
 	}).(pulumi.StringArrayOutput)
 }
 
+// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) TimeZone() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *int {
 		if v == nil {
@@ -2695,6 +2828,7 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) TimeZone() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// The workgroup for this virtual machine if not joining a domain.
 func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) Workgroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
 		if v == nil {
@@ -2706,9 +2840,11 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) Workgroup() pulumi.Stri
 
 type HostPortGroupPort struct {
 	// The key for this port group as returned from the vSphere API.
-	Key          *string  `pulumi:"key"`
+	Key *string `pulumi:"key"`
+	// The MAC addresses of the network service of the virtual machine connected on this port.
 	MacAddresses []string `pulumi:"macAddresses"`
-	Type         *string  `pulumi:"type"`
+	// Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+	Type *string `pulumi:"type"`
 }
 
 // HostPortGroupPortInput is an input type that accepts HostPortGroupPortArgs and HostPortGroupPortOutput values.
@@ -2724,9 +2860,11 @@ type HostPortGroupPortInput interface {
 
 type HostPortGroupPortArgs struct {
 	// The key for this port group as returned from the vSphere API.
-	Key          pulumi.StringPtrInput   `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The MAC addresses of the network service of the virtual machine connected on this port.
 	MacAddresses pulumi.StringArrayInput `pulumi:"macAddresses"`
-	Type         pulumi.StringPtrInput   `pulumi:"type"`
+	// Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (HostPortGroupPortArgs) ElementType() reflect.Type {
@@ -2785,10 +2923,12 @@ func (o HostPortGroupPortOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostPortGroupPort) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The MAC addresses of the network service of the virtual machine connected on this port.
 func (o HostPortGroupPortOutput) MacAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HostPortGroupPort) []string { return v.MacAddresses }).(pulumi.StringArrayOutput)
 }
 
+// Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
 func (o HostPortGroupPortOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostPortGroupPort) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2817,7 +2957,8 @@ type VirtualMachineCdrom struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice *bool `pulumi:"clientDevice"`
 	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   *string `pulumi:"datastoreId"`
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
@@ -2844,7 +2985,8 @@ type VirtualMachineCdromArgs struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice pulumi.BoolPtrInput `pulumi:"clientDevice"`
 	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
@@ -2917,6 +3059,7 @@ func (o VirtualMachineCdromOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 func (o VirtualMachineCdromOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -2956,13 +3099,20 @@ func (o VirtualMachineCdromArrayOutput) Index(i pulumi.IntInput) VirtualMachineC
 }
 
 type VirtualMachineClone struct {
+	// The customization specification for the virtual machine post-clone.
 	CustomizationSpec *VirtualMachineCloneCustomizationSpec `pulumi:"customizationSpec"`
-	Customize         *VirtualMachineCloneCustomize         `pulumi:"customize"`
-	LinkedClone       *bool                                 `pulumi:"linkedClone"`
-	OvfNetworkMap     map[string]string                     `pulumi:"ovfNetworkMap"`
-	OvfStorageMap     map[string]string                     `pulumi:"ovfStorageMap"`
-	TemplateUuid      string                                `pulumi:"templateUuid"`
-	Timeout           *int                                  `pulumi:"timeout"`
+	// The customization specification for the virtual machine post-clone.
+	Customize *VirtualMachineCloneCustomize `pulumi:"customize"`
+	// Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+	LinkedClone *bool `pulumi:"linkedClone"`
+	// Mapping of ovf networks to the networks to use in vSphere.
+	OvfNetworkMap map[string]string `pulumi:"ovfNetworkMap"`
+	// Mapping of ovf storage to the datastores to use in vSphere.
+	OvfStorageMap map[string]string `pulumi:"ovfStorageMap"`
+	// The UUID of the source virtual machine or template.
+	TemplateUuid string `pulumi:"templateUuid"`
+	// The timeout, in minutes, to wait for the virtual machine clone to complete.
+	Timeout *int `pulumi:"timeout"`
 }
 
 // VirtualMachineCloneInput is an input type that accepts VirtualMachineCloneArgs and VirtualMachineCloneOutput values.
@@ -2977,13 +3127,20 @@ type VirtualMachineCloneInput interface {
 }
 
 type VirtualMachineCloneArgs struct {
+	// The customization specification for the virtual machine post-clone.
 	CustomizationSpec VirtualMachineCloneCustomizationSpecPtrInput `pulumi:"customizationSpec"`
-	Customize         VirtualMachineCloneCustomizePtrInput         `pulumi:"customize"`
-	LinkedClone       pulumi.BoolPtrInput                          `pulumi:"linkedClone"`
-	OvfNetworkMap     pulumi.StringMapInput                        `pulumi:"ovfNetworkMap"`
-	OvfStorageMap     pulumi.StringMapInput                        `pulumi:"ovfStorageMap"`
-	TemplateUuid      pulumi.StringInput                           `pulumi:"templateUuid"`
-	Timeout           pulumi.IntPtrInput                           `pulumi:"timeout"`
+	// The customization specification for the virtual machine post-clone.
+	Customize VirtualMachineCloneCustomizePtrInput `pulumi:"customize"`
+	// Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+	LinkedClone pulumi.BoolPtrInput `pulumi:"linkedClone"`
+	// Mapping of ovf networks to the networks to use in vSphere.
+	OvfNetworkMap pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
+	// Mapping of ovf storage to the datastores to use in vSphere.
+	OvfStorageMap pulumi.StringMapInput `pulumi:"ovfStorageMap"`
+	// The UUID of the source virtual machine or template.
+	TemplateUuid pulumi.StringInput `pulumi:"templateUuid"`
+	// The timeout, in minutes, to wait for the virtual machine clone to complete.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (VirtualMachineCloneArgs) ElementType() reflect.Type {
@@ -3063,30 +3220,37 @@ func (o VirtualMachineCloneOutput) ToVirtualMachineClonePtrOutputWithContext(ctx
 	}).(VirtualMachineClonePtrOutput)
 }
 
+// The customization specification for the virtual machine post-clone.
 func (o VirtualMachineCloneOutput) CustomizationSpec() VirtualMachineCloneCustomizationSpecPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *VirtualMachineCloneCustomizationSpec { return v.CustomizationSpec }).(VirtualMachineCloneCustomizationSpecPtrOutput)
 }
 
+// The customization specification for the virtual machine post-clone.
 func (o VirtualMachineCloneOutput) Customize() VirtualMachineCloneCustomizePtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *VirtualMachineCloneCustomize { return v.Customize }).(VirtualMachineCloneCustomizePtrOutput)
 }
 
+// Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
 func (o VirtualMachineCloneOutput) LinkedClone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *bool { return v.LinkedClone }).(pulumi.BoolPtrOutput)
 }
 
+// Mapping of ovf networks to the networks to use in vSphere.
 func (o VirtualMachineCloneOutput) OvfNetworkMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineClone) map[string]string { return v.OvfNetworkMap }).(pulumi.StringMapOutput)
 }
 
+// Mapping of ovf storage to the datastores to use in vSphere.
 func (o VirtualMachineCloneOutput) OvfStorageMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineClone) map[string]string { return v.OvfStorageMap }).(pulumi.StringMapOutput)
 }
 
+// The UUID of the source virtual machine or template.
 func (o VirtualMachineCloneOutput) TemplateUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineClone) string { return v.TemplateUuid }).(pulumi.StringOutput)
 }
 
+// The timeout, in minutes, to wait for the virtual machine clone to complete.
 func (o VirtualMachineCloneOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -3115,6 +3279,7 @@ func (o VirtualMachineClonePtrOutput) Elem() VirtualMachineCloneOutput {
 	}).(VirtualMachineCloneOutput)
 }
 
+// The customization specification for the virtual machine post-clone.
 func (o VirtualMachineClonePtrOutput) CustomizationSpec() VirtualMachineCloneCustomizationSpecPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *VirtualMachineCloneCustomizationSpec {
 		if v == nil {
@@ -3124,6 +3289,7 @@ func (o VirtualMachineClonePtrOutput) CustomizationSpec() VirtualMachineCloneCus
 	}).(VirtualMachineCloneCustomizationSpecPtrOutput)
 }
 
+// The customization specification for the virtual machine post-clone.
 func (o VirtualMachineClonePtrOutput) Customize() VirtualMachineCloneCustomizePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *VirtualMachineCloneCustomize {
 		if v == nil {
@@ -3133,6 +3299,7 @@ func (o VirtualMachineClonePtrOutput) Customize() VirtualMachineCloneCustomizePt
 	}).(VirtualMachineCloneCustomizePtrOutput)
 }
 
+// Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
 func (o VirtualMachineClonePtrOutput) LinkedClone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *bool {
 		if v == nil {
@@ -3142,6 +3309,7 @@ func (o VirtualMachineClonePtrOutput) LinkedClone() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Mapping of ovf networks to the networks to use in vSphere.
 func (o VirtualMachineClonePtrOutput) OvfNetworkMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) map[string]string {
 		if v == nil {
@@ -3151,6 +3319,7 @@ func (o VirtualMachineClonePtrOutput) OvfNetworkMap() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Mapping of ovf storage to the datastores to use in vSphere.
 func (o VirtualMachineClonePtrOutput) OvfStorageMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) map[string]string {
 		if v == nil {
@@ -3160,6 +3329,7 @@ func (o VirtualMachineClonePtrOutput) OvfStorageMap() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// The UUID of the source virtual machine or template.
 func (o VirtualMachineClonePtrOutput) TemplateUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *string {
 		if v == nil {
@@ -3169,6 +3339,7 @@ func (o VirtualMachineClonePtrOutput) TemplateUuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The timeout, in minutes, to wait for the virtual machine clone to complete.
 func (o VirtualMachineClonePtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineClone) *int {
 		if v == nil {
@@ -3180,8 +3351,9 @@ func (o VirtualMachineClonePtrOutput) Timeout() pulumi.IntPtrOutput {
 
 type VirtualMachineCloneCustomizationSpec struct {
 	// The UUID of the virtual machine.
-	Id      string `pulumi:"id"`
-	Timeout *int   `pulumi:"timeout"`
+	Id string `pulumi:"id"`
+	// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+	Timeout *int `pulumi:"timeout"`
 }
 
 // VirtualMachineCloneCustomizationSpecInput is an input type that accepts VirtualMachineCloneCustomizationSpecArgs and VirtualMachineCloneCustomizationSpecOutput values.
@@ -3197,7 +3369,8 @@ type VirtualMachineCloneCustomizationSpecInput interface {
 
 type VirtualMachineCloneCustomizationSpecArgs struct {
 	// The UUID of the virtual machine.
-	Id      pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
@@ -3283,6 +3456,7 @@ func (o VirtualMachineCloneCustomizationSpecOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizationSpec) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
 func (o VirtualMachineCloneCustomizationSpecOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizationSpec) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -3321,6 +3495,7 @@ func (o VirtualMachineCloneCustomizationSpecPtrOutput) Id() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
 func (o VirtualMachineCloneCustomizationSpecPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizationSpec) *int {
 		if v == nil {
@@ -3331,16 +3506,24 @@ func (o VirtualMachineCloneCustomizationSpecPtrOutput) Timeout() pulumi.IntPtrOu
 }
 
 type VirtualMachineCloneCustomize struct {
-	DnsServerLists []string                                  `pulumi:"dnsServerLists"`
-	DnsSuffixLists []string                                  `pulumi:"dnsSuffixLists"`
-	Ipv4Gateway    *string                                   `pulumi:"ipv4Gateway"`
-	Ipv6Gateway    *string                                   `pulumi:"ipv6Gateway"`
-	LinuxOptions   *VirtualMachineCloneCustomizeLinuxOptions `pulumi:"linuxOptions"`
+	// The list of DNS servers for a virtual network adapter with a static IP address.
+	DnsServerLists []string `pulumi:"dnsServerLists"`
+	// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+	DnsSuffixLists []string `pulumi:"dnsSuffixLists"`
+	// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
+	// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv6Gateway *string `pulumi:"ipv6Gateway"`
+	// A list of configuration options specific to Linux virtual machines.
+	LinuxOptions *VirtualMachineCloneCustomizeLinuxOptions `pulumi:"linuxOptions"`
 	// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
-	NetworkInterfaces  []VirtualMachineCloneCustomizeNetworkInterface `pulumi:"networkInterfaces"`
-	Timeout            *int                                           `pulumi:"timeout"`
-	WindowsOptions     *VirtualMachineCloneCustomizeWindowsOptions    `pulumi:"windowsOptions"`
-	WindowsSysprepText *string                                        `pulumi:"windowsSysprepText"`
+	NetworkInterfaces []VirtualMachineCloneCustomizeNetworkInterface `pulumi:"networkInterfaces"`
+	// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+	Timeout *int `pulumi:"timeout"`
+	// A list of configuration options specific to Windows virtual machines.
+	WindowsOptions *VirtualMachineCloneCustomizeWindowsOptions `pulumi:"windowsOptions"`
+	// Use this option to specify a windows sysprep file directly.
+	WindowsSysprepText *string `pulumi:"windowsSysprepText"`
 }
 
 // VirtualMachineCloneCustomizeInput is an input type that accepts VirtualMachineCloneCustomizeArgs and VirtualMachineCloneCustomizeOutput values.
@@ -3355,16 +3538,24 @@ type VirtualMachineCloneCustomizeInput interface {
 }
 
 type VirtualMachineCloneCustomizeArgs struct {
-	DnsServerLists pulumi.StringArrayInput                          `pulumi:"dnsServerLists"`
-	DnsSuffixLists pulumi.StringArrayInput                          `pulumi:"dnsSuffixLists"`
-	Ipv4Gateway    pulumi.StringPtrInput                            `pulumi:"ipv4Gateway"`
-	Ipv6Gateway    pulumi.StringPtrInput                            `pulumi:"ipv6Gateway"`
-	LinuxOptions   VirtualMachineCloneCustomizeLinuxOptionsPtrInput `pulumi:"linuxOptions"`
+	// The list of DNS servers for a virtual network adapter with a static IP address.
+	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
+	// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+	DnsSuffixLists pulumi.StringArrayInput `pulumi:"dnsSuffixLists"`
+	// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv4Gateway pulumi.StringPtrInput `pulumi:"ipv4Gateway"`
+	// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+	Ipv6Gateway pulumi.StringPtrInput `pulumi:"ipv6Gateway"`
+	// A list of configuration options specific to Linux virtual machines.
+	LinuxOptions VirtualMachineCloneCustomizeLinuxOptionsPtrInput `pulumi:"linuxOptions"`
 	// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
-	NetworkInterfaces  VirtualMachineCloneCustomizeNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	Timeout            pulumi.IntPtrInput                                     `pulumi:"timeout"`
-	WindowsOptions     VirtualMachineCloneCustomizeWindowsOptionsPtrInput     `pulumi:"windowsOptions"`
-	WindowsSysprepText pulumi.StringPtrInput                                  `pulumi:"windowsSysprepText"`
+	NetworkInterfaces VirtualMachineCloneCustomizeNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// A list of configuration options specific to Windows virtual machines.
+	WindowsOptions VirtualMachineCloneCustomizeWindowsOptionsPtrInput `pulumi:"windowsOptions"`
+	// Use this option to specify a windows sysprep file directly.
+	WindowsSysprepText pulumi.StringPtrInput `pulumi:"windowsSysprepText"`
 }
 
 func (VirtualMachineCloneCustomizeArgs) ElementType() reflect.Type {
@@ -3444,22 +3635,27 @@ func (o VirtualMachineCloneCustomizeOutput) ToVirtualMachineCloneCustomizePtrOut
 	}).(VirtualMachineCloneCustomizePtrOutput)
 }
 
+// The list of DNS servers for a virtual network adapter with a static IP address.
 func (o VirtualMachineCloneCustomizeOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
 }
 
+// A list of DNS search domains to add to the DNS configuration on the virtual machine.
 func (o VirtualMachineCloneCustomizeOutput) DnsSuffixLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) []string { return v.DnsSuffixLists }).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o VirtualMachineCloneCustomizeOutput) Ipv4Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) *string { return v.Ipv4Gateway }).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o VirtualMachineCloneCustomizeOutput) Ipv6Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) *string { return v.Ipv6Gateway }).(pulumi.StringPtrOutput)
 }
 
+// A list of configuration options specific to Linux virtual machines.
 func (o VirtualMachineCloneCustomizeOutput) LinuxOptions() VirtualMachineCloneCustomizeLinuxOptionsPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeLinuxOptions { return v.LinuxOptions }).(VirtualMachineCloneCustomizeLinuxOptionsPtrOutput)
 }
@@ -3471,16 +3667,19 @@ func (o VirtualMachineCloneCustomizeOutput) NetworkInterfaces() VirtualMachineCl
 	}).(VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput)
 }
 
+// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
 func (o VirtualMachineCloneCustomizeOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
+// A list of configuration options specific to Windows virtual machines.
 func (o VirtualMachineCloneCustomizeOutput) WindowsOptions() VirtualMachineCloneCustomizeWindowsOptionsPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeWindowsOptions {
 		return v.WindowsOptions
 	}).(VirtualMachineCloneCustomizeWindowsOptionsPtrOutput)
 }
 
+// Use this option to specify a windows sysprep file directly.
 func (o VirtualMachineCloneCustomizeOutput) WindowsSysprepText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) *string { return v.WindowsSysprepText }).(pulumi.StringPtrOutput)
 }
@@ -3509,6 +3708,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) Elem() VirtualMachineCloneCustomi
 	}).(VirtualMachineCloneCustomizeOutput)
 }
 
+// The list of DNS servers for a virtual network adapter with a static IP address.
 func (o VirtualMachineCloneCustomizePtrOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) []string {
 		if v == nil {
@@ -3518,6 +3718,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) DnsServerLists() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of DNS search domains to add to the DNS configuration on the virtual machine.
 func (o VirtualMachineCloneCustomizePtrOutput) DnsSuffixLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) []string {
 		if v == nil {
@@ -3527,6 +3728,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) DnsSuffixLists() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o VirtualMachineCloneCustomizePtrOutput) Ipv4Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *string {
 		if v == nil {
@@ -3536,6 +3738,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) Ipv4Gateway() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
 func (o VirtualMachineCloneCustomizePtrOutput) Ipv6Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *string {
 		if v == nil {
@@ -3545,6 +3748,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) Ipv6Gateway() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// A list of configuration options specific to Linux virtual machines.
 func (o VirtualMachineCloneCustomizePtrOutput) LinuxOptions() VirtualMachineCloneCustomizeLinuxOptionsPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeLinuxOptions {
 		if v == nil {
@@ -3564,6 +3768,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) NetworkInterfaces() VirtualMachin
 	}).(VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput)
 }
 
+// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
 func (o VirtualMachineCloneCustomizePtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *int {
 		if v == nil {
@@ -3573,6 +3778,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// A list of configuration options specific to Windows virtual machines.
 func (o VirtualMachineCloneCustomizePtrOutput) WindowsOptions() VirtualMachineCloneCustomizeWindowsOptionsPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeWindowsOptions {
 		if v == nil {
@@ -3582,6 +3788,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) WindowsOptions() VirtualMachineCl
 	}).(VirtualMachineCloneCustomizeWindowsOptionsPtrOutput)
 }
 
+// Use this option to specify a windows sysprep file directly.
 func (o VirtualMachineCloneCustomizePtrOutput) WindowsSysprepText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *string {
 		if v == nil {
@@ -3592,11 +3799,16 @@ func (o VirtualMachineCloneCustomizePtrOutput) WindowsSysprepText() pulumi.Strin
 }
 
 type VirtualMachineCloneCustomizeLinuxOptions struct {
-	Domain     string  `pulumi:"domain"`
-	HostName   string  `pulumi:"hostName"`
-	HwClockUtc *bool   `pulumi:"hwClockUtc"`
+	// The domain name for this virtual machine.
+	Domain string `pulumi:"domain"`
+	// The hostname for this virtual machine.
+	HostName string `pulumi:"hostName"`
+	// Specifies whether or not the hardware clock should be in UTC or not.
+	HwClockUtc *bool `pulumi:"hwClockUtc"`
+	// The customization script to run before and or after guest customization
 	ScriptText *string `pulumi:"scriptText"`
-	TimeZone   *string `pulumi:"timeZone"`
+	// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 // VirtualMachineCloneCustomizeLinuxOptionsInput is an input type that accepts VirtualMachineCloneCustomizeLinuxOptionsArgs and VirtualMachineCloneCustomizeLinuxOptionsOutput values.
@@ -3611,11 +3823,16 @@ type VirtualMachineCloneCustomizeLinuxOptionsInput interface {
 }
 
 type VirtualMachineCloneCustomizeLinuxOptionsArgs struct {
-	Domain     pulumi.StringInput    `pulumi:"domain"`
-	HostName   pulumi.StringInput    `pulumi:"hostName"`
-	HwClockUtc pulumi.BoolPtrInput   `pulumi:"hwClockUtc"`
+	// The domain name for this virtual machine.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The hostname for this virtual machine.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Specifies whether or not the hardware clock should be in UTC or not.
+	HwClockUtc pulumi.BoolPtrInput `pulumi:"hwClockUtc"`
+	// The customization script to run before and or after guest customization
 	ScriptText pulumi.StringPtrInput `pulumi:"scriptText"`
-	TimeZone   pulumi.StringPtrInput `pulumi:"timeZone"`
+	// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
 func (VirtualMachineCloneCustomizeLinuxOptionsArgs) ElementType() reflect.Type {
@@ -3695,22 +3912,27 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) ToVirtualMachineCloneCus
 	}).(VirtualMachineCloneCustomizeLinuxOptionsPtrOutput)
 }
 
+// The domain name for this virtual machine.
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// The hostname for this virtual machine.
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// Specifies whether or not the hardware clock should be in UTC or not.
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) HwClockUtc() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *bool { return v.HwClockUtc }).(pulumi.BoolPtrOutput)
 }
 
+// The customization script to run before and or after guest customization
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) ScriptText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *string { return v.ScriptText }).(pulumi.StringPtrOutput)
 }
 
+// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -3739,6 +3961,7 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Elem() VirtualMachine
 	}).(VirtualMachineCloneCustomizeLinuxOptionsOutput)
 }
 
+// The domain name for this virtual machine.
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
 		if v == nil {
@@ -3748,6 +3971,7 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Domain() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hostname for this virtual machine.
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
 		if v == nil {
@@ -3757,6 +3981,7 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HostName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the hardware clock should be in UTC or not.
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HwClockUtc() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *bool {
 		if v == nil {
@@ -3766,6 +3991,7 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HwClockUtc() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The customization script to run before and or after guest customization
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) ScriptText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
 		if v == nil {
@@ -3775,6 +4001,7 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) ScriptText() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
 		if v == nil {
@@ -3785,12 +4012,18 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) TimeZone() pulumi.Str
 }
 
 type VirtualMachineCloneCustomizeNetworkInterface struct {
-	DnsDomain      *string  `pulumi:"dnsDomain"`
+	// A DNS search domain to add to the DNS configuration on the virtual machine.
+	DnsDomain *string `pulumi:"dnsDomain"`
+	// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 	DnsServerLists []string `pulumi:"dnsServerLists"`
-	Ipv4Address    *string  `pulumi:"ipv4Address"`
-	Ipv4Netmask    *int     `pulumi:"ipv4Netmask"`
-	Ipv6Address    *string  `pulumi:"ipv6Address"`
-	Ipv6Netmask    *int     `pulumi:"ipv6Netmask"`
+	// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+	Ipv4Address *string `pulumi:"ipv4Address"`
+	// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+	Ipv4Netmask *int `pulumi:"ipv4Netmask"`
+	// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+	Ipv6Address *string `pulumi:"ipv6Address"`
+	// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+	Ipv6Netmask *int `pulumi:"ipv6Netmask"`
 }
 
 // VirtualMachineCloneCustomizeNetworkInterfaceInput is an input type that accepts VirtualMachineCloneCustomizeNetworkInterfaceArgs and VirtualMachineCloneCustomizeNetworkInterfaceOutput values.
@@ -3805,12 +4038,18 @@ type VirtualMachineCloneCustomizeNetworkInterfaceInput interface {
 }
 
 type VirtualMachineCloneCustomizeNetworkInterfaceArgs struct {
-	DnsDomain      pulumi.StringPtrInput   `pulumi:"dnsDomain"`
+	// A DNS search domain to add to the DNS configuration on the virtual machine.
+	DnsDomain pulumi.StringPtrInput `pulumi:"dnsDomain"`
+	// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
-	Ipv4Address    pulumi.StringPtrInput   `pulumi:"ipv4Address"`
-	Ipv4Netmask    pulumi.IntPtrInput      `pulumi:"ipv4Netmask"`
-	Ipv6Address    pulumi.StringPtrInput   `pulumi:"ipv6Address"`
-	Ipv6Netmask    pulumi.IntPtrInput      `pulumi:"ipv6Netmask"`
+	// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
+	// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+	Ipv4Netmask pulumi.IntPtrInput `pulumi:"ipv4Netmask"`
+	// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+	Ipv6Netmask pulumi.IntPtrInput `pulumi:"ipv6Netmask"`
 }
 
 func (VirtualMachineCloneCustomizeNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -3864,26 +4103,32 @@ func (o VirtualMachineCloneCustomizeNetworkInterfaceOutput) ToVirtualMachineClon
 	return o
 }
 
+// A DNS search domain to add to the DNS configuration on the virtual machine.
 func (o VirtualMachineCloneCustomizeNetworkInterfaceOutput) DnsDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeNetworkInterface) *string { return v.DnsDomain }).(pulumi.StringPtrOutput)
 }
 
+// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 func (o VirtualMachineCloneCustomizeNetworkInterfaceOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeNetworkInterface) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
 func (o VirtualMachineCloneCustomizeNetworkInterfaceOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeNetworkInterface) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
 }
 
+// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
 func (o VirtualMachineCloneCustomizeNetworkInterfaceOutput) Ipv4Netmask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeNetworkInterface) *int { return v.Ipv4Netmask }).(pulumi.IntPtrOutput)
 }
 
+// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
 func (o VirtualMachineCloneCustomizeNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
+// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
 func (o VirtualMachineCloneCustomizeNetworkInterfaceOutput) Ipv6Netmask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeNetworkInterface) *int { return v.Ipv6Netmask }).(pulumi.IntPtrOutput)
 }
@@ -3909,19 +4154,32 @@ func (o VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput) Index(i pulumi.
 }
 
 type VirtualMachineCloneCustomizeWindowsOptions struct {
-	AdminPassword       *string  `pulumi:"adminPassword"`
-	AutoLogon           *bool    `pulumi:"autoLogon"`
-	AutoLogonCount      *int     `pulumi:"autoLogonCount"`
-	ComputerName        string   `pulumi:"computerName"`
-	DomainAdminPassword *string  `pulumi:"domainAdminPassword"`
-	DomainAdminUser     *string  `pulumi:"domainAdminUser"`
-	FullName            *string  `pulumi:"fullName"`
-	JoinDomain          *string  `pulumi:"joinDomain"`
-	OrganizationName    *string  `pulumi:"organizationName"`
-	ProductKey          *string  `pulumi:"productKey"`
+	// The new administrator password for this virtual machine.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Specifies whether or not the VM automatically logs on as Administrator.
+	AutoLogon *bool `pulumi:"autoLogon"`
+	// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
+	AutoLogonCount *int `pulumi:"autoLogonCount"`
+	// The host name for this virtual machine.
+	ComputerName string `pulumi:"computerName"`
+	// The password of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminPassword *string `pulumi:"domainAdminPassword"`
+	// The user account of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminUser *string `pulumi:"domainAdminUser"`
+	// The full name of the user of this virtual machine.
+	FullName *string `pulumi:"fullName"`
+	// The domain that the virtual machine should join.
+	JoinDomain *string `pulumi:"joinDomain"`
+	// The organization name this virtual machine is being installed for.
+	OrganizationName *string `pulumi:"organizationName"`
+	// The product key for this virtual machine.
+	ProductKey *string `pulumi:"productKey"`
+	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists []string `pulumi:"runOnceCommandLists"`
-	TimeZone            *int     `pulumi:"timeZone"`
-	Workgroup           *string  `pulumi:"workgroup"`
+	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+	TimeZone *int `pulumi:"timeZone"`
+	// The workgroup for this virtual machine if not joining a domain.
+	Workgroup *string `pulumi:"workgroup"`
 }
 
 // VirtualMachineCloneCustomizeWindowsOptionsInput is an input type that accepts VirtualMachineCloneCustomizeWindowsOptionsArgs and VirtualMachineCloneCustomizeWindowsOptionsOutput values.
@@ -3936,19 +4194,32 @@ type VirtualMachineCloneCustomizeWindowsOptionsInput interface {
 }
 
 type VirtualMachineCloneCustomizeWindowsOptionsArgs struct {
-	AdminPassword       pulumi.StringPtrInput   `pulumi:"adminPassword"`
-	AutoLogon           pulumi.BoolPtrInput     `pulumi:"autoLogon"`
-	AutoLogonCount      pulumi.IntPtrInput      `pulumi:"autoLogonCount"`
-	ComputerName        pulumi.StringInput      `pulumi:"computerName"`
-	DomainAdminPassword pulumi.StringPtrInput   `pulumi:"domainAdminPassword"`
-	DomainAdminUser     pulumi.StringPtrInput   `pulumi:"domainAdminUser"`
-	FullName            pulumi.StringPtrInput   `pulumi:"fullName"`
-	JoinDomain          pulumi.StringPtrInput   `pulumi:"joinDomain"`
-	OrganizationName    pulumi.StringPtrInput   `pulumi:"organizationName"`
-	ProductKey          pulumi.StringPtrInput   `pulumi:"productKey"`
+	// The new administrator password for this virtual machine.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Specifies whether or not the VM automatically logs on as Administrator.
+	AutoLogon pulumi.BoolPtrInput `pulumi:"autoLogon"`
+	// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
+	AutoLogonCount pulumi.IntPtrInput `pulumi:"autoLogonCount"`
+	// The host name for this virtual machine.
+	ComputerName pulumi.StringInput `pulumi:"computerName"`
+	// The password of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminPassword pulumi.StringPtrInput `pulumi:"domainAdminPassword"`
+	// The user account of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminUser pulumi.StringPtrInput `pulumi:"domainAdminUser"`
+	// The full name of the user of this virtual machine.
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// The domain that the virtual machine should join.
+	JoinDomain pulumi.StringPtrInput `pulumi:"joinDomain"`
+	// The organization name this virtual machine is being installed for.
+	OrganizationName pulumi.StringPtrInput `pulumi:"organizationName"`
+	// The product key for this virtual machine.
+	ProductKey pulumi.StringPtrInput `pulumi:"productKey"`
+	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists pulumi.StringArrayInput `pulumi:"runOnceCommandLists"`
-	TimeZone            pulumi.IntPtrInput      `pulumi:"timeZone"`
-	Workgroup           pulumi.StringPtrInput   `pulumi:"workgroup"`
+	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+	TimeZone pulumi.IntPtrInput `pulumi:"timeZone"`
+	// The workgroup for this virtual machine if not joining a domain.
+	Workgroup pulumi.StringPtrInput `pulumi:"workgroup"`
 }
 
 func (VirtualMachineCloneCustomizeWindowsOptionsArgs) ElementType() reflect.Type {
@@ -4028,54 +4299,67 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) ToVirtualMachineCloneC
 	}).(VirtualMachineCloneCustomizeWindowsOptionsPtrOutput)
 }
 
+// The new administrator password for this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the VM automatically logs on as Administrator.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) AutoLogon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *bool { return v.AutoLogon }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) AutoLogonCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *int { return v.AutoLogonCount }).(pulumi.IntPtrOutput)
 }
 
+// The host name for this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) ComputerName() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) string { return v.ComputerName }).(pulumi.StringOutput)
 }
 
+// The password of the domain administrator used to join this virtual machine to the domain.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) DomainAdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.DomainAdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// The user account of the domain administrator used to join this virtual machine to the domain.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) DomainAdminUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.DomainAdminUser }).(pulumi.StringPtrOutput)
 }
 
+// The full name of the user of this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// The domain that the virtual machine should join.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) JoinDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.JoinDomain }).(pulumi.StringPtrOutput)
 }
 
+// The organization name this virtual machine is being installed for.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) OrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
 }
 
+// The product key for this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) ProductKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.ProductKey }).(pulumi.StringPtrOutput)
 }
 
+// A list of commands to run at first user logon, after guest customization.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) []string { return v.RunOnceCommandLists }).(pulumi.StringArrayOutput)
 }
 
+// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) TimeZone() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *int { return v.TimeZone }).(pulumi.IntPtrOutput)
 }
 
+// The workgroup for this virtual machine if not joining a domain.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) Workgroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.Workgroup }).(pulumi.StringPtrOutput)
 }
@@ -4104,6 +4388,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) Elem() VirtualMachi
 	}).(VirtualMachineCloneCustomizeWindowsOptionsOutput)
 }
 
+// The new administrator password for this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4113,6 +4398,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AdminPassword() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the VM automatically logs on as Administrator.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AutoLogon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *bool {
 		if v == nil {
@@ -4122,6 +4408,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AutoLogon() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AutoLogonCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *int {
 		if v == nil {
@@ -4131,6 +4418,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AutoLogonCount() pu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The host name for this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ComputerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4140,6 +4428,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ComputerName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The password of the domain administrator used to join this virtual machine to the domain.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainAdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4149,6 +4438,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainAdminPassword
 	}).(pulumi.StringPtrOutput)
 }
 
+// The user account of the domain administrator used to join this virtual machine to the domain.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainAdminUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4158,6 +4448,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainAdminUser() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// The full name of the user of this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4167,6 +4458,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) FullName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The domain that the virtual machine should join.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) JoinDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4176,6 +4468,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) JoinDomain() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The organization name this virtual machine is being installed for.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) OrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4185,6 +4478,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) OrganizationName() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The product key for this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ProductKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4194,6 +4488,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ProductKey() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// A list of commands to run at first user logon, after guest customization.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) []string {
 		if v == nil {
@@ -4203,6 +4498,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) RunOnceCommandLists
 	}).(pulumi.StringArrayOutput)
 }
 
+// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) TimeZone() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *int {
 		if v == nil {
@@ -4212,6 +4508,7 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) TimeZone() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+// The workgroup for this virtual machine if not joining a domain.
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) Workgroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
 		if v == nil {
@@ -4229,7 +4526,8 @@ type VirtualMachineDisk struct {
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType *string `pulumi:"controllerType"`
 	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   *string `pulumi:"datastoreId"`
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
 	//
@@ -4252,7 +4550,8 @@ type VirtualMachineDisk struct {
 	// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
 	KeepOnRemove *bool `pulumi:"keepOnRemove"`
 	// The ID of the device within the virtual machine.
-	Key   *int   `pulumi:"key"`
+	Key *int `pulumi:"key"`
+	// A unique label for this disk.
 	Label string `pulumi:"label"`
 	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
 	//
@@ -4293,7 +4592,8 @@ type VirtualMachineDiskArgs struct {
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType pulumi.StringPtrInput `pulumi:"controllerType"`
 	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
 	//
@@ -4316,7 +4616,8 @@ type VirtualMachineDiskArgs struct {
 	// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
 	KeepOnRemove pulumi.BoolPtrInput `pulumi:"keepOnRemove"`
 	// The ID of the device within the virtual machine.
-	Key   pulumi.IntPtrInput `pulumi:"key"`
+	Key pulumi.IntPtrInput `pulumi:"key"`
+	// A unique label for this disk.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
 	//
@@ -4406,6 +4707,7 @@ func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 func (o VirtualMachineDiskOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -4459,6 +4761,7 @@ func (o VirtualMachineDiskOutput) Key() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.Key }).(pulumi.IntPtrOutput)
 }
 
+// A unique label for this disk.
 func (o VirtualMachineDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -4533,7 +4836,8 @@ type VirtualMachineNetworkInterface struct {
 	BandwidthShareCount *int `pulumi:"bandwidthShareCount"`
 	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
-	DeviceAddress       *string `pulumi:"deviceAddress"`
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
 	// The MAC address of the network interface. Can only be manually set if `useStaticMac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
@@ -4541,7 +4845,8 @@ type VirtualMachineNetworkInterface struct {
 	// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
 	NetworkId string `pulumi:"networkId"`
 	// Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
-	OvfMapping       *string `pulumi:"ovfMapping"`
+	OvfMapping *string `pulumi:"ovfMapping"`
+	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction *string `pulumi:"physicalFunction"`
 	// If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
 	UseStaticMac *bool `pulumi:"useStaticMac"`
@@ -4569,7 +4874,8 @@ type VirtualMachineNetworkInterfaceArgs struct {
 	BandwidthShareCount pulumi.IntPtrInput `pulumi:"bandwidthShareCount"`
 	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
-	DeviceAddress       pulumi.StringPtrInput `pulumi:"deviceAddress"`
+	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
 	// The MAC address of the network interface. Can only be manually set if `useStaticMac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
@@ -4577,7 +4883,8 @@ type VirtualMachineNetworkInterfaceArgs struct {
 	// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
-	OvfMapping       pulumi.StringPtrInput `pulumi:"ovfMapping"`
+	OvfMapping pulumi.StringPtrInput `pulumi:"ovfMapping"`
+	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction pulumi.StringPtrInput `pulumi:"physicalFunction"`
 	// If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
 	UseStaticMac pulumi.BoolPtrInput `pulumi:"useStaticMac"`
@@ -4659,6 +4966,7 @@ func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.Strin
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
 }
 
+// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 func (o VirtualMachineNetworkInterfaceOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -4683,6 +4991,7 @@ func (o VirtualMachineNetworkInterfaceOutput) OvfMapping() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.OvfMapping }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 func (o VirtualMachineNetworkInterfaceOutput) PhysicalFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.PhysicalFunction }).(pulumi.StringPtrOutput)
 }
@@ -4713,15 +5022,24 @@ func (o VirtualMachineNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Virt
 }
 
 type VirtualMachineOvfDeploy struct {
-	AllowUnverifiedSslCert *bool             `pulumi:"allowUnverifiedSslCert"`
-	DeploymentOption       *string           `pulumi:"deploymentOption"`
-	DiskProvisioning       *string           `pulumi:"diskProvisioning"`
-	EnableHiddenProperties *bool             `pulumi:"enableHiddenProperties"`
-	IpAllocationPolicy     *string           `pulumi:"ipAllocationPolicy"`
-	IpProtocol             *string           `pulumi:"ipProtocol"`
-	LocalOvfPath           *string           `pulumi:"localOvfPath"`
-	OvfNetworkMap          map[string]string `pulumi:"ovfNetworkMap"`
-	RemoteOvfUrl           *string           `pulumi:"remoteOvfUrl"`
+	// Allow unverified ssl certificates while deploying ovf/ova from url.
+	AllowUnverifiedSslCert *bool `pulumi:"allowUnverifiedSslCert"`
+	// The Deployment option to be chosen. If empty, the default option is used.
+	DeploymentOption *string `pulumi:"deploymentOption"`
+	// An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+	DiskProvisioning *string `pulumi:"diskProvisioning"`
+	// Allow properties with ovf:userConfigurable=false to be set.
+	EnableHiddenProperties *bool `pulumi:"enableHiddenProperties"`
+	// The IP allocation policy.
+	IpAllocationPolicy *string `pulumi:"ipAllocationPolicy"`
+	// The IP protocol.
+	IpProtocol *string `pulumi:"ipProtocol"`
+	// The absolute path to the ovf/ova file in the local system.
+	LocalOvfPath *string `pulumi:"localOvfPath"`
+	// The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+	OvfNetworkMap map[string]string `pulumi:"ovfNetworkMap"`
+	// URL to the remote ovf/ova file to be deployed.
+	RemoteOvfUrl *string `pulumi:"remoteOvfUrl"`
 }
 
 // VirtualMachineOvfDeployInput is an input type that accepts VirtualMachineOvfDeployArgs and VirtualMachineOvfDeployOutput values.
@@ -4736,15 +5054,24 @@ type VirtualMachineOvfDeployInput interface {
 }
 
 type VirtualMachineOvfDeployArgs struct {
-	AllowUnverifiedSslCert pulumi.BoolPtrInput   `pulumi:"allowUnverifiedSslCert"`
-	DeploymentOption       pulumi.StringPtrInput `pulumi:"deploymentOption"`
-	DiskProvisioning       pulumi.StringPtrInput `pulumi:"diskProvisioning"`
-	EnableHiddenProperties pulumi.BoolPtrInput   `pulumi:"enableHiddenProperties"`
-	IpAllocationPolicy     pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
-	IpProtocol             pulumi.StringPtrInput `pulumi:"ipProtocol"`
-	LocalOvfPath           pulumi.StringPtrInput `pulumi:"localOvfPath"`
-	OvfNetworkMap          pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
-	RemoteOvfUrl           pulumi.StringPtrInput `pulumi:"remoteOvfUrl"`
+	// Allow unverified ssl certificates while deploying ovf/ova from url.
+	AllowUnverifiedSslCert pulumi.BoolPtrInput `pulumi:"allowUnverifiedSslCert"`
+	// The Deployment option to be chosen. If empty, the default option is used.
+	DeploymentOption pulumi.StringPtrInput `pulumi:"deploymentOption"`
+	// An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+	DiskProvisioning pulumi.StringPtrInput `pulumi:"diskProvisioning"`
+	// Allow properties with ovf:userConfigurable=false to be set.
+	EnableHiddenProperties pulumi.BoolPtrInput `pulumi:"enableHiddenProperties"`
+	// The IP allocation policy.
+	IpAllocationPolicy pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
+	// The IP protocol.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// The absolute path to the ovf/ova file in the local system.
+	LocalOvfPath pulumi.StringPtrInput `pulumi:"localOvfPath"`
+	// The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+	OvfNetworkMap pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
+	// URL to the remote ovf/ova file to be deployed.
+	RemoteOvfUrl pulumi.StringPtrInput `pulumi:"remoteOvfUrl"`
 }
 
 func (VirtualMachineOvfDeployArgs) ElementType() reflect.Type {
@@ -4824,38 +5151,47 @@ func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployPtrOutputWithCon
 	}).(VirtualMachineOvfDeployPtrOutput)
 }
 
+// Allow unverified ssl certificates while deploying ovf/ova from url.
 func (o VirtualMachineOvfDeployOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *bool { return v.AllowUnverifiedSslCert }).(pulumi.BoolPtrOutput)
 }
 
+// The Deployment option to be chosen. If empty, the default option is used.
 func (o VirtualMachineOvfDeployOutput) DeploymentOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.DeploymentOption }).(pulumi.StringPtrOutput)
 }
 
+// An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
 func (o VirtualMachineOvfDeployOutput) DiskProvisioning() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.DiskProvisioning }).(pulumi.StringPtrOutput)
 }
 
+// Allow properties with ovf:userConfigurable=false to be set.
 func (o VirtualMachineOvfDeployOutput) EnableHiddenProperties() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *bool { return v.EnableHiddenProperties }).(pulumi.BoolPtrOutput)
 }
 
+// The IP allocation policy.
 func (o VirtualMachineOvfDeployOutput) IpAllocationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.IpAllocationPolicy }).(pulumi.StringPtrOutput)
 }
 
+// The IP protocol.
 func (o VirtualMachineOvfDeployOutput) IpProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
 }
 
+// The absolute path to the ovf/ova file in the local system.
 func (o VirtualMachineOvfDeployOutput) LocalOvfPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.LocalOvfPath }).(pulumi.StringPtrOutput)
 }
 
+// The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
 func (o VirtualMachineOvfDeployOutput) OvfNetworkMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) map[string]string { return v.OvfNetworkMap }).(pulumi.StringMapOutput)
 }
 
+// URL to the remote ovf/ova file to be deployed.
 func (o VirtualMachineOvfDeployOutput) RemoteOvfUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.RemoteOvfUrl }).(pulumi.StringPtrOutput)
 }
@@ -4884,6 +5220,7 @@ func (o VirtualMachineOvfDeployPtrOutput) Elem() VirtualMachineOvfDeployOutput {
 	}).(VirtualMachineOvfDeployOutput)
 }
 
+// Allow unverified ssl certificates while deploying ovf/ova from url.
 func (o VirtualMachineOvfDeployPtrOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *bool {
 		if v == nil {
@@ -4893,6 +5230,7 @@ func (o VirtualMachineOvfDeployPtrOutput) AllowUnverifiedSslCert() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The Deployment option to be chosen. If empty, the default option is used.
 func (o VirtualMachineOvfDeployPtrOutput) DeploymentOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
 		if v == nil {
@@ -4902,6 +5240,7 @@ func (o VirtualMachineOvfDeployPtrOutput) DeploymentOption() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
 func (o VirtualMachineOvfDeployPtrOutput) DiskProvisioning() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
 		if v == nil {
@@ -4911,6 +5250,7 @@ func (o VirtualMachineOvfDeployPtrOutput) DiskProvisioning() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow properties with ovf:userConfigurable=false to be set.
 func (o VirtualMachineOvfDeployPtrOutput) EnableHiddenProperties() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *bool {
 		if v == nil {
@@ -4920,6 +5260,7 @@ func (o VirtualMachineOvfDeployPtrOutput) EnableHiddenProperties() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The IP allocation policy.
 func (o VirtualMachineOvfDeployPtrOutput) IpAllocationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
 		if v == nil {
@@ -4929,6 +5270,7 @@ func (o VirtualMachineOvfDeployPtrOutput) IpAllocationPolicy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP protocol.
 func (o VirtualMachineOvfDeployPtrOutput) IpProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
 		if v == nil {
@@ -4938,6 +5280,7 @@ func (o VirtualMachineOvfDeployPtrOutput) IpProtocol() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The absolute path to the ovf/ova file in the local system.
 func (o VirtualMachineOvfDeployPtrOutput) LocalOvfPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
 		if v == nil {
@@ -4947,6 +5290,7 @@ func (o VirtualMachineOvfDeployPtrOutput) LocalOvfPath() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
 func (o VirtualMachineOvfDeployPtrOutput) OvfNetworkMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) map[string]string {
 		if v == nil {
@@ -4956,6 +5300,7 @@ func (o VirtualMachineOvfDeployPtrOutput) OvfNetworkMap() pulumi.StringMapOutput
 	}).(pulumi.StringMapOutput)
 }
 
+// URL to the remote ovf/ova file to be deployed.
 func (o VirtualMachineOvfDeployPtrOutput) RemoteOvfUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
 		if v == nil {
@@ -4966,6 +5311,7 @@ func (o VirtualMachineOvfDeployPtrOutput) RemoteOvfUrl() pulumi.StringPtrOutput 
 }
 
 type VirtualMachineVapp struct {
+	// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -4981,6 +5327,7 @@ type VirtualMachineVappInput interface {
 }
 
 type VirtualMachineVappArgs struct {
+	// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -5061,6 +5408,7 @@ func (o VirtualMachineVappOutput) ToVirtualMachineVappPtrOutputWithContext(ctx c
 	}).(VirtualMachineVappPtrOutput)
 }
 
+// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 func (o VirtualMachineVappOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineVapp) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -5089,6 +5437,7 @@ func (o VirtualMachineVappPtrOutput) Elem() VirtualMachineVappOutput {
 	}).(VirtualMachineVappOutput)
 }
 
+// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 func (o VirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineVapp) map[string]string {
 		if v == nil {
@@ -5602,12 +5951,18 @@ func (o VnicIpv6PtrOutput) Gw() pulumi.StringPtrOutput {
 }
 
 type GetGuestOsCustomizationSpec struct {
-	DnsServerLists     []string                                      `pulumi:"dnsServerLists"`
-	DnsSuffixLists     []string                                      `pulumi:"dnsSuffixLists"`
-	LinuxOptions       []GetGuestOsCustomizationSpecLinuxOption      `pulumi:"linuxOptions"`
-	NetworkInterfaces  []GetGuestOsCustomizationSpecNetworkInterface `pulumi:"networkInterfaces"`
-	WindowsOptions     []GetGuestOsCustomizationSpecWindowsOption    `pulumi:"windowsOptions"`
-	WindowsSysprepText string                                        `pulumi:"windowsSysprepText"`
+	// A list of DNS servers for a virtual network adapter with a static IP address.
+	DnsServerLists []string `pulumi:"dnsServerLists"`
+	// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+	DnsSuffixLists []string `pulumi:"dnsSuffixLists"`
+	// A list of configuration options specific to Linux.
+	LinuxOptions []GetGuestOsCustomizationSpecLinuxOption `pulumi:"linuxOptions"`
+	// A specification of network interface configuration options.
+	NetworkInterfaces []GetGuestOsCustomizationSpecNetworkInterface `pulumi:"networkInterfaces"`
+	// A list of configuration options specific to Windows.
+	WindowsOptions []GetGuestOsCustomizationSpecWindowsOption `pulumi:"windowsOptions"`
+	// Use this option to specify use of a Windows Sysprep file.
+	WindowsSysprepText string `pulumi:"windowsSysprepText"`
 }
 
 // GetGuestOsCustomizationSpecInput is an input type that accepts GetGuestOsCustomizationSpecArgs and GetGuestOsCustomizationSpecOutput values.
@@ -5622,12 +5977,18 @@ type GetGuestOsCustomizationSpecInput interface {
 }
 
 type GetGuestOsCustomizationSpecArgs struct {
-	DnsServerLists     pulumi.StringArrayInput                               `pulumi:"dnsServerLists"`
-	DnsSuffixLists     pulumi.StringArrayInput                               `pulumi:"dnsSuffixLists"`
-	LinuxOptions       GetGuestOsCustomizationSpecLinuxOptionArrayInput      `pulumi:"linuxOptions"`
-	NetworkInterfaces  GetGuestOsCustomizationSpecNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	WindowsOptions     GetGuestOsCustomizationSpecWindowsOptionArrayInput    `pulumi:"windowsOptions"`
-	WindowsSysprepText pulumi.StringInput                                    `pulumi:"windowsSysprepText"`
+	// A list of DNS servers for a virtual network adapter with a static IP address.
+	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
+	// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+	DnsSuffixLists pulumi.StringArrayInput `pulumi:"dnsSuffixLists"`
+	// A list of configuration options specific to Linux.
+	LinuxOptions GetGuestOsCustomizationSpecLinuxOptionArrayInput `pulumi:"linuxOptions"`
+	// A specification of network interface configuration options.
+	NetworkInterfaces GetGuestOsCustomizationSpecNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// A list of configuration options specific to Windows.
+	WindowsOptions GetGuestOsCustomizationSpecWindowsOptionArrayInput `pulumi:"windowsOptions"`
+	// Use this option to specify use of a Windows Sysprep file.
+	WindowsSysprepText pulumi.StringInput `pulumi:"windowsSysprepText"`
 }
 
 func (GetGuestOsCustomizationSpecArgs) ElementType() reflect.Type {
@@ -5681,30 +6042,36 @@ func (o GetGuestOsCustomizationSpecOutput) ToGetGuestOsCustomizationSpecOutputWi
 	return o
 }
 
+// A list of DNS servers for a virtual network adapter with a static IP address.
 func (o GetGuestOsCustomizationSpecOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
 }
 
+// A list of DNS search domains to add to the DNS configuration on the virtual machine.
 func (o GetGuestOsCustomizationSpecOutput) DnsSuffixLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []string { return v.DnsSuffixLists }).(pulumi.StringArrayOutput)
 }
 
+// A list of configuration options specific to Linux.
 func (o GetGuestOsCustomizationSpecOutput) LinuxOptions() GetGuestOsCustomizationSpecLinuxOptionArrayOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []GetGuestOsCustomizationSpecLinuxOption { return v.LinuxOptions }).(GetGuestOsCustomizationSpecLinuxOptionArrayOutput)
 }
 
+// A specification of network interface configuration options.
 func (o GetGuestOsCustomizationSpecOutput) NetworkInterfaces() GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []GetGuestOsCustomizationSpecNetworkInterface {
 		return v.NetworkInterfaces
 	}).(GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput)
 }
 
+// A list of configuration options specific to Windows.
 func (o GetGuestOsCustomizationSpecOutput) WindowsOptions() GetGuestOsCustomizationSpecWindowsOptionArrayOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpec) []GetGuestOsCustomizationSpecWindowsOption {
 		return v.WindowsOptions
 	}).(GetGuestOsCustomizationSpecWindowsOptionArrayOutput)
 }
 
+// Use this option to specify use of a Windows Sysprep file.
 func (o GetGuestOsCustomizationSpecOutput) WindowsSysprepText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpec) string { return v.WindowsSysprepText }).(pulumi.StringOutput)
 }
@@ -5730,11 +6097,16 @@ func (o GetGuestOsCustomizationSpecArrayOutput) Index(i pulumi.IntInput) GetGues
 }
 
 type GetGuestOsCustomizationSpecLinuxOption struct {
-	Domain     string `pulumi:"domain"`
-	HostName   string `pulumi:"hostName"`
-	HwClockUtc bool   `pulumi:"hwClockUtc"`
+	// The domain name for this virtual machine.
+	Domain string `pulumi:"domain"`
+	// The hostname for this virtual machine.
+	HostName string `pulumi:"hostName"`
+	// Specifies whether or not the hardware clock should be in UTC or not.
+	HwClockUtc bool `pulumi:"hwClockUtc"`
+	// The customization script to run before and or after guest customization.
 	ScriptText string `pulumi:"scriptText"`
-	TimeZone   string `pulumi:"timeZone"`
+	// Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+	TimeZone string `pulumi:"timeZone"`
 }
 
 // GetGuestOsCustomizationSpecLinuxOptionInput is an input type that accepts GetGuestOsCustomizationSpecLinuxOptionArgs and GetGuestOsCustomizationSpecLinuxOptionOutput values.
@@ -5749,11 +6121,16 @@ type GetGuestOsCustomizationSpecLinuxOptionInput interface {
 }
 
 type GetGuestOsCustomizationSpecLinuxOptionArgs struct {
-	Domain     pulumi.StringInput `pulumi:"domain"`
-	HostName   pulumi.StringInput `pulumi:"hostName"`
-	HwClockUtc pulumi.BoolInput   `pulumi:"hwClockUtc"`
+	// The domain name for this virtual machine.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The hostname for this virtual machine.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Specifies whether or not the hardware clock should be in UTC or not.
+	HwClockUtc pulumi.BoolInput `pulumi:"hwClockUtc"`
+	// The customization script to run before and or after guest customization.
 	ScriptText pulumi.StringInput `pulumi:"scriptText"`
-	TimeZone   pulumi.StringInput `pulumi:"timeZone"`
+	// Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
 }
 
 func (GetGuestOsCustomizationSpecLinuxOptionArgs) ElementType() reflect.Type {
@@ -5807,22 +6184,27 @@ func (o GetGuestOsCustomizationSpecLinuxOptionOutput) ToGetGuestOsCustomizationS
 	return o
 }
 
+// The domain name for this virtual machine.
 func (o GetGuestOsCustomizationSpecLinuxOptionOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// The hostname for this virtual machine.
 func (o GetGuestOsCustomizationSpecLinuxOptionOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.HostName }).(pulumi.StringOutput)
 }
 
+// Specifies whether or not the hardware clock should be in UTC or not.
 func (o GetGuestOsCustomizationSpecLinuxOptionOutput) HwClockUtc() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) bool { return v.HwClockUtc }).(pulumi.BoolOutput)
 }
 
+// The customization script to run before and or after guest customization.
 func (o GetGuestOsCustomizationSpecLinuxOptionOutput) ScriptText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.ScriptText }).(pulumi.StringOutput)
 }
 
+// Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
 func (o GetGuestOsCustomizationSpecLinuxOptionOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecLinuxOption) string { return v.TimeZone }).(pulumi.StringOutput)
 }
@@ -5848,12 +6230,18 @@ func (o GetGuestOsCustomizationSpecLinuxOptionArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetGuestOsCustomizationSpecNetworkInterface struct {
-	DnsDomain      string   `pulumi:"dnsDomain"`
+	// A DNS search domain to add to the DNS configuration on the virtual machine.
+	DnsDomain string `pulumi:"dnsDomain"`
+	// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 	DnsServerLists []string `pulumi:"dnsServerLists"`
-	Ipv4Address    string   `pulumi:"ipv4Address"`
-	Ipv4Netmask    int      `pulumi:"ipv4Netmask"`
-	Ipv6Address    string   `pulumi:"ipv6Address"`
-	Ipv6Netmask    int      `pulumi:"ipv6Netmask"`
+	// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+	Ipv4Netmask int `pulumi:"ipv4Netmask"`
+	// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+	Ipv6Netmask int `pulumi:"ipv6Netmask"`
 }
 
 // GetGuestOsCustomizationSpecNetworkInterfaceInput is an input type that accepts GetGuestOsCustomizationSpecNetworkInterfaceArgs and GetGuestOsCustomizationSpecNetworkInterfaceOutput values.
@@ -5868,12 +6256,18 @@ type GetGuestOsCustomizationSpecNetworkInterfaceInput interface {
 }
 
 type GetGuestOsCustomizationSpecNetworkInterfaceArgs struct {
-	DnsDomain      pulumi.StringInput      `pulumi:"dnsDomain"`
+	// A DNS search domain to add to the DNS configuration on the virtual machine.
+	DnsDomain pulumi.StringInput `pulumi:"dnsDomain"`
+	// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 	DnsServerLists pulumi.StringArrayInput `pulumi:"dnsServerLists"`
-	Ipv4Address    pulumi.StringInput      `pulumi:"ipv4Address"`
-	Ipv4Netmask    pulumi.IntInput         `pulumi:"ipv4Netmask"`
-	Ipv6Address    pulumi.StringInput      `pulumi:"ipv6Address"`
-	Ipv6Netmask    pulumi.IntInput         `pulumi:"ipv6Netmask"`
+	// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
+	// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+	Ipv4Netmask pulumi.IntInput `pulumi:"ipv4Netmask"`
+	// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+	Ipv6Netmask pulumi.IntInput `pulumi:"ipv6Netmask"`
 }
 
 func (GetGuestOsCustomizationSpecNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -5927,26 +6321,32 @@ func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) ToGetGuestOsCustomiza
 	return o
 }
 
+// A DNS search domain to add to the DNS configuration on the virtual machine.
 func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) DnsDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) string { return v.DnsDomain }).(pulumi.StringOutput)
 }
 
+// Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
 func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
 func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) string { return v.Ipv4Address }).(pulumi.StringOutput)
 }
 
+// The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
 func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv4Netmask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) int { return v.Ipv4Netmask }).(pulumi.IntOutput)
 }
 
+// The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
 func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
+// The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
 func (o GetGuestOsCustomizationSpecNetworkInterfaceOutput) Ipv6Netmask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecNetworkInterface) int { return v.Ipv6Netmask }).(pulumi.IntOutput)
 }
@@ -5972,16 +6372,26 @@ func (o GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput) Index(i pulumi.I
 }
 
 type GetGuestOsCustomizationSpecWindowsOption struct {
-	AdminPassword       string   `pulumi:"adminPassword"`
-	AutoLogon           bool     `pulumi:"autoLogon"`
-	AutoLogonCount      int      `pulumi:"autoLogonCount"`
-	ComputerName        string   `pulumi:"computerName"`
-	DomainAdminPassword *string  `pulumi:"domainAdminPassword"`
-	DomainAdminUser     string   `pulumi:"domainAdminUser"`
-	JoinDomain          string   `pulumi:"joinDomain"`
+	// The new administrator password for this virtual machine.
+	AdminPassword string `pulumi:"adminPassword"`
+	// Specifies whether or not the guest operating system automatically logs on as Administrator.
+	AutoLogon bool `pulumi:"autoLogon"`
+	// Specifies how many times the guest operating system should auto-logon the Administrator account when `autoLogon` is `true`.
+	AutoLogonCount int `pulumi:"autoLogonCount"`
+	// The hostname for this virtual machine.
+	ComputerName string `pulumi:"computerName"`
+	// The user account used to join this virtual machine to the Active Directory domain.
+	DomainAdminPassword *string `pulumi:"domainAdminPassword"`
+	// The user account of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminUser string `pulumi:"domainAdminUser"`
+	// The Active Directory domain for the virtual machine to join.
+	JoinDomain string `pulumi:"joinDomain"`
+	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists []string `pulumi:"runOnceCommandLists"`
-	TimeZone            int      `pulumi:"timeZone"`
-	Workgroup           string   `pulumi:"workgroup"`
+	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+	TimeZone int `pulumi:"timeZone"`
+	// The workgroup for this virtual machine if not joining an Active Directory domain.
+	Workgroup string `pulumi:"workgroup"`
 }
 
 // GetGuestOsCustomizationSpecWindowsOptionInput is an input type that accepts GetGuestOsCustomizationSpecWindowsOptionArgs and GetGuestOsCustomizationSpecWindowsOptionOutput values.
@@ -5996,16 +6406,26 @@ type GetGuestOsCustomizationSpecWindowsOptionInput interface {
 }
 
 type GetGuestOsCustomizationSpecWindowsOptionArgs struct {
-	AdminPassword       pulumi.StringInput      `pulumi:"adminPassword"`
-	AutoLogon           pulumi.BoolInput        `pulumi:"autoLogon"`
-	AutoLogonCount      pulumi.IntInput         `pulumi:"autoLogonCount"`
-	ComputerName        pulumi.StringInput      `pulumi:"computerName"`
-	DomainAdminPassword pulumi.StringPtrInput   `pulumi:"domainAdminPassword"`
-	DomainAdminUser     pulumi.StringInput      `pulumi:"domainAdminUser"`
-	JoinDomain          pulumi.StringInput      `pulumi:"joinDomain"`
+	// The new administrator password for this virtual machine.
+	AdminPassword pulumi.StringInput `pulumi:"adminPassword"`
+	// Specifies whether or not the guest operating system automatically logs on as Administrator.
+	AutoLogon pulumi.BoolInput `pulumi:"autoLogon"`
+	// Specifies how many times the guest operating system should auto-logon the Administrator account when `autoLogon` is `true`.
+	AutoLogonCount pulumi.IntInput `pulumi:"autoLogonCount"`
+	// The hostname for this virtual machine.
+	ComputerName pulumi.StringInput `pulumi:"computerName"`
+	// The user account used to join this virtual machine to the Active Directory domain.
+	DomainAdminPassword pulumi.StringPtrInput `pulumi:"domainAdminPassword"`
+	// The user account of the domain administrator used to join this virtual machine to the domain.
+	DomainAdminUser pulumi.StringInput `pulumi:"domainAdminUser"`
+	// The Active Directory domain for the virtual machine to join.
+	JoinDomain pulumi.StringInput `pulumi:"joinDomain"`
+	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists pulumi.StringArrayInput `pulumi:"runOnceCommandLists"`
-	TimeZone            pulumi.IntInput         `pulumi:"timeZone"`
-	Workgroup           pulumi.StringInput      `pulumi:"workgroup"`
+	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+	TimeZone pulumi.IntInput `pulumi:"timeZone"`
+	// The workgroup for this virtual machine if not joining an Active Directory domain.
+	Workgroup pulumi.StringInput `pulumi:"workgroup"`
 }
 
 func (GetGuestOsCustomizationSpecWindowsOptionArgs) ElementType() reflect.Type {
@@ -6059,42 +6479,52 @@ func (o GetGuestOsCustomizationSpecWindowsOptionOutput) ToGetGuestOsCustomizatio
 	return o
 }
 
+// The new administrator password for this virtual machine.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) AdminPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.AdminPassword }).(pulumi.StringOutput)
 }
 
+// Specifies whether or not the guest operating system automatically logs on as Administrator.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) AutoLogon() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) bool { return v.AutoLogon }).(pulumi.BoolOutput)
 }
 
+// Specifies how many times the guest operating system should auto-logon the Administrator account when `autoLogon` is `true`.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) AutoLogonCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) int { return v.AutoLogonCount }).(pulumi.IntOutput)
 }
 
+// The hostname for this virtual machine.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) ComputerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.ComputerName }).(pulumi.StringOutput)
 }
 
+// The user account used to join this virtual machine to the Active Directory domain.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainAdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) *string { return v.DomainAdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// The user account of the domain administrator used to join this virtual machine to the domain.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainAdminUser() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.DomainAdminUser }).(pulumi.StringOutput)
 }
 
+// The Active Directory domain for the virtual machine to join.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) JoinDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.JoinDomain }).(pulumi.StringOutput)
 }
 
+// A list of commands to run at first user logon, after guest customization.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) []string { return v.RunOnceCommandLists }).(pulumi.StringArrayOutput)
 }
 
+// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) TimeZone() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) int { return v.TimeZone }).(pulumi.IntOutput)
 }
 
+// The workgroup for this virtual machine if not joining an Active Directory domain.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) Workgroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.Workgroup }).(pulumi.StringOutput)
 }
@@ -6273,7 +6703,8 @@ type GetVirtualMachineNetworkInterface struct {
 	MacAddress string `pulumi:"macAddress"`
 	// The managed object reference ID of the network this interface is
 	// connected to.
-	NetworkId        string `pulumi:"networkId"`
+	NetworkId string `pulumi:"networkId"`
+	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction string `pulumi:"physicalFunction"`
 }
 
@@ -6309,7 +6740,8 @@ type GetVirtualMachineNetworkInterfaceArgs struct {
 	MacAddress pulumi.StringInput `pulumi:"macAddress"`
 	// The managed object reference ID of the network this interface is
 	// connected to.
-	NetworkId        pulumi.StringInput `pulumi:"networkId"`
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction pulumi.StringInput `pulumi:"physicalFunction"`
 }
 
@@ -6406,6 +6838,7 @@ func (o GetVirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
+// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 func (o GetVirtualMachineNetworkInterfaceOutput) PhysicalFunction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.PhysicalFunction }).(pulumi.StringOutput)
 }
@@ -6431,6 +6864,7 @@ func (o GetVirtualMachineNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetVirtualMachineVapp struct {
+	// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -6446,6 +6880,7 @@ type GetVirtualMachineVappInput interface {
 }
 
 type GetVirtualMachineVappArgs struct {
+	// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -6526,6 +6961,7 @@ func (o GetVirtualMachineVappOutput) ToGetVirtualMachineVappPtrOutputWithContext
 	}).(GetVirtualMachineVappPtrOutput)
 }
 
+// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 func (o GetVirtualMachineVappOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVirtualMachineVapp) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -6554,6 +6990,7 @@ func (o GetVirtualMachineVappPtrOutput) Elem() GetVirtualMachineVappOutput {
 	}).(GetVirtualMachineVappOutput)
 }
 
+// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
 func (o GetVirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetVirtualMachineVapp) map[string]string {
 		if v == nil {

@@ -17,37 +17,77 @@ public final class GuestOsCustomizationSpecLinuxOptionsArgs extends com.pulumi.r
 
     public static final GuestOsCustomizationSpecLinuxOptionsArgs Empty = new GuestOsCustomizationSpecLinuxOptionsArgs();
 
+    /**
+     * The domain name for this virtual machine.
+     * 
+     */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
+    /**
+     * @return The domain name for this virtual machine.
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }
 
+    /**
+     * The hostname for this virtual machine.
+     * 
+     */
     @Import(name="hostName", required=true)
     private Output<String> hostName;
 
+    /**
+     * @return The hostname for this virtual machine.
+     * 
+     */
     public Output<String> hostName() {
         return this.hostName;
     }
 
+    /**
+     * Specifies whether or not the hardware clock should be in UTC or not.
+     * 
+     */
     @Import(name="hwClockUtc")
     private @Nullable Output<Boolean> hwClockUtc;
 
+    /**
+     * @return Specifies whether or not the hardware clock should be in UTC or not.
+     * 
+     */
     public Optional<Output<Boolean>> hwClockUtc() {
         return Optional.ofNullable(this.hwClockUtc);
     }
 
+    /**
+     * The customization script to run before and or after guest customization
+     * 
+     */
     @Import(name="scriptText")
     private @Nullable Output<String> scriptText;
 
+    /**
+     * @return The customization script to run before and or after guest customization
+     * 
+     */
     public Optional<Output<String>> scriptText() {
         return Optional.ofNullable(this.scriptText);
     }
 
+    /**
+     * Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+     * 
+     */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
+    /**
+     * @return Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+     * 
+     */
     public Optional<Output<String>> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
@@ -80,47 +120,107 @@ public final class GuestOsCustomizationSpecLinuxOptionsArgs extends com.pulumi.r
             $ = new GuestOsCustomizationSpecLinuxOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domain The domain name for this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain The domain name for this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param hostName The hostname for this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostName(Output<String> hostName) {
             $.hostName = hostName;
             return this;
         }
 
+        /**
+         * @param hostName The hostname for this virtual machine.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostName(String hostName) {
             return hostName(Output.of(hostName));
         }
 
+        /**
+         * @param hwClockUtc Specifies whether or not the hardware clock should be in UTC or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hwClockUtc(@Nullable Output<Boolean> hwClockUtc) {
             $.hwClockUtc = hwClockUtc;
             return this;
         }
 
+        /**
+         * @param hwClockUtc Specifies whether or not the hardware clock should be in UTC or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hwClockUtc(Boolean hwClockUtc) {
             return hwClockUtc(Output.of(hwClockUtc));
         }
 
+        /**
+         * @param scriptText The customization script to run before and or after guest customization
+         * 
+         * @return builder
+         * 
+         */
         public Builder scriptText(@Nullable Output<String> scriptText) {
             $.scriptText = scriptText;
             return this;
         }
 
+        /**
+         * @param scriptText The customization script to run before and or after guest customization
+         * 
+         * @return builder
+         * 
+         */
         public Builder scriptText(String scriptText) {
             return scriptText(Output.of(scriptText));
         }
 
+        /**
+         * @param timeZone Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(@Nullable Output<String> timeZone) {
             $.timeZone = timeZone;
             return this;
         }
 
+        /**
+         * @param timeZone Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(String timeZone) {
             return timeZone(Output.of(timeZone));
         }

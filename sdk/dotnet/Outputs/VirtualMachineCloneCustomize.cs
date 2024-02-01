@@ -13,17 +13,41 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class VirtualMachineCloneCustomize
     {
+        /// <summary>
+        /// The list of DNS servers for a virtual network adapter with a static IP address.
+        /// </summary>
         public readonly ImmutableArray<string> DnsServerLists;
+        /// <summary>
+        /// A list of DNS search domains to add to the DNS configuration on the virtual machine.
+        /// </summary>
         public readonly ImmutableArray<string> DnsSuffixLists;
+        /// <summary>
+        /// The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// </summary>
         public readonly string? Ipv4Gateway;
+        /// <summary>
+        /// The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// </summary>
         public readonly string? Ipv6Gateway;
+        /// <summary>
+        /// A list of configuration options specific to Linux virtual machines.
+        /// </summary>
         public readonly Outputs.VirtualMachineCloneCustomizeLinuxOptions? LinuxOptions;
         /// <summary>
         /// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
         /// </summary>
         public readonly ImmutableArray<Outputs.VirtualMachineCloneCustomizeNetworkInterface> NetworkInterfaces;
+        /// <summary>
+        /// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+        /// </summary>
         public readonly int? Timeout;
+        /// <summary>
+        /// A list of configuration options specific to Windows virtual machines.
+        /// </summary>
         public readonly Outputs.VirtualMachineCloneCustomizeWindowsOptions? WindowsOptions;
+        /// <summary>
+        /// Use this option to specify a windows sysprep file directly.
+        /// </summary>
         public readonly string? WindowsSysprepText;
 
         [OutputConstructor]
