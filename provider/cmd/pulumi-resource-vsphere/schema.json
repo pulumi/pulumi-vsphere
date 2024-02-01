@@ -323,10 +323,12 @@
         "vsphere:index/DistributedPortGroupVlanRange:DistributedPortGroupVlanRange": {
             "properties": {
                 "maxVlan": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum VLAN to use in the range.\n"
                 },
                 "minVlan": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum VLAN to use in the range.\n"
                 }
             },
             "type": "object",
@@ -379,10 +381,12 @@
         "vsphere:index/DistributedVirtualSwitchVlanRange:DistributedVirtualSwitchVlanRange": {
             "properties": {
                 "maxVlan": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum VLAN to use in the range.\n"
                 },
                 "minVlan": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimum VLAN to use in the range.\n"
                 }
             },
             "type": "object",
@@ -424,34 +428,42 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The list of DNS servers for a virtual network adapter with a static IP address.\n"
                 },
                 "dnsSuffixLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of DNS search domains to add to the DNS configuration on the virtual machine.\n"
                 },
                 "ipv4Gateway": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.\n"
                 },
                 "ipv6Gateway": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.\n"
                 },
                 "linuxOptions": {
-                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecLinuxOptions:GuestOsCustomizationSpecLinuxOptions"
+                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecLinuxOptions:GuestOsCustomizationSpecLinuxOptions",
+                    "description": "A list of configuration options specific to Linux virtual machines.\n"
                 },
                 "networkInterfaces": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecNetworkInterface:GuestOsCustomizationSpecNetworkInterface"
-                    }
+                    },
+                    "description": "A specification of network interface configuration options.\n"
                 },
                 "windowsOptions": {
-                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecWindowsOptions:GuestOsCustomizationSpecWindowsOptions"
+                    "$ref": "#/types/vsphere:index/GuestOsCustomizationSpecWindowsOptions:GuestOsCustomizationSpecWindowsOptions",
+                    "description": "A list of configuration options specific to Windows virtual machines.\n"
                 },
                 "windowsSysprepText": {
                     "type": "string",
+                    "description": "Use this option to specify a windows sysprep file directly.\n",
                     "secret": true
                 }
             },
@@ -460,20 +472,25 @@
         "vsphere:index/GuestOsCustomizationSpecLinuxOptions:GuestOsCustomizationSpecLinuxOptions": {
             "properties": {
                 "domain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The domain name for this virtual machine.\n"
                 },
                 "hostName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The hostname for this virtual machine.\n"
                 },
                 "hwClockUtc": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether or not the hardware clock should be in UTC or not.\n"
                 },
                 "scriptText": {
                     "type": "string",
+                    "description": "The customization script to run before and or after guest customization\n",
                     "secret": true
                 },
                 "timeZone": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.\n"
                 }
             },
             "type": "object",
@@ -485,25 +502,31 @@
         "vsphere:index/GuestOsCustomizationSpecNetworkInterface:GuestOsCustomizationSpecNetworkInterface": {
             "properties": {
                 "dnsDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A DNS search domain to add to the DNS configuration on the virtual machine.\n"
                 },
                 "dnsServerLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.\n"
                 },
                 "ipv4Address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv4 address assigned to this network adapter. If left blank, DHCP is used.\n"
                 },
                 "ipv4Netmask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.\n"
                 },
                 "ipv6Address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.\n"
                 },
                 "ipv6Netmask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.\n"
                 }
             },
             "type": "object"
@@ -512,48 +535,61 @@
             "properties": {
                 "adminPassword": {
                     "type": "string",
+                    "description": "The new administrator password for this virtual machine.\n",
                     "secret": true
                 },
                 "autoLogon": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether or not the VM automatically logs on as Administrator.\n"
                 },
                 "autoLogonCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.\n"
                 },
                 "computerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The host name for this virtual machine.\n"
                 },
                 "domainAdminPassword": {
                     "type": "string",
+                    "description": "The password of the domain administrator used to join this virtual machine to the domain.\n",
                     "secret": true
                 },
                 "domainAdminUser": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The user account of the domain administrator used to join this virtual machine to the domain.\n"
                 },
                 "fullName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The full name of the user of this virtual machine.\n"
                 },
                 "joinDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The domain that the virtual machine should join.\n"
                 },
                 "organizationName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The organization name this virtual machine is being installed for.\n"
                 },
                 "productKey": {
                     "type": "string",
+                    "description": "The product key for this virtual machine.\n",
                     "secret": true
                 },
                 "runOnceCommandLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of commands to run at first user logon, after guest customization.\n"
                 },
                 "timeZone": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The new time zone for the virtual machine. This is a sysprep-dictated timezone code.\n"
                 },
                 "workgroup": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The workgroup for this virtual machine if not joining a domain.\n"
                 }
             },
             "type": "object",
@@ -571,10 +607,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The MAC addresses of the network service of the virtual machine connected on this port.\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.\n"
                 }
             },
             "type": "object",
@@ -599,7 +637,8 @@
                     "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
                 },
                 "deviceAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.\n"
                 },
                 "key": {
                     "type": "integer",
@@ -623,31 +662,38 @@
         "vsphere:index/VirtualMachineClone:VirtualMachineClone": {
             "properties": {
                 "customizationSpec": {
-                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomizationSpec:VirtualMachineCloneCustomizationSpec"
+                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomizationSpec:VirtualMachineCloneCustomizationSpec",
+                    "description": "The customization specification for the virtual machine post-clone.\n"
                 },
                 "customize": {
-                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomize:VirtualMachineCloneCustomize"
+                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomize:VirtualMachineCloneCustomize",
+                    "description": "The customization specification for the virtual machine post-clone.\n"
                 },
                 "linkedClone": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.\n"
                 },
                 "ovfNetworkMap": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Mapping of ovf networks to the networks to use in vSphere.\n"
                 },
                 "ovfStorageMap": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Mapping of ovf storage to the datastores to use in vSphere.\n"
                 },
                 "templateUuid": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The UUID of the source virtual machine or template.\n"
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The timeout, in minutes, to wait for the virtual machine clone to complete.\n"
                 }
             },
             "type": "object",
@@ -662,7 +708,8 @@
                     "description": "The UUID of the virtual machine.\n"
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.\n"
                 }
             },
             "type": "object",
@@ -676,22 +723,27 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The list of DNS servers for a virtual network adapter with a static IP address.\n"
                 },
                 "dnsSuffixLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of DNS search domains to add to the DNS configuration on the virtual machine.\n"
                 },
                 "ipv4Gateway": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.\n"
                 },
                 "ipv6Gateway": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.\n"
                 },
                 "linuxOptions": {
-                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomizeLinuxOptions:VirtualMachineCloneCustomizeLinuxOptions"
+                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomizeLinuxOptions:VirtualMachineCloneCustomizeLinuxOptions",
+                    "description": "A list of configuration options specific to Linux virtual machines.\n"
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -701,13 +753,16 @@
                     "description": "A specification for a virtual NIC on the virtual machine. See network interface options for more information.\n"
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.\n"
                 },
                 "windowsOptions": {
-                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomizeWindowsOptions:VirtualMachineCloneCustomizeWindowsOptions"
+                    "$ref": "#/types/vsphere:index/VirtualMachineCloneCustomizeWindowsOptions:VirtualMachineCloneCustomizeWindowsOptions",
+                    "description": "A list of configuration options specific to Windows virtual machines.\n"
                 },
                 "windowsSysprepText": {
                     "type": "string",
+                    "description": "Use this option to specify a windows sysprep file directly.\n",
                     "secret": true
                 }
             },
@@ -716,20 +771,25 @@
         "vsphere:index/VirtualMachineCloneCustomizeLinuxOptions:VirtualMachineCloneCustomizeLinuxOptions": {
             "properties": {
                 "domain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The domain name for this virtual machine.\n"
                 },
                 "hostName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The hostname for this virtual machine.\n"
                 },
                 "hwClockUtc": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether or not the hardware clock should be in UTC or not.\n"
                 },
                 "scriptText": {
                     "type": "string",
+                    "description": "The customization script to run before and or after guest customization\n",
                     "secret": true
                 },
                 "timeZone": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.\n"
                 }
             },
             "type": "object",
@@ -741,25 +801,31 @@
         "vsphere:index/VirtualMachineCloneCustomizeNetworkInterface:VirtualMachineCloneCustomizeNetworkInterface": {
             "properties": {
                 "dnsDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A DNS search domain to add to the DNS configuration on the virtual machine.\n"
                 },
                 "dnsServerLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.\n"
                 },
                 "ipv4Address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv4 address assigned to this network adapter. If left blank, DHCP is used.\n"
                 },
                 "ipv4Netmask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.\n"
                 },
                 "ipv6Address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.\n"
                 },
                 "ipv6Netmask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.\n"
                 }
             },
             "type": "object"
@@ -768,48 +834,61 @@
             "properties": {
                 "adminPassword": {
                     "type": "string",
+                    "description": "The new administrator password for this virtual machine.\n",
                     "secret": true
                 },
                 "autoLogon": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether or not the VM automatically logs on as Administrator.\n"
                 },
                 "autoLogonCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.\n"
                 },
                 "computerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The host name for this virtual machine.\n"
                 },
                 "domainAdminPassword": {
                     "type": "string",
+                    "description": "The password of the domain administrator used to join this virtual machine to the domain.\n",
                     "secret": true
                 },
                 "domainAdminUser": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The user account of the domain administrator used to join this virtual machine to the domain.\n"
                 },
                 "fullName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The full name of the user of this virtual machine.\n"
                 },
                 "joinDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The domain that the virtual machine should join.\n"
                 },
                 "organizationName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The organization name this virtual machine is being installed for.\n"
                 },
                 "productKey": {
                     "type": "string",
+                    "description": "The product key for this virtual machine.\n",
                     "secret": true
                 },
                 "runOnceCommandLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of commands to run at first user logon, after guest customization.\n"
                 },
                 "timeZone": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The new time zone for the virtual machine. This is a sysprep-dictated timezone code.\n"
                 },
                 "workgroup": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The workgroup for this virtual machine if not joining a domain.\n"
                 }
             },
             "type": "object",
@@ -832,7 +911,8 @@
                     "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
                 },
                 "deviceAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.\n"
                 },
                 "diskMode": {
                     "type": "string",
@@ -871,7 +951,8 @@
                     "description": "The ID of the device within the virtual machine.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unique label for this disk.\n"
                 },
                 "path": {
                     "type": "string",
@@ -943,7 +1024,8 @@
                     "description": "The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.\n"
                 },
                 "deviceAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.\n"
                 },
                 "key": {
                     "type": "integer",
@@ -963,7 +1045,8 @@
                     "willReplaceOnChanges": true
                 },
                 "physicalFunction": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'\n"
                 },
                 "useStaticMac": {
                     "type": "boolean",
@@ -989,30 +1072,37 @@
         "vsphere:index/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy": {
             "properties": {
                 "allowUnverifiedSslCert": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Allow unverified ssl certificates while deploying ovf/ova from url.\n"
                 },
                 "deploymentOption": {
                     "type": "string",
+                    "description": "The Deployment option to be chosen. If empty, the default option is used.\n",
                     "willReplaceOnChanges": true
                 },
                 "diskProvisioning": {
                     "type": "string",
+                    "description": "An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).\n",
                     "willReplaceOnChanges": true
                 },
                 "enableHiddenProperties": {
                     "type": "boolean",
+                    "description": "Allow properties with ovf:userConfigurable=false to be set.\n",
                     "willReplaceOnChanges": true
                 },
                 "ipAllocationPolicy": {
                     "type": "string",
+                    "description": "The IP allocation policy.\n",
                     "willReplaceOnChanges": true
                 },
                 "ipProtocol": {
                     "type": "string",
+                    "description": "The IP protocol.\n",
                     "willReplaceOnChanges": true
                 },
                 "localOvfPath": {
                     "type": "string",
+                    "description": "The absolute path to the ovf/ova file in the local system.\n",
                     "willReplaceOnChanges": true
                 },
                 "ovfNetworkMap": {
@@ -1020,10 +1110,12 @@
                     "additionalProperties": {
                         "type": "string"
                     },
+                    "description": "The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.\n",
                     "willReplaceOnChanges": true
                 },
                 "remoteOvfUrl": {
                     "type": "string",
+                    "description": "URL to the remote ovf/ova file to be deployed.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1035,7 +1127,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.\n"
                 }
             },
             "type": "object"
@@ -1115,34 +1208,40 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of DNS servers for a virtual network adapter with a static IP address.\n"
                 },
                 "dnsSuffixLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of DNS search domains to add to the DNS configuration on the virtual machine.\n"
                 },
                 "linuxOptions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/vsphere:index/getGuestOsCustomizationSpecLinuxOption:getGuestOsCustomizationSpecLinuxOption"
-                    }
+                    },
+                    "description": "A list of configuration options specific to Linux.\n"
                 },
                 "networkInterfaces": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/vsphere:index/getGuestOsCustomizationSpecNetworkInterface:getGuestOsCustomizationSpecNetworkInterface"
-                    }
+                    },
+                    "description": "A specification of network interface configuration options.\n"
                 },
                 "windowsOptions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/vsphere:index/getGuestOsCustomizationSpecWindowsOption:getGuestOsCustomizationSpecWindowsOption"
-                    }
+                    },
+                    "description": "A list of configuration options specific to Windows.\n"
                 },
                 "windowsSysprepText": {
                     "type": "string",
+                    "description": "Use this option to specify use of a Windows Sysprep file.\n",
                     "secret": true
                 }
             },
@@ -1164,20 +1263,25 @@
         "vsphere:index/getGuestOsCustomizationSpecLinuxOption:getGuestOsCustomizationSpecLinuxOption": {
             "properties": {
                 "domain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The domain name for this virtual machine.\n"
                 },
                 "hostName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The hostname for this virtual machine.\n"
                 },
                 "hwClockUtc": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether or not the hardware clock should be in UTC or not.\n"
                 },
                 "scriptText": {
                     "type": "string",
+                    "description": "The customization script to run before and or after guest customization.\n",
                     "secret": true
                 },
                 "timeZone": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.\n"
                 }
             },
             "type": "object",
@@ -1197,25 +1301,31 @@
         "vsphere:index/getGuestOsCustomizationSpecNetworkInterface:getGuestOsCustomizationSpecNetworkInterface": {
             "properties": {
                 "dnsDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A DNS search domain to add to the DNS configuration on the virtual machine.\n"
                 },
                 "dnsServerLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.\n"
                 },
                 "ipv4Address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv4 address assigned to this network adapter. If left blank, DHCP is used.\n"
                 },
                 "ipv4Netmask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.\n"
                 },
                 "ipv6Address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.\n"
                 },
                 "ipv6Netmask": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.\n"
                 }
             },
             "type": "object",
@@ -1237,38 +1347,48 @@
             "properties": {
                 "adminPassword": {
                     "type": "string",
+                    "description": "The new administrator password for this virtual machine.\n",
                     "secret": true
                 },
                 "autoLogon": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether or not the guest operating system automatically logs on as Administrator.\n"
                 },
                 "autoLogonCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.\n"
                 },
                 "computerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The hostname for this virtual machine.\n"
                 },
                 "domainAdminPassword": {
                     "type": "string",
+                    "description": "The user account used to join this virtual machine to the Active Directory domain.\n",
                     "secret": true
                 },
                 "domainAdminUser": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The user account of the domain administrator used to join this virtual machine to the domain.\n"
                 },
                 "joinDomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Active Directory domain for the virtual machine to join.\n"
                 },
                 "runOnceCommandLists": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of commands to run at first user logon, after guest customization.\n"
                 },
                 "timeZone": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The new time zone for the virtual machine. This is a sysprep-dictated timezone code.\n"
                 },
                 "workgroup": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The workgroup for this virtual machine if not joining an Active Directory domain.\n"
                 }
             },
             "type": "object",
@@ -1357,7 +1477,8 @@
                     "description": "The managed object reference ID of the network this interface is\nconnected to.\n"
                 },
                 "physicalFunction": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'\n"
                 }
             },
             "type": "object",
@@ -1380,7 +1501,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.\n"
                 }
             },
             "type": "object"
