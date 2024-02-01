@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class DistributedVirtualSwitchVlanRange {
+    /**
+     * @return The minimum VLAN to use in the range.
+     * 
+     */
     private Integer maxVlan;
+    /**
+     * @return The minimum VLAN to use in the range.
+     * 
+     */
     private Integer minVlan;
 
     private DistributedVirtualSwitchVlanRange() {}
+    /**
+     * @return The minimum VLAN to use in the range.
+     * 
+     */
     public Integer maxVlan() {
         return this.maxVlan;
     }
+    /**
+     * @return The minimum VLAN to use in the range.
+     * 
+     */
     public Integer minVlan() {
         return this.minVlan;
     }

@@ -42,6 +42,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("bandwidthShareLevel")]
         public Input<string>? BandwidthShareLevel { get; set; }
 
+        /// <summary>
+        /// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        /// </summary>
         [Input("deviceAddress")]
         public Input<string>? DeviceAddress { get; set; }
 
@@ -69,6 +72,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("ovfMapping")]
         public Input<string>? OvfMapping { get; set; }
 
+        /// <summary>
+        /// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+        /// </summary>
         [Input("physicalFunction")]
         public Input<string>? PhysicalFunction { get; set; }
 

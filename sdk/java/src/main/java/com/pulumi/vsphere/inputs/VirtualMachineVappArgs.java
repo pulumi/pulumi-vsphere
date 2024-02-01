@@ -16,9 +16,17 @@ public final class VirtualMachineVappArgs extends com.pulumi.resources.ResourceA
 
     public static final VirtualMachineVappArgs Empty = new VirtualMachineVappArgs();
 
+    /**
+     * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     * 
+     */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
+    /**
+     * @return A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     * 
+     */
     public Optional<Output<Map<String,String>>> properties() {
         return Optional.ofNullable(this.properties);
     }
@@ -47,11 +55,23 @@ public final class VirtualMachineVappArgs extends com.pulumi.resources.ResourceA
             $ = new VirtualMachineVappArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param properties A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(@Nullable Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
 
+        /**
+         * @param properties A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }

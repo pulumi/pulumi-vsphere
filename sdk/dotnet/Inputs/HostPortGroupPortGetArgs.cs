@@ -20,12 +20,19 @@ namespace Pulumi.VSphere.Inputs
 
         [Input("macAddresses")]
         private InputList<string>? _macAddresses;
+
+        /// <summary>
+        /// The MAC addresses of the network service of the virtual machine connected on this port.
+        /// </summary>
         public InputList<string> MacAddresses
         {
             get => _macAddresses ?? (_macAddresses = new InputList<string>());
             set => _macAddresses = value;
         }
 
+        /// <summary>
+        /// Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

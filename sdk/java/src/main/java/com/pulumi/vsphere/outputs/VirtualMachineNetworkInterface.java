@@ -39,6 +39,10 @@ public final class VirtualMachineNetworkInterface {
      * 
      */
     private @Nullable String bandwidthShareLevel;
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     private @Nullable String deviceAddress;
     /**
      * @return The ID of the device within the virtual machine.
@@ -60,6 +64,10 @@ public final class VirtualMachineNetworkInterface {
      * 
      */
     private @Nullable String ovfMapping;
+    /**
+     * @return The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+     * 
+     */
     private @Nullable String physicalFunction;
     /**
      * @return If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
@@ -103,6 +111,10 @@ public final class VirtualMachineNetworkInterface {
     public Optional<String> bandwidthShareLevel() {
         return Optional.ofNullable(this.bandwidthShareLevel);
     }
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     public Optional<String> deviceAddress() {
         return Optional.ofNullable(this.deviceAddress);
     }
@@ -134,6 +146,10 @@ public final class VirtualMachineNetworkInterface {
     public Optional<String> ovfMapping() {
         return Optional.ofNullable(this.ovfMapping);
     }
+    /**
+     * @return The ID of the Physical SR-IOV NIC to attach to, e.g. &#39;0000:d8:00.0&#39;
+     * 
+     */
     public Optional<String> physicalFunction() {
         return Optional.ofNullable(this.physicalFunction);
     }

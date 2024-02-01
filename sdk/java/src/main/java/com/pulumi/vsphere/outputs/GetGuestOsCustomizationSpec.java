@@ -14,29 +14,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGuestOsCustomizationSpec {
+    /**
+     * @return A list of DNS servers for a virtual network adapter with a static IP address.
+     * 
+     */
     private List<String> dnsServerLists;
+    /**
+     * @return A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     * 
+     */
     private List<String> dnsSuffixLists;
+    /**
+     * @return A list of configuration options specific to Linux.
+     * 
+     */
     private List<GetGuestOsCustomizationSpecLinuxOption> linuxOptions;
+    /**
+     * @return A specification of network interface configuration options.
+     * 
+     */
     private List<GetGuestOsCustomizationSpecNetworkInterface> networkInterfaces;
+    /**
+     * @return A list of configuration options specific to Windows.
+     * 
+     */
     private List<GetGuestOsCustomizationSpecWindowsOption> windowsOptions;
+    /**
+     * @return Use this option to specify use of a Windows Sysprep file.
+     * 
+     */
     private String windowsSysprepText;
 
     private GetGuestOsCustomizationSpec() {}
+    /**
+     * @return A list of DNS servers for a virtual network adapter with a static IP address.
+     * 
+     */
     public List<String> dnsServerLists() {
         return this.dnsServerLists;
     }
+    /**
+     * @return A list of DNS search domains to add to the DNS configuration on the virtual machine.
+     * 
+     */
     public List<String> dnsSuffixLists() {
         return this.dnsSuffixLists;
     }
+    /**
+     * @return A list of configuration options specific to Linux.
+     * 
+     */
     public List<GetGuestOsCustomizationSpecLinuxOption> linuxOptions() {
         return this.linuxOptions;
     }
+    /**
+     * @return A specification of network interface configuration options.
+     * 
+     */
     public List<GetGuestOsCustomizationSpecNetworkInterface> networkInterfaces() {
         return this.networkInterfaces;
     }
+    /**
+     * @return A list of configuration options specific to Windows.
+     * 
+     */
     public List<GetGuestOsCustomizationSpecWindowsOption> windowsOptions() {
         return this.windowsOptions;
     }
+    /**
+     * @return Use this option to specify use of a Windows Sysprep file.
+     * 
+     */
     public String windowsSysprepText() {
         return this.windowsSysprepText;
     }

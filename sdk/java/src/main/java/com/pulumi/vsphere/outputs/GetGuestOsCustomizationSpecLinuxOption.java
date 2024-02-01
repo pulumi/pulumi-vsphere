@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGuestOsCustomizationSpecLinuxOption {
+    /**
+     * @return The domain name for this virtual machine.
+     * 
+     */
     private String domain;
+    /**
+     * @return The hostname for this virtual machine.
+     * 
+     */
     private String hostName;
+    /**
+     * @return Specifies whether or not the hardware clock should be in UTC or not.
+     * 
+     */
     private Boolean hwClockUtc;
+    /**
+     * @return The customization script to run before and or after guest customization.
+     * 
+     */
     private String scriptText;
+    /**
+     * @return Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+     * 
+     */
     private String timeZone;
 
     private GetGuestOsCustomizationSpecLinuxOption() {}
+    /**
+     * @return The domain name for this virtual machine.
+     * 
+     */
     public String domain() {
         return this.domain;
     }
+    /**
+     * @return The hostname for this virtual machine.
+     * 
+     */
     public String hostName() {
         return this.hostName;
     }
+    /**
+     * @return Specifies whether or not the hardware clock should be in UTC or not.
+     * 
+     */
     public Boolean hwClockUtc() {
         return this.hwClockUtc;
     }
+    /**
+     * @return The customization script to run before and or after guest customization.
+     * 
+     */
     public String scriptText() {
         return this.scriptText;
     }
+    /**
+     * @return Set the time zone on the guest operating system. For a list of the acceptable values for Linux customization specifications, see [List of Time Zone Database Zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) on Wikipedia.
+     * 
+     */
     public String timeZone() {
         return this.timeZone;
     }

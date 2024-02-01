@@ -33,6 +33,9 @@ namespace Pulumi.VSphere.Outputs
         /// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
         /// </summary>
         public readonly string? BandwidthShareLevel;
+        /// <summary>
+        /// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        /// </summary>
         public readonly string? DeviceAddress;
         /// <summary>
         /// The ID of the device within the virtual machine.
@@ -50,6 +53,9 @@ namespace Pulumi.VSphere.Outputs
         /// Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
         /// </summary>
         public readonly string? OvfMapping;
+        /// <summary>
+        /// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+        /// </summary>
         public readonly string? PhysicalFunction;
         /// <summary>
         /// If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
