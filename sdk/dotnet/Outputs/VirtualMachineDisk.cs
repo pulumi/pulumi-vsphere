@@ -27,6 +27,9 @@ namespace Pulumi.VSphere.Outputs
         /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         public readonly string? DatastoreId;
+        /// <summary>
+        /// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        /// </summary>
         public readonly string? DeviceAddress;
         /// <summary>
         /// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
@@ -68,6 +71,9 @@ namespace Pulumi.VSphere.Outputs
         /// The ID of the device within the virtual machine.
         /// </summary>
         public readonly int? Key;
+        /// <summary>
+        /// A unique label for this disk.
+        /// </summary>
         public readonly string Label;
         /// <summary>
         /// The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.

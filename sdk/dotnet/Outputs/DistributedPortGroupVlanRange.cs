@@ -13,7 +13,13 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class DistributedPortGroupVlanRange
     {
+        /// <summary>
+        /// The minimum VLAN to use in the range.
+        /// </summary>
         public readonly int MaxVlan;
+        /// <summary>
+        /// The minimum VLAN to use in the range.
+        /// </summary>
         public readonly int MinVlan;
 
         [OutputConstructor]

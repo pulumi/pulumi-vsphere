@@ -23,6 +23,10 @@ public final class VirtualMachineCdrom {
      * 
      */
     private @Nullable String datastoreId;
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     private @Nullable String deviceAddress;
     /**
      * @return The ID of the device within the virtual machine.
@@ -54,6 +58,10 @@ public final class VirtualMachineCdrom {
     public Optional<String> datastoreId() {
         return Optional.ofNullable(this.datastoreId);
     }
+    /**
+     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * 
+     */
     public Optional<String> deviceAddress() {
         return Optional.ofNullable(this.deviceAddress);
     }

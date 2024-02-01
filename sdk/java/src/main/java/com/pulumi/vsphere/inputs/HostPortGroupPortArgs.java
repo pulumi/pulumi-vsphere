@@ -31,16 +31,32 @@ public final class HostPortGroupPortArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The MAC addresses of the network service of the virtual machine connected on this port.
+     * 
+     */
     @Import(name="macAddresses")
     private @Nullable Output<List<String>> macAddresses;
 
+    /**
+     * @return The MAC addresses of the network service of the virtual machine connected on this port.
+     * 
+     */
     public Optional<Output<List<String>>> macAddresses() {
         return Optional.ofNullable(this.macAddresses);
     }
 
+    /**
+     * Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -92,24 +108,54 @@ public final class HostPortGroupPortArgs extends com.pulumi.resources.ResourceAr
             return key(Output.of(key));
         }
 
+        /**
+         * @param macAddresses The MAC addresses of the network service of the virtual machine connected on this port.
+         * 
+         * @return builder
+         * 
+         */
         public Builder macAddresses(@Nullable Output<List<String>> macAddresses) {
             $.macAddresses = macAddresses;
             return this;
         }
 
+        /**
+         * @param macAddresses The MAC addresses of the network service of the virtual machine connected on this port.
+         * 
+         * @return builder
+         * 
+         */
         public Builder macAddresses(List<String> macAddresses) {
             return macAddresses(Output.of(macAddresses));
         }
 
+        /**
+         * @param macAddresses The MAC addresses of the network service of the virtual machine connected on this port.
+         * 
+         * @return builder
+         * 
+         */
         public Builder macAddresses(String... macAddresses) {
             return macAddresses(List.of(macAddresses));
         }
 
+        /**
+         * @param type Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

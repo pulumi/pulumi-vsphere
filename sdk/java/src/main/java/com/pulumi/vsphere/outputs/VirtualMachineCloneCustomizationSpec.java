@@ -18,6 +18,10 @@ public final class VirtualMachineCloneCustomizationSpec {
      * 
      */
     private String id;
+    /**
+     * @return The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+     * 
+     */
     private @Nullable Integer timeout;
 
     private VirtualMachineCloneCustomizationSpec() {}
@@ -28,6 +32,10 @@ public final class VirtualMachineCloneCustomizationSpec {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+     * 
+     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

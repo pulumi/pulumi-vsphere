@@ -17,7 +17,15 @@ public final class HostPortGroupPort {
      * 
      */
     private @Nullable String key;
+    /**
+     * @return The MAC addresses of the network service of the virtual machine connected on this port.
+     * 
+     */
     private @Nullable List<String> macAddresses;
+    /**
+     * @return Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+     * 
+     */
     private @Nullable String type;
 
     private HostPortGroupPort() {}
@@ -28,9 +36,17 @@ public final class HostPortGroupPort {
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return The MAC addresses of the network service of the virtual machine connected on this port.
+     * 
+     */
     public List<String> macAddresses() {
         return this.macAddresses == null ? List.of() : this.macAddresses;
     }
+    /**
+     * @return Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

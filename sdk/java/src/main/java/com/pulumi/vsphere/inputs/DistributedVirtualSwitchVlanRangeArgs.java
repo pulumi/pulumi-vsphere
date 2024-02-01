@@ -14,16 +14,32 @@ public final class DistributedVirtualSwitchVlanRangeArgs extends com.pulumi.reso
 
     public static final DistributedVirtualSwitchVlanRangeArgs Empty = new DistributedVirtualSwitchVlanRangeArgs();
 
+    /**
+     * The minimum VLAN to use in the range.
+     * 
+     */
     @Import(name="maxVlan", required=true)
     private Output<Integer> maxVlan;
 
+    /**
+     * @return The minimum VLAN to use in the range.
+     * 
+     */
     public Output<Integer> maxVlan() {
         return this.maxVlan;
     }
 
+    /**
+     * The minimum VLAN to use in the range.
+     * 
+     */
     @Import(name="minVlan", required=true)
     private Output<Integer> minVlan;
 
+    /**
+     * @return The minimum VLAN to use in the range.
+     * 
+     */
     public Output<Integer> minVlan() {
         return this.minVlan;
     }
@@ -53,20 +69,44 @@ public final class DistributedVirtualSwitchVlanRangeArgs extends com.pulumi.reso
             $ = new DistributedVirtualSwitchVlanRangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxVlan The minimum VLAN to use in the range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxVlan(Output<Integer> maxVlan) {
             $.maxVlan = maxVlan;
             return this;
         }
 
+        /**
+         * @param maxVlan The minimum VLAN to use in the range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxVlan(Integer maxVlan) {
             return maxVlan(Output.of(maxVlan));
         }
 
+        /**
+         * @param minVlan The minimum VLAN to use in the range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minVlan(Output<Integer> minVlan) {
             $.minVlan = minVlan;
             return this;
         }
 
+        /**
+         * @param minVlan The minimum VLAN to use in the range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minVlan(Integer minVlan) {
             return minVlan(Output.of(minVlan));
         }

@@ -13,41 +13,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VirtualMachineOvfDeploy {
+    /**
+     * @return Allow unverified ssl certificates while deploying ovf/ova from url.
+     * 
+     */
     private @Nullable Boolean allowUnverifiedSslCert;
+    /**
+     * @return The Deployment option to be chosen. If empty, the default option is used.
+     * 
+     */
     private @Nullable String deploymentOption;
+    /**
+     * @return An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+     * 
+     */
     private @Nullable String diskProvisioning;
+    /**
+     * @return Allow properties with ovf:userConfigurable=false to be set.
+     * 
+     */
     private @Nullable Boolean enableHiddenProperties;
+    /**
+     * @return The IP allocation policy.
+     * 
+     */
     private @Nullable String ipAllocationPolicy;
+    /**
+     * @return The IP protocol.
+     * 
+     */
     private @Nullable String ipProtocol;
+    /**
+     * @return The absolute path to the ovf/ova file in the local system.
+     * 
+     */
     private @Nullable String localOvfPath;
+    /**
+     * @return The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+     * 
+     */
     private @Nullable Map<String,String> ovfNetworkMap;
+    /**
+     * @return URL to the remote ovf/ova file to be deployed.
+     * 
+     */
     private @Nullable String remoteOvfUrl;
 
     private VirtualMachineOvfDeploy() {}
+    /**
+     * @return Allow unverified ssl certificates while deploying ovf/ova from url.
+     * 
+     */
     public Optional<Boolean> allowUnverifiedSslCert() {
         return Optional.ofNullable(this.allowUnverifiedSslCert);
     }
+    /**
+     * @return The Deployment option to be chosen. If empty, the default option is used.
+     * 
+     */
     public Optional<String> deploymentOption() {
         return Optional.ofNullable(this.deploymentOption);
     }
+    /**
+     * @return An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+     * 
+     */
     public Optional<String> diskProvisioning() {
         return Optional.ofNullable(this.diskProvisioning);
     }
+    /**
+     * @return Allow properties with ovf:userConfigurable=false to be set.
+     * 
+     */
     public Optional<Boolean> enableHiddenProperties() {
         return Optional.ofNullable(this.enableHiddenProperties);
     }
+    /**
+     * @return The IP allocation policy.
+     * 
+     */
     public Optional<String> ipAllocationPolicy() {
         return Optional.ofNullable(this.ipAllocationPolicy);
     }
+    /**
+     * @return The IP protocol.
+     * 
+     */
     public Optional<String> ipProtocol() {
         return Optional.ofNullable(this.ipProtocol);
     }
+    /**
+     * @return The absolute path to the ovf/ova file in the local system.
+     * 
+     */
     public Optional<String> localOvfPath() {
         return Optional.ofNullable(this.localOvfPath);
     }
+    /**
+     * @return The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+     * 
+     */
     public Map<String,String> ovfNetworkMap() {
         return this.ovfNetworkMap == null ? Map.of() : this.ovfNetworkMap;
     }
+    /**
+     * @return URL to the remote ovf/ova file to be deployed.
+     * 
+     */
     public Optional<String> remoteOvfUrl() {
         return Optional.ofNullable(this.remoteOvfUrl);
     }

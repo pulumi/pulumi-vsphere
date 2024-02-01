@@ -48,6 +48,9 @@ namespace Pulumi.VSphere.Outputs
         /// connected to.
         /// </summary>
         public readonly string NetworkId;
+        /// <summary>
+        /// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+        /// </summary>
         public readonly string PhysicalFunction;
 
         [OutputConstructor]

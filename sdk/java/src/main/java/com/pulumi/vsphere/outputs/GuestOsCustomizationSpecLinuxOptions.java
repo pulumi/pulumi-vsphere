@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuestOsCustomizationSpecLinuxOptions {
+    /**
+     * @return The domain name for this virtual machine.
+     * 
+     */
     private String domain;
+    /**
+     * @return The hostname for this virtual machine.
+     * 
+     */
     private String hostName;
+    /**
+     * @return Specifies whether or not the hardware clock should be in UTC or not.
+     * 
+     */
     private @Nullable Boolean hwClockUtc;
+    /**
+     * @return The customization script to run before and or after guest customization
+     * 
+     */
     private @Nullable String scriptText;
+    /**
+     * @return Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+     * 
+     */
     private @Nullable String timeZone;
 
     private GuestOsCustomizationSpecLinuxOptions() {}
+    /**
+     * @return The domain name for this virtual machine.
+     * 
+     */
     public String domain() {
         return this.domain;
     }
+    /**
+     * @return The hostname for this virtual machine.
+     * 
+     */
     public String hostName() {
         return this.hostName;
     }
+    /**
+     * @return Specifies whether or not the hardware clock should be in UTC or not.
+     * 
+     */
     public Optional<Boolean> hwClockUtc() {
         return Optional.ofNullable(this.hwClockUtc);
     }
+    /**
+     * @return The customization script to run before and or after guest customization
+     * 
+     */
     public Optional<String> scriptText() {
         return Optional.ofNullable(this.scriptText);
     }
+    /**
+     * @return Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+     * 
+     */
     public Optional<String> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class VirtualMachineVapp
     {
+        /// <summary>
+        /// A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
 
         [OutputConstructor]

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualMachineVapp {
+    /**
+     * @return A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     * 
+     */
     private @Nullable Map<String,String> properties;
 
     private GetVirtualMachineVapp() {}
+    /**
+     * @return A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+     * 
+     */
     public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }

@@ -13,12 +13,33 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class VirtualMachineClone
     {
+        /// <summary>
+        /// The customization specification for the virtual machine post-clone.
+        /// </summary>
         public readonly Outputs.VirtualMachineCloneCustomizationSpec? CustomizationSpec;
+        /// <summary>
+        /// The customization specification for the virtual machine post-clone.
+        /// </summary>
         public readonly Outputs.VirtualMachineCloneCustomize? Customize;
+        /// <summary>
+        /// Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+        /// </summary>
         public readonly bool? LinkedClone;
+        /// <summary>
+        /// Mapping of ovf networks to the networks to use in vSphere.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? OvfNetworkMap;
+        /// <summary>
+        /// Mapping of ovf storage to the datastores to use in vSphere.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? OvfStorageMap;
+        /// <summary>
+        /// The UUID of the source virtual machine or template.
+        /// </summary>
         public readonly string TemplateUuid;
+        /// <summary>
+        /// The timeout, in minutes, to wait for the virtual machine clone to complete.
+        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

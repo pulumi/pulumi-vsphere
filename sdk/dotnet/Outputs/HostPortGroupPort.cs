@@ -17,7 +17,13 @@ namespace Pulumi.VSphere.Outputs
         /// The key for this port group as returned from the vSphere API.
         /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// The MAC addresses of the network service of the virtual machine connected on this port.
+        /// </summary>
         public readonly ImmutableArray<string> MacAddresses;
+        /// <summary>
+        /// Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]
