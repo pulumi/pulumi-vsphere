@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -24,6 +25,8 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Specifying the Root Resource Pool for a Standalone ESXi Host
  *
  * > **NOTE:** Returning the root resource pool for a cluster can be done
@@ -34,6 +37,7 @@ import * as utilities from "./utilities";
  * explicitly created. This resource pool is referred to as the
  * _root resource pool_ and can be looked up by specifying the path.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -43,6 +47,7 @@ import * as utilities from "./utilities";
  *     datacenterId: data.vsphere_datacenter.datacenter.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
  *
@@ -100,6 +105,7 @@ export interface GetResourcePoolResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -112,6 +118,8 @@ export interface GetResourcePoolResult {
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Specifying the Root Resource Pool for a Standalone ESXi Host
  *
  * > **NOTE:** Returning the root resource pool for a cluster can be done
@@ -122,6 +130,7 @@ export interface GetResourcePoolResult {
  * explicitly created. This resource pool is referred to as the
  * _root resource pool_ and can be looked up by specifying the path.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -131,6 +140,7 @@ export interface GetResourcePoolResult {
  *     datacenterId: data.vsphere_datacenter.datacenter.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
  *

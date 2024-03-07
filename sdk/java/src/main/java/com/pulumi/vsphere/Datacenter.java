@@ -21,7 +21,10 @@ import javax.annotation.Nullable;
  * container of inventory objects such as hosts and virtual machines.
  * 
  * ## Example Usage
+ * 
  * ### Create datacenter on the root folder
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -47,7 +50,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Create datacenter on a subfolder
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -76,6 +83,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="vsphere:index/datacenter:Datacenter")

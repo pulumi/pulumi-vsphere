@@ -41,6 +41,23 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * The following example creates two virtual machines in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machines in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source. It
+ * then creates an affinity rule for these two virtual machines, ensuring they
+ * will run on the same host whenever possible.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The following example creates an affinity rule for a set of virtual machines
+ * in the cluster by looking up the virtual machine UUIDs from the
+ * `vsphere.VirtualMachine` data source.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule")
 public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomResource {

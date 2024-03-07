@@ -73,6 +73,7 @@ def get_vapp_container(datacenter_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -81,6 +82,7 @@ def get_vapp_container(datacenter_id: Optional[str] = None,
     pool = vsphere.get_vapp_container(name="vapp-container-01",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID
@@ -112,6 +114,7 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -120,6 +123,7 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
     pool = vsphere.get_vapp_container(name="vapp-container-01",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID

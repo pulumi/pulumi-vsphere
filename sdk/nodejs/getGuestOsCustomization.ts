@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     name: "linux-spec",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGuestOsCustomization(args: GetGuestOsCustomizationArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestOsCustomizationResult> {
 
@@ -79,6 +81,7 @@ export interface GetGuestOsCustomizationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -87,6 +90,7 @@ export interface GetGuestOsCustomizationResult {
  *     name: "linux-spec",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestOsCustomizationResult> {
     return pulumi.output(args).apply((a: any) => getGuestOsCustomization(a, opts))

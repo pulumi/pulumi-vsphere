@@ -124,12 +124,14 @@ def get_guest_os_customization(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     gosc1 = vsphere.get_guest_os_customization(name="linux-spec")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the customization specification is the unique identifier per vCenter Server instance.
@@ -160,12 +162,14 @@ def get_guest_os_customization_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     gosc1 = vsphere.get_guest_os_customization(name="linux-spec")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the customization specification is the unique identifier per vCenter Server instance.

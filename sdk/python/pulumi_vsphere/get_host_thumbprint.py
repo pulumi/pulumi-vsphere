@@ -83,12 +83,14 @@ def get_host_thumbprint(address: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address: The address of the ESXi host to retrieve the
@@ -124,12 +126,14 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address: The address of the ESXi host to retrieve the

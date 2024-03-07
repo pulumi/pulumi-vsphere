@@ -18,10 +18,9 @@ namespace Pulumi.VSphere
         /// datastores based off a set of discovered disks.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVmfsDisksResult> InvokeAsync(GetVmfsDisksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksArgs(), options.WithDefaults());
@@ -63,10 +61,9 @@ namespace Pulumi.VSphere
         /// datastores based off a set of discovered disks.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVmfsDisksResult> Invoke(GetVmfsDisksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksInvokeArgs(), options.WithDefaults());

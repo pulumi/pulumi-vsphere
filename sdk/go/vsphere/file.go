@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Uploading a File
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,8 +44,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Copying a File
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,6 +78,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type File struct {
 	pulumi.CustomResourceState
 

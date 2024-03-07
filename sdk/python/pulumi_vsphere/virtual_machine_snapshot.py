@@ -308,6 +308,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -321,6 +322,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
             snapshot_name="Snapshot Name",
             virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -369,6 +371,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -382,6 +385,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
             snapshot_name="Snapshot Name",
             virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param VirtualMachineSnapshotArgs args: The arguments to use to populate this resource's properties.

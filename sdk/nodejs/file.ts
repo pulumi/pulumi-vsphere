@@ -6,8 +6,10 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Uploading a File
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -20,8 +22,11 @@ import * as utilities from "./utilities";
  *     sourceFile: "/my/src/path/custom_ubuntu.vmdk",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Copying a File
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -36,6 +41,7 @@ import * as utilities from "./utilities";
  *     sourceFile: "/my/src/path/custom_ubuntu.vmdk",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class File extends pulumi.CustomResource {
     /**

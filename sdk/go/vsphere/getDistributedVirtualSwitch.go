@@ -27,6 +27,7 @@ import (
 // `DistributedPortGroup` resource that uses the first uplink as a
 // primary uplink and the second uplink as a secondary.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,6 +70,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *LookupDistributedVirtualSwitchArgs, opts ...pulumi.InvokeOption) (*LookupDistributedVirtualSwitchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDistributedVirtualSwitchResult

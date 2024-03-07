@@ -167,6 +167,7 @@ class License(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -178,6 +179,7 @@ class License(pulumi.CustomResource):
             },
             license_key="452CQ-2EK54-K8742-00000-00000")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -195,6 +197,7 @@ class License(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -206,6 +209,7 @@ class License(pulumi.CustomResource):
             },
             license_key="452CQ-2EK54-K8742-00000-00000")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.

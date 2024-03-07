@@ -613,8 +613,10 @@ class Host(pulumi.CustomResource):
         can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
+
         ### Create a standalone host
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -630,8 +632,11 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             datacenter=datacenter.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create host in a compute cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -649,6 +654,8 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             cluster=cluster.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Importing
 
         An existing host can be [imported][docs-import] into this resource by supplying
@@ -656,9 +663,11 @@ class Host(pulumi.CustomResource):
 
         [docs-import]: /docs/import/index.html
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         The above would import the host with ID `host-123`.
 
@@ -719,8 +728,10 @@ class Host(pulumi.CustomResource):
         can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
+
         ### Create a standalone host
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -736,8 +747,11 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             datacenter=datacenter.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create host in a compute cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -755,6 +769,8 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             cluster=cluster.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Importing
 
         An existing host can be [imported][docs-import] into this resource by supplying
@@ -762,9 +778,11 @@ class Host(pulumi.CustomResource):
 
         [docs-import]: /docs/import/index.html
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         The above would import the host with ID `host-123`.
 

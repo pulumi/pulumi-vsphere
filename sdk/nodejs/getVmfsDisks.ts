@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -29,6 +30,7 @@ import * as utilities from "./utilities";
  *     filter: "mpx.vmhba1:C0:T[12]:L0",
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVmfsDisks(args: GetVmfsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetVmfsDisksResult> {
 
@@ -91,6 +93,7 @@ export interface GetVmfsDisksResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -108,6 +111,7 @@ export interface GetVmfsDisksResult {
  *     filter: "mpx.vmhba1:C0:T[12]:L0",
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVmfsDisksOutput(args: GetVmfsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVmfsDisksResult> {
     return pulumi.output(args).apply((a: any) => getVmfsDisks(a, opts))

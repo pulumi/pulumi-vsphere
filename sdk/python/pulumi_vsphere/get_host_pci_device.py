@@ -103,8 +103,10 @@ def get_host_pci_device(class_id: Optional[str] = None,
     `VirtualMachine`'s `pci_device_id`.
 
     ## Example Usage
+
     ### With Vendor ID And Class ID
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -116,7 +118,22 @@ def get_host_pci_device(class_id: Optional[str] = None,
         class_id="123",
         vendor_id="456")
     ```
+    <!--End PulumiCodeChooser -->
+
     ### With Name Regular Expression
+
+     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    dev = vsphere.get_host_pci_device(host_id=host.id,
+        name_regex="MMC")
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str class_id: The hexadecimal PCI device class ID
@@ -158,8 +175,10 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
     `VirtualMachine`'s `pci_device_id`.
 
     ## Example Usage
+
     ### With Vendor ID And Class ID
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -171,7 +190,22 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
         class_id="123",
         vendor_id="456")
     ```
+    <!--End PulumiCodeChooser -->
+
     ### With Name Regular Expression
+
+     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    dev = vsphere.get_host_pci_device(host_id=host.id,
+        name_regex="MMC")
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str class_id: The hexadecimal PCI device class ID

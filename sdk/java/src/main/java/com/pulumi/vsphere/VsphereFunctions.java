@@ -101,6 +101,8 @@ public final class VsphereFunctions {
      *  in this provider.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -135,6 +137,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetComputeClusterResult> getComputeCluster(GetComputeClusterArgs args) {
@@ -152,6 +155,8 @@ public final class VsphereFunctions {
      *  in this provider.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -186,6 +191,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetComputeClusterResult> getComputeClusterPlain(GetComputeClusterPlainArgs args) {
@@ -203,6 +209,8 @@ public final class VsphereFunctions {
      *  in this provider.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -237,6 +245,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetComputeClusterResult> getComputeCluster(GetComputeClusterArgs args, InvokeOptions options) {
@@ -254,6 +263,8 @@ public final class VsphereFunctions {
      *  in this provider.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -288,6 +299,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetComputeClusterResult> getComputeClusterPlain(GetComputeClusterPlainArgs args, InvokeOptions options) {
@@ -299,6 +311,8 @@ public final class VsphereFunctions {
      * resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -347,6 +361,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetComputeClusterHostGroupResult> getComputeClusterHostGroup(GetComputeClusterHostGroupArgs args) {
@@ -358,6 +373,8 @@ public final class VsphereFunctions {
      * resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -406,6 +423,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetComputeClusterHostGroupResult> getComputeClusterHostGroupPlain(GetComputeClusterHostGroupPlainArgs args) {
@@ -417,6 +435,8 @@ public final class VsphereFunctions {
      * resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -465,6 +485,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetComputeClusterHostGroupResult> getComputeClusterHostGroup(GetComputeClusterHostGroupArgs args, InvokeOptions options) {
@@ -476,6 +497,8 @@ public final class VsphereFunctions {
      * resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -524,6 +547,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetComputeClusterHostGroupResult> getComputeClusterHostGroupPlain(GetComputeClusterHostGroupPlainArgs args, InvokeOptions options) {
@@ -535,6 +559,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -563,6 +589,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContentLibraryResult> getContentLibrary(GetContentLibraryArgs args) {
@@ -574,6 +601,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -602,6 +631,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContentLibraryResult> getContentLibraryPlain(GetContentLibraryPlainArgs args) {
@@ -613,6 +643,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -641,6 +673,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContentLibraryResult> getContentLibrary(GetContentLibraryArgs args, InvokeOptions options) {
@@ -652,6 +685,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -680,6 +715,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContentLibraryResult> getContentLibraryPlain(GetContentLibraryPlainArgs args, InvokeOptions options) {
@@ -740,6 +776,8 @@ public final class VsphereFunctions {
      * and require vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -768,6 +806,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomAttributeResult> getCustomAttribute(GetCustomAttributeArgs args) {
@@ -784,6 +823,8 @@ public final class VsphereFunctions {
      * and require vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -812,6 +853,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomAttributeResult> getCustomAttributePlain(GetCustomAttributePlainArgs args) {
@@ -828,6 +870,8 @@ public final class VsphereFunctions {
      * and require vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -856,6 +900,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomAttributeResult> getCustomAttribute(GetCustomAttributeArgs args, InvokeOptions options) {
@@ -872,6 +917,8 @@ public final class VsphereFunctions {
      * and require vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -900,6 +947,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomAttributeResult> getCustomAttributePlain(GetCustomAttributePlainArgs args, InvokeOptions options) {
@@ -912,6 +960,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -940,6 +990,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatacenterResult> getDatacenter() {
@@ -952,6 +1003,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -980,6 +1033,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatacenterResult> getDatacenterPlain() {
@@ -992,6 +1046,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1020,6 +1076,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatacenterResult> getDatacenter(GetDatacenterArgs args) {
@@ -1032,6 +1089,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1060,6 +1119,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatacenterResult> getDatacenterPlain(GetDatacenterPlainArgs args) {
@@ -1072,6 +1132,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1100,6 +1162,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatacenterResult> getDatacenter(GetDatacenterArgs args, InvokeOptions options) {
@@ -1112,6 +1175,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1140,6 +1205,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatacenterResult> getDatacenterPlain(GetDatacenterPlainArgs args, InvokeOptions options) {
@@ -1152,6 +1218,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1186,6 +1254,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatastoreResult> getDatastore(GetDatastoreArgs args) {
@@ -1198,6 +1267,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1232,6 +1303,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatastoreResult> getDatastorePlain(GetDatastorePlainArgs args) {
@@ -1244,6 +1316,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1278,6 +1352,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatastoreResult> getDatastore(GetDatastoreArgs args, InvokeOptions options) {
@@ -1290,6 +1365,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1324,6 +1401,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatastoreResult> getDatastorePlain(GetDatastorePlainArgs args, InvokeOptions options) {
@@ -1336,6 +1414,8 @@ public final class VsphereFunctions {
      * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1370,6 +1450,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatastoreClusterResult> getDatastoreCluster(GetDatastoreClusterArgs args) {
@@ -1382,6 +1463,8 @@ public final class VsphereFunctions {
      * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1416,6 +1499,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatastoreClusterResult> getDatastoreClusterPlain(GetDatastoreClusterPlainArgs args) {
@@ -1428,6 +1512,8 @@ public final class VsphereFunctions {
      * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1462,6 +1548,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatastoreClusterResult> getDatastoreCluster(GetDatastoreClusterArgs args, InvokeOptions options) {
@@ -1474,6 +1561,8 @@ public final class VsphereFunctions {
      * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1508,6 +1597,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatastoreClusterResult> getDatastoreClusterPlain(GetDatastoreClusterPlainArgs args, InvokeOptions options) {
@@ -1529,6 +1619,8 @@ public final class VsphereFunctions {
      * datacenter `dc-01`. It then uses this distributed switch to set up a
      * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
      * primary uplink and the second uplink as a secondary.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1571,6 +1663,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDistributedVirtualSwitchResult> getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs args) {
@@ -1592,6 +1685,8 @@ public final class VsphereFunctions {
      * datacenter `dc-01`. It then uses this distributed switch to set up a
      * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
      * primary uplink and the second uplink as a secondary.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1634,6 +1729,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDistributedVirtualSwitchResult> getDistributedVirtualSwitchPlain(GetDistributedVirtualSwitchPlainArgs args) {
@@ -1655,6 +1751,8 @@ public final class VsphereFunctions {
      * datacenter `dc-01`. It then uses this distributed switch to set up a
      * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
      * primary uplink and the second uplink as a secondary.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1697,6 +1795,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDistributedVirtualSwitchResult> getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs args, InvokeOptions options) {
@@ -1718,6 +1817,8 @@ public final class VsphereFunctions {
      * datacenter `dc-01`. It then uses this distributed switch to set up a
      * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
      * primary uplink and the second uplink as a secondary.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1760,6 +1861,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDistributedVirtualSwitchResult> getDistributedVirtualSwitchPlain(GetDistributedVirtualSwitchPlainArgs args, InvokeOptions options) {
@@ -1773,6 +1875,8 @@ public final class VsphereFunctions {
      * and an optional regular expression to filter objects by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1821,6 +1925,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDynamicResult> getDynamic(GetDynamicArgs args) {
@@ -1834,6 +1939,8 @@ public final class VsphereFunctions {
      * and an optional regular expression to filter objects by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1882,6 +1989,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDynamicResult> getDynamicPlain(GetDynamicPlainArgs args) {
@@ -1895,6 +2003,8 @@ public final class VsphereFunctions {
      * and an optional regular expression to filter objects by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1943,6 +2053,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDynamicResult> getDynamic(GetDynamicArgs args, InvokeOptions options) {
@@ -1956,6 +2067,8 @@ public final class VsphereFunctions {
      * and an optional regular expression to filter objects by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2004,6 +2117,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDynamicResult> getDynamicPlain(GetDynamicPlainArgs args, InvokeOptions options) {
@@ -2014,6 +2128,8 @@ public final class VsphereFunctions {
      * vSphere inventory folder. Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2042,6 +2158,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderResult> getFolder(GetFolderArgs args) {
@@ -2052,6 +2169,8 @@ public final class VsphereFunctions {
      * vSphere inventory folder. Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2080,6 +2199,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args) {
@@ -2090,6 +2210,8 @@ public final class VsphereFunctions {
      * vSphere inventory folder. Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2118,6 +2240,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderResult> getFolder(GetFolderArgs args, InvokeOptions options) {
@@ -2128,6 +2251,8 @@ public final class VsphereFunctions {
      * vSphere inventory folder. Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2156,6 +2281,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args, InvokeOptions options) {
@@ -2168,6 +2294,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2196,6 +2324,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args) {
@@ -2208,6 +2337,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2236,6 +2367,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args) {
@@ -2248,6 +2380,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2276,6 +2410,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOptions options) {
@@ -2288,6 +2423,8 @@ public final class VsphereFunctions {
      * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2316,6 +2453,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args, InvokeOptions options) {
@@ -2327,6 +2465,8 @@ public final class VsphereFunctions {
      * host&#39;s managed object reference ID.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2361,6 +2501,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostResult> getHost(GetHostArgs args) {
@@ -2372,6 +2513,8 @@ public final class VsphereFunctions {
      * host&#39;s managed object reference ID.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2406,6 +2549,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostResult> getHostPlain(GetHostPlainArgs args) {
@@ -2417,6 +2561,8 @@ public final class VsphereFunctions {
      * host&#39;s managed object reference ID.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2451,6 +2597,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostResult> getHost(GetHostArgs args, InvokeOptions options) {
@@ -2462,6 +2609,8 @@ public final class VsphereFunctions {
      * host&#39;s managed object reference ID.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2496,6 +2645,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostResult> getHostPlain(GetHostPlainArgs args, InvokeOptions options) {
@@ -2507,7 +2657,10 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
      * 
      * ## Example Usage
+     * 
      * ### With Vendor ID And Class ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2549,7 +2702,52 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### With Name Regular Expression
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;MMC&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostPciDeviceResult> getHostPciDevice(GetHostPciDeviceArgs args) {
@@ -2561,7 +2759,10 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
      * 
      * ## Example Usage
+     * 
      * ### With Vendor ID And Class ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2603,7 +2804,52 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### With Name Regular Expression
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;MMC&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostPciDeviceResult> getHostPciDevicePlain(GetHostPciDevicePlainArgs args) {
@@ -2615,7 +2861,10 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
      * 
      * ## Example Usage
+     * 
      * ### With Vendor ID And Class ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2657,7 +2906,52 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### With Name Regular Expression
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;MMC&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostPciDeviceResult> getHostPciDevice(GetHostPciDeviceArgs args, InvokeOptions options) {
@@ -2669,7 +2963,10 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
      * 
      * ## Example Usage
+     * 
      * ### With Vendor ID And Class ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2711,7 +3008,52 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### With Name Regular Expression
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;MMC&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostPciDeviceResult> getHostPciDevicePlain(GetHostPciDevicePlainArgs args, InvokeOptions options) {
@@ -2724,6 +3066,8 @@ public final class VsphereFunctions {
      * will be used to generate the thumbprint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2752,6 +3096,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostThumbprintResult> getHostThumbprint(GetHostThumbprintArgs args) {
@@ -2764,6 +3109,8 @@ public final class VsphereFunctions {
      * will be used to generate the thumbprint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2792,6 +3139,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostThumbprintResult> getHostThumbprintPlain(GetHostThumbprintPlainArgs args) {
@@ -2804,6 +3152,8 @@ public final class VsphereFunctions {
      * will be used to generate the thumbprint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2832,6 +3182,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostThumbprintResult> getHostThumbprint(GetHostThumbprintArgs args, InvokeOptions options) {
@@ -2844,6 +3195,8 @@ public final class VsphereFunctions {
      * will be used to generate the thumbprint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2872,6 +3225,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostThumbprintResult> getHostThumbprintPlain(GetHostThumbprintPlainArgs args, InvokeOptions options) {
@@ -2882,6 +3236,8 @@ public final class VsphereFunctions {
      * a license keys from a vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2910,6 +3266,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLicenseResult> getLicense(GetLicenseArgs args) {
@@ -2920,6 +3277,8 @@ public final class VsphereFunctions {
      * a license keys from a vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2948,6 +3307,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLicenseResult> getLicensePlain(GetLicensePlainArgs args) {
@@ -2958,6 +3318,8 @@ public final class VsphereFunctions {
      * a license keys from a vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2986,6 +3348,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLicenseResult> getLicense(GetLicenseArgs args, InvokeOptions options) {
@@ -2996,6 +3359,8 @@ public final class VsphereFunctions {
      * a license keys from a vCenter Server instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3024,6 +3389,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLicenseResult> getLicensePlain(GetLicensePlainArgs args, InvokeOptions options) {
@@ -3037,6 +3403,8 @@ public final class VsphereFunctions {
      * distributed port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3071,6 +3439,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
@@ -3084,6 +3453,8 @@ public final class VsphereFunctions {
      * distributed port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3118,6 +3489,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args) {
@@ -3131,6 +3503,8 @@ public final class VsphereFunctions {
      * distributed port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3165,6 +3539,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOptions options) {
@@ -3178,6 +3553,8 @@ public final class VsphereFunctions {
      * distributed port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3212,6 +3589,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
@@ -3222,90 +3600,6 @@ public final class VsphereFunctions {
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
      * 
-     * ## Remote OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfRemote&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   remote_ovf_url    = &#34;https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Local OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfLocal&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-2&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   local_ovf_path    = &#34;/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Deployment of VM from Remote OVF
-     * 
-     * resource &#34;vsphere_virtual_machine&#34; &#34;vmFromRemoteOvf&#34; {
-     *   name                 = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   datacenter_id        = data.vsphere_datacenter.datacenter.id
-     *   datastore_id         = data.vsphere_datastore.datastore.id
-     *   host_system_id       = data.vsphere_host.host.id
-     *   resource_pool_id     = data.vsphere_resource_pool.default.id
-     *   num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
-     *   num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
-     *   memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
-     *   guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
-     *   firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
-     *   scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
-     *   nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
-     *   dynamic &#34;network_interface&#34; {
-     *     for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *     content {
-     *       network_id = network_interface.value
-     *     }
-     *   }
-     *   wait_for_guest_net_timeout = 0
-     *   wait_for_guest_ip_timeout  = 0
-     * 
-     *   ovf_deploy {
-     *     allow_unverified_ssl_cert = false
-     *     remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
-     *     disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
-     *     ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *   }
-     * 
-     *   vapp {
-     *     properties = {
-     *       &#34;guestinfo.hostname&#34;  = &#34;nested-esxi-01.example.com&#34;,
-     *       &#34;guestinfo.ipaddress&#34; = &#34;172.16.11.101&#34;,
-     *       &#34;guestinfo.netmask&#34;   = &#34;255.255.255.0&#34;,
-     *       &#34;guestinfo.gateway&#34;   = &#34;172.16.11.1&#34;,
-     *       &#34;guestinfo.dns&#34;       = &#34;172.16.11.4&#34;,
-     *       &#34;guestinfo.domain&#34;    = &#34;example.com&#34;,
-     *       &#34;guestinfo.ntp&#34;       = &#34;ntp.example.com&#34;,
-     *       &#34;guestinfo.password&#34;  = &#34;VMware1!&#34;,
-     *       &#34;guestinfo.ssh&#34;       = &#34;True&#34;
-     *     }
-     *   }
-     * 
-     *   lifecycle {
-     *     ignore_changes = [
-     *       annotation,
-     *       disk[0].io_share_count,
-     *       disk[1].io_share_count,
-     *       disk[2].io_share_count,
-     *       vapp[0].properties,
-     *     ]
-     *   }
-     * }
-     * 
      */
     public static Output<GetOvfVmTemplateResult> getOvfVmTemplate(GetOvfVmTemplateArgs args) {
         return getOvfVmTemplate(args, InvokeOptions.Empty);
@@ -3314,90 +3608,6 @@ public final class VsphereFunctions {
      * The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
-     * 
-     * ## Remote OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfRemote&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   remote_ovf_url    = &#34;https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Local OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfLocal&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-2&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   local_ovf_path    = &#34;/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Deployment of VM from Remote OVF
-     * 
-     * resource &#34;vsphere_virtual_machine&#34; &#34;vmFromRemoteOvf&#34; {
-     *   name                 = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   datacenter_id        = data.vsphere_datacenter.datacenter.id
-     *   datastore_id         = data.vsphere_datastore.datastore.id
-     *   host_system_id       = data.vsphere_host.host.id
-     *   resource_pool_id     = data.vsphere_resource_pool.default.id
-     *   num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
-     *   num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
-     *   memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
-     *   guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
-     *   firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
-     *   scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
-     *   nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
-     *   dynamic &#34;network_interface&#34; {
-     *     for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *     content {
-     *       network_id = network_interface.value
-     *     }
-     *   }
-     *   wait_for_guest_net_timeout = 0
-     *   wait_for_guest_ip_timeout  = 0
-     * 
-     *   ovf_deploy {
-     *     allow_unverified_ssl_cert = false
-     *     remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
-     *     disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
-     *     ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *   }
-     * 
-     *   vapp {
-     *     properties = {
-     *       &#34;guestinfo.hostname&#34;  = &#34;nested-esxi-01.example.com&#34;,
-     *       &#34;guestinfo.ipaddress&#34; = &#34;172.16.11.101&#34;,
-     *       &#34;guestinfo.netmask&#34;   = &#34;255.255.255.0&#34;,
-     *       &#34;guestinfo.gateway&#34;   = &#34;172.16.11.1&#34;,
-     *       &#34;guestinfo.dns&#34;       = &#34;172.16.11.4&#34;,
-     *       &#34;guestinfo.domain&#34;    = &#34;example.com&#34;,
-     *       &#34;guestinfo.ntp&#34;       = &#34;ntp.example.com&#34;,
-     *       &#34;guestinfo.password&#34;  = &#34;VMware1!&#34;,
-     *       &#34;guestinfo.ssh&#34;       = &#34;True&#34;
-     *     }
-     *   }
-     * 
-     *   lifecycle {
-     *     ignore_changes = [
-     *       annotation,
-     *       disk[0].io_share_count,
-     *       disk[1].io_share_count,
-     *       disk[2].io_share_count,
-     *       vapp[0].properties,
-     *     ]
-     *   }
-     * }
      * 
      */
     public static CompletableFuture<GetOvfVmTemplateResult> getOvfVmTemplatePlain(GetOvfVmTemplatePlainArgs args) {
@@ -3408,90 +3618,6 @@ public final class VsphereFunctions {
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
      * 
-     * ## Remote OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfRemote&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   remote_ovf_url    = &#34;https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Local OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfLocal&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-2&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   local_ovf_path    = &#34;/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Deployment of VM from Remote OVF
-     * 
-     * resource &#34;vsphere_virtual_machine&#34; &#34;vmFromRemoteOvf&#34; {
-     *   name                 = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   datacenter_id        = data.vsphere_datacenter.datacenter.id
-     *   datastore_id         = data.vsphere_datastore.datastore.id
-     *   host_system_id       = data.vsphere_host.host.id
-     *   resource_pool_id     = data.vsphere_resource_pool.default.id
-     *   num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
-     *   num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
-     *   memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
-     *   guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
-     *   firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
-     *   scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
-     *   nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
-     *   dynamic &#34;network_interface&#34; {
-     *     for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *     content {
-     *       network_id = network_interface.value
-     *     }
-     *   }
-     *   wait_for_guest_net_timeout = 0
-     *   wait_for_guest_ip_timeout  = 0
-     * 
-     *   ovf_deploy {
-     *     allow_unverified_ssl_cert = false
-     *     remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
-     *     disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
-     *     ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *   }
-     * 
-     *   vapp {
-     *     properties = {
-     *       &#34;guestinfo.hostname&#34;  = &#34;nested-esxi-01.example.com&#34;,
-     *       &#34;guestinfo.ipaddress&#34; = &#34;172.16.11.101&#34;,
-     *       &#34;guestinfo.netmask&#34;   = &#34;255.255.255.0&#34;,
-     *       &#34;guestinfo.gateway&#34;   = &#34;172.16.11.1&#34;,
-     *       &#34;guestinfo.dns&#34;       = &#34;172.16.11.4&#34;,
-     *       &#34;guestinfo.domain&#34;    = &#34;example.com&#34;,
-     *       &#34;guestinfo.ntp&#34;       = &#34;ntp.example.com&#34;,
-     *       &#34;guestinfo.password&#34;  = &#34;VMware1!&#34;,
-     *       &#34;guestinfo.ssh&#34;       = &#34;True&#34;
-     *     }
-     *   }
-     * 
-     *   lifecycle {
-     *     ignore_changes = [
-     *       annotation,
-     *       disk[0].io_share_count,
-     *       disk[1].io_share_count,
-     *       disk[2].io_share_count,
-     *       vapp[0].properties,
-     *     ]
-     *   }
-     * }
-     * 
      */
     public static Output<GetOvfVmTemplateResult> getOvfVmTemplate(GetOvfVmTemplateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", TypeShape.of(GetOvfVmTemplateResult.class), args, Utilities.withVersion(options));
@@ -3500,90 +3626,6 @@ public final class VsphereFunctions {
      * The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
-     * 
-     * ## Remote OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfRemote&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   remote_ovf_url    = &#34;https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Local OVF/OVA Source
-     * 
-     * data &#34;vsphere_ovf_vm_template&#34; &#34;ovfLocal&#34; {
-     *   name              = &#34;Nested-ESXi-7.0-Terraform-Deploy-2&#34;
-     *   disk_provisioning = &#34;thin&#34;
-     *   resource_pool_id  = data.vsphere_resource_pool.default.id
-     *   datastore_id      = data.vsphere_datastore.datastore.id
-     *   host_system_id    = data.vsphere_host.host.id
-     *   local_ovf_path    = &#34;/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova&#34;
-     *   ovf_network_map = {
-     *     &#34;VM Network&#34; : data.vsphere_network.network.id
-     *   }
-     * }
-     * 
-     * ## Deployment of VM from Remote OVF
-     * 
-     * resource &#34;vsphere_virtual_machine&#34; &#34;vmFromRemoteOvf&#34; {
-     *   name                 = &#34;Nested-ESXi-7.0-Terraform-Deploy-1&#34;
-     *   datacenter_id        = data.vsphere_datacenter.datacenter.id
-     *   datastore_id         = data.vsphere_datastore.datastore.id
-     *   host_system_id       = data.vsphere_host.host.id
-     *   resource_pool_id     = data.vsphere_resource_pool.default.id
-     *   num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
-     *   num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
-     *   memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
-     *   guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
-     *   firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
-     *   scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
-     *   nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
-     *   dynamic &#34;network_interface&#34; {
-     *     for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *     content {
-     *       network_id = network_interface.value
-     *     }
-     *   }
-     *   wait_for_guest_net_timeout = 0
-     *   wait_for_guest_ip_timeout  = 0
-     * 
-     *   ovf_deploy {
-     *     allow_unverified_ssl_cert = false
-     *     remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
-     *     disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
-     *     ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
-     *   }
-     * 
-     *   vapp {
-     *     properties = {
-     *       &#34;guestinfo.hostname&#34;  = &#34;nested-esxi-01.example.com&#34;,
-     *       &#34;guestinfo.ipaddress&#34; = &#34;172.16.11.101&#34;,
-     *       &#34;guestinfo.netmask&#34;   = &#34;255.255.255.0&#34;,
-     *       &#34;guestinfo.gateway&#34;   = &#34;172.16.11.1&#34;,
-     *       &#34;guestinfo.dns&#34;       = &#34;172.16.11.4&#34;,
-     *       &#34;guestinfo.domain&#34;    = &#34;example.com&#34;,
-     *       &#34;guestinfo.ntp&#34;       = &#34;ntp.example.com&#34;,
-     *       &#34;guestinfo.password&#34;  = &#34;VMware1!&#34;,
-     *       &#34;guestinfo.ssh&#34;       = &#34;True&#34;
-     *     }
-     *   }
-     * 
-     *   lifecycle {
-     *     ignore_changes = [
-     *       annotation,
-     *       disk[0].io_share_count,
-     *       disk[1].io_share_count,
-     *       disk[2].io_share_count,
-     *       vapp[0].properties,
-     *     ]
-     *   }
-     * }
      * 
      */
     public static CompletableFuture<GetOvfVmTemplateResult> getOvfVmTemplatePlain(GetOvfVmTemplatePlainArgs args, InvokeOptions options) {
@@ -3598,6 +3640,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3630,6 +3674,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args) {
@@ -3644,6 +3689,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3676,6 +3723,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args) {
@@ -3690,6 +3738,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3722,6 +3772,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOptions options) {
@@ -3736,6 +3787,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3768,6 +3821,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args, InvokeOptions options) {
@@ -3780,6 +3834,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3814,6 +3870,8 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
      * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
@@ -3823,6 +3881,8 @@ public final class VsphereFunctions {
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the
      * _root resource pool_ and can be looked up by specifying the path.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3852,6 +3912,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
      * 
@@ -3868,6 +3929,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3902,6 +3965,8 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
      * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
@@ -3911,6 +3976,8 @@ public final class VsphereFunctions {
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the
      * _root resource pool_ and can be looked up by specifying the path.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3940,6 +4007,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
      * 
@@ -3956,6 +4024,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3990,6 +4060,8 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
      * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
@@ -3999,6 +4071,8 @@ public final class VsphereFunctions {
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the
      * _root resource pool_ and can be looked up by specifying the path.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4028,6 +4102,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
      * 
@@ -4044,6 +4119,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4078,6 +4155,8 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
      * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
@@ -4087,6 +4166,8 @@ public final class VsphereFunctions {
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the
      * _root resource pool_ and can be looked up by specifying the path.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4116,6 +4197,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
      * 
@@ -4132,6 +4214,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4166,6 +4250,8 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
      * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
@@ -4175,6 +4261,8 @@ public final class VsphereFunctions {
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the
      * _root resource pool_ and can be looked up by specifying the path.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4204,6 +4292,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
      * 
@@ -4220,6 +4309,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4254,6 +4345,8 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
      * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
@@ -4263,6 +4356,8 @@ public final class VsphereFunctions {
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the
      * _root resource pool_ and can be looked up by specifying the path.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4292,6 +4387,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
      * 
@@ -4306,6 +4402,8 @@ public final class VsphereFunctions {
      * with a role given its name or display label.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4334,6 +4432,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleResult> getRole(GetRoleArgs args) {
@@ -4344,6 +4443,8 @@ public final class VsphereFunctions {
      * with a role given its name or display label.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4372,6 +4473,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args) {
@@ -4382,6 +4484,8 @@ public final class VsphereFunctions {
      * with a role given its name or display label.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4410,6 +4514,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleResult> getRole(GetRoleArgs args, InvokeOptions options) {
@@ -4420,6 +4525,8 @@ public final class VsphereFunctions {
      * with a role given its name or display label.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4448,6 +4555,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
@@ -4464,6 +4572,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4498,6 +4608,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args) {
@@ -4514,6 +4625,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4548,6 +4661,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args) {
@@ -4564,6 +4678,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4598,6 +4714,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOptions options) {
@@ -4614,6 +4731,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4648,6 +4767,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args, InvokeOptions options) {
@@ -4664,6 +4784,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4692,6 +4814,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagCategoryResult> getTagCategory(GetTagCategoryArgs args) {
@@ -4708,6 +4831,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4736,6 +4861,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagCategoryResult> getTagCategoryPlain(GetTagCategoryPlainArgs args) {
@@ -4752,6 +4878,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4780,6 +4908,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagCategoryResult> getTagCategory(GetTagCategoryArgs args, InvokeOptions options) {
@@ -4796,6 +4925,8 @@ public final class VsphereFunctions {
      * requires vCenter Server.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4824,6 +4955,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagCategoryResult> getTagCategoryPlain(GetTagCategoryPlainArgs args, InvokeOptions options) {
@@ -4836,6 +4968,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4870,6 +5004,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVappContainerResult> getVappContainer(GetVappContainerArgs args) {
@@ -4882,6 +5017,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4916,6 +5053,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVappContainerResult> getVappContainerPlain(GetVappContainerPlainArgs args) {
@@ -4928,6 +5066,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4962,6 +5102,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVappContainerResult> getVappContainer(GetVappContainerArgs args, InvokeOptions options) {
@@ -4974,6 +5115,8 @@ public final class VsphereFunctions {
      * `vsphere.VirtualMachine` resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5008,6 +5151,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVappContainerResult> getVappContainerPlain(GetVappContainerPlainArgs args, InvokeOptions options) {
@@ -5024,6 +5168,8 @@ public final class VsphereFunctions {
      * 
      * In the following example, a virtual machine template is returned by its
      * unique name within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5058,8 +5204,11 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5099,6 +5248,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachineResult> getVirtualMachine() {
@@ -5115,6 +5265,8 @@ public final class VsphereFunctions {
      * 
      * In the following example, a virtual machine template is returned by its
      * unique name within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5149,8 +5301,11 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5190,6 +5345,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain() {
@@ -5206,6 +5362,8 @@ public final class VsphereFunctions {
      * 
      * In the following example, a virtual machine template is returned by its
      * unique name within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5240,8 +5398,11 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5281,6 +5442,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachineResult> getVirtualMachine(GetVirtualMachineArgs args) {
@@ -5297,6 +5459,8 @@ public final class VsphereFunctions {
      * 
      * In the following example, a virtual machine template is returned by its
      * unique name within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5331,8 +5495,11 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5372,6 +5539,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain(GetVirtualMachinePlainArgs args) {
@@ -5388,6 +5556,8 @@ public final class VsphereFunctions {
      * 
      * In the following example, a virtual machine template is returned by its
      * unique name within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5422,8 +5592,11 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5463,6 +5636,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualMachineResult> getVirtualMachine(GetVirtualMachineArgs args, InvokeOptions options) {
@@ -5479,6 +5653,8 @@ public final class VsphereFunctions {
      * 
      * In the following example, a virtual machine template is returned by its
      * unique name within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5513,8 +5689,11 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5554,6 +5733,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain(GetVirtualMachinePlainArgs args, InvokeOptions options) {
@@ -5566,6 +5746,8 @@ public final class VsphereFunctions {
      * datastores based off a set of discovered disks.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5607,6 +5789,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVmfsDisksResult> getVmfsDisks(GetVmfsDisksArgs args) {
@@ -5619,6 +5802,8 @@ public final class VsphereFunctions {
      * datastores based off a set of discovered disks.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5660,6 +5845,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVmfsDisksResult> getVmfsDisksPlain(GetVmfsDisksPlainArgs args) {
@@ -5672,6 +5858,8 @@ public final class VsphereFunctions {
      * datastores based off a set of discovered disks.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5713,6 +5901,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVmfsDisksResult> getVmfsDisks(GetVmfsDisksArgs args, InvokeOptions options) {
@@ -5725,6 +5914,8 @@ public final class VsphereFunctions {
      * datastores based off a set of discovered disks.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5766,6 +5957,7 @@ public final class VsphereFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVmfsDisksResult> getVmfsDisksPlain(GetVmfsDisksPlainArgs args, InvokeOptions options) {

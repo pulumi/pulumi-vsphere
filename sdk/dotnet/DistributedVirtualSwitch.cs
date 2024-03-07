@@ -434,7 +434,8 @@ namespace Pulumi.VSphere
         /// The ratio of total number of packets to
         /// the number of packets analyzed. The default is `0`, which indicates that the
         /// VDS should analyze all packets. The maximum value is `1000`, which
-        /// indicates an analysis rate of 0.001%.
+        /// indicates an analysis rate of 0.001%!
+        /// (MISSING)
         /// </summary>
         [Output("netflowSamplingRate")]
         public Output<int?> NetflowSamplingRate { get; private set; } = null!;
@@ -608,6 +609,7 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -635,6 +637,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("vlanRanges")]
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchVlanRange>> VlanRanges { get; private set; } = null!;
@@ -1166,7 +1169,8 @@ namespace Pulumi.VSphere
         /// The ratio of total number of packets to
         /// the number of packets analyzed. The default is `0`, which indicates that the
         /// VDS should analyze all packets. The maximum value is `1000`, which
-        /// indicates an analysis rate of 0.001%.
+        /// indicates an analysis rate of 0.001%!
+        /// (MISSING)
         /// </summary>
         [Input("netflowSamplingRate")]
         public Input<int>? NetflowSamplingRate { get; set; }
@@ -1367,6 +1371,7 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -1394,6 +1399,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs> VlanRanges
         {
@@ -1897,7 +1903,8 @@ namespace Pulumi.VSphere
         /// The ratio of total number of packets to
         /// the number of packets analyzed. The default is `0`, which indicates that the
         /// VDS should analyze all packets. The maximum value is `1000`, which
-        /// indicates an analysis rate of 0.001%.
+        /// indicates an analysis rate of 0.001%!
+        /// (MISSING)
         /// </summary>
         [Input("netflowSamplingRate")]
         public Input<int>? NetflowSamplingRate { get; set; }
@@ -2098,6 +2105,7 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -2125,6 +2133,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs> VlanRanges
         {

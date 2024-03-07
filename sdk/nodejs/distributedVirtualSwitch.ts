@@ -334,7 +334,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * indicates an analysis rate of 0.001%!
+     * (MISSING)
      */
     public readonly netflowSamplingRate!: pulumi.Output<number | undefined>;
     /**
@@ -458,6 +459,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
@@ -473,6 +475,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      *     },
      * ]});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     public readonly vlanRanges!: pulumi.Output<outputs.DistributedVirtualSwitchVlanRange[]>;
     /**
@@ -1026,7 +1029,8 @@ export interface DistributedVirtualSwitchState {
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * indicates an analysis rate of 0.001%!
+     * (MISSING)
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**
@@ -1150,6 +1154,7 @@ export interface DistributedVirtualSwitchState {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
@@ -1165,6 +1170,7 @@ export interface DistributedVirtualSwitchState {
      *     },
      * ]});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
@@ -1500,7 +1506,8 @@ export interface DistributedVirtualSwitchArgs {
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * indicates an analysis rate of 0.001%!
+     * (MISSING)
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**
@@ -1624,6 +1631,7 @@ export interface DistributedVirtualSwitchArgs {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
@@ -1639,6 +1647,7 @@ export interface DistributedVirtualSwitchArgs {
      *     },
      * ]});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**

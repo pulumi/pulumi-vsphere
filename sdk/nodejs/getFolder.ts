@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     path: "/dc-01/datastore-01/folder-01",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
 
@@ -57,6 +59,7 @@ export interface GetFolderResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -65,6 +68,7 @@ export interface GetFolderResult {
  *     path: "/dc-01/datastore-01/folder-01",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
     return pulumi.output(args).apply((a: any) => getFolder(a, opts))

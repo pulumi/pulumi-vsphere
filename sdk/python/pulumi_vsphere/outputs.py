@@ -206,6 +206,7 @@ class ComputeClusterVsanStretchedCluster(dict):
                > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
                You can enable or re-enable vSphere HA after vSAN is configured.
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -248,6 +249,7 @@ class ComputeClusterVsanStretchedCluster(dict):
                        witness_node=data["vsphere_host"]["witness_host"]["id"],
                    ))
                ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "preferred_fault_domain_host_ids", preferred_fault_domain_host_ids)
         pulumi.set(__self__, "secondary_fault_domain_host_ids", secondary_fault_domain_host_ids)
@@ -298,6 +300,7 @@ class ComputeClusterVsanStretchedCluster(dict):
         > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
         You can enable or re-enable vSphere HA after vSAN is configured.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -340,6 +343,7 @@ class ComputeClusterVsanStretchedCluster(dict):
                 witness_node=data["vsphere_host"]["witness_host"]["id"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "secondary_fault_domain_name")
 

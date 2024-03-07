@@ -17,10 +17,9 @@ namespace Pulumi.VSphere
         /// that require a datacenter, such as the `vsphere.Host`
         /// data source.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatacenterResult> InvokeAsync(GetDatacenterArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterArgs(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.VSphere
         /// that require a datacenter, such as the `vsphere.Host`
         /// data source.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatacenterResult> Invoke(GetDatacenterInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterInvokeArgs(), options.WithDefaults());

@@ -20,6 +20,7 @@ namespace Pulumi.VSphere
     /// 
     /// In this example, tags are first applied to datastores.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -113,9 +114,11 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Next, storage policies are created and `tag_rules` are applied.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -196,9 +199,11 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -231,6 +236,7 @@ namespace Pulumi.VSphere
     ///     // ... other configuration ...
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/vmStoragePolicy:VmStoragePolicy")]
     public partial class VmStoragePolicy : global::Pulumi.CustomResource
