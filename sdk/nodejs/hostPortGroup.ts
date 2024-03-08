@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *
  * **Create a Virtual Switch and Bind a Port Group:**
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -45,6 +46,7 @@ import * as utilities from "./utilities";
  *     virtualSwitchName: hostVirtualSwitch.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * **Create a Port Group with a VLAN and ab Override:**
  *
@@ -54,6 +56,7 @@ import * as utilities from "./utilities";
  * to ensure that all traffic is seen on the port. The setting overrides
  * the implicit default of `false` set on the standard switch.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -81,14 +84,18 @@ import * as utilities from "./utilities";
  *     allowPromiscuous: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Importing
  *
  * An existing host port group can be imported into this resource
  * using the host port group's ID. An example is below:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * The above would import the `management` host port group from host with ID `host-123`.
  */

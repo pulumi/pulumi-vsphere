@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     licenseKey: "452CQ-2EK54-K8742-00000-00000",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class License extends pulumi.CustomResource {
     /**

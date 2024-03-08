@@ -226,7 +226,8 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%.
+               indicates an analysis rate of 0.001%!
+               (MISSING)
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -275,6 +276,7 @@ class DistributedVirtualSwitchArgs:
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -290,6 +292,7 @@ class DistributedVirtualSwitchArgs:
                    ),
                ])
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -1265,7 +1268,8 @@ class DistributedVirtualSwitchArgs:
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
         VDS should analyze all packets. The maximum value is `1000`, which
-        indicates an analysis rate of 0.001%.
+        indicates an analysis rate of 0.001%!
+        (MISSING)
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -1589,6 +1593,7 @@ class DistributedVirtualSwitchArgs:
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -1604,6 +1609,7 @@ class DistributedVirtualSwitchArgs:
             ),
         ])
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -1924,7 +1930,8 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%.
+               indicates an analysis rate of 0.001%!
+               (MISSING)
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -1973,6 +1980,7 @@ class _DistributedVirtualSwitchState:
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -1988,6 +1996,7 @@ class _DistributedVirtualSwitchState:
                    ),
                ])
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -2979,7 +2988,8 @@ class _DistributedVirtualSwitchState:
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
         VDS should analyze all packets. The maximum value is `1000`, which
-        indicates an analysis rate of 0.001%.
+        indicates an analysis rate of 0.001%!
+        (MISSING)
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -3303,6 +3313,7 @@ class _DistributedVirtualSwitchState:
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -3318,6 +3329,7 @@ class _DistributedVirtualSwitchState:
             ),
         ])
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -3640,7 +3652,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%.
+               indicates an analysis rate of 0.001%!
+               (MISSING)
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -3689,6 +3702,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -3704,6 +3718,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                    ),
                ])
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -4164,7 +4179,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%.
+               indicates an analysis rate of 0.001%!
+               (MISSING)
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -4213,6 +4229,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -4228,6 +4245,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                    ),
                ])
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -4885,7 +4903,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
         VDS should analyze all packets. The maximum value is `1000`, which
-        indicates an analysis rate of 0.001%.
+        indicates an analysis rate of 0.001%!
+        (MISSING)
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -5109,6 +5128,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -5124,6 +5144,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             ),
         ])
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "vlan_ranges")
 

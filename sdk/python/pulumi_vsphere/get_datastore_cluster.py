@@ -73,6 +73,7 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -81,6 +82,7 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
     datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference
@@ -114,6 +116,7 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -122,6 +125,7 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[s
     datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference

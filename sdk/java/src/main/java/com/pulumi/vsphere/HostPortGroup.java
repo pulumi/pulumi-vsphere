@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * **Create a Virtual Switch and Bind a Port Group:**
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -84,6 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * **Create a Port Group with a VLAN and ab Override:**
  * 
@@ -92,6 +95,8 @@ import javax.annotation.Nullable;
  * `allow_promiscuous`
  * to ensure that all traffic is seen on the port. The setting overrides
  * the implicit default of `false` set on the standard switch.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -146,10 +151,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Importing
  * 
  * An existing host port group can be imported into this resource
  * using the host port group&#39;s ID. An example is below:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -172,6 +181,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The above would import the `management` host port group from host with ID `host-123`.
  * 

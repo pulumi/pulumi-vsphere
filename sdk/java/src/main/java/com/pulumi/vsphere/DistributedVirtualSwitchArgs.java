@@ -1029,7 +1029,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * indicates an analysis rate of 0.001%!
+     * (MISSING)
      * 
      */
     @Import(name="netflowSamplingRate")
@@ -1039,7 +1040,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * @return The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * indicates an analysis rate of 0.001%!
+     * (MISSING)
      * 
      */
     public Optional<Output<Integer>> netflowSamplingRate() {
@@ -1449,6 +1451,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlan_range` definitions are allowed, but they must not overlap. Example
      * below:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1486,6 +1490,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="vlanRanges")
@@ -1496,6 +1501,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlan_range` definitions are allowed, but they must not overlap. Example
      * below:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1533,6 +1540,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<List<DistributedVirtualSwitchVlanRangeArgs>>> vlanRanges() {
@@ -3166,7 +3174,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * @param netflowSamplingRate The ratio of total number of packets to
          * the number of packets analyzed. The default is `0`, which indicates that the
          * VDS should analyze all packets. The maximum value is `1000`, which
-         * indicates an analysis rate of 0.001%.
+         * indicates an analysis rate of 0.001%!
+         * (MISSING)
          * 
          * @return builder
          * 
@@ -3180,7 +3189,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * @param netflowSamplingRate The ratio of total number of packets to
          * the number of packets analyzed. The default is `0`, which indicates that the
          * VDS should analyze all packets. The maximum value is `1000`, which
-         * indicates an analysis rate of 0.001%.
+         * indicates an analysis rate of 0.001%!
+         * (MISSING)
          * 
          * @return builder
          * 
@@ -3786,6 +3796,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
          * `vlan_range` definitions are allowed, but they must not overlap. Example
          * below:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -3823,6 +3835,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -3837,6 +3850,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
          * `vlan_range` definitions are allowed, but they must not overlap. Example
          * below:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -3874,6 +3889,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -3887,6 +3903,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
          * `vlan_range` definitions are allowed, but they must not overlap. Example
          * below:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -3924,6 +3942,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

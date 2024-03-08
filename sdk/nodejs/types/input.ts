@@ -53,6 +53,7 @@ export interface ComputeClusterVsanStretchedCluster {
      * > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
@@ -96,6 +97,7 @@ export interface ComputeClusterVsanStretchedCluster {
      *     },
      * });
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     secondaryFaultDomainName?: pulumi.Input<string>;
     /**

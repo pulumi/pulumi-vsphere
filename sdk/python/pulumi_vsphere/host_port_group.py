@@ -696,6 +696,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         **Create a Virtual Switch and Bind a Port Group:**
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -715,6 +716,7 @@ class HostPortGroup(pulumi.CustomResource):
             host_system_id=host.id,
             virtual_switch_name=host_virtual_switch.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         **Create a Port Group with a VLAN and ab Override:**
 
@@ -724,6 +726,7 @@ class HostPortGroup(pulumi.CustomResource):
         to ensure that all traffic is seen on the port. The setting overrides
         the implicit default of `false` set on the standard switch.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -745,14 +748,18 @@ class HostPortGroup(pulumi.CustomResource):
             vlan_id=4095,
             allow_promiscuous=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Importing
 
         An existing host port group can be imported into this resource
         using the host port group's ID. An example is below:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         The above would import the `management` host port group from host with ID `host-123`.
 
@@ -805,6 +812,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         **Create a Virtual Switch and Bind a Port Group:**
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -824,6 +832,7 @@ class HostPortGroup(pulumi.CustomResource):
             host_system_id=host.id,
             virtual_switch_name=host_virtual_switch.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         **Create a Port Group with a VLAN and ab Override:**
 
@@ -833,6 +842,7 @@ class HostPortGroup(pulumi.CustomResource):
         to ensure that all traffic is seen on the port. The setting overrides
         the implicit default of `false` set on the standard switch.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -854,14 +864,18 @@ class HostPortGroup(pulumi.CustomResource):
             vlan_id=4095,
             allow_promiscuous=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Importing
 
         An existing host port group can be imported into this resource
         using the host port group's ID. An example is below:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         The above would import the `management` host port group from host with ID `host-123`.
 

@@ -742,6 +742,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     In the following example, a virtual machine template is returned by its
     unique name within the `Datacenter`.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -750,9 +751,11 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     template = vsphere.get_virtual_machine(name="ubuntu-server-template",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
     In the following example, each virtual machine template is returned by its
     unique full path within the `Datacenter`.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -763,6 +766,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     development_template = vsphere.get_virtual_machine(name="development/templates/ubuntu-server-template",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when
@@ -984,6 +988,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     In the following example, a virtual machine template is returned by its
     unique name within the `Datacenter`.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -992,9 +997,11 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     template = vsphere.get_virtual_machine(name="ubuntu-server-template",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
     In the following example, each virtual machine template is returned by its
     unique full path within the `Datacenter`.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -1005,6 +1012,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     development_template = vsphere.get_virtual_machine(name="development/templates/ubuntu-server-template",
         datacenter_id=datacenter.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when

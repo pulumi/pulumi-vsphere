@@ -33,6 +33,8 @@ public final class ComputeClusterVsanStretchedCluster {
      * 
      * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -98,6 +100,7 @@ public final class ComputeClusterVsanStretchedCluster {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable String secondaryFaultDomainName;
@@ -134,6 +137,8 @@ public final class ComputeClusterVsanStretchedCluster {
      * 
      * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -199,6 +204,7 @@ public final class ComputeClusterVsanStretchedCluster {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<String> secondaryFaultDomainName() {

@@ -14,8 +14,10 @@ namespace Pulumi.VSphere
     /// can be used either as a member of a cluster or as a standalone host.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a standalone host
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,8 +49,11 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Create host in a compute cluster
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,6 +91,8 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Importing
     /// 
     /// An existing host can be [imported][docs-import] into this resource by supplying
@@ -93,6 +100,7 @@ namespace Pulumi.VSphere
     /// 
     /// [docs-import]: /docs/import/index.html
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -102,6 +110,7 @@ namespace Pulumi.VSphere
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// The above would import the host with ID `host-123`.
     /// </summary>

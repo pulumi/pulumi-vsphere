@@ -23,6 +23,7 @@ import (
 //
 // **Create a Virtual Switch and Bind a Port Group:**
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,6 +77,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // **Create a Port Group with a VLAN and ab Override:**
 //
@@ -85,6 +87,7 @@ import (
 // to ensure that all traffic is seen on the port. The setting overrides
 // the implicit default of `false` set on the standard switch.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -140,11 +143,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Importing
 //
 // An existing host port group can be imported into this resource
 // using the host port group's ID. An example is below:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,6 +167,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // The above would import the `management` host port group from host with ID `host-123`.
 //

@@ -23,6 +23,7 @@ namespace Pulumi.VSphere
     /// The following example sets up a resource pool in an existing compute cluster
     /// with the default settings for CPU and memory reservations, shares, and limits.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,10 +50,12 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// A virtual machine resource could be targeted to use the default resource pool
     /// of the cluster using the following:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,11 +72,13 @@ namespace Pulumi.VSphere
     ///     // ... other configuration ...
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// The following example sets up a parent resource pool in an existing compute cluster
     /// with a child resource pool nested below. Each resource pool is configured with
     /// the default settings for CPU and memory reservations, shares, and limits.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -105,12 +110,7 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
-    /// ## Importing
-    /// ### Settings that Require vSphere 7.0 or higher
-    /// 
-    /// These settings require vSphere 7.0 or higher:
-    /// 
-    /// * `scale_descendants_shares`
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/resourcePool:ResourcePool")]
     public partial class ResourcePool : global::Pulumi.CustomResource

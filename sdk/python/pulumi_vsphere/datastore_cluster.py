@@ -93,7 +93,7 @@ class DatastoreClusterArgs:
                recommendations to move VMs off of a datastore. Note that this setting should
                only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
                estimate of the capacity of the datastores in your cluster, and should be set
-               to roughly 50-60% of the worst case peak performance of the backing LUNs.
+               to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
         :param pulumi.Input[int] sdrs_io_reservable_percent_threshold: The threshold, in
                percent, of actual estimated performance of the datastore (in IOPS) that
                storage DRS uses to make recommendations to move VMs off of a datastore when
@@ -390,7 +390,7 @@ class DatastoreClusterArgs:
         recommendations to move VMs off of a datastore. Note that this setting should
         only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
         estimate of the capacity of the datastores in your cluster, and should be set
-        to roughly 50-60% of the worst case peak performance of the backing LUNs.
+        to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 
@@ -604,7 +604,7 @@ class _DatastoreClusterState:
                recommendations to move VMs off of a datastore. Note that this setting should
                only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
                estimate of the capacity of the datastores in your cluster, and should be set
-               to roughly 50-60% of the worst case peak performance of the backing LUNs.
+               to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
         :param pulumi.Input[int] sdrs_io_reservable_percent_threshold: The threshold, in
                percent, of actual estimated performance of the datastore (in IOPS) that
                storage DRS uses to make recommendations to move VMs off of a datastore when
@@ -902,7 +902,7 @@ class _DatastoreClusterState:
         recommendations to move VMs off of a datastore. Note that this setting should
         only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
         estimate of the capacity of the datastores in your cluster, and should be set
-        to roughly 50-60% of the worst case peak performance of the backing LUNs.
+        to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 
@@ -1121,7 +1121,7 @@ class DatastoreCluster(pulumi.CustomResource):
                recommendations to move VMs off of a datastore. Note that this setting should
                only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
                estimate of the capacity of the datastores in your cluster, and should be set
-               to roughly 50-60% of the worst case peak performance of the backing LUNs.
+               to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
         :param pulumi.Input[int] sdrs_io_reservable_percent_threshold: The threshold, in
                percent, of actual estimated performance of the datastore (in IOPS) that
                storage DRS uses to make recommendations to move VMs off of a datastore when
@@ -1325,7 +1325,7 @@ class DatastoreCluster(pulumi.CustomResource):
                recommendations to move VMs off of a datastore. Note that this setting should
                only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
                estimate of the capacity of the datastores in your cluster, and should be set
-               to roughly 50-60% of the worst case peak performance of the backing LUNs.
+               to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
         :param pulumi.Input[int] sdrs_io_reservable_percent_threshold: The threshold, in
                percent, of actual estimated performance of the datastore (in IOPS) that
                storage DRS uses to make recommendations to move VMs off of a datastore when
@@ -1543,7 +1543,7 @@ class DatastoreCluster(pulumi.CustomResource):
         recommendations to move VMs off of a datastore. Note that this setting should
         only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
         estimate of the capacity of the datastores in your cluster, and should be set
-        to roughly 50-60% of the worst case peak performance of the backing LUNs.
+        to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 

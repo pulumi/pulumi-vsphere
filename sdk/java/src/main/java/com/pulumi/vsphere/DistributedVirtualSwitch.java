@@ -985,7 +985,8 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * indicates an analysis rate of 0.001%!
+     * (MISSING)
      * 
      */
     @Export(name="netflowSamplingRate", refs={Integer.class}, tree="[0]")
@@ -995,7 +996,8 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * @return The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * indicates an analysis rate of 0.001%!
+     * (MISSING)
      * 
      */
     public Output<Optional<Integer>> netflowSamplingRate() {
@@ -1380,6 +1382,8 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlan_range` definitions are allowed, but they must not overlap. Example
      * below:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1417,6 +1421,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Export(name="vlanRanges", refs={List.class,DistributedVirtualSwitchVlanRange.class}, tree="[0,1]")
@@ -1427,6 +1432,8 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlan_range` definitions are allowed, but they must not overlap. Example
      * below:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1464,6 +1471,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<List<DistributedVirtualSwitchVlanRange>> vlanRanges() {
