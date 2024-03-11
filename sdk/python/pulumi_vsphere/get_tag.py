@@ -86,6 +86,7 @@ def get_tag(category_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -94,6 +95,7 @@ def get_tag(category_id: Optional[str] = None,
     tag = vsphere.get_tag(name="example-tag",
         category_id=category.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category_id: The ID of the tag category in which the tag is
@@ -129,6 +131,7 @@ def get_tag_output(category_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -137,6 +140,7 @@ def get_tag_output(category_id: Optional[pulumi.Input[str]] = None,
     tag = vsphere.get_tag(name="example-tag",
         category_id=category.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category_id: The ID of the tag category in which the tag is

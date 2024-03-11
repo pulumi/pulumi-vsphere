@@ -22,7 +22,10 @@ import javax.annotation.Nullable;
  * can be used either as a member of a cluster or as a standalone host.
  * 
  * ## Example Usage
+ * 
  * ### Create a standalone host
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,7 +71,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Create host in a compute cluster
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -120,12 +127,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Importing
  * 
  * An existing host can be [imported][docs-import] into this resource by supplying
  * the host&#39;s ID. An example is below:
  * 
  * [docs-import]: /docs/import/index.html
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -148,6 +159,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The above would import the host with ID `host-123`.
  * 

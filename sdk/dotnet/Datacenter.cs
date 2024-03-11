@@ -14,8 +14,10 @@ namespace Pulumi.VSphere
     /// container of inventory objects such as hosts and virtual machines.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create datacenter on the root folder
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,8 +30,11 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Create datacenter on a subfolder
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,6 +50,7 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/datacenter:Datacenter")]
     public partial class Datacenter : global::Pulumi.CustomResource

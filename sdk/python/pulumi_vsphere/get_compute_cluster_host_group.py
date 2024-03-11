@@ -85,6 +85,7 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -99,6 +100,7 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
         vm_group_name="vm_group1",
         affinity_host_group_name=host_group1.name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str compute_cluster_id: The [managed object reference ID][docs-about-morefs]
@@ -131,6 +133,7 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -145,6 +148,7 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
         vm_group_name="vm_group1",
         affinity_host_group_name=host_group1.name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str compute_cluster_id: The [managed object reference ID][docs-about-morefs]

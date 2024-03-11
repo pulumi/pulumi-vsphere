@@ -41,6 +41,7 @@ namespace Pulumi.VSphere
     /// then creates an affinity rule for these two virtual machines, ensuring they
     /// will run on the same host whenever possible.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -111,11 +112,13 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// The following example creates an affinity rule for a set of virtual machines
     /// in the cluster by looking up the virtual machine UUIDs from the
     /// `vsphere.VirtualMachine` data source.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -160,6 +163,7 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule")]
     public partial class ComputeClusterVmAffinityRule : global::Pulumi.CustomResource

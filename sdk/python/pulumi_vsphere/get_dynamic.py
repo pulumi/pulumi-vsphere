@@ -84,6 +84,7 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -100,6 +101,7 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
         name_regex="ubuntu",
         type="Datacenter")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] filters: A list of tag IDs that must be present on an object to
@@ -138,6 +140,7 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -154,6 +157,7 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
         name_regex="ubuntu",
         type="Datacenter")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] filters: A list of tag IDs that must be present on an object to

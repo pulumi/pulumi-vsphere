@@ -63,12 +63,14 @@ def get_datacenter(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     datacenter = vsphere.get_datacenter(name="dc-01")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the datacenter. This can be a name or path.
@@ -100,12 +102,14 @@ def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     datacenter = vsphere.get_datacenter(name="dc-01")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the datacenter. This can be a name or path.
