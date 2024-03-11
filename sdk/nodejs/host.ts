@@ -9,8 +9,10 @@ import * as utilities from "./utilities";
  * can be used either as a member of a cluster or as a standalone host.
  *
  * ## Example Usage
+ *
  * ### Create a standalone host
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -31,8 +33,11 @@ import * as utilities from "./utilities";
  *     datacenter: datacenter.then(datacenter => datacenter.id),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create host in a compute cluster
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -57,6 +62,8 @@ import * as utilities from "./utilities";
  *     cluster: cluster.then(cluster => cluster.id),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Importing
  *
  * An existing host can be [imported][docs-import] into this resource by supplying
@@ -64,9 +71,11 @@ import * as utilities from "./utilities";
  *
  * [docs-import]: /docs/import/index.html
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * The above would import the host with ID `host-123`.
  */

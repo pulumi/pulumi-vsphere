@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetHostThumbprint(ctx *pulumi.Context, args *GetHostThumbprintArgs, opts ...pulumi.InvokeOption) (*GetHostThumbprintResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostThumbprintResult

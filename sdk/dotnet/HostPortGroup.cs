@@ -23,6 +23,7 @@ namespace Pulumi.VSphere
     /// 
     /// **Create a Virtual Switch and Bind a Port Group:**
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,6 +69,7 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// **Create a Port Group with a VLAN and ab Override:**
     /// 
@@ -77,6 +79,7 @@ namespace Pulumi.VSphere
     /// to ensure that all traffic is seen on the port. The setting overrides
     /// the implicit default of `false` set on the standard switch.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,11 +127,14 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Importing
     /// 
     /// An existing host port group can be imported into this resource
     /// using the host port group's ID. An example is below:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -138,6 +144,7 @@ namespace Pulumi.VSphere
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// The above would import the `management` host port group from host with ID `host-123`.
     /// </summary>

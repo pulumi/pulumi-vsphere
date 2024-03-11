@@ -21,15 +21,14 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** This data source requires vCenter Server and is not available on
         /// direct ESXi host connections.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example locates a distributed switch named `vds-01`, in the
         /// datacenter `dc-01`. It then uses this distributed switch to set up a
         /// `vsphere.DistributedPortGroup` resource that uses the first uplink as a
         /// primary uplink and the second uplink as a secondary.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,8 +63,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDistributedVirtualSwitchResult> InvokeAsync(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchArgs(), options.WithDefaults());
@@ -80,15 +78,14 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** This data source requires vCenter Server and is not available on
         /// direct ESXi host connections.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// The following example locates a distributed switch named `vds-01`, in the
         /// datacenter `dc-01`. It then uses this distributed switch to set up a
         /// `vsphere.DistributedPortGroup` resource that uses the first uplink as a
         /// primary uplink and the second uplink as a secondary.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -123,8 +120,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDistributedVirtualSwitchResult> Invoke(GetDistributedVirtualSwitchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchInvokeArgs(), options.WithDefaults());

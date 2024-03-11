@@ -18,10 +18,9 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGuestOsCustomizationResult> InvokeAsync(GetGuestOsCustomizationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationArgs(), options.WithDefaults());
@@ -50,10 +48,9 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());

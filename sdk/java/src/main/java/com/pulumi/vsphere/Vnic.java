@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * ### S
+ * 
  * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,7 +93,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Create a vnic attached to a portgroup using the default TCP/IP stack
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -157,12 +164,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Importing
  * 
  * An existing vNic can be [imported][docs-import] into this resource
  * via supplying the vNic&#39;s ID. An example is below:
  * 
  * [docs-import]: /docs/import/index.html
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -185,6 +196,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The above would import the vnic `vmk2` from host with ID `host-123`.
  * 

@@ -386,7 +386,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Triggers replacement of resource whenever it changes.
         /// 
-        /// For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+        /// For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         /// </summary>
         [Output("replaceTrigger")]
         public Output<string?> ReplaceTrigger { get; private set; } = null!;
@@ -981,7 +981,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Triggers replacement of resource whenever it changes.
         /// 
-        /// For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+        /// For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         /// </summary>
         [Input("replaceTrigger")]
         public Input<string>? ReplaceTrigger { get; set; }
@@ -1568,7 +1568,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Triggers replacement of resource whenever it changes.
         /// 
-        /// For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+        /// For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         /// </summary>
         [Input("replaceTrigger")]
         public Input<string>? ReplaceTrigger { get; set; }

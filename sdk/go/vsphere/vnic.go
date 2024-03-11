@@ -17,8 +17,10 @@ import (
 // ## Example Usage
 //
 // ### S
+//
 // ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,8 +84,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Create a vnic attached to a portgroup using the default TCP/IP stack
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -151,6 +156,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Importing
 //
 // An existing vNic can be [imported][docs-import] into this resource
@@ -158,6 +165,7 @@ import (
 //
 // [docs-import]: /docs/import/index.html
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -174,6 +182,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // The above would import the vnic `vmk2` from host with ID `host-123`.
 type Vnic struct {

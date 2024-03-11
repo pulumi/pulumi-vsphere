@@ -294,7 +294,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Triggers replacement of resource whenever it changes.
      *
-     * For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+     * For example, `replaceTrigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
      */
     public readonly replaceTrigger!: pulumi.Output<string | undefined>;
     /**
@@ -872,7 +872,7 @@ export interface VirtualMachineState {
     /**
      * Triggers replacement of resource whenever it changes.
      *
-     * For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+     * For example, `replaceTrigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
      */
     replaceTrigger?: pulumi.Input<string>;
     /**
@@ -1229,7 +1229,7 @@ export interface VirtualMachineArgs {
     /**
      * Triggers replacement of resource whenever it changes.
      *
-     * For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+     * For example, `replaceTrigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
      */
     replaceTrigger?: pulumi.Input<string>;
     /**

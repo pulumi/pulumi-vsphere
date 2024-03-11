@@ -16,8 +16,10 @@ import (
 // can be used either as a member of a cluster or as a standalone host.
 //
 // ## Example Usage
+//
 // ### Create a standalone host
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,8 +61,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Create host in a compute cluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -109,6 +114,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Importing
 //
 // An existing host can be [imported][docs-import] into this resource by supplying
@@ -116,6 +123,7 @@ import (
 //
 // [docs-import]: /docs/import/index.html
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,6 +140,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // The above would import the host with ID `host-123`.
 type Host struct {

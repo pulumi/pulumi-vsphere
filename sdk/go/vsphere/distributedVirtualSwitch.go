@@ -192,7 +192,8 @@ type DistributedVirtualSwitch struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%.
+	// indicates an analysis rate of 0.001%!
+	// (MISSING)
 	NetflowSamplingRate pulumi.IntPtrOutput `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -266,6 +267,7 @@ type DistributedVirtualSwitch struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -295,6 +297,7 @@ type DistributedVirtualSwitch struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayOutput `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntOutput `pulumi:"vmotionMaximumMbit"`
@@ -524,7 +527,8 @@ type distributedVirtualSwitchState struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%.
+	// indicates an analysis rate of 0.001%!
+	// (MISSING)
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -598,6 +602,7 @@ type distributedVirtualSwitchState struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -627,6 +632,7 @@ type distributedVirtualSwitchState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -824,7 +830,8 @@ type DistributedVirtualSwitchState struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%.
+	// indicates an analysis rate of 0.001%!
+	// (MISSING)
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -898,6 +905,7 @@ type DistributedVirtualSwitchState struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -927,6 +935,7 @@ type DistributedVirtualSwitchState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -1125,7 +1134,8 @@ type distributedVirtualSwitchArgs struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%.
+	// indicates an analysis rate of 0.001%!
+	// (MISSING)
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -1199,6 +1209,7 @@ type distributedVirtualSwitchArgs struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1228,6 +1239,7 @@ type distributedVirtualSwitchArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -1423,7 +1435,8 @@ type DistributedVirtualSwitchArgs struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%.
+	// indicates an analysis rate of 0.001%!
+	// (MISSING)
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -1497,6 +1510,7 @@ type DistributedVirtualSwitchArgs struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1526,6 +1540,7 @@ type DistributedVirtualSwitchArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -1992,7 +2007,8 @@ func (o DistributedVirtualSwitchOutput) NetflowObservationDomainId() pulumi.IntP
 // The ratio of total number of packets to
 // the number of packets analyzed. The default is `0`, which indicates that the
 // VDS should analyze all packets. The maximum value is `1000`, which
-// indicates an analysis rate of 0.001%.
+// indicates an analysis rate of 0.001%!
+// (MISSING)
 func (o DistributedVirtualSwitchOutput) NetflowSamplingRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowSamplingRate }).(pulumi.IntPtrOutput)
 }
@@ -2143,6 +2159,7 @@ func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
 // `vlanRange` definitions are allowed, but they must not overlap. Example
 // below:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2175,6 +2192,7 @@ func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o DistributedVirtualSwitchOutput) VlanRanges() DistributedVirtualSwitchVlanRangeArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchVlanRangeArrayOutput { return v.VlanRanges }).(DistributedVirtualSwitchVlanRangeArrayOutput)
 }

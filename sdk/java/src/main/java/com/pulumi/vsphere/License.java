@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a VMware vSphere license resource. This can be used to add and remove license keys.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,6 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="vsphere:index/license:License")

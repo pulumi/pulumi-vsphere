@@ -370,8 +370,10 @@ class Vnic(pulumi.CustomResource):
         ## Example Usage
 
         ### S
+
         ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -397,8 +399,11 @@ class Vnic(pulumi.CustomResource):
             ),
             netstack="vmotion")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a vnic attached to a portgroup using the default TCP/IP stack
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -428,6 +433,8 @@ class Vnic(pulumi.CustomResource):
                 "management",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Importing
 
         An existing vNic can be [imported][docs-import] into this resource
@@ -435,9 +442,11 @@ class Vnic(pulumi.CustomResource):
 
         [docs-import]: /docs/import/index.html
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         The above would import the vnic `vmk2` from host with ID `host-123`.
 
@@ -466,8 +475,10 @@ class Vnic(pulumi.CustomResource):
         ## Example Usage
 
         ### S
+
         ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -493,8 +504,11 @@ class Vnic(pulumi.CustomResource):
             ),
             netstack="vmotion")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a vnic attached to a portgroup using the default TCP/IP stack
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -524,6 +538,8 @@ class Vnic(pulumi.CustomResource):
                 "management",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Importing
 
         An existing vNic can be [imported][docs-import] into this resource
@@ -531,9 +547,11 @@ class Vnic(pulumi.CustomResource):
 
         [docs-import]: /docs/import/index.html
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         The above would import the vnic `vmk2` from host with ID `host-123`.
 

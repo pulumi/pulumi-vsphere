@@ -67,6 +67,8 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
      * 
      * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +134,7 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="secondaryFaultDomainName")
@@ -142,6 +145,8 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
      * 
      * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -207,6 +212,7 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<String>> secondaryFaultDomainName() {
@@ -344,6 +350,8 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
          * 
          * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
          * You can enable or re-enable vSphere HA after vSAN is configured.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -409,6 +417,7 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -423,6 +432,8 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
          * 
          * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
          * You can enable or re-enable vSphere HA after vSAN is configured.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -488,6 +499,7 @@ public final class ComputeClusterVsanStretchedClusterArgs extends com.pulumi.res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

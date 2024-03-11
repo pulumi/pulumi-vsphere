@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     name: "example-category",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
 
@@ -68,6 +70,7 @@ export interface GetTagCategoryResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -76,6 +79,7 @@ export interface GetTagCategoryResult {
  *     name: "example-category",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagCategoryResult> {
     return pulumi.output(args).apply((a: any) => getTagCategory(a, opts))

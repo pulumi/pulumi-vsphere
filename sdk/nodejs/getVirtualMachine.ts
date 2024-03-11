@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * In the following example, a virtual machine template is returned by its
  * unique name within the `vsphere.Datacenter`.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -30,9 +31,11 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  * In the following example, each virtual machine template is returned by its
  * unique full path within the `vsphere.Datacenter`.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -49,6 +52,7 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     args = args || {};
@@ -377,6 +381,7 @@ export interface GetVirtualMachineResult {
  * In the following example, a virtual machine template is returned by its
  * unique name within the `vsphere.Datacenter`.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -389,9 +394,11 @@ export interface GetVirtualMachineResult {
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  * In the following example, each virtual machine template is returned by its
  * unique full path within the `vsphere.Datacenter`.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -408,6 +415,7 @@ export interface GetVirtualMachineResult {
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
     return pulumi.output(args).apply((a: any) => getVirtualMachine(a, opts))

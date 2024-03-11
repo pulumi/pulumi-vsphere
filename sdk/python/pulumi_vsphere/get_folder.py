@@ -61,12 +61,14 @@ def get_folder(path: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     folder = vsphere.get_folder(path="/dc-01/datastore-01/folder-01")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str path: The absolute path of the folder. For example, given a
@@ -94,12 +96,14 @@ def get_folder_output(path: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     folder = vsphere.get_folder(path="/dc-01/datastore-01/folder-01")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str path: The absolute path of the folder. For example, given a

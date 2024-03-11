@@ -65,6 +65,7 @@ def get_policy(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -72,6 +73,7 @@ def get_policy(name: Optional[str] = None,
     prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
     dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the storage policy.
@@ -99,6 +101,7 @@ def get_policy_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -106,6 +109,7 @@ def get_policy_output(name: Optional[pulumi.Input[str]] = None,
     prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
     dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the storage policy.

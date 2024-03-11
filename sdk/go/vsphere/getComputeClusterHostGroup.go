@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,6 +63,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupComputeClusterHostGroup(ctx *pulumi.Context, args *LookupComputeClusterHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupComputeClusterHostGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputeClusterHostGroupResult
