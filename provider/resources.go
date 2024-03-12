@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"path/filepath"
 
+	_ "embed" // Allow embedding state
+
 	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -18,6 +20,9 @@ const (
 	vspherePkg = "vsphere"
 	vsphereMod = "index"
 )
+
+//go:embed cmd/pulumi-resource-vsphere/bridge-metadata.json
+var metadata []byte
 
 func vsphereDataSource(mod string, res string) tokens.ModuleMember {
 	return tfbridge.MakeDataSource(vspherePkg, mod, res)
@@ -40,6 +45,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "hashicorp",
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"allow_unverified_ssl": {
 				Default: &tfbridge.DefaultInfo{
@@ -207,6 +213,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("vsphere_", vsphereMod,
 		tfbridgetokens.MakeStandard(vspherePkg)))
 	prov.SetAutonaming(255, "-")
+	prov.MustApplyAutoAliases()
 
 	return prov
 }
