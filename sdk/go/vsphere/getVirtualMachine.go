@@ -137,6 +137,8 @@ type LookupVirtualMachineArgs struct {
 	ExtraConfigRebootRequired *bool             `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or `efi`.
 	Firmware *string `pulumi:"firmware"`
+	// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+	Folder *string `pulumi:"folder"`
 	// The guest ID of the virtual machine or template.
 	GuestId *string `pulumi:"guestId"`
 	// The hardware version number on this virtual machine.
@@ -145,13 +147,14 @@ type LookupVirtualMachineArgs struct {
 	IdeControllerScanCount *int    `pulumi:"ideControllerScanCount"`
 	LatencySensitivity     *string `pulumi:"latencySensitivity"`
 	// The size of the virtual machine's memory, in MB.
-	Memory              *int    `pulumi:"memory"`
-	MemoryHotAddEnabled *bool   `pulumi:"memoryHotAddEnabled"`
-	MemoryLimit         *int    `pulumi:"memoryLimit"`
-	MemoryReservation   *int    `pulumi:"memoryReservation"`
-	MemoryShareCount    *int    `pulumi:"memoryShareCount"`
-	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
-	Moid                *string `pulumi:"moid"`
+	Memory                       *int    `pulumi:"memory"`
+	MemoryHotAddEnabled          *bool   `pulumi:"memoryHotAddEnabled"`
+	MemoryLimit                  *int    `pulumi:"memoryLimit"`
+	MemoryReservation            *int    `pulumi:"memoryReservation"`
+	MemoryReservationLockedToMax *bool   `pulumi:"memoryReservationLockedToMax"`
+	MemoryShareCount             *int    `pulumi:"memoryShareCount"`
+	MemoryShareLevel             *string `pulumi:"memoryShareLevel"`
+	Moid                         *string `pulumi:"moid"`
 	// The name of the virtual machine. This can be a name or
 	// the full path relative to the datacenter. This is required if a UUID lookup
 	// is not performed.
@@ -233,6 +236,7 @@ type LookupVirtualMachineResult struct {
 	ExtraConfigRebootRequired *bool                   `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or `efi`.
 	Firmware *string `pulumi:"firmware"`
+	Folder   *string `pulumi:"folder"`
 	// The guest ID of the virtual machine or template.
 	GuestId string `pulumi:"guestId"`
 	// A list of IP addresses as reported by VMware Tools.
@@ -245,15 +249,16 @@ type LookupVirtualMachineResult struct {
 	IdeControllerScanCount *int    `pulumi:"ideControllerScanCount"`
 	LatencySensitivity     *string `pulumi:"latencySensitivity"`
 	// The size of the virtual machine's memory, in MB.
-	Memory              *int    `pulumi:"memory"`
-	MemoryHotAddEnabled *bool   `pulumi:"memoryHotAddEnabled"`
-	MemoryLimit         *int    `pulumi:"memoryLimit"`
-	MemoryReservation   *int    `pulumi:"memoryReservation"`
-	MemoryShareCount    int     `pulumi:"memoryShareCount"`
-	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
-	Moid                string  `pulumi:"moid"`
-	Name                *string `pulumi:"name"`
-	NestedHvEnabled     *bool   `pulumi:"nestedHvEnabled"`
+	Memory                       *int    `pulumi:"memory"`
+	MemoryHotAddEnabled          *bool   `pulumi:"memoryHotAddEnabled"`
+	MemoryLimit                  *int    `pulumi:"memoryLimit"`
+	MemoryReservation            *int    `pulumi:"memoryReservation"`
+	MemoryReservationLockedToMax *bool   `pulumi:"memoryReservationLockedToMax"`
+	MemoryShareCount             int     `pulumi:"memoryShareCount"`
+	MemoryShareLevel             *string `pulumi:"memoryShareLevel"`
+	Moid                         string  `pulumi:"moid"`
+	Name                         *string `pulumi:"name"`
+	NestedHvEnabled              *bool   `pulumi:"nestedHvEnabled"`
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
 	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
@@ -345,6 +350,8 @@ type LookupVirtualMachineOutputArgs struct {
 	ExtraConfigRebootRequired pulumi.BoolPtrInput   `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or `efi`.
 	Firmware pulumi.StringPtrInput `pulumi:"firmware"`
+	// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+	Folder pulumi.StringPtrInput `pulumi:"folder"`
 	// The guest ID of the virtual machine or template.
 	GuestId pulumi.StringPtrInput `pulumi:"guestId"`
 	// The hardware version number on this virtual machine.
@@ -353,13 +360,14 @@ type LookupVirtualMachineOutputArgs struct {
 	IdeControllerScanCount pulumi.IntPtrInput    `pulumi:"ideControllerScanCount"`
 	LatencySensitivity     pulumi.StringPtrInput `pulumi:"latencySensitivity"`
 	// The size of the virtual machine's memory, in MB.
-	Memory              pulumi.IntPtrInput    `pulumi:"memory"`
-	MemoryHotAddEnabled pulumi.BoolPtrInput   `pulumi:"memoryHotAddEnabled"`
-	MemoryLimit         pulumi.IntPtrInput    `pulumi:"memoryLimit"`
-	MemoryReservation   pulumi.IntPtrInput    `pulumi:"memoryReservation"`
-	MemoryShareCount    pulumi.IntPtrInput    `pulumi:"memoryShareCount"`
-	MemoryShareLevel    pulumi.StringPtrInput `pulumi:"memoryShareLevel"`
-	Moid                pulumi.StringPtrInput `pulumi:"moid"`
+	Memory                       pulumi.IntPtrInput    `pulumi:"memory"`
+	MemoryHotAddEnabled          pulumi.BoolPtrInput   `pulumi:"memoryHotAddEnabled"`
+	MemoryLimit                  pulumi.IntPtrInput    `pulumi:"memoryLimit"`
+	MemoryReservation            pulumi.IntPtrInput    `pulumi:"memoryReservation"`
+	MemoryReservationLockedToMax pulumi.BoolPtrInput   `pulumi:"memoryReservationLockedToMax"`
+	MemoryShareCount             pulumi.IntPtrInput    `pulumi:"memoryShareCount"`
+	MemoryShareLevel             pulumi.StringPtrInput `pulumi:"memoryShareLevel"`
+	Moid                         pulumi.StringPtrInput `pulumi:"moid"`
 	// The name of the virtual machine. This can be a name or
 	// the full path relative to the datacenter. This is required if a UUID lookup
 	// is not performed.
@@ -527,6 +535,10 @@ func (o LookupVirtualMachineResultOutput) Firmware() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Firmware }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupVirtualMachineResultOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
 // The guest ID of the virtual machine or template.
 func (o LookupVirtualMachineResultOutput) GuestId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.GuestId }).(pulumi.StringOutput)
@@ -574,6 +586,10 @@ func (o LookupVirtualMachineResultOutput) MemoryLimit() pulumi.IntPtrOutput {
 
 func (o LookupVirtualMachineResultOutput) MemoryReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.MemoryReservation }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupVirtualMachineResultOutput) MemoryReservationLockedToMax() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.MemoryReservationLockedToMax }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) MemoryShareCount() pulumi.IntOutput {

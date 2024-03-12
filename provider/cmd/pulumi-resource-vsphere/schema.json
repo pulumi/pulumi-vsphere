@@ -1409,6 +1409,43 @@
                 }
             }
         },
+        "vsphere:index/getHostVgpuProfileVgpuProfile:getHostVgpuProfileVgpuProfile": {
+            "properties": {
+                "diskSnapshotSupported": {
+                    "type": "boolean",
+                    "description": "Indicates whether the GPU plugin on this host is\ncapable of disk-only snapshots when VM is not powered off.\n"
+                },
+                "memorySnapshotSupported": {
+                    "type": "boolean",
+                    "description": "Indicates whether the GPU plugin on this host is\ncapable of memory snapshots.\n"
+                },
+                "migrateSupported": {
+                    "type": "boolean",
+                    "description": "Indicates whether the GPU plugin on this host is capable\nof migration.\n"
+                },
+                "suspendSupported": {
+                    "type": "boolean",
+                    "description": "Indicates whether the GPU plugin on this host is capable\nof suspend-resume.\n"
+                },
+                "vgpu": {
+                    "type": "string",
+                    "description": "Name of a particular vGPU available as a shared GPU device (vGPU profile).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "diskSnapshotSupported",
+                "memorySnapshotSupported",
+                "migrateSupported",
+                "suspendSupported",
+                "vgpu"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "vsphere:index/getVirtualMachineDisk:getVirtualMachineDisk": {
             "properties": {
                 "eagerlyScrub": {
@@ -8965,6 +9002,10 @@
                     "type": "integer",
                     "description": "The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.\n"
                 },
+                "memoryReservationLockedToMax": {
+                    "type": "boolean",
+                    "description": "If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory\nsize;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature\nmay only be enabled if it is currently possible to reserve all of the virtual machine's memory.\n"
+                },
                 "memoryShareCount": {
                     "type": "integer",
                     "description": "The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.\n"
@@ -9085,7 +9126,7 @@
                 },
                 "syncTimeWithHost": {
                     "type": "boolean",
-                    "description": "Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.\n"
+                    "description": "Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.\n"
                 },
                 "syncTimeWithHostPeriodically": {
                     "type": "boolean",
@@ -9342,6 +9383,10 @@
                     "type": "integer",
                     "description": "The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.\n"
                 },
+                "memoryReservationLockedToMax": {
+                    "type": "boolean",
+                    "description": "If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory\nsize;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature\nmay only be enabled if it is currently possible to reserve all of the virtual machine's memory.\n"
+                },
                 "memoryShareCount": {
                     "type": "integer",
                     "description": "The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.\n"
@@ -9451,7 +9496,7 @@
                 },
                 "syncTimeWithHost": {
                     "type": "boolean",
-                    "description": "Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.\n"
+                    "description": "Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.\n"
                 },
                 "syncTimeWithHostPeriodically": {
                     "type": "boolean",
@@ -9689,6 +9734,10 @@
                         "type": "integer",
                         "description": "The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.\n"
                     },
+                    "memoryReservationLockedToMax": {
+                        "type": "boolean",
+                        "description": "If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory\nsize;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature\nmay only be enabled if it is currently possible to reserve all of the virtual machine's memory.\n"
+                    },
                     "memoryShareCount": {
                         "type": "integer",
                         "description": "The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.\n"
@@ -9810,7 +9859,7 @@
                     },
                     "syncTimeWithHost": {
                         "type": "boolean",
-                        "description": "Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.\n"
+                        "description": "Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.\n"
                     },
                     "syncTimeWithHostPeriodically": {
                         "type": "boolean",
@@ -10677,6 +10726,13 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the datastore. This can be a name or path.\n"
+                    },
+                    "stats": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The disk space usage statistics for the specific datastore. The total\ndatastore capacity is represented as `capacity` and the free remaining disk is\nrepresented as `free`.\n"
                     }
                 },
                 "type": "object",
@@ -10696,6 +10752,13 @@
                     },
                     "name": {
                         "type": "string"
+                    },
+                    "stats": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The disk space usage statistics for the specific datastore. The total\ndatastore capacity is represented as `capacity` and the free remaining disk is\nrepresented as `free`.\n"
                     }
                 },
                 "type": "object",
@@ -10741,6 +10804,68 @@
                 "type": "object",
                 "required": [
                     "name",
+                    "id"
+                ]
+            }
+        },
+        "vsphere:index/getDatastoreStats:getDatastoreStats": {
+            "description": "The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats\nof all vSphere datastore objects in a datacenter. This can then be used as a\nstandalone datasource to get information required as input to other data sources.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst datastoreStats = datacenter.then(datacenter =\u003e vsphere.getDatastoreStats({\n    datacenterId: datacenter.id,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\ndatastore_stats = vsphere.get_datastore_stats(datacenter_id=datacenter.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var datastoreStats = VSphere.GetDatastoreStats.Invoke(new()\n    {\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetDatastoreStats(ctx, \u0026vsphere.GetDatastoreStatsArgs{\n\t\t\tDatacenterId: datacenter.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  datastoreStats:\n    fn::invoke:\n      Function: vsphere:getDatastoreStats\n      Arguments:\n        datacenterId: ${datacenter.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nA usefull example of this datasource would be to determine the\ndatastore with the most free space. For example, in addition to\nthe above:\n\nCreate an `outputs.tf` like that:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const maxFreeSpaceName = local.max_free_space_name;\nexport const maxFreeSpace = local.max_free_space;\n```\n```python\nimport pulumi\n\npulumi.export(\"maxFreeSpaceName\", local[\"max_free_space_name\"])\npulumi.export(\"maxFreeSpace\", local[\"max_free_space\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"maxFreeSpaceName\"] = local.Max_free_space_name,\n        [\"maxFreeSpace\"] = local.Max_free_space,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"maxFreeSpaceName\", local.Max_free_space_name)\n\t\tctx.Export(\"maxFreeSpace\", local.Max_free_space)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        ctx.export(\"maxFreeSpaceName\", local.max_free_space_name());\n        ctx.export(\"maxFreeSpace\", local.max_free_space());\n    }\n}\n```\n```yaml\noutputs:\n  maxFreeSpaceName: ${local.max_free_space_name}\n  maxFreeSpace: ${local.max_free_space}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nand a `locals.tf` like that:\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDatastoreStats.\n",
+                "properties": {
+                    "capacity": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of the capacity for all datastore in the datacenter\n, where the name of the datastore is used as key and the capacity as value.\n"
+                    },
+                    "datacenterId": {
+                        "type": "string",
+                        "description": "The [managed object reference ID][docs-about-morefs]\nof the datacenter the datastores are located in. For default datacenters, use\nthe `id` attribute from an empty `vsphere.Datacenter` data source.\n\n[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider\n"
+                    },
+                    "freeSpace": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of the free space for each datastore in the\ndatacenter, where the name of the datastore is used as key and the free\nspace as value.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datacenterId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDatastoreStats.\n",
+                "properties": {
+                    "capacity": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of the capacity for all datastore in the datacenter\n, where the name of the datastore is used as key and the capacity as value.\n"
+                    },
+                    "datacenterId": {
+                        "type": "string",
+                        "description": "The [managed object reference ID][docs-about-morefs]\nof the datacenter the datastores are located in.\n"
+                    },
+                    "freeSpace": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of the free space for each datastore in the\ndatacenter, where the name of the datastore is used as key and the free\nspace as value.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datacenterId",
                     "id"
                 ]
             }
@@ -11087,6 +11212,56 @@
                 "type": "object",
                 "required": [
                     "address",
+                    "id"
+                ]
+            }
+        },
+        "vsphere:index/getHostVgpuProfile:getHostVgpuProfile": {
+            "description": "The `vsphere.getHostVgpuProfile` data source can be used to discover the\navailable vGPU profiles of a vSphere host.\n\n## Example Usage\n\n### To Return All VGPU Profiles\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst host = datacenter.then(datacenter =\u003e vsphere.getHost({\n    name: \"esxi-01.example.com\",\n    datacenterId: datacenter.id,\n}));\nconst vgpuProfile = host.then(host =\u003e vsphere.getHostVgpuProfile({\n    hostId: host.id,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\nhost = vsphere.get_host(name=\"esxi-01.example.com\",\n    datacenter_id=datacenter.id)\nvgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var host = VSphere.GetHost.Invoke(new()\n    {\n        Name = \"esxi-01.example.com\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n    var vgpuProfile = VSphere.GetHostVgpuProfile.Invoke(new()\n    {\n        HostId = host.Apply(getHostResult =\u003e getHostResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\thost, err := vsphere.LookupHost(ctx, \u0026vsphere.LookupHostArgs{\n\t\t\tName:         pulumi.StringRef(\"esxi-01.example.com\"),\n\t\t\tDatacenterId: datacenter.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetHostVgpuProfile(ctx, \u0026vsphere.GetHostVgpuProfileArgs{\n\t\t\tHostId: host.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetHostArgs;\nimport com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var host = VsphereFunctions.getHost(GetHostArgs.builder()\n            .name(\"esxi-01.example.com\")\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .build());\n\n        final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()\n            .hostId(host.applyValue(getHostResult -\u003e getHostResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  host:\n    fn::invoke:\n      Function: vsphere:getHost\n      Arguments:\n        name: esxi-01.example.com\n        datacenterId: ${datacenter.id}\n  vgpuProfile:\n    fn::invoke:\n      Function: vsphere:getHostVgpuProfile\n      Arguments:\n        hostId: ${host.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n### With VGPU Profile Name_regex\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst host = datacenter.then(datacenter =\u003e vsphere.getHost({\n    name: \"esxi-01.example.com\",\n    datacenterId: datacenter.id,\n}));\nconst vgpuProfile = host.then(host =\u003e vsphere.getHostVgpuProfile({\n    hostId: host.id,\n    nameRegex: \"a100\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\nhost = vsphere.get_host(name=\"esxi-01.example.com\",\n    datacenter_id=datacenter.id)\nvgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id,\n    name_regex=\"a100\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var host = VSphere.GetHost.Invoke(new()\n    {\n        Name = \"esxi-01.example.com\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n    var vgpuProfile = VSphere.GetHostVgpuProfile.Invoke(new()\n    {\n        HostId = host.Apply(getHostResult =\u003e getHostResult.Id),\n        NameRegex = \"a100\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\thost, err := vsphere.LookupHost(ctx, \u0026vsphere.LookupHostArgs{\n\t\t\tName:         pulumi.StringRef(\"esxi-01.example.com\"),\n\t\t\tDatacenterId: datacenter.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetHostVgpuProfile(ctx, \u0026vsphere.GetHostVgpuProfileArgs{\n\t\t\tHostId:    host.Id,\n\t\t\tNameRegex: pulumi.StringRef(\"a100\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetHostArgs;\nimport com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var host = VsphereFunctions.getHost(GetHostArgs.builder()\n            .name(\"esxi-01.example.com\")\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .build());\n\n        final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()\n            .hostId(host.applyValue(getHostResult -\u003e getHostResult.id()))\n            .nameRegex(\"a100\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  host:\n    fn::invoke:\n      Function: vsphere:getHost\n      Arguments:\n        name: esxi-01.example.com\n        datacenterId: ${datacenter.id}\n  vgpuProfile:\n    fn::invoke:\n      Function: vsphere:getHostVgpuProfile\n      Arguments:\n        hostId: ${host.id}\n        nameRegex: a100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHostVgpuProfile.\n",
+                "properties": {
+                    "hostId": {
+                        "type": "string",
+                        "description": "The [managed object reference ID][docs-about-morefs] of a host.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regular expression that will be used to match the\nhost vGPU profile name.\n\n[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHostVgpuProfile.\n",
+                "properties": {
+                    "hostId": {
+                        "type": "string",
+                        "description": "The [managed objectID][docs-about-morefs] of the ESXi host.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "(Optional) A regular expression that will be used to match the\nhost vGPU profile name.\n"
+                    },
+                    "vgpuProfiles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getHostVgpuProfileVgpuProfile:getHostVgpuProfileVgpuProfile"
+                        },
+                        "description": "The list of available vGPU profiles on the ESXi host.\nThis may be and empty array if no vGPU profile are identified.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostId",
+                    "vgpuProfiles",
                     "id"
                 ]
             }
@@ -11764,6 +11939,10 @@
                         "type": "string",
                         "description": "The firmware type for this virtual machine. Can be `bios` or `efi`.\n"
                     },
+                    "folder": {
+                        "type": "string",
+                        "description": "The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.\n"
+                    },
                     "guestId": {
                         "type": "string",
                         "description": "The guest ID of the virtual machine or template.\n"
@@ -11793,6 +11972,9 @@
                     },
                     "memoryReservation": {
                         "type": "integer"
+                    },
+                    "memoryReservationLockedToMax": {
+                        "type": "boolean"
                     },
                     "memoryShareCount": {
                         "type": "integer"
@@ -11958,6 +12140,9 @@
                         "type": "string",
                         "description": "The firmware type for this virtual machine. Can be `bios` or `efi`.\n"
                     },
+                    "folder": {
+                        "type": "string"
+                    },
                     "guestId": {
                         "type": "string",
                         "description": "The guest ID of the virtual machine or template.\n"
@@ -11998,6 +12183,9 @@
                     },
                     "memoryReservation": {
                         "type": "integer"
+                    },
+                    "memoryReservationLockedToMax": {
+                        "type": "boolean"
                     },
                     "memoryShareCount": {
                         "type": "integer"

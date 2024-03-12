@@ -102,6 +102,20 @@ namespace Pulumi.VSphere
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("stats")]
+        private Dictionary<string, object>? _stats;
+
+        /// <summary>
+        /// The disk space usage statistics for the specific datastore. The total
+        /// datastore capacity is represented as `capacity` and the free remaining disk is
+        /// represented as `free`.
+        /// </summary>
+        public Dictionary<string, object> Stats
+        {
+            get => _stats ?? (_stats = new Dictionary<string, object>());
+            set => _stats = value;
+        }
+
         public GetDatastoreArgs()
         {
         }
@@ -125,6 +139,20 @@ namespace Pulumi.VSphere
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("stats")]
+        private InputMap<object>? _stats;
+
+        /// <summary>
+        /// The disk space usage statistics for the specific datastore. The total
+        /// datastore capacity is represented as `capacity` and the free remaining disk is
+        /// represented as `free`.
+        /// </summary>
+        public InputMap<object> Stats
+        {
+            get => _stats ?? (_stats = new InputMap<object>());
+            set => _stats = value;
+        }
+
         public GetDatastoreInvokeArgs()
         {
         }
@@ -141,6 +169,12 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// The disk space usage statistics for the specific datastore. The total
+        /// datastore capacity is represented as `capacity` and the free remaining disk is
+        /// represented as `free`.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Stats;
 
         [OutputConstructor]
         private GetDatastoreResult(
@@ -148,11 +182,14 @@ namespace Pulumi.VSphere
 
             string id,
 
-            string name)
+            string name,
+
+            ImmutableDictionary<string, object>? stats)
         {
             DatacenterId = datacenterId;
             Id = id;
             Name = name;
+            Stats = stats;
         }
     }
 }

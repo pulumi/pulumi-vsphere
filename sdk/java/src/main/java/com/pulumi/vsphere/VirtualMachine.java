@@ -683,6 +683,24 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryReservation);
     }
     /**
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
+     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * 
+     */
+    @Export(name="memoryReservationLockedToMax", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> memoryReservationLockedToMax;
+
+    /**
+     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
+     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * 
+     */
+    public Output<Optional<Boolean>> memoryReservationLockedToMax() {
+        return Codegen.optional(this.memoryReservationLockedToMax);
+    }
+    /**
      * The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
      * 
      */
@@ -1095,14 +1113,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.swapPlacementPolicy);
     }
     /**
-     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
      * 
      */
     @Export(name="syncTimeWithHost", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHost;
 
     /**
-     * @return Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+     * @return Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
      * 
      */
     public Output<Optional<Boolean>> syncTimeWithHost() {

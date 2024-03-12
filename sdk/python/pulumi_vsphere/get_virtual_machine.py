@@ -23,7 +23,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -93,6 +93,9 @@ class GetVirtualMachineResult:
         if firmware and not isinstance(firmware, str):
             raise TypeError("Expected argument 'firmware' to be a str")
         pulumi.set(__self__, "firmware", firmware)
+        if folder and not isinstance(folder, str):
+            raise TypeError("Expected argument 'folder' to be a str")
+        pulumi.set(__self__, "folder", folder)
         if guest_id and not isinstance(guest_id, str):
             raise TypeError("Expected argument 'guest_id' to be a str")
         pulumi.set(__self__, "guest_id", guest_id)
@@ -126,6 +129,9 @@ class GetVirtualMachineResult:
         if memory_reservation and not isinstance(memory_reservation, int):
             raise TypeError("Expected argument 'memory_reservation' to be a int")
         pulumi.set(__self__, "memory_reservation", memory_reservation)
+        if memory_reservation_locked_to_max and not isinstance(memory_reservation_locked_to_max, bool):
+            raise TypeError("Expected argument 'memory_reservation_locked_to_max' to be a bool")
+        pulumi.set(__self__, "memory_reservation_locked_to_max", memory_reservation_locked_to_max)
         if memory_share_count and not isinstance(memory_share_count, int):
             raise TypeError("Expected argument 'memory_share_count' to be a int")
         pulumi.set(__self__, "memory_share_count", memory_share_count)
@@ -357,6 +363,11 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "firmware")
 
     @property
+    @pulumi.getter
+    def folder(self) -> Optional[str]:
+        return pulumi.get(self, "folder")
+
+    @property
     @pulumi.getter(name="guestId")
     def guest_id(self) -> str:
         """
@@ -425,6 +436,11 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="memoryReservation")
     def memory_reservation(self) -> Optional[int]:
         return pulumi.get(self, "memory_reservation")
+
+    @property
+    @pulumi.getter(name="memoryReservationLockedToMax")
+    def memory_reservation_locked_to_max(self) -> Optional[bool]:
+        return pulumi.get(self, "memory_reservation_locked_to_max")
 
     @property
     @pulumi.getter(name="memoryShareCount")
@@ -634,6 +650,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             extra_config=self.extra_config,
             extra_config_reboot_required=self.extra_config_reboot_required,
             firmware=self.firmware,
+            folder=self.folder,
             guest_id=self.guest_id,
             guest_ip_addresses=self.guest_ip_addresses,
             hardware_version=self.hardware_version,
@@ -645,6 +662,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             memory_hot_add_enabled=self.memory_hot_add_enabled,
             memory_limit=self.memory_limit,
             memory_reservation=self.memory_reservation,
+            memory_reservation_locked_to_max=self.memory_reservation_locked_to_max,
             memory_share_count=self.memory_share_count,
             memory_share_level=self.memory_share_level,
             moid=self.moid,
@@ -696,6 +714,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         extra_config: Optional[Mapping[str, str]] = None,
                         extra_config_reboot_required: Optional[bool] = None,
                         firmware: Optional[str] = None,
+                        folder: Optional[str] = None,
                         guest_id: Optional[str] = None,
                         hardware_version: Optional[int] = None,
                         hv_mode: Optional[str] = None,
@@ -705,6 +724,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         memory_hot_add_enabled: Optional[bool] = None,
                         memory_limit: Optional[int] = None,
                         memory_reservation: Optional[int] = None,
+                        memory_reservation_locked_to_max: Optional[bool] = None,
                         memory_share_count: Optional[int] = None,
                         memory_share_level: Optional[str] = None,
                         moid: Optional[str] = None,
@@ -778,6 +798,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
            For default datacenters, use the `id` attribute from an empty
            `Datacenter` data source.
     :param str firmware: The firmware type for this virtual machine. Can be `bios` or `efi`.
+    :param str folder: The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
     :param str guest_id: The guest ID of the virtual machine or template.
     :param int hardware_version: The hardware version number on this virtual machine.
     :param int memory: The size of the virtual machine's memory, in MB.
@@ -819,6 +840,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['extraConfig'] = extra_config
     __args__['extraConfigRebootRequired'] = extra_config_reboot_required
     __args__['firmware'] = firmware
+    __args__['folder'] = folder
     __args__['guestId'] = guest_id
     __args__['hardwareVersion'] = hardware_version
     __args__['hvMode'] = hv_mode
@@ -828,6 +850,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['memoryHotAddEnabled'] = memory_hot_add_enabled
     __args__['memoryLimit'] = memory_limit
     __args__['memoryReservation'] = memory_reservation
+    __args__['memoryReservationLockedToMax'] = memory_reservation_locked_to_max
     __args__['memoryShareCount'] = memory_share_count
     __args__['memoryShareLevel'] = memory_share_level
     __args__['moid'] = moid
@@ -879,6 +902,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         extra_config=pulumi.get(__ret__, 'extra_config'),
         extra_config_reboot_required=pulumi.get(__ret__, 'extra_config_reboot_required'),
         firmware=pulumi.get(__ret__, 'firmware'),
+        folder=pulumi.get(__ret__, 'folder'),
         guest_id=pulumi.get(__ret__, 'guest_id'),
         guest_ip_addresses=pulumi.get(__ret__, 'guest_ip_addresses'),
         hardware_version=pulumi.get(__ret__, 'hardware_version'),
@@ -890,6 +914,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         memory_hot_add_enabled=pulumi.get(__ret__, 'memory_hot_add_enabled'),
         memory_limit=pulumi.get(__ret__, 'memory_limit'),
         memory_reservation=pulumi.get(__ret__, 'memory_reservation'),
+        memory_reservation_locked_to_max=pulumi.get(__ret__, 'memory_reservation_locked_to_max'),
         memory_share_count=pulumi.get(__ret__, 'memory_share_count'),
         memory_share_level=pulumi.get(__ret__, 'memory_share_level'),
         moid=pulumi.get(__ret__, 'moid'),
@@ -942,6 +967,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                extra_config: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                extra_config_reboot_required: Optional[pulumi.Input[Optional[bool]]] = None,
                                firmware: Optional[pulumi.Input[Optional[str]]] = None,
+                               folder: Optional[pulumi.Input[Optional[str]]] = None,
                                guest_id: Optional[pulumi.Input[Optional[str]]] = None,
                                hardware_version: Optional[pulumi.Input[Optional[int]]] = None,
                                hv_mode: Optional[pulumi.Input[Optional[str]]] = None,
@@ -951,6 +977,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                memory_hot_add_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                memory_limit: Optional[pulumi.Input[Optional[int]]] = None,
                                memory_reservation: Optional[pulumi.Input[Optional[int]]] = None,
+                               memory_reservation_locked_to_max: Optional[pulumi.Input[Optional[bool]]] = None,
                                memory_share_count: Optional[pulumi.Input[Optional[int]]] = None,
                                memory_share_level: Optional[pulumi.Input[Optional[str]]] = None,
                                moid: Optional[pulumi.Input[Optional[str]]] = None,
@@ -1024,6 +1051,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
            For default datacenters, use the `id` attribute from an empty
            `Datacenter` data source.
     :param str firmware: The firmware type for this virtual machine. Can be `bios` or `efi`.
+    :param str folder: The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
     :param str guest_id: The guest ID of the virtual machine or template.
     :param int hardware_version: The hardware version number on this virtual machine.
     :param int memory: The size of the virtual machine's memory, in MB.

@@ -3,7 +3,8 @@ package vsphere
 import (
 	"fmt"
 	"path/filepath"
-	"unicode"
+
+	_ "embed" // Allow embedding state
 
 	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
 
@@ -11,7 +12,6 @@ import (
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-vsphere/provider/v4/pkg/version"
 )
@@ -21,29 +21,15 @@ const (
 	vsphereMod = "index"
 )
 
-// vsphereMember manufactures a type token for the VSphere package and the given module and type.
-func vsphereMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(vspherePkg + ":" + mod + ":" + mem)
-}
+//go:embed cmd/pulumi-resource-vsphere/bridge-metadata.json
+var metadata []byte
 
-// vsphereType manufactures a type token for the VSphere package and the given module and type.
-func vsphereType(mod string, typ string) tokens.Type {
-	return tokens.Type(vsphereMember(mod, typ))
-}
-
-// vsphereDataSource manufactures a standard resource token given a module and resource name.
-// It automatically uses the VSphere package and names the file by simply lower casing the data
-// source's first character.
 func vsphereDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return vsphereMember(mod+"/"+fn, res)
+	return tfbridge.MakeDataSource(vspherePkg, mod, res)
 }
 
-// vsphereResource manufactures a standard resource token given a module and resource name.
-// package and names the file by simply lower casing the resource's first character.
 func vsphereResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return vsphereType(mod+"/"+fn, res)
+	return tfbridge.MakeResource(vspherePkg, mod, res)
 }
 
 func Provider() tfbridge.ProviderInfo {
@@ -58,6 +44,8 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-vsphere",
 		GitHubOrg:        "hashicorp",
 		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"allow_unverified_ssl": {
 				Default: &tfbridge.DefaultInfo{
@@ -175,6 +163,10 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_ovf_vm_template":            {Tok: vsphereDataSource(vsphereMod, "getOvfVmTemplate")},
 			"vsphere_compute_cluster_host_group": {Tok: vsphereDataSource(vsphereMod, "getComputeClusterHostGroup")},
 			"vsphere_license":                    {Tok: vsphereDataSource(vsphereMod, "getLicense")},
+
+			"vsphere_datastore_stats": {Docs: &tfbridge.DocInfo{
+				Source: "datastore_stats.html .markdown", // Note extra space.
+			}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -218,10 +210,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := prov.ComputeTokens(tfbridgetokens.SingleModule("vsphere_", vsphereMod,
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("vsphere_", vsphereMod,
 		tfbridgetokens.MakeStandard(vspherePkg)))
-	contract.AssertNoErrorf(err, "failed to compute default modules")
 	prov.SetAutonaming(255, "-")
+	prov.MustApplyAutoAliases()
 
 	return prov
 }

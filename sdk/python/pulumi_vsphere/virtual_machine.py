@@ -56,6 +56,7 @@ class VirtualMachineArgs:
                  memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
                  memory_limit: Optional[pulumi.Input[int]] = None,
                  memory_reservation: Optional[pulumi.Input[int]] = None,
+                 memory_reservation_locked_to_max: Optional[pulumi.Input[bool]] = None,
                  memory_share_count: Optional[pulumi.Input[int]] = None,
                  memory_share_level: Optional[pulumi.Input[str]] = None,
                  migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
@@ -161,6 +162,9 @@ class VirtualMachineArgs:
                [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+        :param pulumi.Input[bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
         :param pulumi.Input[str] memory_share_level: The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
         :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
@@ -193,7 +197,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
                
@@ -285,6 +289,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "memory_limit", memory_limit)
         if memory_reservation is not None:
             pulumi.set(__self__, "memory_reservation", memory_reservation)
+        if memory_reservation_locked_to_max is not None:
+            pulumi.set(__self__, "memory_reservation_locked_to_max", memory_reservation_locked_to_max)
         if memory_share_count is not None:
             pulumi.set(__self__, "memory_share_count", memory_share_count)
         if memory_share_level is not None:
@@ -864,6 +870,20 @@ class VirtualMachineArgs:
         pulumi.set(self, "memory_reservation", value)
 
     @property
+    @pulumi.getter(name="memoryReservationLockedToMax")
+    def memory_reservation_locked_to_max(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+        size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+        may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        """
+        return pulumi.get(self, "memory_reservation_locked_to_max")
+
+    @memory_reservation_locked_to_max.setter
+    def memory_reservation_locked_to_max(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "memory_reservation_locked_to_max", value)
+
+    @property
     @pulumi.getter(name="memoryShareCount")
     def memory_share_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1163,7 +1183,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         """
         return pulumi.get(self, "sync_time_with_host")
 
@@ -1328,6 +1348,7 @@ class _VirtualMachineState:
                  memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
                  memory_limit: Optional[pulumi.Input[int]] = None,
                  memory_reservation: Optional[pulumi.Input[int]] = None,
+                 memory_reservation_locked_to_max: Optional[pulumi.Input[bool]] = None,
                  memory_share_count: Optional[pulumi.Input[int]] = None,
                  memory_share_level: Optional[pulumi.Input[str]] = None,
                  migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
@@ -1442,6 +1463,9 @@ class _VirtualMachineState:
                [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+        :param pulumi.Input[bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
         :param pulumi.Input[str] memory_share_level: The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
         :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
@@ -1480,7 +1504,7 @@ class _VirtualMachineState:
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
                
@@ -1583,6 +1607,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "memory_limit", memory_limit)
         if memory_reservation is not None:
             pulumi.set(__self__, "memory_reservation", memory_reservation)
+        if memory_reservation_locked_to_max is not None:
+            pulumi.set(__self__, "memory_reservation_locked_to_max", memory_reservation_locked_to_max)
         if memory_share_count is not None:
             pulumi.set(__self__, "memory_share_count", memory_share_count)
         if memory_share_level is not None:
@@ -2212,6 +2238,20 @@ class _VirtualMachineState:
         pulumi.set(self, "memory_reservation", value)
 
     @property
+    @pulumi.getter(name="memoryReservationLockedToMax")
+    def memory_reservation_locked_to_max(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+        size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+        may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        """
+        return pulumi.get(self, "memory_reservation_locked_to_max")
+
+    @memory_reservation_locked_to_max.setter
+    def memory_reservation_locked_to_max(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "memory_reservation_locked_to_max", value)
+
+    @property
     @pulumi.getter(name="memoryShareCount")
     def memory_share_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2561,7 +2601,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         """
         return pulumi.get(self, "sync_time_with_host")
 
@@ -2772,6 +2812,7 @@ class VirtualMachine(pulumi.CustomResource):
                  memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
                  memory_limit: Optional[pulumi.Input[int]] = None,
                  memory_reservation: Optional[pulumi.Input[int]] = None,
+                 memory_reservation_locked_to_max: Optional[pulumi.Input[bool]] = None,
                  memory_share_count: Optional[pulumi.Input[int]] = None,
                  memory_share_level: Optional[pulumi.Input[str]] = None,
                  migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
@@ -2878,6 +2919,9 @@ class VirtualMachine(pulumi.CustomResource):
                [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+        :param pulumi.Input[bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
         :param pulumi.Input[str] memory_share_level: The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
         :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
@@ -2913,7 +2957,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
                
@@ -2988,6 +3032,7 @@ class VirtualMachine(pulumi.CustomResource):
                  memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
                  memory_limit: Optional[pulumi.Input[int]] = None,
                  memory_reservation: Optional[pulumi.Input[int]] = None,
+                 memory_reservation_locked_to_max: Optional[pulumi.Input[bool]] = None,
                  memory_share_count: Optional[pulumi.Input[int]] = None,
                  memory_share_level: Optional[pulumi.Input[str]] = None,
                  migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
@@ -3071,6 +3116,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["memory_hot_add_enabled"] = memory_hot_add_enabled
             __props__.__dict__["memory_limit"] = memory_limit
             __props__.__dict__["memory_reservation"] = memory_reservation
+            __props__.__dict__["memory_reservation_locked_to_max"] = memory_reservation_locked_to_max
             __props__.__dict__["memory_share_count"] = memory_share_count
             __props__.__dict__["memory_share_level"] = memory_share_level
             __props__.__dict__["migrate_wait_timeout"] = migrate_wait_timeout
@@ -3172,6 +3218,7 @@ class VirtualMachine(pulumi.CustomResource):
             memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
             memory_limit: Optional[pulumi.Input[int]] = None,
             memory_reservation: Optional[pulumi.Input[int]] = None,
+            memory_reservation_locked_to_max: Optional[pulumi.Input[bool]] = None,
             memory_share_count: Optional[pulumi.Input[int]] = None,
             memory_share_level: Optional[pulumi.Input[str]] = None,
             migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
@@ -3291,6 +3338,9 @@ class VirtualMachine(pulumi.CustomResource):
                [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
         :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
         :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+        :param pulumi.Input[bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
         :param pulumi.Input[str] memory_share_level: The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
         :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
@@ -3329,7 +3379,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
                
@@ -3393,6 +3443,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["memory_hot_add_enabled"] = memory_hot_add_enabled
         __props__.__dict__["memory_limit"] = memory_limit
         __props__.__dict__["memory_reservation"] = memory_reservation
+        __props__.__dict__["memory_reservation_locked_to_max"] = memory_reservation_locked_to_max
         __props__.__dict__["memory_share_count"] = memory_share_count
         __props__.__dict__["memory_share_level"] = memory_share_level
         __props__.__dict__["migrate_wait_timeout"] = migrate_wait_timeout
@@ -3809,6 +3860,16 @@ class VirtualMachine(pulumi.CustomResource):
         return pulumi.get(self, "memory_reservation")
 
     @property
+    @pulumi.getter(name="memoryReservationLockedToMax")
+    def memory_reservation_locked_to_max(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+        size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+        may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        """
+        return pulumi.get(self, "memory_reservation_locked_to_max")
+
+    @property
     @pulumi.getter(name="memoryShareCount")
     def memory_share_count(self) -> pulumi.Output[int]:
         """
@@ -4046,7 +4107,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         """
         return pulumi.get(self, "sync_time_with_host")
 

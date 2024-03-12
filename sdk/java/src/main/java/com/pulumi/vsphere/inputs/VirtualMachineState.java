@@ -725,6 +725,25 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
+     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * 
+     */
+    @Import(name="memoryReservationLockedToMax")
+    private @Nullable Output<Boolean> memoryReservationLockedToMax;
+
+    /**
+     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
+     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * 
+     */
+    public Optional<Output<Boolean>> memoryReservationLockedToMax() {
+        return Optional.ofNullable(this.memoryReservationLockedToMax);
+    }
+
+    /**
      * The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
      * 
      */
@@ -1165,14 +1184,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
      * 
      */
     @Import(name="syncTimeWithHost")
     private @Nullable Output<Boolean> syncTimeWithHost;
 
     /**
-     * @return Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+     * @return Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> syncTimeWithHost() {
@@ -1424,6 +1443,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.memoryHotAddEnabled = $.memoryHotAddEnabled;
         this.memoryLimit = $.memoryLimit;
         this.memoryReservation = $.memoryReservation;
+        this.memoryReservationLockedToMax = $.memoryReservationLockedToMax;
         this.memoryShareCount = $.memoryShareCount;
         this.memoryShareLevel = $.memoryShareLevel;
         this.migrateWaitTimeout = $.migrateWaitTimeout;
@@ -2484,6 +2504,31 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
+         * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+         * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryReservationLockedToMax(@Nullable Output<Boolean> memoryReservationLockedToMax) {
+            $.memoryReservationLockedToMax = memoryReservationLockedToMax;
+            return this;
+        }
+
+        /**
+         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
+         * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+         * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryReservationLockedToMax(Boolean memoryReservationLockedToMax) {
+            return memoryReservationLockedToMax(Output.of(memoryReservationLockedToMax));
+        }
+
+        /**
          * @param memoryShareCount The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
          * 
          * @return builder
@@ -3114,7 +3159,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHost Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+         * @param syncTimeWithHost Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
          * 
          * @return builder
          * 
@@ -3125,7 +3170,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHost Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+         * @param syncTimeWithHost Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
          * 
          * @return builder
          * 

@@ -6557,6 +6557,151 @@ func (o GetGuestOsCustomizationSpecWindowsOptionArrayOutput) Index(i pulumi.IntI
 	}).(GetGuestOsCustomizationSpecWindowsOptionOutput)
 }
 
+type GetHostVgpuProfileVgpuProfile struct {
+	// Indicates whether the GPU plugin on this host is
+	// capable of disk-only snapshots when VM is not powered off.
+	DiskSnapshotSupported bool `pulumi:"diskSnapshotSupported"`
+	// Indicates whether the GPU plugin on this host is
+	// capable of memory snapshots.
+	MemorySnapshotSupported bool `pulumi:"memorySnapshotSupported"`
+	// Indicates whether the GPU plugin on this host is capable
+	// of migration.
+	MigrateSupported bool `pulumi:"migrateSupported"`
+	// Indicates whether the GPU plugin on this host is capable
+	// of suspend-resume.
+	SuspendSupported bool `pulumi:"suspendSupported"`
+	// Name of a particular vGPU available as a shared GPU device (vGPU profile).
+	Vgpu string `pulumi:"vgpu"`
+}
+
+// GetHostVgpuProfileVgpuProfileInput is an input type that accepts GetHostVgpuProfileVgpuProfileArgs and GetHostVgpuProfileVgpuProfileOutput values.
+// You can construct a concrete instance of `GetHostVgpuProfileVgpuProfileInput` via:
+//
+//	GetHostVgpuProfileVgpuProfileArgs{...}
+type GetHostVgpuProfileVgpuProfileInput interface {
+	pulumi.Input
+
+	ToGetHostVgpuProfileVgpuProfileOutput() GetHostVgpuProfileVgpuProfileOutput
+	ToGetHostVgpuProfileVgpuProfileOutputWithContext(context.Context) GetHostVgpuProfileVgpuProfileOutput
+}
+
+type GetHostVgpuProfileVgpuProfileArgs struct {
+	// Indicates whether the GPU plugin on this host is
+	// capable of disk-only snapshots when VM is not powered off.
+	DiskSnapshotSupported pulumi.BoolInput `pulumi:"diskSnapshotSupported"`
+	// Indicates whether the GPU plugin on this host is
+	// capable of memory snapshots.
+	MemorySnapshotSupported pulumi.BoolInput `pulumi:"memorySnapshotSupported"`
+	// Indicates whether the GPU plugin on this host is capable
+	// of migration.
+	MigrateSupported pulumi.BoolInput `pulumi:"migrateSupported"`
+	// Indicates whether the GPU plugin on this host is capable
+	// of suspend-resume.
+	SuspendSupported pulumi.BoolInput `pulumi:"suspendSupported"`
+	// Name of a particular vGPU available as a shared GPU device (vGPU profile).
+	Vgpu pulumi.StringInput `pulumi:"vgpu"`
+}
+
+func (GetHostVgpuProfileVgpuProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostVgpuProfileVgpuProfile)(nil)).Elem()
+}
+
+func (i GetHostVgpuProfileVgpuProfileArgs) ToGetHostVgpuProfileVgpuProfileOutput() GetHostVgpuProfileVgpuProfileOutput {
+	return i.ToGetHostVgpuProfileVgpuProfileOutputWithContext(context.Background())
+}
+
+func (i GetHostVgpuProfileVgpuProfileArgs) ToGetHostVgpuProfileVgpuProfileOutputWithContext(ctx context.Context) GetHostVgpuProfileVgpuProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostVgpuProfileVgpuProfileOutput)
+}
+
+// GetHostVgpuProfileVgpuProfileArrayInput is an input type that accepts GetHostVgpuProfileVgpuProfileArray and GetHostVgpuProfileVgpuProfileArrayOutput values.
+// You can construct a concrete instance of `GetHostVgpuProfileVgpuProfileArrayInput` via:
+//
+//	GetHostVgpuProfileVgpuProfileArray{ GetHostVgpuProfileVgpuProfileArgs{...} }
+type GetHostVgpuProfileVgpuProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetHostVgpuProfileVgpuProfileArrayOutput() GetHostVgpuProfileVgpuProfileArrayOutput
+	ToGetHostVgpuProfileVgpuProfileArrayOutputWithContext(context.Context) GetHostVgpuProfileVgpuProfileArrayOutput
+}
+
+type GetHostVgpuProfileVgpuProfileArray []GetHostVgpuProfileVgpuProfileInput
+
+func (GetHostVgpuProfileVgpuProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostVgpuProfileVgpuProfile)(nil)).Elem()
+}
+
+func (i GetHostVgpuProfileVgpuProfileArray) ToGetHostVgpuProfileVgpuProfileArrayOutput() GetHostVgpuProfileVgpuProfileArrayOutput {
+	return i.ToGetHostVgpuProfileVgpuProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostVgpuProfileVgpuProfileArray) ToGetHostVgpuProfileVgpuProfileArrayOutputWithContext(ctx context.Context) GetHostVgpuProfileVgpuProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostVgpuProfileVgpuProfileArrayOutput)
+}
+
+type GetHostVgpuProfileVgpuProfileOutput struct{ *pulumi.OutputState }
+
+func (GetHostVgpuProfileVgpuProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostVgpuProfileVgpuProfile)(nil)).Elem()
+}
+
+func (o GetHostVgpuProfileVgpuProfileOutput) ToGetHostVgpuProfileVgpuProfileOutput() GetHostVgpuProfileVgpuProfileOutput {
+	return o
+}
+
+func (o GetHostVgpuProfileVgpuProfileOutput) ToGetHostVgpuProfileVgpuProfileOutputWithContext(ctx context.Context) GetHostVgpuProfileVgpuProfileOutput {
+	return o
+}
+
+// Indicates whether the GPU plugin on this host is
+// capable of disk-only snapshots when VM is not powered off.
+func (o GetHostVgpuProfileVgpuProfileOutput) DiskSnapshotSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.DiskSnapshotSupported }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the GPU plugin on this host is
+// capable of memory snapshots.
+func (o GetHostVgpuProfileVgpuProfileOutput) MemorySnapshotSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.MemorySnapshotSupported }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the GPU plugin on this host is capable
+// of migration.
+func (o GetHostVgpuProfileVgpuProfileOutput) MigrateSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.MigrateSupported }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the GPU plugin on this host is capable
+// of suspend-resume.
+func (o GetHostVgpuProfileVgpuProfileOutput) SuspendSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.SuspendSupported }).(pulumi.BoolOutput)
+}
+
+// Name of a particular vGPU available as a shared GPU device (vGPU profile).
+func (o GetHostVgpuProfileVgpuProfileOutput) Vgpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) string { return v.Vgpu }).(pulumi.StringOutput)
+}
+
+type GetHostVgpuProfileVgpuProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostVgpuProfileVgpuProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostVgpuProfileVgpuProfile)(nil)).Elem()
+}
+
+func (o GetHostVgpuProfileVgpuProfileArrayOutput) ToGetHostVgpuProfileVgpuProfileArrayOutput() GetHostVgpuProfileVgpuProfileArrayOutput {
+	return o
+}
+
+func (o GetHostVgpuProfileVgpuProfileArrayOutput) ToGetHostVgpuProfileVgpuProfileArrayOutputWithContext(ctx context.Context) GetHostVgpuProfileVgpuProfileArrayOutput {
+	return o
+}
+
+func (o GetHostVgpuProfileVgpuProfileArrayOutput) Index(i pulumi.IntInput) GetHostVgpuProfileVgpuProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostVgpuProfileVgpuProfile {
+		return vs[0].([]GetHostVgpuProfileVgpuProfile)[vs[1].(int)]
+	}).(GetHostVgpuProfileVgpuProfileOutput)
+}
+
 type GetVirtualMachineDisk struct {
 	// Set to `true` if the disk has been eager zeroed.
 	EagerlyScrub bool `pulumi:"eagerlyScrub"`
@@ -7077,6 +7222,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecNetworkInterfaceArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOptionInput)(nil)).Elem(), GetGuestOsCustomizationSpecWindowsOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOptionArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecWindowsOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileArrayInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskInput)(nil)).Elem(), GetVirtualMachineDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskArrayInput)(nil)).Elem(), GetVirtualMachineDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArgs{})
@@ -7151,6 +7298,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecWindowsOptionOutput{})
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecWindowsOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileOutput{})
+	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceOutput{})

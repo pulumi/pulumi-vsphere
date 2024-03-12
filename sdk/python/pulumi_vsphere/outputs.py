@@ -45,6 +45,7 @@ __all__ = [
     'GetGuestOsCustomizationSpecLinuxOptionResult',
     'GetGuestOsCustomizationSpecNetworkInterfaceResult',
     'GetGuestOsCustomizationSpecWindowsOptionResult',
+    'GetHostVgpuProfileVgpuProfileResult',
     'GetVirtualMachineDiskResult',
     'GetVirtualMachineNetworkInterfaceResult',
     'GetVirtualMachineVappResult',
@@ -3364,6 +3365,76 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
         The user account used to join this virtual machine to the Active Directory domain.
         """
         return pulumi.get(self, "domain_admin_password")
+
+
+@pulumi.output_type
+class GetHostVgpuProfileVgpuProfileResult(dict):
+    def __init__(__self__, *,
+                 disk_snapshot_supported: bool,
+                 memory_snapshot_supported: bool,
+                 migrate_supported: bool,
+                 suspend_supported: bool,
+                 vgpu: str):
+        """
+        :param bool disk_snapshot_supported: Indicates whether the GPU plugin on this host is
+               capable of disk-only snapshots when VM is not powered off.
+        :param bool memory_snapshot_supported: Indicates whether the GPU plugin on this host is
+               capable of memory snapshots.
+        :param bool migrate_supported: Indicates whether the GPU plugin on this host is capable
+               of migration.
+        :param bool suspend_supported: Indicates whether the GPU plugin on this host is capable
+               of suspend-resume.
+        :param str vgpu: Name of a particular vGPU available as a shared GPU device (vGPU profile).
+        """
+        pulumi.set(__self__, "disk_snapshot_supported", disk_snapshot_supported)
+        pulumi.set(__self__, "memory_snapshot_supported", memory_snapshot_supported)
+        pulumi.set(__self__, "migrate_supported", migrate_supported)
+        pulumi.set(__self__, "suspend_supported", suspend_supported)
+        pulumi.set(__self__, "vgpu", vgpu)
+
+    @property
+    @pulumi.getter(name="diskSnapshotSupported")
+    def disk_snapshot_supported(self) -> bool:
+        """
+        Indicates whether the GPU plugin on this host is
+        capable of disk-only snapshots when VM is not powered off.
+        """
+        return pulumi.get(self, "disk_snapshot_supported")
+
+    @property
+    @pulumi.getter(name="memorySnapshotSupported")
+    def memory_snapshot_supported(self) -> bool:
+        """
+        Indicates whether the GPU plugin on this host is
+        capable of memory snapshots.
+        """
+        return pulumi.get(self, "memory_snapshot_supported")
+
+    @property
+    @pulumi.getter(name="migrateSupported")
+    def migrate_supported(self) -> bool:
+        """
+        Indicates whether the GPU plugin on this host is capable
+        of migration.
+        """
+        return pulumi.get(self, "migrate_supported")
+
+    @property
+    @pulumi.getter(name="suspendSupported")
+    def suspend_supported(self) -> bool:
+        """
+        Indicates whether the GPU plugin on this host is capable
+        of suspend-resume.
+        """
+        return pulumi.get(self, "suspend_supported")
+
+    @property
+    @pulumi.getter
+    def vgpu(self) -> str:
+        """
+        Name of a particular vGPU available as a shared GPU device (vGPU profile).
+        """
+        return pulumi.get(self, "vgpu")
 
 
 @pulumi.output_type

@@ -74,6 +74,7 @@ public final class GetVirtualMachineResult {
      * 
      */
     private @Nullable String firmware;
+    private @Nullable String folder;
     /**
      * @return The guest ID of the virtual machine or template.
      * 
@@ -105,6 +106,7 @@ public final class GetVirtualMachineResult {
     private @Nullable Boolean memoryHotAddEnabled;
     private @Nullable Integer memoryLimit;
     private @Nullable Integer memoryReservation;
+    private @Nullable Boolean memoryReservationLockedToMax;
     private Integer memoryShareCount;
     private @Nullable String memoryShareLevel;
     private String moid;
@@ -276,6 +278,9 @@ public final class GetVirtualMachineResult {
     public Optional<String> firmware() {
         return Optional.ofNullable(this.firmware);
     }
+    public Optional<String> folder() {
+        return Optional.ofNullable(this.folder);
+    }
     /**
      * @return The guest ID of the virtual machine or template.
      * 
@@ -328,6 +333,9 @@ public final class GetVirtualMachineResult {
     }
     public Optional<Integer> memoryReservation() {
         return Optional.ofNullable(this.memoryReservation);
+    }
+    public Optional<Boolean> memoryReservationLockedToMax() {
+        return Optional.ofNullable(this.memoryReservationLockedToMax);
     }
     public Integer memoryShareCount() {
         return this.memoryShareCount;
@@ -488,6 +496,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Map<String,String> extraConfig;
         private @Nullable Boolean extraConfigRebootRequired;
         private @Nullable String firmware;
+        private @Nullable String folder;
         private String guestId;
         private List<String> guestIpAddresses;
         private Integer hardwareVersion;
@@ -499,6 +508,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Boolean memoryHotAddEnabled;
         private @Nullable Integer memoryLimit;
         private @Nullable Integer memoryReservation;
+        private @Nullable Boolean memoryReservationLockedToMax;
         private Integer memoryShareCount;
         private @Nullable String memoryShareLevel;
         private String moid;
@@ -554,6 +564,7 @@ public final class GetVirtualMachineResult {
     	      this.extraConfig = defaults.extraConfig;
     	      this.extraConfigRebootRequired = defaults.extraConfigRebootRequired;
     	      this.firmware = defaults.firmware;
+    	      this.folder = defaults.folder;
     	      this.guestId = defaults.guestId;
     	      this.guestIpAddresses = defaults.guestIpAddresses;
     	      this.hardwareVersion = defaults.hardwareVersion;
@@ -565,6 +576,7 @@ public final class GetVirtualMachineResult {
     	      this.memoryHotAddEnabled = defaults.memoryHotAddEnabled;
     	      this.memoryLimit = defaults.memoryLimit;
     	      this.memoryReservation = defaults.memoryReservation;
+    	      this.memoryReservationLockedToMax = defaults.memoryReservationLockedToMax;
     	      this.memoryShareCount = defaults.memoryShareCount;
     	      this.memoryShareLevel = defaults.memoryShareLevel;
     	      this.moid = defaults.moid;
@@ -748,6 +760,12 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder folder(@Nullable String folder) {
+
+            this.folder = folder;
+            return this;
+        }
+        @CustomType.Setter
         public Builder guestId(String guestId) {
             if (guestId == null) {
               throw new MissingRequiredPropertyException("GetVirtualMachineResult", "guestId");
@@ -822,6 +840,12 @@ public final class GetVirtualMachineResult {
         public Builder memoryReservation(@Nullable Integer memoryReservation) {
 
             this.memoryReservation = memoryReservation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder memoryReservationLockedToMax(@Nullable Boolean memoryReservationLockedToMax) {
+
+            this.memoryReservationLockedToMax = memoryReservationLockedToMax;
             return this;
         }
         @CustomType.Setter
@@ -1050,6 +1074,7 @@ public final class GetVirtualMachineResult {
             _resultValue.extraConfig = extraConfig;
             _resultValue.extraConfigRebootRequired = extraConfigRebootRequired;
             _resultValue.firmware = firmware;
+            _resultValue.folder = folder;
             _resultValue.guestId = guestId;
             _resultValue.guestIpAddresses = guestIpAddresses;
             _resultValue.hardwareVersion = hardwareVersion;
@@ -1061,6 +1086,7 @@ public final class GetVirtualMachineResult {
             _resultValue.memoryHotAddEnabled = memoryHotAddEnabled;
             _resultValue.memoryLimit = memoryLimit;
             _resultValue.memoryReservation = memoryReservation;
+            _resultValue.memoryReservationLockedToMax = memoryReservationLockedToMax;
             _resultValue.memoryShareCount = memoryShareCount;
             _resultValue.memoryShareLevel = memoryShareLevel;
             _resultValue.moid = moid;

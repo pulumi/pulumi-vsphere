@@ -33,6 +33,7 @@ from .get_custom_attribute import *
 from .get_datacenter import *
 from .get_datastore import *
 from .get_datastore_cluster import *
+from .get_datastore_stats import *
 from .get_distributed_virtual_switch import *
 from .get_dynamic import *
 from .get_folder import *
@@ -40,6 +41,7 @@ from .get_guest_os_customization import *
 from .get_host import *
 from .get_host_pci_device import *
 from .get_host_thumbprint import *
+from .get_host_vgpu_profile import *
 from .get_license import *
 from .get_network import *
 from .get_ovf_vm_template import *

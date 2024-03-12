@@ -348,6 +348,33 @@ export interface GetGuestOsCustomizationSpecWindowsOption {
     workgroup: string;
 }
 
+export interface GetHostVgpuProfileVgpuProfile {
+    /**
+     * Indicates whether the GPU plugin on this host is
+     * capable of disk-only snapshots when VM is not powered off.
+     */
+    diskSnapshotSupported: boolean;
+    /**
+     * Indicates whether the GPU plugin on this host is
+     * capable of memory snapshots.
+     */
+    memorySnapshotSupported: boolean;
+    /**
+     * Indicates whether the GPU plugin on this host is capable
+     * of migration.
+     */
+    migrateSupported: boolean;
+    /**
+     * Indicates whether the GPU plugin on this host is capable
+     * of suspend-resume.
+     */
+    suspendSupported: boolean;
+    /**
+     * Name of a particular vGPU available as a shared GPU device (vGPU profile).
+     */
+    vgpu: string;
+}
+
 export interface GetVirtualMachineDisk {
     /**
      * Set to `true` if the disk has been eager zeroed.
