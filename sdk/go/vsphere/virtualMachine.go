@@ -128,6 +128,10 @@ type VirtualMachine struct {
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
 	MemoryReservation pulumi.IntPtrOutput `pulumi:"memoryReservation"`
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	MemoryReservationLockedToMax pulumi.BoolPtrOutput `pulumi:"memoryReservationLockedToMax"`
 	// The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
 	MemoryShareCount pulumi.IntOutput `pulumi:"memoryShareCount"`
 	// The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -194,7 +198,7 @@ type VirtualMachine struct {
 	StoragePolicyId pulumi.StringOutput `pulumi:"storagePolicyId"`
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrOutput `pulumi:"swapPlacementPolicy"`
-	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
 	SyncTimeWithHost pulumi.BoolPtrOutput `pulumi:"syncTimeWithHost"`
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrOutput `pulumi:"syncTimeWithHostPeriodically"`
@@ -372,6 +376,10 @@ type virtualMachineState struct {
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
 	MemoryReservation *int `pulumi:"memoryReservation"`
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	MemoryReservationLockedToMax *bool `pulumi:"memoryReservationLockedToMax"`
 	// The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
 	MemoryShareCount *int `pulumi:"memoryShareCount"`
 	// The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -438,7 +446,7 @@ type virtualMachineState struct {
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
-	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
@@ -584,6 +592,10 @@ type VirtualMachineState struct {
 	MemoryLimit pulumi.IntPtrInput
 	// The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
 	MemoryReservation pulumi.IntPtrInput
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	MemoryReservationLockedToMax pulumi.BoolPtrInput
 	// The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
 	MemoryShareCount pulumi.IntPtrInput
 	// The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -650,7 +662,7 @@ type VirtualMachineState struct {
 	StoragePolicyId pulumi.StringPtrInput
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrInput
-	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
 	SyncTimeWithHost pulumi.BoolPtrInput
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
@@ -792,6 +804,10 @@ type virtualMachineArgs struct {
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
 	MemoryReservation *int `pulumi:"memoryReservation"`
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	MemoryReservationLockedToMax *bool `pulumi:"memoryReservationLockedToMax"`
 	// The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
 	MemoryShareCount *int `pulumi:"memoryShareCount"`
 	// The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -852,7 +868,7 @@ type virtualMachineArgs struct {
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
-	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
@@ -983,6 +999,10 @@ type VirtualMachineArgs struct {
 	MemoryLimit pulumi.IntPtrInput
 	// The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
 	MemoryReservation pulumi.IntPtrInput
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	MemoryReservationLockedToMax pulumi.BoolPtrInput
 	// The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
 	MemoryShareCount pulumi.IntPtrInput
 	// The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -1043,7 +1063,7 @@ type VirtualMachineArgs struct {
 	StoragePolicyId pulumi.StringPtrInput
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrInput
-	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+	// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
 	SyncTimeWithHost pulumi.BoolPtrInput
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
@@ -1395,6 +1415,13 @@ func (o VirtualMachineOutput) MemoryReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.MemoryReservation }).(pulumi.IntPtrOutput)
 }
 
+// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+func (o VirtualMachineOutput) MemoryReservationLockedToMax() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.MemoryReservationLockedToMax }).(pulumi.BoolPtrOutput)
+}
+
 // The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
 func (o VirtualMachineOutput) MemoryShareCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.MemoryShareCount }).(pulumi.IntOutput)
@@ -1545,7 +1572,7 @@ func (o VirtualMachineOutput) SwapPlacementPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.SwapPlacementPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
 func (o VirtualMachineOutput) SyncTimeWithHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.SyncTimeWithHost }).(pulumi.BoolPtrOutput)
 }

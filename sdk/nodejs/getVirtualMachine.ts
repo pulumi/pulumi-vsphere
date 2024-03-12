@@ -79,6 +79,7 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
         "extraConfig": args.extraConfig,
         "extraConfigRebootRequired": args.extraConfigRebootRequired,
         "firmware": args.firmware,
+        "folder": args.folder,
         "guestId": args.guestId,
         "hardwareVersion": args.hardwareVersion,
         "hvMode": args.hvMode,
@@ -88,6 +89,7 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
         "memoryHotAddEnabled": args.memoryHotAddEnabled,
         "memoryLimit": args.memoryLimit,
         "memoryReservation": args.memoryReservation,
+        "memoryReservationLockedToMax": args.memoryReservationLockedToMax,
         "memoryShareCount": args.memoryShareCount,
         "memoryShareLevel": args.memoryShareLevel,
         "moid": args.moid,
@@ -157,6 +159,10 @@ export interface GetVirtualMachineArgs {
      */
     firmware?: string;
     /**
+     * The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     */
+    folder?: string;
+    /**
      * The guest ID of the virtual machine or template.
      */
     guestId?: string;
@@ -174,6 +180,7 @@ export interface GetVirtualMachineArgs {
     memoryHotAddEnabled?: boolean;
     memoryLimit?: number;
     memoryReservation?: number;
+    memoryReservationLockedToMax?: boolean;
     memoryShareCount?: number;
     memoryShareLevel?: string;
     moid?: string;
@@ -280,6 +287,7 @@ export interface GetVirtualMachineResult {
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      */
     readonly firmware?: string;
+    readonly folder?: string;
     /**
      * The guest ID of the virtual machine or template.
      */
@@ -306,6 +314,7 @@ export interface GetVirtualMachineResult {
     readonly memoryHotAddEnabled?: boolean;
     readonly memoryLimit?: number;
     readonly memoryReservation?: number;
+    readonly memoryReservationLockedToMax?: boolean;
     readonly memoryShareCount: number;
     readonly memoryShareLevel?: string;
     readonly moid: string;
@@ -463,6 +472,10 @@ export interface GetVirtualMachineOutputArgs {
      */
     firmware?: pulumi.Input<string>;
     /**
+     * The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     */
+    folder?: pulumi.Input<string>;
+    /**
      * The guest ID of the virtual machine or template.
      */
     guestId?: pulumi.Input<string>;
@@ -480,6 +493,7 @@ export interface GetVirtualMachineOutputArgs {
     memoryHotAddEnabled?: pulumi.Input<boolean>;
     memoryLimit?: pulumi.Input<number>;
     memoryReservation?: pulumi.Input<number>;
+    memoryReservationLockedToMax?: pulumi.Input<boolean>;
     memoryShareCount?: pulumi.Input<number>;
     memoryShareLevel?: pulumi.Input<string>;
     moid?: pulumi.Input<string>;

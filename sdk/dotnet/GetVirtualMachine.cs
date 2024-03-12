@@ -240,6 +240,12 @@ namespace Pulumi.VSphere
         public string? Firmware { get; set; }
 
         /// <summary>
+        /// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+        /// </summary>
+        [Input("folder")]
+        public string? Folder { get; set; }
+
+        /// <summary>
         /// The guest ID of the virtual machine or template.
         /// </summary>
         [Input("guestId")]
@@ -274,6 +280,9 @@ namespace Pulumi.VSphere
 
         [Input("memoryReservation")]
         public int? MemoryReservation { get; set; }
+
+        [Input("memoryReservationLockedToMax")]
+        public bool? MemoryReservationLockedToMax { get; set; }
 
         [Input("memoryShareCount")]
         public int? MemoryShareCount { get; set; }
@@ -464,6 +473,12 @@ namespace Pulumi.VSphere
         public Input<string>? Firmware { get; set; }
 
         /// <summary>
+        /// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+        /// </summary>
+        [Input("folder")]
+        public Input<string>? Folder { get; set; }
+
+        /// <summary>
         /// The guest ID of the virtual machine or template.
         /// </summary>
         [Input("guestId")]
@@ -498,6 +513,9 @@ namespace Pulumi.VSphere
 
         [Input("memoryReservation")]
         public Input<int>? MemoryReservation { get; set; }
+
+        [Input("memoryReservationLockedToMax")]
+        public Input<bool>? MemoryReservationLockedToMax { get; set; }
 
         [Input("memoryShareCount")]
         public Input<int>? MemoryShareCount { get; set; }
@@ -657,6 +675,7 @@ namespace Pulumi.VSphere
         /// The firmware type for this virtual machine. Can be `bios` or `efi`.
         /// </summary>
         public readonly string? Firmware;
+        public readonly string? Folder;
         /// <summary>
         /// The guest ID of the virtual machine or template.
         /// </summary>
@@ -683,6 +702,7 @@ namespace Pulumi.VSphere
         public readonly bool? MemoryHotAddEnabled;
         public readonly int? MemoryLimit;
         public readonly int? MemoryReservation;
+        public readonly bool? MemoryReservationLockedToMax;
         public readonly int MemoryShareCount;
         public readonly string? MemoryShareLevel;
         public readonly string Moid;
@@ -794,6 +814,8 @@ namespace Pulumi.VSphere
 
             string? firmware,
 
+            string? folder,
+
             string guestId,
 
             ImmutableArray<string> guestIpAddresses,
@@ -815,6 +837,8 @@ namespace Pulumi.VSphere
             int? memoryLimit,
 
             int? memoryReservation,
+
+            bool? memoryReservationLockedToMax,
 
             int memoryShareCount,
 
@@ -897,6 +921,7 @@ namespace Pulumi.VSphere
             ExtraConfig = extraConfig;
             ExtraConfigRebootRequired = extraConfigRebootRequired;
             Firmware = firmware;
+            Folder = folder;
             GuestId = guestId;
             GuestIpAddresses = guestIpAddresses;
             HardwareVersion = hardwareVersion;
@@ -908,6 +933,7 @@ namespace Pulumi.VSphere
             MemoryHotAddEnabled = memoryHotAddEnabled;
             MemoryLimit = memoryLimit;
             MemoryReservation = memoryReservation;
+            MemoryReservationLockedToMax = memoryReservationLockedToMax;
             MemoryShareCount = memoryShareCount;
             MemoryShareLevel = memoryShareLevel;
             Moid = moid;

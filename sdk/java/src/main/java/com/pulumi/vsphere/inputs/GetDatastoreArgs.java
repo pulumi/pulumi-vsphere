@@ -6,7 +6,9 @@ package com.pulumi.vsphere.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -52,11 +54,31 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    /**
+     * The disk space usage statistics for the specific datastore. The total
+     * datastore capacity is represented as `capacity` and the free remaining disk is
+     * represented as `free`.
+     * 
+     */
+    @Import(name="stats")
+    private @Nullable Output<Map<String,Object>> stats;
+
+    /**
+     * @return The disk space usage statistics for the specific datastore. The total
+     * datastore capacity is represented as `capacity` and the free remaining disk is
+     * represented as `free`.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> stats() {
+        return Optional.ofNullable(this.stats);
+    }
+
     private GetDatastoreArgs() {}
 
     private GetDatastoreArgs(GetDatastoreArgs $) {
         this.datacenterId = $.datacenterId;
         this.name = $.name;
+        this.stats = $.stats;
     }
 
     public static Builder builder() {
@@ -123,6 +145,31 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param stats The disk space usage statistics for the specific datastore. The total
+         * datastore capacity is represented as `capacity` and the free remaining disk is
+         * represented as `free`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stats(@Nullable Output<Map<String,Object>> stats) {
+            $.stats = stats;
+            return this;
+        }
+
+        /**
+         * @param stats The disk space usage statistics for the specific datastore. The total
+         * datastore capacity is represented as `capacity` and the free remaining disk is
+         * represented as `free`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stats(Map<String,Object> stats) {
+            return stats(Output.of(stats));
         }
 
         public GetDatastoreArgs build() {

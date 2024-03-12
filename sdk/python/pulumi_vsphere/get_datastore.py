@@ -21,7 +21,7 @@ class GetDatastoreResult:
     """
     A collection of values returned by getDatastore.
     """
-    def __init__(__self__, datacenter_id=None, id=None, name=None):
+    def __init__(__self__, datacenter_id=None, id=None, name=None, stats=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
@@ -31,6 +31,9 @@ class GetDatastoreResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if stats and not isinstance(stats, dict):
+            raise TypeError("Expected argument 'stats' to be a dict")
+        pulumi.set(__self__, "stats", stats)
 
     @property
     @pulumi.getter(name="datacenterId")
@@ -50,6 +53,16 @@ class GetDatastoreResult:
     def name(self) -> str:
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def stats(self) -> Optional[Mapping[str, Any]]:
+        """
+        The disk space usage statistics for the specific datastore. The total
+        datastore capacity is represented as `capacity` and the free remaining disk is
+        represented as `free`.
+        """
+        return pulumi.get(self, "stats")
+
 
 class AwaitableGetDatastoreResult(GetDatastoreResult):
     # pylint: disable=using-constant-test
@@ -59,11 +72,13 @@ class AwaitableGetDatastoreResult(GetDatastoreResult):
         return GetDatastoreResult(
             datacenter_id=self.datacenter_id,
             id=self.id,
-            name=self.name)
+            name=self.name,
+            stats=self.stats)
 
 
 def get_datastore(datacenter_id: Optional[str] = None,
                   name: Optional[str] = None,
+                  stats: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreResult:
     """
     The `get_datastore` data source can be used to discover the ID of a
@@ -90,22 +105,28 @@ def get_datastore(datacenter_id: Optional[str] = None,
            search path used in `name` is an absolute path. For default datacenters, use
            the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name of the datastore. This can be a name or path.
+    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The total
+           datastore capacity is represented as `capacity` and the free remaining disk is
+           represented as `free`.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
+    __args__['stats'] = stats
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatastore:getDatastore', __args__, opts=opts, typ=GetDatastoreResult).value
 
     return AwaitableGetDatastoreResult(
         datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
         id=pulumi.get(__ret__, 'id'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        stats=pulumi.get(__ret__, 'stats'))
 
 
 @_utilities.lift_output_func(get_datastore)
 def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[str]] = None,
+                         stats: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreResult]:
     """
     The `get_datastore` data source can be used to discover the ID of a
@@ -132,5 +153,8 @@ def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = 
            search path used in `name` is an absolute path. For default datacenters, use
            the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name of the datastore. This can be a name or path.
+    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The total
+           datastore capacity is represented as `capacity` and the free remaining disk is
+           represented as `free`.
     """
     ...

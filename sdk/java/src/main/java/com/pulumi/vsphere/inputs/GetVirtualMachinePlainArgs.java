@@ -201,6 +201,21 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
+     * The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * 
+     */
+    @Import(name="folder")
+    private @Nullable String folder;
+
+    /**
+     * @return The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * 
+     */
+    public Optional<String> folder() {
+        return Optional.ofNullable(this.folder);
+    }
+
+    /**
      * The guest ID of the virtual machine or template.
      * 
      */
@@ -285,6 +300,13 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
     public Optional<Integer> memoryReservation() {
         return Optional.ofNullable(this.memoryReservation);
+    }
+
+    @Import(name="memoryReservationLockedToMax")
+    private @Nullable Boolean memoryReservationLockedToMax;
+
+    public Optional<Boolean> memoryReservationLockedToMax() {
+        return Optional.ofNullable(this.memoryReservationLockedToMax);
     }
 
     @Import(name="memoryShareCount")
@@ -540,6 +562,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         this.extraConfig = $.extraConfig;
         this.extraConfigRebootRequired = $.extraConfigRebootRequired;
         this.firmware = $.firmware;
+        this.folder = $.folder;
         this.guestId = $.guestId;
         this.hardwareVersion = $.hardwareVersion;
         this.hvMode = $.hvMode;
@@ -549,6 +572,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         this.memoryHotAddEnabled = $.memoryHotAddEnabled;
         this.memoryLimit = $.memoryLimit;
         this.memoryReservation = $.memoryReservation;
+        this.memoryReservationLockedToMax = $.memoryReservationLockedToMax;
         this.memoryShareCount = $.memoryShareCount;
         this.memoryShareLevel = $.memoryShareLevel;
         this.moid = $.moid;
@@ -723,6 +747,17 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
+         * @param folder The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder folder(@Nullable String folder) {
+            $.folder = folder;
+            return this;
+        }
+
+        /**
          * @param guestId The guest ID of the virtual machine or template.
          * 
          * @return builder
@@ -782,6 +817,11 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
         public Builder memoryReservation(@Nullable Integer memoryReservation) {
             $.memoryReservation = memoryReservation;
+            return this;
+        }
+
+        public Builder memoryReservationLockedToMax(@Nullable Boolean memoryReservationLockedToMax) {
+            $.memoryReservationLockedToMax = memoryReservationLockedToMax;
             return this;
         }
 

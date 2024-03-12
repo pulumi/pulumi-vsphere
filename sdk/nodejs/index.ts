@@ -145,6 +145,11 @@ export const getDatastoreCluster: typeof import("./getDatastoreCluster").getData
 export const getDatastoreClusterOutput: typeof import("./getDatastoreCluster").getDatastoreClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getDatastoreCluster","getDatastoreClusterOutput"], () => require("./getDatastoreCluster"));
 
+export { GetDatastoreStatsArgs, GetDatastoreStatsResult, GetDatastoreStatsOutputArgs } from "./getDatastoreStats";
+export const getDatastoreStats: typeof import("./getDatastoreStats").getDatastoreStats = null as any;
+export const getDatastoreStatsOutput: typeof import("./getDatastoreStats").getDatastoreStatsOutput = null as any;
+utilities.lazyLoad(exports, ["getDatastoreStats","getDatastoreStatsOutput"], () => require("./getDatastoreStats"));
+
 export { GetDistributedVirtualSwitchArgs, GetDistributedVirtualSwitchResult, GetDistributedVirtualSwitchOutputArgs } from "./getDistributedVirtualSwitch";
 export const getDistributedVirtualSwitch: typeof import("./getDistributedVirtualSwitch").getDistributedVirtualSwitch = null as any;
 export const getDistributedVirtualSwitchOutput: typeof import("./getDistributedVirtualSwitch").getDistributedVirtualSwitchOutput = null as any;
@@ -179,6 +184,11 @@ export { GetHostThumbprintArgs, GetHostThumbprintResult, GetHostThumbprintOutput
 export const getHostThumbprint: typeof import("./getHostThumbprint").getHostThumbprint = null as any;
 export const getHostThumbprintOutput: typeof import("./getHostThumbprint").getHostThumbprintOutput = null as any;
 utilities.lazyLoad(exports, ["getHostThumbprint","getHostThumbprintOutput"], () => require("./getHostThumbprint"));
+
+export { GetHostVgpuProfileArgs, GetHostVgpuProfileResult, GetHostVgpuProfileOutputArgs } from "./getHostVgpuProfile";
+export const getHostVgpuProfile: typeof import("./getHostVgpuProfile").getHostVgpuProfile = null as any;
+export const getHostVgpuProfileOutput: typeof import("./getHostVgpuProfile").getHostVgpuProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getHostVgpuProfile","getHostVgpuProfileOutput"], () => require("./getHostVgpuProfile"));
 
 export { GetLicenseArgs, GetLicenseResult, GetLicenseOutputArgs } from "./getLicense";
 export const getLicense: typeof import("./getLicense").getLicense = null as any;

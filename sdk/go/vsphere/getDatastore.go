@@ -69,6 +69,10 @@ type GetDatastoreArgs struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the datastore. This can be a name or path.
 	Name string `pulumi:"name"`
+	// The disk space usage statistics for the specific datastore. The total
+	// datastore capacity is represented as `capacity` and the free remaining disk is
+	// represented as `free`.
+	Stats map[string]interface{} `pulumi:"stats"`
 }
 
 // A collection of values returned by getDatastore.
@@ -77,6 +81,10 @@ type GetDatastoreResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+	// The disk space usage statistics for the specific datastore. The total
+	// datastore capacity is represented as `capacity` and the free remaining disk is
+	// represented as `free`.
+	Stats map[string]interface{} `pulumi:"stats"`
 }
 
 func GetDatastoreOutput(ctx *pulumi.Context, args GetDatastoreOutputArgs, opts ...pulumi.InvokeOption) GetDatastoreResultOutput {
@@ -101,6 +109,10 @@ type GetDatastoreOutputArgs struct {
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name of the datastore. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The disk space usage statistics for the specific datastore. The total
+	// datastore capacity is represented as `capacity` and the free remaining disk is
+	// represented as `free`.
+	Stats pulumi.MapInput `pulumi:"stats"`
 }
 
 func (GetDatastoreOutputArgs) ElementType() reflect.Type {
@@ -133,6 +145,13 @@ func (o GetDatastoreResultOutput) Id() pulumi.StringOutput {
 
 func (o GetDatastoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatastoreResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The disk space usage statistics for the specific datastore. The total
+// datastore capacity is represented as `capacity` and the free remaining disk is
+// represented as `free`.
+func (o GetDatastoreResultOutput) Stats() pulumi.MapOutput {
+	return o.ApplyT(func(v GetDatastoreResult) map[string]interface{} { return v.Stats }).(pulumi.MapOutput)
 }
 
 func init() {

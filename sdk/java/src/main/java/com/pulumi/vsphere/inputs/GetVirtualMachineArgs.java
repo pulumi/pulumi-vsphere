@@ -202,6 +202,21 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * 
+     */
+    @Import(name="folder")
+    private @Nullable Output<String> folder;
+
+    /**
+     * @return The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * 
+     */
+    public Optional<Output<String>> folder() {
+        return Optional.ofNullable(this.folder);
+    }
+
+    /**
      * The guest ID of the virtual machine or template.
      * 
      */
@@ -286,6 +301,13 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
     public Optional<Output<Integer>> memoryReservation() {
         return Optional.ofNullable(this.memoryReservation);
+    }
+
+    @Import(name="memoryReservationLockedToMax")
+    private @Nullable Output<Boolean> memoryReservationLockedToMax;
+
+    public Optional<Output<Boolean>> memoryReservationLockedToMax() {
+        return Optional.ofNullable(this.memoryReservationLockedToMax);
     }
 
     @Import(name="memoryShareCount")
@@ -541,6 +563,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         this.extraConfig = $.extraConfig;
         this.extraConfigRebootRequired = $.extraConfigRebootRequired;
         this.firmware = $.firmware;
+        this.folder = $.folder;
         this.guestId = $.guestId;
         this.hardwareVersion = $.hardwareVersion;
         this.hvMode = $.hvMode;
@@ -550,6 +573,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         this.memoryHotAddEnabled = $.memoryHotAddEnabled;
         this.memoryLimit = $.memoryLimit;
         this.memoryReservation = $.memoryReservation;
+        this.memoryReservationLockedToMax = $.memoryReservationLockedToMax;
         this.memoryShareCount = $.memoryShareCount;
         this.memoryShareLevel = $.memoryShareLevel;
         this.moid = $.moid;
@@ -833,6 +857,27 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
+         * @param folder The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder folder(@Nullable Output<String> folder) {
+            $.folder = folder;
+            return this;
+        }
+
+        /**
+         * @param folder The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder folder(String folder) {
+            return folder(Output.of(folder));
+        }
+
+        /**
          * @param guestId The guest ID of the virtual machine or template.
          * 
          * @return builder
@@ -947,6 +992,15 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder memoryReservation(Integer memoryReservation) {
             return memoryReservation(Output.of(memoryReservation));
+        }
+
+        public Builder memoryReservationLockedToMax(@Nullable Output<Boolean> memoryReservationLockedToMax) {
+            $.memoryReservationLockedToMax = memoryReservationLockedToMax;
+            return this;
+        }
+
+        public Builder memoryReservationLockedToMax(Boolean memoryReservationLockedToMax) {
+            return memoryReservationLockedToMax(Output.of(memoryReservationLockedToMax));
         }
 
         public Builder memoryShareCount(@Nullable Output<Integer> memoryShareCount) {

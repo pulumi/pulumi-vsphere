@@ -298,6 +298,14 @@ namespace Pulumi.VSphere
         public Output<int?> MemoryReservation { get; private set; } = null!;
 
         /// <summary>
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+        /// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+        /// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// </summary>
+        [Output("memoryReservationLockedToMax")]
+        public Output<bool?> MemoryReservationLockedToMax { get; private set; } = null!;
+
+        /// <summary>
         /// The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
         /// </summary>
         [Output("memoryShareCount")]
@@ -476,7 +484,7 @@ namespace Pulumi.VSphere
         public Output<string?> SwapPlacementPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        /// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         /// </summary>
         [Output("syncTimeWithHost")]
         public Output<bool?> SyncTimeWithHost { get; private set; } = null!;
@@ -899,6 +907,14 @@ namespace Pulumi.VSphere
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+        /// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+        /// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// </summary>
+        [Input("memoryReservationLockedToMax")]
+        public Input<bool>? MemoryReservationLockedToMax { get; set; }
+
+        /// <summary>
         /// The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
         /// </summary>
         [Input("memoryShareCount")]
@@ -1071,7 +1087,7 @@ namespace Pulumi.VSphere
         public Input<string>? SwapPlacementPolicy { get; set; }
 
         /// <summary>
-        /// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        /// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         /// </summary>
         [Input("syncTimeWithHost")]
         public Input<bool>? SyncTimeWithHost { get; set; }
@@ -1468,6 +1484,14 @@ namespace Pulumi.VSphere
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+        /// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+        /// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// </summary>
+        [Input("memoryReservationLockedToMax")]
+        public Input<bool>? MemoryReservationLockedToMax { get; set; }
+
+        /// <summary>
         /// The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
         /// </summary>
         [Input("memoryShareCount")]
@@ -1658,7 +1682,7 @@ namespace Pulumi.VSphere
         public Input<string>? SwapPlacementPolicy { get; set; }
 
         /// <summary>
-        /// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+        /// Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
         /// </summary>
         [Input("syncTimeWithHost")]
         public Input<bool>? SyncTimeWithHost { get; set; }

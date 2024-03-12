@@ -234,6 +234,12 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly memoryReservation!: pulumi.Output<number | undefined>;
     /**
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+     * may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     */
+    public readonly memoryReservationLockedToMax!: pulumi.Output<boolean | undefined>;
+    /**
      * The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
      */
     public readonly memoryShareCount!: pulumi.Output<number>;
@@ -356,7 +362,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly swapPlacementPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
      */
     public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
     /**
@@ -470,6 +476,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["memoryHotAddEnabled"] = state ? state.memoryHotAddEnabled : undefined;
             resourceInputs["memoryLimit"] = state ? state.memoryLimit : undefined;
             resourceInputs["memoryReservation"] = state ? state.memoryReservation : undefined;
+            resourceInputs["memoryReservationLockedToMax"] = state ? state.memoryReservationLockedToMax : undefined;
             resourceInputs["memoryShareCount"] = state ? state.memoryShareCount : undefined;
             resourceInputs["memoryShareLevel"] = state ? state.memoryShareLevel : undefined;
             resourceInputs["migrateWaitTimeout"] = state ? state.migrateWaitTimeout : undefined;
@@ -556,6 +563,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["memoryHotAddEnabled"] = args ? args.memoryHotAddEnabled : undefined;
             resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
             resourceInputs["memoryReservation"] = args ? args.memoryReservation : undefined;
+            resourceInputs["memoryReservationLockedToMax"] = args ? args.memoryReservationLockedToMax : undefined;
             resourceInputs["memoryShareCount"] = args ? args.memoryShareCount : undefined;
             resourceInputs["memoryShareLevel"] = args ? args.memoryShareLevel : undefined;
             resourceInputs["migrateWaitTimeout"] = args ? args.migrateWaitTimeout : undefined;
@@ -812,6 +820,12 @@ export interface VirtualMachineState {
      */
     memoryReservation?: pulumi.Input<number>;
     /**
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+     * may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     */
+    memoryReservationLockedToMax?: pulumi.Input<boolean>;
+    /**
      * The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
      */
     memoryShareCount?: pulumi.Input<number>;
@@ -934,7 +948,7 @@ export interface VirtualMachineState {
      */
     swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
      */
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**
@@ -1181,6 +1195,12 @@ export interface VirtualMachineArgs {
      */
     memoryReservation?: pulumi.Input<number>;
     /**
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
+     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
+     * may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     */
+    memoryReservationLockedToMax?: pulumi.Input<boolean>;
+    /**
      * The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
      */
     memoryShareCount?: pulumi.Input<number>;
@@ -1291,7 +1311,7 @@ export interface VirtualMachineArgs {
      */
     swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
      */
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**

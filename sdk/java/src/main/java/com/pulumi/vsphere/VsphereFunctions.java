@@ -24,6 +24,8 @@ import com.pulumi.vsphere.inputs.GetDatastoreArgs;
 import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
 import com.pulumi.vsphere.inputs.GetDatastoreClusterPlainArgs;
 import com.pulumi.vsphere.inputs.GetDatastorePlainArgs;
+import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
+import com.pulumi.vsphere.inputs.GetDatastoreStatsPlainArgs;
 import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchArgs;
 import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchPlainArgs;
 import com.pulumi.vsphere.inputs.GetDynamicArgs;
@@ -38,6 +40,8 @@ import com.pulumi.vsphere.inputs.GetHostPciDevicePlainArgs;
 import com.pulumi.vsphere.inputs.GetHostPlainArgs;
 import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
 import com.pulumi.vsphere.inputs.GetHostThumbprintPlainArgs;
+import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+import com.pulumi.vsphere.inputs.GetHostVgpuProfilePlainArgs;
 import com.pulumi.vsphere.inputs.GetLicenseArgs;
 import com.pulumi.vsphere.inputs.GetLicensePlainArgs;
 import com.pulumi.vsphere.inputs.GetNetworkArgs;
@@ -68,6 +72,7 @@ import com.pulumi.vsphere.outputs.GetCustomAttributeResult;
 import com.pulumi.vsphere.outputs.GetDatacenterResult;
 import com.pulumi.vsphere.outputs.GetDatastoreClusterResult;
 import com.pulumi.vsphere.outputs.GetDatastoreResult;
+import com.pulumi.vsphere.outputs.GetDatastoreStatsResult;
 import com.pulumi.vsphere.outputs.GetDistributedVirtualSwitchResult;
 import com.pulumi.vsphere.outputs.GetDynamicResult;
 import com.pulumi.vsphere.outputs.GetFolderResult;
@@ -75,6 +80,7 @@ import com.pulumi.vsphere.outputs.GetGuestOsCustomizationResult;
 import com.pulumi.vsphere.outputs.GetHostPciDeviceResult;
 import com.pulumi.vsphere.outputs.GetHostResult;
 import com.pulumi.vsphere.outputs.GetHostThumbprintResult;
+import com.pulumi.vsphere.outputs.GetHostVgpuProfileResult;
 import com.pulumi.vsphere.outputs.GetLicenseResult;
 import com.pulumi.vsphere.outputs.GetNetworkResult;
 import com.pulumi.vsphere.outputs.GetOvfVmTemplateResult;
@@ -1602,6 +1608,334 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetDatastoreClusterResult> getDatastoreClusterPlain(GetDatastoreClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDatastoreCluster:getDatastoreCluster", TypeShape.of(GetDatastoreClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
+     * of all vSphere datastore objects in a datacenter. This can then be used as a
+     * standalone datasource to get information required as input to other data sources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A usefull example of this datasource would be to determine the
+     * datastore with the most free space. For example, in addition to
+     * the above:
+     * 
+     * Create an `outputs.tf` like that:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
+     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * and a `locals.tf` like that:
+     * 
+     */
+    public static Output<GetDatastoreStatsResult> getDatastoreStats(GetDatastoreStatsArgs args) {
+        return getDatastoreStats(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
+     * of all vSphere datastore objects in a datacenter. This can then be used as a
+     * standalone datasource to get information required as input to other data sources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A usefull example of this datasource would be to determine the
+     * datastore with the most free space. For example, in addition to
+     * the above:
+     * 
+     * Create an `outputs.tf` like that:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
+     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * and a `locals.tf` like that:
+     * 
+     */
+    public static CompletableFuture<GetDatastoreStatsResult> getDatastoreStatsPlain(GetDatastoreStatsPlainArgs args) {
+        return getDatastoreStatsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
+     * of all vSphere datastore objects in a datacenter. This can then be used as a
+     * standalone datasource to get information required as input to other data sources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A usefull example of this datasource would be to determine the
+     * datastore with the most free space. For example, in addition to
+     * the above:
+     * 
+     * Create an `outputs.tf` like that:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
+     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * and a `locals.tf` like that:
+     * 
+     */
+    public static Output<GetDatastoreStatsResult> getDatastoreStats(GetDatastoreStatsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getDatastoreStats:getDatastoreStats", TypeShape.of(GetDatastoreStatsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
+     * of all vSphere datastore objects in a datacenter. This can then be used as a
+     * standalone datasource to get information required as input to other data sources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A usefull example of this datasource would be to determine the
+     * datastore with the most free space. For example, in addition to
+     * the above:
+     * 
+     * Create an `outputs.tf` like that:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
+     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * and a `locals.tf` like that:
+     * 
+     */
+    public static CompletableFuture<GetDatastoreStatsResult> getDatastoreStatsPlain(GetDatastoreStatsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getDatastoreStats:getDatastoreStats", TypeShape.of(GetDatastoreStatsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
@@ -3230,6 +3564,402 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetHostThumbprintResult> getHostThumbprintPlain(GetHostThumbprintPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getHostVgpuProfile` data source can be used to discover the
+     * available vGPU profiles of a vSphere host.
+     * 
+     * ## Example Usage
+     * 
+     * ### To Return All VGPU Profiles
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With VGPU Profile Name_regex
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;a100&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostVgpuProfileResult> getHostVgpuProfile(GetHostVgpuProfileArgs args) {
+        return getHostVgpuProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getHostVgpuProfile` data source can be used to discover the
+     * available vGPU profiles of a vSphere host.
+     * 
+     * ## Example Usage
+     * 
+     * ### To Return All VGPU Profiles
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With VGPU Profile Name_regex
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;a100&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHostVgpuProfileResult> getHostVgpuProfilePlain(GetHostVgpuProfilePlainArgs args) {
+        return getHostVgpuProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getHostVgpuProfile` data source can be used to discover the
+     * available vGPU profiles of a vSphere host.
+     * 
+     * ## Example Usage
+     * 
+     * ### To Return All VGPU Profiles
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With VGPU Profile Name_regex
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;a100&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostVgpuProfileResult> getHostVgpuProfile(GetHostVgpuProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", TypeShape.of(GetHostVgpuProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getHostVgpuProfile` data source can be used to discover the
+     * available vGPU profiles of a vSphere host.
+     * 
+     * ## Example Usage
+     * 
+     * ### To Return All VGPU Profiles
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With VGPU Profile Name_regex
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(&#34;dc-01&#34;)
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name(&#34;esxi-01.example.com&#34;)
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .nameRegex(&#34;a100&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHostVgpuProfileResult> getHostVgpuProfilePlain(GetHostVgpuProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", TypeShape.of(GetHostVgpuProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.License` data source can be used to get the general attributes of

@@ -5,7 +5,9 @@ package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +21,13 @@ public final class GetDatastoreResult {
      */
     private String id;
     private String name;
+    /**
+     * @return The disk space usage statistics for the specific datastore. The total
+     * datastore capacity is represented as `capacity` and the free remaining disk is
+     * represented as `free`.
+     * 
+     */
+    private @Nullable Map<String,Object> stats;
 
     private GetDatastoreResult() {}
     public Optional<String> datacenterId() {
@@ -34,6 +43,15 @@ public final class GetDatastoreResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The disk space usage statistics for the specific datastore. The total
+     * datastore capacity is represented as `capacity` and the free remaining disk is
+     * represented as `free`.
+     * 
+     */
+    public Map<String,Object> stats() {
+        return this.stats == null ? Map.of() : this.stats;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -47,12 +65,14 @@ public final class GetDatastoreResult {
         private @Nullable String datacenterId;
         private String id;
         private String name;
+        private @Nullable Map<String,Object> stats;
         public Builder() {}
         public Builder(GetDatastoreResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenterId = defaults.datacenterId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.stats = defaults.stats;
         }
 
         @CustomType.Setter
@@ -77,11 +97,18 @@ public final class GetDatastoreResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder stats(@Nullable Map<String,Object> stats) {
+
+            this.stats = stats;
+            return this;
+        }
         public GetDatastoreResult build() {
             final var _resultValue = new GetDatastoreResult();
             _resultValue.datacenterId = datacenterId;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.stats = stats;
             return _resultValue;
         }
     }

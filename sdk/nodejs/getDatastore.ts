@@ -33,6 +33,7 @@ export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions
     return pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {
         "datacenterId": args.datacenterId,
         "name": args.name,
+        "stats": args.stats,
     }, opts);
 }
 
@@ -51,6 +52,12 @@ export interface GetDatastoreArgs {
      * The name of the datastore. This can be a name or path.
      */
     name: string;
+    /**
+     * The disk space usage statistics for the specific datastore. The total
+     * datastore capacity is represented as `capacity` and the free remaining disk is
+     * represented as `free`.
+     */
+    stats?: {[key: string]: any};
 }
 
 /**
@@ -63,6 +70,12 @@ export interface GetDatastoreResult {
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * The disk space usage statistics for the specific datastore. The total
+     * datastore capacity is represented as `capacity` and the free remaining disk is
+     * represented as `free`.
+     */
+    readonly stats?: {[key: string]: any};
 }
 /**
  * The `vsphere.getDatastore` data source can be used to discover the ID of a
@@ -106,4 +119,10 @@ export interface GetDatastoreOutputArgs {
      * The name of the datastore. This can be a name or path.
      */
     name: pulumi.Input<string>;
+    /**
+     * The disk space usage statistics for the specific datastore. The total
+     * datastore capacity is represented as `capacity` and the free remaining disk is
+     * represented as `free`.
+     */
+    stats?: pulumi.Input<{[key: string]: any}>;
 }
