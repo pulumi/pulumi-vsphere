@@ -43,7 +43,7 @@ export class VirtualDisk extends pulumi.CustomResource {
      * disk controller types. This parameter will be removed in future versions of the
      * vSphere provider.
      *
-     * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+     * @deprecated this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      */
     public readonly adapterType!: pulumi.Output<string | undefined>;
     /**
@@ -145,7 +145,7 @@ export interface VirtualDiskState {
      * disk controller types. This parameter will be removed in future versions of the
      * vSphere provider.
      *
-     * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+     * @deprecated this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      */
     adapterType?: pulumi.Input<string>;
     /**
@@ -204,7 +204,7 @@ export interface VirtualDiskArgs {
      * disk controller types. This parameter will be removed in future versions of the
      * vSphere provider.
      *
-     * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+     * @deprecated this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      */
     adapterType?: pulumi.Input<string>;
     /**

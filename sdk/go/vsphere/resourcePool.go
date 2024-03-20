@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewResourcePool(ctx, "resourcePool", &vsphere.ResourcePoolArgs{
-//				ParentResourcePoolId: *pulumi.String(computeCluster.ResourcePoolId),
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
 //			})
 //			if err != nil {
 //				return err
@@ -122,7 +122,7 @@ import (
 //				return err
 //			}
 //			resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resourcePoolParent", &vsphere.ResourcePoolArgs{
-//				ParentResourcePoolId: *pulumi.String(computeCluster.ResourcePoolId),
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
 //			})
 //			if err != nil {
 //				return err
