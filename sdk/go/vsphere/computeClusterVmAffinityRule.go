@@ -88,14 +88,14 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
-//					ResourcePoolId: *pulumi.String(cluster.ResourcePoolId),
-//					DatastoreId:    *pulumi.String(datastore.Id),
+//					ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//					DatastoreId:    pulumi.String(datastore.Id),
 //					NumCpus:        pulumi.Int(1),
 //					Memory:         pulumi.Int(1024),
 //					GuestId:        pulumi.String("otherLinux64Guest"),
 //					NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
 //						&vsphere.VirtualMachineNetworkInterfaceArgs{
-//							NetworkId: *pulumi.String(network.Id),
+//							NetworkId: pulumi.String(network.Id),
 //						},
 //					},
 //					Disks: vsphere.VirtualMachineDiskArray{
@@ -111,7 +111,7 @@ import (
 //				vm = append(vm, __res)
 //			}
 //			_, err = vsphere.NewComputeClusterVmAffinityRule(ctx, "vmAffinityRule", &vsphere.ComputeClusterVmAffinityRuleArgs{
-//				ComputeClusterId:  *pulumi.String(cluster.Id),
+//				ComputeClusterId:  pulumi.String(cluster.Id),
 //				VirtualMachineIds: "TODO: For expression",
 //			})
 //			if err != nil {
@@ -165,8 +165,8 @@ import (
 //			}
 //			_, err = vsphere.NewComputeClusterVmAffinityRule(ctx, "vmAffinityRule", &vsphere.ComputeClusterVmAffinityRuleArgs{
 //				Enabled:           pulumi.Bool(true),
-//				ComputeClusterId:  *pulumi.String(cluster.Id),
-//				VirtualMachineIds: []*pulumi.String(splat0),
+//				ComputeClusterId:  pulumi.String(cluster.Id),
+//				VirtualMachineIds: splat0,
 //			})
 //			if err != nil {
 //				return err
