@@ -51,9 +51,9 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "hostRule1", &vsphere.ComputeClusterVmHostRuleArgs{
-//				ComputeClusterId:      *pulumi.String(cluster.Id),
+//				ComputeClusterId:      pulumi.String(cluster.Id),
 //				VmGroupName:           pulumi.String("vm_group1"),
-//				AffinityHostGroupName: *pulumi.String(hostGroup1.Name),
+//				AffinityHostGroupName: pulumi.String(hostGroup1.Name),
 //			})
 //			if err != nil {
 //				return err

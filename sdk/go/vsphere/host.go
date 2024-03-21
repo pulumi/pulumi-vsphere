@@ -50,8 +50,8 @@ import (
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
 //				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Thumbprint: *pulumi.String(thumbprint.Id),
-//				Datacenter: *pulumi.String(datacenter.Id),
+//				Thumbprint: pulumi.String(thumbprint.Id),
+//				Datacenter: pulumi.String(datacenter.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -103,8 +103,8 @@ import (
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
 //				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Thumbprint: *pulumi.String(thumbprint.Id),
-//				Cluster:    *pulumi.String(cluster.Id),
+//				Thumbprint: pulumi.String(thumbprint.Id),
+//				Cluster:    pulumi.String(cluster.Id),
 //			})
 //			if err != nil {
 //				return err

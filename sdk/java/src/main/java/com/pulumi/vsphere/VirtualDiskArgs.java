@@ -30,10 +30,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * vSphere provider.
      * 
      * @deprecated
-     * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+     * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
      * 
      */
-    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead */
+    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
     @Import(name="adapterType")
     private @Nullable Output<String> adapterType;
 
@@ -49,10 +49,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * vSphere provider.
      * 
      * @deprecated
-     * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+     * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
      * 
      */
-    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead */
+    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
     public Optional<Output<String>> adapterType() {
         return Optional.ofNullable(this.adapterType);
     }
@@ -221,10 +221,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+         * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
          * 
          */
-        @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead */
+        @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
         public Builder adapterType(@Nullable Output<String> adapterType) {
             $.adapterType = adapterType;
             return this;
@@ -244,10 +244,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+         * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
          * 
          */
-        @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead */
+        @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
         public Builder adapterType(String adapterType) {
             return adapterType(Output.of(adapterType));
         }
