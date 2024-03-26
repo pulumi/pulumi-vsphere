@@ -58,8 +58,8 @@ class VirtualDiskArgs:
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "vmdk_path", vmdk_path)
         if adapter_type is not None:
-            warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-            pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
+            warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+            pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
         if adapter_type is not None:
             pulumi.set(__self__, "adapter_type", adapter_type)
         if create_directories is not None:
@@ -121,8 +121,8 @@ class VirtualDiskArgs:
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
-        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
+        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
 
         return pulumi.get(self, "adapter_type")
 
@@ -224,8 +224,8 @@ class _VirtualDiskState:
                be created.  This needs to end in `.vmdk`.
         """
         if adapter_type is not None:
-            warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-            pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
+            warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+            pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
         if adapter_type is not None:
             pulumi.set(__self__, "adapter_type", adapter_type)
         if create_directories is not None:
@@ -255,8 +255,8 @@ class _VirtualDiskState:
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
-        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
+        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
 
         return pulumi.get(self, "adapter_type")
 
@@ -534,8 +534,8 @@ class VirtualDisk(pulumi.CustomResource):
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
-        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
+        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
 
         return pulumi.get(self, "adapter_type")
 

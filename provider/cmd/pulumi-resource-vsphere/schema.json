@@ -8692,7 +8692,7 @@
                 "adapterType": {
                     "type": "string",
                     "description": "The adapter type for this virtual disk. Can be\none of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.\n\n\u003e **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of\ncontroller that the virtual disk will be attached to on the virtual machine.\nPlease see the `scsi_type` parameter\nin the `vsphere.VirtualMachine` resource for information on how to control\ndisk controller types. This parameter will be removed in future versions of the\nvSphere provider.\n",
-                    "deprecationMessage": "this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead"
+                    "deprecationMessage": "this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead"
                 },
                 "createDirectories": {
                     "type": "boolean",
@@ -8728,7 +8728,7 @@
                 "adapterType": {
                     "type": "string",
                     "description": "The adapter type for this virtual disk. Can be\none of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.\n\n\u003e **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of\ncontroller that the virtual disk will be attached to on the virtual machine.\nPlease see the `scsi_type` parameter\nin the `vsphere.VirtualMachine` resource for information on how to control\ndisk controller types. This parameter will be removed in future versions of the\nvSphere provider.\n",
-                    "deprecationMessage": "this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead",
+                    "deprecationMessage": "this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead",
                     "willReplaceOnChanges": true
                 },
                 "createDirectories": {
@@ -8773,7 +8773,7 @@
                     "adapterType": {
                         "type": "string",
                         "description": "The adapter type for this virtual disk. Can be\none of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.\n\n\u003e **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of\ncontroller that the virtual disk will be attached to on the virtual machine.\nPlease see the `scsi_type` parameter\nin the `vsphere.VirtualMachine` resource for information on how to control\ndisk controller types. This parameter will be removed in future versions of the\nvSphere provider.\n",
-                        "deprecationMessage": "this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead",
+                        "deprecationMessage": "this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead",
                         "willReplaceOnChanges": true
                     },
                     "createDirectories": {
