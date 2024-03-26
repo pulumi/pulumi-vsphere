@@ -30,10 +30,10 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * vSphere provider.
      * 
      * @deprecated
-     * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
+     * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      * 
      */
-    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
+    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead */
     @Export(name="adapterType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> adapterType;
 

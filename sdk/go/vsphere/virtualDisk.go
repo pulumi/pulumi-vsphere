@@ -25,7 +25,7 @@ type VirtualDisk struct {
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
 	//
-	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrOutput `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -105,7 +105,7 @@ type virtualDiskState struct {
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
 	//
-	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType *string `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -147,7 +147,7 @@ type VirtualDiskState struct {
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
 	//
-	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrInput
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -193,7 +193,7 @@ type virtualDiskArgs struct {
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
 	//
-	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType *string `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -236,7 +236,7 @@ type VirtualDiskArgs struct {
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
 	//
-	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrInput
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -364,7 +364,7 @@ func (o VirtualDiskOutput) ToVirtualDiskOutputWithContext(ctx context.Context) V
 // disk controller types. This parameter will be removed in future versions of the
 // vSphere provider.
 //
-// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
+// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 func (o VirtualDiskOutput) AdapterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.AdapterType }).(pulumi.StringPtrOutput)
 }
