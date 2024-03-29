@@ -233,10 +233,12 @@ import javax.annotation.Nullable;
  *             .storagePolicyId(data.vsphere_storage_policy().storage_policy().prod_platinum_replicated().id())
  *             .build());
  * 
+ *         // ... other configuration ...
  *         var devVm = new VirtualMachine(&#34;devVm&#34;, VirtualMachineArgs.builder()        
  *             .storagePolicyId(data.vsphere_storage_policy().storage_policy().dev_silver_nonreplicated().id())
  *             .build());
  * 
+ *         // ... other configuration ...
  *     }
  * }
  * ```

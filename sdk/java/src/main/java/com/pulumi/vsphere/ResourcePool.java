@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  *             .resourcePoolId(data.vsphere_compute_cluster().cluster().resource_pool_id())
  *             .build());
  * 
+ *         // ... other configuration ...
  *     }
  * }
  * ```
