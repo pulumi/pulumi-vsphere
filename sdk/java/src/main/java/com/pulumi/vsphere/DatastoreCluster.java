@@ -300,7 +300,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * recommendations to move VMs off of a datastore. Note that this setting should
      * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
      * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      * 
      */
     @Export(name="sdrsIoReservableIopsThreshold", refs={Integer.class}, tree="[0]")
@@ -312,7 +312,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * recommendations to move VMs off of a datastore. Note that this setting should
      * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
      * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      * 
      */
     public Output<Optional<Integer>> sdrsIoReservableIopsThreshold() {

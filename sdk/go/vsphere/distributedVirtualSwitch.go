@@ -192,8 +192,7 @@ type DistributedVirtualSwitch struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%!
-	// (MISSING)
+	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate pulumi.IntPtrOutput `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -527,8 +526,7 @@ type distributedVirtualSwitchState struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%!
-	// (MISSING)
+	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -830,8 +828,7 @@ type DistributedVirtualSwitchState struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%!
-	// (MISSING)
+	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -1134,8 +1131,7 @@ type distributedVirtualSwitchArgs struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%!
-	// (MISSING)
+	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -1435,8 +1431,7 @@ type DistributedVirtualSwitchArgs struct {
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
 	// VDS should analyze all packets. The maximum value is `1000`, which
-	// indicates an analysis rate of 0.001%!
-	// (MISSING)
+	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Set to `true` to enable
 	// network I/O control. Default: `false`.
@@ -2007,8 +2002,7 @@ func (o DistributedVirtualSwitchOutput) NetflowObservationDomainId() pulumi.IntP
 // The ratio of total number of packets to
 // the number of packets analyzed. The default is `0`, which indicates that the
 // VDS should analyze all packets. The maximum value is `1000`, which
-// indicates an analysis rate of 0.001%!
-// (MISSING)
+// indicates an analysis rate of 0.001%.
 func (o DistributedVirtualSwitchOutput) NetflowSamplingRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowSamplingRate }).(pulumi.IntPtrOutput)
 }

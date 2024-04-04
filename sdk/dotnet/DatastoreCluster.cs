@@ -140,7 +140,7 @@ namespace Pulumi.VSphere
         /// recommendations to move VMs off of a datastore. Note that this setting should
         /// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
         /// estimate of the capacity of the datastores in your cluster, and should be set
-        /// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+        /// to roughly 50-60% of the worst case peak performance of the backing LUNs.
         /// </summary>
         [Output("sdrsIoReservableIopsThreshold")]
         public Output<int?> SdrsIoReservableIopsThreshold { get; private set; } = null!;
@@ -400,7 +400,7 @@ namespace Pulumi.VSphere
         /// recommendations to move VMs off of a datastore. Note that this setting should
         /// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
         /// estimate of the capacity of the datastores in your cluster, and should be set
-        /// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+        /// to roughly 50-60% of the worst case peak performance of the backing LUNs.
         /// </summary>
         [Input("sdrsIoReservableIopsThreshold")]
         public Input<int>? SdrsIoReservableIopsThreshold { get; set; }
@@ -628,7 +628,7 @@ namespace Pulumi.VSphere
         /// recommendations to move VMs off of a datastore. Note that this setting should
         /// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
         /// estimate of the capacity of the datastores in your cluster, and should be set
-        /// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+        /// to roughly 50-60% of the worst case peak performance of the backing LUNs.
         /// </summary>
         [Input("sdrsIoReservableIopsThreshold")]
         public Input<int>? SdrsIoReservableIopsThreshold { get; set; }

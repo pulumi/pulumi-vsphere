@@ -226,8 +226,7 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%!
-               (MISSING)
+               indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -1268,8 +1267,7 @@ class DistributedVirtualSwitchArgs:
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
         VDS should analyze all packets. The maximum value is `1000`, which
-        indicates an analysis rate of 0.001%!
-        (MISSING)
+        indicates an analysis rate of 0.001%.
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -1930,8 +1928,7 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%!
-               (MISSING)
+               indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -2988,8 +2985,7 @@ class _DistributedVirtualSwitchState:
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
         VDS should analyze all packets. The maximum value is `1000`, which
-        indicates an analysis rate of 0.001%!
-        (MISSING)
+        indicates an analysis rate of 0.001%.
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -3652,8 +3648,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%!
-               (MISSING)
+               indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -4179,8 +4174,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                VDS should analyze all packets. The maximum value is `1000`, which
-               indicates an analysis rate of 0.001%!
-               (MISSING)
+               indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
@@ -4903,8 +4897,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
         VDS should analyze all packets. The maximum value is `1000`, which
-        indicates an analysis rate of 0.001%!
-        (MISSING)
+        indicates an analysis rate of 0.001%.
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
