@@ -3586,7 +3586,7 @@
                 },
                 "sdrsIoReservableIopsThreshold": {
                     "type": "integer",
-                    "description": "The threshold of reservable\nIOPS of all virtual machines on the datastore before storage DRS makes\nrecommendations to move VMs off of a datastore. Note that this setting should\nonly be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate\nestimate of the capacity of the datastores in your cluster, and should be set\nto roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.\n"
+                    "description": "The threshold of reservable\nIOPS of all virtual machines on the datastore before storage DRS makes\nrecommendations to move VMs off of a datastore. Note that this setting should\nonly be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate\nestimate of the capacity of the datastores in your cluster, and should be set\nto roughly 50-60% of the worst case peak performance of the backing LUNs.\n"
                 },
                 "sdrsIoReservablePercentThreshold": {
                     "type": "integer",
@@ -3702,7 +3702,7 @@
                 },
                 "sdrsIoReservableIopsThreshold": {
                     "type": "integer",
-                    "description": "The threshold of reservable\nIOPS of all virtual machines on the datastore before storage DRS makes\nrecommendations to move VMs off of a datastore. Note that this setting should\nonly be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate\nestimate of the capacity of the datastores in your cluster, and should be set\nto roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.\n"
+                    "description": "The threshold of reservable\nIOPS of all virtual machines on the datastore before storage DRS makes\nrecommendations to move VMs off of a datastore. Note that this setting should\nonly be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate\nestimate of the capacity of the datastores in your cluster, and should be set\nto roughly 50-60% of the worst case peak performance of the backing LUNs.\n"
                 },
                 "sdrsIoReservablePercentThreshold": {
                     "type": "integer",
@@ -3819,7 +3819,7 @@
                     },
                     "sdrsIoReservableIopsThreshold": {
                         "type": "integer",
-                        "description": "The threshold of reservable\nIOPS of all virtual machines on the datastore before storage DRS makes\nrecommendations to move VMs off of a datastore. Note that this setting should\nonly be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate\nestimate of the capacity of the datastores in your cluster, and should be set\nto roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.\n"
+                        "description": "The threshold of reservable\nIOPS of all virtual machines on the datastore before storage DRS makes\nrecommendations to move VMs off of a datastore. Note that this setting should\nonly be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate\nestimate of the capacity of the datastores in your cluster, and should be set\nto roughly 50-60% of the worst case peak performance of the backing LUNs.\n"
                     },
                     "sdrsIoReservablePercentThreshold": {
                         "type": "integer",
@@ -4876,7 +4876,7 @@
                 },
                 "netflowSamplingRate": {
                     "type": "integer",
-                    "description": "The ratio of total number of packets to\nthe number of packets analyzed. The default is `0`, which indicates that the\nVDS should analyze all packets. The maximum value is `1000`, which\nindicates an analysis rate of 0.001%!\n(MISSING)"
+                    "description": "The ratio of total number of packets to\nthe number of packets analyzed. The default is `0`, which indicates that the\nVDS should analyze all packets. The maximum value is `1000`, which\nindicates an analysis rate of 0.001%.\n"
                 },
                 "networkResourceControlEnabled": {
                     "type": "boolean",
@@ -5357,7 +5357,7 @@
                 },
                 "netflowSamplingRate": {
                     "type": "integer",
-                    "description": "The ratio of total number of packets to\nthe number of packets analyzed. The default is `0`, which indicates that the\nVDS should analyze all packets. The maximum value is `1000`, which\nindicates an analysis rate of 0.001%!\n(MISSING)"
+                    "description": "The ratio of total number of packets to\nthe number of packets analyzed. The default is `0`, which indicates that the\nVDS should analyze all packets. The maximum value is `1000`, which\nindicates an analysis rate of 0.001%.\n"
                 },
                 "networkResourceControlEnabled": {
                     "type": "boolean",
@@ -5770,7 +5770,7 @@
                     },
                     "netflowSamplingRate": {
                         "type": "integer",
-                        "description": "The ratio of total number of packets to\nthe number of packets analyzed. The default is `0`, which indicates that the\nVDS should analyze all packets. The maximum value is `1000`, which\nindicates an analysis rate of 0.001%!\n(MISSING)"
+                        "description": "The ratio of total number of packets to\nthe number of packets analyzed. The default is `0`, which indicates that the\nVDS should analyze all packets. The maximum value is `1000`, which\nindicates an analysis rate of 0.001%.\n"
                     },
                     "networkResourceControlEnabled": {
                         "type": "boolean",
@@ -9070,7 +9070,7 @@
                 },
                 "replaceTrigger": {
                     "type": "string",
-                    "description": "Triggers replacement of resource whenever it changes.\n\nFor example, `replace_trigger = sha256(format(\"%!s(MISSING)-%!s(MISSING)\",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)\n"
+                    "description": "Triggers replacement of resource whenever it changes.\n\nFor example, `replace_trigger = sha256(format(\"%s-%s\",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)\n"
                 },
                 "resourcePoolId": {
                     "type": "string",
@@ -9439,7 +9439,7 @@
                 },
                 "replaceTrigger": {
                     "type": "string",
-                    "description": "Triggers replacement of resource whenever it changes.\n\nFor example, `replace_trigger = sha256(format(\"%!s(MISSING)-%!s(MISSING)\",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)\n",
+                    "description": "Triggers replacement of resource whenever it changes.\n\nFor example, `replace_trigger = sha256(format(\"%s-%s\",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)\n",
                     "willReplaceOnChanges": true
                 },
                 "resourcePoolId": {
@@ -9802,7 +9802,7 @@
                     },
                     "replaceTrigger": {
                         "type": "string",
-                        "description": "Triggers replacement of resource whenever it changes.\n\nFor example, `replace_trigger = sha256(format(\"%!s(MISSING)-%!s(MISSING)\",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)\n",
+                        "description": "Triggers replacement of resource whenever it changes.\n\nFor example, `replace_trigger = sha256(format(\"%s-%s\",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)\n",
                         "willReplaceOnChanges": true
                     },
                     "resourcePoolId": {
