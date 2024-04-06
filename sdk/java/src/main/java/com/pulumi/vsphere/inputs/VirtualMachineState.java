@@ -960,7 +960,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     /**
      * Triggers replacement of resource whenever it changes.
      * 
-     * For example, `replace_trigger = sha256(format(&#34;%!s(MISSING)-%!s(MISSING)&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
      * 
      */
     @Import(name="replaceTrigger")
@@ -969,7 +969,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     /**
      * @return Triggers replacement of resource whenever it changes.
      * 
-     * For example, `replace_trigger = sha256(format(&#34;%!s(MISSING)-%!s(MISSING)&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
      * 
      */
     public Optional<Output<String>> replaceTrigger() {
@@ -2851,7 +2851,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         /**
          * @param replaceTrigger Triggers replacement of resource whenever it changes.
          * 
-         * For example, `replace_trigger = sha256(format(&#34;%!s(MISSING)-%!s(MISSING)&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+         * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
          * 
          * @return builder
          * 
@@ -2864,7 +2864,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         /**
          * @param replaceTrigger Triggers replacement of resource whenever it changes.
          * 
-         * For example, `replace_trigger = sha256(format(&#34;%!s(MISSING)-%!s(MISSING)&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+         * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
          * 
          * @return builder
          * 

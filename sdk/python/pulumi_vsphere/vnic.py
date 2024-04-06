@@ -442,12 +442,6 @@ class Vnic(pulumi.CustomResource):
 
         [docs-import]: /docs/import/index.html
 
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
         The above would import the vnic `vmk2` from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
@@ -546,12 +540,6 @@ class Vnic(pulumi.CustomResource):
         via supplying the vNic's ID. An example is below:
 
         [docs-import]: /docs/import/index.html
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
 
         The above would import the vnic `vmk2` from host with ID `host-123`.
 

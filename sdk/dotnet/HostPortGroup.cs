@@ -134,18 +134,6 @@ namespace Pulumi.VSphere
     /// An existing host port group can be imported into this resource
     /// using the host port group's ID. An example is below:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// The above would import the `management` host port group from host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/hostPortGroup:HostPortGroup")]

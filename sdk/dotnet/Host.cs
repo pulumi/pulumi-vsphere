@@ -100,18 +100,6 @@ namespace Pulumi.VSphere
     /// 
     /// [docs-import]: /docs/import/index.html
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// The above would import the host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/host:Host")]

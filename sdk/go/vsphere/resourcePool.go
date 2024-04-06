@@ -140,6 +140,20 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## Importing
+//
+// An existing resource pool can be imported into this resource via
+// the path to the resource pool, using the following command:
+//
+// The above would import the resource pool named `resource-pool-01` that is located
+// in the compute cluster `cluster-01` in the `dc-01` datacenter.
+//
+// ### Settings that Require vSphere 7.0 or higher
+//
+// These settings require vSphere 7.0 or higher:
+//
+// * `scaleDescendantsShares`
+//
 // [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 type ResourcePool struct {
 	pulumi.CustomResourceState

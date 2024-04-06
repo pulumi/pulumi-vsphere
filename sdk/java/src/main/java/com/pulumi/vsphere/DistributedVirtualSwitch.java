@@ -985,8 +985,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%!
-     * (MISSING)
+     * indicates an analysis rate of 0.001%.
      * 
      */
     @Export(name="netflowSamplingRate", refs={Integer.class}, tree="[0]")
@@ -996,8 +995,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * @return The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%!
-     * (MISSING)
+     * indicates an analysis rate of 0.001%.
      * 
      */
     public Output<Optional<Integer>> netflowSamplingRate() {

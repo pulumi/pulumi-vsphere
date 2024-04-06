@@ -318,6 +318,13 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## Importing
+
+        An existing rule can be imported into this resource by supplying
+        both the path to the cluster, and the name the rule. If the name or cluster is
+        not found, or if the rule is of a different type, an error will be returned. An
+        example is below:
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
@@ -429,6 +436,13 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             virtual_machine_ids=[__item.id for __item in vms_virtual_machine])
         ```
         <!--End PulumiCodeChooser -->
+
+        ## Importing
+
+        An existing rule can be imported into this resource by supplying
+        both the path to the cluster, and the name the rule. If the name or cluster is
+        not found, or if the rule is of a different type, an error will be returned. An
+        example is below:
 
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmAffinityRuleArgs args: The arguments to use to populate this resource's properties.

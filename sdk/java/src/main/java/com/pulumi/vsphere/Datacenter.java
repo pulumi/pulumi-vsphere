@@ -85,6 +85,15 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Importing
+ * 
+ * An existing datacenter can be [imported][docs-import] into this resource
+ * via supplying the full path to the datacenter. An example is below:
+ * 
+ * [docs-import]: /docs/import/index.html
+ * 
+ * The above would import the datacenter named `dc1`.
+ * 
  */
 @ResourceType(type="vsphere:index/datacenter:Datacenter")
 public class Datacenter extends com.pulumi.resources.CustomResource {

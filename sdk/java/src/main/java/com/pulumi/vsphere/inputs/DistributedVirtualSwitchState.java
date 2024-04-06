@@ -1045,8 +1045,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%!
-     * (MISSING)
+     * indicates an analysis rate of 0.001%.
      * 
      */
     @Import(name="netflowSamplingRate")
@@ -1056,8 +1055,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
      * @return The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%!
-     * (MISSING)
+     * indicates an analysis rate of 0.001%.
      * 
      */
     public Optional<Output<Integer>> netflowSamplingRate() {
@@ -3214,8 +3212,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
          * @param netflowSamplingRate The ratio of total number of packets to
          * the number of packets analyzed. The default is `0`, which indicates that the
          * VDS should analyze all packets. The maximum value is `1000`, which
-         * indicates an analysis rate of 0.001%!
-         * (MISSING)
+         * indicates an analysis rate of 0.001%.
          * 
          * @return builder
          * 
@@ -3229,8 +3226,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
          * @param netflowSamplingRate The ratio of total number of packets to
          * the number of packets analyzed. The default is `0`, which indicates that the
          * VDS should analyze all packets. The maximum value is `1000`, which
-         * indicates an analysis rate of 0.001%!
-         * (MISSING)
+         * indicates an analysis rate of 0.001%.
          * 
          * @return builder
          * 

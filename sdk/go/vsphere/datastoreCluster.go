@@ -82,7 +82,7 @@ type DatastoreCluster struct {
 	// recommendations to move VMs off of a datastore. Note that this setting should
 	// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 	// estimate of the capacity of the datastores in your cluster, and should be set
-	// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+	// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 	SdrsIoReservableIopsThreshold pulumi.IntPtrOutput `pulumi:"sdrsIoReservableIopsThreshold"`
 	// The threshold, in
 	// percent, of actual estimated performance of the datastore (in IOPS) that
@@ -219,7 +219,7 @@ type datastoreClusterState struct {
 	// recommendations to move VMs off of a datastore. Note that this setting should
 	// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 	// estimate of the capacity of the datastores in your cluster, and should be set
-	// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+	// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 	SdrsIoReservableIopsThreshold *int `pulumi:"sdrsIoReservableIopsThreshold"`
 	// The threshold, in
 	// percent, of actual estimated performance of the datastore (in IOPS) that
@@ -324,7 +324,7 @@ type DatastoreClusterState struct {
 	// recommendations to move VMs off of a datastore. Note that this setting should
 	// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 	// estimate of the capacity of the datastores in your cluster, and should be set
-	// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+	// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 	SdrsIoReservableIopsThreshold pulumi.IntPtrInput
 	// The threshold, in
 	// percent, of actual estimated performance of the datastore (in IOPS) that
@@ -433,7 +433,7 @@ type datastoreClusterArgs struct {
 	// recommendations to move VMs off of a datastore. Note that this setting should
 	// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 	// estimate of the capacity of the datastores in your cluster, and should be set
-	// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+	// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 	SdrsIoReservableIopsThreshold *int `pulumi:"sdrsIoReservableIopsThreshold"`
 	// The threshold, in
 	// percent, of actual estimated performance of the datastore (in IOPS) that
@@ -539,7 +539,7 @@ type DatastoreClusterArgs struct {
 	// recommendations to move VMs off of a datastore. Note that this setting should
 	// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 	// estimate of the capacity of the datastores in your cluster, and should be set
-	// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+	// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 	SdrsIoReservableIopsThreshold pulumi.IntPtrInput
 	// The threshold, in
 	// percent, of actual estimated performance of the datastore (in IOPS) that
@@ -775,7 +775,7 @@ func (o DatastoreClusterOutput) SdrsIoLoadImbalanceThreshold() pulumi.IntPtrOutp
 // recommendations to move VMs off of a datastore. Note that this setting should
 // only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 // estimate of the capacity of the datastores in your cluster, and should be set
-// to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 func (o DatastoreClusterOutput) SdrsIoReservableIopsThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsIoReservableIopsThreshold }).(pulumi.IntPtrOutput)
 }

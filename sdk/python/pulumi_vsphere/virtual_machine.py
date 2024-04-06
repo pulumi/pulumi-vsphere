@@ -180,7 +180,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
                
-               For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+               For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_after_resume: Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
@@ -1023,7 +1023,7 @@ class VirtualMachineArgs:
         """
         Triggers replacement of resource whenever it changes.
 
-        For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+        For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         """
         return pulumi.get(self, "replace_trigger")
 
@@ -1484,7 +1484,7 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
                
-               For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+               For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         :param pulumi.Input[str] resource_pool_id: The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
                
                > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
@@ -2427,7 +2427,7 @@ class _VirtualMachineState:
         """
         Triggers replacement of resource whenever it changes.
 
-        For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+        For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         """
         return pulumi.get(self, "replace_trigger")
 
@@ -2937,7 +2937,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
                
-               For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+               For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         :param pulumi.Input[str] resource_pool_id: The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
                
                > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
@@ -3359,7 +3359,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
                
-               For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+               For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         :param pulumi.Input[str] resource_pool_id: The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
                
                > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
@@ -3989,7 +3989,7 @@ class VirtualMachine(pulumi.CustomResource):
         """
         Triggers replacement of resource whenever it changes.
 
-        For example, `replace_trigger = sha256(format("%!s(MISSING)-%!s(MISSING)",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+        For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
         """
         return pulumi.get(self, "replace_trigger")
 

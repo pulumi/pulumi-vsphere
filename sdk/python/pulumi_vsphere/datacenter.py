@@ -261,6 +261,15 @@ class Datacenter(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## Importing
+
+        An existing datacenter can be [imported][docs-import] into this resource
+        via supplying the full path to the datacenter. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        The above would import the datacenter named `dc1`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to value 
@@ -314,6 +323,15 @@ class Datacenter(pulumi.CustomResource):
         research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
         ```
         <!--End PulumiCodeChooser -->
+
+        ## Importing
+
+        An existing datacenter can be [imported][docs-import] into this resource
+        via supplying the full path to the datacenter. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        The above would import the datacenter named `dc1`.
 
         :param str resource_name: The name of the resource.
         :param DatacenterArgs args: The arguments to use to populate this resource's properties.

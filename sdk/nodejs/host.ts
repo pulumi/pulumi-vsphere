@@ -71,12 +71,6 @@ import * as utilities from "./utilities";
  *
  * [docs-import]: /docs/import/index.html
  *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * The above would import the host with ID `host-123`.
  */
 export class Host extends pulumi.CustomResource {
