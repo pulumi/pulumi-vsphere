@@ -91,12 +91,6 @@ import * as utilities from "./utilities";
  * An existing host port group can be imported into this resource
  * using the host port group's ID. An example is below:
  *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * The above would import the `management` host port group from host with ID `host-123`.
  */
 export class HostPortGroup extends pulumi.CustomResource {

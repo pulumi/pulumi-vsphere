@@ -69,6 +69,15 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+//
+// ## Importing
+//
+// An existing datacenter can be [imported][docs-import] into this resource
+// via supplying the full path to the datacenter. An example is below:
+//
+// [docs-import]: /docs/import/index.html
+//
+// The above would import the datacenter named `dc1`.
 type Datacenter struct {
 	pulumi.CustomResourceState
 

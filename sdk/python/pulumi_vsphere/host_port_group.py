@@ -755,12 +755,6 @@ class HostPortGroup(pulumi.CustomResource):
         An existing host port group can be imported into this resource
         using the host port group's ID. An example is below:
 
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
         The above would import the `management` host port group from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
@@ -870,12 +864,6 @@ class HostPortGroup(pulumi.CustomResource):
 
         An existing host port group can be imported into this resource
         using the host port group's ID. An example is below:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
 
         The above would import the `management` host port group from host with ID `host-123`.
 

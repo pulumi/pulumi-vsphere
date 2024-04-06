@@ -334,8 +334,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%!
-     * (MISSING)
+     * indicates an analysis rate of 0.001%.
      */
     public readonly netflowSamplingRate!: pulumi.Output<number | undefined>;
     /**
@@ -1029,8 +1028,7 @@ export interface DistributedVirtualSwitchState {
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%!
-     * (MISSING)
+     * indicates an analysis rate of 0.001%.
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**
@@ -1506,8 +1504,7 @@ export interface DistributedVirtualSwitchArgs {
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%!
-     * (MISSING)
+     * indicates an analysis rate of 0.001%.
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**

@@ -663,12 +663,6 @@ class Host(pulumi.CustomResource):
 
         [docs-import]: /docs/import/index.html
 
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
         The above would import the host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
@@ -777,12 +771,6 @@ class Host(pulumi.CustomResource):
         the host's ID. An example is below:
 
         [docs-import]: /docs/import/index.html
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
 
         The above would import the host with ID `host-123`.
 

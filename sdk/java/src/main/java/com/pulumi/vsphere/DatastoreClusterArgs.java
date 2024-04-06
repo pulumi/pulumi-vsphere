@@ -315,7 +315,7 @@ public final class DatastoreClusterArgs extends com.pulumi.resources.ResourceArg
      * recommendations to move VMs off of a datastore. Note that this setting should
      * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
      * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      * 
      */
     @Import(name="sdrsIoReservableIopsThreshold")
@@ -327,7 +327,7 @@ public final class DatastoreClusterArgs extends com.pulumi.resources.ResourceArg
      * recommendations to move VMs off of a datastore. Note that this setting should
      * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
      * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      * 
      */
     public Optional<Output<Integer>> sdrsIoReservableIopsThreshold() {
@@ -932,7 +932,7 @@ public final class DatastoreClusterArgs extends com.pulumi.resources.ResourceArg
          * recommendations to move VMs off of a datastore. Note that this setting should
          * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
          * estimate of the capacity of the datastores in your cluster, and should be set
-         * to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+         * to roughly 50-60% of the worst case peak performance of the backing LUNs.
          * 
          * @return builder
          * 
@@ -948,7 +948,7 @@ public final class DatastoreClusterArgs extends com.pulumi.resources.ResourceArg
          * recommendations to move VMs off of a datastore. Note that this setting should
          * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
          * estimate of the capacity of the datastores in your cluster, and should be set
-         * to roughly 50-60%!o(MISSING)f the worst case peak performance of the backing LUNs.
+         * to roughly 50-60% of the worst case peak performance of the backing LUNs.
          * 
          * @return builder
          * 

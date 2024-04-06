@@ -67,6 +67,20 @@ import * as utilities from "./utilities";
  * const resourcePoolChild = new vsphere.ResourcePool("resourcePoolChild", {parentResourcePoolId: resourcePoolParent.id});
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ## Importing
+ *
+ * An existing resource pool can be imported into this resource via
+ * the path to the resource pool, using the following command:
+ *
+ * The above would import the resource pool named `resource-pool-01` that is located
+ * in the compute cluster `cluster-01` in the `dc-01` datacenter.
+ *
+ * ### Settings that Require vSphere 7.0 or higher
+ *
+ * These settings require vSphere 7.0 or higher:
+ *
+ * * `scaleDescendantsShares`
  */
 export class ResourcePool extends pulumi.CustomResource {
     /**

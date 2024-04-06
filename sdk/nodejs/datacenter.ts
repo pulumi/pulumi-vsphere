@@ -31,6 +31,15 @@ import * as utilities from "./utilities";
  * const researchDatacenter = new vsphere.Datacenter("researchDatacenter", {folder: "/research/"});
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ## Importing
+ *
+ * An existing datacenter can be [imported][docs-import] into this resource
+ * via supplying the full path to the datacenter. An example is below:
+ *
+ * [docs-import]: /docs/import/index.html
+ *
+ * The above would import the datacenter named `dc1`.
  */
 export class Datacenter extends pulumi.CustomResource {
     /**

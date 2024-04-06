@@ -158,31 +158,6 @@ import javax.annotation.Nullable;
  * An existing host port group can be imported into this resource
  * using the host port group&#39;s ID. An example is below:
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * The above would import the `management` host port group from host with ID `host-123`.
  * 
  */
