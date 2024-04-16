@@ -100,7 +100,7 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
     import pulumi_vsphere as vsphere
 
     pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
-        datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"])
+        datacenter_id=datacenter["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -172,7 +172,7 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     import pulumi_vsphere as vsphere
 
     pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
-        datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"])
+        datacenter_id=datacenter["id"])
     ```
     <!--End PulumiCodeChooser -->
 

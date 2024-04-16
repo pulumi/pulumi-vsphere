@@ -49,7 +49,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.NewResourcePool(ctx, "resourcePool", &vsphere.ResourcePoolArgs{
+//			_, err = vsphere.NewResourcePool(ctx, "resource_pool", &vsphere.ResourcePoolArgs{
+//				Name:                 pulumi.String("resource-pool-01"),
 //				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
 //			})
 //			if err != nil {
@@ -79,7 +80,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
-//				ResourcePoolId: pulumi.Any(data.Vsphere_compute_cluster.Cluster.Resource_pool_id),
+//				ResourcePoolId: pulumi.Any(cluster.ResourcePoolId),
 //			})
 //			if err != nil {
 //				return err
@@ -121,13 +122,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resourcePoolParent", &vsphere.ResourcePoolArgs{
+//			resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resource_pool_parent", &vsphere.ResourcePoolArgs{
+//				Name:                 pulumi.String("parent"),
 //				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.NewResourcePool(ctx, "resourcePoolChild", &vsphere.ResourcePoolArgs{
+//			_, err = vsphere.NewResourcePool(ctx, "resource_pool_child", &vsphere.ResourcePoolArgs{
+//				Name:                 pulumi.String("child"),
 //				ParentResourcePoolId: resourcePoolParent.ID(),
 //			})
 //			if err != nil {

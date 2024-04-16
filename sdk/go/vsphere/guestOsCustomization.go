@@ -15,6 +15,49 @@ import (
 // The `GuestOsCustomization` resource can be used to a customization specification for a guest operating system.
 //
 // > **NOTE:** The name attribute is unique identifier for the guest OS spec per VC.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewGuestOsCustomization(ctx, "windows_customization", &vsphere.GuestOsCustomizationArgs{
+//				Name: pulumi.String("windows-spec"),
+//				Type: pulumi.String("Windows"),
+//				Spec: &vsphere.GuestOsCustomizationSpecArgs{
+//					WindowsOptions: &vsphere.GuestOsCustomizationSpecWindowsOptionsArgs{
+//						RunOnceCommandLists: pulumi.StringArray{
+//							pulumi.String("command-1"),
+//							pulumi.String("command-2"),
+//						},
+//						ComputerName:   pulumi.String("windows"),
+//						AutoLogon:      pulumi.Bool(false),
+//						AutoLogonCount: pulumi.Int(0),
+//						AdminPassword:  pulumi.String("VMware1!"),
+//						TimeZone:       pulumi.Int(4),
+//						Workgroup:      pulumi.String("workgroup"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 type GuestOsCustomization struct {
 	pulumi.CustomResourceState
 

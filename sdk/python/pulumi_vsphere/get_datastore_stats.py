@@ -115,8 +115,8 @@ def get_datastore_stats(capacity: Optional[Mapping[str, Any]] = None,
     ```python
     import pulumi
 
-    pulumi.export("maxFreeSpaceName", local["max_free_space_name"])
-    pulumi.export("maxFreeSpace", local["max_free_space"])
+    pulumi.export("maxFreeSpaceName", their_max_free_space_name)
+    pulumi.export("maxFreeSpace", their_max_free_space)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -180,8 +180,8 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
     ```python
     import pulumi
 
-    pulumi.export("maxFreeSpaceName", local["max_free_space_name"])
-    pulumi.export("maxFreeSpace", local["max_free_space"])
+    pulumi.export("maxFreeSpaceName", their_max_free_space_name)
+    pulumi.export("maxFreeSpace", their_max_free_space)
     ```
     <!--End PulumiCodeChooser -->
 

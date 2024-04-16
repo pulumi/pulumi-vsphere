@@ -275,6 +275,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         vm = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                name=f"foo-{range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_id=datastore.id,
                 num_cpus=1,
@@ -287,7 +288,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
                     label="disk0",
                     size=20,
                 )]))
-        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
+            name="vm-affinity-rule",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[v.id for k, v in vm])
         ```
@@ -309,12 +311,13 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         cluster = vsphere.get_compute_cluster(name="cluster-01",
             datacenter_id=datacenter.id)
-        vms_virtual_machine = [vsphere.get_virtual_machine(name=vms[__index],
+        vms_get_virtual_machine = [vsphere.get_virtual_machine(name=vms[__index],
             datacenter_id=datacenter.id) for __index in range(len(vms))]
-        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
+            name="vm-affinity-rule",
             enabled=True,
             compute_cluster_id=cluster.id,
-            virtual_machine_ids=[__item.id for __item in vms_virtual_machine])
+            virtual_machine_ids=[__item.id for __item in vms_get_virtual_machine])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -394,6 +397,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         vm = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                name=f"foo-{range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_id=datastore.id,
                 num_cpus=1,
@@ -406,7 +410,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
                     label="disk0",
                     size=20,
                 )]))
-        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
+            name="vm-affinity-rule",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[v.id for k, v in vm])
         ```
@@ -428,12 +433,13 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         cluster = vsphere.get_compute_cluster(name="cluster-01",
             datacenter_id=datacenter.id)
-        vms_virtual_machine = [vsphere.get_virtual_machine(name=vms[__index],
+        vms_get_virtual_machine = [vsphere.get_virtual_machine(name=vms[__index],
             datacenter_id=datacenter.id) for __index in range(len(vms))]
-        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
+            name="vm-affinity-rule",
             enabled=True,
             compute_cluster_id=cluster.id,
-            virtual_machine_ids=[__item.id for __item in vms_virtual_machine])
+            virtual_machine_ids=[__item.id for __item in vms_get_virtual_machine])
         ```
         <!--End PulumiCodeChooser -->
 

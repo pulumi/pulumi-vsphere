@@ -76,7 +76,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
 //				Name:         pulumi.StringRef("esxi-01.example.com/Resources"),
-//				DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Datacenter.Id),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err

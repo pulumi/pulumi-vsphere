@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const prodDatacenter = new vsphere.Datacenter("prodDatacenter", {});
+ * const prodDatacenter = new vsphere.Datacenter("prod_datacenter", {name: "my_prod_datacenter"});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -28,7 +28,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const researchDatacenter = new vsphere.Datacenter("researchDatacenter", {folder: "/research/"});
+ * const researchDatacenter = new vsphere.Datacenter("research_datacenter", {
+ *     name: "my_research_datacenter",
+ *     folder: "/research/",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

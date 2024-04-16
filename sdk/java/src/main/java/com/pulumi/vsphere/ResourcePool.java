@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var resourcePool = new ResourcePool(&#34;resourcePool&#34;, ResourcePoolArgs.builder()        
+ *             .name(&#34;resource-pool-01&#34;)
  *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.resourcePoolId()))
  *             .build());
  * 
@@ -101,10 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vm = new VirtualMachine(&#34;vm&#34;, VirtualMachineArgs.builder()        
- *             .resourcePoolId(data.vsphere_compute_cluster().cluster().resource_pool_id())
+ *             .resourcePoolId(cluster.resourcePoolId())
  *             .build());
  * 
- *         // ... other configuration ...
  *     }
  * }
  * ```
@@ -149,10 +149,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var resourcePoolParent = new ResourcePool(&#34;resourcePoolParent&#34;, ResourcePoolArgs.builder()        
+ *             .name(&#34;parent&#34;)
  *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.resourcePoolId()))
  *             .build());
  * 
  *         var resourcePoolChild = new ResourcePool(&#34;resourcePoolChild&#34;, ResourcePoolArgs.builder()        
+ *             .name(&#34;child&#34;)
  *             .parentResourcePoolId(resourcePoolParent.id())
  *             .build());
  * 

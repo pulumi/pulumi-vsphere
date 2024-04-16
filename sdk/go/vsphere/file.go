@@ -29,12 +29,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.NewFile(ctx, "ubuntuVmdkUpload", &vsphere.FileArgs{
-//				CreateDirectories: pulumi.Bool(true),
+//			_, err := vsphere.NewFile(ctx, "ubuntu_vmdk_upload", &vsphere.FileArgs{
 //				Datacenter:        pulumi.String("dc-01"),
 //				Datastore:         pulumi.String("datastore-01"),
-//				DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
 //				SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
+//				DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
+//				CreateDirectories: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -61,14 +61,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.NewFile(ctx, "ubuntuCopy", &vsphere.FileArgs{
-//				CreateDirectories: pulumi.Bool(true),
-//				Datacenter:        pulumi.String("dc-01"),
-//				Datastore:         pulumi.String("datastore-01"),
-//				DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
+//			_, err := vsphere.NewFile(ctx, "ubuntu_copy", &vsphere.FileArgs{
 //				SourceDatacenter:  pulumi.String("dc-01"),
+//				Datacenter:        pulumi.String("dc-01"),
 //				SourceDatastore:   pulumi.String("datastore-01"),
+//				Datastore:         pulumi.String("datastore-01"),
 //				SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
+//				DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
+//				CreateDirectories: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

@@ -39,14 +39,14 @@ import (
 // }
 // tag1, err := vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 // Name: "FirstTag",
-// CategoryId: data.Vsphere_tag_category.Cat.Id,
+// CategoryId: cat.Id,
 // }, nil);
 // if err != nil {
 // return err
 // }
 // _, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 // Name: "SecondTag",
-// CategoryId: data.Vsphere_tag_category.Cat.Id,
+// CategoryId: cat.Id,
 // }, nil);
 // if err != nil {
 // return err

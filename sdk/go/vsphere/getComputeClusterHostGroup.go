@@ -31,13 +31,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef(_var.Vsphere_datacenter),
+//				Name: pulumi.StringRef(vsphereDatacenter),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
-//				Name:         _var.Vsphere_cluster,
+//				Name:         vsphereCluster,
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
@@ -50,8 +50,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "hostRule1", &vsphere.ComputeClusterVmHostRuleArgs{
+//			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "host_rule1", &vsphere.ComputeClusterVmHostRuleArgs{
 //				ComputeClusterId:      pulumi.String(cluster.Id),
+//				Name:                  pulumi.String("terraform-host-rule1"),
 //				VmGroupName:           pulumi.String("vm_group1"),
 //				AffinityHostGroupName: pulumi.String(hostGroup1.Name),
 //			})

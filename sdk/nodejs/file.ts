@@ -14,12 +14,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const ubuntuVmdkUpload = new vsphere.File("ubuntuVmdkUpload", {
- *     createDirectories: true,
+ * const ubuntuVmdkUpload = new vsphere.File("ubuntu_vmdk_upload", {
  *     datacenter: "dc-01",
  *     datastore: "datastore-01",
- *     destinationFile: "/my/dst/path/custom_ubuntu.vmdk",
  *     sourceFile: "/my/src/path/custom_ubuntu.vmdk",
+ *     destinationFile: "/my/dst/path/custom_ubuntu.vmdk",
+ *     createDirectories: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -31,14 +31,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const ubuntuCopy = new vsphere.File("ubuntuCopy", {
- *     createDirectories: true,
- *     datacenter: "dc-01",
- *     datastore: "datastore-01",
- *     destinationFile: "/my/dst/path/custom_ubuntu.vmdk",
+ * const ubuntuCopy = new vsphere.File("ubuntu_copy", {
  *     sourceDatacenter: "dc-01",
+ *     datacenter: "dc-01",
  *     sourceDatastore: "datastore-01",
+ *     datastore: "datastore-01",
  *     sourceFile: "/my/src/path/custom_ubuntu.vmdk",
+ *     destinationFile: "/my/dst/path/custom_ubuntu.vmdk",
+ *     createDirectories: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

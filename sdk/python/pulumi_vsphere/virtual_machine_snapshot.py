@@ -314,13 +314,13 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         import pulumi_vsphere as vsphere
 
         demo1 = vsphere.VirtualMachineSnapshot("demo1",
-            consolidate=True,
+            virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9",
+            snapshot_name="Snapshot Name",
             description="This is Demo Snapshot",
             memory=True,
             quiesce=True,
             remove_children=False,
-            snapshot_name="Snapshot Name",
-            virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
+            consolidate=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -377,13 +377,13 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         import pulumi_vsphere as vsphere
 
         demo1 = vsphere.VirtualMachineSnapshot("demo1",
-            consolidate=True,
+            virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9",
+            snapshot_name="Snapshot Name",
             description="This is Demo Snapshot",
             memory=True,
             quiesce=True,
             remove_children=False,
-            snapshot_name="Snapshot Name",
-            virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
+            consolidate=True)
         ```
         <!--End PulumiCodeChooser -->
 

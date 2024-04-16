@@ -13,6 +13,44 @@ namespace Pulumi.VSphere
     /// The `vsphere.GuestOsCustomization` resource can be used to a customization specification for a guest operating system.
     /// 
     /// &gt; **NOTE:** The name attribute is unique identifier for the guest OS spec per VC.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var windowsCustomization = new VSphere.GuestOsCustomization("windows_customization", new()
+    ///     {
+    ///         Name = "windows-spec",
+    ///         Type = "Windows",
+    ///         Spec = new VSphere.Inputs.GuestOsCustomizationSpecArgs
+    ///         {
+    ///             WindowsOptions = new VSphere.Inputs.GuestOsCustomizationSpecWindowsOptionsArgs
+    ///             {
+    ///                 RunOnceCommandLists = new[]
+    ///                 {
+    ///                     "command-1",
+    ///                     "command-2",
+    ///                 },
+    ///                 ComputerName = "windows",
+    ///                 AutoLogon = false,
+    ///                 AutoLogonCount = 0,
+    ///                 AdminPassword = "VMware1!",
+    ///                 TimeZone = 4,
+    ///                 Workgroup = "workgroup",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/guestOsCustomization:GuestOsCustomization")]
     public partial class GuestOsCustomization : global::Pulumi.CustomResource

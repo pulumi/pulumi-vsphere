@@ -202,6 +202,33 @@ class GuestOsCustomization(pulumi.CustomResource):
 
         > **NOTE:** The name attribute is unique identifier for the guest OS spec per VC.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        windows_customization = vsphere.GuestOsCustomization("windows_customization",
+            name="windows-spec",
+            type="Windows",
+            spec=vsphere.GuestOsCustomizationSpecArgs(
+                windows_options=vsphere.GuestOsCustomizationSpecWindowsOptionsArgs(
+                    run_once_command_lists=[
+                        "command-1",
+                        "command-2",
+                    ],
+                    computer_name="windows",
+                    auto_logon=False,
+                    auto_logon_count=0,
+                    admin_password="VMware1!",
+                    time_zone=4,
+                    workgroup="workgroup",
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the customization specification.
@@ -219,6 +246,33 @@ class GuestOsCustomization(pulumi.CustomResource):
         The `GuestOsCustomization` resource can be used to a customization specification for a guest operating system.
 
         > **NOTE:** The name attribute is unique identifier for the guest OS spec per VC.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        windows_customization = vsphere.GuestOsCustomization("windows_customization",
+            name="windows-spec",
+            type="Windows",
+            spec=vsphere.GuestOsCustomizationSpecArgs(
+                windows_options=vsphere.GuestOsCustomizationSpecWindowsOptionsArgs(
+                    run_once_command_lists=[
+                        "command-1",
+                        "command-2",
+                    ],
+                    computer_name="windows",
+                    auto_logon=False,
+                    auto_logon_count=0,
+                    admin_password="VMware1!",
+                    time_zone=4,
+                    workgroup="workgroup",
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param GuestOsCustomizationArgs args: The arguments to use to populate this resource's properties.

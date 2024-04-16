@@ -106,6 +106,7 @@ def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
     vds = vsphere.get_distributed_virtual_switch(name="vds-01",
         datacenter_id=datacenter.id)
     dvpg = vsphere.DistributedPortGroup("dvpg",
+        name="dvpg-01",
         distributed_virtual_switch_uuid=vds.id,
         active_uplinks=[vds.uplinks[0]],
         standby_uplinks=[vds.uplinks[1]])
@@ -162,6 +163,7 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
     vds = vsphere.get_distributed_virtual_switch(name="vds-01",
         datacenter_id=datacenter.id)
     dvpg = vsphere.DistributedPortGroup("dvpg",
+        name="dvpg-01",
         distributed_virtual_switch_uuid=vds.id,
         active_uplinks=[vds.uplinks[0]],
         standby_uplinks=[vds.uplinks[1]])

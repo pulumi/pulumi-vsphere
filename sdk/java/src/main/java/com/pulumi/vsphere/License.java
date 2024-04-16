@@ -44,11 +44,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var licenseKey = new License(&#34;licenseKey&#34;, LicenseArgs.builder()        
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;VpxClientLicenseLabel&#34;, &#34;Hello World&#34;),
- *                 Map.entry(&#34;Workflow&#34;, &#34;Hello World&#34;)
- *             ))
  *             .licenseKey(&#34;452CQ-2EK54-K8742-00000-00000&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;vpxClientLicenseLabel&#34;, &#34;Hello World&#34;),
+ *                 Map.entry(&#34;workflow&#34;, &#34;Hello World&#34;)
+ *             ))
  *             .build());
  * 
  *     }

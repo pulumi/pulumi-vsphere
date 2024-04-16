@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var d1 = new DistributedVirtualSwitch(&#34;d1&#34;, DistributedVirtualSwitchArgs.builder()        
+ *             .name(&#34;dc_DVPG0&#34;)
  *             .datacenterId(dc.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
  *             .hosts(DistributedVirtualSwitchHostArgs.builder()
  *                 .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
@@ -76,6 +77,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var p1 = new DistributedPortGroup(&#34;p1&#34;, DistributedPortGroupArgs.builder()        
+ *             .name(&#34;test-pg&#34;)
  *             .vlanId(1234)
  *             .distributedVirtualSwitchUuid(d1.id())
  *             .build());
@@ -137,6 +139,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var hvs1 = new HostVirtualSwitch(&#34;hvs1&#34;, HostVirtualSwitchArgs.builder()        
+ *             .name(&#34;dc_HPG0&#34;)
  *             .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
  *             .networkAdapters(            
  *                 &#34;vmnic3&#34;,
@@ -146,6 +149,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var p1 = new HostPortGroup(&#34;p1&#34;, HostPortGroupArgs.builder()        
+ *             .name(&#34;my-pg&#34;)
  *             .virtualSwitchName(hvs1.name())
  *             .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
  *             .build());

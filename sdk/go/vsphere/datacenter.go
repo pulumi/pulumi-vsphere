@@ -31,7 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.NewDatacenter(ctx, "prodDatacenter", nil)
+//			_, err := vsphere.NewDatacenter(ctx, "prod_datacenter", &vsphere.DatacenterArgs{
+//				Name: pulumi.String("my_prod_datacenter"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -57,7 +59,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.NewDatacenter(ctx, "researchDatacenter", &vsphere.DatacenterArgs{
+//			_, err := vsphere.NewDatacenter(ctx, "research_datacenter", &vsphere.DatacenterArgs{
+//				Name:   pulumi.String("my_research_datacenter"),
 //				Folder: pulumi.String("/research/"),
 //			})
 //			if err != nil {

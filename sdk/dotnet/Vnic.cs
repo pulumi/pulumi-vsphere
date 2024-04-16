@@ -40,6 +40,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var d1 = new VSphere.DistributedVirtualSwitch("d1", new()
     ///     {
+    ///         Name = "dc_DVPG0",
     ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///         Hosts = new[]
     ///         {
@@ -56,6 +57,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var p1 = new VSphere.DistributedPortGroup("p1", new()
     ///     {
+    ///         Name = "test-pg",
     ///         VlanId = 1234,
     ///         DistributedVirtualSwitchUuid = d1.Id,
     ///     });
@@ -100,6 +102,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var hvs1 = new VSphere.HostVirtualSwitch("hvs1", new()
     ///     {
+    ///         Name = "dc_HPG0",
     ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
     ///         NetworkAdapters = new[]
     ///         {
@@ -118,6 +121,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var p1 = new VSphere.HostPortGroup("p1", new()
     ///     {
+    ///         Name = "my-pg",
     ///         VirtualSwitchName = hvs1.Name,
     ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
     ///     });

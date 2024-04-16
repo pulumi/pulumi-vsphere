@@ -280,12 +280,12 @@ type DistributedVirtualSwitch struct {
 	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
 	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
 	// 					MinVlan: pulumi.Int(100),
+	// 					MaxVlan: pulumi.Int(199),
 	// 				},
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
 	// 					MinVlan: pulumi.Int(300),
+	// 					MaxVlan: pulumi.Int(399),
 	// 				},
 	// 			},
 	// 		})
@@ -614,12 +614,12 @@ type distributedVirtualSwitchState struct {
 	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
 	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
 	// 					MinVlan: pulumi.Int(100),
+	// 					MaxVlan: pulumi.Int(199),
 	// 				},
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
 	// 					MinVlan: pulumi.Int(300),
+	// 					MaxVlan: pulumi.Int(399),
 	// 				},
 	// 			},
 	// 		})
@@ -916,12 +916,12 @@ type DistributedVirtualSwitchState struct {
 	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
 	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
 	// 					MinVlan: pulumi.Int(100),
+	// 					MaxVlan: pulumi.Int(199),
 	// 				},
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
 	// 					MinVlan: pulumi.Int(300),
+	// 					MaxVlan: pulumi.Int(399),
 	// 				},
 	// 			},
 	// 		})
@@ -1219,12 +1219,12 @@ type distributedVirtualSwitchArgs struct {
 	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
 	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
 	// 					MinVlan: pulumi.Int(100),
+	// 					MaxVlan: pulumi.Int(199),
 	// 				},
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
 	// 					MinVlan: pulumi.Int(300),
+	// 					MaxVlan: pulumi.Int(399),
 	// 				},
 	// 			},
 	// 		})
@@ -1519,12 +1519,12 @@ type DistributedVirtualSwitchArgs struct {
 	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
 	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
 	// 					MinVlan: pulumi.Int(100),
+	// 					MaxVlan: pulumi.Int(199),
 	// 				},
 	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
 	// 					MinVlan: pulumi.Int(300),
+	// 					MaxVlan: pulumi.Int(399),
 	// 				},
 	// 			},
 	// 		})
@@ -2169,12 +2169,12 @@ func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
 //			_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
 //				VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
 //					&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-//						MaxVlan: pulumi.Int(199),
 //						MinVlan: pulumi.Int(100),
+//						MaxVlan: pulumi.Int(199),
 //					},
 //					&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-//						MaxVlan: pulumi.Int(399),
 //						MinVlan: pulumi.Int(300),
+//						MaxVlan: pulumi.Int(399),
 //					},
 //				},
 //			})

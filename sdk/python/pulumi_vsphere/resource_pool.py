@@ -665,7 +665,9 @@ class ResourcePool(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
             datacenter_id=datacenter.id)
-        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool = vsphere.ResourcePool("resource_pool",
+            name="resource-pool-01",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -677,8 +679,7 @@ class ResourcePool(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
-        # ... other configuration ...
+        vm = vsphere.VirtualMachine("vm", resource_pool_id=cluster["resourcePoolId"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -694,8 +695,12 @@ class ResourcePool(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
             datacenter_id=datacenter.id)
-        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
-        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
+        resource_pool_parent = vsphere.ResourcePool("resource_pool_parent",
+            name="parent",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool_child = vsphere.ResourcePool("resource_pool_child",
+            name="child",
+            parent_resource_pool_id=resource_pool_parent.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -788,7 +793,9 @@ class ResourcePool(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
             datacenter_id=datacenter.id)
-        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool = vsphere.ResourcePool("resource_pool",
+            name="resource-pool-01",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -800,8 +807,7 @@ class ResourcePool(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
-        # ... other configuration ...
+        vm = vsphere.VirtualMachine("vm", resource_pool_id=cluster["resourcePoolId"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -817,8 +823,12 @@ class ResourcePool(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
             datacenter_id=datacenter.id)
-        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
-        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
+        resource_pool_parent = vsphere.ResourcePool("resource_pool_parent",
+            name="parent",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool_child = vsphere.ResourcePool("resource_pool_child",
+            name="child",
+            parent_resource_pool_id=resource_pool_parent.id)
         ```
         <!--End PulumiCodeChooser -->
 

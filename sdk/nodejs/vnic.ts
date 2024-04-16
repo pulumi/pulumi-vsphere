@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *     datacenterId: dc.id,
  * }));
  * const d1 = new vsphere.DistributedVirtualSwitch("d1", {
+ *     name: "dc_DVPG0",
  *     datacenterId: dc.then(dc => dc.id),
  *     hosts: [{
  *         hostSystemId: h1.then(h1 => h1.id),
@@ -35,6 +36,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const p1 = new vsphere.DistributedPortGroup("p1", {
+ *     name: "test-pg",
  *     vlanId: 1234,
  *     distributedVirtualSwitchUuid: d1.id,
  * });
@@ -65,6 +67,7 @@ import * as utilities from "./utilities";
  *     datacenterId: dc.id,
  * }));
  * const hvs1 = new vsphere.HostVirtualSwitch("hvs1", {
+ *     name: "dc_HPG0",
  *     hostSystemId: h1.then(h1 => h1.id),
  *     networkAdapters: [
  *         "vmnic3",
@@ -74,6 +77,7 @@ import * as utilities from "./utilities";
  *     standbyNics: ["vmnic4"],
  * });
  * const p1 = new vsphere.HostPortGroup("p1", {
+ *     name: "my-pg",
  *     virtualSwitchName: hvs1.name,
  *     hostSystemId: h1.then(h1 => h1.id),
  * });

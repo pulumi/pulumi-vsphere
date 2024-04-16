@@ -67,8 +67,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ctx.Export("maxFreeSpaceName", local.Max_free_space_name)
-//			ctx.Export("maxFreeSpace", local.Max_free_space)
+//			ctx.Export("maxFreeSpaceName", theirMaxFreeSpaceName)
+//			ctx.Export("maxFreeSpace", theirMaxFreeSpace)
 //			return nil
 //		})
 //	}

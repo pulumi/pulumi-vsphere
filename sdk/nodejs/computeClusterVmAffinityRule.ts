@@ -59,6 +59,7 @@ import * as utilities from "./utilities";
  * const vm: vsphere.VirtualMachine[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     vm.push(new vsphere.VirtualMachine(`vm-${range.value}`, {
+ *         name: `foo-${range.value}`,
  *         resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
  *         datastoreId: datastore.then(datastore => datastore.id),
  *         numCpus: 1,
@@ -73,7 +74,8 @@ import * as utilities from "./utilities";
  *         }],
  *     }));
  * }
- * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vmAffinityRule", {
+ * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule", {
+ *     name: "vm-affinity-rule",
  *     computeClusterId: cluster.then(cluster => cluster.id),
  *     virtualMachineIds: vm.map((v, k) => [k, v]).map(([, ]) => (v.id)),
  * });
@@ -100,14 +102,15 @@ import * as utilities from "./utilities";
  *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
- * const vmsVirtualMachine = (new Array(vms.length)).map((_, i) => i).map(__index => (vsphere.getVirtualMachine({
+ * const vmsGetVirtualMachine = (new Array(vms.length)).map((_, i) => i).map(__index => (vsphere.getVirtualMachine({
  *     name: vms[__index],
  *     datacenterId: _arg0_.id,
  * })));
- * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vmAffinityRule", {
+ * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule", {
+ *     name: "vm-affinity-rule",
  *     enabled: true,
  *     computeClusterId: cluster.then(cluster => cluster.id),
- *     virtualMachineIds: vmsVirtualMachine.map(__item => __item.id),
+ *     virtualMachineIds: vmsGetVirtualMachine.map(__item => __item.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

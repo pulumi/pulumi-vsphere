@@ -29,12 +29,12 @@ namespace Pulumi.VSphere
         /// {
         ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         Name = @var.Vsphere_datacenter,
+        ///         Name = vsphereDatacenter,
         ///     });
         /// 
         ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
         ///     {
-        ///         Name = @var.Vsphere_cluster,
+        ///         Name = vsphereCluster,
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
@@ -44,9 +44,10 @@ namespace Pulumi.VSphere
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });
         /// 
-        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new()
+        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("host_rule1", new()
         ///     {
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///         Name = "terraform-host-rule1",
         ///         VmGroupName = "vm_group1",
         ///         AffinityHostGroupName = hostGroup1.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
         ///     });
@@ -76,12 +77,12 @@ namespace Pulumi.VSphere
         /// {
         ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         Name = @var.Vsphere_datacenter,
+        ///         Name = vsphereDatacenter,
         ///     });
         /// 
         ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
         ///     {
-        ///         Name = @var.Vsphere_cluster,
+        ///         Name = vsphereCluster,
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
         ///     });
         /// 
@@ -91,9 +92,10 @@ namespace Pulumi.VSphere
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
         ///     });
         /// 
-        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new()
+        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("host_rule1", new()
         ///     {
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///         Name = "terraform-host-rule1",
         ///         VmGroupName = "vm_group1",
         ///         AffinityHostGroupName = hostGroup1.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
         ///     });

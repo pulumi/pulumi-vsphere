@@ -10,6 +10,34 @@ import * as utilities from "./utilities";
  * The `vsphere.GuestOsCustomization` resource can be used to a customization specification for a guest operating system.
  *
  * > **NOTE:** The name attribute is unique identifier for the guest OS spec per VC.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const windowsCustomization = new vsphere.GuestOsCustomization("windows_customization", {
+ *     name: "windows-spec",
+ *     type: "Windows",
+ *     spec: {
+ *         windowsOptions: {
+ *             runOnceCommandLists: [
+ *                 "command-1",
+ *                 "command-2",
+ *             ],
+ *             computerName: "windows",
+ *             autoLogon: false,
+ *             autoLogonCount: 0,
+ *             adminPassword: "VMware1!",
+ *             timeZone: 4,
+ *             workgroup: "workgroup",
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class GuestOsCustomization extends pulumi.CustomResource {
     /**

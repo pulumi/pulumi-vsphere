@@ -465,12 +465,12 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      *
      * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
      *     {
-     *         maxVlan: 199,
      *         minVlan: 100,
+     *         maxVlan: 199,
      *     },
      *     {
-     *         maxVlan: 399,
      *         minVlan: 300,
+     *         maxVlan: 399,
      *     },
      * ]});
      * ```
@@ -1159,12 +1159,12 @@ export interface DistributedVirtualSwitchState {
      *
      * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
      *     {
-     *         maxVlan: 199,
      *         minVlan: 100,
+     *         maxVlan: 199,
      *     },
      *     {
-     *         maxVlan: 399,
      *         minVlan: 300,
+     *         maxVlan: 399,
      *     },
      * ]});
      * ```
@@ -1635,12 +1635,12 @@ export interface DistributedVirtualSwitchArgs {
      *
      * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
      *     {
-     *         maxVlan: 199,
      *         minVlan: 100,
+     *         maxVlan: 199,
      *     },
      *     {
-     *         maxVlan: 399,
      *         minVlan: 300,
+     *         maxVlan: 399,
      *     },
      * ]});
      * ```

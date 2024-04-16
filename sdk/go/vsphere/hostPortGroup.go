@@ -49,7 +49,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "hostVirtualSwitch", &vsphere.HostVirtualSwitchArgs{
+//			hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "host_virtual_switch", &vsphere.HostVirtualSwitchArgs{
+//				Name:         pulumi.String("switch-01"),
 //				HostSystemId: pulumi.String(host.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
@@ -66,6 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewHostPortGroup(ctx, "pg", &vsphere.HostPortGroupArgs{
+//				Name:              pulumi.String("portgroup-01"),
 //				HostSystemId:      pulumi.String(host.Id),
 //				VirtualSwitchName: hostVirtualSwitch.Name,
 //			})
@@ -113,7 +115,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "hostVirtualSwitch", &vsphere.HostVirtualSwitchArgs{
+//			hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "host_virtual_switch", &vsphere.HostVirtualSwitchArgs{
+//				Name:         pulumi.String("switch-01"),
 //				HostSystemId: pulumi.String(host.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
@@ -130,6 +133,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewHostPortGroup(ctx, "pg", &vsphere.HostPortGroupArgs{
+//				Name:              pulumi.String("portgroup-01"),
 //				HostSystemId:      pulumi.String(host.Id),
 //				VirtualSwitchName: hostVirtualSwitch.Name,
 //				VlanId:            pulumi.Int(4095),

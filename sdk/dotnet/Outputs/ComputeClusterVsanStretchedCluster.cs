@@ -40,12 +40,13 @@ namespace Pulumi.VSphere.Outputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var computeCluster = new VSphere.ComputeCluster("computeCluster", new()
+        ///     var computeCluster = new VSphere.ComputeCluster("compute_cluster", new()
         ///     {
-        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
+        ///         Name = "terraform-compute-cluster-test",
+        ///         DatacenterId = datacenter.Id,
         ///         HostSystemIds = new[]
         ///         {
-        ///             data.Vsphere_host.Host.Select(__item =&gt; __item.Id).ToList(),
+        ///             host.Select(__item =&gt; __item.Id).ToList(),
         ///         },
         ///         DrsEnabled = true,
         ///         DrsAutomationLevel = "fullyAutomated",
@@ -64,8 +65,8 @@ namespace Pulumi.VSphere.Outputs
         ///         {
         ///             new VSphere.Inputs.ComputeClusterVsanDiskGroupArgs
         ///             {
-        ///                 Cache = data.Vsphere_vmfs_disks.Cache_disks[0],
-        ///                 Storages = data.Vsphere_vmfs_disks.Storage_disks,
+        ///                 Cache = cacheDisks[0],
+        ///                 Storages = storageDisks,
         ///             },
         ///         },
         ///         VsanFaultDomains = new[]
@@ -79,7 +80,7 @@ namespace Pulumi.VSphere.Outputs
         ///                         Name = "fd1",
         ///                         HostIds = new[]
         ///                         {
-        ///                             data.Vsphere_host.Faultdomain1_hosts.Select(__item =&gt; __item.Id).ToList(),
+        ///                             faultdomain1Hosts.Select(__item =&gt; __item.Id).ToList(),
         ///                         },
         ///                     },
         ///                     new VSphere.Inputs.ComputeClusterVsanFaultDomainFaultDomainArgs
@@ -87,7 +88,7 @@ namespace Pulumi.VSphere.Outputs
         ///                         Name = "fd2",
         ///                         HostIds = new[]
         ///                         {
-        ///                             data.Vsphere_host.Faultdomain2_hosts.Select(__item =&gt; __item.Id).ToList(),
+        ///                             faultdomain2Hosts.Select(__item =&gt; __item.Id).ToList(),
         ///                         },
         ///                     },
         ///                 },
@@ -97,13 +98,13 @@ namespace Pulumi.VSphere.Outputs
         ///         {
         ///             PreferredFaultDomainHostIds = new[]
         ///             {
-        ///                 data.Vsphere_host.Preferred_fault_domain_host.Select(__item =&gt; __item.Id).ToList(),
+        ///                 preferredFaultDomainHost.Select(__item =&gt; __item.Id).ToList(),
         ///             },
         ///             SecondaryFaultDomainHostIds = new[]
         ///             {
-        ///                 data.Vsphere_host.Secondary_fault_domain_host.Select(__item =&gt; __item.Id).ToList(),
+        ///                 secondaryFaultDomainHost.Select(__item =&gt; __item.Id).ToList(),
         ///             },
-        ///             WitnessNode = data.Vsphere_host.Witness_host.Id,
+        ///             WitnessNode = witnessHost.Id,
         ///         },
         ///     });
         /// 

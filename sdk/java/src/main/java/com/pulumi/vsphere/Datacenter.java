@@ -32,6 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.vsphere.Datacenter;
+ * import com.pulumi.vsphere.DatacenterArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,7 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prodDatacenter = new Datacenter(&#34;prodDatacenter&#34;);
+ *         var prodDatacenter = new Datacenter(&#34;prodDatacenter&#34;, DatacenterArgs.builder()        
+ *             .name(&#34;my_prod_datacenter&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -77,6 +80,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var researchDatacenter = new Datacenter(&#34;researchDatacenter&#34;, DatacenterArgs.builder()        
+ *             .name(&#34;my_research_datacenter&#34;)
  *             .folder(&#34;/research/&#34;)
  *             .build());
  * 

@@ -37,13 +37,13 @@ namespace Pulumi.VSphere
         ///     var tag1 = VSphere.GetTag.Invoke(new()
         ///     {
         ///         Name = "FirstTag",
-        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         CategoryId = cat.Id,
         ///     });
         /// 
         ///     var tag2 = VSphere.GetTag.Invoke(new()
         ///     {
         ///         Name = "SecondTag",
-        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         CategoryId = cat.Id,
         ///     });
         /// 
         ///     var dyn = VSphere.GetDynamic.Invoke(new()
@@ -90,13 +90,13 @@ namespace Pulumi.VSphere
         ///     var tag1 = VSphere.GetTag.Invoke(new()
         ///     {
         ///         Name = "FirstTag",
-        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         CategoryId = cat.Id,
         ///     });
         /// 
         ///     var tag2 = VSphere.GetTag.Invoke(new()
         ///     {
         ///         Name = "SecondTag",
-        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         CategoryId = cat.Id,
         ///     });
         /// 
         ///     var dyn = VSphere.GetDynamic.Invoke(new()

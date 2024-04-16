@@ -303,12 +303,12 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        ubuntu_vmdk_upload = vsphere.File("ubuntuVmdkUpload",
-            create_directories=True,
+        ubuntu_vmdk_upload = vsphere.File("ubuntu_vmdk_upload",
             datacenter="dc-01",
             datastore="datastore-01",
+            source_file="/my/src/path/custom_ubuntu.vmdk",
             destination_file="/my/dst/path/custom_ubuntu.vmdk",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
+            create_directories=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -319,14 +319,14 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        ubuntu_copy = vsphere.File("ubuntuCopy",
-            create_directories=True,
-            datacenter="dc-01",
-            datastore="datastore-01",
-            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+        ubuntu_copy = vsphere.File("ubuntu_copy",
             source_datacenter="dc-01",
+            datacenter="dc-01",
             source_datastore="datastore-01",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
+            datastore="datastore-01",
+            source_file="/my/src/path/custom_ubuntu.vmdk",
+            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+            create_directories=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -365,12 +365,12 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        ubuntu_vmdk_upload = vsphere.File("ubuntuVmdkUpload",
-            create_directories=True,
+        ubuntu_vmdk_upload = vsphere.File("ubuntu_vmdk_upload",
             datacenter="dc-01",
             datastore="datastore-01",
+            source_file="/my/src/path/custom_ubuntu.vmdk",
             destination_file="/my/dst/path/custom_ubuntu.vmdk",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
+            create_directories=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -381,14 +381,14 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        ubuntu_copy = vsphere.File("ubuntuCopy",
-            create_directories=True,
-            datacenter="dc-01",
-            datastore="datastore-01",
-            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+        ubuntu_copy = vsphere.File("ubuntu_copy",
             source_datacenter="dc-01",
+            datacenter="dc-01",
             source_datastore="datastore-01",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
+            datastore="datastore-01",
+            source_file="/my/src/path/custom_ubuntu.vmdk",
+            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+            create_directories=True)
         ```
         <!--End PulumiCodeChooser -->
 

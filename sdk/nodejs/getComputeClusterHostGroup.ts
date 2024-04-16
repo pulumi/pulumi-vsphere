@@ -17,18 +17,19 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *     name: _var.vsphere_datacenter,
+ *     name: vsphereDatacenter,
  * });
  * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
- *     name: _var.vsphere_cluster,
+ *     name: vsphereCluster,
  *     datacenterId: datacenter.id,
  * }));
  * const hostGroup1 = cluster.then(cluster => vsphere.getComputeClusterHostGroup({
  *     name: "host_group1",
  *     computeClusterId: cluster.id,
  * }));
- * const hostRule1 = new vsphere.ComputeClusterVmHostRule("hostRule1", {
+ * const hostRule1 = new vsphere.ComputeClusterVmHostRule("host_rule1", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     name: "terraform-host-rule1",
  *     vmGroupName: "vm_group1",
  *     affinityHostGroupName: hostGroup1.then(hostGroup1 => hostGroup1.name),
  * });
@@ -90,18 +91,19 @@ export interface GetComputeClusterHostGroupResult {
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *     name: _var.vsphere_datacenter,
+ *     name: vsphereDatacenter,
  * });
  * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
- *     name: _var.vsphere_cluster,
+ *     name: vsphereCluster,
  *     datacenterId: datacenter.id,
  * }));
  * const hostGroup1 = cluster.then(cluster => vsphere.getComputeClusterHostGroup({
  *     name: "host_group1",
  *     computeClusterId: cluster.id,
  * }));
- * const hostRule1 = new vsphere.ComputeClusterVmHostRule("hostRule1", {
+ * const hostRule1 = new vsphere.ComputeClusterVmHostRule("host_rule1", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     name: "terraform-host-rule1",
  *     vmGroupName: "vm_group1",
  *     affinityHostGroupName: hostGroup1.then(hostGroup1 => hostGroup1.name),
  * });

@@ -46,13 +46,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vsphere.NewVirtualMachineSnapshot(ctx, "demo1", &vsphere.VirtualMachineSnapshotArgs{
-//				Consolidate:        pulumi.Bool(true),
+//				VirtualMachineUuid: pulumi.String("9aac5551-a351-4158-8c5c-15a71e8ec5c9"),
+//				SnapshotName:       pulumi.String("Snapshot Name"),
 //				Description:        pulumi.String("This is Demo Snapshot"),
 //				Memory:             pulumi.Bool(true),
 //				Quiesce:            pulumi.Bool(true),
 //				RemoveChildren:     pulumi.Bool(false),
-//				SnapshotName:       pulumi.String("Snapshot Name"),
-//				VirtualMachineUuid: pulumi.String("9aac5551-a351-4158-8c5c-15a71e8ec5c9"),
+//				Consolidate:        pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

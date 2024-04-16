@@ -30,7 +30,10 @@ import * as utilities from "./utilities";
  *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
- * const resourcePool = new vsphere.ResourcePool("resourcePool", {parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId)});
+ * const resourcePool = new vsphere.ResourcePool("resource_pool", {
+ *     name: "resource-pool-01",
+ *     parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId),
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -42,8 +45,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const vm = new vsphere.VirtualMachine("vm", {resourcePoolId: data.vsphere_compute_cluster.cluster.resource_pool_id});
- * // ... other configuration ...
+ * const vm = new vsphere.VirtualMachine("vm", {resourcePoolId: cluster.resourcePoolId});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -63,8 +65,14 @@ import * as utilities from "./utilities";
  *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
- * const resourcePoolParent = new vsphere.ResourcePool("resourcePoolParent", {parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId)});
- * const resourcePoolChild = new vsphere.ResourcePool("resourcePoolChild", {parentResourcePoolId: resourcePoolParent.id});
+ * const resourcePoolParent = new vsphere.ResourcePool("resource_pool_parent", {
+ *     name: "parent",
+ *     parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId),
+ * });
+ * const resourcePoolChild = new vsphere.ResourcePool("resource_pool_child", {
+ *     name: "child",
+ *     parentResourcePoolId: resourcePoolParent.id,
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

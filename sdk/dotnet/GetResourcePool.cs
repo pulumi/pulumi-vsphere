@@ -65,7 +65,7 @@ namespace Pulumi.VSphere
         ///     var pool = VSphere.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com/Resources",
-        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
+        ///         DatacenterId = datacenter.Id,
         ///     });
         /// 
         /// });
@@ -133,7 +133,7 @@ namespace Pulumi.VSphere
         ///     var pool = VSphere.GetResourcePool.Invoke(new()
         ///     {
         ///         Name = "esxi-01.example.com/Resources",
-        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
+        ///         DatacenterId = datacenter.Id,
         ///     });
         /// 
         /// });

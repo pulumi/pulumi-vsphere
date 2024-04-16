@@ -1407,12 +1407,12 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
      *             .vlanRanges(            
      *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .maxVlan(199)
      *                     .minVlan(100)
+     *                     .maxVlan(199)
      *                     .build(),
      *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .maxVlan(399)
      *                     .minVlan(300)
+     *                     .maxVlan(399)
      *                     .build())
      *             .build());
      * 
@@ -1457,12 +1457,12 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
      *             .vlanRanges(            
      *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .maxVlan(199)
      *                     .minVlan(100)
+     *                     .maxVlan(199)
      *                     .build(),
      *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .maxVlan(399)
      *                     .minVlan(300)
+     *                     .maxVlan(399)
      *                     .build())
      *             .build());
      * 

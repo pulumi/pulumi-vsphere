@@ -79,6 +79,7 @@ namespace Pulumi.VSphere
     ///         var range = new { Value = rangeIndex };
     ///         vm.Add(new VSphere.VirtualMachine($"vm-{range.Value}", new()
     ///         {
+    ///             Name = $"foo-{range.Value}",
     ///             ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///             DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
     ///             NumCpus = 1,
@@ -101,8 +102,9 @@ namespace Pulumi.VSphere
     ///             },
     ///         }));
     ///     }
-    ///     var vmAffinityRule = new VSphere.ComputeClusterVmAffinityRule("vmAffinityRule", new()
+    ///     var vmAffinityRule = new VSphere.ComputeClusterVmAffinityRule("vm_affinity_rule", new()
     ///     {
+    ///         Name = "vm-affinity-rule",
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         VirtualMachineIds = vm.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(v =&gt; 
     ///         {
@@ -117,53 +119,6 @@ namespace Pulumi.VSphere
     /// The following example creates an affinity rule for a set of virtual machines
     /// in the cluster by looking up the virtual machine UUIDs from the
     /// `vsphere.VirtualMachine` data source.
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vms = new[]
-    ///     {
-    ///         "foo-0",
-    ///         "foo-1",
-    ///     };
-    /// 
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-    ///     {
-    ///         Name = "dc-01",
-    ///     });
-    /// 
-    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
-    ///     {
-    ///         Name = "cluster-01",
-    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-    ///     });
-    /// 
-    ///     var vmsVirtualMachine = "TODO: Range  range( length(vms)
-    /// ) false".Select(__index =&gt; 
-    ///     {
-    ///         return VSphere.GetVirtualMachine.Invoke(new()
-    ///         {
-    ///             Name = vms[__index],
-    ///             DatacenterId = _arg0_.Id,
-    ///         });
-    ///     }).ToList();
-    /// 
-    ///     var vmAffinityRule = new VSphere.ComputeClusterVmAffinityRule("vmAffinityRule", new()
-    ///     {
-    ///         Enabled = true,
-    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
-    ///         VirtualMachineIds = vmsVirtualMachine.Select(__item =&gt; __item.Id).ToList(),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Importing
     /// 

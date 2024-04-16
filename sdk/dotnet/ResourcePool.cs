@@ -43,8 +43,9 @@ namespace Pulumi.VSphere
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var resourcePool = new VSphere.ResourcePool("resourcePool", new()
+    ///     var resourcePool = new VSphere.ResourcePool("resource_pool", new()
     ///     {
+    ///         Name = "resource-pool-01",
     ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///     });
     /// 
@@ -66,10 +67,9 @@ namespace Pulumi.VSphere
     /// {
     ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
-    ///         ResourcePoolId = data.Vsphere_compute_cluster.Cluster.Resource_pool_id,
+    ///         ResourcePoolId = cluster.ResourcePoolId,
     ///     });
     /// 
-    ///     // ... other configuration ...
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
@@ -98,13 +98,15 @@ namespace Pulumi.VSphere
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var resourcePoolParent = new VSphere.ResourcePool("resourcePoolParent", new()
+    ///     var resourcePoolParent = new VSphere.ResourcePool("resource_pool_parent", new()
     ///     {
+    ///         Name = "parent",
     ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///     });
     /// 
-    ///     var resourcePoolChild = new VSphere.ResourcePool("resourcePoolChild", new()
+    ///     var resourcePoolChild = new VSphere.ResourcePool("resource_pool_child", new()
     ///     {
+    ///         Name = "child",
     ///         ParentResourcePoolId = resourcePoolParent.Id,
     ///     });
     /// 

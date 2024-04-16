@@ -54,6 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewDistributedPortGroup(ctx, "dvpg", &vsphere.DistributedPortGroupArgs{
+//				Name:                         pulumi.String("dvpg-01"),
 //				DistributedVirtualSwitchUuid: pulumi.String(vds.Id),
 //				ActiveUplinks: pulumi.StringArray{
 //					pulumi.String(vds.Uplinks[0]),

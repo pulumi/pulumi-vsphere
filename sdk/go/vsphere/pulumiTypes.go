@@ -346,10 +346,11 @@ type ComputeClusterVsanStretchedCluster struct {
 	// )
 	// func main() {
 	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+	// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
+	// Name: pulumi.String("terraform-compute-cluster-test"),
+	// DatacenterId: pulumi.Any(datacenter.Id),
 	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
 	// },
 	// DrsEnabled: pulumi.Bool(true),
 	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
@@ -366,8 +367,8 @@ type ComputeClusterVsanStretchedCluster struct {
 	// VsanDitRekeyInterval: pulumi.Int(1800),
 	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
 	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+	// Cache: pulumi.Any(cacheDisks[0]),
+	// Storages: pulumi.Any(storageDisks),
 	// },
 	// },
 	// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
@@ -376,13 +377,13 @@ type ComputeClusterVsanStretchedCluster struct {
 	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 	// Name: pulumi.String("fd1"),
 	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
 	// },
 	// },
 	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 	// Name: pulumi.String("fd2"),
 	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
 	// },
 	// },
 	// },
@@ -390,12 +391,12 @@ type ComputeClusterVsanStretchedCluster struct {
 	// },
 	// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
 	// PreferredFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
 	// },
 	// SecondaryFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
 	// },
-	// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+	// WitnessNode: pulumi.Any(witnessHost.Id),
 	// },
 	// })
 	// if err != nil {
@@ -444,10 +445,11 @@ type ComputeClusterVsanStretchedClusterArgs struct {
 	// )
 	// func main() {
 	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+	// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
+	// Name: pulumi.String("terraform-compute-cluster-test"),
+	// DatacenterId: pulumi.Any(datacenter.Id),
 	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
 	// },
 	// DrsEnabled: pulumi.Bool(true),
 	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
@@ -464,8 +466,8 @@ type ComputeClusterVsanStretchedClusterArgs struct {
 	// VsanDitRekeyInterval: pulumi.Int(1800),
 	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
 	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+	// Cache: pulumi.Any(cacheDisks[0]),
+	// Storages: pulumi.Any(storageDisks),
 	// },
 	// },
 	// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
@@ -474,13 +476,13 @@ type ComputeClusterVsanStretchedClusterArgs struct {
 	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 	// Name: pulumi.String("fd1"),
 	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
 	// },
 	// },
 	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 	// Name: pulumi.String("fd2"),
 	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
 	// },
 	// },
 	// },
@@ -488,12 +490,12 @@ type ComputeClusterVsanStretchedClusterArgs struct {
 	// },
 	// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
 	// PreferredFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
 	// },
 	// SecondaryFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
 	// },
-	// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+	// WitnessNode: pulumi.Any(witnessHost.Id),
 	// },
 	// })
 	// if err != nil {
@@ -618,10 +620,11 @@ func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() 
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
+// Name: pulumi.String("terraform-compute-cluster-test"),
+// DatacenterId: pulumi.Any(datacenter.Id),
 // HostSystemIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
 // },
 // DrsEnabled: pulumi.Bool(true),
 // DrsAutomationLevel: pulumi.String("fullyAutomated"),
@@ -638,8 +641,8 @@ func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() 
 // VsanDitRekeyInterval: pulumi.Int(1800),
 // VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
 // &vsphere.ComputeClusterVsanDiskGroupArgs{
-// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+// Cache: pulumi.Any(cacheDisks[0]),
+// Storages: pulumi.Any(storageDisks),
 // },
 // },
 // VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
@@ -648,13 +651,13 @@ func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() 
 // &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 // Name: pulumi.String("fd1"),
 // HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
 // },
 // },
 // &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 // Name: pulumi.String("fd2"),
 // HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
 // },
 // },
 // },
@@ -662,12 +665,12 @@ func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() 
 // },
 // VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
 // PreferredFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
 // },
 // SecondaryFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
 // },
-// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+// WitnessNode: pulumi.Any(witnessHost.Id),
 // },
 // })
 // if err != nil {
@@ -758,10 +761,11 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
+// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
+// Name: pulumi.String("terraform-compute-cluster-test"),
+// DatacenterId: pulumi.Any(datacenter.Id),
 // HostSystemIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:2,18-45),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
 // },
 // DrsEnabled: pulumi.Bool(true),
 // DrsAutomationLevel: pulumi.String("fullyAutomated"),
@@ -778,8 +782,8 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds
 // VsanDitRekeyInterval: pulumi.Int(1800),
 // VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
 // &vsphere.ComputeClusterVsanDiskGroupArgs{
-// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
+// Cache: pulumi.Any(cacheDisks[0]),
+// Storages: pulumi.Any(storageDisks),
 // },
 // },
 // VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
@@ -788,13 +792,13 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds
 // &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 // Name: pulumi.String("fd1"),
 // HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:23,12-53),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
 // },
 // },
 // &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
 // Name: pulumi.String("fd2"),
 // HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:27,12-53),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
 // },
 // },
 // },
@@ -802,12 +806,12 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds
 // },
 // VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
 // PreferredFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:31,32-82),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
 // },
 // SecondaryFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanStretchedCluster:ComputeClusterVsanStretchedCluster-secondaryFaultDomainName.pp:32,32-82),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
 // },
-// WitnessNode: pulumi.Any(data.Vsphere_host.Witness_host.Id),
+// WitnessNode: pulumi.Any(witnessHost.Id),
 // },
 // })
 // if err != nil {
