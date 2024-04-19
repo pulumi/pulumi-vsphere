@@ -266,7 +266,6 @@ type DistributedVirtualSwitch struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -296,7 +295,6 @@ type DistributedVirtualSwitch struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayOutput `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntOutput `pulumi:"vmotionMaximumMbit"`
@@ -600,7 +598,6 @@ type distributedVirtualSwitchState struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -630,7 +627,6 @@ type distributedVirtualSwitchState struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -902,7 +898,6 @@ type DistributedVirtualSwitchState struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -932,7 +927,6 @@ type DistributedVirtualSwitchState struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -1205,7 +1199,6 @@ type distributedVirtualSwitchArgs struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1235,7 +1228,6 @@ type distributedVirtualSwitchArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -1505,7 +1497,6 @@ type DistributedVirtualSwitchArgs struct {
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1535,7 +1526,6 @@ type DistributedVirtualSwitchArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -2153,7 +2143,6 @@ func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
 // `vlanRange` definitions are allowed, but they must not overlap. Example
 // below:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2186,7 +2175,6 @@ func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o DistributedVirtualSwitchOutput) VlanRanges() DistributedVirtualSwitchVlanRangeArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchVlanRangeArrayOutput { return v.VlanRanges }).(DistributedVirtualSwitchVlanRangeArrayOutput)
 }

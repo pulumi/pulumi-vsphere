@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  * The following example sets up a resource pool in an existing compute cluster
  * with the default settings for CPU and memory reservations, shares, and limits.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -32,12 +31,10 @@ import * as utilities from "./utilities";
  * }));
  * const resourcePool = new vsphere.ResourcePool("resourcePool", {parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId)});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * A virtual machine resource could be targeted to use the default resource pool
  * of the cluster using the following:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -45,13 +42,11 @@ import * as utilities from "./utilities";
  * const vm = new vsphere.VirtualMachine("vm", {resourcePoolId: data.vsphere_compute_cluster.cluster.resource_pool_id});
  * // ... other configuration ...
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The following example sets up a parent resource pool in an existing compute cluster
  * with a child resource pool nested below. Each resource pool is configured with
  * the default settings for CPU and memory reservations, shares, and limits.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -66,7 +61,6 @@ import * as utilities from "./utilities";
  * const resourcePoolParent = new vsphere.ResourcePool("resourcePoolParent", {parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId)});
  * const resourcePoolChild = new vsphere.ResourcePool("resourcePoolChild", {parentResourcePoolId: resourcePoolParent.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Importing
  *

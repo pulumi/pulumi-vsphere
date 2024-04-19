@@ -95,7 +95,6 @@ def get_datastore_stats(capacity: Optional[Mapping[str, Any]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -103,7 +102,6 @@ def get_datastore_stats(capacity: Optional[Mapping[str, Any]] = None,
     datacenter = vsphere.get_datacenter(name="dc-01")
     datastore_stats = vsphere.get_datastore_stats(datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     A usefull example of this datasource would be to determine the
     datastore with the most free space. For example, in addition to
@@ -111,14 +109,12 @@ def get_datastore_stats(capacity: Optional[Mapping[str, Any]] = None,
 
     Create an `outputs.tf` like that:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
 
     pulumi.export("maxFreeSpaceName", local["max_free_space_name"])
     pulumi.export("maxFreeSpace", local["max_free_space"])
     ```
-    <!--End PulumiCodeChooser -->
 
     and a `locals.tf` like that:
 
@@ -160,7 +156,6 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -168,7 +163,6 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
     datacenter = vsphere.get_datacenter(name="dc-01")
     datastore_stats = vsphere.get_datastore_stats(datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     A usefull example of this datasource would be to determine the
     datastore with the most free space. For example, in addition to
@@ -176,14 +170,12 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
 
     Create an `outputs.tf` like that:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
 
     pulumi.export("maxFreeSpaceName", local["max_free_space_name"])
     pulumi.export("maxFreeSpace", local["max_free_space"])
     ```
-    <!--End PulumiCodeChooser -->
 
     and a `locals.tf` like that:
 

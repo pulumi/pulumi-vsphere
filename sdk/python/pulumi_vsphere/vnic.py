@@ -373,7 +373,6 @@ class Vnic(pulumi.CustomResource):
 
         ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -399,11 +398,9 @@ class Vnic(pulumi.CustomResource):
             ),
             netstack="vmotion")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a vnic attached to a portgroup using the default TCP/IP stack
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -433,7 +430,6 @@ class Vnic(pulumi.CustomResource):
                 "management",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 
@@ -472,7 +468,6 @@ class Vnic(pulumi.CustomResource):
 
         ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -498,11 +493,9 @@ class Vnic(pulumi.CustomResource):
             ),
             netstack="vmotion")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a vnic attached to a portgroup using the default TCP/IP stack
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -532,7 +525,6 @@ class Vnic(pulumi.CustomResource):
                 "management",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 

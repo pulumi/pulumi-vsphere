@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -48,11 +47,9 @@ import * as utilities from "./utilities";
  *     netstack: "vmotion",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a vnic attached to a portgroup using the default TCP/IP stack
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -89,7 +86,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Importing
  *

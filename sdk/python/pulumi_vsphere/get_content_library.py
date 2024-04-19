@@ -62,14 +62,12 @@ def get_content_library(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     library = vsphere.get_content_library(name="Content Library")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the content library.
@@ -94,14 +92,12 @@ def get_content_library_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     library = vsphere.get_content_library(name="Content Library")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the content library.

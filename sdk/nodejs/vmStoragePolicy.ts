@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * In this example, tags are first applied to datastores.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -74,11 +73,9 @@ import * as utilities from "./utilities";
  *     "data.vsphere_tag.non_replicated.id",
  * ]});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next, storage policies are created and `tagRules` are applied.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -124,11 +121,9 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -144,7 +139,6 @@ import * as utilities from "./utilities";
  * const devVm = new vsphere.VirtualMachine("devVm", {storagePolicyId: data.vsphere_storage_policy.storage_policy.dev_silver_nonreplicated.id});
  * // ... other configuration ...
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class VmStoragePolicy extends pulumi.CustomResource {
     /**

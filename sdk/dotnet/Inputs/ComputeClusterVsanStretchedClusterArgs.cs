@@ -48,7 +48,6 @@ namespace Pulumi.VSphere.Inputs
         /// &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
         /// You can enable or re-enable vSphere HA after vSAN is configured.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -126,7 +125,6 @@ namespace Pulumi.VSphere.Inputs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("secondaryFaultDomainName")]
         public Input<string>? SecondaryFaultDomainName { get; set; }

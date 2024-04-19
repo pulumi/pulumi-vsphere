@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // A usefull example of this datasource would be to determine the
 // datastore with the most free space. For example, in addition to
@@ -55,7 +53,6 @@ import (
 //
 // Create an `outputs.tf` like that:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,7 +71,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // and a `locals.tf` like that:
 func GetDatastoreStats(ctx *pulumi.Context, args *GetDatastoreStatsArgs, opts ...pulumi.InvokeOption) (*GetDatastoreStatsResult, error) {

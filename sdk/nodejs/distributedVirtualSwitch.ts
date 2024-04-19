@@ -458,7 +458,6 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
@@ -474,7 +473,6 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      *     },
      * ]});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     public readonly vlanRanges!: pulumi.Output<outputs.DistributedVirtualSwitchVlanRange[]>;
     /**
@@ -1152,7 +1150,6 @@ export interface DistributedVirtualSwitchState {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
@@ -1168,7 +1165,6 @@ export interface DistributedVirtualSwitchState {
      *     },
      * ]});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
@@ -1628,7 +1624,6 @@ export interface DistributedVirtualSwitchArgs {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
@@ -1644,7 +1639,6 @@ export interface DistributedVirtualSwitchArgs {
      *     },
      * ]});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**

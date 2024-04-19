@@ -144,7 +144,6 @@ class VmStoragePolicy(pulumi.CustomResource):
 
         In this example, tags are first applied to datastores.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -179,11 +178,9 @@ class VmStoragePolicy(pulumi.CustomResource):
             "data.vsphere_tag.non_replicated.id",
         ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Next, storage policies are created and `tag_rules` are applied.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -227,11 +224,9 @@ class VmStoragePolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -243,7 +238,6 @@ class VmStoragePolicy(pulumi.CustomResource):
         dev_vm = vsphere.VirtualMachine("devVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["dev_silver_nonreplicated"]["id"])
         # ... other configuration ...
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -268,7 +262,6 @@ class VmStoragePolicy(pulumi.CustomResource):
 
         In this example, tags are first applied to datastores.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -303,11 +296,9 @@ class VmStoragePolicy(pulumi.CustomResource):
             "data.vsphere_tag.non_replicated.id",
         ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Next, storage policies are created and `tag_rules` are applied.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -351,11 +342,9 @@ class VmStoragePolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -367,7 +356,6 @@ class VmStoragePolicy(pulumi.CustomResource):
         dev_vm = vsphere.VirtualMachine("devVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["dev_silver_nonreplicated"]["id"])
         # ... other configuration ...
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param VmStoragePolicyArgs args: The arguments to use to populate this resource's properties.

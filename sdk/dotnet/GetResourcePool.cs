@@ -19,7 +19,6 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Specifying the Root Resource Pool for a Standalone ESXi Host
         /// 
@@ -53,7 +51,6 @@ namespace Pulumi.VSphere
         /// explicitly created. This resource pool is referred to as the
         /// _root resource pool_ and can be looked up by specifying the path.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
         /// 
@@ -87,7 +83,6 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -109,7 +104,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Specifying the Root Resource Pool for a Standalone ESXi Host
         /// 
@@ -121,7 +115,6 @@ namespace Pulumi.VSphere
         /// explicitly created. This resource pool is referred to as the
         /// _root resource pool_ and can be looked up by specifying the path.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -138,7 +131,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
         /// 

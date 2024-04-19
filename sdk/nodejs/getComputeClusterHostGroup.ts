@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -33,7 +32,6 @@ import * as utilities from "./utilities";
  *     affinityHostGroupName: hostGroup1.then(hostGroup1 => hostGroup1.name),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getComputeClusterHostGroup(args: GetComputeClusterHostGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterHostGroupResult> {
 
@@ -84,7 +82,6 @@ export interface GetComputeClusterHostGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -106,7 +103,6 @@ export interface GetComputeClusterHostGroupResult {
  *     affinityHostGroupName: hostGroup1.then(hostGroup1 => hostGroup1.name),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getComputeClusterHostGroupOutput(args: GetComputeClusterHostGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterHostGroupResult> {
     return pulumi.output(args).apply((a: any) => getComputeClusterHostGroup(a, opts))

@@ -97,7 +97,6 @@ def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
     `DistributedPortGroup` resource that uses the first uplink as a
     primary uplink and the second uplink as a secondary.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -110,7 +109,6 @@ def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
         active_uplinks=[vds.uplinks[0]],
         standby_uplinks=[vds.uplinks[1]])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID
@@ -153,7 +151,6 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
     `DistributedPortGroup` resource that uses the first uplink as a
     primary uplink and the second uplink as a secondary.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -166,7 +163,6 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
         active_uplinks=[vds.uplinks[0]],
         standby_uplinks=[vds.uplinks[1]])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID

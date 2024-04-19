@@ -241,25 +241,21 @@ class Datacenter(pulumi.CustomResource):
 
         ### Create datacenter on the root folder
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
 
         prod_datacenter = vsphere.Datacenter("prodDatacenter")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create datacenter on a subfolder
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
 
         research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 
@@ -304,25 +300,21 @@ class Datacenter(pulumi.CustomResource):
 
         ### Create datacenter on the root folder
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
 
         prod_datacenter = vsphere.Datacenter("prodDatacenter")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create datacenter on a subfolder
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
 
         research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 

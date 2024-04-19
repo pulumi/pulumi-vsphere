@@ -96,7 +96,6 @@ def get_vmfs_disks(filter: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -108,7 +107,6 @@ def get_vmfs_disks(filter: Optional[str] = None,
         rescan=True,
         filter="mpx.vmhba1:C0:T[12]:L0")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A regular expression to filter the disks against. Only
@@ -151,7 +149,6 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -163,7 +160,6 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
         rescan=True,
         filter="mpx.vmhba1:C0:T[12]:L0")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A regular expression to filter the disks against. Only

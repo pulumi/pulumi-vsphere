@@ -118,14 +118,12 @@ def get_license(license_key: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     license = vsphere.get_license(license_key="00000-00000-00000-00000-00000")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str license_key: The license key.
@@ -154,14 +152,12 @@ def get_license_output(license_key: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     license = vsphere.get_license(license_key="00000-00000-00000-00000-00000")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str license_key: The license key.

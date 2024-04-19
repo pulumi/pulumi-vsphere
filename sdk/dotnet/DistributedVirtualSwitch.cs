@@ -608,7 +608,6 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -636,7 +635,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("vlanRanges")]
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchVlanRange>> VlanRanges { get; private set; } = null!;
@@ -1369,7 +1367,6 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -1397,7 +1394,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs> VlanRanges
         {
@@ -2102,7 +2098,6 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -2130,7 +2125,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs> VlanRanges
         {

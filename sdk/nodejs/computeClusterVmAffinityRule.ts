@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  * then creates an affinity rule for these two virtual machines, ensuring they
  * will run on the same host whenever possible.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -78,13 +77,11 @@ import * as utilities from "./utilities";
  *     virtualMachineIds: vm.map((v, k) => [k, v]).map(([, ]) => (v.id)),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The following example creates an affinity rule for a set of virtual machines
  * in the cluster by looking up the virtual machine UUIDs from the
  * `vsphere.VirtualMachine` data source.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -110,7 +107,6 @@ import * as utilities from "./utilities";
  *     virtualMachineIds: vmsVirtualMachine.map(__item => __item.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Importing
  *

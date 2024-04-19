@@ -336,7 +336,6 @@ type ComputeClusterVsanStretchedCluster struct {
 	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
 	// You can enable or re-enable vSphere HA after vSAN is configured.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -405,7 +404,6 @@ type ComputeClusterVsanStretchedCluster struct {
 	// })
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	SecondaryFaultDomainName *string `pulumi:"secondaryFaultDomainName"`
 	// The managed object IDs of the host selected as witness node when enable stretched cluster.
 	WitnessNode string `pulumi:"witnessNode"`
@@ -434,7 +432,6 @@ type ComputeClusterVsanStretchedClusterArgs struct {
 	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
 	// You can enable or re-enable vSphere HA after vSAN is configured.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -503,7 +500,6 @@ type ComputeClusterVsanStretchedClusterArgs struct {
 	// })
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	SecondaryFaultDomainName pulumi.StringPtrInput `pulumi:"secondaryFaultDomainName"`
 	// The managed object IDs of the host selected as witness node when enable stretched cluster.
 	WitnessNode pulumi.StringInput `pulumi:"witnessNode"`
@@ -606,7 +602,6 @@ func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() 
 // > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
 // You can enable or re-enable vSphere HA after vSAN is configured.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -677,7 +672,6 @@ func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() 
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) *string { return v.SecondaryFaultDomainName }).(pulumi.StringPtrOutput)
 }
@@ -746,7 +740,6 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds
 // > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
 // You can enable or re-enable vSphere HA after vSAN is configured.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -817,7 +810,6 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) *string {
 		if v == nil {

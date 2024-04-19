@@ -100,14 +100,12 @@ def get_role(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     terraform_role = vsphere.get_role(label="Terraform to vSphere Integration Role")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of the role.
@@ -142,14 +140,12 @@ def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     terraform_role = vsphere.get_role(label="Terraform to vSphere Integration Role")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of the role.

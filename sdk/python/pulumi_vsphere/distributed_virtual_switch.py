@@ -275,7 +275,6 @@ class DistributedVirtualSwitchArgs:
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -291,7 +290,6 @@ class DistributedVirtualSwitchArgs:
                    ),
                ])
                ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -1591,7 +1589,6 @@ class DistributedVirtualSwitchArgs:
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -1607,7 +1604,6 @@ class DistributedVirtualSwitchArgs:
             ),
         ])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -1977,7 +1973,6 @@ class _DistributedVirtualSwitchState:
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -1993,7 +1988,6 @@ class _DistributedVirtualSwitchState:
                    ),
                ])
                ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -3309,7 +3303,6 @@ class _DistributedVirtualSwitchState:
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -3325,7 +3318,6 @@ class _DistributedVirtualSwitchState:
             ),
         ])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -3697,7 +3689,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -3713,7 +3704,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                    ),
                ])
                ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -4223,7 +4213,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_vsphere as vsphere
@@ -4239,7 +4228,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                    ),
                ])
                ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -5121,7 +5109,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -5137,7 +5124,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             ),
         ])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "vlan_ranges")
 

@@ -12,25 +12,21 @@ import * as utilities from "./utilities";
  *
  * ### Create datacenter on the root folder
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const prodDatacenter = new vsphere.Datacenter("prodDatacenter", {});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create datacenter on a subfolder
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const researchDatacenter = new vsphere.Datacenter("researchDatacenter", {folder: "/research/"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Importing
  *

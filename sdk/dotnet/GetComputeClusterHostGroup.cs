@@ -18,7 +18,6 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetComputeClusterHostGroupResult> InvokeAsync(GetComputeClusterHostGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupArgs(), options.WithDefaults());
@@ -65,7 +63,6 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetComputeClusterHostGroupResult> Invoke(GetComputeClusterHostGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupInvokeArgs(), options.WithDefaults());

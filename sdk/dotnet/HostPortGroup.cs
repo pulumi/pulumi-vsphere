@@ -23,7 +23,6 @@ namespace Pulumi.VSphere
     /// 
     /// **Create a Virtual Switch and Bind a Port Group:**
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,7 +68,6 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// **Create a Port Group with a VLAN and ab Override:**
     /// 
@@ -79,7 +77,6 @@ namespace Pulumi.VSphere
     /// to ensure that all traffic is seen on the port. The setting overrides
     /// the implicit default of `false` set on the standard switch.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -127,7 +124,6 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Importing
     /// 
