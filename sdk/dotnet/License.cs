@@ -11,31 +11,6 @@ namespace Pulumi.VSphere
 {
     /// <summary>
     /// Provides a VMware vSphere license resource. This can be used to add and remove license keys.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var licenseKey = new VSphere.License("licenseKey", new()
-    ///     {
-    ///         Labels = 
-    ///         {
-    ///             { "VpxClientLicenseLabel", "Hello World" },
-    ///             { "Workflow", "Hello World" },
-    ///         },
-    ///         LicenseKey = "452CQ-2EK54-K8742-00000-00000",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/license:License")]
     public partial class License : global::Pulumi.CustomResource

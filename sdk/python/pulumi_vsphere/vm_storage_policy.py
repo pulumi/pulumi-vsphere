@@ -152,28 +152,28 @@ class VmStoragePolicy(pulumi.CustomResource):
         environment = vsphere.get_tag_category(name="environment")
         service_level = vsphere.get_tag_category(name="service_level")
         replication = vsphere.get_tag_category(name="replication")
-        production = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
-            name="production")
-        development = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
-            name="development")
-        platinum = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="platinum")
-        gold = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="platinum")
-        silver = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="silver")
-        bronze = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="bronze")
-        replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
-            name="replicated")
-        non_replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
-            name="non_replicated")
-        prod_datastore = vsphere.VmfsDatastore("prodDatastore", tags=[
+        production = vsphere.get_tag(name="production",
+            category_id="data.vsphere_tag_category.environment.id")
+        development = vsphere.get_tag(name="development",
+            category_id="data.vsphere_tag_category.environment.id")
+        platinum = vsphere.get_tag(name="platinum",
+            category_id="data.vsphere_tag_category.service_level.id")
+        gold = vsphere.get_tag(name="platinum",
+            category_id="data.vsphere_tag_category.service_level.id")
+        silver = vsphere.get_tag(name="silver",
+            category_id="data.vsphere_tag_category.service_level.id")
+        bronze = vsphere.get_tag(name="bronze",
+            category_id="data.vsphere_tag_category.service_level.id")
+        replicated = vsphere.get_tag(name="replicated",
+            category_id="data.vsphere_tag_category.replication.id")
+        non_replicated = vsphere.get_tag(name="non_replicated",
+            category_id="data.vsphere_tag_category.replication.id")
+        prod_datastore = vsphere.VmfsDatastore("prod_datastore", tags=[
             "data.vsphere_tag.production.id",
             "data.vsphere_tag.platinum.id",
             "data.vsphere_tag.replicated.id",
         ])
-        dev_datastore = vsphere.NasDatastore("devDatastore", tags=[
+        dev_datastore = vsphere.NasDatastore("dev_datastore", tags=[
             "data.vsphere_tag.development.id",
             "data.vsphere_tag.silver.id",
             "data.vsphere_tag.non_replicated.id",
@@ -188,41 +188,43 @@ class VmStoragePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        prod_platinum_replicated = vsphere.VmStoragePolicy("prodPlatinumReplicated",
+        prod_platinum_replicated = vsphere.VmStoragePolicy("prod_platinum_replicated",
+            name="prod_platinum_replicated",
             description="prod_platinum_replicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
-                    tags=[data["vsphere_tag"]["production"]["name"]],
+                    tag_category=environment["name"],
+                    tags=[production["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
-                    tags=[data["vsphere_tag"]["platinum"]["name"]],
+                    tag_category=service_level["name"],
+                    tags=[platinum["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
-                    tags=[data["vsphere_tag"]["replicated"]["name"]],
+                    tag_category=replication["name"],
+                    tags=[replicated["name"]],
                     include_datastores_with_tags=True,
                 ),
             ])
-        dev_silver_nonreplicated = vsphere.VmStoragePolicy("devSilverNonreplicated",
+        dev_silver_nonreplicated = vsphere.VmStoragePolicy("dev_silver_nonreplicated",
+            name="dev_silver_nonreplicated",
             description="dev_silver_nonreplicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
-                    tags=[data["vsphere_tag"]["development"]["name"]],
+                    tag_category=environment["name"],
+                    tags=[development["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
-                    tags=[data["vsphere_tag"]["silver"]["name"]],
+                    tag_category=service_level["name"],
+                    tags=[silver["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
-                    tags=[data["vsphere_tag"]["non_replicated"]["name"]],
+                    tag_category=replication["name"],
+                    tags=[non_replicated["name"]],
                     include_datastores_with_tags=True,
                 ),
             ])
@@ -238,10 +240,8 @@ class VmStoragePolicy(pulumi.CustomResource):
 
         prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
         dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
-        prod_vm = vsphere.VirtualMachine("prodVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["prod_platinum_replicated"]["id"])
-        # ... other configuration ...
-        dev_vm = vsphere.VirtualMachine("devVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["dev_silver_nonreplicated"]["id"])
-        # ... other configuration ...
+        prod_vm = vsphere.VirtualMachine("prod_vm", storage_policy_id=storage_policy["prodPlatinumReplicated"]["id"])
+        dev_vm = vsphere.VirtualMachine("dev_vm", storage_policy_id=storage_policy["devSilverNonreplicated"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -276,28 +276,28 @@ class VmStoragePolicy(pulumi.CustomResource):
         environment = vsphere.get_tag_category(name="environment")
         service_level = vsphere.get_tag_category(name="service_level")
         replication = vsphere.get_tag_category(name="replication")
-        production = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
-            name="production")
-        development = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
-            name="development")
-        platinum = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="platinum")
-        gold = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="platinum")
-        silver = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="silver")
-        bronze = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
-            name="bronze")
-        replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
-            name="replicated")
-        non_replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
-            name="non_replicated")
-        prod_datastore = vsphere.VmfsDatastore("prodDatastore", tags=[
+        production = vsphere.get_tag(name="production",
+            category_id="data.vsphere_tag_category.environment.id")
+        development = vsphere.get_tag(name="development",
+            category_id="data.vsphere_tag_category.environment.id")
+        platinum = vsphere.get_tag(name="platinum",
+            category_id="data.vsphere_tag_category.service_level.id")
+        gold = vsphere.get_tag(name="platinum",
+            category_id="data.vsphere_tag_category.service_level.id")
+        silver = vsphere.get_tag(name="silver",
+            category_id="data.vsphere_tag_category.service_level.id")
+        bronze = vsphere.get_tag(name="bronze",
+            category_id="data.vsphere_tag_category.service_level.id")
+        replicated = vsphere.get_tag(name="replicated",
+            category_id="data.vsphere_tag_category.replication.id")
+        non_replicated = vsphere.get_tag(name="non_replicated",
+            category_id="data.vsphere_tag_category.replication.id")
+        prod_datastore = vsphere.VmfsDatastore("prod_datastore", tags=[
             "data.vsphere_tag.production.id",
             "data.vsphere_tag.platinum.id",
             "data.vsphere_tag.replicated.id",
         ])
-        dev_datastore = vsphere.NasDatastore("devDatastore", tags=[
+        dev_datastore = vsphere.NasDatastore("dev_datastore", tags=[
             "data.vsphere_tag.development.id",
             "data.vsphere_tag.silver.id",
             "data.vsphere_tag.non_replicated.id",
@@ -312,41 +312,43 @@ class VmStoragePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        prod_platinum_replicated = vsphere.VmStoragePolicy("prodPlatinumReplicated",
+        prod_platinum_replicated = vsphere.VmStoragePolicy("prod_platinum_replicated",
+            name="prod_platinum_replicated",
             description="prod_platinum_replicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
-                    tags=[data["vsphere_tag"]["production"]["name"]],
+                    tag_category=environment["name"],
+                    tags=[production["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
-                    tags=[data["vsphere_tag"]["platinum"]["name"]],
+                    tag_category=service_level["name"],
+                    tags=[platinum["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
-                    tags=[data["vsphere_tag"]["replicated"]["name"]],
+                    tag_category=replication["name"],
+                    tags=[replicated["name"]],
                     include_datastores_with_tags=True,
                 ),
             ])
-        dev_silver_nonreplicated = vsphere.VmStoragePolicy("devSilverNonreplicated",
+        dev_silver_nonreplicated = vsphere.VmStoragePolicy("dev_silver_nonreplicated",
+            name="dev_silver_nonreplicated",
             description="dev_silver_nonreplicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
-                    tags=[data["vsphere_tag"]["development"]["name"]],
+                    tag_category=environment["name"],
+                    tags=[development["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
-                    tags=[data["vsphere_tag"]["silver"]["name"]],
+                    tag_category=service_level["name"],
+                    tags=[silver["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
-                    tags=[data["vsphere_tag"]["non_replicated"]["name"]],
+                    tag_category=replication["name"],
+                    tags=[non_replicated["name"]],
                     include_datastores_with_tags=True,
                 ),
             ])
@@ -362,10 +364,8 @@ class VmStoragePolicy(pulumi.CustomResource):
 
         prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
         dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
-        prod_vm = vsphere.VirtualMachine("prodVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["prod_platinum_replicated"]["id"])
-        # ... other configuration ...
-        dev_vm = vsphere.VirtualMachine("devVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["dev_silver_nonreplicated"]["id"])
-        # ... other configuration ...
+        prod_vm = vsphere.VirtualMachine("prod_vm", storage_policy_id=storage_policy["prodPlatinumReplicated"]["id"])
+        dev_vm = vsphere.VirtualMachine("dev_vm", storage_policy_id=storage_policy["devSilverNonreplicated"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 

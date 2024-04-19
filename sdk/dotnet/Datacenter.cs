@@ -26,7 +26,10 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var prodDatacenter = new VSphere.Datacenter("prodDatacenter");
+    ///     var prodDatacenter = new VSphere.Datacenter("prod_datacenter", new()
+    ///     {
+    ///         Name = "my_prod_datacenter",
+    ///     });
     /// 
     /// });
     /// ```
@@ -43,8 +46,9 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var researchDatacenter = new VSphere.Datacenter("researchDatacenter", new()
+    ///     var researchDatacenter = new VSphere.Datacenter("research_datacenter", new()
     ///     {
+    ///         Name = "my_research_datacenter",
     ///         Folder = "/research/",
     ///     });
     /// 

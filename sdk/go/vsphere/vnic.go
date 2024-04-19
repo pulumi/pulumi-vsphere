@@ -47,6 +47,7 @@ import (
 //				return err
 //			}
 //			d1, err := vsphere.NewDistributedVirtualSwitch(ctx, "d1", &vsphere.DistributedVirtualSwitchArgs{
+//				Name:         pulumi.String("dc_DVPG0"),
 //				DatacenterId: pulumi.String(dc.Id),
 //				Hosts: vsphere.DistributedVirtualSwitchHostArray{
 //					&vsphere.DistributedVirtualSwitchHostArgs{
@@ -61,6 +62,7 @@ import (
 //				return err
 //			}
 //			p1, err := vsphere.NewDistributedPortGroup(ctx, "p1", &vsphere.DistributedPortGroupArgs{
+//				Name:                         pulumi.String("test-pg"),
 //				VlanId:                       pulumi.Int(1234),
 //				DistributedVirtualSwitchUuid: d1.ID(),
 //			})
@@ -115,6 +117,7 @@ import (
 //				return err
 //			}
 //			hvs1, err := vsphere.NewHostVirtualSwitch(ctx, "hvs1", &vsphere.HostVirtualSwitchArgs{
+//				Name:         pulumi.String("dc_HPG0"),
 //				HostSystemId: pulumi.String(h1.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic3"),
@@ -131,6 +134,7 @@ import (
 //				return err
 //			}
 //			p1, err := vsphere.NewHostPortGroup(ctx, "p1", &vsphere.HostPortGroupArgs{
+//				Name:              pulumi.String("my-pg"),
 //				VirtualSwitchName: hvs1.Name,
 //				HostSystemId:      pulumi.String(h1.Id),
 //			})

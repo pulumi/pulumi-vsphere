@@ -623,13 +623,13 @@ namespace Pulumi.VSphere
         ///         {
         ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
         ///             {
-        ///                 MaxVlan = 199,
         ///                 MinVlan = 100,
+        ///                 MaxVlan = 199,
         ///             },
         ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
         ///             {
-        ///                 MaxVlan = 399,
         ///                 MinVlan = 300,
+        ///                 MaxVlan = 399,
         ///             },
         ///         },
         ///     });
@@ -1384,13 +1384,13 @@ namespace Pulumi.VSphere
         ///         {
         ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
         ///             {
-        ///                 MaxVlan = 199,
         ///                 MinVlan = 100,
+        ///                 MaxVlan = 199,
         ///             },
         ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
         ///             {
-        ///                 MaxVlan = 399,
         ///                 MinVlan = 300,
+        ///                 MaxVlan = 399,
         ///             },
         ///         },
         ///     });
@@ -2117,13 +2117,13 @@ namespace Pulumi.VSphere
         ///         {
         ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
         ///             {
-        ///                 MaxVlan = 199,
         ///                 MinVlan = 100,
+        ///                 MaxVlan = 199,
         ///             },
         ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
         ///             {
-        ///                 MaxVlan = 399,
         ///                 MinVlan = 300,
+        ///                 MaxVlan = 399,
         ///             },
         ///         },
         ///     });

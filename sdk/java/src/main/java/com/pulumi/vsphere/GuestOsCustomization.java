@@ -47,20 +47,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var windowsCustomization = new GuestOsCustomization(&#34;windowsCustomization&#34;, GuestOsCustomizationArgs.builder()        
+ *             .name(&#34;windows-spec&#34;)
+ *             .type(&#34;Windows&#34;)
  *             .spec(GuestOsCustomizationSpecArgs.builder()
  *                 .windowsOptions(GuestOsCustomizationSpecWindowsOptionsArgs.builder()
- *                     .adminPassword(&#34;VMware1!&#34;)
- *                     .autoLogon(false)
- *                     .autoLogonCount(0)
- *                     .computerName(&#34;windows&#34;)
- *                     .runOnceCommandList(                    
+ *                     .runOnceCommandLists(                    
  *                         &#34;command-1&#34;,
  *                         &#34;command-2&#34;)
+ *                     .computerName(&#34;windows&#34;)
+ *                     .autoLogon(false)
+ *                     .autoLogonCount(0)
+ *                     .adminPassword(&#34;VMware1!&#34;)
  *                     .timeZone(4)
  *                     .workgroup(&#34;workgroup&#34;)
  *                     .build())
  *                 .build())
- *             .type(&#34;Windows&#34;)
  *             .build());
  * 
  *     }

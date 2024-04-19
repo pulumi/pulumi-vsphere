@@ -57,8 +57,8 @@ namespace Pulumi.VSphere
         /// {
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["maxFreeSpaceName"] = local.Max_free_space_name,
-        ///         ["maxFreeSpace"] = local.Max_free_space,
+        ///         ["maxFreeSpaceName"] = theirMaxFreeSpaceName,
+        ///         ["maxFreeSpace"] = theirMaxFreeSpace,
         ///     };
         /// });
         /// ```
@@ -115,8 +115,8 @@ namespace Pulumi.VSphere
         /// {
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["maxFreeSpaceName"] = local.Max_free_space_name,
-        ///         ["maxFreeSpace"] = local.Max_free_space,
+        ///         ["maxFreeSpaceName"] = theirMaxFreeSpaceName,
+        ///         ["maxFreeSpace"] = theirMaxFreeSpace,
         ///     };
         /// });
         /// ```

@@ -49,82 +49,6 @@ import javax.annotation.Nullable;
  * will run on the same host whenever possible.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.vsphere.VsphereFunctions;
- * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
- * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
- * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
- * import com.pulumi.vsphere.inputs.GetNetworkArgs;
- * import com.pulumi.vsphere.VirtualMachine;
- * import com.pulumi.vsphere.VirtualMachineArgs;
- * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
- * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
- * import com.pulumi.vsphere.ComputeClusterVmAffinityRule;
- * import com.pulumi.vsphere.ComputeClusterVmAffinityRuleArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
- *             .build());
- * 
- *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
- *             .name(&#34;datastore-01&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
- *             .build());
- * 
- *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
- *             .name(&#34;cluster-01&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
- *             .build());
- * 
- *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name(&#34;VM Network&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
- *             .build());
- * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new VirtualMachine(&#34;vm-&#34; + i, VirtualMachineArgs.builder()            
- *                 .resourcePoolId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.resourcePoolId()))
- *                 .datastoreId(datastore.applyValue(getDatastoreResult -&gt; getDatastoreResult.id()))
- *                 .numCpus(1)
- *                 .memory(1024)
- *                 .guestId(&#34;otherLinux64Guest&#34;)
- *                 .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                     .networkId(network.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
- *                     .build())
- *                 .disks(VirtualMachineDiskArgs.builder()
- *                     .label(&#34;disk0&#34;)
- *                     .size(20)
- *                     .build())
- *                 .build());
- * 
- *         
- * }
- *         var vmAffinityRule = new ComputeClusterVmAffinityRule(&#34;vmAffinityRule&#34;, ComputeClusterVmAffinityRuleArgs.builder()        
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
- *             .virtualMachineIds(&#34;TODO: ForExpression&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The following example creates an affinity rule for a set of virtual machines
@@ -132,54 +56,6 @@ import javax.annotation.Nullable;
  * `vsphere.VirtualMachine` data source.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.vsphere.VsphereFunctions;
- * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
- * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
- * import com.pulumi.vsphere.ComputeClusterVmAffinityRule;
- * import com.pulumi.vsphere.ComputeClusterVmAffinityRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var vms =         
- *             &#34;foo-0&#34;,
- *             &#34;foo-1&#34;;
- * 
- *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
- *             .build());
- * 
- *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
- *             .name(&#34;cluster-01&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
- *             .build());
- * 
- *         final var vmsVirtualMachine = &#34;TODO: ForExpression&#34;;
- * 
- *         var vmAffinityRule = new ComputeClusterVmAffinityRule(&#34;vmAffinityRule&#34;, ComputeClusterVmAffinityRuleArgs.builder()        
- *             .enabled(true)
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
- *             .virtualMachineIds(vmsVirtualMachine.stream().map(element -&gt; element.id()).collect(toList()))
- *             .build());
- * 
- *     }
- * }
- * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Importing

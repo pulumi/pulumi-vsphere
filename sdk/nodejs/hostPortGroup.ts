@@ -32,7 +32,8 @@ import * as utilities from "./utilities";
  *     name: "esxi-01.example.com",
  *     datacenterId: datacenter.id,
  * }));
- * const hostVirtualSwitch = new vsphere.HostVirtualSwitch("hostVirtualSwitch", {
+ * const hostVirtualSwitch = new vsphere.HostVirtualSwitch("host_virtual_switch", {
+ *     name: "switch-01",
  *     hostSystemId: host.then(host => host.id),
  *     networkAdapters: [
  *         "vmnic0",
@@ -42,6 +43,7 @@ import * as utilities from "./utilities";
  *     standbyNics: ["vmnic1"],
  * });
  * const pg = new vsphere.HostPortGroup("pg", {
+ *     name: "portgroup-01",
  *     hostSystemId: host.then(host => host.id),
  *     virtualSwitchName: hostVirtualSwitch.name,
  * });
@@ -68,7 +70,8 @@ import * as utilities from "./utilities";
  *     name: "esxi-01.example.com",
  *     datacenterId: datacenter.id,
  * }));
- * const hostVirtualSwitch = new vsphere.HostVirtualSwitch("hostVirtualSwitch", {
+ * const hostVirtualSwitch = new vsphere.HostVirtualSwitch("host_virtual_switch", {
+ *     name: "switch-01",
  *     hostSystemId: host.then(host => host.id),
  *     networkAdapters: [
  *         "vmnic0",
@@ -78,6 +81,7 @@ import * as utilities from "./utilities";
  *     standbyNics: ["vmnic1"],
  * });
  * const pg = new vsphere.HostPortGroup("pg", {
+ *     name: "portgroup-01",
  *     hostSystemId: host.then(host => host.id),
  *     virtualSwitchName: hostVirtualSwitch.name,
  *     vlanId: 4095,

@@ -282,12 +282,12 @@ class DistributedVirtualSwitchArgs:
                
                vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
                        min_vlan=100,
+                       max_vlan=199,
                    ),
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
                        min_vlan=300,
+                       max_vlan=399,
                    ),
                ])
                ```
@@ -1598,12 +1598,12 @@ class DistributedVirtualSwitchArgs:
 
         vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
             vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=199,
                 min_vlan=100,
+                max_vlan=199,
             ),
             vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=399,
                 min_vlan=300,
+                max_vlan=399,
             ),
         ])
         ```
@@ -1984,12 +1984,12 @@ class _DistributedVirtualSwitchState:
                
                vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
                        min_vlan=100,
+                       max_vlan=199,
                    ),
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
                        min_vlan=300,
+                       max_vlan=399,
                    ),
                ])
                ```
@@ -3316,12 +3316,12 @@ class _DistributedVirtualSwitchState:
 
         vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
             vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=199,
                 min_vlan=100,
+                max_vlan=199,
             ),
             vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=399,
                 min_vlan=300,
+                max_vlan=399,
             ),
         ])
         ```
@@ -3704,12 +3704,12 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                
                vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
                        min_vlan=100,
+                       max_vlan=199,
                    ),
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
                        min_vlan=300,
+                       max_vlan=399,
                    ),
                ])
                ```
@@ -4230,12 +4230,12 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                
                vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
                        min_vlan=100,
+                       max_vlan=199,
                    ),
                    vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
                        min_vlan=300,
+                       max_vlan=399,
                    ),
                ])
                ```
@@ -5128,12 +5128,12 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
         vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
             vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=199,
                 min_vlan=100,
+                max_vlan=199,
             ),
             vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=399,
                 min_vlan=300,
+                max_vlan=399,
             ),
         ])
         ```

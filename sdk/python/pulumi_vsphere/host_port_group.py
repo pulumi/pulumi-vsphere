@@ -704,7 +704,8 @@ class HostPortGroup(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+        host_virtual_switch = vsphere.HostVirtualSwitch("host_virtual_switch",
+            name="switch-01",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -713,6 +714,7 @@ class HostPortGroup(pulumi.CustomResource):
             active_nics=["vmnic0"],
             standby_nics=["vmnic1"])
         pg = vsphere.HostPortGroup("pg",
+            name="portgroup-01",
             host_system_id=host.id,
             virtual_switch_name=host_virtual_switch.name)
         ```
@@ -734,7 +736,8 @@ class HostPortGroup(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+        host_virtual_switch = vsphere.HostVirtualSwitch("host_virtual_switch",
+            name="switch-01",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -743,6 +746,7 @@ class HostPortGroup(pulumi.CustomResource):
             active_nics=["vmnic0"],
             standby_nics=["vmnic1"])
         pg = vsphere.HostPortGroup("pg",
+            name="portgroup-01",
             host_system_id=host.id,
             virtual_switch_name=host_virtual_switch.name,
             vlan_id=4095,
@@ -814,7 +818,8 @@ class HostPortGroup(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+        host_virtual_switch = vsphere.HostVirtualSwitch("host_virtual_switch",
+            name="switch-01",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -823,6 +828,7 @@ class HostPortGroup(pulumi.CustomResource):
             active_nics=["vmnic0"],
             standby_nics=["vmnic1"])
         pg = vsphere.HostPortGroup("pg",
+            name="portgroup-01",
             host_system_id=host.id,
             virtual_switch_name=host_virtual_switch.name)
         ```
@@ -844,7 +850,8 @@ class HostPortGroup(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter(name="dc-01")
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+        host_virtual_switch = vsphere.HostVirtualSwitch("host_virtual_switch",
+            name="switch-01",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -853,6 +860,7 @@ class HostPortGroup(pulumi.CustomResource):
             active_nics=["vmnic0"],
             standby_nics=["vmnic1"])
         pg = vsphere.HostPortGroup("pg",
+            name="portgroup-01",
             host_system_id=host.id,
             virtual_switch_name=host_virtual_switch.name,
             vlan_id=4095,

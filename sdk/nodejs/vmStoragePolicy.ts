@@ -32,43 +32,43 @@ import * as utilities from "./utilities";
  *     name: "replication",
  * });
  * const production = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.environment.id",
  *     name: "production",
+ *     categoryId: "data.vsphere_tag_category.environment.id",
  * });
  * const development = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.environment.id",
  *     name: "development",
+ *     categoryId: "data.vsphere_tag_category.environment.id",
  * });
  * const platinum = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "platinum",
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
  * });
  * const gold = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "platinum",
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
  * });
  * const silver = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "silver",
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
  * });
  * const bronze = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "bronze",
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
  * });
  * const replicated = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.replication.id",
  *     name: "replicated",
+ *     categoryId: "data.vsphere_tag_category.replication.id",
  * });
  * const nonReplicated = vsphere.getTag({
- *     categoryId: "data.vsphere_tag_category.replication.id",
  *     name: "non_replicated",
+ *     categoryId: "data.vsphere_tag_category.replication.id",
  * });
- * const prodDatastore = new vsphere.VmfsDatastore("prodDatastore", {tags: [
+ * const prodDatastore = new vsphere.VmfsDatastore("prod_datastore", {tags: [
  *     "data.vsphere_tag.production.id",
  *     "data.vsphere_tag.platinum.id",
  *     "data.vsphere_tag.replicated.id",
  * ]});
- * const devDatastore = new vsphere.NasDatastore("devDatastore", {tags: [
+ * const devDatastore = new vsphere.NasDatastore("dev_datastore", {tags: [
  *     "data.vsphere_tag.development.id",
  *     "data.vsphere_tag.silver.id",
  *     "data.vsphere_tag.non_replicated.id",
@@ -83,42 +83,44 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const prodPlatinumReplicated = new vsphere.VmStoragePolicy("prodPlatinumReplicated", {
+ * const prodPlatinumReplicated = new vsphere.VmStoragePolicy("prod_platinum_replicated", {
+ *     name: "prod_platinum_replicated",
  *     description: "prod_platinum_replicated",
  *     tagRules: [
  *         {
- *             tagCategory: data.vsphere_tag_category.environment.name,
- *             tags: [data.vsphere_tag.production.name],
+ *             tagCategory: environment.name,
+ *             tags: [production.name],
  *             includeDatastoresWithTags: true,
  *         },
  *         {
- *             tagCategory: data.vsphere_tag_category.service_level.name,
- *             tags: [data.vsphere_tag.platinum.name],
+ *             tagCategory: serviceLevel.name,
+ *             tags: [platinum.name],
  *             includeDatastoresWithTags: true,
  *         },
  *         {
- *             tagCategory: data.vsphere_tag_category.replication.name,
- *             tags: [data.vsphere_tag.replicated.name],
+ *             tagCategory: replication.name,
+ *             tags: [replicated.name],
  *             includeDatastoresWithTags: true,
  *         },
  *     ],
  * });
- * const devSilverNonreplicated = new vsphere.VmStoragePolicy("devSilverNonreplicated", {
+ * const devSilverNonreplicated = new vsphere.VmStoragePolicy("dev_silver_nonreplicated", {
+ *     name: "dev_silver_nonreplicated",
  *     description: "dev_silver_nonreplicated",
  *     tagRules: [
  *         {
- *             tagCategory: data.vsphere_tag_category.environment.name,
- *             tags: [data.vsphere_tag.development.name],
+ *             tagCategory: environment.name,
+ *             tags: [development.name],
  *             includeDatastoresWithTags: true,
  *         },
  *         {
- *             tagCategory: data.vsphere_tag_category.service_level.name,
- *             tags: [data.vsphere_tag.silver.name],
+ *             tagCategory: serviceLevel.name,
+ *             tags: [silver.name],
  *             includeDatastoresWithTags: true,
  *         },
  *         {
- *             tagCategory: data.vsphere_tag_category.replication.name,
- *             tags: [data.vsphere_tag.non_replicated.name],
+ *             tagCategory: replication.name,
+ *             tags: [nonReplicated.name],
  *             includeDatastoresWithTags: true,
  *         },
  *     ],
@@ -139,10 +141,8 @@ import * as utilities from "./utilities";
  * const devSilverNonreplicated = vsphere.getPolicy({
  *     name: "dev_silver_nonreplicated",
  * });
- * const prodVm = new vsphere.VirtualMachine("prodVm", {storagePolicyId: data.vsphere_storage_policy.storage_policy.prod_platinum_replicated.id});
- * // ... other configuration ...
- * const devVm = new vsphere.VirtualMachine("devVm", {storagePolicyId: data.vsphere_storage_policy.storage_policy.dev_silver_nonreplicated.id});
- * // ... other configuration ...
+ * const prodVm = new vsphere.VirtualMachine("prod_vm", {storagePolicyId: storagePolicy.prodPlatinumReplicated.id});
+ * const devVm = new vsphere.VirtualMachine("dev_vm", {storagePolicyId: storagePolicy.devSilverNonreplicated.id});
  * ```
  * <!--End PulumiCodeChooser -->
  */

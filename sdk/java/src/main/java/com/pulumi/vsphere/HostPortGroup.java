@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var hostVirtualSwitch = new HostVirtualSwitch(&#34;hostVirtualSwitch&#34;, HostVirtualSwitchArgs.builder()        
+ *             .name(&#34;switch-01&#34;)
  *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
  *             .networkAdapters(            
  *                 &#34;vmnic0&#34;,
@@ -79,6 +80,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var pg = new HostPortGroup(&#34;pg&#34;, HostPortGroupArgs.builder()        
+ *             .name(&#34;portgroup-01&#34;)
  *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
  *             .virtualSwitchName(hostVirtualSwitch.name())
  *             .build());
@@ -133,6 +135,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var hostVirtualSwitch = new HostVirtualSwitch(&#34;hostVirtualSwitch&#34;, HostVirtualSwitchArgs.builder()        
+ *             .name(&#34;switch-01&#34;)
  *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
  *             .networkAdapters(            
  *                 &#34;vmnic0&#34;,
@@ -142,6 +145,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var pg = new HostPortGroup(&#34;pg&#34;, HostPortGroupArgs.builder()        
+ *             .name(&#34;portgroup-01&#34;)
  *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
  *             .virtualSwitchName(hostVirtualSwitch.name())
  *             .vlanId(4095)

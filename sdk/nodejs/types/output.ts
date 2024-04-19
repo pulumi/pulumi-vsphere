@@ -58,9 +58,10 @@ export interface ComputeClusterVsanStretchedCluster {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as vsphere from "@pulumi/vsphere";
      *
-     * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
-     *     datacenterId: data.vsphere_datacenter.datacenter.id,
-     *     hostSystemIds: [data.vsphere_host.host.map(__item => __item.id)],
+     * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+     *     name: "terraform-compute-cluster-test",
+     *     datacenterId: datacenter.id,
+     *     hostSystemIds: [host.map(__item => __item.id)],
      *     drsEnabled: true,
      *     drsAutomationLevel: "fullyAutomated",
      *     haEnabled: false,
@@ -75,25 +76,25 @@ export interface ComputeClusterVsanStretchedCluster {
      *     vsanDitEncryptionEnabled: true,
      *     vsanDitRekeyInterval: 1800,
      *     vsanDiskGroups: [{
-     *         cache: data.vsphere_vmfs_disks.cache_disks[0],
-     *         storages: data.vsphere_vmfs_disks.storage_disks,
+     *         cache: cacheDisks[0],
+     *         storages: storageDisks,
      *     }],
      *     vsanFaultDomains: [{
      *         faultDomains: [
      *             {
      *                 name: "fd1",
-     *                 hostIds: [data.vsphere_host.faultdomain1_hosts.map(__item => __item.id)],
+     *                 hostIds: [faultdomain1Hosts.map(__item => __item.id)],
      *             },
      *             {
      *                 name: "fd2",
-     *                 hostIds: [data.vsphere_host.faultdomain2_hosts.map(__item => __item.id)],
+     *                 hostIds: [faultdomain2Hosts.map(__item => __item.id)],
      *             },
      *         ],
      *     }],
      *     vsanStretchedCluster: {
-     *         preferredFaultDomainHostIds: [data.vsphere_host.preferred_fault_domain_host.map(__item => __item.id)],
-     *         secondaryFaultDomainHostIds: [data.vsphere_host.secondary_fault_domain_host.map(__item => __item.id)],
-     *         witnessNode: data.vsphere_host.witness_host.id,
+     *         preferredFaultDomainHostIds: [preferredFaultDomainHost.map(__item => __item.id)],
+     *         secondaryFaultDomainHostIds: [secondaryFaultDomainHost.map(__item => __item.id)],
+     *         witnessNode: witnessHost.id,
      *     },
      * });
      * ```

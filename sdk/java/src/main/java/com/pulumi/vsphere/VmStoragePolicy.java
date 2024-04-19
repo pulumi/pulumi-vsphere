@@ -67,43 +67,43 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var production = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.environment.id&#34;)
  *             .name(&#34;production&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.environment.id&#34;)
  *             .build());
  * 
  *         final var development = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.environment.id&#34;)
  *             .name(&#34;development&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.environment.id&#34;)
  *             .build());
  * 
  *         final var platinum = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .name(&#34;platinum&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .build());
  * 
  *         final var gold = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .name(&#34;platinum&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .build());
  * 
  *         final var silver = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .name(&#34;silver&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .build());
  * 
  *         final var bronze = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .name(&#34;bronze&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
  *             .build());
  * 
  *         final var replicated = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.replication.id&#34;)
  *             .name(&#34;replicated&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.replication.id&#34;)
  *             .build());
  * 
  *         final var nonReplicated = VsphereFunctions.getTag(GetTagArgs.builder()
- *             .categoryId(&#34;data.vsphere_tag_category.replication.id&#34;)
  *             .name(&#34;non_replicated&#34;)
+ *             .categoryId(&#34;data.vsphere_tag_category.replication.id&#34;)
  *             .build());
  * 
  *         var prodDatastore = new VmfsDatastore(&#34;prodDatastore&#34;, VmfsDatastoreArgs.builder()        
@@ -151,41 +151,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var prodPlatinumReplicated = new VmStoragePolicy(&#34;prodPlatinumReplicated&#34;, VmStoragePolicyArgs.builder()        
+ *             .name(&#34;prod_platinum_replicated&#34;)
  *             .description(&#34;prod_platinum_replicated&#34;)
  *             .tagRules(            
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(data.vsphere_tag_category().environment().name())
- *                     .tags(data.vsphere_tag().production().name())
+ *                     .tagCategory(environment.name())
+ *                     .tags(production.name())
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(data.vsphere_tag_category().service_level().name())
- *                     .tags(data.vsphere_tag().platinum().name())
+ *                     .tagCategory(serviceLevel.name())
+ *                     .tags(platinum.name())
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(data.vsphere_tag_category().replication().name())
- *                     .tags(data.vsphere_tag().replicated().name())
+ *                     .tagCategory(replication.name())
+ *                     .tags(replicated.name())
  *                     .includeDatastoresWithTags(true)
  *                     .build())
  *             .build());
  * 
  *         var devSilverNonreplicated = new VmStoragePolicy(&#34;devSilverNonreplicated&#34;, VmStoragePolicyArgs.builder()        
+ *             .name(&#34;dev_silver_nonreplicated&#34;)
  *             .description(&#34;dev_silver_nonreplicated&#34;)
  *             .tagRules(            
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(data.vsphere_tag_category().environment().name())
- *                     .tags(data.vsphere_tag().development().name())
+ *                     .tagCategory(environment.name())
+ *                     .tags(development.name())
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(data.vsphere_tag_category().service_level().name())
- *                     .tags(data.vsphere_tag().silver().name())
+ *                     .tagCategory(serviceLevel.name())
+ *                     .tags(silver.name())
  *                     .includeDatastoresWithTags(true)
  *                     .build(),
  *                 VmStoragePolicyTagRuleArgs.builder()
- *                     .tagCategory(data.vsphere_tag_category().replication().name())
- *                     .tags(data.vsphere_tag().non_replicated().name())
+ *                     .tagCategory(replication.name())
+ *                     .tags(nonReplicated.name())
  *                     .includeDatastoresWithTags(true)
  *                     .build())
  *             .build());
@@ -230,15 +232,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var prodVm = new VirtualMachine(&#34;prodVm&#34;, VirtualMachineArgs.builder()        
- *             .storagePolicyId(data.vsphere_storage_policy().storage_policy().prod_platinum_replicated().id())
+ *             .storagePolicyId(storagePolicy.prodPlatinumReplicated().id())
  *             .build());
  * 
- *         // ... other configuration ...
  *         var devVm = new VirtualMachine(&#34;devVm&#34;, VirtualMachineArgs.builder()        
- *             .storagePolicyId(data.vsphere_storage_policy().storage_policy().dev_silver_nonreplicated().id())
+ *             .storagePolicyId(storagePolicy.devSilverNonreplicated().id())
  *             .build());
  * 
- *         // ... other configuration ...
  *     }
  * }
  * ```

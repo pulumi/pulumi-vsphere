@@ -50,6 +50,7 @@ namespace Pulumi.VSphere
         /// 
         ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
         ///     {
+        ///         Name = "dvpg-01",
         ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
         ///         ActiveUplinks = new[]
         ///         {
@@ -107,6 +108,7 @@ namespace Pulumi.VSphere
         /// 
         ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
         ///     {
+        ///         Name = "dvpg-01",
         ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
         ///         ActiveUplinks = new[]
         ///         {

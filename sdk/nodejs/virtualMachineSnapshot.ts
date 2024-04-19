@@ -35,13 +35,13 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const demo1 = new vsphere.VirtualMachineSnapshot("demo1", {
- *     consolidate: true,
+ *     virtualMachineUuid: "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
+ *     snapshotName: "Snapshot Name",
  *     description: "This is Demo Snapshot",
  *     memory: true,
  *     quiesce: true,
  *     removeChildren: false,
- *     snapshotName: "Snapshot Name",
- *     virtualMachineUuid: "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
+ *     consolidate: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

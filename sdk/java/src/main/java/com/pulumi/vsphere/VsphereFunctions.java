@@ -345,11 +345,11 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(var_.vsphere_datacenter())
+     *             .name(vsphereDatacenter)
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(var_.vsphere_cluster())
+     *             .name(vsphereCluster)
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
      *             .build());
      * 
@@ -360,6 +360,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name(&#34;terraform-host-rule1&#34;)
      *             .vmGroupName(&#34;vm_group1&#34;)
      *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
      *             .build());
@@ -407,11 +408,11 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(var_.vsphere_datacenter())
+     *             .name(vsphereDatacenter)
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(var_.vsphere_cluster())
+     *             .name(vsphereCluster)
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
      *             .build());
      * 
@@ -422,6 +423,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name(&#34;terraform-host-rule1&#34;)
      *             .vmGroupName(&#34;vm_group1&#34;)
      *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
      *             .build());
@@ -469,11 +471,11 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(var_.vsphere_datacenter())
+     *             .name(vsphereDatacenter)
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(var_.vsphere_cluster())
+     *             .name(vsphereCluster)
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
      *             .build());
      * 
@@ -484,6 +486,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name(&#34;terraform-host-rule1&#34;)
      *             .vmGroupName(&#34;vm_group1&#34;)
      *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
      *             .build());
@@ -531,11 +534,11 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(var_.vsphere_datacenter())
+     *             .name(vsphereDatacenter)
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(var_.vsphere_cluster())
+     *             .name(vsphereCluster)
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
      *             .build());
      * 
@@ -546,6 +549,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name(&#34;terraform-host-rule1&#34;)
      *             .vmGroupName(&#34;vm_group1&#34;)
      *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
      *             .build());
@@ -1678,8 +1682,8 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
-     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
+     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
      *     }
      * }
      * ```
@@ -1760,8 +1764,8 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
-     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
+     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
      *     }
      * }
      * ```
@@ -1842,8 +1846,8 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
-     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
+     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
      *     }
      * }
      * ```
@@ -1924,8 +1928,8 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, local.max_free_space_name());
-     *         ctx.export(&#34;maxFreeSpace&#34;, local.max_free_space());
+     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
+     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
      *     }
      * }
      * ```
@@ -1989,6 +1993,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
+     *             .name(&#34;dvpg-01&#34;)
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
      *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
@@ -2055,6 +2060,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
+     *             .name(&#34;dvpg-01&#34;)
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
      *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
@@ -2121,6 +2127,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
+     *             .name(&#34;dvpg-01&#34;)
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
      *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
@@ -2187,6 +2194,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
+     *             .name(&#34;dvpg-01&#34;)
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
      *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
@@ -2240,12 +2248,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;FirstTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;SecondTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -2304,12 +2312,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;FirstTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;SecondTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -2368,12 +2376,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;FirstTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;SecondTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -2432,12 +2440,12 @@ public final class VsphereFunctions {
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;FirstTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name(&#34;SecondTag&#34;)
-     *             .categoryId(data.vsphere_tag_category().cat().id())
+     *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
@@ -4636,7 +4644,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name(&#34;esxi-01.example.com/Resources&#34;)
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -4731,7 +4739,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name(&#34;esxi-01.example.com/Resources&#34;)
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -4826,7 +4834,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name(&#34;esxi-01.example.com/Resources&#34;)
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -4921,7 +4929,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name(&#34;esxi-01.example.com/Resources&#34;)
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -5016,7 +5024,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name(&#34;esxi-01.example.com/Resources&#34;)
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -5111,7 +5119,7 @@ public final class VsphereFunctions {
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name(&#34;esxi-01.example.com/Resources&#34;)
-     *             .datacenterId(data.vsphere_datacenter().datacenter().id())
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }

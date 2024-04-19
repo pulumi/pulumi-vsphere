@@ -34,6 +34,7 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * const dvpg = new vsphere.DistributedPortGroup("dvpg", {
+ *     name: "dvpg-01",
  *     distributedVirtualSwitchUuid: vds.then(vds => vds.id),
  *     activeUplinks: [vds.then(vds => vds.uplinks?.[0])],
  *     standbyUplinks: [vds.then(vds => vds.uplinks?.[1])],
@@ -115,6 +116,7 @@ export interface GetDistributedVirtualSwitchResult {
  *     datacenterId: datacenter.id,
  * }));
  * const dvpg = new vsphere.DistributedPortGroup("dvpg", {
+ *     name: "dvpg-01",
  *     distributedVirtualSwitchUuid: vds.then(vds => vds.id),
  *     activeUplinks: [vds.then(vds => vds.uplinks?.[0])],
  *     standbyUplinks: [vds.then(vds => vds.uplinks?.[1])],

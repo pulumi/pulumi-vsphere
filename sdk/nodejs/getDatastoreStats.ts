@@ -35,8 +35,8 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  *
- * export const maxFreeSpaceName = local.max_free_space_name;
- * export const maxFreeSpace = local.max_free_space;
+ * export const maxFreeSpaceName = theirMaxFreeSpaceName;
+ * export const maxFreeSpace = theirMaxFreeSpace;
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -133,8 +133,8 @@ export interface GetDatastoreStatsResult {
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  *
- * export const maxFreeSpaceName = local.max_free_space_name;
- * export const maxFreeSpace = local.max_free_space;
+ * export const maxFreeSpaceName = theirMaxFreeSpaceName;
+ * export const maxFreeSpace = theirMaxFreeSpace;
  * ```
  * <!--End PulumiCodeChooser -->
  *

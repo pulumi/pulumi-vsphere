@@ -23,13 +23,13 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuVmdkUpload = new VSphere.File("ubuntuVmdkUpload", new()
+    ///     var ubuntuVmdkUpload = new VSphere.File("ubuntu_vmdk_upload", new()
     ///     {
-    ///         CreateDirectories = true,
     ///         Datacenter = "dc-01",
     ///         Datastore = "datastore-01",
-    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
     ///         SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///         CreateDirectories = true,
     ///     });
     /// 
     /// });
@@ -47,15 +47,15 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuCopy = new VSphere.File("ubuntuCopy", new()
+    ///     var ubuntuCopy = new VSphere.File("ubuntu_copy", new()
     ///     {
-    ///         CreateDirectories = true,
-    ///         Datacenter = "dc-01",
-    ///         Datastore = "datastore-01",
-    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
     ///         SourceDatacenter = "dc-01",
+    ///         Datacenter = "dc-01",
     ///         SourceDatastore = "datastore-01",
+    ///         Datastore = "datastore-01",
     ///         SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///         CreateDirectories = true,
     ///     });
     /// 
     /// });

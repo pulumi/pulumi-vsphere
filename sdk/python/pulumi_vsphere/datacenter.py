@@ -246,7 +246,7 @@ class Datacenter(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        prod_datacenter = vsphere.Datacenter("prodDatacenter")
+        prod_datacenter = vsphere.Datacenter("prod_datacenter", name="my_prod_datacenter")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -257,7 +257,9 @@ class Datacenter(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
+        research_datacenter = vsphere.Datacenter("research_datacenter",
+            name="my_research_datacenter",
+            folder="/research/")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -309,7 +311,7 @@ class Datacenter(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        prod_datacenter = vsphere.Datacenter("prodDatacenter")
+        prod_datacenter = vsphere.Datacenter("prod_datacenter", name="my_prod_datacenter")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -320,7 +322,9 @@ class Datacenter(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
+        research_datacenter = vsphere.Datacenter("research_datacenter",
+            name="my_research_datacenter",
+            folder="/research/")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -23,11 +23,11 @@ import * as utilities from "./utilities";
  * });
  * const tag1 = vsphere.getTag({
  *     name: "FirstTag",
- *     categoryId: data.vsphere_tag_category.cat.id,
+ *     categoryId: cat.id,
  * });
  * const tag2 = vsphere.getTag({
  *     name: "SecondTag",
- *     categoryId: data.vsphere_tag_category.cat.id,
+ *     categoryId: cat.id,
  * });
  * const dyn = Promise.all([tag1, tag1]).then(([tag1, tag11]) => vsphere.getDynamic({
  *     filters: [
@@ -103,11 +103,11 @@ export interface GetDynamicResult {
  * });
  * const tag1 = vsphere.getTag({
  *     name: "FirstTag",
- *     categoryId: data.vsphere_tag_category.cat.id,
+ *     categoryId: cat.id,
  * });
  * const tag2 = vsphere.getTag({
  *     name: "SecondTag",
- *     categoryId: data.vsphere_tag_category.cat.id,
+ *     categoryId: cat.id,
  * });
  * const dyn = Promise.all([tag1, tag1]).then(([tag1, tag11]) => vsphere.getDynamic({
  *     filters: [

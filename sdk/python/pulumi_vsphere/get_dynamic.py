@@ -91,9 +91,9 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
 
     category = vsphere.get_tag_category(name="SomeCategory")
     tag1 = vsphere.get_tag(name="FirstTag",
-        category_id=data["vsphere_tag_category"]["cat"]["id"])
+        category_id=cat["id"])
     tag2 = vsphere.get_tag(name="SecondTag",
-        category_id=data["vsphere_tag_category"]["cat"]["id"])
+        category_id=cat["id"])
     dyn = vsphere.get_dynamic(filters=[
             tag1.id,
             tag1.id,
@@ -147,9 +147,9 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
 
     category = vsphere.get_tag_category(name="SomeCategory")
     tag1 = vsphere.get_tag(name="FirstTag",
-        category_id=data["vsphere_tag_category"]["cat"]["id"])
+        category_id=cat["id"])
     tag2 = vsphere.get_tag(name="SecondTag",
-        category_id=data["vsphere_tag_category"]["cat"]["id"])
+        category_id=cat["id"])
     dyn = vsphere.get_dynamic(filters=[
             tag1.id,
             tag1.id,

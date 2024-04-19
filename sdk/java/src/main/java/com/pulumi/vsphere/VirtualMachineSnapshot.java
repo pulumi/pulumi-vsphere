@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var demo1 = new VirtualMachineSnapshot(&#34;demo1&#34;, VirtualMachineSnapshotArgs.builder()        
- *             .consolidate(&#34;true&#34;)
+ *             .virtualMachineUuid(&#34;9aac5551-a351-4158-8c5c-15a71e8ec5c9&#34;)
+ *             .snapshotName(&#34;Snapshot Name&#34;)
  *             .description(&#34;This is Demo Snapshot&#34;)
  *             .memory(&#34;true&#34;)
  *             .quiesce(&#34;true&#34;)
  *             .removeChildren(&#34;false&#34;)
- *             .snapshotName(&#34;Snapshot Name&#34;)
- *             .virtualMachineUuid(&#34;9aac5551-a351-4158-8c5c-15a71e8ec5c9&#34;)
+ *             .consolidate(&#34;true&#34;)
  *             .build());
  * 
  *     }

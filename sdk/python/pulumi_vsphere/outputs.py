@@ -212,9 +212,10 @@ class ComputeClusterVsanStretchedCluster(dict):
                import pulumi
                import pulumi_vsphere as vsphere
                
-               compute_cluster = vsphere.ComputeCluster("computeCluster",
-                   datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
-                   host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
+               compute_cluster = vsphere.ComputeCluster("compute_cluster",
+                   name="terraform-compute-cluster-test",
+                   datacenter_id=datacenter["id"],
+                   host_system_ids=[[__item["id"] for __item in host]],
                    drs_enabled=True,
                    drs_automation_level="fullyAutomated",
                    ha_enabled=False,
@@ -229,25 +230,25 @@ class ComputeClusterVsanStretchedCluster(dict):
                    vsan_dit_encryption_enabled=True,
                    vsan_dit_rekey_interval=1800,
                    vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
-                       cache=data["vsphere_vmfs_disks"]["cache_disks"],
-                       storages=data["vsphere_vmfs_disks"]["storage_disks"],
+                       cache=cache_disks[0],
+                       storages=storage_disks,
                    )],
                    vsan_fault_domains=[vsphere.ComputeClusterVsanFaultDomainArgs(
                        fault_domains=[
                            vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
                                name="fd1",
-                               host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain1_hosts"]]],
+                               host_ids=[[__item["id"] for __item in faultdomain1_hosts]],
                            ),
                            vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
                                name="fd2",
-                               host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain2_hosts"]]],
+                               host_ids=[[__item["id"] for __item in faultdomain2_hosts]],
                            ),
                        ],
                    )],
                    vsan_stretched_cluster=vsphere.ComputeClusterVsanStretchedClusterArgs(
-                       preferred_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["preferred_fault_domain_host"]]],
-                       secondary_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["secondary_fault_domain_host"]]],
-                       witness_node=data["vsphere_host"]["witness_host"]["id"],
+                       preferred_fault_domain_host_ids=[[__item["id"] for __item in preferred_fault_domain_host]],
+                       secondary_fault_domain_host_ids=[[__item["id"] for __item in secondary_fault_domain_host]],
+                       witness_node=witness_host["id"],
                    ))
                ```
                <!--End PulumiCodeChooser -->
@@ -306,9 +307,10 @@ class ComputeClusterVsanStretchedCluster(dict):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        compute_cluster = vsphere.ComputeCluster("computeCluster",
-            datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
-            host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="terraform-compute-cluster-test",
+            datacenter_id=datacenter["id"],
+            host_system_ids=[[__item["id"] for __item in host]],
             drs_enabled=True,
             drs_automation_level="fullyAutomated",
             ha_enabled=False,
@@ -323,25 +325,25 @@ class ComputeClusterVsanStretchedCluster(dict):
             vsan_dit_encryption_enabled=True,
             vsan_dit_rekey_interval=1800,
             vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
-                cache=data["vsphere_vmfs_disks"]["cache_disks"],
-                storages=data["vsphere_vmfs_disks"]["storage_disks"],
+                cache=cache_disks[0],
+                storages=storage_disks,
             )],
             vsan_fault_domains=[vsphere.ComputeClusterVsanFaultDomainArgs(
                 fault_domains=[
                     vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
                         name="fd1",
-                        host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain1_hosts"]]],
+                        host_ids=[[__item["id"] for __item in faultdomain1_hosts]],
                     ),
                     vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
                         name="fd2",
-                        host_ids=[[__item["id"] for __item in data["vsphere_host"]["faultdomain2_hosts"]]],
+                        host_ids=[[__item["id"] for __item in faultdomain2_hosts]],
                     ),
                 ],
             )],
             vsan_stretched_cluster=vsphere.ComputeClusterVsanStretchedClusterArgs(
-                preferred_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["preferred_fault_domain_host"]]],
-                secondary_fault_domain_host_ids=[[__item["id"] for __item in data["vsphere_host"]["secondary_fault_domain_host"]]],
-                witness_node=data["vsphere_host"]["witness_host"]["id"],
+                preferred_fault_domain_host_ids=[[__item["id"] for __item in preferred_fault_domain_host]],
+                secondary_fault_domain_host_ids=[[__item["id"] for __item in secondary_fault_domain_host]],
+                witness_node=witness_host["id"],
             ))
         ```
         <!--End PulumiCodeChooser -->

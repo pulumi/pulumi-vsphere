@@ -382,12 +382,14 @@ class Vnic(pulumi.CustomResource):
         h1 = vsphere.get_host(name="esxi1.host.test",
             datacenter_id=dc.id)
         d1 = vsphere.DistributedVirtualSwitch("d1",
+            name="dc_DVPG0",
             datacenter_id=dc.id,
             hosts=[vsphere.DistributedVirtualSwitchHostArgs(
                 host_system_id=h1.id,
                 devices=["vnic3"],
             )])
         p1 = vsphere.DistributedPortGroup("p1",
+            name="test-pg",
             vlan_id=1234,
             distributed_virtual_switch_uuid=d1.id)
         v1 = vsphere.Vnic("v1",
@@ -412,6 +414,7 @@ class Vnic(pulumi.CustomResource):
         h1 = vsphere.get_host(name="esxi1.host.test",
             datacenter_id=dc.id)
         hvs1 = vsphere.HostVirtualSwitch("hvs1",
+            name="dc_HPG0",
             host_system_id=h1.id,
             network_adapters=[
                 "vmnic3",
@@ -420,6 +423,7 @@ class Vnic(pulumi.CustomResource):
             active_nics=["vmnic3"],
             standby_nics=["vmnic4"])
         p1 = vsphere.HostPortGroup("p1",
+            name="my-pg",
             virtual_switch_name=hvs1.name,
             host_system_id=h1.id)
         v1 = vsphere.Vnic("v1",
@@ -481,12 +485,14 @@ class Vnic(pulumi.CustomResource):
         h1 = vsphere.get_host(name="esxi1.host.test",
             datacenter_id=dc.id)
         d1 = vsphere.DistributedVirtualSwitch("d1",
+            name="dc_DVPG0",
             datacenter_id=dc.id,
             hosts=[vsphere.DistributedVirtualSwitchHostArgs(
                 host_system_id=h1.id,
                 devices=["vnic3"],
             )])
         p1 = vsphere.DistributedPortGroup("p1",
+            name="test-pg",
             vlan_id=1234,
             distributed_virtual_switch_uuid=d1.id)
         v1 = vsphere.Vnic("v1",
@@ -511,6 +517,7 @@ class Vnic(pulumi.CustomResource):
         h1 = vsphere.get_host(name="esxi1.host.test",
             datacenter_id=dc.id)
         hvs1 = vsphere.HostVirtualSwitch("hvs1",
+            name="dc_HPG0",
             host_system_id=h1.id,
             network_adapters=[
                 "vmnic3",
@@ -519,6 +526,7 @@ class Vnic(pulumi.CustomResource):
             active_nics=["vmnic3"],
             standby_nics=["vmnic4"])
         p1 = vsphere.HostPortGroup("p1",
+            name="my-pg",
             virtual_switch_name=hvs1.name,
             host_system_id=h1.id)
         v1 = vsphere.Vnic("v1",

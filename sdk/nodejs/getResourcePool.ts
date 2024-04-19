@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *
  * const pool = vsphere.getResourcePool({
  *     name: "esxi-01.example.com/Resources",
- *     datacenterId: data.vsphere_datacenter.datacenter.id,
+ *     datacenterId: datacenter.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -137,7 +137,7 @@ export interface GetResourcePoolResult {
  *
  * const pool = vsphere.getResourcePool({
  *     name: "esxi-01.example.com/Resources",
- *     datacenterId: data.vsphere_datacenter.datacenter.id,
+ *     datacenterId: datacenter.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
