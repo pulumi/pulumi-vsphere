@@ -298,7 +298,6 @@ class File(pulumi.CustomResource):
 
         ### Uploading a File
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -310,11 +309,9 @@ class File(pulumi.CustomResource):
             destination_file="/my/dst/path/custom_ubuntu.vmdk",
             create_directories=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Copying a File
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -328,7 +325,6 @@ class File(pulumi.CustomResource):
             destination_file="/my/dst/path/custom_ubuntu.vmdk",
             create_directories=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -360,7 +356,6 @@ class File(pulumi.CustomResource):
 
         ### Uploading a File
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -372,11 +367,9 @@ class File(pulumi.CustomResource):
             destination_file="/my/dst/path/custom_ubuntu.vmdk",
             create_directories=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Copying a File
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -390,7 +383,6 @@ class File(pulumi.CustomResource):
             destination_file="/my/dst/path/custom_ubuntu.vmdk",
             create_directories=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.

@@ -18,7 +18,6 @@ import (
 //
 // ### To Return All VGPU Profiles
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,11 +54,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### With VGPU Profile Name_regex
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,7 +94,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHostVgpuProfile(ctx *pulumi.Context, args *GetHostVgpuProfileArgs, opts ...pulumi.InvokeOption) (*GetHostVgpuProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostVgpuProfileResult

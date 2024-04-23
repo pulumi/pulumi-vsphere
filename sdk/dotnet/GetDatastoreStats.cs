@@ -18,7 +18,6 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A usefull example of this datasource would be to determine the
         /// datastore with the most free space. For example, in addition to
@@ -47,7 +45,6 @@ namespace Pulumi.VSphere
         /// 
         /// Create an `outputs.tf` like that:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.VSphere
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// and a `locals.tf` like that:
         /// </summary>
@@ -76,7 +72,6 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -97,7 +92,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A usefull example of this datasource would be to determine the
         /// datastore with the most free space. For example, in addition to
@@ -105,7 +99,6 @@ namespace Pulumi.VSphere
         /// 
         /// Create an `outputs.tf` like that:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,7 +113,6 @@ namespace Pulumi.VSphere
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// and a `locals.tf` like that:
         /// </summary>

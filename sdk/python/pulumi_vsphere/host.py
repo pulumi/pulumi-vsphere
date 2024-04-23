@@ -616,7 +616,6 @@ class Host(pulumi.CustomResource):
 
         ### Create a standalone host
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -632,11 +631,9 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             datacenter=datacenter.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create host in a compute cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -654,7 +651,6 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             cluster=cluster.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 
@@ -725,7 +721,6 @@ class Host(pulumi.CustomResource):
 
         ### Create a standalone host
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -741,11 +736,9 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             datacenter=datacenter.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create host in a compute cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -763,7 +756,6 @@ class Host(pulumi.CustomResource):
             thumbprint=thumbprint.id,
             cluster=cluster.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 

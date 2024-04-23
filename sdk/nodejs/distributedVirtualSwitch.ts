@@ -35,26 +35,20 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     }
 
     /**
-     * A list of active uplinks to be used in load
-     * balancing. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     public readonly activeUplinks!: pulumi.Output<string[]>;
     /**
-     * Controls whether or not a virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     public readonly allowForgedTransmits!: pulumi.Output<boolean>;
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
     public readonly allowMacChanges!: pulumi.Output<boolean>;
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
     public readonly allowPromiscuous!: pulumi.Output<boolean>;
     /**
@@ -74,17 +68,11 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly backupnfcShareLevel!: pulumi.Output<string>;
     /**
-     * Shuts down all ports in the port groups that
-     * this policy applies to, effectively blocking all network access to connected
-     * virtual devices.
+     * Indicates whether to block all ports by default.
      */
     public readonly blockAllPorts!: pulumi.Output<boolean>;
     /**
-     * Enables beacon probing as an additional measure
-     * to detect NIC failure.
-     *
-     * > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-     * probing.
+     * Enable beacon probing on the ports this policy applies to.
      */
     public readonly checkBeacon!: pulumi.Output<boolean>;
     /**
@@ -120,33 +108,27 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Allow VMDirectPath Gen2 for the ports
-     * for which this policy applies to.
+     * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
     public readonly directpathGen2Allowed!: pulumi.Output<boolean>;
     /**
-     * The average bandwidth in bits
-     * per second if egress traffic shaping is enabled on the port.
+     * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
     public readonly egressShapingAverageBandwidth!: pulumi.Output<number>;
     /**
-     * The maximum burst size allowed in
-     * bytes if egress traffic shaping is enabled on the port.
+     * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
     public readonly egressShapingBurstSize!: pulumi.Output<number>;
     /**
-     * `true` if the traffic shaper is enabled
-     * on the port for egress traffic.
+     * True if the traffic shaper is enabled for egress traffic on the port.
      */
     public readonly egressShapingEnabled!: pulumi.Output<boolean>;
     /**
-     * The peak bandwidth during bursts
-     * in bits per second if egress traffic shaping is enabled on the port.
+     * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
     public readonly egressShapingPeakBandwidth!: pulumi.Output<number>;
     /**
-     * If `true`, the teaming policy will re-activate failed
-     * uplinks higher in precedence when they come back up.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
     public readonly failback!: pulumi.Output<boolean>;
     /**
@@ -187,33 +169,27 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly hbrShareLevel!: pulumi.Output<string>;
     /**
-     * Use the `host` block to declare a host specification. The
-     * options are:
+     * A host member specification.
      */
     public readonly hosts!: pulumi.Output<outputs.DistributedVirtualSwitchHost[] | undefined>;
     /**
-     * Whether to ignore existing PVLAN
-     * mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
      */
     public readonly ignoreOtherPvlanMappings!: pulumi.Output<boolean | undefined>;
     /**
-     * The average bandwidth in
-     * bits per second if ingress traffic shaping is enabled on the port.
+     * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
     public readonly ingressShapingAverageBandwidth!: pulumi.Output<number>;
     /**
-     * The maximum burst size allowed in
-     * bytes if ingress traffic shaping is enabled on the port.
+     * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
     public readonly ingressShapingBurstSize!: pulumi.Output<number>;
     /**
-     * `true` if the traffic shaper is
-     * enabled on the port for ingress traffic.
+     * True if the traffic shaper is enabled for ingress traffic on the port.
      */
     public readonly ingressShapingEnabled!: pulumi.Output<boolean>;
     /**
-     * The peak bandwidth during
-     * bursts in bits per second if ingress traffic shaping is enabled on the port.
+     * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
     public readonly ingressShapingPeakBandwidth!: pulumi.Output<number>;
     /**
@@ -244,12 +220,11 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly lacpApiVersion!: pulumi.Output<string>;
     /**
-     * Enables LACP for the ports that this policy
-     * applies to.
+     * Whether or not to enable LACP on all uplink ports.
      */
     public readonly lacpEnabled!: pulumi.Output<boolean>;
     /**
-     * The LACP mode. Can be one of `active` or `passive`.
+     * The uplink LACP mode to use. Can be one of active or passive.
      */
     public readonly lacpMode!: pulumi.Output<string>;
     /**
@@ -292,59 +267,45 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The number of seconds after which
-     * active flows are forced to be exported to the collector. Allowed range is
-     * `60` to `3600`. Default: `60`.
+     * The number of seconds after which active flows are forced to be exported to the collector.
      */
     public readonly netflowActiveFlowTimeout!: pulumi.Output<number | undefined>;
     /**
-     * IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-     * Must be set before Netflow can be enabled.
+     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+     * later.
      */
     public readonly netflowCollectorIpAddress!: pulumi.Output<string | undefined>;
     /**
-     * Port for the Netflow collector. This
-     * must be set before Netflow can be enabled.
+     * The port for the netflow collector.
      */
     public readonly netflowCollectorPort!: pulumi.Output<number | undefined>;
     /**
-     * Enables Netflow on all ports that this policy
-     * applies to.
+     * Indicates whether to enable netflow on all ports.
      */
     public readonly netflowEnabled!: pulumi.Output<boolean>;
     /**
-     * The number of seconds after which
-     * idle flows are forced to be exported to the collector. Allowed range is `10`
-     * to `600`. Default: `15`.
+     * The number of seconds after which idle flows are forced to be exported to the collector.
      */
     public readonly netflowIdleFlowTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Whether to limit analysis to
-     * traffic that has both source and destination served by the same host.
-     * Default: `false`.
+     * Whether to limit analysis to traffic that has both source and destination served by the same host.
      */
     public readonly netflowInternalFlowsOnly!: pulumi.Output<boolean | undefined>;
     /**
-     * The observation domain ID for
-     * the Netflow collector.
+     * The observation Domain ID for the netflow collector.
      */
     public readonly netflowObservationDomainId!: pulumi.Output<number | undefined>;
     /**
-     * The ratio of total number of packets to
-     * the number of packets analyzed. The default is `0`, which indicates that the
-     * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+     * packets are analyzed.
      */
     public readonly netflowSamplingRate!: pulumi.Output<number | undefined>;
     /**
-     * Set to `true` to enable
-     * network I/O control. Default: `false`.
+     * Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
      */
     public readonly networkResourceControlEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The version of network I/O
-     * control to use. Can be one of `version2` or `version3`. Default: `version2`.
+     * The network I/O control version to use. Can be one of version2 or version3.
      */
     public readonly networkResourceControlVersion!: pulumi.Output<string>;
     /**
@@ -364,25 +325,19 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly nfsShareLevel!: pulumi.Output<string>;
     /**
-     * If `true`, the teaming policy will notify the
-     * broadcast network of an uplink failover, triggering cache updates.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
     public readonly notifySwitches!: pulumi.Output<boolean>;
     /**
-     * Used to define a secondary VLAN
-     * ID when using private VLANs.
+     * The secondary VLAN ID for this port.
      */
     public readonly portPrivateSecondaryVlanId!: pulumi.Output<number>;
     /**
-     * Use the `pvlanMapping` block to declare a
-     * private VLAN mapping. The options are:
+     * A private VLAN (PVLAN) mapping.
      */
     public readonly pvlanMappings!: pulumi.Output<outputs.DistributedVirtualSwitchPvlanMapping[] | undefined>;
     /**
-     * A list of standby uplinks to be used in
-     * failover. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     public readonly standbyUplinks!: pulumi.Output<string[]>;
     /**
@@ -392,22 +347,18 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * The uplink teaming policy. Can be one of
-     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
-     * `failoverExplicit`, or `loadbalanceLoadbased`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+     * failover_explicit, or loadbalance_loadbased.
      */
     public readonly teamingPolicy!: pulumi.Output<string>;
     /**
-     * Forward all traffic transmitted by ports for which
-     * this policy applies to its VDS uplinks.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      */
     public readonly txUplink!: pulumi.Output<boolean>;
     /**
-     * A list of strings that uniquely identifies the names
-     * of the uplinks on the VDS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the VDS, in addition to the
-     * names. See here for an example on how to
-     * use this option.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+     * across hosts.
      */
     public readonly uplinks!: pulumi.Output<string[]>;
     /**
@@ -453,28 +404,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly vlanId!: pulumi.Output<number>;
     /**
-     * Used to denote VLAN trunking. Use the `minVlan`
-     * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlanRange` definitions are allowed, but they must not overlap. Example
-     * below:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as vsphere from "@pulumi/vsphere";
-     *
-     * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
-     *     {
-     *         minVlan: 100,
-     *         maxVlan: 199,
-     *     },
-     *     {
-     *         minVlan: 300,
-     *         maxVlan: 399,
-     *     },
-     * ]});
-     * ```
-     * <!--End PulumiCodeChooser -->
+     * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
     public readonly vlanRanges!: pulumi.Output<outputs.DistributedVirtualSwitchVlanRange[]>;
     /**
@@ -729,26 +659,20 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
  */
 export interface DistributedVirtualSwitchState {
     /**
-     * A list of active uplinks to be used in load
-     * balancing. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not a virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
     allowMacChanges?: pulumi.Input<boolean>;
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
     allowPromiscuous?: pulumi.Input<boolean>;
     /**
@@ -768,17 +692,11 @@ export interface DistributedVirtualSwitchState {
      */
     backupnfcShareLevel?: pulumi.Input<string>;
     /**
-     * Shuts down all ports in the port groups that
-     * this policy applies to, effectively blocking all network access to connected
-     * virtual devices.
+     * Indicates whether to block all ports by default.
      */
     blockAllPorts?: pulumi.Input<boolean>;
     /**
-     * Enables beacon probing as an additional measure
-     * to detect NIC failure.
-     *
-     * > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-     * probing.
+     * Enable beacon probing on the ports this policy applies to.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
@@ -814,33 +732,27 @@ export interface DistributedVirtualSwitchState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Allow VMDirectPath Gen2 for the ports
-     * for which this policy applies to.
+     * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
     directpathGen2Allowed?: pulumi.Input<boolean>;
     /**
-     * The average bandwidth in bits
-     * per second if egress traffic shaping is enabled on the port.
+     * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
     egressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
-     * The maximum burst size allowed in
-     * bytes if egress traffic shaping is enabled on the port.
+     * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
     egressShapingBurstSize?: pulumi.Input<number>;
     /**
-     * `true` if the traffic shaper is enabled
-     * on the port for egress traffic.
+     * True if the traffic shaper is enabled for egress traffic on the port.
      */
     egressShapingEnabled?: pulumi.Input<boolean>;
     /**
-     * The peak bandwidth during bursts
-     * in bits per second if egress traffic shaping is enabled on the port.
+     * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
     egressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
-     * If `true`, the teaming policy will re-activate failed
-     * uplinks higher in precedence when they come back up.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
     failback?: pulumi.Input<boolean>;
     /**
@@ -881,33 +793,27 @@ export interface DistributedVirtualSwitchState {
      */
     hbrShareLevel?: pulumi.Input<string>;
     /**
-     * Use the `host` block to declare a host specification. The
-     * options are:
+     * A host member specification.
      */
     hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
-     * Whether to ignore existing PVLAN
-     * mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
      */
     ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
     /**
-     * The average bandwidth in
-     * bits per second if ingress traffic shaping is enabled on the port.
+     * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
     ingressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
-     * The maximum burst size allowed in
-     * bytes if ingress traffic shaping is enabled on the port.
+     * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
     ingressShapingBurstSize?: pulumi.Input<number>;
     /**
-     * `true` if the traffic shaper is
-     * enabled on the port for ingress traffic.
+     * True if the traffic shaper is enabled for ingress traffic on the port.
      */
     ingressShapingEnabled?: pulumi.Input<boolean>;
     /**
-     * The peak bandwidth during
-     * bursts in bits per second if ingress traffic shaping is enabled on the port.
+     * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
     ingressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
@@ -938,12 +844,11 @@ export interface DistributedVirtualSwitchState {
      */
     lacpApiVersion?: pulumi.Input<string>;
     /**
-     * Enables LACP for the ports that this policy
-     * applies to.
+     * Whether or not to enable LACP on all uplink ports.
      */
     lacpEnabled?: pulumi.Input<boolean>;
     /**
-     * The LACP mode. Can be one of `active` or `passive`.
+     * The uplink LACP mode to use. Can be one of active or passive.
      */
     lacpMode?: pulumi.Input<string>;
     /**
@@ -986,59 +891,45 @@ export interface DistributedVirtualSwitchState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of seconds after which
-     * active flows are forced to be exported to the collector. Allowed range is
-     * `60` to `3600`. Default: `60`.
+     * The number of seconds after which active flows are forced to be exported to the collector.
      */
     netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
-     * IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-     * Must be set before Netflow can be enabled.
+     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+     * later.
      */
     netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
-     * Port for the Netflow collector. This
-     * must be set before Netflow can be enabled.
+     * The port for the netflow collector.
      */
     netflowCollectorPort?: pulumi.Input<number>;
     /**
-     * Enables Netflow on all ports that this policy
-     * applies to.
+     * Indicates whether to enable netflow on all ports.
      */
     netflowEnabled?: pulumi.Input<boolean>;
     /**
-     * The number of seconds after which
-     * idle flows are forced to be exported to the collector. Allowed range is `10`
-     * to `600`. Default: `15`.
+     * The number of seconds after which idle flows are forced to be exported to the collector.
      */
     netflowIdleFlowTimeout?: pulumi.Input<number>;
     /**
-     * Whether to limit analysis to
-     * traffic that has both source and destination served by the same host.
-     * Default: `false`.
+     * Whether to limit analysis to traffic that has both source and destination served by the same host.
      */
     netflowInternalFlowsOnly?: pulumi.Input<boolean>;
     /**
-     * The observation domain ID for
-     * the Netflow collector.
+     * The observation Domain ID for the netflow collector.
      */
     netflowObservationDomainId?: pulumi.Input<number>;
     /**
-     * The ratio of total number of packets to
-     * the number of packets analyzed. The default is `0`, which indicates that the
-     * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+     * packets are analyzed.
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**
-     * Set to `true` to enable
-     * network I/O control. Default: `false`.
+     * Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
      */
     networkResourceControlEnabled?: pulumi.Input<boolean>;
     /**
-     * The version of network I/O
-     * control to use. Can be one of `version2` or `version3`. Default: `version2`.
+     * The network I/O control version to use. Can be one of version2 or version3.
      */
     networkResourceControlVersion?: pulumi.Input<string>;
     /**
@@ -1058,25 +949,19 @@ export interface DistributedVirtualSwitchState {
      */
     nfsShareLevel?: pulumi.Input<string>;
     /**
-     * If `true`, the teaming policy will notify the
-     * broadcast network of an uplink failover, triggering cache updates.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
     notifySwitches?: pulumi.Input<boolean>;
     /**
-     * Used to define a secondary VLAN
-     * ID when using private VLANs.
+     * The secondary VLAN ID for this port.
      */
     portPrivateSecondaryVlanId?: pulumi.Input<number>;
     /**
-     * Use the `pvlanMapping` block to declare a
-     * private VLAN mapping. The options are:
+     * A private VLAN (PVLAN) mapping.
      */
     pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
     /**
-     * A list of standby uplinks to be used in
-     * failover. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1086,22 +971,18 @@ export interface DistributedVirtualSwitchState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The uplink teaming policy. Can be one of
-     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
-     * `failoverExplicit`, or `loadbalanceLoadbased`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+     * failover_explicit, or loadbalance_loadbased.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
-     * Forward all traffic transmitted by ports for which
-     * this policy applies to its VDS uplinks.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      */
     txUplink?: pulumi.Input<boolean>;
     /**
-     * A list of strings that uniquely identifies the names
-     * of the uplinks on the VDS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the VDS, in addition to the
-     * names. See here for an example on how to
-     * use this option.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+     * across hosts.
      */
     uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1147,28 +1028,7 @@ export interface DistributedVirtualSwitchState {
      */
     vlanId?: pulumi.Input<number>;
     /**
-     * Used to denote VLAN trunking. Use the `minVlan`
-     * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlanRange` definitions are allowed, but they must not overlap. Example
-     * below:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as vsphere from "@pulumi/vsphere";
-     *
-     * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
-     *     {
-     *         minVlan: 100,
-     *         maxVlan: 199,
-     *     },
-     *     {
-     *         minVlan: 300,
-     *         maxVlan: 399,
-     *     },
-     * ]});
-     * ```
-     * <!--End PulumiCodeChooser -->
+     * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
@@ -1210,26 +1070,20 @@ export interface DistributedVirtualSwitchState {
  */
 export interface DistributedVirtualSwitchArgs {
     /**
-     * A list of active uplinks to be used in load
-     * balancing. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not a virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
     allowMacChanges?: pulumi.Input<boolean>;
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
     allowPromiscuous?: pulumi.Input<boolean>;
     /**
@@ -1249,17 +1103,11 @@ export interface DistributedVirtualSwitchArgs {
      */
     backupnfcShareLevel?: pulumi.Input<string>;
     /**
-     * Shuts down all ports in the port groups that
-     * this policy applies to, effectively blocking all network access to connected
-     * virtual devices.
+     * Indicates whether to block all ports by default.
      */
     blockAllPorts?: pulumi.Input<boolean>;
     /**
-     * Enables beacon probing as an additional measure
-     * to detect NIC failure.
-     *
-     * > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-     * probing.
+     * Enable beacon probing on the ports this policy applies to.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
@@ -1290,33 +1138,27 @@ export interface DistributedVirtualSwitchArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Allow VMDirectPath Gen2 for the ports
-     * for which this policy applies to.
+     * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
     directpathGen2Allowed?: pulumi.Input<boolean>;
     /**
-     * The average bandwidth in bits
-     * per second if egress traffic shaping is enabled on the port.
+     * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
     egressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
-     * The maximum burst size allowed in
-     * bytes if egress traffic shaping is enabled on the port.
+     * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
     egressShapingBurstSize?: pulumi.Input<number>;
     /**
-     * `true` if the traffic shaper is enabled
-     * on the port for egress traffic.
+     * True if the traffic shaper is enabled for egress traffic on the port.
      */
     egressShapingEnabled?: pulumi.Input<boolean>;
     /**
-     * The peak bandwidth during bursts
-     * in bits per second if egress traffic shaping is enabled on the port.
+     * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
     egressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
-     * If `true`, the teaming policy will re-activate failed
-     * uplinks higher in precedence when they come back up.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
     failback?: pulumi.Input<boolean>;
     /**
@@ -1357,33 +1199,27 @@ export interface DistributedVirtualSwitchArgs {
      */
     hbrShareLevel?: pulumi.Input<string>;
     /**
-     * Use the `host` block to declare a host specification. The
-     * options are:
+     * A host member specification.
      */
     hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
-     * Whether to ignore existing PVLAN
-     * mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
      */
     ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
     /**
-     * The average bandwidth in
-     * bits per second if ingress traffic shaping is enabled on the port.
+     * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
     ingressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
-     * The maximum burst size allowed in
-     * bytes if ingress traffic shaping is enabled on the port.
+     * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
     ingressShapingBurstSize?: pulumi.Input<number>;
     /**
-     * `true` if the traffic shaper is
-     * enabled on the port for ingress traffic.
+     * True if the traffic shaper is enabled for ingress traffic on the port.
      */
     ingressShapingEnabled?: pulumi.Input<boolean>;
     /**
-     * The peak bandwidth during
-     * bursts in bits per second if ingress traffic shaping is enabled on the port.
+     * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
     ingressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
@@ -1414,12 +1250,11 @@ export interface DistributedVirtualSwitchArgs {
      */
     lacpApiVersion?: pulumi.Input<string>;
     /**
-     * Enables LACP for the ports that this policy
-     * applies to.
+     * Whether or not to enable LACP on all uplink ports.
      */
     lacpEnabled?: pulumi.Input<boolean>;
     /**
-     * The LACP mode. Can be one of `active` or `passive`.
+     * The uplink LACP mode to use. Can be one of active or passive.
      */
     lacpMode?: pulumi.Input<string>;
     /**
@@ -1462,59 +1297,45 @@ export interface DistributedVirtualSwitchArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of seconds after which
-     * active flows are forced to be exported to the collector. Allowed range is
-     * `60` to `3600`. Default: `60`.
+     * The number of seconds after which active flows are forced to be exported to the collector.
      */
     netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
-     * IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-     * Must be set before Netflow can be enabled.
+     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+     * later.
      */
     netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
-     * Port for the Netflow collector. This
-     * must be set before Netflow can be enabled.
+     * The port for the netflow collector.
      */
     netflowCollectorPort?: pulumi.Input<number>;
     /**
-     * Enables Netflow on all ports that this policy
-     * applies to.
+     * Indicates whether to enable netflow on all ports.
      */
     netflowEnabled?: pulumi.Input<boolean>;
     /**
-     * The number of seconds after which
-     * idle flows are forced to be exported to the collector. Allowed range is `10`
-     * to `600`. Default: `15`.
+     * The number of seconds after which idle flows are forced to be exported to the collector.
      */
     netflowIdleFlowTimeout?: pulumi.Input<number>;
     /**
-     * Whether to limit analysis to
-     * traffic that has both source and destination served by the same host.
-     * Default: `false`.
+     * Whether to limit analysis to traffic that has both source and destination served by the same host.
      */
     netflowInternalFlowsOnly?: pulumi.Input<boolean>;
     /**
-     * The observation domain ID for
-     * the Netflow collector.
+     * The observation Domain ID for the netflow collector.
      */
     netflowObservationDomainId?: pulumi.Input<number>;
     /**
-     * The ratio of total number of packets to
-     * the number of packets analyzed. The default is `0`, which indicates that the
-     * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+     * packets are analyzed.
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**
-     * Set to `true` to enable
-     * network I/O control. Default: `false`.
+     * Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
      */
     networkResourceControlEnabled?: pulumi.Input<boolean>;
     /**
-     * The version of network I/O
-     * control to use. Can be one of `version2` or `version3`. Default: `version2`.
+     * The network I/O control version to use. Can be one of version2 or version3.
      */
     networkResourceControlVersion?: pulumi.Input<string>;
     /**
@@ -1534,25 +1355,19 @@ export interface DistributedVirtualSwitchArgs {
      */
     nfsShareLevel?: pulumi.Input<string>;
     /**
-     * If `true`, the teaming policy will notify the
-     * broadcast network of an uplink failover, triggering cache updates.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
     notifySwitches?: pulumi.Input<boolean>;
     /**
-     * Used to define a secondary VLAN
-     * ID when using private VLANs.
+     * The secondary VLAN ID for this port.
      */
     portPrivateSecondaryVlanId?: pulumi.Input<number>;
     /**
-     * Use the `pvlanMapping` block to declare a
-     * private VLAN mapping. The options are:
+     * A private VLAN (PVLAN) mapping.
      */
     pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
     /**
-     * A list of standby uplinks to be used in
-     * failover. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1562,22 +1377,18 @@ export interface DistributedVirtualSwitchArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The uplink teaming policy. Can be one of
-     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
-     * `failoverExplicit`, or `loadbalanceLoadbased`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+     * failover_explicit, or loadbalance_loadbased.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
-     * Forward all traffic transmitted by ports for which
-     * this policy applies to its VDS uplinks.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      */
     txUplink?: pulumi.Input<boolean>;
     /**
-     * A list of strings that uniquely identifies the names
-     * of the uplinks on the VDS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the VDS, in addition to the
-     * names. See here for an example on how to
-     * use this option.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+     * across hosts.
      */
     uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1623,28 +1434,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     vlanId?: pulumi.Input<number>;
     /**
-     * Used to denote VLAN trunking. Use the `minVlan`
-     * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlanRange` definitions are allowed, but they must not overlap. Example
-     * below:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as vsphere from "@pulumi/vsphere";
-     *
-     * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
-     *     {
-     *         minVlan: 100,
-     *         maxVlan: 199,
-     *     },
-     *     {
-     *         minVlan: 300,
-     *         maxVlan: 399,
-     *     },
-     * ]});
-     * ```
-     * <!--End PulumiCodeChooser -->
+     * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**

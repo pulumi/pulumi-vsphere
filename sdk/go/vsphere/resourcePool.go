@@ -23,7 +23,6 @@ import (
 // The following example sets up a resource pool in an existing compute cluster
 // with the default settings for CPU and memory reservations, shares, and limits.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,12 +60,10 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // A virtual machine resource could be targeted to use the default resource pool
 // of the cluster using the following:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,13 +87,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // The following example sets up a parent resource pool in an existing compute cluster
 // with a child resource pool nested below. Each resource pool is configured with
 // the default settings for CPU and memory reservations, shares, and limits.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -141,7 +136,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Importing
 //

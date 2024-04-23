@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ### Create a standalone host
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -33,11 +32,9 @@ import * as utilities from "./utilities";
  *     datacenter: datacenter.then(datacenter => datacenter.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create host in a compute cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -62,7 +59,6 @@ import * as utilities from "./utilities";
  *     cluster: cluster.then(cluster => cluster.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Importing
  *

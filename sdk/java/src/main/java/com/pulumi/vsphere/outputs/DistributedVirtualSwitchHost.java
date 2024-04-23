@@ -13,30 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DistributedVirtualSwitchHost {
     /**
-     * @return The list of NIC devices to map to uplinks on the VDS,
-     * added in order they are specified.
+     * @return Name of the physical NIC to be added to the proxy switch.
      * 
      */
     private @Nullable List<String> devices;
     /**
-     * @return The host system ID of the host to add to the
-     * VDS.
+     * @return The managed object ID of the host this specification applies to.
      * 
      */
     private String hostSystemId;
 
     private DistributedVirtualSwitchHost() {}
     /**
-     * @return The list of NIC devices to map to uplinks on the VDS,
-     * added in order they are specified.
+     * @return Name of the physical NIC to be added to the proxy switch.
      * 
      */
     public List<String> devices() {
         return this.devices == null ? List.of() : this.devices;
     }
     /**
-     * @return The host system ID of the host to add to the
-     * VDS.
+     * @return The managed object ID of the host this specification applies to.
      * 
      */
     public String hostSystemId() {

@@ -18,7 +18,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PreferredFaultDomainHostIds;
         /// <summary>
-        /// The name of first fault domain. Default is `Preferred`.
+        /// The name of prepferred fault domain.
         /// </summary>
         public readonly string? PreferredFaultDomainName;
         /// <summary>
@@ -26,91 +26,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecondaryFaultDomainHostIds;
         /// <summary>
-        /// The name of second fault domain. Default is `Secondary`.
-        /// 
-        /// &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-        /// You can enable or re-enable vSphere HA after vSAN is configured.
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var computeCluster = new VSphere.ComputeCluster("compute_cluster", new()
-        ///     {
-        ///         Name = "terraform-compute-cluster-test",
-        ///         DatacenterId = datacenter.Id,
-        ///         HostSystemIds = new[]
-        ///         {
-        ///             host.Select(__item =&gt; __item.Id).ToList(),
-        ///         },
-        ///         DrsEnabled = true,
-        ///         DrsAutomationLevel = "fullyAutomated",
-        ///         HaEnabled = false,
-        ///         VsanEnabled = true,
-        ///         VsanEsaEnabled = true,
-        ///         VsanDedupEnabled = true,
-        ///         VsanCompressionEnabled = true,
-        ///         VsanPerformanceEnabled = true,
-        ///         VsanVerboseModeEnabled = true,
-        ///         VsanNetworkDiagnosticModeEnabled = true,
-        ///         VsanUnmapEnabled = true,
-        ///         VsanDitEncryptionEnabled = true,
-        ///         VsanDitRekeyInterval = 1800,
-        ///         VsanDiskGroups = new[]
-        ///         {
-        ///             new VSphere.Inputs.ComputeClusterVsanDiskGroupArgs
-        ///             {
-        ///                 Cache = cacheDisks[0],
-        ///                 Storages = storageDisks,
-        ///             },
-        ///         },
-        ///         VsanFaultDomains = new[]
-        ///         {
-        ///             new VSphere.Inputs.ComputeClusterVsanFaultDomainArgs
-        ///             {
-        ///                 FaultDomains = new[]
-        ///                 {
-        ///                     new VSphere.Inputs.ComputeClusterVsanFaultDomainFaultDomainArgs
-        ///                     {
-        ///                         Name = "fd1",
-        ///                         HostIds = new[]
-        ///                         {
-        ///                             faultdomain1Hosts.Select(__item =&gt; __item.Id).ToList(),
-        ///                         },
-        ///                     },
-        ///                     new VSphere.Inputs.ComputeClusterVsanFaultDomainFaultDomainArgs
-        ///                     {
-        ///                         Name = "fd2",
-        ///                         HostIds = new[]
-        ///                         {
-        ///                             faultdomain2Hosts.Select(__item =&gt; __item.Id).ToList(),
-        ///                         },
-        ///                     },
-        ///                 },
-        ///             },
-        ///         },
-        ///         VsanStretchedCluster = new VSphere.Inputs.ComputeClusterVsanStretchedClusterArgs
-        ///         {
-        ///             PreferredFaultDomainHostIds = new[]
-        ///             {
-        ///                 preferredFaultDomainHost.Select(__item =&gt; __item.Id).ToList(),
-        ///             },
-        ///             SecondaryFaultDomainHostIds = new[]
-        ///             {
-        ///                 secondaryFaultDomainHost.Select(__item =&gt; __item.Id).ToList(),
-        ///             },
-        ///             WitnessNode = witnessHost.Id,
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// The name of secondary fault domain.
         /// </summary>
         public readonly string? SecondaryFaultDomainName;
         /// <summary>

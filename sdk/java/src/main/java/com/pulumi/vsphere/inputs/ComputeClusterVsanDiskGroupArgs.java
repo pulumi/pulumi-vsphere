@@ -17,14 +17,14 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
     public static final ComputeClusterVsanDiskGroupArgs Empty = new ComputeClusterVsanDiskGroupArgs();
 
     /**
-     * The canonical name of the disk to use for vSAN cache.
+     * Cache disk.
      * 
      */
     @Import(name="cache")
     private @Nullable Output<String> cache;
 
     /**
-     * @return The canonical name of the disk to use for vSAN cache.
+     * @return Cache disk.
      * 
      */
     public Optional<Output<String>> cache() {
@@ -32,14 +32,14 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * An array of disk canonical names for vSAN storage.
+     * List of storage disks.
      * 
      */
     @Import(name="storages")
     private @Nullable Output<List<String>> storages;
 
     /**
-     * @return An array of disk canonical names for vSAN storage.
+     * @return List of storage disks.
      * 
      */
     public Optional<Output<List<String>>> storages() {
@@ -72,7 +72,7 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cache The canonical name of the disk to use for vSAN cache.
+         * @param cache Cache disk.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cache The canonical name of the disk to use for vSAN cache.
+         * @param cache Cache disk.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param storages An array of disk canonical names for vSAN storage.
+         * @param storages List of storage disks.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param storages An array of disk canonical names for vSAN storage.
+         * @param storages List of storage disks.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param storages An array of disk canonical names for vSAN storage.
+         * @param storages List of storage disks.
          * 
          * @return builder
          * 

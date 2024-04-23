@@ -16,8 +16,7 @@ namespace Pulumi.VSphere.Inputs
         private InputList<string>? _devices;
 
         /// <summary>
-        /// The list of NIC devices to map to uplinks on the VDS,
-        /// added in order they are specified.
+        /// Name of the physical NIC to be added to the proxy switch.
         /// </summary>
         public InputList<string> Devices
         {
@@ -26,8 +25,7 @@ namespace Pulumi.VSphere.Inputs
         }
 
         /// <summary>
-        /// The host system ID of the host to add to the
-        /// VDS.
+        /// The managed object ID of the host this specification applies to.
         /// </summary>
         [Input("hostSystemId", required: true)]
         public Input<string> HostSystemId { get; set; } = null!;

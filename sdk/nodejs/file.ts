@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ### Uploading a File
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -22,11 +21,9 @@ import * as utilities from "./utilities";
  *     createDirectories: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Copying a File
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -41,7 +38,6 @@ import * as utilities from "./utilities";
  *     createDirectories: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class File extends pulumi.CustomResource {
     /**

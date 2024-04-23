@@ -73,7 +73,6 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -82,7 +81,6 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
     pool = vsphere.get_resource_pool(name="resource-pool-01",
         datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Specifying the Root Resource Pool for a Standalone ESXi Host
 
@@ -94,7 +92,6 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
     explicitly created. This resource pool is referred to as the
     _root resource pool_ and can be looked up by specifying the path.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -102,7 +99,6 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
     pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
         datacenter_id=datacenter["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
     For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
 
@@ -145,7 +141,6 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -154,7 +149,6 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     pool = vsphere.get_resource_pool(name="resource-pool-01",
         datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ### Specifying the Root Resource Pool for a Standalone ESXi Host
 
@@ -166,7 +160,6 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     explicitly created. This resource pool is referred to as the
     _root resource pool_ and can be looked up by specifying the path.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -174,7 +167,6 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
         datacenter_id=datacenter["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
     For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
 

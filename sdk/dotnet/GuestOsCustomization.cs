@@ -16,7 +16,6 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/guestOsCustomization:GuestOsCustomization")]
     public partial class GuestOsCustomization : global::Pulumi.CustomResource

@@ -109,48 +109,42 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * A key/value map of advanced Storage DRS
-     * settings that are not exposed via the provider or the vSphere client.
+     * Advanced configuration options for storage DRS.
      * 
      */
     @Export(name="sdrsAdvancedOptions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> sdrsAdvancedOptions;
 
     /**
-     * @return A key/value map of advanced Storage DRS
-     * settings that are not exposed via the provider or the vSphere client.
+     * @return Advanced configuration options for storage DRS.
      * 
      */
     public Output<Optional<Map<String,String>>> sdrsAdvancedOptions() {
         return Codegen.optional(this.sdrsAdvancedOptions);
     }
     /**
-     * The global automation level for all
-     * virtual machines in this datastore cluster. Default: `manual`.
+     * The default automation level for all virtual machines in this storage cluster.
      * 
      */
     @Export(name="sdrsAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsAutomationLevel;
 
     /**
-     * @return The global automation level for all
-     * virtual machines in this datastore cluster. Default: `manual`.
+     * @return The default automation level for all virtual machines in this storage cluster.
      * 
      */
     public Output<Optional<String>> sdrsAutomationLevel() {
         return Codegen.optional(this.sdrsAutomationLevel);
     }
     /**
-     * When `true`, all disks in a
-     * single virtual machine will be kept on the same datastore. Default: `true`.
+     * When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
      * 
      */
     @Export(name="sdrsDefaultIntraVmAffinity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sdrsDefaultIntraVmAffinity;
 
     /**
-     * @return When `true`, all disks in a
-     * single virtual machine will be kept on the same datastore. Default: `true`.
+     * @return When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
      * 
      */
     public Output<Optional<Boolean>> sdrsDefaultIntraVmAffinity() {
@@ -173,20 +167,14 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsEnabled);
     }
     /**
-     * The free space threshold to use.
-     * When set to `utilization`, `drs_space_utilization_threshold` is used, and
-     * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
-     * `utilization`.
+     * The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      * 
      */
     @Export(name="sdrsFreeSpaceThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsFreeSpaceThreshold;
 
     /**
-     * @return The free space threshold to use.
-     * When set to `utilization`, `drs_space_utilization_threshold` is used, and
-     * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
-     * `utilization`.
+     * @return The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      * 
      */
     public Output<Optional<Integer>> sdrsFreeSpaceThreshold() {
@@ -209,248 +197,204 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsFreeSpaceThresholdMode);
     }
     /**
-     * The threshold, in
-     * percent, of difference between space utilization in datastores before storage
-     * DRS makes decisions to balance the space. Default: `5` percent.
+     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+     * balance the space.
      * 
      */
     @Export(name="sdrsFreeSpaceUtilizationDifference", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsFreeSpaceUtilizationDifference;
 
     /**
-     * @return The threshold, in
-     * percent, of difference between space utilization in datastores before storage
-     * DRS makes decisions to balance the space. Default: `5` percent.
+     * @return The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+     * balance the space.
      * 
      */
     public Output<Optional<Integer>> sdrsFreeSpaceUtilizationDifference() {
         return Codegen.optional(this.sdrsFreeSpaceUtilizationDifference);
     }
     /**
-     * Overrides the default
-     * automation settings when correcting I/O load imbalances.
+     * Overrides the default automation settings when correcting I/O load imbalances.
      * 
      */
     @Export(name="sdrsIoBalanceAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsIoBalanceAutomationLevel;
 
     /**
-     * @return Overrides the default
-     * automation settings when correcting I/O load imbalances.
+     * @return Overrides the default automation settings when correcting I/O load imbalances.
      * 
      */
     public Output<Optional<String>> sdrsIoBalanceAutomationLevel() {
         return Codegen.optional(this.sdrsIoBalanceAutomationLevel);
     }
     /**
-     * The I/O latency threshold, in
-     * milliseconds, that storage DRS uses to make recommendations to move disks
-     * from this datastore. Default: `15` seconds.
+     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+     * datastore.
      * 
      */
     @Export(name="sdrsIoLatencyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoLatencyThreshold;
 
     /**
-     * @return The I/O latency threshold, in
-     * milliseconds, that storage DRS uses to make recommendations to move disks
-     * from this datastore. Default: `15` seconds.
+     * @return The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+     * datastore.
      * 
      */
     public Output<Optional<Integer>> sdrsIoLatencyThreshold() {
         return Codegen.optional(this.sdrsIoLatencyThreshold);
     }
     /**
-     * Enable I/O load balancing for
-     * this datastore cluster. Default: `true`.
+     * Enable I/O load balancing for this datastore cluster.
      * 
      */
     @Export(name="sdrsIoLoadBalanceEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sdrsIoLoadBalanceEnabled;
 
     /**
-     * @return Enable I/O load balancing for
-     * this datastore cluster. Default: `true`.
+     * @return Enable I/O load balancing for this datastore cluster.
      * 
      */
     public Output<Optional<Boolean>> sdrsIoLoadBalanceEnabled() {
         return Codegen.optional(this.sdrsIoLoadBalanceEnabled);
     }
     /**
-     * The difference between load
-     * in datastores in the cluster before storage DRS makes recommendations to
-     * balance the load. Default: `5` percent.
+     * The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
      * 
      */
     @Export(name="sdrsIoLoadImbalanceThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoLoadImbalanceThreshold;
 
     /**
-     * @return The difference between load
-     * in datastores in the cluster before storage DRS makes recommendations to
-     * balance the load. Default: `5` percent.
+     * @return The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
      * 
      */
     public Output<Optional<Integer>> sdrsIoLoadImbalanceThreshold() {
         return Codegen.optional(this.sdrsIoLoadImbalanceThreshold);
     }
     /**
-     * The threshold of reservable
-     * IOPS of all virtual machines on the datastore before storage DRS makes
-     * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
-     * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
+     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+     * move VMs off of a datastore.
      * 
      */
     @Export(name="sdrsIoReservableIopsThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoReservableIopsThreshold;
 
     /**
-     * @return The threshold of reservable
-     * IOPS of all virtual machines on the datastore before storage DRS makes
-     * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
-     * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
+     * @return The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+     * move VMs off of a datastore.
      * 
      */
     public Output<Optional<Integer>> sdrsIoReservableIopsThreshold() {
         return Codegen.optional(this.sdrsIoReservableIopsThreshold);
     }
     /**
-     * The threshold, in
-     * percent, of actual estimated performance of the datastore (in IOPS) that
-     * storage DRS uses to make recommendations to move VMs off of a datastore when
-     * the total reservable IOPS exceeds the threshold. Default: `60` percent.
+     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      * 
      */
     @Export(name="sdrsIoReservablePercentThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoReservablePercentThreshold;
 
     /**
-     * @return The threshold, in
-     * percent, of actual estimated performance of the datastore (in IOPS) that
-     * storage DRS uses to make recommendations to move VMs off of a datastore when
-     * the total reservable IOPS exceeds the threshold. Default: `60` percent.
+     * @return The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      * 
      */
     public Output<Optional<Integer>> sdrsIoReservablePercentThreshold() {
         return Codegen.optional(this.sdrsIoReservablePercentThreshold);
     }
     /**
-     * The reservable IOPS
-     * threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-     * of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
-     * `manual`. Default: `automatic`.
+     * The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
      * 
      */
     @Export(name="sdrsIoReservableThresholdMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsIoReservableThresholdMode;
 
     /**
-     * @return The reservable IOPS
-     * threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-     * of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
-     * `manual`. Default: `automatic`.
+     * @return The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
      * 
      */
     public Output<Optional<String>> sdrsIoReservableThresholdMode() {
         return Codegen.optional(this.sdrsIoReservableThresholdMode);
     }
     /**
-     * The storage DRS poll interval, in
-     * minutes. Default: `480` minutes.
+     * The storage DRS poll interval, in minutes.
      * 
      */
     @Export(name="sdrsLoadBalanceInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsLoadBalanceInterval;
 
     /**
-     * @return The storage DRS poll interval, in
-     * minutes. Default: `480` minutes.
+     * @return The storage DRS poll interval, in minutes.
      * 
      */
     public Output<Optional<Integer>> sdrsLoadBalanceInterval() {
         return Codegen.optional(this.sdrsLoadBalanceInterval);
     }
     /**
-     * Overrides the default
-     * automation settings when correcting storage and VM policy violations.
+     * Overrides the default automation settings when correcting storage and VM policy violations.
      * 
      */
     @Export(name="sdrsPolicyEnforcementAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsPolicyEnforcementAutomationLevel;
 
     /**
-     * @return Overrides the default
-     * automation settings when correcting storage and VM policy violations.
+     * @return Overrides the default automation settings when correcting storage and VM policy violations.
      * 
      */
     public Output<Optional<String>> sdrsPolicyEnforcementAutomationLevel() {
         return Codegen.optional(this.sdrsPolicyEnforcementAutomationLevel);
     }
     /**
-     * Overrides the default
-     * automation settings when correcting affinity rule violations.
+     * Overrides the default automation settings when correcting affinity rule violations.
      * 
      */
     @Export(name="sdrsRuleEnforcementAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsRuleEnforcementAutomationLevel;
 
     /**
-     * @return Overrides the default
-     * automation settings when correcting affinity rule violations.
+     * @return Overrides the default automation settings when correcting affinity rule violations.
      * 
      */
     public Output<Optional<String>> sdrsRuleEnforcementAutomationLevel() {
         return Codegen.optional(this.sdrsRuleEnforcementAutomationLevel);
     }
     /**
-     * Overrides the default
-     * automation settings when correcting disk space imbalances.
+     * Overrides the default automation settings when correcting disk space imbalances.
      * 
      */
     @Export(name="sdrsSpaceBalanceAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsSpaceBalanceAutomationLevel;
 
     /**
-     * @return Overrides the default
-     * automation settings when correcting disk space imbalances.
+     * @return Overrides the default automation settings when correcting disk space imbalances.
      * 
      */
     public Output<Optional<String>> sdrsSpaceBalanceAutomationLevel() {
         return Codegen.optional(this.sdrsSpaceBalanceAutomationLevel);
     }
     /**
-     * Runtime thresholds govern
-     * when Storage DRS performs or recommends migrations
-     * (based on the selected automation level). Default: `80` percent.
+     * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      * 
      */
     @Export(name="sdrsSpaceUtilizationThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsSpaceUtilizationThreshold;
 
     /**
-     * @return Runtime thresholds govern
-     * when Storage DRS performs or recommends migrations
-     * (based on the selected automation level). Default: `80` percent.
+     * @return The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      * 
      */
     public Output<Optional<Integer>> sdrsSpaceUtilizationThreshold() {
         return Codegen.optional(this.sdrsSpaceUtilizationThreshold);
     }
     /**
-     * Overrides the default
-     * automation settings when generating recommendations for datastore evacuation.
+     * Overrides the default automation settings when generating recommendations for datastore evacuation.
      * 
      */
     @Export(name="sdrsVmEvacuationAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsVmEvacuationAutomationLevel;
 
     /**
-     * @return Overrides the default
-     * automation settings when generating recommendations for datastore evacuation.
+     * @return Overrides the default automation settings when generating recommendations for datastore evacuation.
      * 
      */
     public Output<Optional<String>> sdrsVmEvacuationAutomationLevel() {

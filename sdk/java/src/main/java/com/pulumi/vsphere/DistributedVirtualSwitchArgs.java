@@ -24,20 +24,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     public static final DistributedVirtualSwitchArgs Empty = new DistributedVirtualSwitchArgs();
 
     /**
-     * A list of active uplinks to be used in load
-     * balancing. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      * 
      */
     @Import(name="activeUplinks")
     private @Nullable Output<List<String>> activeUplinks;
 
     /**
-     * @return A list of active uplinks to be used in load
-     * balancing. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * @return List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      * 
      */
     public Optional<Output<List<String>>> activeUplinks() {
@@ -45,18 +39,16 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Controls whether or not a virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      * 
      */
     @Import(name="allowForgedTransmits")
     private @Nullable Output<Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not a virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      * 
      */
     public Optional<Output<Boolean>> allowForgedTransmits() {
@@ -64,16 +56,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      * 
      */
     @Import(name="allowMacChanges")
     private @Nullable Output<Boolean> allowMacChanges;
 
     /**
-     * @return Controls whether or not the Media Access
-     * Control (MAC) address can be changed.
+     * @return Controls whether or not the Media Access Control (MAC) address can be changed.
      * 
      */
     public Optional<Output<Boolean>> allowMacChanges() {
@@ -81,16 +71,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      * 
      */
     @Import(name="allowPromiscuous")
     private @Nullable Output<Boolean> allowPromiscuous;
 
     /**
-     * @return Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port.
+     * @return Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      * 
      */
     public Optional<Output<Boolean>> allowPromiscuous() {
@@ -158,18 +146,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Shuts down all ports in the port groups that
-     * this policy applies to, effectively blocking all network access to connected
-     * virtual devices.
+     * Indicates whether to block all ports by default.
      * 
      */
     @Import(name="blockAllPorts")
     private @Nullable Output<Boolean> blockAllPorts;
 
     /**
-     * @return Shuts down all ports in the port groups that
-     * this policy applies to, effectively blocking all network access to connected
-     * virtual devices.
+     * @return Indicates whether to block all ports by default.
      * 
      */
     public Optional<Output<Boolean>> blockAllPorts() {
@@ -177,22 +161,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enables beacon probing as an additional measure
-     * to detect NIC failure.
-     * 
-     * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-     * probing.
+     * Enable beacon probing on the ports this policy applies to.
      * 
      */
     @Import(name="checkBeacon")
     private @Nullable Output<Boolean> checkBeacon;
 
     /**
-     * @return Enables beacon probing as an additional measure
-     * to detect NIC failure.
-     * 
-     * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-     * probing.
+     * @return Enable beacon probing on the ports this policy applies to.
      * 
      */
     public Optional<Output<Boolean>> checkBeacon() {
@@ -289,16 +265,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow VMDirectPath Gen2 for the ports
-     * for which this policy applies to.
+     * Allow VMDirectPath Gen2 on the ports this policy applies to.
      * 
      */
     @Import(name="directpathGen2Allowed")
     private @Nullable Output<Boolean> directpathGen2Allowed;
 
     /**
-     * @return Allow VMDirectPath Gen2 for the ports
-     * for which this policy applies to.
+     * @return Allow VMDirectPath Gen2 on the ports this policy applies to.
      * 
      */
     public Optional<Output<Boolean>> directpathGen2Allowed() {
@@ -306,16 +280,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The average bandwidth in bits
-     * per second if egress traffic shaping is enabled on the port.
+     * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      * 
      */
     @Import(name="egressShapingAverageBandwidth")
     private @Nullable Output<Integer> egressShapingAverageBandwidth;
 
     /**
-     * @return The average bandwidth in bits
-     * per second if egress traffic shaping is enabled on the port.
+     * @return The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      * 
      */
     public Optional<Output<Integer>> egressShapingAverageBandwidth() {
@@ -323,16 +295,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum burst size allowed in
-     * bytes if egress traffic shaping is enabled on the port.
+     * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      * 
      */
     @Import(name="egressShapingBurstSize")
     private @Nullable Output<Integer> egressShapingBurstSize;
 
     /**
-     * @return The maximum burst size allowed in
-     * bytes if egress traffic shaping is enabled on the port.
+     * @return The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      * 
      */
     public Optional<Output<Integer>> egressShapingBurstSize() {
@@ -340,16 +310,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * `true` if the traffic shaper is enabled
-     * on the port for egress traffic.
+     * True if the traffic shaper is enabled for egress traffic on the port.
      * 
      */
     @Import(name="egressShapingEnabled")
     private @Nullable Output<Boolean> egressShapingEnabled;
 
     /**
-     * @return `true` if the traffic shaper is enabled
-     * on the port for egress traffic.
+     * @return True if the traffic shaper is enabled for egress traffic on the port.
      * 
      */
     public Optional<Output<Boolean>> egressShapingEnabled() {
@@ -357,16 +325,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The peak bandwidth during bursts
-     * in bits per second if egress traffic shaping is enabled on the port.
+     * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      * 
      */
     @Import(name="egressShapingPeakBandwidth")
     private @Nullable Output<Integer> egressShapingPeakBandwidth;
 
     /**
-     * @return The peak bandwidth during bursts
-     * in bits per second if egress traffic shaping is enabled on the port.
+     * @return The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      * 
      */
     public Optional<Output<Integer>> egressShapingPeakBandwidth() {
@@ -374,16 +340,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If `true`, the teaming policy will re-activate failed
-     * uplinks higher in precedence when they come back up.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      * 
      */
     @Import(name="failback")
     private @Nullable Output<Boolean> failback;
 
     /**
-     * @return If `true`, the teaming policy will re-activate failed
-     * uplinks higher in precedence when they come back up.
+     * @return If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      * 
      */
     public Optional<Output<Boolean>> failback() {
@@ -528,16 +492,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Use the `host` block to declare a host specification. The
-     * options are:
+     * A host member specification.
      * 
      */
     @Import(name="hosts")
     private @Nullable Output<List<DistributedVirtualSwitchHostArgs>> hosts;
 
     /**
-     * @return Use the `host` block to declare a host specification. The
-     * options are:
+     * @return A host member specification.
      * 
      */
     public Optional<Output<List<DistributedVirtualSwitchHostArgs>>> hosts() {
@@ -545,16 +507,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Whether to ignore existing PVLAN
-     * mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
      * 
      */
     @Import(name="ignoreOtherPvlanMappings")
     private @Nullable Output<Boolean> ignoreOtherPvlanMappings;
 
     /**
-     * @return Whether to ignore existing PVLAN
-     * mappings not managed by this resource. Defaults to false.
+     * @return Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> ignoreOtherPvlanMappings() {
@@ -562,16 +522,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The average bandwidth in
-     * bits per second if ingress traffic shaping is enabled on the port.
+     * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      * 
      */
     @Import(name="ingressShapingAverageBandwidth")
     private @Nullable Output<Integer> ingressShapingAverageBandwidth;
 
     /**
-     * @return The average bandwidth in
-     * bits per second if ingress traffic shaping is enabled on the port.
+     * @return The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      * 
      */
     public Optional<Output<Integer>> ingressShapingAverageBandwidth() {
@@ -579,16 +537,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum burst size allowed in
-     * bytes if ingress traffic shaping is enabled on the port.
+     * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      * 
      */
     @Import(name="ingressShapingBurstSize")
     private @Nullable Output<Integer> ingressShapingBurstSize;
 
     /**
-     * @return The maximum burst size allowed in
-     * bytes if ingress traffic shaping is enabled on the port.
+     * @return The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      * 
      */
     public Optional<Output<Integer>> ingressShapingBurstSize() {
@@ -596,16 +552,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * `true` if the traffic shaper is
-     * enabled on the port for ingress traffic.
+     * True if the traffic shaper is enabled for ingress traffic on the port.
      * 
      */
     @Import(name="ingressShapingEnabled")
     private @Nullable Output<Boolean> ingressShapingEnabled;
 
     /**
-     * @return `true` if the traffic shaper is
-     * enabled on the port for ingress traffic.
+     * @return True if the traffic shaper is enabled for ingress traffic on the port.
      * 
      */
     public Optional<Output<Boolean>> ingressShapingEnabled() {
@@ -613,16 +567,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The peak bandwidth during
-     * bursts in bits per second if ingress traffic shaping is enabled on the port.
+     * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      * 
      */
     @Import(name="ingressShapingPeakBandwidth")
     private @Nullable Output<Integer> ingressShapingPeakBandwidth;
 
     /**
-     * @return The peak bandwidth during
-     * bursts in bits per second if ingress traffic shaping is enabled on the port.
+     * @return The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      * 
      */
     public Optional<Output<Integer>> ingressShapingPeakBandwidth() {
@@ -726,16 +678,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enables LACP for the ports that this policy
-     * applies to.
+     * Whether or not to enable LACP on all uplink ports.
      * 
      */
     @Import(name="lacpEnabled")
     private @Nullable Output<Boolean> lacpEnabled;
 
     /**
-     * @return Enables LACP for the ports that this policy
-     * applies to.
+     * @return Whether or not to enable LACP on all uplink ports.
      * 
      */
     public Optional<Output<Boolean>> lacpEnabled() {
@@ -743,14 +693,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The LACP mode. Can be one of `active` or `passive`.
+     * The uplink LACP mode to use. Can be one of active or passive.
      * 
      */
     @Import(name="lacpMode")
     private @Nullable Output<String> lacpMode;
 
     /**
-     * @return The LACP mode. Can be one of `active` or `passive`.
+     * @return The uplink LACP mode to use. Can be one of active or passive.
      * 
      */
     public Optional<Output<String>> lacpMode() {
@@ -899,18 +849,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The number of seconds after which
-     * active flows are forced to be exported to the collector. Allowed range is
-     * `60` to `3600`. Default: `60`.
+     * The number of seconds after which active flows are forced to be exported to the collector.
      * 
      */
     @Import(name="netflowActiveFlowTimeout")
     private @Nullable Output<Integer> netflowActiveFlowTimeout;
 
     /**
-     * @return The number of seconds after which
-     * active flows are forced to be exported to the collector. Allowed range is
-     * `60` to `3600`. Default: `60`.
+     * @return The number of seconds after which active flows are forced to be exported to the collector.
      * 
      */
     public Optional<Output<Integer>> netflowActiveFlowTimeout() {
@@ -918,18 +864,16 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-     * Must be set before Netflow can be enabled.
+     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+     * later.
      * 
      */
     @Import(name="netflowCollectorIpAddress")
     private @Nullable Output<String> netflowCollectorIpAddress;
 
     /**
-     * @return IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-     * Must be set before Netflow can be enabled.
+     * @return IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+     * later.
      * 
      */
     public Optional<Output<String>> netflowCollectorIpAddress() {
@@ -937,16 +881,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Port for the Netflow collector. This
-     * must be set before Netflow can be enabled.
+     * The port for the netflow collector.
      * 
      */
     @Import(name="netflowCollectorPort")
     private @Nullable Output<Integer> netflowCollectorPort;
 
     /**
-     * @return Port for the Netflow collector. This
-     * must be set before Netflow can be enabled.
+     * @return The port for the netflow collector.
      * 
      */
     public Optional<Output<Integer>> netflowCollectorPort() {
@@ -954,16 +896,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enables Netflow on all ports that this policy
-     * applies to.
+     * Indicates whether to enable netflow on all ports.
      * 
      */
     @Import(name="netflowEnabled")
     private @Nullable Output<Boolean> netflowEnabled;
 
     /**
-     * @return Enables Netflow on all ports that this policy
-     * applies to.
+     * @return Indicates whether to enable netflow on all ports.
      * 
      */
     public Optional<Output<Boolean>> netflowEnabled() {
@@ -971,18 +911,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The number of seconds after which
-     * idle flows are forced to be exported to the collector. Allowed range is `10`
-     * to `600`. Default: `15`.
+     * The number of seconds after which idle flows are forced to be exported to the collector.
      * 
      */
     @Import(name="netflowIdleFlowTimeout")
     private @Nullable Output<Integer> netflowIdleFlowTimeout;
 
     /**
-     * @return The number of seconds after which
-     * idle flows are forced to be exported to the collector. Allowed range is `10`
-     * to `600`. Default: `15`.
+     * @return The number of seconds after which idle flows are forced to be exported to the collector.
      * 
      */
     public Optional<Output<Integer>> netflowIdleFlowTimeout() {
@@ -990,18 +926,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Whether to limit analysis to
-     * traffic that has both source and destination served by the same host.
-     * Default: `false`.
+     * Whether to limit analysis to traffic that has both source and destination served by the same host.
      * 
      */
     @Import(name="netflowInternalFlowsOnly")
     private @Nullable Output<Boolean> netflowInternalFlowsOnly;
 
     /**
-     * @return Whether to limit analysis to
-     * traffic that has both source and destination served by the same host.
-     * Default: `false`.
+     * @return Whether to limit analysis to traffic that has both source and destination served by the same host.
      * 
      */
     public Optional<Output<Boolean>> netflowInternalFlowsOnly() {
@@ -1009,16 +941,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The observation domain ID for
-     * the Netflow collector.
+     * The observation Domain ID for the netflow collector.
      * 
      */
     @Import(name="netflowObservationDomainId")
     private @Nullable Output<Integer> netflowObservationDomainId;
 
     /**
-     * @return The observation domain ID for
-     * the Netflow collector.
+     * @return The observation Domain ID for the netflow collector.
      * 
      */
     public Optional<Output<Integer>> netflowObservationDomainId() {
@@ -1026,20 +956,16 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The ratio of total number of packets to
-     * the number of packets analyzed. The default is `0`, which indicates that the
-     * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+     * packets are analyzed.
      * 
      */
     @Import(name="netflowSamplingRate")
     private @Nullable Output<Integer> netflowSamplingRate;
 
     /**
-     * @return The ratio of total number of packets to
-     * the number of packets analyzed. The default is `0`, which indicates that the
-     * VDS should analyze all packets. The maximum value is `1000`, which
-     * indicates an analysis rate of 0.001%.
+     * @return The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+     * packets are analyzed.
      * 
      */
     public Optional<Output<Integer>> netflowSamplingRate() {
@@ -1047,16 +973,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Set to `true` to enable
-     * network I/O control. Default: `false`.
+     * Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
      * 
      */
     @Import(name="networkResourceControlEnabled")
     private @Nullable Output<Boolean> networkResourceControlEnabled;
 
     /**
-     * @return Set to `true` to enable
-     * network I/O control. Default: `false`.
+     * @return Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
      * 
      */
     public Optional<Output<Boolean>> networkResourceControlEnabled() {
@@ -1064,16 +988,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The version of network I/O
-     * control to use. Can be one of `version2` or `version3`. Default: `version2`.
+     * The network I/O control version to use. Can be one of version2 or version3.
      * 
      */
     @Import(name="networkResourceControlVersion")
     private @Nullable Output<String> networkResourceControlVersion;
 
     /**
-     * @return The version of network I/O
-     * control to use. Can be one of `version2` or `version3`. Default: `version2`.
+     * @return The network I/O control version to use. Can be one of version2 or version3.
      * 
      */
     public Optional<Output<String>> networkResourceControlVersion() {
@@ -1141,16 +1063,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If `true`, the teaming policy will notify the
-     * broadcast network of an uplink failover, triggering cache updates.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      * 
      */
     @Import(name="notifySwitches")
     private @Nullable Output<Boolean> notifySwitches;
 
     /**
-     * @return If `true`, the teaming policy will notify the
-     * broadcast network of an uplink failover, triggering cache updates.
+     * @return If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      * 
      */
     public Optional<Output<Boolean>> notifySwitches() {
@@ -1158,16 +1078,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Used to define a secondary VLAN
-     * ID when using private VLANs.
+     * The secondary VLAN ID for this port.
      * 
      */
     @Import(name="portPrivateSecondaryVlanId")
     private @Nullable Output<Integer> portPrivateSecondaryVlanId;
 
     /**
-     * @return Used to define a secondary VLAN
-     * ID when using private VLANs.
+     * @return The secondary VLAN ID for this port.
      * 
      */
     public Optional<Output<Integer>> portPrivateSecondaryVlanId() {
@@ -1175,16 +1093,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Use the `pvlan_mapping` block to declare a
-     * private VLAN mapping. The options are:
+     * A private VLAN (PVLAN) mapping.
      * 
      */
     @Import(name="pvlanMappings")
     private @Nullable Output<List<DistributedVirtualSwitchPvlanMappingArgs>> pvlanMappings;
 
     /**
-     * @return Use the `pvlan_mapping` block to declare a
-     * private VLAN mapping. The options are:
+     * @return A private VLAN (PVLAN) mapping.
      * 
      */
     public Optional<Output<List<DistributedVirtualSwitchPvlanMappingArgs>>> pvlanMappings() {
@@ -1192,20 +1108,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A list of standby uplinks to be used in
-     * failover. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      * 
      */
     @Import(name="standbyUplinks")
     private @Nullable Output<List<String>> standbyUplinks;
 
     /**
-     * @return A list of standby uplinks to be used in
-     * failover. These uplinks need to match the definitions in the
-     * `uplinks` VDS argument. See
-     * here for more details.
+     * @return List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      * 
      */
     public Optional<Output<List<String>>> standbyUplinks() {
@@ -1232,18 +1142,16 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The uplink teaming policy. Can be one of
-     * `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
-     * `failover_explicit`, or `loadbalance_loadbased`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+     * failover_explicit, or loadbalance_loadbased.
      * 
      */
     @Import(name="teamingPolicy")
     private @Nullable Output<String> teamingPolicy;
 
     /**
-     * @return The uplink teaming policy. Can be one of
-     * `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
-     * `failover_explicit`, or `loadbalance_loadbased`.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+     * failover_explicit, or loadbalance_loadbased.
      * 
      */
     public Optional<Output<String>> teamingPolicy() {
@@ -1251,16 +1159,16 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Forward all traffic transmitted by ports for which
-     * this policy applies to its VDS uplinks.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      * 
      */
     @Import(name="txUplink")
     private @Nullable Output<Boolean> txUplink;
 
     /**
-     * @return Forward all traffic transmitted by ports for which
-     * this policy applies to its VDS uplinks.
+     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      * 
      */
     public Optional<Output<Boolean>> txUplink() {
@@ -1268,22 +1176,16 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A list of strings that uniquely identifies the names
-     * of the uplinks on the VDS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the VDS, in addition to the
-     * names. See here for an example on how to
-     * use this option.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+     * across hosts.
      * 
      */
     @Import(name="uplinks")
     private @Nullable Output<List<String>> uplinks;
 
     /**
-     * @return A list of strings that uniquely identifies the names
-     * of the uplinks on the VDS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the VDS, in addition to the
-     * names. See here for an example on how to
-     * use this option.
+     * @return A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+     * across hosts.
      * 
      */
     public Optional<Output<List<String>>> uplinks() {
@@ -1445,100 +1347,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Used to denote VLAN trunking. Use the `min_vlan`
-     * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlan_range` definitions are allowed, but they must not overlap. Example
-     * below:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.DistributedVirtualSwitch;
-     * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
-     * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
-     *             .vlanRanges(            
-     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .minVlan(100)
-     *                     .maxVlan(199)
-     *                     .build(),
-     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .minVlan(300)
-     *                     .maxVlan(399)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      * 
      */
     @Import(name="vlanRanges")
     private @Nullable Output<List<DistributedVirtualSwitchVlanRangeArgs>> vlanRanges;
 
     /**
-     * @return Used to denote VLAN trunking. Use the `min_vlan`
-     * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlan_range` definitions are allowed, but they must not overlap. Example
-     * below:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.DistributedVirtualSwitch;
-     * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
-     * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
-     *             .vlanRanges(            
-     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .minVlan(100)
-     *                     .maxVlan(199)
-     *                     .build(),
-     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-     *                     .minVlan(300)
-     *                     .maxVlan(399)
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * @return The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      * 
      */
     public Optional<Output<List<DistributedVirtualSwitchVlanRangeArgs>>> vlanRanges() {
@@ -1783,10 +1599,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param activeUplinks A list of active uplinks to be used in load
-         * balancing. These uplinks need to match the definitions in the
-         * `uplinks` VDS argument. See
-         * here for more details.
+         * @param activeUplinks List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
          * 
          * @return builder
          * 
@@ -1797,10 +1610,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param activeUplinks A list of active uplinks to be used in load
-         * balancing. These uplinks need to match the definitions in the
-         * `uplinks` VDS argument. See
-         * here for more details.
+         * @param activeUplinks List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
          * 
          * @return builder
          * 
@@ -1810,10 +1620,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param activeUplinks A list of active uplinks to be used in load
-         * balancing. These uplinks need to match the definitions in the
-         * `uplinks` VDS argument. See
-         * here for more details.
+         * @param activeUplinks List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
          * 
          * @return builder
          * 
@@ -1823,9 +1630,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not a virtual
-         * network adapter is allowed to send network traffic with a different MAC
-         * address than that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+         * that of its own.
          * 
          * @return builder
          * 
@@ -1836,9 +1642,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not a virtual
-         * network adapter is allowed to send network traffic with a different MAC
-         * address than that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+         * that of its own.
          * 
          * @return builder
          * 
@@ -1848,8 +1653,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowMacChanges Controls whether or not the Media Access
-         * Control (MAC) address can be changed.
+         * @param allowMacChanges Controls whether or not the Media Access Control (MAC) address can be changed.
          * 
          * @return builder
          * 
@@ -1860,8 +1664,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowMacChanges Controls whether or not the Media Access
-         * Control (MAC) address can be changed.
+         * @param allowMacChanges Controls whether or not the Media Access Control (MAC) address can be changed.
          * 
          * @return builder
          * 
@@ -1871,8 +1674,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowPromiscuous Enable promiscuous mode on the network. This
-         * flag indicates whether or not all traffic is seen on a given port.
+         * @param allowPromiscuous Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
          * 
          * @return builder
          * 
@@ -1883,8 +1685,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowPromiscuous Enable promiscuous mode on the network. This
-         * flag indicates whether or not all traffic is seen on a given port.
+         * @param allowPromiscuous Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
          * 
          * @return builder
          * 
@@ -1978,9 +1779,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param blockAllPorts Shuts down all ports in the port groups that
-         * this policy applies to, effectively blocking all network access to connected
-         * virtual devices.
+         * @param blockAllPorts Indicates whether to block all ports by default.
          * 
          * @return builder
          * 
@@ -1991,9 +1790,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param blockAllPorts Shuts down all ports in the port groups that
-         * this policy applies to, effectively blocking all network access to connected
-         * virtual devices.
+         * @param blockAllPorts Indicates whether to block all ports by default.
          * 
          * @return builder
          * 
@@ -2003,11 +1800,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param checkBeacon Enables beacon probing as an additional measure
-         * to detect NIC failure.
-         * 
-         * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-         * probing.
+         * @param checkBeacon Enable beacon probing on the ports this policy applies to.
          * 
          * @return builder
          * 
@@ -2018,11 +1811,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param checkBeacon Enables beacon probing as an additional measure
-         * to detect NIC failure.
-         * 
-         * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-         * probing.
+         * @param checkBeacon Enable beacon probing on the ports this policy applies to.
          * 
          * @return builder
          * 
@@ -2151,8 +1940,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param directpathGen2Allowed Allow VMDirectPath Gen2 for the ports
-         * for which this policy applies to.
+         * @param directpathGen2Allowed Allow VMDirectPath Gen2 on the ports this policy applies to.
          * 
          * @return builder
          * 
@@ -2163,8 +1951,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param directpathGen2Allowed Allow VMDirectPath Gen2 for the ports
-         * for which this policy applies to.
+         * @param directpathGen2Allowed Allow VMDirectPath Gen2 on the ports this policy applies to.
          * 
          * @return builder
          * 
@@ -2174,8 +1961,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingAverageBandwidth The average bandwidth in bits
-         * per second if egress traffic shaping is enabled on the port.
+         * @param egressShapingAverageBandwidth The average egress bandwidth in bits per second if egress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2186,8 +1972,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingAverageBandwidth The average bandwidth in bits
-         * per second if egress traffic shaping is enabled on the port.
+         * @param egressShapingAverageBandwidth The average egress bandwidth in bits per second if egress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2197,8 +1982,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingBurstSize The maximum burst size allowed in
-         * bytes if egress traffic shaping is enabled on the port.
+         * @param egressShapingBurstSize The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2209,8 +1993,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingBurstSize The maximum burst size allowed in
-         * bytes if egress traffic shaping is enabled on the port.
+         * @param egressShapingBurstSize The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2220,8 +2003,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingEnabled `true` if the traffic shaper is enabled
-         * on the port for egress traffic.
+         * @param egressShapingEnabled True if the traffic shaper is enabled for egress traffic on the port.
          * 
          * @return builder
          * 
@@ -2232,8 +2014,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingEnabled `true` if the traffic shaper is enabled
-         * on the port for egress traffic.
+         * @param egressShapingEnabled True if the traffic shaper is enabled for egress traffic on the port.
          * 
          * @return builder
          * 
@@ -2243,8 +2024,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingPeakBandwidth The peak bandwidth during bursts
-         * in bits per second if egress traffic shaping is enabled on the port.
+         * @param egressShapingPeakBandwidth The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2255,8 +2035,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param egressShapingPeakBandwidth The peak bandwidth during bursts
-         * in bits per second if egress traffic shaping is enabled on the port.
+         * @param egressShapingPeakBandwidth The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2266,8 +2045,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param failback If `true`, the teaming policy will re-activate failed
-         * uplinks higher in precedence when they come back up.
+         * @param failback If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
          * 
          * @return builder
          * 
@@ -2278,8 +2056,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param failback If `true`, the teaming policy will re-activate failed
-         * uplinks higher in precedence when they come back up.
+         * @param failback If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
          * 
          * @return builder
          * 
@@ -2480,8 +2257,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param hosts Use the `host` block to declare a host specification. The
-         * options are:
+         * @param hosts A host member specification.
          * 
          * @return builder
          * 
@@ -2492,8 +2268,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param hosts Use the `host` block to declare a host specification. The
-         * options are:
+         * @param hosts A host member specification.
          * 
          * @return builder
          * 
@@ -2503,8 +2278,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param hosts Use the `host` block to declare a host specification. The
-         * options are:
+         * @param hosts A host member specification.
          * 
          * @return builder
          * 
@@ -2514,8 +2288,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN
-         * mappings not managed by this resource. Defaults to false.
+         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
          * 
          * @return builder
          * 
@@ -2526,8 +2299,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN
-         * mappings not managed by this resource. Defaults to false.
+         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
          * 
          * @return builder
          * 
@@ -2537,8 +2309,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingAverageBandwidth The average bandwidth in
-         * bits per second if ingress traffic shaping is enabled on the port.
+         * @param ingressShapingAverageBandwidth The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2549,8 +2320,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingAverageBandwidth The average bandwidth in
-         * bits per second if ingress traffic shaping is enabled on the port.
+         * @param ingressShapingAverageBandwidth The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2560,8 +2330,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingBurstSize The maximum burst size allowed in
-         * bytes if ingress traffic shaping is enabled on the port.
+         * @param ingressShapingBurstSize The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2572,8 +2341,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingBurstSize The maximum burst size allowed in
-         * bytes if ingress traffic shaping is enabled on the port.
+         * @param ingressShapingBurstSize The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2583,8 +2351,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingEnabled `true` if the traffic shaper is
-         * enabled on the port for ingress traffic.
+         * @param ingressShapingEnabled True if the traffic shaper is enabled for ingress traffic on the port.
          * 
          * @return builder
          * 
@@ -2595,8 +2362,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingEnabled `true` if the traffic shaper is
-         * enabled on the port for ingress traffic.
+         * @param ingressShapingEnabled True if the traffic shaper is enabled for ingress traffic on the port.
          * 
          * @return builder
          * 
@@ -2606,8 +2372,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingPeakBandwidth The peak bandwidth during
-         * bursts in bits per second if ingress traffic shaping is enabled on the port.
+         * @param ingressShapingPeakBandwidth The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2618,8 +2383,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ingressShapingPeakBandwidth The peak bandwidth during
-         * bursts in bits per second if ingress traffic shaping is enabled on the port.
+         * @param ingressShapingPeakBandwidth The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
          * 
          * @return builder
          * 
@@ -2761,8 +2525,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param lacpEnabled Enables LACP for the ports that this policy
-         * applies to.
+         * @param lacpEnabled Whether or not to enable LACP on all uplink ports.
          * 
          * @return builder
          * 
@@ -2773,8 +2536,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param lacpEnabled Enables LACP for the ports that this policy
-         * applies to.
+         * @param lacpEnabled Whether or not to enable LACP on all uplink ports.
          * 
          * @return builder
          * 
@@ -2784,7 +2546,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param lacpMode The LACP mode. Can be one of `active` or `passive`.
+         * @param lacpMode The uplink LACP mode to use. Can be one of active or passive.
          * 
          * @return builder
          * 
@@ -2795,7 +2557,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param lacpMode The LACP mode. Can be one of `active` or `passive`.
+         * @param lacpMode The uplink LACP mode to use. Can be one of active or passive.
          * 
          * @return builder
          * 
@@ -3000,9 +2762,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowActiveFlowTimeout The number of seconds after which
-         * active flows are forced to be exported to the collector. Allowed range is
-         * `60` to `3600`. Default: `60`.
+         * @param netflowActiveFlowTimeout The number of seconds after which active flows are forced to be exported to the collector.
          * 
          * @return builder
          * 
@@ -3013,9 +2773,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowActiveFlowTimeout The number of seconds after which
-         * active flows are forced to be exported to the collector. Allowed range is
-         * `60` to `3600`. Default: `60`.
+         * @param netflowActiveFlowTimeout The number of seconds after which active flows are forced to be exported to the collector.
          * 
          * @return builder
          * 
@@ -3025,9 +2783,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowCollectorIpAddress IP address for the Netflow
-         * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-         * Must be set before Netflow can be enabled.
+         * @param netflowCollectorIpAddress IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+         * later.
          * 
          * @return builder
          * 
@@ -3038,9 +2795,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowCollectorIpAddress IP address for the Netflow
-         * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-         * Must be set before Netflow can be enabled.
+         * @param netflowCollectorIpAddress IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+         * later.
          * 
          * @return builder
          * 
@@ -3050,8 +2806,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowCollectorPort Port for the Netflow collector. This
-         * must be set before Netflow can be enabled.
+         * @param netflowCollectorPort The port for the netflow collector.
          * 
          * @return builder
          * 
@@ -3062,8 +2817,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowCollectorPort Port for the Netflow collector. This
-         * must be set before Netflow can be enabled.
+         * @param netflowCollectorPort The port for the netflow collector.
          * 
          * @return builder
          * 
@@ -3073,8 +2827,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowEnabled Enables Netflow on all ports that this policy
-         * applies to.
+         * @param netflowEnabled Indicates whether to enable netflow on all ports.
          * 
          * @return builder
          * 
@@ -3085,8 +2838,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowEnabled Enables Netflow on all ports that this policy
-         * applies to.
+         * @param netflowEnabled Indicates whether to enable netflow on all ports.
          * 
          * @return builder
          * 
@@ -3096,9 +2848,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowIdleFlowTimeout The number of seconds after which
-         * idle flows are forced to be exported to the collector. Allowed range is `10`
-         * to `600`. Default: `15`.
+         * @param netflowIdleFlowTimeout The number of seconds after which idle flows are forced to be exported to the collector.
          * 
          * @return builder
          * 
@@ -3109,9 +2859,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowIdleFlowTimeout The number of seconds after which
-         * idle flows are forced to be exported to the collector. Allowed range is `10`
-         * to `600`. Default: `15`.
+         * @param netflowIdleFlowTimeout The number of seconds after which idle flows are forced to be exported to the collector.
          * 
          * @return builder
          * 
@@ -3121,9 +2869,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowInternalFlowsOnly Whether to limit analysis to
-         * traffic that has both source and destination served by the same host.
-         * Default: `false`.
+         * @param netflowInternalFlowsOnly Whether to limit analysis to traffic that has both source and destination served by the same host.
          * 
          * @return builder
          * 
@@ -3134,9 +2880,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowInternalFlowsOnly Whether to limit analysis to
-         * traffic that has both source and destination served by the same host.
-         * Default: `false`.
+         * @param netflowInternalFlowsOnly Whether to limit analysis to traffic that has both source and destination served by the same host.
          * 
          * @return builder
          * 
@@ -3146,8 +2890,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowObservationDomainId The observation domain ID for
-         * the Netflow collector.
+         * @param netflowObservationDomainId The observation Domain ID for the netflow collector.
          * 
          * @return builder
          * 
@@ -3158,8 +2901,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowObservationDomainId The observation domain ID for
-         * the Netflow collector.
+         * @param netflowObservationDomainId The observation Domain ID for the netflow collector.
          * 
          * @return builder
          * 
@@ -3169,10 +2911,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowSamplingRate The ratio of total number of packets to
-         * the number of packets analyzed. The default is `0`, which indicates that the
-         * VDS should analyze all packets. The maximum value is `1000`, which
-         * indicates an analysis rate of 0.001%.
+         * @param netflowSamplingRate The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+         * packets are analyzed.
          * 
          * @return builder
          * 
@@ -3183,10 +2923,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowSamplingRate The ratio of total number of packets to
-         * the number of packets analyzed. The default is `0`, which indicates that the
-         * VDS should analyze all packets. The maximum value is `1000`, which
-         * indicates an analysis rate of 0.001%.
+         * @param netflowSamplingRate The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+         * packets are analyzed.
          * 
          * @return builder
          * 
@@ -3196,8 +2934,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkResourceControlEnabled Set to `true` to enable
-         * network I/O control. Default: `false`.
+         * @param networkResourceControlEnabled Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
          * 
          * @return builder
          * 
@@ -3208,8 +2945,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkResourceControlEnabled Set to `true` to enable
-         * network I/O control. Default: `false`.
+         * @param networkResourceControlEnabled Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
          * 
          * @return builder
          * 
@@ -3219,8 +2955,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkResourceControlVersion The version of network I/O
-         * control to use. Can be one of `version2` or `version3`. Default: `version2`.
+         * @param networkResourceControlVersion The network I/O control version to use. Can be one of version2 or version3.
          * 
          * @return builder
          * 
@@ -3231,8 +2966,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkResourceControlVersion The version of network I/O
-         * control to use. Can be one of `version2` or `version3`. Default: `version2`.
+         * @param networkResourceControlVersion The network I/O control version to use. Can be one of version2 or version3.
          * 
          * @return builder
          * 
@@ -3326,8 +3060,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param notifySwitches If `true`, the teaming policy will notify the
-         * broadcast network of an uplink failover, triggering cache updates.
+         * @param notifySwitches If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
          * 
          * @return builder
          * 
@@ -3338,8 +3071,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param notifySwitches If `true`, the teaming policy will notify the
-         * broadcast network of an uplink failover, triggering cache updates.
+         * @param notifySwitches If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
          * 
          * @return builder
          * 
@@ -3349,8 +3081,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param portPrivateSecondaryVlanId Used to define a secondary VLAN
-         * ID when using private VLANs.
+         * @param portPrivateSecondaryVlanId The secondary VLAN ID for this port.
          * 
          * @return builder
          * 
@@ -3361,8 +3092,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param portPrivateSecondaryVlanId Used to define a secondary VLAN
-         * ID when using private VLANs.
+         * @param portPrivateSecondaryVlanId The secondary VLAN ID for this port.
          * 
          * @return builder
          * 
@@ -3372,8 +3102,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param pvlanMappings Use the `pvlan_mapping` block to declare a
-         * private VLAN mapping. The options are:
+         * @param pvlanMappings A private VLAN (PVLAN) mapping.
          * 
          * @return builder
          * 
@@ -3384,8 +3113,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param pvlanMappings Use the `pvlan_mapping` block to declare a
-         * private VLAN mapping. The options are:
+         * @param pvlanMappings A private VLAN (PVLAN) mapping.
          * 
          * @return builder
          * 
@@ -3395,8 +3123,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param pvlanMappings Use the `pvlan_mapping` block to declare a
-         * private VLAN mapping. The options are:
+         * @param pvlanMappings A private VLAN (PVLAN) mapping.
          * 
          * @return builder
          * 
@@ -3406,10 +3133,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param standbyUplinks A list of standby uplinks to be used in
-         * failover. These uplinks need to match the definitions in the
-         * `uplinks` VDS argument. See
-         * here for more details.
+         * @param standbyUplinks List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
          * 
          * @return builder
          * 
@@ -3420,10 +3144,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param standbyUplinks A list of standby uplinks to be used in
-         * failover. These uplinks need to match the definitions in the
-         * `uplinks` VDS argument. See
-         * here for more details.
+         * @param standbyUplinks List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
          * 
          * @return builder
          * 
@@ -3433,10 +3154,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param standbyUplinks A list of standby uplinks to be used in
-         * failover. These uplinks need to match the definitions in the
-         * `uplinks` VDS argument. See
-         * here for more details.
+         * @param standbyUplinks List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
          * 
          * @return builder
          * 
@@ -3483,9 +3201,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param teamingPolicy The uplink teaming policy. Can be one of
-         * `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
-         * `failover_explicit`, or `loadbalance_loadbased`.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+         * failover_explicit, or loadbalance_loadbased.
          * 
          * @return builder
          * 
@@ -3496,9 +3213,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param teamingPolicy The uplink teaming policy. Can be one of
-         * `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
-         * `failover_explicit`, or `loadbalance_loadbased`.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+         * failover_explicit, or loadbalance_loadbased.
          * 
          * @return builder
          * 
@@ -3508,8 +3224,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param txUplink Forward all traffic transmitted by ports for which
-         * this policy applies to its VDS uplinks.
+         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+         * forwarded done by the switch.
          * 
          * @return builder
          * 
@@ -3520,8 +3236,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param txUplink Forward all traffic transmitted by ports for which
-         * this policy applies to its VDS uplinks.
+         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+         * forwarded done by the switch.
          * 
          * @return builder
          * 
@@ -3531,11 +3247,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uplinks A list of strings that uniquely identifies the names
-         * of the uplinks on the VDS across hosts. The number of items in this list
-         * controls the number of uplinks that exist on the VDS, in addition to the
-         * names. See here for an example on how to
-         * use this option.
+         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+         * across hosts.
          * 
          * @return builder
          * 
@@ -3546,11 +3259,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uplinks A list of strings that uniquely identifies the names
-         * of the uplinks on the VDS across hosts. The number of items in this list
-         * controls the number of uplinks that exist on the VDS, in addition to the
-         * names. See here for an example on how to
-         * use this option.
+         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+         * across hosts.
          * 
          * @return builder
          * 
@@ -3560,11 +3270,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uplinks A list of strings that uniquely identifies the names
-         * of the uplinks on the VDS across hosts. The number of items in this list
-         * controls the number of uplinks that exist on the VDS, in addition to the
-         * names. See here for an example on how to
-         * use this option.
+         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+         * across hosts.
          * 
          * @return builder
          * 
@@ -3788,50 +3495,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vlanRanges Used to denote VLAN trunking. Use the `min_vlan`
-         * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-         * `vlan_range` definitions are allowed, but they must not overlap. Example
-         * below:
-         * 
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.vsphere.DistributedVirtualSwitch;
-         * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
-         * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
-         *             .vlanRanges(            
-         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-         *                     .minVlan(100)
-         *                     .maxVlan(199)
-         *                     .build(),
-         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-         *                     .minVlan(300)
-         *                     .maxVlan(399)
-         *                     .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * ```
-         * &lt;!--End PulumiCodeChooser --&gt;
+         * @param vlanRanges The VLAN ID for single VLAN mode. 0 denotes no VLAN.
          * 
          * @return builder
          * 
@@ -3842,50 +3506,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vlanRanges Used to denote VLAN trunking. Use the `min_vlan`
-         * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-         * `vlan_range` definitions are allowed, but they must not overlap. Example
-         * below:
-         * 
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.vsphere.DistributedVirtualSwitch;
-         * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
-         * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
-         *             .vlanRanges(            
-         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-         *                     .minVlan(100)
-         *                     .maxVlan(199)
-         *                     .build(),
-         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-         *                     .minVlan(300)
-         *                     .maxVlan(399)
-         *                     .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * ```
-         * &lt;!--End PulumiCodeChooser --&gt;
+         * @param vlanRanges The VLAN ID for single VLAN mode. 0 denotes no VLAN.
          * 
          * @return builder
          * 
@@ -3895,50 +3516,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vlanRanges Used to denote VLAN trunking. Use the `min_vlan`
-         * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-         * `vlan_range` definitions are allowed, but they must not overlap. Example
-         * below:
-         * 
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.vsphere.DistributedVirtualSwitch;
-         * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
-         * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
-         *             .vlanRanges(            
-         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-         *                     .minVlan(100)
-         *                     .maxVlan(199)
-         *                     .build(),
-         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
-         *                     .minVlan(300)
-         *                     .maxVlan(399)
-         *                     .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * ```
-         * &lt;!--End PulumiCodeChooser --&gt;
+         * @param vlanRanges The VLAN ID for single VLAN mode. 0 denotes no VLAN.
          * 
          * @return builder
          * 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -38,7 +37,6 @@ import * as utilities from "./utilities";
  *     type: "Datacenter",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDynamic(args: GetDynamicArgs, opts?: pulumi.InvokeOptions): Promise<GetDynamicResult> {
 
@@ -93,7 +91,6 @@ export interface GetDynamicResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -118,7 +115,6 @@ export interface GetDynamicResult {
  *     type: "Datacenter",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDynamicOutput(args: GetDynamicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicResult> {
     return pulumi.output(args).apply((a: any) => getDynamic(a, opts))

@@ -22,7 +22,6 @@ import (
 // In the following example, a virtual machine template is returned by its
 // unique name within the `Datacenter`.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,11 +52,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // In the following example, each virtual machine template is returned by its
 // unique full path within the `Datacenter`.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,7 +92,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult

@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -44,7 +43,6 @@ import * as utilities from "./utilities";
  *     consolidate: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class VirtualMachineSnapshot extends pulumi.CustomResource {
     /**

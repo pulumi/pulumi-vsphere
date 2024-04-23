@@ -27,84 +27,84 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/virtualMachine:VirtualMachine")
 public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
-     * The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
+     * The guest name for the operating system when guest_id is otherGuest or otherGuest64.
      * 
      */
     @Export(name="alternateGuestName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alternateGuestName;
 
     /**
-     * @return The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
+     * @return The guest name for the operating system when guest_id is otherGuest or otherGuest64.
      * 
      */
     public Output<Optional<String>> alternateGuestName() {
         return Codegen.optional(this.alternateGuestName);
     }
     /**
-     * A user-provided description of the virtual machine.
+     * User-provided description of the virtual machine.
      * 
      */
     @Export(name="annotation", refs={String.class}, tree="[0]")
     private Output<String> annotation;
 
     /**
-     * @return A user-provided description of the virtual machine.
+     * @return User-provided description of the virtual machine.
      * 
      */
     public Output<String> annotation() {
         return this.annotation;
     }
     /**
-     * The number of milliseconds to wait before starting the boot sequence. The default is no delay.
+     * The number of milliseconds to wait before starting the boot sequence.
      * 
      */
     @Export(name="bootDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bootDelay;
 
     /**
-     * @return The number of milliseconds to wait before starting the boot sequence. The default is no delay.
+     * @return The number of milliseconds to wait before starting the boot sequence.
      * 
      */
     public Output<Optional<Integer>> bootDelay() {
         return Codegen.optional(this.bootDelay);
     }
     /**
-     * The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
+     * The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
      * 
      */
     @Export(name="bootRetryDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bootRetryDelay;
 
     /**
-     * @return The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
+     * @return The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
      * 
      */
     public Output<Optional<Integer>> bootRetryDelay() {
         return Codegen.optional(this.bootRetryDelay);
     }
     /**
-     * If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
+     * If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
      * 
      */
     @Export(name="bootRetryEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bootRetryEnabled;
 
     /**
-     * @return If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
+     * @return If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
      * 
      */
     public Output<Optional<Boolean>> bootRetryEnabled() {
         return Codegen.optional(this.bootRetryEnabled);
     }
     /**
-     * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+     * A specification for a CDROM device on this virtual machine.
      * 
      */
     @Export(name="cdroms", refs={List.class,VirtualMachineCdrom.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineCdrom>> cdroms;
 
     /**
-     * @return A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+     * @return A specification for a CDROM device on this virtual machine.
      * 
      */
     public Output<Optional<List<VirtualMachineCdrom>>> cdroms() {
@@ -125,184 +125,172 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.changeVersion;
     }
     /**
-     * When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
+     * A specification for cloning a virtual machine from template.
      * 
      */
     @Export(name="clone", refs={VirtualMachineClone.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineClone> clone;
 
     /**
-     * @return When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
+     * @return A specification for cloning a virtual machine from template.
      * 
      */
     public Output<Optional<VirtualMachineClone>> clone_() {
         return Codegen.optional(this.clone);
     }
     /**
-     * Allow CPUs to be added to the virtual machine while it is powered on.
+     * Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     @Export(name="cpuHotAddEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuHotAddEnabled;
 
     /**
-     * @return Allow CPUs to be added to the virtual machine while it is powered on.
+     * @return Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     public Output<Optional<Boolean>> cpuHotAddEnabled() {
         return Codegen.optional(this.cpuHotAddEnabled);
     }
     /**
-     * Allow CPUs to be removed to the virtual machine while it is powered on.
+     * Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     @Export(name="cpuHotRemoveEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuHotRemoveEnabled;
 
     /**
-     * @return Allow CPUs to be removed to the virtual machine while it is powered on.
+     * @return Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     public Output<Optional<Boolean>> cpuHotRemoveEnabled() {
         return Codegen.optional(this.cpuHotRemoveEnabled);
     }
     /**
-     * The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     @Export(name="cpuLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuLimit;
 
     /**
-     * @return The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     public Output<Optional<Integer>> cpuLimit() {
         return Codegen.optional(this.cpuLimit);
     }
     /**
-     * Enable CPU performance counters on the virtual machine. Default: `false`.
+     * Enable CPU performance counters on this virtual machine.
      * 
      */
     @Export(name="cpuPerformanceCountersEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuPerformanceCountersEnabled;
 
     /**
-     * @return Enable CPU performance counters on the virtual machine. Default: `false`.
+     * @return Enable CPU performance counters on this virtual machine.
      * 
      */
     public Output<Optional<Boolean>> cpuPerformanceCountersEnabled() {
         return Codegen.optional(this.cpuPerformanceCountersEnabled);
     }
     /**
-     * The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
+     * The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     @Export(name="cpuReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuReservation;
 
     /**
-     * @return The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
+     * @return The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     public Output<Optional<Integer>> cpuReservation() {
         return Codegen.optional(this.cpuReservation);
     }
     /**
-     * The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
+     * The amount of shares to allocate to cpu for a custom share level.
      * 
      */
     @Export(name="cpuShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpuShareCount;
 
     /**
-     * @return The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
+     * @return The amount of shares to allocate to cpu for a custom share level.
      * 
      */
     public Output<Integer> cpuShareCount() {
         return this.cpuShareCount;
     }
     /**
-     * The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for cpu resources. Can be one of high, low, normal, or custom.
      * 
      */
     @Export(name="cpuShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cpuShareLevel;
 
     /**
-     * @return The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * @return The allocation level for cpu resources. Can be one of high, low, normal, or custom.
      * 
      */
     public Output<Optional<String>> cpuShareLevel() {
         return Codegen.optional(this.cpuShareLevel);
     }
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
-     * 
-     * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
+     * A list of custom attributes to set on this resource.
      * 
      */
     @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
-     * @return Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
-     * 
-     * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
+     * @return A list of custom attributes to set on this resource.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
         return Codegen.optional(this.customAttributes);
     }
     /**
-     * The datacenter ID. Required only when deploying an OVF/OVA template.
+     * The ID of the datacenter where the VM is to be created.
      * 
      */
     @Export(name="datacenterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenterId;
 
     /**
-     * @return The datacenter ID. Required only when deploying an OVF/OVA template.
+     * @return The ID of the datacenter where the VM is to be created.
      * 
      */
     public Output<Optional<String>> datacenterId() {
         return Codegen.optional(this.datacenterId);
     }
     /**
-     * The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
-     * 
-     * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
-     * 
-     * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
+     * The ID of a datastore cluster to put the virtual machine in.
      * 
      */
     @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datastoreClusterId;
 
     /**
-     * @return The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
-     * 
-     * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
-     * 
-     * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
+     * @return The ID of a datastore cluster to put the virtual machine in.
      * 
      */
     public Output<Optional<String>> datastoreClusterId() {
         return Codegen.optional(this.datastoreClusterId);
     }
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
+     * disks that are created without datastores.
      * 
      */
     @Export(name="datastoreId", refs={String.class}, tree="[0]")
     private Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
+     * disks that are created without datastores.
      * 
      */
     public Output<String> datastoreId() {
@@ -323,166 +311,156 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.defaultIpAddress;
     }
     /**
-     * A specification for a virtual disk device on the virtual machine. See disk options for more information.
+     * A specification for a virtual disk device on this virtual machine.
      * 
      */
     @Export(name="disks", refs={List.class,VirtualMachineDisk.class}, tree="[0,1]")
     private Output<List<VirtualMachineDisk>> disks;
 
     /**
-     * @return A specification for a virtual disk device on the virtual machine. See disk options for more information.
+     * @return A specification for a virtual disk device on this virtual machine.
      * 
      */
     public Output<List<VirtualMachineDisk>> disks() {
         return this.disks;
     }
     /**
-     * Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
-     * 
-     * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
+     * When the boot type set in firmware is efi, this enables EFI secure boot.
      * 
      */
     @Export(name="efiSecureBootEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> efiSecureBootEnabled;
 
     /**
-     * @return Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
-     * 
-     * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
+     * @return When the boot type set in firmware is efi, this enables EFI secure boot.
      * 
      */
     public Output<Optional<Boolean>> efiSecureBootEnabled() {
         return Codegen.optional(this.efiSecureBootEnabled);
     }
     /**
-     * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
+     * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
      * 
      */
     @Export(name="enableDiskUuid", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableDiskUuid;
 
     /**
-     * @return Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
+     * @return Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
      * 
      */
     public Output<Optional<Boolean>> enableDiskUuid() {
         return Codegen.optional(this.enableDiskUuid);
     }
     /**
-     * Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
+     * Enable logging on this virtual machine.
      * 
      */
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
-     * @return Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
+     * @return Enable logging on this virtual machine.
      * 
      */
     public Output<Optional<Boolean>> enableLogging() {
         return Codegen.optional(this.enableLogging);
     }
     /**
-     * The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
+     * The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
      * 
      */
     @Export(name="eptRviMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eptRviMode;
 
     /**
-     * @return The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
+     * @return The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
      * 
      */
     public Output<Optional<String>> eptRviMode() {
         return Codegen.optional(this.eptRviMode);
     }
     /**
-     * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-     * 
-     * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
+     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
+     * configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     @Export(name="extraConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> extraConfig;
 
     /**
-     * @return Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-     * 
-     * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
+     * @return Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
+     * configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     public Output<Optional<Map<String,String>>> extraConfig() {
         return Codegen.optional(this.extraConfig);
     }
     /**
-     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
      * 
      */
     @Export(name="extraConfigRebootRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> extraConfigRebootRequired;
 
     /**
-     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
      * 
      */
     public Output<Optional<Boolean>> extraConfigRebootRequired() {
         return Codegen.optional(this.extraConfigRebootRequired);
     }
     /**
-     * The firmware for the virtual machine. One of `bios` or `efi`.
+     * The firmware interface to use on the virtual machine. Can be one of bios or efi.
      * 
      */
     @Export(name="firmware", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firmware;
 
     /**
-     * @return The firmware for the virtual machine. One of `bios` or `efi`.
+     * @return The firmware interface to use on the virtual machine. Can be one of bios or efi.
      * 
      */
     public Output<Optional<String>> firmware() {
         return Codegen.optional(this.firmware);
     }
     /**
-     * The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/&lt;datacenter-name&gt;/vm`).  For example, `/dc-01/vm/foo`
+     * The name of the folder to locate the virtual machine in.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
-     * @return The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/&lt;datacenter-name&gt;/vm`).  For example, `/dc-01/vm/foo`
+     * @return The name of the folder to locate the virtual machine in.
      * 
      */
     public Output<Optional<String>> folder() {
         return Codegen.optional(this.folder);
     }
     /**
-     * If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
+     * Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
      * 
      */
     @Export(name="forcePowerOff", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forcePowerOff;
 
     /**
-     * @return If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
+     * @return Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
      * 
      */
     public Output<Optional<Boolean>> forcePowerOff() {
         return Codegen.optional(this.forcePowerOff);
     }
     /**
-     * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     * 
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+     * The guest ID for the operating system.
      * 
      */
     @Export(name="guestId", refs={String.class}, tree="[0]")
     private Output<String> guestId;
 
     /**
-     * @return The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     * 
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+     * @return The guest ID for the operating system.
      * 
      */
     public Output<String> guestId() {
@@ -503,76 +481,74 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.guestIpAddresses;
     }
     /**
-     * The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     * 
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+     * The hardware version for the virtual machine.
      * 
      */
     @Export(name="hardwareVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> hardwareVersion;
 
     /**
-     * @return The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     * 
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+     * @return The hardware version for the virtual machine.
      * 
      */
     public Output<Integer> hardwareVersion() {
         return this.hardwareVersion;
     }
     /**
-     * The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+     * The ID of an optional host system to pin the virtual machine to.
      * 
      */
     @Export(name="hostSystemId", refs={String.class}, tree="[0]")
     private Output<String> hostSystemId;
 
     /**
-     * @return The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+     * @return The ID of an optional host system to pin the virtual machine to.
      * 
      */
     public Output<String> hostSystemId() {
         return this.hostSystemId;
     }
     /**
-     * The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
+     * The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      * 
      */
     @Export(name="hvMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hvMode;
 
     /**
-     * @return The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
+     * @return The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      * 
      */
     public Output<Optional<String>> hvMode() {
         return Codegen.optional(this.hvMode);
     }
     /**
-     * The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
+     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      * 
      */
     @Export(name="ideControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ideControllerCount;
 
     /**
-     * @return The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
+     * @return The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      * 
      */
     public Output<Optional<Integer>> ideControllerCount() {
         return Codegen.optional(this.ideControllerCount);
     }
     /**
-     * List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
+     * List of IP addresses and CIDR networks to ignore while waiting for an IP
      * 
      */
     @Export(name="ignoredGuestIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ignoredGuestIps;
 
     /**
-     * @return List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
+     * @return List of IP addresses and CIDR networks to ignore while waiting for an IP
      * 
      */
     public Output<Optional<List<String>>> ignoredGuestIps() {
@@ -593,90 +569,76 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.imported;
     }
     /**
-     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
-     * 
-     * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
+     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
+     * devices. Can be one of low, normal, medium, or high.
      * 
      */
     @Export(name="latencySensitivity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> latencySensitivity;
 
     /**
-     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
-     * 
-     * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
+     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
+     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
+     * devices. Can be one of low, normal, medium, or high.
      * 
      */
     public Output<Optional<String>> latencySensitivity() {
         return Codegen.optional(this.latencySensitivity);
     }
     /**
-     * The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
+     * The size of the virtual machine&#39;s memory, in MB.
      * 
      */
     @Export(name="memory", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memory;
 
     /**
-     * @return The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
+     * @return The size of the virtual machine&#39;s memory, in MB.
      * 
      */
     public Output<Optional<Integer>> memory() {
         return Codegen.optional(this.memory);
     }
     /**
-     * Allow memory to be added to the virtual machine while it is powered on.
-     * 
-     * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
-     * 
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-     * 
-     * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     * 
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
+     * Allow memory to be added to this virtual machine while it is running.
      * 
      */
     @Export(name="memoryHotAddEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> memoryHotAddEnabled;
 
     /**
-     * @return Allow memory to be added to the virtual machine while it is powered on.
-     * 
-     * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
-     * 
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-     * 
-     * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     * 
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
+     * @return Allow memory to be added to this virtual machine while it is running.
      * 
      */
     public Output<Optional<Boolean>> memoryHotAddEnabled() {
         return Codegen.optional(this.memoryHotAddEnabled);
     }
     /**
-     * The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     @Export(name="memoryLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryLimit;
 
     /**
-     * @return The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     public Output<Optional<Integer>> memoryLimit() {
         return Codegen.optional(this.memoryLimit);
     }
     /**
-     * The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+     * The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     @Export(name="memoryReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryReservation;
 
     /**
-     * @return The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+     * @return The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     public Output<Optional<Integer>> memoryReservation() {
@@ -701,42 +663,42 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryReservationLockedToMax);
     }
     /**
-     * The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
+     * The amount of shares to allocate to memory for a custom share level.
      * 
      */
     @Export(name="memoryShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> memoryShareCount;
 
     /**
-     * @return The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
+     * @return The amount of shares to allocate to memory for a custom share level.
      * 
      */
     public Output<Integer> memoryShareCount() {
         return this.memoryShareCount;
     }
     /**
-     * The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for memory resources. Can be one of high, low, normal, or custom.
      * 
      */
     @Export(name="memoryShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memoryShareLevel;
 
     /**
-     * @return The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * @return The allocation level for memory resources. Can be one of high, low, normal, or custom.
      * 
      */
     public Output<Optional<String>> memoryShareLevel() {
         return Codegen.optional(this.memoryShareLevel);
     }
     /**
-     * The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
+     * The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
      * 
      */
     @Export(name="migrateWaitTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> migrateWaitTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
+     * @return The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
      * 
      */
     public Output<Optional<Integer>> migrateWaitTimeout() {
@@ -757,102 +719,100 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.moid;
     }
     /**
-     * The name of the virtual machine.
+     * The name of this virtual machine.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the virtual machine.
+     * @return The name of this virtual machine.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
+     * Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
      * 
      */
     @Export(name="nestedHvEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> nestedHvEnabled;
 
     /**
-     * @return Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
+     * @return Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
      * 
      */
     public Output<Optional<Boolean>> nestedHvEnabled() {
         return Codegen.optional(this.nestedHvEnabled);
     }
     /**
-     * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * A specification for a virtual NIC on this virtual machine.
      * 
      */
     @Export(name="networkInterfaces", refs={List.class,VirtualMachineNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineNetworkInterface>> networkInterfaces;
 
     /**
-     * @return A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * @return A specification for a virtual NIC on this virtual machine.
      * 
      */
     public Output<Optional<List<VirtualMachineNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
     }
     /**
-     * The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `num_cpus` divided by `num_cores_per_socket`. If specified, the value supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+     * must be evenly divisible by this value.
      * 
      */
     @Export(name="numCoresPerSocket", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numCoresPerSocket;
 
     /**
-     * @return The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `num_cpus` divided by `num_cores_per_socket`. If specified, the value supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+     * must be evenly divisible by this value.
      * 
      */
     public Output<Optional<Integer>> numCoresPerSocket() {
         return Codegen.optional(this.numCoresPerSocket);
     }
     /**
-     * The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
+     * The number of virtual processors to assign to this virtual machine.
      * 
      */
     @Export(name="numCpus", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numCpus;
 
     /**
-     * @return The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
+     * @return The number of virtual processors to assign to this virtual machine.
      * 
      */
     public Output<Optional<Integer>> numCpus() {
         return Codegen.optional(this.numCpus);
     }
     /**
-     * When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
+     * A specification for deploying a virtual machine from ovf/ova template.
      * 
      */
     @Export(name="ovfDeploy", refs={VirtualMachineOvfDeploy.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineOvfDeploy> ovfDeploy;
 
     /**
-     * @return When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
+     * @return A specification for deploying a virtual machine from ovf/ova template.
      * 
      */
     public Output<Optional<VirtualMachineOvfDeploy>> ovfDeploy() {
         return Codegen.optional(this.ovfDeploy);
     }
     /**
-     * List of host PCI device IDs in which to create PCI passthroughs.
-     * 
-     * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+     * A list of PCI passthrough devices
      * 
      */
     @Export(name="pciDeviceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> pciDeviceIds;
 
     /**
-     * @return List of host PCI device IDs in which to create PCI passthroughs.
-     * 
-     * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+     * @return A list of PCI passthrough devices
      * 
      */
     public Output<Optional<List<String>>> pciDeviceIds() {
@@ -903,8 +863,6 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * Triggers replacement of resource whenever it changes.
      * 
-     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
-     * 
      */
     @Export(name="replaceTrigger", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replaceTrigger;
@@ -912,95 +870,89 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * @return Triggers replacement of resource whenever it changes.
      * 
-     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
-     * 
      */
     public Output<Optional<String>> replaceTrigger() {
         return Codegen.optional(this.replaceTrigger);
     }
     /**
-     * The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
+     * The ID of a resource pool to put the virtual machine in.
      * 
      */
     @Export(name="resourcePoolId", refs={String.class}, tree="[0]")
     private Output<String> resourcePoolId;
 
     /**
-     * @return The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
+     * @return The ID of a resource pool to put the virtual machine in.
      * 
      */
     public Output<String> resourcePoolId() {
         return this.resourcePoolId;
     }
     /**
-     * Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
      * 
      */
     @Export(name="runToolsScriptsAfterPowerOn", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsAfterPowerOn;
 
     /**
-     * @return Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
      * 
      */
     public Output<Optional<Boolean>> runToolsScriptsAfterPowerOn() {
         return Codegen.optional(this.runToolsScriptsAfterPowerOn);
     }
     /**
-     * Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
      * 
      */
     @Export(name="runToolsScriptsAfterResume", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsAfterResume;
 
     /**
-     * @return Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
      * 
      */
     public Output<Optional<Boolean>> runToolsScriptsAfterResume() {
         return Codegen.optional(this.runToolsScriptsAfterResume);
     }
     /**
-     * Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
+     * Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
      * 
      */
     @Export(name="runToolsScriptsBeforeGuestReboot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsBeforeGuestReboot;
 
     /**
-     * @return Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
+     * @return Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
      * 
      */
     public Output<Optional<Boolean>> runToolsScriptsBeforeGuestReboot() {
         return Codegen.optional(this.runToolsScriptsBeforeGuestReboot);
     }
     /**
-     * Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
      * 
      */
     @Export(name="runToolsScriptsBeforeGuestShutdown", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsBeforeGuestShutdown;
 
     /**
-     * @return Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
      * 
      */
     public Output<Optional<Boolean>> runToolsScriptsBeforeGuestShutdown() {
         return Codegen.optional(this.runToolsScriptsBeforeGuestShutdown);
     }
     /**
-     * Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      * 
      */
     @Export(name="runToolsScriptsBeforeGuestStandby", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsBeforeGuestStandby;
 
     /**
-     * @return Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      * 
      */
     public Output<Optional<Boolean>> runToolsScriptsBeforeGuestStandby() {
@@ -1025,14 +977,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sataControllerCount);
     }
     /**
-     * The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
+     * Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      * 
      */
     @Export(name="scsiBusSharing", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scsiBusSharing;
 
     /**
-     * @return The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
+     * @return Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      * 
      */
     public Output<Optional<String>> scsiBusSharing() {
@@ -1057,144 +1009,144 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scsiControllerCount);
     }
     /**
-     * The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
+     * The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
      * 
      */
     @Export(name="scsiType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scsiType;
 
     /**
-     * @return The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
+     * @return The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
      * 
      */
     public Output<Optional<String>> scsiType() {
         return Codegen.optional(this.scsiType);
     }
     /**
-     * The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
+     * The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
      * 
      */
     @Export(name="shutdownWaitTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shutdownWaitTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
+     * @return The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
      * 
      */
     public Output<Optional<Integer>> shutdownWaitTimeout() {
         return Codegen.optional(this.shutdownWaitTimeout);
     }
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the virtual machine home directory.
      * 
      */
     @Export(name="storagePolicyId", refs={String.class}, tree="[0]")
     private Output<String> storagePolicyId;
 
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the virtual machine home directory.
      * 
      */
     public Output<String> storagePolicyId() {
         return this.storagePolicyId;
     }
     /**
-     * The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
+     * The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
      * 
      */
     @Export(name="swapPlacementPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> swapPlacementPolicy;
 
     /**
-     * @return The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
+     * @return The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
      * 
      */
     public Output<Optional<String>> swapPlacementPolicy() {
         return Codegen.optional(this.swapPlacementPolicy);
     }
     /**
-     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
+     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
+     * synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     @Export(name="syncTimeWithHost", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHost;
 
     /**
-     * @return Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
+     * @return Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
+     * synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     public Output<Optional<Boolean>> syncTimeWithHost() {
         return Codegen.optional(this.syncTimeWithHost);
     }
     /**
-     * Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
+     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     @Export(name="syncTimeWithHostPeriodically", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHostPeriodically;
 
     /**
-     * @return Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
+     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
+     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     public Output<Optional<Boolean>> syncTimeWithHostPeriodically() {
         return Codegen.optional(this.syncTimeWithHostPeriodically);
     }
     /**
-     * The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
-     * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+     * A list of tag IDs to apply to this object.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
-     * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+     * @return A list of tag IDs to apply to this object.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     * Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
      * 
      */
     @Export(name="toolsUpgradePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> toolsUpgradePolicy;
 
     /**
-     * @return Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     * @return Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
      * 
      */
     public Output<Optional<String>> toolsUpgradePolicy() {
         return Codegen.optional(this.toolsUpgradePolicy);
     }
     /**
-     * The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
-     * @return The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * @return The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     public Output<String> uuid() {
         return this.uuid;
     }
     /**
-     * Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
+     * vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
      * 
      */
     @Export(name="vapp", refs={VirtualMachineVapp.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineVapp> vapp;
 
     /**
-     * @return Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
+     * @return vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
      * 
      */
     public Output<Optional<VirtualMachineVapp>> vapp() {
@@ -1215,14 +1167,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.vappTransports;
     }
     /**
-     * Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
+     * Flag to specify if Virtualization-based security is enabled for this virtual machine.
      * 
      */
     @Export(name="vbsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vbsEnabled;
 
     /**
-     * @return Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
+     * @return Flag to specify if Virtualization-based security is enabled for this virtual machine.
      * 
      */
     public Output<Optional<Boolean>> vbsEnabled() {
@@ -1257,56 +1209,64 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.vmxPath;
     }
     /**
-     * Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
+     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
+     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     @Export(name="vvtdEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vvtdEnabled;
 
     /**
-     * @return Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
+     * @return Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
+     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     public Output<Optional<Boolean>> vvtdEnabled() {
         return Codegen.optional(this.vvtdEnabled);
     }
     /**
-     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `wait_for_guest_net_timeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     @Export(name="waitForGuestIpTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> waitForGuestIpTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `wait_for_guest_net_timeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     public Output<Optional<Integer>> waitForGuestIpTimeout() {
         return Codegen.optional(this.waitForGuestIpTimeout);
     }
     /**
-     * Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
+     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
+     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     @Export(name="waitForGuestNetRoutable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForGuestNetRoutable;
 
     /**
-     * @return Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
+     * @return Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
+     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     public Output<Optional<Boolean>> waitForGuestNetRoutable() {
         return Codegen.optional(this.waitForGuestNetRoutable);
     }
     /**
-     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     @Export(name="waitForGuestNetTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> waitForGuestNetTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     public Output<Optional<Integer>> waitForGuestNetTimeout() {

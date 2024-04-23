@@ -58,7 +58,7 @@ namespace Pulumi.VSphere.Inputs
         private InputList<Inputs.VirtualMachineCloneCustomizeNetworkInterfaceGetArgs>? _networkInterfaces;
 
         /// <summary>
-        /// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+        /// A specification of network interface configuration options.
         /// </summary>
         public InputList<Inputs.VirtualMachineCloneCustomizeNetworkInterfaceGetArgs> NetworkInterfaces
         {

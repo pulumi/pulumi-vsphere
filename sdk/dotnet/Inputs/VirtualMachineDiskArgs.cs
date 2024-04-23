@@ -13,21 +13,19 @@ namespace Pulumi.VSphere.Inputs
     public sealed class VirtualMachineDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-        /// 
-        /// &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+        /// If this is true, the disk is attached instead of created. Implies keep_on_remove.
         /// </summary>
         [Input("attach")]
         public Input<bool>? Attach { get; set; }
 
         /// <summary>
-        /// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+        /// The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
         /// </summary>
         [Input("controllerType")]
         public Input<string>? ControllerType { get; set; }
 
         /// <summary>
-        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// The datastore ID for this virtual disk, if different than the virtual machine.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -39,53 +37,49 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? DeviceAddress { get; set; }
 
         /// <summary>
-        /// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-        /// 
-        /// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+        /// The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
         /// </summary>
         [Input("diskMode")]
         public Input<string>? DiskMode { get; set; }
 
         /// <summary>
-        /// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-        /// 
-        /// &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+        /// The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
         /// </summary>
         [Input("diskSharing")]
         public Input<string>? DiskSharing { get; set; }
 
         /// <summary>
-        /// If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+        /// The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
         /// </summary>
         [Input("eagerlyScrub")]
         public Input<bool>? EagerlyScrub { get; set; }
 
         /// <summary>
-        /// The upper limit of IOPS that this disk can use. The default is no limit.
+        /// The upper limit of IOPS that this disk can use.
         /// </summary>
         [Input("ioLimit")]
         public Input<int>? IoLimit { get; set; }
 
         /// <summary>
-        /// The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+        /// The I/O guarantee that this disk has, in IOPS.
         /// </summary>
         [Input("ioReservation")]
         public Input<int>? IoReservation { get; set; }
 
         /// <summary>
-        /// The share count for the virtual disk when the share level is `custom`.
+        /// The share count for this disk when the share level is custom.
         /// </summary>
         [Input("ioShareCount")]
         public Input<int>? IoShareCount { get; set; }
 
         /// <summary>
-        /// The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        /// The share allocation level for this disk. Can be one of low, normal, high, or custom.
         /// </summary>
         [Input("ioShareLevel")]
         public Input<string>? IoShareLevel { get; set; }
 
         /// <summary>
-        /// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+        /// Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
         /// </summary>
         [Input("keepOnRemove")]
         public Input<bool>? KeepOnRemove { get; set; }
@@ -103,47 +97,43 @@ namespace Pulumi.VSphere.Inputs
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-        /// 
-        /// &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-        /// 
-        /// &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        /// The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The size of the disk, in GB. Must be a whole number.
+        /// The size of the disk, in GB.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The UUID of the storage policy to assign to the virtual disk.
+        /// The ID of the storage policy to assign to the virtual disk in VM.
         /// </summary>
         [Input("storagePolicyId")]
         public Input<string>? StoragePolicyId { get; set; }
 
         /// <summary>
-        /// If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+        /// If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
         /// </summary>
         [Input("thinProvisioned")]
         public Input<bool>? ThinProvisioned { get; set; }
 
         /// <summary>
-        /// The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+        /// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
         /// </summary>
         [Input("unitNumber")]
         public Input<int>? UnitNumber { get; set; }
 
         /// <summary>
-        /// The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+        /// The UUID of the virtual machine. Also exposed as the `id` of the resource.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+        /// If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
         /// </summary>
         [Input("writeThrough")]
         public Input<bool>? WriteThrough { get; set; }

@@ -99,7 +99,6 @@ def get_network(datacenter_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -108,7 +107,6 @@ def get_network(datacenter_id: Optional[str] = None,
     network = vsphere.get_network(name="VM Network",
         datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID
@@ -150,7 +148,6 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -159,7 +156,6 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
     network = vsphere.get_network(name="VM Network",
         datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID

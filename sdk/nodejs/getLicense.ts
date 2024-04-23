@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     licenseKey: "00000-00000-00000-00000-00000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLicense(args: GetLicenseArgs, opts?: pulumi.InvokeOptions): Promise<GetLicenseResult> {
 
@@ -72,7 +70,6 @@ export interface GetLicenseResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -81,7 +78,6 @@ export interface GetLicenseResult {
  *     licenseKey: "00000-00000-00000-00000-00000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseResult> {
     return pulumi.output(args).apply((a: any) => getLicense(a, opts))

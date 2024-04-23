@@ -19,18 +19,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     public static final VirtualMachineDiskArgs Empty = new VirtualMachineDiskArgs();
 
     /**
-     * Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-     * 
-     * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+     * If this is true, the disk is attached instead of created. Implies keep_on_remove.
      * 
      */
     @Import(name="attach")
     private @Nullable Output<Boolean> attach;
 
     /**
-     * @return Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-     * 
-     * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+     * @return If this is true, the disk is attached instead of created. Implies keep_on_remove.
      * 
      */
     public Optional<Output<Boolean>> attach() {
@@ -38,14 +34,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+     * The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
      * 
      */
     @Import(name="controllerType")
     private @Nullable Output<String> controllerType;
 
     /**
-     * @return The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
      * 
      */
     public Optional<Output<String>> controllerType() {
@@ -53,14 +49,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The datastore ID for this virtual disk, if different than the virtual machine.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The datastore ID for this virtual disk, if different than the virtual machine.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -83,18 +79,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-     * 
-     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+     * The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
      * 
      */
     @Import(name="diskMode")
     private @Nullable Output<String> diskMode;
 
     /**
-     * @return The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-     * 
-     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+     * @return The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
      * 
      */
     public Optional<Output<String>> diskMode() {
@@ -102,18 +94,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-     * 
-     * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+     * The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
      * 
      */
     @Import(name="diskSharing")
     private @Nullable Output<String> diskSharing;
 
     /**
-     * @return The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-     * 
-     * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+     * @return The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
      * 
      */
     public Optional<Output<String>> diskSharing() {
@@ -121,14 +109,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+     * The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     @Import(name="eagerlyScrub")
     private @Nullable Output<Boolean> eagerlyScrub;
 
     /**
-     * @return If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+     * @return The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     public Optional<Output<Boolean>> eagerlyScrub() {
@@ -136,14 +124,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The upper limit of IOPS that this disk can use. The default is no limit.
+     * The upper limit of IOPS that this disk can use.
      * 
      */
     @Import(name="ioLimit")
     private @Nullable Output<Integer> ioLimit;
 
     /**
-     * @return The upper limit of IOPS that this disk can use. The default is no limit.
+     * @return The upper limit of IOPS that this disk can use.
      * 
      */
     public Optional<Output<Integer>> ioLimit() {
@@ -151,14 +139,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+     * The I/O guarantee that this disk has, in IOPS.
      * 
      */
     @Import(name="ioReservation")
     private @Nullable Output<Integer> ioReservation;
 
     /**
-     * @return The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+     * @return The I/O guarantee that this disk has, in IOPS.
      * 
      */
     public Optional<Output<Integer>> ioReservation() {
@@ -166,14 +154,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The share count for the virtual disk when the share level is `custom`.
+     * The share count for this disk when the share level is custom.
      * 
      */
     @Import(name="ioShareCount")
     private @Nullable Output<Integer> ioShareCount;
 
     /**
-     * @return The share count for the virtual disk when the share level is `custom`.
+     * @return The share count for this disk when the share level is custom.
      * 
      */
     public Optional<Output<Integer>> ioShareCount() {
@@ -181,14 +169,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * The share allocation level for this disk. Can be one of low, normal, high, or custom.
      * 
      */
     @Import(name="ioShareLevel")
     private @Nullable Output<String> ioShareLevel;
 
     /**
-     * @return The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * @return The share allocation level for this disk. Can be one of low, normal, high, or custom.
      * 
      */
     public Optional<Output<String>> ioShareLevel() {
@@ -196,14 +184,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+     * Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
      * 
      */
     @Import(name="keepOnRemove")
     private @Nullable Output<Boolean> keepOnRemove;
 
     /**
-     * @return Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+     * @return Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
      * 
      */
     public Optional<Output<Boolean>> keepOnRemove() {
@@ -241,22 +229,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
      * 
      */
     public Optional<Output<String>> path() {
@@ -264,14 +244,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The size of the disk, in GB. Must be a whole number.
+     * The size of the disk, in GB.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return The size of the disk, in GB. Must be a whole number.
+     * @return The size of the disk, in GB.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -279,14 +259,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the virtual disk in VM.
      * 
      */
     @Import(name="storagePolicyId")
     private @Nullable Output<String> storagePolicyId;
 
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the virtual disk in VM.
      * 
      */
     public Optional<Output<String>> storagePolicyId() {
@@ -294,14 +274,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+     * If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
      * 
      */
     @Import(name="thinProvisioned")
     private @Nullable Output<Boolean> thinProvisioned;
 
     /**
-     * @return If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+     * @return If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
      * 
      */
     public Optional<Output<Boolean>> thinProvisioned() {
@@ -309,14 +289,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+     * The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
      * 
      */
     @Import(name="unitNumber")
     private @Nullable Output<Integer> unitNumber;
 
     /**
-     * @return The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+     * @return The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
      * 
      */
     public Optional<Output<Integer>> unitNumber() {
@@ -324,14 +304,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * @return The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -339,14 +319,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+     * If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
      * 
      */
     @Import(name="writeThrough")
     private @Nullable Output<Boolean> writeThrough;
 
     /**
-     * @return If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+     * @return If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
      * 
      */
     public Optional<Output<Boolean>> writeThrough() {
@@ -398,9 +378,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param attach Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-         * 
-         * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+         * @param attach If this is true, the disk is attached instead of created. Implies keep_on_remove.
          * 
          * @return builder
          * 
@@ -411,9 +389,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param attach Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-         * 
-         * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+         * @param attach If this is true, the disk is attached instead of created. Implies keep_on_remove.
          * 
          * @return builder
          * 
@@ -423,7 +399,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param controllerType The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+         * @param controllerType The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
          * 
          * @return builder
          * 
@@ -434,7 +410,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param controllerType The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+         * @param controllerType The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
          * 
          * @return builder
          * 
@@ -444,7 +420,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The datastore ID for this virtual disk, if different than the virtual machine.
          * 
          * @return builder
          * 
@@ -455,7 +431,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The datastore ID for this virtual disk, if different than the virtual machine.
          * 
          * @return builder
          * 
@@ -486,9 +462,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param diskMode The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-         * 
-         * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+         * @param diskMode The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
          * 
          * @return builder
          * 
@@ -499,9 +473,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param diskMode The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-         * 
-         * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+         * @param diskMode The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
          * 
          * @return builder
          * 
@@ -511,9 +483,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param diskSharing The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-         * 
-         * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+         * @param diskSharing The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
          * 
          * @return builder
          * 
@@ -524,9 +494,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param diskSharing The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-         * 
-         * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+         * @param diskSharing The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
          * 
          * @return builder
          * 
@@ -536,7 +504,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param eagerlyScrub If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+         * @param eagerlyScrub The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
          * 
          * @return builder
          * 
@@ -547,7 +515,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param eagerlyScrub If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+         * @param eagerlyScrub The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
          * 
          * @return builder
          * 
@@ -557,7 +525,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioLimit The upper limit of IOPS that this disk can use. The default is no limit.
+         * @param ioLimit The upper limit of IOPS that this disk can use.
          * 
          * @return builder
          * 
@@ -568,7 +536,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioLimit The upper limit of IOPS that this disk can use. The default is no limit.
+         * @param ioLimit The upper limit of IOPS that this disk can use.
          * 
          * @return builder
          * 
@@ -578,7 +546,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioReservation The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+         * @param ioReservation The I/O guarantee that this disk has, in IOPS.
          * 
          * @return builder
          * 
@@ -589,7 +557,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioReservation The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+         * @param ioReservation The I/O guarantee that this disk has, in IOPS.
          * 
          * @return builder
          * 
@@ -599,7 +567,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioShareCount The share count for the virtual disk when the share level is `custom`.
+         * @param ioShareCount The share count for this disk when the share level is custom.
          * 
          * @return builder
          * 
@@ -610,7 +578,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioShareCount The share count for the virtual disk when the share level is `custom`.
+         * @param ioShareCount The share count for this disk when the share level is custom.
          * 
          * @return builder
          * 
@@ -620,7 +588,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioShareLevel The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+         * @param ioShareLevel The share allocation level for this disk. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -631,7 +599,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ioShareLevel The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+         * @param ioShareLevel The share allocation level for this disk. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -641,7 +609,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param keepOnRemove Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+         * @param keepOnRemove Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
          * 
          * @return builder
          * 
@@ -652,7 +620,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param keepOnRemove Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+         * @param keepOnRemove Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
          * 
          * @return builder
          * 
@@ -704,11 +672,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-         * 
-         * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-         * 
-         * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+         * @param path The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
          * 
          * @return builder
          * 
@@ -719,11 +683,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-         * 
-         * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-         * 
-         * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+         * @param path The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
          * 
          * @return builder
          * 
@@ -733,7 +693,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param size The size of the disk, in GB. Must be a whole number.
+         * @param size The size of the disk, in GB.
          * 
          * @return builder
          * 
@@ -744,7 +704,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param size The size of the disk, in GB. Must be a whole number.
+         * @param size The size of the disk, in GB.
          * 
          * @return builder
          * 
@@ -754,7 +714,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
+         * @param storagePolicyId The ID of the storage policy to assign to the virtual disk in VM.
          * 
          * @return builder
          * 
@@ -765,7 +725,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
+         * @param storagePolicyId The ID of the storage policy to assign to the virtual disk in VM.
          * 
          * @return builder
          * 
@@ -775,7 +735,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param thinProvisioned If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+         * @param thinProvisioned If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
          * 
          * @return builder
          * 
@@ -786,7 +746,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param thinProvisioned If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+         * @param thinProvisioned If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
          * 
          * @return builder
          * 
@@ -796,7 +756,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param unitNumber The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+         * @param unitNumber The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
          * 
          * @return builder
          * 
@@ -807,7 +767,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param unitNumber The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+         * @param unitNumber The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
          * 
          * @return builder
          * 
@@ -817,7 +777,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param uuid The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+         * @param uuid The UUID of the virtual machine. Also exposed as the `id` of the resource.
          * 
          * @return builder
          * 
@@ -828,7 +788,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param uuid The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+         * @param uuid The UUID of the virtual machine. Also exposed as the `id` of the resource.
          * 
          * @return builder
          * 
@@ -838,7 +798,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param writeThrough If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+         * @param writeThrough If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
          * 
          * @return builder
          * 
@@ -849,7 +809,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param writeThrough If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+         * @param writeThrough If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
          * 
          * @return builder
          * 

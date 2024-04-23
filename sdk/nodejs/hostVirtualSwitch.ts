@@ -33,44 +33,33 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
     }
 
     /**
-     * The list of active network adapters used for load
-     * balancing.
+     * List of active network adapters used for load balancing.
      */
     public readonly activeNics!: pulumi.Output<string[]>;
     /**
-     * Controls whether or not the virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own. Default: `true`.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     public readonly allowForgedTransmits!: pulumi.Output<boolean | undefined>;
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed. Default: `true`.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
     public readonly allowMacChanges!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port. Default:
-     * `false`.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
     public readonly allowPromiscuous!: pulumi.Output<boolean | undefined>;
     /**
-     * The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `checkBeacon` to
-     * offer link failure capability beyond link status only. Default: `1`.
+     * Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
      */
     public readonly beaconInterval!: pulumi.Output<number | undefined>;
     /**
-     * Enable beacon probing - this requires that the
-     * `beaconInterval` option has been set in the bridge
-     * options. If this is set to `false`, only link status is used to check for
-     * failed NICs.  Default: `false`.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      */
     public readonly checkBeacon!: pulumi.Output<boolean | undefined>;
     /**
-     * If set to `true`, the teaming policy will re-activate
-     * failed interfaces higher in precedence when they come back up.  Default:
-     * `true`.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
     public readonly failback!: pulumi.Output<boolean | undefined>;
     /**
@@ -79,13 +68,11 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly hostSystemId!: pulumi.Output<string>;
     /**
-     * Whether to `advertise` or `listen`
-     * for link discovery traffic. Default: `listen`.
+     * Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
      */
     public readonly linkDiscoveryOperation!: pulumi.Output<string | undefined>;
     /**
-     * The discovery protocol type.  Valid
-     * types are `cpd` and `lldp`. Default: `cdp`.
+     * The discovery protocol type. Valid values are cdp and lldp.
      */
     public readonly linkDiscoveryProtocol!: pulumi.Output<string | undefined>;
     /**
@@ -99,13 +86,11 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The network interfaces to bind to the bridge.
+     * The list of network adapters to bind to this virtual switch.
      */
     public readonly networkAdapters!: pulumi.Output<string[]>;
     /**
-     * If set to `true`, the teaming policy will
-     * notify the broadcast network of a NIC failover, triggering cache updates.
-     * Default: `true`.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
     public readonly notifySwitches!: pulumi.Output<boolean | undefined>;
     /**
@@ -117,34 +102,28 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly numberOfPorts!: pulumi.Output<number | undefined>;
     /**
-     * The average bandwidth in bits per
-     * second if traffic shaping is enabled. Default: `0`
+     * The average bandwidth in bits per second if traffic shaping is enabled.
      */
     public readonly shapingAverageBandwidth!: pulumi.Output<number | undefined>;
     /**
-     * The maximum burst size allowed in bytes if
-     * shaping is enabled. Default: `0`
+     * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
     public readonly shapingBurstSize!: pulumi.Output<number | undefined>;
     /**
-     * Set to `true` to enable the traffic shaper for
-     * ports managed by this virtual switch. Default: `false`.
+     * Enable traffic shaping on this virtual switch or port group.
      */
     public readonly shapingEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The peak bandwidth during bursts in
-     * bits per second if traffic shaping is enabled. Default: `0`
+     * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
     public readonly shapingPeakBandwidth!: pulumi.Output<number | undefined>;
     /**
-     * The list of standby network adapters used for
-     * failover.
+     * List of standby network adapters used for failover.
      */
     public readonly standbyNics!: pulumi.Output<string[] | undefined>;
     /**
-     * The network adapter teaming policy. Can be one
-     * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-     * `failoverExplicit`. Default: `loadbalanceSrcid`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+     * failover_explicit.
      */
     public readonly teamingPolicy!: pulumi.Output<string | undefined>;
 
@@ -225,44 +204,33 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
  */
 export interface HostVirtualSwitchState {
     /**
-     * The list of active network adapters used for load
-     * balancing.
+     * List of active network adapters used for load balancing.
      */
     activeNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own. Default: `true`.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed. Default: `true`.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
     allowMacChanges?: pulumi.Input<boolean>;
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port. Default:
-     * `false`.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
     allowPromiscuous?: pulumi.Input<boolean>;
     /**
-     * The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `checkBeacon` to
-     * offer link failure capability beyond link status only. Default: `1`.
+     * Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
      */
     beaconInterval?: pulumi.Input<number>;
     /**
-     * Enable beacon probing - this requires that the
-     * `beaconInterval` option has been set in the bridge
-     * options. If this is set to `false`, only link status is used to check for
-     * failed NICs.  Default: `false`.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
-     * If set to `true`, the teaming policy will re-activate
-     * failed interfaces higher in precedence when they come back up.  Default:
-     * `true`.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
     failback?: pulumi.Input<boolean>;
     /**
@@ -271,13 +239,11 @@ export interface HostVirtualSwitchState {
      */
     hostSystemId?: pulumi.Input<string>;
     /**
-     * Whether to `advertise` or `listen`
-     * for link discovery traffic. Default: `listen`.
+     * Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
      */
     linkDiscoveryOperation?: pulumi.Input<string>;
     /**
-     * The discovery protocol type.  Valid
-     * types are `cpd` and `lldp`. Default: `cdp`.
+     * The discovery protocol type. Valid values are cdp and lldp.
      */
     linkDiscoveryProtocol?: pulumi.Input<string>;
     /**
@@ -291,13 +257,11 @@ export interface HostVirtualSwitchState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The network interfaces to bind to the bridge.
+     * The list of network adapters to bind to this virtual switch.
      */
     networkAdapters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set to `true`, the teaming policy will
-     * notify the broadcast network of a NIC failover, triggering cache updates.
-     * Default: `true`.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
     notifySwitches?: pulumi.Input<boolean>;
     /**
@@ -309,34 +273,28 @@ export interface HostVirtualSwitchState {
      */
     numberOfPorts?: pulumi.Input<number>;
     /**
-     * The average bandwidth in bits per
-     * second if traffic shaping is enabled. Default: `0`
+     * The average bandwidth in bits per second if traffic shaping is enabled.
      */
     shapingAverageBandwidth?: pulumi.Input<number>;
     /**
-     * The maximum burst size allowed in bytes if
-     * shaping is enabled. Default: `0`
+     * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
     shapingBurstSize?: pulumi.Input<number>;
     /**
-     * Set to `true` to enable the traffic shaper for
-     * ports managed by this virtual switch. Default: `false`.
+     * Enable traffic shaping on this virtual switch or port group.
      */
     shapingEnabled?: pulumi.Input<boolean>;
     /**
-     * The peak bandwidth during bursts in
-     * bits per second if traffic shaping is enabled. Default: `0`
+     * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
     shapingPeakBandwidth?: pulumi.Input<number>;
     /**
-     * The list of standby network adapters used for
-     * failover.
+     * List of standby network adapters used for failover.
      */
     standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one
-     * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-     * `failoverExplicit`. Default: `loadbalanceSrcid`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+     * failover_explicit.
      */
     teamingPolicy?: pulumi.Input<string>;
 }
@@ -346,44 +304,33 @@ export interface HostVirtualSwitchState {
  */
 export interface HostVirtualSwitchArgs {
     /**
-     * The list of active network adapters used for load
-     * balancing.
+     * List of active network adapters used for load balancing.
      */
     activeNics: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own. Default: `true`.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed. Default: `true`.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
     allowMacChanges?: pulumi.Input<boolean>;
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port. Default:
-     * `false`.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
     allowPromiscuous?: pulumi.Input<boolean>;
     /**
-     * The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `checkBeacon` to
-     * offer link failure capability beyond link status only. Default: `1`.
+     * Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
      */
     beaconInterval?: pulumi.Input<number>;
     /**
-     * Enable beacon probing - this requires that the
-     * `beaconInterval` option has been set in the bridge
-     * options. If this is set to `false`, only link status is used to check for
-     * failed NICs.  Default: `false`.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
-     * If set to `true`, the teaming policy will re-activate
-     * failed interfaces higher in precedence when they come back up.  Default:
-     * `true`.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
     failback?: pulumi.Input<boolean>;
     /**
@@ -392,13 +339,11 @@ export interface HostVirtualSwitchArgs {
      */
     hostSystemId: pulumi.Input<string>;
     /**
-     * Whether to `advertise` or `listen`
-     * for link discovery traffic. Default: `listen`.
+     * Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
      */
     linkDiscoveryOperation?: pulumi.Input<string>;
     /**
-     * The discovery protocol type.  Valid
-     * types are `cpd` and `lldp`. Default: `cdp`.
+     * The discovery protocol type. Valid values are cdp and lldp.
      */
     linkDiscoveryProtocol?: pulumi.Input<string>;
     /**
@@ -412,13 +357,11 @@ export interface HostVirtualSwitchArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The network interfaces to bind to the bridge.
+     * The list of network adapters to bind to this virtual switch.
      */
     networkAdapters: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If set to `true`, the teaming policy will
-     * notify the broadcast network of a NIC failover, triggering cache updates.
-     * Default: `true`.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
     notifySwitches?: pulumi.Input<boolean>;
     /**
@@ -430,34 +373,28 @@ export interface HostVirtualSwitchArgs {
      */
     numberOfPorts?: pulumi.Input<number>;
     /**
-     * The average bandwidth in bits per
-     * second if traffic shaping is enabled. Default: `0`
+     * The average bandwidth in bits per second if traffic shaping is enabled.
      */
     shapingAverageBandwidth?: pulumi.Input<number>;
     /**
-     * The maximum burst size allowed in bytes if
-     * shaping is enabled. Default: `0`
+     * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
     shapingBurstSize?: pulumi.Input<number>;
     /**
-     * Set to `true` to enable the traffic shaper for
-     * ports managed by this virtual switch. Default: `false`.
+     * Enable traffic shaping on this virtual switch or port group.
      */
     shapingEnabled?: pulumi.Input<boolean>;
     /**
-     * The peak bandwidth during bursts in
-     * bits per second if traffic shaping is enabled. Default: `0`
+     * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
     shapingPeakBandwidth?: pulumi.Input<number>;
     /**
-     * The list of standby network adapters used for
-     * failover.
+     * List of standby network adapters used for failover.
      */
     standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one
-     * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-     * `failoverExplicit`. Default: `loadbalanceSrcid`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+     * failover_explicit.
      */
     teamingPolicy?: pulumi.Input<string>;
 }
