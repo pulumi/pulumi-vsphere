@@ -14,23 +14,23 @@ namespace Pulumi.VSphere.Outputs
     public sealed class VirtualMachineNetworkInterface
     {
         /// <summary>
-        /// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+        /// The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
         /// </summary>
         public readonly string? AdapterType;
         /// <summary>
-        /// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
+        /// The upper bandwidth limit of this network interface, in Mbits/sec.
         /// </summary>
         public readonly int? BandwidthLimit;
         /// <summary>
-        /// The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+        /// The bandwidth reservation of this network interface, in Mbits/sec.
         /// </summary>
         public readonly int? BandwidthReservation;
         /// <summary>
-        /// The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
+        /// The share count for this network interface when the share level is custom.
         /// </summary>
         public readonly int? BandwidthShareCount;
         /// <summary>
-        /// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+        /// The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
         /// </summary>
         public readonly string? BandwidthShareLevel;
         /// <summary>
@@ -42,15 +42,15 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly int? Key;
         /// <summary>
-        /// The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+        /// The MAC address of this network interface. Can only be manually set if use_static_mac is true.
         /// </summary>
         public readonly string? MacAddress;
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+        /// The ID of the network to connect this network interface to.
         /// </summary>
         public readonly string NetworkId;
         /// <summary>
-        /// Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+        /// Mapping of network interface to OVF network.
         /// </summary>
         public readonly string? OvfMapping;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? PhysicalFunction;
         /// <summary>
-        /// If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
+        /// If true, the mac_address field is treated as a static MAC address and set accordingly.
         /// </summary>
         public readonly bool? UseStaticMac;
 

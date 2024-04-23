@@ -13,25 +13,25 @@ namespace Pulumi.VSphere.Inputs
     public sealed class VnicIpv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use DHCP to configure the interface's IPv6 stack.
+        /// Use DHCP to configure the interface's IPv4 stack.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
 
         /// <summary>
-        /// IP address of the default gateway, if DHCP or autoconfig is not set.
+        /// IP address of the default gateway, if DHCP is not set.
         /// </summary>
         [Input("gw")]
         public Input<string>? Gw { get; set; }
 
         /// <summary>
-        /// Address of the interface, if DHCP is not set.
+        /// address of the interface, if DHCP is not set.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Netmask of the interface, if DHCP is not set.
+        /// netmask of the interface, if DHCP is not set.
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }

@@ -18,16 +18,14 @@ public final class DistributedVirtualSwitchHostArgs extends com.pulumi.resources
     public static final DistributedVirtualSwitchHostArgs Empty = new DistributedVirtualSwitchHostArgs();
 
     /**
-     * The list of NIC devices to map to uplinks on the VDS,
-     * added in order they are specified.
+     * Name of the physical NIC to be added to the proxy switch.
      * 
      */
     @Import(name="devices")
     private @Nullable Output<List<String>> devices;
 
     /**
-     * @return The list of NIC devices to map to uplinks on the VDS,
-     * added in order they are specified.
+     * @return Name of the physical NIC to be added to the proxy switch.
      * 
      */
     public Optional<Output<List<String>>> devices() {
@@ -35,16 +33,14 @@ public final class DistributedVirtualSwitchHostArgs extends com.pulumi.resources
     }
 
     /**
-     * The host system ID of the host to add to the
-     * VDS.
+     * The managed object ID of the host this specification applies to.
      * 
      */
     @Import(name="hostSystemId", required=true)
     private Output<String> hostSystemId;
 
     /**
-     * @return The host system ID of the host to add to the
-     * VDS.
+     * @return The managed object ID of the host this specification applies to.
      * 
      */
     public Output<String> hostSystemId() {
@@ -77,8 +73,7 @@ public final class DistributedVirtualSwitchHostArgs extends com.pulumi.resources
         }
 
         /**
-         * @param devices The list of NIC devices to map to uplinks on the VDS,
-         * added in order they are specified.
+         * @param devices Name of the physical NIC to be added to the proxy switch.
          * 
          * @return builder
          * 
@@ -89,8 +84,7 @@ public final class DistributedVirtualSwitchHostArgs extends com.pulumi.resources
         }
 
         /**
-         * @param devices The list of NIC devices to map to uplinks on the VDS,
-         * added in order they are specified.
+         * @param devices Name of the physical NIC to be added to the proxy switch.
          * 
          * @return builder
          * 
@@ -100,8 +94,7 @@ public final class DistributedVirtualSwitchHostArgs extends com.pulumi.resources
         }
 
         /**
-         * @param devices The list of NIC devices to map to uplinks on the VDS,
-         * added in order they are specified.
+         * @param devices Name of the physical NIC to be added to the proxy switch.
          * 
          * @return builder
          * 
@@ -111,8 +104,7 @@ public final class DistributedVirtualSwitchHostArgs extends com.pulumi.resources
         }
 
         /**
-         * @param hostSystemId The host system ID of the host to add to the
-         * VDS.
+         * @param hostSystemId The managed object ID of the host this specification applies to.
          * 
          * @return builder
          * 
@@ -123,8 +115,7 @@ public final class DistributedVirtualSwitchHostArgs extends com.pulumi.resources
         }
 
         /**
-         * @param hostSystemId The host system ID of the host to add to the
-         * VDS.
+         * @param hostSystemId The managed object ID of the host this specification applies to.
          * 
          * @return builder
          * 

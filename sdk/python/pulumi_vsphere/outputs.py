@@ -57,8 +57,8 @@ class ComputeClusterVsanDiskGroup(dict):
                  cache: Optional[str] = None,
                  storages: Optional[Sequence[str]] = None):
         """
-        :param str cache: The canonical name of the disk to use for vSAN cache.
-        :param Sequence[str] storages: An array of disk canonical names for vSAN storage.
+        :param str cache: Cache disk.
+        :param Sequence[str] storages: List of storage disks.
         """
         if cache is not None:
             pulumi.set(__self__, "cache", cache)
@@ -69,7 +69,7 @@ class ComputeClusterVsanDiskGroup(dict):
     @pulumi.getter
     def cache(self) -> Optional[str]:
         """
-        The canonical name of the disk to use for vSAN cache.
+        Cache disk.
         """
         return pulumi.get(self, "cache")
 
@@ -77,7 +77,7 @@ class ComputeClusterVsanDiskGroup(dict):
     @pulumi.getter
     def storages(self) -> Optional[Sequence[str]]:
         """
-        An array of disk canonical names for vSAN storage.
+        List of storage disks.
         """
         return pulumi.get(self, "storages")
 
@@ -201,57 +201,8 @@ class ComputeClusterVsanStretchedCluster(dict):
         :param Sequence[str] preferred_fault_domain_host_ids: The managed object IDs of the hosts to put in the first fault domain.
         :param Sequence[str] secondary_fault_domain_host_ids: The managed object IDs of the hosts to put in the second fault domain.
         :param str witness_node: The managed object IDs of the host selected as witness node when enable stretched cluster.
-        :param str preferred_fault_domain_name: The name of first fault domain. Default is `Preferred`.
-        :param str secondary_fault_domain_name: The name of second fault domain. Default is `Secondary`.
-               
-               > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-               You can enable or re-enable vSphere HA after vSAN is configured.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               import pulumi_vsphere as vsphere
-               
-               compute_cluster = vsphere.ComputeCluster("compute_cluster",
-                   name="terraform-compute-cluster-test",
-                   datacenter_id=datacenter["id"],
-                   host_system_ids=[[__item["id"] for __item in host]],
-                   drs_enabled=True,
-                   drs_automation_level="fullyAutomated",
-                   ha_enabled=False,
-                   vsan_enabled=True,
-                   vsan_esa_enabled=True,
-                   vsan_dedup_enabled=True,
-                   vsan_compression_enabled=True,
-                   vsan_performance_enabled=True,
-                   vsan_verbose_mode_enabled=True,
-                   vsan_network_diagnostic_mode_enabled=True,
-                   vsan_unmap_enabled=True,
-                   vsan_dit_encryption_enabled=True,
-                   vsan_dit_rekey_interval=1800,
-                   vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
-                       cache=cache_disks[0],
-                       storages=storage_disks,
-                   )],
-                   vsan_fault_domains=[vsphere.ComputeClusterVsanFaultDomainArgs(
-                       fault_domains=[
-                           vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
-                               name="fd1",
-                               host_ids=[[__item["id"] for __item in faultdomain1_hosts]],
-                           ),
-                           vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
-                               name="fd2",
-                               host_ids=[[__item["id"] for __item in faultdomain2_hosts]],
-                           ),
-                       ],
-                   )],
-                   vsan_stretched_cluster=vsphere.ComputeClusterVsanStretchedClusterArgs(
-                       preferred_fault_domain_host_ids=[[__item["id"] for __item in preferred_fault_domain_host]],
-                       secondary_fault_domain_host_ids=[[__item["id"] for __item in secondary_fault_domain_host]],
-                       witness_node=witness_host["id"],
-                   ))
-               ```
-               <!--End PulumiCodeChooser -->
+        :param str preferred_fault_domain_name: The name of prepferred fault domain.
+        :param str secondary_fault_domain_name: The name of secondary fault domain.
         """
         pulumi.set(__self__, "preferred_fault_domain_host_ids", preferred_fault_domain_host_ids)
         pulumi.set(__self__, "secondary_fault_domain_host_ids", secondary_fault_domain_host_ids)
@@ -289,7 +240,7 @@ class ComputeClusterVsanStretchedCluster(dict):
     @pulumi.getter(name="preferredFaultDomainName")
     def preferred_fault_domain_name(self) -> Optional[str]:
         """
-        The name of first fault domain. Default is `Preferred`.
+        The name of prepferred fault domain.
         """
         return pulumi.get(self, "preferred_fault_domain_name")
 
@@ -297,56 +248,7 @@ class ComputeClusterVsanStretchedCluster(dict):
     @pulumi.getter(name="secondaryFaultDomainName")
     def secondary_fault_domain_name(self) -> Optional[str]:
         """
-        The name of second fault domain. Default is `Secondary`.
-
-        > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-        You can enable or re-enable vSphere HA after vSAN is configured.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        compute_cluster = vsphere.ComputeCluster("compute_cluster",
-            name="terraform-compute-cluster-test",
-            datacenter_id=datacenter["id"],
-            host_system_ids=[[__item["id"] for __item in host]],
-            drs_enabled=True,
-            drs_automation_level="fullyAutomated",
-            ha_enabled=False,
-            vsan_enabled=True,
-            vsan_esa_enabled=True,
-            vsan_dedup_enabled=True,
-            vsan_compression_enabled=True,
-            vsan_performance_enabled=True,
-            vsan_verbose_mode_enabled=True,
-            vsan_network_diagnostic_mode_enabled=True,
-            vsan_unmap_enabled=True,
-            vsan_dit_encryption_enabled=True,
-            vsan_dit_rekey_interval=1800,
-            vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
-                cache=cache_disks[0],
-                storages=storage_disks,
-            )],
-            vsan_fault_domains=[vsphere.ComputeClusterVsanFaultDomainArgs(
-                fault_domains=[
-                    vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
-                        name="fd1",
-                        host_ids=[[__item["id"] for __item in faultdomain1_hosts]],
-                    ),
-                    vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs(
-                        name="fd2",
-                        host_ids=[[__item["id"] for __item in faultdomain2_hosts]],
-                    ),
-                ],
-            )],
-            vsan_stretched_cluster=vsphere.ComputeClusterVsanStretchedClusterArgs(
-                preferred_fault_domain_host_ids=[[__item["id"] for __item in preferred_fault_domain_host]],
-                secondary_fault_domain_host_ids=[[__item["id"] for __item in secondary_fault_domain_host]],
-                witness_node=witness_host["id"],
-            ))
-        ```
-        <!--End PulumiCodeChooser -->
+        The name of secondary fault domain.
         """
         return pulumi.get(self, "secondary_fault_domain_name")
 
@@ -379,11 +281,11 @@ class ContentLibraryPublication(dict):
                  published: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str authentication_method: Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
-        :param str password: Password used for authentication.
+        :param str authentication_method: Method to authenticate users. Must be `NONE` or `BASIC`.
+        :param str password: Password used by subscribers to authenticate.
         :param str publish_url: The URL of the published content library.
         :param bool published: Publish the content library. Default `false`.
-        :param str username: Username used for authentication.
+        :param str username: Username used by subscribers to authenticate. Currently can only be `vcsp`.
         """
         if authentication_method is not None:
             pulumi.set(__self__, "authentication_method", authentication_method)
@@ -400,7 +302,7 @@ class ContentLibraryPublication(dict):
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> Optional[str]:
         """
-        Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+        Method to authenticate users. Must be `NONE` or `BASIC`.
         """
         return pulumi.get(self, "authentication_method")
 
@@ -408,7 +310,7 @@ class ContentLibraryPublication(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        Password used for authentication.
+        Password used by subscribers to authenticate.
         """
         return pulumi.get(self, "password")
 
@@ -432,7 +334,7 @@ class ContentLibraryPublication(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         """
-        Username used for authentication.
+        Username used by subscribers to authenticate. Currently can only be `vcsp`.
         """
         return pulumi.get(self, "username")
 
@@ -610,10 +512,8 @@ class DistributedVirtualSwitchHost(dict):
                  host_system_id: str,
                  devices: Optional[Sequence[str]] = None):
         """
-        :param str host_system_id: The host system ID of the host to add to the
-               VDS.
-        :param Sequence[str] devices: The list of NIC devices to map to uplinks on the VDS,
-               added in order they are specified.
+        :param str host_system_id: The managed object ID of the host this specification applies to.
+        :param Sequence[str] devices: Name of the physical NIC to be added to the proxy switch.
         """
         pulumi.set(__self__, "host_system_id", host_system_id)
         if devices is not None:
@@ -623,8 +523,7 @@ class DistributedVirtualSwitchHost(dict):
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> str:
         """
-        The host system ID of the host to add to the
-        VDS.
+        The managed object ID of the host this specification applies to.
         """
         return pulumi.get(self, "host_system_id")
 
@@ -632,8 +531,7 @@ class DistributedVirtualSwitchHost(dict):
     @pulumi.getter
     def devices(self) -> Optional[Sequence[str]]:
         """
-        The list of NIC devices to map to uplinks on the VDS,
-        added in order they are specified.
+        Name of the physical NIC to be added to the proxy switch.
         """
         return pulumi.get(self, "devices")
 
@@ -666,12 +564,9 @@ class DistributedVirtualSwitchPvlanMapping(dict):
                  pvlan_type: str,
                  secondary_vlan_id: int):
         """
-        :param int primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and
-               4095 are reserved and cannot be used in this property.
-        :param str pvlan_type: The private VLAN type. Valid values are
-               promiscuous, community and isolated.
-        :param int secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
-               and 4095 are reserved and cannot be used in this property.
+        :param int primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
+        :param str pvlan_type: The private VLAN type. Valid values are promiscuous, community and isolated.
+        :param int secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         """
         pulumi.set(__self__, "primary_vlan_id", primary_vlan_id)
         pulumi.set(__self__, "pvlan_type", pvlan_type)
@@ -681,8 +576,7 @@ class DistributedVirtualSwitchPvlanMapping(dict):
     @pulumi.getter(name="primaryVlanId")
     def primary_vlan_id(self) -> int:
         """
-        The primary VLAN ID. The VLAN IDs of 0 and
-        4095 are reserved and cannot be used in this property.
+        The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         """
         return pulumi.get(self, "primary_vlan_id")
 
@@ -690,8 +584,7 @@ class DistributedVirtualSwitchPvlanMapping(dict):
     @pulumi.getter(name="pvlanType")
     def pvlan_type(self) -> str:
         """
-        The private VLAN type. Valid values are
-        promiscuous, community and isolated.
+        The private VLAN type. Valid values are promiscuous, community and isolated.
         """
         return pulumi.get(self, "pvlan_type")
 
@@ -699,8 +592,7 @@ class DistributedVirtualSwitchPvlanMapping(dict):
     @pulumi.getter(name="secondaryVlanId")
     def secondary_vlan_id(self) -> int:
         """
-        The secondary VLAN ID. The VLAN IDs of 0
-        and 4095 are reserved and cannot be used in this property.
+        The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         """
         return pulumi.get(self, "secondary_vlan_id")
 
@@ -1444,15 +1336,11 @@ class VirtualMachineCdrom(dict):
                  key: Optional[int] = None,
                  path: Optional[str] = None):
         """
-        :param bool client_device: Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
-        :param str datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param bool client_device: Indicates whether the device should be mapped to a remote client device
+        :param str datastore_id: The datastore ID the ISO is located on.
         :param str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
         :param int key: The ID of the device within the virtual machine.
-        :param str path: The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-               
-               > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-               
-               > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        :param str path: The path to the ISO file on the datastore.
         """
         if client_device is not None:
             pulumi.set(__self__, "client_device", client_device)
@@ -1469,7 +1357,7 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter(name="clientDevice")
     def client_device(self) -> Optional[bool]:
         """
-        Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
+        Indicates whether the device should be mapped to a remote client device
         """
         return pulumi.get(self, "client_device")
 
@@ -1477,7 +1365,7 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         """
-        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        The datastore ID the ISO is located on.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -1501,11 +1389,7 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-
-        > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-
-        > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        The path to the ISO file on the datastore.
         """
         return pulumi.get(self, "path")
 
@@ -1704,7 +1588,7 @@ class VirtualMachineCloneCustomize(dict):
         :param str ipv4_gateway: The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
         :param str ipv6_gateway: The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
         :param 'VirtualMachineCloneCustomizeLinuxOptionsArgs' linux_options: A list of configuration options specific to Linux virtual machines.
-        :param Sequence['VirtualMachineCloneCustomizeNetworkInterfaceArgs'] network_interfaces: A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+        :param Sequence['VirtualMachineCloneCustomizeNetworkInterfaceArgs'] network_interfaces: A specification of network interface configuration options.
         :param int timeout: The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
         :param 'VirtualMachineCloneCustomizeWindowsOptionsArgs' windows_options: A list of configuration options specific to Windows virtual machines.
         :param str windows_sysprep_text: Use this option to specify a windows sysprep file directly.
@@ -1772,7 +1656,7 @@ class VirtualMachineCloneCustomize(dict):
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[Sequence['outputs.VirtualMachineCloneCustomizeNetworkInterface']]:
         """
-        A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+        A specification of network interface configuration options.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -2267,36 +2151,26 @@ class VirtualMachineDisk(dict):
                  write_through: Optional[bool] = None):
         """
         :param str label: A unique label for this disk.
-        :param bool attach: Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-               
-               > **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
-        :param str controller_type: The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
-        :param str datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param bool attach: If this is true, the disk is attached instead of created. Implies keep_on_remove.
+        :param str controller_type: The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        :param str datastore_id: The datastore ID for this virtual disk, if different than the virtual machine.
         :param str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
-        :param str disk_mode: The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-               
-               [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
-        :param str disk_sharing: The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-               
-               > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
-        :param bool eagerly_scrub: If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
-        :param int io_limit: The upper limit of IOPS that this disk can use. The default is no limit.
-        :param int io_reservation: The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
-        :param int io_share_count: The share count for the virtual disk when the share level is `custom`.
-        :param str io_share_level: The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
-        :param bool keep_on_remove: Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+        :param str disk_mode: The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
+        :param str disk_sharing: The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
+        :param bool eagerly_scrub: The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+        :param int io_limit: The upper limit of IOPS that this disk can use.
+        :param int io_reservation: The I/O guarantee that this disk has, in IOPS.
+        :param int io_share_count: The share count for this disk when the share level is custom.
+        :param str io_share_level: The share allocation level for this disk. Can be one of low, normal, high, or custom.
+        :param bool keep_on_remove: Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
         :param int key: The ID of the device within the virtual machine.
-        :param str path: The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-               
-               > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-               
-               > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
-        :param int size: The size of the disk, in GB. Must be a whole number.
-        :param str storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
-        :param bool thin_provisioned: If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
-        :param int unit_number: The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
-        :param str uuid: The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
-        :param bool write_through: If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+        :param str path: The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
+        :param int size: The size of the disk, in GB.
+        :param str storage_policy_id: The ID of the storage policy to assign to the virtual disk in VM.
+        :param bool thin_provisioned: If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
+        :param int unit_number: The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+        :param str uuid: The UUID of the virtual machine. Also exposed as the `id` of the resource.
+        :param bool write_through: If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
         """
         pulumi.set(__self__, "label", label)
         if attach is not None:
@@ -2352,9 +2226,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter
     def attach(self) -> Optional[bool]:
         """
-        Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-
-        > **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+        If this is true, the disk is attached instead of created. Implies keep_on_remove.
         """
         return pulumi.get(self, "attach")
 
@@ -2362,7 +2234,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="controllerType")
     def controller_type(self) -> Optional[str]:
         """
-        The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+        The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
         """
         return pulumi.get(self, "controller_type")
 
@@ -2370,7 +2242,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[str]:
         """
-        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        The datastore ID for this virtual disk, if different than the virtual machine.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -2386,9 +2258,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="diskMode")
     def disk_mode(self) -> Optional[str]:
         """
-        The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-
-        [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+        The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
         """
         return pulumi.get(self, "disk_mode")
 
@@ -2396,9 +2266,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="diskSharing")
     def disk_sharing(self) -> Optional[str]:
         """
-        The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-
-        > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+        The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
         """
         return pulumi.get(self, "disk_sharing")
 
@@ -2406,7 +2274,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="eagerlyScrub")
     def eagerly_scrub(self) -> Optional[bool]:
         """
-        If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+        The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
         """
         return pulumi.get(self, "eagerly_scrub")
 
@@ -2414,7 +2282,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="ioLimit")
     def io_limit(self) -> Optional[int]:
         """
-        The upper limit of IOPS that this disk can use. The default is no limit.
+        The upper limit of IOPS that this disk can use.
         """
         return pulumi.get(self, "io_limit")
 
@@ -2422,7 +2290,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="ioReservation")
     def io_reservation(self) -> Optional[int]:
         """
-        The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+        The I/O guarantee that this disk has, in IOPS.
         """
         return pulumi.get(self, "io_reservation")
 
@@ -2430,7 +2298,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="ioShareCount")
     def io_share_count(self) -> Optional[int]:
         """
-        The share count for the virtual disk when the share level is `custom`.
+        The share count for this disk when the share level is custom.
         """
         return pulumi.get(self, "io_share_count")
 
@@ -2438,7 +2306,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="ioShareLevel")
     def io_share_level(self) -> Optional[str]:
         """
-        The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        The share allocation level for this disk. Can be one of low, normal, high, or custom.
         """
         return pulumi.get(self, "io_share_level")
 
@@ -2446,7 +2314,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="keepOnRemove")
     def keep_on_remove(self) -> Optional[bool]:
         """
-        Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+        Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
         """
         return pulumi.get(self, "keep_on_remove")
 
@@ -2462,11 +2330,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-
-        > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-
-        > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+        The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
         """
         return pulumi.get(self, "path")
 
@@ -2474,7 +2338,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        The size of the disk, in GB. Must be a whole number.
+        The size of the disk, in GB.
         """
         return pulumi.get(self, "size")
 
@@ -2482,7 +2346,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="storagePolicyId")
     def storage_policy_id(self) -> Optional[str]:
         """
-        The UUID of the storage policy to assign to the virtual disk.
+        The ID of the storage policy to assign to the virtual disk in VM.
         """
         return pulumi.get(self, "storage_policy_id")
 
@@ -2490,7 +2354,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="thinProvisioned")
     def thin_provisioned(self) -> Optional[bool]:
         """
-        If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+        If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
         """
         return pulumi.get(self, "thin_provisioned")
 
@@ -2498,7 +2362,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="unitNumber")
     def unit_number(self) -> Optional[int]:
         """
-        The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+        The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
         """
         return pulumi.get(self, "unit_number")
 
@@ -2506,7 +2370,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+        The UUID of the virtual machine. Also exposed as the `id` of the resource.
         """
         return pulumi.get(self, "uuid")
 
@@ -2514,7 +2378,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="writeThrough")
     def write_through(self) -> Optional[bool]:
         """
-        If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+        If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
         """
         return pulumi.get(self, "write_through")
 
@@ -2572,18 +2436,18 @@ class VirtualMachineNetworkInterface(dict):
                  physical_function: Optional[str] = None,
                  use_static_mac: Optional[bool] = None):
         """
-        :param str network_id: The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
-        :param str adapter_type: The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
-        :param int bandwidth_limit: The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
-        :param int bandwidth_reservation: The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
-        :param int bandwidth_share_count: The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
-        :param str bandwidth_share_level: The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+        :param str network_id: The ID of the network to connect this network interface to.
+        :param str adapter_type: The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
+        :param int bandwidth_limit: The upper bandwidth limit of this network interface, in Mbits/sec.
+        :param int bandwidth_reservation: The bandwidth reservation of this network interface, in Mbits/sec.
+        :param int bandwidth_share_count: The share count for this network interface when the share level is custom.
+        :param str bandwidth_share_level: The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
         :param str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
         :param int key: The ID of the device within the virtual machine.
-        :param str mac_address: The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
-        :param str ovf_mapping: Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+        :param str mac_address: The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+        :param str ovf_mapping: Mapping of network interface to OVF network.
         :param str physical_function: The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
-        :param bool use_static_mac: If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
+        :param bool use_static_mac: If true, the mac_address field is treated as a static MAC address and set accordingly.
         """
         pulumi.set(__self__, "network_id", network_id)
         if adapter_type is not None:
@@ -2613,7 +2477,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
         """
-        The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+        The ID of the network to connect this network interface to.
         """
         return pulumi.get(self, "network_id")
 
@@ -2621,7 +2485,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="adapterType")
     def adapter_type(self) -> Optional[str]:
         """
-        The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+        The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
         """
         return pulumi.get(self, "adapter_type")
 
@@ -2629,7 +2493,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="bandwidthLimit")
     def bandwidth_limit(self) -> Optional[int]:
         """
-        The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
+        The upper bandwidth limit of this network interface, in Mbits/sec.
         """
         return pulumi.get(self, "bandwidth_limit")
 
@@ -2637,7 +2501,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="bandwidthReservation")
     def bandwidth_reservation(self) -> Optional[int]:
         """
-        The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+        The bandwidth reservation of this network interface, in Mbits/sec.
         """
         return pulumi.get(self, "bandwidth_reservation")
 
@@ -2645,7 +2509,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="bandwidthShareCount")
     def bandwidth_share_count(self) -> Optional[int]:
         """
-        The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
+        The share count for this network interface when the share level is custom.
         """
         return pulumi.get(self, "bandwidth_share_count")
 
@@ -2653,7 +2517,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="bandwidthShareLevel")
     def bandwidth_share_level(self) -> Optional[str]:
         """
-        The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+        The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
         """
         return pulumi.get(self, "bandwidth_share_level")
 
@@ -2677,7 +2541,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[str]:
         """
-        The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+        The MAC address of this network interface. Can only be manually set if use_static_mac is true.
         """
         return pulumi.get(self, "mac_address")
 
@@ -2685,7 +2549,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="ovfMapping")
     def ovf_mapping(self) -> Optional[str]:
         """
-        Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+        Mapping of network interface to OVF network.
         """
         return pulumi.get(self, "ovf_mapping")
 
@@ -2701,7 +2565,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="useStaticMac")
     def use_static_mac(self) -> Optional[bool]:
         """
-        If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
+        If true, the mac_address field is treated as a static MAC address and set accordingly.
         """
         return pulumi.get(self, "use_static_mac")
 
@@ -2941,10 +2805,10 @@ class VnicIpv4(dict):
                  ip: Optional[str] = None,
                  netmask: Optional[str] = None):
         """
-        :param bool dhcp: Use DHCP to configure the interface's IPv6 stack.
-        :param str gw: IP address of the default gateway, if DHCP or autoconfig is not set.
-        :param str ip: Address of the interface, if DHCP is not set.
-        :param str netmask: Netmask of the interface, if DHCP is not set.
+        :param bool dhcp: Use DHCP to configure the interface's IPv4 stack.
+        :param str gw: IP address of the default gateway, if DHCP is not set.
+        :param str ip: address of the interface, if DHCP is not set.
+        :param str netmask: netmask of the interface, if DHCP is not set.
         """
         if dhcp is not None:
             pulumi.set(__self__, "dhcp", dhcp)
@@ -2959,7 +2823,7 @@ class VnicIpv4(dict):
     @pulumi.getter
     def dhcp(self) -> Optional[bool]:
         """
-        Use DHCP to configure the interface's IPv6 stack.
+        Use DHCP to configure the interface's IPv4 stack.
         """
         return pulumi.get(self, "dhcp")
 
@@ -2967,7 +2831,7 @@ class VnicIpv4(dict):
     @pulumi.getter
     def gw(self) -> Optional[str]:
         """
-        IP address of the default gateway, if DHCP or autoconfig is not set.
+        IP address of the default gateway, if DHCP is not set.
         """
         return pulumi.get(self, "gw")
 
@@ -2975,7 +2839,7 @@ class VnicIpv4(dict):
     @pulumi.getter
     def ip(self) -> Optional[str]:
         """
-        Address of the interface, if DHCP is not set.
+        address of the interface, if DHCP is not set.
         """
         return pulumi.get(self, "ip")
 
@@ -2983,7 +2847,7 @@ class VnicIpv4(dict):
     @pulumi.getter
     def netmask(self) -> Optional[str]:
         """
-        Netmask of the interface, if DHCP is not set.
+        netmask of the interface, if DHCP is not set.
         """
         return pulumi.get(self, "netmask")
 
@@ -2998,7 +2862,7 @@ class VnicIpv6(dict):
         """
         :param Sequence[str] addresses: List of IPv6 addresses
         :param bool autoconfig: Use IPv6 Autoconfiguration (RFC2462).
-        :param bool dhcp: Use DHCP to configure the interface's IPv6 stack.
+        :param bool dhcp: Use DHCP to configure the interface's IPv4 stack.
         :param str gw: IP address of the default gateway, if DHCP or autoconfig is not set.
         """
         if addresses is not None:
@@ -3030,7 +2894,7 @@ class VnicIpv6(dict):
     @pulumi.getter
     def dhcp(self) -> Optional[bool]:
         """
-        Use DHCP to configure the interface's IPv6 stack.
+        Use DHCP to configure the interface's IPv4 stack.
         """
         return pulumi.get(self, "dhcp")
 

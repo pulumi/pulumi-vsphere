@@ -94,14 +94,12 @@ def get_tag_category(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     category = vsphere.get_tag_category(name="example-category")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the tag category.
@@ -134,14 +132,12 @@ def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     category = vsphere.get_tag_category(name="example-category")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the tag category.

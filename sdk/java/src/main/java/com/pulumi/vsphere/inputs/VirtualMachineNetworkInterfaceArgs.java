@@ -19,14 +19,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     public static final VirtualMachineNetworkInterfaceArgs Empty = new VirtualMachineNetworkInterfaceArgs();
 
     /**
-     * The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+     * The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
      * 
      */
     @Import(name="adapterType")
     private @Nullable Output<String> adapterType;
 
     /**
-     * @return The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+     * @return The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
      * 
      */
     public Optional<Output<String>> adapterType() {
@@ -34,14 +34,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
+     * The upper bandwidth limit of this network interface, in Mbits/sec.
      * 
      */
     @Import(name="bandwidthLimit")
     private @Nullable Output<Integer> bandwidthLimit;
 
     /**
-     * @return The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
+     * @return The upper bandwidth limit of this network interface, in Mbits/sec.
      * 
      */
     public Optional<Output<Integer>> bandwidthLimit() {
@@ -49,14 +49,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+     * The bandwidth reservation of this network interface, in Mbits/sec.
      * 
      */
     @Import(name="bandwidthReservation")
     private @Nullable Output<Integer> bandwidthReservation;
 
     /**
-     * @return The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+     * @return The bandwidth reservation of this network interface, in Mbits/sec.
      * 
      */
     public Optional<Output<Integer>> bandwidthReservation() {
@@ -64,14 +64,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
+     * The share count for this network interface when the share level is custom.
      * 
      */
     @Import(name="bandwidthShareCount")
     private @Nullable Output<Integer> bandwidthShareCount;
 
     /**
-     * @return The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
+     * @return The share count for this network interface when the share level is custom.
      * 
      */
     public Optional<Output<Integer>> bandwidthShareCount() {
@@ -79,14 +79,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+     * The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
      * 
      */
     @Import(name="bandwidthShareLevel")
     private @Nullable Output<String> bandwidthShareLevel;
 
     /**
-     * @return The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+     * @return The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
      * 
      */
     public Optional<Output<String>> bandwidthShareLevel() {
@@ -124,14 +124,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+     * The MAC address of this network interface. Can only be manually set if use_static_mac is true.
      * 
      */
     @Import(name="macAddress")
     private @Nullable Output<String> macAddress;
 
     /**
-     * @return The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+     * @return The MAC address of this network interface. Can only be manually set if use_static_mac is true.
      * 
      */
     public Optional<Output<String>> macAddress() {
@@ -139,14 +139,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+     * The ID of the network to connect this network interface to.
      * 
      */
     @Import(name="networkId", required=true)
     private Output<String> networkId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+     * @return The ID of the network to connect this network interface to.
      * 
      */
     public Output<String> networkId() {
@@ -154,14 +154,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+     * Mapping of network interface to OVF network.
      * 
      */
     @Import(name="ovfMapping")
     private @Nullable Output<String> ovfMapping;
 
     /**
-     * @return Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+     * @return Mapping of network interface to OVF network.
      * 
      */
     public Optional<Output<String>> ovfMapping() {
@@ -184,14 +184,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
+     * If true, the mac_address field is treated as a static MAC address and set accordingly.
      * 
      */
     @Import(name="useStaticMac")
     private @Nullable Output<Boolean> useStaticMac;
 
     /**
-     * @return If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
+     * @return If true, the mac_address field is treated as a static MAC address and set accordingly.
      * 
      */
     public Optional<Output<Boolean>> useStaticMac() {
@@ -234,7 +234,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param adapterType The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+         * @param adapterType The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param adapterType The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+         * @param adapterType The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthLimit The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
+         * @param bandwidthLimit The upper bandwidth limit of this network interface, in Mbits/sec.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthLimit The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapter_type` is set to `sriov`.
+         * @param bandwidthLimit The upper bandwidth limit of this network interface, in Mbits/sec.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthReservation The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+         * @param bandwidthReservation The bandwidth reservation of this network interface, in Mbits/sec.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthReservation The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+         * @param bandwidthReservation The bandwidth reservation of this network interface, in Mbits/sec.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareCount The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
+         * @param bandwidthShareCount The share count for this network interface when the share level is custom.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareCount The share count for the network interface when the share level is `custom`. Ignored if `adapter_type` is set to `sriov`.
+         * @param bandwidthShareCount The share count for this network interface when the share level is custom.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareLevel The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+         * @param bandwidthShareLevel The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bandwidthShareLevel The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapter_type` is set to `sriov`.
+         * @param bandwidthShareLevel The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param macAddress The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+         * @param macAddress The MAC address of this network interface. Can only be manually set if use_static_mac is true.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param macAddress The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+         * @param macAddress The MAC address of this network interface. Can only be manually set if use_static_mac is true.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkId The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+         * @param networkId The ID of the network to connect this network interface to.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkId The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+         * @param networkId The ID of the network to connect this network interface to.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ovfMapping Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+         * @param ovfMapping Mapping of network interface to OVF network.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ovfMapping Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+         * @param ovfMapping Mapping of network interface to OVF network.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param useStaticMac If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
+         * @param useStaticMac If true, the mac_address field is treated as a static MAC address and set accordingly.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param useStaticMac If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
+         * @param useStaticMac If true, the mac_address field is treated as a static MAC address and set accordingly.
          * 
          * @return builder
          * 

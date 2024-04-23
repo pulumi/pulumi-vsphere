@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * A usefull example of this datasource would be to determine the
  * datastore with the most free space. For example, in addition to
@@ -31,14 +29,12 @@ import * as utilities from "./utilities";
  *
  * Create an `outputs.tf` like that:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  *
  * export const maxFreeSpaceName = theirMaxFreeSpaceName;
  * export const maxFreeSpace = theirMaxFreeSpace;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * and a `locals.tf` like that:
  */
@@ -109,7 +105,6 @@ export interface GetDatastoreStatsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -121,7 +116,6 @@ export interface GetDatastoreStatsResult {
  *     datacenterId: datacenter.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * A usefull example of this datasource would be to determine the
  * datastore with the most free space. For example, in addition to
@@ -129,14 +123,12 @@ export interface GetDatastoreStatsResult {
  *
  * Create an `outputs.tf` like that:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  *
  * export const maxFreeSpaceName = theirMaxFreeSpaceName;
  * export const maxFreeSpace = theirMaxFreeSpace;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * and a `locals.tf` like that:
  */

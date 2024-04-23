@@ -19,288 +19,234 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/haVmOverride:HaVmOverride")
 public class HaVmOverride extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
-     * resource if changed.
+     * The managed object ID of the cluster.
      * 
      */
     @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
-     * resource if changed.
+     * @return The managed object ID of the cluster.
      * 
      */
     public Output<String> computeClusterId() {
         return this.computeClusterId;
     }
     /**
-     * Controls the action to take
-     * on this virtual machine if an APD status on an affected datastore clears in
-     * the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-     * `reset`.  Default: `useClusterDefault`.
+     * Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+     * APD event. Can be one of useClusterDefault, none or reset.
      * 
      */
     @Export(name="haDatastoreApdRecoveryAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdRecoveryAction;
 
     /**
-     * @return Controls the action to take
-     * on this virtual machine if an APD status on an affected datastore clears in
-     * the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-     * `reset`.  Default: `useClusterDefault`.
+     * @return Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+     * APD event. Can be one of useClusterDefault, none or reset.
      * 
      */
     public Output<Optional<String>> haDatastoreApdRecoveryAction() {
         return Codegen.optional(this.haDatastoreApdRecoveryAction);
     }
     /**
-     * Controls the action to take on this
-     * virtual machine when the cluster has detected loss to all paths to a relevant
-     * datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-     * `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
+     * Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+     * datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     @Export(name="haDatastoreApdResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdResponse;
 
     /**
-     * @return Controls the action to take on this
-     * virtual machine when the cluster has detected loss to all paths to a relevant
-     * datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-     * `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
+     * @return Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+     * datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     public Output<Optional<String>> haDatastoreApdResponse() {
         return Codegen.optional(this.haDatastoreApdResponse);
     }
     /**
-     * Controls the delay in seconds
-     * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Use `-1` to use
-     * the cluster default. Default: `-1`.
+     * Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+     * ha_datastore_apd_response. Specify -1 to use the cluster setting.
      * 
      */
     @Export(name="haDatastoreApdResponseDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haDatastoreApdResponseDelay;
 
     /**
-     * @return Controls the delay in seconds
-     * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Use `-1` to use
-     * the cluster default. Default: `-1`.
+     * @return Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+     * ha_datastore_apd_response. Specify -1 to use the cluster setting.
      * 
      */
     public Output<Optional<Integer>> haDatastoreApdResponseDelay() {
         return Codegen.optional(this.haDatastoreApdResponseDelay);
     }
     /**
-     * Controls the action to take on this
-     * virtual machine when the cluster has detected a permanent device loss to a
-     * relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-     * `restartAggressive`. Default: `clusterDefault`.
+     * Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+     * datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
      * 
      */
     @Export(name="haDatastorePdlResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastorePdlResponse;
 
     /**
-     * @return Controls the action to take on this
-     * virtual machine when the cluster has detected a permanent device loss to a
-     * relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-     * `restartAggressive`. Default: `clusterDefault`.
+     * @return Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+     * datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
      * 
      */
     public Output<Optional<String>> haDatastorePdlResponse() {
         return Codegen.optional(this.haDatastorePdlResponse);
     }
     /**
-     * The action to take on this virtual
-     * machine when a host has detected that it has been isolated from the rest of
-     * the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-     * `shutdown`. Default: `clusterIsolationResponse`.
+     * The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+     * clusterIsolationResponse, none, powerOff, or shutdown.
      * 
      */
     @Export(name="haHostIsolationResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haHostIsolationResponse;
 
     /**
-     * @return The action to take on this virtual
-     * machine when a host has detected that it has been isolated from the rest of
-     * the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-     * `shutdown`. Default: `clusterIsolationResponse`.
+     * @return The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+     * clusterIsolationResponse, none, powerOff, or shutdown.
      * 
      */
     public Output<Optional<String>> haHostIsolationResponse() {
         return Codegen.optional(this.haHostIsolationResponse);
     }
     /**
-     * If a heartbeat from this virtual
-     * machine is not received within this configured interval, the virtual machine
-     * is marked as failed. The value is in seconds. Default: `30`.
+     * If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+     * as failed. The value is in seconds.
      * 
      */
     @Export(name="haVmFailureInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmFailureInterval;
 
     /**
-     * @return If a heartbeat from this virtual
-     * machine is not received within this configured interval, the virtual machine
-     * is marked as failed. The value is in seconds. Default: `30`.
+     * @return If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+     * as failed. The value is in seconds.
      * 
      */
     public Output<Optional<Integer>> haVmFailureInterval() {
         return Codegen.optional(this.haVmFailureInterval);
     }
     /**
-     * The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
-     * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-     * unlimited reset time is allotted. The value is specified in seconds. Default:
-     * `-1` (no window).
+     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+     * time is allotted.
      * 
      */
     @Export(name="haVmMaximumFailureWindow", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumFailureWindow;
 
     /**
-     * @return The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
-     * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-     * unlimited reset time is allotted. The value is specified in seconds. Default:
-     * `-1` (no window).
+     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+     * time is allotted.
      * 
      */
     public Output<Optional<Integer>> haVmMaximumFailureWindow() {
         return Codegen.optional(this.haVmMaximumFailureWindow);
     }
     /**
-     * The maximum number of resets that HA will
-     * perform to this virtual machine when responding to a failure event. Default:
-     * `3`
+     * The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
      * 
      */
     @Export(name="haVmMaximumResets", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumResets;
 
     /**
-     * @return The maximum number of resets that HA will
-     * perform to this virtual machine when responding to a failure event. Default:
-     * `3`
+     * @return The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
      * 
      */
     public Output<Optional<Integer>> haVmMaximumResets() {
         return Codegen.optional(this.haVmMaximumResets);
     }
     /**
-     * The time, in seconds, that HA waits after
-     * powering on this virtual machine before monitoring for heartbeats. Default:
-     * `120` (2 minutes).
+     * The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
      * 
      */
     @Export(name="haVmMinimumUptime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMinimumUptime;
 
     /**
-     * @return The time, in seconds, that HA waits after
-     * powering on this virtual machine before monitoring for heartbeats. Default:
-     * `120` (2 minutes).
+     * @return The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
      * 
      */
     public Output<Optional<Integer>> haVmMinimumUptime() {
         return Codegen.optional(this.haVmMinimumUptime);
     }
     /**
-     * The type of virtual machine monitoring to use
-     * when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-     * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
+     * The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+     * vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     @Export(name="haVmMonitoring", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmMonitoring;
 
     /**
-     * @return The type of virtual machine monitoring to use
-     * when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-     * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
+     * @return The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+     * vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     public Output<Optional<String>> haVmMonitoring() {
         return Codegen.optional(this.haVmMonitoring);
     }
     /**
-     * Determines whether or
-     * not the cluster&#39;s default settings or the VM override settings specified in
-     * this resource are used for virtual machine monitoring. The default is `true`
-     * (use cluster defaults) - set to `false` to have overrides take effect.
+     * Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used
+     * for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
      * 
      */
     @Export(name="haVmMonitoringUseClusterDefaults", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> haVmMonitoringUseClusterDefaults;
 
     /**
-     * @return Determines whether or
-     * not the cluster&#39;s default settings or the VM override settings specified in
-     * this resource are used for virtual machine monitoring. The default is `true`
-     * (use cluster defaults) - set to `false` to have overrides take effect.
+     * @return Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used
+     * for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
      * 
      */
     public Output<Optional<Boolean>> haVmMonitoringUseClusterDefaults() {
         return Codegen.optional(this.haVmMonitoringUseClusterDefaults);
     }
     /**
-     * The restart priority for the virtual
-     * machine when vSphere detects a host failure. Can be one of
-     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-     * Default: `clusterRestartPriority`.
+     * The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+     * lowest, low, medium, high, or highest.
      * 
      */
     @Export(name="haVmRestartPriority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmRestartPriority;
 
     /**
-     * @return The restart priority for the virtual
-     * machine when vSphere detects a host failure. Can be one of
-     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-     * Default: `clusterRestartPriority`.
+     * @return The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+     * lowest, low, medium, high, or highest.
      * 
      */
     public Output<Optional<String>> haVmRestartPriority() {
         return Codegen.optional(this.haVmRestartPriority);
     }
     /**
-     * The maximum time, in seconds, that
-     * vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-     * specify the cluster default.  Default: `-1`.
+     * The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+     * default.
      * 
      */
     @Export(name="haVmRestartTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmRestartTimeout;
 
     /**
-     * @return The maximum time, in seconds, that
-     * vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-     * specify the cluster default.  Default: `-1`.
+     * @return The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+     * default.
      * 
      */
     public Output<Optional<Integer>> haVmRestartTimeout() {
         return Codegen.optional(this.haVmRestartTimeout);
     }
     /**
-     * The UUID of the virtual machine to create
-     * the override for.  Forces a new resource if changed.
+     * The managed object ID of the virtual machine.
      * 
      */
     @Export(name="virtualMachineId", refs={String.class}, tree="[0]")
     private Output<String> virtualMachineId;
 
     /**
-     * @return The UUID of the virtual machine to create
-     * the override for.  Forces a new resource if changed.
+     * @return The managed object ID of the virtual machine.
      * 
      */
     public Output<String> virtualMachineId() {

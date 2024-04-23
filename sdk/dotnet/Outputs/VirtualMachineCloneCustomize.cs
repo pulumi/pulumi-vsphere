@@ -34,7 +34,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly Outputs.VirtualMachineCloneCustomizeLinuxOptions? LinuxOptions;
         /// <summary>
-        /// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+        /// A specification of network interface configuration options.
         /// </summary>
         public readonly ImmutableArray<Outputs.VirtualMachineCloneCustomizeNetworkInterface> NetworkInterfaces;
         /// <summary>

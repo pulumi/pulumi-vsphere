@@ -33,8 +33,7 @@ type DistributedPortGroup struct {
 	AutoExpand pulumi.BoolPtrOutput `pulumi:"autoExpand"`
 	// Indicates whether to block all ports by default.
 	BlockAllPorts pulumi.BoolOutput `pulumi:"blockAllPorts"`
-	// Allow the port shutdown
-	// policy to be overridden on an individual port.
+	// Allow the blocked setting of an individual port to override the setting in the portgroup.
 	BlockOverrideAllowed pulumi.BoolPtrOutput `pulumi:"blockOverrideAllowed"`
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolOutput `pulumi:"checkBeacon"`
@@ -78,31 +77,26 @@ type DistributedPortGroup struct {
 	LacpEnabled pulumi.BoolOutput `pulumi:"lacpEnabled"`
 	// The uplink LACP mode to use. Can be one of active or passive.
 	LacpMode pulumi.StringOutput `pulumi:"lacpMode"`
-	// Allow a port in this port group to be
-	// moved to another port group while it is connected.
+	// Allow a live port to be moved in and out of the portgroup.
 	LivePortMovingAllowed pulumi.BoolPtrOutput `pulumi:"livePortMovingAllowed"`
 	// The name of the port group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled pulumi.BoolOutput `pulumi:"netflowEnabled"`
-	// Allow the
-	// [Netflow policy][netflow-policy] on this port group to be overridden on an
-	// individual port.
+	// Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
 	NetflowOverrideAllowed pulumi.BoolPtrOutput `pulumi:"netflowOverrideAllowed"`
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
 	// association.
 	NetworkResourcePoolKey pulumi.StringPtrOutput `pulumi:"networkResourcePoolKey"`
-	// Allow the network
-	// resource pool set on this port group to be overridden on an individual port.
+	// Allow the network resource pool of an individual port to override the setting in the portgroup.
 	NetworkResourcePoolOverrideAllowed pulumi.BoolPtrOutput `pulumi:"networkResourcePoolOverrideAllowed"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolOutput `pulumi:"notifySwitches"`
 	// The number of ports available on this port
 	// group. Cannot be decreased below the amount of used ports on the port group.
 	NumberOfPorts pulumi.IntOutput `pulumi:"numberOfPorts"`
-	// Reset a port's settings to the
-	// settings defined on this port group policy when the port disconnects.
+	// Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
 	PortConfigResetAtDisconnect pulumi.BoolPtrOutput `pulumi:"portConfigResetAtDisconnect"`
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
@@ -112,13 +106,9 @@ type DistributedPortGroup struct {
 	PortNameFormat pulumi.StringPtrOutput `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
-	// Allow the
-	// [security policy settings][sec-policy-settings] defined in this port group
-	// policy to be overridden on an individual port.
+	// Allow security policy settings on a port to override those on the portgroup.
 	SecurityPolicyOverrideAllowed pulumi.BoolPtrOutput `pulumi:"securityPolicyOverrideAllowed"`
-	// Allow the
-	// [traffic shaping options][traffic-shaping-settings] on this port group policy
-	// to be overridden on an individual port.
+	// Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
 	ShapingOverrideAllowed pulumi.BoolPtrOutput `pulumi:"shapingOverrideAllowed"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
@@ -127,8 +117,7 @@ type DistributedPortGroup struct {
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringOutput `pulumi:"teamingPolicy"`
-	// Allow any traffic filters on
-	// this port group to be overridden on an individual port.
+	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed pulumi.BoolPtrOutput `pulumi:"trafficFilterOverrideAllowed"`
 	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
 	// forwarded done by the switch.
@@ -136,15 +125,11 @@ type DistributedPortGroup struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// Allow the
-	// [uplink teaming options][uplink-teaming-settings] on this port group to be
-	// overridden on an individual port.
+	// Allow the uplink teaming policies on a port to override those on the portgroup.
 	UplinkTeamingOverrideAllowed pulumi.BoolPtrOutput `pulumi:"uplinkTeamingOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId pulumi.IntOutput `pulumi:"vlanId"`
-	// Allow the
-	// [VLAN settings][vlan-settings] on this port group to be overridden on an
-	// individual port.
+	// Allow the VLAN configuration on a port to override those on the portgroup.
 	VlanOverrideAllowed pulumi.BoolPtrOutput `pulumi:"vlanOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges DistributedPortGroupVlanRangeArrayOutput `pulumi:"vlanRanges"`
@@ -201,8 +186,7 @@ type distributedPortGroupState struct {
 	AutoExpand *bool `pulumi:"autoExpand"`
 	// Indicates whether to block all ports by default.
 	BlockAllPorts *bool `pulumi:"blockAllPorts"`
-	// Allow the port shutdown
-	// policy to be overridden on an individual port.
+	// Allow the blocked setting of an individual port to override the setting in the portgroup.
 	BlockOverrideAllowed *bool `pulumi:"blockOverrideAllowed"`
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
@@ -246,31 +230,26 @@ type distributedPortGroupState struct {
 	LacpEnabled *bool `pulumi:"lacpEnabled"`
 	// The uplink LACP mode to use. Can be one of active or passive.
 	LacpMode *string `pulumi:"lacpMode"`
-	// Allow a port in this port group to be
-	// moved to another port group while it is connected.
+	// Allow a live port to be moved in and out of the portgroup.
 	LivePortMovingAllowed *bool `pulumi:"livePortMovingAllowed"`
 	// The name of the port group.
 	Name *string `pulumi:"name"`
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled *bool `pulumi:"netflowEnabled"`
-	// Allow the
-	// [Netflow policy][netflow-policy] on this port group to be overridden on an
-	// individual port.
+	// Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
 	NetflowOverrideAllowed *bool `pulumi:"netflowOverrideAllowed"`
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
 	// association.
 	NetworkResourcePoolKey *string `pulumi:"networkResourcePoolKey"`
-	// Allow the network
-	// resource pool set on this port group to be overridden on an individual port.
+	// Allow the network resource pool of an individual port to override the setting in the portgroup.
 	NetworkResourcePoolOverrideAllowed *bool `pulumi:"networkResourcePoolOverrideAllowed"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches *bool `pulumi:"notifySwitches"`
 	// The number of ports available on this port
 	// group. Cannot be decreased below the amount of used ports on the port group.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
-	// Reset a port's settings to the
-	// settings defined on this port group policy when the port disconnects.
+	// Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
 	PortConfigResetAtDisconnect *bool `pulumi:"portConfigResetAtDisconnect"`
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
@@ -280,13 +259,9 @@ type distributedPortGroupState struct {
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
-	// Allow the
-	// [security policy settings][sec-policy-settings] defined in this port group
-	// policy to be overridden on an individual port.
+	// Allow security policy settings on a port to override those on the portgroup.
 	SecurityPolicyOverrideAllowed *bool `pulumi:"securityPolicyOverrideAllowed"`
-	// Allow the
-	// [traffic shaping options][traffic-shaping-settings] on this port group policy
-	// to be overridden on an individual port.
+	// Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
 	ShapingOverrideAllowed *bool `pulumi:"shapingOverrideAllowed"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
@@ -295,8 +270,7 @@ type distributedPortGroupState struct {
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
-	// Allow any traffic filters on
-	// this port group to be overridden on an individual port.
+	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed *bool `pulumi:"trafficFilterOverrideAllowed"`
 	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
 	// forwarded done by the switch.
@@ -304,15 +278,11 @@ type distributedPortGroupState struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type *string `pulumi:"type"`
-	// Allow the
-	// [uplink teaming options][uplink-teaming-settings] on this port group to be
-	// overridden on an individual port.
+	// Allow the uplink teaming policies on a port to override those on the portgroup.
 	UplinkTeamingOverrideAllowed *bool `pulumi:"uplinkTeamingOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId *int `pulumi:"vlanId"`
-	// Allow the
-	// [VLAN settings][vlan-settings] on this port group to be overridden on an
-	// individual port.
+	// Allow the VLAN configuration on a port to override those on the portgroup.
 	VlanOverrideAllowed *bool `pulumi:"vlanOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges []DistributedPortGroupVlanRange `pulumi:"vlanRanges"`
@@ -337,8 +307,7 @@ type DistributedPortGroupState struct {
 	AutoExpand pulumi.BoolPtrInput
 	// Indicates whether to block all ports by default.
 	BlockAllPorts pulumi.BoolPtrInput
-	// Allow the port shutdown
-	// policy to be overridden on an individual port.
+	// Allow the blocked setting of an individual port to override the setting in the portgroup.
 	BlockOverrideAllowed pulumi.BoolPtrInput
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolPtrInput
@@ -382,31 +351,26 @@ type DistributedPortGroupState struct {
 	LacpEnabled pulumi.BoolPtrInput
 	// The uplink LACP mode to use. Can be one of active or passive.
 	LacpMode pulumi.StringPtrInput
-	// Allow a port in this port group to be
-	// moved to another port group while it is connected.
+	// Allow a live port to be moved in and out of the portgroup.
 	LivePortMovingAllowed pulumi.BoolPtrInput
 	// The name of the port group.
 	Name pulumi.StringPtrInput
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled pulumi.BoolPtrInput
-	// Allow the
-	// [Netflow policy][netflow-policy] on this port group to be overridden on an
-	// individual port.
+	// Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
 	NetflowOverrideAllowed pulumi.BoolPtrInput
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
 	// association.
 	NetworkResourcePoolKey pulumi.StringPtrInput
-	// Allow the network
-	// resource pool set on this port group to be overridden on an individual port.
+	// Allow the network resource pool of an individual port to override the setting in the portgroup.
 	NetworkResourcePoolOverrideAllowed pulumi.BoolPtrInput
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrInput
 	// The number of ports available on this port
 	// group. Cannot be decreased below the amount of used ports on the port group.
 	NumberOfPorts pulumi.IntPtrInput
-	// Reset a port's settings to the
-	// settings defined on this port group policy when the port disconnects.
+	// Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
 	PortConfigResetAtDisconnect pulumi.BoolPtrInput
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
@@ -416,13 +380,9 @@ type DistributedPortGroupState struct {
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
-	// Allow the
-	// [security policy settings][sec-policy-settings] defined in this port group
-	// policy to be overridden on an individual port.
+	// Allow security policy settings on a port to override those on the portgroup.
 	SecurityPolicyOverrideAllowed pulumi.BoolPtrInput
-	// Allow the
-	// [traffic shaping options][traffic-shaping-settings] on this port group policy
-	// to be overridden on an individual port.
+	// Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
 	ShapingOverrideAllowed pulumi.BoolPtrInput
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
@@ -431,8 +391,7 @@ type DistributedPortGroupState struct {
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringPtrInput
-	// Allow any traffic filters on
-	// this port group to be overridden on an individual port.
+	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed pulumi.BoolPtrInput
 	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
 	// forwarded done by the switch.
@@ -440,15 +399,11 @@ type DistributedPortGroupState struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type pulumi.StringPtrInput
-	// Allow the
-	// [uplink teaming options][uplink-teaming-settings] on this port group to be
-	// overridden on an individual port.
+	// Allow the uplink teaming policies on a port to override those on the portgroup.
 	UplinkTeamingOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId pulumi.IntPtrInput
-	// Allow the
-	// [VLAN settings][vlan-settings] on this port group to be overridden on an
-	// individual port.
+	// Allow the VLAN configuration on a port to override those on the portgroup.
 	VlanOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges DistributedPortGroupVlanRangeArrayInput
@@ -477,8 +432,7 @@ type distributedPortGroupArgs struct {
 	AutoExpand *bool `pulumi:"autoExpand"`
 	// Indicates whether to block all ports by default.
 	BlockAllPorts *bool `pulumi:"blockAllPorts"`
-	// Allow the port shutdown
-	// policy to be overridden on an individual port.
+	// Allow the blocked setting of an individual port to override the setting in the portgroup.
 	BlockOverrideAllowed *bool `pulumi:"blockOverrideAllowed"`
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
@@ -517,31 +471,26 @@ type distributedPortGroupArgs struct {
 	LacpEnabled *bool `pulumi:"lacpEnabled"`
 	// The uplink LACP mode to use. Can be one of active or passive.
 	LacpMode *string `pulumi:"lacpMode"`
-	// Allow a port in this port group to be
-	// moved to another port group while it is connected.
+	// Allow a live port to be moved in and out of the portgroup.
 	LivePortMovingAllowed *bool `pulumi:"livePortMovingAllowed"`
 	// The name of the port group.
 	Name *string `pulumi:"name"`
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled *bool `pulumi:"netflowEnabled"`
-	// Allow the
-	// [Netflow policy][netflow-policy] on this port group to be overridden on an
-	// individual port.
+	// Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
 	NetflowOverrideAllowed *bool `pulumi:"netflowOverrideAllowed"`
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
 	// association.
 	NetworkResourcePoolKey *string `pulumi:"networkResourcePoolKey"`
-	// Allow the network
-	// resource pool set on this port group to be overridden on an individual port.
+	// Allow the network resource pool of an individual port to override the setting in the portgroup.
 	NetworkResourcePoolOverrideAllowed *bool `pulumi:"networkResourcePoolOverrideAllowed"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches *bool `pulumi:"notifySwitches"`
 	// The number of ports available on this port
 	// group. Cannot be decreased below the amount of used ports on the port group.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
-	// Reset a port's settings to the
-	// settings defined on this port group policy when the port disconnects.
+	// Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
 	PortConfigResetAtDisconnect *bool `pulumi:"portConfigResetAtDisconnect"`
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
@@ -551,13 +500,9 @@ type distributedPortGroupArgs struct {
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
-	// Allow the
-	// [security policy settings][sec-policy-settings] defined in this port group
-	// policy to be overridden on an individual port.
+	// Allow security policy settings on a port to override those on the portgroup.
 	SecurityPolicyOverrideAllowed *bool `pulumi:"securityPolicyOverrideAllowed"`
-	// Allow the
-	// [traffic shaping options][traffic-shaping-settings] on this port group policy
-	// to be overridden on an individual port.
+	// Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
 	ShapingOverrideAllowed *bool `pulumi:"shapingOverrideAllowed"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
@@ -566,8 +511,7 @@ type distributedPortGroupArgs struct {
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
-	// Allow any traffic filters on
-	// this port group to be overridden on an individual port.
+	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed *bool `pulumi:"trafficFilterOverrideAllowed"`
 	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
 	// forwarded done by the switch.
@@ -575,15 +519,11 @@ type distributedPortGroupArgs struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type *string `pulumi:"type"`
-	// Allow the
-	// [uplink teaming options][uplink-teaming-settings] on this port group to be
-	// overridden on an individual port.
+	// Allow the uplink teaming policies on a port to override those on the portgroup.
 	UplinkTeamingOverrideAllowed *bool `pulumi:"uplinkTeamingOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId *int `pulumi:"vlanId"`
-	// Allow the
-	// [VLAN settings][vlan-settings] on this port group to be overridden on an
-	// individual port.
+	// Allow the VLAN configuration on a port to override those on the portgroup.
 	VlanOverrideAllowed *bool `pulumi:"vlanOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges []DistributedPortGroupVlanRange `pulumi:"vlanRanges"`
@@ -609,8 +549,7 @@ type DistributedPortGroupArgs struct {
 	AutoExpand pulumi.BoolPtrInput
 	// Indicates whether to block all ports by default.
 	BlockAllPorts pulumi.BoolPtrInput
-	// Allow the port shutdown
-	// policy to be overridden on an individual port.
+	// Allow the blocked setting of an individual port to override the setting in the portgroup.
 	BlockOverrideAllowed pulumi.BoolPtrInput
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolPtrInput
@@ -649,31 +588,26 @@ type DistributedPortGroupArgs struct {
 	LacpEnabled pulumi.BoolPtrInput
 	// The uplink LACP mode to use. Can be one of active or passive.
 	LacpMode pulumi.StringPtrInput
-	// Allow a port in this port group to be
-	// moved to another port group while it is connected.
+	// Allow a live port to be moved in and out of the portgroup.
 	LivePortMovingAllowed pulumi.BoolPtrInput
 	// The name of the port group.
 	Name pulumi.StringPtrInput
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled pulumi.BoolPtrInput
-	// Allow the
-	// [Netflow policy][netflow-policy] on this port group to be overridden on an
-	// individual port.
+	// Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
 	NetflowOverrideAllowed pulumi.BoolPtrInput
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
 	// association.
 	NetworkResourcePoolKey pulumi.StringPtrInput
-	// Allow the network
-	// resource pool set on this port group to be overridden on an individual port.
+	// Allow the network resource pool of an individual port to override the setting in the portgroup.
 	NetworkResourcePoolOverrideAllowed pulumi.BoolPtrInput
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrInput
 	// The number of ports available on this port
 	// group. Cannot be decreased below the amount of used ports on the port group.
 	NumberOfPorts pulumi.IntPtrInput
-	// Reset a port's settings to the
-	// settings defined on this port group policy when the port disconnects.
+	// Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
 	PortConfigResetAtDisconnect pulumi.BoolPtrInput
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
@@ -683,13 +617,9 @@ type DistributedPortGroupArgs struct {
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
-	// Allow the
-	// [security policy settings][sec-policy-settings] defined in this port group
-	// policy to be overridden on an individual port.
+	// Allow security policy settings on a port to override those on the portgroup.
 	SecurityPolicyOverrideAllowed pulumi.BoolPtrInput
-	// Allow the
-	// [traffic shaping options][traffic-shaping-settings] on this port group policy
-	// to be overridden on an individual port.
+	// Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
 	ShapingOverrideAllowed pulumi.BoolPtrInput
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
@@ -698,8 +628,7 @@ type DistributedPortGroupArgs struct {
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringPtrInput
-	// Allow any traffic filters on
-	// this port group to be overridden on an individual port.
+	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed pulumi.BoolPtrInput
 	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
 	// forwarded done by the switch.
@@ -707,15 +636,11 @@ type DistributedPortGroupArgs struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type pulumi.StringPtrInput
-	// Allow the
-	// [uplink teaming options][uplink-teaming-settings] on this port group to be
-	// overridden on an individual port.
+	// Allow the uplink teaming policies on a port to override those on the portgroup.
 	UplinkTeamingOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId pulumi.IntPtrInput
-	// Allow the
-	// [VLAN settings][vlan-settings] on this port group to be overridden on an
-	// individual port.
+	// Allow the VLAN configuration on a port to override those on the portgroup.
 	VlanOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges DistributedPortGroupVlanRangeArrayInput
@@ -844,8 +769,7 @@ func (o DistributedPortGroupOutput) BlockAllPorts() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.BlockAllPorts }).(pulumi.BoolOutput)
 }
 
-// Allow the port shutdown
-// policy to be overridden on an individual port.
+// Allow the blocked setting of an individual port to override the setting in the portgroup.
 func (o DistributedPortGroupOutput) BlockOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.BlockOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
@@ -946,8 +870,7 @@ func (o DistributedPortGroupOutput) LacpMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.LacpMode }).(pulumi.StringOutput)
 }
 
-// Allow a port in this port group to be
-// moved to another port group while it is connected.
+// Allow a live port to be moved in and out of the portgroup.
 func (o DistributedPortGroupOutput) LivePortMovingAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.LivePortMovingAllowed }).(pulumi.BoolPtrOutput)
 }
@@ -962,9 +885,7 @@ func (o DistributedPortGroupOutput) NetflowEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.NetflowEnabled }).(pulumi.BoolOutput)
 }
 
-// Allow the
-// [Netflow policy][netflow-policy] on this port group to be overridden on an
-// individual port.
+// Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
 func (o DistributedPortGroupOutput) NetflowOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.NetflowOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
@@ -976,8 +897,7 @@ func (o DistributedPortGroupOutput) NetworkResourcePoolKey() pulumi.StringPtrOut
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.NetworkResourcePoolKey }).(pulumi.StringPtrOutput)
 }
 
-// Allow the network
-// resource pool set on this port group to be overridden on an individual port.
+// Allow the network resource pool of an individual port to override the setting in the portgroup.
 func (o DistributedPortGroupOutput) NetworkResourcePoolOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.NetworkResourcePoolOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
@@ -993,8 +913,7 @@ func (o DistributedPortGroupOutput) NumberOfPorts() pulumi.IntOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.NumberOfPorts }).(pulumi.IntOutput)
 }
 
-// Reset a port's settings to the
-// settings defined on this port group policy when the port disconnects.
+// Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
 func (o DistributedPortGroupOutput) PortConfigResetAtDisconnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.PortConfigResetAtDisconnect }).(pulumi.BoolPtrOutput)
 }
@@ -1013,16 +932,12 @@ func (o DistributedPortGroupOutput) PortPrivateSecondaryVlanId() pulumi.IntOutpu
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.PortPrivateSecondaryVlanId }).(pulumi.IntOutput)
 }
 
-// Allow the
-// [security policy settings][sec-policy-settings] defined in this port group
-// policy to be overridden on an individual port.
+// Allow security policy settings on a port to override those on the portgroup.
 func (o DistributedPortGroupOutput) SecurityPolicyOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.SecurityPolicyOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
 
-// Allow the
-// [traffic shaping options][traffic-shaping-settings] on this port group policy
-// to be overridden on an individual port.
+// Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
 func (o DistributedPortGroupOutput) ShapingOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.ShapingOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
@@ -1043,8 +958,7 @@ func (o DistributedPortGroupOutput) TeamingPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.TeamingPolicy }).(pulumi.StringOutput)
 }
 
-// Allow any traffic filters on
-// this port group to be overridden on an individual port.
+// Allow any filter policies set on the individual port to override those in the portgroup.
 func (o DistributedPortGroupOutput) TrafficFilterOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.TrafficFilterOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
@@ -1061,9 +975,7 @@ func (o DistributedPortGroupOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Allow the
-// [uplink teaming options][uplink-teaming-settings] on this port group to be
-// overridden on an individual port.
+// Allow the uplink teaming policies on a port to override those on the portgroup.
 func (o DistributedPortGroupOutput) UplinkTeamingOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.UplinkTeamingOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
@@ -1073,9 +985,7 @@ func (o DistributedPortGroupOutput) VlanId() pulumi.IntOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.VlanId }).(pulumi.IntOutput)
 }
 
-// Allow the
-// [VLAN settings][vlan-settings] on this port group to be overridden on an
-// individual port.
+// Allow the VLAN configuration on a port to override those on the portgroup.
 func (o DistributedPortGroupOutput) VlanOverrideAllowed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.VlanOverrideAllowed }).(pulumi.BoolPtrOutput)
 }

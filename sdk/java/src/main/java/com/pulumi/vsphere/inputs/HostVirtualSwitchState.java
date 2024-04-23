@@ -19,16 +19,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     public static final HostVirtualSwitchState Empty = new HostVirtualSwitchState();
 
     /**
-     * The list of active network adapters used for load
-     * balancing.
+     * List of active network adapters used for load balancing.
      * 
      */
     @Import(name="activeNics")
     private @Nullable Output<List<String>> activeNics;
 
     /**
-     * @return The list of active network adapters used for load
-     * balancing.
+     * @return List of active network adapters used for load balancing.
      * 
      */
     public Optional<Output<List<String>>> activeNics() {
@@ -36,18 +34,16 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Controls whether or not the virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own. Default: `true`.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      * 
      */
     @Import(name="allowForgedTransmits")
     private @Nullable Output<Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not the virtual
-     * network adapter is allowed to send network traffic with a different MAC
-     * address than that of its own. Default: `true`.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      * 
      */
     public Optional<Output<Boolean>> allowForgedTransmits() {
@@ -55,16 +51,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Controls whether or not the Media Access
-     * Control (MAC) address can be changed. Default: `true`.
+     * Controls whether or not the Media Access Control (MAC) address can be changed.
      * 
      */
     @Import(name="allowMacChanges")
     private @Nullable Output<Boolean> allowMacChanges;
 
     /**
-     * @return Controls whether or not the Media Access
-     * Control (MAC) address can be changed. Default: `true`.
+     * @return Controls whether or not the Media Access Control (MAC) address can be changed.
      * 
      */
     public Optional<Output<Boolean>> allowMacChanges() {
@@ -72,18 +66,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port. Default:
-     * `false`.
+     * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      * 
      */
     @Import(name="allowPromiscuous")
     private @Nullable Output<Boolean> allowPromiscuous;
 
     /**
-     * @return Enable promiscuous mode on the network. This
-     * flag indicates whether or not all traffic is seen on a given port. Default:
-     * `false`.
+     * @return Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      * 
      */
     public Optional<Output<Boolean>> allowPromiscuous() {
@@ -91,18 +81,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `check_beacon` to
-     * offer link failure capability beyond link status only. Default: `1`.
+     * Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
      * 
      */
     @Import(name="beaconInterval")
     private @Nullable Output<Integer> beaconInterval;
 
     /**
-     * @return The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `check_beacon` to
-     * offer link failure capability beyond link status only. Default: `1`.
+     * @return Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
      * 
      */
     public Optional<Output<Integer>> beaconInterval() {
@@ -110,20 +96,16 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enable beacon probing - this requires that the
-     * `beacon_interval` option has been set in the bridge
-     * options. If this is set to `false`, only link status is used to check for
-     * failed NICs.  Default: `false`.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      * 
      */
     @Import(name="checkBeacon")
     private @Nullable Output<Boolean> checkBeacon;
 
     /**
-     * @return Enable beacon probing - this requires that the
-     * `beacon_interval` option has been set in the bridge
-     * options. If this is set to `false`, only link status is used to check for
-     * failed NICs.  Default: `false`.
+     * @return Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      * 
      */
     public Optional<Output<Boolean>> checkBeacon() {
@@ -131,18 +113,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If set to `true`, the teaming policy will re-activate
-     * failed interfaces higher in precedence when they come back up.  Default:
-     * `true`.
+     * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      * 
      */
     @Import(name="failback")
     private @Nullable Output<Boolean> failback;
 
     /**
-     * @return If set to `true`, the teaming policy will re-activate
-     * failed interfaces higher in precedence when they come back up.  Default:
-     * `true`.
+     * @return If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      * 
      */
     public Optional<Output<Boolean>> failback() {
@@ -167,16 +145,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether to `advertise` or `listen`
-     * for link discovery traffic. Default: `listen`.
+     * Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
      * 
      */
     @Import(name="linkDiscoveryOperation")
     private @Nullable Output<String> linkDiscoveryOperation;
 
     /**
-     * @return Whether to `advertise` or `listen`
-     * for link discovery traffic. Default: `listen`.
+     * @return Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
      * 
      */
     public Optional<Output<String>> linkDiscoveryOperation() {
@@ -184,16 +160,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The discovery protocol type.  Valid
-     * types are `cpd` and `lldp`. Default: `cdp`.
+     * The discovery protocol type. Valid values are cdp and lldp.
      * 
      */
     @Import(name="linkDiscoveryProtocol")
     private @Nullable Output<String> linkDiscoveryProtocol;
 
     /**
-     * @return The discovery protocol type.  Valid
-     * types are `cpd` and `lldp`. Default: `cdp`.
+     * @return The discovery protocol type. Valid values are cdp and lldp.
      * 
      */
     public Optional<Output<String>> linkDiscoveryProtocol() {
@@ -235,14 +209,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The network interfaces to bind to the bridge.
+     * The list of network adapters to bind to this virtual switch.
      * 
      */
     @Import(name="networkAdapters")
     private @Nullable Output<List<String>> networkAdapters;
 
     /**
-     * @return The network interfaces to bind to the bridge.
+     * @return The list of network adapters to bind to this virtual switch.
      * 
      */
     public Optional<Output<List<String>>> networkAdapters() {
@@ -250,18 +224,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If set to `true`, the teaming policy will
-     * notify the broadcast network of a NIC failover, triggering cache updates.
-     * Default: `true`.
+     * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      * 
      */
     @Import(name="notifySwitches")
     private @Nullable Output<Boolean> notifySwitches;
 
     /**
-     * @return If set to `true`, the teaming policy will
-     * notify the broadcast network of a NIC failover, triggering cache updates.
-     * Default: `true`.
+     * @return If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      * 
      */
     public Optional<Output<Boolean>> notifySwitches() {
@@ -292,16 +262,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The average bandwidth in bits per
-     * second if traffic shaping is enabled. Default: `0`
+     * The average bandwidth in bits per second if traffic shaping is enabled.
      * 
      */
     @Import(name="shapingAverageBandwidth")
     private @Nullable Output<Integer> shapingAverageBandwidth;
 
     /**
-     * @return The average bandwidth in bits per
-     * second if traffic shaping is enabled. Default: `0`
+     * @return The average bandwidth in bits per second if traffic shaping is enabled.
      * 
      */
     public Optional<Output<Integer>> shapingAverageBandwidth() {
@@ -309,16 +277,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The maximum burst size allowed in bytes if
-     * shaping is enabled. Default: `0`
+     * The maximum burst size allowed in bytes if traffic shaping is enabled.
      * 
      */
     @Import(name="shapingBurstSize")
     private @Nullable Output<Integer> shapingBurstSize;
 
     /**
-     * @return The maximum burst size allowed in bytes if
-     * shaping is enabled. Default: `0`
+     * @return The maximum burst size allowed in bytes if traffic shaping is enabled.
      * 
      */
     public Optional<Output<Integer>> shapingBurstSize() {
@@ -326,16 +292,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Set to `true` to enable the traffic shaper for
-     * ports managed by this virtual switch. Default: `false`.
+     * Enable traffic shaping on this virtual switch or port group.
      * 
      */
     @Import(name="shapingEnabled")
     private @Nullable Output<Boolean> shapingEnabled;
 
     /**
-     * @return Set to `true` to enable the traffic shaper for
-     * ports managed by this virtual switch. Default: `false`.
+     * @return Enable traffic shaping on this virtual switch or port group.
      * 
      */
     public Optional<Output<Boolean>> shapingEnabled() {
@@ -343,16 +307,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The peak bandwidth during bursts in
-     * bits per second if traffic shaping is enabled. Default: `0`
+     * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      * 
      */
     @Import(name="shapingPeakBandwidth")
     private @Nullable Output<Integer> shapingPeakBandwidth;
 
     /**
-     * @return The peak bandwidth during bursts in
-     * bits per second if traffic shaping is enabled. Default: `0`
+     * @return The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      * 
      */
     public Optional<Output<Integer>> shapingPeakBandwidth() {
@@ -360,16 +322,14 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The list of standby network adapters used for
-     * failover.
+     * List of standby network adapters used for failover.
      * 
      */
     @Import(name="standbyNics")
     private @Nullable Output<List<String>> standbyNics;
 
     /**
-     * @return The list of standby network adapters used for
-     * failover.
+     * @return List of standby network adapters used for failover.
      * 
      */
     public Optional<Output<List<String>>> standbyNics() {
@@ -377,18 +337,16 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The network adapter teaming policy. Can be one
-     * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`. Default: `loadbalance_srcid`.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+     * failover_explicit.
      * 
      */
     @Import(name="teamingPolicy")
     private @Nullable Output<String> teamingPolicy;
 
     /**
-     * @return The network adapter teaming policy. Can be one
-     * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`. Default: `loadbalance_srcid`.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+     * failover_explicit.
      * 
      */
     public Optional<Output<String>> teamingPolicy() {
@@ -440,8 +398,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param activeNics The list of active network adapters used for load
-         * balancing.
+         * @param activeNics List of active network adapters used for load balancing.
          * 
          * @return builder
          * 
@@ -452,8 +409,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param activeNics The list of active network adapters used for load
-         * balancing.
+         * @param activeNics List of active network adapters used for load balancing.
          * 
          * @return builder
          * 
@@ -463,8 +419,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param activeNics The list of active network adapters used for load
-         * balancing.
+         * @param activeNics List of active network adapters used for load balancing.
          * 
          * @return builder
          * 
@@ -474,9 +429,8 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual
-         * network adapter is allowed to send network traffic with a different MAC
-         * address than that of its own. Default: `true`.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+         * that of its own.
          * 
          * @return builder
          * 
@@ -487,9 +441,8 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual
-         * network adapter is allowed to send network traffic with a different MAC
-         * address than that of its own. Default: `true`.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+         * that of its own.
          * 
          * @return builder
          * 
@@ -499,8 +452,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowMacChanges Controls whether or not the Media Access
-         * Control (MAC) address can be changed. Default: `true`.
+         * @param allowMacChanges Controls whether or not the Media Access Control (MAC) address can be changed.
          * 
          * @return builder
          * 
@@ -511,8 +463,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowMacChanges Controls whether or not the Media Access
-         * Control (MAC) address can be changed. Default: `true`.
+         * @param allowMacChanges Controls whether or not the Media Access Control (MAC) address can be changed.
          * 
          * @return builder
          * 
@@ -522,9 +473,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowPromiscuous Enable promiscuous mode on the network. This
-         * flag indicates whether or not all traffic is seen on a given port. Default:
-         * `false`.
+         * @param allowPromiscuous Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
          * 
          * @return builder
          * 
@@ -535,9 +484,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowPromiscuous Enable promiscuous mode on the network. This
-         * flag indicates whether or not all traffic is seen on a given port. Default:
-         * `false`.
+         * @param allowPromiscuous Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
          * 
          * @return builder
          * 
@@ -547,9 +494,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param beaconInterval The interval, in seconds, that a NIC beacon
-         * packet is sent out. This can be used with `check_beacon` to
-         * offer link failure capability beyond link status only. Default: `1`.
+         * @param beaconInterval Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
          * 
          * @return builder
          * 
@@ -560,9 +505,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param beaconInterval The interval, in seconds, that a NIC beacon
-         * packet is sent out. This can be used with `check_beacon` to
-         * offer link failure capability beyond link status only. Default: `1`.
+         * @param beaconInterval Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
          * 
          * @return builder
          * 
@@ -572,10 +515,8 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkBeacon Enable beacon probing - this requires that the
-         * `beacon_interval` option has been set in the bridge
-         * options. If this is set to `false`, only link status is used to check for
-         * failed NICs.  Default: `false`.
+         * @param checkBeacon Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+         * only.
          * 
          * @return builder
          * 
@@ -586,10 +527,8 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkBeacon Enable beacon probing - this requires that the
-         * `beacon_interval` option has been set in the bridge
-         * options. If this is set to `false`, only link status is used to check for
-         * failed NICs.  Default: `false`.
+         * @param checkBeacon Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+         * only.
          * 
          * @return builder
          * 
@@ -599,9 +538,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param failback If set to `true`, the teaming policy will re-activate
-         * failed interfaces higher in precedence when they come back up.  Default:
-         * `true`.
+         * @param failback If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
          * 
          * @return builder
          * 
@@ -612,9 +549,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param failback If set to `true`, the teaming policy will re-activate
-         * failed interfaces higher in precedence when they come back up.  Default:
-         * `true`.
+         * @param failback If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
          * 
          * @return builder
          * 
@@ -647,8 +582,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linkDiscoveryOperation Whether to `advertise` or `listen`
-         * for link discovery traffic. Default: `listen`.
+         * @param linkDiscoveryOperation Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
          * 
          * @return builder
          * 
@@ -659,8 +593,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linkDiscoveryOperation Whether to `advertise` or `listen`
-         * for link discovery traffic. Default: `listen`.
+         * @param linkDiscoveryOperation Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
          * 
          * @return builder
          * 
@@ -670,8 +603,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linkDiscoveryProtocol The discovery protocol type.  Valid
-         * types are `cpd` and `lldp`. Default: `cdp`.
+         * @param linkDiscoveryProtocol The discovery protocol type. Valid values are cdp and lldp.
          * 
          * @return builder
          * 
@@ -682,8 +614,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linkDiscoveryProtocol The discovery protocol type.  Valid
-         * types are `cpd` and `lldp`. Default: `cdp`.
+         * @param linkDiscoveryProtocol The discovery protocol type. Valid values are cdp and lldp.
          * 
          * @return builder
          * 
@@ -739,7 +670,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkAdapters The network interfaces to bind to the bridge.
+         * @param networkAdapters The list of network adapters to bind to this virtual switch.
          * 
          * @return builder
          * 
@@ -750,7 +681,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkAdapters The network interfaces to bind to the bridge.
+         * @param networkAdapters The list of network adapters to bind to this virtual switch.
          * 
          * @return builder
          * 
@@ -760,7 +691,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkAdapters The network interfaces to bind to the bridge.
+         * @param networkAdapters The list of network adapters to bind to this virtual switch.
          * 
          * @return builder
          * 
@@ -770,9 +701,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param notifySwitches If set to `true`, the teaming policy will
-         * notify the broadcast network of a NIC failover, triggering cache updates.
-         * Default: `true`.
+         * @param notifySwitches If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
          * 
          * @return builder
          * 
@@ -783,9 +712,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param notifySwitches If set to `true`, the teaming policy will
-         * notify the broadcast network of a NIC failover, triggering cache updates.
-         * Default: `true`.
+         * @param notifySwitches If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
          * 
          * @return builder
          * 
@@ -824,8 +751,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingAverageBandwidth The average bandwidth in bits per
-         * second if traffic shaping is enabled. Default: `0`
+         * @param shapingAverageBandwidth The average bandwidth in bits per second if traffic shaping is enabled.
          * 
          * @return builder
          * 
@@ -836,8 +762,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingAverageBandwidth The average bandwidth in bits per
-         * second if traffic shaping is enabled. Default: `0`
+         * @param shapingAverageBandwidth The average bandwidth in bits per second if traffic shaping is enabled.
          * 
          * @return builder
          * 
@@ -847,8 +772,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingBurstSize The maximum burst size allowed in bytes if
-         * shaping is enabled. Default: `0`
+         * @param shapingBurstSize The maximum burst size allowed in bytes if traffic shaping is enabled.
          * 
          * @return builder
          * 
@@ -859,8 +783,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingBurstSize The maximum burst size allowed in bytes if
-         * shaping is enabled. Default: `0`
+         * @param shapingBurstSize The maximum burst size allowed in bytes if traffic shaping is enabled.
          * 
          * @return builder
          * 
@@ -870,8 +793,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingEnabled Set to `true` to enable the traffic shaper for
-         * ports managed by this virtual switch. Default: `false`.
+         * @param shapingEnabled Enable traffic shaping on this virtual switch or port group.
          * 
          * @return builder
          * 
@@ -882,8 +804,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingEnabled Set to `true` to enable the traffic shaper for
-         * ports managed by this virtual switch. Default: `false`.
+         * @param shapingEnabled Enable traffic shaping on this virtual switch or port group.
          * 
          * @return builder
          * 
@@ -893,8 +814,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingPeakBandwidth The peak bandwidth during bursts in
-         * bits per second if traffic shaping is enabled. Default: `0`
+         * @param shapingPeakBandwidth The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
          * 
          * @return builder
          * 
@@ -905,8 +825,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param shapingPeakBandwidth The peak bandwidth during bursts in
-         * bits per second if traffic shaping is enabled. Default: `0`
+         * @param shapingPeakBandwidth The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
          * 
          * @return builder
          * 
@@ -916,8 +835,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param standbyNics The list of standby network adapters used for
-         * failover.
+         * @param standbyNics List of standby network adapters used for failover.
          * 
          * @return builder
          * 
@@ -928,8 +846,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param standbyNics The list of standby network adapters used for
-         * failover.
+         * @param standbyNics List of standby network adapters used for failover.
          * 
          * @return builder
          * 
@@ -939,8 +856,7 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param standbyNics The list of standby network adapters used for
-         * failover.
+         * @param standbyNics List of standby network adapters used for failover.
          * 
          * @return builder
          * 
@@ -950,9 +866,8 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one
-         * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-         * `failover_explicit`. Default: `loadbalance_srcid`.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+         * failover_explicit.
          * 
          * @return builder
          * 
@@ -963,9 +878,8 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one
-         * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-         * `failover_explicit`. Default: `loadbalance_srcid`.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+         * failover_explicit.
          * 
          * @return builder
          * 

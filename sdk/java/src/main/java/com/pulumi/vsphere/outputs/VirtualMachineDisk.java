@@ -15,19 +15,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineDisk {
     /**
-     * @return Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-     * 
-     * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+     * @return If this is true, the disk is attached instead of created. Implies keep_on_remove.
      * 
      */
     private @Nullable Boolean attach;
     /**
-     * @return The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
      * 
      */
     private @Nullable String controllerType;
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The datastore ID for this virtual disk, if different than the virtual machine.
      * 
      */
     private @Nullable String datastoreId;
@@ -37,46 +35,42 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String deviceAddress;
     /**
-     * @return The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-     * 
-     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+     * @return The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
      * 
      */
     private @Nullable String diskMode;
     /**
-     * @return The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-     * 
-     * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+     * @return The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
      * 
      */
     private @Nullable String diskSharing;
     /**
-     * @return If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+     * @return The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     private @Nullable Boolean eagerlyScrub;
     /**
-     * @return The upper limit of IOPS that this disk can use. The default is no limit.
+     * @return The upper limit of IOPS that this disk can use.
      * 
      */
     private @Nullable Integer ioLimit;
     /**
-     * @return The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+     * @return The I/O guarantee that this disk has, in IOPS.
      * 
      */
     private @Nullable Integer ioReservation;
     /**
-     * @return The share count for the virtual disk when the share level is `custom`.
+     * @return The share count for this disk when the share level is custom.
      * 
      */
     private @Nullable Integer ioShareCount;
     /**
-     * @return The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * @return The share allocation level for this disk. Can be one of low, normal, high, or custom.
      * 
      */
     private @Nullable String ioShareLevel;
     /**
-     * @return Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+     * @return Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
      * 
      */
     private @Nullable Boolean keepOnRemove;
@@ -91,64 +85,58 @@ public final class VirtualMachineDisk {
      */
     private String label;
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
      * 
      */
     private @Nullable String path;
     /**
-     * @return The size of the disk, in GB. Must be a whole number.
+     * @return The size of the disk, in GB.
      * 
      */
     private @Nullable Integer size;
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the virtual disk in VM.
      * 
      */
     private @Nullable String storagePolicyId;
     /**
-     * @return If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+     * @return If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
      * 
      */
     private @Nullable Boolean thinProvisioned;
     /**
-     * @return The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+     * @return The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
      * 
      */
     private @Nullable Integer unitNumber;
     /**
-     * @return The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * @return The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     private @Nullable String uuid;
     /**
-     * @return If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+     * @return If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
      * 
      */
     private @Nullable Boolean writeThrough;
 
     private VirtualMachineDisk() {}
     /**
-     * @return Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-     * 
-     * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+     * @return If this is true, the disk is attached instead of created. Implies keep_on_remove.
      * 
      */
     public Optional<Boolean> attach() {
         return Optional.ofNullable(this.attach);
     }
     /**
-     * @return The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
      * 
      */
     public Optional<String> controllerType() {
         return Optional.ofNullable(this.controllerType);
     }
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The datastore ID for this virtual disk, if different than the virtual machine.
      * 
      */
     public Optional<String> datastoreId() {
@@ -162,60 +150,56 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.deviceAddress);
     }
     /**
-     * @return The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-     * 
-     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+     * @return The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
      * 
      */
     public Optional<String> diskMode() {
         return Optional.ofNullable(this.diskMode);
     }
     /**
-     * @return The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-     * 
-     * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+     * @return The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
      * 
      */
     public Optional<String> diskSharing() {
         return Optional.ofNullable(this.diskSharing);
     }
     /**
-     * @return If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+     * @return The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     public Optional<Boolean> eagerlyScrub() {
         return Optional.ofNullable(this.eagerlyScrub);
     }
     /**
-     * @return The upper limit of IOPS that this disk can use. The default is no limit.
+     * @return The upper limit of IOPS that this disk can use.
      * 
      */
     public Optional<Integer> ioLimit() {
         return Optional.ofNullable(this.ioLimit);
     }
     /**
-     * @return The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+     * @return The I/O guarantee that this disk has, in IOPS.
      * 
      */
     public Optional<Integer> ioReservation() {
         return Optional.ofNullable(this.ioReservation);
     }
     /**
-     * @return The share count for the virtual disk when the share level is `custom`.
+     * @return The share count for this disk when the share level is custom.
      * 
      */
     public Optional<Integer> ioShareCount() {
         return Optional.ofNullable(this.ioShareCount);
     }
     /**
-     * @return The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * @return The share allocation level for this disk. Can be one of low, normal, high, or custom.
      * 
      */
     public Optional<String> ioShareLevel() {
         return Optional.ofNullable(this.ioShareLevel);
     }
     /**
-     * @return Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+     * @return Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
      * 
      */
     public Optional<Boolean> keepOnRemove() {
@@ -236,53 +220,49 @@ public final class VirtualMachineDisk {
         return this.label;
     }
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
      * 
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return The size of the disk, in GB. Must be a whole number.
+     * @return The size of the disk, in GB.
      * 
      */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the virtual disk in VM.
      * 
      */
     public Optional<String> storagePolicyId() {
         return Optional.ofNullable(this.storagePolicyId);
     }
     /**
-     * @return If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+     * @return If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
      * 
      */
     public Optional<Boolean> thinProvisioned() {
         return Optional.ofNullable(this.thinProvisioned);
     }
     /**
-     * @return The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+     * @return The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
      * 
      */
     public Optional<Integer> unitNumber() {
         return Optional.ofNullable(this.unitNumber);
     }
     /**
-     * @return The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * @return The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }
     /**
-     * @return If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+     * @return If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
      * 
      */
     public Optional<Boolean> writeThrough() {

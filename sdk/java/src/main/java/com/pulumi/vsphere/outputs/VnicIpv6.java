@@ -24,7 +24,7 @@ public final class VnicIpv6 {
      */
     private @Nullable Boolean autoconfig;
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
      * 
      */
     private @Nullable Boolean dhcp;
@@ -50,7 +50,7 @@ public final class VnicIpv6 {
         return Optional.ofNullable(this.autoconfig);
     }
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
      * 
      */
     public Optional<Boolean> dhcp() {

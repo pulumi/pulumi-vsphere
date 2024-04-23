@@ -19,7 +19,7 @@ public final class ComputeClusterVsanStretchedCluster {
      */
     private List<String> preferredFaultDomainHostIds;
     /**
-     * @return The name of first fault domain. Default is `Preferred`.
+     * @return The name of prepferred fault domain.
      * 
      */
     private @Nullable String preferredFaultDomainName;
@@ -29,79 +29,7 @@ public final class ComputeClusterVsanStretchedCluster {
      */
     private List<String> secondaryFaultDomainHostIds;
     /**
-     * @return The name of second fault domain. Default is `Secondary`.
-     * 
-     * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-     * You can enable or re-enable vSphere HA after vSAN is configured.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.ComputeCluster;
-     * import com.pulumi.vsphere.ComputeClusterArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanFaultDomainArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanStretchedClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var computeCluster = new ComputeCluster(&#34;computeCluster&#34;, ComputeClusterArgs.builder()        
-     *             .name(&#34;terraform-compute-cluster-test&#34;)
-     *             .datacenterId(datacenter.id())
-     *             .hostSystemIds(host.stream().map(element -&gt; element.id()).collect(toList()))
-     *             .drsEnabled(true)
-     *             .drsAutomationLevel(&#34;fullyAutomated&#34;)
-     *             .haEnabled(false)
-     *             .vsanEnabled(true)
-     *             .vsanEsaEnabled(true)
-     *             .vsanDedupEnabled(true)
-     *             .vsanCompressionEnabled(true)
-     *             .vsanPerformanceEnabled(true)
-     *             .vsanVerboseModeEnabled(true)
-     *             .vsanNetworkDiagnosticModeEnabled(true)
-     *             .vsanUnmapEnabled(true)
-     *             .vsanDitEncryptionEnabled(true)
-     *             .vsanDitRekeyInterval(1800)
-     *             .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()
-     *                 .cache(cacheDisks[0])
-     *                 .storages(storageDisks)
-     *                 .build())
-     *             .vsanFaultDomains(ComputeClusterVsanFaultDomainArgs.builder()
-     *                 .faultDomains(                
-     *                     ComputeClusterVsanFaultDomainFaultDomainArgs.builder()
-     *                         .name(&#34;fd1&#34;)
-     *                         .hostIds(faultdomain1Hosts.stream().map(element -&gt; element.id()).collect(toList()))
-     *                         .build(),
-     *                     ComputeClusterVsanFaultDomainFaultDomainArgs.builder()
-     *                         .name(&#34;fd2&#34;)
-     *                         .hostIds(faultdomain2Hosts.stream().map(element -&gt; element.id()).collect(toList()))
-     *                         .build())
-     *                 .build())
-     *             .vsanStretchedCluster(ComputeClusterVsanStretchedClusterArgs.builder()
-     *                 .preferredFaultDomainHostIds(preferredFaultDomainHost.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .secondaryFaultDomainHostIds(secondaryFaultDomainHost.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .witnessNode(witnessHost.id())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * @return The name of secondary fault domain.
      * 
      */
     private @Nullable String secondaryFaultDomainName;
@@ -120,7 +48,7 @@ public final class ComputeClusterVsanStretchedCluster {
         return this.preferredFaultDomainHostIds;
     }
     /**
-     * @return The name of first fault domain. Default is `Preferred`.
+     * @return The name of prepferred fault domain.
      * 
      */
     public Optional<String> preferredFaultDomainName() {
@@ -134,79 +62,7 @@ public final class ComputeClusterVsanStretchedCluster {
         return this.secondaryFaultDomainHostIds;
     }
     /**
-     * @return The name of second fault domain. Default is `Secondary`.
-     * 
-     * &gt; **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-     * You can enable or re-enable vSphere HA after vSAN is configured.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.ComputeCluster;
-     * import com.pulumi.vsphere.ComputeClusterArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanFaultDomainArgs;
-     * import com.pulumi.vsphere.inputs.ComputeClusterVsanStretchedClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var computeCluster = new ComputeCluster(&#34;computeCluster&#34;, ComputeClusterArgs.builder()        
-     *             .name(&#34;terraform-compute-cluster-test&#34;)
-     *             .datacenterId(datacenter.id())
-     *             .hostSystemIds(host.stream().map(element -&gt; element.id()).collect(toList()))
-     *             .drsEnabled(true)
-     *             .drsAutomationLevel(&#34;fullyAutomated&#34;)
-     *             .haEnabled(false)
-     *             .vsanEnabled(true)
-     *             .vsanEsaEnabled(true)
-     *             .vsanDedupEnabled(true)
-     *             .vsanCompressionEnabled(true)
-     *             .vsanPerformanceEnabled(true)
-     *             .vsanVerboseModeEnabled(true)
-     *             .vsanNetworkDiagnosticModeEnabled(true)
-     *             .vsanUnmapEnabled(true)
-     *             .vsanDitEncryptionEnabled(true)
-     *             .vsanDitRekeyInterval(1800)
-     *             .vsanDiskGroups(ComputeClusterVsanDiskGroupArgs.builder()
-     *                 .cache(cacheDisks[0])
-     *                 .storages(storageDisks)
-     *                 .build())
-     *             .vsanFaultDomains(ComputeClusterVsanFaultDomainArgs.builder()
-     *                 .faultDomains(                
-     *                     ComputeClusterVsanFaultDomainFaultDomainArgs.builder()
-     *                         .name(&#34;fd1&#34;)
-     *                         .hostIds(faultdomain1Hosts.stream().map(element -&gt; element.id()).collect(toList()))
-     *                         .build(),
-     *                     ComputeClusterVsanFaultDomainFaultDomainArgs.builder()
-     *                         .name(&#34;fd2&#34;)
-     *                         .hostIds(faultdomain2Hosts.stream().map(element -&gt; element.id()).collect(toList()))
-     *                         .build())
-     *                 .build())
-     *             .vsanStretchedCluster(ComputeClusterVsanStretchedClusterArgs.builder()
-     *                 .preferredFaultDomainHostIds(preferredFaultDomainHost.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .secondaryFaultDomainHostIds(secondaryFaultDomainHost.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .witnessNode(witnessHost.id())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * @return The name of secondary fault domain.
      * 
      */
     public Optional<String> secondaryFaultDomainName() {

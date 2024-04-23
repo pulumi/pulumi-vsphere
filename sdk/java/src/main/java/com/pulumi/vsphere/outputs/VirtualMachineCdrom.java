@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineCdrom {
     /**
-     * @return Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
+     * @return Indicates whether the device should be mapped to a remote client device
      * 
      */
     private @Nullable Boolean clientDevice;
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The datastore ID the ISO is located on.
      * 
      */
     private @Nullable String datastoreId;
@@ -34,25 +34,21 @@ public final class VirtualMachineCdrom {
      */
     private @Nullable Integer key;
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return The path to the ISO file on the datastore.
      * 
      */
     private @Nullable String path;
 
     private VirtualMachineCdrom() {}
     /**
-     * @return Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
+     * @return Indicates whether the device should be mapped to a remote client device
      * 
      */
     public Optional<Boolean> clientDevice() {
         return Optional.ofNullable(this.clientDevice);
     }
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The datastore ID the ISO is located on.
      * 
      */
     public Optional<String> datastoreId() {
@@ -73,11 +69,7 @@ public final class VirtualMachineCdrom {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
-     * 
-     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
-     * 
-     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * @return The path to the ISO file on the datastore.
      * 
      */
     public Optional<String> path() {

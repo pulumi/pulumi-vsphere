@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "Content Library",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryResult> {
 
@@ -57,7 +55,6 @@ export interface GetContentLibraryResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -66,7 +63,6 @@ export interface GetContentLibraryResult {
  *     name: "Content Library",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getContentLibraryOutput(args: GetContentLibraryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryResult> {
     return pulumi.output(args).apply((a: any) => getContentLibrary(a, opts))

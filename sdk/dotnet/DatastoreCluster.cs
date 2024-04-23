@@ -53,22 +53,19 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A key/value map of advanced Storage DRS
-        /// settings that are not exposed via the provider or the vSphere client.
+        /// Advanced configuration options for storage DRS.
         /// </summary>
         [Output("sdrsAdvancedOptions")]
         public Output<ImmutableDictionary<string, string>?> SdrsAdvancedOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The global automation level for all
-        /// virtual machines in this datastore cluster. Default: `manual`.
+        /// The default automation level for all virtual machines in this storage cluster.
         /// </summary>
         [Output("sdrsAutomationLevel")]
         public Output<string?> SdrsAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// When `true`, all disks in a
-        /// single virtual machine will be kept on the same datastore. Default: `true`.
+        /// When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
         /// </summary>
         [Output("sdrsDefaultIntraVmAffinity")]
         public Output<bool?> SdrsDefaultIntraVmAffinity { get; private set; } = null!;
@@ -81,10 +78,7 @@ namespace Pulumi.VSphere
         public Output<bool?> SdrsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The free space threshold to use.
-        /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
-        /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
-        /// `utilization`.
+        /// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Output("sdrsFreeSpaceThreshold")]
         public Output<int?> SdrsFreeSpaceThreshold { get; private set; } = null!;
@@ -97,111 +91,89 @@ namespace Pulumi.VSphere
         public Output<string?> SdrsFreeSpaceThresholdMode { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold, in
-        /// percent, of difference between space utilization in datastores before storage
-        /// DRS makes decisions to balance the space. Default: `5` percent.
+        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+        /// balance the space.
         /// </summary>
         [Output("sdrsFreeSpaceUtilizationDifference")]
         public Output<int?> SdrsFreeSpaceUtilizationDifference { get; private set; } = null!;
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting I/O load imbalances.
+        /// Overrides the default automation settings when correcting I/O load imbalances.
         /// </summary>
         [Output("sdrsIoBalanceAutomationLevel")]
         public Output<string?> SdrsIoBalanceAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The I/O latency threshold, in
-        /// milliseconds, that storage DRS uses to make recommendations to move disks
-        /// from this datastore. Default: `15` seconds.
+        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+        /// datastore.
         /// </summary>
         [Output("sdrsIoLatencyThreshold")]
         public Output<int?> SdrsIoLatencyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Enable I/O load balancing for
-        /// this datastore cluster. Default: `true`.
+        /// Enable I/O load balancing for this datastore cluster.
         /// </summary>
         [Output("sdrsIoLoadBalanceEnabled")]
         public Output<bool?> SdrsIoLoadBalanceEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The difference between load
-        /// in datastores in the cluster before storage DRS makes recommendations to
-        /// balance the load. Default: `5` percent.
+        /// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
         /// </summary>
         [Output("sdrsIoLoadImbalanceThreshold")]
         public Output<int?> SdrsIoLoadImbalanceThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold of reservable
-        /// IOPS of all virtual machines on the datastore before storage DRS makes
-        /// recommendations to move VMs off of a datastore. Note that this setting should
-        /// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
-        /// estimate of the capacity of the datastores in your cluster, and should be set
-        /// to roughly 50-60% of the worst case peak performance of the backing LUNs.
+        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+        /// move VMs off of a datastore.
         /// </summary>
         [Output("sdrsIoReservableIopsThreshold")]
         public Output<int?> SdrsIoReservableIopsThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold, in
-        /// percent, of actual estimated performance of the datastore (in IOPS) that
-        /// storage DRS uses to make recommendations to move VMs off of a datastore when
-        /// the total reservable IOPS exceeds the threshold. Default: `60` percent.
+        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+        /// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         /// </summary>
         [Output("sdrsIoReservablePercentThreshold")]
         public Output<int?> SdrsIoReservablePercentThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The reservable IOPS
-        /// threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-        /// of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
-        /// `manual`. Default: `automatic`.
+        /// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         /// </summary>
         [Output("sdrsIoReservableThresholdMode")]
         public Output<string?> SdrsIoReservableThresholdMode { get; private set; } = null!;
 
         /// <summary>
-        /// The storage DRS poll interval, in
-        /// minutes. Default: `480` minutes.
+        /// The storage DRS poll interval, in minutes.
         /// </summary>
         [Output("sdrsLoadBalanceInterval")]
         public Output<int?> SdrsLoadBalanceInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting storage and VM policy violations.
+        /// Overrides the default automation settings when correcting storage and VM policy violations.
         /// </summary>
         [Output("sdrsPolicyEnforcementAutomationLevel")]
         public Output<string?> SdrsPolicyEnforcementAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting affinity rule violations.
+        /// Overrides the default automation settings when correcting affinity rule violations.
         /// </summary>
         [Output("sdrsRuleEnforcementAutomationLevel")]
         public Output<string?> SdrsRuleEnforcementAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting disk space imbalances.
+        /// Overrides the default automation settings when correcting disk space imbalances.
         /// </summary>
         [Output("sdrsSpaceBalanceAutomationLevel")]
         public Output<string?> SdrsSpaceBalanceAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Runtime thresholds govern 
-        /// when Storage DRS performs or recommends migrations
-        /// (based on the selected automation level). Default: `80` percent.
+        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Output("sdrsSpaceUtilizationThreshold")]
         public Output<int?> SdrsSpaceUtilizationThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when generating recommendations for datastore evacuation.
+        /// Overrides the default automation settings when generating recommendations for datastore evacuation.
         /// </summary>
         [Output("sdrsVmEvacuationAutomationLevel")]
         public Output<string?> SdrsVmEvacuationAutomationLevel { get; private set; } = null!;
@@ -310,8 +282,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _sdrsAdvancedOptions;
 
         /// <summary>
-        /// A key/value map of advanced Storage DRS
-        /// settings that are not exposed via the provider or the vSphere client.
+        /// Advanced configuration options for storage DRS.
         /// </summary>
         public InputMap<string> SdrsAdvancedOptions
         {
@@ -320,15 +291,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The global automation level for all
-        /// virtual machines in this datastore cluster. Default: `manual`.
+        /// The default automation level for all virtual machines in this storage cluster.
         /// </summary>
         [Input("sdrsAutomationLevel")]
         public Input<string>? SdrsAutomationLevel { get; set; }
 
         /// <summary>
-        /// When `true`, all disks in a
-        /// single virtual machine will be kept on the same datastore. Default: `true`.
+        /// When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
         /// </summary>
         [Input("sdrsDefaultIntraVmAffinity")]
         public Input<bool>? SdrsDefaultIntraVmAffinity { get; set; }
@@ -341,10 +310,7 @@ namespace Pulumi.VSphere
         public Input<bool>? SdrsEnabled { get; set; }
 
         /// <summary>
-        /// The free space threshold to use.
-        /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
-        /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
-        /// `utilization`.
+        /// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Input("sdrsFreeSpaceThreshold")]
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
@@ -357,111 +323,89 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }
 
         /// <summary>
-        /// The threshold, in
-        /// percent, of difference between space utilization in datastores before storage
-        /// DRS makes decisions to balance the space. Default: `5` percent.
+        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+        /// balance the space.
         /// </summary>
         [Input("sdrsFreeSpaceUtilizationDifference")]
         public Input<int>? SdrsFreeSpaceUtilizationDifference { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting I/O load imbalances.
+        /// Overrides the default automation settings when correcting I/O load imbalances.
         /// </summary>
         [Input("sdrsIoBalanceAutomationLevel")]
         public Input<string>? SdrsIoBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The I/O latency threshold, in
-        /// milliseconds, that storage DRS uses to make recommendations to move disks
-        /// from this datastore. Default: `15` seconds.
+        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+        /// datastore.
         /// </summary>
         [Input("sdrsIoLatencyThreshold")]
         public Input<int>? SdrsIoLatencyThreshold { get; set; }
 
         /// <summary>
-        /// Enable I/O load balancing for
-        /// this datastore cluster. Default: `true`.
+        /// Enable I/O load balancing for this datastore cluster.
         /// </summary>
         [Input("sdrsIoLoadBalanceEnabled")]
         public Input<bool>? SdrsIoLoadBalanceEnabled { get; set; }
 
         /// <summary>
-        /// The difference between load
-        /// in datastores in the cluster before storage DRS makes recommendations to
-        /// balance the load. Default: `5` percent.
+        /// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
         /// </summary>
         [Input("sdrsIoLoadImbalanceThreshold")]
         public Input<int>? SdrsIoLoadImbalanceThreshold { get; set; }
 
         /// <summary>
-        /// The threshold of reservable
-        /// IOPS of all virtual machines on the datastore before storage DRS makes
-        /// recommendations to move VMs off of a datastore. Note that this setting should
-        /// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
-        /// estimate of the capacity of the datastores in your cluster, and should be set
-        /// to roughly 50-60% of the worst case peak performance of the backing LUNs.
+        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+        /// move VMs off of a datastore.
         /// </summary>
         [Input("sdrsIoReservableIopsThreshold")]
         public Input<int>? SdrsIoReservableIopsThreshold { get; set; }
 
         /// <summary>
-        /// The threshold, in
-        /// percent, of actual estimated performance of the datastore (in IOPS) that
-        /// storage DRS uses to make recommendations to move VMs off of a datastore when
-        /// the total reservable IOPS exceeds the threshold. Default: `60` percent.
+        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+        /// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         /// </summary>
         [Input("sdrsIoReservablePercentThreshold")]
         public Input<int>? SdrsIoReservablePercentThreshold { get; set; }
 
         /// <summary>
-        /// The reservable IOPS
-        /// threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-        /// of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
-        /// `manual`. Default: `automatic`.
+        /// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         /// </summary>
         [Input("sdrsIoReservableThresholdMode")]
         public Input<string>? SdrsIoReservableThresholdMode { get; set; }
 
         /// <summary>
-        /// The storage DRS poll interval, in
-        /// minutes. Default: `480` minutes.
+        /// The storage DRS poll interval, in minutes.
         /// </summary>
         [Input("sdrsLoadBalanceInterval")]
         public Input<int>? SdrsLoadBalanceInterval { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting storage and VM policy violations.
+        /// Overrides the default automation settings when correcting storage and VM policy violations.
         /// </summary>
         [Input("sdrsPolicyEnforcementAutomationLevel")]
         public Input<string>? SdrsPolicyEnforcementAutomationLevel { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting affinity rule violations.
+        /// Overrides the default automation settings when correcting affinity rule violations.
         /// </summary>
         [Input("sdrsRuleEnforcementAutomationLevel")]
         public Input<string>? SdrsRuleEnforcementAutomationLevel { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting disk space imbalances.
+        /// Overrides the default automation settings when correcting disk space imbalances.
         /// </summary>
         [Input("sdrsSpaceBalanceAutomationLevel")]
         public Input<string>? SdrsSpaceBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// Runtime thresholds govern 
-        /// when Storage DRS performs or recommends migrations
-        /// (based on the selected automation level). Default: `80` percent.
+        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]
         public Input<int>? SdrsSpaceUtilizationThreshold { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when generating recommendations for datastore evacuation.
+        /// Overrides the default automation settings when generating recommendations for datastore evacuation.
         /// </summary>
         [Input("sdrsVmEvacuationAutomationLevel")]
         public Input<string>? SdrsVmEvacuationAutomationLevel { get; set; }
@@ -538,8 +482,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _sdrsAdvancedOptions;
 
         /// <summary>
-        /// A key/value map of advanced Storage DRS
-        /// settings that are not exposed via the provider or the vSphere client.
+        /// Advanced configuration options for storage DRS.
         /// </summary>
         public InputMap<string> SdrsAdvancedOptions
         {
@@ -548,15 +491,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The global automation level for all
-        /// virtual machines in this datastore cluster. Default: `manual`.
+        /// The default automation level for all virtual machines in this storage cluster.
         /// </summary>
         [Input("sdrsAutomationLevel")]
         public Input<string>? SdrsAutomationLevel { get; set; }
 
         /// <summary>
-        /// When `true`, all disks in a
-        /// single virtual machine will be kept on the same datastore. Default: `true`.
+        /// When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
         /// </summary>
         [Input("sdrsDefaultIntraVmAffinity")]
         public Input<bool>? SdrsDefaultIntraVmAffinity { get; set; }
@@ -569,10 +510,7 @@ namespace Pulumi.VSphere
         public Input<bool>? SdrsEnabled { get; set; }
 
         /// <summary>
-        /// The free space threshold to use.
-        /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
-        /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
-        /// `utilization`.
+        /// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Input("sdrsFreeSpaceThreshold")]
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
@@ -585,111 +523,89 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }
 
         /// <summary>
-        /// The threshold, in
-        /// percent, of difference between space utilization in datastores before storage
-        /// DRS makes decisions to balance the space. Default: `5` percent.
+        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+        /// balance the space.
         /// </summary>
         [Input("sdrsFreeSpaceUtilizationDifference")]
         public Input<int>? SdrsFreeSpaceUtilizationDifference { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting I/O load imbalances.
+        /// Overrides the default automation settings when correcting I/O load imbalances.
         /// </summary>
         [Input("sdrsIoBalanceAutomationLevel")]
         public Input<string>? SdrsIoBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The I/O latency threshold, in
-        /// milliseconds, that storage DRS uses to make recommendations to move disks
-        /// from this datastore. Default: `15` seconds.
+        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+        /// datastore.
         /// </summary>
         [Input("sdrsIoLatencyThreshold")]
         public Input<int>? SdrsIoLatencyThreshold { get; set; }
 
         /// <summary>
-        /// Enable I/O load balancing for
-        /// this datastore cluster. Default: `true`.
+        /// Enable I/O load balancing for this datastore cluster.
         /// </summary>
         [Input("sdrsIoLoadBalanceEnabled")]
         public Input<bool>? SdrsIoLoadBalanceEnabled { get; set; }
 
         /// <summary>
-        /// The difference between load
-        /// in datastores in the cluster before storage DRS makes recommendations to
-        /// balance the load. Default: `5` percent.
+        /// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
         /// </summary>
         [Input("sdrsIoLoadImbalanceThreshold")]
         public Input<int>? SdrsIoLoadImbalanceThreshold { get; set; }
 
         /// <summary>
-        /// The threshold of reservable
-        /// IOPS of all virtual machines on the datastore before storage DRS makes
-        /// recommendations to move VMs off of a datastore. Note that this setting should
-        /// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
-        /// estimate of the capacity of the datastores in your cluster, and should be set
-        /// to roughly 50-60% of the worst case peak performance of the backing LUNs.
+        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+        /// move VMs off of a datastore.
         /// </summary>
         [Input("sdrsIoReservableIopsThreshold")]
         public Input<int>? SdrsIoReservableIopsThreshold { get; set; }
 
         /// <summary>
-        /// The threshold, in
-        /// percent, of actual estimated performance of the datastore (in IOPS) that
-        /// storage DRS uses to make recommendations to move VMs off of a datastore when
-        /// the total reservable IOPS exceeds the threshold. Default: `60` percent.
+        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+        /// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         /// </summary>
         [Input("sdrsIoReservablePercentThreshold")]
         public Input<int>? SdrsIoReservablePercentThreshold { get; set; }
 
         /// <summary>
-        /// The reservable IOPS
-        /// threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-        /// of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
-        /// `manual`. Default: `automatic`.
+        /// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         /// </summary>
         [Input("sdrsIoReservableThresholdMode")]
         public Input<string>? SdrsIoReservableThresholdMode { get; set; }
 
         /// <summary>
-        /// The storage DRS poll interval, in
-        /// minutes. Default: `480` minutes.
+        /// The storage DRS poll interval, in minutes.
         /// </summary>
         [Input("sdrsLoadBalanceInterval")]
         public Input<int>? SdrsLoadBalanceInterval { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting storage and VM policy violations.
+        /// Overrides the default automation settings when correcting storage and VM policy violations.
         /// </summary>
         [Input("sdrsPolicyEnforcementAutomationLevel")]
         public Input<string>? SdrsPolicyEnforcementAutomationLevel { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting affinity rule violations.
+        /// Overrides the default automation settings when correcting affinity rule violations.
         /// </summary>
         [Input("sdrsRuleEnforcementAutomationLevel")]
         public Input<string>? SdrsRuleEnforcementAutomationLevel { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when correcting disk space imbalances.
+        /// Overrides the default automation settings when correcting disk space imbalances.
         /// </summary>
         [Input("sdrsSpaceBalanceAutomationLevel")]
         public Input<string>? SdrsSpaceBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// Runtime thresholds govern 
-        /// when Storage DRS performs or recommends migrations
-        /// (based on the selected automation level). Default: `80` percent.
+        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]
         public Input<int>? SdrsSpaceUtilizationThreshold { get; set; }
 
         /// <summary>
-        /// Overrides the default
-        /// automation settings when generating recommendations for datastore evacuation.
+        /// Overrides the default automation settings when generating recommendations for datastore evacuation.
         /// </summary>
         [Input("sdrsVmEvacuationAutomationLevel")]
         public Input<string>? SdrsVmEvacuationAutomationLevel { get; set; }

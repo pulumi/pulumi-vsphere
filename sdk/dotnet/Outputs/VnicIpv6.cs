@@ -22,7 +22,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool? Autoconfig;
         /// <summary>
-        /// Use DHCP to configure the interface's IPv6 stack.
+        /// Use DHCP to configure the interface's IPv4 stack.
         /// </summary>
         public readonly bool? Dhcp;
         /// <summary>

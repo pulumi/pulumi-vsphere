@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ### With Vendor ID And Class ID
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -31,28 +30,25 @@ import * as utilities from "./utilities";
  *     vendorId: "456",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### With Name Regular Expression
  *
- *  <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
+ *    name: "dc-01",
  * });
  * const host = datacenter.then(datacenter => vsphere.getHost({
- *     name: "esxi-01.example.com",
- *     datacenterId: datacenter.id,
+ *    name: "esxi-01.example.com",
+ *    datacenterId: datacenter.id,
  * }));
  * const dev = host.then(host => vsphere.getHostPciDevice({
- *     hostId: host.id,
- *     nameRegex: "MMC",
+ *    hostId: host.id,
+ *    nameRegex: "MMC",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostPciDevice(args: GetHostPciDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetHostPciDeviceResult> {
 
@@ -118,7 +114,6 @@ export interface GetHostPciDeviceResult {
  *
  * ### With Vendor ID And Class ID
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -136,28 +131,25 @@ export interface GetHostPciDeviceResult {
  *     vendorId: "456",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### With Name Regular Expression
  *
- *  <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
+ *    name: "dc-01",
  * });
  * const host = datacenter.then(datacenter => vsphere.getHost({
- *     name: "esxi-01.example.com",
- *     datacenterId: datacenter.id,
+ *    name: "esxi-01.example.com",
+ *    datacenterId: datacenter.id,
  * }));
  * const dev = host.then(host => vsphere.getHostPciDevice({
- *     hostId: host.id,
- *     nameRegex: "MMC",
+ *    hostId: host.id,
+ *    nameRegex: "MMC",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostPciDeviceResult> {
     return pulumi.output(args).apply((a: any) => getHostPciDevice(a, opts))

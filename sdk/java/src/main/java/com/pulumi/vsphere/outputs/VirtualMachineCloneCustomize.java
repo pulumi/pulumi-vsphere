@@ -42,7 +42,7 @@ public final class VirtualMachineCloneCustomize {
      */
     private @Nullable VirtualMachineCloneCustomizeLinuxOptions linuxOptions;
     /**
-     * @return A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * @return A specification of network interface configuration options.
      * 
      */
     private @Nullable List<VirtualMachineCloneCustomizeNetworkInterface> networkInterfaces;
@@ -99,7 +99,7 @@ public final class VirtualMachineCloneCustomize {
         return Optional.ofNullable(this.linuxOptions);
     }
     /**
-     * @return A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * @return A specification of network interface configuration options.
      * 
      */
     public List<VirtualMachineCloneCustomizeNetworkInterface> networkInterfaces() {

@@ -13,32 +13,26 @@ namespace Pulumi.VSphere
     public partial class DistributedVirtualSwitch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of active uplinks to be used in load
-        /// balancing. These uplinks need to match the definitions in the
-        /// `uplinks` VDS argument. See
-        /// here for more details.
+        /// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         [Output("activeUplinks")]
         public Output<ImmutableArray<string>> ActiveUplinks { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether or not a virtual
-        /// network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Output("allowForgedTransmits")]
         public Output<bool> AllowForgedTransmits { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether or not the Media Access
-        /// Control (MAC) address can be changed.
+        /// Controls whether or not the Media Access Control (MAC) address can be changed.
         /// </summary>
         [Output("allowMacChanges")]
         public Output<bool> AllowMacChanges { get; private set; } = null!;
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This
-        /// flag indicates whether or not all traffic is seen on a given port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Output("allowPromiscuous")]
         public Output<bool> AllowPromiscuous { get; private set; } = null!;
@@ -68,19 +62,13 @@ namespace Pulumi.VSphere
         public Output<string> BackupnfcShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Shuts down all ports in the port groups that
-        /// this policy applies to, effectively blocking all network access to connected
-        /// virtual devices.
+        /// Indicates whether to block all ports by default.
         /// </summary>
         [Output("blockAllPorts")]
         public Output<bool> BlockAllPorts { get; private set; } = null!;
 
         /// <summary>
-        /// Enables beacon probing as an additional measure
-        /// to detect NIC failure.
-        /// 
-        /// &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-        /// probing.
+        /// Enable beacon probing on the ports this policy applies to.
         /// </summary>
         [Output("checkBeacon")]
         public Output<bool> CheckBeacon { get; private set; } = null!;
@@ -130,43 +118,37 @@ namespace Pulumi.VSphere
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Allow VMDirectPath Gen2 for the ports
-        /// for which this policy applies to.
+        /// Allow VMDirectPath Gen2 on the ports this policy applies to.
         /// </summary>
         [Output("directpathGen2Allowed")]
         public Output<bool> DirectpathGen2Allowed { get; private set; } = null!;
 
         /// <summary>
-        /// The average bandwidth in bits
-        /// per second if egress traffic shaping is enabled on the port.
+        /// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
         /// </summary>
         [Output("egressShapingAverageBandwidth")]
         public Output<int> EgressShapingAverageBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum burst size allowed in
-        /// bytes if egress traffic shaping is enabled on the port.
+        /// The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         /// </summary>
         [Output("egressShapingBurstSize")]
         public Output<int> EgressShapingBurstSize { get; private set; } = null!;
 
         /// <summary>
-        /// `true` if the traffic shaper is enabled
-        /// on the port for egress traffic.
+        /// True if the traffic shaper is enabled for egress traffic on the port.
         /// </summary>
         [Output("egressShapingEnabled")]
         public Output<bool> EgressShapingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The peak bandwidth during bursts
-        /// in bits per second if egress traffic shaping is enabled on the port.
+        /// The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         /// </summary>
         [Output("egressShapingPeakBandwidth")]
         public Output<int> EgressShapingPeakBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the teaming policy will re-activate failed
-        /// uplinks higher in precedence when they come back up.
+        /// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         /// </summary>
         [Output("failback")]
         public Output<bool> Failback { get; private set; } = null!;
@@ -227,43 +209,37 @@ namespace Pulumi.VSphere
         public Output<string> HbrShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Use the `host` block to declare a host specification. The
-        /// options are:
+        /// A host member specification.
         /// </summary>
         [Output("hosts")]
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchHost>> Hosts { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to ignore existing PVLAN
-        /// mappings not managed by this resource. Defaults to false.
+        /// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
         /// </summary>
         [Output("ignoreOtherPvlanMappings")]
         public Output<bool?> IgnoreOtherPvlanMappings { get; private set; } = null!;
 
         /// <summary>
-        /// The average bandwidth in
-        /// bits per second if ingress traffic shaping is enabled on the port.
+        /// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         /// </summary>
         [Output("ingressShapingAverageBandwidth")]
         public Output<int> IngressShapingAverageBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum burst size allowed in
-        /// bytes if ingress traffic shaping is enabled on the port.
+        /// The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         /// </summary>
         [Output("ingressShapingBurstSize")]
         public Output<int> IngressShapingBurstSize { get; private set; } = null!;
 
         /// <summary>
-        /// `true` if the traffic shaper is
-        /// enabled on the port for ingress traffic.
+        /// True if the traffic shaper is enabled for ingress traffic on the port.
         /// </summary>
         [Output("ingressShapingEnabled")]
         public Output<bool> IngressShapingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The peak bandwidth during
-        /// bursts in bits per second if ingress traffic shaping is enabled on the port.
+        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
         [Output("ingressShapingPeakBandwidth")]
         public Output<int> IngressShapingPeakBandwidth { get; private set; } = null!;
@@ -308,14 +284,13 @@ namespace Pulumi.VSphere
         public Output<string> LacpApiVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Enables LACP for the ports that this policy
-        /// applies to.
+        /// Whether or not to enable LACP on all uplink ports.
         /// </summary>
         [Output("lacpEnabled")]
         public Output<bool> LacpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The LACP mode. Can be one of `active` or `passive`.
+        /// The uplink LACP mode to use. Can be one of active or passive.
         /// </summary>
         [Output("lacpMode")]
         public Output<string> LacpMode { get; private set; } = null!;
@@ -378,77 +353,63 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The number of seconds after which
-        /// active flows are forced to be exported to the collector. Allowed range is
-        /// `60` to `3600`. Default: `60`.
+        /// The number of seconds after which active flows are forced to be exported to the collector.
         /// </summary>
         [Output("netflowActiveFlowTimeout")]
         public Output<int?> NetflowActiveFlowTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// IP address for the Netflow
-        /// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-        /// Must be set before Netflow can be enabled.
+        /// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+        /// later.
         /// </summary>
         [Output("netflowCollectorIpAddress")]
         public Output<string?> NetflowCollectorIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Port for the Netflow collector. This
-        /// must be set before Netflow can be enabled.
+        /// The port for the netflow collector.
         /// </summary>
         [Output("netflowCollectorPort")]
         public Output<int?> NetflowCollectorPort { get; private set; } = null!;
 
         /// <summary>
-        /// Enables Netflow on all ports that this policy
-        /// applies to.
+        /// Indicates whether to enable netflow on all ports.
         /// </summary>
         [Output("netflowEnabled")]
         public Output<bool> NetflowEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The number of seconds after which
-        /// idle flows are forced to be exported to the collector. Allowed range is `10`
-        /// to `600`. Default: `15`.
+        /// The number of seconds after which idle flows are forced to be exported to the collector.
         /// </summary>
         [Output("netflowIdleFlowTimeout")]
         public Output<int?> NetflowIdleFlowTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to limit analysis to
-        /// traffic that has both source and destination served by the same host.
-        /// Default: `false`.
+        /// Whether to limit analysis to traffic that has both source and destination served by the same host.
         /// </summary>
         [Output("netflowInternalFlowsOnly")]
         public Output<bool?> NetflowInternalFlowsOnly { get; private set; } = null!;
 
         /// <summary>
-        /// The observation domain ID for
-        /// the Netflow collector.
+        /// The observation Domain ID for the netflow collector.
         /// </summary>
         [Output("netflowObservationDomainId")]
         public Output<int?> NetflowObservationDomainId { get; private set; } = null!;
 
         /// <summary>
-        /// The ratio of total number of packets to
-        /// the number of packets analyzed. The default is `0`, which indicates that the
-        /// VDS should analyze all packets. The maximum value is `1000`, which
-        /// indicates an analysis rate of 0.001%.
+        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+        /// packets are analyzed.
         /// </summary>
         [Output("netflowSamplingRate")]
         public Output<int?> NetflowSamplingRate { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to enable
-        /// network I/O control. Default: `false`.
+        /// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
         /// </summary>
         [Output("networkResourceControlEnabled")]
         public Output<bool?> NetworkResourceControlEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The version of network I/O
-        /// control to use. Can be one of `version2` or `version3`. Default: `version2`.
+        /// The network I/O control version to use. Can be one of version2 or version3.
         /// </summary>
         [Output("networkResourceControlVersion")]
         public Output<string> NetworkResourceControlVersion { get; private set; } = null!;
@@ -478,31 +439,25 @@ namespace Pulumi.VSphere
         public Output<string> NfsShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the teaming policy will notify the
-        /// broadcast network of an uplink failover, triggering cache updates.
+        /// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         /// </summary>
         [Output("notifySwitches")]
         public Output<bool> NotifySwitches { get; private set; } = null!;
 
         /// <summary>
-        /// Used to define a secondary VLAN
-        /// ID when using private VLANs.
+        /// The secondary VLAN ID for this port.
         /// </summary>
         [Output("portPrivateSecondaryVlanId")]
         public Output<int> PortPrivateSecondaryVlanId { get; private set; } = null!;
 
         /// <summary>
-        /// Use the `pvlan_mapping` block to declare a
-        /// private VLAN mapping. The options are:
+        /// A private VLAN (PVLAN) mapping.
         /// </summary>
         [Output("pvlanMappings")]
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchPvlanMapping>> PvlanMappings { get; private set; } = null!;
 
         /// <summary>
-        /// A list of standby uplinks to be used in
-        /// failover. These uplinks need to match the definitions in the
-        /// `uplinks` VDS argument. See
-        /// here for more details.
+        /// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         [Output("standbyUplinks")]
         public Output<ImmutableArray<string>> StandbyUplinks { get; private set; } = null!;
@@ -516,26 +471,22 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The uplink teaming policy. Can be one of
-        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
-        /// `failover_explicit`, or `loadbalance_loadbased`.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+        /// failover_explicit, or loadbalance_loadbased.
         /// </summary>
         [Output("teamingPolicy")]
         public Output<string> TeamingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Forward all traffic transmitted by ports for which
-        /// this policy applies to its VDS uplinks.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+        /// forwarded done by the switch.
         /// </summary>
         [Output("txUplink")]
         public Output<bool> TxUplink { get; private set; } = null!;
 
         /// <summary>
-        /// A list of strings that uniquely identifies the names
-        /// of the uplinks on the VDS across hosts. The number of items in this list
-        /// controls the number of uplinks that exist on the VDS, in addition to the
-        /// names. See here for an example on how to
-        /// use this option.
+        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+        /// across hosts.
         /// </summary>
         [Output("uplinks")]
         public Output<ImmutableArray<string>> Uplinks { get; private set; } = null!;
@@ -603,40 +554,7 @@ namespace Pulumi.VSphere
         public Output<int> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// Used to denote VLAN trunking. Use the `min_vlan`
-        /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-        /// `vlan_range` definitions are allowed, but they must not overlap. Example
-        /// below:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
-        ///     {
-        ///         VlanRanges = new[]
-        ///         {
-        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
-        ///             {
-        ///                 MinVlan = 100,
-        ///                 MaxVlan = 199,
-        ///             },
-        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
-        ///             {
-        ///                 MinVlan = 300,
-        ///                 MaxVlan = 399,
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         /// </summary>
         [Output("vlanRanges")]
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchVlanRange>> VlanRanges { get; private set; } = null!;
@@ -739,10 +657,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _activeUplinks;
 
         /// <summary>
-        /// A list of active uplinks to be used in load
-        /// balancing. These uplinks need to match the definitions in the
-        /// `uplinks` VDS argument. See
-        /// here for more details.
+        /// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         public InputList<string> ActiveUplinks
         {
@@ -751,23 +666,20 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not a virtual
-        /// network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
 
         /// <summary>
-        /// Controls whether or not the Media Access
-        /// Control (MAC) address can be changed.
+        /// Controls whether or not the Media Access Control (MAC) address can be changed.
         /// </summary>
         [Input("allowMacChanges")]
         public Input<bool>? AllowMacChanges { get; set; }
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This
-        /// flag indicates whether or not all traffic is seen on a given port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Input("allowPromiscuous")]
         public Input<bool>? AllowPromiscuous { get; set; }
@@ -797,19 +709,13 @@ namespace Pulumi.VSphere
         public Input<string>? BackupnfcShareLevel { get; set; }
 
         /// <summary>
-        /// Shuts down all ports in the port groups that
-        /// this policy applies to, effectively blocking all network access to connected
-        /// virtual devices.
+        /// Indicates whether to block all ports by default.
         /// </summary>
         [Input("blockAllPorts")]
         public Input<bool>? BlockAllPorts { get; set; }
 
         /// <summary>
-        /// Enables beacon probing as an additional measure
-        /// to detect NIC failure.
-        /// 
-        /// &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-        /// probing.
+        /// Enable beacon probing on the ports this policy applies to.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -858,43 +764,37 @@ namespace Pulumi.VSphere
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Allow VMDirectPath Gen2 for the ports
-        /// for which this policy applies to.
+        /// Allow VMDirectPath Gen2 on the ports this policy applies to.
         /// </summary>
         [Input("directpathGen2Allowed")]
         public Input<bool>? DirectpathGen2Allowed { get; set; }
 
         /// <summary>
-        /// The average bandwidth in bits
-        /// per second if egress traffic shaping is enabled on the port.
+        /// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
         /// </summary>
         [Input("egressShapingAverageBandwidth")]
         public Input<int>? EgressShapingAverageBandwidth { get; set; }
 
         /// <summary>
-        /// The maximum burst size allowed in
-        /// bytes if egress traffic shaping is enabled on the port.
+        /// The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         /// </summary>
         [Input("egressShapingBurstSize")]
         public Input<int>? EgressShapingBurstSize { get; set; }
 
         /// <summary>
-        /// `true` if the traffic shaper is enabled
-        /// on the port for egress traffic.
+        /// True if the traffic shaper is enabled for egress traffic on the port.
         /// </summary>
         [Input("egressShapingEnabled")]
         public Input<bool>? EgressShapingEnabled { get; set; }
 
         /// <summary>
-        /// The peak bandwidth during bursts
-        /// in bits per second if egress traffic shaping is enabled on the port.
+        /// The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         /// </summary>
         [Input("egressShapingPeakBandwidth")]
         public Input<int>? EgressShapingPeakBandwidth { get; set; }
 
         /// <summary>
-        /// If `true`, the teaming policy will re-activate failed
-        /// uplinks higher in precedence when they come back up.
+        /// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         /// </summary>
         [Input("failback")]
         public Input<bool>? Failback { get; set; }
@@ -958,8 +858,7 @@ namespace Pulumi.VSphere
         private InputList<Inputs.DistributedVirtualSwitchHostArgs>? _hosts;
 
         /// <summary>
-        /// Use the `host` block to declare a host specification. The
-        /// options are:
+        /// A host member specification.
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchHostArgs> Hosts
         {
@@ -968,36 +867,31 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Whether to ignore existing PVLAN
-        /// mappings not managed by this resource. Defaults to false.
+        /// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
         /// </summary>
         [Input("ignoreOtherPvlanMappings")]
         public Input<bool>? IgnoreOtherPvlanMappings { get; set; }
 
         /// <summary>
-        /// The average bandwidth in
-        /// bits per second if ingress traffic shaping is enabled on the port.
+        /// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingAverageBandwidth")]
         public Input<int>? IngressShapingAverageBandwidth { get; set; }
 
         /// <summary>
-        /// The maximum burst size allowed in
-        /// bytes if ingress traffic shaping is enabled on the port.
+        /// The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingBurstSize")]
         public Input<int>? IngressShapingBurstSize { get; set; }
 
         /// <summary>
-        /// `true` if the traffic shaper is
-        /// enabled on the port for ingress traffic.
+        /// True if the traffic shaper is enabled for ingress traffic on the port.
         /// </summary>
         [Input("ingressShapingEnabled")]
         public Input<bool>? IngressShapingEnabled { get; set; }
 
         /// <summary>
-        /// The peak bandwidth during
-        /// bursts in bits per second if ingress traffic shaping is enabled on the port.
+        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingPeakBandwidth")]
         public Input<int>? IngressShapingPeakBandwidth { get; set; }
@@ -1042,14 +936,13 @@ namespace Pulumi.VSphere
         public Input<string>? LacpApiVersion { get; set; }
 
         /// <summary>
-        /// Enables LACP for the ports that this policy
-        /// applies to.
+        /// Whether or not to enable LACP on all uplink ports.
         /// </summary>
         [Input("lacpEnabled")]
         public Input<bool>? LacpEnabled { get; set; }
 
         /// <summary>
-        /// The LACP mode. Can be one of `active` or `passive`.
+        /// The uplink LACP mode to use. Can be one of active or passive.
         /// </summary>
         [Input("lacpMode")]
         public Input<string>? LacpMode { get; set; }
@@ -1112,77 +1005,63 @@ namespace Pulumi.VSphere
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The number of seconds after which
-        /// active flows are forced to be exported to the collector. Allowed range is
-        /// `60` to `3600`. Default: `60`.
+        /// The number of seconds after which active flows are forced to be exported to the collector.
         /// </summary>
         [Input("netflowActiveFlowTimeout")]
         public Input<int>? NetflowActiveFlowTimeout { get; set; }
 
         /// <summary>
-        /// IP address for the Netflow
-        /// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-        /// Must be set before Netflow can be enabled.
+        /// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+        /// later.
         /// </summary>
         [Input("netflowCollectorIpAddress")]
         public Input<string>? NetflowCollectorIpAddress { get; set; }
 
         /// <summary>
-        /// Port for the Netflow collector. This
-        /// must be set before Netflow can be enabled.
+        /// The port for the netflow collector.
         /// </summary>
         [Input("netflowCollectorPort")]
         public Input<int>? NetflowCollectorPort { get; set; }
 
         /// <summary>
-        /// Enables Netflow on all ports that this policy
-        /// applies to.
+        /// Indicates whether to enable netflow on all ports.
         /// </summary>
         [Input("netflowEnabled")]
         public Input<bool>? NetflowEnabled { get; set; }
 
         /// <summary>
-        /// The number of seconds after which
-        /// idle flows are forced to be exported to the collector. Allowed range is `10`
-        /// to `600`. Default: `15`.
+        /// The number of seconds after which idle flows are forced to be exported to the collector.
         /// </summary>
         [Input("netflowIdleFlowTimeout")]
         public Input<int>? NetflowIdleFlowTimeout { get; set; }
 
         /// <summary>
-        /// Whether to limit analysis to
-        /// traffic that has both source and destination served by the same host.
-        /// Default: `false`.
+        /// Whether to limit analysis to traffic that has both source and destination served by the same host.
         /// </summary>
         [Input("netflowInternalFlowsOnly")]
         public Input<bool>? NetflowInternalFlowsOnly { get; set; }
 
         /// <summary>
-        /// The observation domain ID for
-        /// the Netflow collector.
+        /// The observation Domain ID for the netflow collector.
         /// </summary>
         [Input("netflowObservationDomainId")]
         public Input<int>? NetflowObservationDomainId { get; set; }
 
         /// <summary>
-        /// The ratio of total number of packets to
-        /// the number of packets analyzed. The default is `0`, which indicates that the
-        /// VDS should analyze all packets. The maximum value is `1000`, which
-        /// indicates an analysis rate of 0.001%.
+        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+        /// packets are analyzed.
         /// </summary>
         [Input("netflowSamplingRate")]
         public Input<int>? NetflowSamplingRate { get; set; }
 
         /// <summary>
-        /// Set to `true` to enable
-        /// network I/O control. Default: `false`.
+        /// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
         /// </summary>
         [Input("networkResourceControlEnabled")]
         public Input<bool>? NetworkResourceControlEnabled { get; set; }
 
         /// <summary>
-        /// The version of network I/O
-        /// control to use. Can be one of `version2` or `version3`. Default: `version2`.
+        /// The network I/O control version to use. Can be one of version2 or version3.
         /// </summary>
         [Input("networkResourceControlVersion")]
         public Input<string>? NetworkResourceControlVersion { get; set; }
@@ -1212,15 +1091,13 @@ namespace Pulumi.VSphere
         public Input<string>? NfsShareLevel { get; set; }
 
         /// <summary>
-        /// If `true`, the teaming policy will notify the
-        /// broadcast network of an uplink failover, triggering cache updates.
+        /// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         /// </summary>
         [Input("notifySwitches")]
         public Input<bool>? NotifySwitches { get; set; }
 
         /// <summary>
-        /// Used to define a secondary VLAN
-        /// ID when using private VLANs.
+        /// The secondary VLAN ID for this port.
         /// </summary>
         [Input("portPrivateSecondaryVlanId")]
         public Input<int>? PortPrivateSecondaryVlanId { get; set; }
@@ -1229,8 +1106,7 @@ namespace Pulumi.VSphere
         private InputList<Inputs.DistributedVirtualSwitchPvlanMappingArgs>? _pvlanMappings;
 
         /// <summary>
-        /// Use the `pvlan_mapping` block to declare a
-        /// private VLAN mapping. The options are:
+        /// A private VLAN (PVLAN) mapping.
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchPvlanMappingArgs> PvlanMappings
         {
@@ -1242,10 +1118,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _standbyUplinks;
 
         /// <summary>
-        /// A list of standby uplinks to be used in
-        /// failover. These uplinks need to match the definitions in the
-        /// `uplinks` VDS argument. See
-        /// here for more details.
+        /// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         public InputList<string> StandbyUplinks
         {
@@ -1268,16 +1141,15 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The uplink teaming policy. Can be one of
-        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
-        /// `failover_explicit`, or `loadbalance_loadbased`.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+        /// failover_explicit, or loadbalance_loadbased.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }
 
         /// <summary>
-        /// Forward all traffic transmitted by ports for which
-        /// this policy applies to its VDS uplinks.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+        /// forwarded done by the switch.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -1286,11 +1158,8 @@ namespace Pulumi.VSphere
         private InputList<string>? _uplinks;
 
         /// <summary>
-        /// A list of strings that uniquely identifies the names
-        /// of the uplinks on the VDS across hosts. The number of items in this list
-        /// controls the number of uplinks that exist on the VDS, in addition to the
-        /// names. See here for an example on how to
-        /// use this option.
+        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+        /// across hosts.
         /// </summary>
         public InputList<string> Uplinks
         {
@@ -1364,40 +1233,7 @@ namespace Pulumi.VSphere
         private InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs>? _vlanRanges;
 
         /// <summary>
-        /// Used to denote VLAN trunking. Use the `min_vlan`
-        /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-        /// `vlan_range` definitions are allowed, but they must not overlap. Example
-        /// below:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
-        ///     {
-        ///         VlanRanges = new[]
-        ///         {
-        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
-        ///             {
-        ///                 MinVlan = 100,
-        ///                 MaxVlan = 199,
-        ///             },
-        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
-        ///             {
-        ///                 MinVlan = 300,
-        ///                 MaxVlan = 399,
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs> VlanRanges
         {
@@ -1465,10 +1301,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _activeUplinks;
 
         /// <summary>
-        /// A list of active uplinks to be used in load
-        /// balancing. These uplinks need to match the definitions in the
-        /// `uplinks` VDS argument. See
-        /// here for more details.
+        /// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         public InputList<string> ActiveUplinks
         {
@@ -1477,23 +1310,20 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not a virtual
-        /// network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
 
         /// <summary>
-        /// Controls whether or not the Media Access
-        /// Control (MAC) address can be changed.
+        /// Controls whether or not the Media Access Control (MAC) address can be changed.
         /// </summary>
         [Input("allowMacChanges")]
         public Input<bool>? AllowMacChanges { get; set; }
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This
-        /// flag indicates whether or not all traffic is seen on a given port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Input("allowPromiscuous")]
         public Input<bool>? AllowPromiscuous { get; set; }
@@ -1523,19 +1353,13 @@ namespace Pulumi.VSphere
         public Input<string>? BackupnfcShareLevel { get; set; }
 
         /// <summary>
-        /// Shuts down all ports in the port groups that
-        /// this policy applies to, effectively blocking all network access to connected
-        /// virtual devices.
+        /// Indicates whether to block all ports by default.
         /// </summary>
         [Input("blockAllPorts")]
         public Input<bool>? BlockAllPorts { get; set; }
 
         /// <summary>
-        /// Enables beacon probing as an additional measure
-        /// to detect NIC failure.
-        /// 
-        /// &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
-        /// probing.
+        /// Enable beacon probing on the ports this policy applies to.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -1591,43 +1415,37 @@ namespace Pulumi.VSphere
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Allow VMDirectPath Gen2 for the ports
-        /// for which this policy applies to.
+        /// Allow VMDirectPath Gen2 on the ports this policy applies to.
         /// </summary>
         [Input("directpathGen2Allowed")]
         public Input<bool>? DirectpathGen2Allowed { get; set; }
 
         /// <summary>
-        /// The average bandwidth in bits
-        /// per second if egress traffic shaping is enabled on the port.
+        /// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
         /// </summary>
         [Input("egressShapingAverageBandwidth")]
         public Input<int>? EgressShapingAverageBandwidth { get; set; }
 
         /// <summary>
-        /// The maximum burst size allowed in
-        /// bytes if egress traffic shaping is enabled on the port.
+        /// The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         /// </summary>
         [Input("egressShapingBurstSize")]
         public Input<int>? EgressShapingBurstSize { get; set; }
 
         /// <summary>
-        /// `true` if the traffic shaper is enabled
-        /// on the port for egress traffic.
+        /// True if the traffic shaper is enabled for egress traffic on the port.
         /// </summary>
         [Input("egressShapingEnabled")]
         public Input<bool>? EgressShapingEnabled { get; set; }
 
         /// <summary>
-        /// The peak bandwidth during bursts
-        /// in bits per second if egress traffic shaping is enabled on the port.
+        /// The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         /// </summary>
         [Input("egressShapingPeakBandwidth")]
         public Input<int>? EgressShapingPeakBandwidth { get; set; }
 
         /// <summary>
-        /// If `true`, the teaming policy will re-activate failed
-        /// uplinks higher in precedence when they come back up.
+        /// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         /// </summary>
         [Input("failback")]
         public Input<bool>? Failback { get; set; }
@@ -1691,8 +1509,7 @@ namespace Pulumi.VSphere
         private InputList<Inputs.DistributedVirtualSwitchHostGetArgs>? _hosts;
 
         /// <summary>
-        /// Use the `host` block to declare a host specification. The
-        /// options are:
+        /// A host member specification.
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchHostGetArgs> Hosts
         {
@@ -1701,36 +1518,31 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Whether to ignore existing PVLAN
-        /// mappings not managed by this resource. Defaults to false.
+        /// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
         /// </summary>
         [Input("ignoreOtherPvlanMappings")]
         public Input<bool>? IgnoreOtherPvlanMappings { get; set; }
 
         /// <summary>
-        /// The average bandwidth in
-        /// bits per second if ingress traffic shaping is enabled on the port.
+        /// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingAverageBandwidth")]
         public Input<int>? IngressShapingAverageBandwidth { get; set; }
 
         /// <summary>
-        /// The maximum burst size allowed in
-        /// bytes if ingress traffic shaping is enabled on the port.
+        /// The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingBurstSize")]
         public Input<int>? IngressShapingBurstSize { get; set; }
 
         /// <summary>
-        /// `true` if the traffic shaper is
-        /// enabled on the port for ingress traffic.
+        /// True if the traffic shaper is enabled for ingress traffic on the port.
         /// </summary>
         [Input("ingressShapingEnabled")]
         public Input<bool>? IngressShapingEnabled { get; set; }
 
         /// <summary>
-        /// The peak bandwidth during
-        /// bursts in bits per second if ingress traffic shaping is enabled on the port.
+        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingPeakBandwidth")]
         public Input<int>? IngressShapingPeakBandwidth { get; set; }
@@ -1775,14 +1587,13 @@ namespace Pulumi.VSphere
         public Input<string>? LacpApiVersion { get; set; }
 
         /// <summary>
-        /// Enables LACP for the ports that this policy
-        /// applies to.
+        /// Whether or not to enable LACP on all uplink ports.
         /// </summary>
         [Input("lacpEnabled")]
         public Input<bool>? LacpEnabled { get; set; }
 
         /// <summary>
-        /// The LACP mode. Can be one of `active` or `passive`.
+        /// The uplink LACP mode to use. Can be one of active or passive.
         /// </summary>
         [Input("lacpMode")]
         public Input<string>? LacpMode { get; set; }
@@ -1845,77 +1656,63 @@ namespace Pulumi.VSphere
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The number of seconds after which
-        /// active flows are forced to be exported to the collector. Allowed range is
-        /// `60` to `3600`. Default: `60`.
+        /// The number of seconds after which active flows are forced to be exported to the collector.
         /// </summary>
         [Input("netflowActiveFlowTimeout")]
         public Input<int>? NetflowActiveFlowTimeout { get; set; }
 
         /// <summary>
-        /// IP address for the Netflow
-        /// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
-        /// Must be set before Netflow can be enabled.
+        /// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
+        /// later.
         /// </summary>
         [Input("netflowCollectorIpAddress")]
         public Input<string>? NetflowCollectorIpAddress { get; set; }
 
         /// <summary>
-        /// Port for the Netflow collector. This
-        /// must be set before Netflow can be enabled.
+        /// The port for the netflow collector.
         /// </summary>
         [Input("netflowCollectorPort")]
         public Input<int>? NetflowCollectorPort { get; set; }
 
         /// <summary>
-        /// Enables Netflow on all ports that this policy
-        /// applies to.
+        /// Indicates whether to enable netflow on all ports.
         /// </summary>
         [Input("netflowEnabled")]
         public Input<bool>? NetflowEnabled { get; set; }
 
         /// <summary>
-        /// The number of seconds after which
-        /// idle flows are forced to be exported to the collector. Allowed range is `10`
-        /// to `600`. Default: `15`.
+        /// The number of seconds after which idle flows are forced to be exported to the collector.
         /// </summary>
         [Input("netflowIdleFlowTimeout")]
         public Input<int>? NetflowIdleFlowTimeout { get; set; }
 
         /// <summary>
-        /// Whether to limit analysis to
-        /// traffic that has both source and destination served by the same host.
-        /// Default: `false`.
+        /// Whether to limit analysis to traffic that has both source and destination served by the same host.
         /// </summary>
         [Input("netflowInternalFlowsOnly")]
         public Input<bool>? NetflowInternalFlowsOnly { get; set; }
 
         /// <summary>
-        /// The observation domain ID for
-        /// the Netflow collector.
+        /// The observation Domain ID for the netflow collector.
         /// </summary>
         [Input("netflowObservationDomainId")]
         public Input<int>? NetflowObservationDomainId { get; set; }
 
         /// <summary>
-        /// The ratio of total number of packets to
-        /// the number of packets analyzed. The default is `0`, which indicates that the
-        /// VDS should analyze all packets. The maximum value is `1000`, which
-        /// indicates an analysis rate of 0.001%.
+        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
+        /// packets are analyzed.
         /// </summary>
         [Input("netflowSamplingRate")]
         public Input<int>? NetflowSamplingRate { get; set; }
 
         /// <summary>
-        /// Set to `true` to enable
-        /// network I/O control. Default: `false`.
+        /// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
         /// </summary>
         [Input("networkResourceControlEnabled")]
         public Input<bool>? NetworkResourceControlEnabled { get; set; }
 
         /// <summary>
-        /// The version of network I/O
-        /// control to use. Can be one of `version2` or `version3`. Default: `version2`.
+        /// The network I/O control version to use. Can be one of version2 or version3.
         /// </summary>
         [Input("networkResourceControlVersion")]
         public Input<string>? NetworkResourceControlVersion { get; set; }
@@ -1945,15 +1742,13 @@ namespace Pulumi.VSphere
         public Input<string>? NfsShareLevel { get; set; }
 
         /// <summary>
-        /// If `true`, the teaming policy will notify the
-        /// broadcast network of an uplink failover, triggering cache updates.
+        /// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         /// </summary>
         [Input("notifySwitches")]
         public Input<bool>? NotifySwitches { get; set; }
 
         /// <summary>
-        /// Used to define a secondary VLAN
-        /// ID when using private VLANs.
+        /// The secondary VLAN ID for this port.
         /// </summary>
         [Input("portPrivateSecondaryVlanId")]
         public Input<int>? PortPrivateSecondaryVlanId { get; set; }
@@ -1962,8 +1757,7 @@ namespace Pulumi.VSphere
         private InputList<Inputs.DistributedVirtualSwitchPvlanMappingGetArgs>? _pvlanMappings;
 
         /// <summary>
-        /// Use the `pvlan_mapping` block to declare a
-        /// private VLAN mapping. The options are:
+        /// A private VLAN (PVLAN) mapping.
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchPvlanMappingGetArgs> PvlanMappings
         {
@@ -1975,10 +1769,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _standbyUplinks;
 
         /// <summary>
-        /// A list of standby uplinks to be used in
-        /// failover. These uplinks need to match the definitions in the
-        /// `uplinks` VDS argument. See
-        /// here for more details.
+        /// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         public InputList<string> StandbyUplinks
         {
@@ -2001,16 +1792,15 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The uplink teaming policy. Can be one of
-        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
-        /// `failover_explicit`, or `loadbalance_loadbased`.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+        /// failover_explicit, or loadbalance_loadbased.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }
 
         /// <summary>
-        /// Forward all traffic transmitted by ports for which
-        /// this policy applies to its VDS uplinks.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+        /// forwarded done by the switch.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -2019,11 +1809,8 @@ namespace Pulumi.VSphere
         private InputList<string>? _uplinks;
 
         /// <summary>
-        /// A list of strings that uniquely identifies the names
-        /// of the uplinks on the VDS across hosts. The number of items in this list
-        /// controls the number of uplinks that exist on the VDS, in addition to the
-        /// names. See here for an example on how to
-        /// use this option.
+        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
+        /// across hosts.
         /// </summary>
         public InputList<string> Uplinks
         {
@@ -2097,40 +1884,7 @@ namespace Pulumi.VSphere
         private InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs>? _vlanRanges;
 
         /// <summary>
-        /// Used to denote VLAN trunking. Use the `min_vlan`
-        /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-        /// `vlan_range` definitions are allowed, but they must not overlap. Example
-        /// below:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
-        ///     {
-        ///         VlanRanges = new[]
-        ///         {
-        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
-        ///             {
-        ///                 MinVlan = 100,
-        ///                 MaxVlan = 199,
-        ///             },
-        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
-        ///             {
-        ///                 MinVlan = 300,
-        ///                 MaxVlan = 399,
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs> VlanRanges
         {

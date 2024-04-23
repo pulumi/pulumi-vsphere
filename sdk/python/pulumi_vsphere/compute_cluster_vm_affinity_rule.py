@@ -260,7 +260,6 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         then creates an affinity rule for these two virtual machines, ensuring they
         will run on the same host whenever possible.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -293,13 +292,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[v.id for k, v in vm])
         ```
-        <!--End PulumiCodeChooser -->
 
         The following example creates an affinity rule for a set of virtual machines
         in the cluster by looking up the virtual machine UUIDs from the
         `VirtualMachine` data source.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -319,7 +316,6 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[__item.id for __item in vms_get_virtual_machine])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 
@@ -382,7 +378,6 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         then creates an affinity rule for these two virtual machines, ensuring they
         will run on the same host whenever possible.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -415,13 +410,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[v.id for k, v in vm])
         ```
-        <!--End PulumiCodeChooser -->
 
         The following example creates an affinity rule for a set of virtual machines
         in the cluster by looking up the virtual machine UUIDs from the
         `VirtualMachine` data source.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -441,7 +434,6 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[__item.id for __item in vms_get_virtual_machine])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Importing
 

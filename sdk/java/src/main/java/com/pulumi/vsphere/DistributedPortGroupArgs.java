@@ -124,16 +124,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow the port shutdown
-     * policy to be overridden on an individual port.
+     * Allow the blocked setting of an individual port to override the setting in the portgroup.
      * 
      */
     @Import(name="blockOverrideAllowed")
     private @Nullable Output<Boolean> blockOverrideAllowed;
 
     /**
-     * @return Allow the port shutdown
-     * policy to be overridden on an individual port.
+     * @return Allow the blocked setting of an individual port to override the setting in the portgroup.
      * 
      */
     public Optional<Output<Boolean>> blockOverrideAllowed() {
@@ -391,16 +389,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow a port in this port group to be
-     * moved to another port group while it is connected.
+     * Allow a live port to be moved in and out of the portgroup.
      * 
      */
     @Import(name="livePortMovingAllowed")
     private @Nullable Output<Boolean> livePortMovingAllowed;
 
     /**
-     * @return Allow a port in this port group to be
-     * moved to another port group while it is connected.
+     * @return Allow a live port to be moved in and out of the portgroup.
      * 
      */
     public Optional<Output<Boolean>> livePortMovingAllowed() {
@@ -438,18 +434,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow the
-     * [Netflow policy][netflow-policy] on this port group to be overridden on an
-     * individual port.
+     * Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
      * 
      */
     @Import(name="netflowOverrideAllowed")
     private @Nullable Output<Boolean> netflowOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [Netflow policy][netflow-policy] on this port group to be overridden on an
-     * individual port.
+     * @return Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
      * 
      */
     public Optional<Output<Boolean>> netflowOverrideAllowed() {
@@ -476,16 +468,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow the network
-     * resource pool set on this port group to be overridden on an individual port.
+     * Allow the network resource pool of an individual port to override the setting in the portgroup.
      * 
      */
     @Import(name="networkResourcePoolOverrideAllowed")
     private @Nullable Output<Boolean> networkResourcePoolOverrideAllowed;
 
     /**
-     * @return Allow the network
-     * resource pool set on this port group to be overridden on an individual port.
+     * @return Allow the network resource pool of an individual port to override the setting in the portgroup.
      * 
      */
     public Optional<Output<Boolean>> networkResourcePoolOverrideAllowed() {
@@ -525,16 +515,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Reset a port&#39;s settings to the
-     * settings defined on this port group policy when the port disconnects.
+     * Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
      * 
      */
     @Import(name="portConfigResetAtDisconnect")
     private @Nullable Output<Boolean> portConfigResetAtDisconnect;
 
     /**
-     * @return Reset a port&#39;s settings to the
-     * settings defined on this port group policy when the port disconnects.
+     * @return Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
      * 
      */
     public Optional<Output<Boolean>> portConfigResetAtDisconnect() {
@@ -580,18 +568,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow the
-     * [security policy settings][sec-policy-settings] defined in this port group
-     * policy to be overridden on an individual port.
+     * Allow security policy settings on a port to override those on the portgroup.
      * 
      */
     @Import(name="securityPolicyOverrideAllowed")
     private @Nullable Output<Boolean> securityPolicyOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [security policy settings][sec-policy-settings] defined in this port group
-     * policy to be overridden on an individual port.
+     * @return Allow security policy settings on a port to override those on the portgroup.
      * 
      */
     public Optional<Output<Boolean>> securityPolicyOverrideAllowed() {
@@ -599,18 +583,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow the
-     * [traffic shaping options][traffic-shaping-settings] on this port group policy
-     * to be overridden on an individual port.
+     * Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
      * 
      */
     @Import(name="shapingOverrideAllowed")
     private @Nullable Output<Boolean> shapingOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [traffic shaping options][traffic-shaping-settings] on this port group policy
-     * to be overridden on an individual port.
+     * @return Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
      * 
      */
     public Optional<Output<Boolean>> shapingOverrideAllowed() {
@@ -665,16 +645,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow any traffic filters on
-     * this port group to be overridden on an individual port.
+     * Allow any filter policies set on the individual port to override those in the portgroup.
      * 
      */
     @Import(name="trafficFilterOverrideAllowed")
     private @Nullable Output<Boolean> trafficFilterOverrideAllowed;
 
     /**
-     * @return Allow any traffic filters on
-     * this port group to be overridden on an individual port.
+     * @return Allow any filter policies set on the individual port to override those in the portgroup.
      * 
      */
     public Optional<Output<Boolean>> trafficFilterOverrideAllowed() {
@@ -716,18 +694,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow the
-     * [uplink teaming options][uplink-teaming-settings] on this port group to be
-     * overridden on an individual port.
+     * Allow the uplink teaming policies on a port to override those on the portgroup.
      * 
      */
     @Import(name="uplinkTeamingOverrideAllowed")
     private @Nullable Output<Boolean> uplinkTeamingOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [uplink teaming options][uplink-teaming-settings] on this port group to be
-     * overridden on an individual port.
+     * @return Allow the uplink teaming policies on a port to override those on the portgroup.
      * 
      */
     public Optional<Output<Boolean>> uplinkTeamingOverrideAllowed() {
@@ -750,18 +724,14 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow the
-     * [VLAN settings][vlan-settings] on this port group to be overridden on an
-     * individual port.
+     * Allow the VLAN configuration on a port to override those on the portgroup.
      * 
      */
     @Import(name="vlanOverrideAllowed")
     private @Nullable Output<Boolean> vlanOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [VLAN settings][vlan-settings] on this port group to be overridden on an
-     * individual port.
+     * @return Allow the VLAN configuration on a port to override those on the portgroup.
      * 
      */
     public Optional<Output<Boolean>> vlanOverrideAllowed() {
@@ -1001,8 +971,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param blockOverrideAllowed Allow the port shutdown
-         * policy to be overridden on an individual port.
+         * @param blockOverrideAllowed Allow the blocked setting of an individual port to override the setting in the portgroup.
          * 
          * @return builder
          * 
@@ -1013,8 +982,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param blockOverrideAllowed Allow the port shutdown
-         * policy to be overridden on an individual port.
+         * @param blockOverrideAllowed Allow the blocked setting of an individual port to override the setting in the portgroup.
          * 
          * @return builder
          * 
@@ -1370,8 +1338,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param livePortMovingAllowed Allow a port in this port group to be
-         * moved to another port group while it is connected.
+         * @param livePortMovingAllowed Allow a live port to be moved in and out of the portgroup.
          * 
          * @return builder
          * 
@@ -1382,8 +1349,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param livePortMovingAllowed Allow a port in this port group to be
-         * moved to another port group while it is connected.
+         * @param livePortMovingAllowed Allow a live port to be moved in and out of the portgroup.
          * 
          * @return builder
          * 
@@ -1435,9 +1401,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netflowOverrideAllowed Allow the
-         * [Netflow policy][netflow-policy] on this port group to be overridden on an
-         * individual port.
+         * @param netflowOverrideAllowed Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
          * 
          * @return builder
          * 
@@ -1448,9 +1412,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netflowOverrideAllowed Allow the
-         * [Netflow policy][netflow-policy] on this port group to be overridden on an
-         * individual port.
+         * @param netflowOverrideAllowed Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
          * 
          * @return builder
          * 
@@ -1485,8 +1447,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkResourcePoolOverrideAllowed Allow the network
-         * resource pool set on this port group to be overridden on an individual port.
+         * @param networkResourcePoolOverrideAllowed Allow the network resource pool of an individual port to override the setting in the portgroup.
          * 
          * @return builder
          * 
@@ -1497,8 +1458,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkResourcePoolOverrideAllowed Allow the network
-         * resource pool set on this port group to be overridden on an individual port.
+         * @param networkResourcePoolOverrideAllowed Allow the network resource pool of an individual port to override the setting in the portgroup.
          * 
          * @return builder
          * 
@@ -1552,8 +1512,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param portConfigResetAtDisconnect Reset a port&#39;s settings to the
-         * settings defined on this port group policy when the port disconnects.
+         * @param portConfigResetAtDisconnect Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
          * 
          * @return builder
          * 
@@ -1564,8 +1523,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param portConfigResetAtDisconnect Reset a port&#39;s settings to the
-         * settings defined on this port group policy when the port disconnects.
+         * @param portConfigResetAtDisconnect Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
          * 
          * @return builder
          * 
@@ -1625,9 +1583,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityPolicyOverrideAllowed Allow the
-         * [security policy settings][sec-policy-settings] defined in this port group
-         * policy to be overridden on an individual port.
+         * @param securityPolicyOverrideAllowed Allow security policy settings on a port to override those on the portgroup.
          * 
          * @return builder
          * 
@@ -1638,9 +1594,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityPolicyOverrideAllowed Allow the
-         * [security policy settings][sec-policy-settings] defined in this port group
-         * policy to be overridden on an individual port.
+         * @param securityPolicyOverrideAllowed Allow security policy settings on a port to override those on the portgroup.
          * 
          * @return builder
          * 
@@ -1650,9 +1604,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param shapingOverrideAllowed Allow the
-         * [traffic shaping options][traffic-shaping-settings] on this port group policy
-         * to be overridden on an individual port.
+         * @param shapingOverrideAllowed Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
          * 
          * @return builder
          * 
@@ -1663,9 +1615,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param shapingOverrideAllowed Allow the
-         * [traffic shaping options][traffic-shaping-settings] on this port group policy
-         * to be overridden on an individual port.
+         * @param shapingOverrideAllowed Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
          * 
          * @return builder
          * 
@@ -1760,8 +1710,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficFilterOverrideAllowed Allow any traffic filters on
-         * this port group to be overridden on an individual port.
+         * @param trafficFilterOverrideAllowed Allow any filter policies set on the individual port to override those in the portgroup.
          * 
          * @return builder
          * 
@@ -1772,8 +1721,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficFilterOverrideAllowed Allow any traffic filters on
-         * this port group to be overridden on an individual port.
+         * @param trafficFilterOverrideAllowed Allow any filter policies set on the individual port to override those in the portgroup.
          * 
          * @return builder
          * 
@@ -1829,9 +1777,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uplinkTeamingOverrideAllowed Allow the
-         * [uplink teaming options][uplink-teaming-settings] on this port group to be
-         * overridden on an individual port.
+         * @param uplinkTeamingOverrideAllowed Allow the uplink teaming policies on a port to override those on the portgroup.
          * 
          * @return builder
          * 
@@ -1842,9 +1788,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uplinkTeamingOverrideAllowed Allow the
-         * [uplink teaming options][uplink-teaming-settings] on this port group to be
-         * overridden on an individual port.
+         * @param uplinkTeamingOverrideAllowed Allow the uplink teaming policies on a port to override those on the portgroup.
          * 
          * @return builder
          * 
@@ -1875,9 +1819,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vlanOverrideAllowed Allow the
-         * [VLAN settings][vlan-settings] on this port group to be overridden on an
-         * individual port.
+         * @param vlanOverrideAllowed Allow the VLAN configuration on a port to override those on the portgroup.
          * 
          * @return builder
          * 
@@ -1888,9 +1830,7 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vlanOverrideAllowed Allow the
-         * [VLAN settings][vlan-settings] on this port group to be overridden on an
-         * individual port.
+         * @param vlanOverrideAllowed Allow the VLAN configuration on a port to override those on the portgroup.
          * 
          * @return builder
          * 

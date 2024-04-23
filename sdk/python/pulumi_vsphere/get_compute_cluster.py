@@ -91,7 +91,6 @@ def get_compute_cluster(datacenter_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -100,7 +99,6 @@ def get_compute_cluster(datacenter_id: Optional[str] = None,
     compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
         datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID
@@ -139,7 +137,6 @@ def get_compute_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -148,7 +145,6 @@ def get_compute_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[str
     compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
         datacenter_id=datacenter.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter_id: The managed object reference ID

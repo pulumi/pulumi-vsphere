@@ -14,18 +14,15 @@ namespace Pulumi.VSphere.Outputs
     public sealed class DistributedVirtualSwitchPvlanMapping
     {
         /// <summary>
-        /// The primary VLAN ID. The VLAN IDs of 0 and
-        /// 4095 are reserved and cannot be used in this property.
+        /// The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         /// </summary>
         public readonly int PrimaryVlanId;
         /// <summary>
-        /// The private VLAN type. Valid values are
-        /// promiscuous, community and isolated.
+        /// The private VLAN type. Valid values are promiscuous, community and isolated.
         /// </summary>
         public readonly string PvlanType;
         /// <summary>
-        /// The secondary VLAN ID. The VLAN IDs of 0
-        /// and 4095 are reserved and cannot be used in this property.
+        /// The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         /// </summary>
         public readonly int SecondaryVlanId;
 

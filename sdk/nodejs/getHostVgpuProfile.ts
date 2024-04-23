@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ### To Return All VGPU Profiles
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -30,11 +29,9 @@ import * as utilities from "./utilities";
  *     hostId: host.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### With VGPU Profile Name_regex
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -51,7 +48,6 @@ import * as utilities from "./utilities";
  *     nameRegex: "a100",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostVgpuProfile(args: GetHostVgpuProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetHostVgpuProfileResult> {
 
@@ -110,7 +106,6 @@ export interface GetHostVgpuProfileResult {
  *
  * ### To Return All VGPU Profiles
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -126,11 +121,9 @@ export interface GetHostVgpuProfileResult {
  *     hostId: host.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### With VGPU Profile Name_regex
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -147,7 +140,6 @@ export interface GetHostVgpuProfileResult {
  *     nameRegex: "a100",
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostVgpuProfileOutput(args: GetHostVgpuProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostVgpuProfileResult> {
     return pulumi.output(args).apply((a: any) => getHostVgpuProfile(a, opts))

@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     address: "esxi-01.example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostThumbprint(args: GetHostThumbprintArgs, opts?: pulumi.InvokeOptions): Promise<GetHostThumbprintResult> {
 
@@ -73,7 +71,6 @@ export interface GetHostThumbprintResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -82,7 +79,6 @@ export interface GetHostThumbprintResult {
  *     address: "esxi-01.example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostThumbprintOutput(args: GetHostThumbprintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostThumbprintResult> {
     return pulumi.output(args).apply((a: any) => getHostThumbprint(a, opts))

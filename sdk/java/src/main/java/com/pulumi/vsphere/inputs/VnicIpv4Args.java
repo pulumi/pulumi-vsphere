@@ -17,14 +17,14 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
     public static final VnicIpv4Args Empty = new VnicIpv4Args();
 
     /**
-     * Use DHCP to configure the interface&#39;s IPv6 stack.
+     * Use DHCP to configure the interface&#39;s IPv4 stack.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<Boolean> dhcp;
 
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -32,14 +32,14 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     * IP address of the default gateway, if DHCP is not set.
      * 
      */
     @Import(name="gw")
     private @Nullable Output<String> gw;
 
     /**
-     * @return IP address of the default gateway, if DHCP or autoconfig is not set.
+     * @return IP address of the default gateway, if DHCP is not set.
      * 
      */
     public Optional<Output<String>> gw() {
@@ -47,14 +47,14 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address of the interface, if DHCP is not set.
+     * address of the interface, if DHCP is not set.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return Address of the interface, if DHCP is not set.
+     * @return address of the interface, if DHCP is not set.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -62,14 +62,14 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Netmask of the interface, if DHCP is not set.
+     * netmask of the interface, if DHCP is not set.
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return Netmask of the interface, if DHCP is not set.
+     * @return netmask of the interface, if DHCP is not set.
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -104,7 +104,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp Use DHCP to configure the interface&#39;s IPv6 stack.
+         * @param dhcp Use DHCP to configure the interface&#39;s IPv4 stack.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp Use DHCP to configure the interface&#39;s IPv6 stack.
+         * @param dhcp Use DHCP to configure the interface&#39;s IPv4 stack.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gw IP address of the default gateway, if DHCP or autoconfig is not set.
+         * @param gw IP address of the default gateway, if DHCP is not set.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gw IP address of the default gateway, if DHCP or autoconfig is not set.
+         * @param gw IP address of the default gateway, if DHCP is not set.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip Address of the interface, if DHCP is not set.
+         * @param ip address of the interface, if DHCP is not set.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip Address of the interface, if DHCP is not set.
+         * @param ip address of the interface, if DHCP is not set.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netmask Netmask of the interface, if DHCP is not set.
+         * @param netmask netmask of the interface, if DHCP is not set.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netmask Netmask of the interface, if DHCP is not set.
+         * @param netmask netmask of the interface, if DHCP is not set.
          * 
          * @return builder
          * 

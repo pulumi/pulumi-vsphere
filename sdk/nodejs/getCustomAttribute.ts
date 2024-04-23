@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     name: "test-attribute",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
 
@@ -68,7 +66,6 @@ export interface GetCustomAttributeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -77,7 +74,6 @@ export interface GetCustomAttributeResult {
  *     name: "test-attribute",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomAttributeOutput(args: GetCustomAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomAttributeResult> {
     return pulumi.output(args).apply((a: any) => getCustomAttribute(a, opts))

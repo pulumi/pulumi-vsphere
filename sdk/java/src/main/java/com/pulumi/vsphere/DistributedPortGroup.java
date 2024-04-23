@@ -118,16 +118,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.blockAllPorts;
     }
     /**
-     * Allow the port shutdown
-     * policy to be overridden on an individual port.
+     * Allow the blocked setting of an individual port to override the setting in the portgroup.
      * 
      */
     @Export(name="blockOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockOverrideAllowed;
 
     /**
-     * @return Allow the port shutdown
-     * policy to be overridden on an individual port.
+     * @return Allow the blocked setting of an individual port to override the setting in the portgroup.
      * 
      */
     public Output<Optional<Boolean>> blockOverrideAllowed() {
@@ -398,16 +396,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.lacpMode;
     }
     /**
-     * Allow a port in this port group to be
-     * moved to another port group while it is connected.
+     * Allow a live port to be moved in and out of the portgroup.
      * 
      */
     @Export(name="livePortMovingAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> livePortMovingAllowed;
 
     /**
-     * @return Allow a port in this port group to be
-     * moved to another port group while it is connected.
+     * @return Allow a live port to be moved in and out of the portgroup.
      * 
      */
     public Output<Optional<Boolean>> livePortMovingAllowed() {
@@ -442,18 +438,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.netflowEnabled;
     }
     /**
-     * Allow the
-     * [Netflow policy][netflow-policy] on this port group to be overridden on an
-     * individual port.
+     * Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
      * 
      */
     @Export(name="netflowOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> netflowOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [Netflow policy][netflow-policy] on this port group to be overridden on an
-     * individual port.
+     * @return Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
      * 
      */
     public Output<Optional<Boolean>> netflowOverrideAllowed() {
@@ -478,16 +470,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkResourcePoolKey);
     }
     /**
-     * Allow the network
-     * resource pool set on this port group to be overridden on an individual port.
+     * Allow the network resource pool of an individual port to override the setting in the portgroup.
      * 
      */
     @Export(name="networkResourcePoolOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> networkResourcePoolOverrideAllowed;
 
     /**
-     * @return Allow the network
-     * resource pool set on this port group to be overridden on an individual port.
+     * @return Allow the network resource pool of an individual port to override the setting in the portgroup.
      * 
      */
     public Output<Optional<Boolean>> networkResourcePoolOverrideAllowed() {
@@ -524,16 +514,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.numberOfPorts;
     }
     /**
-     * Reset a port&#39;s settings to the
-     * settings defined on this port group policy when the port disconnects.
+     * Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
      * 
      */
     @Export(name="portConfigResetAtDisconnect", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> portConfigResetAtDisconnect;
 
     /**
-     * @return Reset a port&#39;s settings to the
-     * settings defined on this port group policy when the port disconnects.
+     * @return Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
      * 
      */
     public Output<Optional<Boolean>> portConfigResetAtDisconnect() {
@@ -576,36 +564,28 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.portPrivateSecondaryVlanId;
     }
     /**
-     * Allow the
-     * [security policy settings][sec-policy-settings] defined in this port group
-     * policy to be overridden on an individual port.
+     * Allow security policy settings on a port to override those on the portgroup.
      * 
      */
     @Export(name="securityPolicyOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> securityPolicyOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [security policy settings][sec-policy-settings] defined in this port group
-     * policy to be overridden on an individual port.
+     * @return Allow security policy settings on a port to override those on the portgroup.
      * 
      */
     public Output<Optional<Boolean>> securityPolicyOverrideAllowed() {
         return Codegen.optional(this.securityPolicyOverrideAllowed);
     }
     /**
-     * Allow the
-     * [traffic shaping options][traffic-shaping-settings] on this port group policy
-     * to be overridden on an individual port.
+     * Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
      * 
      */
     @Export(name="shapingOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shapingOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [traffic shaping options][traffic-shaping-settings] on this port group policy
-     * to be overridden on an individual port.
+     * @return Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
      * 
      */
     public Output<Optional<Boolean>> shapingOverrideAllowed() {
@@ -656,16 +636,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.teamingPolicy;
     }
     /**
-     * Allow any traffic filters on
-     * this port group to be overridden on an individual port.
+     * Allow any filter policies set on the individual port to override those in the portgroup.
      * 
      */
     @Export(name="trafficFilterOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> trafficFilterOverrideAllowed;
 
     /**
-     * @return Allow any traffic filters on
-     * this port group to be overridden on an individual port.
+     * @return Allow any filter policies set on the individual port to override those in the portgroup.
      * 
      */
     public Output<Optional<Boolean>> trafficFilterOverrideAllowed() {
@@ -704,18 +682,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.type);
     }
     /**
-     * Allow the
-     * [uplink teaming options][uplink-teaming-settings] on this port group to be
-     * overridden on an individual port.
+     * Allow the uplink teaming policies on a port to override those on the portgroup.
      * 
      */
     @Export(name="uplinkTeamingOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> uplinkTeamingOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [uplink teaming options][uplink-teaming-settings] on this port group to be
-     * overridden on an individual port.
+     * @return Allow the uplink teaming policies on a port to override those on the portgroup.
      * 
      */
     public Output<Optional<Boolean>> uplinkTeamingOverrideAllowed() {
@@ -736,18 +710,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.vlanId;
     }
     /**
-     * Allow the
-     * [VLAN settings][vlan-settings] on this port group to be overridden on an
-     * individual port.
+     * Allow the VLAN configuration on a port to override those on the portgroup.
      * 
      */
     @Export(name="vlanOverrideAllowed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vlanOverrideAllowed;
 
     /**
-     * @return Allow the
-     * [VLAN settings][vlan-settings] on this port group to be overridden on an
-     * individual port.
+     * @return Allow the VLAN configuration on a port to override those on the portgroup.
      * 
      */
     public Output<Optional<Boolean>> vlanOverrideAllowed() {
