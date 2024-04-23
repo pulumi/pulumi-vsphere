@@ -20,7 +20,6 @@ import (
 //
 // ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,11 +85,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a vnic attached to a portgroup using the default TCP/IP stack
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,7 +157,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Importing
 //

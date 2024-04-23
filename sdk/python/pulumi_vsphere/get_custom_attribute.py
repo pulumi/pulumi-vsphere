@@ -76,14 +76,12 @@ def get_custom_attribute(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     attribute = vsphere.get_custom_attribute(name="test-attribute")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the custom attribute.
@@ -114,14 +112,12 @@ def get_custom_attribute_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     attribute = vsphere.get_custom_attribute(name="test-attribute")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the custom attribute.

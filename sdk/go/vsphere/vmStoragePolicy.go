@@ -22,7 +22,6 @@ import (
 //
 // In this example, tags are first applied to datastores.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,11 +133,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Next, storage policies are created and `tagRules` are applied.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -216,11 +213,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -262,7 +257,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type VmStoragePolicy struct {
 	pulumi.CustomResourceState
 

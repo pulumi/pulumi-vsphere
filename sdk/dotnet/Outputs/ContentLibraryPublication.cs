@@ -14,11 +14,11 @@ namespace Pulumi.VSphere.Outputs
     public sealed class ContentLibraryPublication
     {
         /// <summary>
-        /// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+        /// Method to authenticate users. Must be `NONE` or `BASIC`.
         /// </summary>
         public readonly string? AuthenticationMethod;
         /// <summary>
-        /// Password used for authentication.
+        /// Password used by subscribers to authenticate.
         /// </summary>
         public readonly string? Password;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool? Published;
         /// <summary>
-        /// Username used for authentication.
+        /// Username used by subscribers to authenticate. Currently can only be `vcsp`.
         /// </summary>
         public readonly string? Username;
 

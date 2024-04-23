@@ -16,16 +16,14 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
     public static final DistributedVirtualSwitchPvlanMappingArgs Empty = new DistributedVirtualSwitchPvlanMappingArgs();
 
     /**
-     * The primary VLAN ID. The VLAN IDs of 0 and
-     * 4095 are reserved and cannot be used in this property.
+     * The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      * 
      */
     @Import(name="primaryVlanId", required=true)
     private Output<Integer> primaryVlanId;
 
     /**
-     * @return The primary VLAN ID. The VLAN IDs of 0 and
-     * 4095 are reserved and cannot be used in this property.
+     * @return The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      * 
      */
     public Output<Integer> primaryVlanId() {
@@ -33,16 +31,14 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
     }
 
     /**
-     * The private VLAN type. Valid values are
-     * promiscuous, community and isolated.
+     * The private VLAN type. Valid values are promiscuous, community and isolated.
      * 
      */
     @Import(name="pvlanType", required=true)
     private Output<String> pvlanType;
 
     /**
-     * @return The private VLAN type. Valid values are
-     * promiscuous, community and isolated.
+     * @return The private VLAN type. Valid values are promiscuous, community and isolated.
      * 
      */
     public Output<String> pvlanType() {
@@ -50,16 +46,14 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
     }
 
     /**
-     * The secondary VLAN ID. The VLAN IDs of 0
-     * and 4095 are reserved and cannot be used in this property.
+     * The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      * 
      */
     @Import(name="secondaryVlanId", required=true)
     private Output<Integer> secondaryVlanId;
 
     /**
-     * @return The secondary VLAN ID. The VLAN IDs of 0
-     * and 4095 are reserved and cannot be used in this property.
+     * @return The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      * 
      */
     public Output<Integer> secondaryVlanId() {
@@ -93,8 +87,7 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param primaryVlanId The primary VLAN ID. The VLAN IDs of 0 and
-         * 4095 are reserved and cannot be used in this property.
+         * @param primaryVlanId The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
          * 
          * @return builder
          * 
@@ -105,8 +98,7 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param primaryVlanId The primary VLAN ID. The VLAN IDs of 0 and
-         * 4095 are reserved and cannot be used in this property.
+         * @param primaryVlanId The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
          * 
          * @return builder
          * 
@@ -116,8 +108,7 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param pvlanType The private VLAN type. Valid values are
-         * promiscuous, community and isolated.
+         * @param pvlanType The private VLAN type. Valid values are promiscuous, community and isolated.
          * 
          * @return builder
          * 
@@ -128,8 +119,7 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param pvlanType The private VLAN type. Valid values are
-         * promiscuous, community and isolated.
+         * @param pvlanType The private VLAN type. Valid values are promiscuous, community and isolated.
          * 
          * @return builder
          * 
@@ -139,8 +129,7 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param secondaryVlanId The secondary VLAN ID. The VLAN IDs of 0
-         * and 4095 are reserved and cannot be used in this property.
+         * @param secondaryVlanId The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
          * 
          * @return builder
          * 
@@ -151,8 +140,7 @@ public final class DistributedVirtualSwitchPvlanMappingArgs extends com.pulumi.r
         }
 
         /**
-         * @param secondaryVlanId The secondary VLAN ID. The VLAN IDs of 0
-         * and 4095 are reserved and cannot be used in this property.
+         * @param secondaryVlanId The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
          * 
          * @return builder
          * 

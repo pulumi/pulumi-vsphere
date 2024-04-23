@@ -14,13 +14,11 @@ namespace Pulumi.VSphere.Outputs
     public sealed class DistributedVirtualSwitchHost
     {
         /// <summary>
-        /// The list of NIC devices to map to uplinks on the VDS,
-        /// added in order they are specified.
+        /// Name of the physical NIC to be added to the proxy switch.
         /// </summary>
         public readonly ImmutableArray<string> Devices;
         /// <summary>
-        /// The host system ID of the host to add to the
-        /// VDS.
+        /// The managed object ID of the host this specification applies to.
         /// </summary>
         public readonly string HostSystemId;
 

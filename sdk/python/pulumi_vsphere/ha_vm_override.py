@@ -31,60 +31,33 @@ class HaVmOverrideArgs:
                  ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a HaVmOverride resource.
-        :param pulumi.Input[str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
-               resource if changed.
-        :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
-               the override for.  Forces a new resource if changed.
-        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take
-               on this virtual machine if an APD status on an affected datastore clears in
-               the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-               `reset`.  Default: `useClusterDefault`.
-        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this
-               virtual machine when the cluster has detected loss to all paths to a relevant
-               datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-               `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Use `-1` to use
-               the cluster default. Default: `-1`.
-        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this
-               virtual machine when the cluster has detected a permanent device loss to a
-               relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-               `restartAggressive`. Default: `clusterDefault`.
-        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual
-               machine when a host has detected that it has been isolated from the rest of
-               the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-               `shutdown`. Default: `clusterIsolationResponse`.
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual
-               machine is not received within this configured interval, the virtual machine
-               is marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
-               which `ha_vm_maximum_resets` can operate. When this
-               window expires, no more resets are attempted regardless of the setting
-               configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
-        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
-               perform to this virtual machine when responding to a failure event. Default:
-               `3`
-        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
-               powering on this virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
-        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
-               when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-               `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or
-               not the cluster's default settings or the VM override settings specified in
-               this resource are used for virtual machine monitoring. The default is `true`
-               (use cluster defaults) - set to `false` to have overrides take effect.
-        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
-               machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-               Default: `clusterRestartPriority`.
-        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
-               vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-               specify the cluster default.  Default: `-1`.
+        :param pulumi.Input[str] compute_cluster_id: The managed object ID of the cluster.
+        :param pulumi.Input[str] virtual_machine_id: The managed object ID of the virtual machine.
+        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+               APD event. Can be one of useClusterDefault, none or reset.
+        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+               ha_datastore_apd_response. Specify -1 to use the cluster setting.
+        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+               clusterIsolationResponse, none, powerOff, or shutdown.
+        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+               as failed. The value is in seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+               time is allotted.
+        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
+        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
+        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used
+               for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+               lowest, low, medium, high, or highest.
+        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+               default.
         """
         pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
         pulumi.set(__self__, "virtual_machine_id", virtual_machine_id)
@@ -119,9 +92,7 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[str]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
-        resource if changed.
+        The managed object ID of the cluster.
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -133,8 +104,7 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="virtualMachineId")
     def virtual_machine_id(self) -> pulumi.Input[str]:
         """
-        The UUID of the virtual machine to create
-        the override for.  Forces a new resource if changed.
+        The managed object ID of the virtual machine.
         """
         return pulumi.get(self, "virtual_machine_id")
 
@@ -146,10 +116,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
     def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the action to take
-        on this virtual machine if an APD status on an affected datastore clears in
-        the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-        `reset`.  Default: `useClusterDefault`.
+        Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+        APD event. Can be one of useClusterDefault, none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
@@ -161,10 +129,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haDatastoreApdResponse")
     def ha_datastore_apd_response(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the action to take on this
-        virtual machine when the cluster has detected loss to all paths to a relevant
-        datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-        `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
+        Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+        datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
@@ -176,10 +142,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Controls the delay in seconds
-        to wait after an APD timeout event to execute the response action defined in
-        `ha_datastore_apd_response`. Use `-1` to use
-        the cluster default. Default: `-1`.
+        Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+        ha_datastore_apd_response. Specify -1 to use the cluster setting.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -191,10 +155,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haDatastorePdlResponse")
     def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the action to take on this
-        virtual machine when the cluster has detected a permanent device loss to a
-        relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-        `restartAggressive`. Default: `clusterDefault`.
+        Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+        datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
@@ -206,10 +168,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haHostIsolationResponse")
     def ha_host_isolation_response(self) -> Optional[pulumi.Input[str]]:
         """
-        The action to take on this virtual
-        machine when a host has detected that it has been isolated from the rest of
-        the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-        `shutdown`. Default: `clusterIsolationResponse`.
+        The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+        clusterIsolationResponse, none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
@@ -221,9 +181,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        If a heartbeat from this virtual
-        machine is not received within this configured interval, the virtual machine
-        is marked as failed. The value is in seconds. Default: `30`.
+        If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+        as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -235,12 +194,9 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[int]]:
         """
-        The length of the reset window in
-        which `ha_vm_maximum_resets` can operate. When this
-        window expires, no more resets are attempted regardless of the setting
-        configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        unlimited reset time is allotted. The value is specified in seconds. Default:
-        `-1` (no window).
+        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+        attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+        time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -252,9 +208,7 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmMaximumResets")
     def ha_vm_maximum_resets(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of resets that HA will
-        perform to this virtual machine when responding to a failure event. Default:
-        `3`
+        The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
         """
         return pulumi.get(self, "ha_vm_maximum_resets")
 
@@ -266,9 +220,7 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmMinimumUptime")
     def ha_vm_minimum_uptime(self) -> Optional[pulumi.Input[int]]:
         """
-        The time, in seconds, that HA waits after
-        powering on this virtual machine before monitoring for heartbeats. Default:
-        `120` (2 minutes).
+        The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
@@ -280,9 +232,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmMonitoring")
     def ha_vm_monitoring(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of virtual machine monitoring to use
-        when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-        `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
+        The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+        vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
@@ -294,10 +245,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmMonitoringUseClusterDefaults")
     def ha_vm_monitoring_use_cluster_defaults(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether or
-        not the cluster's default settings or the VM override settings specified in
-        this resource are used for virtual machine monitoring. The default is `true`
-        (use cluster defaults) - set to `false` to have overrides take effect.
+        Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used
+        for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
         """
         return pulumi.get(self, "ha_vm_monitoring_use_cluster_defaults")
 
@@ -309,10 +258,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmRestartPriority")
     def ha_vm_restart_priority(self) -> Optional[pulumi.Input[str]]:
         """
-        The restart priority for the virtual
-        machine when vSphere detects a host failure. Can be one of
-        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-        Default: `clusterRestartPriority`.
+        The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+        lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
@@ -324,9 +271,8 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haVmRestartTimeout")
     def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum time, in seconds, that
-        vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-        specify the cluster default.  Default: `-1`.
+        The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+        default.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
@@ -355,60 +301,33 @@ class _HaVmOverrideState:
                  virtual_machine_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HaVmOverride resources.
-        :param pulumi.Input[str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
-               resource if changed.
-        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take
-               on this virtual machine if an APD status on an affected datastore clears in
-               the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-               `reset`.  Default: `useClusterDefault`.
-        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this
-               virtual machine when the cluster has detected loss to all paths to a relevant
-               datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-               `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Use `-1` to use
-               the cluster default. Default: `-1`.
-        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this
-               virtual machine when the cluster has detected a permanent device loss to a
-               relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-               `restartAggressive`. Default: `clusterDefault`.
-        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual
-               machine when a host has detected that it has been isolated from the rest of
-               the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-               `shutdown`. Default: `clusterIsolationResponse`.
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual
-               machine is not received within this configured interval, the virtual machine
-               is marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
-               which `ha_vm_maximum_resets` can operate. When this
-               window expires, no more resets are attempted regardless of the setting
-               configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
-        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
-               perform to this virtual machine when responding to a failure event. Default:
-               `3`
-        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
-               powering on this virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
-        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
-               when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-               `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or
-               not the cluster's default settings or the VM override settings specified in
-               this resource are used for virtual machine monitoring. The default is `true`
-               (use cluster defaults) - set to `false` to have overrides take effect.
-        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
-               machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-               Default: `clusterRestartPriority`.
-        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
-               vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-               specify the cluster default.  Default: `-1`.
-        :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
-               the override for.  Forces a new resource if changed.
+        :param pulumi.Input[str] compute_cluster_id: The managed object ID of the cluster.
+        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+               APD event. Can be one of useClusterDefault, none or reset.
+        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+               ha_datastore_apd_response. Specify -1 to use the cluster setting.
+        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+               clusterIsolationResponse, none, powerOff, or shutdown.
+        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+               as failed. The value is in seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+               time is allotted.
+        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
+        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
+        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used
+               for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+               lowest, low, medium, high, or highest.
+        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+               default.
+        :param pulumi.Input[str] virtual_machine_id: The managed object ID of the virtual machine.
         """
         if compute_cluster_id is not None:
             pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
@@ -445,9 +364,7 @@ class _HaVmOverrideState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
-        resource if changed.
+        The managed object ID of the cluster.
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -459,10 +376,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
     def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the action to take
-        on this virtual machine if an APD status on an affected datastore clears in
-        the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-        `reset`.  Default: `useClusterDefault`.
+        Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+        APD event. Can be one of useClusterDefault, none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
@@ -474,10 +389,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haDatastoreApdResponse")
     def ha_datastore_apd_response(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the action to take on this
-        virtual machine when the cluster has detected loss to all paths to a relevant
-        datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-        `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
+        Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+        datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
@@ -489,10 +402,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Controls the delay in seconds
-        to wait after an APD timeout event to execute the response action defined in
-        `ha_datastore_apd_response`. Use `-1` to use
-        the cluster default. Default: `-1`.
+        Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+        ha_datastore_apd_response. Specify -1 to use the cluster setting.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -504,10 +415,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haDatastorePdlResponse")
     def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the action to take on this
-        virtual machine when the cluster has detected a permanent device loss to a
-        relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-        `restartAggressive`. Default: `clusterDefault`.
+        Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+        datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
@@ -519,10 +428,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haHostIsolationResponse")
     def ha_host_isolation_response(self) -> Optional[pulumi.Input[str]]:
         """
-        The action to take on this virtual
-        machine when a host has detected that it has been isolated from the rest of
-        the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-        `shutdown`. Default: `clusterIsolationResponse`.
+        The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+        clusterIsolationResponse, none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
@@ -534,9 +441,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        If a heartbeat from this virtual
-        machine is not received within this configured interval, the virtual machine
-        is marked as failed. The value is in seconds. Default: `30`.
+        If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+        as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -548,12 +454,9 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[int]]:
         """
-        The length of the reset window in
-        which `ha_vm_maximum_resets` can operate. When this
-        window expires, no more resets are attempted regardless of the setting
-        configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        unlimited reset time is allotted. The value is specified in seconds. Default:
-        `-1` (no window).
+        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+        attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+        time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -565,9 +468,7 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmMaximumResets")
     def ha_vm_maximum_resets(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of resets that HA will
-        perform to this virtual machine when responding to a failure event. Default:
-        `3`
+        The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
         """
         return pulumi.get(self, "ha_vm_maximum_resets")
 
@@ -579,9 +480,7 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmMinimumUptime")
     def ha_vm_minimum_uptime(self) -> Optional[pulumi.Input[int]]:
         """
-        The time, in seconds, that HA waits after
-        powering on this virtual machine before monitoring for heartbeats. Default:
-        `120` (2 minutes).
+        The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
@@ -593,9 +492,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmMonitoring")
     def ha_vm_monitoring(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of virtual machine monitoring to use
-        when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-        `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
+        The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+        vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
@@ -607,10 +505,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmMonitoringUseClusterDefaults")
     def ha_vm_monitoring_use_cluster_defaults(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether or
-        not the cluster's default settings or the VM override settings specified in
-        this resource are used for virtual machine monitoring. The default is `true`
-        (use cluster defaults) - set to `false` to have overrides take effect.
+        Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used
+        for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
         """
         return pulumi.get(self, "ha_vm_monitoring_use_cluster_defaults")
 
@@ -622,10 +518,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmRestartPriority")
     def ha_vm_restart_priority(self) -> Optional[pulumi.Input[str]]:
         """
-        The restart priority for the virtual
-        machine when vSphere detects a host failure. Can be one of
-        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-        Default: `clusterRestartPriority`.
+        The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+        lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
@@ -637,9 +531,8 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haVmRestartTimeout")
     def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum time, in seconds, that
-        vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-        specify the cluster default.  Default: `-1`.
+        The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+        default.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
@@ -651,8 +544,7 @@ class _HaVmOverrideState:
     @pulumi.getter(name="virtualMachineId")
     def virtual_machine_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of the virtual machine to create
-        the override for.  Forces a new resource if changed.
+        The managed object ID of the virtual machine.
         """
         return pulumi.get(self, "virtual_machine_id")
 
@@ -686,60 +578,33 @@ class HaVmOverride(pulumi.CustomResource):
         Create a HaVmOverride resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
-               resource if changed.
-        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take
-               on this virtual machine if an APD status on an affected datastore clears in
-               the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-               `reset`.  Default: `useClusterDefault`.
-        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this
-               virtual machine when the cluster has detected loss to all paths to a relevant
-               datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-               `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Use `-1` to use
-               the cluster default. Default: `-1`.
-        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this
-               virtual machine when the cluster has detected a permanent device loss to a
-               relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-               `restartAggressive`. Default: `clusterDefault`.
-        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual
-               machine when a host has detected that it has been isolated from the rest of
-               the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-               `shutdown`. Default: `clusterIsolationResponse`.
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual
-               machine is not received within this configured interval, the virtual machine
-               is marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
-               which `ha_vm_maximum_resets` can operate. When this
-               window expires, no more resets are attempted regardless of the setting
-               configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
-        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
-               perform to this virtual machine when responding to a failure event. Default:
-               `3`
-        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
-               powering on this virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
-        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
-               when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-               `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or
-               not the cluster's default settings or the VM override settings specified in
-               this resource are used for virtual machine monitoring. The default is `true`
-               (use cluster defaults) - set to `false` to have overrides take effect.
-        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
-               machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-               Default: `clusterRestartPriority`.
-        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
-               vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-               specify the cluster default.  Default: `-1`.
-        :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
-               the override for.  Forces a new resource if changed.
+        :param pulumi.Input[str] compute_cluster_id: The managed object ID of the cluster.
+        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+               APD event. Can be one of useClusterDefault, none or reset.
+        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+               ha_datastore_apd_response. Specify -1 to use the cluster setting.
+        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+               clusterIsolationResponse, none, powerOff, or shutdown.
+        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+               as failed. The value is in seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+               time is allotted.
+        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
+        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
+        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used
+               for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+               lowest, low, medium, high, or highest.
+        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+               default.
+        :param pulumi.Input[str] virtual_machine_id: The managed object ID of the virtual machine.
         """
         ...
     @overload
@@ -839,60 +704,33 @@ class HaVmOverride(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
-               resource if changed.
-        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take
-               on this virtual machine if an APD status on an affected datastore clears in
-               the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-               `reset`.  Default: `useClusterDefault`.
-        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this
-               virtual machine when the cluster has detected loss to all paths to a relevant
-               datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-               `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Use `-1` to use
-               the cluster default. Default: `-1`.
-        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this
-               virtual machine when the cluster has detected a permanent device loss to a
-               relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-               `restartAggressive`. Default: `clusterDefault`.
-        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual
-               machine when a host has detected that it has been isolated from the rest of
-               the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-               `shutdown`. Default: `clusterIsolationResponse`.
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual
-               machine is not received within this configured interval, the virtual machine
-               is marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
-               which `ha_vm_maximum_resets` can operate. When this
-               window expires, no more resets are attempted regardless of the setting
-               configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
-        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
-               perform to this virtual machine when responding to a failure event. Default:
-               `3`
-        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
-               powering on this virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
-        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
-               when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-               `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or
-               not the cluster's default settings or the VM override settings specified in
-               this resource are used for virtual machine monitoring. The default is `true`
-               (use cluster defaults) - set to `false` to have overrides take effect.
-        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
-               machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-               Default: `clusterRestartPriority`.
-        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
-               vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-               specify the cluster default.  Default: `-1`.
-        :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
-               the override for.  Forces a new resource if changed.
+        :param pulumi.Input[str] compute_cluster_id: The managed object ID of the cluster.
+        :param pulumi.Input[str] ha_datastore_apd_recovery_action: Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+               APD event. Can be one of useClusterDefault, none or reset.
+        :param pulumi.Input[str] ha_datastore_apd_response: Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+               ha_datastore_apd_response. Specify -1 to use the cluster setting.
+        :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+               datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+        :param pulumi.Input[str] ha_host_isolation_response: The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+               clusterIsolationResponse, none, powerOff, or shutdown.
+        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+               as failed. The value is in seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+               time is allotted.
+        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
+        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
+        :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[bool] ha_vm_monitoring_use_cluster_defaults: Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used
+               for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+        :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+               lowest, low, medium, high, or highest.
+        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+               default.
+        :param pulumi.Input[str] virtual_machine_id: The managed object ID of the virtual machine.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -919,9 +757,7 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[str]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
-        resource if changed.
+        The managed object ID of the cluster.
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -929,10 +765,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
     def ha_datastore_apd_recovery_action(self) -> pulumi.Output[Optional[str]]:
         """
-        Controls the action to take
-        on this virtual machine if an APD status on an affected datastore clears in
-        the middle of an APD event. Can be one of `useClusterDefault`, `none` or
-        `reset`.  Default: `useClusterDefault`.
+        Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
+        APD event. Can be one of useClusterDefault, none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
@@ -940,10 +774,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdResponse")
     def ha_datastore_apd_response(self) -> pulumi.Output[Optional[str]]:
         """
-        Controls the action to take on this
-        virtual machine when the cluster has detected loss to all paths to a relevant
-        datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
-        `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
+        Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
+        datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
@@ -951,10 +783,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[int]]:
         """
-        Controls the delay in seconds
-        to wait after an APD timeout event to execute the response action defined in
-        `ha_datastore_apd_response`. Use `-1` to use
-        the cluster default. Default: `-1`.
+        Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
+        ha_datastore_apd_response. Specify -1 to use the cluster setting.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -962,10 +792,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haDatastorePdlResponse")
     def ha_datastore_pdl_response(self) -> pulumi.Output[Optional[str]]:
         """
-        Controls the action to take on this
-        virtual machine when the cluster has detected a permanent device loss to a
-        relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
-        `restartAggressive`. Default: `clusterDefault`.
+        Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
+        datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
@@ -973,10 +801,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haHostIsolationResponse")
     def ha_host_isolation_response(self) -> pulumi.Output[Optional[str]]:
         """
-        The action to take on this virtual
-        machine when a host has detected that it has been isolated from the rest of
-        the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
-        `shutdown`. Default: `clusterIsolationResponse`.
+        The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
+        clusterIsolationResponse, none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
@@ -984,9 +810,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> pulumi.Output[Optional[int]]:
         """
-        If a heartbeat from this virtual
-        machine is not received within this configured interval, the virtual machine
-        is marked as failed. The value is in seconds. Default: `30`.
+        If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
+        as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -994,12 +819,9 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> pulumi.Output[Optional[int]]:
         """
-        The length of the reset window in
-        which `ha_vm_maximum_resets` can operate. When this
-        window expires, no more resets are attempted regardless of the setting
-        configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        unlimited reset time is allotted. The value is specified in seconds. Default:
-        `-1` (no window).
+        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+        attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
+        time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -1007,9 +829,7 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmMaximumResets")
     def ha_vm_maximum_resets(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum number of resets that HA will
-        perform to this virtual machine when responding to a failure event. Default:
-        `3`
+        The maximum number of resets that HA will perform to this virtual machine when responding to a failure event.
         """
         return pulumi.get(self, "ha_vm_maximum_resets")
 
@@ -1017,9 +837,7 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmMinimumUptime")
     def ha_vm_minimum_uptime(self) -> pulumi.Output[Optional[int]]:
         """
-        The time, in seconds, that HA waits after
-        powering on this virtual machine before monitoring for heartbeats. Default:
-        `120` (2 minutes).
+        The time, in seconds, that HA waits after powering on this virtual machine before monitoring for heartbeats.
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
@@ -1027,9 +845,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmMonitoring")
     def ha_vm_monitoring(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of virtual machine monitoring to use
-        when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
-        `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
+        The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
+        vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
@@ -1037,10 +854,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmMonitoringUseClusterDefaults")
     def ha_vm_monitoring_use_cluster_defaults(self) -> pulumi.Output[Optional[bool]]:
         """
-        Determines whether or
-        not the cluster's default settings or the VM override settings specified in
-        this resource are used for virtual machine monitoring. The default is `true`
-        (use cluster defaults) - set to `false` to have overrides take effect.
+        Determines whether or not the cluster's default settings or the VM override settings specified in this resource are used
+        for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
         """
         return pulumi.get(self, "ha_vm_monitoring_use_cluster_defaults")
 
@@ -1048,10 +863,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmRestartPriority")
     def ha_vm_restart_priority(self) -> pulumi.Output[Optional[str]]:
         """
-        The restart priority for the virtual
-        machine when vSphere detects a host failure. Can be one of
-        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
-        Default: `clusterRestartPriority`.
+        The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
+        lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
@@ -1059,9 +872,8 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haVmRestartTimeout")
     def ha_vm_restart_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum time, in seconds, that
-        vSphere HA will wait for this virtual machine to be ready. Use `-1` to
-        specify the cluster default.  Default: `-1`.
+        The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
+        default.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
@@ -1069,8 +881,7 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="virtualMachineId")
     def virtual_machine_id(self) -> pulumi.Output[str]:
         """
-        The UUID of the virtual machine to create
-        the override for.  Forces a new resource if changed.
+        The managed object ID of the virtual machine.
         """
         return pulumi.get(self, "virtual_machine_id")
 

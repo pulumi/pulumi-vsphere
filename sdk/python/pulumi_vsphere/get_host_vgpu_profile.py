@@ -94,7 +94,6 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
 
     ### To Return All VGPU Profiles
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -104,11 +103,9 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
         datacenter_id=datacenter.id)
     vgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ### With VGPU Profile Name_regex
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -119,7 +116,6 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
     vgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id,
         name_regex="a100")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.
@@ -153,7 +149,6 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
 
     ### To Return All VGPU Profiles
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -163,11 +158,9 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
         datacenter_id=datacenter.id)
     vgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ### With VGPU Profile Name_regex
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
@@ -178,7 +171,6 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
     vgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id,
         name_regex="a100")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.

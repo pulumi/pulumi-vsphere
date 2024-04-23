@@ -17,14 +17,14 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
     public static final ContentLibraryPublicationArgs Empty = new ContentLibraryPublicationArgs();
 
     /**
-     * Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+     * Method to authenticate users. Must be `NONE` or `BASIC`.
      * 
      */
     @Import(name="authenticationMethod")
     private @Nullable Output<String> authenticationMethod;
 
     /**
-     * @return Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+     * @return Method to authenticate users. Must be `NONE` or `BASIC`.
      * 
      */
     public Optional<Output<String>> authenticationMethod() {
@@ -32,14 +32,14 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Password used for authentication.
+     * Password used by subscribers to authenticate.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password used for authentication.
+     * @return Password used by subscribers to authenticate.
      * 
      */
     public Optional<Output<String>> password() {
@@ -77,14 +77,14 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Username used for authentication.
+     * Username used by subscribers to authenticate. Currently can only be `vcsp`.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username used for authentication.
+     * @return Username used by subscribers to authenticate. Currently can only be `vcsp`.
      * 
      */
     public Optional<Output<String>> username() {
@@ -120,7 +120,7 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param authenticationMethod Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+         * @param authenticationMethod Method to authenticate users. Must be `NONE` or `BASIC`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param authenticationMethod Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+         * @param authenticationMethod Method to authenticate users. Must be `NONE` or `BASIC`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password Password used for authentication.
+         * @param password Password used by subscribers to authenticate.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password Password used for authentication.
+         * @param password Password used by subscribers to authenticate.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username Username used for authentication.
+         * @param username Username used by subscribers to authenticate. Currently can only be `vcsp`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ContentLibraryPublicationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username Username used for authentication.
+         * @param username Username used by subscribers to authenticate. Currently can only be `vcsp`.
          * 
          * @return builder
          * 

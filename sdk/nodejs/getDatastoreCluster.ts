@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreClusterResult> {
 
@@ -73,7 +71,6 @@ export interface GetDatastoreClusterResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -86,7 +83,6 @@ export interface GetDatastoreClusterResult {
  *     datacenterId: datacenter.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatastoreClusterOutput(args: GetDatastoreClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreClusterResult> {
     return pulumi.output(args).apply((a: any) => getDatastoreCluster(a, opts))

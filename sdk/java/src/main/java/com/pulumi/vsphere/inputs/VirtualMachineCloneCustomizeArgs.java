@@ -96,14 +96,14 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
     }
 
     /**
-     * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * A specification of network interface configuration options.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<VirtualMachineCloneCustomizeNetworkInterfaceArgs>> networkInterfaces;
 
     /**
-     * @return A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * @return A specification of network interface configuration options.
      * 
      */
     public Optional<Output<List<VirtualMachineCloneCustomizeNetworkInterfaceArgs>>> networkInterfaces() {
@@ -313,7 +313,7 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkInterfaces A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+         * @param networkInterfaces A specification of network interface configuration options.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkInterfaces A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+         * @param networkInterfaces A specification of network interface configuration options.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkInterfaces A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+         * @param networkInterfaces A specification of network interface configuration options.
          * 
          * @return builder
          * 

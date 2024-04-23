@@ -19,7 +19,6 @@ namespace Pulumi.VSphere
         /// 
         /// ### To Return All VGPU Profiles
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,12 +45,10 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// 
         /// ### With VGPU Profile Name_regex
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,7 +76,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHostVgpuProfileResult> InvokeAsync(GetHostVgpuProfileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostVgpuProfileResult>("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", args ?? new GetHostVgpuProfileArgs(), options.WithDefaults());
@@ -92,7 +88,6 @@ namespace Pulumi.VSphere
         /// 
         /// ### To Return All VGPU Profiles
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -119,12 +114,10 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// 
         /// ### With VGPU Profile Name_regex
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -152,7 +145,6 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHostVgpuProfileResult> Invoke(GetHostVgpuProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostVgpuProfileResult>("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", args ?? new GetHostVgpuProfileInvokeArgs(), options.WithDefaults());

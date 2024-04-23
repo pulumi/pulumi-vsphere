@@ -65,18 +65,15 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A key/value map of advanced Storage DRS
-     * settings that are not exposed via the provider or the vSphere client.
+     * Advanced configuration options for storage DRS.
      */
     public readonly sdrsAdvancedOptions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The global automation level for all
-     * virtual machines in this datastore cluster. Default: `manual`.
+     * The default automation level for all virtual machines in this storage cluster.
      */
     public readonly sdrsAutomationLevel!: pulumi.Output<string | undefined>;
     /**
-     * When `true`, all disks in a
-     * single virtual machine will be kept on the same datastore. Default: `true`.
+     * When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
      */
     public readonly sdrsDefaultIntraVmAffinity!: pulumi.Output<boolean | undefined>;
     /**
@@ -85,10 +82,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly sdrsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The free space threshold to use.
-     * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
-     * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
-     * `utilization`.
+     * The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
     public readonly sdrsFreeSpaceThreshold!: pulumi.Output<number | undefined>;
     /**
@@ -97,85 +91,63 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly sdrsFreeSpaceThresholdMode!: pulumi.Output<string | undefined>;
     /**
-     * The threshold, in
-     * percent, of difference between space utilization in datastores before storage
-     * DRS makes decisions to balance the space. Default: `5` percent.
+     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+     * balance the space.
      */
     public readonly sdrsFreeSpaceUtilizationDifference!: pulumi.Output<number | undefined>;
     /**
-     * Overrides the default
-     * automation settings when correcting I/O load imbalances.
+     * Overrides the default automation settings when correcting I/O load imbalances.
      */
     public readonly sdrsIoBalanceAutomationLevel!: pulumi.Output<string | undefined>;
     /**
-     * The I/O latency threshold, in
-     * milliseconds, that storage DRS uses to make recommendations to move disks
-     * from this datastore. Default: `15` seconds.
+     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+     * datastore.
      */
     public readonly sdrsIoLatencyThreshold!: pulumi.Output<number | undefined>;
     /**
-     * Enable I/O load balancing for
-     * this datastore cluster. Default: `true`.
+     * Enable I/O load balancing for this datastore cluster.
      */
     public readonly sdrsIoLoadBalanceEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The difference between load
-     * in datastores in the cluster before storage DRS makes recommendations to
-     * balance the load. Default: `5` percent.
+     * The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
      */
     public readonly sdrsIoLoadImbalanceThreshold!: pulumi.Output<number | undefined>;
     /**
-     * The threshold of reservable
-     * IOPS of all virtual machines on the datastore before storage DRS makes
-     * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
-     * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
+     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+     * move VMs off of a datastore.
      */
     public readonly sdrsIoReservableIopsThreshold!: pulumi.Output<number | undefined>;
     /**
-     * The threshold, in
-     * percent, of actual estimated performance of the datastore (in IOPS) that
-     * storage DRS uses to make recommendations to move VMs off of a datastore when
-     * the total reservable IOPS exceeds the threshold. Default: `60` percent.
+     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      */
     public readonly sdrsIoReservablePercentThreshold!: pulumi.Output<number | undefined>;
     /**
-     * The reservable IOPS
-     * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
-     * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
-     * `manual`. Default: `automatic`.
+     * The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
      */
     public readonly sdrsIoReservableThresholdMode!: pulumi.Output<string | undefined>;
     /**
-     * The storage DRS poll interval, in
-     * minutes. Default: `480` minutes.
+     * The storage DRS poll interval, in minutes.
      */
     public readonly sdrsLoadBalanceInterval!: pulumi.Output<number | undefined>;
     /**
-     * Overrides the default
-     * automation settings when correcting storage and VM policy violations.
+     * Overrides the default automation settings when correcting storage and VM policy violations.
      */
     public readonly sdrsPolicyEnforcementAutomationLevel!: pulumi.Output<string | undefined>;
     /**
-     * Overrides the default
-     * automation settings when correcting affinity rule violations.
+     * Overrides the default automation settings when correcting affinity rule violations.
      */
     public readonly sdrsRuleEnforcementAutomationLevel!: pulumi.Output<string | undefined>;
     /**
-     * Overrides the default
-     * automation settings when correcting disk space imbalances.
+     * Overrides the default automation settings when correcting disk space imbalances.
      */
     public readonly sdrsSpaceBalanceAutomationLevel!: pulumi.Output<string | undefined>;
     /**
-     * Runtime thresholds govern 
-     * when Storage DRS performs or recommends migrations
-     * (based on the selected automation level). Default: `80` percent.
+     * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
     public readonly sdrsSpaceUtilizationThreshold!: pulumi.Output<number | undefined>;
     /**
-     * Overrides the default
-     * automation settings when generating recommendations for datastore evacuation.
+     * Overrides the default automation settings when generating recommendations for datastore evacuation.
      */
     public readonly sdrsVmEvacuationAutomationLevel!: pulumi.Output<string | undefined>;
     /**
@@ -296,18 +268,15 @@ export interface DatastoreClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A key/value map of advanced Storage DRS
-     * settings that are not exposed via the provider or the vSphere client.
+     * Advanced configuration options for storage DRS.
      */
     sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The global automation level for all
-     * virtual machines in this datastore cluster. Default: `manual`.
+     * The default automation level for all virtual machines in this storage cluster.
      */
     sdrsAutomationLevel?: pulumi.Input<string>;
     /**
-     * When `true`, all disks in a
-     * single virtual machine will be kept on the same datastore. Default: `true`.
+     * When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
      */
     sdrsDefaultIntraVmAffinity?: pulumi.Input<boolean>;
     /**
@@ -316,10 +285,7 @@ export interface DatastoreClusterState {
      */
     sdrsEnabled?: pulumi.Input<boolean>;
     /**
-     * The free space threshold to use.
-     * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
-     * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
-     * `utilization`.
+     * The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
     sdrsFreeSpaceThreshold?: pulumi.Input<number>;
     /**
@@ -328,85 +294,63 @@ export interface DatastoreClusterState {
      */
     sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**
-     * The threshold, in
-     * percent, of difference between space utilization in datastores before storage
-     * DRS makes decisions to balance the space. Default: `5` percent.
+     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+     * balance the space.
      */
     sdrsFreeSpaceUtilizationDifference?: pulumi.Input<number>;
     /**
-     * Overrides the default
-     * automation settings when correcting I/O load imbalances.
+     * Overrides the default automation settings when correcting I/O load imbalances.
      */
     sdrsIoBalanceAutomationLevel?: pulumi.Input<string>;
     /**
-     * The I/O latency threshold, in
-     * milliseconds, that storage DRS uses to make recommendations to move disks
-     * from this datastore. Default: `15` seconds.
+     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+     * datastore.
      */
     sdrsIoLatencyThreshold?: pulumi.Input<number>;
     /**
-     * Enable I/O load balancing for
-     * this datastore cluster. Default: `true`.
+     * Enable I/O load balancing for this datastore cluster.
      */
     sdrsIoLoadBalanceEnabled?: pulumi.Input<boolean>;
     /**
-     * The difference between load
-     * in datastores in the cluster before storage DRS makes recommendations to
-     * balance the load. Default: `5` percent.
+     * The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
      */
     sdrsIoLoadImbalanceThreshold?: pulumi.Input<number>;
     /**
-     * The threshold of reservable
-     * IOPS of all virtual machines on the datastore before storage DRS makes
-     * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
-     * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
+     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+     * move VMs off of a datastore.
      */
     sdrsIoReservableIopsThreshold?: pulumi.Input<number>;
     /**
-     * The threshold, in
-     * percent, of actual estimated performance of the datastore (in IOPS) that
-     * storage DRS uses to make recommendations to move VMs off of a datastore when
-     * the total reservable IOPS exceeds the threshold. Default: `60` percent.
+     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      */
     sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
     /**
-     * The reservable IOPS
-     * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
-     * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
-     * `manual`. Default: `automatic`.
+     * The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
      */
     sdrsIoReservableThresholdMode?: pulumi.Input<string>;
     /**
-     * The storage DRS poll interval, in
-     * minutes. Default: `480` minutes.
+     * The storage DRS poll interval, in minutes.
      */
     sdrsLoadBalanceInterval?: pulumi.Input<number>;
     /**
-     * Overrides the default
-     * automation settings when correcting storage and VM policy violations.
+     * Overrides the default automation settings when correcting storage and VM policy violations.
      */
     sdrsPolicyEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
-     * Overrides the default
-     * automation settings when correcting affinity rule violations.
+     * Overrides the default automation settings when correcting affinity rule violations.
      */
     sdrsRuleEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
-     * Overrides the default
-     * automation settings when correcting disk space imbalances.
+     * Overrides the default automation settings when correcting disk space imbalances.
      */
     sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
-     * Runtime thresholds govern 
-     * when Storage DRS performs or recommends migrations
-     * (based on the selected automation level). Default: `80` percent.
+     * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
     sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
     /**
-     * Overrides the default
-     * automation settings when generating recommendations for datastore evacuation.
+     * Overrides the default automation settings when generating recommendations for datastore evacuation.
      */
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
@@ -454,18 +398,15 @@ export interface DatastoreClusterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A key/value map of advanced Storage DRS
-     * settings that are not exposed via the provider or the vSphere client.
+     * Advanced configuration options for storage DRS.
      */
     sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The global automation level for all
-     * virtual machines in this datastore cluster. Default: `manual`.
+     * The default automation level for all virtual machines in this storage cluster.
      */
     sdrsAutomationLevel?: pulumi.Input<string>;
     /**
-     * When `true`, all disks in a
-     * single virtual machine will be kept on the same datastore. Default: `true`.
+     * When true, storage DRS keeps VMDKs for individual VMs on the same datastore by default.
      */
     sdrsDefaultIntraVmAffinity?: pulumi.Input<boolean>;
     /**
@@ -474,10 +415,7 @@ export interface DatastoreClusterArgs {
      */
     sdrsEnabled?: pulumi.Input<boolean>;
     /**
-     * The free space threshold to use.
-     * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
-     * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
-     * `utilization`.
+     * The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
     sdrsFreeSpaceThreshold?: pulumi.Input<number>;
     /**
@@ -486,85 +424,63 @@ export interface DatastoreClusterArgs {
      */
     sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**
-     * The threshold, in
-     * percent, of difference between space utilization in datastores before storage
-     * DRS makes decisions to balance the space. Default: `5` percent.
+     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
+     * balance the space.
      */
     sdrsFreeSpaceUtilizationDifference?: pulumi.Input<number>;
     /**
-     * Overrides the default
-     * automation settings when correcting I/O load imbalances.
+     * Overrides the default automation settings when correcting I/O load imbalances.
      */
     sdrsIoBalanceAutomationLevel?: pulumi.Input<string>;
     /**
-     * The I/O latency threshold, in
-     * milliseconds, that storage DRS uses to make recommendations to move disks
-     * from this datastore. Default: `15` seconds.
+     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
+     * datastore.
      */
     sdrsIoLatencyThreshold?: pulumi.Input<number>;
     /**
-     * Enable I/O load balancing for
-     * this datastore cluster. Default: `true`.
+     * Enable I/O load balancing for this datastore cluster.
      */
     sdrsIoLoadBalanceEnabled?: pulumi.Input<boolean>;
     /**
-     * The difference between load
-     * in datastores in the cluster before storage DRS makes recommendations to
-     * balance the load. Default: `5` percent.
+     * The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
      */
     sdrsIoLoadImbalanceThreshold?: pulumi.Input<number>;
     /**
-     * The threshold of reservable
-     * IOPS of all virtual machines on the datastore before storage DRS makes
-     * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
-     * estimate of the capacity of the datastores in your cluster, and should be set
-     * to roughly 50-60% of the worst case peak performance of the backing LUNs.
+     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
+     * move VMs off of a datastore.
      */
     sdrsIoReservableIopsThreshold?: pulumi.Input<number>;
     /**
-     * The threshold, in
-     * percent, of actual estimated performance of the datastore (in IOPS) that
-     * storage DRS uses to make recommendations to move VMs off of a datastore when
-     * the total reservable IOPS exceeds the threshold. Default: `60` percent.
+     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
+     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      */
     sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
     /**
-     * The reservable IOPS
-     * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
-     * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
-     * `manual`. Default: `automatic`.
+     * The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
      */
     sdrsIoReservableThresholdMode?: pulumi.Input<string>;
     /**
-     * The storage DRS poll interval, in
-     * minutes. Default: `480` minutes.
+     * The storage DRS poll interval, in minutes.
      */
     sdrsLoadBalanceInterval?: pulumi.Input<number>;
     /**
-     * Overrides the default
-     * automation settings when correcting storage and VM policy violations.
+     * Overrides the default automation settings when correcting storage and VM policy violations.
      */
     sdrsPolicyEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
-     * Overrides the default
-     * automation settings when correcting affinity rule violations.
+     * Overrides the default automation settings when correcting affinity rule violations.
      */
     sdrsRuleEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
-     * Overrides the default
-     * automation settings when correcting disk space imbalances.
+     * Overrides the default automation settings when correcting disk space imbalances.
      */
     sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
-     * Runtime thresholds govern 
-     * when Storage DRS performs or recommends migrations
-     * (based on the selected automation level). Default: `80` percent.
+     * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
     sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
     /**
-     * Overrides the default
-     * automation settings when generating recommendations for datastore evacuation.
+     * Overrides the default automation settings when generating recommendations for datastore evacuation.
      */
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**

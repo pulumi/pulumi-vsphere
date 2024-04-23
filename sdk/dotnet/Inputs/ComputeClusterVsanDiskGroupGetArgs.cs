@@ -13,7 +13,7 @@ namespace Pulumi.VSphere.Inputs
     public sealed class ComputeClusterVsanDiskGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The canonical name of the disk to use for vSAN cache.
+        /// Cache disk.
         /// </summary>
         [Input("cache")]
         public Input<string>? Cache { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.VSphere.Inputs
         private InputList<string>? _storages;
 
         /// <summary>
-        /// An array of disk canonical names for vSAN storage.
+        /// List of storage disks.
         /// </summary>
         public InputList<string> Storages
         {

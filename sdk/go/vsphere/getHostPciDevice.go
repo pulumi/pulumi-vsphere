@@ -19,7 +19,6 @@ import (
 //
 // ### With Vendor ID And Class ID
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,11 +57,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### With Name Regular Expression
-//
-//	<!--Start PulumiCodeChooser -->
 //
 // ```go
 // package main
@@ -75,33 +71,32 @@ import (
 // )
 //
 //	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef("dc-01"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
-//				Name:         pulumi.StringRef("esxi-01.example.com"),
-//				DatacenterId: datacenter.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
-//				HostId:    host.Id,
-//				NameRegex: pulumi.StringRef("MMC"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
+//	   pulumi.Run(func(ctx *pulumi.Context) error {
+//	       datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//	           Name: pulumi.StringRef("dc-01"),
+//	       }, nil)
+//	       if err != nil {
+//	           return err
+//	       }
+//	       host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//	           Name:         pulumi.StringRef("esxi-01.example.com"),
+//	           DatacenterId: datacenter.Id,
+//	       }, nil)
+//	       if err != nil {
+//	           return err
+//	       }
+//	       _, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
+//	           HostId:    host.Id,
+//	           NameRegex: pulumi.StringRef("MMC"),
+//	       }, nil)
+//	       if err != nil {
+//	           return err
+//	       }
+//	       return nil
+//	   })
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHostPciDevice(ctx *pulumi.Context, args *GetHostPciDeviceArgs, opts ...pulumi.InvokeOption) (*GetHostPciDeviceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostPciDeviceResult

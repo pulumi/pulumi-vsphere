@@ -26,14 +26,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     public static final VirtualMachineState Empty = new VirtualMachineState();
 
     /**
-     * The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
+     * The guest name for the operating system when guest_id is otherGuest or otherGuest64.
      * 
      */
     @Import(name="alternateGuestName")
     private @Nullable Output<String> alternateGuestName;
 
     /**
-     * @return The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
+     * @return The guest name for the operating system when guest_id is otherGuest or otherGuest64.
      * 
      */
     public Optional<Output<String>> alternateGuestName() {
@@ -41,14 +41,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A user-provided description of the virtual machine.
+     * User-provided description of the virtual machine.
      * 
      */
     @Import(name="annotation")
     private @Nullable Output<String> annotation;
 
     /**
-     * @return A user-provided description of the virtual machine.
+     * @return User-provided description of the virtual machine.
      * 
      */
     public Optional<Output<String>> annotation() {
@@ -56,14 +56,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of milliseconds to wait before starting the boot sequence. The default is no delay.
+     * The number of milliseconds to wait before starting the boot sequence.
      * 
      */
     @Import(name="bootDelay")
     private @Nullable Output<Integer> bootDelay;
 
     /**
-     * @return The number of milliseconds to wait before starting the boot sequence. The default is no delay.
+     * @return The number of milliseconds to wait before starting the boot sequence.
      * 
      */
     public Optional<Output<Integer>> bootDelay() {
@@ -71,14 +71,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
+     * The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
      * 
      */
     @Import(name="bootRetryDelay")
     private @Nullable Output<Integer> bootRetryDelay;
 
     /**
-     * @return The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
+     * @return The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
      * 
      */
     public Optional<Output<Integer>> bootRetryDelay() {
@@ -86,14 +86,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
+     * If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
      * 
      */
     @Import(name="bootRetryEnabled")
     private @Nullable Output<Boolean> bootRetryEnabled;
 
     /**
-     * @return If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
+     * @return If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
      * 
      */
     public Optional<Output<Boolean>> bootRetryEnabled() {
@@ -101,14 +101,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+     * A specification for a CDROM device on this virtual machine.
      * 
      */
     @Import(name="cdroms")
     private @Nullable Output<List<VirtualMachineCdromArgs>> cdroms;
 
     /**
-     * @return A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+     * @return A specification for a CDROM device on this virtual machine.
      * 
      */
     public Optional<Output<List<VirtualMachineCdromArgs>>> cdroms() {
@@ -131,14 +131,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
+     * A specification for cloning a virtual machine from template.
      * 
      */
     @Import(name="clone")
     private @Nullable Output<VirtualMachineCloneArgs> clone;
 
     /**
-     * @return When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
+     * @return A specification for cloning a virtual machine from template.
      * 
      */
     public Optional<Output<VirtualMachineCloneArgs>> clone_() {
@@ -146,14 +146,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Allow CPUs to be added to the virtual machine while it is powered on.
+     * Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     @Import(name="cpuHotAddEnabled")
     private @Nullable Output<Boolean> cpuHotAddEnabled;
 
     /**
-     * @return Allow CPUs to be added to the virtual machine while it is powered on.
+     * @return Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     public Optional<Output<Boolean>> cpuHotAddEnabled() {
@@ -161,14 +161,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Allow CPUs to be removed to the virtual machine while it is powered on.
+     * Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     @Import(name="cpuHotRemoveEnabled")
     private @Nullable Output<Boolean> cpuHotRemoveEnabled;
 
     /**
-     * @return Allow CPUs to be removed to the virtual machine while it is powered on.
+     * @return Allow CPUs to be added to this virtual machine while it is running.
      * 
      */
     public Optional<Output<Boolean>> cpuHotRemoveEnabled() {
@@ -176,14 +176,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     @Import(name="cpuLimit")
     private @Nullable Output<Integer> cpuLimit;
 
     /**
-     * @return The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     public Optional<Output<Integer>> cpuLimit() {
@@ -191,14 +193,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable CPU performance counters on the virtual machine. Default: `false`.
+     * Enable CPU performance counters on this virtual machine.
      * 
      */
     @Import(name="cpuPerformanceCountersEnabled")
     private @Nullable Output<Boolean> cpuPerformanceCountersEnabled;
 
     /**
-     * @return Enable CPU performance counters on the virtual machine. Default: `false`.
+     * @return Enable CPU performance counters on this virtual machine.
      * 
      */
     public Optional<Output<Boolean>> cpuPerformanceCountersEnabled() {
@@ -206,14 +208,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
+     * The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     @Import(name="cpuReservation")
     private @Nullable Output<Integer> cpuReservation;
 
     /**
-     * @return The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
+     * @return The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     public Optional<Output<Integer>> cpuReservation() {
@@ -221,14 +223,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
+     * The amount of shares to allocate to cpu for a custom share level.
      * 
      */
     @Import(name="cpuShareCount")
     private @Nullable Output<Integer> cpuShareCount;
 
     /**
-     * @return The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
+     * @return The amount of shares to allocate to cpu for a custom share level.
      * 
      */
     public Optional<Output<Integer>> cpuShareCount() {
@@ -236,14 +238,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for cpu resources. Can be one of high, low, normal, or custom.
      * 
      */
     @Import(name="cpuShareLevel")
     private @Nullable Output<String> cpuShareLevel;
 
     /**
-     * @return The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * @return The allocation level for cpu resources. Can be one of high, low, normal, or custom.
      * 
      */
     public Optional<Output<String>> cpuShareLevel() {
@@ -251,18 +253,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
-     * 
-     * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
+     * A list of custom attributes to set on this resource.
      * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<Map<String,String>> customAttributes;
 
     /**
-     * @return Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
-     * 
-     * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
+     * @return A list of custom attributes to set on this resource.
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -270,14 +268,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The datacenter ID. Required only when deploying an OVF/OVA template.
+     * The ID of the datacenter where the VM is to be created.
      * 
      */
     @Import(name="datacenterId")
     private @Nullable Output<String> datacenterId;
 
     /**
-     * @return The datacenter ID. Required only when deploying an OVF/OVA template.
+     * @return The ID of the datacenter where the VM is to be created.
      * 
      */
     public Optional<Output<String>> datacenterId() {
@@ -285,26 +283,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
-     * 
-     * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
-     * 
-     * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
+     * The ID of a datastore cluster to put the virtual machine in.
      * 
      */
     @Import(name="datastoreClusterId")
     private @Nullable Output<String> datastoreClusterId;
 
     /**
-     * @return The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
-     * 
-     * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
-     * 
-     * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
+     * @return The ID of a datastore cluster to put the virtual machine in.
      * 
      */
     public Optional<Output<String>> datastoreClusterId() {
@@ -312,14 +298,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
+     * disks that are created without datastores.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
+     * disks that are created without datastores.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -342,14 +330,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A specification for a virtual disk device on the virtual machine. See disk options for more information.
+     * A specification for a virtual disk device on this virtual machine.
      * 
      */
     @Import(name="disks")
     private @Nullable Output<List<VirtualMachineDiskArgs>> disks;
 
     /**
-     * @return A specification for a virtual disk device on the virtual machine. See disk options for more information.
+     * @return A specification for a virtual disk device on this virtual machine.
      * 
      */
     public Optional<Output<List<VirtualMachineDiskArgs>>> disks() {
@@ -357,18 +345,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
-     * 
-     * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
+     * When the boot type set in firmware is efi, this enables EFI secure boot.
      * 
      */
     @Import(name="efiSecureBootEnabled")
     private @Nullable Output<Boolean> efiSecureBootEnabled;
 
     /**
-     * @return Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
-     * 
-     * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
+     * @return When the boot type set in firmware is efi, this enables EFI secure boot.
      * 
      */
     public Optional<Output<Boolean>> efiSecureBootEnabled() {
@@ -376,14 +360,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
+     * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
      * 
      */
     @Import(name="enableDiskUuid")
     private @Nullable Output<Boolean> enableDiskUuid;
 
     /**
-     * @return Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
+     * @return Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
      * 
      */
     public Optional<Output<Boolean>> enableDiskUuid() {
@@ -391,14 +375,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
+     * Enable logging on this virtual machine.
      * 
      */
     @Import(name="enableLogging")
     private @Nullable Output<Boolean> enableLogging;
 
     /**
-     * @return Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
+     * @return Enable logging on this virtual machine.
      * 
      */
     public Optional<Output<Boolean>> enableLogging() {
@@ -406,14 +390,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
+     * The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
      * 
      */
     @Import(name="eptRviMode")
     private @Nullable Output<String> eptRviMode;
 
     /**
-     * @return The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
+     * @return The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
      * 
      */
     public Optional<Output<String>> eptRviMode() {
@@ -421,18 +405,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-     * 
-     * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
+     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
+     * configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     @Import(name="extraConfig")
     private @Nullable Output<Map<String,String>> extraConfig;
 
     /**
-     * @return Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-     * 
-     * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
+     * @return Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
+     * configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     public Optional<Output<Map<String,String>>> extraConfig() {
@@ -440,14 +422,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
      * 
      */
     @Import(name="extraConfigRebootRequired")
     private @Nullable Output<Boolean> extraConfigRebootRequired;
 
     /**
-     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
      * 
      */
     public Optional<Output<Boolean>> extraConfigRebootRequired() {
@@ -455,14 +437,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The firmware for the virtual machine. One of `bios` or `efi`.
+     * The firmware interface to use on the virtual machine. Can be one of bios or efi.
      * 
      */
     @Import(name="firmware")
     private @Nullable Output<String> firmware;
 
     /**
-     * @return The firmware for the virtual machine. One of `bios` or `efi`.
+     * @return The firmware interface to use on the virtual machine. Can be one of bios or efi.
      * 
      */
     public Optional<Output<String>> firmware() {
@@ -470,14 +452,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/&lt;datacenter-name&gt;/vm`).  For example, `/dc-01/vm/foo`
+     * The name of the folder to locate the virtual machine in.
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/&lt;datacenter-name&gt;/vm`).  For example, `/dc-01/vm/foo`
+     * @return The name of the folder to locate the virtual machine in.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -485,14 +467,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
+     * Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
      * 
      */
     @Import(name="forcePowerOff")
     private @Nullable Output<Boolean> forcePowerOff;
 
     /**
-     * @return If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
+     * @return Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
      * 
      */
     public Optional<Output<Boolean>> forcePowerOff() {
@@ -500,18 +482,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     * 
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+     * The guest ID for the operating system.
      * 
      */
     @Import(name="guestId")
     private @Nullable Output<String> guestId;
 
     /**
-     * @return The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-     * 
-     * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+     * @return The guest ID for the operating system.
      * 
      */
     public Optional<Output<String>> guestId() {
@@ -534,20 +512,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     * 
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+     * The hardware version for the virtual machine.
      * 
      */
     @Import(name="hardwareVersion")
     private @Nullable Output<Integer> hardwareVersion;
 
     /**
-     * @return The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-     * 
-     * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+     * @return The hardware version for the virtual machine.
      * 
      */
     public Optional<Output<Integer>> hardwareVersion() {
@@ -555,14 +527,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+     * The ID of an optional host system to pin the virtual machine to.
      * 
      */
     @Import(name="hostSystemId")
     private @Nullable Output<String> hostSystemId;
 
     /**
-     * @return The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+     * @return The ID of an optional host system to pin the virtual machine to.
      * 
      */
     public Optional<Output<String>> hostSystemId() {
@@ -570,14 +542,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
+     * The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      * 
      */
     @Import(name="hvMode")
     private @Nullable Output<String> hvMode;
 
     /**
-     * @return The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
+     * @return The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      * 
      */
     public Optional<Output<String>> hvMode() {
@@ -585,14 +557,18 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
+     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      * 
      */
     @Import(name="ideControllerCount")
     private @Nullable Output<Integer> ideControllerCount;
 
     /**
-     * @return The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
+     * @return The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      * 
      */
     public Optional<Output<Integer>> ideControllerCount() {
@@ -600,14 +576,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
+     * List of IP addresses and CIDR networks to ignore while waiting for an IP
      * 
      */
     @Import(name="ignoredGuestIps")
     private @Nullable Output<List<String>> ignoredGuestIps;
 
     /**
-     * @return List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
+     * @return List of IP addresses and CIDR networks to ignore while waiting for an IP
      * 
      */
     public Optional<Output<List<String>>> ignoredGuestIps() {
@@ -630,18 +606,18 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
-     * 
-     * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
+     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
+     * devices. Can be one of low, normal, medium, or high.
      * 
      */
     @Import(name="latencySensitivity")
     private @Nullable Output<String> latencySensitivity;
 
     /**
-     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
-     * 
-     * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
+     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
+     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
+     * devices. Can be one of low, normal, medium, or high.
      * 
      */
     public Optional<Output<String>> latencySensitivity() {
@@ -649,14 +625,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
+     * The size of the virtual machine&#39;s memory, in MB.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Integer> memory;
 
     /**
-     * @return The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
+     * @return The size of the virtual machine&#39;s memory, in MB.
      * 
      */
     public Optional<Output<Integer>> memory() {
@@ -664,30 +640,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Allow memory to be added to the virtual machine while it is powered on.
-     * 
-     * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
-     * 
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-     * 
-     * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     * 
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
+     * Allow memory to be added to this virtual machine while it is running.
      * 
      */
     @Import(name="memoryHotAddEnabled")
     private @Nullable Output<Boolean> memoryHotAddEnabled;
 
     /**
-     * @return Allow memory to be added to the virtual machine while it is powered on.
-     * 
-     * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
-     * 
-     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-     * 
-     * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-     * 
-     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
+     * @return Allow memory to be added to this virtual machine while it is running.
      * 
      */
     public Optional<Output<Boolean>> memoryHotAddEnabled() {
@@ -695,14 +655,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     @Import(name="memoryLimit")
     private @Nullable Output<Integer> memoryLimit;
 
     /**
-     * @return The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+     * resources.
      * 
      */
     public Optional<Output<Integer>> memoryLimit() {
@@ -710,14 +672,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+     * The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     @Import(name="memoryReservation")
     private @Nullable Output<Integer> memoryReservation;
 
     /**
-     * @return The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+     * @return The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      * 
      */
     public Optional<Output<Integer>> memoryReservation() {
@@ -744,14 +706,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
+     * The amount of shares to allocate to memory for a custom share level.
      * 
      */
     @Import(name="memoryShareCount")
     private @Nullable Output<Integer> memoryShareCount;
 
     /**
-     * @return The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
+     * @return The amount of shares to allocate to memory for a custom share level.
      * 
      */
     public Optional<Output<Integer>> memoryShareCount() {
@@ -759,14 +721,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for memory resources. Can be one of high, low, normal, or custom.
      * 
      */
     @Import(name="memoryShareLevel")
     private @Nullable Output<String> memoryShareLevel;
 
     /**
-     * @return The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * @return The allocation level for memory resources. Can be one of high, low, normal, or custom.
      * 
      */
     public Optional<Output<String>> memoryShareLevel() {
@@ -774,14 +736,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
+     * The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
      * 
      */
     @Import(name="migrateWaitTimeout")
     private @Nullable Output<Integer> migrateWaitTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
+     * @return The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
      * 
      */
     public Optional<Output<Integer>> migrateWaitTimeout() {
@@ -804,14 +766,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the virtual machine.
+     * The name of this virtual machine.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the virtual machine.
+     * @return The name of this virtual machine.
      * 
      */
     public Optional<Output<String>> name() {
@@ -819,14 +781,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
+     * Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
      * 
      */
     @Import(name="nestedHvEnabled")
     private @Nullable Output<Boolean> nestedHvEnabled;
 
     /**
-     * @return Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
+     * @return Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
      * 
      */
     public Optional<Output<Boolean>> nestedHvEnabled() {
@@ -834,14 +796,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * A specification for a virtual NIC on this virtual machine.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<VirtualMachineNetworkInterfaceArgs>> networkInterfaces;
 
     /**
-     * @return A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+     * @return A specification for a virtual NIC on this virtual machine.
      * 
      */
     public Optional<Output<List<VirtualMachineNetworkInterfaceArgs>>> networkInterfaces() {
@@ -849,14 +811,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `num_cpus` divided by `num_cores_per_socket`. If specified, the value supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+     * must be evenly divisible by this value.
      * 
      */
     @Import(name="numCoresPerSocket")
     private @Nullable Output<Integer> numCoresPerSocket;
 
     /**
-     * @return The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `num_cpus` divided by `num_cores_per_socket`. If specified, the value supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+     * must be evenly divisible by this value.
      * 
      */
     public Optional<Output<Integer>> numCoresPerSocket() {
@@ -864,14 +828,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
+     * The number of virtual processors to assign to this virtual machine.
      * 
      */
     @Import(name="numCpus")
     private @Nullable Output<Integer> numCpus;
 
     /**
-     * @return The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
+     * @return The number of virtual processors to assign to this virtual machine.
      * 
      */
     public Optional<Output<Integer>> numCpus() {
@@ -879,14 +843,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
+     * A specification for deploying a virtual machine from ovf/ova template.
      * 
      */
     @Import(name="ovfDeploy")
     private @Nullable Output<VirtualMachineOvfDeployArgs> ovfDeploy;
 
     /**
-     * @return When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
+     * @return A specification for deploying a virtual machine from ovf/ova template.
      * 
      */
     public Optional<Output<VirtualMachineOvfDeployArgs>> ovfDeploy() {
@@ -894,18 +858,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of host PCI device IDs in which to create PCI passthroughs.
-     * 
-     * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+     * A list of PCI passthrough devices
      * 
      */
     @Import(name="pciDeviceIds")
     private @Nullable Output<List<String>> pciDeviceIds;
 
     /**
-     * @return List of host PCI device IDs in which to create PCI passthroughs.
-     * 
-     * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+     * @return A list of PCI passthrough devices
      * 
      */
     public Optional<Output<List<String>>> pciDeviceIds() {
@@ -960,8 +920,6 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     /**
      * Triggers replacement of resource whenever it changes.
      * 
-     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
-     * 
      */
     @Import(name="replaceTrigger")
     private @Nullable Output<String> replaceTrigger;
@@ -969,26 +927,20 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     /**
      * @return Triggers replacement of resource whenever it changes.
      * 
-     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
-     * 
      */
     public Optional<Output<String>> replaceTrigger() {
         return Optional.ofNullable(this.replaceTrigger);
     }
 
     /**
-     * The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
+     * The ID of a resource pool to put the virtual machine in.
      * 
      */
     @Import(name="resourcePoolId")
     private @Nullable Output<String> resourcePoolId;
 
     /**
-     * @return The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
+     * @return The ID of a resource pool to put the virtual machine in.
      * 
      */
     public Optional<Output<String>> resourcePoolId() {
@@ -996,14 +948,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
      * 
      */
     @Import(name="runToolsScriptsAfterPowerOn")
     private @Nullable Output<Boolean> runToolsScriptsAfterPowerOn;
 
     /**
-     * @return Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
      * 
      */
     public Optional<Output<Boolean>> runToolsScriptsAfterPowerOn() {
@@ -1011,14 +963,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
      * 
      */
     @Import(name="runToolsScriptsAfterResume")
     private @Nullable Output<Boolean> runToolsScriptsAfterResume;
 
     /**
-     * @return Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
      * 
      */
     public Optional<Output<Boolean>> runToolsScriptsAfterResume() {
@@ -1026,14 +978,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
+     * Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
      * 
      */
     @Import(name="runToolsScriptsBeforeGuestReboot")
     private @Nullable Output<Boolean> runToolsScriptsBeforeGuestReboot;
 
     /**
-     * @return Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
+     * @return Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
      * 
      */
     public Optional<Output<Boolean>> runToolsScriptsBeforeGuestReboot() {
@@ -1041,14 +993,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
      * 
      */
     @Import(name="runToolsScriptsBeforeGuestShutdown")
     private @Nullable Output<Boolean> runToolsScriptsBeforeGuestShutdown;
 
     /**
-     * @return Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
      * 
      */
     public Optional<Output<Boolean>> runToolsScriptsBeforeGuestShutdown() {
@@ -1056,14 +1008,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
+     * Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      * 
      */
     @Import(name="runToolsScriptsBeforeGuestStandby")
     private @Nullable Output<Boolean> runToolsScriptsBeforeGuestStandby;
 
     /**
-     * @return Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
+     * @return Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      * 
      */
     public Optional<Output<Boolean>> runToolsScriptsBeforeGuestStandby() {
@@ -1090,14 +1042,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
+     * Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      * 
      */
     @Import(name="scsiBusSharing")
     private @Nullable Output<String> scsiBusSharing;
 
     /**
-     * @return The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
+     * @return Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      * 
      */
     public Optional<Output<String>> scsiBusSharing() {
@@ -1124,14 +1076,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
+     * The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
      * 
      */
     @Import(name="scsiType")
     private @Nullable Output<String> scsiType;
 
     /**
-     * @return The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
+     * @return The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
      * 
      */
     public Optional<Output<String>> scsiType() {
@@ -1139,14 +1091,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
+     * The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
      * 
      */
     @Import(name="shutdownWaitTimeout")
     private @Nullable Output<Integer> shutdownWaitTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
+     * @return The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
      * 
      */
     public Optional<Output<Integer>> shutdownWaitTimeout() {
@@ -1154,14 +1106,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the virtual machine home directory.
      * 
      */
     @Import(name="storagePolicyId")
     private @Nullable Output<String> storagePolicyId;
 
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the virtual machine home directory.
      * 
      */
     public Optional<Output<String>> storagePolicyId() {
@@ -1169,14 +1121,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
+     * The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
      * 
      */
     @Import(name="swapPlacementPolicy")
     private @Nullable Output<String> swapPlacementPolicy;
 
     /**
-     * @return The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
+     * @return The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
      * 
      */
     public Optional<Output<String>> swapPlacementPolicy() {
@@ -1184,14 +1136,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
+     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
+     * synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     @Import(name="syncTimeWithHost")
     private @Nullable Output<Boolean> syncTimeWithHost;
 
     /**
-     * @return Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
+     * @return Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
+     * synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     public Optional<Output<Boolean>> syncTimeWithHost() {
@@ -1199,14 +1153,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
+     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     @Import(name="syncTimeWithHostPeriodically")
     private @Nullable Output<Boolean> syncTimeWithHostPeriodically;
 
     /**
-     * @return Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
+     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
+     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     public Optional<Output<Boolean>> syncTimeWithHostPeriodically() {
@@ -1214,18 +1170,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
-     * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+     * A list of tag IDs to apply to this object.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
-     * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+     * @return A list of tag IDs to apply to this object.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -1233,14 +1185,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     * Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
      * 
      */
     @Import(name="toolsUpgradePolicy")
     private @Nullable Output<String> toolsUpgradePolicy;
 
     /**
-     * @return Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     * @return Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
      * 
      */
     public Optional<Output<String>> toolsUpgradePolicy() {
@@ -1248,14 +1200,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+     * @return The UUID of the virtual machine. Also exposed as the `id` of the resource.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -1263,14 +1215,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
+     * vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
      * 
      */
     @Import(name="vapp")
     private @Nullable Output<VirtualMachineVappArgs> vapp;
 
     /**
-     * @return Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
+     * @return vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
      * 
      */
     public Optional<Output<VirtualMachineVappArgs>> vapp() {
@@ -1293,14 +1245,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
+     * Flag to specify if Virtualization-based security is enabled for this virtual machine.
      * 
      */
     @Import(name="vbsEnabled")
     private @Nullable Output<Boolean> vbsEnabled;
 
     /**
-     * @return Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
+     * @return Flag to specify if Virtualization-based security is enabled for this virtual machine.
      * 
      */
     public Optional<Output<Boolean>> vbsEnabled() {
@@ -1338,14 +1290,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
+     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
+     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     @Import(name="vvtdEnabled")
     private @Nullable Output<Boolean> vvtdEnabled;
 
     /**
-     * @return Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
+     * @return Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
+     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     public Optional<Output<Boolean>> vvtdEnabled() {
@@ -1353,14 +1307,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `wait_for_guest_net_timeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     @Import(name="waitForGuestIpTimeout")
     private @Nullable Output<Integer> waitForGuestIpTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `wait_for_guest_net_timeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     public Optional<Output<Integer>> waitForGuestIpTimeout() {
@@ -1368,14 +1324,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
+     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
+     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     @Import(name="waitForGuestNetRoutable")
     private @Nullable Output<Boolean> waitForGuestNetRoutable;
 
     /**
-     * @return Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
+     * @return Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
+     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     public Optional<Output<Boolean>> waitForGuestNetRoutable() {
@@ -1383,14 +1341,16 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     @Import(name="waitForGuestNetTimeout")
     private @Nullable Output<Integer> waitForGuestNetTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+     * disables the waiter.
      * 
      */
     public Optional<Output<Integer>> waitForGuestNetTimeout() {
@@ -1507,7 +1467,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param alternateGuestName The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
+         * @param alternateGuestName The guest name for the operating system when guest_id is otherGuest or otherGuest64.
          * 
          * @return builder
          * 
@@ -1518,7 +1478,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param alternateGuestName The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
+         * @param alternateGuestName The guest name for the operating system when guest_id is otherGuest or otherGuest64.
          * 
          * @return builder
          * 
@@ -1528,7 +1488,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param annotation A user-provided description of the virtual machine.
+         * @param annotation User-provided description of the virtual machine.
          * 
          * @return builder
          * 
@@ -1539,7 +1499,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param annotation A user-provided description of the virtual machine.
+         * @param annotation User-provided description of the virtual machine.
          * 
          * @return builder
          * 
@@ -1549,7 +1509,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootDelay The number of milliseconds to wait before starting the boot sequence. The default is no delay.
+         * @param bootDelay The number of milliseconds to wait before starting the boot sequence.
          * 
          * @return builder
          * 
@@ -1560,7 +1520,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootDelay The number of milliseconds to wait before starting the boot sequence. The default is no delay.
+         * @param bootDelay The number of milliseconds to wait before starting the boot sequence.
          * 
          * @return builder
          * 
@@ -1570,7 +1530,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
+         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
          * 
          * @return builder
          * 
@@ -1581,7 +1541,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
+         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
          * 
          * @return builder
          * 
@@ -1591,7 +1551,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootRetryEnabled If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
+         * @param bootRetryEnabled If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
          * 
          * @return builder
          * 
@@ -1602,7 +1562,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootRetryEnabled If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
+         * @param bootRetryEnabled If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
          * 
          * @return builder
          * 
@@ -1612,7 +1572,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cdroms A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+         * @param cdroms A specification for a CDROM device on this virtual machine.
          * 
          * @return builder
          * 
@@ -1623,7 +1583,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cdroms A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+         * @param cdroms A specification for a CDROM device on this virtual machine.
          * 
          * @return builder
          * 
@@ -1633,7 +1593,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cdroms A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+         * @param cdroms A specification for a CDROM device on this virtual machine.
          * 
          * @return builder
          * 
@@ -1664,7 +1624,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param clone When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
+         * @param clone A specification for cloning a virtual machine from template.
          * 
          * @return builder
          * 
@@ -1675,7 +1635,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param clone When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
+         * @param clone A specification for cloning a virtual machine from template.
          * 
          * @return builder
          * 
@@ -1685,7 +1645,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuHotAddEnabled Allow CPUs to be added to the virtual machine while it is powered on.
+         * @param cpuHotAddEnabled Allow CPUs to be added to this virtual machine while it is running.
          * 
          * @return builder
          * 
@@ -1696,7 +1656,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuHotAddEnabled Allow CPUs to be added to the virtual machine while it is powered on.
+         * @param cpuHotAddEnabled Allow CPUs to be added to this virtual machine while it is running.
          * 
          * @return builder
          * 
@@ -1706,7 +1666,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuHotRemoveEnabled Allow CPUs to be removed to the virtual machine while it is powered on.
+         * @param cpuHotRemoveEnabled Allow CPUs to be added to this virtual machine while it is running.
          * 
          * @return builder
          * 
@@ -1717,7 +1677,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuHotRemoveEnabled Allow CPUs to be removed to the virtual machine while it is powered on.
+         * @param cpuHotRemoveEnabled Allow CPUs to be added to this virtual machine while it is running.
          * 
          * @return builder
          * 
@@ -1727,7 +1687,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuLimit The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
+         * @param cpuLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+         * resources.
          * 
          * @return builder
          * 
@@ -1738,7 +1699,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuLimit The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
+         * @param cpuLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+         * resources.
          * 
          * @return builder
          * 
@@ -1748,7 +1710,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuPerformanceCountersEnabled Enable CPU performance counters on the virtual machine. Default: `false`.
+         * @param cpuPerformanceCountersEnabled Enable CPU performance counters on this virtual machine.
          * 
          * @return builder
          * 
@@ -1759,7 +1721,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuPerformanceCountersEnabled Enable CPU performance counters on the virtual machine. Default: `false`.
+         * @param cpuPerformanceCountersEnabled Enable CPU performance counters on this virtual machine.
          * 
          * @return builder
          * 
@@ -1769,7 +1731,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuReservation The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
+         * @param cpuReservation The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
          * 
          * @return builder
          * 
@@ -1780,7 +1742,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuReservation The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
+         * @param cpuReservation The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
          * 
          * @return builder
          * 
@@ -1790,7 +1752,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuShareCount The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
+         * @param cpuShareCount The amount of shares to allocate to cpu for a custom share level.
          * 
          * @return builder
          * 
@@ -1801,7 +1763,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuShareCount The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
+         * @param cpuShareCount The amount of shares to allocate to cpu for a custom share level.
          * 
          * @return builder
          * 
@@ -1811,7 +1773,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuShareLevel The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+         * @param cpuShareLevel The allocation level for cpu resources. Can be one of high, low, normal, or custom.
          * 
          * @return builder
          * 
@@ -1822,7 +1784,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuShareLevel The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+         * @param cpuShareLevel The allocation level for cpu resources. Can be one of high, low, normal, or custom.
          * 
          * @return builder
          * 
@@ -1832,9 +1794,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customAttributes Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
-         * 
-         * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
+         * @param customAttributes A list of custom attributes to set on this resource.
          * 
          * @return builder
          * 
@@ -1845,9 +1805,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customAttributes Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
-         * 
-         * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
+         * @param customAttributes A list of custom attributes to set on this resource.
          * 
          * @return builder
          * 
@@ -1857,7 +1815,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datacenterId The datacenter ID. Required only when deploying an OVF/OVA template.
+         * @param datacenterId The ID of the datacenter where the VM is to be created.
          * 
          * @return builder
          * 
@@ -1868,7 +1826,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datacenterId The datacenter ID. Required only when deploying an OVF/OVA template.
+         * @param datacenterId The ID of the datacenter where the VM is to be created.
          * 
          * @return builder
          * 
@@ -1878,13 +1836,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datastoreClusterId The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
-         * 
-         * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
-         * 
-         * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
-         * 
-         * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
+         * @param datastoreClusterId The ID of a datastore cluster to put the virtual machine in.
          * 
          * @return builder
          * 
@@ -1895,13 +1847,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datastoreClusterId The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
-         * 
-         * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
-         * 
-         * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
-         * 
-         * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
+         * @param datastoreClusterId The ID of a datastore cluster to put the virtual machine in.
          * 
          * @return builder
          * 
@@ -1911,7 +1857,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
+         * disks that are created without datastores.
          * 
          * @return builder
          * 
@@ -1922,7 +1869,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
+         * disks that are created without datastores.
          * 
          * @return builder
          * 
@@ -1953,7 +1901,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disks A specification for a virtual disk device on the virtual machine. See disk options for more information.
+         * @param disks A specification for a virtual disk device on this virtual machine.
          * 
          * @return builder
          * 
@@ -1964,7 +1912,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disks A specification for a virtual disk device on the virtual machine. See disk options for more information.
+         * @param disks A specification for a virtual disk device on this virtual machine.
          * 
          * @return builder
          * 
@@ -1974,7 +1922,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disks A specification for a virtual disk device on the virtual machine. See disk options for more information.
+         * @param disks A specification for a virtual disk device on this virtual machine.
          * 
          * @return builder
          * 
@@ -1984,9 +1932,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param efiSecureBootEnabled Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
-         * 
-         * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
+         * @param efiSecureBootEnabled When the boot type set in firmware is efi, this enables EFI secure boot.
          * 
          * @return builder
          * 
@@ -1997,9 +1943,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param efiSecureBootEnabled Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
-         * 
-         * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
+         * @param efiSecureBootEnabled When the boot type set in firmware is efi, this enables EFI secure boot.
          * 
          * @return builder
          * 
@@ -2009,7 +1953,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enableDiskUuid Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
+         * @param enableDiskUuid Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
          * 
          * @return builder
          * 
@@ -2020,7 +1964,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enableDiskUuid Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
+         * @param enableDiskUuid Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
          * 
          * @return builder
          * 
@@ -2030,7 +1974,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enableLogging Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
+         * @param enableLogging Enable logging on this virtual machine.
          * 
          * @return builder
          * 
@@ -2041,7 +1985,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enableLogging Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
+         * @param enableLogging Enable logging on this virtual machine.
          * 
          * @return builder
          * 
@@ -2051,7 +1995,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param eptRviMode The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
+         * @param eptRviMode The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
          * 
          * @return builder
          * 
@@ -2062,7 +2006,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param eptRviMode The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
+         * @param eptRviMode The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
          * 
          * @return builder
          * 
@@ -2072,9 +2016,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraConfig Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-         * 
-         * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
+         * @param extraConfig Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
+         * configuration, such as instance metadata, or configuration data for OVF images.
          * 
          * @return builder
          * 
@@ -2085,9 +2028,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraConfig Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-         * 
-         * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
+         * @param extraConfig Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
+         * configuration, such as instance metadata, or configuration data for OVF images.
          * 
          * @return builder
          * 
@@ -2097,7 +2039,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
          * 
          * @return builder
          * 
@@ -2108,7 +2050,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
          * 
          * @return builder
          * 
@@ -2118,7 +2060,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param firmware The firmware for the virtual machine. One of `bios` or `efi`.
+         * @param firmware The firmware interface to use on the virtual machine. Can be one of bios or efi.
          * 
          * @return builder
          * 
@@ -2129,7 +2071,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param firmware The firmware for the virtual machine. One of `bios` or `efi`.
+         * @param firmware The firmware interface to use on the virtual machine. Can be one of bios or efi.
          * 
          * @return builder
          * 
@@ -2139,7 +2081,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param folder The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/&lt;datacenter-name&gt;/vm`).  For example, `/dc-01/vm/foo`
+         * @param folder The name of the folder to locate the virtual machine in.
          * 
          * @return builder
          * 
@@ -2150,7 +2092,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param folder The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/&lt;datacenter-name&gt;/vm`).  For example, `/dc-01/vm/foo`
+         * @param folder The name of the folder to locate the virtual machine in.
          * 
          * @return builder
          * 
@@ -2160,7 +2102,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param forcePowerOff If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
+         * @param forcePowerOff Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
          * 
          * @return builder
          * 
@@ -2171,7 +2113,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param forcePowerOff If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
+         * @param forcePowerOff Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
          * 
          * @return builder
          * 
@@ -2181,9 +2123,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param guestId The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-         * 
-         * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+         * @param guestId The guest ID for the operating system.
          * 
          * @return builder
          * 
@@ -2194,9 +2134,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param guestId The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
-         * 
-         * [vmware-docs-guest-ids]: https://vdc-repo.vmware.com/vmwb-repository/dcr-public/184bb3ba-6fa8-4574-a767-d0c96e2a38f4/ba9422ef-405c-47dd-8553-e11b619185b2/SDK/vsphere-ws/docs/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+         * @param guestId The guest ID for the operating system.
          * 
          * @return builder
          * 
@@ -2237,10 +2175,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hardwareVersion The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-         * 
-         * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-         * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+         * @param hardwareVersion The hardware version for the virtual machine.
          * 
          * @return builder
          * 
@@ -2251,10 +2186,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hardwareVersion The hardware version number. Valid range is from 4 to 21. The hardware version cannot be downgraded. See virtual machine hardware [versions][virtual-machine-hardware-versions] and [compatibility][virtual-machine-hardware-compatibility] for more information on supported settings.
-         * 
-         * [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
-         * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+         * @param hardwareVersion The hardware version for the virtual machine.
          * 
          * @return builder
          * 
@@ -2264,7 +2196,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostSystemId The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+         * @param hostSystemId The ID of an optional host system to pin the virtual machine to.
          * 
          * @return builder
          * 
@@ -2275,7 +2207,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostSystemId The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+         * @param hostSystemId The ID of an optional host system to pin the virtual machine to.
          * 
          * @return builder
          * 
@@ -2285,7 +2217,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hvMode The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
+         * @param hvMode The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
          * 
          * @return builder
          * 
@@ -2296,7 +2228,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hvMode The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
+         * @param hvMode The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
          * 
          * @return builder
          * 
@@ -2306,7 +2238,9 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ideControllerCount The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
+         * @param ideControllerCount The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+         * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+         * controllers.
          * 
          * @return builder
          * 
@@ -2317,7 +2251,9 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ideControllerCount The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
+         * @param ideControllerCount The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+         * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+         * controllers.
          * 
          * @return builder
          * 
@@ -2327,7 +2263,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ignoredGuestIps List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
+         * @param ignoredGuestIps List of IP addresses and CIDR networks to ignore while waiting for an IP
          * 
          * @return builder
          * 
@@ -2338,7 +2274,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ignoredGuestIps List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
+         * @param ignoredGuestIps List of IP addresses and CIDR networks to ignore while waiting for an IP
          * 
          * @return builder
          * 
@@ -2348,7 +2284,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ignoredGuestIps List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
+         * @param ignoredGuestIps List of IP addresses and CIDR networks to ignore while waiting for an IP
          * 
          * @return builder
          * 
@@ -2379,9 +2315,9 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
-         * 
-         * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
+         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
+         * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
+         * devices. Can be one of low, normal, medium, or high.
          * 
          * @return builder
          * 
@@ -2392,9 +2328,9 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
-         * 
-         * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
+         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
+         * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
+         * devices. Can be one of low, normal, medium, or high.
          * 
          * @return builder
          * 
@@ -2404,7 +2340,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memory The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
+         * @param memory The size of the virtual machine&#39;s memory, in MB.
          * 
          * @return builder
          * 
@@ -2415,7 +2351,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memory The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
+         * @param memory The size of the virtual machine&#39;s memory, in MB.
          * 
          * @return builder
          * 
@@ -2425,15 +2361,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryHotAddEnabled Allow memory to be added to the virtual machine while it is powered on.
-         * 
-         * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
-         * 
-         * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-         * 
-         * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-         * 
-         * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
+         * @param memoryHotAddEnabled Allow memory to be added to this virtual machine while it is running.
          * 
          * @return builder
          * 
@@ -2444,15 +2372,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryHotAddEnabled Allow memory to be added to the virtual machine while it is powered on.
-         * 
-         * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
-         * 
-         * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
-         * 
-         * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
-         * 
-         * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
+         * @param memoryHotAddEnabled Allow memory to be added to this virtual machine while it is running.
          * 
          * @return builder
          * 
@@ -2462,7 +2382,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryLimit The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
+         * @param memoryLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+         * resources.
          * 
          * @return builder
          * 
@@ -2473,7 +2394,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryLimit The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
+         * @param memoryLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
+         * resources.
          * 
          * @return builder
          * 
@@ -2483,7 +2405,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryReservation The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+         * @param memoryReservation The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
          * 
          * @return builder
          * 
@@ -2494,7 +2416,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryReservation The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
+         * @param memoryReservation The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
          * 
          * @return builder
          * 
@@ -2529,7 +2451,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryShareCount The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
+         * @param memoryShareCount The amount of shares to allocate to memory for a custom share level.
          * 
          * @return builder
          * 
@@ -2540,7 +2462,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryShareCount The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
+         * @param memoryShareCount The amount of shares to allocate to memory for a custom share level.
          * 
          * @return builder
          * 
@@ -2550,7 +2472,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryShareLevel The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+         * @param memoryShareLevel The allocation level for memory resources. Can be one of high, low, normal, or custom.
          * 
          * @return builder
          * 
@@ -2561,7 +2483,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryShareLevel The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+         * @param memoryShareLevel The allocation level for memory resources. Can be one of high, low, normal, or custom.
          * 
          * @return builder
          * 
@@ -2571,7 +2493,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param migrateWaitTimeout The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
+         * @param migrateWaitTimeout The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
          * 
          * @return builder
          * 
@@ -2582,7 +2504,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param migrateWaitTimeout The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
+         * @param migrateWaitTimeout The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
          * 
          * @return builder
          * 
@@ -2613,7 +2535,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the virtual machine.
+         * @param name The name of this virtual machine.
          * 
          * @return builder
          * 
@@ -2624,7 +2546,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the virtual machine.
+         * @param name The name of this virtual machine.
          * 
          * @return builder
          * 
@@ -2634,7 +2556,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nestedHvEnabled Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
+         * @param nestedHvEnabled Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
          * 
          * @return builder
          * 
@@ -2645,7 +2567,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nestedHvEnabled Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
+         * @param nestedHvEnabled Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
          * 
          * @return builder
          * 
@@ -2655,7 +2577,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+         * @param networkInterfaces A specification for a virtual NIC on this virtual machine.
          * 
          * @return builder
          * 
@@ -2666,7 +2588,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+         * @param networkInterfaces A specification for a virtual NIC on this virtual machine.
          * 
          * @return builder
          * 
@@ -2676,7 +2598,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+         * @param networkInterfaces A specification for a virtual NIC on this virtual machine.
          * 
          * @return builder
          * 
@@ -2686,7 +2608,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numCoresPerSocket The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `num_cpus` divided by `num_cores_per_socket`. If specified, the value supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+         * must be evenly divisible by this value.
          * 
          * @return builder
          * 
@@ -2697,7 +2620,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numCoresPerSocket The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `num_cpus` divided by `num_cores_per_socket`. If specified, the value supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+         * must be evenly divisible by this value.
          * 
          * @return builder
          * 
@@ -2707,7 +2631,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numCpus The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
+         * @param numCpus The number of virtual processors to assign to this virtual machine.
          * 
          * @return builder
          * 
@@ -2718,7 +2642,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numCpus The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
+         * @param numCpus The number of virtual processors to assign to this virtual machine.
          * 
          * @return builder
          * 
@@ -2728,7 +2652,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ovfDeploy When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
+         * @param ovfDeploy A specification for deploying a virtual machine from ovf/ova template.
          * 
          * @return builder
          * 
@@ -2739,7 +2663,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ovfDeploy When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
+         * @param ovfDeploy A specification for deploying a virtual machine from ovf/ova template.
          * 
          * @return builder
          * 
@@ -2749,9 +2673,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pciDeviceIds List of host PCI device IDs in which to create PCI passthroughs.
-         * 
-         * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+         * @param pciDeviceIds A list of PCI passthrough devices
          * 
          * @return builder
          * 
@@ -2762,9 +2684,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pciDeviceIds List of host PCI device IDs in which to create PCI passthroughs.
-         * 
-         * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+         * @param pciDeviceIds A list of PCI passthrough devices
          * 
          * @return builder
          * 
@@ -2774,9 +2694,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pciDeviceIds List of host PCI device IDs in which to create PCI passthroughs.
-         * 
-         * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+         * @param pciDeviceIds A list of PCI passthrough devices
          * 
          * @return builder
          * 
@@ -2851,8 +2769,6 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         /**
          * @param replaceTrigger Triggers replacement of resource whenever it changes.
          * 
-         * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
-         * 
          * @return builder
          * 
          */
@@ -2864,8 +2780,6 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         /**
          * @param replaceTrigger Triggers replacement of resource whenever it changes.
          * 
-         * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
-         * 
          * @return builder
          * 
          */
@@ -2874,9 +2788,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourcePoolId The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
-         * 
-         * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
+         * @param resourcePoolId The ID of a resource pool to put the virtual machine in.
          * 
          * @return builder
          * 
@@ -2887,9 +2799,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourcePoolId The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
-         * 
-         * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
+         * @param resourcePoolId The ID of a resource pool to put the virtual machine in.
          * 
          * @return builder
          * 
@@ -2899,7 +2809,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsAfterPowerOn Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsAfterPowerOn Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2910,7 +2820,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsAfterPowerOn Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsAfterPowerOn Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2920,7 +2830,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsAfterResume Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsAfterResume Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2931,7 +2841,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsAfterResume Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsAfterResume Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2941,7 +2851,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsBeforeGuestReboot Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
+         * @param runToolsScriptsBeforeGuestReboot Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2952,7 +2862,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsBeforeGuestReboot Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
+         * @param runToolsScriptsBeforeGuestReboot Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2962,7 +2872,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsBeforeGuestShutdown Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsBeforeGuestShutdown Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2973,7 +2883,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsBeforeGuestShutdown Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsBeforeGuestShutdown Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2983,7 +2893,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsBeforeGuestStandby Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsBeforeGuestStandby Enable the run of scripts before guest operating system standby when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -2994,7 +2904,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runToolsScriptsBeforeGuestStandby Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
+         * @param runToolsScriptsBeforeGuestStandby Enable the run of scripts before guest operating system standby when VMware Tools is installed.
          * 
          * @return builder
          * 
@@ -3029,7 +2939,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scsiBusSharing The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
+         * @param scsiBusSharing Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
          * 
          * @return builder
          * 
@@ -3040,7 +2950,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scsiBusSharing The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
+         * @param scsiBusSharing Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
          * 
          * @return builder
          * 
@@ -3075,7 +2985,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scsiType The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
+         * @param scsiType The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
          * 
          * @return builder
          * 
@@ -3086,7 +2996,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scsiType The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
+         * @param scsiType The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
          * 
          * @return builder
          * 
@@ -3096,7 +3006,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param shutdownWaitTimeout The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
+         * @param shutdownWaitTimeout The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
          * 
          * @return builder
          * 
@@ -3107,7 +3017,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param shutdownWaitTimeout The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
+         * @param shutdownWaitTimeout The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
          * 
          * @return builder
          * 
@@ -3117,7 +3027,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
+         * @param storagePolicyId The ID of the storage policy to assign to the virtual machine home directory.
          * 
          * @return builder
          * 
@@ -3128,7 +3038,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
+         * @param storagePolicyId The ID of the storage policy to assign to the virtual machine home directory.
          * 
          * @return builder
          * 
@@ -3138,7 +3048,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param swapPlacementPolicy The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
+         * @param swapPlacementPolicy The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
          * 
          * @return builder
          * 
@@ -3149,7 +3059,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param swapPlacementPolicy The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
+         * @param swapPlacementPolicy The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
          * 
          * @return builder
          * 
@@ -3159,7 +3069,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHost Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
+         * @param syncTimeWithHost Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
+         * synchronized on startup and resume. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3170,7 +3081,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHost Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `true`.
+         * @param syncTimeWithHost Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
+         * synchronized on startup and resume. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3180,7 +3092,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHostPeriodically Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
+         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
+         * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3191,7 +3104,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHostPeriodically Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
+         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
+         * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3201,9 +3115,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
-         * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+         * @param tags A list of tag IDs to apply to this object.
          * 
          * @return builder
          * 
@@ -3214,9 +3126,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
-         * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+         * @param tags A list of tag IDs to apply to this object.
          * 
          * @return builder
          * 
@@ -3226,9 +3136,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
-         * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+         * @param tags A list of tag IDs to apply to this object.
          * 
          * @return builder
          * 
@@ -3238,7 +3146,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param toolsUpgradePolicy Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+         * @param toolsUpgradePolicy Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
          * 
          * @return builder
          * 
@@ -3249,7 +3157,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param toolsUpgradePolicy Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+         * @param toolsUpgradePolicy Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
          * 
          * @return builder
          * 
@@ -3259,7 +3167,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+         * @param uuid The UUID of the virtual machine. Also exposed as the `id` of the resource.
          * 
          * @return builder
          * 
@@ -3270,7 +3178,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+         * @param uuid The UUID of the virtual machine. Also exposed as the `id` of the resource.
          * 
          * @return builder
          * 
@@ -3280,7 +3188,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vapp Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
+         * @param vapp vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
          * 
          * @return builder
          * 
@@ -3291,7 +3199,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vapp Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
+         * @param vapp vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
          * 
          * @return builder
          * 
@@ -3332,7 +3240,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vbsEnabled Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
+         * @param vbsEnabled Flag to specify if Virtualization-based security is enabled for this virtual machine.
          * 
          * @return builder
          * 
@@ -3343,7 +3251,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vbsEnabled Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
+         * @param vbsEnabled Flag to specify if Virtualization-based security is enabled for this virtual machine.
          * 
          * @return builder
          * 
@@ -3395,7 +3303,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vvtdEnabled Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
+         * @param vvtdEnabled Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
+         * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
          * 
          * @return builder
          * 
@@ -3406,7 +3315,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vvtdEnabled Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
+         * @param vvtdEnabled Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
+         * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
          * 
          * @return builder
          * 
@@ -3416,7 +3326,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `wait_for_guest_net_timeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
+         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+         * disables the waiter.
          * 
          * @return builder
          * 
@@ -3427,7 +3338,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `wait_for_guest_net_timeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
+         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+         * disables the waiter.
          * 
          * @return builder
          * 
@@ -3437,7 +3349,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
+         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
+         * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
          * 
          * @return builder
          * 
@@ -3448,7 +3361,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
+         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
+         * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
          * 
          * @return builder
          * 
@@ -3458,7 +3372,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
+         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+         * disables the waiter.
          * 
          * @return builder
          * 
@@ -3469,7 +3384,8 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
+         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
+         * disables the waiter.
          * 
          * @return builder
          * 

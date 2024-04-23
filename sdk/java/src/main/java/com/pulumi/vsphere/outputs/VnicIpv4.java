@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VnicIpv4 {
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
      * 
      */
     private @Nullable Boolean dhcp;
     /**
-     * @return IP address of the default gateway, if DHCP or autoconfig is not set.
+     * @return IP address of the default gateway, if DHCP is not set.
      * 
      */
     private @Nullable String gw;
     /**
-     * @return Address of the interface, if DHCP is not set.
+     * @return address of the interface, if DHCP is not set.
      * 
      */
     private @Nullable String ip;
     /**
-     * @return Netmask of the interface, if DHCP is not set.
+     * @return netmask of the interface, if DHCP is not set.
      * 
      */
     private @Nullable String netmask;
 
     private VnicIpv4() {}
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
      * 
      */
     public Optional<Boolean> dhcp() {
         return Optional.ofNullable(this.dhcp);
     }
     /**
-     * @return IP address of the default gateway, if DHCP or autoconfig is not set.
+     * @return IP address of the default gateway, if DHCP is not set.
      * 
      */
     public Optional<String> gw() {
         return Optional.ofNullable(this.gw);
     }
     /**
-     * @return Address of the interface, if DHCP is not set.
+     * @return address of the interface, if DHCP is not set.
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return Netmask of the interface, if DHCP is not set.
+     * @return netmask of the interface, if DHCP is not set.
      * 
      */
     public Optional<String> netmask() {

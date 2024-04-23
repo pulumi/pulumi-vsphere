@@ -14,9 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ComputeClusterVsanDiskGroup struct {
-	// The canonical name of the disk to use for vSAN cache.
+	// Cache disk.
 	Cache *string `pulumi:"cache"`
-	// An array of disk canonical names for vSAN storage.
+	// List of storage disks.
 	Storages []string `pulumi:"storages"`
 }
 
@@ -32,9 +32,9 @@ type ComputeClusterVsanDiskGroupInput interface {
 }
 
 type ComputeClusterVsanDiskGroupArgs struct {
-	// The canonical name of the disk to use for vSAN cache.
+	// Cache disk.
 	Cache pulumi.StringPtrInput `pulumi:"cache"`
-	// An array of disk canonical names for vSAN storage.
+	// List of storage disks.
 	Storages pulumi.StringArrayInput `pulumi:"storages"`
 }
 
@@ -89,12 +89,12 @@ func (o ComputeClusterVsanDiskGroupOutput) ToComputeClusterVsanDiskGroupOutputWi
 	return o
 }
 
-// The canonical name of the disk to use for vSAN cache.
+// Cache disk.
 func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) *string { return v.Cache }).(pulumi.StringPtrOutput)
 }
 
-// An array of disk canonical names for vSAN storage.
+// List of storage disks.
 func (o ComputeClusterVsanDiskGroupOutput) Storages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) []string { return v.Storages }).(pulumi.StringArrayOutput)
 }
@@ -327,86 +327,11 @@ func (o ComputeClusterVsanFaultDomainFaultDomainArrayOutput) Index(i pulumi.IntI
 type ComputeClusterVsanStretchedCluster struct {
 	// The managed object IDs of the hosts to put in the first fault domain.
 	PreferredFaultDomainHostIds []string `pulumi:"preferredFaultDomainHostIds"`
-	// The name of first fault domain. Default is `Preferred`.
+	// The name of prepferred fault domain.
 	PreferredFaultDomainName *string `pulumi:"preferredFaultDomainName"`
 	// The managed object IDs of the hosts to put in the second fault domain.
 	SecondaryFaultDomainHostIds []string `pulumi:"secondaryFaultDomainHostIds"`
-	// The name of second fault domain. Default is `Secondary`.
-	//
-	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-	// You can enable or re-enable vSphere HA after vSAN is configured.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	// func main() {
-	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
-	// Name: pulumi.String("terraform-compute-cluster-test"),
-	// DatacenterId: pulumi.Any(datacenter.Id),
-	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
-	// },
-	// DrsEnabled: pulumi.Bool(true),
-	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-	// HaEnabled: pulumi.Bool(false),
-	// VsanEnabled: pulumi.Bool(true),
-	// VsanEsaEnabled: pulumi.Bool(true),
-	// VsanDedupEnabled: pulumi.Bool(true),
-	// VsanCompressionEnabled: pulumi.Bool(true),
-	// VsanPerformanceEnabled: pulumi.Bool(true),
-	// VsanVerboseModeEnabled: pulumi.Bool(true),
-	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-	// VsanUnmapEnabled: pulumi.Bool(true),
-	// VsanDitEncryptionEnabled: pulumi.Bool(true),
-	// VsanDitRekeyInterval: pulumi.Int(1800),
-	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(cacheDisks[0]),
-	// Storages: pulumi.Any(storageDisks),
-	// },
-	// },
-	// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
-	// &vsphere.ComputeClusterVsanFaultDomainArgs{
-	// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
-	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-	// Name: pulumi.String("fd1"),
-	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
-	// },
-	// },
-	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-	// Name: pulumi.String("fd2"),
-	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
-	// },
-	// },
-	// },
-	// },
-	// },
-	// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
-	// PreferredFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
-	// },
-	// SecondaryFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
-	// },
-	// WitnessNode: pulumi.Any(witnessHost.Id),
-	// },
-	// })
-	// if err != nil {
-	// return err
-	// }
-	// return nil
-	// })
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
+	// The name of secondary fault domain.
 	SecondaryFaultDomainName *string `pulumi:"secondaryFaultDomainName"`
 	// The managed object IDs of the host selected as witness node when enable stretched cluster.
 	WitnessNode string `pulumi:"witnessNode"`
@@ -426,86 +351,11 @@ type ComputeClusterVsanStretchedClusterInput interface {
 type ComputeClusterVsanStretchedClusterArgs struct {
 	// The managed object IDs of the hosts to put in the first fault domain.
 	PreferredFaultDomainHostIds pulumi.StringArrayInput `pulumi:"preferredFaultDomainHostIds"`
-	// The name of first fault domain. Default is `Preferred`.
+	// The name of prepferred fault domain.
 	PreferredFaultDomainName pulumi.StringPtrInput `pulumi:"preferredFaultDomainName"`
 	// The managed object IDs of the hosts to put in the second fault domain.
 	SecondaryFaultDomainHostIds pulumi.StringArrayInput `pulumi:"secondaryFaultDomainHostIds"`
-	// The name of second fault domain. Default is `Secondary`.
-	//
-	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-	// You can enable or re-enable vSphere HA after vSAN is configured.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	// func main() {
-	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
-	// Name: pulumi.String("terraform-compute-cluster-test"),
-	// DatacenterId: pulumi.Any(datacenter.Id),
-	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
-	// },
-	// DrsEnabled: pulumi.Bool(true),
-	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-	// HaEnabled: pulumi.Bool(false),
-	// VsanEnabled: pulumi.Bool(true),
-	// VsanEsaEnabled: pulumi.Bool(true),
-	// VsanDedupEnabled: pulumi.Bool(true),
-	// VsanCompressionEnabled: pulumi.Bool(true),
-	// VsanPerformanceEnabled: pulumi.Bool(true),
-	// VsanVerboseModeEnabled: pulumi.Bool(true),
-	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-	// VsanUnmapEnabled: pulumi.Bool(true),
-	// VsanDitEncryptionEnabled: pulumi.Bool(true),
-	// VsanDitRekeyInterval: pulumi.Int(1800),
-	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(cacheDisks[0]),
-	// Storages: pulumi.Any(storageDisks),
-	// },
-	// },
-	// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
-	// &vsphere.ComputeClusterVsanFaultDomainArgs{
-	// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
-	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-	// Name: pulumi.String("fd1"),
-	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
-	// },
-	// },
-	// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-	// Name: pulumi.String("fd2"),
-	// HostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
-	// },
-	// },
-	// },
-	// },
-	// },
-	// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
-	// PreferredFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
-	// },
-	// SecondaryFaultDomainHostIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
-	// },
-	// WitnessNode: pulumi.Any(witnessHost.Id),
-	// },
-	// })
-	// if err != nil {
-	// return err
-	// }
-	// return nil
-	// })
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
+	// The name of secondary fault domain.
 	SecondaryFaultDomainName pulumi.StringPtrInput `pulumi:"secondaryFaultDomainName"`
 	// The managed object IDs of the host selected as witness node when enable stretched cluster.
 	WitnessNode pulumi.StringInput `pulumi:"witnessNode"`
@@ -593,7 +443,7 @@ func (o ComputeClusterVsanStretchedClusterOutput) PreferredFaultDomainHostIds() 
 	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) []string { return v.PreferredFaultDomainHostIds }).(pulumi.StringArrayOutput)
 }
 
-// The name of first fault domain. Default is `Preferred`.
+// The name of prepferred fault domain.
 func (o ComputeClusterVsanStretchedClusterOutput) PreferredFaultDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) *string { return v.PreferredFaultDomainName }).(pulumi.StringPtrOutput)
 }
@@ -603,84 +453,7 @@ func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainHostIds() 
 	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) []string { return v.SecondaryFaultDomainHostIds }).(pulumi.StringArrayOutput)
 }
 
-// The name of second fault domain. Default is `Secondary`.
-//
-// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-// You can enable or re-enable vSphere HA after vSAN is configured.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
-// Name: pulumi.String("terraform-compute-cluster-test"),
-// DatacenterId: pulumi.Any(datacenter.Id),
-// HostSystemIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
-// },
-// DrsEnabled: pulumi.Bool(true),
-// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-// HaEnabled: pulumi.Bool(false),
-// VsanEnabled: pulumi.Bool(true),
-// VsanEsaEnabled: pulumi.Bool(true),
-// VsanDedupEnabled: pulumi.Bool(true),
-// VsanCompressionEnabled: pulumi.Bool(true),
-// VsanPerformanceEnabled: pulumi.Bool(true),
-// VsanVerboseModeEnabled: pulumi.Bool(true),
-// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-// VsanUnmapEnabled: pulumi.Bool(true),
-// VsanDitEncryptionEnabled: pulumi.Bool(true),
-// VsanDitRekeyInterval: pulumi.Int(1800),
-// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-// &vsphere.ComputeClusterVsanDiskGroupArgs{
-// Cache: pulumi.Any(cacheDisks[0]),
-// Storages: pulumi.Any(storageDisks),
-// },
-// },
-// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
-// &vsphere.ComputeClusterVsanFaultDomainArgs{
-// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
-// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-// Name: pulumi.String("fd1"),
-// HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
-// },
-// },
-// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-// Name: pulumi.String("fd2"),
-// HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
-// },
-// },
-// },
-// },
-// },
-// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
-// PreferredFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
-// },
-// SecondaryFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
-// },
-// WitnessNode: pulumi.Any(witnessHost.Id),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
-// <!--End PulumiCodeChooser -->
+// The name of secondary fault domain.
 func (o ComputeClusterVsanStretchedClusterOutput) SecondaryFaultDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeClusterVsanStretchedCluster) *string { return v.SecondaryFaultDomainName }).(pulumi.StringPtrOutput)
 }
@@ -724,7 +497,7 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) PreferredFaultDomainHostIds
 	}).(pulumi.StringArrayOutput)
 }
 
-// The name of first fault domain. Default is `Preferred`.
+// The name of prepferred fault domain.
 func (o ComputeClusterVsanStretchedClusterPtrOutput) PreferredFaultDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) *string {
 		if v == nil {
@@ -744,84 +517,7 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainHostIds
 	}).(pulumi.StringArrayOutput)
 }
 
-// The name of second fault domain. Default is `Secondary`.
-//
-// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
-// You can enable or re-enable vSphere HA after vSAN is configured.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.NewComputeCluster(ctx, "compute_cluster", &vsphere.ComputeClusterArgs{
-// Name: pulumi.String("terraform-compute-cluster-test"),
-// DatacenterId: pulumi.Any(datacenter.Id),
-// HostSystemIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,25-35),
-// },
-// DrsEnabled: pulumi.Bool(true),
-// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-// HaEnabled: pulumi.Bool(false),
-// VsanEnabled: pulumi.Bool(true),
-// VsanEsaEnabled: pulumi.Bool(true),
-// VsanDedupEnabled: pulumi.Bool(true),
-// VsanCompressionEnabled: pulumi.Bool(true),
-// VsanPerformanceEnabled: pulumi.Bool(true),
-// VsanVerboseModeEnabled: pulumi.Bool(true),
-// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-// VsanUnmapEnabled: pulumi.Bool(true),
-// VsanDitEncryptionEnabled: pulumi.Bool(true),
-// VsanDitRekeyInterval: pulumi.Int(1800),
-// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-// &vsphere.ComputeClusterVsanDiskGroupArgs{
-// Cache: pulumi.Any(cacheDisks[0]),
-// Storages: pulumi.Any(storageDisks),
-// },
-// },
-// VsanFaultDomains: vsphere.ComputeClusterVsanFaultDomainArray{
-// &vsphere.ComputeClusterVsanFaultDomainArgs{
-// FaultDomains: vsphere.ComputeClusterVsanFaultDomainFaultDomainArray{
-// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-// Name: pulumi.String("fd1"),
-// HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,18-41),
-// },
-// },
-// &vsphere.ComputeClusterVsanFaultDomainFaultDomainArgs{
-// Name: pulumi.String("fd2"),
-// HostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:29,18-41),
-// },
-// },
-// },
-// },
-// },
-// VsanStretchedCluster: &vsphere.ComputeClusterVsanStretchedClusterArgs{
-// PreferredFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,36-66),
-// },
-// SecondaryFaultDomainHostIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,36-66),
-// },
-// WitnessNode: pulumi.Any(witnessHost.Id),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
-// <!--End PulumiCodeChooser -->
+// The name of secondary fault domain.
 func (o ComputeClusterVsanStretchedClusterPtrOutput) SecondaryFaultDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeClusterVsanStretchedCluster) *string {
 		if v == nil {
@@ -842,15 +538,15 @@ func (o ComputeClusterVsanStretchedClusterPtrOutput) WitnessNode() pulumi.String
 }
 
 type ContentLibraryPublication struct {
-	// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+	// Method to authenticate users. Must be `NONE` or `BASIC`.
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
-	// Password used for authentication.
+	// Password used by subscribers to authenticate.
 	Password *string `pulumi:"password"`
 	// The URL of the published content library.
 	PublishUrl *string `pulumi:"publishUrl"`
 	// Publish the content library. Default `false`.
 	Published *bool `pulumi:"published"`
-	// Username used for authentication.
+	// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 	Username *string `pulumi:"username"`
 }
 
@@ -866,15 +562,15 @@ type ContentLibraryPublicationInput interface {
 }
 
 type ContentLibraryPublicationArgs struct {
-	// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+	// Method to authenticate users. Must be `NONE` or `BASIC`.
 	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
-	// Password used for authentication.
+	// Password used by subscribers to authenticate.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The URL of the published content library.
 	PublishUrl pulumi.StringPtrInput `pulumi:"publishUrl"`
 	// Publish the content library. Default `false`.
 	Published pulumi.BoolPtrInput `pulumi:"published"`
-	// Username used for authentication.
+	// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -955,12 +651,12 @@ func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationPtrOutputWit
 	}).(ContentLibraryPublicationPtrOutput)
 }
 
-// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+// Method to authenticate users. Must be `NONE` or `BASIC`.
 func (o ContentLibraryPublicationOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
-// Password used for authentication.
+// Password used by subscribers to authenticate.
 func (o ContentLibraryPublicationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -975,7 +671,7 @@ func (o ContentLibraryPublicationOutput) Published() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *bool { return v.Published }).(pulumi.BoolPtrOutput)
 }
 
-// Username used for authentication.
+// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 func (o ContentLibraryPublicationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1004,7 +700,7 @@ func (o ContentLibraryPublicationPtrOutput) Elem() ContentLibraryPublicationOutp
 	}).(ContentLibraryPublicationOutput)
 }
 
-// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+// Method to authenticate users. Must be `NONE` or `BASIC`.
 func (o ContentLibraryPublicationPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLibraryPublication) *string {
 		if v == nil {
@@ -1014,7 +710,7 @@ func (o ContentLibraryPublicationPtrOutput) AuthenticationMethod() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Password used for authentication.
+// Password used by subscribers to authenticate.
 func (o ContentLibraryPublicationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLibraryPublication) *string {
 		if v == nil {
@@ -1044,7 +740,7 @@ func (o ContentLibraryPublicationPtrOutput) Published() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Username used for authentication.
+// Username used by subscribers to authenticate. Currently can only be `vcsp`.
 func (o ContentLibraryPublicationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLibraryPublication) *string {
 		if v == nil {
@@ -1393,11 +1089,9 @@ func (o DistributedPortGroupVlanRangeArrayOutput) Index(i pulumi.IntInput) Distr
 }
 
 type DistributedVirtualSwitchHost struct {
-	// The list of NIC devices to map to uplinks on the VDS,
-	// added in order they are specified.
+	// Name of the physical NIC to be added to the proxy switch.
 	Devices []string `pulumi:"devices"`
-	// The host system ID of the host to add to the
-	// VDS.
+	// The managed object ID of the host this specification applies to.
 	HostSystemId string `pulumi:"hostSystemId"`
 }
 
@@ -1413,11 +1107,9 @@ type DistributedVirtualSwitchHostInput interface {
 }
 
 type DistributedVirtualSwitchHostArgs struct {
-	// The list of NIC devices to map to uplinks on the VDS,
-	// added in order they are specified.
+	// Name of the physical NIC to be added to the proxy switch.
 	Devices pulumi.StringArrayInput `pulumi:"devices"`
-	// The host system ID of the host to add to the
-	// VDS.
+	// The managed object ID of the host this specification applies to.
 	HostSystemId pulumi.StringInput `pulumi:"hostSystemId"`
 }
 
@@ -1472,14 +1164,12 @@ func (o DistributedVirtualSwitchHostOutput) ToDistributedVirtualSwitchHostOutput
 	return o
 }
 
-// The list of NIC devices to map to uplinks on the VDS,
-// added in order they are specified.
+// Name of the physical NIC to be added to the proxy switch.
 func (o DistributedVirtualSwitchHostOutput) Devices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DistributedVirtualSwitchHost) []string { return v.Devices }).(pulumi.StringArrayOutput)
 }
 
-// The host system ID of the host to add to the
-// VDS.
+// The managed object ID of the host this specification applies to.
 func (o DistributedVirtualSwitchHostOutput) HostSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributedVirtualSwitchHost) string { return v.HostSystemId }).(pulumi.StringOutput)
 }
@@ -1505,14 +1195,11 @@ func (o DistributedVirtualSwitchHostArrayOutput) Index(i pulumi.IntInput) Distri
 }
 
 type DistributedVirtualSwitchPvlanMapping struct {
-	// The primary VLAN ID. The VLAN IDs of 0 and
-	// 4095 are reserved and cannot be used in this property.
+	// The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
 	PrimaryVlanId int `pulumi:"primaryVlanId"`
-	// The private VLAN type. Valid values are
-	// promiscuous, community and isolated.
+	// The private VLAN type. Valid values are promiscuous, community and isolated.
 	PvlanType string `pulumi:"pvlanType"`
-	// The secondary VLAN ID. The VLAN IDs of 0
-	// and 4095 are reserved and cannot be used in this property.
+	// The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
 	SecondaryVlanId int `pulumi:"secondaryVlanId"`
 }
 
@@ -1528,14 +1215,11 @@ type DistributedVirtualSwitchPvlanMappingInput interface {
 }
 
 type DistributedVirtualSwitchPvlanMappingArgs struct {
-	// The primary VLAN ID. The VLAN IDs of 0 and
-	// 4095 are reserved and cannot be used in this property.
+	// The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
 	PrimaryVlanId pulumi.IntInput `pulumi:"primaryVlanId"`
-	// The private VLAN type. Valid values are
-	// promiscuous, community and isolated.
+	// The private VLAN type. Valid values are promiscuous, community and isolated.
 	PvlanType pulumi.StringInput `pulumi:"pvlanType"`
-	// The secondary VLAN ID. The VLAN IDs of 0
-	// and 4095 are reserved and cannot be used in this property.
+	// The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
 	SecondaryVlanId pulumi.IntInput `pulumi:"secondaryVlanId"`
 }
 
@@ -1590,20 +1274,17 @@ func (o DistributedVirtualSwitchPvlanMappingOutput) ToDistributedVirtualSwitchPv
 	return o
 }
 
-// The primary VLAN ID. The VLAN IDs of 0 and
-// 4095 are reserved and cannot be used in this property.
+// The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
 func (o DistributedVirtualSwitchPvlanMappingOutput) PrimaryVlanId() pulumi.IntOutput {
 	return o.ApplyT(func(v DistributedVirtualSwitchPvlanMapping) int { return v.PrimaryVlanId }).(pulumi.IntOutput)
 }
 
-// The private VLAN type. Valid values are
-// promiscuous, community and isolated.
+// The private VLAN type. Valid values are promiscuous, community and isolated.
 func (o DistributedVirtualSwitchPvlanMappingOutput) PvlanType() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributedVirtualSwitchPvlanMapping) string { return v.PvlanType }).(pulumi.StringOutput)
 }
 
-// The secondary VLAN ID. The VLAN IDs of 0
-// and 4095 are reserved and cannot be used in this property.
+// The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
 func (o DistributedVirtualSwitchPvlanMappingOutput) SecondaryVlanId() pulumi.IntOutput {
 	return o.ApplyT(func(v DistributedVirtualSwitchPvlanMapping) int { return v.SecondaryVlanId }).(pulumi.IntOutput)
 }
@@ -2966,19 +2647,15 @@ func (o HostPortGroupPortArrayOutput) Index(i pulumi.IntInput) HostPortGroupPort
 }
 
 type VirtualMachineCdrom struct {
-	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
+	// Indicates whether the device should be mapped to a remote client device
 	ClientDevice *bool `pulumi:"clientDevice"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The datastore ID the ISO is located on.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// The path to the ISO file on the datastore.
 	Path *string `pulumi:"path"`
 }
 
@@ -2994,19 +2671,15 @@ type VirtualMachineCdromInput interface {
 }
 
 type VirtualMachineCdromArgs struct {
-	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
+	// Indicates whether the device should be mapped to a remote client device
 	ClientDevice pulumi.BoolPtrInput `pulumi:"clientDevice"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The datastore ID the ISO is located on.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// The path to the ISO file on the datastore.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -3061,12 +2734,12 @@ func (o VirtualMachineCdromOutput) ToVirtualMachineCdromOutputWithContext(ctx co
 	return o
 }
 
-// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
+// Indicates whether the device should be mapped to a remote client device
 func (o VirtualMachineCdromOutput) ClientDevice() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *bool { return v.ClientDevice }).(pulumi.BoolPtrOutput)
 }
 
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// The datastore ID the ISO is located on.
 func (o VirtualMachineCdromOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -3081,11 +2754,7 @@ func (o VirtualMachineCdromOutput) Key() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *int { return v.Key }).(pulumi.IntPtrOutput)
 }
 
-// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-//
-// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-//
-// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+// The path to the ISO file on the datastore.
 func (o VirtualMachineCdromOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -3528,7 +3197,7 @@ type VirtualMachineCloneCustomize struct {
 	Ipv6Gateway *string `pulumi:"ipv6Gateway"`
 	// A list of configuration options specific to Linux virtual machines.
 	LinuxOptions *VirtualMachineCloneCustomizeLinuxOptions `pulumi:"linuxOptions"`
-	// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+	// A specification of network interface configuration options.
 	NetworkInterfaces []VirtualMachineCloneCustomizeNetworkInterface `pulumi:"networkInterfaces"`
 	// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
 	Timeout *int `pulumi:"timeout"`
@@ -3560,7 +3229,7 @@ type VirtualMachineCloneCustomizeArgs struct {
 	Ipv6Gateway pulumi.StringPtrInput `pulumi:"ipv6Gateway"`
 	// A list of configuration options specific to Linux virtual machines.
 	LinuxOptions VirtualMachineCloneCustomizeLinuxOptionsPtrInput `pulumi:"linuxOptions"`
-	// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+	// A specification of network interface configuration options.
 	NetworkInterfaces VirtualMachineCloneCustomizeNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 	// The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
@@ -3672,7 +3341,7 @@ func (o VirtualMachineCloneCustomizeOutput) LinuxOptions() VirtualMachineCloneCu
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeLinuxOptions { return v.LinuxOptions }).(VirtualMachineCloneCustomizeLinuxOptionsPtrOutput)
 }
 
-// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+// A specification of network interface configuration options.
 func (o VirtualMachineCloneCustomizeOutput) NetworkInterfaces() VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) []VirtualMachineCloneCustomizeNetworkInterface {
 		return v.NetworkInterfaces
@@ -3770,7 +3439,7 @@ func (o VirtualMachineCloneCustomizePtrOutput) LinuxOptions() VirtualMachineClon
 	}).(VirtualMachineCloneCustomizeLinuxOptionsPtrOutput)
 }
 
-// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
+// A specification of network interface configuration options.
 func (o VirtualMachineCloneCustomizePtrOutput) NetworkInterfaces() VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomize) []VirtualMachineCloneCustomizeNetworkInterface {
 		if v == nil {
@@ -4531,57 +4200,47 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) Workgroup() pulumi.
 }
 
 type VirtualMachineDisk struct {
-	// Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
-	//
-	// > **NOTE:** External disks cannot be attached when `datastoreClusterId` is used.
+	// If this is true, the disk is attached instead of created. Implies keep_on_remove.
 	Attach *bool `pulumi:"attach"`
-	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+	// The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
 	ControllerType *string `pulumi:"controllerType"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The datastore ID for this virtual disk, if different than the virtual machine.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress *string `pulumi:"deviceAddress"`
-	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-	//
-	// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+	// The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
 	DiskMode *string `pulumi:"diskMode"`
-	// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-	//
-	// > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+	// The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
 	DiskSharing *string `pulumi:"diskSharing"`
-	// If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thinProvisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+	// The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
 	EagerlyScrub *bool `pulumi:"eagerlyScrub"`
-	// The upper limit of IOPS that this disk can use. The default is no limit.
+	// The upper limit of IOPS that this disk can use.
 	IoLimit *int `pulumi:"ioLimit"`
-	// The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+	// The I/O guarantee that this disk has, in IOPS.
 	IoReservation *int `pulumi:"ioReservation"`
-	// The share count for the virtual disk when the share level is `custom`.
+	// The share count for this disk when the share level is custom.
 	IoShareCount *int `pulumi:"ioShareCount"`
-	// The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+	// The share allocation level for this disk. Can be one of low, normal, high, or custom.
 	IoShareLevel *string `pulumi:"ioShareLevel"`
-	// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+	// Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
 	KeepOnRemove *bool `pulumi:"keepOnRemove"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
 	// A unique label for this disk.
 	Label string `pulumi:"label"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
 	Path *string `pulumi:"path"`
-	// The size of the disk, in GB. Must be a whole number.
+	// The size of the disk, in GB.
 	Size *int `pulumi:"size"`
-	// The UUID of the storage policy to assign to the virtual disk.
+	// The ID of the storage policy to assign to the virtual disk in VM.
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
-	// If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerlyScrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+	// If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
 	ThinProvisioned *bool `pulumi:"thinProvisioned"`
-	// The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+	// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
 	UnitNumber *int `pulumi:"unitNumber"`
-	// The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+	// The UUID of the virtual machine. Also exposed as the `id` of the resource.
 	Uuid *string `pulumi:"uuid"`
-	// If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+	// If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
 	WriteThrough *bool `pulumi:"writeThrough"`
 }
 
@@ -4597,57 +4256,47 @@ type VirtualMachineDiskInput interface {
 }
 
 type VirtualMachineDiskArgs struct {
-	// Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
-	//
-	// > **NOTE:** External disks cannot be attached when `datastoreClusterId` is used.
+	// If this is true, the disk is attached instead of created. Implies keep_on_remove.
 	Attach pulumi.BoolPtrInput `pulumi:"attach"`
-	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+	// The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
 	ControllerType pulumi.StringPtrInput `pulumi:"controllerType"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The datastore ID for this virtual disk, if different than the virtual machine.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
-	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-	//
-	// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+	// The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
 	DiskMode pulumi.StringPtrInput `pulumi:"diskMode"`
-	// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-	//
-	// > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+	// The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
 	DiskSharing pulumi.StringPtrInput `pulumi:"diskSharing"`
-	// If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thinProvisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+	// The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
 	EagerlyScrub pulumi.BoolPtrInput `pulumi:"eagerlyScrub"`
-	// The upper limit of IOPS that this disk can use. The default is no limit.
+	// The upper limit of IOPS that this disk can use.
 	IoLimit pulumi.IntPtrInput `pulumi:"ioLimit"`
-	// The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+	// The I/O guarantee that this disk has, in IOPS.
 	IoReservation pulumi.IntPtrInput `pulumi:"ioReservation"`
-	// The share count for the virtual disk when the share level is `custom`.
+	// The share count for this disk when the share level is custom.
 	IoShareCount pulumi.IntPtrInput `pulumi:"ioShareCount"`
-	// The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+	// The share allocation level for this disk. Can be one of low, normal, high, or custom.
 	IoShareLevel pulumi.StringPtrInput `pulumi:"ioShareLevel"`
-	// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+	// Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
 	KeepOnRemove pulumi.BoolPtrInput `pulumi:"keepOnRemove"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
 	// A unique label for this disk.
 	Label pulumi.StringInput `pulumi:"label"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-	//
-	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-	//
-	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+	// The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The size of the disk, in GB. Must be a whole number.
+	// The size of the disk, in GB.
 	Size pulumi.IntPtrInput `pulumi:"size"`
-	// The UUID of the storage policy to assign to the virtual disk.
+	// The ID of the storage policy to assign to the virtual disk in VM.
 	StoragePolicyId pulumi.StringPtrInput `pulumi:"storagePolicyId"`
-	// If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerlyScrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+	// If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
 	ThinProvisioned pulumi.BoolPtrInput `pulumi:"thinProvisioned"`
-	// The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+	// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
 	UnitNumber pulumi.IntPtrInput `pulumi:"unitNumber"`
-	// The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+	// The UUID of the virtual machine. Also exposed as the `id` of the resource.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+	// If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
 	WriteThrough pulumi.BoolPtrInput `pulumi:"writeThrough"`
 }
 
@@ -4702,19 +4351,17 @@ func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutputWithContext(ctx cont
 	return o
 }
 
-// Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
-//
-// > **NOTE:** External disks cannot be attached when `datastoreClusterId` is used.
+// If this is true, the disk is attached instead of created. Implies keep_on_remove.
 func (o VirtualMachineDiskOutput) Attach() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Attach }).(pulumi.BoolPtrOutput)
 }
 
-// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+// The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
 func (o VirtualMachineDiskOutput) ControllerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.ControllerType }).(pulumi.StringPtrOutput)
 }
 
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// The datastore ID for this virtual disk, if different than the virtual machine.
 func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -4724,46 +4371,42 @@ func (o VirtualMachineDiskOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
 
-// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
-//
-// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+// The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
 func (o VirtualMachineDiskOutput) DiskMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DiskMode }).(pulumi.StringPtrOutput)
 }
 
-// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-//
-// > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+// The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
 func (o VirtualMachineDiskOutput) DiskSharing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DiskSharing }).(pulumi.StringPtrOutput)
 }
 
-// If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thinProvisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+// The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
 func (o VirtualMachineDiskOutput) EagerlyScrub() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.EagerlyScrub }).(pulumi.BoolPtrOutput)
 }
 
-// The upper limit of IOPS that this disk can use. The default is no limit.
+// The upper limit of IOPS that this disk can use.
 func (o VirtualMachineDiskOutput) IoLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.IoLimit }).(pulumi.IntPtrOutput)
 }
 
-// The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+// The I/O guarantee that this disk has, in IOPS.
 func (o VirtualMachineDiskOutput) IoReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.IoReservation }).(pulumi.IntPtrOutput)
 }
 
-// The share count for the virtual disk when the share level is `custom`.
+// The share count for this disk when the share level is custom.
 func (o VirtualMachineDiskOutput) IoShareCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.IoShareCount }).(pulumi.IntPtrOutput)
 }
 
-// The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+// The share allocation level for this disk. Can be one of low, normal, high, or custom.
 func (o VirtualMachineDiskOutput) IoShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.IoShareLevel }).(pulumi.StringPtrOutput)
 }
 
-// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
+// Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
 func (o VirtualMachineDiskOutput) KeepOnRemove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.KeepOnRemove }).(pulumi.BoolPtrOutput)
 }
@@ -4778,41 +4421,37 @@ func (o VirtualMachineDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-//
-// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
-//
-// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+// The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
 func (o VirtualMachineDiskOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The size of the disk, in GB. Must be a whole number.
+// The size of the disk, in GB.
 func (o VirtualMachineDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// The UUID of the storage policy to assign to the virtual disk.
+// The ID of the storage policy to assign to the virtual disk in VM.
 func (o VirtualMachineDiskOutput) StoragePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.StoragePolicyId }).(pulumi.StringPtrOutput)
 }
 
-// If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerlyScrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+// If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
 func (o VirtualMachineDiskOutput) ThinProvisioned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.ThinProvisioned }).(pulumi.BoolPtrOutput)
 }
 
-// The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+// The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
 func (o VirtualMachineDiskOutput) UnitNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.UnitNumber }).(pulumi.IntPtrOutput)
 }
 
-// The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+// The UUID of the virtual machine. Also exposed as the `id` of the resource.
 func (o VirtualMachineDiskOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
+// If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
 func (o VirtualMachineDiskOutput) WriteThrough() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.WriteThrough }).(pulumi.BoolPtrOutput)
 }
@@ -4838,29 +4477,29 @@ func (o VirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) VirtualMachineDi
 }
 
 type VirtualMachineNetworkInterface struct {
-	// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+	// The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
 	AdapterType *string `pulumi:"adapterType"`
-	// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
+	// The upper bandwidth limit of this network interface, in Mbits/sec.
 	BandwidthLimit *int `pulumi:"bandwidthLimit"`
-	// The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+	// The bandwidth reservation of this network interface, in Mbits/sec.
 	BandwidthReservation *int `pulumi:"bandwidthReservation"`
-	// The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
+	// The share count for this network interface when the share level is custom.
 	BandwidthShareCount *int `pulumi:"bandwidthShareCount"`
-	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
+	// The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
 	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
-	// The MAC address of the network interface. Can only be manually set if `useStaticMac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+	// The MAC address of this network interface. Can only be manually set if useStaticMac is true.
 	MacAddress *string `pulumi:"macAddress"`
-	// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+	// The ID of the network to connect this network interface to.
 	NetworkId string `pulumi:"networkId"`
-	// Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+	// Mapping of network interface to OVF network.
 	OvfMapping *string `pulumi:"ovfMapping"`
 	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction *string `pulumi:"physicalFunction"`
-	// If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
+	// If true, the macAddress field is treated as a static MAC address and set accordingly.
 	UseStaticMac *bool `pulumi:"useStaticMac"`
 }
 
@@ -4876,29 +4515,29 @@ type VirtualMachineNetworkInterfaceInput interface {
 }
 
 type VirtualMachineNetworkInterfaceArgs struct {
-	// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+	// The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
 	AdapterType pulumi.StringPtrInput `pulumi:"adapterType"`
-	// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
+	// The upper bandwidth limit of this network interface, in Mbits/sec.
 	BandwidthLimit pulumi.IntPtrInput `pulumi:"bandwidthLimit"`
-	// The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+	// The bandwidth reservation of this network interface, in Mbits/sec.
 	BandwidthReservation pulumi.IntPtrInput `pulumi:"bandwidthReservation"`
-	// The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
+	// The share count for this network interface when the share level is custom.
 	BandwidthShareCount pulumi.IntPtrInput `pulumi:"bandwidthShareCount"`
-	// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
+	// The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
 	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
-	// The MAC address of the network interface. Can only be manually set if `useStaticMac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+	// The MAC address of this network interface. Can only be manually set if useStaticMac is true.
 	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
-	// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+	// The ID of the network to connect this network interface to.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
-	// Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+	// Mapping of network interface to OVF network.
 	OvfMapping pulumi.StringPtrInput `pulumi:"ovfMapping"`
 	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction pulumi.StringPtrInput `pulumi:"physicalFunction"`
-	// If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
+	// If true, the macAddress field is treated as a static MAC address and set accordingly.
 	UseStaticMac pulumi.BoolPtrInput `pulumi:"useStaticMac"`
 }
 
@@ -4953,27 +4592,27 @@ func (o VirtualMachineNetworkInterfaceOutput) ToVirtualMachineNetworkInterfaceOu
 	return o
 }
 
-// The network interface type. One of `e1000`, `e1000e`, `sriov`, or `vmxnet3`. Default: `vmxnet3`.
+// The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
 func (o VirtualMachineNetworkInterfaceOutput) AdapterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.AdapterType }).(pulumi.StringPtrOutput)
 }
 
-// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit. Ignored if `adapterType` is set to `sriov`.
+// The upper bandwidth limit of this network interface, in Mbits/sec.
 func (o VirtualMachineNetworkInterfaceOutput) BandwidthLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *int { return v.BandwidthLimit }).(pulumi.IntPtrOutput)
 }
 
-// The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+// The bandwidth reservation of this network interface, in Mbits/sec.
 func (o VirtualMachineNetworkInterfaceOutput) BandwidthReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *int { return v.BandwidthReservation }).(pulumi.IntPtrOutput)
 }
 
-// The share count for the network interface when the share level is `custom`. Ignored if `adapterType` is set to `sriov`.
+// The share count for this network interface when the share level is custom.
 func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *int { return v.BandwidthShareCount }).(pulumi.IntPtrOutput)
 }
 
-// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`. Ignored if `adapterType` is set to `sriov`.
+// The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
 func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
 }
@@ -4988,17 +4627,17 @@ func (o VirtualMachineNetworkInterfaceOutput) Key() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *int { return v.Key }).(pulumi.IntPtrOutput)
 }
 
-// The MAC address of the network interface. Can only be manually set if `useStaticMac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+// The MAC address of this network interface. Can only be manually set if useStaticMac is true.
 func (o VirtualMachineNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
 }
 
-// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+// The ID of the network to connect this network interface to.
 func (o VirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+// Mapping of network interface to OVF network.
 func (o VirtualMachineNetworkInterfaceOutput) OvfMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.OvfMapping }).(pulumi.StringPtrOutput)
 }
@@ -5008,7 +4647,7 @@ func (o VirtualMachineNetworkInterfaceOutput) PhysicalFunction() pulumi.StringPt
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.PhysicalFunction }).(pulumi.StringPtrOutput)
 }
 
-// If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
+// If true, the macAddress field is treated as a static MAC address and set accordingly.
 func (o VirtualMachineNetworkInterfaceOutput) UseStaticMac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *bool { return v.UseStaticMac }).(pulumi.BoolPtrOutput)
 }
@@ -5575,13 +5214,13 @@ func (o VmStoragePolicyTagRuleArrayOutput) Index(i pulumi.IntInput) VmStoragePol
 }
 
 type VnicIpv4 struct {
-	// Use DHCP to configure the interface's IPv6 stack.
+	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp *bool `pulumi:"dhcp"`
-	// IP address of the default gateway, if DHCP or autoconfig is not set.
+	// IP address of the default gateway, if DHCP is not set.
 	Gw *string `pulumi:"gw"`
-	// Address of the interface, if DHCP is not set.
+	// address of the interface, if DHCP is not set.
 	Ip *string `pulumi:"ip"`
-	// Netmask of the interface, if DHCP is not set.
+	// netmask of the interface, if DHCP is not set.
 	Netmask *string `pulumi:"netmask"`
 }
 
@@ -5597,13 +5236,13 @@ type VnicIpv4Input interface {
 }
 
 type VnicIpv4Args struct {
-	// Use DHCP to configure the interface's IPv6 stack.
+	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
-	// IP address of the default gateway, if DHCP or autoconfig is not set.
+	// IP address of the default gateway, if DHCP is not set.
 	Gw pulumi.StringPtrInput `pulumi:"gw"`
-	// Address of the interface, if DHCP is not set.
+	// address of the interface, if DHCP is not set.
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// Netmask of the interface, if DHCP is not set.
+	// netmask of the interface, if DHCP is not set.
 	Netmask pulumi.StringPtrInput `pulumi:"netmask"`
 }
 
@@ -5684,22 +5323,22 @@ func (o VnicIpv4Output) ToVnicIpv4PtrOutputWithContext(ctx context.Context) Vnic
 	}).(VnicIpv4PtrOutput)
 }
 
-// Use DHCP to configure the interface's IPv6 stack.
+// Use DHCP to configure the interface's IPv4 stack.
 func (o VnicIpv4Output) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv4) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
-// IP address of the default gateway, if DHCP or autoconfig is not set.
+// IP address of the default gateway, if DHCP is not set.
 func (o VnicIpv4Output) Gw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnicIpv4) *string { return v.Gw }).(pulumi.StringPtrOutput)
 }
 
-// Address of the interface, if DHCP is not set.
+// address of the interface, if DHCP is not set.
 func (o VnicIpv4Output) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnicIpv4) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Netmask of the interface, if DHCP is not set.
+// netmask of the interface, if DHCP is not set.
 func (o VnicIpv4Output) Netmask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnicIpv4) *string { return v.Netmask }).(pulumi.StringPtrOutput)
 }
@@ -5728,7 +5367,7 @@ func (o VnicIpv4PtrOutput) Elem() VnicIpv4Output {
 	}).(VnicIpv4Output)
 }
 
-// Use DHCP to configure the interface's IPv6 stack.
+// Use DHCP to configure the interface's IPv4 stack.
 func (o VnicIpv4PtrOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VnicIpv4) *bool {
 		if v == nil {
@@ -5738,7 +5377,7 @@ func (o VnicIpv4PtrOutput) Dhcp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// IP address of the default gateway, if DHCP or autoconfig is not set.
+// IP address of the default gateway, if DHCP is not set.
 func (o VnicIpv4PtrOutput) Gw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnicIpv4) *string {
 		if v == nil {
@@ -5748,7 +5387,7 @@ func (o VnicIpv4PtrOutput) Gw() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Address of the interface, if DHCP is not set.
+// address of the interface, if DHCP is not set.
 func (o VnicIpv4PtrOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnicIpv4) *string {
 		if v == nil {
@@ -5758,7 +5397,7 @@ func (o VnicIpv4PtrOutput) Ip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Netmask of the interface, if DHCP is not set.
+// netmask of the interface, if DHCP is not set.
 func (o VnicIpv4PtrOutput) Netmask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnicIpv4) *string {
 		if v == nil {
@@ -5773,7 +5412,7 @@ type VnicIpv6 struct {
 	Addresses []string `pulumi:"addresses"`
 	// Use IPv6 Autoconfiguration (RFC2462).
 	Autoconfig *bool `pulumi:"autoconfig"`
-	// Use DHCP to configure the interface's IPv6 stack.
+	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp *bool `pulumi:"dhcp"`
 	// IP address of the default gateway, if DHCP or autoconfig is not set.
 	Gw *string `pulumi:"gw"`
@@ -5795,7 +5434,7 @@ type VnicIpv6Args struct {
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// Use IPv6 Autoconfiguration (RFC2462).
 	Autoconfig pulumi.BoolPtrInput `pulumi:"autoconfig"`
-	// Use DHCP to configure the interface's IPv6 stack.
+	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
 	// IP address of the default gateway, if DHCP or autoconfig is not set.
 	Gw pulumi.StringPtrInput `pulumi:"gw"`
@@ -5888,7 +5527,7 @@ func (o VnicIpv6Output) Autoconfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv6) *bool { return v.Autoconfig }).(pulumi.BoolPtrOutput)
 }
 
-// Use DHCP to configure the interface's IPv6 stack.
+// Use DHCP to configure the interface's IPv4 stack.
 func (o VnicIpv6Output) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv6) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
@@ -5942,7 +5581,7 @@ func (o VnicIpv6PtrOutput) Autoconfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Use DHCP to configure the interface's IPv6 stack.
+// Use DHCP to configure the interface's IPv4 stack.
 func (o VnicIpv6PtrOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VnicIpv6) *bool {
 		if v == nil {

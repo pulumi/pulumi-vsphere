@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ComputeClusterVsanDiskGroup {
     /**
-     * @return The canonical name of the disk to use for vSAN cache.
+     * @return Cache disk.
      * 
      */
     private @Nullable String cache;
     /**
-     * @return An array of disk canonical names for vSAN storage.
+     * @return List of storage disks.
      * 
      */
     private @Nullable List<String> storages;
 
     private ComputeClusterVsanDiskGroup() {}
     /**
-     * @return The canonical name of the disk to use for vSAN cache.
+     * @return Cache disk.
      * 
      */
     public Optional<String> cache() {
         return Optional.ofNullable(this.cache);
     }
     /**
-     * @return An array of disk canonical names for vSAN storage.
+     * @return List of storage disks.
      * 
      */
     public List<String> storages() {

@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
  * primary uplink and the second uplink as a secondary.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -40,7 +39,6 @@ import * as utilities from "./utilities";
  *     standbyUplinks: [vds.then(vds => vds.uplinks?.[1])],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> {
 
@@ -103,7 +101,6 @@ export interface GetDistributedVirtualSwitchResult {
  * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
  * primary uplink and the second uplink as a secondary.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -122,7 +119,6 @@ export interface GetDistributedVirtualSwitchResult {
  *     standbyUplinks: [vds.then(vds => vds.uplinks?.[1])],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDistributedVirtualSwitchOutput(args: GetDistributedVirtualSwitchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDistributedVirtualSwitchResult> {
     return pulumi.output(args).apply((a: any) => getDistributedVirtualSwitch(a, opts))

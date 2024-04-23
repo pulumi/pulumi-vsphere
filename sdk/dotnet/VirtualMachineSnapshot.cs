@@ -34,7 +34,6 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,7 +55,6 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [VSphereResourceType("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot")]
     public partial class VirtualMachineSnapshot : global::Pulumi.CustomResource

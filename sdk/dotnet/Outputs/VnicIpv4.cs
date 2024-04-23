@@ -14,19 +14,19 @@ namespace Pulumi.VSphere.Outputs
     public sealed class VnicIpv4
     {
         /// <summary>
-        /// Use DHCP to configure the interface's IPv6 stack.
+        /// Use DHCP to configure the interface's IPv4 stack.
         /// </summary>
         public readonly bool? Dhcp;
         /// <summary>
-        /// IP address of the default gateway, if DHCP or autoconfig is not set.
+        /// IP address of the default gateway, if DHCP is not set.
         /// </summary>
         public readonly string? Gw;
         /// <summary>
-        /// Address of the interface, if DHCP is not set.
+        /// address of the interface, if DHCP is not set.
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// Netmask of the interface, if DHCP is not set.
+        /// netmask of the interface, if DHCP is not set.
         /// </summary>
         public readonly string? Netmask;
 
