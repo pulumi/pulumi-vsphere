@@ -129,9 +129,6 @@ class VirtualMachineArgs:
         :param pulumi.Input[int] hardware_version: The hardware version for the virtual machine.
         :param pulumi.Input[str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-        :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
         :param pulumi.Input[str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
                latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
@@ -162,13 +159,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the run of scripts before guest operating system standby when VMware Tools is installed.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
@@ -742,11 +733,6 @@ class VirtualMachineArgs:
     @property
     @pulumi.getter(name="ideControllerCount")
     def ide_controller_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "ide_controller_count")
 
     @ide_controller_count.setter
@@ -1050,11 +1036,6 @@ class VirtualMachineArgs:
     @property
     @pulumi.getter(name="sataControllerCount")
     def sata_controller_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "sata_controller_count")
 
     @sata_controller_count.setter
@@ -1076,11 +1057,6 @@ class VirtualMachineArgs:
     @property
     @pulumi.getter(name="scsiControllerCount")
     def scsi_controller_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "scsi_controller_count")
 
     @scsi_controller_count.setter
@@ -1391,9 +1367,6 @@ class _VirtualMachineState:
         :param pulumi.Input[int] hardware_version: The hardware version for the virtual machine.
         :param pulumi.Input[str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-        :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
         :param pulumi.Input[bool] imported: Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
         :param pulumi.Input[str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
@@ -1421,7 +1394,6 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: A list of PCI passthrough devices
         :param pulumi.Input[str] power_state: A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
-        :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
         :param pulumi.Input[str] resource_pool_id: The ID of a resource pool to put the virtual machine in.
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
@@ -1429,13 +1401,7 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the run of scripts before guest operating system standby when VMware Tools is installed.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
@@ -2060,11 +2026,6 @@ class _VirtualMachineState:
     @property
     @pulumi.getter(name="ideControllerCount")
     def ide_controller_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "ide_controller_count")
 
     @ide_controller_count.setter
@@ -2332,9 +2293,6 @@ class _VirtualMachineState:
     @property
     @pulumi.getter(name="rebootRequired")
     def reboot_required(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Value internal to Terraform used to determine if a configuration set change requires a reboot.
-        """
         return pulumi.get(self, "reboot_required")
 
     @reboot_required.setter
@@ -2428,11 +2386,6 @@ class _VirtualMachineState:
     @property
     @pulumi.getter(name="sataControllerCount")
     def sata_controller_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "sata_controller_count")
 
     @sata_controller_count.setter
@@ -2454,11 +2407,6 @@ class _VirtualMachineState:
     @property
     @pulumi.getter(name="scsiControllerCount")
     def scsi_controller_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "scsi_controller_count")
 
     @scsi_controller_count.setter
@@ -2808,9 +2756,6 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] hardware_version: The hardware version for the virtual machine.
         :param pulumi.Input[str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-        :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
         :param pulumi.Input[str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
                latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
@@ -2842,13 +2787,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the run of scripts before guest operating system standby when VMware Tools is installed.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
@@ -3206,9 +3145,6 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] hardware_version: The hardware version for the virtual machine.
         :param pulumi.Input[str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-        :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
         :param pulumi.Input[bool] imported: Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
         :param pulumi.Input[str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
@@ -3236,7 +3172,6 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: A list of PCI passthrough devices
         :param pulumi.Input[str] power_state: A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
-        :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
         :param pulumi.Input[str] resource_pool_id: The ID of a resource pool to put the virtual machine in.
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
@@ -3244,13 +3179,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the run of scripts before guest operating system standby when VMware Tools is installed.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
@@ -3654,11 +3583,6 @@ class VirtualMachine(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ideControllerCount")
     def ide_controller_count(self) -> pulumi.Output[Optional[int]]:
-        """
-        The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "ide_controller_count")
 
     @property
@@ -3838,9 +3762,6 @@ class VirtualMachine(pulumi.CustomResource):
     @property
     @pulumi.getter(name="rebootRequired")
     def reboot_required(self) -> pulumi.Output[bool]:
-        """
-        Value internal to Terraform used to determine if a configuration set change requires a reboot.
-        """
         return pulumi.get(self, "reboot_required")
 
     @property
@@ -3902,11 +3823,6 @@ class VirtualMachine(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sataControllerCount")
     def sata_controller_count(self) -> pulumi.Output[Optional[int]]:
-        """
-        The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "sata_controller_count")
 
     @property
@@ -3920,11 +3836,6 @@ class VirtualMachine(pulumi.CustomResource):
     @property
     @pulumi.getter(name="scsiControllerCount")
     def scsi_controller_count(self) -> pulumi.Output[Optional[int]]:
-        """
-        The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        controllers.
-        """
         return pulumi.get(self, "scsi_controller_count")
 
     @property

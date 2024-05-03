@@ -522,21 +522,9 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> hvMode() {
         return Codegen.optional(this.hvMode);
     }
-    /**
-     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     * 
-     */
     @Export(name="ideControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ideControllerCount;
 
-    /**
-     * @return The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     * 
-     */
     public Output<Optional<Integer>> ideControllerCount() {
         return Codegen.optional(this.ideControllerCount);
     }
@@ -846,17 +834,9 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> poweronTimeout() {
         return Codegen.optional(this.poweronTimeout);
     }
-    /**
-     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
-     * 
-     */
     @Export(name="rebootRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> rebootRequired;
 
-    /**
-     * @return Value internal to Terraform used to determine if a configuration set change requires a reboot.
-     * 
-     */
     public Output<Boolean> rebootRequired() {
         return this.rebootRequired;
     }
@@ -958,21 +938,9 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> runToolsScriptsBeforeGuestStandby() {
         return Codegen.optional(this.runToolsScriptsBeforeGuestStandby);
     }
-    /**
-     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     * 
-     */
     @Export(name="sataControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sataControllerCount;
 
-    /**
-     * @return The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     * 
-     */
     public Output<Optional<Integer>> sataControllerCount() {
         return Codegen.optional(this.sataControllerCount);
     }
@@ -990,21 +958,9 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> scsiBusSharing() {
         return Codegen.optional(this.scsiBusSharing);
     }
-    /**
-     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     * 
-     */
     @Export(name="scsiControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> scsiControllerCount;
 
-    /**
-     * @return The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     * 
-     */
     public Output<Optional<Integer>> scsiControllerCount() {
         return Codegen.optional(this.scsiControllerCount);
     }
