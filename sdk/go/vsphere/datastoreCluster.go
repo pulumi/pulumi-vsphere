@@ -50,8 +50,8 @@ type DatastoreCluster struct {
 	SdrsEnabled pulumi.BoolPtrOutput `pulumi:"sdrsEnabled"`
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold pulumi.IntPtrOutput `pulumi:"sdrsFreeSpaceThreshold"`
-	// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-	// freeSpace, drs_free_space_threshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+	// freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrOutput `pulumi:"sdrsFreeSpaceThresholdMode"`
 	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
 	// balance the space.
@@ -159,8 +159,8 @@ type datastoreClusterState struct {
 	SdrsEnabled *bool `pulumi:"sdrsEnabled"`
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold *int `pulumi:"sdrsFreeSpaceThreshold"`
-	// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-	// freeSpace, drs_free_space_threshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+	// freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode *string `pulumi:"sdrsFreeSpaceThresholdMode"`
 	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
 	// balance the space.
@@ -236,8 +236,8 @@ type DatastoreClusterState struct {
 	SdrsEnabled pulumi.BoolPtrInput
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold pulumi.IntPtrInput
-	// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-	// freeSpace, drs_free_space_threshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+	// freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrInput
 	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
 	// balance the space.
@@ -317,8 +317,8 @@ type datastoreClusterArgs struct {
 	SdrsEnabled *bool `pulumi:"sdrsEnabled"`
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold *int `pulumi:"sdrsFreeSpaceThreshold"`
-	// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-	// freeSpace, drs_free_space_threshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+	// freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode *string `pulumi:"sdrsFreeSpaceThresholdMode"`
 	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
 	// balance the space.
@@ -395,8 +395,8 @@ type DatastoreClusterArgs struct {
 	SdrsEnabled pulumi.BoolPtrInput
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold pulumi.IntPtrInput
-	// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-	// freeSpace, drs_free_space_threshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+	// freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrInput
 	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
 	// balance the space.
@@ -585,8 +585,8 @@ func (o DatastoreClusterOutput) SdrsFreeSpaceThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsFreeSpaceThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-// freeSpace, drs_free_space_threshold is used.
+// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+// freeSpace, drsFreeSpaceThreshold is used.
 func (o DatastoreClusterOutput) SdrsFreeSpaceThresholdMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringPtrOutput { return v.SdrsFreeSpaceThresholdMode }).(pulumi.StringPtrOutput)
 }

@@ -35,7 +35,7 @@ type HaVmOverride struct {
 	// If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
 	// as failed. The value is in seconds.
 	HaVmFailureInterval pulumi.IntPtrOutput `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow pulumi.IntPtrOutput `pulumi:"haVmMaximumFailureWindow"`
@@ -115,7 +115,7 @@ type haVmOverrideState struct {
 	// If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
 	// as failed. The value is in seconds.
 	HaVmFailureInterval *int `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow *int `pulumi:"haVmMaximumFailureWindow"`
@@ -160,7 +160,7 @@ type HaVmOverrideState struct {
 	// If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
 	// as failed. The value is in seconds.
 	HaVmFailureInterval pulumi.IntPtrInput
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow pulumi.IntPtrInput
@@ -209,7 +209,7 @@ type haVmOverrideArgs struct {
 	// If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
 	// as failed. The value is in seconds.
 	HaVmFailureInterval *int `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow *int `pulumi:"haVmMaximumFailureWindow"`
@@ -255,7 +255,7 @@ type HaVmOverrideArgs struct {
 	// If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
 	// as failed. The value is in seconds.
 	HaVmFailureInterval pulumi.IntPtrInput
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow pulumi.IntPtrInput
@@ -407,7 +407,7 @@ func (o HaVmOverrideOutput) HaVmFailureInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HaVmOverride) pulumi.IntPtrOutput { return v.HaVmFailureInterval }).(pulumi.IntPtrOutput)
 }
 
-// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 // attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 // time is allotted.
 func (o HaVmOverrideOutput) HaVmMaximumFailureWindow() pulumi.IntPtrOutput {

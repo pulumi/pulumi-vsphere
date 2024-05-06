@@ -225,11 +225,6 @@ namespace Pulumi.VSphere
         [Output("hvMode")]
         public Output<string?> HvMode { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Output("ideControllerCount")]
         public Output<int?> IdeControllerCount { get; private set; } = null!;
 
@@ -365,9 +360,6 @@ namespace Pulumi.VSphere
         [Output("poweronTimeout")]
         public Output<int?> PoweronTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// Value internal to Terraform used to determine if a configuration set change requires a reboot.
-        /// </summary>
         [Output("rebootRequired")]
         public Output<bool> RebootRequired { get; private set; } = null!;
 
@@ -413,11 +405,6 @@ namespace Pulumi.VSphere
         [Output("runToolsScriptsBeforeGuestStandby")]
         public Output<bool?> RunToolsScriptsBeforeGuestStandby { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Output("sataControllerCount")]
         public Output<int?> SataControllerCount { get; private set; } = null!;
 
@@ -427,11 +414,6 @@ namespace Pulumi.VSphere
         [Output("scsiBusSharing")]
         public Output<string?> ScsiBusSharing { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Output("scsiControllerCount")]
         public Output<int?> ScsiControllerCount { get; private set; } = null!;
 
@@ -814,11 +796,6 @@ namespace Pulumi.VSphere
         [Input("hvMode")]
         public Input<string>? HvMode { get; set; }
 
-        /// <summary>
-        /// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Input("ideControllerCount")]
         public Input<int>? IdeControllerCount { get; set; }
 
@@ -996,11 +973,6 @@ namespace Pulumi.VSphere
         [Input("runToolsScriptsBeforeGuestStandby")]
         public Input<bool>? RunToolsScriptsBeforeGuestStandby { get; set; }
 
-        /// <summary>
-        /// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Input("sataControllerCount")]
         public Input<int>? SataControllerCount { get; set; }
 
@@ -1010,11 +982,6 @@ namespace Pulumi.VSphere
         [Input("scsiBusSharing")]
         public Input<string>? ScsiBusSharing { get; set; }
 
-        /// <summary>
-        /// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Input("scsiControllerCount")]
         public Input<int>? ScsiControllerCount { get; set; }
 
@@ -1365,11 +1332,6 @@ namespace Pulumi.VSphere
         [Input("hvMode")]
         public Input<string>? HvMode { get; set; }
 
-        /// <summary>
-        /// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Input("ideControllerCount")]
         public Input<int>? IdeControllerCount { get; set; }
 
@@ -1523,9 +1485,6 @@ namespace Pulumi.VSphere
         [Input("poweronTimeout")]
         public Input<int>? PoweronTimeout { get; set; }
 
-        /// <summary>
-        /// Value internal to Terraform used to determine if a configuration set change requires a reboot.
-        /// </summary>
         [Input("rebootRequired")]
         public Input<bool>? RebootRequired { get; set; }
 
@@ -1571,11 +1530,6 @@ namespace Pulumi.VSphere
         [Input("runToolsScriptsBeforeGuestStandby")]
         public Input<bool>? RunToolsScriptsBeforeGuestStandby { get; set; }
 
-        /// <summary>
-        /// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Input("sataControllerCount")]
         public Input<int>? SataControllerCount { get; set; }
 
@@ -1585,11 +1539,6 @@ namespace Pulumi.VSphere
         [Input("scsiBusSharing")]
         public Input<string>? ScsiBusSharing { get; set; }
 
-        /// <summary>
-        /// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
-        /// </summary>
         [Input("scsiControllerCount")]
         public Input<int>? ScsiControllerCount { get; set; }
 
