@@ -86,8 +86,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly sdrsFreeSpaceThreshold!: pulumi.Output<number | undefined>;
     /**
-     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-     * freeSpace, drs_free_space_threshold is used.
+     * The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+     * freeSpace, drsFreeSpaceThreshold is used.
      */
     public readonly sdrsFreeSpaceThresholdMode!: pulumi.Output<string | undefined>;
     /**
@@ -289,8 +289,8 @@ export interface DatastoreClusterState {
      */
     sdrsFreeSpaceThreshold?: pulumi.Input<number>;
     /**
-     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-     * freeSpace, drs_free_space_threshold is used.
+     * The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+     * freeSpace, drsFreeSpaceThreshold is used.
      */
     sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**
@@ -419,8 +419,8 @@ export interface DatastoreClusterArgs {
      */
     sdrsFreeSpaceThreshold?: pulumi.Input<number>;
     /**
-     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-     * freeSpace, drs_free_space_threshold is used.
+     * The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
+     * freeSpace, drsFreeSpaceThreshold is used.
      */
     sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**

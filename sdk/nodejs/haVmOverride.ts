@@ -67,7 +67,7 @@ export class HaVmOverride extends pulumi.CustomResource {
      */
     public readonly haVmFailureInterval!: pulumi.Output<number | undefined>;
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+     * The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
      * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
      * time is allotted.
      */
@@ -201,7 +201,7 @@ export interface HaVmOverrideState {
      */
     haVmFailureInterval?: pulumi.Input<number>;
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+     * The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
      * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
      * time is allotted.
      */
@@ -279,7 +279,7 @@ export interface HaVmOverrideArgs {
      */
     haVmFailureInterval?: pulumi.Input<number>;
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+     * The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
      * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
      * time is allotted.
      */
