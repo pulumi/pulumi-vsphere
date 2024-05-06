@@ -8968,8 +8968,7 @@
                     "description": "The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.\n"
                 },
                 "ideControllerCount": {
-                    "type": "integer",
-                    "description": "The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                    "type": "integer"
                 },
                 "ignoredGuestIps": {
                     "type": "array",
@@ -9065,8 +9064,7 @@
                     "description": "The amount of time, in seconds, that we will be trying to power on a VM\n"
                 },
                 "rebootRequired": {
-                    "type": "boolean",
-                    "description": "Value internal to Terraform used to determine if a configuration set change requires a reboot.\n"
+                    "type": "boolean"
                 },
                 "replaceTrigger": {
                     "type": "string",
@@ -9097,16 +9095,14 @@
                     "description": "Enable the run of scripts before guest operating system standby when VMware Tools is installed.\n"
                 },
                 "sataControllerCount": {
-                    "type": "integer",
-                    "description": "The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                    "type": "integer"
                 },
                 "scsiBusSharing": {
                     "type": "string",
                     "description": "Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.\n"
                 },
                 "scsiControllerCount": {
-                    "type": "integer",
-                    "description": "The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                    "type": "integer"
                 },
                 "scsiType": {
                     "type": "string",
@@ -9353,8 +9349,7 @@
                     "description": "The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.\n"
                 },
                 "ideControllerCount": {
-                    "type": "integer",
-                    "description": "The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                    "type": "integer"
                 },
                 "ignoredGuestIps": {
                     "type": "array",
@@ -9467,16 +9462,14 @@
                     "description": "Enable the run of scripts before guest operating system standby when VMware Tools is installed.\n"
                 },
                 "sataControllerCount": {
-                    "type": "integer",
-                    "description": "The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                    "type": "integer"
                 },
                 "scsiBusSharing": {
                     "type": "string",
                     "description": "Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.\n"
                 },
                 "scsiControllerCount": {
-                    "type": "integer",
-                    "description": "The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                    "type": "integer"
                 },
                 "scsiType": {
                     "type": "string",
@@ -9700,8 +9693,7 @@
                         "description": "The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.\n"
                     },
                     "ideControllerCount": {
-                        "type": "integer",
-                        "description": "The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                        "type": "integer"
                     },
                     "ignoredGuestIps": {
                         "type": "array",
@@ -9797,8 +9789,7 @@
                         "description": "The amount of time, in seconds, that we will be trying to power on a VM\n"
                     },
                     "rebootRequired": {
-                        "type": "boolean",
-                        "description": "Value internal to Terraform used to determine if a configuration set change requires a reboot.\n"
+                        "type": "boolean"
                     },
                     "replaceTrigger": {
                         "type": "string",
@@ -9830,16 +9821,14 @@
                         "description": "Enable the run of scripts before guest operating system standby when VMware Tools is installed.\n"
                     },
                     "sataControllerCount": {
-                        "type": "integer",
-                        "description": "The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                        "type": "integer"
                     },
                     "scsiBusSharing": {
                         "type": "string",
                         "description": "Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.\n"
                     },
                     "scsiControllerCount": {
-                        "type": "integer",
-                        "description": "The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                        "type": "integer"
                     },
                     "scsiType": {
                         "type": "string",
