@@ -15,13 +15,13 @@ import (
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
-	// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+	// The guest name for the operating system when guestId is otherGuest or otherGuest64.
 	AlternateGuestName pulumi.StringPtrOutput `pulumi:"alternateGuestName"`
 	// User-provided description of the virtual machine.
 	Annotation pulumi.StringOutput `pulumi:"annotation"`
 	// The number of milliseconds to wait before starting the boot sequence.
 	BootDelay pulumi.IntPtrOutput `pulumi:"bootDelay"`
-	// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+	// The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
 	BootRetryDelay pulumi.IntPtrOutput `pulumi:"bootRetryDelay"`
 	// If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
 	BootRetryEnabled pulumi.BoolPtrOutput `pulumi:"bootRetryEnabled"`
@@ -70,7 +70,7 @@ type VirtualMachine struct {
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
 	// configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapOutput `pulumi:"extraConfig"`
-	// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired pulumi.BoolPtrOutput `pulumi:"extraConfigRebootRequired"`
 	// The firmware interface to use on the virtual machine. Can be one of bios or efi.
 	Firmware pulumi.StringPtrOutput `pulumi:"firmware"`
@@ -87,11 +87,8 @@ type VirtualMachine struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode pulumi.StringPtrOutput `pulumi:"hvMode"`
-	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	IdeControllerCount pulumi.IntPtrOutput `pulumi:"ideControllerCount"`
+	HvMode             pulumi.StringPtrOutput `pulumi:"hvMode"`
+	IdeControllerCount pulumi.IntPtrOutput    `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayOutput `pulumi:"ignoredGuestIps"`
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
@@ -127,7 +124,7 @@ type VirtualMachine struct {
 	NestedHvEnabled pulumi.BoolPtrOutput `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
 	// must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrOutput `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
@@ -140,8 +137,7 @@ type VirtualMachine struct {
 	PowerState pulumi.StringOutput `pulumi:"powerState"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrOutput `pulumi:"poweronTimeout"`
-	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
-	RebootRequired pulumi.BoolOutput `pulumi:"rebootRequired"`
+	RebootRequired pulumi.BoolOutput   `pulumi:"rebootRequired"`
 	// Triggers replacement of resource whenever it changes.
 	ReplaceTrigger pulumi.StringPtrOutput `pulumi:"replaceTrigger"`
 	// The ID of a resource pool to put the virtual machine in.
@@ -156,16 +152,10 @@ type VirtualMachine struct {
 	RunToolsScriptsBeforeGuestShutdown pulumi.BoolPtrOutput `pulumi:"runToolsScriptsBeforeGuestShutdown"`
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrOutput `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	SataControllerCount pulumi.IntPtrOutput `pulumi:"sataControllerCount"`
+	SataControllerCount               pulumi.IntPtrOutput  `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing pulumi.StringPtrOutput `pulumi:"scsiBusSharing"`
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	ScsiControllerCount pulumi.IntPtrOutput `pulumi:"scsiControllerCount"`
+	ScsiBusSharing      pulumi.StringPtrOutput `pulumi:"scsiBusSharing"`
+	ScsiControllerCount pulumi.IntPtrOutput    `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType pulumi.StringPtrOutput `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
@@ -178,7 +168,7 @@ type VirtualMachine struct {
 	// synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost pulumi.BoolPtrOutput `pulumi:"syncTimeWithHost"`
 	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrOutput `pulumi:"syncTimeWithHostPeriodically"`
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -243,13 +233,13 @@ func GetVirtualMachine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VirtualMachine resources.
 type virtualMachineState struct {
-	// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+	// The guest name for the operating system when guestId is otherGuest or otherGuest64.
 	AlternateGuestName *string `pulumi:"alternateGuestName"`
 	// User-provided description of the virtual machine.
 	Annotation *string `pulumi:"annotation"`
 	// The number of milliseconds to wait before starting the boot sequence.
 	BootDelay *int `pulumi:"bootDelay"`
-	// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+	// The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
 	BootRetryDelay *int `pulumi:"bootRetryDelay"`
 	// If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
 	BootRetryEnabled *bool `pulumi:"bootRetryEnabled"`
@@ -298,7 +288,7 @@ type virtualMachineState struct {
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
 	// configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
-	// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired *bool `pulumi:"extraConfigRebootRequired"`
 	// The firmware interface to use on the virtual machine. Can be one of bios or efi.
 	Firmware *string `pulumi:"firmware"`
@@ -315,11 +305,8 @@ type virtualMachineState struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId *string `pulumi:"hostSystemId"`
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode *string `pulumi:"hvMode"`
-	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	IdeControllerCount *int `pulumi:"ideControllerCount"`
+	HvMode             *string `pulumi:"hvMode"`
+	IdeControllerCount *int    `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps []string `pulumi:"ignoredGuestIps"`
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
@@ -355,7 +342,7 @@ type virtualMachineState struct {
 	NestedHvEnabled *bool `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces []VirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
 	// must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
@@ -367,8 +354,7 @@ type virtualMachineState struct {
 	// A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
 	PowerState *string `pulumi:"powerState"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
-	PoweronTimeout *int `pulumi:"poweronTimeout"`
-	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
+	PoweronTimeout *int  `pulumi:"poweronTimeout"`
 	RebootRequired *bool `pulumi:"rebootRequired"`
 	// Triggers replacement of resource whenever it changes.
 	ReplaceTrigger *string `pulumi:"replaceTrigger"`
@@ -384,16 +370,10 @@ type virtualMachineState struct {
 	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	SataControllerCount *int `pulumi:"sataControllerCount"`
+	SataControllerCount               *int  `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	ScsiControllerCount *int `pulumi:"scsiControllerCount"`
+	ScsiBusSharing      *string `pulumi:"scsiBusSharing"`
+	ScsiControllerCount *int    `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType *string `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
@@ -406,7 +386,7 @@ type virtualMachineState struct {
 	// synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
 	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
@@ -439,13 +419,13 @@ type virtualMachineState struct {
 }
 
 type VirtualMachineState struct {
-	// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+	// The guest name for the operating system when guestId is otherGuest or otherGuest64.
 	AlternateGuestName pulumi.StringPtrInput
 	// User-provided description of the virtual machine.
 	Annotation pulumi.StringPtrInput
 	// The number of milliseconds to wait before starting the boot sequence.
 	BootDelay pulumi.IntPtrInput
-	// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+	// The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
 	BootRetryDelay pulumi.IntPtrInput
 	// If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
 	BootRetryEnabled pulumi.BoolPtrInput
@@ -494,7 +474,7 @@ type VirtualMachineState struct {
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
 	// configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapInput
-	// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired pulumi.BoolPtrInput
 	// The firmware interface to use on the virtual machine. Can be one of bios or efi.
 	Firmware pulumi.StringPtrInput
@@ -511,10 +491,7 @@ type VirtualMachineState struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringPtrInput
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode pulumi.StringPtrInput
-	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	HvMode             pulumi.StringPtrInput
 	IdeControllerCount pulumi.IntPtrInput
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayInput
@@ -551,7 +528,7 @@ type VirtualMachineState struct {
 	NestedHvEnabled pulumi.BoolPtrInput
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayInput
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
 	// must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
@@ -564,7 +541,6 @@ type VirtualMachineState struct {
 	PowerState pulumi.StringPtrInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
-	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired pulumi.BoolPtrInput
 	// Triggers replacement of resource whenever it changes.
 	ReplaceTrigger pulumi.StringPtrInput
@@ -580,15 +556,9 @@ type VirtualMachineState struct {
 	RunToolsScriptsBeforeGuestShutdown pulumi.BoolPtrInput
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrInput
-	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	SataControllerCount pulumi.IntPtrInput
+	SataControllerCount               pulumi.IntPtrInput
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing pulumi.StringPtrInput
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	ScsiBusSharing      pulumi.StringPtrInput
 	ScsiControllerCount pulumi.IntPtrInput
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType pulumi.StringPtrInput
@@ -602,7 +572,7 @@ type VirtualMachineState struct {
 	// synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost pulumi.BoolPtrInput
 	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
@@ -639,13 +609,13 @@ func (VirtualMachineState) ElementType() reflect.Type {
 }
 
 type virtualMachineArgs struct {
-	// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+	// The guest name for the operating system when guestId is otherGuest or otherGuest64.
 	AlternateGuestName *string `pulumi:"alternateGuestName"`
 	// User-provided description of the virtual machine.
 	Annotation *string `pulumi:"annotation"`
 	// The number of milliseconds to wait before starting the boot sequence.
 	BootDelay *int `pulumi:"bootDelay"`
-	// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+	// The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
 	BootRetryDelay *int `pulumi:"bootRetryDelay"`
 	// If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
 	BootRetryEnabled *bool `pulumi:"bootRetryEnabled"`
@@ -690,7 +660,7 @@ type virtualMachineArgs struct {
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
 	// configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
-	// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired *bool `pulumi:"extraConfigRebootRequired"`
 	// The firmware interface to use on the virtual machine. Can be one of bios or efi.
 	Firmware *string `pulumi:"firmware"`
@@ -705,11 +675,8 @@ type virtualMachineArgs struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId *string `pulumi:"hostSystemId"`
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode *string `pulumi:"hvMode"`
-	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	IdeControllerCount *int `pulumi:"ideControllerCount"`
+	HvMode             *string `pulumi:"hvMode"`
+	IdeControllerCount *int    `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps []string `pulumi:"ignoredGuestIps"`
 	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
@@ -741,7 +708,7 @@ type virtualMachineArgs struct {
 	NestedHvEnabled *bool `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces []VirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
 	// must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
@@ -766,16 +733,10 @@ type virtualMachineArgs struct {
 	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	SataControllerCount *int `pulumi:"sataControllerCount"`
+	SataControllerCount               *int  `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	ScsiControllerCount *int `pulumi:"scsiControllerCount"`
+	ScsiBusSharing      *string `pulumi:"scsiBusSharing"`
+	ScsiControllerCount *int    `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType *string `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
@@ -788,7 +749,7 @@ type virtualMachineArgs struct {
 	// synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
 	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
@@ -814,13 +775,13 @@ type virtualMachineArgs struct {
 
 // The set of arguments for constructing a VirtualMachine resource.
 type VirtualMachineArgs struct {
-	// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+	// The guest name for the operating system when guestId is otherGuest or otherGuest64.
 	AlternateGuestName pulumi.StringPtrInput
 	// User-provided description of the virtual machine.
 	Annotation pulumi.StringPtrInput
 	// The number of milliseconds to wait before starting the boot sequence.
 	BootDelay pulumi.IntPtrInput
-	// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+	// The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
 	BootRetryDelay pulumi.IntPtrInput
 	// If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
 	BootRetryEnabled pulumi.BoolPtrInput
@@ -865,7 +826,7 @@ type VirtualMachineArgs struct {
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
 	// configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapInput
-	// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired pulumi.BoolPtrInput
 	// The firmware interface to use on the virtual machine. Can be one of bios or efi.
 	Firmware pulumi.StringPtrInput
@@ -880,10 +841,7 @@ type VirtualMachineArgs struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringPtrInput
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode pulumi.StringPtrInput
-	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	HvMode             pulumi.StringPtrInput
 	IdeControllerCount pulumi.IntPtrInput
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayInput
@@ -916,7 +874,7 @@ type VirtualMachineArgs struct {
 	NestedHvEnabled pulumi.BoolPtrInput
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayInput
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
 	// must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
@@ -941,15 +899,9 @@ type VirtualMachineArgs struct {
 	RunToolsScriptsBeforeGuestShutdown pulumi.BoolPtrInput
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrInput
-	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
-	SataControllerCount pulumi.IntPtrInput
+	SataControllerCount               pulumi.IntPtrInput
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing pulumi.StringPtrInput
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	ScsiBusSharing      pulumi.StringPtrInput
 	ScsiControllerCount pulumi.IntPtrInput
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType pulumi.StringPtrInput
@@ -963,7 +915,7 @@ type VirtualMachineArgs struct {
 	// synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost pulumi.BoolPtrInput
 	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
@@ -1074,7 +1026,7 @@ func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+// The guest name for the operating system when guestId is otherGuest or otherGuest64.
 func (o VirtualMachineOutput) AlternateGuestName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.AlternateGuestName }).(pulumi.StringPtrOutput)
 }
@@ -1089,7 +1041,7 @@ func (o VirtualMachineOutput) BootDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.BootDelay }).(pulumi.IntPtrOutput)
 }
 
-// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+// The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
 func (o VirtualMachineOutput) BootRetryDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.BootRetryDelay }).(pulumi.IntPtrOutput)
 }
@@ -1207,7 +1159,7 @@ func (o VirtualMachineOutput) ExtraConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringMapOutput { return v.ExtraConfig }).(pulumi.StringMapOutput)
 }
 
-// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 func (o VirtualMachineOutput) ExtraConfigRebootRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.ExtraConfigRebootRequired }).(pulumi.BoolPtrOutput)
 }
@@ -1252,9 +1204,6 @@ func (o VirtualMachineOutput) HvMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.HvMode }).(pulumi.StringPtrOutput)
 }
 
-// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-// controllers.
 func (o VirtualMachineOutput) IdeControllerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.IdeControllerCount }).(pulumi.IntPtrOutput)
 }
@@ -1339,7 +1288,7 @@ func (o VirtualMachineOutput) NetworkInterfaces() VirtualMachineNetworkInterface
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(VirtualMachineNetworkInterfaceArrayOutput)
 }
 
-// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
 // must be evenly divisible by this value.
 func (o VirtualMachineOutput) NumCoresPerSocket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.NumCoresPerSocket }).(pulumi.IntPtrOutput)
@@ -1370,7 +1319,6 @@ func (o VirtualMachineOutput) PoweronTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.PoweronTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 func (o VirtualMachineOutput) RebootRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolOutput { return v.RebootRequired }).(pulumi.BoolOutput)
 }
@@ -1410,9 +1358,6 @@ func (o VirtualMachineOutput) RunToolsScriptsBeforeGuestStandby() pulumi.BoolPtr
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.RunToolsScriptsBeforeGuestStandby }).(pulumi.BoolPtrOutput)
 }
 
-// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-// controllers.
 func (o VirtualMachineOutput) SataControllerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.SataControllerCount }).(pulumi.IntPtrOutput)
 }
@@ -1422,9 +1367,6 @@ func (o VirtualMachineOutput) ScsiBusSharing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.ScsiBusSharing }).(pulumi.StringPtrOutput)
 }
 
-// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-// controllers.
 func (o VirtualMachineOutput) ScsiControllerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.ScsiControllerCount }).(pulumi.IntPtrOutput)
 }
@@ -1456,7 +1398,7 @@ func (o VirtualMachineOutput) SyncTimeWithHost() pulumi.BoolPtrOutput {
 }
 
 // Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 func (o VirtualMachineOutput) SyncTimeWithHostPeriodically() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.SyncTimeWithHostPeriodically }).(pulumi.BoolPtrOutput)
 }
