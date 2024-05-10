@@ -69,6 +69,12 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? DomainAdminUser { get; set; }
 
         /// <summary>
+        /// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        /// </summary>
+        [Input("domainOu")]
+        public Input<string>? DomainOu { get; set; }
+
+        /// <summary>
         /// The full name of the user of this virtual machine.
         /// </summary>
         [Input("fullName")]

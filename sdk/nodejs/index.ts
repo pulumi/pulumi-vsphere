@@ -175,6 +175,11 @@ export const getHost: typeof import("./getHost").getHost = null as any;
 export const getHostOutput: typeof import("./getHost").getHostOutput = null as any;
 utilities.lazyLoad(exports, ["getHost","getHostOutput"], () => require("./getHost"));
 
+export { GetHostBaseImagesResult } from "./getHostBaseImages";
+export const getHostBaseImages: typeof import("./getHostBaseImages").getHostBaseImages = null as any;
+export const getHostBaseImagesOutput: typeof import("./getHostBaseImages").getHostBaseImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getHostBaseImages","getHostBaseImagesOutput"], () => require("./getHostBaseImages"));
+
 export { GetHostPciDeviceArgs, GetHostPciDeviceResult, GetHostPciDeviceOutputArgs } from "./getHostPciDevice";
 export const getHostPciDevice: typeof import("./getHostPciDevice").getHostPciDevice = null as any;
 export const getHostPciDeviceOutput: typeof import("./getHostPciDevice").getHostPciDeviceOutput = null as any;
@@ -280,6 +285,11 @@ export type NasDatastore = import("./nasDatastore").NasDatastore;
 export const NasDatastore: typeof import("./nasDatastore").NasDatastore = null as any;
 utilities.lazyLoad(exports, ["NasDatastore"], () => require("./nasDatastore"));
 
+export { OfflineSoftwareDepotArgs, OfflineSoftwareDepotState } from "./offlineSoftwareDepot";
+export type OfflineSoftwareDepot = import("./offlineSoftwareDepot").OfflineSoftwareDepot;
+export const OfflineSoftwareDepot: typeof import("./offlineSoftwareDepot").OfflineSoftwareDepot = null as any;
+utilities.lazyLoad(exports, ["OfflineSoftwareDepot"], () => require("./offlineSoftwareDepot"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -299,6 +309,11 @@ export { StorageDrsVmOverrideArgs, StorageDrsVmOverrideState } from "./storageDr
 export type StorageDrsVmOverride = import("./storageDrsVmOverride").StorageDrsVmOverride;
 export const StorageDrsVmOverride: typeof import("./storageDrsVmOverride").StorageDrsVmOverride = null as any;
 utilities.lazyLoad(exports, ["StorageDrsVmOverride"], () => require("./storageDrsVmOverride"));
+
+export { SupervisorArgs, SupervisorState } from "./supervisor";
+export type Supervisor = import("./supervisor").Supervisor;
+export const Supervisor: typeof import("./supervisor").Supervisor = null as any;
+utilities.lazyLoad(exports, ["Supervisor"], () => require("./supervisor"));
 
 export { TagArgs, TagState } from "./tag";
 export type Tag = import("./tag").Tag;
@@ -329,6 +344,11 @@ export { VirtualMachineArgs, VirtualMachineState } from "./virtualMachine";
 export type VirtualMachine = import("./virtualMachine").VirtualMachine;
 export const VirtualMachine: typeof import("./virtualMachine").VirtualMachine = null as any;
 utilities.lazyLoad(exports, ["VirtualMachine"], () => require("./virtualMachine"));
+
+export { VirtualMachineClassArgs, VirtualMachineClassState } from "./virtualMachineClass";
+export type VirtualMachineClass = import("./virtualMachineClass").VirtualMachineClass;
+export const VirtualMachineClass: typeof import("./virtualMachineClass").VirtualMachineClass = null as any;
+utilities.lazyLoad(exports, ["VirtualMachineClass"], () => require("./virtualMachineClass"));
 
 export { VirtualMachineSnapshotArgs, VirtualMachineSnapshotState } from "./virtualMachineSnapshot";
 export type VirtualMachineSnapshot = import("./virtualMachineSnapshot").VirtualMachineSnapshot;
@@ -418,12 +438,16 @@ const _module = {
                 return new License(name, <any>undefined, { urn })
             case "vsphere:index/nasDatastore:NasDatastore":
                 return new NasDatastore(name, <any>undefined, { urn })
+            case "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot":
+                return new OfflineSoftwareDepot(name, <any>undefined, { urn })
             case "vsphere:index/resourcePool:ResourcePool":
                 return new ResourcePool(name, <any>undefined, { urn })
             case "vsphere:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
             case "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride":
                 return new StorageDrsVmOverride(name, <any>undefined, { urn })
+            case "vsphere:index/supervisor:Supervisor":
+                return new Supervisor(name, <any>undefined, { urn })
             case "vsphere:index/tag:Tag":
                 return new Tag(name, <any>undefined, { urn })
             case "vsphere:index/tagCategory:TagCategory":
@@ -436,6 +460,8 @@ const _module = {
                 return new VirtualDisk(name, <any>undefined, { urn })
             case "vsphere:index/virtualMachine:VirtualMachine":
                 return new VirtualMachine(name, <any>undefined, { urn })
+            case "vsphere:index/virtualMachineClass:VirtualMachineClass":
+                return new VirtualMachineClass(name, <any>undefined, { urn })
             case "vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot":
                 return new VirtualMachineSnapshot(name, <any>undefined, { urn })
             case "vsphere:index/vmStoragePolicy:VmStoragePolicy":
@@ -476,15 +502,18 @@ pulumi.runtime.registerResourceModule("vsphere", "index/hostPortGroup", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/hostVirtualSwitch", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/license", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/nasDatastore", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/offlineSoftwareDepot", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/resourcePool", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/role", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/storageDrsVmOverride", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/supervisor", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/tag", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/tagCategory", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vappContainer", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vappEntity", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/virtualDisk", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/virtualMachine", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/virtualMachineClass", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/virtualMachineSnapshot", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vmStoragePolicy", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vmfsDatastore", _module)

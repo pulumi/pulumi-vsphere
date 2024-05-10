@@ -259,6 +259,10 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     public readonly hostClusterExitTimeout!: pulumi.Output<number | undefined>;
     /**
+     * Details about the host image which should be applied to the cluster.
+     */
+    public readonly hostImage!: pulumi.Output<outputs.ComputeClusterHostImage | undefined>;
+    /**
      * Must be set if cluster enrollment is managed from host resource.
      */
     public readonly hostManaged!: pulumi.Output<boolean | undefined>;
@@ -419,6 +423,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["haVmRestartPriority"] = state ? state.haVmRestartPriority : undefined;
             resourceInputs["haVmRestartTimeout"] = state ? state.haVmRestartTimeout : undefined;
             resourceInputs["hostClusterExitTimeout"] = state ? state.hostClusterExitTimeout : undefined;
+            resourceInputs["hostImage"] = state ? state.hostImage : undefined;
             resourceInputs["hostManaged"] = state ? state.hostManaged : undefined;
             resourceInputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -493,6 +498,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["haVmRestartPriority"] = args ? args.haVmRestartPriority : undefined;
             resourceInputs["haVmRestartTimeout"] = args ? args.haVmRestartTimeout : undefined;
             resourceInputs["hostClusterExitTimeout"] = args ? args.hostClusterExitTimeout : undefined;
+            resourceInputs["hostImage"] = args ? args.hostImage : undefined;
             resourceInputs["hostManaged"] = args ? args.hostManaged : undefined;
             resourceInputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -751,6 +757,10 @@ export interface ComputeClusterState {
      * The timeout for each host maintenance mode operation when removing hosts from a cluster.
      */
     hostClusterExitTimeout?: pulumi.Input<number>;
+    /**
+     * Details about the host image which should be applied to the cluster.
+     */
+    hostImage?: pulumi.Input<inputs.ComputeClusterHostImage>;
     /**
      * Must be set if cluster enrollment is managed from host resource.
      */
@@ -1083,6 +1093,10 @@ export interface ComputeClusterArgs {
      * The timeout for each host maintenance mode operation when removing hosts from a cluster.
      */
     hostClusterExitTimeout?: pulumi.Input<number>;
+    /**
+     * Details about the host image which should be applied to the cluster.
+     */
+    hostImage?: pulumi.Input<inputs.ComputeClusterHostImage>;
     /**
      * Must be set if cluster enrollment is managed from host resource.
      */

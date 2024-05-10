@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Ian Wahbe <ian@wahbe.com>
-Date: Tue, 12 Mar 2024 12:39:11 +0100
+From: Venelin <venelin@pulumi.com>
+Date: Fri, 10 May 2024 18:08:31 +0100
 Subject: [PATCH] fork
 
 
@@ -246,10 +246,10 @@ index e4dcf67c..0c61fd91 100644
 +  resource.
 \ No newline at end of file
 diff --git a/website/docs/d/folder.html.markdown b/website/docs/d/folder.html.markdown
-index 93fbfa1d..37417604 100644
+index 8a5c85c4..ee5270bb 100644
 --- a/website/docs/d/folder.html.markdown
 +++ b/website/docs/d/folder.html.markdown
-@@ -27,13 +27,11 @@ The following arguments are supported:
+@@ -31,13 +31,11 @@ The following arguments are supported:
  
  * `path` - (Required) The absolute path of the folder. For example, given a
    default datacenter of `default-dc`, a folder of type `vm`, and a folder name
@@ -581,7 +581,7 @@ index eb1b7f04..eb4ae03a 100644
    searching for disks. This may lengthen the time it takes to perform the
    search. Default: `false`.
 diff --git a/website/docs/r/compute_cluster.html.markdown b/website/docs/r/compute_cluster.html.markdown
-index 434c3104..81e15c49 100644
+index 273b6f23..d7c042be 100644
 --- a/website/docs/r/compute_cluster.html.markdown
 +++ b/website/docs/r/compute_cluster.html.markdown
 @@ -12,14 +12,12 @@ description: |-
@@ -684,7 +684,7 @@ index 434c3104..81e15c49 100644
    hosts. These hosts are kept as available as possible - admission control will
    block access to the host, and DRS will ignore the host when making
    recommendations.
-@@ -552,15 +543,12 @@ resource "vsphere_compute_cluster" "compute_cluster" {
+@@ -562,16 +553,12 @@ After vLCM is enabled on a cluster it is not possible to disable it.
  
  The following attributes are exported:
  
@@ -699,6 +699,7 @@ index 434c3104..81e15c49 100644
 -
 -[docs-r-vsphere-virtual-machine-resource-pool-id]: /docs/providers/vsphere/r/virtual_machine.html#resource_pool_id
 -[docs-r-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
+-[docs-d-host-base-images]: /docs/providers/vsphere/d/host_base_images.html
 +  `resource_pool_id`
 +  attribute of the
 +  `vsphere_virtual_machine` resource.
@@ -1935,14 +1936,14 @@ index 9223cbd9..2873acb7 100644
  will copy from within specified locations in vSphere.
  
 diff --git a/website/docs/r/folder.html.markdown b/website/docs/r/folder.html.markdown
-index b5aacd1d..d61e2b74 100644
+index f38cbe96..8ac9a29b 100644
 --- a/website/docs/r/folder.html.markdown
 +++ b/website/docs/r/folder.html.markdown
 @@ -22,13 +22,13 @@ as that folder exists.
  ## Example Usage
  
  The basic example below creates a virtual machine folder named
--`terraform-test-folder` in the default datacenter's VM hierarchy. 
+-`terraform-test-folder` in the default datacenter's VM hierarchy.
 +`test-folder` in the default datacenter's VM hierarchy. 
  
  ```hcl
@@ -1952,7 +1953,7 @@ index b5aacd1d..d61e2b74 100644
 -  path          = "terraform-test-folder"
 +  path          = "test-folder"
    type          = "vm"
-   datacenter_id = "${data.vsphere_datacenter.dc.id}"
+   datacenter_id = data.vsphere_datacenter.dc.id
  }
 @@ -37,7 +37,7 @@ resource "vsphere_folder" "folder" {
  ### Example with subfolders
@@ -1970,14 +1971,14 @@ index b5aacd1d..d61e2b74 100644
 -  path          = "terraform-test-parent"
 +  path          = "test-parent"
    type          = "vm"
-   datacenter_id = "${data.vsphere_datacenter.dc.id}"
+   datacenter_id = data.vsphere_datacenter.dc.id
  }
  
  resource "vsphere_folder" "folder" {
 -  path          = "${vsphere_folder.parent.path}/terraform-test-folder"
 +  path          = "${vsphere_folder.parent.path}/test-folder"
    type          = "vm"
-   datacenter_id = "${data.vsphere_datacenter.dc.id}"
+   datacenter_id = data.vsphere_datacenter.dc.id
  }
 @@ -69,8 +69,8 @@ The following arguments are supported:
    the root of the type of folder you are creating, and the supplied datacenter.
@@ -2785,7 +2786,7 @@ index 4879a047..422c7a9d 100644
    directories that are a part of the `vmdk_path` parameter if they are missing.
    Default: `false`.
 diff --git a/website/docs/r/virtual_machine.html.markdown b/website/docs/r/virtual_machine.html.markdown
-index 00fec612..d4975ccd 100644
+index b259c86e..7d90f484 100644
 --- a/website/docs/r/virtual_machine.html.markdown
 +++ b/website/docs/r/virtual_machine.html.markdown
 @@ -16,7 +16,7 @@ For details on working with virtual machines in VMware vSphere, please refer to
@@ -2903,7 +2904,7 @@ index 00fec612..d4975ccd 100644
  
  ~> **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
  
-@@ -1219,10 +1200,9 @@ The options are:
+@@ -1223,10 +1204,9 @@ The options are:
  
  * `hw_clock_utc` - (Optional) Tells the operating system that the hardware clock is set to UTC. Default: `true`.
  
@@ -2915,7 +2916,7 @@ index 00fec612..d4975ccd 100644
  
  * `time_zone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][vmware-kb-2145518]. The default is UTC.
  
-@@ -1479,9 +1459,8 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -1502,9 +1482,8 @@ resource "vsphere_virtual_machine" "vm" {
  
  #### Storage Migration Restrictions
  
@@ -2926,7 +2927,7 @@ index 00fec612..d4975ccd 100644
  
  ## Virtual Machine Reboot
  
-@@ -1540,23 +1519,19 @@ The following attributes are exported on the base level of this resource:
+@@ -1563,23 +1542,19 @@ The following attributes are exported on the base level of this resource:
  
  * `uuid` - The UUID of the virtual machine. Also exposed as the `id` of the resource.
  

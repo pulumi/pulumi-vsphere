@@ -11,6 +11,8 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'ComputeClusterHostImage',
+    'ComputeClusterHostImageComponent',
     'ComputeClusterVsanDiskGroup',
     'ComputeClusterVsanFaultDomain',
     'ComputeClusterVsanFaultDomainFaultDomain',
@@ -27,6 +29,13 @@ __all__ = [
     'GuestOsCustomizationSpecNetworkInterface',
     'GuestOsCustomizationSpecWindowsOptions',
     'HostPortGroupPort',
+    'OfflineSoftwareDepotComponent',
+    'SupervisorEgressCidr',
+    'SupervisorIngressCidr',
+    'SupervisorManagementNetwork',
+    'SupervisorNamespace',
+    'SupervisorPodCidr',
+    'SupervisorServiceCidr',
     'VirtualMachineCdrom',
     'VirtualMachineClone',
     'VirtualMachineCloneCustomizationSpec',
@@ -50,6 +59,85 @@ __all__ = [
     'GetVirtualMachineNetworkInterfaceResult',
     'GetVirtualMachineVappResult',
 ]
+
+@pulumi.output_type
+class ComputeClusterHostImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "esxVersion":
+            suggest = "esx_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComputeClusterHostImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComputeClusterHostImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComputeClusterHostImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 components: Optional[Sequence['outputs.ComputeClusterHostImageComponent']] = None,
+                 esx_version: Optional[str] = None):
+        """
+        :param Sequence['ComputeClusterHostImageComponentArgs'] components: List of custom components.
+        :param str esx_version: The ESXi version which the image is based on.
+        """
+        if components is not None:
+            pulumi.set(__self__, "components", components)
+        if esx_version is not None:
+            pulumi.set(__self__, "esx_version", esx_version)
+
+    @property
+    @pulumi.getter
+    def components(self) -> Optional[Sequence['outputs.ComputeClusterHostImageComponent']]:
+        """
+        List of custom components.
+        """
+        return pulumi.get(self, "components")
+
+    @property
+    @pulumi.getter(name="esxVersion")
+    def esx_version(self) -> Optional[str]:
+        """
+        The ESXi version which the image is based on.
+        """
+        return pulumi.get(self, "esx_version")
+
+
+@pulumi.output_type
+class ComputeClusterHostImageComponent(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str key: The identifier for the component.
+        :param str version: The version to use.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The identifier for the component.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        The version to use.
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class ComputeClusterVsanDiskGroup(dict):
@@ -1062,6 +1150,8 @@ class GuestOsCustomizationSpecWindowsOptions(dict):
             suggest = "domain_admin_password"
         elif key == "domainAdminUser":
             suggest = "domain_admin_user"
+        elif key == "domainOu":
+            suggest = "domain_ou"
         elif key == "fullName":
             suggest = "full_name"
         elif key == "joinDomain":
@@ -1093,6 +1183,7 @@ class GuestOsCustomizationSpecWindowsOptions(dict):
                  auto_logon_count: Optional[int] = None,
                  domain_admin_password: Optional[str] = None,
                  domain_admin_user: Optional[str] = None,
+                 domain_ou: Optional[str] = None,
                  full_name: Optional[str] = None,
                  join_domain: Optional[str] = None,
                  organization_name: Optional[str] = None,
@@ -1107,6 +1198,7 @@ class GuestOsCustomizationSpecWindowsOptions(dict):
         :param int auto_logon_count: Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
         :param str domain_admin_password: The password of the domain administrator used to join this virtual machine to the domain.
         :param str domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param str domain_ou: The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
         :param str full_name: The full name of the user of this virtual machine.
         :param str join_domain: The domain that the virtual machine should join.
         :param str organization_name: The organization name this virtual machine is being installed for.
@@ -1126,6 +1218,8 @@ class GuestOsCustomizationSpecWindowsOptions(dict):
             pulumi.set(__self__, "domain_admin_password", domain_admin_password)
         if domain_admin_user is not None:
             pulumi.set(__self__, "domain_admin_user", domain_admin_user)
+        if domain_ou is not None:
+            pulumi.set(__self__, "domain_ou", domain_ou)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if join_domain is not None:
@@ -1188,6 +1282,14 @@ class GuestOsCustomizationSpecWindowsOptions(dict):
         The user account of the domain administrator used to join this virtual machine to the domain.
         """
         return pulumi.get(self, "domain_admin_user")
+
+    @property
+    @pulumi.getter(name="domainOu")
+    def domain_ou(self) -> Optional[str]:
+        """
+        The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        """
+        return pulumi.get(self, "domain_ou")
 
     @property
     @pulumi.getter(name="fullName")
@@ -1304,6 +1406,326 @@ class HostPortGroupPort(dict):
         Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OfflineSoftwareDepotComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OfflineSoftwareDepotComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OfflineSoftwareDepotComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OfflineSoftwareDepotComponent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[str] = None,
+                 key: Optional[str] = None,
+                 versions: Optional[Sequence[str]] = None):
+        """
+        :param str display_name: The name of the component. Useful for easier identification.
+        :param str key: The identifier of the component.
+        :param Sequence[str] versions: The list of available versions of the component.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The name of the component. Useful for easier identification.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The identifier of the component.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Optional[Sequence[str]]:
+        """
+        The list of available versions of the component.
+        """
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class SupervisorEgressCidr(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 prefix: int):
+        """
+        :param str address: Network address.
+        :param int prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class SupervisorIngressCidr(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 prefix: int):
+        """
+        :param str address: Network address.
+        :param int prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class SupervisorManagementNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressCount":
+            suggest = "address_count"
+        elif key == "startingAddress":
+            suggest = "starting_address"
+        elif key == "subnetMask":
+            suggest = "subnet_mask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorManagementNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorManagementNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorManagementNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address_count: int,
+                 gateway: str,
+                 network: str,
+                 starting_address: str,
+                 subnet_mask: str):
+        """
+        :param int address_count: Number of addresses to allocate. Starts from 'starting_address'
+        :param str gateway: Gateway IP address.
+        :param str network: ID of the network. (e.g. a distributed port group).
+        :param str starting_address: Starting address of the management network range.
+        :param str subnet_mask: Subnet mask.
+        """
+        pulumi.set(__self__, "address_count", address_count)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "starting_address", starting_address)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+
+    @property
+    @pulumi.getter(name="addressCount")
+    def address_count(self) -> int:
+        """
+        Number of addresses to allocate. Starts from 'starting_address'
+        """
+        return pulumi.get(self, "address_count")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        """
+        Gateway IP address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        ID of the network. (e.g. a distributed port group).
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="startingAddress")
+    def starting_address(self) -> str:
+        """
+        Starting address of the management network range.
+        """
+        return pulumi.get(self, "starting_address")
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> str:
+        """
+        Subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+
+@pulumi.output_type
+class SupervisorNamespace(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentLibraries":
+            suggest = "content_libraries"
+        elif key == "vmClasses":
+            suggest = "vm_classes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SupervisorNamespace. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SupervisorNamespace.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SupervisorNamespace.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 content_libraries: Optional[Sequence[str]] = None,
+                 vm_classes: Optional[Sequence[str]] = None):
+        """
+        :param str name: The name of the namespace.
+        :param Sequence[str] content_libraries: A list of content libraries.
+        :param Sequence[str] vm_classes: A list of virtual machine classes.
+        """
+        pulumi.set(__self__, "name", name)
+        if content_libraries is not None:
+            pulumi.set(__self__, "content_libraries", content_libraries)
+        if vm_classes is not None:
+            pulumi.set(__self__, "vm_classes", vm_classes)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the namespace.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="contentLibraries")
+    def content_libraries(self) -> Optional[Sequence[str]]:
+        """
+        A list of content libraries.
+        """
+        return pulumi.get(self, "content_libraries")
+
+    @property
+    @pulumi.getter(name="vmClasses")
+    def vm_classes(self) -> Optional[Sequence[str]]:
+        """
+        A list of virtual machine classes.
+        """
+        return pulumi.get(self, "vm_classes")
+
+
+@pulumi.output_type
+class SupervisorPodCidr(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 prefix: int):
+        """
+        :param str address: Network address.
+        :param int prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class SupervisorServiceCidr(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 prefix: int):
+        """
+        :param str address: Network address.
+        :param int prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> int:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
 
 
 @pulumi.output_type
@@ -1896,6 +2318,8 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
             suggest = "domain_admin_password"
         elif key == "domainAdminUser":
             suggest = "domain_admin_user"
+        elif key == "domainOu":
+            suggest = "domain_ou"
         elif key == "fullName":
             suggest = "full_name"
         elif key == "joinDomain":
@@ -1927,6 +2351,7 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
                  auto_logon_count: Optional[int] = None,
                  domain_admin_password: Optional[str] = None,
                  domain_admin_user: Optional[str] = None,
+                 domain_ou: Optional[str] = None,
                  full_name: Optional[str] = None,
                  join_domain: Optional[str] = None,
                  organization_name: Optional[str] = None,
@@ -1941,6 +2366,7 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
         :param int auto_logon_count: Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
         :param str domain_admin_password: The password of the domain administrator used to join this virtual machine to the domain.
         :param str domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param str domain_ou: The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
         :param str full_name: The full name of the user of this virtual machine.
         :param str join_domain: The domain that the virtual machine should join.
         :param str organization_name: The organization name this virtual machine is being installed for.
@@ -1960,6 +2386,8 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
             pulumi.set(__self__, "domain_admin_password", domain_admin_password)
         if domain_admin_user is not None:
             pulumi.set(__self__, "domain_admin_user", domain_admin_user)
+        if domain_ou is not None:
+            pulumi.set(__self__, "domain_ou", domain_ou)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if join_domain is not None:
@@ -2022,6 +2450,14 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
         The user account of the domain administrator used to join this virtual machine to the domain.
         """
         return pulumi.get(self, "domain_admin_user")
+
+    @property
+    @pulumi.getter(name="domainOu")
+    def domain_ou(self) -> Optional[str]:
+        """
+        The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        """
+        return pulumi.get(self, "domain_ou")
 
     @property
     @pulumi.getter(name="fullName")
@@ -3123,6 +3559,7 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
                  auto_logon_count: int,
                  computer_name: str,
                  domain_admin_user: str,
+                 domain_ou: str,
                  join_domain: str,
                  run_once_command_lists: Sequence[str],
                  time_zone: int,
@@ -3134,6 +3571,7 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
         :param int auto_logon_count: Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
         :param str computer_name: The hostname for this virtual machine.
         :param str domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param str domain_ou: The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
         :param str join_domain: The Active Directory domain for the virtual machine to join.
         :param Sequence[str] run_once_command_lists: A list of commands to run at first user logon, after guest customization.
         :param int time_zone: The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
@@ -3145,6 +3583,7 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
         pulumi.set(__self__, "auto_logon_count", auto_logon_count)
         pulumi.set(__self__, "computer_name", computer_name)
         pulumi.set(__self__, "domain_admin_user", domain_admin_user)
+        pulumi.set(__self__, "domain_ou", domain_ou)
         pulumi.set(__self__, "join_domain", join_domain)
         pulumi.set(__self__, "run_once_command_lists", run_once_command_lists)
         pulumi.set(__self__, "time_zone", time_zone)
@@ -3191,6 +3630,14 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
         The user account of the domain administrator used to join this virtual machine to the domain.
         """
         return pulumi.get(self, "domain_admin_user")
+
+    @property
+    @pulumi.getter(name="domainOu")
+    def domain_ou(self) -> str:
+        """
+        The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        """
+        return pulumi.get(self, "domain_ou")
 
     @property
     @pulumi.getter(name="joinDomain")

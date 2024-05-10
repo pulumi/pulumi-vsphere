@@ -10,6 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'ComputeClusterHostImageArgs',
+    'ComputeClusterHostImageComponentArgs',
     'ComputeClusterVsanDiskGroupArgs',
     'ComputeClusterVsanFaultDomainArgs',
     'ComputeClusterVsanFaultDomainFaultDomainArgs',
@@ -26,6 +28,13 @@ __all__ = [
     'GuestOsCustomizationSpecNetworkInterfaceArgs',
     'GuestOsCustomizationSpecWindowsOptionsArgs',
     'HostPortGroupPortArgs',
+    'OfflineSoftwareDepotComponentArgs',
+    'SupervisorEgressCidrArgs',
+    'SupervisorIngressCidrArgs',
+    'SupervisorManagementNetworkArgs',
+    'SupervisorNamespaceArgs',
+    'SupervisorPodCidrArgs',
+    'SupervisorServiceCidrArgs',
     'VirtualMachineCdromArgs',
     'VirtualMachineCloneArgs',
     'VirtualMachineCloneCustomizationSpecArgs',
@@ -42,6 +51,84 @@ __all__ = [
     'VnicIpv6Args',
     'GetVirtualMachineVappArgs',
 ]
+
+@pulumi.input_type
+class ComputeClusterHostImageArgs:
+    def __init__(__self__, *,
+                 components: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgs']]]] = None,
+                 esx_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgs']]] components: List of custom components.
+        :param pulumi.Input[str] esx_version: The ESXi version which the image is based on.
+        """
+        if components is not None:
+            pulumi.set(__self__, "components", components)
+        if esx_version is not None:
+            pulumi.set(__self__, "esx_version", esx_version)
+
+    @property
+    @pulumi.getter
+    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgs']]]]:
+        """
+        List of custom components.
+        """
+        return pulumi.get(self, "components")
+
+    @components.setter
+    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgs']]]]):
+        pulumi.set(self, "components", value)
+
+    @property
+    @pulumi.getter(name="esxVersion")
+    def esx_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ESXi version which the image is based on.
+        """
+        return pulumi.get(self, "esx_version")
+
+    @esx_version.setter
+    def esx_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "esx_version", value)
+
+
+@pulumi.input_type
+class ComputeClusterHostImageComponentArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The identifier for the component.
+        :param pulumi.Input[str] version: The version to use.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for the component.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version to use.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
 
 @pulumi.input_type
 class ComputeClusterVsanDiskGroupArgs:
@@ -979,6 +1066,7 @@ class GuestOsCustomizationSpecWindowsOptionsArgs:
                  auto_logon_count: Optional[pulumi.Input[int]] = None,
                  domain_admin_password: Optional[pulumi.Input[str]] = None,
                  domain_admin_user: Optional[pulumi.Input[str]] = None,
+                 domain_ou: Optional[pulumi.Input[str]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
                  join_domain: Optional[pulumi.Input[str]] = None,
                  organization_name: Optional[pulumi.Input[str]] = None,
@@ -993,6 +1081,7 @@ class GuestOsCustomizationSpecWindowsOptionsArgs:
         :param pulumi.Input[int] auto_logon_count: Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
         :param pulumi.Input[str] domain_admin_password: The password of the domain administrator used to join this virtual machine to the domain.
         :param pulumi.Input[str] domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param pulumi.Input[str] domain_ou: The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
         :param pulumi.Input[str] full_name: The full name of the user of this virtual machine.
         :param pulumi.Input[str] join_domain: The domain that the virtual machine should join.
         :param pulumi.Input[str] organization_name: The organization name this virtual machine is being installed for.
@@ -1012,6 +1101,8 @@ class GuestOsCustomizationSpecWindowsOptionsArgs:
             pulumi.set(__self__, "domain_admin_password", domain_admin_password)
         if domain_admin_user is not None:
             pulumi.set(__self__, "domain_admin_user", domain_admin_user)
+        if domain_ou is not None:
+            pulumi.set(__self__, "domain_ou", domain_ou)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if join_domain is not None:
@@ -1098,6 +1189,18 @@ class GuestOsCustomizationSpecWindowsOptionsArgs:
     @domain_admin_user.setter
     def domain_admin_user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain_admin_user", value)
+
+    @property
+    @pulumi.getter(name="domainOu")
+    def domain_ou(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        """
+        return pulumi.get(self, "domain_ou")
+
+    @domain_ou.setter
+    def domain_ou(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_ou", value)
 
     @property
     @pulumi.getter(name="fullName")
@@ -1237,6 +1340,345 @@ class HostPortGroupPortArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class OfflineSoftwareDepotComponentArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] display_name: The name of the component. Useful for easier identification.
+        :param pulumi.Input[str] key: The identifier of the component.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] versions: The list of available versions of the component.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the component. Useful for easier identification.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the component.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of available versions of the component.
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "versions", value)
+
+
+@pulumi.input_type
+class SupervisorEgressCidrArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 prefix: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] address: Network address.
+        :param pulumi.Input[int] prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[int]:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[int]):
+        pulumi.set(self, "prefix", value)
+
+
+@pulumi.input_type
+class SupervisorIngressCidrArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 prefix: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] address: Network address.
+        :param pulumi.Input[int] prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[int]:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[int]):
+        pulumi.set(self, "prefix", value)
+
+
+@pulumi.input_type
+class SupervisorManagementNetworkArgs:
+    def __init__(__self__, *,
+                 address_count: pulumi.Input[int],
+                 gateway: pulumi.Input[str],
+                 network: pulumi.Input[str],
+                 starting_address: pulumi.Input[str],
+                 subnet_mask: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] address_count: Number of addresses to allocate. Starts from 'starting_address'
+        :param pulumi.Input[str] gateway: Gateway IP address.
+        :param pulumi.Input[str] network: ID of the network. (e.g. a distributed port group).
+        :param pulumi.Input[str] starting_address: Starting address of the management network range.
+        :param pulumi.Input[str] subnet_mask: Subnet mask.
+        """
+        pulumi.set(__self__, "address_count", address_count)
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "starting_address", starting_address)
+        pulumi.set(__self__, "subnet_mask", subnet_mask)
+
+    @property
+    @pulumi.getter(name="addressCount")
+    def address_count(self) -> pulumi.Input[int]:
+        """
+        Number of addresses to allocate. Starts from 'starting_address'
+        """
+        return pulumi.get(self, "address_count")
+
+    @address_count.setter
+    def address_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "address_count", value)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> pulumi.Input[str]:
+        """
+        Gateway IP address.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        ID of the network. (e.g. a distributed port group).
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="startingAddress")
+    def starting_address(self) -> pulumi.Input[str]:
+        """
+        Starting address of the management network range.
+        """
+        return pulumi.get(self, "starting_address")
+
+    @starting_address.setter
+    def starting_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "starting_address", value)
+
+    @property
+    @pulumi.getter(name="subnetMask")
+    def subnet_mask(self) -> pulumi.Input[str]:
+        """
+        Subnet mask.
+        """
+        return pulumi.get(self, "subnet_mask")
+
+    @subnet_mask.setter
+    def subnet_mask(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet_mask", value)
+
+
+@pulumi.input_type
+class SupervisorNamespaceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 content_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vm_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] content_libraries: A list of content libraries.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vm_classes: A list of virtual machine classes.
+        """
+        pulumi.set(__self__, "name", name)
+        if content_libraries is not None:
+            pulumi.set(__self__, "content_libraries", content_libraries)
+        if vm_classes is not None:
+            pulumi.set(__self__, "vm_classes", vm_classes)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the namespace.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="contentLibraries")
+    def content_libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of content libraries.
+        """
+        return pulumi.get(self, "content_libraries")
+
+    @content_libraries.setter
+    def content_libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "content_libraries", value)
+
+    @property
+    @pulumi.getter(name="vmClasses")
+    def vm_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of virtual machine classes.
+        """
+        return pulumi.get(self, "vm_classes")
+
+    @vm_classes.setter
+    def vm_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vm_classes", value)
+
+
+@pulumi.input_type
+class SupervisorPodCidrArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 prefix: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] address: Network address.
+        :param pulumi.Input[int] prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[int]:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[int]):
+        pulumi.set(self, "prefix", value)
+
+
+@pulumi.input_type
+class SupervisorServiceCidrArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 prefix: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] address: Network address.
+        :param pulumi.Input[int] prefix: Subnet prefix.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        Network address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[int]:
+        """
+        Subnet prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[int]):
+        pulumi.set(self, "prefix", value)
 
 
 @pulumi.input_type
@@ -1830,6 +2272,7 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
                  auto_logon_count: Optional[pulumi.Input[int]] = None,
                  domain_admin_password: Optional[pulumi.Input[str]] = None,
                  domain_admin_user: Optional[pulumi.Input[str]] = None,
+                 domain_ou: Optional[pulumi.Input[str]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
                  join_domain: Optional[pulumi.Input[str]] = None,
                  organization_name: Optional[pulumi.Input[str]] = None,
@@ -1844,6 +2287,7 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
         :param pulumi.Input[int] auto_logon_count: Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
         :param pulumi.Input[str] domain_admin_password: The password of the domain administrator used to join this virtual machine to the domain.
         :param pulumi.Input[str] domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
+        :param pulumi.Input[str] domain_ou: The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
         :param pulumi.Input[str] full_name: The full name of the user of this virtual machine.
         :param pulumi.Input[str] join_domain: The domain that the virtual machine should join.
         :param pulumi.Input[str] organization_name: The organization name this virtual machine is being installed for.
@@ -1863,6 +2307,8 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
             pulumi.set(__self__, "domain_admin_password", domain_admin_password)
         if domain_admin_user is not None:
             pulumi.set(__self__, "domain_admin_user", domain_admin_user)
+        if domain_ou is not None:
+            pulumi.set(__self__, "domain_ou", domain_ou)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if join_domain is not None:
@@ -1949,6 +2395,18 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
     @domain_admin_user.setter
     def domain_admin_user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain_admin_user", value)
+
+    @property
+    @pulumi.getter(name="domainOu")
+    def domain_ou(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        """
+        return pulumi.get(self, "domain_ou")
+
+    @domain_ou.setter
+    def domain_ou(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_ou", value)
 
     @property
     @pulumi.getter(name="fullName")

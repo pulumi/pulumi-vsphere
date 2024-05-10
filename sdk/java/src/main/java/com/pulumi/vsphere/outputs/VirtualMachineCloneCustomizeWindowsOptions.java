@@ -46,6 +46,11 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
      */
     private @Nullable String domainAdminUser;
     /**
+     * @return The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     * 
+     */
+    private @Nullable String domainOu;
+    /**
      * @return The full name of the user of this virtual machine.
      * 
      */
@@ -125,6 +130,13 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
         return Optional.ofNullable(this.domainAdminUser);
     }
     /**
+     * @return The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     * 
+     */
+    public Optional<String> domainOu() {
+        return Optional.ofNullable(this.domainOu);
+    }
+    /**
      * @return The full name of the user of this virtual machine.
      * 
      */
@@ -189,6 +201,7 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
         private String computerName;
         private @Nullable String domainAdminPassword;
         private @Nullable String domainAdminUser;
+        private @Nullable String domainOu;
         private @Nullable String fullName;
         private @Nullable String joinDomain;
         private @Nullable String organizationName;
@@ -205,6 +218,7 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
     	      this.computerName = defaults.computerName;
     	      this.domainAdminPassword = defaults.domainAdminPassword;
     	      this.domainAdminUser = defaults.domainAdminUser;
+    	      this.domainOu = defaults.domainOu;
     	      this.fullName = defaults.fullName;
     	      this.joinDomain = defaults.joinDomain;
     	      this.organizationName = defaults.organizationName;
@@ -250,6 +264,12 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
         public Builder domainAdminUser(@Nullable String domainAdminUser) {
 
             this.domainAdminUser = domainAdminUser;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder domainOu(@Nullable String domainOu) {
+
+            this.domainOu = domainOu;
             return this;
         }
         @CustomType.Setter
@@ -305,6 +325,7 @@ public final class VirtualMachineCloneCustomizeWindowsOptions {
             _resultValue.computerName = computerName;
             _resultValue.domainAdminPassword = domainAdminPassword;
             _resultValue.domainAdminUser = domainAdminUser;
+            _resultValue.domainOu = domainOu;
             _resultValue.fullName = fullName;
             _resultValue.joinDomain = joinDomain;
             _resultValue.organizationName = organizationName;

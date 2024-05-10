@@ -328,6 +328,12 @@ namespace Pulumi.VSphere
         public Output<int?> HostClusterExitTimeout { get; private set; } = null!;
 
         /// <summary>
+        /// Details about the host image which should be applied to the cluster.
+        /// </summary>
+        [Output("hostImage")]
+        public Output<Outputs.ComputeClusterHostImage?> HostImage { get; private set; } = null!;
+
+        /// <summary>
         /// Must be set if cluster enrollment is managed from host resource.
         /// </summary>
         [Output("hostManaged")]
@@ -869,6 +875,12 @@ namespace Pulumi.VSphere
         public Input<int>? HostClusterExitTimeout { get; set; }
 
         /// <summary>
+        /// Details about the host image which should be applied to the cluster.
+        /// </summary>
+        [Input("hostImage")]
+        public Input<Inputs.ComputeClusterHostImageArgs>? HostImage { get; set; }
+
+        /// <summary>
         /// Must be set if cluster enrollment is managed from host resource.
         /// </summary>
         [Input("hostManaged")]
@@ -1396,6 +1408,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("hostClusterExitTimeout")]
         public Input<int>? HostClusterExitTimeout { get; set; }
+
+        /// <summary>
+        /// Details about the host image which should be applied to the cluster.
+        /// </summary>
+        [Input("hostImage")]
+        public Input<Inputs.ComputeClusterHostImageGetArgs>? HostImage { get; set; }
 
         /// <summary>
         /// Must be set if cluster enrollment is managed from host resource.

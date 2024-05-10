@@ -75,12 +75,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &License{}
 	case "vsphere:index/nasDatastore:NasDatastore":
 		r = &NasDatastore{}
+	case "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot":
+		r = &OfflineSoftwareDepot{}
 	case "vsphere:index/resourcePool:ResourcePool":
 		r = &ResourcePool{}
 	case "vsphere:index/role:Role":
 		r = &Role{}
 	case "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride":
 		r = &StorageDrsVmOverride{}
+	case "vsphere:index/supervisor:Supervisor":
+		r = &Supervisor{}
 	case "vsphere:index/tag:Tag":
 		r = &Tag{}
 	case "vsphere:index/tagCategory:TagCategory":
@@ -93,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VirtualDisk{}
 	case "vsphere:index/virtualMachine:VirtualMachine":
 		r = &VirtualMachine{}
+	case "vsphere:index/virtualMachineClass:VirtualMachineClass":
+		r = &VirtualMachineClass{}
 	case "vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot":
 		r = &VirtualMachineSnapshot{}
 	case "vsphere:index/vmStoragePolicy:VmStoragePolicy":
@@ -269,6 +275,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"vsphere",
+		"index/offlineSoftwareDepot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
 		"index/resourcePool",
 		&module{version},
 	)
@@ -280,6 +291,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/storageDrsVmOverride",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/supervisor",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -310,6 +326,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/virtualMachine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/virtualMachineClass",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

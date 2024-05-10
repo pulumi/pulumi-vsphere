@@ -39,6 +39,7 @@ from .get_dynamic import *
 from .get_folder import *
 from .get_guest_os_customization import *
 from .get_host import *
+from .get_host_base_images import *
 from .get_host_pci_device import *
 from .get_host_thumbprint import *
 from .get_host_vgpu_profile import *
@@ -60,16 +61,19 @@ from .host_port_group import *
 from .host_virtual_switch import *
 from .license import *
 from .nas_datastore import *
+from .offline_software_depot import *
 from .provider import *
 from .resource_pool import *
 from .role import *
 from .storage_drs_vm_override import *
+from .supervisor import *
 from .tag import *
 from .tag_category import *
 from .vapp_container import *
 from .vapp_entity import *
 from .virtual_disk import *
 from .virtual_machine import *
+from .virtual_machine_class import *
 from .virtual_machine_snapshot import *
 from .vm_storage_policy import *
 from .vmfs_datastore import *
@@ -305,6 +309,14 @@ _utilities.register(
  },
  {
   "pkg": "vsphere",
+  "mod": "index/offlineSoftwareDepot",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot": "OfflineSoftwareDepot"
+  }
+ },
+ {
+  "pkg": "vsphere",
   "mod": "index/resourcePool",
   "fqn": "pulumi_vsphere",
   "classes": {
@@ -325,6 +337,14 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride": "StorageDrsVmOverride"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/supervisor",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/supervisor:Supervisor": "Supervisor"
   }
  },
  {
@@ -373,6 +393,14 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/virtualMachine:VirtualMachine": "VirtualMachine"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/virtualMachineClass",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/virtualMachineClass:VirtualMachineClass": "VirtualMachineClass"
   }
  },
  {

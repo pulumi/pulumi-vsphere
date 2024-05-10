@@ -11,6 +11,16 @@
                     "ha_heartbeat_datastore_ids": {
                         "maxItemsOne": false
                     },
+                    "host_image": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "component": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "host_system_ids": {
                         "maxItemsOne": false
                     },
@@ -352,6 +362,22 @@
                     }
                 }
             },
+            "vsphere_offline_software_depot": {
+                "current": "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot",
+                "majorVersion": 4,
+                "fields": {
+                    "component": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "version": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "vsphere_resource_pool": {
                 "current": "vsphere:index/resourcePool:ResourcePool",
                 "majorVersion": 4,
@@ -373,6 +399,49 @@
             "vsphere_storage_drs_vm_override": {
                 "current": "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride",
                 "majorVersion": 4
+            },
+            "vsphere_supervisor": {
+                "current": "vsphere:index/supervisor:Supervisor",
+                "majorVersion": 4,
+                "fields": {
+                    "egress_cidr": {
+                        "maxItemsOne": false
+                    },
+                    "ingress_cidr": {
+                        "maxItemsOne": false
+                    },
+                    "main_dns": {
+                        "maxItemsOne": false
+                    },
+                    "management_network": {
+                        "maxItemsOne": true
+                    },
+                    "namespace": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "content_libraries": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_classes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pod_cidr": {
+                        "maxItemsOne": false
+                    },
+                    "search_domains": {
+                        "maxItemsOne": true
+                    },
+                    "service_cidr": {
+                        "maxItemsOne": true
+                    },
+                    "worker_dns": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "vsphere_tag": {
                 "current": "vsphere:index/tag:Tag",
@@ -487,6 +556,15 @@
                         "maxItemsOne": true
                     },
                     "vapp_transport": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "vsphere_virtual_machine_class": {
+                "current": "vsphere:index/virtualMachineClass:VirtualMachineClass",
+                "majorVersion": 4,
+                "fields": {
+                    "vgpu_devices": {
                         "maxItemsOne": false
                     }
                 }
@@ -655,6 +733,15 @@
             "vsphere_host": {
                 "current": "vsphere:index/getHost:getHost",
                 "majorVersion": 4
+            },
+            "vsphere_host_base_images": {
+                "current": "vsphere:index/getHostBaseImages:getHostBaseImages",
+                "majorVersion": 4,
+                "fields": {
+                    "version": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "vsphere_host_pci_device": {
                 "current": "vsphere:index/getHostPciDevice:getHostPciDevice",

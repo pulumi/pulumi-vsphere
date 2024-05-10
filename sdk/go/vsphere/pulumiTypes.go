@@ -13,6 +13,268 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ComputeClusterHostImage struct {
+	// List of custom components.
+	Components []ComputeClusterHostImageComponent `pulumi:"components"`
+	// The ESXi version which the image is based on.
+	EsxVersion *string `pulumi:"esxVersion"`
+}
+
+// ComputeClusterHostImageInput is an input type that accepts ComputeClusterHostImageArgs and ComputeClusterHostImageOutput values.
+// You can construct a concrete instance of `ComputeClusterHostImageInput` via:
+//
+//	ComputeClusterHostImageArgs{...}
+type ComputeClusterHostImageInput interface {
+	pulumi.Input
+
+	ToComputeClusterHostImageOutput() ComputeClusterHostImageOutput
+	ToComputeClusterHostImageOutputWithContext(context.Context) ComputeClusterHostImageOutput
+}
+
+type ComputeClusterHostImageArgs struct {
+	// List of custom components.
+	Components ComputeClusterHostImageComponentArrayInput `pulumi:"components"`
+	// The ESXi version which the image is based on.
+	EsxVersion pulumi.StringPtrInput `pulumi:"esxVersion"`
+}
+
+func (ComputeClusterHostImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterHostImage)(nil)).Elem()
+}
+
+func (i ComputeClusterHostImageArgs) ToComputeClusterHostImageOutput() ComputeClusterHostImageOutput {
+	return i.ToComputeClusterHostImageOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterHostImageArgs) ToComputeClusterHostImageOutputWithContext(ctx context.Context) ComputeClusterHostImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostImageOutput)
+}
+
+func (i ComputeClusterHostImageArgs) ToComputeClusterHostImagePtrOutput() ComputeClusterHostImagePtrOutput {
+	return i.ToComputeClusterHostImagePtrOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterHostImageArgs) ToComputeClusterHostImagePtrOutputWithContext(ctx context.Context) ComputeClusterHostImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostImageOutput).ToComputeClusterHostImagePtrOutputWithContext(ctx)
+}
+
+// ComputeClusterHostImagePtrInput is an input type that accepts ComputeClusterHostImageArgs, ComputeClusterHostImagePtr and ComputeClusterHostImagePtrOutput values.
+// You can construct a concrete instance of `ComputeClusterHostImagePtrInput` via:
+//
+//	        ComputeClusterHostImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type ComputeClusterHostImagePtrInput interface {
+	pulumi.Input
+
+	ToComputeClusterHostImagePtrOutput() ComputeClusterHostImagePtrOutput
+	ToComputeClusterHostImagePtrOutputWithContext(context.Context) ComputeClusterHostImagePtrOutput
+}
+
+type computeClusterHostImagePtrType ComputeClusterHostImageArgs
+
+func ComputeClusterHostImagePtr(v *ComputeClusterHostImageArgs) ComputeClusterHostImagePtrInput {
+	return (*computeClusterHostImagePtrType)(v)
+}
+
+func (*computeClusterHostImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterHostImage)(nil)).Elem()
+}
+
+func (i *computeClusterHostImagePtrType) ToComputeClusterHostImagePtrOutput() ComputeClusterHostImagePtrOutput {
+	return i.ToComputeClusterHostImagePtrOutputWithContext(context.Background())
+}
+
+func (i *computeClusterHostImagePtrType) ToComputeClusterHostImagePtrOutputWithContext(ctx context.Context) ComputeClusterHostImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostImagePtrOutput)
+}
+
+type ComputeClusterHostImageOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterHostImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterHostImage)(nil)).Elem()
+}
+
+func (o ComputeClusterHostImageOutput) ToComputeClusterHostImageOutput() ComputeClusterHostImageOutput {
+	return o
+}
+
+func (o ComputeClusterHostImageOutput) ToComputeClusterHostImageOutputWithContext(ctx context.Context) ComputeClusterHostImageOutput {
+	return o
+}
+
+func (o ComputeClusterHostImageOutput) ToComputeClusterHostImagePtrOutput() ComputeClusterHostImagePtrOutput {
+	return o.ToComputeClusterHostImagePtrOutputWithContext(context.Background())
+}
+
+func (o ComputeClusterHostImageOutput) ToComputeClusterHostImagePtrOutputWithContext(ctx context.Context) ComputeClusterHostImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeClusterHostImage) *ComputeClusterHostImage {
+		return &v
+	}).(ComputeClusterHostImagePtrOutput)
+}
+
+// List of custom components.
+func (o ComputeClusterHostImageOutput) Components() ComputeClusterHostImageComponentArrayOutput {
+	return o.ApplyT(func(v ComputeClusterHostImage) []ComputeClusterHostImageComponent { return v.Components }).(ComputeClusterHostImageComponentArrayOutput)
+}
+
+// The ESXi version which the image is based on.
+func (o ComputeClusterHostImageOutput) EsxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeClusterHostImage) *string { return v.EsxVersion }).(pulumi.StringPtrOutput)
+}
+
+type ComputeClusterHostImagePtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterHostImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterHostImage)(nil)).Elem()
+}
+
+func (o ComputeClusterHostImagePtrOutput) ToComputeClusterHostImagePtrOutput() ComputeClusterHostImagePtrOutput {
+	return o
+}
+
+func (o ComputeClusterHostImagePtrOutput) ToComputeClusterHostImagePtrOutputWithContext(ctx context.Context) ComputeClusterHostImagePtrOutput {
+	return o
+}
+
+func (o ComputeClusterHostImagePtrOutput) Elem() ComputeClusterHostImageOutput {
+	return o.ApplyT(func(v *ComputeClusterHostImage) ComputeClusterHostImage {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeClusterHostImage
+		return ret
+	}).(ComputeClusterHostImageOutput)
+}
+
+// List of custom components.
+func (o ComputeClusterHostImagePtrOutput) Components() ComputeClusterHostImageComponentArrayOutput {
+	return o.ApplyT(func(v *ComputeClusterHostImage) []ComputeClusterHostImageComponent {
+		if v == nil {
+			return nil
+		}
+		return v.Components
+	}).(ComputeClusterHostImageComponentArrayOutput)
+}
+
+// The ESXi version which the image is based on.
+func (o ComputeClusterHostImagePtrOutput) EsxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterHostImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EsxVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type ComputeClusterHostImageComponent struct {
+	// The identifier for the component.
+	Key *string `pulumi:"key"`
+	// The version to use.
+	Version *string `pulumi:"version"`
+}
+
+// ComputeClusterHostImageComponentInput is an input type that accepts ComputeClusterHostImageComponentArgs and ComputeClusterHostImageComponentOutput values.
+// You can construct a concrete instance of `ComputeClusterHostImageComponentInput` via:
+//
+//	ComputeClusterHostImageComponentArgs{...}
+type ComputeClusterHostImageComponentInput interface {
+	pulumi.Input
+
+	ToComputeClusterHostImageComponentOutput() ComputeClusterHostImageComponentOutput
+	ToComputeClusterHostImageComponentOutputWithContext(context.Context) ComputeClusterHostImageComponentOutput
+}
+
+type ComputeClusterHostImageComponentArgs struct {
+	// The identifier for the component.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The version to use.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ComputeClusterHostImageComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterHostImageComponent)(nil)).Elem()
+}
+
+func (i ComputeClusterHostImageComponentArgs) ToComputeClusterHostImageComponentOutput() ComputeClusterHostImageComponentOutput {
+	return i.ToComputeClusterHostImageComponentOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterHostImageComponentArgs) ToComputeClusterHostImageComponentOutputWithContext(ctx context.Context) ComputeClusterHostImageComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostImageComponentOutput)
+}
+
+// ComputeClusterHostImageComponentArrayInput is an input type that accepts ComputeClusterHostImageComponentArray and ComputeClusterHostImageComponentArrayOutput values.
+// You can construct a concrete instance of `ComputeClusterHostImageComponentArrayInput` via:
+//
+//	ComputeClusterHostImageComponentArray{ ComputeClusterHostImageComponentArgs{...} }
+type ComputeClusterHostImageComponentArrayInput interface {
+	pulumi.Input
+
+	ToComputeClusterHostImageComponentArrayOutput() ComputeClusterHostImageComponentArrayOutput
+	ToComputeClusterHostImageComponentArrayOutputWithContext(context.Context) ComputeClusterHostImageComponentArrayOutput
+}
+
+type ComputeClusterHostImageComponentArray []ComputeClusterHostImageComponentInput
+
+func (ComputeClusterHostImageComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterHostImageComponent)(nil)).Elem()
+}
+
+func (i ComputeClusterHostImageComponentArray) ToComputeClusterHostImageComponentArrayOutput() ComputeClusterHostImageComponentArrayOutput {
+	return i.ToComputeClusterHostImageComponentArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterHostImageComponentArray) ToComputeClusterHostImageComponentArrayOutputWithContext(ctx context.Context) ComputeClusterHostImageComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostImageComponentArrayOutput)
+}
+
+type ComputeClusterHostImageComponentOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterHostImageComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterHostImageComponent)(nil)).Elem()
+}
+
+func (o ComputeClusterHostImageComponentOutput) ToComputeClusterHostImageComponentOutput() ComputeClusterHostImageComponentOutput {
+	return o
+}
+
+func (o ComputeClusterHostImageComponentOutput) ToComputeClusterHostImageComponentOutputWithContext(ctx context.Context) ComputeClusterHostImageComponentOutput {
+	return o
+}
+
+// The identifier for the component.
+func (o ComputeClusterHostImageComponentOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeClusterHostImageComponent) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The version to use.
+func (o ComputeClusterHostImageComponentOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeClusterHostImageComponent) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ComputeClusterHostImageComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterHostImageComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterHostImageComponent)(nil)).Elem()
+}
+
+func (o ComputeClusterHostImageComponentArrayOutput) ToComputeClusterHostImageComponentArrayOutput() ComputeClusterHostImageComponentArrayOutput {
+	return o
+}
+
+func (o ComputeClusterHostImageComponentArrayOutput) ToComputeClusterHostImageComponentArrayOutputWithContext(ctx context.Context) ComputeClusterHostImageComponentArrayOutput {
+	return o
+}
+
+func (o ComputeClusterHostImageComponentArrayOutput) Index(i pulumi.IntInput) ComputeClusterHostImageComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterHostImageComponent {
+		return vs[0].([]ComputeClusterHostImageComponent)[vs[1].(int)]
+	}).(ComputeClusterHostImageComponentOutput)
+}
+
 type ComputeClusterVsanDiskGroup struct {
 	// Cache disk.
 	Cache *string `pulumi:"cache"`
@@ -2179,6 +2441,8 @@ type GuestOsCustomizationSpecWindowsOptions struct {
 	DomainAdminPassword *string `pulumi:"domainAdminPassword"`
 	// The user account of the domain administrator used to join this virtual machine to the domain.
 	DomainAdminUser *string `pulumi:"domainAdminUser"`
+	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+	DomainOu *string `pulumi:"domainOu"`
 	// The full name of the user of this virtual machine.
 	FullName *string `pulumi:"fullName"`
 	// The domain that the virtual machine should join.
@@ -2219,6 +2483,8 @@ type GuestOsCustomizationSpecWindowsOptionsArgs struct {
 	DomainAdminPassword pulumi.StringPtrInput `pulumi:"domainAdminPassword"`
 	// The user account of the domain administrator used to join this virtual machine to the domain.
 	DomainAdminUser pulumi.StringPtrInput `pulumi:"domainAdminUser"`
+	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+	DomainOu pulumi.StringPtrInput `pulumi:"domainOu"`
 	// The full name of the user of this virtual machine.
 	FullName pulumi.StringPtrInput `pulumi:"fullName"`
 	// The domain that the virtual machine should join.
@@ -2342,6 +2608,11 @@ func (o GuestOsCustomizationSpecWindowsOptionsOutput) DomainAdminUser() pulumi.S
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.DomainAdminUser }).(pulumi.StringPtrOutput)
 }
 
+// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+func (o GuestOsCustomizationSpecWindowsOptionsOutput) DomainOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.DomainOu }).(pulumi.StringPtrOutput)
+}
+
 // The full name of the user of this virtual machine.
 func (o GuestOsCustomizationSpecWindowsOptionsOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOsCustomizationSpecWindowsOptions) *string { return v.FullName }).(pulumi.StringPtrOutput)
@@ -2458,6 +2729,16 @@ func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainAdminUser() pulum
 			return nil
 		}
 		return v.DomainAdminUser
+	}).(pulumi.StringPtrOutput)
+}
+
+// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+func (o GuestOsCustomizationSpecWindowsOptionsPtrOutput) DomainOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestOsCustomizationSpecWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainOu
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2644,6 +2925,923 @@ func (o HostPortGroupPortArrayOutput) Index(i pulumi.IntInput) HostPortGroupPort
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostPortGroupPort {
 		return vs[0].([]HostPortGroupPort)[vs[1].(int)]
 	}).(HostPortGroupPortOutput)
+}
+
+type OfflineSoftwareDepotComponent struct {
+	// The name of the component. Useful for easier identification.
+	DisplayName *string `pulumi:"displayName"`
+	// The identifier of the component.
+	Key *string `pulumi:"key"`
+	// The list of available versions of the component.
+	Versions []string `pulumi:"versions"`
+}
+
+// OfflineSoftwareDepotComponentInput is an input type that accepts OfflineSoftwareDepotComponentArgs and OfflineSoftwareDepotComponentOutput values.
+// You can construct a concrete instance of `OfflineSoftwareDepotComponentInput` via:
+//
+//	OfflineSoftwareDepotComponentArgs{...}
+type OfflineSoftwareDepotComponentInput interface {
+	pulumi.Input
+
+	ToOfflineSoftwareDepotComponentOutput() OfflineSoftwareDepotComponentOutput
+	ToOfflineSoftwareDepotComponentOutputWithContext(context.Context) OfflineSoftwareDepotComponentOutput
+}
+
+type OfflineSoftwareDepotComponentArgs struct {
+	// The name of the component. Useful for easier identification.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The identifier of the component.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The list of available versions of the component.
+	Versions pulumi.StringArrayInput `pulumi:"versions"`
+}
+
+func (OfflineSoftwareDepotComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OfflineSoftwareDepotComponent)(nil)).Elem()
+}
+
+func (i OfflineSoftwareDepotComponentArgs) ToOfflineSoftwareDepotComponentOutput() OfflineSoftwareDepotComponentOutput {
+	return i.ToOfflineSoftwareDepotComponentOutputWithContext(context.Background())
+}
+
+func (i OfflineSoftwareDepotComponentArgs) ToOfflineSoftwareDepotComponentOutputWithContext(ctx context.Context) OfflineSoftwareDepotComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OfflineSoftwareDepotComponentOutput)
+}
+
+// OfflineSoftwareDepotComponentArrayInput is an input type that accepts OfflineSoftwareDepotComponentArray and OfflineSoftwareDepotComponentArrayOutput values.
+// You can construct a concrete instance of `OfflineSoftwareDepotComponentArrayInput` via:
+//
+//	OfflineSoftwareDepotComponentArray{ OfflineSoftwareDepotComponentArgs{...} }
+type OfflineSoftwareDepotComponentArrayInput interface {
+	pulumi.Input
+
+	ToOfflineSoftwareDepotComponentArrayOutput() OfflineSoftwareDepotComponentArrayOutput
+	ToOfflineSoftwareDepotComponentArrayOutputWithContext(context.Context) OfflineSoftwareDepotComponentArrayOutput
+}
+
+type OfflineSoftwareDepotComponentArray []OfflineSoftwareDepotComponentInput
+
+func (OfflineSoftwareDepotComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OfflineSoftwareDepotComponent)(nil)).Elem()
+}
+
+func (i OfflineSoftwareDepotComponentArray) ToOfflineSoftwareDepotComponentArrayOutput() OfflineSoftwareDepotComponentArrayOutput {
+	return i.ToOfflineSoftwareDepotComponentArrayOutputWithContext(context.Background())
+}
+
+func (i OfflineSoftwareDepotComponentArray) ToOfflineSoftwareDepotComponentArrayOutputWithContext(ctx context.Context) OfflineSoftwareDepotComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OfflineSoftwareDepotComponentArrayOutput)
+}
+
+type OfflineSoftwareDepotComponentOutput struct{ *pulumi.OutputState }
+
+func (OfflineSoftwareDepotComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OfflineSoftwareDepotComponent)(nil)).Elem()
+}
+
+func (o OfflineSoftwareDepotComponentOutput) ToOfflineSoftwareDepotComponentOutput() OfflineSoftwareDepotComponentOutput {
+	return o
+}
+
+func (o OfflineSoftwareDepotComponentOutput) ToOfflineSoftwareDepotComponentOutputWithContext(ctx context.Context) OfflineSoftwareDepotComponentOutput {
+	return o
+}
+
+// The name of the component. Useful for easier identification.
+func (o OfflineSoftwareDepotComponentOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfflineSoftwareDepotComponent) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the component.
+func (o OfflineSoftwareDepotComponentOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfflineSoftwareDepotComponent) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The list of available versions of the component.
+func (o OfflineSoftwareDepotComponentOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OfflineSoftwareDepotComponent) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
+type OfflineSoftwareDepotComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (OfflineSoftwareDepotComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OfflineSoftwareDepotComponent)(nil)).Elem()
+}
+
+func (o OfflineSoftwareDepotComponentArrayOutput) ToOfflineSoftwareDepotComponentArrayOutput() OfflineSoftwareDepotComponentArrayOutput {
+	return o
+}
+
+func (o OfflineSoftwareDepotComponentArrayOutput) ToOfflineSoftwareDepotComponentArrayOutputWithContext(ctx context.Context) OfflineSoftwareDepotComponentArrayOutput {
+	return o
+}
+
+func (o OfflineSoftwareDepotComponentArrayOutput) Index(i pulumi.IntInput) OfflineSoftwareDepotComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OfflineSoftwareDepotComponent {
+		return vs[0].([]OfflineSoftwareDepotComponent)[vs[1].(int)]
+	}).(OfflineSoftwareDepotComponentOutput)
+}
+
+type SupervisorEgressCidr struct {
+	// Network address.
+	Address string `pulumi:"address"`
+	// Subnet prefix.
+	Prefix int `pulumi:"prefix"`
+}
+
+// SupervisorEgressCidrInput is an input type that accepts SupervisorEgressCidrArgs and SupervisorEgressCidrOutput values.
+// You can construct a concrete instance of `SupervisorEgressCidrInput` via:
+//
+//	SupervisorEgressCidrArgs{...}
+type SupervisorEgressCidrInput interface {
+	pulumi.Input
+
+	ToSupervisorEgressCidrOutput() SupervisorEgressCidrOutput
+	ToSupervisorEgressCidrOutputWithContext(context.Context) SupervisorEgressCidrOutput
+}
+
+type SupervisorEgressCidrArgs struct {
+	// Network address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Subnet prefix.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+}
+
+func (SupervisorEgressCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorEgressCidr)(nil)).Elem()
+}
+
+func (i SupervisorEgressCidrArgs) ToSupervisorEgressCidrOutput() SupervisorEgressCidrOutput {
+	return i.ToSupervisorEgressCidrOutputWithContext(context.Background())
+}
+
+func (i SupervisorEgressCidrArgs) ToSupervisorEgressCidrOutputWithContext(ctx context.Context) SupervisorEgressCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorEgressCidrOutput)
+}
+
+// SupervisorEgressCidrArrayInput is an input type that accepts SupervisorEgressCidrArray and SupervisorEgressCidrArrayOutput values.
+// You can construct a concrete instance of `SupervisorEgressCidrArrayInput` via:
+//
+//	SupervisorEgressCidrArray{ SupervisorEgressCidrArgs{...} }
+type SupervisorEgressCidrArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorEgressCidrArrayOutput() SupervisorEgressCidrArrayOutput
+	ToSupervisorEgressCidrArrayOutputWithContext(context.Context) SupervisorEgressCidrArrayOutput
+}
+
+type SupervisorEgressCidrArray []SupervisorEgressCidrInput
+
+func (SupervisorEgressCidrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorEgressCidr)(nil)).Elem()
+}
+
+func (i SupervisorEgressCidrArray) ToSupervisorEgressCidrArrayOutput() SupervisorEgressCidrArrayOutput {
+	return i.ToSupervisorEgressCidrArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorEgressCidrArray) ToSupervisorEgressCidrArrayOutputWithContext(ctx context.Context) SupervisorEgressCidrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorEgressCidrArrayOutput)
+}
+
+type SupervisorEgressCidrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorEgressCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorEgressCidr)(nil)).Elem()
+}
+
+func (o SupervisorEgressCidrOutput) ToSupervisorEgressCidrOutput() SupervisorEgressCidrOutput {
+	return o
+}
+
+func (o SupervisorEgressCidrOutput) ToSupervisorEgressCidrOutputWithContext(ctx context.Context) SupervisorEgressCidrOutput {
+	return o
+}
+
+// Network address.
+func (o SupervisorEgressCidrOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorEgressCidr) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Subnet prefix.
+func (o SupervisorEgressCidrOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorEgressCidr) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+type SupervisorEgressCidrArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorEgressCidrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorEgressCidr)(nil)).Elem()
+}
+
+func (o SupervisorEgressCidrArrayOutput) ToSupervisorEgressCidrArrayOutput() SupervisorEgressCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorEgressCidrArrayOutput) ToSupervisorEgressCidrArrayOutputWithContext(ctx context.Context) SupervisorEgressCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorEgressCidrArrayOutput) Index(i pulumi.IntInput) SupervisorEgressCidrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorEgressCidr {
+		return vs[0].([]SupervisorEgressCidr)[vs[1].(int)]
+	}).(SupervisorEgressCidrOutput)
+}
+
+type SupervisorIngressCidr struct {
+	// Network address.
+	Address string `pulumi:"address"`
+	// Subnet prefix.
+	Prefix int `pulumi:"prefix"`
+}
+
+// SupervisorIngressCidrInput is an input type that accepts SupervisorIngressCidrArgs and SupervisorIngressCidrOutput values.
+// You can construct a concrete instance of `SupervisorIngressCidrInput` via:
+//
+//	SupervisorIngressCidrArgs{...}
+type SupervisorIngressCidrInput interface {
+	pulumi.Input
+
+	ToSupervisorIngressCidrOutput() SupervisorIngressCidrOutput
+	ToSupervisorIngressCidrOutputWithContext(context.Context) SupervisorIngressCidrOutput
+}
+
+type SupervisorIngressCidrArgs struct {
+	// Network address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Subnet prefix.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+}
+
+func (SupervisorIngressCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorIngressCidr)(nil)).Elem()
+}
+
+func (i SupervisorIngressCidrArgs) ToSupervisorIngressCidrOutput() SupervisorIngressCidrOutput {
+	return i.ToSupervisorIngressCidrOutputWithContext(context.Background())
+}
+
+func (i SupervisorIngressCidrArgs) ToSupervisorIngressCidrOutputWithContext(ctx context.Context) SupervisorIngressCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorIngressCidrOutput)
+}
+
+// SupervisorIngressCidrArrayInput is an input type that accepts SupervisorIngressCidrArray and SupervisorIngressCidrArrayOutput values.
+// You can construct a concrete instance of `SupervisorIngressCidrArrayInput` via:
+//
+//	SupervisorIngressCidrArray{ SupervisorIngressCidrArgs{...} }
+type SupervisorIngressCidrArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorIngressCidrArrayOutput() SupervisorIngressCidrArrayOutput
+	ToSupervisorIngressCidrArrayOutputWithContext(context.Context) SupervisorIngressCidrArrayOutput
+}
+
+type SupervisorIngressCidrArray []SupervisorIngressCidrInput
+
+func (SupervisorIngressCidrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorIngressCidr)(nil)).Elem()
+}
+
+func (i SupervisorIngressCidrArray) ToSupervisorIngressCidrArrayOutput() SupervisorIngressCidrArrayOutput {
+	return i.ToSupervisorIngressCidrArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorIngressCidrArray) ToSupervisorIngressCidrArrayOutputWithContext(ctx context.Context) SupervisorIngressCidrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorIngressCidrArrayOutput)
+}
+
+type SupervisorIngressCidrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorIngressCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorIngressCidr)(nil)).Elem()
+}
+
+func (o SupervisorIngressCidrOutput) ToSupervisorIngressCidrOutput() SupervisorIngressCidrOutput {
+	return o
+}
+
+func (o SupervisorIngressCidrOutput) ToSupervisorIngressCidrOutputWithContext(ctx context.Context) SupervisorIngressCidrOutput {
+	return o
+}
+
+// Network address.
+func (o SupervisorIngressCidrOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorIngressCidr) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Subnet prefix.
+func (o SupervisorIngressCidrOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorIngressCidr) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+type SupervisorIngressCidrArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorIngressCidrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorIngressCidr)(nil)).Elem()
+}
+
+func (o SupervisorIngressCidrArrayOutput) ToSupervisorIngressCidrArrayOutput() SupervisorIngressCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorIngressCidrArrayOutput) ToSupervisorIngressCidrArrayOutputWithContext(ctx context.Context) SupervisorIngressCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorIngressCidrArrayOutput) Index(i pulumi.IntInput) SupervisorIngressCidrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorIngressCidr {
+		return vs[0].([]SupervisorIngressCidr)[vs[1].(int)]
+	}).(SupervisorIngressCidrOutput)
+}
+
+type SupervisorManagementNetwork struct {
+	// Number of addresses to allocate. Starts from 'starting_address'
+	AddressCount int `pulumi:"addressCount"`
+	// Gateway IP address.
+	Gateway string `pulumi:"gateway"`
+	// ID of the network. (e.g. a distributed port group).
+	Network string `pulumi:"network"`
+	// Starting address of the management network range.
+	StartingAddress string `pulumi:"startingAddress"`
+	// Subnet mask.
+	SubnetMask string `pulumi:"subnetMask"`
+}
+
+// SupervisorManagementNetworkInput is an input type that accepts SupervisorManagementNetworkArgs and SupervisorManagementNetworkOutput values.
+// You can construct a concrete instance of `SupervisorManagementNetworkInput` via:
+//
+//	SupervisorManagementNetworkArgs{...}
+type SupervisorManagementNetworkInput interface {
+	pulumi.Input
+
+	ToSupervisorManagementNetworkOutput() SupervisorManagementNetworkOutput
+	ToSupervisorManagementNetworkOutputWithContext(context.Context) SupervisorManagementNetworkOutput
+}
+
+type SupervisorManagementNetworkArgs struct {
+	// Number of addresses to allocate. Starts from 'starting_address'
+	AddressCount pulumi.IntInput `pulumi:"addressCount"`
+	// Gateway IP address.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// ID of the network. (e.g. a distributed port group).
+	Network pulumi.StringInput `pulumi:"network"`
+	// Starting address of the management network range.
+	StartingAddress pulumi.StringInput `pulumi:"startingAddress"`
+	// Subnet mask.
+	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
+}
+
+func (SupervisorManagementNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorManagementNetwork)(nil)).Elem()
+}
+
+func (i SupervisorManagementNetworkArgs) ToSupervisorManagementNetworkOutput() SupervisorManagementNetworkOutput {
+	return i.ToSupervisorManagementNetworkOutputWithContext(context.Background())
+}
+
+func (i SupervisorManagementNetworkArgs) ToSupervisorManagementNetworkOutputWithContext(ctx context.Context) SupervisorManagementNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorManagementNetworkOutput)
+}
+
+func (i SupervisorManagementNetworkArgs) ToSupervisorManagementNetworkPtrOutput() SupervisorManagementNetworkPtrOutput {
+	return i.ToSupervisorManagementNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorManagementNetworkArgs) ToSupervisorManagementNetworkPtrOutputWithContext(ctx context.Context) SupervisorManagementNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorManagementNetworkOutput).ToSupervisorManagementNetworkPtrOutputWithContext(ctx)
+}
+
+// SupervisorManagementNetworkPtrInput is an input type that accepts SupervisorManagementNetworkArgs, SupervisorManagementNetworkPtr and SupervisorManagementNetworkPtrOutput values.
+// You can construct a concrete instance of `SupervisorManagementNetworkPtrInput` via:
+//
+//	        SupervisorManagementNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorManagementNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorManagementNetworkPtrOutput() SupervisorManagementNetworkPtrOutput
+	ToSupervisorManagementNetworkPtrOutputWithContext(context.Context) SupervisorManagementNetworkPtrOutput
+}
+
+type supervisorManagementNetworkPtrType SupervisorManagementNetworkArgs
+
+func SupervisorManagementNetworkPtr(v *SupervisorManagementNetworkArgs) SupervisorManagementNetworkPtrInput {
+	return (*supervisorManagementNetworkPtrType)(v)
+}
+
+func (*supervisorManagementNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorManagementNetwork)(nil)).Elem()
+}
+
+func (i *supervisorManagementNetworkPtrType) ToSupervisorManagementNetworkPtrOutput() SupervisorManagementNetworkPtrOutput {
+	return i.ToSupervisorManagementNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorManagementNetworkPtrType) ToSupervisorManagementNetworkPtrOutputWithContext(ctx context.Context) SupervisorManagementNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorManagementNetworkPtrOutput)
+}
+
+type SupervisorManagementNetworkOutput struct{ *pulumi.OutputState }
+
+func (SupervisorManagementNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorManagementNetwork)(nil)).Elem()
+}
+
+func (o SupervisorManagementNetworkOutput) ToSupervisorManagementNetworkOutput() SupervisorManagementNetworkOutput {
+	return o
+}
+
+func (o SupervisorManagementNetworkOutput) ToSupervisorManagementNetworkOutputWithContext(ctx context.Context) SupervisorManagementNetworkOutput {
+	return o
+}
+
+func (o SupervisorManagementNetworkOutput) ToSupervisorManagementNetworkPtrOutput() SupervisorManagementNetworkPtrOutput {
+	return o.ToSupervisorManagementNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorManagementNetworkOutput) ToSupervisorManagementNetworkPtrOutputWithContext(ctx context.Context) SupervisorManagementNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorManagementNetwork) *SupervisorManagementNetwork {
+		return &v
+	}).(SupervisorManagementNetworkPtrOutput)
+}
+
+// Number of addresses to allocate. Starts from 'starting_address'
+func (o SupervisorManagementNetworkOutput) AddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorManagementNetwork) int { return v.AddressCount }).(pulumi.IntOutput)
+}
+
+// Gateway IP address.
+func (o SupervisorManagementNetworkOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorManagementNetwork) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// ID of the network. (e.g. a distributed port group).
+func (o SupervisorManagementNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorManagementNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Starting address of the management network range.
+func (o SupervisorManagementNetworkOutput) StartingAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorManagementNetwork) string { return v.StartingAddress }).(pulumi.StringOutput)
+}
+
+// Subnet mask.
+func (o SupervisorManagementNetworkOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorManagementNetwork) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+type SupervisorManagementNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorManagementNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorManagementNetwork)(nil)).Elem()
+}
+
+func (o SupervisorManagementNetworkPtrOutput) ToSupervisorManagementNetworkPtrOutput() SupervisorManagementNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorManagementNetworkPtrOutput) ToSupervisorManagementNetworkPtrOutputWithContext(ctx context.Context) SupervisorManagementNetworkPtrOutput {
+	return o
+}
+
+func (o SupervisorManagementNetworkPtrOutput) Elem() SupervisorManagementNetworkOutput {
+	return o.ApplyT(func(v *SupervisorManagementNetwork) SupervisorManagementNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorManagementNetwork
+		return ret
+	}).(SupervisorManagementNetworkOutput)
+}
+
+// Number of addresses to allocate. Starts from 'starting_address'
+func (o SupervisorManagementNetworkPtrOutput) AddressCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SupervisorManagementNetwork) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.AddressCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gateway IP address.
+func (o SupervisorManagementNetworkPtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorManagementNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the network. (e.g. a distributed port group).
+func (o SupervisorManagementNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorManagementNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Starting address of the management network range.
+func (o SupervisorManagementNetworkPtrOutput) StartingAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorManagementNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartingAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnet mask.
+func (o SupervisorManagementNetworkPtrOutput) SubnetMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorManagementNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetMask
+	}).(pulumi.StringPtrOutput)
+}
+
+type SupervisorNamespace struct {
+	// A list of content libraries.
+	ContentLibraries []string `pulumi:"contentLibraries"`
+	// The name of the namespace.
+	Name string `pulumi:"name"`
+	// A list of virtual machine classes.
+	VmClasses []string `pulumi:"vmClasses"`
+}
+
+// SupervisorNamespaceInput is an input type that accepts SupervisorNamespaceArgs and SupervisorNamespaceOutput values.
+// You can construct a concrete instance of `SupervisorNamespaceInput` via:
+//
+//	SupervisorNamespaceArgs{...}
+type SupervisorNamespaceInput interface {
+	pulumi.Input
+
+	ToSupervisorNamespaceOutput() SupervisorNamespaceOutput
+	ToSupervisorNamespaceOutputWithContext(context.Context) SupervisorNamespaceOutput
+}
+
+type SupervisorNamespaceArgs struct {
+	// A list of content libraries.
+	ContentLibraries pulumi.StringArrayInput `pulumi:"contentLibraries"`
+	// The name of the namespace.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of virtual machine classes.
+	VmClasses pulumi.StringArrayInput `pulumi:"vmClasses"`
+}
+
+func (SupervisorNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorNamespace)(nil)).Elem()
+}
+
+func (i SupervisorNamespaceArgs) ToSupervisorNamespaceOutput() SupervisorNamespaceOutput {
+	return i.ToSupervisorNamespaceOutputWithContext(context.Background())
+}
+
+func (i SupervisorNamespaceArgs) ToSupervisorNamespaceOutputWithContext(ctx context.Context) SupervisorNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorNamespaceOutput)
+}
+
+// SupervisorNamespaceArrayInput is an input type that accepts SupervisorNamespaceArray and SupervisorNamespaceArrayOutput values.
+// You can construct a concrete instance of `SupervisorNamespaceArrayInput` via:
+//
+//	SupervisorNamespaceArray{ SupervisorNamespaceArgs{...} }
+type SupervisorNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorNamespaceArrayOutput() SupervisorNamespaceArrayOutput
+	ToSupervisorNamespaceArrayOutputWithContext(context.Context) SupervisorNamespaceArrayOutput
+}
+
+type SupervisorNamespaceArray []SupervisorNamespaceInput
+
+func (SupervisorNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorNamespace)(nil)).Elem()
+}
+
+func (i SupervisorNamespaceArray) ToSupervisorNamespaceArrayOutput() SupervisorNamespaceArrayOutput {
+	return i.ToSupervisorNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorNamespaceArray) ToSupervisorNamespaceArrayOutputWithContext(ctx context.Context) SupervisorNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorNamespaceArrayOutput)
+}
+
+type SupervisorNamespaceOutput struct{ *pulumi.OutputState }
+
+func (SupervisorNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorNamespace)(nil)).Elem()
+}
+
+func (o SupervisorNamespaceOutput) ToSupervisorNamespaceOutput() SupervisorNamespaceOutput {
+	return o
+}
+
+func (o SupervisorNamespaceOutput) ToSupervisorNamespaceOutputWithContext(ctx context.Context) SupervisorNamespaceOutput {
+	return o
+}
+
+// A list of content libraries.
+func (o SupervisorNamespaceOutput) ContentLibraries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorNamespace) []string { return v.ContentLibraries }).(pulumi.StringArrayOutput)
+}
+
+// The name of the namespace.
+func (o SupervisorNamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorNamespace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of virtual machine classes.
+func (o SupervisorNamespaceOutput) VmClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SupervisorNamespace) []string { return v.VmClasses }).(pulumi.StringArrayOutput)
+}
+
+type SupervisorNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorNamespace)(nil)).Elem()
+}
+
+func (o SupervisorNamespaceArrayOutput) ToSupervisorNamespaceArrayOutput() SupervisorNamespaceArrayOutput {
+	return o
+}
+
+func (o SupervisorNamespaceArrayOutput) ToSupervisorNamespaceArrayOutputWithContext(ctx context.Context) SupervisorNamespaceArrayOutput {
+	return o
+}
+
+func (o SupervisorNamespaceArrayOutput) Index(i pulumi.IntInput) SupervisorNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorNamespace {
+		return vs[0].([]SupervisorNamespace)[vs[1].(int)]
+	}).(SupervisorNamespaceOutput)
+}
+
+type SupervisorPodCidr struct {
+	// Network address.
+	Address string `pulumi:"address"`
+	// Subnet prefix.
+	Prefix int `pulumi:"prefix"`
+}
+
+// SupervisorPodCidrInput is an input type that accepts SupervisorPodCidrArgs and SupervisorPodCidrOutput values.
+// You can construct a concrete instance of `SupervisorPodCidrInput` via:
+//
+//	SupervisorPodCidrArgs{...}
+type SupervisorPodCidrInput interface {
+	pulumi.Input
+
+	ToSupervisorPodCidrOutput() SupervisorPodCidrOutput
+	ToSupervisorPodCidrOutputWithContext(context.Context) SupervisorPodCidrOutput
+}
+
+type SupervisorPodCidrArgs struct {
+	// Network address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Subnet prefix.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+}
+
+func (SupervisorPodCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorPodCidr)(nil)).Elem()
+}
+
+func (i SupervisorPodCidrArgs) ToSupervisorPodCidrOutput() SupervisorPodCidrOutput {
+	return i.ToSupervisorPodCidrOutputWithContext(context.Background())
+}
+
+func (i SupervisorPodCidrArgs) ToSupervisorPodCidrOutputWithContext(ctx context.Context) SupervisorPodCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorPodCidrOutput)
+}
+
+// SupervisorPodCidrArrayInput is an input type that accepts SupervisorPodCidrArray and SupervisorPodCidrArrayOutput values.
+// You can construct a concrete instance of `SupervisorPodCidrArrayInput` via:
+//
+//	SupervisorPodCidrArray{ SupervisorPodCidrArgs{...} }
+type SupervisorPodCidrArrayInput interface {
+	pulumi.Input
+
+	ToSupervisorPodCidrArrayOutput() SupervisorPodCidrArrayOutput
+	ToSupervisorPodCidrArrayOutputWithContext(context.Context) SupervisorPodCidrArrayOutput
+}
+
+type SupervisorPodCidrArray []SupervisorPodCidrInput
+
+func (SupervisorPodCidrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorPodCidr)(nil)).Elem()
+}
+
+func (i SupervisorPodCidrArray) ToSupervisorPodCidrArrayOutput() SupervisorPodCidrArrayOutput {
+	return i.ToSupervisorPodCidrArrayOutputWithContext(context.Background())
+}
+
+func (i SupervisorPodCidrArray) ToSupervisorPodCidrArrayOutputWithContext(ctx context.Context) SupervisorPodCidrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorPodCidrArrayOutput)
+}
+
+type SupervisorPodCidrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorPodCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorPodCidr)(nil)).Elem()
+}
+
+func (o SupervisorPodCidrOutput) ToSupervisorPodCidrOutput() SupervisorPodCidrOutput {
+	return o
+}
+
+func (o SupervisorPodCidrOutput) ToSupervisorPodCidrOutputWithContext(ctx context.Context) SupervisorPodCidrOutput {
+	return o
+}
+
+// Network address.
+func (o SupervisorPodCidrOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorPodCidr) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Subnet prefix.
+func (o SupervisorPodCidrOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorPodCidr) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+type SupervisorPodCidrArrayOutput struct{ *pulumi.OutputState }
+
+func (SupervisorPodCidrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SupervisorPodCidr)(nil)).Elem()
+}
+
+func (o SupervisorPodCidrArrayOutput) ToSupervisorPodCidrArrayOutput() SupervisorPodCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorPodCidrArrayOutput) ToSupervisorPodCidrArrayOutputWithContext(ctx context.Context) SupervisorPodCidrArrayOutput {
+	return o
+}
+
+func (o SupervisorPodCidrArrayOutput) Index(i pulumi.IntInput) SupervisorPodCidrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SupervisorPodCidr {
+		return vs[0].([]SupervisorPodCidr)[vs[1].(int)]
+	}).(SupervisorPodCidrOutput)
+}
+
+type SupervisorServiceCidr struct {
+	// Network address.
+	Address string `pulumi:"address"`
+	// Subnet prefix.
+	Prefix int `pulumi:"prefix"`
+}
+
+// SupervisorServiceCidrInput is an input type that accepts SupervisorServiceCidrArgs and SupervisorServiceCidrOutput values.
+// You can construct a concrete instance of `SupervisorServiceCidrInput` via:
+//
+//	SupervisorServiceCidrArgs{...}
+type SupervisorServiceCidrInput interface {
+	pulumi.Input
+
+	ToSupervisorServiceCidrOutput() SupervisorServiceCidrOutput
+	ToSupervisorServiceCidrOutputWithContext(context.Context) SupervisorServiceCidrOutput
+}
+
+type SupervisorServiceCidrArgs struct {
+	// Network address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Subnet prefix.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+}
+
+func (SupervisorServiceCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorServiceCidr)(nil)).Elem()
+}
+
+func (i SupervisorServiceCidrArgs) ToSupervisorServiceCidrOutput() SupervisorServiceCidrOutput {
+	return i.ToSupervisorServiceCidrOutputWithContext(context.Background())
+}
+
+func (i SupervisorServiceCidrArgs) ToSupervisorServiceCidrOutputWithContext(ctx context.Context) SupervisorServiceCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorServiceCidrOutput)
+}
+
+func (i SupervisorServiceCidrArgs) ToSupervisorServiceCidrPtrOutput() SupervisorServiceCidrPtrOutput {
+	return i.ToSupervisorServiceCidrPtrOutputWithContext(context.Background())
+}
+
+func (i SupervisorServiceCidrArgs) ToSupervisorServiceCidrPtrOutputWithContext(ctx context.Context) SupervisorServiceCidrPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorServiceCidrOutput).ToSupervisorServiceCidrPtrOutputWithContext(ctx)
+}
+
+// SupervisorServiceCidrPtrInput is an input type that accepts SupervisorServiceCidrArgs, SupervisorServiceCidrPtr and SupervisorServiceCidrPtrOutput values.
+// You can construct a concrete instance of `SupervisorServiceCidrPtrInput` via:
+//
+//	        SupervisorServiceCidrArgs{...}
+//
+//	or:
+//
+//	        nil
+type SupervisorServiceCidrPtrInput interface {
+	pulumi.Input
+
+	ToSupervisorServiceCidrPtrOutput() SupervisorServiceCidrPtrOutput
+	ToSupervisorServiceCidrPtrOutputWithContext(context.Context) SupervisorServiceCidrPtrOutput
+}
+
+type supervisorServiceCidrPtrType SupervisorServiceCidrArgs
+
+func SupervisorServiceCidrPtr(v *SupervisorServiceCidrArgs) SupervisorServiceCidrPtrInput {
+	return (*supervisorServiceCidrPtrType)(v)
+}
+
+func (*supervisorServiceCidrPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorServiceCidr)(nil)).Elem()
+}
+
+func (i *supervisorServiceCidrPtrType) ToSupervisorServiceCidrPtrOutput() SupervisorServiceCidrPtrOutput {
+	return i.ToSupervisorServiceCidrPtrOutputWithContext(context.Background())
+}
+
+func (i *supervisorServiceCidrPtrType) ToSupervisorServiceCidrPtrOutputWithContext(ctx context.Context) SupervisorServiceCidrPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupervisorServiceCidrPtrOutput)
+}
+
+type SupervisorServiceCidrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorServiceCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupervisorServiceCidr)(nil)).Elem()
+}
+
+func (o SupervisorServiceCidrOutput) ToSupervisorServiceCidrOutput() SupervisorServiceCidrOutput {
+	return o
+}
+
+func (o SupervisorServiceCidrOutput) ToSupervisorServiceCidrOutputWithContext(ctx context.Context) SupervisorServiceCidrOutput {
+	return o
+}
+
+func (o SupervisorServiceCidrOutput) ToSupervisorServiceCidrPtrOutput() SupervisorServiceCidrPtrOutput {
+	return o.ToSupervisorServiceCidrPtrOutputWithContext(context.Background())
+}
+
+func (o SupervisorServiceCidrOutput) ToSupervisorServiceCidrPtrOutputWithContext(ctx context.Context) SupervisorServiceCidrPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupervisorServiceCidr) *SupervisorServiceCidr {
+		return &v
+	}).(SupervisorServiceCidrPtrOutput)
+}
+
+// Network address.
+func (o SupervisorServiceCidrOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v SupervisorServiceCidr) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Subnet prefix.
+func (o SupervisorServiceCidrOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v SupervisorServiceCidr) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+type SupervisorServiceCidrPtrOutput struct{ *pulumi.OutputState }
+
+func (SupervisorServiceCidrPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupervisorServiceCidr)(nil)).Elem()
+}
+
+func (o SupervisorServiceCidrPtrOutput) ToSupervisorServiceCidrPtrOutput() SupervisorServiceCidrPtrOutput {
+	return o
+}
+
+func (o SupervisorServiceCidrPtrOutput) ToSupervisorServiceCidrPtrOutputWithContext(ctx context.Context) SupervisorServiceCidrPtrOutput {
+	return o
+}
+
+func (o SupervisorServiceCidrPtrOutput) Elem() SupervisorServiceCidrOutput {
+	return o.ApplyT(func(v *SupervisorServiceCidr) SupervisorServiceCidr {
+		if v != nil {
+			return *v
+		}
+		var ret SupervisorServiceCidr
+		return ret
+	}).(SupervisorServiceCidrOutput)
+}
+
+// Network address.
+func (o SupervisorServiceCidrPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupervisorServiceCidr) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnet prefix.
+func (o SupervisorServiceCidrPtrOutput) Prefix() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SupervisorServiceCidr) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Prefix
+	}).(pulumi.IntPtrOutput)
 }
 
 type VirtualMachineCdrom struct {
@@ -3847,6 +5045,8 @@ type VirtualMachineCloneCustomizeWindowsOptions struct {
 	DomainAdminPassword *string `pulumi:"domainAdminPassword"`
 	// The user account of the domain administrator used to join this virtual machine to the domain.
 	DomainAdminUser *string `pulumi:"domainAdminUser"`
+	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+	DomainOu *string `pulumi:"domainOu"`
 	// The full name of the user of this virtual machine.
 	FullName *string `pulumi:"fullName"`
 	// The domain that the virtual machine should join.
@@ -3887,6 +5087,8 @@ type VirtualMachineCloneCustomizeWindowsOptionsArgs struct {
 	DomainAdminPassword pulumi.StringPtrInput `pulumi:"domainAdminPassword"`
 	// The user account of the domain administrator used to join this virtual machine to the domain.
 	DomainAdminUser pulumi.StringPtrInput `pulumi:"domainAdminUser"`
+	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+	DomainOu pulumi.StringPtrInput `pulumi:"domainOu"`
 	// The full name of the user of this virtual machine.
 	FullName pulumi.StringPtrInput `pulumi:"fullName"`
 	// The domain that the virtual machine should join.
@@ -4010,6 +5212,11 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) DomainAdminUser() pulu
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.DomainAdminUser }).(pulumi.StringPtrOutput)
 }
 
+// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) DomainOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.DomainOu }).(pulumi.StringPtrOutput)
+}
+
 // The full name of the user of this virtual machine.
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.FullName }).(pulumi.StringPtrOutput)
@@ -4126,6 +5333,16 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainAdminUser() p
 			return nil
 		}
 		return v.DomainAdminUser
+	}).(pulumi.StringPtrOutput)
+}
+
+// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainOu
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6035,6 +7252,8 @@ type GetGuestOsCustomizationSpecWindowsOption struct {
 	DomainAdminPassword *string `pulumi:"domainAdminPassword"`
 	// The user account of the domain administrator used to join this virtual machine to the domain.
 	DomainAdminUser string `pulumi:"domainAdminUser"`
+	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+	DomainOu string `pulumi:"domainOu"`
 	// The Active Directory domain for the virtual machine to join.
 	JoinDomain string `pulumi:"joinDomain"`
 	// A list of commands to run at first user logon, after guest customization.
@@ -6069,6 +7288,8 @@ type GetGuestOsCustomizationSpecWindowsOptionArgs struct {
 	DomainAdminPassword pulumi.StringPtrInput `pulumi:"domainAdminPassword"`
 	// The user account of the domain administrator used to join this virtual machine to the domain.
 	DomainAdminUser pulumi.StringInput `pulumi:"domainAdminUser"`
+	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+	DomainOu pulumi.StringInput `pulumi:"domainOu"`
 	// The Active Directory domain for the virtual machine to join.
 	JoinDomain pulumi.StringInput `pulumi:"joinDomain"`
 	// A list of commands to run at first user logon, after guest customization.
@@ -6158,6 +7379,11 @@ func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainAdminPassword() pu
 // The user account of the domain administrator used to join this virtual machine to the domain.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainAdminUser() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.DomainAdminUser }).(pulumi.StringOutput)
+}
+
+// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainOu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.DomainOu }).(pulumi.StringOutput)
 }
 
 // The Active Directory domain for the virtual machine to join.
@@ -6797,6 +8023,10 @@ func (o GetVirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostImageInput)(nil)).Elem(), ComputeClusterHostImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostImagePtrInput)(nil)).Elem(), ComputeClusterHostImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostImageComponentInput)(nil)).Elem(), ComputeClusterHostImageComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostImageComponentArrayInput)(nil)).Elem(), ComputeClusterHostImageComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanDiskGroupInput)(nil)).Elem(), ComputeClusterVsanDiskGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanDiskGroupArrayInput)(nil)).Elem(), ComputeClusterVsanDiskGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanFaultDomainInput)(nil)).Elem(), ComputeClusterVsanFaultDomainArgs{})
@@ -6829,6 +8059,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecWindowsOptionsPtrInput)(nil)).Elem(), GuestOsCustomizationSpecWindowsOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortInput)(nil)).Elem(), HostPortGroupPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortArrayInput)(nil)).Elem(), HostPortGroupPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentInput)(nil)).Elem(), OfflineSoftwareDepotComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentArrayInput)(nil)).Elem(), OfflineSoftwareDepotComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorEgressCidrInput)(nil)).Elem(), SupervisorEgressCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorEgressCidrArrayInput)(nil)).Elem(), SupervisorEgressCidrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorIngressCidrInput)(nil)).Elem(), SupervisorIngressCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorIngressCidrArrayInput)(nil)).Elem(), SupervisorIngressCidrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorManagementNetworkInput)(nil)).Elem(), SupervisorManagementNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorManagementNetworkPtrInput)(nil)).Elem(), SupervisorManagementNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorNamespaceInput)(nil)).Elem(), SupervisorNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorNamespaceArrayInput)(nil)).Elem(), SupervisorNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorPodCidrInput)(nil)).Elem(), SupervisorPodCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorPodCidrArrayInput)(nil)).Elem(), SupervisorPodCidrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorServiceCidrInput)(nil)).Elem(), SupervisorServiceCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorServiceCidrPtrInput)(nil)).Elem(), SupervisorServiceCidrArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromInput)(nil)).Elem(), VirtualMachineCdromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromArrayInput)(nil)).Elem(), VirtualMachineCdromArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneInput)(nil)).Elem(), VirtualMachineCloneArgs{})
@@ -6873,6 +8117,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceArrayInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVappInput)(nil)).Elem(), GetVirtualMachineVappArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVappPtrInput)(nil)).Elem(), GetVirtualMachineVappArgs{})
+	pulumi.RegisterOutputType(ComputeClusterHostImageOutput{})
+	pulumi.RegisterOutputType(ComputeClusterHostImagePtrOutput{})
+	pulumi.RegisterOutputType(ComputeClusterHostImageComponentOutput{})
+	pulumi.RegisterOutputType(ComputeClusterHostImageComponentArrayOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupArrayOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVsanFaultDomainOutput{})
@@ -6905,6 +8153,20 @@ func init() {
 	pulumi.RegisterOutputType(GuestOsCustomizationSpecWindowsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortArrayOutput{})
+	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentOutput{})
+	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorEgressCidrOutput{})
+	pulumi.RegisterOutputType(SupervisorEgressCidrArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorIngressCidrOutput{})
+	pulumi.RegisterOutputType(SupervisorIngressCidrArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorManagementNetworkOutput{})
+	pulumi.RegisterOutputType(SupervisorManagementNetworkPtrOutput{})
+	pulumi.RegisterOutputType(SupervisorNamespaceOutput{})
+	pulumi.RegisterOutputType(SupervisorNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorPodCidrOutput{})
+	pulumi.RegisterOutputType(SupervisorPodCidrArrayOutput{})
+	pulumi.RegisterOutputType(SupervisorServiceCidrOutput{})
+	pulumi.RegisterOutputType(SupervisorServiceCidrPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneOutput{})

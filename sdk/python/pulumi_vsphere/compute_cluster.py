@@ -61,6 +61,7 @@ class ComputeClusterArgs:
                  ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
                  ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
                  host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
+                 host_image: Optional[pulumi.Input['ComputeClusterHostImageArgs']] = None,
                  host_managed: Optional[pulumi.Input[bool]] = None,
                  host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -176,6 +177,7 @@ class ComputeClusterArgs:
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
                proceeding with the next priority.
         :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
+        :param pulumi.Input['ComputeClusterHostImageArgs'] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[bool] host_managed: Must be set if cluster enrollment is managed from host resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
@@ -291,6 +293,8 @@ class ComputeClusterArgs:
             pulumi.set(__self__, "ha_vm_restart_timeout", ha_vm_restart_timeout)
         if host_cluster_exit_timeout is not None:
             pulumi.set(__self__, "host_cluster_exit_timeout", host_cluster_exit_timeout)
+        if host_image is not None:
+            pulumi.set(__self__, "host_image", host_image)
         if host_managed is not None:
             pulumi.set(__self__, "host_managed", host_managed)
         if host_system_ids is not None:
@@ -924,6 +928,18 @@ class ComputeClusterArgs:
         pulumi.set(self, "host_cluster_exit_timeout", value)
 
     @property
+    @pulumi.getter(name="hostImage")
+    def host_image(self) -> Optional[pulumi.Input['ComputeClusterHostImageArgs']]:
+        """
+        Details about the host image which should be applied to the cluster.
+        """
+        return pulumi.get(self, "host_image")
+
+    @host_image.setter
+    def host_image(self, value: Optional[pulumi.Input['ComputeClusterHostImageArgs']]):
+        pulumi.set(self, "host_image", value)
+
+    @property
     @pulumi.getter(name="hostManaged")
     def host_managed(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1250,6 +1266,7 @@ class _ComputeClusterState:
                  ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
                  ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
                  host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
+                 host_image: Optional[pulumi.Input['ComputeClusterHostImageArgs']] = None,
                  host_managed: Optional[pulumi.Input[bool]] = None,
                  host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1366,6 +1383,7 @@ class _ComputeClusterState:
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
                proceeding with the next priority.
         :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
+        :param pulumi.Input['ComputeClusterHostImageArgs'] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[bool] host_managed: Must be set if cluster enrollment is managed from host resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
@@ -1487,6 +1505,8 @@ class _ComputeClusterState:
             pulumi.set(__self__, "ha_vm_restart_timeout", ha_vm_restart_timeout)
         if host_cluster_exit_timeout is not None:
             pulumi.set(__self__, "host_cluster_exit_timeout", host_cluster_exit_timeout)
+        if host_image is not None:
+            pulumi.set(__self__, "host_image", host_image)
         if host_managed is not None:
             pulumi.set(__self__, "host_managed", host_managed)
         if host_system_ids is not None:
@@ -2122,6 +2142,18 @@ class _ComputeClusterState:
         pulumi.set(self, "host_cluster_exit_timeout", value)
 
     @property
+    @pulumi.getter(name="hostImage")
+    def host_image(self) -> Optional[pulumi.Input['ComputeClusterHostImageArgs']]:
+        """
+        Details about the host image which should be applied to the cluster.
+        """
+        return pulumi.get(self, "host_image")
+
+    @host_image.setter
+    def host_image(self, value: Optional[pulumi.Input['ComputeClusterHostImageArgs']]):
+        pulumi.set(self, "host_image", value)
+
+    @property
     @pulumi.getter(name="hostManaged")
     def host_managed(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2466,6 +2498,7 @@ class ComputeCluster(pulumi.CustomResource):
                  ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
                  ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
                  host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
+                 host_image: Optional[pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']]] = None,
                  host_managed: Optional[pulumi.Input[bool]] = None,
                  host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2584,6 +2617,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
                proceeding with the next priority.
         :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
+        :param pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[bool] host_managed: Must be set if cluster enrollment is managed from host resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
@@ -2678,6 +2712,7 @@ class ComputeCluster(pulumi.CustomResource):
                  ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
                  ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
                  host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
+                 host_image: Optional[pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']]] = None,
                  host_managed: Optional[pulumi.Input[bool]] = None,
                  host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2757,6 +2792,7 @@ class ComputeCluster(pulumi.CustomResource):
             __props__.__dict__["ha_vm_restart_priority"] = ha_vm_restart_priority
             __props__.__dict__["ha_vm_restart_timeout"] = ha_vm_restart_timeout
             __props__.__dict__["host_cluster_exit_timeout"] = host_cluster_exit_timeout
+            __props__.__dict__["host_image"] = host_image
             __props__.__dict__["host_managed"] = host_managed
             __props__.__dict__["host_system_ids"] = host_system_ids
             __props__.__dict__["name"] = name
@@ -2836,6 +2872,7 @@ class ComputeCluster(pulumi.CustomResource):
             ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
             ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
             host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
+            host_image: Optional[pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']]] = None,
             host_managed: Optional[pulumi.Input[bool]] = None,
             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -2957,6 +2994,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
                proceeding with the next priority.
         :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
+        :param pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[bool] host_managed: Must be set if cluster enrollment is managed from host resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
@@ -3037,6 +3075,7 @@ class ComputeCluster(pulumi.CustomResource):
         __props__.__dict__["ha_vm_restart_priority"] = ha_vm_restart_priority
         __props__.__dict__["ha_vm_restart_timeout"] = ha_vm_restart_timeout
         __props__.__dict__["host_cluster_exit_timeout"] = host_cluster_exit_timeout
+        __props__.__dict__["host_image"] = host_image
         __props__.__dict__["host_managed"] = host_managed
         __props__.__dict__["host_system_ids"] = host_system_ids
         __props__.__dict__["name"] = name
@@ -3467,6 +3506,14 @@ class ComputeCluster(pulumi.CustomResource):
         The timeout for each host maintenance mode operation when removing hosts from a cluster.
         """
         return pulumi.get(self, "host_cluster_exit_timeout")
+
+    @property
+    @pulumi.getter(name="hostImage")
+    def host_image(self) -> pulumi.Output[Optional['outputs.ComputeClusterHostImage']]:
+        """
+        Details about the host image which should be applied to the cluster.
+        """
+        return pulumi.get(self, "host_image")
 
     @property
     @pulumi.getter(name="hostManaged")

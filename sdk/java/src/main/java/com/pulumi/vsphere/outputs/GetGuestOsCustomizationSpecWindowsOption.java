@@ -46,6 +46,11 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
      */
     private String domainAdminUser;
     /**
+     * @return The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     * 
+     */
+    private String domainOu;
+    /**
      * @return The Active Directory domain for the virtual machine to join.
      * 
      */
@@ -110,6 +115,13 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
         return this.domainAdminUser;
     }
     /**
+     * @return The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     * 
+     */
+    public String domainOu() {
+        return this.domainOu;
+    }
+    /**
      * @return The Active Directory domain for the virtual machine to join.
      * 
      */
@@ -153,6 +165,7 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
         private String computerName;
         private @Nullable String domainAdminPassword;
         private String domainAdminUser;
+        private String domainOu;
         private String joinDomain;
         private List<String> runOnceCommandLists;
         private Integer timeZone;
@@ -166,6 +179,7 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
     	      this.computerName = defaults.computerName;
     	      this.domainAdminPassword = defaults.domainAdminPassword;
     	      this.domainAdminUser = defaults.domainAdminUser;
+    	      this.domainOu = defaults.domainOu;
     	      this.joinDomain = defaults.joinDomain;
     	      this.runOnceCommandLists = defaults.runOnceCommandLists;
     	      this.timeZone = defaults.timeZone;
@@ -219,6 +233,14 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
             return this;
         }
         @CustomType.Setter
+        public Builder domainOu(String domainOu) {
+            if (domainOu == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "domainOu");
+            }
+            this.domainOu = domainOu;
+            return this;
+        }
+        @CustomType.Setter
         public Builder joinDomain(String joinDomain) {
             if (joinDomain == null) {
               throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "joinDomain");
@@ -261,6 +283,7 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
             _resultValue.computerName = computerName;
             _resultValue.domainAdminPassword = domainAdminPassword;
             _resultValue.domainAdminUser = domainAdminUser;
+            _resultValue.domainOu = domainOu;
             _resultValue.joinDomain = joinDomain;
             _resultValue.runOnceCommandLists = runOnceCommandLists;
             _resultValue.timeZone = timeZone;

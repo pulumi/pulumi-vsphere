@@ -110,6 +110,21 @@ public final class VirtualMachineCloneCustomizeWindowsOptionsArgs extends com.pu
     }
 
     /**
+     * The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     * 
+     */
+    @Import(name="domainOu")
+    private @Nullable Output<String> domainOu;
+
+    /**
+     * @return The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     * 
+     */
+    public Optional<Output<String>> domainOu() {
+        return Optional.ofNullable(this.domainOu);
+    }
+
+    /**
      * The full name of the user of this virtual machine.
      * 
      */
@@ -223,6 +238,7 @@ public final class VirtualMachineCloneCustomizeWindowsOptionsArgs extends com.pu
         this.computerName = $.computerName;
         this.domainAdminPassword = $.domainAdminPassword;
         this.domainAdminUser = $.domainAdminUser;
+        this.domainOu = $.domainOu;
         this.fullName = $.fullName;
         this.joinDomain = $.joinDomain;
         this.organizationName = $.organizationName;
@@ -374,6 +390,27 @@ public final class VirtualMachineCloneCustomizeWindowsOptionsArgs extends com.pu
          */
         public Builder domainAdminUser(String domainAdminUser) {
             return domainAdminUser(Output.of(domainAdminUser));
+        }
+
+        /**
+         * @param domainOu The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainOu(@Nullable Output<String> domainOu) {
+            $.domainOu = domainOu;
+            return this;
+        }
+
+        /**
+         * @param domainOu The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainOu(String domainOu) {
+            return domainOu(Output.of(domainOu));
         }
 
         /**
