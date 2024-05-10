@@ -59,7 +59,7 @@ type ComputeCluster struct {
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
 	// for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy pulumi.BoolPtrOutput `pulumi:"forceEvacuateOnDestroy"`
-	// When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
+	// When haAdmissionControlPolicy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
 	// failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
 	// will ignore the host when making recommendations.
 	HaAdmissionControlFailoverHostSystemIds pulumi.StringArrayOutput `pulumi:"haAdmissionControlFailoverHostSystemIds"`
@@ -74,43 +74,42 @@ type ComputeCluster struct {
 	// slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
 	// issues.
 	HaAdmissionControlPolicy pulumi.StringPtrOutput `pulumi:"haAdmissionControlPolicy"`
-	// When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-	// subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-	// from the total amount of resources in the cluster. Disable to supply user-defined values.
+	// When haAdmissionControlPolicy is resourcePercentage, automatically determine available resource percentages by
+	// subtracting the average number of host resources represented by the haAdmissionControlHostFailureTolerance setting from
+	// the total amount of resources in the cluster. Disable to supply user-defined values.
 	HaAdmissionControlResourcePercentageAutoCompute pulumi.BoolPtrOutput `pulumi:"haAdmissionControlResourcePercentageAutoCompute"`
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-	// the cluster to reserve for failover.
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of CPU resources in the
+	// cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageCpu pulumi.IntPtrOutput `pulumi:"haAdmissionControlResourcePercentageCpu"`
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of memory resources in
 	// the cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageMemory pulumi.IntPtrOutput `pulumi:"haAdmissionControlResourcePercentageMemory"`
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
 	HaAdmissionControlSlotPolicyExplicitCpu pulumi.IntPtrOutput `pulumi:"haAdmissionControlSlotPolicyExplicitCpu"`
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined memory slot size, in MB.
 	HaAdmissionControlSlotPolicyExplicitMemory pulumi.IntPtrOutput `pulumi:"haAdmissionControlSlotPolicyExplicitMemory"`
-	// When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-	// to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
+	// When haAdmissionControlPolicy is slotPolicy, this setting controls whether or not you wish to supply explicit values to
+	// CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
 	// currently in the cluster.
 	HaAdmissionControlSlotPolicyUseExplicitSize pulumi.BoolPtrOutput `pulumi:"haAdmissionControlSlotPolicyUseExplicitSize"`
 	// Advanced configuration options for vSphere HA.
 	HaAdvancedOptions pulumi.StringMapOutput `pulumi:"haAdvancedOptions"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-	// affected datastore clears in the middle of an APD event. Can be one of none or reset.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines if an APD status on an affected
+	// datastore clears in the middle of an APD event. Can be one of none or reset.
 	HaDatastoreApdRecoveryAction pulumi.StringPtrOutput `pulumi:"haDatastoreApdRecoveryAction"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-	// restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected
+	// loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
 	HaDatastoreApdResponse pulumi.StringPtrOutput `pulumi:"haDatastoreApdResponse"`
-	// When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-	// the response action defined in ha_datastore_apd_response.
+	// When haVmComponentProtection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the
+	// response action defined in ha_datastore_apd_response.
 	HaDatastoreApdResponseDelay pulumi.IntPtrOutput `pulumi:"haDatastoreApdResponseDelay"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected a
+	// permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
 	HaDatastorePdlResponse pulumi.StringPtrOutput `pulumi:"haDatastorePdlResponse"`
 	// Enable vSphere HA for this cluster.
 	HaEnabled pulumi.BoolPtrOutput `pulumi:"haEnabled"`
 	// The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-	// ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+	// haHeartbeatDatastorePolicy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
 	HaHeartbeatDatastoreIds pulumi.StringArrayOutput `pulumi:"haHeartbeatDatastoreIds"`
 	// The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
 	// allFeasibleDsWithUserPreference.
@@ -129,7 +128,7 @@ type ComputeCluster struct {
 	// If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
 	// failed. The value is in seconds.
 	HaVmFailureInterval pulumi.IntPtrOutput `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow pulumi.IntPtrOutput `pulumi:"haVmMaximumFailureWindow"`
@@ -161,12 +160,12 @@ type ComputeCluster struct {
 	// Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
 	ProactiveHaEnabled pulumi.BoolPtrOutput `pulumi:"proactiveHaEnabled"`
 	// The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-	// this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+	// this cannot be set to MaintenanceMode when proactiveHaSevereRemediation is set to QuarantineMode.
 	ProactiveHaModerateRemediation pulumi.StringPtrOutput `pulumi:"proactiveHaModerateRemediation"`
 	// The list of IDs for health update providers configured for this cluster.
 	ProactiveHaProviderIds pulumi.StringArrayOutput `pulumi:"proactiveHaProviderIds"`
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-	// cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+	// cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation pulumi.StringPtrOutput `pulumi:"proactiveHaSevereRemediation"`
 	// The managed object ID of the primary
 	// resource pool for this cluster. This can be passed directly to the
@@ -184,7 +183,7 @@ type ComputeCluster struct {
 	VsanDiskGroups ComputeClusterVsanDiskGroupArrayOutput `pulumi:"vsanDiskGroups"`
 	// Whether the vSAN data-in-transit encryption is enabled for the cluster.
 	VsanDitEncryptionEnabled pulumi.BoolPtrOutput `pulumi:"vsanDitEncryptionEnabled"`
-	// When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
+	// When vsanDitEncryptionEnabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
 	VsanDitRekeyInterval pulumi.IntOutput `pulumi:"vsanDitRekeyInterval"`
 	// Whether the vSAN service is enabled for the cluster.
 	VsanEnabled pulumi.BoolPtrOutput `pulumi:"vsanEnabled"`
@@ -283,7 +282,7 @@ type computeClusterState struct {
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
 	// for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
-	// When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
+	// When haAdmissionControlPolicy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
 	// failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
 	// will ignore the host when making recommendations.
 	HaAdmissionControlFailoverHostSystemIds []string `pulumi:"haAdmissionControlFailoverHostSystemIds"`
@@ -298,43 +297,42 @@ type computeClusterState struct {
 	// slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
 	// issues.
 	HaAdmissionControlPolicy *string `pulumi:"haAdmissionControlPolicy"`
-	// When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-	// subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-	// from the total amount of resources in the cluster. Disable to supply user-defined values.
+	// When haAdmissionControlPolicy is resourcePercentage, automatically determine available resource percentages by
+	// subtracting the average number of host resources represented by the haAdmissionControlHostFailureTolerance setting from
+	// the total amount of resources in the cluster. Disable to supply user-defined values.
 	HaAdmissionControlResourcePercentageAutoCompute *bool `pulumi:"haAdmissionControlResourcePercentageAutoCompute"`
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-	// the cluster to reserve for failover.
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of CPU resources in the
+	// cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageCpu *int `pulumi:"haAdmissionControlResourcePercentageCpu"`
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of memory resources in
 	// the cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageMemory *int `pulumi:"haAdmissionControlResourcePercentageMemory"`
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
 	HaAdmissionControlSlotPolicyExplicitCpu *int `pulumi:"haAdmissionControlSlotPolicyExplicitCpu"`
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined memory slot size, in MB.
 	HaAdmissionControlSlotPolicyExplicitMemory *int `pulumi:"haAdmissionControlSlotPolicyExplicitMemory"`
-	// When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-	// to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
+	// When haAdmissionControlPolicy is slotPolicy, this setting controls whether or not you wish to supply explicit values to
+	// CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
 	// currently in the cluster.
 	HaAdmissionControlSlotPolicyUseExplicitSize *bool `pulumi:"haAdmissionControlSlotPolicyUseExplicitSize"`
 	// Advanced configuration options for vSphere HA.
 	HaAdvancedOptions map[string]string `pulumi:"haAdvancedOptions"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-	// affected datastore clears in the middle of an APD event. Can be one of none or reset.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines if an APD status on an affected
+	// datastore clears in the middle of an APD event. Can be one of none or reset.
 	HaDatastoreApdRecoveryAction *string `pulumi:"haDatastoreApdRecoveryAction"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-	// restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected
+	// loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
-	// When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-	// the response action defined in ha_datastore_apd_response.
+	// When haVmComponentProtection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the
+	// response action defined in ha_datastore_apd_response.
 	HaDatastoreApdResponseDelay *int `pulumi:"haDatastoreApdResponseDelay"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected a
+	// permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
 	HaDatastorePdlResponse *string `pulumi:"haDatastorePdlResponse"`
 	// Enable vSphere HA for this cluster.
 	HaEnabled *bool `pulumi:"haEnabled"`
 	// The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-	// ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+	// haHeartbeatDatastorePolicy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
 	HaHeartbeatDatastoreIds []string `pulumi:"haHeartbeatDatastoreIds"`
 	// The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
 	// allFeasibleDsWithUserPreference.
@@ -353,7 +351,7 @@ type computeClusterState struct {
 	// If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
 	// failed. The value is in seconds.
 	HaVmFailureInterval *int `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow *int `pulumi:"haVmMaximumFailureWindow"`
@@ -385,12 +383,12 @@ type computeClusterState struct {
 	// Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
 	ProactiveHaEnabled *bool `pulumi:"proactiveHaEnabled"`
 	// The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-	// this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+	// this cannot be set to MaintenanceMode when proactiveHaSevereRemediation is set to QuarantineMode.
 	ProactiveHaModerateRemediation *string `pulumi:"proactiveHaModerateRemediation"`
 	// The list of IDs for health update providers configured for this cluster.
 	ProactiveHaProviderIds []string `pulumi:"proactiveHaProviderIds"`
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-	// cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+	// cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
 	// The managed object ID of the primary
 	// resource pool for this cluster. This can be passed directly to the
@@ -408,7 +406,7 @@ type computeClusterState struct {
 	VsanDiskGroups []ComputeClusterVsanDiskGroup `pulumi:"vsanDiskGroups"`
 	// Whether the vSAN data-in-transit encryption is enabled for the cluster.
 	VsanDitEncryptionEnabled *bool `pulumi:"vsanDitEncryptionEnabled"`
-	// When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
+	// When vsanDitEncryptionEnabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
 	VsanDitRekeyInterval *int `pulumi:"vsanDitRekeyInterval"`
 	// Whether the vSAN service is enabled for the cluster.
 	VsanEnabled *bool `pulumi:"vsanEnabled"`
@@ -475,7 +473,7 @@ type ComputeClusterState struct {
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
 	// for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
-	// When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
+	// When haAdmissionControlPolicy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
 	// failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
 	// will ignore the host when making recommendations.
 	HaAdmissionControlFailoverHostSystemIds pulumi.StringArrayInput
@@ -490,43 +488,42 @@ type ComputeClusterState struct {
 	// slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
 	// issues.
 	HaAdmissionControlPolicy pulumi.StringPtrInput
-	// When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-	// subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-	// from the total amount of resources in the cluster. Disable to supply user-defined values.
+	// When haAdmissionControlPolicy is resourcePercentage, automatically determine available resource percentages by
+	// subtracting the average number of host resources represented by the haAdmissionControlHostFailureTolerance setting from
+	// the total amount of resources in the cluster. Disable to supply user-defined values.
 	HaAdmissionControlResourcePercentageAutoCompute pulumi.BoolPtrInput
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-	// the cluster to reserve for failover.
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of CPU resources in the
+	// cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageCpu pulumi.IntPtrInput
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of memory resources in
 	// the cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageMemory pulumi.IntPtrInput
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
 	HaAdmissionControlSlotPolicyExplicitCpu pulumi.IntPtrInput
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined memory slot size, in MB.
 	HaAdmissionControlSlotPolicyExplicitMemory pulumi.IntPtrInput
-	// When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-	// to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
+	// When haAdmissionControlPolicy is slotPolicy, this setting controls whether or not you wish to supply explicit values to
+	// CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
 	// currently in the cluster.
 	HaAdmissionControlSlotPolicyUseExplicitSize pulumi.BoolPtrInput
 	// Advanced configuration options for vSphere HA.
 	HaAdvancedOptions pulumi.StringMapInput
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-	// affected datastore clears in the middle of an APD event. Can be one of none or reset.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines if an APD status on an affected
+	// datastore clears in the middle of an APD event. Can be one of none or reset.
 	HaDatastoreApdRecoveryAction pulumi.StringPtrInput
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-	// restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected
+	// loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
 	HaDatastoreApdResponse pulumi.StringPtrInput
-	// When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-	// the response action defined in ha_datastore_apd_response.
+	// When haVmComponentProtection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the
+	// response action defined in ha_datastore_apd_response.
 	HaDatastoreApdResponseDelay pulumi.IntPtrInput
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected a
+	// permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
 	HaDatastorePdlResponse pulumi.StringPtrInput
 	// Enable vSphere HA for this cluster.
 	HaEnabled pulumi.BoolPtrInput
 	// The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-	// ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+	// haHeartbeatDatastorePolicy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
 	HaHeartbeatDatastoreIds pulumi.StringArrayInput
 	// The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
 	// allFeasibleDsWithUserPreference.
@@ -545,7 +542,7 @@ type ComputeClusterState struct {
 	// If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
 	// failed. The value is in seconds.
 	HaVmFailureInterval pulumi.IntPtrInput
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow pulumi.IntPtrInput
@@ -577,12 +574,12 @@ type ComputeClusterState struct {
 	// Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
 	ProactiveHaEnabled pulumi.BoolPtrInput
 	// The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-	// this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+	// this cannot be set to MaintenanceMode when proactiveHaSevereRemediation is set to QuarantineMode.
 	ProactiveHaModerateRemediation pulumi.StringPtrInput
 	// The list of IDs for health update providers configured for this cluster.
 	ProactiveHaProviderIds pulumi.StringArrayInput
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-	// cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+	// cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
 	// The managed object ID of the primary
 	// resource pool for this cluster. This can be passed directly to the
@@ -600,7 +597,7 @@ type ComputeClusterState struct {
 	VsanDiskGroups ComputeClusterVsanDiskGroupArrayInput
 	// Whether the vSAN data-in-transit encryption is enabled for the cluster.
 	VsanDitEncryptionEnabled pulumi.BoolPtrInput
-	// When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
+	// When vsanDitEncryptionEnabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
 	VsanDitRekeyInterval pulumi.IntPtrInput
 	// Whether the vSAN service is enabled for the cluster.
 	VsanEnabled pulumi.BoolPtrInput
@@ -671,7 +668,7 @@ type computeClusterArgs struct {
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
 	// for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
-	// When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
+	// When haAdmissionControlPolicy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
 	// failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
 	// will ignore the host when making recommendations.
 	HaAdmissionControlFailoverHostSystemIds []string `pulumi:"haAdmissionControlFailoverHostSystemIds"`
@@ -686,43 +683,42 @@ type computeClusterArgs struct {
 	// slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
 	// issues.
 	HaAdmissionControlPolicy *string `pulumi:"haAdmissionControlPolicy"`
-	// When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-	// subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-	// from the total amount of resources in the cluster. Disable to supply user-defined values.
+	// When haAdmissionControlPolicy is resourcePercentage, automatically determine available resource percentages by
+	// subtracting the average number of host resources represented by the haAdmissionControlHostFailureTolerance setting from
+	// the total amount of resources in the cluster. Disable to supply user-defined values.
 	HaAdmissionControlResourcePercentageAutoCompute *bool `pulumi:"haAdmissionControlResourcePercentageAutoCompute"`
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-	// the cluster to reserve for failover.
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of CPU resources in the
+	// cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageCpu *int `pulumi:"haAdmissionControlResourcePercentageCpu"`
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of memory resources in
 	// the cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageMemory *int `pulumi:"haAdmissionControlResourcePercentageMemory"`
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
 	HaAdmissionControlSlotPolicyExplicitCpu *int `pulumi:"haAdmissionControlSlotPolicyExplicitCpu"`
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined memory slot size, in MB.
 	HaAdmissionControlSlotPolicyExplicitMemory *int `pulumi:"haAdmissionControlSlotPolicyExplicitMemory"`
-	// When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-	// to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
+	// When haAdmissionControlPolicy is slotPolicy, this setting controls whether or not you wish to supply explicit values to
+	// CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
 	// currently in the cluster.
 	HaAdmissionControlSlotPolicyUseExplicitSize *bool `pulumi:"haAdmissionControlSlotPolicyUseExplicitSize"`
 	// Advanced configuration options for vSphere HA.
 	HaAdvancedOptions map[string]string `pulumi:"haAdvancedOptions"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-	// affected datastore clears in the middle of an APD event. Can be one of none or reset.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines if an APD status on an affected
+	// datastore clears in the middle of an APD event. Can be one of none or reset.
 	HaDatastoreApdRecoveryAction *string `pulumi:"haDatastoreApdRecoveryAction"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-	// restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected
+	// loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
-	// When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-	// the response action defined in ha_datastore_apd_response.
+	// When haVmComponentProtection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the
+	// response action defined in ha_datastore_apd_response.
 	HaDatastoreApdResponseDelay *int `pulumi:"haDatastoreApdResponseDelay"`
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected a
+	// permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
 	HaDatastorePdlResponse *string `pulumi:"haDatastorePdlResponse"`
 	// Enable vSphere HA for this cluster.
 	HaEnabled *bool `pulumi:"haEnabled"`
 	// The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-	// ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+	// haHeartbeatDatastorePolicy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
 	HaHeartbeatDatastoreIds []string `pulumi:"haHeartbeatDatastoreIds"`
 	// The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
 	// allFeasibleDsWithUserPreference.
@@ -741,7 +737,7 @@ type computeClusterArgs struct {
 	// If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
 	// failed. The value is in seconds.
 	HaVmFailureInterval *int `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow *int `pulumi:"haVmMaximumFailureWindow"`
@@ -773,12 +769,12 @@ type computeClusterArgs struct {
 	// Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
 	ProactiveHaEnabled *bool `pulumi:"proactiveHaEnabled"`
 	// The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-	// this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+	// this cannot be set to MaintenanceMode when proactiveHaSevereRemediation is set to QuarantineMode.
 	ProactiveHaModerateRemediation *string `pulumi:"proactiveHaModerateRemediation"`
 	// The list of IDs for health update providers configured for this cluster.
 	ProactiveHaProviderIds []string `pulumi:"proactiveHaProviderIds"`
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-	// cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+	// cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
@@ -790,7 +786,7 @@ type computeClusterArgs struct {
 	VsanDiskGroups []ComputeClusterVsanDiskGroup `pulumi:"vsanDiskGroups"`
 	// Whether the vSAN data-in-transit encryption is enabled for the cluster.
 	VsanDitEncryptionEnabled *bool `pulumi:"vsanDitEncryptionEnabled"`
-	// When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
+	// When vsanDitEncryptionEnabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
 	VsanDitRekeyInterval *int `pulumi:"vsanDitRekeyInterval"`
 	// Whether the vSAN service is enabled for the cluster.
 	VsanEnabled *bool `pulumi:"vsanEnabled"`
@@ -858,7 +854,7 @@ type ComputeClusterArgs struct {
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
 	// for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
-	// When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
+	// When haAdmissionControlPolicy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
 	// failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
 	// will ignore the host when making recommendations.
 	HaAdmissionControlFailoverHostSystemIds pulumi.StringArrayInput
@@ -873,43 +869,42 @@ type ComputeClusterArgs struct {
 	// slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
 	// issues.
 	HaAdmissionControlPolicy pulumi.StringPtrInput
-	// When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-	// subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-	// from the total amount of resources in the cluster. Disable to supply user-defined values.
+	// When haAdmissionControlPolicy is resourcePercentage, automatically determine available resource percentages by
+	// subtracting the average number of host resources represented by the haAdmissionControlHostFailureTolerance setting from
+	// the total amount of resources in the cluster. Disable to supply user-defined values.
 	HaAdmissionControlResourcePercentageAutoCompute pulumi.BoolPtrInput
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-	// the cluster to reserve for failover.
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of CPU resources in the
+	// cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageCpu pulumi.IntPtrInput
-	// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
+	// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of memory resources in
 	// the cluster to reserve for failover.
 	HaAdmissionControlResourcePercentageMemory pulumi.IntPtrInput
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
 	HaAdmissionControlSlotPolicyExplicitCpu pulumi.IntPtrInput
-	// When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
+	// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined memory slot size, in MB.
 	HaAdmissionControlSlotPolicyExplicitMemory pulumi.IntPtrInput
-	// When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-	// to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
+	// When haAdmissionControlPolicy is slotPolicy, this setting controls whether or not you wish to supply explicit values to
+	// CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
 	// currently in the cluster.
 	HaAdmissionControlSlotPolicyUseExplicitSize pulumi.BoolPtrInput
 	// Advanced configuration options for vSphere HA.
 	HaAdvancedOptions pulumi.StringMapInput
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-	// affected datastore clears in the middle of an APD event. Can be one of none or reset.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines if an APD status on an affected
+	// datastore clears in the middle of an APD event. Can be one of none or reset.
 	HaDatastoreApdRecoveryAction pulumi.StringPtrInput
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-	// restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected
+	// loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
 	HaDatastoreApdResponse pulumi.StringPtrInput
-	// When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-	// the response action defined in ha_datastore_apd_response.
+	// When haVmComponentProtection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the
+	// response action defined in ha_datastore_apd_response.
 	HaDatastoreApdResponseDelay pulumi.IntPtrInput
-	// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-	// detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+	// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected a
+	// permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
 	HaDatastorePdlResponse pulumi.StringPtrInput
 	// Enable vSphere HA for this cluster.
 	HaEnabled pulumi.BoolPtrInput
 	// The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-	// ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+	// haHeartbeatDatastorePolicy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
 	HaHeartbeatDatastoreIds pulumi.StringArrayInput
 	// The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
 	// allFeasibleDsWithUserPreference.
@@ -928,7 +923,7 @@ type ComputeClusterArgs struct {
 	// If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
 	// failed. The value is in seconds.
 	HaVmFailureInterval pulumi.IntPtrInput
-	// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+	// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 	// attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 	// time is allotted.
 	HaVmMaximumFailureWindow pulumi.IntPtrInput
@@ -960,12 +955,12 @@ type ComputeClusterArgs struct {
 	// Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
 	ProactiveHaEnabled pulumi.BoolPtrInput
 	// The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-	// this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+	// this cannot be set to MaintenanceMode when proactiveHaSevereRemediation is set to QuarantineMode.
 	ProactiveHaModerateRemediation pulumi.StringPtrInput
 	// The list of IDs for health update providers configured for this cluster.
 	ProactiveHaProviderIds pulumi.StringArrayInput
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-	// cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+	// cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
@@ -977,7 +972,7 @@ type ComputeClusterArgs struct {
 	VsanDiskGroups ComputeClusterVsanDiskGroupArrayInput
 	// Whether the vSAN data-in-transit encryption is enabled for the cluster.
 	VsanDitEncryptionEnabled pulumi.BoolPtrInput
-	// When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
+	// When vsanDitEncryptionEnabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
 	VsanDitRekeyInterval pulumi.IntPtrInput
 	// Whether the vSAN service is enabled for the cluster.
 	VsanEnabled pulumi.BoolPtrInput
@@ -1172,7 +1167,7 @@ func (o ComputeClusterOutput) ForceEvacuateOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.ForceEvacuateOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
+// When haAdmissionControlPolicy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
 // failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
 // will ignore the host when making recommendations.
 func (o ComputeClusterOutput) HaAdmissionControlFailoverHostSystemIds() pulumi.StringArrayOutput {
@@ -1199,37 +1194,37 @@ func (o ComputeClusterOutput) HaAdmissionControlPolicy() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaAdmissionControlPolicy }).(pulumi.StringPtrOutput)
 }
 
-// When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-// subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-// from the total amount of resources in the cluster. Disable to supply user-defined values.
+// When haAdmissionControlPolicy is resourcePercentage, automatically determine available resource percentages by
+// subtracting the average number of host resources represented by the haAdmissionControlHostFailureTolerance setting from
+// the total amount of resources in the cluster. Disable to supply user-defined values.
 func (o ComputeClusterOutput) HaAdmissionControlResourcePercentageAutoCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.HaAdmissionControlResourcePercentageAutoCompute }).(pulumi.BoolPtrOutput)
 }
 
-// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-// the cluster to reserve for failover.
+// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of CPU resources in the
+// cluster to reserve for failover.
 func (o ComputeClusterOutput) HaAdmissionControlResourcePercentageCpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlResourcePercentageCpu }).(pulumi.IntPtrOutput)
 }
 
-// When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
+// When haAdmissionControlPolicy is resourcePercentage, this controls the user-defined percentage of memory resources in
 // the cluster to reserve for failover.
 func (o ComputeClusterOutput) HaAdmissionControlResourcePercentageMemory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlResourcePercentageMemory }).(pulumi.IntPtrOutput)
 }
 
-// When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
+// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
 func (o ComputeClusterOutput) HaAdmissionControlSlotPolicyExplicitCpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlSlotPolicyExplicitCpu }).(pulumi.IntPtrOutput)
 }
 
-// When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
+// When haAdmissionControlPolicy is slotPolicy, this controls the user-defined memory slot size, in MB.
 func (o ComputeClusterOutput) HaAdmissionControlSlotPolicyExplicitMemory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlSlotPolicyExplicitMemory }).(pulumi.IntPtrOutput)
 }
 
-// When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-// to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
+// When haAdmissionControlPolicy is slotPolicy, this setting controls whether or not you wish to supply explicit values to
+// CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
 // currently in the cluster.
 func (o ComputeClusterOutput) HaAdmissionControlSlotPolicyUseExplicitSize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.HaAdmissionControlSlotPolicyUseExplicitSize }).(pulumi.BoolPtrOutput)
@@ -1240,27 +1235,26 @@ func (o ComputeClusterOutput) HaAdvancedOptions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringMapOutput { return v.HaAdvancedOptions }).(pulumi.StringMapOutput)
 }
 
-// When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-// affected datastore clears in the middle of an APD event. Can be one of none or reset.
+// When haVmComponentProtection is enabled, controls the action to take on virtual machines if an APD status on an affected
+// datastore clears in the middle of an APD event. Can be one of none or reset.
 func (o ComputeClusterOutput) HaDatastoreApdRecoveryAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaDatastoreApdRecoveryAction }).(pulumi.StringPtrOutput)
 }
 
-// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-// detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-// restartAggressive.
+// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected
+// loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
 func (o ComputeClusterOutput) HaDatastoreApdResponse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaDatastoreApdResponse }).(pulumi.StringPtrOutput)
 }
 
-// When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-// the response action defined in ha_datastore_apd_response.
+// When haVmComponentProtection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the
+// response action defined in ha_datastore_apd_response.
 func (o ComputeClusterOutput) HaDatastoreApdResponseDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaDatastoreApdResponseDelay }).(pulumi.IntPtrOutput)
 }
 
-// When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-// detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+// When haVmComponentProtection is enabled, controls the action to take on virtual machines when the cluster has detected a
+// permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
 func (o ComputeClusterOutput) HaDatastorePdlResponse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaDatastorePdlResponse }).(pulumi.StringPtrOutput)
 }
@@ -1271,7 +1265,7 @@ func (o ComputeClusterOutput) HaEnabled() pulumi.BoolPtrOutput {
 }
 
 // The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-// ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+// haHeartbeatDatastorePolicy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
 func (o ComputeClusterOutput) HaHeartbeatDatastoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.HaHeartbeatDatastoreIds }).(pulumi.StringArrayOutput)
 }
@@ -1311,7 +1305,7 @@ func (o ComputeClusterOutput) HaVmFailureInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaVmFailureInterval }).(pulumi.IntPtrOutput)
 }
 
-// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
+// The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are
 // attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
 // time is allotted.
 func (o ComputeClusterOutput) HaVmMaximumFailureWindow() pulumi.IntPtrOutput {
@@ -1382,7 +1376,7 @@ func (o ComputeClusterOutput) ProactiveHaEnabled() pulumi.BoolPtrOutput {
 }
 
 // The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-// this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+// this cannot be set to MaintenanceMode when proactiveHaSevereRemediation is set to QuarantineMode.
 func (o ComputeClusterOutput) ProactiveHaModerateRemediation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.ProactiveHaModerateRemediation }).(pulumi.StringPtrOutput)
 }
@@ -1393,7 +1387,7 @@ func (o ComputeClusterOutput) ProactiveHaProviderIds() pulumi.StringArrayOutput 
 }
 
 // The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-// cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+// cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 func (o ComputeClusterOutput) ProactiveHaSevereRemediation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.ProactiveHaSevereRemediation }).(pulumi.StringPtrOutput)
 }
@@ -1432,7 +1426,7 @@ func (o ComputeClusterOutput) VsanDitEncryptionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanDitEncryptionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
+// When vsanDitEncryptionEnabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
 func (o ComputeClusterOutput) VsanDitRekeyInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntOutput { return v.VsanDitRekeyInterval }).(pulumi.IntOutput)
 }

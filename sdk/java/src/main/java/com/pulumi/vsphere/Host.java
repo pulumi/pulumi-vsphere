@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Create a standalone host
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,32 +52,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
+ *             .name("dc-01")
  *             .build());
  * 
  *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
- *             .address(&#34;esx-01.example.com&#34;)
+ *             .address("esx-01.example.com")
  *             .insecure(true)
  *             .build());
  * 
- *         var esx_01 = new Host(&#34;esx-01&#34;, HostArgs.builder()        
- *             .hostname(&#34;esx-01.example.com&#34;)
- *             .username(&#34;root&#34;)
- *             .password(&#34;password&#34;)
- *             .license(&#34;00000-00000-00000-00000-00000&#34;)
- *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -&gt; getHostThumbprintResult.id()))
- *             .datacenter(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()        
+ *             .hostname("esx-01.example.com")
+ *             .username("root")
+ *             .password("password")
+ *             .license("00000-00000-00000-00000-00000")
+ *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -> getHostThumbprintResult.id()))
+ *             .datacenter(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create host in a compute cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,31 +105,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
+ *             .name("dc-01")
  *             .build());
  * 
  *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
- *             .name(&#34;cluster-01&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
  *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
- *             .address(&#34;esx-01.example.com&#34;)
+ *             .address("esx-01.example.com")
  *             .insecure(true)
  *             .build());
  * 
- *         var esx_01 = new Host(&#34;esx-01&#34;, HostArgs.builder()        
- *             .hostname(&#34;esx-01.example.com&#34;)
- *             .username(&#34;root&#34;)
- *             .password(&#34;password&#34;)
- *             .license(&#34;00000-00000-00000-00000-00000&#34;)
- *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -&gt; getHostThumbprintResult.id()))
- *             .cluster(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()        
+ *             .hostname("esx-01.example.com")
+ *             .username("root")
+ *             .password("password")
+ *             .license("00000-00000-00000-00000-00000")
+ *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -> getHostThumbprintResult.id()))
+ *             .cluster(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Importing

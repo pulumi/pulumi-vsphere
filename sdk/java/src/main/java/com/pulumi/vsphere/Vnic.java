@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,48 +60,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var dc = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;mydc&#34;)
+ *             .name("mydc")
  *             .build());
  * 
  *         final var h1 = VsphereFunctions.getHost(GetHostArgs.builder()
- *             .name(&#34;esxi1.host.test&#34;)
- *             .datacenterId(dc.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .name("esxi1.host.test")
+ *             .datacenterId(dc.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var d1 = new DistributedVirtualSwitch(&#34;d1&#34;, DistributedVirtualSwitchArgs.builder()        
- *             .name(&#34;dc_DVPG0&#34;)
- *             .datacenterId(dc.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *         var d1 = new DistributedVirtualSwitch("d1", DistributedVirtualSwitchArgs.builder()        
+ *             .name("dc_DVPG0")
+ *             .datacenterId(dc.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .hosts(DistributedVirtualSwitchHostArgs.builder()
- *                 .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
- *                 .devices(&#34;vnic3&#34;)
+ *                 .hostSystemId(h1.applyValue(getHostResult -> getHostResult.id()))
+ *                 .devices("vnic3")
  *                 .build())
  *             .build());
  * 
- *         var p1 = new DistributedPortGroup(&#34;p1&#34;, DistributedPortGroupArgs.builder()        
- *             .name(&#34;test-pg&#34;)
+ *         var p1 = new DistributedPortGroup("p1", DistributedPortGroupArgs.builder()        
+ *             .name("test-pg")
  *             .vlanId(1234)
  *             .distributedVirtualSwitchUuid(d1.id())
  *             .build());
  * 
- *         var v1 = new Vnic(&#34;v1&#34;, VnicArgs.builder()        
- *             .host(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *         var v1 = new Vnic("v1", VnicArgs.builder()        
+ *             .host(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .distributedSwitchPort(d1.id())
  *             .distributedPortGroup(p1.id())
  *             .ipv4(VnicIpv4Args.builder()
  *                 .dhcp(true)
  *                 .build())
- *             .netstack(&#34;vmotion&#34;)
+ *             .netstack("vmotion")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a vnic attached to a portgroup using the default TCP/IP stack
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -130,44 +133,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var dc = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;mydc&#34;)
+ *             .name("mydc")
  *             .build());
  * 
  *         final var h1 = VsphereFunctions.getHost(GetHostArgs.builder()
- *             .name(&#34;esxi1.host.test&#34;)
- *             .datacenterId(dc.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .name("esxi1.host.test")
+ *             .datacenterId(dc.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var hvs1 = new HostVirtualSwitch(&#34;hvs1&#34;, HostVirtualSwitchArgs.builder()        
- *             .name(&#34;dc_HPG0&#34;)
- *             .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *         var hvs1 = new HostVirtualSwitch("hvs1", HostVirtualSwitchArgs.builder()        
+ *             .name("dc_HPG0")
+ *             .hostSystemId(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .networkAdapters(            
- *                 &#34;vmnic3&#34;,
- *                 &#34;vmnic4&#34;)
- *             .activeNics(&#34;vmnic3&#34;)
- *             .standbyNics(&#34;vmnic4&#34;)
+ *                 "vmnic3",
+ *                 "vmnic4")
+ *             .activeNics("vmnic3")
+ *             .standbyNics("vmnic4")
  *             .build());
  * 
- *         var p1 = new HostPortGroup(&#34;p1&#34;, HostPortGroupArgs.builder()        
- *             .name(&#34;my-pg&#34;)
+ *         var p1 = new HostPortGroup("p1", HostPortGroupArgs.builder()        
+ *             .name("my-pg")
  *             .virtualSwitchName(hvs1.name())
- *             .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .hostSystemId(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .build());
  * 
- *         var v1 = new Vnic(&#34;v1&#34;, VnicArgs.builder()        
- *             .host(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *         var v1 = new Vnic("v1", VnicArgs.builder()        
+ *             .host(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .portgroup(p1.name())
  *             .ipv4(VnicIpv4Args.builder()
  *                 .dhcp(true)
  *                 .build())
  *             .services(            
- *                 &#34;vsan&#34;,
- *                 &#34;management&#34;)
+ *                 "vsan",
+ *                 "management")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Importing

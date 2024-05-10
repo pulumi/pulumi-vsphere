@@ -35,7 +35,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     }
 
     /**
-     * The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+     * The guest name for the operating system when guestId is otherGuest or otherGuest64.
      */
     public readonly alternateGuestName!: pulumi.Output<string | undefined>;
     /**
@@ -47,7 +47,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly bootDelay!: pulumi.Output<number | undefined>;
     /**
-     * The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+     * The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      */
     public readonly bootRetryDelay!: pulumi.Output<number | undefined>;
     /**
@@ -142,7 +142,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly extraConfig!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      */
     public readonly extraConfigRebootRequired!: pulumi.Output<boolean | undefined>;
     /**
@@ -177,11 +177,6 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      */
     public readonly hvMode!: pulumi.Output<string | undefined>;
-    /**
-     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     public readonly ideControllerCount!: pulumi.Output<number | undefined>;
     /**
      * List of IP addresses and CIDR networks to ignore while waiting for an IP
@@ -249,7 +244,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.VirtualMachineNetworkInterface[] | undefined>;
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
      * must be evenly divisible by this value.
      */
     public readonly numCoresPerSocket!: pulumi.Output<number | undefined>;
@@ -273,9 +268,6 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
     public readonly poweronTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
-     */
     public /*out*/ readonly rebootRequired!: pulumi.Output<boolean>;
     /**
      * Triggers replacement of resource whenever it changes.
@@ -305,21 +297,11 @@ export class VirtualMachine extends pulumi.CustomResource {
      * Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      */
     public readonly runToolsScriptsBeforeGuestStandby!: pulumi.Output<boolean | undefined>;
-    /**
-     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     public readonly sataControllerCount!: pulumi.Output<number | undefined>;
     /**
      * Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      */
     public readonly scsiBusSharing!: pulumi.Output<string | undefined>;
-    /**
-     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     public readonly scsiControllerCount!: pulumi.Output<number | undefined>;
     /**
      * The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
@@ -344,7 +326,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
     /**
      * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      */
     public readonly syncTimeWithHostPeriodically!: pulumi.Output<boolean | undefined>;
     /**
@@ -601,7 +583,7 @@ export class VirtualMachine extends pulumi.CustomResource {
  */
 export interface VirtualMachineState {
     /**
-     * The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+     * The guest name for the operating system when guestId is otherGuest or otherGuest64.
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
@@ -613,7 +595,7 @@ export interface VirtualMachineState {
      */
     bootDelay?: pulumi.Input<number>;
     /**
-     * The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+     * The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      */
     bootRetryDelay?: pulumi.Input<number>;
     /**
@@ -708,7 +690,7 @@ export interface VirtualMachineState {
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      */
     extraConfigRebootRequired?: pulumi.Input<boolean>;
     /**
@@ -743,11 +725,6 @@ export interface VirtualMachineState {
      * The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      */
     hvMode?: pulumi.Input<string>;
-    /**
-     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     ideControllerCount?: pulumi.Input<number>;
     /**
      * List of IP addresses and CIDR networks to ignore while waiting for an IP
@@ -815,7 +792,7 @@ export interface VirtualMachineState {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
      * must be evenly divisible by this value.
      */
     numCoresPerSocket?: pulumi.Input<number>;
@@ -839,9 +816,6 @@ export interface VirtualMachineState {
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
     poweronTimeout?: pulumi.Input<number>;
-    /**
-     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
-     */
     rebootRequired?: pulumi.Input<boolean>;
     /**
      * Triggers replacement of resource whenever it changes.
@@ -871,21 +845,11 @@ export interface VirtualMachineState {
      * Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      */
     runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
-    /**
-     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     sataControllerCount?: pulumi.Input<number>;
     /**
      * Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      */
     scsiBusSharing?: pulumi.Input<string>;
-    /**
-     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     scsiControllerCount?: pulumi.Input<number>;
     /**
      * The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
@@ -910,7 +874,7 @@ export interface VirtualMachineState {
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**
      * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
@@ -972,7 +936,7 @@ export interface VirtualMachineState {
  */
 export interface VirtualMachineArgs {
     /**
-     * The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+     * The guest name for the operating system when guestId is otherGuest or otherGuest64.
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
@@ -984,7 +948,7 @@ export interface VirtualMachineArgs {
      */
     bootDelay?: pulumi.Input<number>;
     /**
-     * The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+     * The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      */
     bootRetryDelay?: pulumi.Input<number>;
     /**
@@ -1071,7 +1035,7 @@ export interface VirtualMachineArgs {
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      */
     extraConfigRebootRequired?: pulumi.Input<boolean>;
     /**
@@ -1102,11 +1066,6 @@ export interface VirtualMachineArgs {
      * The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      */
     hvMode?: pulumi.Input<string>;
-    /**
-     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     ideControllerCount?: pulumi.Input<number>;
     /**
      * List of IP addresses and CIDR networks to ignore while waiting for an IP
@@ -1166,7 +1125,7 @@ export interface VirtualMachineArgs {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
      * must be evenly divisible by this value.
      */
     numCoresPerSocket?: pulumi.Input<number>;
@@ -1214,21 +1173,11 @@ export interface VirtualMachineArgs {
      * Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      */
     runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
-    /**
-     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     sataControllerCount?: pulumi.Input<number>;
     /**
      * Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      */
     scsiBusSharing?: pulumi.Input<string>;
-    /**
-     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
-     */
     scsiControllerCount?: pulumi.Input<number>;
     /**
      * The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
@@ -1253,7 +1202,7 @@ export interface VirtualMachineArgs {
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**
      * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**

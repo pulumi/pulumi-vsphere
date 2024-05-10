@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Create datacenter on the root folder
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,19 +47,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prodDatacenter = new Datacenter(&#34;prodDatacenter&#34;, DatacenterArgs.builder()        
- *             .name(&#34;my_prod_datacenter&#34;)
+ *         var prodDatacenter = new Datacenter("prodDatacenter", DatacenterArgs.builder()        
+ *             .name("my_prod_datacenter")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create datacenter on a subfolder
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,14 +82,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var researchDatacenter = new Datacenter(&#34;researchDatacenter&#34;, DatacenterArgs.builder()        
- *             .name(&#34;my_research_datacenter&#34;)
- *             .folder(&#34;/research/&#34;)
+ *         var researchDatacenter = new Datacenter("researchDatacenter", DatacenterArgs.builder()        
+ *             .name("my_research_datacenter")
+ *             .folder("/research/")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Importing

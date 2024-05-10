@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,17 +44,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var licenseKey = new License(&#34;licenseKey&#34;, LicenseArgs.builder()        
- *             .licenseKey(&#34;452CQ-2EK54-K8742-00000-00000&#34;)
+ *         var licenseKey = new License("licenseKey", LicenseArgs.builder()        
+ *             .licenseKey("452CQ-2EK54-K8742-00000-00000")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;vpxClientLicenseLabel&#34;, &#34;Hello World&#34;),
- *                 Map.entry(&#34;workflow&#34;, &#34;Hello World&#34;)
+ *                 Map.entry("vpxClientLicenseLabel", "Hello World"),
+ *                 Map.entry("workflow", "Hello World")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * with the default settings for CPU and memory reservations, shares, and limits.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,29 +59,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
+ *             .name("dc-01")
  *             .build());
  * 
  *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
- *             .name(&#34;cluster-01&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var resourcePool = new ResourcePool(&#34;resourcePool&#34;, ResourcePoolArgs.builder()        
- *             .name(&#34;resource-pool-01&#34;)
- *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.resourcePoolId()))
+ *         var resourcePool = new ResourcePool("resourcePool", ResourcePoolArgs.builder()        
+ *             .name("resource-pool-01")
+ *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * A virtual machine resource could be targeted to use the default resource pool
  * of the cluster using the following:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -101,13 +104,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vm = new VirtualMachine(&#34;vm&#34;, VirtualMachineArgs.builder()        
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()        
  *             .resourcePoolId(cluster.resourcePoolId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * The following example sets up a parent resource pool in an existing compute cluster
@@ -115,7 +119,8 @@ import javax.annotation.Nullable;
  * the default settings for CPU and memory reservations, shares, and limits.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -140,27 +145,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
+ *             .name("dc-01")
  *             .build());
  * 
  *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
- *             .name(&#34;cluster-01&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var resourcePoolParent = new ResourcePool(&#34;resourcePoolParent&#34;, ResourcePoolArgs.builder()        
- *             .name(&#34;parent&#34;)
- *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.resourcePoolId()))
+ *         var resourcePoolParent = new ResourcePool("resourcePoolParent", ResourcePoolArgs.builder()        
+ *             .name("parent")
+ *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
  *             .build());
  * 
- *         var resourcePoolChild = new ResourcePool(&#34;resourcePoolChild&#34;, ResourcePoolArgs.builder()        
- *             .name(&#34;child&#34;)
+ *         var resourcePoolChild = new ResourcePool("resourcePoolChild", ResourcePoolArgs.builder()        
+ *             .name("child")
  *             .parentResourcePoolId(resourcePoolParent.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Importing
