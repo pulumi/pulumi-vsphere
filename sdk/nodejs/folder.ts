@@ -33,7 +33,7 @@ export class Folder extends pulumi.CustomResource {
     }
 
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      *
@@ -120,7 +120,7 @@ export class Folder extends pulumi.CustomResource {
  */
 export interface FolderState {
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      *
@@ -171,7 +171,7 @@ export interface FolderState {
  */
 export interface FolderArgs {
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      *

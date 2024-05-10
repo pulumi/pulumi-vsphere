@@ -13,7 +13,11 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.Folder` data source can be used to get the general attributes of a
-        /// vSphere inventory folder. Paths are absolute and must include the datacenter.
+        /// vSphere inventory folder. The data source supports creating folders of the 5
+        /// major types - datacenter folders, host and cluster folders, virtual machine
+        /// folders, storage folders, and network folders.
+        /// 
+        /// Paths are absolute and must include the datacenter.
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +42,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.Folder` data source can be used to get the general attributes of a
-        /// vSphere inventory folder. Paths are absolute and must include the datacenter.
+        /// vSphere inventory folder. The data source supports creating folders of the 5
+        /// major types - datacenter folders, host and cluster folders, virtual machine
+        /// folders, storage folders, and network folders.
+        /// 
+        /// Paths are absolute and must include the datacenter.
         /// 
         /// ## Example Usage
         /// 

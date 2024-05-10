@@ -6,6 +6,7 @@ package com.pulumi.vsphere;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.vsphere.inputs.ComputeClusterHostImageArgs;
 import com.pulumi.vsphere.inputs.ComputeClusterVsanDiskGroupArgs;
 import com.pulumi.vsphere.inputs.ComputeClusterVsanFaultDomainArgs;
 import com.pulumi.vsphere.inputs.ComputeClusterVsanStretchedClusterArgs;
@@ -789,6 +790,21 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Details about the host image which should be applied to the cluster.
+     * 
+     */
+    @Import(name="hostImage")
+    private @Nullable Output<ComputeClusterHostImageArgs> hostImage;
+
+    /**
+     * @return Details about the host image which should be applied to the cluster.
+     * 
+     */
+    public Optional<Output<ComputeClusterHostImageArgs>> hostImage() {
+        return Optional.ofNullable(this.hostImage);
+    }
+
+    /**
      * Must be set if cluster enrollment is managed from host resource.
      * 
      */
@@ -1185,6 +1201,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         this.haVmRestartPriority = $.haVmRestartPriority;
         this.haVmRestartTimeout = $.haVmRestartTimeout;
         this.hostClusterExitTimeout = $.hostClusterExitTimeout;
+        this.hostImage = $.hostImage;
         this.hostManaged = $.hostManaged;
         this.hostSystemIds = $.hostSystemIds;
         this.name = $.name;
@@ -2284,6 +2301,27 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder hostClusterExitTimeout(Integer hostClusterExitTimeout) {
             return hostClusterExitTimeout(Output.of(hostClusterExitTimeout));
+        }
+
+        /**
+         * @param hostImage Details about the host image which should be applied to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostImage(@Nullable Output<ComputeClusterHostImageArgs> hostImage) {
+            $.hostImage = hostImage;
+            return this;
+        }
+
+        /**
+         * @param hostImage Details about the host image which should be applied to the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostImage(ComputeClusterHostImageArgs hostImage) {
+            return hostImage(Output.of(hostImage));
         }
 
         /**

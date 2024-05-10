@@ -154,6 +154,35 @@
         ]
     },
     "types": {
+        "vsphere:index/ComputeClusterHostImage:ComputeClusterHostImage": {
+            "properties": {
+                "components": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/ComputeClusterHostImageComponent:ComputeClusterHostImageComponent"
+                    },
+                    "description": "List of custom components.\n"
+                },
+                "esxVersion": {
+                    "type": "string",
+                    "description": "The ESXi version which the image is based on.\n"
+                }
+            },
+            "type": "object"
+        },
+        "vsphere:index/ComputeClusterHostImageComponent:ComputeClusterHostImageComponent": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The identifier for the component.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The version to use.\n"
+                }
+            },
+            "type": "object"
+        },
         "vsphere:index/ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup": {
             "properties": {
                 "cache": {
@@ -559,6 +588,10 @@
                     "type": "string",
                     "description": "The user account of the domain administrator used to join this virtual machine to the domain.\n"
                 },
+                "domainOu": {
+                    "type": "string",
+                    "description": "The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.\n"
+                },
                 "fullName": {
                     "type": "string",
                     "description": "The full name of the user of this virtual machine.\n"
@@ -625,6 +658,161 @@
                     ]
                 }
             }
+        },
+        "vsphere:index/OfflineSoftwareDepotComponent:OfflineSoftwareDepotComponent": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "The name of the component. Useful for easier identification.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The identifier of the component.\n"
+                },
+                "versions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of available versions of the component.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "displayName",
+                        "key",
+                        "versions"
+                    ]
+                }
+            }
+        },
+        "vsphere:index/SupervisorEgressCidr:SupervisorEgressCidr": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Network address.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "Subnet prefix.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "prefix"
+            ]
+        },
+        "vsphere:index/SupervisorIngressCidr:SupervisorIngressCidr": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Network address.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "Subnet prefix.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "prefix"
+            ]
+        },
+        "vsphere:index/SupervisorManagementNetwork:SupervisorManagementNetwork": {
+            "properties": {
+                "addressCount": {
+                    "type": "integer",
+                    "description": "Number of addresses to allocate. Starts from 'starting_address'\n"
+                },
+                "gateway": {
+                    "type": "string",
+                    "description": "Gateway IP address.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "ID of the network. (e.g. a distributed port group).\n"
+                },
+                "startingAddress": {
+                    "type": "string",
+                    "description": "Starting address of the management network range.\n"
+                },
+                "subnetMask": {
+                    "type": "string",
+                    "description": "Subnet mask.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "addressCount",
+                "gateway",
+                "network",
+                "startingAddress",
+                "subnetMask"
+            ]
+        },
+        "vsphere:index/SupervisorNamespace:SupervisorNamespace": {
+            "properties": {
+                "contentLibraries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of content libraries.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the namespace.\n"
+                },
+                "vmClasses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of virtual machine classes.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "vsphere:index/SupervisorPodCidr:SupervisorPodCidr": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Network address.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "Subnet prefix.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "prefix"
+            ]
+        },
+        "vsphere:index/SupervisorServiceCidr:SupervisorServiceCidr": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Network address.\n"
+                },
+                "prefix": {
+                    "type": "integer",
+                    "description": "Subnet prefix.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "prefix"
+            ]
         },
         "vsphere:index/VirtualMachineCdrom:VirtualMachineCdrom": {
             "properties": {
@@ -857,6 +1045,10 @@
                 "domainAdminUser": {
                     "type": "string",
                     "description": "The user account of the domain administrator used to join this virtual machine to the domain.\n"
+                },
+                "domainOu": {
+                    "type": "string",
+                    "description": "The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.\n"
                 },
                 "fullName": {
                     "type": "string",
@@ -1371,6 +1563,10 @@
                     "type": "string",
                     "description": "The user account of the domain administrator used to join this virtual machine to the domain.\n"
                 },
+                "domainOu": {
+                    "type": "string",
+                    "description": "The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.\n"
+                },
                 "joinDomain": {
                     "type": "string",
                     "description": "The Active Directory domain for the virtual machine to join.\n"
@@ -1398,6 +1594,7 @@
                 "autoLogonCount",
                 "computerName",
                 "domainAdminUser",
+                "domainOu",
                 "joinDomain",
                 "runOnceCommandLists",
                 "timeZone",
@@ -1902,6 +2099,10 @@
                     "type": "integer",
                     "description": "The timeout for each host maintenance mode operation when removing hosts from a cluster.\n"
                 },
+                "hostImage": {
+                    "$ref": "#/types/vsphere:index/ComputeClusterHostImage:ComputeClusterHostImage",
+                    "description": "Details about the host image which should be applied to the cluster.\n"
+                },
                 "hostManaged": {
                     "type": "boolean",
                     "description": "Must be set if cluster enrollment is managed from host resource.\n"
@@ -2221,6 +2422,10 @@
                     "type": "integer",
                     "description": "The timeout for each host maintenance mode operation when removing hosts from a cluster.\n"
                 },
+                "hostImage": {
+                    "$ref": "#/types/vsphere:index/ComputeClusterHostImage:ComputeClusterHostImage",
+                    "description": "Details about the host image which should be applied to the cluster.\n"
+                },
                 "hostManaged": {
                     "type": "boolean",
                     "description": "Must be set if cluster enrollment is managed from host resource.\n"
@@ -2533,6 +2738,10 @@
                     "hostClusterExitTimeout": {
                         "type": "integer",
                         "description": "The timeout for each host maintenance mode operation when removing hosts from a cluster.\n"
+                    },
+                    "hostImage": {
+                        "$ref": "#/types/vsphere:index/ComputeClusterHostImage:ComputeClusterHostImage",
+                        "description": "Details about the host image which should be applied to the cluster.\n"
                     },
                     "hostManaged": {
                         "type": "boolean",
@@ -6251,7 +6460,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute\nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
                 },
                 "datacenterId": {
                     "type": "string",
@@ -6283,7 +6492,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                    "description": "Map of custom attribute ids to attribute\nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
                 },
                 "datacenterId": {
                     "type": "string",
@@ -6319,7 +6528,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Map of custom attribute ids to attribute \nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
+                        "description": "Map of custom attribute ids to attribute\nvalue strings to set for folder. See [here][docs-setting-custom-attributes]\nfor a reference on how to set values for custom attributes.\n\n[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource\n\n\u003e **NOTE:** Custom attributes are unsupported on direct ESXi connections\nand require vCenter.\n"
                     },
                     "datacenterId": {
                         "type": "string",
@@ -7808,6 +8017,54 @@
                 "type": "object"
             }
         },
+        "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot": {
+            "description": "Provides a VMware vSphere offline software depot resource.\n\n## Example Usage\n\n",
+            "properties": {
+                "components": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/OfflineSoftwareDepotComponent:OfflineSoftwareDepotComponent"
+                    },
+                    "description": "The list of custom components in the depot.\n"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The URL where the depot source is hosted.\n"
+                }
+            },
+            "required": [
+                "components",
+                "location"
+            ],
+            "inputProperties": {
+                "location": {
+                    "type": "string",
+                    "description": "The URL where the depot source is hosted.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "location"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OfflineSoftwareDepot resources.\n",
+                "properties": {
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/OfflineSoftwareDepotComponent:OfflineSoftwareDepotComponent"
+                        },
+                        "description": "The list of custom components in the depot.\n"
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "The URL where the depot source is hosted.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "vsphere:index/resourcePool:ResourcePool": {
             "description": "The `vsphere.ResourcePool` resource can be used to create and manage\nresource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.\n\nFor more information on vSphere resource pools, please refer to the\n[product documentation][ref-vsphere-resource_pools].\n\n[ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html\n\n## Example Usage\n\nThe following example sets up a resource pool in an existing compute cluster\nwith the default settings for CPU and memory reservations, shares, and limits.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst computeCluster = datacenter.then(datacenter =\u003e vsphere.getComputeCluster({\n    name: \"cluster-01\",\n    datacenterId: datacenter.id,\n}));\nconst resourcePool = new vsphere.ResourcePool(\"resource_pool\", {\n    name: \"resource-pool-01\",\n    parentResourcePoolId: computeCluster.then(computeCluster =\u003e computeCluster.resourcePoolId),\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\ncompute_cluster = vsphere.get_compute_cluster(name=\"cluster-01\",\n    datacenter_id=datacenter.id)\nresource_pool = vsphere.ResourcePool(\"resource_pool\",\n    name=\"resource-pool-01\",\n    parent_resource_pool_id=compute_cluster.resource_pool_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var computeCluster = VSphere.GetComputeCluster.Invoke(new()\n    {\n        Name = \"cluster-01\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n    var resourcePool = new VSphere.ResourcePool(\"resource_pool\", new()\n    {\n        Name = \"resource-pool-01\",\n        ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =\u003e getComputeClusterResult.ResourcePoolId),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcomputeCluster, err := vsphere.LookupComputeCluster(ctx, \u0026vsphere.LookupComputeClusterArgs{\n\t\t\tName:         \"cluster-01\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenter.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.NewResourcePool(ctx, \"resource_pool\", \u0026vsphere.ResourcePoolArgs{\n\t\t\tName:                 pulumi.String(\"resource-pool-01\"),\n\t\t\tParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetComputeClusterArgs;\nimport com.pulumi.vsphere.ResourcePool;\nimport com.pulumi.vsphere.ResourcePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()\n            .name(\"cluster-01\")\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .build());\n\n        var resourcePool = new ResourcePool(\"resourcePool\", ResourcePoolArgs.builder()        \n            .name(\"resource-pool-01\")\n            .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -\u003e getComputeClusterResult.resourcePoolId()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  resourcePool:\n    type: vsphere:ResourcePool\n    name: resource_pool\n    properties:\n      name: resource-pool-01\n      parentResourcePoolId: ${computeCluster.resourcePoolId}\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  computeCluster:\n    fn::invoke:\n      Function: vsphere:getComputeCluster\n      Arguments:\n        name: cluster-01\n        datacenterId: ${datacenter.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nA virtual machine resource could be targeted to use the default resource pool\nof the cluster using the following:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst vm = new vsphere.VirtualMachine(\"vm\", {resourcePoolId: cluster.resourcePoolId});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nvm = vsphere.VirtualMachine(\"vm\", resource_pool_id=cluster[\"resourcePoolId\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vm = new VSphere.VirtualMachine(\"vm\", new()\n    {\n        ResourcePoolId = cluster.ResourcePoolId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewVirtualMachine(ctx, \"vm\", \u0026vsphere.VirtualMachineArgs{\n\t\t\tResourcePoolId: pulumi.Any(cluster.ResourcePoolId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VirtualMachine;\nimport com.pulumi.vsphere.VirtualMachineArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vm = new VirtualMachine(\"vm\", VirtualMachineArgs.builder()        \n            .resourcePoolId(cluster.resourcePoolId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vm:\n    type: vsphere:VirtualMachine\n    properties:\n      resourcePoolId: ${cluster.resourcePoolId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following example sets up a parent resource pool in an existing compute cluster\nwith a child resource pool nested below. Each resource pool is configured with\nthe default settings for CPU and memory reservations, shares, and limits.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst computeCluster = datacenter.then(datacenter =\u003e vsphere.getComputeCluster({\n    name: \"cluster-01\",\n    datacenterId: datacenter.id,\n}));\nconst resourcePoolParent = new vsphere.ResourcePool(\"resource_pool_parent\", {\n    name: \"parent\",\n    parentResourcePoolId: computeCluster.then(computeCluster =\u003e computeCluster.resourcePoolId),\n});\nconst resourcePoolChild = new vsphere.ResourcePool(\"resource_pool_child\", {\n    name: \"child\",\n    parentResourcePoolId: resourcePoolParent.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\ncompute_cluster = vsphere.get_compute_cluster(name=\"cluster-01\",\n    datacenter_id=datacenter.id)\nresource_pool_parent = vsphere.ResourcePool(\"resource_pool_parent\",\n    name=\"parent\",\n    parent_resource_pool_id=compute_cluster.resource_pool_id)\nresource_pool_child = vsphere.ResourcePool(\"resource_pool_child\",\n    name=\"child\",\n    parent_resource_pool_id=resource_pool_parent.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var computeCluster = VSphere.GetComputeCluster.Invoke(new()\n    {\n        Name = \"cluster-01\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n    var resourcePoolParent = new VSphere.ResourcePool(\"resource_pool_parent\", new()\n    {\n        Name = \"parent\",\n        ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =\u003e getComputeClusterResult.ResourcePoolId),\n    });\n\n    var resourcePoolChild = new VSphere.ResourcePool(\"resource_pool_child\", new()\n    {\n        Name = \"child\",\n        ParentResourcePoolId = resourcePoolParent.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcomputeCluster, err := vsphere.LookupComputeCluster(ctx, \u0026vsphere.LookupComputeClusterArgs{\n\t\t\tName:         \"cluster-01\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenter.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tresourcePoolParent, err := vsphere.NewResourcePool(ctx, \"resource_pool_parent\", \u0026vsphere.ResourcePoolArgs{\n\t\t\tName:                 pulumi.String(\"parent\"),\n\t\t\tParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.NewResourcePool(ctx, \"resource_pool_child\", \u0026vsphere.ResourcePoolArgs{\n\t\t\tName:                 pulumi.String(\"child\"),\n\t\t\tParentResourcePoolId: resourcePoolParent.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetComputeClusterArgs;\nimport com.pulumi.vsphere.ResourcePool;\nimport com.pulumi.vsphere.ResourcePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()\n            .name(\"cluster-01\")\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .build());\n\n        var resourcePoolParent = new ResourcePool(\"resourcePoolParent\", ResourcePoolArgs.builder()        \n            .name(\"parent\")\n            .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -\u003e getComputeClusterResult.resourcePoolId()))\n            .build());\n\n        var resourcePoolChild = new ResourcePool(\"resourcePoolChild\", ResourcePoolArgs.builder()        \n            .name(\"child\")\n            .parentResourcePoolId(resourcePoolParent.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  resourcePoolParent:\n    type: vsphere:ResourcePool\n    name: resource_pool_parent\n    properties:\n      name: parent\n      parentResourcePoolId: ${computeCluster.resourcePoolId}\n  resourcePoolChild:\n    type: vsphere:ResourcePool\n    name: resource_pool_child\n    properties:\n      name: child\n      parentResourcePoolId: ${resourcePoolParent.id}\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  computeCluster:\n    fn::invoke:\n      Function: vsphere:getComputeCluster\n      Arguments:\n        name: cluster-01\n        datacenterId: ${datacenter.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Importing\n\nAn existing resource pool can be imported into this resource via\nthe path to the resource pool, using the following command:\n\n```\nterraform import vsphere_resource_pool.resource_pool /dc-01/host/cluster-01/Resources/resource-pool-01\n```\n\nThe above would import the resource pool named `resource-pool-01` that is located\nin the compute cluster `cluster-01` in the `dc-01` datacenter.\n\n### Settings that Require vSphere 7.0 or higher\n\nThese settings require vSphere 7.0 or higher:\n\n* `scale_descendants_shares`\n",
             "properties": {
@@ -8164,6 +8421,285 @@
                         "type": "string",
                         "description": "The UUID of the virtual machine to create\nthe override for.  Forces a new resource if changed.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "vsphere:index/supervisor:Supervisor": {
+            "description": "Provides a resource for configuring Workload Management.\n\n## Example Usage\n\n### S\n\n**Enable Workload Management on a compute cluster**\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VirtualMachineClass;\nimport com.pulumi.vsphere.VirtualMachineClassArgs;\nimport com.pulumi.vsphere.Supervisor;\nimport com.pulumi.vsphere.SupervisorArgs;\nimport com.pulumi.vsphere.inputs.SupervisorManagementNetworkArgs;\nimport com.pulumi.vsphere.inputs.SupervisorIngressCidrArgs;\nimport com.pulumi.vsphere.inputs.SupervisorEgressCidrArgs;\nimport com.pulumi.vsphere.inputs.SupervisorPodCidrArgs;\nimport com.pulumi.vsphere.inputs.SupervisorServiceCidrArgs;\nimport com.pulumi.vsphere.inputs.SupervisorNamespaceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vmClass = new VirtualMachineClass(\"vmClass\", VirtualMachineClassArgs.builder()        \n            .name(\"custom-class\")\n            .cpus(4)\n            .memory(4096)\n            .build());\n\n        var supervisor = new Supervisor(\"supervisor\", SupervisorArgs.builder()        \n            .cluster(\"\u003ccompute_cluster_id\u003e\")\n            .storagePolicy(\"\u003cstorage_policy_name\u003e\")\n            .contentLibrary(\"\u003ccontent_library_id\u003e\")\n            .mainDns(\"10.0.0.250\")\n            .workerDns(\"10.0.0.250\")\n            .edgeCluster(\"\u003cedge_cluster_id\u003e\")\n            .dvsUuid(\"\u003cdistributed_switch_uuid\u003e\")\n            .sizingHint(\"MEDIUM\")\n            .managementNetwork(SupervisorManagementNetworkArgs.builder()\n                .network(\"\u003cportgroup_id\u003e\")\n                .subnetMask(\"255.255.255.0\")\n                .startingAddress(\"10.0.0.150\")\n                .gateway(\"10.0.0.250\")\n                .addressCount(5)\n                .build())\n            .ingressCidrs(SupervisorIngressCidrArgs.builder()\n                .address(\"10.10.10.0\")\n                .prefix(24)\n                .build())\n            .egressCidrs(SupervisorEgressCidrArgs.builder()\n                .address(\"10.10.11.0\")\n                .prefix(24)\n                .build())\n            .podCidrs(SupervisorPodCidrArgs.builder()\n                .address(\"10.244.10.0\")\n                .prefix(23)\n                .build())\n            .serviceCidr(SupervisorServiceCidrArgs.builder()\n                .address(\"10.10.12.0\")\n                .prefix(24)\n                .build())\n            .searchDomains(\"vsphere.local\")\n            .namespaces(SupervisorNamespaceArgs.builder()\n                .name(\"custom-namespace\")\n                .contentLibraries()\n                .vmClases(vmClass.id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vmClass:\n    type: vsphere:VirtualMachineClass\n    name: vm_class\n    properties:\n      name: custom-class\n      cpus: 4\n      memory: 4096\n  supervisor:\n    type: vsphere:Supervisor\n    properties:\n      cluster: \u003ccompute_cluster_id\u003e\n      storagePolicy: \u003cstorage_policy_name\u003e\n      contentLibrary: \u003ccontent_library_id\u003e\n      mainDns: 10.0.0.250\n      workerDns: 10.0.0.250\n      edgeCluster: \u003cedge_cluster_id\u003e\n      dvsUuid: \u003cdistributed_switch_uuid\u003e\n      sizingHint: MEDIUM\n      managementNetwork:\n        network: \u003cportgroup_id\u003e\n        subnetMask: 255.255.255.0\n        startingAddress: 10.0.0.150\n        gateway: 10.0.0.250\n        addressCount: 5\n      ingressCidrs:\n        - address: 10.10.10.0\n          prefix: 24\n      egressCidrs:\n        - address: 10.10.11.0\n          prefix: 24\n      podCidrs:\n        - address: 10.244.10.0\n          prefix: 23\n      serviceCidr:\n        address: 10.10.12.0\n        prefix: 24\n      searchDomains: vsphere.local\n      namespaces:\n        - name: custom-namespace\n          contentLibraries: []\n          vmClases:\n            - ${vmClass.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "cluster": {
+                    "type": "string",
+                    "description": "The identifier of the compute cluster.\n"
+                },
+                "contentLibrary": {
+                    "type": "string",
+                    "description": "The identifier of the subscribed content library.\n"
+                },
+                "dvsUuid": {
+                    "type": "string",
+                    "description": "The UUID of the distributed switch.\n"
+                },
+                "edgeCluster": {
+                    "type": "string",
+                    "description": "The identifier of the NSX Edge Cluster.\n"
+                },
+                "egressCidrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorEgressCidr:SupervisorEgressCidr"
+                    },
+                    "description": "CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.\n"
+                },
+                "ingressCidrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorIngressCidr:SupervisorIngressCidr"
+                    },
+                    "description": "CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.\n"
+                },
+                "mainDns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the primary DNS servers.\n"
+                },
+                "managementNetwork": {
+                    "$ref": "#/types/vsphere:index/SupervisorManagementNetwork:SupervisorManagementNetwork",
+                    "description": "The configuration for the management network which the control plane VMs will be connected to.\n* * `network` - ID of the network. (e.g. a distributed port group).\n* * `starting_address` - Starting address of the management network range.\n* * `subnet_mask` - Subnet mask.\n* * `gateway` - Gateway IP address.\n* * `address_count` - Number of addresses to allocate. Starts from `starting_address`\n"
+                },
+                "namespaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorNamespace:SupervisorNamespace"
+                    },
+                    "description": "The list of namespaces to create in the Supervisor cluster\n"
+                },
+                "podCidrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorPodCidr:SupervisorPodCidr"
+                    },
+                    "description": "CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.\n"
+                },
+                "searchDomains": {
+                    "type": "string",
+                    "description": "List of DNS search domains.\n"
+                },
+                "serviceCidr": {
+                    "$ref": "#/types/vsphere:index/SupervisorServiceCidr:SupervisorServiceCidr",
+                    "description": "CIDR block from which Kubernetes allocates service cluster IP addresses.\n"
+                },
+                "sizingHint": {
+                    "type": "string",
+                    "description": "The size of the Kubernetes API server.\n"
+                },
+                "storagePolicy": {
+                    "type": "string",
+                    "description": "The name of the storage policy.\n"
+                },
+                "workerDns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the DNS servers to use for the worker nodes.\n"
+                }
+            },
+            "required": [
+                "cluster",
+                "contentLibrary",
+                "dvsUuid",
+                "edgeCluster",
+                "egressCidrs",
+                "ingressCidrs",
+                "mainDns",
+                "managementNetwork",
+                "podCidrs",
+                "searchDomains",
+                "serviceCidr",
+                "sizingHint",
+                "storagePolicy",
+                "workerDns"
+            ],
+            "inputProperties": {
+                "cluster": {
+                    "type": "string",
+                    "description": "The identifier of the compute cluster.\n"
+                },
+                "contentLibrary": {
+                    "type": "string",
+                    "description": "The identifier of the subscribed content library.\n"
+                },
+                "dvsUuid": {
+                    "type": "string",
+                    "description": "The UUID of the distributed switch.\n"
+                },
+                "edgeCluster": {
+                    "type": "string",
+                    "description": "The identifier of the NSX Edge Cluster.\n"
+                },
+                "egressCidrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorEgressCidr:SupervisorEgressCidr"
+                    },
+                    "description": "CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.\n"
+                },
+                "ingressCidrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorIngressCidr:SupervisorIngressCidr"
+                    },
+                    "description": "CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.\n"
+                },
+                "mainDns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the primary DNS servers.\n"
+                },
+                "managementNetwork": {
+                    "$ref": "#/types/vsphere:index/SupervisorManagementNetwork:SupervisorManagementNetwork",
+                    "description": "The configuration for the management network which the control plane VMs will be connected to.\n* * `network` - ID of the network. (e.g. a distributed port group).\n* * `starting_address` - Starting address of the management network range.\n* * `subnet_mask` - Subnet mask.\n* * `gateway` - Gateway IP address.\n* * `address_count` - Number of addresses to allocate. Starts from `starting_address`\n"
+                },
+                "namespaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorNamespace:SupervisorNamespace"
+                    },
+                    "description": "The list of namespaces to create in the Supervisor cluster\n"
+                },
+                "podCidrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:index/SupervisorPodCidr:SupervisorPodCidr"
+                    },
+                    "description": "CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.\n"
+                },
+                "searchDomains": {
+                    "type": "string",
+                    "description": "List of DNS search domains.\n"
+                },
+                "serviceCidr": {
+                    "$ref": "#/types/vsphere:index/SupervisorServiceCidr:SupervisorServiceCidr",
+                    "description": "CIDR block from which Kubernetes allocates service cluster IP addresses.\n"
+                },
+                "sizingHint": {
+                    "type": "string",
+                    "description": "The size of the Kubernetes API server.\n"
+                },
+                "storagePolicy": {
+                    "type": "string",
+                    "description": "The name of the storage policy.\n"
+                },
+                "workerDns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the DNS servers to use for the worker nodes.\n"
+                }
+            },
+            "requiredInputs": [
+                "cluster",
+                "contentLibrary",
+                "dvsUuid",
+                "edgeCluster",
+                "egressCidrs",
+                "ingressCidrs",
+                "mainDns",
+                "managementNetwork",
+                "podCidrs",
+                "searchDomains",
+                "serviceCidr",
+                "sizingHint",
+                "storagePolicy",
+                "workerDns"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Supervisor resources.\n",
+                "properties": {
+                    "cluster": {
+                        "type": "string",
+                        "description": "The identifier of the compute cluster.\n"
+                    },
+                    "contentLibrary": {
+                        "type": "string",
+                        "description": "The identifier of the subscribed content library.\n"
+                    },
+                    "dvsUuid": {
+                        "type": "string",
+                        "description": "The UUID of the distributed switch.\n"
+                    },
+                    "edgeCluster": {
+                        "type": "string",
+                        "description": "The identifier of the NSX Edge Cluster.\n"
+                    },
+                    "egressCidrs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/SupervisorEgressCidr:SupervisorEgressCidr"
+                        },
+                        "description": "CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.\n"
+                    },
+                    "ingressCidrs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/SupervisorIngressCidr:SupervisorIngressCidr"
+                        },
+                        "description": "CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.\n"
+                    },
+                    "mainDns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of addresses of the primary DNS servers.\n"
+                    },
+                    "managementNetwork": {
+                        "$ref": "#/types/vsphere:index/SupervisorManagementNetwork:SupervisorManagementNetwork",
+                        "description": "The configuration for the management network which the control plane VMs will be connected to.\n* * `network` - ID of the network. (e.g. a distributed port group).\n* * `starting_address` - Starting address of the management network range.\n* * `subnet_mask` - Subnet mask.\n* * `gateway` - Gateway IP address.\n* * `address_count` - Number of addresses to allocate. Starts from `starting_address`\n"
+                    },
+                    "namespaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/SupervisorNamespace:SupervisorNamespace"
+                        },
+                        "description": "The list of namespaces to create in the Supervisor cluster\n"
+                    },
+                    "podCidrs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/SupervisorPodCidr:SupervisorPodCidr"
+                        },
+                        "description": "CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.\n"
+                    },
+                    "searchDomains": {
+                        "type": "string",
+                        "description": "List of DNS search domains.\n"
+                    },
+                    "serviceCidr": {
+                        "$ref": "#/types/vsphere:index/SupervisorServiceCidr:SupervisorServiceCidr",
+                        "description": "CIDR block from which Kubernetes allocates service cluster IP addresses.\n"
+                    },
+                    "sizingHint": {
+                        "type": "string",
+                        "description": "The size of the Kubernetes API server.\n"
+                    },
+                    "storagePolicy": {
+                        "type": "string",
+                        "description": "The name of the storage policy.\n"
+                    },
+                    "workerDns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of addresses of the DNS servers to use for the worker nodes.\n"
                     }
                 },
                 "type": "object"
@@ -9912,6 +10448,109 @@
                 "type": "object"
             }
         },
+        "vsphere:index/virtualMachineClass:VirtualMachineClass": {
+            "description": "Provides a resource for configuring a Virtual Machine class.\n\n## Example Usage\n\n### S\n\n**Create a basic class**\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst basicClass = new vsphere.VirtualMachineClass(\"basic_class\", {\n    name: \"basic-class\",\n    cpus: 4,\n    memory: 4096,\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nbasic_class = vsphere.VirtualMachineClass(\"basic_class\",\n    name=\"basic-class\",\n    cpus=4,\n    memory=4096)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var basicClass = new VSphere.VirtualMachineClass(\"basic_class\", new()\n    {\n        Name = \"basic-class\",\n        Cpus = 4,\n        Memory = 4096,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewVirtualMachineClass(ctx, \"basic_class\", \u0026vsphere.VirtualMachineClassArgs{\n\t\t\tName:   pulumi.String(\"basic-class\"),\n\t\t\tCpus:   pulumi.Int(4),\n\t\t\tMemory: pulumi.Int(4096),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VirtualMachineClass;\nimport com.pulumi.vsphere.VirtualMachineClassArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var basicClass = new VirtualMachineClass(\"basicClass\", VirtualMachineClassArgs.builder()        \n            .name(\"basic-class\")\n            .cpus(4)\n            .memory(4096)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  basicClass:\n    type: vsphere:VirtualMachineClass\n    name: basic_class\n    properties:\n      name: basic-class\n      cpus: 4\n      memory: 4096\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n**Create a class with a vGPU**\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst vgpClass = new vsphere.VirtualMachineClass(\"vgp_class\", {\n    name: \"vgpu-class\",\n    cpus: 4,\n    memory: 4096,\n    memoryReservation: 100,\n    vgpuDevices: [\"vgpu1\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nvgp_class = vsphere.VirtualMachineClass(\"vgp_class\",\n    name=\"vgpu-class\",\n    cpus=4,\n    memory=4096,\n    memory_reservation=100,\n    vgpu_devices=[\"vgpu1\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vgpClass = new VSphere.VirtualMachineClass(\"vgp_class\", new()\n    {\n        Name = \"vgpu-class\",\n        Cpus = 4,\n        Memory = 4096,\n        MemoryReservation = 100,\n        VgpuDevices = new[]\n        {\n            \"vgpu1\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewVirtualMachineClass(ctx, \"vgp_class\", \u0026vsphere.VirtualMachineClassArgs{\n\t\t\tName:              pulumi.String(\"vgpu-class\"),\n\t\t\tCpus:              pulumi.Int(4),\n\t\t\tMemory:            pulumi.Int(4096),\n\t\t\tMemoryReservation: pulumi.Int(100),\n\t\t\tVgpuDevices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"vgpu1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VirtualMachineClass;\nimport com.pulumi.vsphere.VirtualMachineClassArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vgpClass = new VirtualMachineClass(\"vgpClass\", VirtualMachineClassArgs.builder()        \n            .name(\"vgpu-class\")\n            .cpus(4)\n            .memory(4096)\n            .memoryReservation(100)\n            .vgpuDevices(\"vgpu1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vgpClass:\n    type: vsphere:VirtualMachineClass\n    name: vgp_class\n    properties:\n      name: vgpu-class\n      cpus: 4\n      memory: 4096\n      memoryReservation: 100\n      vgpuDevices:\n        - vgpu1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "cpuReservation": {
+                    "type": "integer",
+                    "description": "The percentage of the available CPU capacity which will be reserved.\n"
+                },
+                "cpus": {
+                    "type": "integer",
+                    "description": "The number of CPUs.\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The amount of memory in MB.\n"
+                },
+                "memoryReservation": {
+                    "type": "integer",
+                    "description": "The percentage of memory reservation.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the class.\n"
+                },
+                "vgpuDevices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.\n"
+                }
+            },
+            "required": [
+                "cpus",
+                "memory",
+                "name"
+            ],
+            "inputProperties": {
+                "cpuReservation": {
+                    "type": "integer",
+                    "description": "The percentage of the available CPU capacity which will be reserved.\n"
+                },
+                "cpus": {
+                    "type": "integer",
+                    "description": "The number of CPUs.\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The amount of memory in MB.\n"
+                },
+                "memoryReservation": {
+                    "type": "integer",
+                    "description": "The percentage of memory reservation.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the class.\n"
+                },
+                "vgpuDevices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.\n"
+                }
+            },
+            "requiredInputs": [
+                "cpus",
+                "memory"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VirtualMachineClass resources.\n",
+                "properties": {
+                    "cpuReservation": {
+                        "type": "integer",
+                        "description": "The percentage of the available CPU capacity which will be reserved.\n"
+                    },
+                    "cpus": {
+                        "type": "integer",
+                        "description": "The number of CPUs.\n"
+                    },
+                    "memory": {
+                        "type": "integer",
+                        "description": "The amount of memory in MB.\n"
+                    },
+                    "memoryReservation": {
+                        "type": "integer",
+                        "description": "The percentage of memory reservation.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name for the class.\n"
+                    },
+                    "vgpuDevices": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot": {
             "description": "The `vsphere.VirtualMachineSnapshot` resource can be used to manage snapshots\nfor a virtual machine.\n\nFor more information on managing snapshots and how they work in VMware, see\n[here][ext-vm-snapshot-management].\n\n[ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html\n\n\u003e **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and\ncan contain the actual running state of the virtual machine, data for all disks\nthat have not been set to be independent from the snapshot (including ones that\nhave been attached via the `attach`\nparameter to the `vsphere.VirtualMachine` `disk` block), and even the\nconfiguration of the virtual machine at the time of the snapshot. Virtual\nmachine, disk activity, and configuration changes post-snapshot are not\nincluded in the original state. Use this resource with care! Neither VMware nor\nHashiCorp recommends retaining snapshots for a extended period of time and does\nNOT recommend using them as as backup feature. For more information on the\nlimitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].\n\n[ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst demo1 = new vsphere.VirtualMachineSnapshot(\"demo1\", {\n    virtualMachineUuid: \"9aac5551-a351-4158-8c5c-15a71e8ec5c9\",\n    snapshotName: \"Snapshot Name\",\n    description: \"This is Demo Snapshot\",\n    memory: true,\n    quiesce: true,\n    removeChildren: false,\n    consolidate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndemo1 = vsphere.VirtualMachineSnapshot(\"demo1\",\n    virtual_machine_uuid=\"9aac5551-a351-4158-8c5c-15a71e8ec5c9\",\n    snapshot_name=\"Snapshot Name\",\n    description=\"This is Demo Snapshot\",\n    memory=True,\n    quiesce=True,\n    remove_children=False,\n    consolidate=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var demo1 = new VSphere.VirtualMachineSnapshot(\"demo1\", new()\n    {\n        VirtualMachineUuid = \"9aac5551-a351-4158-8c5c-15a71e8ec5c9\",\n        SnapshotName = \"Snapshot Name\",\n        Description = \"This is Demo Snapshot\",\n        Memory = true,\n        Quiesce = true,\n        RemoveChildren = false,\n        Consolidate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewVirtualMachineSnapshot(ctx, \"demo1\", \u0026vsphere.VirtualMachineSnapshotArgs{\n\t\t\tVirtualMachineUuid: pulumi.String(\"9aac5551-a351-4158-8c5c-15a71e8ec5c9\"),\n\t\t\tSnapshotName:       pulumi.String(\"Snapshot Name\"),\n\t\t\tDescription:        pulumi.String(\"This is Demo Snapshot\"),\n\t\t\tMemory:             pulumi.Bool(true),\n\t\t\tQuiesce:            pulumi.Bool(true),\n\t\t\tRemoveChildren:     pulumi.Bool(false),\n\t\t\tConsolidate:        pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VirtualMachineSnapshot;\nimport com.pulumi.vsphere.VirtualMachineSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var demo1 = new VirtualMachineSnapshot(\"demo1\", VirtualMachineSnapshotArgs.builder()        \n            .virtualMachineUuid(\"9aac5551-a351-4158-8c5c-15a71e8ec5c9\")\n            .snapshotName(\"Snapshot Name\")\n            .description(\"This is Demo Snapshot\")\n            .memory(\"true\")\n            .quiesce(\"true\")\n            .removeChildren(\"false\")\n            .consolidate(\"true\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  demo1:\n    type: vsphere:VirtualMachineSnapshot\n    properties:\n      virtualMachineUuid: 9aac5551-a351-4158-8c5c-15a71e8ec5c9\n      snapshotName: Snapshot Name\n      description: This is Demo Snapshot\n      memory: 'true'\n      quiesce: 'true'\n      removeChildren: 'false'\n      consolidate: 'true'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -10961,7 +11600,7 @@
             }
         },
         "vsphere:index/getFolder:getFolder": {
-            "description": "The `vsphere.Folder` data source can be used to get the general attributes of a\nvSphere inventory folder. Paths are absolute and must include the datacenter.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst folder = vsphere.getFolder({\n    path: \"/dc-01/datastore-01/folder-01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nfolder = vsphere.get_folder(path=\"/dc-01/datastore-01/folder-01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var folder = VSphere.GetFolder.Invoke(new()\n    {\n        Path = \"/dc-01/datastore-01/folder-01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.LookupFolder(ctx, \u0026vsphere.LookupFolderArgs{\n\t\t\tPath: \"/dc-01/datastore-01/folder-01\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetFolderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()\n            .path(\"/dc-01/datastore-01/folder-01\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  folder:\n    fn::invoke:\n      Function: vsphere:getFolder\n      Arguments:\n        path: /dc-01/datastore-01/folder-01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The `vsphere.Folder` data source can be used to get the general attributes of a\nvSphere inventory folder. The data source supports creating folders of the 5\nmajor types - datacenter folders, host and cluster folders, virtual machine\nfolders, storage folders, and network folders.\n\nPaths are absolute and must include the datacenter.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst folder = vsphere.getFolder({\n    path: \"/dc-01/datastore-01/folder-01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nfolder = vsphere.get_folder(path=\"/dc-01/datastore-01/folder-01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var folder = VSphere.GetFolder.Invoke(new()\n    {\n        Path = \"/dc-01/datastore-01/folder-01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.LookupFolder(ctx, \u0026vsphere.LookupFolderArgs{\n\t\t\tPath: \"/dc-01/datastore-01/folder-01\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetFolderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()\n            .path(\"/dc-01/datastore-01/folder-01\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  folder:\n    fn::invoke:\n      Function: vsphere:getFolder\n      Arguments:\n        path: /dc-01/datastore-01/folder-01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getFolder.\n",
                 "properties": {
@@ -11094,6 +11733,30 @@
                 "required": [
                     "datacenterId",
                     "resourcePoolId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "vsphere:index/getHostBaseImages:getHostBaseImages": {
+            "description": "The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available\nfor cluster software management.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst baseimages = vsphere.getHostBaseImages({});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nbaseimages = vsphere.get_host_base_images()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var baseimages = VSphere.GetHostBaseImages.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetHostBaseImages(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var baseimages = VsphereFunctions.getHostBaseImages();\n\n    }\n}\n```\n```yaml\nvariables:\n  baseimages:\n    fn::invoke:\n      Function: vsphere:getHostBaseImages\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getHostBaseImages.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "versions": {
+                        "description": "The ESXi version identifier for the image\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "versions",
                     "id"
                 ],
                 "type": "object"

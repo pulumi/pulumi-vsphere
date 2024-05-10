@@ -13,7 +13,7 @@ namespace Pulumi.VSphere
     public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Map of custom attribute ids to attribute 
+        /// Map of custom attribute ids to attribute
         /// value strings to set for folder. See [here][docs-setting-custom-attributes]
         /// for a reference on how to set values for custom attributes.
         /// 
@@ -117,7 +117,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute 
+        /// Map of custom attribute ids to attribute
         /// value strings to set for folder. See [here][docs-setting-custom-attributes]
         /// for a reference on how to set values for custom attributes.
         /// 
@@ -192,7 +192,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute 
+        /// Map of custom attribute ids to attribute
         /// value strings to set for folder. See [here][docs-setting-custom-attributes]
         /// for a reference on how to set values for custom attributes.
         /// 

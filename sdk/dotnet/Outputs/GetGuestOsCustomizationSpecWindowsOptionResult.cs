@@ -38,6 +38,10 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string DomainAdminUser;
         /// <summary>
+        /// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        /// </summary>
+        public readonly string DomainOu;
+        /// <summary>
         /// The Active Directory domain for the virtual machine to join.
         /// </summary>
         public readonly string JoinDomain;
@@ -68,6 +72,8 @@ namespace Pulumi.VSphere.Outputs
 
             string domainAdminUser,
 
+            string domainOu,
+
             string joinDomain,
 
             ImmutableArray<string> runOnceCommandLists,
@@ -82,6 +88,7 @@ namespace Pulumi.VSphere.Outputs
             ComputerName = computerName;
             DomainAdminPassword = domainAdminPassword;
             DomainAdminUser = domainAdminUser;
+            DomainOu = domainOu;
             JoinDomain = joinDomain;
             RunOnceCommandLists = runOnceCommandLists;
             TimeZone = timeZone;

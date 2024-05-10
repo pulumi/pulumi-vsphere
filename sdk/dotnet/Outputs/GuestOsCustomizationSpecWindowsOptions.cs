@@ -38,6 +38,10 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? DomainAdminUser;
         /// <summary>
+        /// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        /// </summary>
+        public readonly string? DomainOu;
+        /// <summary>
         /// The full name of the user of this virtual machine.
         /// </summary>
         public readonly string? FullName;
@@ -80,6 +84,8 @@ namespace Pulumi.VSphere.Outputs
 
             string? domainAdminUser,
 
+            string? domainOu,
+
             string? fullName,
 
             string? joinDomain,
@@ -100,6 +106,7 @@ namespace Pulumi.VSphere.Outputs
             ComputerName = computerName;
             DomainAdminPassword = domainAdminPassword;
             DomainAdminUser = domainAdminUser;
+            DomainOu = domainOu;
             FullName = fullName;
             JoinDomain = joinDomain;
             OrganizationName = organizationName;

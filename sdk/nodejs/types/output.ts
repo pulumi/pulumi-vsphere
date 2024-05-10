@@ -5,6 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ComputeClusterHostImage {
+    /**
+     * List of custom components.
+     */
+    components?: outputs.ComputeClusterHostImageComponent[];
+    /**
+     * The ESXi version which the image is based on.
+     */
+    esxVersion?: string;
+}
+
+export interface ComputeClusterHostImageComponent {
+    /**
+     * The identifier for the component.
+     */
+    key?: string;
+    /**
+     * The version to use.
+     */
+    version?: string;
+}
+
 export interface ComputeClusterVsanDiskGroup {
     /**
      * Cache disk.
@@ -277,6 +299,10 @@ export interface GetGuestOsCustomizationSpecWindowsOption {
      */
     domainAdminUser: string;
     /**
+     * The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     */
+    domainOu: string;
+    /**
      * The Active Directory domain for the virtual machine to join.
      */
     joinDomain: string;
@@ -504,6 +530,10 @@ export interface GuestOsCustomizationSpecWindowsOptions {
      */
     domainAdminUser?: string;
     /**
+     * The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     */
+    domainOu?: string;
+    /**
      * The full name of the user of this virtual machine.
      */
     fullName?: string;
@@ -546,6 +576,103 @@ export interface HostPortGroupPort {
      * Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
      */
     type: string;
+}
+
+export interface OfflineSoftwareDepotComponent {
+    /**
+     * The name of the component. Useful for easier identification.
+     */
+    displayName: string;
+    /**
+     * The identifier of the component.
+     */
+    key: string;
+    /**
+     * The list of available versions of the component.
+     */
+    versions: string[];
+}
+
+export interface SupervisorEgressCidr {
+    /**
+     * Network address.
+     */
+    address: string;
+    /**
+     * Subnet prefix.
+     */
+    prefix: number;
+}
+
+export interface SupervisorIngressCidr {
+    /**
+     * Network address.
+     */
+    address: string;
+    /**
+     * Subnet prefix.
+     */
+    prefix: number;
+}
+
+export interface SupervisorManagementNetwork {
+    /**
+     * Number of addresses to allocate. Starts from 'starting_address'
+     */
+    addressCount: number;
+    /**
+     * Gateway IP address.
+     */
+    gateway: string;
+    /**
+     * ID of the network. (e.g. a distributed port group).
+     */
+    network: string;
+    /**
+     * Starting address of the management network range.
+     */
+    startingAddress: string;
+    /**
+     * Subnet mask.
+     */
+    subnetMask: string;
+}
+
+export interface SupervisorNamespace {
+    /**
+     * A list of content libraries.
+     */
+    contentLibraries?: string[];
+    /**
+     * The name of the namespace.
+     */
+    name: string;
+    /**
+     * A list of virtual machine classes.
+     */
+    vmClasses?: string[];
+}
+
+export interface SupervisorPodCidr {
+    /**
+     * Network address.
+     */
+    address: string;
+    /**
+     * Subnet prefix.
+     */
+    prefix: number;
+}
+
+export interface SupervisorServiceCidr {
+    /**
+     * Network address.
+     */
+    address: string;
+    /**
+     * Subnet prefix.
+     */
+    prefix: number;
 }
 
 export interface VirtualMachineCdrom {
@@ -727,6 +854,10 @@ export interface VirtualMachineCloneCustomizeWindowsOptions {
      * The user account of the domain administrator used to join this virtual machine to the domain.
      */
     domainAdminUser?: string;
+    /**
+     * The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+     */
+    domainOu?: string;
     /**
      * The full name of the user of this virtual machine.
      */

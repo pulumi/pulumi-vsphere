@@ -36,7 +36,7 @@ class FolderArgs:
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
                `network` for network folders. Forces a new resource if changed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for folder. See [here][docs-setting-custom-attributes]
                for a reference on how to set values for custom attributes.
                
@@ -102,7 +102,7 @@ class FolderArgs:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of custom attribute ids to attribute 
+        Map of custom attribute ids to attribute
         value strings to set for folder. See [here][docs-setting-custom-attributes]
         for a reference on how to set values for custom attributes.
 
@@ -157,7 +157,7 @@ class _FolderState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for folder. See [here][docs-setting-custom-attributes]
                for a reference on how to set values for custom attributes.
                
@@ -203,7 +203,7 @@ class _FolderState:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of custom attribute ids to attribute 
+        Map of custom attribute ids to attribute
         value strings to set for folder. See [here][docs-setting-custom-attributes]
         for a reference on how to set values for custom attributes.
 
@@ -300,7 +300,7 @@ class Folder(pulumi.CustomResource):
         Create a Folder resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for folder. See [here][docs-setting-custom-attributes]
                for a reference on how to set values for custom attributes.
                
@@ -399,7 +399,7 @@ class Folder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for folder. See [here][docs-setting-custom-attributes]
                for a reference on how to set values for custom attributes.
                
@@ -445,7 +445,7 @@ class Folder(pulumi.CustomResource):
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Map of custom attribute ids to attribute 
+        Map of custom attribute ids to attribute
         value strings to set for folder. See [here][docs-setting-custom-attributes]
         for a reference on how to set values for custom attributes.
 

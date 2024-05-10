@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.resources.InvokeArgs;
 import com.pulumi.vsphere.Utilities;
 import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
 import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
@@ -77,6 +78,7 @@ import com.pulumi.vsphere.outputs.GetDistributedVirtualSwitchResult;
 import com.pulumi.vsphere.outputs.GetDynamicResult;
 import com.pulumi.vsphere.outputs.GetFolderResult;
 import com.pulumi.vsphere.outputs.GetGuestOsCustomizationResult;
+import com.pulumi.vsphere.outputs.GetHostBaseImagesResult;
 import com.pulumi.vsphere.outputs.GetHostPciDeviceResult;
 import com.pulumi.vsphere.outputs.GetHostResult;
 import com.pulumi.vsphere.outputs.GetHostThumbprintResult;
@@ -2559,7 +2561,11 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Folder` data source can be used to get the general attributes of a
-     * vSphere inventory folder. Paths are absolute and must include the datacenter.
+     * vSphere inventory folder. The data source supports creating folders of the 5
+     * major types - datacenter folders, host and cluster folders, virtual machine
+     * folders, storage folders, and network folders.
+     * 
+     * Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
      * 
@@ -2602,7 +2608,11 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Folder` data source can be used to get the general attributes of a
-     * vSphere inventory folder. Paths are absolute and must include the datacenter.
+     * vSphere inventory folder. The data source supports creating folders of the 5
+     * major types - datacenter folders, host and cluster folders, virtual machine
+     * folders, storage folders, and network folders.
+     * 
+     * Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
      * 
@@ -2645,7 +2655,11 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Folder` data source can be used to get the general attributes of a
-     * vSphere inventory folder. Paths are absolute and must include the datacenter.
+     * vSphere inventory folder. The data source supports creating folders of the 5
+     * major types - datacenter folders, host and cluster folders, virtual machine
+     * folders, storage folders, and network folders.
+     * 
+     * Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
      * 
@@ -2688,7 +2702,11 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Folder` data source can be used to get the general attributes of a
-     * vSphere inventory folder. Paths are absolute and must include the datacenter.
+     * vSphere inventory folder. The data source supports creating folders of the 5
+     * major types - datacenter folders, host and cluster folders, virtual machine
+     * folders, storage folders, and network folders.
+     * 
+     * Paths are absolute and must include the datacenter.
      * 
      * ## Example Usage
      * 
@@ -3108,6 +3126,246 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetHostResult> getHostPlain(GetHostPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHost:getHost", TypeShape.of(GetHostResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
+     * for cluster software management.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostBaseImagesResult> getHostBaseImages() {
+        return getHostBaseImages(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
+     * for cluster software management.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHostBaseImagesResult> getHostBaseImagesPlain() {
+        return getHostBaseImagesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
+     * for cluster software management.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostBaseImagesResult> getHostBaseImages(InvokeArgs args) {
+        return getHostBaseImages(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
+     * for cluster software management.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHostBaseImagesResult> getHostBaseImagesPlain(InvokeArgs args) {
+        return getHostBaseImagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
+     * for cluster software management.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostBaseImagesResult> getHostBaseImages(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getHostBaseImages:getHostBaseImages", TypeShape.of(GetHostBaseImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
+     * for cluster software management.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHostBaseImagesResult> getHostBaseImagesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getHostBaseImages:getHostBaseImages", TypeShape.of(GetHostBaseImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID

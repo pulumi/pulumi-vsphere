@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.vsphere.ComputeClusterArgs;
 import com.pulumi.vsphere.Utilities;
 import com.pulumi.vsphere.inputs.ComputeClusterState;
+import com.pulumi.vsphere.outputs.ComputeClusterHostImage;
 import com.pulumi.vsphere.outputs.ComputeClusterVsanDiskGroup;
 import com.pulumi.vsphere.outputs.ComputeClusterVsanFaultDomain;
 import com.pulumi.vsphere.outputs.ComputeClusterVsanStretchedCluster;
@@ -742,6 +743,20 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> hostClusterExitTimeout() {
         return Codegen.optional(this.hostClusterExitTimeout);
+    }
+    /**
+     * Details about the host image which should be applied to the cluster.
+     * 
+     */
+    @Export(name="hostImage", refs={ComputeClusterHostImage.class}, tree="[0]")
+    private Output</* @Nullable */ ComputeClusterHostImage> hostImage;
+
+    /**
+     * @return Details about the host image which should be applied to the cluster.
+     * 
+     */
+    public Output<Optional<ComputeClusterHostImage>> hostImage() {
+        return Codegen.optional(this.hostImage);
     }
     /**
      * Must be set if cluster enrollment is managed from host resource.

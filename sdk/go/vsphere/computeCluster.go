@@ -149,6 +149,8 @@ type ComputeCluster struct {
 	HaVmRestartTimeout pulumi.IntPtrOutput `pulumi:"haVmRestartTimeout"`
 	// The timeout for each host maintenance mode operation when removing hosts from a cluster.
 	HostClusterExitTimeout pulumi.IntPtrOutput `pulumi:"hostClusterExitTimeout"`
+	// Details about the host image which should be applied to the cluster.
+	HostImage ComputeClusterHostImagePtrOutput `pulumi:"hostImage"`
 	// Must be set if cluster enrollment is managed from host resource.
 	HostManaged pulumi.BoolPtrOutput `pulumi:"hostManaged"`
 	// The managed object IDs of the hosts to put in the cluster.
@@ -372,6 +374,8 @@ type computeClusterState struct {
 	HaVmRestartTimeout *int `pulumi:"haVmRestartTimeout"`
 	// The timeout for each host maintenance mode operation when removing hosts from a cluster.
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
+	// Details about the host image which should be applied to the cluster.
+	HostImage *ComputeClusterHostImage `pulumi:"hostImage"`
 	// Must be set if cluster enrollment is managed from host resource.
 	HostManaged *bool `pulumi:"hostManaged"`
 	// The managed object IDs of the hosts to put in the cluster.
@@ -563,6 +567,8 @@ type ComputeClusterState struct {
 	HaVmRestartTimeout pulumi.IntPtrInput
 	// The timeout for each host maintenance mode operation when removing hosts from a cluster.
 	HostClusterExitTimeout pulumi.IntPtrInput
+	// Details about the host image which should be applied to the cluster.
+	HostImage ComputeClusterHostImagePtrInput
 	// Must be set if cluster enrollment is managed from host resource.
 	HostManaged pulumi.BoolPtrInput
 	// The managed object IDs of the hosts to put in the cluster.
@@ -758,6 +764,8 @@ type computeClusterArgs struct {
 	HaVmRestartTimeout *int `pulumi:"haVmRestartTimeout"`
 	// The timeout for each host maintenance mode operation when removing hosts from a cluster.
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
+	// Details about the host image which should be applied to the cluster.
+	HostImage *ComputeClusterHostImage `pulumi:"hostImage"`
 	// Must be set if cluster enrollment is managed from host resource.
 	HostManaged *bool `pulumi:"hostManaged"`
 	// The managed object IDs of the hosts to put in the cluster.
@@ -944,6 +952,8 @@ type ComputeClusterArgs struct {
 	HaVmRestartTimeout pulumi.IntPtrInput
 	// The timeout for each host maintenance mode operation when removing hosts from a cluster.
 	HostClusterExitTimeout pulumi.IntPtrInput
+	// Details about the host image which should be applied to the cluster.
+	HostImage ComputeClusterHostImagePtrInput
 	// Must be set if cluster enrollment is managed from host resource.
 	HostManaged pulumi.BoolPtrInput
 	// The managed object IDs of the hosts to put in the cluster.
@@ -1348,6 +1358,11 @@ func (o ComputeClusterOutput) HaVmRestartTimeout() pulumi.IntPtrOutput {
 // The timeout for each host maintenance mode operation when removing hosts from a cluster.
 func (o ComputeClusterOutput) HostClusterExitTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HostClusterExitTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Details about the host image which should be applied to the cluster.
+func (o ComputeClusterOutput) HostImage() ComputeClusterHostImagePtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) ComputeClusterHostImagePtrOutput { return v.HostImage }).(ComputeClusterHostImagePtrOutput)
 }
 
 // Must be set if cluster enrollment is managed from host resource.
