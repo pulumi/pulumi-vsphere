@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ### Uploading a File
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,23 +43,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ubuntuVmdkUpload = new File(&#34;ubuntuVmdkUpload&#34;, FileArgs.builder()        
- *             .datacenter(&#34;dc-01&#34;)
- *             .datastore(&#34;datastore-01&#34;)
- *             .sourceFile(&#34;/my/src/path/custom_ubuntu.vmdk&#34;)
- *             .destinationFile(&#34;/my/dst/path/custom_ubuntu.vmdk&#34;)
+ *         var ubuntuVmdkUpload = new File("ubuntuVmdkUpload", FileArgs.builder()        
+ *             .datacenter("dc-01")
+ *             .datastore("datastore-01")
+ *             .sourceFile("/my/src/path/custom_ubuntu.vmdk")
+ *             .destinationFile("/my/dst/path/custom_ubuntu.vmdk")
  *             .createDirectories(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Copying a File
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -79,19 +82,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ubuntuCopy = new File(&#34;ubuntuCopy&#34;, FileArgs.builder()        
- *             .sourceDatacenter(&#34;dc-01&#34;)
- *             .datacenter(&#34;dc-01&#34;)
- *             .sourceDatastore(&#34;datastore-01&#34;)
- *             .datastore(&#34;datastore-01&#34;)
- *             .sourceFile(&#34;/my/src/path/custom_ubuntu.vmdk&#34;)
- *             .destinationFile(&#34;/my/dst/path/custom_ubuntu.vmdk&#34;)
+ *         var ubuntuCopy = new File("ubuntuCopy", FileArgs.builder()        
+ *             .sourceDatacenter("dc-01")
+ *             .datacenter("dc-01")
+ *             .sourceDatastore("datastore-01")
+ *             .datastore("datastore-01")
+ *             .sourceFile("/my/src/path/custom_ubuntu.vmdk")
+ *             .destinationFile("/my/dst/path/custom_ubuntu.vmdk")
  *             .createDirectories(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

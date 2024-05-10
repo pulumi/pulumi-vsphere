@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * **Create a Virtual Switch and Bind a Port Group:**
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,33 +62,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
+ *             .name("dc-01")
  *             .build());
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
- *             .name(&#34;esxi-01.example.com&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var hostVirtualSwitch = new HostVirtualSwitch(&#34;hostVirtualSwitch&#34;, HostVirtualSwitchArgs.builder()        
- *             .name(&#34;switch-01&#34;)
- *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()        
+ *             .name("switch-01")
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .networkAdapters(            
- *                 &#34;vmnic0&#34;,
- *                 &#34;vmnic1&#34;)
- *             .activeNics(&#34;vmnic0&#34;)
- *             .standbyNics(&#34;vmnic1&#34;)
+ *                 "vmnic0",
+ *                 "vmnic1")
+ *             .activeNics("vmnic0")
+ *             .standbyNics("vmnic1")
  *             .build());
  * 
- *         var pg = new HostPortGroup(&#34;pg&#34;, HostPortGroupArgs.builder()        
- *             .name(&#34;portgroup-01&#34;)
- *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()        
+ *             .name("portgroup-01")
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .virtualSwitchName(hostVirtualSwitch.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * **Create a Port Group with a VLAN and ab Override:**
@@ -99,7 +101,8 @@ import javax.annotation.Nullable;
  * the implicit default of `false` set on the standard switch.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -126,27 +129,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name(&#34;dc-01&#34;)
+ *             .name("dc-01")
  *             .build());
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
- *             .name(&#34;esxi-01.example.com&#34;)
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var hostVirtualSwitch = new HostVirtualSwitch(&#34;hostVirtualSwitch&#34;, HostVirtualSwitchArgs.builder()        
- *             .name(&#34;switch-01&#34;)
- *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()        
+ *             .name("switch-01")
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .networkAdapters(            
- *                 &#34;vmnic0&#34;,
- *                 &#34;vmnic1&#34;)
- *             .activeNics(&#34;vmnic0&#34;)
- *             .standbyNics(&#34;vmnic1&#34;)
+ *                 "vmnic0",
+ *                 "vmnic1")
+ *             .activeNics("vmnic0")
+ *             .standbyNics("vmnic1")
  *             .build());
  * 
- *         var pg = new HostPortGroup(&#34;pg&#34;, HostPortGroupArgs.builder()        
- *             .name(&#34;portgroup-01&#34;)
- *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()        
+ *             .name("portgroup-01")
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .virtualSwitchName(hostVirtualSwitch.name())
  *             .vlanId(4095)
  *             .allowPromiscuous(true)
@@ -154,7 +157,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Importing

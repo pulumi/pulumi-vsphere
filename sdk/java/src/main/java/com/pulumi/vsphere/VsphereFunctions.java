@@ -109,7 +109,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -132,17 +133,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(&#34;cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -163,7 +165,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -186,17 +189,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(&#34;cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -217,7 +221,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -240,17 +245,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(&#34;cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -271,7 +277,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -294,17 +301,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(&#34;cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -319,7 +327,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -350,24 +359,25 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name(vsphereCluster)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name(&#34;host_group1&#34;)
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name("host_group1")
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
-     *             .name(&#34;terraform-host-rule1&#34;)
-     *             .vmGroupName(&#34;vm_group1&#34;)
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .name("terraform-host-rule1")
+     *             .vmGroupName("vm_group1")
+     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -382,7 +392,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -413,24 +424,25 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name(vsphereCluster)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name(&#34;host_group1&#34;)
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name("host_group1")
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
-     *             .name(&#34;terraform-host-rule1&#34;)
-     *             .vmGroupName(&#34;vm_group1&#34;)
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .name("terraform-host-rule1")
+     *             .vmGroupName("vm_group1")
+     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -445,7 +457,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -476,24 +489,25 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name(vsphereCluster)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name(&#34;host_group1&#34;)
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name("host_group1")
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
-     *             .name(&#34;terraform-host-rule1&#34;)
-     *             .vmGroupName(&#34;vm_group1&#34;)
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .name("terraform-host-rule1")
+     *             .vmGroupName("vm_group1")
+     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -508,7 +522,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -539,24 +554,25 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name(vsphereCluster)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name(&#34;host_group1&#34;)
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+     *             .name("host_group1")
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule(&#34;hostRule1&#34;, ComputeClusterVmHostRuleArgs.builder()        
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
-     *             .name(&#34;terraform-host-rule1&#34;)
-     *             .vmGroupName(&#34;vm_group1&#34;)
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -&gt; getComputeClusterHostGroupResult.name()))
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .name("terraform-host-rule1")
+     *             .vmGroupName("vm_group1")
+     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -571,7 +587,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -593,12 +610,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
-     *             .name(&#34;Content Library&#34;)
+     *             .name("Content Library")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -613,7 +631,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -635,12 +654,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
-     *             .name(&#34;Content Library&#34;)
+     *             .name("Content Library")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -655,7 +675,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -677,12 +698,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
-     *             .name(&#34;Content Library&#34;)
+     *             .name("Content Library")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -697,7 +719,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -719,12 +742,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
-     *             .name(&#34;Content Library&#34;)
+     *             .name("Content Library")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -788,7 +812,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -810,12 +835,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name(&#34;test-attribute&#34;)
+     *             .name("test-attribute")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -835,7 +861,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -857,12 +884,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name(&#34;test-attribute&#34;)
+     *             .name("test-attribute")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -882,7 +910,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -904,12 +933,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name(&#34;test-attribute&#34;)
+     *             .name("test-attribute")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -929,7 +959,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -951,12 +982,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name(&#34;test-attribute&#34;)
+     *             .name("test-attribute")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -972,7 +1004,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -994,12 +1027,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1015,7 +1049,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1037,12 +1072,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1058,7 +1094,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1080,12 +1117,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1101,7 +1139,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1123,12 +1162,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1144,7 +1184,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1166,12 +1207,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1187,7 +1229,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1209,12 +1252,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1230,7 +1274,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1253,17 +1298,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name(&#34;datastore-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1279,7 +1325,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1302,17 +1349,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name(&#34;datastore-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1328,7 +1376,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1351,17 +1400,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name(&#34;datastore-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1377,7 +1427,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1400,17 +1451,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name(&#34;datastore-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1426,7 +1478,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1449,17 +1502,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
-     *             .name(&#34;datastore-cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1475,7 +1529,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1498,17 +1553,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
-     *             .name(&#34;datastore-cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1524,7 +1580,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1547,17 +1604,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
-     *             .name(&#34;datastore-cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1573,7 +1631,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1596,17 +1655,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
-     *             .name(&#34;datastore-cluster-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("datastore-cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1621,7 +1681,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1644,16 +1705,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A usefull example of this datasource would be to determine the
@@ -1663,7 +1725,8 @@ public final class VsphereFunctions {
      * Create an `outputs.tf` like that:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1682,11 +1745,12 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
-     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
+     *         ctx.export("maxFreeSpaceName", theirMaxFreeSpaceName);
+     *         ctx.export("maxFreeSpace", theirMaxFreeSpace);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * and a `locals.tf` like that:
@@ -1703,7 +1767,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1726,16 +1791,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A usefull example of this datasource would be to determine the
@@ -1745,7 +1811,8 @@ public final class VsphereFunctions {
      * Create an `outputs.tf` like that:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1764,11 +1831,12 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
-     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
+     *         ctx.export("maxFreeSpaceName", theirMaxFreeSpaceName);
+     *         ctx.export("maxFreeSpace", theirMaxFreeSpace);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * and a `locals.tf` like that:
@@ -1785,7 +1853,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1808,16 +1877,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A usefull example of this datasource would be to determine the
@@ -1827,7 +1897,8 @@ public final class VsphereFunctions {
      * Create an `outputs.tf` like that:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1846,11 +1917,12 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
-     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
+     *         ctx.export("maxFreeSpaceName", theirMaxFreeSpaceName);
+     *         ctx.export("maxFreeSpace", theirMaxFreeSpace);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * and a `locals.tf` like that:
@@ -1867,7 +1939,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1890,16 +1963,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A usefull example of this datasource would be to determine the
@@ -1909,7 +1983,8 @@ public final class VsphereFunctions {
      * Create an `outputs.tf` like that:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1928,11 +2003,12 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         ctx.export(&#34;maxFreeSpaceName&#34;, theirMaxFreeSpaceName);
-     *         ctx.export(&#34;maxFreeSpace&#34;, theirMaxFreeSpace);
+     *         ctx.export("maxFreeSpaceName", theirMaxFreeSpaceName);
+     *         ctx.export("maxFreeSpace", theirMaxFreeSpace);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * and a `locals.tf` like that:
@@ -1959,7 +2035,8 @@ public final class VsphereFunctions {
      * primary uplink and the second uplink as a secondary.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1984,24 +2061,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
-     *             .name(&#34;vds-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vds-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
-     *             .name(&#34;dvpg-01&#34;)
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *             .name("dvpg-01")
+     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
+     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
+     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2026,7 +2104,8 @@ public final class VsphereFunctions {
      * primary uplink and the second uplink as a secondary.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2051,24 +2130,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
-     *             .name(&#34;vds-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vds-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
-     *             .name(&#34;dvpg-01&#34;)
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *             .name("dvpg-01")
+     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
+     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
+     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2093,7 +2173,8 @@ public final class VsphereFunctions {
      * primary uplink and the second uplink as a secondary.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2118,24 +2199,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
-     *             .name(&#34;vds-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vds-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
-     *             .name(&#34;dvpg-01&#34;)
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *             .name("dvpg-01")
+     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
+     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
+     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2160,7 +2242,8 @@ public final class VsphereFunctions {
      * primary uplink and the second uplink as a secondary.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2185,24 +2268,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
-     *             .name(&#34;vds-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vds-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup(&#34;dvpg&#34;, DistributedPortGroupArgs.builder()        
-     *             .name(&#34;dvpg-01&#34;)
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -&gt; getDistributedVirtualSwitchResult.uplinks()[1]))
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *             .name("dvpg-01")
+     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
+     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
+     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2219,7 +2303,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2243,30 +2328,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;SomeCategory&#34;)
+     *             .name("SomeCategory")
      *             .build());
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;FirstTag&#34;)
+     *             .name("FirstTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;SecondTag&#34;)
+     *             .name("SecondTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()))
-     *             .nameRegex(&#34;ubuntu&#34;)
-     *             .type(&#34;Datacenter&#34;)
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *             .nameRegex("ubuntu")
+     *             .type("Datacenter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2283,7 +2369,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2307,30 +2394,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;SomeCategory&#34;)
+     *             .name("SomeCategory")
      *             .build());
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;FirstTag&#34;)
+     *             .name("FirstTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;SecondTag&#34;)
+     *             .name("SecondTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()))
-     *             .nameRegex(&#34;ubuntu&#34;)
-     *             .type(&#34;Datacenter&#34;)
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *             .nameRegex("ubuntu")
+     *             .type("Datacenter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2347,7 +2435,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2371,30 +2460,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;SomeCategory&#34;)
+     *             .name("SomeCategory")
      *             .build());
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;FirstTag&#34;)
+     *             .name("FirstTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;SecondTag&#34;)
+     *             .name("SecondTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()))
-     *             .nameRegex(&#34;ubuntu&#34;)
-     *             .type(&#34;Datacenter&#34;)
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *             .nameRegex("ubuntu")
+     *             .type("Datacenter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2411,7 +2501,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2435,30 +2526,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;SomeCategory&#34;)
+     *             .name("SomeCategory")
      *             .build());
      * 
      *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;FirstTag&#34;)
+     *             .name("FirstTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;SecondTag&#34;)
+     *             .name("SecondTag")
      *             .categoryId(cat.id())
      *             .build());
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -&gt; getTagResult.id()))
-     *             .nameRegex(&#34;ubuntu&#34;)
-     *             .type(&#34;Datacenter&#34;)
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *             .nameRegex("ubuntu")
+     *             .type("Datacenter")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2472,7 +2564,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2494,12 +2587,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path(&#34;/dc-01/datastore-01/folder-01&#34;)
+     *             .path("/dc-01/datastore-01/folder-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2513,7 +2607,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2535,12 +2630,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path(&#34;/dc-01/datastore-01/folder-01&#34;)
+     *             .path("/dc-01/datastore-01/folder-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2554,7 +2650,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2576,12 +2673,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path(&#34;/dc-01/datastore-01/folder-01&#34;)
+     *             .path("/dc-01/datastore-01/folder-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2595,7 +2693,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2617,12 +2716,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path(&#34;/dc-01/datastore-01/folder-01&#34;)
+     *             .path("/dc-01/datastore-01/folder-01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2638,7 +2738,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2660,12 +2761,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name(&#34;linux-spec&#34;)
+     *             .name("linux-spec")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2681,7 +2783,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2703,12 +2806,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name(&#34;linux-spec&#34;)
+     *             .name("linux-spec")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2724,7 +2828,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2746,12 +2851,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name(&#34;linux-spec&#34;)
+     *             .name("linux-spec")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2767,7 +2873,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2789,12 +2896,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name(&#34;linux-spec&#34;)
+     *             .name("linux-spec")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2809,7 +2917,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2832,17 +2941,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2857,7 +2967,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2880,17 +2991,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2905,7 +3017,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2928,17 +3041,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2953,7 +3067,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2976,17 +3091,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3003,7 +3119,8 @@ public final class VsphereFunctions {
      * ### With Vendor ID And Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3027,29 +3144,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .classId(123)
      *             .vendorId(456)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With Name Regular Expression
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3073,22 +3192,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;MMC&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("MMC")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3105,7 +3225,8 @@ public final class VsphereFunctions {
      * ### With Vendor ID And Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3129,29 +3250,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .classId(123)
      *             .vendorId(456)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With Name Regular Expression
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3175,22 +3298,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;MMC&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("MMC")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3207,7 +3331,8 @@ public final class VsphereFunctions {
      * ### With Vendor ID And Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3231,29 +3356,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .classId(123)
      *             .vendorId(456)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With Name Regular Expression
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3277,22 +3404,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;MMC&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("MMC")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3309,7 +3437,8 @@ public final class VsphereFunctions {
      * ### With Vendor ID And Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3333,29 +3462,31 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .classId(123)
      *             .vendorId(456)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With Name Regular Expression
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3379,22 +3510,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;MMC&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("MMC")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3410,7 +3542,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3432,12 +3565,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
-     *             .address(&#34;esxi-01.example.com&#34;)
+     *             .address("esxi-01.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3453,7 +3587,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3475,12 +3610,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
-     *             .address(&#34;esxi-01.example.com&#34;)
+     *             .address("esxi-01.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3496,7 +3632,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3518,12 +3655,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
-     *             .address(&#34;esxi-01.example.com&#34;)
+     *             .address("esxi-01.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3539,7 +3677,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3561,12 +3700,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
-     *             .address(&#34;esxi-01.example.com&#34;)
+     *             .address("esxi-01.example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3582,7 +3722,8 @@ public final class VsphereFunctions {
      * ### To Return All VGPU Profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3606,27 +3747,29 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With VGPU Profile Name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3650,22 +3793,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;a100&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("a100")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3681,7 +3825,8 @@ public final class VsphereFunctions {
      * ### To Return All VGPU Profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3705,27 +3850,29 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With VGPU Profile Name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3749,22 +3896,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;a100&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("a100")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3780,7 +3928,8 @@ public final class VsphereFunctions {
      * ### To Return All VGPU Profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3804,27 +3953,29 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With VGPU Profile Name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3848,22 +3999,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;a100&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("a100")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3879,7 +4031,8 @@ public final class VsphereFunctions {
      * ### To Return All VGPU Profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3903,27 +4056,29 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With VGPU Profile Name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3947,22 +4102,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -&gt; getHostResult.id()))
-     *             .nameRegex(&#34;a100&#34;)
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("a100")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3976,7 +4132,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3998,12 +4155,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var license = VsphereFunctions.getLicense(GetLicenseArgs.builder()
-     *             .licenseKey(&#34;00000-00000-00000-00000-00000&#34;)
+     *             .licenseKey("00000-00000-00000-00000-00000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4017,7 +4175,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4039,12 +4198,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var license = VsphereFunctions.getLicense(GetLicenseArgs.builder()
-     *             .licenseKey(&#34;00000-00000-00000-00000-00000&#34;)
+     *             .licenseKey("00000-00000-00000-00000-00000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4058,7 +4218,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4080,12 +4241,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var license = VsphereFunctions.getLicense(GetLicenseArgs.builder()
-     *             .licenseKey(&#34;00000-00000-00000-00000-00000&#34;)
+     *             .licenseKey("00000-00000-00000-00000-00000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4099,7 +4261,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4121,12 +4284,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var license = VsphereFunctions.getLicense(GetLicenseArgs.builder()
-     *             .licenseKey(&#34;00000-00000-00000-00000-00000&#34;)
+     *             .licenseKey("00000-00000-00000-00000-00000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4143,7 +4307,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4166,17 +4331,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;VM Network&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4193,7 +4359,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4216,17 +4383,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;VM Network&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4243,7 +4411,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4266,17 +4435,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;VM Network&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4293,7 +4463,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4316,17 +4487,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;VM Network&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4380,7 +4552,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4402,16 +4575,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prodPlatinumReplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;prod_platinum_replicated&#34;)
+     *             .name("prod_platinum_replicated")
      *             .build());
      * 
      *         final var devSilverNonreplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;dev_silver_nonreplicated&#34;)
+     *             .name("dev_silver_nonreplicated")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4429,7 +4603,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4451,16 +4626,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prodPlatinumReplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;prod_platinum_replicated&#34;)
+     *             .name("prod_platinum_replicated")
      *             .build());
      * 
      *         final var devSilverNonreplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;dev_silver_nonreplicated&#34;)
+     *             .name("dev_silver_nonreplicated")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4478,7 +4654,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4500,16 +4677,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prodPlatinumReplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;prod_platinum_replicated&#34;)
+     *             .name("prod_platinum_replicated")
      *             .build());
      * 
      *         final var devSilverNonreplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;dev_silver_nonreplicated&#34;)
+     *             .name("dev_silver_nonreplicated")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4527,7 +4705,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4549,16 +4728,17 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var prodPlatinumReplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;prod_platinum_replicated&#34;)
+     *             .name("prod_platinum_replicated")
      *             .build());
      * 
      *         final var devSilverNonreplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;dev_silver_nonreplicated&#34;)
+     *             .name("dev_silver_nonreplicated")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4574,7 +4754,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4597,17 +4778,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;resource-pool-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("resource-pool-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -4621,7 +4803,8 @@ public final class VsphereFunctions {
      * _root resource pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4643,13 +4826,14 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;esxi-01.example.com/Resources&#34;)
+     *             .name("esxi-01.example.com/Resources")
      *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -4669,7 +4853,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4692,17 +4877,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;resource-pool-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("resource-pool-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -4716,7 +4902,8 @@ public final class VsphereFunctions {
      * _root resource pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4738,13 +4925,14 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;esxi-01.example.com/Resources&#34;)
+     *             .name("esxi-01.example.com/Resources")
      *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -4764,7 +4952,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4787,17 +4976,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;resource-pool-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("resource-pool-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -4811,7 +5001,8 @@ public final class VsphereFunctions {
      * _root resource pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4833,13 +5024,14 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;esxi-01.example.com/Resources&#34;)
+     *             .name("esxi-01.example.com/Resources")
      *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -4859,7 +5051,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4882,17 +5075,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;resource-pool-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("resource-pool-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -4906,7 +5100,8 @@ public final class VsphereFunctions {
      * _root resource pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4928,13 +5123,14 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;esxi-01.example.com/Resources&#34;)
+     *             .name("esxi-01.example.com/Resources")
      *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -4954,7 +5150,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4977,17 +5174,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;resource-pool-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("resource-pool-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -5001,7 +5199,8 @@ public final class VsphereFunctions {
      * _root resource pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5023,13 +5222,14 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;esxi-01.example.com/Resources&#34;)
+     *             .name("esxi-01.example.com/Resources")
      *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -5049,7 +5249,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5072,17 +5273,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;resource-pool-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("resource-pool-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -5096,7 +5298,8 @@ public final class VsphereFunctions {
      * _root resource pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5118,13 +5321,14 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name(&#34;esxi-01.example.com/Resources&#34;)
+     *             .name("esxi-01.example.com/Resources")
      *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -5142,7 +5346,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5164,12 +5369,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var terraformRole = VsphereFunctions.getRole(GetRoleArgs.builder()
-     *             .label(&#34;Terraform to vSphere Integration Role&#34;)
+     *             .label("Terraform to vSphere Integration Role")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5183,7 +5389,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5205,12 +5412,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var terraformRole = VsphereFunctions.getRole(GetRoleArgs.builder()
-     *             .label(&#34;Terraform to vSphere Integration Role&#34;)
+     *             .label("Terraform to vSphere Integration Role")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5224,7 +5432,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5246,12 +5455,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var terraformRole = VsphereFunctions.getRole(GetRoleArgs.builder()
-     *             .label(&#34;Terraform to vSphere Integration Role&#34;)
+     *             .label("Terraform to vSphere Integration Role")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5265,7 +5475,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5287,12 +5498,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var terraformRole = VsphereFunctions.getRole(GetRoleArgs.builder()
-     *             .label(&#34;Terraform to vSphere Integration Role&#34;)
+     *             .label("Terraform to vSphere Integration Role")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5312,7 +5524,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5335,17 +5548,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example-tag&#34;)
-     *             .categoryId(category.applyValue(getTagCategoryResult -&gt; getTagCategoryResult.id()))
+     *             .name("example-tag")
+     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5365,7 +5579,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5388,17 +5603,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example-tag&#34;)
-     *             .categoryId(category.applyValue(getTagCategoryResult -&gt; getTagCategoryResult.id()))
+     *             .name("example-tag")
+     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5418,7 +5634,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5441,17 +5658,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example-tag&#34;)
-     *             .categoryId(category.applyValue(getTagCategoryResult -&gt; getTagCategoryResult.id()))
+     *             .name("example-tag")
+     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5471,7 +5689,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5494,17 +5713,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
-     *             .name(&#34;example-tag&#34;)
-     *             .categoryId(category.applyValue(getTagCategoryResult -&gt; getTagCategoryResult.id()))
+     *             .name("example-tag")
+     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5524,7 +5744,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5546,12 +5767,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5571,7 +5793,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5593,12 +5816,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5618,7 +5842,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5640,12 +5865,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5665,7 +5891,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5687,12 +5914,13 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
-     *             .name(&#34;example-category&#34;)
+     *             .name("example-category")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5708,7 +5936,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5731,17 +5960,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
-     *             .name(&#34;vapp-container-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vapp-container-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5757,7 +5987,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5780,17 +6011,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
-     *             .name(&#34;vapp-container-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vapp-container-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5806,7 +6038,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5829,17 +6062,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
-     *             .name(&#34;vapp-container-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vapp-container-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5855,7 +6089,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5878,17 +6113,18 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
-     *             .name(&#34;vapp-container-01&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("vapp-container-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5908,7 +6144,8 @@ public final class VsphereFunctions {
      * unique name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5931,23 +6168,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5970,22 +6209,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;production/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("production/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;development/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("development/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6005,7 +6245,8 @@ public final class VsphereFunctions {
      * unique name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6028,23 +6269,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6067,22 +6310,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;production/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("production/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;development/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("development/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6102,7 +6346,8 @@ public final class VsphereFunctions {
      * unique name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6125,23 +6370,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6164,22 +6411,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;production/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("production/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;development/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("development/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6199,7 +6447,8 @@ public final class VsphereFunctions {
      * unique name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6222,23 +6471,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6261,22 +6512,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;production/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("production/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;development/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("development/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6296,7 +6548,8 @@ public final class VsphereFunctions {
      * unique name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6319,23 +6572,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6358,22 +6613,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;production/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("production/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;development/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("development/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6393,7 +6649,8 @@ public final class VsphereFunctions {
      * unique name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6416,23 +6673,25 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6455,22 +6714,23 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;production/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("production/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
-     *             .name(&#34;development/templates/ubuntu-server-template&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("development/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6486,7 +6746,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6510,23 +6771,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .rescan(true)
-     *             .filter(&#34;mpx.vmhba1:C0:T[12]:L0&#34;)
+     *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6542,7 +6804,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6566,23 +6829,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .rescan(true)
-     *             .filter(&#34;mpx.vmhba1:C0:T[12]:L0&#34;)
+     *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6598,7 +6862,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6622,23 +6887,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .rescan(true)
-     *             .filter(&#34;mpx.vmhba1:C0:T[12]:L0&#34;)
+     *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6654,7 +6920,8 @@ public final class VsphereFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6678,23 +6945,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(&#34;dc-01&#34;)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name(&#34;esxi-01.example.com&#34;)
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
      *             .rescan(true)
-     *             .filter(&#34;mpx.vmhba1:C0:T[12]:L0&#34;)
+     *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
