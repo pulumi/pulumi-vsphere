@@ -369,7 +369,7 @@ public final class VsphereFunctions {
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
      *             .vmGroupName("vm_group1")
@@ -434,7 +434,7 @@ public final class VsphereFunctions {
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
      *             .vmGroupName("vm_group1")
@@ -499,7 +499,7 @@ public final class VsphereFunctions {
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
      *             .vmGroupName("vm_group1")
@@ -564,7 +564,7 @@ public final class VsphereFunctions {
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()        
+     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
      *             .vmGroupName("vm_group1")
@@ -2071,7 +2071,7 @@ public final class VsphereFunctions {
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
@@ -2140,7 +2140,7 @@ public final class VsphereFunctions {
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
@@ -2209,7 +2209,7 @@ public final class VsphereFunctions {
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
@@ -2278,7 +2278,7 @@ public final class VsphereFunctions {
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()        
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
      *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
      *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))

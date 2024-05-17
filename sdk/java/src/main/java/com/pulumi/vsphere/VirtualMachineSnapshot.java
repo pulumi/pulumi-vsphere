@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var demo1 = new VirtualMachineSnapshot("demo1", VirtualMachineSnapshotArgs.builder()        
+ *         var demo1 = new VirtualMachineSnapshot("demo1", VirtualMachineSnapshotArgs.builder()
  *             .virtualMachineUuid("9aac5551-a351-4158-8c5c-15a71e8ec5c9")
  *             .snapshotName("Snapshot Name")
  *             .description("This is Demo Snapshot")
