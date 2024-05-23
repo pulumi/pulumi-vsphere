@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .datacenterId(dc.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var d1 = new DistributedVirtualSwitch("d1", DistributedVirtualSwitchArgs.builder()        
+ *         var d1 = new DistributedVirtualSwitch("d1", DistributedVirtualSwitchArgs.builder()
  *             .name("dc_DVPG0")
  *             .datacenterId(dc.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .hosts(DistributedVirtualSwitchHostArgs.builder()
@@ -77,13 +77,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var p1 = new DistributedPortGroup("p1", DistributedPortGroupArgs.builder()        
+ *         var p1 = new DistributedPortGroup("p1", DistributedPortGroupArgs.builder()
  *             .name("test-pg")
  *             .vlanId(1234)
  *             .distributedVirtualSwitchUuid(d1.id())
  *             .build());
  * 
- *         var v1 = new Vnic("v1", VnicArgs.builder()        
+ *         var v1 = new Vnic("v1", VnicArgs.builder()
  *             .host(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .distributedSwitchPort(d1.id())
  *             .distributedPortGroup(p1.id())
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *             .datacenterId(dc.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var hvs1 = new HostVirtualSwitch("hvs1", HostVirtualSwitchArgs.builder()        
+ *         var hvs1 = new HostVirtualSwitch("hvs1", HostVirtualSwitchArgs.builder()
  *             .name("dc_HPG0")
  *             .hostSystemId(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .networkAdapters(            
@@ -151,13 +151,13 @@ import javax.annotation.Nullable;
  *             .standbyNics("vmnic4")
  *             .build());
  * 
- *         var p1 = new HostPortGroup("p1", HostPortGroupArgs.builder()        
+ *         var p1 = new HostPortGroup("p1", HostPortGroupArgs.builder()
  *             .name("my-pg")
  *             .virtualSwitchName(hvs1.name())
  *             .hostSystemId(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .build());
  * 
- *         var v1 = new Vnic("v1", VnicArgs.builder()        
+ *         var v1 = new Vnic("v1", VnicArgs.builder()
  *             .host(h1.applyValue(getHostResult -> getHostResult.id()))
  *             .portgroup(p1.name())
  *             .ipv4(VnicIpv4Args.builder()
