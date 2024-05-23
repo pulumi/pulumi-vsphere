@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prodDatacenter = new Datacenter("prodDatacenter", DatacenterArgs.builder()        
+ *         var prodDatacenter = new Datacenter("prodDatacenter", DatacenterArgs.builder()
  *             .name("my_prod_datacenter")
  *             .build());
  * 
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var researchDatacenter = new Datacenter("researchDatacenter", DatacenterArgs.builder()        
+ *         var researchDatacenter = new Datacenter("researchDatacenter", DatacenterArgs.builder()
  *             .name("my_research_datacenter")
  *             .folder("/research/")
  *             .build());

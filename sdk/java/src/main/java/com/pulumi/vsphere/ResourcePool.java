@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var resourcePool = new ResourcePool("resourcePool", ResourcePoolArgs.builder()        
+ *         var resourcePool = new ResourcePool("resourcePool", ResourcePoolArgs.builder()
  *             .name("resource-pool-01")
  *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
  *             .build());
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()        
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .resourcePoolId(cluster.resourcePoolId())
  *             .build());
  * 
@@ -153,12 +153,12 @@ import javax.annotation.Nullable;
  *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var resourcePoolParent = new ResourcePool("resourcePoolParent", ResourcePoolArgs.builder()        
+ *         var resourcePoolParent = new ResourcePool("resourcePoolParent", ResourcePoolArgs.builder()
  *             .name("parent")
  *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
  *             .build());
  * 
- *         var resourcePoolChild = new ResourcePool("resourcePoolChild", ResourcePoolArgs.builder()        
+ *         var resourcePoolChild = new ResourcePool("resourcePoolChild", ResourcePoolArgs.builder()
  *             .name("child")
  *             .parentResourcePoolId(resourcePoolParent.id())
  *             .build());

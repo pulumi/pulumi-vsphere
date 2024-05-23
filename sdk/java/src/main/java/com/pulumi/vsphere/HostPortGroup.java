@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()        
+ *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()
  *             .name("switch-01")
  *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .networkAdapters(            
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .standbyNics("vmnic1")
  *             .build());
  * 
- *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()        
+ *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()
  *             .name("portgroup-01")
  *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .virtualSwitchName(hostVirtualSwitch.name())
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
  *             .build());
  * 
- *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()        
+ *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()
  *             .name("switch-01")
  *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .networkAdapters(            
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .standbyNics("vmnic1")
  *             .build());
  * 
- *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()        
+ *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()
  *             .name("portgroup-01")
  *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
  *             .virtualSwitchName(hostVirtualSwitch.name())

@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var licenseKey = new License("licenseKey", LicenseArgs.builder()        
+ *         var licenseKey = new License("licenseKey", LicenseArgs.builder()
  *             .licenseKey("452CQ-2EK54-K8742-00000-00000")
  *             .labels(Map.ofEntries(
  *                 Map.entry("vpxClientLicenseLabel", "Hello World"),

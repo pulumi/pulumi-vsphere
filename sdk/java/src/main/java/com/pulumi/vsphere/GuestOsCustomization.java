@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var windowsCustomization = new GuestOsCustomization("windowsCustomization", GuestOsCustomizationArgs.builder()        
+ *         var windowsCustomization = new GuestOsCustomization("windowsCustomization", GuestOsCustomizationArgs.builder()
  *             .name("windows-spec")
  *             .type("Windows")
  *             .spec(GuestOsCustomizationSpecArgs.builder()
