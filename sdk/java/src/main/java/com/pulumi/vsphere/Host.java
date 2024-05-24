@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .insecure(true)
  *             .build());
  * 
- *         var esx_01 = new Host("esx-01", HostArgs.builder()        
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()
  *             .hostname("esx-01.example.com")
  *             .username("root")
  *             .password("password")
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .insecure(true)
  *             .build());
  * 
- *         var esx_01 = new Host("esx-01", HostArgs.builder()        
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()
  *             .hostname("esx-01.example.com")
  *             .username("root")
  *             .password("password")

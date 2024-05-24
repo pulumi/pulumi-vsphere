@@ -107,14 +107,14 @@ import javax.annotation.Nullable;
  *             .categoryId("data.vsphere_tag_category.replication.id")
  *             .build());
  * 
- *         var prodDatastore = new VmfsDatastore("prodDatastore", VmfsDatastoreArgs.builder()        
+ *         var prodDatastore = new VmfsDatastore("prodDatastore", VmfsDatastoreArgs.builder()
  *             .tags(            
  *                 "data.vsphere_tag.production.id",
  *                 "data.vsphere_tag.platinum.id",
  *                 "data.vsphere_tag.replicated.id")
  *             .build());
  * 
- *         var devDatastore = new NasDatastore("devDatastore", NasDatastoreArgs.builder()        
+ *         var devDatastore = new NasDatastore("devDatastore", NasDatastoreArgs.builder()
  *             .tags(            
  *                 "data.vsphere_tag.development.id",
  *                 "data.vsphere_tag.silver.id",
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var prodPlatinumReplicated = new VmStoragePolicy("prodPlatinumReplicated", VmStoragePolicyArgs.builder()        
+ *         var prodPlatinumReplicated = new VmStoragePolicy("prodPlatinumReplicated", VmStoragePolicyArgs.builder()
  *             .name("prod_platinum_replicated")
  *             .description("prod_platinum_replicated")
  *             .tagRules(            
@@ -174,7 +174,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var devSilverNonreplicated = new VmStoragePolicy("devSilverNonreplicated", VmStoragePolicyArgs.builder()        
+ *         var devSilverNonreplicated = new VmStoragePolicy("devSilverNonreplicated", VmStoragePolicyArgs.builder()
  *             .name("dev_silver_nonreplicated")
  *             .description("dev_silver_nonreplicated")
  *             .tagRules(            
@@ -236,11 +236,11 @@ import javax.annotation.Nullable;
  *             .name("dev_silver_nonreplicated")
  *             .build());
  * 
- *         var prodVm = new VirtualMachine("prodVm", VirtualMachineArgs.builder()        
+ *         var prodVm = new VirtualMachine("prodVm", VirtualMachineArgs.builder()
  *             .storagePolicyId(storagePolicy.prodPlatinumReplicated().id())
  *             .build());
  * 
- *         var devVm = new VirtualMachine("devVm", VirtualMachineArgs.builder()        
+ *         var devVm = new VirtualMachine("devVm", VirtualMachineArgs.builder()
  *             .storagePolicyId(storagePolicy.devSilverNonreplicated().id())
  *             .build());
  * 

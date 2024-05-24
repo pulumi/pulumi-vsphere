@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicClass = new VirtualMachineClass("basicClass", VirtualMachineClassArgs.builder()        
+ *         var basicClass = new VirtualMachineClass("basicClass", VirtualMachineClassArgs.builder()
  *             .name("basic-class")
  *             .cpus(4)
  *             .memory(4096)
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vgpClass = new VirtualMachineClass("vgpClass", VirtualMachineClassArgs.builder()        
+ *         var vgpClass = new VirtualMachineClass("vgpClass", VirtualMachineClassArgs.builder()
  *             .name("vgpu-class")
  *             .cpus(4)
  *             .memory(4096)

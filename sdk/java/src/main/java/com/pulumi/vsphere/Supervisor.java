@@ -61,13 +61,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vmClass = new VirtualMachineClass("vmClass", VirtualMachineClassArgs.builder()        
+ *         var vmClass = new VirtualMachineClass("vmClass", VirtualMachineClassArgs.builder()
  *             .name("custom-class")
  *             .cpus(4)
  *             .memory(4096)
  *             .build());
  * 
- *         var supervisor = new Supervisor("supervisor", SupervisorArgs.builder()        
+ *         var supervisor = new Supervisor("supervisor", SupervisorArgs.builder()
  *             .cluster("<compute_cluster_id>")
  *             .storagePolicy("<storage_policy_name>")
  *             .contentLibrary("<content_library_id>")

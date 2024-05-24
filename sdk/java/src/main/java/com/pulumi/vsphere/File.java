@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ubuntuVmdkUpload = new File("ubuntuVmdkUpload", FileArgs.builder()        
+ *         var ubuntuVmdkUpload = new File("ubuntuVmdkUpload", FileArgs.builder()
  *             .datacenter("dc-01")
  *             .datastore("datastore-01")
  *             .sourceFile("/my/src/path/custom_ubuntu.vmdk")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ubuntuCopy = new File("ubuntuCopy", FileArgs.builder()        
+ *         var ubuntuCopy = new File("ubuntuCopy", FileArgs.builder()
  *             .sourceDatacenter("dc-01")
  *             .datacenter("dc-01")
  *             .sourceDatastore("datastore-01")
