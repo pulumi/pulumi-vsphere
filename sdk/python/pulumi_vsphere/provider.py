@@ -196,10 +196,8 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="vcenterServer")
+    @_utilities.deprecated("""This field has been renamed to vsphere_server.""")
     def vcenter_server(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
-        pulumi.log.warn("""vcenter_server is deprecated: This field has been renamed to vsphere_server.""")
-
         return pulumi.get(self, "vcenter_server")
 
     @vcenter_server.setter
@@ -413,10 +411,8 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="vcenterServer")
+    @_utilities.deprecated("""This field has been renamed to vsphere_server.""")
     def vcenter_server(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
-        pulumi.log.warn("""vcenter_server is deprecated: This field has been renamed to vsphere_server.""")
-
         return pulumi.get(self, "vcenter_server")
 
     @property
