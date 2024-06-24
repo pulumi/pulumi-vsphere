@@ -109,6 +109,7 @@ class VirtualDiskArgs:
 
     @property
     @pulumi.getter(name="adapterType")
+    @_utilities.deprecated("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
     def adapter_type(self) -> Optional[pulumi.Input[str]]:
         """
         The adapter type for this virtual disk. Can be
@@ -121,9 +122,6 @@ class VirtualDiskArgs:
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
-        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
-
         return pulumi.get(self, "adapter_type")
 
     @adapter_type.setter
@@ -243,6 +241,7 @@ class _VirtualDiskState:
 
     @property
     @pulumi.getter(name="adapterType")
+    @_utilities.deprecated("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
     def adapter_type(self) -> Optional[pulumi.Input[str]]:
         """
         The adapter type for this virtual disk. Can be
@@ -255,9 +254,6 @@ class _VirtualDiskState:
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
-        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
-
         return pulumi.get(self, "adapter_type")
 
     @adapter_type.setter
@@ -522,6 +518,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adapterType")
+    @_utilities.deprecated("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
     def adapter_type(self) -> pulumi.Output[Optional[str]]:
         """
         The adapter type for this virtual disk. Can be
@@ -534,9 +531,6 @@ class VirtualDisk(pulumi.CustomResource):
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
-        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""", DeprecationWarning)
-        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in VirtualMachine instead""")
-
         return pulumi.get(self, "adapter_type")
 
     @property
