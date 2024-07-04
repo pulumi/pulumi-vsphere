@@ -5,15 +5,19 @@ Subject: [PATCH] fork
 
 
 diff --git a/website/docs/d/compute_cluster.html.markdown b/website/docs/d/compute_cluster.html.markdown
-index 445940be..01994b88 100644
+index 84219d90..01994b88 100644
 --- a/website/docs/d/compute_cluster.html.markdown
 +++ b/website/docs/d/compute_cluster.html.markdown
-@@ -12,18 +12,13 @@ description: |-
+@@ -11,21 +11,14 @@ description: |-
+ # vsphere\_compute\_cluster
  
  The `vsphere_compute_cluster` data source can be used to discover the ID of a
- cluster in vSphere. This is useful to fetch the ID of a cluster that you want
--to use for virtual machine placement via the [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource, allowing to specify the cluster's root resource pool directly versus
--using the alias available through the [`vsphere_resource_pool`][docs-resource-pool-data-source]
+-cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+-use for virtual machine placement via the
+-[`vsphere_virtual_machine`][docs-virtual-machine-resource] resource, allowing to
+-specify the cluster's root resource pool directly versus using the alias
+-available through the [`vsphere_resource_pool`][docs-resource-pool-data-source]
++cluster in vSphere. This is useful to fetch the ID of a cluster that you want
 +to use for virtual machine placement via the `vsphere_virtual_machine` resource, allowing to specify the cluster's root resource pool directly versus
 +using the alias available through the `vsphere_resource_pool`
  data source.
@@ -31,18 +35,22 @@ index 445940be..01994b88 100644
  
  ## Example Usage
  
-@@ -43,17 +38,15 @@ data "vsphere_compute_cluster" "compute_cluster" {
+@@ -45,18 +38,15 @@ data "vsphere_compute_cluster" "compute_cluster" {
  The following arguments are supported:
  
  * `name` - (Required) The name or absolute path to the cluster.
--* `datacenter_id` - (Optional) The [managed object reference ID][docs-about-morefs]
-+* `datacenter_id` - (Optional) The managed object reference ID
-   of the datacenter the cluster is located in.  This can be omitted if the
-   search path used in `name` is an absolute path. For default datacenters,
-   use the `id` attribute from an empty `vsphere_datacenter` data source.
- 
--[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+-* `datacenter_id` - (Optional) The
+-  [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+-  is located in. This can be omitted if the search path used in `name` is an
+-  absolute path. For default datacenters, use the `id` attribute from an empty
+-  `vsphere_datacenter` data source.
 -
+-[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
++* `datacenter_id` - (Optional) The managed object reference ID
++  of the datacenter the cluster is located in.  This can be omitted if the
++  search path used in `name` is an absolute path. For default datacenters,
++  use the `id` attribute from an empty `vsphere_datacenter` data source.
+ 
  ## Attribute Reference
  
  The following attributes are exported:
@@ -53,10 +61,10 @@ index 445940be..01994b88 100644
 +* `resource_pool_id`: The managed object reference ID of
    the root resource pool for the cluster.
 diff --git a/website/docs/d/content_library.html.markdown b/website/docs/d/content_library.html.markdown
-index 0b07b88c..2611d9d9 100644
+index 48226048..6625855e 100644
 --- a/website/docs/d/content_library.html.markdown
 +++ b/website/docs/d/content_library.html.markdown
-@@ -30,5 +30,5 @@ The following arguments are supported:
+@@ -32,5 +32,5 @@ The following arguments are supported:
  ## Attribute Reference
  
  The only attribute this resource exports is the `id` of the resource, which is
@@ -107,14 +115,18 @@ index ed557e91..fe85521c 100644
 +the `vsphere_custom_attribute` resource are also
  populated.
 diff --git a/website/docs/d/datacenter.html.markdown b/website/docs/d/datacenter.html.markdown
-index 14cd3ecd..dd180f13 100644
+index 6484b04d..dd180f13 100644
 --- a/website/docs/d/datacenter.html.markdown
 +++ b/website/docs/d/datacenter.html.markdown
-@@ -11,11 +11,9 @@ description: |-
+@@ -9,13 +9,11 @@ description: |-
  
- The `vsphere_datacenter` data source can be used to discover the ID of a
- vSphere datacenter object. This can then be used with resources or data sources
--that require a datacenter, such as the [`vsphere_host`][data-source-vsphere-host]
+ # vsphere\_datacenter
+ 
+-The `vsphere_datacenter` data source can be used to discover the ID of a vSphere
+-datacenter object. This can then be used with resources or data sources that
+-require a datacenter, such as the [`vsphere_host`][data-source-vsphere-host]
++The `vsphere_datacenter` data source can be used to discover the ID of a
++vSphere datacenter object. This can then be used with resources or data sources
 +that require a datacenter, such as the `vsphere_host`
  data source.
  
@@ -134,43 +146,54 @@ index 14cd3ecd..dd180f13 100644
 +The only exported attribute is `id`, which is the managed object
 +ID of this datacenter.
 diff --git a/website/docs/d/datastore.html.markdown b/website/docs/d/datastore.html.markdown
-index cd016bd2..95003764 100644
+index 8777c024..1df6a00b 100644
 --- a/website/docs/d/datastore.html.markdown
 +++ b/website/docs/d/datastore.html.markdown
-@@ -12,9 +12,8 @@ description: |-
- The `vsphere_datastore` data source can be used to discover the ID of a
- vSphere datastore object. This can then be used with resources or data sources
- that require a datastore. For example, to create virtual machines in using the
+@@ -9,12 +9,11 @@ description: |-
+ 
+ # vsphere_datastore
+ 
+-The `vsphere_datastore` data source can be used to discover the ID of a vSphere
+-datastore object. This can then be used with resources or data sources that
+-require a datastore. For example, to create virtual machines in using the
 -[`vsphere_virtual_machine`][docs-virtual-machine-resource] resource.
++The `vsphere_datastore` data source can be used to discover the ID of a
++vSphere datastore object. This can then be used with resources or data sources
++that require a datastore. For example, to create virtual machines in using the
 +`vsphere_virtual_machine` resource.
  
 -[docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
  
  ## Example Usage
  
-@@ -34,13 +33,11 @@ data "vsphere_datastore" "datastore" {
+@@ -34,13 +33,10 @@ data "vsphere_datastore" "datastore" {
  The following arguments are supported:
  
  - `name` - (Required) The name of the datastore. This can be a name or path.
--- `datacenter_id` - (Optional) The [managed object reference ID][docs-about-morefs]
-+- `datacenter_id` - (Optional) The managed object reference ID
-   of the datacenter the datastore is located in. This can be omitted if the
-   search path used in `name` is an absolute path. For default datacenters, use
-   the `id` attribute from an empty `vsphere_datacenter` data source.
- 
--[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+-- `datacenter_id` - (Optional) The
+-  [managed object reference ID][docs-about-morefs] of the datacenter the
+-  datastore is located in. This can be omitted if the search path used in `name`
+-  is an absolute path. For default datacenters, use the `id` attribute from an
+-  empty `vsphere_datacenter` data source.
 -
+-[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
++- `datacenter_id` - (Optional) The managed object reference ID
++  of the datacenter the datastore is located in. This can be omitted if the
++  search path used in `name` is an absolute path. For default datacenters, use
++  the `id` attribute from an empty `vsphere_datacenter` data source.
+ 
  ## Attribute Reference
  
- The following attributes are exported:
 diff --git a/website/docs/d/datastore_cluster.html.markdown b/website/docs/d/datastore_cluster.html.markdown
-index ad5324a3..a0119b8a 100644
+index 21f45255..a0119b8a 100644
 --- a/website/docs/d/datastore_cluster.html.markdown
 +++ b/website/docs/d/datastore_cluster.html.markdown
-@@ -12,14 +12,7 @@ description: |-
+@@ -10,16 +10,9 @@ description: |-
+ # vsphere\_datastore\_cluster
+ 
  The `vsphere_datastore_cluster` data source can be used to discover the ID of a
- vSphere datastore cluster object. This can then be used with resources or data sources
- that require a datastore. For example, to assign datastores using the
+-vSphere datastore cluster object. This can then be used with resources or data
+-sources that require a datastore. For example, to assign datastores using the
 -[`vsphere_nas_datastore`][docs-nas-datastore-resource] or
 -[`vsphere_vmfs_datastore`][docs-vmfs-datastore-resource] resources, or to create
 -virtual machines in using the
@@ -179,6 +202,8 @@ index ad5324a3..a0119b8a 100644
 -[docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
 -[docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
 -[docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
++vSphere datastore cluster object. This can then be used with resources or data sources
++that require a datastore. For example, to assign datastores using the
 +`vsphere_nas_datastore` or `vsphere_vmfs_datastore` resources, or to create virtual machines in using the `vsphere_virtual_machine` resource.
  
  ## Example Usage
@@ -201,14 +226,20 @@ index ad5324a3..a0119b8a 100644
  
  The only exported attribute from this data source is `id`, which represents the
 diff --git a/website/docs/d/distributed_virtual_switch.html.markdown b/website/docs/d/distributed_virtual_switch.html.markdown
-index e4dcf67c..0c61fd91 100644
+index fd7c5169..cb84377f 100644
 --- a/website/docs/d/distributed_virtual_switch.html.markdown
 +++ b/website/docs/d/distributed_virtual_switch.html.markdown
-@@ -13,11 +13,9 @@ description: |-
- The `vsphere_distributed_virtual_switch` data source can be used to discover
- the ID and uplink data of a of a vSphere distributed switch (VDS). This
- can then be used with resources or data sources that require a VDS, such as the
+@@ -10,14 +10,12 @@ description: |-
+ 
+ # vsphere\_distributed\_virtual\_switch
+ 
+-The `vsphere_distributed_virtual_switch` data source can be used to discover the
+-ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+-used with resources or data sources that require a VDS, such as the
 -[`vsphere_distributed_port_group`][distributed-port-group] resource, for which
++The `vsphere_distributed_virtual_switch` data source can be used to discover
++the ID and uplink data of a of a vSphere distributed switch (VDS). This
++can then be used with resources or data sources that require a VDS, such as the
 +`vsphere_distributed_port_group` resource, for which
  an example is shown below.
  
@@ -217,34 +248,37 @@ index e4dcf67c..0c61fd91 100644
  ~> **NOTE:** This data source requires vCenter Server and is not available on
  direct ESXi host connections.
  
-@@ -52,12 +50,11 @@ resource "vsphere_distributed_port_group" "dvpg" {
+@@ -52,23 +50,18 @@ resource "vsphere_distributed_port_group" "dvpg" {
  The following arguments are supported:
  
  * `name` - (Required) The name of the VDS. This can be a name or path.
--* `datacenter_id` - (Optional) The [managed object reference ID][docs-about-morefs]
+-* `datacenter_id` - (Optional) The
+-  [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+-  located in. This can be omitted if the search path used in `name` is an
+-  absolute path. For default datacenters, use the `id` attribute from an empty
+-  `vsphere_datacenter` data source.
 +* `datacenter_id` - (Optional) The managed object reference ID
-   of the datacenter the VDS is located in. This can be omitted if the search
-   path used in `name` is an absolute path. For default datacenters, use the `id`
-   attribute from an empty `vsphere_datacenter` data source.
++  of the datacenter the VDS is located in. This can be omitted if the search
++  path used in `name` is an absolute path. For default datacenters, use the `id`
++  attribute from an empty `vsphere_datacenter` data source.
  
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  
  ## Attribute Reference
  
-@@ -65,9 +62,6 @@ The following attributes are exported:
+ The following attributes are exported:
  
  * `id`: The UUID of the vSphere distributed switch.
- * `uplinks`: The list of the uplinks on this vSphere distributed switch, as per the
--  [`uplinks`][distributed-virtual-switch-uplinks] argument to the
+-* `uplinks`: The list of the uplinks on this vSphere distributed switch, as per
+-  the [`uplinks`][distributed-virtual-switch-uplinks] argument to the
 -  [`vsphere_distributed_virtual_switch`][distributed-virtual-switch-resource]
--  resource.
++* `uplinks`: The list of the uplinks on this vSphere distributed switch, as per the
++  `uplinks` argument to the
++  `vsphere_distributed_virtual_switch`
+   resource.
 -
 -[distributed-virtual-switch-uplinks]: /docs/providers/vsphere/r/distributed_virtual_switch.html#uplinks
 -[distributed-virtual-switch-resource]: /docs/providers/vsphere/r/distributed_virtual_switch.html
-+  `uplinks` argument to the
-+  `vsphere_distributed_virtual_switch`
-+  resource.
-\ No newline at end of file
 diff --git a/website/docs/d/folder.html.markdown b/website/docs/d/folder.html.markdown
 index 8a5c85c4..ee5270bb 100644
 --- a/website/docs/d/folder.html.markdown
@@ -267,32 +301,38 @@ index 8a5c85c4..ee5270bb 100644
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 +managed object ID of the folder.
 diff --git a/website/docs/d/host.html.markdown b/website/docs/d/host.html.markdown
-index d1f4f314..9087fe5f 100644
+index 50e01bd4..9087fe5f 100644
 --- a/website/docs/d/host.html.markdown
 +++ b/website/docs/d/host.html.markdown
-@@ -11,9 +11,7 @@ description: |-
+@@ -10,10 +10,8 @@ description: |-
+ # vsphere\_host
  
  The `vsphere_host` data source can be used to discover the ID of an ESXi host.
- This can then be used with resources or data sources that require an ESX
--host's [managed object reference ID][docs-about-morefs].
+-This can then be used with resources or data sources that require an ESX host's
+-[managed object reference ID][docs-about-morefs].
 -
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
++This can then be used with resources or data sources that require an ESX
 +host's managed object reference ID.
  
  ## Example Usage
  
-@@ -32,25 +30,21 @@ data "vsphere_host" "host" {
+@@ -32,27 +30,21 @@ data "vsphere_host" "host" {
  
  The following arguments are supported:
  
--* `datacenter_id` - (Required) The [managed object reference ID][docs-about-morefs]
-+* `datacenter_id` - (Required) The managed object reference ID
-   of a vSphere datacenter object.
- * `name` - (Optional) The name of the ESXI host. This can be a name or path.
-   Can be omitted if there is only one host in your inventory.
- 
--[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+-* `datacenter_id` - (Required) The
+-  [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+-  object.
+-* `name` - (Optional) The name of the ESXI host. This can be a name or path. Can
+-  be omitted if there is only one host in your inventory.
 -
+-[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
++* `datacenter_id` - (Required) The managed object reference ID
++  of a vSphere datacenter object.
++* `name` - (Optional) The name of the ESXI host. This can be a name or path.
++  Can be omitted if there is only one host in your inventory.
+ 
  ~> **NOTE:** When used against an ESXi host directly, this data source _always_
  returns the ESXi host's object ID, regardless of what is entered into `name`.
  
@@ -304,29 +344,38 @@ index d1f4f314..9087fe5f 100644
 +* `resource_pool_id` - The managed object ID of the ESXi
    host's root resource pool.
  
---> Note that the resource pool referenced by [`resource_pool_id`](#resource_pool_id)
-+-> Note that the resource pool referenced by `resource_pool_id`
-   is dependent on the ESXi host's state. If it is a standalone ESXi host, the
-   resource pool will belong to the host only; however, if it is a member of a
-   cluster, the resource pool will be the root for the cluster.
+--> Note that the resource pool referenced by
+-[`resource_pool_id`](#resource_pool_id) is dependent on the ESXi host's state.
+-If it is a standalone ESXi host, the resource pool will belong to the host only;
+-however, if it is a member of a cluster, the resource pool will be the root for
+-the cluster.
 -
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
++-> Note that the resource pool referenced by `resource_pool_id`
++  is dependent on the ESXi host's state. If it is a standalone ESXi host, the
++  resource pool will belong to the host only; however, if it is a member of a
++  cluster, the resource pool will be the root for the cluster.
 diff --git a/website/docs/d/network.html.markdown b/website/docs/d/network.html.markdown
-index 8330b2f8..4163ee0c 100644
+index 1b51a93c..3c2417e5 100644
 --- a/website/docs/d/network.html.markdown
 +++ b/website/docs/d/network.html.markdown
-@@ -34,7 +34,7 @@ data "vsphere_network" "network" {
+@@ -34,23 +34,20 @@ data "vsphere_network" "network" {
  The following arguments are supported:
  
  * `name` - (Required) The name of the network. This can be a name or path.
--* `datacenter_id` - (Optional) The [managed object reference ID][docs-about-morefs]
+-* `datacenter_id` - (Optional) The
+-  [managed object reference ID][docs-about-morefs] of the datacenter the network
+-  is located in. This can be omitted if the search path used in `name` is an
+-  absolute path. For default datacenters, use the `id` attribute from an empty
+-  `vsphere_datacenter` data source.
 +* `datacenter_id` - (Optional) The managed object reference ID
-   of the datacenter the network is located in. This can be omitted if the
-   search path used in `name` is an absolute path. For default datacenters,
-   use the `id` attribute from an empty `vsphere_datacenter` data source.
-@@ -43,13 +43,11 @@ The following arguments are supported:
-    group belongs. It is useful to differentiate port groups with same name
-    using the distributed virtual switch ID.
++  of the datacenter the network is located in. This can be omitted if the
++  search path used in `name` is an absolute path. For default datacenters,
++  use the `id` attribute from an empty `vsphere_datacenter` data source.
+ * `distributed_virtual_switch_uuid` - (Optional) For distributed port group type
+   network objects, the ID of the distributed virtual switch for which the port
+   group belongs. It is useful to differentiate port groups with same name using
+   the distributed virtual switch ID.
  
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 -
@@ -340,7 +389,7 @@ index 8330b2f8..4163ee0c 100644
    of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
    standard (host-based) port groups, or `OpaqueNetwork` for networks managed
 diff --git a/website/docs/d/resource_pool.html.markdown b/website/docs/d/resource_pool.html.markdown
-index 897e9e78..464ef462 100644
+index 88b0bbdc..41f66df7 100644
 --- a/website/docs/d/resource_pool.html.markdown
 +++ b/website/docs/d/resource_pool.html.markdown
 @@ -13,9 +13,7 @@ description: |-
@@ -354,57 +403,71 @@ index 897e9e78..464ef462 100644
  
  ## Example Usage
  
-@@ -33,11 +31,9 @@ data "vsphere_resource_pool" "pool" {
+@@ -32,11 +30,9 @@ data "vsphere_resource_pool" "pool" {
+ 
  ### Specifying the Root Resource Pool for a Standalone ESXi Host
  
- -> **NOTE:** Returning the root resource pool for a cluster can be done
--directly via the [`vsphere_compute_cluster`][docs-compute-cluster-data-source]
-+directly via the `vsphere_compute_cluster`
- data source.
- 
--[docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+--> **NOTE:** Returning the root resource pool for a cluster can be done directly
+-via the [`vsphere_compute_cluster`][docs-compute-cluster-data-source] data
+-source.
 -
+-[docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
++-> **NOTE:** Returning the root resource pool for a cluster can be done
++directly via the `vsphere_compute_cluster`
++data source.
+ 
  All compute resources in vSphere have a resource pool, even if one has not been
- explicitly created. This resource pool is referred to as the
- _root resource pool_ and can be looked up by specifying the path.
-@@ -59,14 +55,12 @@ The following arguments are supported:
+ explicitly created. This resource pool is referred to as the _root resource
+@@ -61,17 +57,15 @@ The following arguments are supported:
  
  * `name` - (Optional) The name of the resource pool. This can be a name or
    path. This is required when using vCenter.
--* `datacenter_id` - (Optional) The [managed object reference ID][docs-about-morefs]
-+* `datacenter_id` - (Optional) The managed object reference ID
-   of the datacenter in which the resource pool is located. This can be omitted
-   if the search path used in `name` is an absolute path. For default
-   datacenters, use the id attribute from an empty `vsphere_datacenter` data
-   source.
- 
+-* `datacenter_id` - (Optional) The
+-  [managed object reference ID][docs-about-morefs] of the datacenter in which
+-  the resource pool is located. This can be omitted if the search path used in
+-  `name` is an absolute path. For default datacenters, use the id attribute from
+-  an empty `vsphere_datacenter` data source.
+-
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 -
- ~> **Note:** When using ESXi without a vCenter Server instance, you do not
- need to specify either attribute to use this data source. An empty declaration
- will load the ESXi host's root resource pool.
+-~> **Note:** When using ESXi without a vCenter Server instance, you do not need
+-to specify either attribute to use this data source. An empty declaration will
+-load the ESXi host's root resource pool.
++* `datacenter_id` - (Optional) The managed object reference ID
++  of the datacenter in which the resource pool is located. This can be omitted
++  if the search path used in `name` is an absolute path. For default
++  datacenters, use the id attribute from an empty `vsphere_datacenter` data
++  source.
++
++~> **Note:** When using ESXi without a vCenter Server instance, you do not
++need to specify either attribute to use this data source. An empty declaration
++will load the ESXi host's root resource pool.
+ 
+ ## Attribute Reference
+ 
 diff --git a/website/docs/d/tag.html.markdown b/website/docs/d/tag.html.markdown
-index a5bf5856..3a259c3e 100644
+index a2525526..3a259c3e 100644
 --- a/website/docs/d/tag.html.markdown
 +++ b/website/docs/d/tag.html.markdown
 @@ -4,19 +4,16 @@ layout: "vsphere"
  page_title: "VMware vSphere: vsphere_tag"
  sidebar_current: "docs-vsphere-data-source-tag-data-source"
  description: |-
--  Provides a vSphere tag data source. This can be used to reference tags not
--  managed in Terraform.
+-  Provides a vSphere tag data source.
+-  This can be used to reference tags not managed in Terraform.
 +  Provides a vSphere tag data source. This can be used to reference tags not managed by this provider.
  ---
  
  # vsphere\_tag
  
- The `vsphere_tag` data source can be used to reference tags that are not
--managed by Terraform. Its attributes are exactly the same as the
+-The `vsphere_tag` data source can be used to reference tags that are not managed
+-by Terraform. Its attributes are exactly the same as the
 -[`vsphere_tag` resource][resource-tag], and, like importing, the data source
 -uses a name and category as search criteria. The `id` and other attributes are
 -populated with the data found by the search.
 -
 -[resource-tag]: /docs/providers/vsphere/r/tag.html
++The `vsphere_tag` data source can be used to reference tags that are not
 +managed by this provider. Its attributes are exactly the same as the `vsphere_tag`
 +resource, and, like importing, the data source takes a name and
 +category to search on. The `id` and other attributes are then populated with
@@ -419,15 +482,15 @@ index a5bf5856..3a259c3e 100644
 -the [`vsphere_tag` resource][resource-tag] are also populated.
 +the `vsphere_tag` resource are also populated.
 diff --git a/website/docs/d/tag_category.html.markdown b/website/docs/d/tag_category.html.markdown
-index 31528b2a..31037167 100644
+index cb5682ac..31037167 100644
 --- a/website/docs/d/tag_category.html.markdown
 +++ b/website/docs/d/tag_category.html.markdown
 @@ -4,20 +4,17 @@ layout: "vsphere"
  page_title: "VMware vSphere: vsphere_tag_category"
  sidebar_current: "docs-vsphere-data-source-tag-category"
  description: |-
--  Provides a vSphere tag category data source. This can be used to reference
--  tag categories not managed in Terraform.
+-  Provides a vSphere tag category data source.
+-  This can be used to reference tag categories not managed in Terraform.
 +  Provides a vSphere tag category data source. This can be used to reference tag categories not managed by this provider.
  ---
  
@@ -453,7 +516,7 @@ index 31528b2a..31037167 100644
 -the [`vsphere_tag_category` resource][resource-tag-category] are also populated.
 +the `vsphere_tag_category` resource are also populated.
 diff --git a/website/docs/d/vapp_container.html.markdown b/website/docs/d/vapp_container.html.markdown
-index 0935c5cc..b556945f 100644
+index a9c2ddcd..dae572d0 100644
 --- a/website/docs/d/vapp_container.html.markdown
 +++ b/website/docs/d/vapp_container.html.markdown
 @@ -13,9 +13,7 @@ description: |-
@@ -467,28 +530,33 @@ index 0935c5cc..b556945f 100644
  
  ## Example Usage
  
-@@ -36,11 +34,9 @@ The following arguments are supported:
+@@ -36,11 +34,8 @@ The following arguments are supported:
  
  * `name` - (Required) The name of the vApp container. This can be a name or
    path.
--* `datacenter_id` - (Required) The [managed object reference ID][docs-about-morefs]
-+* `datacenter_id` - (Required) The managed object reference ID
-   of the datacenter in which the vApp container is located.
- 
--[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+-* `datacenter_id` - (Required) The
+-  [managed object reference ID][docs-about-morefs] of the datacenter in which
+-  the vApp container is located.
 -
+-[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
++* `datacenter_id` - (Required) The managed object reference ID
++  of the datacenter in which the vApp container is located.
+ 
  ## Attribute Reference
  
- The only exported attribute for this data source is `id`, which
 diff --git a/website/docs/d/virtual_machine.html.markdown b/website/docs/d/virtual_machine.html.markdown
-index 6936ef0a..ce7de7f0 100644
+index a7faf9fa..3d4286ad 100644
 --- a/website/docs/d/virtual_machine.html.markdown
 +++ b/website/docs/d/virtual_machine.html.markdown
-@@ -12,11 +12,9 @@ description: |-
+@@ -11,13 +11,11 @@ description: |-
+ # vsphere\_virtual\_machine
+ 
  The `vsphere_virtual_machine` data source can be used to find the UUID of an
- existing virtual machine or template. The most common purpose is for finding
- the UUID of a template to be used as the source for cloning to a new
+-existing virtual machine or template. The most common purpose is for finding the
+-UUID of a template to be used as the source for cloning to a new
 -[`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. It also
++existing virtual machine or template. The most common purpose is for finding
++the UUID of a template to be used as the source for cloning to a new
 +`vsphere_virtual_machine` resource. It also
  reads the guest ID so that can be supplied as well.
  
@@ -496,56 +564,58 @@ index 6936ef0a..ce7de7f0 100644
 -
  ## Example Usage
  
- In the following example, a virtual machine template is returned by its
-@@ -61,24 +59,19 @@ The following arguments are supported:
- * `uuid` - (Optional) Specify this field for a UUID lookup, `name` and `datacenter_id`
-   are not required if this is specified.
- * `folder` - (Optional) The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+ In the following example, a virtual machine template is returned by its unique
+@@ -57,34 +55,25 @@ data "vsphere_virtual_machine" "development_template" {
+ 
+ The following arguments are supported:
+ 
+-* `name` - (Optional) The name of the virtual machine. This can be a name or the
+-  full path relative to the datacenter. This is required if a UUID lookup is not
+-  performed.
+-* `uuid` - (Optional) Specify this field for a UUID lookup, `name` and
+-  `datacenter_id` are not required if this is specified.
+-* `folder` - (Optional) The name of the virtual machine folder where the virtual
+-  machine is located. The `name` argument is limited to 80 characters. If the
+-  `name` argument includes the full path to the virtual machine and exceeds the
+-  80 characters limit, the `folder` folder argument can be used.
 -* `datacenter_id` - (Optional) The [managed object reference
 -  ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+-  This can be omitted if the search path used in `name` is an absolute path. For
+-  default datacenters, use the `id` attribute from an empty `vsphere_datacenter`
+-  data source.
++* `name` - (Optional) The name of the virtual machine. This can be a name or
++  the full path relative to the datacenter. This is required if a UUID lookup
++  is not performed.
++* `uuid` - (Optional) Specify this field for a UUID lookup, `name` and `datacenter_id`
++  are not required if this is specified.
++* `folder` - (Optional) The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
 +* `datacenter_id` - (Optional) The managed object reference
 +  ID of the datacenter the virtual machine is located in.
-   This can be omitted if the search path used in `name` is an absolute path.
-   For default datacenters, use the `id` attribute from an empty
-   `vsphere_datacenter` data source.
++  This can be omitted if the search path used in `name` is an absolute path.
++  For default datacenters, use the `id` attribute from an empty
++  `vsphere_datacenter` data source.
  * `scsi_controller_scan_count` - (Optional) The number of SCSI controllers to
    scan for disk attributes and controller types on. Default: `1`.
  
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 -
  ~> **NOTE:** For best results, ensure that all the disks on any templates you
- use with this data source reside on the primary controller, and leave this
--value at the default. See the [`vsphere_virtual_machine`][docs-virtual-machine-resource]
-+value at the default. See the `vsphere_virtual_machine`
- resource documentation for the significance of this setting, specifically the
--[additional requirements and notes for cloning][docs-virtual-machine-resource-cloning] 
+-use with this data source reside on the primary controller, and leave this value
+-at the default. See the
+-[`vsphere_virtual_machine`][docs-virtual-machine-resource] resource
+-documentation for the significance of this setting, specifically the
+-[additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
 -section.
 -
 -[docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
++use with this data source reside on the primary controller, and leave this
++value at the default. See the `vsphere_virtual_machine`
++resource documentation for the significance of this setting, specifically the
 +additional requirements and notes for cloning section.
  
  ## Attribute Reference
  
-@@ -132,14 +125,14 @@ The following attributes are exported:
-   `vmxnet3vrdma`, or `vmxnet3`.
-  * `bandwidth_limit` - The upper bandwidth limit of this network interface, 
-   in Mbits/sec.
-- * `bandwidth_reservation` - The bandwidth reservation of this network interface, 
-+ * `bandwidth_reservation` - The bandwidth reservation of this network interface,
-   in Mbits/sec.
-- * `bandwidth_share_level` - The bandwidth share allocation level for this interface. 
-+ * `bandwidth_share_level` - The bandwidth share allocation level for this interface.
-   Can be one of `low`, `normal`, `high`, or `custom`.
-- * `bandwidth_share_count` - The share count for this network interface when the 
-+ * `bandwidth_share_count` - The share count for this network interface when the
-   share level is custom.
-  * `mac_address` - The MAC address of this network interface.
-- * `network_id` - The managed object reference ID of the network this interface is 
-+ * `network_id` - The managed object reference ID of the network this interface is
-   connected to.
- * `firmware` - The firmware type for this virtual machine. Can be `bios` or `efi`.
- * `default_ip_address` - Whenever possible, this is the first IPv4 address that is reachable through
-@@ -152,4 +145,4 @@ The following attributes are exported:
+@@ -163,4 +152,4 @@ The following attributes are exported:
  ~> **NOTE:** Keep in mind when using the results of `scsi_type` and
  `network_interface_types`, that the `vsphere_virtual_machine` resource only
  supports a subset of the types returned from this data source. See the
@@ -581,7 +651,7 @@ index eb1b7f04..eb4ae03a 100644
    searching for disks. This may lengthen the time it takes to perform the
    search. Default: `false`.
 diff --git a/website/docs/r/compute_cluster.html.markdown b/website/docs/r/compute_cluster.html.markdown
-index 273b6f23..d7c042be 100644
+index f91e4b17..4c1074b4 100644
 --- a/website/docs/r/compute_cluster.html.markdown
 +++ b/website/docs/r/compute_cluster.html.markdown
 @@ -12,14 +12,12 @@ description: |-
@@ -602,7 +672,7 @@ index 273b6f23..d7c042be 100644
  
  The `vsphere_compute_cluster` resource can be used to create and manage
  clusters of hosts allowing for resource control of compute resources, load
-@@ -74,7 +72,7 @@ data "vsphere_host" "host" {
+@@ -72,7 +70,7 @@ data "vsphere_host" "host" {
  }
  
  resource "vsphere_compute_cluster" "compute_cluster" {
@@ -611,7 +681,7 @@ index 273b6f23..d7c042be 100644
    datacenter_id   = data.vsphere_datacenter.datacenter.id
    host_system_ids = [data.vsphere_host.host.*.id]
  
-@@ -90,36 +88,29 @@ resource "vsphere_compute_cluster" "compute_cluster" {
+@@ -88,36 +86,29 @@ resource "vsphere_compute_cluster" "compute_cluster" {
  The following arguments are supported:
  
  * `name` - (Required) The name of the cluster.
@@ -657,7 +727,7 @@ index 273b6f23..d7c042be 100644
    the hosts to put in the cluster. Conflicts with: `host_managed`.
  * `host_managed` - (Optional) Can be set to `true` if compute cluster
    membership will be managed through the `host` resource rather than the
-@@ -129,7 +120,7 @@ within the cluster itself by Terraform.
+@@ -127,7 +118,7 @@ within the cluster itself by Terraform.
  * `force_evacuate_on_destroy` - When destroying the resource, setting this to
    `true` will auto-remove any hosts that are currently a member of the cluster,
    as if they were removed by taking their entry out of `host_system_ids` (see
@@ -666,7 +736,7 @@ index 273b6f23..d7c042be 100644
    option and should only be used for testing. Default: `false`.
  
  ~> **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
-@@ -139,7 +130,7 @@ your DRS and HA settings, the full host evacuation may fail. Instead,
+@@ -137,7 +128,7 @@ your DRS and HA settings, the full host evacuation may fail. Instead,
  incrementally remove hosts from your configuration by adjusting the contents of
  the `host_system_ids` attribute.
  
@@ -675,7 +745,7 @@ index 273b6f23..d7c042be 100644
  
  You can remove hosts from clusters by adjusting the
  [`host_system_ids`](#host_system_ids) configuration setting and removing the
-@@ -401,7 +392,7 @@ The following settings control specific settings for Admission Control when
+@@ -399,7 +390,7 @@ The following settings control specific settings for Admission Control when
  [`ha_admission_control_policy`](#ha_admission_control_policy).
  
  * `ha_admission_control_failover_host_system_ids` - (Optional) Defines the
@@ -684,7 +754,7 @@ index 273b6f23..d7c042be 100644
    hosts. These hosts are kept as available as possible - admission control will
    block access to the host, and DRS will ignore the host when making
    recommendations.
-@@ -562,16 +553,12 @@ After vLCM is enabled on a cluster it is not possible to disable it.
+@@ -560,16 +551,12 @@ After vLCM is enabled on a cluster it is not possible to disable it.
  
  The following attributes are exported:
  
@@ -707,10 +777,10 @@ index 273b6f23..d7c042be 100644
  ## Importing
  
 diff --git a/website/docs/r/compute_cluster_host_group.html.markdown b/website/docs/r/compute_cluster_host_group.html.markdown
-index d1f529af..dff5d27e 100644
+index 5f2c25b1..c8c1efa5 100644
 --- a/website/docs/r/compute_cluster_host_group.html.markdown
 +++ b/website/docs/r/compute_cluster_host_group.html.markdown
-@@ -11,19 +11,15 @@ description: |-
+@@ -11,32 +11,20 @@ description: |-
  
  The `vsphere_compute_cluster_host_group` resource can be used to manage groups
  of hosts in a cluster, either created by the
@@ -733,8 +803,6 @@ index d1f529af..dff5d27e 100644
  ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
  connections.
  
-@@ -31,14 +27,6 @@ connections.
- 
  ## Example Usage
  
 -The example below is the exact same configuration as the
@@ -747,22 +815,24 @@ index d1f529af..dff5d27e 100644
 -
  ```hcl
  variable "datacenter" {
-   default = "dc1"
-@@ -63,7 +51,7 @@ data "vsphere_host" "hosts" {
+   default = "dc-01"
+@@ -61,8 +49,8 @@ data "vsphere_host" "hosts" {
  }
  
  resource "vsphere_compute_cluster" "compute_cluster" {
 -  name            = "terraform-compute-cluster-test"
+-  datacenter_id   = data.vsphere_datacenter.datacenter.id
 +  name            = "compute-cluster-test"
-   datacenter_id   = "${data.vsphere_datacenter.dc.id}"
++  datacenter_id   = "${data.vsphere_datacenter.dc.id}"
    host_system_ids = ["${data.vsphere_host.hosts.*.id}"]
  
-@@ -74,9 +62,9 @@ resource "vsphere_compute_cluster" "compute_cluster" {
+   drs_enabled          = true
+@@ -72,9 +60,9 @@ resource "vsphere_compute_cluster" "compute_cluster" {
  }
  
  resource "vsphere_compute_cluster_host_group" "cluster_host_group" {
 -  name               = "terraform-test-cluster-host-group"
--  compute_cluster_id = "${vsphere_compute_cluster.compute_cluster.id}"
+-  compute_cluster_id = vsphere_compute_cluster.compute_cluster.id
 -  host_system_ids    = ["${data.vsphere_host.hosts.*.id}"]
 +  name                = "test-cluster-host-group"
 +  compute_cluster_id  = "${vsphere_compute_cluster.compute_cluster.id}"
@@ -770,7 +840,7 @@ index d1f529af..dff5d27e 100644
  }
  ```
  
-@@ -86,26 +74,22 @@ The following arguments are supported:
+@@ -84,26 +72,22 @@ The following arguments are supported:
  
  * `name` - (Required) The name of the host group. This must be unique in the
    cluster. Forces a new resource if changed.
@@ -803,7 +873,7 @@ index d1f529af..dff5d27e 100644
  
  ## Importing
 diff --git a/website/docs/r/compute_cluster_vm_affinity_rule.html.markdown b/website/docs/r/compute_cluster_vm_affinity_rule.html.markdown
-index 0dd688eb..25a05faf 100644
+index 827f353b..b0a2e5a1 100644
 --- a/website/docs/r/compute_cluster_vm_affinity_rule.html.markdown
 +++ b/website/docs/r/compute_cluster_vm_affinity_rule.html.markdown
 @@ -11,12 +11,8 @@ description: |-
@@ -821,9 +891,9 @@ index 0dd688eb..25a05faf 100644
  
  This rule can be used to tell a set of virtual machines to run together on the
  same host within a cluster. When configured, DRS will make a best effort to
-@@ -27,11 +23,9 @@ that would keep that from happening, depending on the value of the
+@@ -27,25 +23,21 @@ that would keep that from happening, depending on the value of the
  -> An affinity rule can only be used to place virtual machines on the same
- _non-specific_ hosts. It cannot be used to pin virtual machines to a host. 
+ _non-specific_ hosts. It cannot be used to pin virtual machines to a host.
  To enable this capability, use the
 -[`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]
 +`vsphere_compute_cluster_vm_host_rule`
@@ -831,10 +901,10 @@ index 0dd688eb..25a05faf 100644
  
 -[tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 -
- ~> **NOTE:** This resource requires vCenter Server and is not available on
+-~> **NOTE:** This resource requires vCenter and is not available on
++~> **NOTE:** This resource requires vCenter Server and is not available on
  direct ESXi host connections.
  
-@@ -40,14 +34,12 @@ direct ESXi host connections.
  ## Example Usage
  
  The following example creates two virtual machines in a cluster using the
@@ -851,7 +921,7 @@ index 0dd688eb..25a05faf 100644
  ```hcl
  data "vsphere_datacenter" "datacenter" {
    name = "dc-01"
-@@ -88,6 +80,7 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -86,6 +78,7 @@ resource "vsphere_virtual_machine" "vm" {
    }
  }
  
@@ -859,18 +929,18 @@ index 0dd688eb..25a05faf 100644
  resource "vsphere_compute_cluster_vm_affinity_rule" "vm_affinity_rule" {
    name                = "vm-affinity-rule"
    compute_cluster_id  = data.vsphere_compute_cluster.cluster.id
-@@ -97,9 +90,7 @@ resource "vsphere_compute_cluster_vm_affinity_rule" "vm_affinity_rule" {
+@@ -95,9 +88,7 @@ resource "vsphere_compute_cluster_vm_affinity_rule" "vm_affinity_rule" {
  
  The following example creates an affinity rule for a set of virtual machines
  in the cluster by looking up the virtual machine UUIDs from the
--[`vsphere_virtual_machine`][tf-vsphere-vm-data-source] data source. 
+-[`vsphere_virtual_machine`][tf-vsphere-vm-data-source] data source.
 -
 -[tf-vsphere-vm-data-source]: /docs/providers/vsphere/d/virtual_machine.html
 +`vsphere_virtual_machine` data source.
  
  ```hcl
  locals {
-@@ -136,12 +127,10 @@ resource "vsphere_compute_cluster_vm_affinity_rule" "vm_affinity_rule" {
+@@ -134,12 +125,10 @@ resource "vsphere_compute_cluster_vm_affinity_rule" "vm_affinity_rule" {
  
  The following arguments are supported:
  
@@ -885,7 +955,7 @@ index 0dd688eb..25a05faf 100644
  * `name` - (Required) The name of the rule. This must be unique in the cluster.
  * `virtual_machine_ids` - (Required) The UUIDs of the virtual machines to run
    on the same host together.
-@@ -156,20 +145,18 @@ this when naming your rules.
+@@ -154,18 +143,16 @@ this when naming your rules.
  ## Attribute Reference
  
  The only attribute this resource exports is the `id` of the resource, which is
@@ -906,12 +976,8 @@ index 0dd688eb..25a05faf 100644
  ```
  terraform import vsphere_compute_cluster_vm_affinity_rule.vm_affinity_rule \
    '{"compute_cluster_path": "/dc-01/host/cluster-01", \
-   "name": "vm-affinity-rule"}'
--```
-\ No newline at end of file
-+```
 diff --git a/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown b/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown
-index d4b45016..2c3d9d12 100644
+index fd3d2f25..772bff3d 100644
 --- a/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown
 +++ b/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown
 @@ -11,11 +11,8 @@ description: |-
@@ -926,10 +992,10 @@ index d4b45016..2c3d9d12 100644
 +`vsphere_compute_cluster` resource or looked up
 +by the `vsphere_compute_cluster` data source.
  
- An anti-affinity rule places a group of virtual machines across different 
+ An anti-affinity rule places a group of virtual machines across different
  hosts within a cluster, and is useful for preventing single points of failure in
-@@ -27,11 +24,9 @@ operation that would keep that from happening, depending on the value of the
- -> An anti-affinity rule can only be used to place virtual machines on seperate
+@@ -27,25 +24,21 @@ operation that would keep that from happening, depending on the value of the
+ -> An anti-affinity rule can only be used to place virtual machines on separate
  _non-specific_ hosts. Specific hosts cannot be specified with this rule.
  To enable this capability, use VM-Host Groups, see the
 -[`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]
@@ -938,10 +1004,10 @@ index d4b45016..2c3d9d12 100644
  
 -[tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 -
- ~> **NOTE:** This resource requires vCenter Server and is not available on
+-~> **NOTE:** This resource requires vCenter and is not available on
++~> **NOTE:** This resource requires vCenter Server and is not available on
  direct ESXi host connections.
  
-@@ -40,14 +35,12 @@ direct ESXi host connections.
  ## Example Usage
  
  The following example creates two virtual machines in a cluster using the
@@ -958,18 +1024,18 @@ index d4b45016..2c3d9d12 100644
  ```hcl
  data "vsphere_datacenter" "datacenter" {
    name = "dc-01"
-@@ -103,9 +96,7 @@ resource "vsphere_compute_cluster_vm_anti_affinity_rule" "vm_anti_affinity_rule"
-  
+@@ -101,9 +94,7 @@ resource "vsphere_compute_cluster_vm_anti_affinity_rule" "vm_anti_affinity_rule"
+ 
  The following example creates an anti-affinity rule for a set of virtual machines
  in the cluster by looking up the virtual machine UUIDs from the
--[`vsphere_virtual_machine`][tf-vsphere-vm-data-source] data source. 
+-[`vsphere_virtual_machine`][tf-vsphere-vm-data-source] data source.
 -
 -[tf-vsphere-vm-data-source]: /docs/providers/vsphere/d/virtual_machine.html
 +`vsphere_virtual_machine` data source.
  
  ```hcl
  locals {
-@@ -142,12 +133,10 @@ resource "vsphere_compute_cluster_vm_anti_affinity_rule" "vm_anti_affinity_rule"
+@@ -140,12 +131,10 @@ resource "vsphere_compute_cluster_vm_anti_affinity_rule" "vm_anti_affinity_rule"
  
  The following arguments are supported:
  
@@ -984,7 +1050,7 @@ index d4b45016..2c3d9d12 100644
  * `name` - (Required) The name of the rule. This must be unique in the cluster.
  * `virtual_machine_ids` - (Required) The UUIDs of the virtual machines to run
    on hosts different from each other.
-@@ -162,7 +151,7 @@ this when naming your rules.
+@@ -160,7 +149,7 @@ this when naming your rules.
  ## Attribute Reference
  
  The only attribute this resource exports is the `id` of the resource, which is
@@ -994,7 +1060,7 @@ index d4b45016..2c3d9d12 100644
  
  ## Importing
 diff --git a/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown b/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown
-index 4da8cc82..a797774b 100644
+index bb6ac90e..acd55b27 100644
 --- a/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown
 +++ b/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown
 @@ -11,35 +11,28 @@ description: |-
@@ -1039,48 +1105,63 @@ index 4da8cc82..a797774b 100644
  resource. This is to ensure that the rule is not created before the groups
  exist, which may not possibly happen in the event that the names came from a
  "static" source such as a variable.
-@@ -65,7 +58,7 @@ data "vsphere_network" "network" {
+@@ -65,9 +58,9 @@ data "vsphere_network" "network" {
  }
  
  resource "vsphere_virtual_machine" "vm1" {
 -  name             = "terraform-test1"
+-  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+-  datastore_id     = data.vsphere_datastore.datastore.id
 +  name             = "test1"
-   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-   datastore_id     = "${data.vsphere_datastore.datastore.id}"
++  resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
++  datastore_id     = "${data.vsphere_datastore.datastore.id}"
  
-@@ -84,7 +77,7 @@ resource "vsphere_virtual_machine" "vm1" {
+   num_cpus = 2
+   memory   = 2048
+@@ -84,9 +77,9 @@ resource "vsphere_virtual_machine" "vm1" {
  }
  
  resource "vsphere_virtual_machine" "vm2" {
 -  name             = "terraform-test2"
+-  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+-  datastore_id     = data.vsphere_datastore.datastore.id
 +  name             = "test2"
-   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-   datastore_id     = "${data.vsphere_datastore.datastore.id}"
++  resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
++  datastore_id     = "${data.vsphere_datastore.datastore.id}"
  
-@@ -103,20 +96,20 @@ resource "vsphere_virtual_machine" "vm2" {
+   num_cpus = 2
+   memory   = 2048
+@@ -103,22 +96,22 @@ resource "vsphere_virtual_machine" "vm2" {
  }
  
  resource "vsphere_compute_cluster_vm_group" "cluster_vm_group1" {
 -  name                = "terraform-test-cluster-vm-group1"
+-  compute_cluster_id  = data.vsphere_compute_cluster.cluster.id
 +  name                = "test-cluster-vm-group1"
-   compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
++  compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
    virtual_machine_ids = ["${vsphere_virtual_machine.vm1.id}"]
  }
  
  resource "vsphere_compute_cluster_vm_group" "cluster_vm_group2" {
 -  name                = "terraform-test-cluster-vm-group2"
+-  compute_cluster_id  = data.vsphere_compute_cluster.cluster.id
 +  name                = "test-cluster-vm-group2"
-   compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
++  compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
    virtual_machine_ids = ["${vsphere_virtual_machine.vm2.id}"]
  }
  
  resource "vsphere_compute_cluster_vm_dependency_rule" "cluster_vm_dependency_rule" {
-   compute_cluster_id       = "${data.vsphere_compute_cluster.cluster.id}"
+-  compute_cluster_id       = data.vsphere_compute_cluster.cluster.id
 -  name                     = "terraform-test-cluster-vm-dependency-rule"
+-  dependency_vm_group_name = vsphere_compute_cluster_vm_group.cluster_vm_group1.name
+-  vm_group_name            = vsphere_compute_cluster_vm_group.cluster_vm_group2.name
++  compute_cluster_id       = "${data.vsphere_compute_cluster.cluster.id}"
 +  name                     = "test-cluster-vm-dependency-rule"
-   dependency_vm_group_name = "${vsphere_compute_cluster_vm_group.cluster_vm_group1.name}"
-   vm_group_name            = "${vsphere_compute_cluster_vm_group.cluster_vm_group2.name}"
++  dependency_vm_group_name = "${vsphere_compute_cluster_vm_group.cluster_vm_group1.name}"
++  vm_group_name            = "${vsphere_compute_cluster_vm_group.cluster_vm_group2.name}"
  }
+ ```
+ 
 @@ -126,12 +119,10 @@ resource "vsphere_compute_cluster_vm_dependency_rule" "cluster_vm_dependency_rul
  
  The following arguments are supported:
@@ -1106,10 +1187,10 @@ index 4da8cc82..a797774b 100644
  
  ## Importing
 diff --git a/website/docs/r/compute_cluster_vm_group.html.markdown b/website/docs/r/compute_cluster_vm_group.html.markdown
-index 72b2dc26..48e19bf8 100644
+index cbf0f4da..ec12c125 100644
 --- a/website/docs/r/compute_cluster_vm_group.html.markdown
 +++ b/website/docs/r/compute_cluster_vm_group.html.markdown
-@@ -34,13 +34,11 @@ connections.
+@@ -32,13 +32,11 @@ connections.
  ## Example Usage
  
  The example below creates two virtual machines in a cluster using the
@@ -1123,27 +1204,33 @@ index 72b2dc26..48e19bf8 100644
 -[tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 -
  ```hcl
- data "vsphere_datacenter" "dc" {
-   name = "dc1"
-@@ -63,7 +61,7 @@ data "vsphere_network" "network" {
+ data "vsphere_datacenter" "datacenter" {
+   name = "dc-01"
+@@ -61,9 +59,9 @@ data "vsphere_network" "network" {
  
  resource "vsphere_virtual_machine" "vm" {
    count            = 2
 -  name             = "terraform-test-${count.index}"
+-  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+-  datastore_id     = data.vsphere_datastore.datastore.id
 +  name             = "test-${count.index}"
-   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-   datastore_id     = "${data.vsphere_datastore.datastore.id}"
++  resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
++  datastore_id     = "${data.vsphere_datastore.datastore.id}"
  
-@@ -82,7 +80,7 @@ resource "vsphere_virtual_machine" "vm" {
+   num_cpus = 2
+   memory   = 2048
+@@ -80,8 +78,8 @@ resource "vsphere_virtual_machine" "vm" {
  }
  
  resource "vsphere_compute_cluster_vm_group" "cluster_vm_group" {
 -  name                = "terraform-test-cluster-vm-group"
+-  compute_cluster_id  = data.vsphere_compute_cluster.cluster.id
 +  name                = "test-cluster-vm-group"
-   compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
++  compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
    virtual_machine_ids = ["${vsphere_virtual_machine.vm.*.id}"]
  }
-@@ -94,26 +92,21 @@ The following arguments are supported:
+ ```
+@@ -92,26 +90,21 @@ The following arguments are supported:
  
  * `name` - (Required) The name of the VM group. This must be unique in the
    cluster. Forces a new resource if changed.
@@ -1175,10 +1262,10 @@ index 72b2dc26..48e19bf8 100644
  
  ## Importing
 diff --git a/website/docs/r/compute_cluster_vm_host_rule.html.markdown b/website/docs/r/compute_cluster_vm_host_rule.html.markdown
-index e286ee12..6ff9d8a4 100644
+index 4c4f2d2e..d97f3dda 100644
 --- a/website/docs/r/compute_cluster_vm_host_rule.html.markdown
 +++ b/website/docs/r/compute_cluster_vm_host_rule.html.markdown
-@@ -11,23 +11,17 @@ description: |-
+@@ -11,45 +11,36 @@ description: |-
  
  The `vsphere_compute_cluster_vm_host_rule` resource can be used to manage
  VM-to-host rules in a cluster, either created by the
@@ -1206,7 +1293,6 @@ index e286ee12..6ff9d8a4 100644
  ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
  connections.
  
-@@ -36,22 +30,19 @@ connections.
  ## Example Usage
  
  The example below creates a virtual machine in a cluster using the
@@ -1234,40 +1320,51 @@ index e286ee12..6ff9d8a4 100644
  resources. This is to ensure that the rule is not created before the groups
  exist, which may not possibly happen in the event that the names came from a
  "static" source such as a variable.
-@@ -82,7 +73,7 @@ data "vsphere_network" "network" {
+@@ -80,9 +71,9 @@ data "vsphere_network" "network" {
  }
  
  resource "vsphere_virtual_machine" "vm" {
 -  name             = "terraform-test"
+-  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+-  datastore_id     = data.vsphere_datastore.datastore.id
 +  name             = "test"
-   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-   datastore_id     = "${data.vsphere_datastore.datastore.id}"
++  resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
++  datastore_id     = "${data.vsphere_datastore.datastore.id}"
  
-@@ -101,20 +92,20 @@ resource "vsphere_virtual_machine" "vm" {
+   num_cpus = 2
+   memory   = 2048
+@@ -99,22 +90,22 @@ resource "vsphere_virtual_machine" "vm" {
  }
  
  resource "vsphere_compute_cluster_vm_group" "cluster_vm_group" {
 -  name                = "terraform-test-cluster-vm-group"
+-  compute_cluster_id  = data.vsphere_compute_cluster.cluster.id
 +  name                = "test-cluster-vm-group"
-   compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
++  compute_cluster_id  = "${data.vsphere_compute_cluster.cluster.id}"
    virtual_machine_ids = ["${vsphere_virtual_machine.vm.id}"]
  }
  
  resource "vsphere_compute_cluster_host_group" "cluster_host_group" {
 -  name               = "terraform-test-cluster-vm-group"
+-  compute_cluster_id = data.vsphere_compute_cluster.cluster.id
 +  name               = "test-cluster-vm-group"
-   compute_cluster_id = "${data.vsphere_compute_cluster.cluster.id}"
++  compute_cluster_id = "${data.vsphere_compute_cluster.cluster.id}"
    host_system_ids    = ["${data.vsphere_host.host.id}"]
  }
  
  resource "vsphere_compute_cluster_vm_host_rule" "cluster_vm_host_rule" {
-   compute_cluster_id       = "${data.vsphere_compute_cluster.cluster.id}"
+-  compute_cluster_id       = data.vsphere_compute_cluster.cluster.id
 -  name                     = "terraform-test-cluster-vm-host-rule"
+-  vm_group_name            = vsphere_compute_cluster_vm_group.cluster_vm_group.name
+-  affinity_host_group_name = vsphere_compute_cluster_host_group.cluster_host_group.name
++  compute_cluster_id       = "${data.vsphere_compute_cluster.cluster.id}"
 +  name                     = "test-cluster-vm-host-rule"
-   vm_group_name            = "${vsphere_compute_cluster_vm_group.cluster_vm_group.name}"
-   affinity_host_group_name = "${vsphere_compute_cluster_host_group.cluster_host_group.name}"
++  vm_group_name            = "${vsphere_compute_cluster_vm_group.cluster_vm_group.name}"
++  affinity_host_group_name = "${vsphere_compute_cluster_host_group.cluster_host_group.name}"
  }
-@@ -124,12 +115,9 @@ resource "vsphere_compute_cluster_vm_host_rule" "cluster_vm_host_rule" {
+ ```
+ 
+@@ -122,12 +113,9 @@ resource "vsphere_compute_cluster_vm_host_rule" "cluster_vm_host_rule" {
  
  The following arguments are supported:
  
@@ -1282,7 +1379,7 @@ index e286ee12..6ff9d8a4 100644
  * `name` - (Required) The name of the rule. This must be unique in the
    cluster.
  * `vm_group_name` - (Required) The name of the virtual machine group to use
-@@ -155,7 +143,7 @@ this when naming your rules.
+@@ -153,7 +141,7 @@ this when naming your rules.
  ## Attribute Reference
  
  The only attribute this resource exports is the `id` of the resource, which is
@@ -1292,7 +1389,7 @@ index e286ee12..6ff9d8a4 100644
  
  ## Importing
 diff --git a/website/docs/r/content_library.html.markdown b/website/docs/r/content_library.html.markdown
-index 6b8ed106..ccdb729a 100644
+index c27e1699..33db92bb 100644
 --- a/website/docs/r/content_library.html.markdown
 +++ b/website/docs/r/content_library.html.markdown
 @@ -17,8 +17,6 @@ The `vsphere_content_library` resource can be used to manage content libraries.
@@ -1329,7 +1426,7 @@ index 6b8ed106..ccdb729a 100644
    * `publish_url` - The URL of the published content library.
  
 diff --git a/website/docs/r/content_library_item.html.markdown b/website/docs/r/content_library_item.html.markdown
-index 89b9af8e..a743821b 100644
+index 4eee84d6..8a2d7ae5 100644
 --- a/website/docs/r/content_library_item.html.markdown
 +++ b/website/docs/r/content_library_item.html.markdown
 @@ -19,8 +19,6 @@ on the content library's storage backing.
@@ -1349,16 +1446,16 @@ index 89b9af8e..a743821b 100644
 +a combination of the managed object reference ID of the
  cluster, and the name of the virtual machine group.
  
- ## Importing
+ [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 diff --git a/website/docs/r/custom_attribute.html.markdown b/website/docs/r/custom_attribute.html.markdown
-index f1e5109b..5ce25e2c 100644
+index 31accdba..6ee04b51 100644
 --- a/website/docs/r/custom_attribute.html.markdown
 +++ b/website/docs/r/custom_attribute.html.markdown
 @@ -23,12 +23,12 @@ and require vCenter Server.
  
  ## Example Usage
  
--This example creates a custom attribute named `terraform-test-attribute`. The 
+-This example creates a custom attribute named `terraform-test-attribute`. The
 +This example creates a custom attribute named `test-attribute`. The 
  resulting custom attribute can be assigned to VMs only.
  
@@ -1381,7 +1478,7 @@ index f1e5109b..5ce25e2c 100644
  ```hcl
  data "vsphere_custom_attribute" "attribute" {
 diff --git a/website/docs/r/datacenter.html.markdown b/website/docs/r/datacenter.html.markdown
-index 97d2d89b..60828048 100644
+index bd2a6919..cd56ff74 100644
 --- a/website/docs/r/datacenter.html.markdown
 +++ b/website/docs/r/datacenter.html.markdown
 @@ -12,9 +12,9 @@ description: |-
@@ -1415,9 +1512,9 @@ index 97d2d89b..60828048 100644
 -[docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 +* `tags` - (Optional) The IDs of any tags to attach to this resource.
  
- ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
- requires vCenter 6.0 or higher.
-@@ -59,11 +56,9 @@ and require vCenter.
+ * `custom_attributes` - (Optional) Map of custom attribute ids to value
+   strings to set for datacenter resource. See
+@@ -56,11 +53,9 @@ and require vCenter.
  
  ## Attribute Reference
  
@@ -1430,10 +1527,10 @@ index 97d2d89b..60828048 100644
 +  object ID in v2.0.
 +* `moid` - Managed object ID of this datacenter.
  
- ## Importing 
+ ## Importing
  
 diff --git a/website/docs/r/datastore_cluster.html.markdown b/website/docs/r/datastore_cluster.html.markdown
-index ffa69826..36f21f0d 100644
+index 539bd73d..23efaa1f 100644
 --- a/website/docs/r/datastore_cluster.html.markdown
 +++ b/website/docs/r/datastore_cluster.html.markdown
 @@ -28,10 +28,9 @@ connections.
@@ -1448,21 +1545,24 @@ index ffa69826..36f21f0d 100644
  
  ```hcl
  variable "hosts" {
-@@ -51,29 +50,29 @@ data "vsphere_host" "esxi_hosts" {
+@@ -51,29 +50,29 @@ data "vsphere_host" "hosts" {
  }
  
  resource "vsphere_datastore_cluster" "datastore_cluster" {
 -  name          = "terraform-datastore-cluster-test"
+-  datacenter_id = data.vsphere_datacenter.datacenter.id
 +  name          = "datastore-cluster-test"
-   datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
++  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
    sdrs_enabled  = true
  }
  
  resource "vsphere_nas_datastore" "datastore1" {
 -  name                 = "terraform-datastore-test1"
+-  host_system_ids      = ["${data.vsphere_host.hosts.*.id}"]
+-  datastore_cluster_id = vsphere_datastore_cluster.datastore_cluster.id
 +  name                 = "datastore-test1"
-   host_system_ids      = ["${data.vsphere_host.esxi_hosts.*.id}"]
-   datastore_cluster_id = "${vsphere_datastore_cluster.datastore_cluster.id}"
++  host_system_ids      = ["${data.vsphere_host.esxi_hosts.*.id}"]
++  datastore_cluster_id = "${vsphere_datastore_cluster.datastore_cluster.id}"
  
    type         = "NFS"
    remote_hosts = ["nfs"]
@@ -1472,9 +1572,11 @@ index ffa69826..36f21f0d 100644
  
  resource "vsphere_nas_datastore" "datastore2" {
 -  name                 = "terraform-datastore-test2"
+-  host_system_ids      = ["${data.vsphere_host.hosts.*.id}"]
+-  datastore_cluster_id = vsphere_datastore_cluster.datastore_cluster.id
 +  name                 = "datastore-test2"
-   host_system_ids      = ["${data.vsphere_host.esxi_hosts.*.id}"]
-   datastore_cluster_id = "${vsphere_datastore_cluster.datastore_cluster.id}"
++  host_system_ids      = ["${data.vsphere_host.esxi_hosts.*.id}"]
++  datastore_cluster_id = "${vsphere_datastore_cluster.datastore_cluster.id}"
  
    type         = "NFS"
    remote_hosts = ["nfs"]
@@ -1510,18 +1612,21 @@ index ffa69826..36f21f0d 100644
 -[docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 +* `tags` - (Optional) The IDs of any tags to attach to this resource.
  
- ~> **NOTE:** Tagging support requires vCenter 6.0 or higher.
+ * `custom_attributes` - (Optional) A map of custom attribute ids to attribute
+   value strings to set for the datastore cluster. See
+@@ -174,6 +169,11 @@ datastore cluster.
+ The following options control disk space load balancing for Storage DRS on the
+ datastore cluster.
  
-@@ -182,7 +177,7 @@ datastore cluster.
- ~> **NOTE:** Setting `sdrs_free_space_threshold_mode` to `freeSpace` and using
- the `sdrs_free_space_threshold` setting requires vSphere 6.0 or higher and is
- ignored on older versions. Using these settings on older versions may result in
--spurious diffs in Terraform.
++~> **NOTE:** Setting `sdrs_free_space_threshold_mode` to `freeSpace` and using
++the `sdrs_free_space_threshold` setting requires vSphere 6.0 or higher and is
++ignored on older versions. Using these settings on older versions may result in
 +spurious diffs.
- 
++
  * `sdrs_free_space_utilization_difference` - (Optional) The threshold, in
    percent of used space, that storage DRS uses to make decisions to migrate VMs
-@@ -208,12 +203,12 @@ require changing during basic operation:
+   out of a datastore. Default: `80` percent.
+@@ -198,12 +198,12 @@ require changing during basic operation:
  * `sdrs_load_balance_interval` - (Optional) The storage DRS poll interval, in
    minutes. Default: `480` minutes.
  * `sdrs_advanced_options` - (Optional) A key/value map of advanced Storage DRS
@@ -1537,7 +1642,7 @@ index ffa69826..36f21f0d 100644
  
  ## Importing
 diff --git a/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown b/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown
-index e4a1ccd1..1eb339ef 100644
+index ce8b6604..562627c1 100644
 --- a/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown
 +++ b/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown
 @@ -11,11 +11,8 @@ description: |-
@@ -1569,25 +1674,31 @@ index e4a1ccd1..1eb339ef 100644
 -[tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  
  ```hcl
- data "vsphere_datacenter" "dc" {
-@@ -62,7 +58,7 @@ data "vsphere_network" "network" {
+ data "vsphere_datacenter" "datacenter" {
+@@ -62,9 +58,9 @@ data "vsphere_network" "network" {
  
  resource "vsphere_virtual_machine" "vm" {
    count                = 2
 -  name                 = "terraform-test-${count.index}"
+-  resource_pool_id     = data.vsphere_compute_cluster.cluster.resource_pool_id
+-  datastore_cluster_id = data.vsphere_datastore_cluster.datastore_cluster.id
 +  name                 = "test-${count.index}"
-   resource_pool_id     = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-   datastore_cluster_id = "${data.vsphere_datastore_cluster.datastore_cluster.id}"
++  resource_pool_id     = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
++  datastore_cluster_id = "${data.vsphere_datastore_cluster.datastore_cluster.id}"
  
-@@ -81,7 +77,7 @@ resource "vsphere_virtual_machine" "vm" {
+   num_cpus = 2
+   memory   = 2048
+@@ -81,8 +77,8 @@ resource "vsphere_virtual_machine" "vm" {
  }
  
  resource "vsphere_datastore_cluster_vm_anti_affinity_rule" "cluster_vm_anti_affinity_rule" {
 -  name                 = "terraform-test-datastore-cluster-vm-anti-affinity-rule"
+-  datastore_cluster_id = data.vsphere_datastore_cluster.datastore_cluster.id
 +  name                 = "test-datastore-cluster-vm-anti-affinity-rule"
-   datastore_cluster_id = "${data.vsphere_datastore_cluster.datastore_cluster.id}"
++  datastore_cluster_id = "${data.vsphere_datastore_cluster.datastore_cluster.id}"
    virtual_machine_ids  = ["${vsphere_virtual_machine.vm.*.id}"]
  }
+ ```
 @@ -91,20 +87,14 @@ resource "vsphere_datastore_cluster_vm_anti_affinity_rule" "cluster_vm_anti_affi
  
  The following arguments are supported:
@@ -1622,7 +1733,7 @@ index e4a1ccd1..1eb339ef 100644
  
  ## Importing
 diff --git a/website/docs/r/distributed_port_group.html.markdown b/website/docs/r/distributed_port_group.html.markdown
-index 414133ff..9426f406 100644
+index d229c8f8..785178c1 100644
 --- a/website/docs/r/distributed_port_group.html.markdown
 +++ b/website/docs/r/distributed_port_group.html.markdown
 @@ -13,7 +13,7 @@ description: |-
@@ -1634,14 +1745,18 @@ index 414133ff..9426f406 100644
  
  Distributed port groups can be used as networks for virtual machines, allowing
  the virtual machines to use the networking supplied by a vSphere Distributed
-@@ -26,7 +26,6 @@ desired.
+@@ -26,9 +26,8 @@ desired.
  * For more information on distributed port groups, refer to the vSphere
    [product documentation][ref-vsphere-dvportgroup].
  
 -[distributed-virtual-switch]: /docs/providers/vsphere/r/distributed_virtual_switch.html
- [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
- [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+-[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-8CDF29B2-ABA8-4F34-9FEF-14987BC13265.html
+-[ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
++[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
++[ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
  
+ ~> **NOTE:** This resource requires vCenter and is not available on
+ direct ESXi host connections.
 @@ -36,7 +35,7 @@ direct ESXi host connections.
  ## Example Usage
  
@@ -1660,7 +1775,7 @@ index 414133ff..9426f406 100644
    vlan_range {
      min_vlan = 100
      max_vlan = 199
-@@ -131,12 +130,10 @@ resource "vsphere_distributed_virtual_switch" "vds" {
+@@ -132,12 +131,10 @@ resource "vsphere_distributed_virtual_switch" "vds" {
  
  ### Overriding VDS policies
  
@@ -1674,19 +1789,22 @@ index 414133ff..9426f406 100644
  As an example, we also take this example from the
  `vsphere_distributed_virtual_switch` resource where we manually specify our
  uplink count and uplink order. While the vSphere Distributed Switch has a
-@@ -194,10 +191,7 @@ specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+@@ -195,10 +192,14 @@ specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
    to associate with this port group. The default is `-1`, which implies no
    association.
  * `custom_attributes` (Optional) Map of custom attribute ids to attribute
--  value string to set for port group. See [here][docs-setting-custom-attributes] 
--  for a reference on how to set values for custom attributes.
--
--[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
++<<<<<<< HEAD
+   value string to set for port group. See [here][docs-setting-custom-attributes]
+   for a reference on how to set values for custom attributes.
+ 
+ [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
++=======
 +  value string to set for port group.
++>>>>>>> 69c6e040 (fork)
  
  ~> **NOTE:** Custom attributes are not supported on direct ESXi host
  connections and require vCenter Server.
-@@ -217,8 +211,8 @@ See the link for a full list of options that can be set.
+@@ -218,8 +219,8 @@ See the link for a full list of options that can be set.
  The following options below control whether or not the policies set in the port
  group can be overridden on the individual port:
  
@@ -1697,7 +1815,7 @@ index 414133ff..9426f406 100644
  * `live_port_moving_allowed` - (Optional) Allow a port in this port group to be
    moved to another port group while it is connected.
  * `netflow_override_allowed` - (Optional) Allow the
-@@ -243,27 +237,18 @@ group can be overridden on the individual port:
+@@ -244,27 +245,18 @@ group can be overridden on the individual port:
    [VLAN settings][vlan-settings] on this port group to be overridden on an
    individual port.
  
@@ -1727,15 +1845,8 @@ index 414133ff..9426f406 100644
  to use the `id` field.
  
  * `config_version`: The current version of the port group configuration,
-@@ -281,4 +266,4 @@ terraform import vsphere_distributed_port_group.pg  /dc-01/network/pg-01
- ```
- 
- The above would import the port group named `pg-01` that is located in the `dc-01`
--datacenter.
-\ No newline at end of file
-+datacenter.
 diff --git a/website/docs/r/distributed_virtual_switch.html.markdown b/website/docs/r/distributed_virtual_switch.html.markdown
-index fda4cb65..31686550 100644
+index 7a95ca98..eabb5d1d 100644
 --- a/website/docs/r/distributed_virtual_switch.html.markdown
 +++ b/website/docs/r/distributed_virtual_switch.html.markdown
 @@ -17,7 +17,7 @@ An essential component of a distributed, scalable vSphere infrastructure, the
@@ -1747,14 +1858,18 @@ index fda4cb65..31686550 100644
  that can be used as networks for virtual machines, a VDS can be configured to
  perform advanced high availability, traffic shaping, network monitoring, etc.
  
-@@ -26,7 +26,6 @@ For an overview on vSphere networking concepts, see
+@@ -26,9 +26,8 @@ For an overview on vSphere networking concepts, see
  
  For more information on the VDS, see [this page][ref-vsphere-vds].
  
 -[distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
- [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
- [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+-[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+-[ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
++[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
++[ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
  
+ ~> **NOTE:** This resource requires vCenter and is not available on
+ direct ESXi host connections.
 @@ -100,7 +99,7 @@ of uplinks, and the name of the uplinks via the `uplinks` parameter.
  
  Note that if you change the uplink naming and count after creating the VDS, you
@@ -1764,7 +1879,7 @@ index fda4cb65..31686550 100644
  specified in config, and will drift if not modified, causing errors.
  
  ```hcl
-@@ -147,18 +146,12 @@ The following arguments are supported:
+@@ -147,16 +146,10 @@ The following arguments are supported:
  - `version` - (Optional) - The version of the VDS. BY default, a VDS is created
    at the latest version supported by the vSphere version if not specified.
    A VDS can be upgraded to a newer version, but can not be downgraded.
@@ -1773,8 +1888,6 @@ index fda4cb65..31686550 100644
 -
 -[docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 +- `tags` - (Optional) The IDs of any tags to attach to this resource.
- 
- ~> **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
  
  - `custom_attributes` - (Optional) Map of custom attribute ids to attribute
 -  value strings to set for VDS. See [here][docs-setting-custom-attributes]
@@ -1785,7 +1898,7 @@ index fda4cb65..31686550 100644
  
  ~> **NOTE:** Custom attributes are unsupported on direct ESXi host connections
  and requires vCenter Server.
-@@ -289,7 +282,7 @@ The options are:
+@@ -286,7 +279,7 @@ The options are:
  ### Default port group policy arguments
  
  The following arguments are shared with the
@@ -1795,10 +1908,10 @@ index fda4cb65..31686550 100644
  groups on this VDS that do not have these values otherwise overridden. Not
  defining these options in a VDS will infer defaults that can be seen in the
 diff --git a/website/docs/r/dpm_host_override.html.markdown b/website/docs/r/dpm_host_override.html.markdown
-index 8883f9ce..5bdc0bd3 100644
+index fb3a6fff..d7ae0741 100644
 --- a/website/docs/r/dpm_host_override.html.markdown
 +++ b/website/docs/r/dpm_host_override.html.markdown
-@@ -28,16 +28,13 @@ connections.
+@@ -26,16 +26,13 @@ connections.
  
  The following example creates a compute cluster comprised of three hosts,
  making use of the
@@ -1816,17 +1929,19 @@ index 8883f9ce..5bdc0bd3 100644
 -
  ```hcl
  variable "datacenter" {
-   default = "dc1"
-@@ -62,7 +59,7 @@ data "vsphere_host" "hosts" {
+   default = "dc-01"
+@@ -60,8 +57,8 @@ data "vsphere_host" "hosts" {
  }
  
  resource "vsphere_compute_cluster" "compute_cluster" {
 -  name            = "terraform-compute-cluster-test"
+-  datacenter_id   = data.vsphere_datacenter.datacenter.id
 +  name            = "compute-cluster-test"
-   datacenter_id   = "${data.vsphere_datacenter.dc.id}"
++  datacenter_id   = "${data.vsphere_datacenter.dc.id}"
    host_system_ids = ["${data.vsphere_host.hosts.*.id}"]
  
-@@ -82,13 +79,11 @@ resource "vsphere_dpm_host_override" "dpm_host_override" {
+   drs_enabled          = true
+@@ -80,13 +77,11 @@ resource "vsphere_dpm_host_override" "dpm_host_override" {
  
  The following arguments are supported:
  
@@ -1842,8 +1957,8 @@ index 8883f9ce..5bdc0bd3 100644
 +* `host_system_ids` - (Optional) The managed object ID of
    the host to create the override for.
  * `dpm_enabled` - (Optional) Enable DPM support for this host. Default:
-   `false`. 
-@@ -103,7 +98,7 @@ for both options.
+   `false`.
+@@ -101,7 +96,7 @@ for both options.
  ## Attribute Reference
  
  The only attribute this resource exports is the `id` of the resource, which is
@@ -1853,10 +1968,10 @@ index 8883f9ce..5bdc0bd3 100644
  up the override on subsequent plan and apply operations after the override has
  been created.
 diff --git a/website/docs/r/drs_vm_override.html.markdown b/website/docs/r/drs_vm_override.html.markdown
-index bcdd0797..e81d56e7 100644
+index 04a48b9f..de990da5 100644
 --- a/website/docs/r/drs_vm_override.html.markdown
 +++ b/website/docs/r/drs_vm_override.html.markdown
-@@ -27,20 +27,16 @@ connections.
+@@ -25,20 +25,16 @@ connections.
  ## Example Usage
  
  The example below creates a virtual machine in a cluster using the
@@ -1878,18 +1993,24 @@ index bcdd0797..e81d56e7 100644
 -[tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 -
  ```hcl
- data "vsphere_datacenter" "dc" {
-   name = "dc1"
-@@ -67,7 +63,7 @@ data "vsphere_network" "network" {
+ data "vsphere_datacenter" "datacenter" {
+   name = "dc-01"
+@@ -65,10 +61,10 @@ data "vsphere_network" "network" {
  }
  
  resource "vsphere_virtual_machine" "vm" {
 -  name             = "terraform-test"
+-  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+-  host_system_id   = data.vsphere_host.host.id
+-  datastore_id     = data.vsphere_datastore.datastore.id
 +  name             = "test"
-   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-   host_system_id   = "${data.vsphere_host.host.id}"
-   datastore_id     = "${data.vsphere_datastore.datastore.id}"
-@@ -97,12 +93,10 @@ resource "vsphere_drs_vm_override" "drs_vm_override" {
++  resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
++  host_system_id   = "${data.vsphere_host.host.id}"
++  datastore_id     = "${data.vsphere_datastore.datastore.id}"
+ 
+   num_cpus = 2
+   memory   = 2048
+@@ -95,12 +91,10 @@ resource "vsphere_drs_vm_override" "drs_vm_override" {
  
  The following arguments are supported:
  
@@ -1904,7 +2025,7 @@ index bcdd0797..e81d56e7 100644
  * `virtual_machine_id` - (Required) The UUID of the virtual machine to create
    the override for.  Forces a new resource if changed.
  * `drs_enabled` - (Optional) Overrides the default DRS setting for this virtual
-@@ -118,7 +112,7 @@ for both options.
+@@ -116,7 +110,7 @@ for both options.
  ## Attribute Reference
  
  The only attribute this resource exports is the `id` of the resource, which is
@@ -1936,7 +2057,7 @@ index 9223cbd9..2873acb7 100644
  will copy from within specified locations in vSphere.
  
 diff --git a/website/docs/r/folder.html.markdown b/website/docs/r/folder.html.markdown
-index f38cbe96..8ac9a29b 100644
+index b9af99ba..cdf5e526 100644
 --- a/website/docs/r/folder.html.markdown
 +++ b/website/docs/r/folder.html.markdown
 @@ -22,13 +22,13 @@ as that folder exists.
@@ -1947,13 +2068,13 @@ index f38cbe96..8ac9a29b 100644
 +`test-folder` in the default datacenter's VM hierarchy. 
  
  ```hcl
- data "vsphere_datacenter" "dc" {}
+ data "vsphere_datacenter" "datacenter" {}
  
  resource "vsphere_folder" "folder" {
 -  path          = "terraform-test-folder"
 +  path          = "test-folder"
    type          = "vm"
-   datacenter_id = data.vsphere_datacenter.dc.id
+   datacenter_id = data.vsphere_datacenter.datacenter.id
  }
 @@ -37,7 +37,7 @@ resource "vsphere_folder" "folder" {
  ### Example with subfolders
@@ -1965,20 +2086,20 @@ index f38cbe96..8ac9a29b 100644
  dependency off the parent's `path` attribute.
  
 @@ -49,13 +49,13 @@ parent.
- data "vsphere_datacenter" "dc" {}
+ data "vsphere_datacenter" "datacenter" {}
  
  resource "vsphere_folder" "parent" {
 -  path          = "terraform-test-parent"
 +  path          = "test-parent"
    type          = "vm"
-   datacenter_id = data.vsphere_datacenter.dc.id
+   datacenter_id = data.vsphere_datacenter.datacenter.id
  }
  
  resource "vsphere_folder" "folder" {
 -  path          = "${vsphere_folder.parent.path}/terraform-test-folder"
 +  path          = "${vsphere_folder.parent.path}/test-folder"
    type          = "vm"
-   datacenter_id = data.vsphere_datacenter.dc.id
+   datacenter_id = data.vsphere_datacenter.datacenter.id
  }
 @@ -69,8 +69,8 @@ The following arguments are supported:
    the root of the type of folder you are creating, and the supplied datacenter.
@@ -2001,9 +2122,9 @@ index f38cbe96..8ac9a29b 100644
 -[docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 +* `tags` - (Optional) The IDs of any tags to attach to this resource.
  
- ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
- requires vCenter 6.0 or higher.
-@@ -104,9 +101,7 @@ and require vCenter.
+ * `custom_attributes` - (Optional) Map of custom attribute ids to attribute
+   value strings to set for folder. See [here][docs-setting-custom-attributes]
+@@ -101,9 +98,7 @@ and require vCenter.
  ## Attribute Reference
  
  The only attribute that this resource exports is the `id`, which is set to the
@@ -2015,7 +2136,7 @@ index f38cbe96..8ac9a29b 100644
  ## Importing
  
 diff --git a/website/docs/r/ha_vm_override.html.markdown b/website/docs/r/ha_vm_override.html.markdown
-index ed4e16b0..28b432e7 100644
+index abf14afa..e73922f1 100644
 --- a/website/docs/r/ha_vm_override.html.markdown
 +++ b/website/docs/r/ha_vm_override.html.markdown
 @@ -25,23 +25,20 @@ connections.
@@ -2043,17 +2164,21 @@ index ed4e16b0..28b432e7 100644
 -[tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 -
  ```hcl
- data "vsphere_datacenter" "dc" {
-   name = "dc1"
-@@ -63,7 +60,7 @@ data "vsphere_network" "network" {
+ data "vsphere_datacenter" "datacenter" {
+   name = "dc-01"
+@@ -63,9 +60,9 @@ data "vsphere_network" "network" {
  }
  
  resource "vsphere_virtual_machine" "vm" {
 -  name             = "terraform-test"
+-  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+-  datastore_id     = data.vsphere_datastore.datastore.id
 +  name             = "test"
-   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-   datastore_id     = "${data.vsphere_datastore.datastore.id}"
++  resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
++  datastore_id     = "${data.vsphere_datastore.datastore.id}"
  
+   num_cpus = 2
+   memory   = 2048
 @@ -97,30 +94,23 @@ The following arguments are supported:
  
  The following options are required:
@@ -2082,7 +2207,7 @@ index ed4e16b0..28b432e7 100644
  ~> **NOTE:** The same version restrictions that apply for certain options
 -within [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] apply to
 -overrides as well. See [here][tf-vsphere-cluster-resource-version-restrictions]
--for an entire list of version restrictions. 
+-for an entire list of version restrictions.
 -
 -[tf-vsphere-cluster-resource-version-restrictions]: /docs/providers/vsphere/r/compute_cluster.html#vsphere-version-requirements
 +within `vsphere_compute_cluster` apply to
@@ -2156,7 +2281,7 @@ index 18ad95aa..4f0cb3cd 100644
  ```hcl
  data "vsphere_datacenter" "datacenter" {
 diff --git a/website/docs/r/host_port_group.html.markdown b/website/docs/r/host_port_group.html.markdown
-index 3994c70a..f4ecc0aa 100644
+index eb5f09d4..f4ecc0aa 100644
 --- a/website/docs/r/host_port_group.html.markdown
 +++ b/website/docs/r/host_port_group.html.markdown
 @@ -11,15 +11,14 @@ description: |-
@@ -2170,7 +2295,8 @@ index 3994c70a..f4ecc0aa 100644
  For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
  
 -[host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
- [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+-[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-8CDF29B2-ABA8-4F34-9FEF-14987BC13265.html
++[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  
 -## Example Usages
 +## Example Usage
@@ -2217,13 +2343,15 @@ index 3994c70a..f4ecc0aa 100644
  
  ## Attribute Reference
  
-@@ -127,20 +123,18 @@ The following attributes are exported:
+@@ -126,21 +122,19 @@ The following attributes are exported:
+   The convention is a prefix, the host system ID, and the port group name.
    For example,`tf-HostPortGroup:host-10:portgroup-01`. Tracking a port group
    on a standard switch, which can be created with or without a vCenter Server,
-   is different than then a dvPortGroup which is tracked as a managed object ID
--  in vCemter Server versus a key on a host.
+-  is different than a dvPortGroup which is tracked as a managed object ID in
+-  vCenter Server versus a key on a host.
 -* `computed_policy` - A map with a full set of the [policy
 -  options][host-vswitch-policy-options] computed from defaults and overrides,
++  is different than then a dvPortGroup which is tracked as a managed object ID
 +  in vCenter Server versus a key on a host.
 +* `computed_policy` - A map with a full set of the policy
 +  options computed from defaults and overrides,
@@ -2243,7 +2371,7 @@ index 3994c70a..f4ecc0aa 100644
  terraform import vsphere_host_port_group.management tf-HostPortGroup:host-123:management
  ```
 diff --git a/website/docs/r/host_virtual_switch.html.markdown b/website/docs/r/host_virtual_switch.html.markdown
-index d3e13d88..eb533e9c 100644
+index 5e96e49f..321e3e20 100644
 --- a/website/docs/r/host_virtual_switch.html.markdown
 +++ b/website/docs/r/host_virtual_switch.html.markdown
 @@ -12,17 +12,16 @@ description: |-
@@ -2257,7 +2385,8 @@ index d3e13d88..eb533e9c 100644
  page][ref-vsphere-net-concepts].
  
 -[host-port-group]: /docs/providers/vsphere/r/host_port_group.html
- [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+-[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-8CDF29B2-ABA8-4F34-9FEF-14987BC13265.html
++[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  
 -## Example Usages
 +## Example Usage
@@ -2267,15 +2396,17 @@ index d3e13d88..eb533e9c 100644
  
  ```hcl
  data "vsphere_datacenter" "datacenter" {
-@@ -35,7 +34,7 @@ data "vsphere_host" "host" {
+@@ -35,8 +34,8 @@ data "vsphere_host" "host" {
  }
  
  resource "vsphere_host_virtual_switch" "switch" {
 -  name           = "vSwitchTerraformTest"
+-  host_system_id = data.vsphere_host.host.id
 +  name           = "vSwitchTest"
-   host_system_id = "${data.vsphere_host.host.id}"
++  host_system_id = "${data.vsphere_host.host.id}"
  
    network_adapters = ["vmnic0", "vmnic1"]
+ 
 @@ -45,7 +44,7 @@ resource "vsphere_host_virtual_switch" "switch" {
  }
  ```
@@ -2285,15 +2416,17 @@ index d3e13d88..eb533e9c 100644
  
  ```hcl
  data "vsphere_datacenter" "datacenter" {
-@@ -58,7 +57,7 @@ data "vsphere_host" "host" {
+@@ -58,8 +57,8 @@ data "vsphere_host" "host" {
  }
  
  resource "vsphere_host_virtual_switch" "switch" {
 -  name           = "vSwitchTerraformTest"
+-  host_system_id = data.vsphere_host.host.id
 +  name           = "vSwitchTest"
-   host_system_id = "${data.vsphere_host.host.id}"
++  host_system_id = "${data.vsphere_host.host.id}"
  
    network_adapters = ["vmnic0", "vmnic1"]
+ 
 @@ -84,16 +83,14 @@ The following arguments are supported:
  
  * `name` - (Required) The name of the virtual switch. Forces a new resource if
@@ -2335,7 +2468,7 @@ index d3e13d88..eb533e9c 100644
  ## Importing
  
 diff --git a/website/docs/r/nas_datastore.html.markdown b/website/docs/r/nas_datastore.html.markdown
-index ecf93672..fcf03f61 100644
+index bf6ef2b0..fa073b9e 100644
 --- a/website/docs/r/nas_datastore.html.markdown
 +++ b/website/docs/r/nas_datastore.html.markdown
 @@ -13,18 +13,16 @@ The `vsphere_nas_datastore` resource can be used to create and manage NAS
@@ -2359,13 +2492,14 @@ index ecf93672..fcf03f61 100644
  
  ```hcl
  variable "hosts" {
-@@ -44,12 +42,12 @@ data "vsphere_host" "esxi_hosts" {
+@@ -46,12 +44,12 @@ data "vsphere_host" "hosts" {
  }
  
  resource "vsphere_nas_datastore" "datastore" {
 -  name            = "terraform-test"
+-  host_system_ids = ["${data.vsphere_host.hosts.*.id}"]
 +  name            = "test"
-   host_system_ids = ["${data.vsphere_host.esxi_hosts.*.id}"]
++  host_system_ids = ["${data.vsphere_host.esxi_hosts.*.id}"]
  
    type         = "NFS"
    remote_hosts = ["nfs"]
@@ -2374,7 +2508,7 @@ index ecf93672..fcf03f61 100644
  }
  ```
  
-@@ -59,7 +57,7 @@ The following arguments are supported:
+@@ -61,7 +59,7 @@ The following arguments are supported:
  
  * `name` - (Required) The name of the datastore. Forces a new resource if
    changed.
@@ -2383,7 +2517,7 @@ index ecf93672..fcf03f61 100644
    the hosts to mount the datastore on.
  * `type` - (Optional) The type of NAS volume. Can be one of `NFS` (to denote
    v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
-@@ -79,29 +77,21 @@ The following arguments are supported:
+@@ -81,33 +79,29 @@ The following arguments are supported:
  * `folder` - (Optional) The relative path to a folder to put this datastore in.
    This is a path relative to the datacenter you are deploying the datastore to.
    Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -2403,24 +2537,24 @@ index ecf93672..fcf03f61 100644
 -
 -[docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+-
+-* `custom_attributes` - (Optional) Map of custom attribute ids to attribute
+-  value strings to set on resource. See [here][docs-setting-custom-attributes]
+-  for a reference on how to set values for custom attributes.
 +* `tags` - (Optional) The IDs of any tags to attach to this resource. 
  
- ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
- requires vCenter 6.0 or higher.
- 
- * `custom_attributes` - (Optional) Map of custom attribute ids to attribute 
--  value strings to set on datasource resource. See 
--  [here][docs-setting-custom-attributes] for a reference on how to set values 
--  for custom attributes.
--
 -[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
--
++~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
++requires vCenter 6.0 or higher.
+ 
+-~> **NOTE:** Custom attributes are unsupported on direct ESXi connections
++* `custom_attributes` - (Optional) Map of custom attribute ids to attribute 
 +  value strings to set on datasource resource. 
 +  
- ~> **NOTE:** Custom attributes are unsupported on direct ESXi connections 
++~> **NOTE:** Custom attributes are unsupported on direct ESXi connections 
  and require vCenter.
  
-@@ -109,7 +99,7 @@ and require vCenter.
+ ## Attribute Reference
  
  The following attributes are exported:
  
@@ -2430,27 +2564,9 @@ index ecf93672..fcf03f61 100644
    some other computed attributes may be out of date.
  * `capacity` - Maximum capacity of the datastore, in megabytes.
 diff --git a/website/docs/r/resource_pool.html.markdown b/website/docs/r/resource_pool.html.markdown
-index 3523ec61..7c8fe2f4 100644
+index dddfa111..352b9f64 100644
 --- a/website/docs/r/resource_pool.html.markdown
 +++ b/website/docs/r/resource_pool.html.markdown
-@@ -4,7 +4,7 @@ layout: "vsphere"
- page_title: "VMware vSphere: vsphere_resource_pool"
- sidebar_current: "docs-vsphere-resource-compute-resource-pool"
- description: |-
--  Provides a resource for VMware vSphere resource pools. 
-+  Provides a resource for VMware vSphere resource pools.
-   This can be used to create and manage resource pools.
- ---
- 
-@@ -72,7 +72,7 @@ resource "vsphere_resource_pool" "resource_pool_parent" {
- resource "vsphere_resource_pool" "resource_pool_child" {
-   name                    = "child"
-   parent_resource_pool_id = vsphere_resource_pool.resource_pool_parent.id
--} 
-+}
- ```
- 
- ## Argument Reference
 @@ -80,7 +80,7 @@ resource "vsphere_resource_pool" "resource_pool_child" {
  The following arguments are supported:
  
@@ -2489,7 +2605,7 @@ index 3523ec61..7c8fe2f4 100644
  terraform import vsphere_resource_pool.resource_pool /dc-01/host/cluster-01/Resources/resource-pool-01
  ```
 diff --git a/website/docs/r/storage_drs_vm_override.html.markdown b/website/docs/r/storage_drs_vm_override.html.markdown
-index 7cc56c91..fcca5990 100644
+index 16f5b7e9..9cf57fed 100644
 --- a/website/docs/r/storage_drs_vm_override.html.markdown
 +++ b/website/docs/r/storage_drs_vm_override.html.markdown
 @@ -22,22 +22,6 @@ page][ref-vsphere-datastore-clusters].
@@ -2513,17 +2629,21 @@ index 7cc56c91..fcca5990 100644
 -[tf-vsphere-datastore-data-source]: /docs/providers/vsphere/d/datastore.html
 -
  ```hcl
- data "vsphere_datacenter" "dc" {
-   name = "dc1"
-@@ -64,7 +48,7 @@ data "vsphere_network" "network" {
+ data "vsphere_datacenter" "datacenter" {
+   name = "dc-01"
+@@ -64,9 +48,9 @@ data "vsphere_network" "network" {
  }
  
  resource "vsphere_virtual_machine" "vm" {
 -  name             = "terraform-test"
+-  resource_pool_id = data.vsphere_resource_pool.pool.id
+-  datastore_id     = data.vsphere_datastore.member_datastore.id
 +  name             = "test"
-   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
-   datastore_id     = "${data.vsphere_datastore.member_datastore.id}"
++  resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
++  datastore_id     = "${data.vsphere_datastore.member_datastore.id}"
  
+   num_cpus = 2
+   memory   = 1024
 @@ -93,12 +77,10 @@ resource "vsphere_storage_drs_vm_override" "drs_vm_override" {
  
  The following arguments are supported:
@@ -2562,10 +2682,10 @@ index 7cc56c91..fcca5990 100644
  the override on subsequent plan and apply operations after the override has
  been created.
 diff --git a/website/docs/r/tag.html.markdown b/website/docs/r/tag.html.markdown
-index 340c8e0c..b2bf06fe 100644
+index 0afb82d2..1920e7d6 100644
 --- a/website/docs/r/tag.html.markdown
 +++ b/website/docs/r/tag.html.markdown
-@@ -22,20 +22,18 @@ requires vCenter 6.0 or higher.
+@@ -19,20 +19,18 @@ For more information about tags, click [here][ext-tags-general].
  
  ## Example Usage
  
@@ -2591,7 +2711,7 @@ index 340c8e0c..b2bf06fe 100644
  
    associable_types = [
      "VirtualMachine",
-@@ -44,28 +42,26 @@ resource "vsphere_tag_category" "category" {
+@@ -41,28 +39,26 @@ resource "vsphere_tag_category" "category" {
  }
  
  resource "vsphere_tag" "tag" {
@@ -2627,7 +2747,7 @@ index 340c8e0c..b2bf06fe 100644
  
    associable_types = [
      "VirtualMachine",
-@@ -74,9 +70,9 @@ resource "vsphere_tag_category" "category" {
+@@ -71,9 +67,9 @@ resource "vsphere_tag_category" "category" {
  }
  
  resource "vsphere_tag" "tag" {
@@ -2640,10 +2760,10 @@ index 340c8e0c..b2bf06fe 100644
  
  resource "vsphere_virtual_machine" "web" {
 diff --git a/website/docs/r/tag_category.html.markdown b/website/docs/r/tag_category.html.markdown
-index 3394a69b..a9effb05 100644
+index 1256e9ba..e25310de 100644
 --- a/website/docs/r/tag_category.html.markdown
 +++ b/website/docs/r/tag_category.html.markdown
-@@ -25,15 +25,15 @@ requires vCenter 6.0 or higher.
+@@ -19,15 +19,15 @@ For more information about tags, click [here][ext-tags-general].
  
  ## Example Usage
  
@@ -2663,7 +2783,7 @@ index 3394a69b..a9effb05 100644
  
    associable_types = [
 diff --git a/website/docs/r/vapp_container.html.markdown b/website/docs/r/vapp_container.html.markdown
-index 85f1f39c..9871513c 100644
+index 8442b148..23784cf7 100644
 --- a/website/docs/r/vapp_container.html.markdown
 +++ b/website/docs/r/vapp_container.html.markdown
 @@ -93,12 +93,12 @@ resource "vsphere_virtual_machine" "vm" {
@@ -2701,35 +2821,42 @@ index 85f1f39c..9871513c 100644
  ## Importing
  
 diff --git a/website/docs/r/vapp_entity.html.markdown b/website/docs/r/vapp_entity.html.markdown
-index 05101872..c17293f9 100644
+index 0872bc76..a5b782d1 100644
 --- a/website/docs/r/vapp_entity.html.markdown
 +++ b/website/docs/r/vapp_entity.html.markdown
-@@ -52,7 +52,7 @@ data "vsphere_datastore" "datastore" {
+@@ -52,8 +52,8 @@ data "vsphere_datastore" "datastore" {
  }
  
  resource "vsphere_vapp_container" "vapp_container" {
 -  name                    = "terraform-vapp-container-test"
+-  parent_resource_pool_id = data.vsphere_compute_cluster.compute_cluster.id
 +  name                    = "vapp-container-test"
-   parent_resource_pool_id = "${data.vsphere_compute_cluster.compute_cluster.id}"
++  parent_resource_pool_id = "${data.vsphere_compute_cluster.compute_cluster.id}"
  }
  
-@@ -63,7 +63,7 @@ resource "vsphere_vapp_entity" "vapp_entity" {
+ resource "vsphere_vapp_entity" "vapp_entity" {
+@@ -63,9 +63,9 @@ resource "vsphere_vapp_entity" "vapp_entity" {
  }
  
  resource "vsphere_virtual_machine" "vm" {
 -  name             = "terraform-virtual-machine-test"
+-  resource_pool_id = vsphere_vapp_container.vapp_container.id
+-  datastore_id     = data.vsphere_datastore.datastore.id
 +  name             = "virtual-machine-test"
-   resource_pool_id = "${vsphere_vapp_container.vapp_container.id}"
-   datastore_id     = "${data.vsphere_datastore.datastore.id}"
++  resource_pool_id = "${vsphere_vapp_container.vapp_container.id}"
++  datastore_id     = "${data.vsphere_datastore.datastore.id}"
    num_cpus         = 2
+   memory           = 1024
+   guest_id         = "ubuntu64Guest"
 @@ -85,9 +85,9 @@ resource "vsphere_virtual_machine" "vm" {
  
  The following arguments are supported:
  
 -* `target_id` - (Required) [Managed object ID|docs-about-morefs] of the entity
-+* `target_id` - (Required) Managed object ID of the entity
-   to power on or power off. This can be a virtual machine or a vApp. 
+-  to power on or power off. This can be a virtual machine or a vApp.
 -* `container_id` - (Required) [Managed object ID|docs-about-morefs] of the vApp
++* `target_id` - (Required) Managed object ID of the entity
++  to power on or power off. This can be a virtual machine or a vApp. 
 +* `container_id` - (Required) Managed object ID of the vApp
    container the entity is a member of.
  * `start_order` - (Optional) Order to start and stop target in vApp. Default: 1
@@ -2752,7 +2879,7 @@ index 05101872..c17293f9 100644
  ## Importing
  
 diff --git a/website/docs/r/virtual_disk.html.markdown b/website/docs/r/virtual_disk.html.markdown
-index 4879a047..422c7a9d 100644
+index 99c7f91b..6a7a035e 100644
 --- a/website/docs/r/virtual_disk.html.markdown
 +++ b/website/docs/r/virtual_disk.html.markdown
 @@ -10,12 +10,9 @@ description: |-
@@ -2786,12 +2913,12 @@ index 4879a047..422c7a9d 100644
    directories that are a part of the `vmdk_path` parameter if they are missing.
    Default: `false`.
 diff --git a/website/docs/r/virtual_machine.html.markdown b/website/docs/r/virtual_machine.html.markdown
-index b259c86e..7d90f484 100644
+index 05237aad..0b851981 100644
 --- a/website/docs/r/virtual_machine.html.markdown
 +++ b/website/docs/r/virtual_machine.html.markdown
 @@ -16,7 +16,7 @@ For details on working with virtual machines in VMware vSphere, please refer to
  
- [vmware-docs-vm-management]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-55238059-912E-411F-A0E9-A7A536972A91.html
+ [vmware-docs-vm-management]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-55238059-912E-411F-A0E9-A7A536972A91.html
  
 -## About Working with Virtual Machines in Terraform
 +## About Working with Virtual Machines
@@ -2832,7 +2959,7 @@ index b259c86e..7d90f484 100644
  
  ~> **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
  
-@@ -552,15 +546,10 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -568,15 +562,10 @@ resource "vsphere_virtual_machine" "vm" {
  
  The `vsphere_virtual_machine` resource also supports vSphere Storage DRS, allowing the assignment of virtual machines to datastore clusters. When assigned to a datastore cluster, changes to a virtual machine's underlying datastores are ignored unless disks drift outside of the datastore cluster. Note that the [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-resource] resource also exists to allow for management of datastore clusters using the Terraform provider.
  
@@ -2849,7 +2976,7 @@ index b259c86e..7d90f484 100644
  **Example**:
  
  ```hcl
-@@ -618,15 +607,13 @@ The following options are general virtual machine and provider workflow options:
+@@ -634,15 +623,13 @@ The following options are general virtual machine and provider workflow options:
  
  * `extra_config_reboot_required` - (Optional) Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
  
@@ -2868,16 +2995,16 @@ index b259c86e..7d90f484 100644
  
  ~> **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
  
-@@ -655,7 +642,7 @@ The following options are general virtual machine and provider workflow options:
- [virtual-machine-hardware-versions]: https://kb.vmware.com/s/article/1003746
- [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+@@ -680,7 +667,7 @@ The following options are general virtual machine and provider workflow options:
+ [virtual-machine-hardware-versions]: https://knowledge.broadcom.com/external/article?articleNumber=315655
+ [virtual-machine-hardware-compatibility]: https://knowledge.broadcom.com/external/article?articleNumber=312100
  
 -* `host_system_id` - (Optional) The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on [virtual machine migration](#virtual-machine-migration) for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 +* `host_system_id` - (Optional) The managed object reference ID of a host on which to place the virtual machine. See the section on [virtual machine migration](#virtual-machine-migration) for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
  
  * `name` - (Required) The name of the virtual machine.
  
-@@ -671,13 +658,9 @@ The following options are general virtual machine and provider workflow options:
+@@ -696,13 +683,9 @@ The following options are general virtual machine and provider workflow options:
  
  For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
  
@@ -2893,7 +3020,7 @@ index b259c86e..7d90f484 100644
  
  * `scsi_type` - (Optional) The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
  
-@@ -685,9 +668,7 @@ For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_i
+@@ -710,9 +693,7 @@ For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_i
  
  * `storage_policy_id` - (Optional) The ID of the storage policy to assign to the home directory of a virtual machine.
  
@@ -2904,19 +3031,20 @@ index b259c86e..7d90f484 100644
  
  ~> **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
  
-@@ -1223,10 +1204,9 @@ The options are:
+@@ -1246,10 +1227,9 @@ The options are:
  
  * `hw_clock_utc` - (Optional) Tells the operating system that the hardware clock is set to UTC. Default: `true`.
  
--* `script_text` - (Optional) The customization script for the virtual machine that will be applied before and / or after guest customization. For more information on enabling and using a customization script, please refer to [VMware KB 74880][vmware-kb-74880]. The [Heredoc style][tf-heredoc-strings] of string literal is recommended.
+-* `script_text` - (Optional) The customization script for the virtual machine that will be applied before and / or after guest customization. For more information on enabling and using a customization script, please refer to [VMware KB 74880][kb-74880]. The [Heredoc style][tf-heredoc-strings] of string literal is recommended.
 +* `script_text` - (Optional) The customization script for the virtual machine that will be applied before and / or after guest customization. For more information on enabling and using a customization script, please refer to [VMware KB 74880][vmware-kb-74880]. The Heredoc style of string literal is recommended.
  
- [vmware-kb-74880]: https://kb.vmware.com/s/article/74880
+-[kb-74880]: https://knowledge.broadcom.com/external/article?articleNumber=313048
 -[tf-heredoc-strings]: https://www.terraform.io/language/expressions/strings#heredoc-strings
++[vmware-kb-74880]: https://kb.vmware.com/s/article/74880
  
- * `time_zone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][vmware-kb-2145518]. The default is UTC.
+ * `time_zone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][kb-2145518]. The default is UTC.
  
-@@ -1502,9 +1482,8 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -1529,9 +1509,8 @@ resource "vsphere_virtual_machine" "vm" {
  
  #### Storage Migration Restrictions
  
@@ -2927,7 +3055,7 @@ index b259c86e..7d90f484 100644
  
  ## Virtual Machine Reboot
  
-@@ -1563,23 +1542,19 @@ The following attributes are exported on the base level of this resource:
+@@ -1590,23 +1569,19 @@ The following attributes are exported on the base level of this resource:
  
  * `uuid` - The UUID of the virtual machine. Also exposed as the `id` of the resource.
  
@@ -2955,7 +3083,7 @@ index b259c86e..7d90f484 100644
  **Example**:
  
 diff --git a/website/docs/r/virtual_machine_snapshot.html.markdown b/website/docs/r/virtual_machine_snapshot.html.markdown
-index 68883258..5874eee7 100644
+index 3b22c0f7..ebdfb0ad 100644
 --- a/website/docs/r/virtual_machine_snapshot.html.markdown
 +++ b/website/docs/r/virtual_machine_snapshot.html.markdown
 @@ -20,7 +20,7 @@ For more information on managing snapshots and how they work in VMware, see
@@ -2967,14 +3095,16 @@ index 68883258..5874eee7 100644
  parameter to the `vsphere_virtual_machine` `disk` block), and even the
  configuration of the virtual machine at the time of the snapshot. Virtual
  machine, disk activity, and configuration changes post-snapshot are not
-@@ -29,7 +29,6 @@ HashiCorp recommends retaining snapshots for a extended period of time and does
+@@ -29,8 +29,7 @@ HashiCorp recommends retaining snapshots for a extended period of time and does
  NOT recommend using them as as backup feature. For more information on the
  limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
  
 -[docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
- [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
+-[ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-38F4D574-ADE7-4B80-AEAB-7EC502A379F4.html
++[ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
  
  ## Example Usage
+ 
 @@ -70,6 +69,4 @@ are immutable and force a new resource if changed.
  ## Attribute Reference
  
@@ -2984,7 +3114,7 @@ index 68883258..5874eee7 100644
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 +the managed object reference ID of the snapshot.
 diff --git a/website/docs/r/vmfs_datastore.html.markdown b/website/docs/r/vmfs_datastore.html.markdown
-index 7b6f9c11..23f09d8a 100644
+index 9d54d885..f41e755a 100644
 --- a/website/docs/r/vmfs_datastore.html.markdown
 +++ b/website/docs/r/vmfs_datastore.html.markdown
 @@ -42,9 +42,7 @@ an already provisioned disk is currently not supported (but may be in future
@@ -2998,15 +3128,17 @@ index 7b6f9c11..23f09d8a 100644
  
  [cmd-taint]: /docs/commands/taint.html
  
-@@ -70,7 +68,7 @@ data "vsphere_host" "esxi_host" {
+@@ -70,8 +68,8 @@ data "vsphere_host" "host" {
  }
  
  resource "vsphere_vmfs_datastore" "datastore" {
 -  name           = "terraform-test"
+-  host_system_id = data.vsphere_host.host.id
 +  name           = "test"
-   host_system_id = "${data.vsphere_host.esxi_host.id}"
++  host_system_id = "${data.vsphere_host.esxi_host.id}"
  
    disks = [
+     "mpx.vmhba1:C0:T1:L0",
 @@ -84,7 +82,7 @@ resource "vsphere_vmfs_datastore" "datastore" {
  ### Auto-detection of disks via `vsphere_vmfs_disks`
  
@@ -3016,15 +3148,17 @@ index 7b6f9c11..23f09d8a 100644
  exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
  exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
  into `vsphere_vmfs_datastore`. The datastore is also placed in the
-@@ -109,7 +107,7 @@ data "vsphere_vmfs_disks" "available" {
+@@ -109,8 +107,8 @@ data "vsphere_vmfs_disks" "available" {
  }
  
  resource "vsphere_vmfs_datastore" "datastore" {
 -  name           = "terraform-test"
+-  host_system_id = data.vsphere_host.host.id
 +  name           = "test"
-   host_system_id = "${data.vsphere_host.esxi_host.id}"
++  host_system_id = "${data.vsphere_host.esxi_host.id}"
    folder         = "datastore-folder"
  
+   disks = ["${data.vsphere_vmfs_disks.available.disks}"]
 @@ -123,7 +121,7 @@ The following arguments are supported:
  
  * `name` - (Required) The name of the datastore. Forces a new resource if
@@ -3034,7 +3168,7 @@ index 7b6f9c11..23f09d8a 100644
    the host to set the datastore up on. Note that this is not necessarily the
    only host that the datastore will be set up on - see
    [here](#auto-mounting-of-datastores-within-vcenter) for more info. Forces a
-@@ -132,29 +130,21 @@ The following arguments are supported:
+@@ -132,34 +130,29 @@ The following arguments are supported:
  * `folder` - (Optional) The relative path to a folder to put this datastore in.
    This is a path relative to the datacenter you are deploying the datastore to.
    Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -3054,24 +3188,25 @@ index 7b6f9c11..23f09d8a 100644
 -
 -[docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+-
+-* `custom_attributes` (Optional) Map of custom attribute ids to attribute
+-   value string to set on datastore resource. See
+-   [here][docs-setting-custom-attributes] for a reference on how to set values
+-   for custom attributes.
 +* `tags` - (Optional) The IDs of any tags to attach to this resource. 
  
- ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
- requires vCenter 6.0 or higher.
- 
- * `custom_attributes` (Optional) Map of custom attribute ids to attribute 
--   value string to set on datastore resource. See 
--   [here][docs-setting-custom-attributes] for a reference on how to set values 
--   for custom attributes.
--
 -[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
--
++~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
++requires vCenter 6.0 or higher.
+ 
+-~> **NOTE:** Custom attributes are unsupported on direct ESXi connections
++* `custom_attributes` (Optional) Map of custom attribute ids to attribute 
 +   value string to set on datastore resource. 
 +   
- ~> **NOTE:** Custom attributes are unsupported on direct ESXi connections 
++~> **NOTE:** Custom attributes are unsupported on direct ESXi connections 
  and require vCenter.
  
-@@ -162,7 +152,7 @@ and require vCenter.
+ ## Attribute Reference
  
  The following attributes are exported:
  
@@ -3081,19 +3216,22 @@ index 7b6f9c11..23f09d8a 100644
    some other computed attributes may be out of date.
  * `capacity` - Maximum capacity of the datastore, in megabytes.
 diff --git a/website/docs/r/vnic.html.markdown b/website/docs/r/vnic.html.markdown
-index 9530ffdc..e3bdfc7f 100644
+index 5919bb8d..3d1cc859 100644
 --- a/website/docs/r/vnic.html.markdown
 +++ b/website/docs/r/vnic.html.markdown
-@@ -13,7 +13,7 @@ Provides a VMware vSphere vnic resource.
+@@ -11,9 +11,9 @@ description: |-
  
- ## Example Usages
+ Provides a VMware vSphere vnic resource.
  
--**Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack:**
+-## Example Usages
++## Example Usage
+ 
+-**Create a vnic attached to a distributed virtual switch using the vMotion TCP/IP stack:**
 +### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
  
  ```hcl
- data "vsphere_datacenter" "dc" {
-@@ -51,7 +51,7 @@ resource "vsphere_vnic" "v1" {
+ data "vsphere_datacenter" "datacenter" {
+@@ -51,7 +51,7 @@ resource "vsphere_vnic" "vnic" {
  }
  ```
  
@@ -3101,4 +3239,4 @@ index 9530ffdc..e3bdfc7f 100644
 +### Create a vnic attached to a portgroup using the default TCP/IP stack
  
  ```hcl
- data "vsphere_datacenter" "dc" {
+ data "vsphere_datacenter" "datacenter" {
