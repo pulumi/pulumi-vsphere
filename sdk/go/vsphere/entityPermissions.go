@@ -15,13 +15,16 @@ import (
 type EntityPermissions struct {
 	pulumi.CustomResourceState
 
-	// The managed object id (uuid for some entities) on which permissions are to be created.
+	// The managed object id (uuid for some entities) on
+	// which permissions are to be created.
 	EntityId pulumi.StringOutput `pulumi:"entityId"`
-	// The managed object type, types can be found in the managed object type section
-	// [here](https://developer.vmware.com/apis/968/vsphere).
+	// The managed object type, types can be found in the
+	// managed object type section
+	// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
-	// The permissions to be given on this entity. Keep the permissions sorted
-	// alphabetically on `userOrGroup` for a better user experience.
+	// The permissions to be given on this entity. Keep
+	// the permissions sorted alphabetically on `userOrGroup` for a better user
+	// experience.
 	Permissions EntityPermissionsPermissionArrayOutput `pulumi:"permissions"`
 }
 
@@ -64,24 +67,30 @@ func GetEntityPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntityPermissions resources.
 type entityPermissionsState struct {
-	// The managed object id (uuid for some entities) on which permissions are to be created.
+	// The managed object id (uuid for some entities) on
+	// which permissions are to be created.
 	EntityId *string `pulumi:"entityId"`
-	// The managed object type, types can be found in the managed object type section
-	// [here](https://developer.vmware.com/apis/968/vsphere).
+	// The managed object type, types can be found in the
+	// managed object type section
+	// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 	EntityType *string `pulumi:"entityType"`
-	// The permissions to be given on this entity. Keep the permissions sorted
-	// alphabetically on `userOrGroup` for a better user experience.
+	// The permissions to be given on this entity. Keep
+	// the permissions sorted alphabetically on `userOrGroup` for a better user
+	// experience.
 	Permissions []EntityPermissionsPermission `pulumi:"permissions"`
 }
 
 type EntityPermissionsState struct {
-	// The managed object id (uuid for some entities) on which permissions are to be created.
+	// The managed object id (uuid for some entities) on
+	// which permissions are to be created.
 	EntityId pulumi.StringPtrInput
-	// The managed object type, types can be found in the managed object type section
-	// [here](https://developer.vmware.com/apis/968/vsphere).
+	// The managed object type, types can be found in the
+	// managed object type section
+	// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 	EntityType pulumi.StringPtrInput
-	// The permissions to be given on this entity. Keep the permissions sorted
-	// alphabetically on `userOrGroup` for a better user experience.
+	// The permissions to be given on this entity. Keep
+	// the permissions sorted alphabetically on `userOrGroup` for a better user
+	// experience.
 	Permissions EntityPermissionsPermissionArrayInput
 }
 
@@ -90,25 +99,31 @@ func (EntityPermissionsState) ElementType() reflect.Type {
 }
 
 type entityPermissionsArgs struct {
-	// The managed object id (uuid for some entities) on which permissions are to be created.
+	// The managed object id (uuid for some entities) on
+	// which permissions are to be created.
 	EntityId string `pulumi:"entityId"`
-	// The managed object type, types can be found in the managed object type section
-	// [here](https://developer.vmware.com/apis/968/vsphere).
+	// The managed object type, types can be found in the
+	// managed object type section
+	// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 	EntityType string `pulumi:"entityType"`
-	// The permissions to be given on this entity. Keep the permissions sorted
-	// alphabetically on `userOrGroup` for a better user experience.
+	// The permissions to be given on this entity. Keep
+	// the permissions sorted alphabetically on `userOrGroup` for a better user
+	// experience.
 	Permissions []EntityPermissionsPermission `pulumi:"permissions"`
 }
 
 // The set of arguments for constructing a EntityPermissions resource.
 type EntityPermissionsArgs struct {
-	// The managed object id (uuid for some entities) on which permissions are to be created.
+	// The managed object id (uuid for some entities) on
+	// which permissions are to be created.
 	EntityId pulumi.StringInput
-	// The managed object type, types can be found in the managed object type section
-	// [here](https://developer.vmware.com/apis/968/vsphere).
+	// The managed object type, types can be found in the
+	// managed object type section
+	// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 	EntityType pulumi.StringInput
-	// The permissions to be given on this entity. Keep the permissions sorted
-	// alphabetically on `userOrGroup` for a better user experience.
+	// The permissions to be given on this entity. Keep
+	// the permissions sorted alphabetically on `userOrGroup` for a better user
+	// experience.
 	Permissions EntityPermissionsPermissionArrayInput
 }
 
@@ -199,19 +214,22 @@ func (o EntityPermissionsOutput) ToEntityPermissionsOutputWithContext(ctx contex
 	return o
 }
 
-// The managed object id (uuid for some entities) on which permissions are to be created.
+// The managed object id (uuid for some entities) on
+// which permissions are to be created.
 func (o EntityPermissionsOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityPermissions) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// The managed object type, types can be found in the managed object type section
-// [here](https://developer.vmware.com/apis/968/vsphere).
+// The managed object type, types can be found in the
+// managed object type section
+// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 func (o EntityPermissionsOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityPermissions) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
 }
 
-// The permissions to be given on this entity. Keep the permissions sorted
-// alphabetically on `userOrGroup` for a better user experience.
+// The permissions to be given on this entity. Keep
+// the permissions sorted alphabetically on `userOrGroup` for a better user
+// experience.
 func (o EntityPermissionsOutput) Permissions() EntityPermissionsPermissionArrayOutput {
 	return o.ApplyT(func(v *EntityPermissions) EntityPermissionsPermissionArrayOutput { return v.Permissions }).(EntityPermissionsPermissionArrayOutput)
 }

@@ -21,7 +21,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      * 
      */
     @Import(name="alternateGuestName")
@@ -29,7 +30,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      * 
      */
     public Optional<Output<String>> alternateGuestName() {
@@ -187,14 +189,16 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      * 
      */
     @Import(name="firmware")
     private @Nullable Output<String> firmware;
 
     /**
-     * @return The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * @return The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      * 
      */
     public Optional<Output<String>> firmware() {
@@ -358,14 +362,16 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The number of cores per socket for this virtual machine.
+     * The number of cores per socket for this virtual
+     * machine.
      * 
      */
     @Import(name="numCoresPerSocket")
     private @Nullable Output<Integer> numCoresPerSocket;
 
     /**
-     * @return The number of cores per socket for this virtual machine.
+     * @return The number of cores per socket for this virtual
+     * machine.
      * 
      */
     public Optional<Output<Integer>> numCoresPerSocket() {
@@ -620,7 +626,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param alternateGuestName The alternate guest name of the virtual machine when
-         * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+         * `guest_id` is a non-specific operating system, like `otherGuest` or
+         * `otherGuest64`.
          * 
          * @return builder
          * 
@@ -632,7 +639,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param alternateGuestName The alternate guest name of the virtual machine when
-         * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+         * `guest_id` is a non-specific operating system, like `otherGuest` or
+         * `otherGuest64`.
          * 
          * @return builder
          * 
@@ -836,7 +844,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param firmware The firmware type for this virtual machine. Can be `bios` or `efi`.
+         * @param firmware The firmware type for this virtual machine. Can be `bios` or
+         * `efi`.
          * 
          * @return builder
          * 
@@ -847,7 +856,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param firmware The firmware type for this virtual machine. Can be `bios` or `efi`.
+         * @param firmware The firmware type for this virtual machine. Can be `bios` or
+         * `efi`.
          * 
          * @return builder
          * 
@@ -1065,7 +1075,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param numCoresPerSocket The number of cores per socket for this virtual machine.
+         * @param numCoresPerSocket The number of cores per socket for this virtual
+         * machine.
          * 
          * @return builder
          * 
@@ -1076,7 +1087,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param numCoresPerSocket The number of cores per socket for this virtual machine.
+         * @param numCoresPerSocket The number of cores per socket for this virtual
+         * machine.
          * 
          * @return builder
          * 

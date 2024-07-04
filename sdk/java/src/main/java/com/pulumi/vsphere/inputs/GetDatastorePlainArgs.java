@@ -54,18 +54,18 @@ public final class GetDatastorePlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      * 
      */
     @Import(name="stats")
     private @Nullable Map<String,Object> stats;
 
     /**
-     * @return The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * @return The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      * 
      */
     public Optional<Map<String,Object>> stats() {
@@ -124,9 +124,9 @@ public final class GetDatastorePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param stats The disk space usage statistics for the specific datastore. The total
-         * datastore capacity is represented as `capacity` and the free remaining disk is
-         * represented as `free`.
+         * @param stats The disk space usage statistics for the specific datastore. The
+         * total datastore capacity is represented as `capacity` and the free remaining
+         * disk is represented as `free`.
          * 
          * @return builder
          * 

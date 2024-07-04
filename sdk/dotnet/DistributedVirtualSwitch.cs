@@ -359,8 +359,7 @@ namespace Pulumi.VSphere
         public Output<int?> NetflowActiveFlowTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-        /// later.
+        /// IP address for the netflow collector, using IPv4 or IPv6.
         /// </summary>
         [Output("netflowCollectorIpAddress")]
         public Output<string?> NetflowCollectorIpAddress { get; private set; } = null!;
@@ -464,8 +463,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
-        /// 
-        /// &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -1011,8 +1008,7 @@ namespace Pulumi.VSphere
         public Input<int>? NetflowActiveFlowTimeout { get; set; }
 
         /// <summary>
-        /// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-        /// later.
+        /// IP address for the netflow collector, using IPv4 or IPv6.
         /// </summary>
         [Input("netflowCollectorIpAddress")]
         public Input<string>? NetflowCollectorIpAddress { get; set; }
@@ -1131,8 +1127,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
-        /// 
-        /// &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {
@@ -1662,8 +1656,7 @@ namespace Pulumi.VSphere
         public Input<int>? NetflowActiveFlowTimeout { get; set; }
 
         /// <summary>
-        /// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-        /// later.
+        /// IP address for the netflow collector, using IPv4 or IPv6.
         /// </summary>
         [Input("netflowCollectorIpAddress")]
         public Input<string>? NetflowCollectorIpAddress { get; set; }
@@ -1782,8 +1775,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
-        /// 
-        /// &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {

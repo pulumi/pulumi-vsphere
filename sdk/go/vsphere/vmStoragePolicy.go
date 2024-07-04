@@ -214,7 +214,7 @@ import (
 //
 // ```
 //
-// Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
+// Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
 //
 // ```go
 // package main

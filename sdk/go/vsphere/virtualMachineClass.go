@@ -47,6 +47,7 @@ import (
 // ```
 //
 // **Create a class with a vGPU**
+//
 // ```go
 // package main
 //

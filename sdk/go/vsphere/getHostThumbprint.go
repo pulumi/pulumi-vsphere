@@ -11,10 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `vsphereThumbprint` data source can be used to discover the host
-// thumbprint of an ESXi host. This can be used when adding the `Host`
-// resource. If the ESXi host is using a certificate chain, the first one returned
-// will be used to generate the thumbprint.
+// The `vsphereThumbprint` data source can be used to discover the host thumbprint
+// of an ESXi host. This can be used when adding the `Host` resource. If
+// the ESXi host is using a certificate chain, the first one returned will be used
+// to generate the thumbprint.
 //
 // ## Example Usage
 //
@@ -53,8 +53,8 @@ func GetHostThumbprint(ctx *pulumi.Context, args *GetHostThumbprintArgs, opts ..
 
 // A collection of arguments for invoking getHostThumbprint.
 type GetHostThumbprintArgs struct {
-	// The address of the ESXi host to retrieve the
-	// thumbprint from.
+	// The address of the ESXi host to retrieve the thumbprint
+	// from.
 	Address string `pulumi:"address"`
 	// Disables SSL certificate verification.
 	// Default: `false`
@@ -87,8 +87,8 @@ func GetHostThumbprintOutput(ctx *pulumi.Context, args GetHostThumbprintOutputAr
 
 // A collection of arguments for invoking getHostThumbprint.
 type GetHostThumbprintOutputArgs struct {
-	// The address of the ESXi host to retrieve the
-	// thumbprint from.
+	// The address of the ESXi host to retrieve the thumbprint
+	// from.
 	Address pulumi.StringInput `pulumi:"address"`
 	// Disables SSL certificate verification.
 	// Default: `false`

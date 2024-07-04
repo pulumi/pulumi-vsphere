@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 public final class GetVirtualMachineNetworkInterface {
     /**
      * @return The network interface types for each network interface found
-     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-     * `vmxnet3vrdma`, or `vmxnet3`.
+     * on the virtual machine, in device bus order. Will be one of `e1000`,
+     * `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
      * 
      */
     private String adapterType;
@@ -27,8 +27,8 @@ public final class GetVirtualMachineNetworkInterface {
      */
     private @Nullable Integer bandwidthLimit;
     /**
-     * @return The bandwidth reservation of this network interface,
-     * in Mbits/sec.
+     * @return The bandwidth reservation of this network
+     * interface, in Mbits/sec.
      * 
      */
     private @Nullable Integer bandwidthReservation;
@@ -39,8 +39,8 @@ public final class GetVirtualMachineNetworkInterface {
      */
     private Integer bandwidthShareCount;
     /**
-     * @return The bandwidth share allocation level for this interface.
-     * Can be one of `low`, `normal`, `high`, or `custom`.
+     * @return The bandwidth share allocation level for this
+     * interface. Can be one of `low`, `normal`, `high`, or `custom`.
      * 
      */
     private @Nullable String bandwidthShareLevel;
@@ -50,8 +50,8 @@ public final class GetVirtualMachineNetworkInterface {
      */
     private String macAddress;
     /**
-     * @return The managed object reference ID of the network this interface is
-     * connected to.
+     * @return The managed object reference ID of the network this interface
+     * is connected to.
      * 
      */
     private String networkId;
@@ -64,8 +64,8 @@ public final class GetVirtualMachineNetworkInterface {
     private GetVirtualMachineNetworkInterface() {}
     /**
      * @return The network interface types for each network interface found
-     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-     * `vmxnet3vrdma`, or `vmxnet3`.
+     * on the virtual machine, in device bus order. Will be one of `e1000`,
+     * `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
      * 
      */
     public String adapterType() {
@@ -80,8 +80,8 @@ public final class GetVirtualMachineNetworkInterface {
         return Optional.ofNullable(this.bandwidthLimit);
     }
     /**
-     * @return The bandwidth reservation of this network interface,
-     * in Mbits/sec.
+     * @return The bandwidth reservation of this network
+     * interface, in Mbits/sec.
      * 
      */
     public Optional<Integer> bandwidthReservation() {
@@ -96,8 +96,8 @@ public final class GetVirtualMachineNetworkInterface {
         return this.bandwidthShareCount;
     }
     /**
-     * @return The bandwidth share allocation level for this interface.
-     * Can be one of `low`, `normal`, `high`, or `custom`.
+     * @return The bandwidth share allocation level for this
+     * interface. Can be one of `low`, `normal`, `high`, or `custom`.
      * 
      */
     public Optional<String> bandwidthShareLevel() {
@@ -111,8 +111,8 @@ public final class GetVirtualMachineNetworkInterface {
         return this.macAddress;
     }
     /**
-     * @return The managed object reference ID of the network this interface is
-     * connected to.
+     * @return The managed object reference ID of the network this interface
+     * is connected to.
      * 
      */
     public String networkId() {

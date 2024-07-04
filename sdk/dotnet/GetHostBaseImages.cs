@@ -12,8 +12,8 @@ namespace Pulumi.VSphere
     public static class GetHostBaseImages
     {
         /// <summary>
-        /// The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-        /// for cluster software management.
+        /// The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+        /// base images available for cluster software management.
         /// 
         /// ## Example Usage
         /// 
@@ -25,7 +25,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var baseimages = VSphere.GetHostBaseImages.Invoke();
+        ///     var baseImages = VSphere.GetHostBaseImages.Invoke();
         /// 
         /// });
         /// ```
@@ -34,8 +34,8 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostBaseImagesResult>("vsphere:index/getHostBaseImages:getHostBaseImages", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-        /// for cluster software management.
+        /// The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+        /// base images available for cluster software management.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var baseimages = VSphere.GetHostBaseImages.Invoke();
+        ///     var baseImages = VSphere.GetHostBaseImages.Invoke();
         /// 
         /// });
         /// ```

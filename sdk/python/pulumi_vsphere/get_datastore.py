@@ -57,9 +57,9 @@ class GetDatastoreResult:
     @pulumi.getter
     def stats(self) -> Optional[Mapping[str, Any]]:
         """
-        The disk space usage statistics for the specific datastore. The total
-        datastore capacity is represented as `capacity` and the free remaining disk is
-        represented as `free`.
+        The disk space usage statistics for the specific datastore. The
+        total datastore capacity is represented as `capacity` and the free remaining
+        disk is represented as `free`.
         """
         return pulumi.get(self, "stats")
 
@@ -103,9 +103,9 @@ def get_datastore(datacenter_id: Optional[str] = None,
            search path used in `name` is an absolute path. For default datacenters, use
            the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name of the datastore. This can be a name or path.
-    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The total
-           datastore capacity is represented as `capacity` and the free remaining disk is
-           represented as `free`.
+    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The
+           total datastore capacity is represented as `capacity` and the free remaining
+           disk is represented as `free`.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
@@ -149,8 +149,8 @@ def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = 
            search path used in `name` is an absolute path. For default datacenters, use
            the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name of the datastore. This can be a name or path.
-    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The total
-           datastore capacity is represented as `capacity` and the free remaining disk is
-           represented as `free`.
+    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The
+           total datastore capacity is represented as `capacity` and the free remaining
+           disk is represented as `free`.
     """
     ...

@@ -55,18 +55,18 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      * 
      */
     @Import(name="stats")
     private @Nullable Output<Map<String,Object>> stats;
 
     /**
-     * @return The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * @return The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      * 
      */
     public Optional<Output<Map<String,Object>>> stats() {
@@ -148,9 +148,9 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param stats The disk space usage statistics for the specific datastore. The total
-         * datastore capacity is represented as `capacity` and the free remaining disk is
-         * represented as `free`.
+         * @param stats The disk space usage statistics for the specific datastore. The
+         * total datastore capacity is represented as `capacity` and the free remaining
+         * disk is represented as `free`.
          * 
          * @return builder
          * 
@@ -161,9 +161,9 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param stats The disk space usage statistics for the specific datastore. The total
-         * datastore capacity is represented as `capacity` and the free remaining disk is
-         * represented as `free`.
+         * @param stats The disk space usage statistics for the specific datastore. The
+         * total datastore capacity is represented as `capacity` and the free remaining
+         * disk is represented as `free`.
          * 
          * @return builder
          * 

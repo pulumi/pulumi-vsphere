@@ -124,7 +124,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
+ * Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

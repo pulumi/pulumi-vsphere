@@ -69,7 +69,7 @@ export class Datacenter extends pulumi.CustomResource {
     }
 
     /**
-     * Map of custom attribute ids to value 
+     * Map of custom attribute ids to value
      * strings to set for datacenter resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
@@ -96,9 +96,6 @@ export class Datacenter extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -138,7 +135,7 @@ export class Datacenter extends pulumi.CustomResource {
  */
 export interface DatacenterState {
     /**
-     * Map of custom attribute ids to value 
+     * Map of custom attribute ids to value
      * strings to set for datacenter resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
@@ -165,9 +162,6 @@ export interface DatacenterState {
     name?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -177,7 +171,7 @@ export interface DatacenterState {
  */
 export interface DatacenterArgs {
     /**
-     * Map of custom attribute ids to value 
+     * Map of custom attribute ids to value
      * strings to set for datacenter resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
@@ -200,9 +194,6 @@ export interface DatacenterArgs {
     name?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

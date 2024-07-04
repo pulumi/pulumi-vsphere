@@ -13,6 +13,90 @@ namespace Pulumi.VSphere
     /// Provides a resource for configuring Workload Management.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### S
+    /// 
+    /// **Enable Workload Management on a compute cluster**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vmClass = new VSphere.VirtualMachineClass("vm_class", new()
+    ///     {
+    ///         Name = "custom-class",
+    ///         Cpus = 4,
+    ///         Memory = 4096,
+    ///     });
+    /// 
+    ///     var supervisor = new VSphere.Supervisor("supervisor", new()
+    ///     {
+    ///         Cluster = "&lt;compute_cluster_id&gt;",
+    ///         StoragePolicy = "&lt;storage_policy_name&gt;",
+    ///         ContentLibrary = "&lt;content_library_id&gt;",
+    ///         MainDns = "10.0.0.250",
+    ///         WorkerDns = "10.0.0.250",
+    ///         EdgeCluster = "&lt;edge_cluster_id&gt;",
+    ///         DvsUuid = "&lt;distributed_switch_uuid&gt;",
+    ///         SizingHint = "MEDIUM",
+    ///         ManagementNetwork = new VSphere.Inputs.SupervisorManagementNetworkArgs
+    ///         {
+    ///             Network = "&lt;portgroup_id&gt;",
+    ///             SubnetMask = "255.255.255.0",
+    ///             StartingAddress = "10.0.0.150",
+    ///             Gateway = "10.0.0.250",
+    ///             AddressCount = 5,
+    ///         },
+    ///         IngressCidrs = new[]
+    ///         {
+    ///             new VSphere.Inputs.SupervisorIngressCidrArgs
+    ///             {
+    ///                 Address = "10.10.10.0",
+    ///                 Prefix = 24,
+    ///             },
+    ///         },
+    ///         EgressCidrs = new[]
+    ///         {
+    ///             new VSphere.Inputs.SupervisorEgressCidrArgs
+    ///             {
+    ///                 Address = "10.10.11.0",
+    ///                 Prefix = 24,
+    ///             },
+    ///         },
+    ///         PodCidrs = new[]
+    ///         {
+    ///             new VSphere.Inputs.SupervisorPodCidrArgs
+    ///             {
+    ///                 Address = "10.244.10.0",
+    ///                 Prefix = 23,
+    ///             },
+    ///         },
+    ///         ServiceCidr = new VSphere.Inputs.SupervisorServiceCidrArgs
+    ///         {
+    ///             Address = "10.10.12.0",
+    ///             Prefix = 24,
+    ///         },
+    ///         SearchDomains = "vsphere.local",
+    ///         Namespaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.SupervisorNamespaceArgs
+    ///             {
+    ///                 Name = "custom-namespace",
+    ///                 ContentLibraries = new() { },
+    ///                 VmClasses = new[]
+    ///                 {
+    ///                     vmClass.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/supervisor:Supervisor")]
     public partial class Supervisor : global::Pulumi.CustomResource

@@ -208,8 +208,8 @@ class GuestOsCustomization(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        windows_customization = vsphere.GuestOsCustomization("windows_customization",
-            name="windows-spec",
+        windows = vsphere.GuestOsCustomization("windows",
+            name="windows",
             type="Windows",
             spec=vsphere.GuestOsCustomizationSpecArgs(
                 windows_options=vsphere.GuestOsCustomizationSpecWindowsOptionsArgs(
@@ -251,8 +251,8 @@ class GuestOsCustomization(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        windows_customization = vsphere.GuestOsCustomization("windows_customization",
-            name="windows-spec",
+        windows = vsphere.GuestOsCustomization("windows",
+            name="windows",
             type="Windows",
             spec=vsphere.GuestOsCustomizationSpecArgs(
                 windows_options=vsphere.GuestOsCustomizationSpecWindowsOptionsArgs(

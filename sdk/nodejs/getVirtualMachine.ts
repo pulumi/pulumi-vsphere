@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * In the following example, a virtual machine template is returned by its
- * unique name within the `vsphere.Datacenter`.
+ * In the following example, a virtual machine template is returned by its unique
+ * name within the `vsphere.Datacenter`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ *
  * In the following example, each virtual machine template is returned by its
  * unique full path within the `vsphere.Datacenter`.
  *
@@ -119,7 +120,8 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
 export interface GetVirtualMachineArgs {
     /**
      * The alternate guest name of the virtual machine when
-     * `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guestId` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      */
     alternateGuestName?: string;
     /**
@@ -151,7 +153,8 @@ export interface GetVirtualMachineArgs {
     extraConfig?: {[key: string]: string};
     extraConfigRebootRequired?: boolean;
     /**
-     * The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      */
     firmware?: string;
     /**
@@ -188,7 +191,8 @@ export interface GetVirtualMachineArgs {
     name?: string;
     nestedHvEnabled?: boolean;
     /**
-     * The number of cores per socket for this virtual machine.
+     * The number of cores per socket for this virtual
+     * machine.
      */
     numCoresPerSocket?: number;
     /**
@@ -235,7 +239,8 @@ export interface GetVirtualMachineArgs {
 export interface GetVirtualMachineResult {
     /**
      * The alternate guest name of the virtual machine when
-     * `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guestId` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      */
     readonly alternateGuestName?: string;
     /**
@@ -255,11 +260,11 @@ export interface GetVirtualMachineResult {
     readonly cpuShareLevel?: string;
     readonly datacenterId?: string;
     /**
-     * Whenever possible, this is the first IPv4 address that is reachable through
-     * the default gateway configured on the machine, then the first reachable IPv6
-     * address, and then the first general discovered address if neither exist. If
-     * VMware Tools is not running on the virtual machine, or if the VM is powered
-     * off, this value will be blank.
+     * Whenever possible, this is the first IPv4 address that
+     * is reachable through the default gateway configured on the machine, then the
+     * first reachable IPv6 address, and then the first general discovered address if
+     * neither exist. If VMware Tools is not running on the virtual machine, or if
+     * the VM is powered off, this value will be blank.
      */
     readonly defaultIpAddress: string;
     /**
@@ -267,20 +272,21 @@ export interface GetVirtualMachineResult {
      * template. These are sorted by bus and unit number so that they can be applied
      * to a `vsphere.VirtualMachine` resource in the order the resource expects
      * while cloning. This is useful for discovering certain disk settings while
-     * performing a linked clone, as all settings that are output by this data
-     * source must be the same on the destination virtual machine as the source.
-     * Only the first number of controllers defined by `scsiControllerScanCount`
-     * are scanned for disks. The sub-attributes are:
+     * performing a linked clone, as all settings that are output by this data source
+     * must be the same on the destination virtual machine as the source. Only the
+     * first number of controllers defined by `scsiControllerScanCount` are
+     * scanned for disks. The sub-attributes are:
      */
     readonly disks: outputs.GetVirtualMachineDisk[];
     readonly efiSecureBootEnabled?: boolean;
     readonly enableDiskUuid?: boolean;
     readonly enableLogging?: boolean;
-    readonly eptRviMode?: string;
+    readonly eptRviMode: string;
     readonly extraConfig?: {[key: string]: string};
     readonly extraConfigRebootRequired?: boolean;
     /**
-     * The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      */
     readonly firmware?: string;
     readonly folder?: string;
@@ -296,12 +302,16 @@ export interface GetVirtualMachineResult {
      * The hardware version number on this virtual machine.
      */
     readonly hardwareVersion: number;
-    readonly hvMode?: string;
+    readonly hvMode: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ideControllerScanCount?: number;
+    /**
+     * The instance UUID of the virtual machine or template.
+     */
+    readonly instanceUuid: string;
     readonly latencySensitivity?: string;
     /**
      * The size of the virtual machine's memory, in MB.
@@ -319,21 +329,23 @@ export interface GetVirtualMachineResult {
     /**
      * The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
-     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
+     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
+     * `vmxnet3`.
      */
     readonly networkInterfaceTypes: string[];
     /**
-     * Information about each of the network interfaces on this 
-     * virtual machine or template. These are sorted by device bus order so that they
-     * can be applied to a `vsphere.VirtualMachine` resource in the order the resource
-     * expects while cloning. This is useful for discovering certain network interface
-     * settings while performing a linked clone, as all settings that are output by this
-     * data source must be the same on the destination virtual machine as the source.
-     * The sub-attributes are:
+     * Information about each of the network interfaces on
+     * this virtual machine or template. These are sorted by device bus order so that
+     * they can be applied to a `vsphere.VirtualMachine` resource in the order the
+     * resource expects while cloning. This is useful for discovering certain network
+     * interface settings while performing a linked clone, as all settings that are
+     * output by this data source must be the same on the destination virtual machine
+     * as the source. The sub-attributes are:
      */
     readonly networkInterfaces: outputs.GetVirtualMachineNetworkInterface[];
     /**
-     * The number of cores per socket for this virtual machine.
+     * The number of cores per socket for this virtual
+     * machine.
      */
     readonly numCoresPerSocket?: number;
     /**
@@ -383,8 +395,8 @@ export interface GetVirtualMachineResult {
  *
  * ## Example Usage
  *
- * In the following example, a virtual machine template is returned by its
- * unique name within the `vsphere.Datacenter`.
+ * In the following example, a virtual machine template is returned by its unique
+ * name within the `vsphere.Datacenter`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -398,6 +410,7 @@ export interface GetVirtualMachineResult {
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ *
  * In the following example, each virtual machine template is returned by its
  * unique full path within the `vsphere.Datacenter`.
  *
@@ -428,7 +441,8 @@ export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts
 export interface GetVirtualMachineOutputArgs {
     /**
      * The alternate guest name of the virtual machine when
-     * `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guestId` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
@@ -460,7 +474,8 @@ export interface GetVirtualMachineOutputArgs {
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     extraConfigRebootRequired?: pulumi.Input<boolean>;
     /**
-     * The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      */
     firmware?: pulumi.Input<string>;
     /**
@@ -497,7 +512,8 @@ export interface GetVirtualMachineOutputArgs {
     name?: pulumi.Input<string>;
     nestedHvEnabled?: pulumi.Input<boolean>;
     /**
-     * The number of cores per socket for this virtual machine.
+     * The number of cores per socket for this virtual
+     * machine.
      */
     numCoresPerSocket?: pulumi.Input<number>;
     /**

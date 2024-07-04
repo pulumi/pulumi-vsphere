@@ -8,8 +8,8 @@ import * as utilities from "./utilities";
  * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
  * of a content library item.
  *
- * > **NOTE:** This resource requires vCenter Server and is not available on
- * direct ESXi host connections.
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * host connections.
  */
 export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
 
@@ -26,7 +26,8 @@ export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pu
  */
 export interface GetContentLibraryItemArgs {
     /**
-     * The ID of the content library in which the item exists.
+     * The ID of the content library in which the item
+     * exists.
      */
     libraryId: string;
     /**
@@ -34,7 +35,8 @@ export interface GetContentLibraryItemArgs {
      */
     name: string;
     /**
-     * The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+     * The type for the content library item. One of `ovf`,
+     * `vm-template`, or `iso`
      */
     type: string;
 }
@@ -55,8 +57,8 @@ export interface GetContentLibraryItemResult {
  * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
  * of a content library item.
  *
- * > **NOTE:** This resource requires vCenter Server and is not available on
- * direct ESXi host connections.
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * host connections.
  */
 export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryItemResult> {
     return pulumi.output(args).apply((a: any) => getContentLibraryItem(a, opts))
@@ -67,7 +69,8 @@ export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArg
  */
 export interface GetContentLibraryItemOutputArgs {
     /**
-     * The ID of the content library in which the item exists.
+     * The ID of the content library in which the item
+     * exists.
      */
     libraryId: pulumi.Input<string>;
     /**
@@ -75,7 +78,8 @@ export interface GetContentLibraryItemOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+     * The type for the content library item. One of `ovf`,
+     * `vm-template`, or `iso`
      */
     type: pulumi.Input<string>;
 }

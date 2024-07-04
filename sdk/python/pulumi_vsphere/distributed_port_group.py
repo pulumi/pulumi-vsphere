@@ -81,7 +81,14 @@ class DistributedPortGroupArgs:
         :param pulumi.Input[bool] block_override_allowed: Allow the blocked setting of an individual port to override the setting in the portgroup.
         :param pulumi.Input[bool] check_beacon: Enable beacon probing on the ports this policy applies to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
+               <<<<<<< HEAD
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               =======
                value string to set for port group.
+               >>>>>>> 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -114,7 +121,7 @@ class DistributedPortGroupArgs:
                the ports in this port group. See the `portNameFormat` attribute listed
                [here][ext-vsphere-portname-format] for details on the format syntax.
                
-               [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -344,7 +351,14 @@ class DistributedPortGroupArgs:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of custom attribute ids to attribute
+        <<<<<<< HEAD
+        value string to set for port group. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        =======
         value string to set for port group.
+        >>>>>>> 69c6e040 (fork)
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -630,7 +644,7 @@ class DistributedPortGroupArgs:
         the ports in this port group. See the `portNameFormat` attribute listed
         [here][ext-vsphere-portname-format] for details on the format syntax.
 
-        [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+        [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
         """
         return pulumi.get(self, "port_name_format")
 
@@ -868,7 +882,14 @@ class _DistributedPortGroupState:
         :param pulumi.Input[str] config_version: The current version of the port group configuration,
                incremented by subsequent updates to the port group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
+               <<<<<<< HEAD
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               =======
                value string to set for port group.
+               >>>>>>> 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -904,7 +925,7 @@ class _DistributedPortGroupState:
                the ports in this port group. See the `portNameFormat` attribute listed
                [here][ext-vsphere-portname-format] for details on the format syntax.
                
-               [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -1139,7 +1160,14 @@ class _DistributedPortGroupState:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of custom attribute ids to attribute
+        <<<<<<< HEAD
+        value string to set for port group. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        =======
         value string to set for port group.
+        >>>>>>> 69c6e040 (fork)
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -1450,7 +1478,7 @@ class _DistributedPortGroupState:
         the ports in this port group. See the `portNameFormat` attribute listed
         [here][ext-vsphere-portname-format] for details on the format syntax.
 
-        [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+        [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
         """
         return pulumi.get(self, "port_name_format")
 
@@ -1689,7 +1717,14 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] block_override_allowed: Allow the blocked setting of an individual port to override the setting in the portgroup.
         :param pulumi.Input[bool] check_beacon: Enable beacon probing on the ports this policy applies to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
+               <<<<<<< HEAD
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               =======
                value string to set for port group.
+               >>>>>>> 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -1724,7 +1759,7 @@ class DistributedPortGroup(pulumi.CustomResource):
                the ports in this port group. See the `portNameFormat` attribute listed
                [here][ext-vsphere-portname-format] for details on the format syntax.
                
-               [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -1952,7 +1987,14 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[str] config_version: The current version of the port group configuration,
                incremented by subsequent updates to the port group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
+               <<<<<<< HEAD
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               =======
                value string to set for port group.
+               >>>>>>> 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -1988,7 +2030,7 @@ class DistributedPortGroup(pulumi.CustomResource):
                the ports in this port group. See the `portNameFormat` attribute listed
                [here][ext-vsphere-portname-format] for details on the format syntax.
                
-               [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -2144,7 +2186,14 @@ class DistributedPortGroup(pulumi.CustomResource):
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to attribute
+        <<<<<<< HEAD
+        value string to set for port group. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        =======
         value string to set for port group.
+        >>>>>>> 69c6e040 (fork)
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -2355,7 +2404,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         the ports in this port group. See the `portNameFormat` attribute listed
         [here][ext-vsphere-portname-format] for details on the format syntax.
 
-        [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+        [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
         """
         return pulumi.get(self, "port_name_format")
 

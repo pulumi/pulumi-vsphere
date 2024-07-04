@@ -135,7 +135,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
      */
-    public readonly eptRviMode!: pulumi.Output<string | undefined>;
+    public readonly eptRviMode!: pulumi.Output<string>;
     /**
      * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
      * configuration, such as instance metadata, or configuration data for OVF images.
@@ -176,7 +176,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      */
-    public readonly hvMode!: pulumi.Output<string | undefined>;
+    public readonly hvMode!: pulumi.Output<string>;
     public readonly ideControllerCount!: pulumi.Output<number | undefined>;
     /**
      * List of IP addresses and CIDR networks to ignore while waiting for an IP

@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             .namespaces(SupervisorNamespaceArgs.builder()
  *                 .name("custom-namespace")
  *                 .contentLibraries()
- *                 .vmClases(vmClass.id())
+ *                 .vmClasses(vmClass.id())
  *                 .build())
  *             .build());
  * 

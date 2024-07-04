@@ -12,57 +12,15 @@ namespace Pulumi.VSphere
     public static class GetGuestOsCustomization
     {
         /// <summary>
-        /// The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-        /// 
-        /// Suggested change
-        /// &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
-        /// 
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var gosc1 = VSphere.GetGuestOsCustomization.Invoke(new()
-        ///     {
-        ///         Name = "linux-spec",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// The `vsphere.GuestOsCustomization` data source can be used to discover the
+        /// details about a customization specification for a guest operating system.
         /// </summary>
         public static Task<GetGuestOsCustomizationResult> InvokeAsync(GetGuestOsCustomizationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-        /// 
-        /// Suggested change
-        /// &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
-        /// 
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var gosc1 = VSphere.GetGuestOsCustomization.Invoke(new()
-        ///     {
-        ///         Name = "linux-spec",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// The `vsphere.GuestOsCustomization` data source can be used to discover the
+        /// details about a customization specification for a guest operating system.
         /// </summary>
         public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());
@@ -72,7 +30,8 @@ namespace Pulumi.VSphere
     public sealed class GetGuestOsCustomizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the customization specification is the unique identifier per vCenter Server instance.
+        /// The name of the customization specification is the unique
+        /// identifier per vCenter Server instance. ## Attribute Reference
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -86,7 +45,8 @@ namespace Pulumi.VSphere
     public sealed class GetGuestOsCustomizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the customization specification is the unique identifier per vCenter Server instance.
+        /// The name of the customization specification is the unique
+        /// identifier per vCenter Server instance. ## Attribute Reference
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -101,30 +61,15 @@ namespace Pulumi.VSphere
     [OutputType]
     public sealed class GetGuestOsCustomizationResult
     {
-        /// <summary>
-        /// The number of last changed version to the customization specification.
-        /// </summary>
         public readonly string ChangeVersion;
-        /// <summary>
-        /// The description for the customization specification.
-        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The time of last modification to the customization specification.
-        /// </summary>
         public readonly string LastUpdateTime;
         public readonly string Name;
-        /// <summary>
-        /// Container object for the guest operating system properties to be customized. See virtual machine customizations
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetGuestOsCustomizationSpecResult> Specs;
-        /// <summary>
-        /// The type of customization specification: One among: Windows, Linux.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

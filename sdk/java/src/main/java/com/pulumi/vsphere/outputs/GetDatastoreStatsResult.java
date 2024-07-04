@@ -14,21 +14,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatastoreStatsResult {
     /**
-     * @return A mapping of the capacity for all datastore in the datacenter
-     * , where the name of the datastore is used as key and the capacity as value.
+     * @return A mapping of the capacity for all datastore in the datacenter,
+     * where the name of the datastore is used as key and the capacity as value.
      * 
      */
     private @Nullable Map<String,Object> capacity;
     /**
-     * @return The [managed object reference ID][docs-about-morefs]
-     * of the datacenter the datastores are located in.
+     * @return The [managed object reference ID][docs-about-morefs] of the
+     * datacenter the datastores are located in.
      * 
      */
     private String datacenterId;
     /**
      * @return A mapping of the free space for each datastore in the
-     * datacenter, where the name of the datastore is used as key and the free
-     * space as value.
+     * datacenter, where the name of the datastore is used as key and the free space
+     * as value.
      * 
      */
     private @Nullable Map<String,Object> freeSpace;
@@ -40,16 +40,16 @@ public final class GetDatastoreStatsResult {
 
     private GetDatastoreStatsResult() {}
     /**
-     * @return A mapping of the capacity for all datastore in the datacenter
-     * , where the name of the datastore is used as key and the capacity as value.
+     * @return A mapping of the capacity for all datastore in the datacenter,
+     * where the name of the datastore is used as key and the capacity as value.
      * 
      */
     public Map<String,Object> capacity() {
         return this.capacity == null ? Map.of() : this.capacity;
     }
     /**
-     * @return The [managed object reference ID][docs-about-morefs]
-     * of the datacenter the datastores are located in.
+     * @return The [managed object reference ID][docs-about-morefs] of the
+     * datacenter the datastores are located in.
      * 
      */
     public String datacenterId() {
@@ -57,8 +57,8 @@ public final class GetDatastoreStatsResult {
     }
     /**
      * @return A mapping of the free space for each datastore in the
-     * datacenter, where the name of the datastore is used as key and the free
-     * space as value.
+     * datacenter, where the name of the datastore is used as key and the free space
+     * as value.
      * 
      */
     public Map<String,Object> freeSpace() {

@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
- * with a role given its name or display label.
+ * The `vsphere.Role` data source can be used to discover the `id` and privileges
+ * associated with a role given its name or display label.
  *
  * ## Example Usage
  *
@@ -72,8 +72,8 @@ export interface GetRoleResult {
     readonly rolePrivileges?: string[];
 }
 /**
- * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
- * with a role given its name or display label.
+ * The `vsphere.Role` data source can be used to discover the `id` and privileges
+ * associated with a role given its name or display label.
  *
  * ## Example Usage
  *

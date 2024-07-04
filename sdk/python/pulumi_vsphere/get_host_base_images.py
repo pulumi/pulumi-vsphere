@@ -58,8 +58,8 @@ class AwaitableGetHostBaseImagesResult(GetHostBaseImagesResult):
 
 def get_host_base_images(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostBaseImagesResult:
     """
-    The `get_host_base_images` data source can be used to get the list of ESXi base images available
-    for cluster software management.
+    The `get_host_base_images` data source can be used to get the list of ESXi
+    base images available for cluster software management.
 
     ## Example Usage
 
@@ -67,7 +67,7 @@ def get_host_base_images(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
     import pulumi
     import pulumi_vsphere as vsphere
 
-    baseimages = vsphere.get_host_base_images()
+    base_images = vsphere.get_host_base_images()
     ```
     """
     __args__ = dict()
@@ -82,8 +82,8 @@ def get_host_base_images(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
 @_utilities.lift_output_func(get_host_base_images)
 def get_host_base_images_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostBaseImagesResult]:
     """
-    The `get_host_base_images` data source can be used to get the list of ESXi base images available
-    for cluster software management.
+    The `get_host_base_images` data source can be used to get the list of ESXi
+    base images available for cluster software management.
 
     ## Example Usage
 
@@ -91,7 +91,7 @@ def get_host_base_images_output(opts: Optional[pulumi.InvokeOptions] = None) -> 
     import pulumi
     import pulumi_vsphere as vsphere
 
-    baseimages = vsphere.get_host_base_images()
+    base_images = vsphere.get_host_base_images()
     ```
     """
     ...

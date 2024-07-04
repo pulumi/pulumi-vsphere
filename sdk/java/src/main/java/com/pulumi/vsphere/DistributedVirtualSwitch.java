@@ -826,16 +826,14 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.netflowActiveFlowTimeout);
     }
     /**
-     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-     * later.
+     * IP address for the netflow collector, using IPv4 or IPv6.
      * 
      */
     @Export(name="netflowCollectorIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netflowCollectorIpAddress;
 
     /**
-     * @return IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-     * later.
+     * @return IP address for the netflow collector, using IPv4 or IPv6.
      * 
      */
     public Output<Optional<String>> netflowCollectorIpAddress() {
@@ -1070,16 +1068,12 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
     /**
      * The IDs of any tags to attach to this resource.
      * 
-     * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
-     * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
-     * 
-     * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      * 
      */
     public Output<Optional<List<String>>> tags() {

@@ -118,7 +118,8 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
     ```
 
 
-    :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.
+    :param str host_id: The [managed object reference ID][docs-about-morefs] of
+           a host.
     :param str name_regex: A regular expression that will be used to match the
            host vGPU profile name.
            
@@ -173,7 +174,8 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.
+    :param str host_id: The [managed object reference ID][docs-about-morefs] of
+           a host.
     :param str name_regex: A regular expression that will be used to match the
            host vGPU profile name.
            

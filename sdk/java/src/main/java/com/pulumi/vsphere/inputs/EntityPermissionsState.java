@@ -18,14 +18,16 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
     public static final EntityPermissionsState Empty = new EntityPermissionsState();
 
     /**
-     * The managed object id (uuid for some entities) on which permissions are to be created.
+     * The managed object id (uuid for some entities) on
+     * which permissions are to be created.
      * 
      */
     @Import(name="entityId")
     private @Nullable Output<String> entityId;
 
     /**
-     * @return The managed object id (uuid for some entities) on which permissions are to be created.
+     * @return The managed object id (uuid for some entities) on
+     * which permissions are to be created.
      * 
      */
     public Optional<Output<String>> entityId() {
@@ -33,16 +35,18 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The managed object type, types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * The managed object type, types can be found in the
+     * managed object type section
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      * 
      */
     @Import(name="entityType")
     private @Nullable Output<String> entityType;
 
     /**
-     * @return The managed object type, types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * @return The managed object type, types can be found in the
+     * managed object type section
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      * 
      */
     public Optional<Output<String>> entityType() {
@@ -50,16 +54,18 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The permissions to be given on this entity. Keep the permissions sorted
-     * alphabetically on `user_or_group` for a better user experience.
+     * The permissions to be given on this entity. Keep
+     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * experience.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<EntityPermissionsPermissionArgs>> permissions;
 
     /**
-     * @return The permissions to be given on this entity. Keep the permissions sorted
-     * alphabetically on `user_or_group` for a better user experience.
+     * @return The permissions to be given on this entity. Keep
+     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * experience.
      * 
      */
     public Optional<Output<List<EntityPermissionsPermissionArgs>>> permissions() {
@@ -93,7 +99,8 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entityId The managed object id (uuid for some entities) on which permissions are to be created.
+         * @param entityId The managed object id (uuid for some entities) on
+         * which permissions are to be created.
          * 
          * @return builder
          * 
@@ -104,7 +111,8 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entityId The managed object id (uuid for some entities) on which permissions are to be created.
+         * @param entityId The managed object id (uuid for some entities) on
+         * which permissions are to be created.
          * 
          * @return builder
          * 
@@ -114,8 +122,9 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entityType The managed object type, types can be found in the managed object type section
-         * [here](https://developer.vmware.com/apis/968/vsphere).
+         * @param entityType The managed object type, types can be found in the
+         * managed object type section
+         * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
          * 
          * @return builder
          * 
@@ -126,8 +135,9 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entityType The managed object type, types can be found in the managed object type section
-         * [here](https://developer.vmware.com/apis/968/vsphere).
+         * @param entityType The managed object type, types can be found in the
+         * managed object type section
+         * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
          * 
          * @return builder
          * 
@@ -137,8 +147,9 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param permissions The permissions to be given on this entity. Keep the permissions sorted
-         * alphabetically on `user_or_group` for a better user experience.
+         * @param permissions The permissions to be given on this entity. Keep
+         * the permissions sorted alphabetically on `user_or_group` for a better user
+         * experience.
          * 
          * @return builder
          * 
@@ -149,8 +160,9 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param permissions The permissions to be given on this entity. Keep the permissions sorted
-         * alphabetically on `user_or_group` for a better user experience.
+         * @param permissions The permissions to be given on this entity. Keep
+         * the permissions sorted alphabetically on `user_or_group` for a better user
+         * experience.
          * 
          * @return builder
          * 
@@ -160,8 +172,9 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param permissions The permissions to be given on this entity. Keep the permissions sorted
-         * alphabetically on `user_or_group` for a better user experience.
+         * @param permissions The permissions to be given on this entity. Keep
+         * the permissions sorted alphabetically on `user_or_group` for a better user
+         * experience.
          * 
          * @return builder
          * 

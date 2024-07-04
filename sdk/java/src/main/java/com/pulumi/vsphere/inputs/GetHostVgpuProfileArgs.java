@@ -17,14 +17,16 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
     public static final GetHostVgpuProfileArgs Empty = new GetHostVgpuProfileArgs();
 
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of
+     * a host.
      * 
      */
     @Import(name="hostId", required=true)
     private Output<String> hostId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of a host.
+     * @return The [managed object reference ID][docs-about-morefs] of
+     * a host.
      * 
      */
     public Output<String> hostId() {
@@ -78,7 +80,8 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of a host.
+         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * a host.
          * 
          * @return builder
          * 
@@ -89,7 +92,8 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of a host.
+         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * a host.
          * 
          * @return builder
          * 

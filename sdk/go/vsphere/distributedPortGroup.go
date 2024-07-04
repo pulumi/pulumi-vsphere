@@ -41,7 +41,14 @@ type DistributedPortGroup struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
+	// <<<<<<< HEAD
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	// =======
 	// value string to set for port group.
+	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -102,7 +109,7 @@ type DistributedPortGroup struct {
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
 	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
 	PortNameFormat pulumi.StringPtrOutput `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
@@ -194,7 +201,14 @@ type distributedPortGroupState struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion *string `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
+	// <<<<<<< HEAD
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	// =======
 	// value string to set for port group.
+	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -255,7 +269,7 @@ type distributedPortGroupState struct {
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
 	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -315,7 +329,14 @@ type DistributedPortGroupState struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
+	// <<<<<<< HEAD
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	// =======
 	// value string to set for port group.
+	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -376,7 +397,7 @@ type DistributedPortGroupState struct {
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
 	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -437,7 +458,14 @@ type distributedPortGroupArgs struct {
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// Map of custom attribute ids to attribute
+	// <<<<<<< HEAD
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	// =======
 	// value string to set for port group.
+	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -496,7 +524,7 @@ type distributedPortGroupArgs struct {
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
 	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -554,7 +582,14 @@ type DistributedPortGroupArgs struct {
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolPtrInput
 	// Map of custom attribute ids to attribute
+	// <<<<<<< HEAD
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	// =======
 	// value string to set for port group.
+	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -613,7 +648,7 @@ type DistributedPortGroupArgs struct {
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
 	//
-	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -786,7 +821,14 @@ func (o DistributedPortGroupOutput) ConfigVersion() pulumi.StringOutput {
 }
 
 // Map of custom attribute ids to attribute
+// <<<<<<< HEAD
+// value string to set for port group. See [here][docs-setting-custom-attributes]
+// for a reference on how to set values for custom attributes.
+//
+// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+// =======
 // value string to set for port group.
+// > > > > > > > 69c6e040 (fork)
 //
 // > **NOTE:** Custom attributes are not supported on direct ESXi host
 // connections and require vCenter Server.
@@ -922,7 +964,7 @@ func (o DistributedPortGroupOutput) PortConfigResetAtDisconnect() pulumi.BoolPtr
 // the ports in this port group. See the `portNameFormat` attribute listed
 // [here][ext-vsphere-portname-format] for details on the format syntax.
 //
-// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
 func (o DistributedPortGroupOutput) PortNameFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.PortNameFormat }).(pulumi.StringPtrOutput)
 }

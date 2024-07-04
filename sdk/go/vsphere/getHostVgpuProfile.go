@@ -106,7 +106,8 @@ func GetHostVgpuProfile(ctx *pulumi.Context, args *GetHostVgpuProfileArgs, opts 
 
 // A collection of arguments for invoking getHostVgpuProfile.
 type GetHostVgpuProfileArgs struct {
-	// The [managed object reference ID][docs-about-morefs] of a host.
+	// The [managed object reference ID][docs-about-morefs] of
+	// a host.
 	HostId string `pulumi:"hostId"`
 	// A regular expression that will be used to match the
 	// host vGPU profile name.
@@ -144,7 +145,8 @@ func GetHostVgpuProfileOutput(ctx *pulumi.Context, args GetHostVgpuProfileOutput
 
 // A collection of arguments for invoking getHostVgpuProfile.
 type GetHostVgpuProfileOutputArgs struct {
-	// The [managed object reference ID][docs-about-morefs] of a host.
+	// The [managed object reference ID][docs-about-morefs] of
+	// a host.
 	HostId pulumi.StringInput `pulumi:"hostId"`
 	// A regular expression that will be used to match the
 	// host vGPU profile name.

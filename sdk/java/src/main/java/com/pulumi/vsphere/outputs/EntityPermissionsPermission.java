@@ -12,17 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class EntityPermissionsPermission {
     /**
-     * @return Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+     * @return Whether `user_or_group` field refers to a user or a
+     * group. True for a group and false for a user.
      * 
      */
     private Boolean isGroup;
     /**
-     * @return Whether or not this permission propagates down the hierarchy to sub-entities.
+     * @return Whether or not this permission propagates down the
+     * hierarchy to sub-entities.
      * 
      */
     private Boolean propagate;
     /**
-     * @return The role id of the role to be given to the user on the specified entity.
+     * @return The role id of the role to be given to the user on
+     * the specified entity.
      * 
      */
     private String roleId;
@@ -34,21 +37,24 @@ public final class EntityPermissionsPermission {
 
     private EntityPermissionsPermission() {}
     /**
-     * @return Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+     * @return Whether `user_or_group` field refers to a user or a
+     * group. True for a group and false for a user.
      * 
      */
     public Boolean isGroup() {
         return this.isGroup;
     }
     /**
-     * @return Whether or not this permission propagates down the hierarchy to sub-entities.
+     * @return Whether or not this permission propagates down the
+     * hierarchy to sub-entities.
      * 
      */
     public Boolean propagate() {
         return this.propagate;
     }
     /**
-     * @return The role id of the role to be given to the user on the specified entity.
+     * @return The role id of the role to be given to the user on
+     * the specified entity.
      * 
      */
     public String roleId() {

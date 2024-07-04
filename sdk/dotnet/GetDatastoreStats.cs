@@ -12,9 +12,10 @@ namespace Pulumi.VSphere
     public static class GetDatastoreStats
     {
         /// <summary>
-        /// The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
-        /// of all vSphere datastore objects in a datacenter. This can then be used as a
-        /// standalone datasource to get information required as input to other data sources.
+        /// The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+        /// stats of all vSphere datastore objects in a datacenter. This can then be used as
+        /// a standalone data source to get information required as input to other data
+        /// sources.
         /// 
         /// ## Example Usage
         /// 
@@ -39,9 +40,8 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// A usefull example of this datasource would be to determine the
-        /// datastore with the most free space. For example, in addition to
-        /// the above:
+        /// A useful example of this data source would be to determine the datastore with
+        /// the most free space. For example, in addition to the above:
         /// 
         /// Create an `outputs.tf` like that:
         /// 
@@ -66,9 +66,10 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreStatsResult>("vsphere:index/getDatastoreStats:getDatastoreStats", args ?? new GetDatastoreStatsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
-        /// of all vSphere datastore objects in a datacenter. This can then be used as a
-        /// standalone datasource to get information required as input to other data sources.
+        /// The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+        /// stats of all vSphere datastore objects in a datacenter. This can then be used as
+        /// a standalone data source to get information required as input to other data
+        /// sources.
         /// 
         /// ## Example Usage
         /// 
@@ -93,9 +94,8 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// A usefull example of this datasource would be to determine the
-        /// datastore with the most free space. For example, in addition to
-        /// the above:
+        /// A useful example of this data source would be to determine the datastore with
+        /// the most free space. For example, in addition to the above:
         /// 
         /// Create an `outputs.tf` like that:
         /// 
@@ -127,8 +127,8 @@ namespace Pulumi.VSphere
         private Dictionary<string, object>? _capacity;
 
         /// <summary>
-        /// A mapping of the capacity for all datastore in the datacenter
-        /// , where the name of the datastore is used as key and the capacity as value.
+        /// A mapping of the capacity for all datastore in the datacenter,
+        /// where the name of the datastore is used as key and the capacity as value.
         /// </summary>
         public Dictionary<string, object> Capacity
         {
@@ -137,9 +137,10 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs]
-        /// of the datacenter the datastores are located in. For default datacenters, use
-        /// the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the
+        /// datastores are located in. For default datacenters, use the `id` attribute
+        /// from an empty `vsphere.Datacenter` data source.
         /// 
         /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
@@ -151,8 +152,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A mapping of the free space for each datastore in the
-        /// datacenter, where the name of the datastore is used as key and the free
-        /// space as value.
+        /// datacenter, where the name of the datastore is used as key and the free space
+        /// as value.
         /// </summary>
         public Dictionary<string, object> FreeSpace
         {
@@ -172,8 +173,8 @@ namespace Pulumi.VSphere
         private InputMap<object>? _capacity;
 
         /// <summary>
-        /// A mapping of the capacity for all datastore in the datacenter
-        /// , where the name of the datastore is used as key and the capacity as value.
+        /// A mapping of the capacity for all datastore in the datacenter,
+        /// where the name of the datastore is used as key and the capacity as value.
         /// </summary>
         public InputMap<object> Capacity
         {
@@ -182,9 +183,10 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs]
-        /// of the datacenter the datastores are located in. For default datacenters, use
-        /// the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the
+        /// datastores are located in. For default datacenters, use the `id` attribute
+        /// from an empty `vsphere.Datacenter` data source.
         /// 
         /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
@@ -196,8 +198,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A mapping of the free space for each datastore in the
-        /// datacenter, where the name of the datastore is used as key and the free
-        /// space as value.
+        /// datacenter, where the name of the datastore is used as key and the free space
+        /// as value.
         /// </summary>
         public InputMap<object> FreeSpace
         {
@@ -216,19 +218,19 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreStatsResult
     {
         /// <summary>
-        /// A mapping of the capacity for all datastore in the datacenter
-        /// , where the name of the datastore is used as key and the capacity as value.
+        /// A mapping of the capacity for all datastore in the datacenter,
+        /// where the name of the datastore is used as key and the capacity as value.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Capacity;
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs]
-        /// of the datacenter the datastores are located in.
+        /// The [managed object reference ID][docs-about-morefs] of the
+        /// datacenter the datastores are located in.
         /// </summary>
         public readonly string DatacenterId;
         /// <summary>
         /// A mapping of the free space for each datastore in the
-        /// datacenter, where the name of the datastore is used as key and the free
-        /// space as value.
+        /// datacenter, where the name of the datastore is used as key and the free space
+        /// as value.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? FreeSpace;
         /// <summary>

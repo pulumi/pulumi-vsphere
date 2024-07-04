@@ -20,7 +20,8 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
     /**
      * The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      * 
      */
     @Import(name="alternateGuestName")
@@ -28,7 +29,8 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      * 
      */
     public Optional<String> alternateGuestName() {
@@ -186,14 +188,16 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      * 
      */
     @Import(name="firmware")
     private @Nullable String firmware;
 
     /**
-     * @return The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * @return The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      * 
      */
     public Optional<String> firmware() {
@@ -357,14 +361,16 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The number of cores per socket for this virtual machine.
+     * The number of cores per socket for this virtual
+     * machine.
      * 
      */
     @Import(name="numCoresPerSocket")
     private @Nullable Integer numCoresPerSocket;
 
     /**
-     * @return The number of cores per socket for this virtual machine.
+     * @return The number of cores per socket for this virtual
+     * machine.
      * 
      */
     public Optional<Integer> numCoresPerSocket() {
@@ -619,7 +625,8 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param alternateGuestName The alternate guest name of the virtual machine when
-         * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+         * `guest_id` is a non-specific operating system, like `otherGuest` or
+         * `otherGuest64`.
          * 
          * @return builder
          * 
@@ -736,7 +743,8 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param firmware The firmware type for this virtual machine. Can be `bios` or `efi`.
+         * @param firmware The firmware type for this virtual machine. Can be `bios` or
+         * `efi`.
          * 
          * @return builder
          * 
@@ -859,7 +867,8 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param numCoresPerSocket The number of cores per socket for this virtual machine.
+         * @param numCoresPerSocket The number of cores per socket for this virtual
+         * machine.
          * 
          * @return builder
          * 

@@ -12,50 +12,22 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGuestOsCustomizationResult {
-    /**
-     * @return The number of last changed version to the customization specification.
-     * 
-     */
     private String changeVersion;
-    /**
-     * @return The description for the customization specification.
-     * 
-     */
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return The time of last modification to the customization specification.
-     * 
-     */
     private String lastUpdateTime;
     private String name;
-    /**
-     * @return Container object for the guest operating system properties to be customized. See virtual machine customizations
-     * 
-     */
     private List<GetGuestOsCustomizationSpec> specs;
-    /**
-     * @return The type of customization specification: One among: Windows, Linux.
-     * 
-     */
     private String type;
 
     private GetGuestOsCustomizationResult() {}
-    /**
-     * @return The number of last changed version to the customization specification.
-     * 
-     */
     public String changeVersion() {
         return this.changeVersion;
     }
-    /**
-     * @return The description for the customization specification.
-     * 
-     */
     public String description() {
         return this.description;
     }
@@ -66,27 +38,15 @@ public final class GetGuestOsCustomizationResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The time of last modification to the customization specification.
-     * 
-     */
     public String lastUpdateTime() {
         return this.lastUpdateTime;
     }
     public String name() {
         return this.name;
     }
-    /**
-     * @return Container object for the guest operating system properties to be customized. See virtual machine customizations
-     * 
-     */
     public List<GetGuestOsCustomizationSpec> specs() {
         return this.specs;
     }
-    /**
-     * @return The type of customization specification: One among: Windows, Linux.
-     * 
-     */
     public String type() {
         return this.type;
     }

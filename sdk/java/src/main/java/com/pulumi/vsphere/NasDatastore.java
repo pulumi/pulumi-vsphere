@@ -230,7 +230,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
     }
     /**
      * The hostnames or IP addresses of the remote
-     * server or servers. Only one element should be present for NFS v3 but multiple
+     * servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      * 
      */
@@ -239,7 +239,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The hostnames or IP addresses of the remote
-     * server or servers. Only one element should be present for NFS v3 but multiple
+     * servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      * 
      */

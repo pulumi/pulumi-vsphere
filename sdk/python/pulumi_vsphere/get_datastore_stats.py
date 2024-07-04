@@ -39,8 +39,8 @@ class GetDatastoreStatsResult:
     @pulumi.getter
     def capacity(self) -> Optional[Mapping[str, Any]]:
         """
-        A mapping of the capacity for all datastore in the datacenter
-        , where the name of the datastore is used as key and the capacity as value.
+        A mapping of the capacity for all datastore in the datacenter,
+        where the name of the datastore is used as key and the capacity as value.
         """
         return pulumi.get(self, "capacity")
 
@@ -48,8 +48,8 @@ class GetDatastoreStatsResult:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> str:
         """
-        The [managed object reference ID][docs-about-morefs]
-        of the datacenter the datastores are located in.
+        The [managed object reference ID][docs-about-morefs] of the
+        datacenter the datastores are located in.
         """
         return pulumi.get(self, "datacenter_id")
 
@@ -58,8 +58,8 @@ class GetDatastoreStatsResult:
     def free_space(self) -> Optional[Mapping[str, Any]]:
         """
         A mapping of the free space for each datastore in the
-        datacenter, where the name of the datastore is used as key and the free
-        space as value.
+        datacenter, where the name of the datastore is used as key and the free space
+        as value.
         """
         return pulumi.get(self, "free_space")
 
@@ -89,9 +89,10 @@ def get_datastore_stats(capacity: Optional[Mapping[str, Any]] = None,
                         free_space: Optional[Mapping[str, Any]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreStatsResult:
     """
-    The `get_datastore_stats` data source can be used to retrieve the usage stats
-    of all vSphere datastore objects in a datacenter. This can then be used as a
-    standalone datasource to get information required as input to other data sources.
+    The `get_datastore_stats` data source can be used to retrieve the usage
+    stats of all vSphere datastore objects in a datacenter. This can then be used as
+    a standalone data source to get information required as input to other data
+    sources.
 
     ## Example Usage
 
@@ -103,9 +104,8 @@ def get_datastore_stats(capacity: Optional[Mapping[str, Any]] = None,
     datastore_stats = vsphere.get_datastore_stats(datacenter_id=datacenter.id)
     ```
 
-    A usefull example of this datasource would be to determine the
-    datastore with the most free space. For example, in addition to
-    the above:
+    A useful example of this data source would be to determine the datastore with
+    the most free space. For example, in addition to the above:
 
     Create an `outputs.tf` like that:
 
@@ -119,16 +119,17 @@ def get_datastore_stats(capacity: Optional[Mapping[str, Any]] = None,
     and a `locals.tf` like that:
 
 
-    :param Mapping[str, Any] capacity: A mapping of the capacity for all datastore in the datacenter
-           , where the name of the datastore is used as key and the capacity as value.
-    :param str datacenter_id: The [managed object reference ID][docs-about-morefs]
-           of the datacenter the datastores are located in. For default datacenters, use
-           the `id` attribute from an empty `Datacenter` data source.
+    :param Mapping[str, Any] capacity: A mapping of the capacity for all datastore in the datacenter,
+           where the name of the datastore is used as key and the capacity as value.
+    :param str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the
+           datastores are located in. For default datacenters, use the `id` attribute
+           from an empty `Datacenter` data source.
            
            [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param Mapping[str, Any] free_space: A mapping of the free space for each datastore in the
-           datacenter, where the name of the datastore is used as key and the free
-           space as value.
+           datacenter, where the name of the datastore is used as key and the free space
+           as value.
     """
     __args__ = dict()
     __args__['capacity'] = capacity
@@ -150,9 +151,10 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
                                free_space: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreStatsResult]:
     """
-    The `get_datastore_stats` data source can be used to retrieve the usage stats
-    of all vSphere datastore objects in a datacenter. This can then be used as a
-    standalone datasource to get information required as input to other data sources.
+    The `get_datastore_stats` data source can be used to retrieve the usage
+    stats of all vSphere datastore objects in a datacenter. This can then be used as
+    a standalone data source to get information required as input to other data
+    sources.
 
     ## Example Usage
 
@@ -164,9 +166,8 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
     datastore_stats = vsphere.get_datastore_stats(datacenter_id=datacenter.id)
     ```
 
-    A usefull example of this datasource would be to determine the
-    datastore with the most free space. For example, in addition to
-    the above:
+    A useful example of this data source would be to determine the datastore with
+    the most free space. For example, in addition to the above:
 
     Create an `outputs.tf` like that:
 
@@ -180,15 +181,16 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
     and a `locals.tf` like that:
 
 
-    :param Mapping[str, Any] capacity: A mapping of the capacity for all datastore in the datacenter
-           , where the name of the datastore is used as key and the capacity as value.
-    :param str datacenter_id: The [managed object reference ID][docs-about-morefs]
-           of the datacenter the datastores are located in. For default datacenters, use
-           the `id` attribute from an empty `Datacenter` data source.
+    :param Mapping[str, Any] capacity: A mapping of the capacity for all datastore in the datacenter,
+           where the name of the datastore is used as key and the capacity as value.
+    :param str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the
+           datastores are located in. For default datacenters, use the `id` attribute
+           from an empty `Datacenter` data source.
            
            [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param Mapping[str, Any] free_space: A mapping of the free space for each datastore in the
-           datacenter, where the name of the datastore is used as key and the free
-           space as value.
+           datacenter, where the name of the datastore is used as key and the free space
+           as value.
     """
     ...

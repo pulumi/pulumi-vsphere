@@ -152,8 +152,6 @@ export class DatastoreCluster extends pulumi.CustomResource {
     public readonly sdrsVmEvacuationAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support requires vCenter 6.0 or higher.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -355,8 +353,6 @@ export interface DatastoreClusterState {
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -485,8 +481,6 @@ export interface DatastoreClusterArgs {
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

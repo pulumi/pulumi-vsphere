@@ -12,9 +12,8 @@ namespace Pulumi.VSphere
     public static class GetRole
     {
         /// <summary>
-        /// The `vsphere.Role` data source can be used to discover the `id` and privileges associated
-        /// with a role given its name or display label.
-        /// 
+        /// The `vsphere.Role` data source can be used to discover the `id` and privileges
+        /// associated with a role given its name or display label.
         /// 
         /// ## Example Usage
         /// 
@@ -38,9 +37,8 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.Role` data source can be used to discover the `id` and privileges associated
-        /// with a role given its name or display label.
-        /// 
+        /// The `vsphere.Role` data source can be used to discover the `id` and privileges
+        /// associated with a role given its name or display label.
         /// 
         /// ## Example Usage
         /// 

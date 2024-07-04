@@ -162,7 +162,7 @@ namespace Pulumi.VSphere
         /// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
         /// </summary>
         [Output("eptRviMode")]
-        public Output<string?> EptRviMode { get; private set; } = null!;
+        public Output<string> EptRviMode { get; private set; } = null!;
 
         /// <summary>
         /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
@@ -223,7 +223,7 @@ namespace Pulumi.VSphere
         /// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         /// </summary>
         [Output("hvMode")]
-        public Output<string?> HvMode { get; private set; } = null!;
+        public Output<string> HvMode { get; private set; } = null!;
 
         [Output("ideControllerCount")]
         public Output<int?> IdeControllerCount { get; private set; } = null!;

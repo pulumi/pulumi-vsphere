@@ -12,10 +12,10 @@ namespace Pulumi.VSphere
     public static class GetHostThumbprint
     {
         /// <summary>
-        /// The `vsphere_thumbprint` data source can be used to discover the host
-        /// thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
-        /// resource. If the ESXi host is using a certificate chain, the first one returned
-        /// will be used to generate the thumbprint.
+        /// The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+        /// of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+        /// the ESXi host is using a certificate chain, the first one returned will be used
+        /// to generate the thumbprint.
         /// 
         /// ## Example Usage
         /// 
@@ -39,10 +39,10 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere_thumbprint` data source can be used to discover the host
-        /// thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
-        /// resource. If the ESXi host is using a certificate chain, the first one returned
-        /// will be used to generate the thumbprint.
+        /// The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+        /// of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+        /// the ESXi host is using a certificate chain, the first one returned will be used
+        /// to generate the thumbprint.
         /// 
         /// ## Example Usage
         /// 
@@ -70,8 +70,8 @@ namespace Pulumi.VSphere
     public sealed class GetHostThumbprintArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The address of the ESXi host to retrieve the
-        /// thumbprint from.
+        /// The address of the ESXi host to retrieve the thumbprint
+        /// from.
         /// </summary>
         [Input("address", required: true)]
         public string Address { get; set; } = null!;
@@ -98,8 +98,8 @@ namespace Pulumi.VSphere
     public sealed class GetHostThumbprintInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The address of the ESXi host to retrieve the
-        /// thumbprint from.
+        /// The address of the ESXi host to retrieve the thumbprint
+        /// from.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;

@@ -13,21 +13,24 @@ namespace Pulumi.VSphere
     public partial class EntityPermissions : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The managed object id (uuid for some entities) on which permissions are to be created.
+        /// The managed object id (uuid for some entities) on
+        /// which permissions are to be created.
         /// </summary>
         [Output("entityId")]
         public Output<string> EntityId { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object type, types can be found in the managed object type section 
-        /// [here](https://developer.vmware.com/apis/968/vsphere).
+        /// The managed object type, types can be found in the
+        /// managed object type section
+        /// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
 
         /// <summary>
-        /// The permissions to be given on this entity. Keep the permissions sorted
-        /// alphabetically on `user_or_group` for a better user experience.
+        /// The permissions to be given on this entity. Keep
+        /// the permissions sorted alphabetically on `user_or_group` for a better user
+        /// experience.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.EntityPermissionsPermission>> Permissions { get; private set; } = null!;
@@ -79,14 +82,16 @@ namespace Pulumi.VSphere
     public sealed class EntityPermissionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object id (uuid for some entities) on which permissions are to be created.
+        /// The managed object id (uuid for some entities) on
+        /// which permissions are to be created.
         /// </summary>
         [Input("entityId", required: true)]
         public Input<string> EntityId { get; set; } = null!;
 
         /// <summary>
-        /// The managed object type, types can be found in the managed object type section 
-        /// [here](https://developer.vmware.com/apis/968/vsphere).
+        /// The managed object type, types can be found in the
+        /// managed object type section
+        /// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -95,8 +100,9 @@ namespace Pulumi.VSphere
         private InputList<Inputs.EntityPermissionsPermissionArgs>? _permissions;
 
         /// <summary>
-        /// The permissions to be given on this entity. Keep the permissions sorted
-        /// alphabetically on `user_or_group` for a better user experience.
+        /// The permissions to be given on this entity. Keep
+        /// the permissions sorted alphabetically on `user_or_group` for a better user
+        /// experience.
         /// </summary>
         public InputList<Inputs.EntityPermissionsPermissionArgs> Permissions
         {
@@ -113,14 +119,16 @@ namespace Pulumi.VSphere
     public sealed class EntityPermissionsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object id (uuid for some entities) on which permissions are to be created.
+        /// The managed object id (uuid for some entities) on
+        /// which permissions are to be created.
         /// </summary>
         [Input("entityId")]
         public Input<string>? EntityId { get; set; }
 
         /// <summary>
-        /// The managed object type, types can be found in the managed object type section 
-        /// [here](https://developer.vmware.com/apis/968/vsphere).
+        /// The managed object type, types can be found in the
+        /// managed object type section
+        /// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }
@@ -129,8 +137,9 @@ namespace Pulumi.VSphere
         private InputList<Inputs.EntityPermissionsPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// The permissions to be given on this entity. Keep the permissions sorted
-        /// alphabetically on `user_or_group` for a better user experience.
+        /// The permissions to be given on this entity. Keep
+        /// the permissions sorted alphabetically on `user_or_group` for a better user
+        /// experience.
         /// </summary>
         public InputList<Inputs.EntityPermissionsPermissionGetArgs> Permissions
         {

@@ -20,8 +20,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// In the following example, a virtual machine template is returned by its
-        /// unique name within the `vsphere.Datacenter`.
+        /// In the following example, a virtual machine template is returned by its unique
+        /// name within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -44,6 +44,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
         /// In the following example, each virtual machine template is returned by its
         /// unique full path within the `vsphere.Datacenter`.
         /// 
@@ -87,8 +88,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// In the following example, a virtual machine template is returned by its
-        /// unique name within the `vsphere.Datacenter`.
+        /// In the following example, a virtual machine template is returned by its unique
+        /// name within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -111,6 +112,7 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
         /// In the following example, each virtual machine template is returned by its
         /// unique full path within the `vsphere.Datacenter`.
         /// 
@@ -151,7 +153,8 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+        /// `guest_id` is a non-specific operating system, like `otherGuest` or
+        /// `otherGuest64`.
         /// </summary>
         [Input("alternateGuestName")]
         public string? AlternateGuestName { get; set; }
@@ -226,7 +229,8 @@ namespace Pulumi.VSphere
         public bool? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
-        /// The firmware type for this virtual machine. Can be `bios` or `efi`.
+        /// The firmware type for this virtual machine. Can be `bios` or
+        /// `efi`.
         /// </summary>
         [Input("firmware")]
         public string? Firmware { get; set; }
@@ -297,7 +301,8 @@ namespace Pulumi.VSphere
         public bool? NestedHvEnabled { get; set; }
 
         /// <summary>
-        /// The number of cores per socket for this virtual machine.
+        /// The number of cores per socket for this virtual
+        /// machine.
         /// </summary>
         [Input("numCoresPerSocket")]
         public int? NumCoresPerSocket { get; set; }
@@ -384,7 +389,8 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+        /// `guest_id` is a non-specific operating system, like `otherGuest` or
+        /// `otherGuest64`.
         /// </summary>
         [Input("alternateGuestName")]
         public Input<string>? AlternateGuestName { get; set; }
@@ -459,7 +465,8 @@ namespace Pulumi.VSphere
         public Input<bool>? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
-        /// The firmware type for this virtual machine. Can be `bios` or `efi`.
+        /// The firmware type for this virtual machine. Can be `bios` or
+        /// `efi`.
         /// </summary>
         [Input("firmware")]
         public Input<string>? Firmware { get; set; }
@@ -530,7 +537,8 @@ namespace Pulumi.VSphere
         public Input<bool>? NestedHvEnabled { get; set; }
 
         /// <summary>
-        /// The number of cores per socket for this virtual machine.
+        /// The number of cores per socket for this virtual
+        /// machine.
         /// </summary>
         [Input("numCoresPerSocket")]
         public Input<int>? NumCoresPerSocket { get; set; }
@@ -619,7 +627,8 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+        /// `guest_id` is a non-specific operating system, like `otherGuest` or
+        /// `otherGuest64`.
         /// </summary>
         public readonly string? AlternateGuestName;
         /// <summary>
@@ -639,11 +648,11 @@ namespace Pulumi.VSphere
         public readonly string? CpuShareLevel;
         public readonly string? DatacenterId;
         /// <summary>
-        /// Whenever possible, this is the first IPv4 address that is reachable through
-        /// the default gateway configured on the machine, then the first reachable IPv6
-        /// address, and then the first general discovered address if neither exist. If
-        /// VMware Tools is not running on the virtual machine, or if the VM is powered
-        /// off, this value will be blank.
+        /// Whenever possible, this is the first IPv4 address that
+        /// is reachable through the default gateway configured on the machine, then the
+        /// first reachable IPv6 address, and then the first general discovered address if
+        /// neither exist. If VMware Tools is not running on the virtual machine, or if
+        /// the VM is powered off, this value will be blank.
         /// </summary>
         public readonly string DefaultIpAddress;
         /// <summary>
@@ -651,20 +660,21 @@ namespace Pulumi.VSphere
         /// template. These are sorted by bus and unit number so that they can be applied
         /// to a `vsphere.VirtualMachine` resource in the order the resource expects
         /// while cloning. This is useful for discovering certain disk settings while
-        /// performing a linked clone, as all settings that are output by this data
-        /// source must be the same on the destination virtual machine as the source.
-        /// Only the first number of controllers defined by `scsi_controller_scan_count`
-        /// are scanned for disks. The sub-attributes are:
+        /// performing a linked clone, as all settings that are output by this data source
+        /// must be the same on the destination virtual machine as the source. Only the
+        /// first number of controllers defined by `scsi_controller_scan_count` are
+        /// scanned for disks. The sub-attributes are:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualMachineDiskResult> Disks;
         public readonly bool? EfiSecureBootEnabled;
         public readonly bool? EnableDiskUuid;
         public readonly bool? EnableLogging;
-        public readonly string? EptRviMode;
+        public readonly string EptRviMode;
         public readonly ImmutableDictionary<string, string>? ExtraConfig;
         public readonly bool? ExtraConfigRebootRequired;
         /// <summary>
-        /// The firmware type for this virtual machine. Can be `bios` or `efi`.
+        /// The firmware type for this virtual machine. Can be `bios` or
+        /// `efi`.
         /// </summary>
         public readonly string? Firmware;
         public readonly string? Folder;
@@ -680,12 +690,16 @@ namespace Pulumi.VSphere
         /// The hardware version number on this virtual machine.
         /// </summary>
         public readonly int HardwareVersion;
-        public readonly string? HvMode;
+        public readonly string HvMode;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly int? IdeControllerScanCount;
+        /// <summary>
+        /// The instance UUID of the virtual machine or template.
+        /// </summary>
+        public readonly string InstanceUuid;
         public readonly string? LatencySensitivity;
         /// <summary>
         /// The size of the virtual machine's memory, in MB.
@@ -703,21 +717,23 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The network interface types for each network
         /// interface found on the virtual machine, in device bus order. Will be one of
-        /// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
+        /// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
+        /// `vmxnet3`.
         /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceTypes;
         /// <summary>
-        /// Information about each of the network interfaces on this 
-        /// virtual machine or template. These are sorted by device bus order so that they
-        /// can be applied to a `vsphere.VirtualMachine` resource in the order the resource
-        /// expects while cloning. This is useful for discovering certain network interface
-        /// settings while performing a linked clone, as all settings that are output by this
-        /// data source must be the same on the destination virtual machine as the source.
-        /// The sub-attributes are:
+        /// Information about each of the network interfaces on
+        /// this virtual machine or template. These are sorted by device bus order so that
+        /// they can be applied to a `vsphere.VirtualMachine` resource in the order the
+        /// resource expects while cloning. This is useful for discovering certain network
+        /// interface settings while performing a linked clone, as all settings that are
+        /// output by this data source must be the same on the destination virtual machine
+        /// as the source. The sub-attributes are:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualMachineNetworkInterfaceResult> NetworkInterfaces;
         /// <summary>
-        /// The number of cores per socket for this virtual machine.
+        /// The number of cores per socket for this virtual
+        /// machine.
         /// </summary>
         public readonly int? NumCoresPerSocket;
         /// <summary>
@@ -798,7 +814,7 @@ namespace Pulumi.VSphere
 
             bool? enableLogging,
 
-            string? eptRviMode,
+            string eptRviMode,
 
             ImmutableDictionary<string, string>? extraConfig,
 
@@ -814,11 +830,13 @@ namespace Pulumi.VSphere
 
             int hardwareVersion,
 
-            string? hvMode,
+            string hvMode,
 
             string id,
 
             int? ideControllerScanCount,
+
+            string instanceUuid,
 
             string? latencySensitivity,
 
@@ -920,6 +938,7 @@ namespace Pulumi.VSphere
             HvMode = hvMode;
             Id = id;
             IdeControllerScanCount = ideControllerScanCount;
+            InstanceUuid = instanceUuid;
             LatencySensitivity = latencySensitivity;
             Memory = memory;
             MemoryHotAddEnabled = memoryHotAddEnabled;

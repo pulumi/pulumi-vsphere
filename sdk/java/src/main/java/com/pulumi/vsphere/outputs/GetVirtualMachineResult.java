@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
 public final class GetVirtualMachineResult {
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      * 
      */
     private @Nullable String alternateGuestName;
@@ -43,11 +44,11 @@ public final class GetVirtualMachineResult {
     private @Nullable String cpuShareLevel;
     private @Nullable String datacenterId;
     /**
-     * @return Whenever possible, this is the first IPv4 address that is reachable through
-     * the default gateway configured on the machine, then the first reachable IPv6
-     * address, and then the first general discovered address if neither exist. If
-     * VMware Tools is not running on the virtual machine, or if the VM is powered
-     * off, this value will be blank.
+     * @return Whenever possible, this is the first IPv4 address that
+     * is reachable through the default gateway configured on the machine, then the
+     * first reachable IPv6 address, and then the first general discovered address if
+     * neither exist. If VMware Tools is not running on the virtual machine, or if
+     * the VM is powered off, this value will be blank.
      * 
      */
     private String defaultIpAddress;
@@ -56,21 +57,22 @@ public final class GetVirtualMachineResult {
      * template. These are sorted by bus and unit number so that they can be applied
      * to a `vsphere.VirtualMachine` resource in the order the resource expects
      * while cloning. This is useful for discovering certain disk settings while
-     * performing a linked clone, as all settings that are output by this data
-     * source must be the same on the destination virtual machine as the source.
-     * Only the first number of controllers defined by `scsi_controller_scan_count`
-     * are scanned for disks. The sub-attributes are:
+     * performing a linked clone, as all settings that are output by this data source
+     * must be the same on the destination virtual machine as the source. Only the
+     * first number of controllers defined by `scsi_controller_scan_count` are
+     * scanned for disks. The sub-attributes are:
      * 
      */
     private List<GetVirtualMachineDisk> disks;
     private @Nullable Boolean efiSecureBootEnabled;
     private @Nullable Boolean enableDiskUuid;
     private @Nullable Boolean enableLogging;
-    private @Nullable String eptRviMode;
+    private String eptRviMode;
     private @Nullable Map<String,String> extraConfig;
     private @Nullable Boolean extraConfigRebootRequired;
     /**
-     * @return The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * @return The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      * 
      */
     private @Nullable String firmware;
@@ -90,13 +92,18 @@ public final class GetVirtualMachineResult {
      * 
      */
     private Integer hardwareVersion;
-    private @Nullable String hvMode;
+    private String hvMode;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     private @Nullable Integer ideControllerScanCount;
+    /**
+     * @return The instance UUID of the virtual machine or template.
+     * 
+     */
+    private String instanceUuid;
     private @Nullable String latencySensitivity;
     /**
      * @return The size of the virtual machine&#39;s memory, in MB.
@@ -115,23 +122,25 @@ public final class GetVirtualMachineResult {
     /**
      * @return The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
-     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
+     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
+     * `vmxnet3`.
      * 
      */
     private List<String> networkInterfaceTypes;
     /**
-     * @return Information about each of the network interfaces on this
-     * virtual machine or template. These are sorted by device bus order so that they
-     * can be applied to a `vsphere.VirtualMachine` resource in the order the resource
-     * expects while cloning. This is useful for discovering certain network interface
-     * settings while performing a linked clone, as all settings that are output by this
-     * data source must be the same on the destination virtual machine as the source.
-     * The sub-attributes are:
+     * @return Information about each of the network interfaces on
+     * this virtual machine or template. These are sorted by device bus order so that
+     * they can be applied to a `vsphere.VirtualMachine` resource in the order the
+     * resource expects while cloning. This is useful for discovering certain network
+     * interface settings while performing a linked clone, as all settings that are
+     * output by this data source must be the same on the destination virtual machine
+     * as the source. The sub-attributes are:
      * 
      */
     private List<GetVirtualMachineNetworkInterface> networkInterfaces;
     /**
-     * @return The number of cores per socket for this virtual machine.
+     * @return The number of cores per socket for this virtual
+     * machine.
      * 
      */
     private @Nullable Integer numCoresPerSocket;
@@ -179,7 +188,8 @@ public final class GetVirtualMachineResult {
     private GetVirtualMachineResult() {}
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `otherGuest64`.
      * 
      */
     public Optional<String> alternateGuestName() {
@@ -229,11 +239,11 @@ public final class GetVirtualMachineResult {
         return Optional.ofNullable(this.datacenterId);
     }
     /**
-     * @return Whenever possible, this is the first IPv4 address that is reachable through
-     * the default gateway configured on the machine, then the first reachable IPv6
-     * address, and then the first general discovered address if neither exist. If
-     * VMware Tools is not running on the virtual machine, or if the VM is powered
-     * off, this value will be blank.
+     * @return Whenever possible, this is the first IPv4 address that
+     * is reachable through the default gateway configured on the machine, then the
+     * first reachable IPv6 address, and then the first general discovered address if
+     * neither exist. If VMware Tools is not running on the virtual machine, or if
+     * the VM is powered off, this value will be blank.
      * 
      */
     public String defaultIpAddress() {
@@ -244,10 +254,10 @@ public final class GetVirtualMachineResult {
      * template. These are sorted by bus and unit number so that they can be applied
      * to a `vsphere.VirtualMachine` resource in the order the resource expects
      * while cloning. This is useful for discovering certain disk settings while
-     * performing a linked clone, as all settings that are output by this data
-     * source must be the same on the destination virtual machine as the source.
-     * Only the first number of controllers defined by `scsi_controller_scan_count`
-     * are scanned for disks. The sub-attributes are:
+     * performing a linked clone, as all settings that are output by this data source
+     * must be the same on the destination virtual machine as the source. Only the
+     * first number of controllers defined by `scsi_controller_scan_count` are
+     * scanned for disks. The sub-attributes are:
      * 
      */
     public List<GetVirtualMachineDisk> disks() {
@@ -262,8 +272,8 @@ public final class GetVirtualMachineResult {
     public Optional<Boolean> enableLogging() {
         return Optional.ofNullable(this.enableLogging);
     }
-    public Optional<String> eptRviMode() {
-        return Optional.ofNullable(this.eptRviMode);
+    public String eptRviMode() {
+        return this.eptRviMode;
     }
     public Map<String,String> extraConfig() {
         return this.extraConfig == null ? Map.of() : this.extraConfig;
@@ -272,7 +282,8 @@ public final class GetVirtualMachineResult {
         return Optional.ofNullable(this.extraConfigRebootRequired);
     }
     /**
-     * @return The firmware type for this virtual machine. Can be `bios` or `efi`.
+     * @return The firmware type for this virtual machine. Can be `bios` or
+     * `efi`.
      * 
      */
     public Optional<String> firmware() {
@@ -302,8 +313,8 @@ public final class GetVirtualMachineResult {
     public Integer hardwareVersion() {
         return this.hardwareVersion;
     }
-    public Optional<String> hvMode() {
-        return Optional.ofNullable(this.hvMode);
+    public String hvMode() {
+        return this.hvMode;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -314,6 +325,13 @@ public final class GetVirtualMachineResult {
     }
     public Optional<Integer> ideControllerScanCount() {
         return Optional.ofNullable(this.ideControllerScanCount);
+    }
+    /**
+     * @return The instance UUID of the virtual machine or template.
+     * 
+     */
+    public String instanceUuid() {
+        return this.instanceUuid;
     }
     public Optional<String> latencySensitivity() {
         return Optional.ofNullable(this.latencySensitivity);
@@ -355,27 +373,29 @@ public final class GetVirtualMachineResult {
     /**
      * @return The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
-     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
+     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
+     * `vmxnet3`.
      * 
      */
     public List<String> networkInterfaceTypes() {
         return this.networkInterfaceTypes;
     }
     /**
-     * @return Information about each of the network interfaces on this
-     * virtual machine or template. These are sorted by device bus order so that they
-     * can be applied to a `vsphere.VirtualMachine` resource in the order the resource
-     * expects while cloning. This is useful for discovering certain network interface
-     * settings while performing a linked clone, as all settings that are output by this
-     * data source must be the same on the destination virtual machine as the source.
-     * The sub-attributes are:
+     * @return Information about each of the network interfaces on
+     * this virtual machine or template. These are sorted by device bus order so that
+     * they can be applied to a `vsphere.VirtualMachine` resource in the order the
+     * resource expects while cloning. This is useful for discovering certain network
+     * interface settings while performing a linked clone, as all settings that are
+     * output by this data source must be the same on the destination virtual machine
+     * as the source. The sub-attributes are:
      * 
      */
     public List<GetVirtualMachineNetworkInterface> networkInterfaces() {
         return this.networkInterfaces;
     }
     /**
-     * @return The number of cores per socket for this virtual machine.
+     * @return The number of cores per socket for this virtual
+     * machine.
      * 
      */
     public Optional<Integer> numCoresPerSocket() {
@@ -492,7 +512,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Boolean efiSecureBootEnabled;
         private @Nullable Boolean enableDiskUuid;
         private @Nullable Boolean enableLogging;
-        private @Nullable String eptRviMode;
+        private String eptRviMode;
         private @Nullable Map<String,String> extraConfig;
         private @Nullable Boolean extraConfigRebootRequired;
         private @Nullable String firmware;
@@ -500,9 +520,10 @@ public final class GetVirtualMachineResult {
         private String guestId;
         private List<String> guestIpAddresses;
         private Integer hardwareVersion;
-        private @Nullable String hvMode;
+        private String hvMode;
         private String id;
         private @Nullable Integer ideControllerScanCount;
+        private String instanceUuid;
         private @Nullable String latencySensitivity;
         private @Nullable Integer memory;
         private @Nullable Boolean memoryHotAddEnabled;
@@ -571,6 +592,7 @@ public final class GetVirtualMachineResult {
     	      this.hvMode = defaults.hvMode;
     	      this.id = defaults.id;
     	      this.ideControllerScanCount = defaults.ideControllerScanCount;
+    	      this.instanceUuid = defaults.instanceUuid;
     	      this.latencySensitivity = defaults.latencySensitivity;
     	      this.memory = defaults.memory;
     	      this.memoryHotAddEnabled = defaults.memoryHotAddEnabled;
@@ -736,8 +758,10 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
-        public Builder eptRviMode(@Nullable String eptRviMode) {
-
+        public Builder eptRviMode(String eptRviMode) {
+            if (eptRviMode == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "eptRviMode");
+            }
             this.eptRviMode = eptRviMode;
             return this;
         }
@@ -793,8 +817,10 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
-        public Builder hvMode(@Nullable String hvMode) {
-
+        public Builder hvMode(String hvMode) {
+            if (hvMode == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "hvMode");
+            }
             this.hvMode = hvMode;
             return this;
         }
@@ -810,6 +836,14 @@ public final class GetVirtualMachineResult {
         public Builder ideControllerScanCount(@Nullable Integer ideControllerScanCount) {
 
             this.ideControllerScanCount = ideControllerScanCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceUuid(String instanceUuid) {
+            if (instanceUuid == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "instanceUuid");
+            }
+            this.instanceUuid = instanceUuid;
             return this;
         }
         @CustomType.Setter
@@ -1081,6 +1115,7 @@ public final class GetVirtualMachineResult {
             _resultValue.hvMode = hvMode;
             _resultValue.id = id;
             _resultValue.ideControllerScanCount = ideControllerScanCount;
+            _resultValue.instanceUuid = instanceUuid;
             _resultValue.latencySensitivity = latencySensitivity;
             _resultValue.memory = memory;
             _resultValue.memoryHotAddEnabled = memoryHotAddEnabled;

@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Role` data source can be used to discover the `id` and privileges associated
-// with a role given its name or display label.
+// The `Role` data source can be used to discover the `id` and privileges
+// associated with a role given its name or display label.
 //
 // ## Example Usage
 //

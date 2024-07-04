@@ -7,21 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
- *
- * Suggested change
- * > **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const gosc1 = vsphere.getGuestOsCustomization({
- *     name: "linux-spec",
- * });
- * ```
+ * The `vsphere.GuestOsCustomization` data source can be used to discover the
+ * details about a customization specification for a guest operating system.
  */
 export function getGuestOsCustomization(args: GetGuestOsCustomizationArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestOsCustomizationResult> {
 
@@ -36,7 +23,8 @@ export function getGuestOsCustomization(args: GetGuestOsCustomizationArgs, opts?
  */
 export interface GetGuestOsCustomizationArgs {
     /**
-     * The name of the customization specification is the unique identifier per vCenter Server instance.
+     * The name of the customization specification is the unique
+     * identifier per vCenter Server instance. ## Attribute Reference
      */
     name: string;
 }
@@ -45,48 +33,20 @@ export interface GetGuestOsCustomizationArgs {
  * A collection of values returned by getGuestOsCustomization.
  */
 export interface GetGuestOsCustomizationResult {
-    /**
-     * The number of last changed version to the customization specification.
-     */
     readonly changeVersion: string;
-    /**
-     * The description for the customization specification.
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The time of last modification to the customization specification.
-     */
     readonly lastUpdateTime: string;
     readonly name: string;
-    /**
-     * Container object for the guest operating system properties to be customized. See virtual machine customizations
-     */
     readonly specs: outputs.GetGuestOsCustomizationSpec[];
-    /**
-     * The type of customization specification: One among: Windows, Linux.
-     */
     readonly type: string;
 }
 /**
- * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
- *
- * Suggested change
- * > **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const gosc1 = vsphere.getGuestOsCustomization({
- *     name: "linux-spec",
- * });
- * ```
+ * The `vsphere.GuestOsCustomization` data source can be used to discover the
+ * details about a customization specification for a guest operating system.
  */
 export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestOsCustomizationResult> {
     return pulumi.output(args).apply((a: any) => getGuestOsCustomization(a, opts))
@@ -97,7 +57,8 @@ export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutpu
  */
 export interface GetGuestOsCustomizationOutputArgs {
     /**
-     * The name of the customization specification is the unique identifier per vCenter Server instance.
+     * The name of the customization specification is the unique
+     * identifier per vCenter Server instance. ## Attribute Reference
      */
     name: pulumi.Input<string>;
 }

@@ -66,7 +66,7 @@ type VirtualMachine struct {
 	// Enable logging on this virtual machine.
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
-	EptRviMode pulumi.StringPtrOutput `pulumi:"eptRviMode"`
+	EptRviMode pulumi.StringOutput `pulumi:"eptRviMode"`
 	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
 	// configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapOutput `pulumi:"extraConfig"`
@@ -87,8 +87,8 @@ type VirtualMachine struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode             pulumi.StringPtrOutput `pulumi:"hvMode"`
-	IdeControllerCount pulumi.IntPtrOutput    `pulumi:"ideControllerCount"`
+	HvMode             pulumi.StringOutput `pulumi:"hvMode"`
+	IdeControllerCount pulumi.IntPtrOutput `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayOutput `pulumi:"ignoredGuestIps"`
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
@@ -1149,8 +1149,8 @@ func (o VirtualMachineOutput) EnableLogging() pulumi.BoolPtrOutput {
 }
 
 // The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
-func (o VirtualMachineOutput) EptRviMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.EptRviMode }).(pulumi.StringPtrOutput)
+func (o VirtualMachineOutput) EptRviMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.EptRviMode }).(pulumi.StringOutput)
 }
 
 // Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
@@ -1200,8 +1200,8 @@ func (o VirtualMachineOutput) HostSystemId() pulumi.StringOutput {
 }
 
 // The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-func (o VirtualMachineOutput) HvMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.HvMode }).(pulumi.StringPtrOutput)
+func (o VirtualMachineOutput) HvMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.HvMode }).(pulumi.StringOutput)
 }
 
 func (o VirtualMachineOutput) IdeControllerCount() pulumi.IntPtrOutput {

@@ -88,8 +88,6 @@ class DatastoreClusterArgs:
         :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         pulumi.set(__self__, "datacenter_id", datacenter_id)
         if custom_attributes is not None:
@@ -456,8 +454,6 @@ class DatastoreClusterArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -543,8 +539,6 @@ class _DatastoreClusterState:
         :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -912,8 +906,6 @@ class _DatastoreClusterState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -1004,8 +996,6 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         ...
     @overload
@@ -1180,8 +1170,6 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1433,8 +1421,6 @@ class DatastoreCluster(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 

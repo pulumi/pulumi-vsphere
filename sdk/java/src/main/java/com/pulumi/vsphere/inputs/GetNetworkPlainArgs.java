@@ -39,8 +39,8 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * For distributed port group type
      * network objects, the ID of the distributed virtual switch for which the port
-     * group belongs. It is useful to differentiate port groups with same name
-     * using the distributed virtual switch ID.
+     * group belongs. It is useful to differentiate port groups with same name using
+     * the distributed virtual switch ID.
      * 
      */
     @Import(name="distributedVirtualSwitchUuid")
@@ -49,8 +49,8 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return For distributed port group type
      * network objects, the ID of the distributed virtual switch for which the port
-     * group belongs. It is useful to differentiate port groups with same name
-     * using the distributed virtual switch ID.
+     * group belongs. It is useful to differentiate port groups with same name using
+     * the distributed virtual switch ID.
      * 
      */
     public Optional<String> distributedVirtualSwitchUuid() {
@@ -115,8 +115,8 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param distributedVirtualSwitchUuid For distributed port group type
          * network objects, the ID of the distributed virtual switch for which the port
-         * group belongs. It is useful to differentiate port groups with same name
-         * using the distributed virtual switch ID.
+         * group belongs. It is useful to differentiate port groups with same name using
+         * the distributed virtual switch ID.
          * 
          * @return builder
          * 

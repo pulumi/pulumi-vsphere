@@ -271,8 +271,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly netflowActiveFlowTimeout!: pulumi.Output<number | undefined>;
     /**
-     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-     * later.
+     * IP address for the netflow collector, using IPv4 or IPv6.
      */
     public readonly netflowCollectorIpAddress!: pulumi.Output<string | undefined>;
     /**
@@ -342,8 +341,6 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly standbyUplinks!: pulumi.Output<string[]>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -895,8 +892,7 @@ export interface DistributedVirtualSwitchState {
      */
     netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
-     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-     * later.
+     * IP address for the netflow collector, using IPv4 or IPv6.
      */
     netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
@@ -966,8 +962,6 @@ export interface DistributedVirtualSwitchState {
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1301,8 +1295,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
-     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-     * later.
+     * IP address for the netflow collector, using IPv4 or IPv6.
      */
     netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
@@ -1372,8 +1365,6 @@ export interface DistributedVirtualSwitchArgs {
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IDs of any tags to attach to this resource.
-     *
-     * > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

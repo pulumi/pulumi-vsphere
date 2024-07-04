@@ -14,14 +14,16 @@ public final class GetContentLibraryItemPlainArgs extends com.pulumi.resources.I
     public static final GetContentLibraryItemPlainArgs Empty = new GetContentLibraryItemPlainArgs();
 
     /**
-     * The ID of the content library in which the item exists.
+     * The ID of the content library in which the item
+     * exists.
      * 
      */
     @Import(name="libraryId", required=true)
     private String libraryId;
 
     /**
-     * @return The ID of the content library in which the item exists.
+     * @return The ID of the content library in which the item
+     * exists.
      * 
      */
     public String libraryId() {
@@ -44,14 +46,16 @@ public final class GetContentLibraryItemPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+     * The type for the content library item. One of `ovf`,
+     * `vm-template`, or `iso`
      * 
      */
     @Import(name="type", required=true)
     private String type;
 
     /**
-     * @return The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+     * @return The type for the content library item. One of `ovf`,
+     * `vm-template`, or `iso`
      * 
      */
     public String type() {
@@ -85,7 +89,8 @@ public final class GetContentLibraryItemPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param libraryId The ID of the content library in which the item exists.
+         * @param libraryId The ID of the content library in which the item
+         * exists.
          * 
          * @return builder
          * 
@@ -107,7 +112,8 @@ public final class GetContentLibraryItemPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param type The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+         * @param type The type for the content library item. One of `ovf`,
+         * `vm-template`, or `iso`
          * 
          * @return builder
          * 

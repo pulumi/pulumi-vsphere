@@ -102,9 +102,9 @@ namespace Pulumi.VSphere
         private Dictionary<string, object>? _stats;
 
         /// <summary>
-        /// The disk space usage statistics for the specific datastore. The total
-        /// datastore capacity is represented as `capacity` and the free remaining disk is
-        /// represented as `free`.
+        /// The disk space usage statistics for the specific datastore. The
+        /// total datastore capacity is represented as `capacity` and the free remaining
+        /// disk is represented as `free`.
         /// </summary>
         public Dictionary<string, object> Stats
         {
@@ -139,9 +139,9 @@ namespace Pulumi.VSphere
         private InputMap<object>? _stats;
 
         /// <summary>
-        /// The disk space usage statistics for the specific datastore. The total
-        /// datastore capacity is represented as `capacity` and the free remaining disk is
-        /// represented as `free`.
+        /// The disk space usage statistics for the specific datastore. The
+        /// total datastore capacity is represented as `capacity` and the free remaining
+        /// disk is represented as `free`.
         /// </summary>
         public InputMap<object> Stats
         {
@@ -166,9 +166,9 @@ namespace Pulumi.VSphere
         public readonly string Id;
         public readonly string Name;
         /// <summary>
-        /// The disk space usage statistics for the specific datastore. The total
-        /// datastore capacity is represented as `capacity` and the free remaining disk is
-        /// represented as `free`.
+        /// The disk space usage statistics for the specific datastore. The
+        /// total datastore capacity is represented as `capacity` and the free remaining
+        /// disk is represented as `free`.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Stats;
 

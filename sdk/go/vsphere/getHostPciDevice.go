@@ -115,7 +115,8 @@ type GetHostPciDeviceArgs struct {
 	//
 	// > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
 	ClassId *string `pulumi:"classId"`
-	// The [managed object reference ID][docs-about-morefs] of a host.
+	// The [managed object reference ID][docs-about-morefs] of
+	// a host.
 	HostId string `pulumi:"hostId"`
 	// A regular expression that will be used to match the
 	// host PCI device name.
@@ -157,7 +158,8 @@ type GetHostPciDeviceOutputArgs struct {
 	//
 	// > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
 	ClassId pulumi.StringPtrInput `pulumi:"classId"`
-	// The [managed object reference ID][docs-about-morefs] of a host.
+	// The [managed object reference ID][docs-about-morefs] of
+	// a host.
 	HostId pulumi.StringInput `pulumi:"hostId"`
 	// A regular expression that will be used to match the
 	// host PCI device name.

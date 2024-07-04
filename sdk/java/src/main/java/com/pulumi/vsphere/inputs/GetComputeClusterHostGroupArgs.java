@@ -15,8 +15,9 @@ public final class GetComputeClusterHostGroupArgs extends com.pulumi.resources.I
     public static final GetComputeClusterHostGroupArgs Empty = new GetComputeClusterHostGroupArgs();
 
     /**
-     * The [managed object reference ID][docs-about-morefs]
-     * of the compute cluster for the host group.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the compute cluster for
+     * the host group.
      * 
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
@@ -25,8 +26,9 @@ public final class GetComputeClusterHostGroupArgs extends com.pulumi.resources.I
     private Output<String> computeClusterId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs]
-     * of the compute cluster for the host group.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the compute cluster for
+     * the host group.
      * 
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
@@ -76,8 +78,9 @@ public final class GetComputeClusterHostGroupArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param computeClusterId The [managed object reference ID][docs-about-morefs]
-         * of the compute cluster for the host group.
+         * @param computeClusterId The
+         * [managed object reference ID][docs-about-morefs] of the compute cluster for
+         * the host group.
          * 
          * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
@@ -90,8 +93,9 @@ public final class GetComputeClusterHostGroupArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param computeClusterId The [managed object reference ID][docs-about-morefs]
-         * of the compute cluster for the host group.
+         * @param computeClusterId The
+         * [managed object reference ID][docs-about-morefs] of the compute cluster for
+         * the host group.
          * 
          * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 

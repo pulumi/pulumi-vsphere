@@ -35,17 +35,20 @@ export class EntityPermissions extends pulumi.CustomResource {
     }
 
     /**
-     * The managed object id (uuid for some entities) on which permissions are to be created.
+     * The managed object id (uuid for some entities) on
+     * which permissions are to be created.
      */
     public readonly entityId!: pulumi.Output<string>;
     /**
-     * The managed object type, types can be found in the managed object type section 
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * The managed object type, types can be found in the
+     * managed object type section
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      */
     public readonly entityType!: pulumi.Output<string>;
     /**
-     * The permissions to be given on this entity. Keep the permissions sorted
-     * alphabetically on `userOrGroup` for a better user experience.
+     * The permissions to be given on this entity. Keep
+     * the permissions sorted alphabetically on `userOrGroup` for a better user
+     * experience.
      */
     public readonly permissions!: pulumi.Output<outputs.EntityPermissionsPermission[]>;
 
@@ -90,17 +93,20 @@ export class EntityPermissions extends pulumi.CustomResource {
  */
 export interface EntityPermissionsState {
     /**
-     * The managed object id (uuid for some entities) on which permissions are to be created.
+     * The managed object id (uuid for some entities) on
+     * which permissions are to be created.
      */
     entityId?: pulumi.Input<string>;
     /**
-     * The managed object type, types can be found in the managed object type section 
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * The managed object type, types can be found in the
+     * managed object type section
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      */
     entityType?: pulumi.Input<string>;
     /**
-     * The permissions to be given on this entity. Keep the permissions sorted
-     * alphabetically on `userOrGroup` for a better user experience.
+     * The permissions to be given on this entity. Keep
+     * the permissions sorted alphabetically on `userOrGroup` for a better user
+     * experience.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.EntityPermissionsPermission>[]>;
 }
@@ -110,17 +116,20 @@ export interface EntityPermissionsState {
  */
 export interface EntityPermissionsArgs {
     /**
-     * The managed object id (uuid for some entities) on which permissions are to be created.
+     * The managed object id (uuid for some entities) on
+     * which permissions are to be created.
      */
     entityId: pulumi.Input<string>;
     /**
-     * The managed object type, types can be found in the managed object type section 
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * The managed object type, types can be found in the
+     * managed object type section
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      */
     entityType: pulumi.Input<string>;
     /**
-     * The permissions to be given on this entity. Keep the permissions sorted
-     * alphabetically on `userOrGroup` for a better user experience.
+     * The permissions to be given on this entity. Keep
+     * the permissions sorted alphabetically on `userOrGroup` for a better user
+     * experience.
      */
     permissions: pulumi.Input<pulumi.Input<inputs.EntityPermissionsPermission>[]>;
 }

@@ -16,21 +16,21 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *     name: vsphereDatacenter,
+ *     name: "dc-01",
  * });
  * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
- *     name: vsphereCluster,
+ *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
- * const hostGroup1 = cluster.then(cluster => vsphere.getComputeClusterHostGroup({
- *     name: "host_group1",
+ * const hostGroup = cluster.then(cluster => vsphere.getComputeClusterHostGroup({
+ *     name: "hostgroup-01",
  *     computeClusterId: cluster.id,
  * }));
- * const hostRule1 = new vsphere.ComputeClusterVmHostRule("host_rule1", {
+ * const hostRule = new vsphere.ComputeClusterVmHostRule("host_rule", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
  *     name: "terraform-host-rule1",
- *     vmGroupName: "vm_group1",
- *     affinityHostGroupName: hostGroup1.then(hostGroup1 => hostGroup1.name),
+ *     vmGroupName: "vmgroup-01",
+ *     affinityHostGroupName: hostGroup.then(hostGroup => hostGroup.name),
  * });
  * ```
  */
@@ -48,8 +48,9 @@ export function getComputeClusterHostGroup(args: GetComputeClusterHostGroupArgs,
  */
 export interface GetComputeClusterHostGroupArgs {
     /**
-     * The [managed object reference ID][docs-about-morefs]
-     * of the compute cluster for the host group.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the compute cluster for
+     * the host group.
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
@@ -88,21 +89,21 @@ export interface GetComputeClusterHostGroupResult {
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *     name: vsphereDatacenter,
+ *     name: "dc-01",
  * });
  * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
- *     name: vsphereCluster,
+ *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
- * const hostGroup1 = cluster.then(cluster => vsphere.getComputeClusterHostGroup({
- *     name: "host_group1",
+ * const hostGroup = cluster.then(cluster => vsphere.getComputeClusterHostGroup({
+ *     name: "hostgroup-01",
  *     computeClusterId: cluster.id,
  * }));
- * const hostRule1 = new vsphere.ComputeClusterVmHostRule("host_rule1", {
+ * const hostRule = new vsphere.ComputeClusterVmHostRule("host_rule", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
  *     name: "terraform-host-rule1",
- *     vmGroupName: "vm_group1",
- *     affinityHostGroupName: hostGroup1.then(hostGroup1 => hostGroup1.name),
+ *     vmGroupName: "vmgroup-01",
+ *     affinityHostGroupName: hostGroup.then(hostGroup => hostGroup.name),
  * });
  * ```
  */
@@ -115,8 +116,9 @@ export function getComputeClusterHostGroupOutput(args: GetComputeClusterHostGrou
  */
 export interface GetComputeClusterHostGroupOutputArgs {
     /**
-     * The [managed object reference ID][docs-about-morefs]
-     * of the compute cluster for the host group.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the compute cluster for
+     * the host group.
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */

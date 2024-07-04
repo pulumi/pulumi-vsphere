@@ -30,7 +30,7 @@ class VnicArgs:
         The set of arguments for constructing a Vnic resource.
         :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
-        :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        :param pulumi.Input[str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input['VnicIpv4Args'] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         :param pulumi.Input['VnicIpv6Args'] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         :param pulumi.Input[str] mac: MAC address of the interface.
@@ -87,7 +87,7 @@ class VnicArgs:
     @pulumi.getter(name="distributedSwitchPort")
     def distributed_switch_port(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         """
         return pulumi.get(self, "distributed_switch_port")
 
@@ -196,7 +196,7 @@ class _VnicState:
         """
         Input properties used for looking up and filtering Vnic resources.
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
-        :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        :param pulumi.Input[str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input['VnicIpv4Args'] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         :param pulumi.Input['VnicIpv6Args'] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
@@ -243,7 +243,7 @@ class _VnicState:
     @pulumi.getter(name="distributedSwitchPort")
     def distributed_switch_port(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         """
         return pulumi.get(self, "distributed_switch_port")
 
@@ -369,32 +369,30 @@ class Vnic(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### S
-
         ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="mydc")
-        h1 = vsphere.get_host(name="esxi1.host.test",
-            datacenter_id=dc.id)
-        d1 = vsphere.DistributedVirtualSwitch("d1",
-            name="dc_DVPG0",
-            datacenter_id=dc.id,
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter.id,
             hosts=[vsphere.DistributedVirtualSwitchHostArgs(
-                host_system_id=h1.id,
+                host_system_id=host.id,
                 devices=["vnic3"],
             )])
-        p1 = vsphere.DistributedPortGroup("p1",
-            name="test-pg",
+        pg = vsphere.DistributedPortGroup("pg",
+            name="pg-01",
             vlan_id=1234,
-            distributed_virtual_switch_uuid=d1.id)
-        v1 = vsphere.Vnic("v1",
-            host=h1.id,
-            distributed_switch_port=d1.id,
-            distributed_port_group=p1.id,
+            distributed_virtual_switch_uuid=vds.id)
+        vnic = vsphere.Vnic("vnic",
+            host=host.id,
+            distributed_switch_port=vds.id,
+            distributed_port_group=pg.id,
             ipv4=vsphere.VnicIpv4Args(
                 dhcp=True,
             ),
@@ -407,25 +405,25 @@ class Vnic(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="mydc")
-        h1 = vsphere.get_host(name="esxi1.host.test",
-            datacenter_id=dc.id)
-        hvs1 = vsphere.HostVirtualSwitch("hvs1",
-            name="dc_HPG0",
-            host_system_id=h1.id,
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        hvs = vsphere.HostVirtualSwitch("hvs",
+            name="hvs-01",
+            host_system_id=host.id,
             network_adapters=[
                 "vmnic3",
                 "vmnic4",
             ],
             active_nics=["vmnic3"],
             standby_nics=["vmnic4"])
-        p1 = vsphere.HostPortGroup("p1",
-            name="my-pg",
-            virtual_switch_name=hvs1.name,
-            host_system_id=h1.id)
-        v1 = vsphere.Vnic("v1",
-            host=h1.id,
-            portgroup=p1.name,
+        pg = vsphere.HostPortGroup("pg",
+            name="pg-01",
+            virtual_switch_name=hvs.name,
+            host_system_id=host.id)
+        vnic = vsphere.Vnic("vnic",
+            host=host.id,
+            portgroup=pg.name,
             ipv4=vsphere.VnicIpv4Args(
                 dhcp=True,
             ),
@@ -447,7 +445,7 @@ class Vnic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
-        :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        :param pulumi.Input[str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input[pulumi.InputType['VnicIpv4Args']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         :param pulumi.Input[pulumi.InputType['VnicIpv6Args']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
@@ -468,32 +466,30 @@ class Vnic(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### S
-
         ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="mydc")
-        h1 = vsphere.get_host(name="esxi1.host.test",
-            datacenter_id=dc.id)
-        d1 = vsphere.DistributedVirtualSwitch("d1",
-            name="dc_DVPG0",
-            datacenter_id=dc.id,
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter.id,
             hosts=[vsphere.DistributedVirtualSwitchHostArgs(
-                host_system_id=h1.id,
+                host_system_id=host.id,
                 devices=["vnic3"],
             )])
-        p1 = vsphere.DistributedPortGroup("p1",
-            name="test-pg",
+        pg = vsphere.DistributedPortGroup("pg",
+            name="pg-01",
             vlan_id=1234,
-            distributed_virtual_switch_uuid=d1.id)
-        v1 = vsphere.Vnic("v1",
-            host=h1.id,
-            distributed_switch_port=d1.id,
-            distributed_port_group=p1.id,
+            distributed_virtual_switch_uuid=vds.id)
+        vnic = vsphere.Vnic("vnic",
+            host=host.id,
+            distributed_switch_port=vds.id,
+            distributed_port_group=pg.id,
             ipv4=vsphere.VnicIpv4Args(
                 dhcp=True,
             ),
@@ -506,25 +502,25 @@ class Vnic(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="mydc")
-        h1 = vsphere.get_host(name="esxi1.host.test",
-            datacenter_id=dc.id)
-        hvs1 = vsphere.HostVirtualSwitch("hvs1",
-            name="dc_HPG0",
-            host_system_id=h1.id,
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        hvs = vsphere.HostVirtualSwitch("hvs",
+            name="hvs-01",
+            host_system_id=host.id,
             network_adapters=[
                 "vmnic3",
                 "vmnic4",
             ],
             active_nics=["vmnic3"],
             standby_nics=["vmnic4"])
-        p1 = vsphere.HostPortGroup("p1",
-            name="my-pg",
-            virtual_switch_name=hvs1.name,
-            host_system_id=h1.id)
-        v1 = vsphere.Vnic("v1",
-            host=h1.id,
-            portgroup=p1.name,
+        pg = vsphere.HostPortGroup("pg",
+            name="pg-01",
+            virtual_switch_name=hvs.name,
+            host_system_id=host.id)
+        vnic = vsphere.Vnic("vnic",
+            host=host.id,
+            portgroup=pg.name,
             ipv4=vsphere.VnicIpv4Args(
                 dhcp=True,
             ),
@@ -617,7 +613,7 @@ class Vnic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
-        :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        :param pulumi.Input[str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input[pulumi.InputType['VnicIpv4Args']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         :param pulumi.Input[pulumi.InputType['VnicIpv6Args']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
@@ -655,7 +651,7 @@ class Vnic(pulumi.CustomResource):
     @pulumi.getter(name="distributedSwitchPort")
     def distributed_switch_port(self) -> pulumi.Output[Optional[str]]:
         """
-        UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         """
         return pulumi.get(self, "distributed_switch_port")
 

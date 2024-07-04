@@ -179,15 +179,18 @@ export interface DistributedVirtualSwitchVlanRange {
 
 export interface EntityPermissionsPermission {
     /**
-     * Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+     * Whether `userOrGroup` field refers to a user or a
+     * group. True for a group and false for a user.
      */
     isGroup: pulumi.Input<boolean>;
     /**
-     * Whether or not this permission propagates down the hierarchy to sub-entities.
+     * Whether or not this permission propagates down the
+     * hierarchy to sub-entities.
      */
     propagate: pulumi.Input<boolean>;
     /**
-     * The role id of the role to be given to the user on the specified entity.
+     * The role id of the role to be given to the user on
+     * the specified entity.
      */
     roleId: pulumi.Input<string>;
     /**

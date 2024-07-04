@@ -154,7 +154,8 @@ namespace Pulumi.VSphere
     public sealed class GetHostVgpuProfileArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of a host.
+        /// The [managed object reference ID][docs-about-morefs] of
+        /// a host.
         /// </summary>
         [Input("hostId", required: true)]
         public string HostId { get; set; } = null!;
@@ -177,7 +178,8 @@ namespace Pulumi.VSphere
     public sealed class GetHostVgpuProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of a host.
+        /// The [managed object reference ID][docs-about-morefs] of
+        /// a host.
         /// </summary>
         [Input("hostId", required: true)]
         public Input<string> HostId { get; set; } = null!;

@@ -541,6 +541,58 @@ class Supervisor(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### S
+
+        **Enable Workload Management on a compute cluster**
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vm_class = vsphere.VirtualMachineClass("vm_class",
+            name="custom-class",
+            cpus=4,
+            memory=4096)
+        supervisor = vsphere.Supervisor("supervisor",
+            cluster="<compute_cluster_id>",
+            storage_policy="<storage_policy_name>",
+            content_library="<content_library_id>",
+            main_dns="10.0.0.250",
+            worker_dns="10.0.0.250",
+            edge_cluster="<edge_cluster_id>",
+            dvs_uuid="<distributed_switch_uuid>",
+            sizing_hint="MEDIUM",
+            management_network=vsphere.SupervisorManagementNetworkArgs(
+                network="<portgroup_id>",
+                subnet_mask="255.255.255.0",
+                starting_address="10.0.0.150",
+                gateway="10.0.0.250",
+                address_count=5,
+            ),
+            ingress_cidrs=[vsphere.SupervisorIngressCidrArgs(
+                address="10.10.10.0",
+                prefix=24,
+            )],
+            egress_cidrs=[vsphere.SupervisorEgressCidrArgs(
+                address="10.10.11.0",
+                prefix=24,
+            )],
+            pod_cidrs=[vsphere.SupervisorPodCidrArgs(
+                address="10.244.10.0",
+                prefix=23,
+            )],
+            service_cidr=vsphere.SupervisorServiceCidrArgs(
+                address="10.10.12.0",
+                prefix=24,
+            ),
+            search_domains="vsphere.local",
+            namespaces=[vsphere.SupervisorNamespaceArgs(
+                name="custom-namespace",
+                content_libraries=[],
+                vm_classes=[vm_class.id],
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The identifier of the compute cluster.
@@ -574,6 +626,58 @@ class Supervisor(pulumi.CustomResource):
         Provides a resource for configuring Workload Management.
 
         ## Example Usage
+
+        ### S
+
+        **Enable Workload Management on a compute cluster**
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vm_class = vsphere.VirtualMachineClass("vm_class",
+            name="custom-class",
+            cpus=4,
+            memory=4096)
+        supervisor = vsphere.Supervisor("supervisor",
+            cluster="<compute_cluster_id>",
+            storage_policy="<storage_policy_name>",
+            content_library="<content_library_id>",
+            main_dns="10.0.0.250",
+            worker_dns="10.0.0.250",
+            edge_cluster="<edge_cluster_id>",
+            dvs_uuid="<distributed_switch_uuid>",
+            sizing_hint="MEDIUM",
+            management_network=vsphere.SupervisorManagementNetworkArgs(
+                network="<portgroup_id>",
+                subnet_mask="255.255.255.0",
+                starting_address="10.0.0.150",
+                gateway="10.0.0.250",
+                address_count=5,
+            ),
+            ingress_cidrs=[vsphere.SupervisorIngressCidrArgs(
+                address="10.10.10.0",
+                prefix=24,
+            )],
+            egress_cidrs=[vsphere.SupervisorEgressCidrArgs(
+                address="10.10.11.0",
+                prefix=24,
+            )],
+            pod_cidrs=[vsphere.SupervisorPodCidrArgs(
+                address="10.244.10.0",
+                prefix=23,
+            )],
+            service_cidr=vsphere.SupervisorServiceCidrArgs(
+                address="10.10.12.0",
+                prefix=24,
+            ),
+            search_domains="vsphere.local",
+            namespaces=[vsphere.SupervisorNamespaceArgs(
+                name="custom-namespace",
+                content_libraries=[],
+                vm_classes=[vm_class.id],
+            )])
+        ```
 
         :param str resource_name: The name of the resource.
         :param SupervisorArgs args: The arguments to use to populate this resource's properties.

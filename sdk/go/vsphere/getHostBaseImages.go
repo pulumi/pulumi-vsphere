@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getHostBaseImages` data source can be used to get the list of ESXi base images available
-// for cluster software management.
+// The `getHostBaseImages` data source can be used to get the list of ESXi
+// base images available for cluster software management.
 //
 // ## Example Usage
 //

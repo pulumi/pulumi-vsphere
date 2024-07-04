@@ -40,14 +40,16 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of
+     * a host.
      * 
      */
     @Import(name="hostId", required=true)
     private Output<String> hostId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of a host.
+     * @return The [managed object reference ID][docs-about-morefs] of
+     * a host.
      * 
      */
     public Output<String> hostId() {
@@ -143,7 +145,8 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of a host.
+         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * a host.
          * 
          * @return builder
          * 
@@ -154,7 +157,8 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of a host.
+         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * a host.
          * 
          * @return builder
          * 

@@ -15,6 +15,88 @@ import (
 // Provides a resource for configuring Workload Management.
 //
 // ## Example Usage
+//
+// ### S
+//
+// **Enable Workload Management on a compute cluster**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vmClass, err := vsphere.NewVirtualMachineClass(ctx, "vm_class", &vsphere.VirtualMachineClassArgs{
+//				Name:   pulumi.String("custom-class"),
+//				Cpus:   pulumi.Int(4),
+//				Memory: pulumi.Int(4096),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewSupervisor(ctx, "supervisor", &vsphere.SupervisorArgs{
+//				Cluster:        pulumi.String("<compute_cluster_id>"),
+//				StoragePolicy:  pulumi.String("<storage_policy_name>"),
+//				ContentLibrary: pulumi.String("<content_library_id>"),
+//				MainDns:        pulumi.StringArray("10.0.0.250"),
+//				WorkerDns:      pulumi.StringArray("10.0.0.250"),
+//				EdgeCluster:    pulumi.String("<edge_cluster_id>"),
+//				DvsUuid:        pulumi.String("<distributed_switch_uuid>"),
+//				SizingHint:     pulumi.String("MEDIUM"),
+//				ManagementNetwork: &vsphere.SupervisorManagementNetworkArgs{
+//					Network:         pulumi.String("<portgroup_id>"),
+//					SubnetMask:      pulumi.String("255.255.255.0"),
+//					StartingAddress: pulumi.String("10.0.0.150"),
+//					Gateway:         pulumi.String("10.0.0.250"),
+//					AddressCount:    pulumi.Int(5),
+//				},
+//				IngressCidrs: vsphere.SupervisorIngressCidrArray{
+//					&vsphere.SupervisorIngressCidrArgs{
+//						Address: pulumi.String("10.10.10.0"),
+//						Prefix:  pulumi.Int(24),
+//					},
+//				},
+//				EgressCidrs: vsphere.SupervisorEgressCidrArray{
+//					&vsphere.SupervisorEgressCidrArgs{
+//						Address: pulumi.String("10.10.11.0"),
+//						Prefix:  pulumi.Int(24),
+//					},
+//				},
+//				PodCidrs: vsphere.SupervisorPodCidrArray{
+//					&vsphere.SupervisorPodCidrArgs{
+//						Address: pulumi.String("10.244.10.0"),
+//						Prefix:  pulumi.Int(23),
+//					},
+//				},
+//				ServiceCidr: &vsphere.SupervisorServiceCidrArgs{
+//					Address: pulumi.String("10.10.12.0"),
+//					Prefix:  pulumi.Int(24),
+//				},
+//				SearchDomains: pulumi.String("vsphere.local"),
+//				Namespaces: vsphere.SupervisorNamespaceArray{
+//					&vsphere.SupervisorNamespaceArgs{
+//						Name:             pulumi.String("custom-namespace"),
+//						ContentLibraries: pulumi.StringArray{},
+//						VmClasses: pulumi.StringArray{
+//							vmClass.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Supervisor struct {
 	pulumi.CustomResourceState
 

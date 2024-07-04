@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getNetwork` data source can be used to discover the ID of a network
-// in vSphere. This can be any network that can be used as the backing for a
-// network interface for `VirtualMachine` or any other vSphere resource
-// that requires a network. This includes standard (host-based) port groups,
-// distributed port groups, or opaque networks such as those managed by NSX.
+// The `getNetwork` data source can be used to discover the ID of a network in
+// vSphere. This can be any network that can be used as the backing for a network
+// interface for `VirtualMachine` or any other vSphere resource that
+// requires a network. This includes standard (host-based) port groups, distributed
+// port groups, or opaque networks such as those managed by NSX.
 //
 // ## Example Usage
 //
@@ -68,8 +68,8 @@ type GetNetworkArgs struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// For distributed port group type
 	// network objects, the ID of the distributed virtual switch for which the port
-	// group belongs. It is useful to differentiate port groups with same name
-	// using the distributed virtual switch ID.
+	// group belongs. It is useful to differentiate port groups with same name using
+	// the distributed virtual switch ID.
 	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
 	// The name of the network. This can be a name or path.
 	Name string `pulumi:"name"`
@@ -111,8 +111,8 @@ type GetNetworkOutputArgs struct {
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// For distributed port group type
 	// network objects, the ID of the distributed virtual switch for which the port
-	// group belongs. It is useful to differentiate port groups with same name
-	// using the distributed virtual switch ID.
+	// group belongs. It is useful to differentiate port groups with same name using
+	// the distributed virtual switch ID.
 	DistributedVirtualSwitchUuid pulumi.StringPtrInput `pulumi:"distributedVirtualSwitchUuid"`
 	// The name of the network. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`

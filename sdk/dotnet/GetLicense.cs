@@ -101,7 +101,8 @@ namespace Pulumi.VSphere
         public readonly string EditionKey;
         public readonly string Id;
         /// <summary>
-        /// A map of key/value pairs attached as labels (tags) to the license key.
+        /// A map of key/value pairs attached as labels (tags) to the license
+        /// key.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string LicenseKey;

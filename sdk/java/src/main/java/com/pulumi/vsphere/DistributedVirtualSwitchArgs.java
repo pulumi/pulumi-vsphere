@@ -864,16 +864,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-     * later.
+     * IP address for the netflow collector, using IPv4 or IPv6.
      * 
      */
     @Import(name="netflowCollectorIpAddress")
     private @Nullable Output<String> netflowCollectorIpAddress;
 
     /**
-     * @return IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-     * later.
+     * @return IP address for the netflow collector, using IPv4 or IPv6.
      * 
      */
     public Optional<Output<String>> netflowCollectorIpAddress() {
@@ -1125,16 +1123,12 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     /**
      * The IDs of any tags to attach to this resource.
      * 
-     * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
-     * 
-     * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -2783,8 +2777,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowCollectorIpAddress IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-         * later.
+         * @param netflowCollectorIpAddress IP address for the netflow collector, using IPv4 or IPv6.
          * 
          * @return builder
          * 
@@ -2795,8 +2788,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowCollectorIpAddress IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-         * later.
+         * @param netflowCollectorIpAddress IP address for the netflow collector, using IPv4 or IPv6.
          * 
          * @return builder
          * 
@@ -3166,8 +3158,6 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
-         * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
-         * 
          * @return builder
          * 
          */
@@ -3179,8 +3169,6 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
-         * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
-         * 
          * @return builder
          * 
          */
@@ -3190,8 +3178,6 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
 
         /**
          * @param tags The IDs of any tags to attach to this resource.
-         * 
-         * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
          * 
          * @return builder
          * 

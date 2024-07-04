@@ -15,14 +15,16 @@ public final class GetContentLibraryItemArgs extends com.pulumi.resources.Invoke
     public static final GetContentLibraryItemArgs Empty = new GetContentLibraryItemArgs();
 
     /**
-     * The ID of the content library in which the item exists.
+     * The ID of the content library in which the item
+     * exists.
      * 
      */
     @Import(name="libraryId", required=true)
     private Output<String> libraryId;
 
     /**
-     * @return The ID of the content library in which the item exists.
+     * @return The ID of the content library in which the item
+     * exists.
      * 
      */
     public Output<String> libraryId() {
@@ -45,14 +47,16 @@ public final class GetContentLibraryItemArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+     * The type for the content library item. One of `ovf`,
+     * `vm-template`, or `iso`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+     * @return The type for the content library item. One of `ovf`,
+     * `vm-template`, or `iso`
      * 
      */
     public Output<String> type() {
@@ -86,7 +90,8 @@ public final class GetContentLibraryItemArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param libraryId The ID of the content library in which the item exists.
+         * @param libraryId The ID of the content library in which the item
+         * exists.
          * 
          * @return builder
          * 
@@ -97,7 +102,8 @@ public final class GetContentLibraryItemArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param libraryId The ID of the content library in which the item exists.
+         * @param libraryId The ID of the content library in which the item
+         * exists.
          * 
          * @return builder
          * 
@@ -128,7 +134,8 @@ public final class GetContentLibraryItemArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param type The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+         * @param type The type for the content library item. One of `ovf`,
+         * `vm-template`, or `iso`
          * 
          * @return builder
          * 
@@ -139,7 +146,8 @@ public final class GetContentLibraryItemArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param type The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+         * @param type The type for the content library item. One of `ovf`,
+         * `vm-template`, or `iso`
          * 
          * @return builder
          * 

@@ -61,7 +61,8 @@ class GetLicenseResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        A map of key/value pairs attached as labels (tags) to the license key.
+        A map of key/value pairs attached as labels (tags) to the license
+        key.
         """
         return pulumi.get(self, "labels")
 

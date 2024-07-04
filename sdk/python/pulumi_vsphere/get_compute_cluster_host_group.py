@@ -89,21 +89,22 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name=vsphere_datacenter)
-    cluster = vsphere.get_compute_cluster(name=vsphere_cluster,
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    cluster = vsphere.get_compute_cluster(name="cluster-01",
         datacenter_id=datacenter.id)
-    host_group1 = vsphere.get_compute_cluster_host_group(name="host_group1",
+    host_group = vsphere.get_compute_cluster_host_group(name="hostgroup-01",
         compute_cluster_id=cluster.id)
-    host_rule1 = vsphere.ComputeClusterVmHostRule("host_rule1",
+    host_rule = vsphere.ComputeClusterVmHostRule("host_rule",
         compute_cluster_id=cluster.id,
         name="terraform-host-rule1",
-        vm_group_name="vm_group1",
-        affinity_host_group_name=host_group1.name)
+        vm_group_name="vmgroup-01",
+        affinity_host_group_name=host_group.name)
     ```
 
 
-    :param str compute_cluster_id: The [managed object reference ID][docs-about-morefs]
-           of the compute cluster for the host group.
+    :param str compute_cluster_id: The
+           [managed object reference ID][docs-about-morefs] of the compute cluster for
+           the host group.
            
            [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param str name: The name of the host group.
@@ -136,21 +137,22 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name=vsphere_datacenter)
-    cluster = vsphere.get_compute_cluster(name=vsphere_cluster,
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    cluster = vsphere.get_compute_cluster(name="cluster-01",
         datacenter_id=datacenter.id)
-    host_group1 = vsphere.get_compute_cluster_host_group(name="host_group1",
+    host_group = vsphere.get_compute_cluster_host_group(name="hostgroup-01",
         compute_cluster_id=cluster.id)
-    host_rule1 = vsphere.ComputeClusterVmHostRule("host_rule1",
+    host_rule = vsphere.ComputeClusterVmHostRule("host_rule",
         compute_cluster_id=cluster.id,
         name="terraform-host-rule1",
-        vm_group_name="vm_group1",
-        affinity_host_group_name=host_group1.name)
+        vm_group_name="vmgroup-01",
+        affinity_host_group_name=host_group.name)
     ```
 
 
-    :param str compute_cluster_id: The [managed object reference ID][docs-about-morefs]
-           of the compute cluster for the host group.
+    :param str compute_cluster_id: The
+           [managed object reference ID][docs-about-morefs] of the compute cluster for
+           the host group.
            
            [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param str name: The name of the host group.
