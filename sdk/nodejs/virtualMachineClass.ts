@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * **Create a class with a vGPU**
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";

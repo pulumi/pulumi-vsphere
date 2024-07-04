@@ -37,6 +37,7 @@ namespace Pulumi.VSphere
     /// ```
     /// 
     /// **Create a class with a vGPU**
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

@@ -99,9 +99,6 @@ type Datacenter struct {
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -154,9 +151,6 @@ type datacenterState struct {
 	// within the folder. Forces a new resource if changed.
 	Name *string `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -180,9 +174,6 @@ type DatacenterState struct {
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -208,9 +199,6 @@ type datacenterArgs struct {
 	// within the folder. Forces a new resource if changed.
 	Name *string `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -233,9 +221,6 @@ type DatacenterArgs struct {
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -357,9 +342,6 @@ func (o DatacenterOutput) Name() pulumi.StringOutput {
 }
 
 // The IDs of any tags to attach to this resource.
-//
-// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-// requires vCenter 6.0 or higher.
 func (o DatacenterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Datacenter) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

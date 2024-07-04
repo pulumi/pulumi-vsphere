@@ -78,9 +78,10 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
     """
     [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
-    The `get_dynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
-    of any tagged managed object in vCenter Server by providing a list of tag IDs
-    and an optional regular expression to filter objects by name.
+    The `get_dynamic` data source can be used to get the
+    [managed object reference ID][docs-about-morefs] of any tagged managed object in
+    vCenter Server by providing a list of tag IDs and an optional regular expression
+    to filter objects by name.
 
     ## Example Usage
 
@@ -104,11 +105,11 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
 
     :param Sequence[str] filters: A list of tag IDs that must be present on an object to
            be a match.
-    :param str name_regex: A regular expression that will be used to match
-           the object's name.
+    :param str name_regex: A regular expression that will be used to match the
+           object's name.
     :param str type: The managed object type the returned object must match.
            The managed object types can be found in the managed object type section
-           [here](https://developer.vmware.com/apis/968/vsphere).
+           [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -132,9 +133,10 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
     """
     [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
-    The `get_dynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
-    of any tagged managed object in vCenter Server by providing a list of tag IDs
-    and an optional regular expression to filter objects by name.
+    The `get_dynamic` data source can be used to get the
+    [managed object reference ID][docs-about-morefs] of any tagged managed object in
+    vCenter Server by providing a list of tag IDs and an optional regular expression
+    to filter objects by name.
 
     ## Example Usage
 
@@ -158,10 +160,10 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
 
     :param Sequence[str] filters: A list of tag IDs that must be present on an object to
            be a match.
-    :param str name_regex: A regular expression that will be used to match
-           the object's name.
+    :param str name_regex: A regular expression that will be used to match the
+           object's name.
     :param str type: The managed object type the returned object must match.
            The managed object types can be found in the managed object type section
-           [here](https://developer.vmware.com/apis/968/vsphere).
+           [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
     """
     ...

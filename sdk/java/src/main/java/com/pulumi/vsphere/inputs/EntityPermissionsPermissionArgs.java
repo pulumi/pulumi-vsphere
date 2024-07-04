@@ -16,14 +16,16 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
     public static final EntityPermissionsPermissionArgs Empty = new EntityPermissionsPermissionArgs();
 
     /**
-     * Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+     * Whether `user_or_group` field refers to a user or a
+     * group. True for a group and false for a user.
      * 
      */
     @Import(name="isGroup", required=true)
     private Output<Boolean> isGroup;
 
     /**
-     * @return Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+     * @return Whether `user_or_group` field refers to a user or a
+     * group. True for a group and false for a user.
      * 
      */
     public Output<Boolean> isGroup() {
@@ -31,14 +33,16 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether or not this permission propagates down the hierarchy to sub-entities.
+     * Whether or not this permission propagates down the
+     * hierarchy to sub-entities.
      * 
      */
     @Import(name="propagate", required=true)
     private Output<Boolean> propagate;
 
     /**
-     * @return Whether or not this permission propagates down the hierarchy to sub-entities.
+     * @return Whether or not this permission propagates down the
+     * hierarchy to sub-entities.
      * 
      */
     public Output<Boolean> propagate() {
@@ -46,14 +50,16 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
     }
 
     /**
-     * The role id of the role to be given to the user on the specified entity.
+     * The role id of the role to be given to the user on
+     * the specified entity.
      * 
      */
     @Import(name="roleId", required=true)
     private Output<String> roleId;
 
     /**
-     * @return The role id of the role to be given to the user on the specified entity.
+     * @return The role id of the role to be given to the user on
+     * the specified entity.
      * 
      */
     public Output<String> roleId() {
@@ -103,7 +109,8 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isGroup Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+         * @param isGroup Whether `user_or_group` field refers to a user or a
+         * group. True for a group and false for a user.
          * 
          * @return builder
          * 
@@ -114,7 +121,8 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isGroup Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+         * @param isGroup Whether `user_or_group` field refers to a user or a
+         * group. True for a group and false for a user.
          * 
          * @return builder
          * 
@@ -124,7 +132,8 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param propagate Whether or not this permission propagates down the hierarchy to sub-entities.
+         * @param propagate Whether or not this permission propagates down the
+         * hierarchy to sub-entities.
          * 
          * @return builder
          * 
@@ -135,7 +144,8 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param propagate Whether or not this permission propagates down the hierarchy to sub-entities.
+         * @param propagate Whether or not this permission propagates down the
+         * hierarchy to sub-entities.
          * 
          * @return builder
          * 
@@ -145,7 +155,8 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param roleId The role id of the role to be given to the user on the specified entity.
+         * @param roleId The role id of the role to be given to the user on
+         * the specified entity.
          * 
          * @return builder
          * 
@@ -156,7 +167,8 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param roleId The role id of the role to be given to the user on the specified entity.
+         * @param roleId The role id of the role to be given to the user on
+         * the specified entity.
          * 
          * @return builder
          * 

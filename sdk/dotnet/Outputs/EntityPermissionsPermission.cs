@@ -14,15 +14,18 @@ namespace Pulumi.VSphere.Outputs
     public sealed class EntityPermissionsPermission
     {
         /// <summary>
-        /// Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+        /// Whether `user_or_group` field refers to a user or a
+        /// group. True for a group and false for a user.
         /// </summary>
         public readonly bool IsGroup;
         /// <summary>
-        /// Whether or not this permission propagates down the hierarchy to sub-entities.
+        /// Whether or not this permission propagates down the
+        /// hierarchy to sub-entities.
         /// </summary>
         public readonly bool Propagate;
         /// <summary>
-        /// The role id of the role to be given to the user on the specified entity.
+        /// The role id of the role to be given to the user on
+        /// the specified entity.
         /// </summary>
         public readonly string RoleId;
         /// <summary>

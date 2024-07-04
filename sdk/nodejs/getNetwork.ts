@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.getNetwork` data source can be used to discover the ID of a network
- * in vSphere. This can be any network that can be used as the backing for a
- * network interface for `vsphere.VirtualMachine` or any other vSphere resource
- * that requires a network. This includes standard (host-based) port groups,
- * distributed port groups, or opaque networks such as those managed by NSX.
+ * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+ * vSphere. This can be any network that can be used as the backing for a network
+ * interface for `vsphere.VirtualMachine` or any other vSphere resource that
+ * requires a network. This includes standard (host-based) port groups, distributed
+ * port groups, or opaque networks such as those managed by NSX.
  *
  * ## Example Usage
  *
@@ -50,8 +50,8 @@ export interface GetNetworkArgs {
     /**
      * For distributed port group type
      * network objects, the ID of the distributed virtual switch for which the port
-     * group belongs. It is useful to differentiate port groups with same name
-     * using the distributed virtual switch ID.
+     * group belongs. It is useful to differentiate port groups with same name using
+     * the distributed virtual switch ID.
      */
     distributedVirtualSwitchUuid?: string;
     /**
@@ -80,11 +80,11 @@ export interface GetNetworkResult {
     readonly type: string;
 }
 /**
- * The `vsphere.getNetwork` data source can be used to discover the ID of a network
- * in vSphere. This can be any network that can be used as the backing for a
- * network interface for `vsphere.VirtualMachine` or any other vSphere resource
- * that requires a network. This includes standard (host-based) port groups,
- * distributed port groups, or opaque networks such as those managed by NSX.
+ * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+ * vSphere. This can be any network that can be used as the backing for a network
+ * interface for `vsphere.VirtualMachine` or any other vSphere resource that
+ * requires a network. This includes standard (host-based) port groups, distributed
+ * port groups, or opaque networks such as those managed by NSX.
  *
  * ## Example Usage
  *
@@ -119,8 +119,8 @@ export interface GetNetworkOutputArgs {
     /**
      * For distributed port group type
      * network objects, the ID of the distributed virtual switch for which the port
-     * group belongs. It is useful to differentiate port groups with same name
-     * using the distributed virtual switch ID.
+     * group belongs. It is useful to differentiate port groups with same name using
+     * the distributed virtual switch ID.
      */
     distributedVirtualSwitchUuid?: pulumi.Input<string>;
     /**

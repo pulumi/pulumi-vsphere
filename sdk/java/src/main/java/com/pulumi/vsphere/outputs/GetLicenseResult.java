@@ -19,7 +19,8 @@ public final class GetLicenseResult {
     private String editionKey;
     private String id;
     /**
-     * @return A map of key/value pairs attached as labels (tags) to the license key.
+     * @return A map of key/value pairs attached as labels (tags) to the license
+     * key.
      * 
      */
     private Map<String,String> labels;
@@ -52,7 +53,8 @@ public final class GetLicenseResult {
         return this.id;
     }
     /**
-     * @return A map of key/value pairs attached as labels (tags) to the license key.
+     * @return A map of key/value pairs attached as labels (tags) to the license
+     * key.
      * 
      */
     public Map<String,String> labels() {

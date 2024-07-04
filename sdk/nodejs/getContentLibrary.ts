@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+ * The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+ * content library.
  *
- * > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * host connections.
  *
  * ## Example Usage
  *
@@ -15,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const library = vsphere.getContentLibrary({
+ * const contentLibrary = vsphere.getContentLibrary({
  *     name: "Content Library",
  * });
  * ```
@@ -49,9 +51,11 @@ export interface GetContentLibraryResult {
     readonly name: string;
 }
 /**
- * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+ * The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+ * content library.
  *
- * > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * host connections.
  *
  * ## Example Usage
  *
@@ -59,7 +63,7 @@ export interface GetContentLibraryResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const library = vsphere.getContentLibrary({
+ * const contentLibrary = vsphere.getContentLibrary({
  *     name: "Content Library",
  * });
  * ```

@@ -13,9 +13,10 @@ import (
 
 // [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 //
-// The `getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
-// of any tagged managed object in vCenter Server by providing a list of tag IDs
-// and an optional regular expression to filter objects by name.
+// The `getDynamic` data source can be used to get the
+// [managed object reference ID][docs-about-morefs] of any tagged managed object in
+// vCenter Server by providing a list of tag IDs and an optional regular expression
+// to filter objects by name.
 //
 // ## Example Usage
 //
@@ -80,12 +81,12 @@ type GetDynamicArgs struct {
 	// A list of tag IDs that must be present on an object to
 	// be a match.
 	Filters []string `pulumi:"filters"`
-	// A regular expression that will be used to match
-	// the object's name.
+	// A regular expression that will be used to match the
+	// object's name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The managed object type the returned object must match.
 	// The managed object types can be found in the managed object type section
-	// [here](https://developer.vmware.com/apis/968/vsphere).
+	// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 	Type *string `pulumi:"type"`
 }
 
@@ -116,12 +117,12 @@ type GetDynamicOutputArgs struct {
 	// A list of tag IDs that must be present on an object to
 	// be a match.
 	Filters pulumi.StringArrayInput `pulumi:"filters"`
-	// A regular expression that will be used to match
-	// the object's name.
+	// A regular expression that will be used to match the
+	// object's name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The managed object type the returned object must match.
 	// The managed object types can be found in the managed object type section
-	// [here](https://developer.vmware.com/apis/968/vsphere).
+	// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 

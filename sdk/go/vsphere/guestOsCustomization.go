@@ -30,8 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.NewGuestOsCustomization(ctx, "windows_customization", &vsphere.GuestOsCustomizationArgs{
-//				Name: pulumi.String("windows-spec"),
+//			_, err := vsphere.NewGuestOsCustomization(ctx, "windows", &vsphere.GuestOsCustomizationArgs{
+//				Name: pulumi.String("windows"),
 //				Type: pulumi.String("Windows"),
 //				Spec: &vsphere.GuestOsCustomizationSpecArgs{
 //					WindowsOptions: &vsphere.GuestOsCustomizationSpecWindowsOptionsArgs{

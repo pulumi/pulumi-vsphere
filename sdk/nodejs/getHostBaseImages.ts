@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
- * for cluster software management.
+ * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+ * base images available for cluster software management.
  *
  * ## Example Usage
  *
@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const baseimages = vsphere.getHostBaseImages({});
+ * const baseImages = vsphere.getHostBaseImages({});
  * ```
  */
 export function getHostBaseImages(opts?: pulumi.InvokeOptions): Promise<GetHostBaseImagesResult> {
@@ -38,8 +38,8 @@ export interface GetHostBaseImagesResult {
     readonly versions: string[];
 }
 /**
- * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
- * for cluster software management.
+ * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+ * base images available for cluster software management.
  *
  * ## Example Usage
  *
@@ -47,7 +47,7 @@ export interface GetHostBaseImagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const baseimages = vsphere.getHostBaseImages({});
+ * const baseImages = vsphere.getHostBaseImages({});
  * ```
  */
 export function getHostBaseImagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetHostBaseImagesResult> {

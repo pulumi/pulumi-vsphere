@@ -48,17 +48,11 @@ class GetGuestOsCustomizationResult:
     @property
     @pulumi.getter(name="changeVersion")
     def change_version(self) -> str:
-        """
-        The number of last changed version to the customization specification.
-        """
         return pulumi.get(self, "change_version")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description for the customization specification.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -72,9 +66,6 @@ class GetGuestOsCustomizationResult:
     @property
     @pulumi.getter(name="lastUpdateTime")
     def last_update_time(self) -> str:
-        """
-        The time of last modification to the customization specification.
-        """
         return pulumi.get(self, "last_update_time")
 
     @property
@@ -85,17 +76,11 @@ class GetGuestOsCustomizationResult:
     @property
     @pulumi.getter
     def specs(self) -> Sequence['outputs.GetGuestOsCustomizationSpecResult']:
-        """
-        Container object for the guest operating system properties to be customized. See virtual machine customizations
-        """
         return pulumi.get(self, "specs")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The type of customization specification: One among: Windows, Linux.
-        """
         return pulumi.get(self, "type")
 
 
@@ -117,22 +102,12 @@ class AwaitableGetGuestOsCustomizationResult(GetGuestOsCustomizationResult):
 def get_guest_os_customization(name: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGuestOsCustomizationResult:
     """
-    The `GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-
-    Suggested change
-    > **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    gosc1 = vsphere.get_guest_os_customization(name="linux-spec")
-    ```
+    The `GuestOsCustomization` data source can be used to discover the
+    details about a customization specification for a guest operating system.
 
 
-    :param str name: The name of the customization specification is the unique identifier per vCenter Server instance.
+    :param str name: The name of the customization specification is the unique
+           identifier per vCenter Server instance. ## Attribute Reference
     """
     __args__ = dict()
     __args__['name'] = name
@@ -153,21 +128,11 @@ def get_guest_os_customization(name: Optional[str] = None,
 def get_guest_os_customization_output(name: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGuestOsCustomizationResult]:
     """
-    The `GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-
-    Suggested change
-    > **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    gosc1 = vsphere.get_guest_os_customization(name="linux-spec")
-    ```
+    The `GuestOsCustomization` data source can be used to discover the
+    details about a customization specification for a guest operating system.
 
 
-    :param str name: The name of the customization specification is the unique identifier per vCenter Server instance.
+    :param str name: The name of the customization specification is the unique
+           identifier per vCenter Server instance. ## Attribute Reference
     """
     ...

@@ -22,9 +22,9 @@ public final class GetDatastoreResult {
     private String id;
     private String name;
     /**
-     * @return The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * @return The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      * 
      */
     private @Nullable Map<String,Object> stats;
@@ -44,9 +44,9 @@ public final class GetDatastoreResult {
         return this.name;
     }
     /**
-     * @return The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * @return The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      * 
      */
     public Map<String,Object> stats() {

@@ -5,9 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
- * of all vSphere datastore objects in a datacenter. This can then be used as a
- * standalone datasource to get information required as input to other data sources.
+ * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+ * stats of all vSphere datastore objects in a datacenter. This can then be used as
+ * a standalone data source to get information required as input to other data
+ * sources.
  *
  * ## Example Usage
  *
@@ -23,9 +24,8 @@ import * as utilities from "./utilities";
  * }));
  * ```
  *
- * A usefull example of this datasource would be to determine the
- * datastore with the most free space. For example, in addition to
- * the above:
+ * A useful example of this data source would be to determine the datastore with
+ * the most free space. For example, in addition to the above:
  *
  * Create an `outputs.tf` like that:
  *
@@ -53,22 +53,23 @@ export function getDatastoreStats(args: GetDatastoreStatsArgs, opts?: pulumi.Inv
  */
 export interface GetDatastoreStatsArgs {
     /**
-     * A mapping of the capacity for all datastore in the datacenter
-     * , where the name of the datastore is used as key and the capacity as value.
+     * A mapping of the capacity for all datastore in the datacenter,
+     * where the name of the datastore is used as key and the capacity as value.
      */
     capacity?: {[key: string]: any};
     /**
-     * The [managed object reference ID][docs-about-morefs]
-     * of the datacenter the datastores are located in. For default datacenters, use
-     * the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * datastores are located in. For default datacenters, use the `id` attribute
+     * from an empty `vsphere.Datacenter` data source.
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     datacenterId: string;
     /**
      * A mapping of the free space for each datastore in the
-     * datacenter, where the name of the datastore is used as key and the free
-     * space as value.
+     * datacenter, where the name of the datastore is used as key and the free space
+     * as value.
      */
     freeSpace?: {[key: string]: any};
 }
@@ -78,19 +79,19 @@ export interface GetDatastoreStatsArgs {
  */
 export interface GetDatastoreStatsResult {
     /**
-     * A mapping of the capacity for all datastore in the datacenter
-     * , where the name of the datastore is used as key and the capacity as value.
+     * A mapping of the capacity for all datastore in the datacenter,
+     * where the name of the datastore is used as key and the capacity as value.
      */
     readonly capacity?: {[key: string]: any};
     /**
-     * The [managed object reference ID][docs-about-morefs]
-     * of the datacenter the datastores are located in.
+     * The [managed object reference ID][docs-about-morefs] of the
+     * datacenter the datastores are located in.
      */
     readonly datacenterId: string;
     /**
      * A mapping of the free space for each datastore in the
-     * datacenter, where the name of the datastore is used as key and the free
-     * space as value.
+     * datacenter, where the name of the datastore is used as key and the free space
+     * as value.
      */
     readonly freeSpace?: {[key: string]: any};
     /**
@@ -99,9 +100,10 @@ export interface GetDatastoreStatsResult {
     readonly id: string;
 }
 /**
- * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
- * of all vSphere datastore objects in a datacenter. This can then be used as a
- * standalone datasource to get information required as input to other data sources.
+ * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+ * stats of all vSphere datastore objects in a datacenter. This can then be used as
+ * a standalone data source to get information required as input to other data
+ * sources.
  *
  * ## Example Usage
  *
@@ -117,9 +119,8 @@ export interface GetDatastoreStatsResult {
  * }));
  * ```
  *
- * A usefull example of this datasource would be to determine the
- * datastore with the most free space. For example, in addition to
- * the above:
+ * A useful example of this data source would be to determine the datastore with
+ * the most free space. For example, in addition to the above:
  *
  * Create an `outputs.tf` like that:
  *
@@ -141,22 +142,23 @@ export function getDatastoreStatsOutput(args: GetDatastoreStatsOutputArgs, opts?
  */
 export interface GetDatastoreStatsOutputArgs {
     /**
-     * A mapping of the capacity for all datastore in the datacenter
-     * , where the name of the datastore is used as key and the capacity as value.
+     * A mapping of the capacity for all datastore in the datacenter,
+     * where the name of the datastore is used as key and the capacity as value.
      */
     capacity?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The [managed object reference ID][docs-about-morefs]
-     * of the datacenter the datastores are located in. For default datacenters, use
-     * the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * datastores are located in. For default datacenters, use the `id` attribute
+     * from an empty `vsphere.Datacenter` data source.
      *
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     datacenterId: pulumi.Input<string>;
     /**
      * A mapping of the free space for each datastore in the
-     * datacenter, where the name of the datastore is used as key and the free
-     * space as value.
+     * datacenter, where the name of the datastore is used as key and the free space
+     * as value.
      */
     freeSpace?: pulumi.Input<{[key: string]: any}>;
 }

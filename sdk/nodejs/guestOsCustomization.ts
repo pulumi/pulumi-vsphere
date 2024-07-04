@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const windowsCustomization = new vsphere.GuestOsCustomization("windows_customization", {
- *     name: "windows-spec",
+ * const windows = new vsphere.GuestOsCustomization("windows", {
+ *     name: "windows",
  *     type: "Windows",
  *     spec: {
  *         windowsOptions: {

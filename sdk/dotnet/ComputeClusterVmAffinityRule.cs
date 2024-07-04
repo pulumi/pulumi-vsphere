@@ -30,8 +30,6 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** This resource requires vCenter Server and is not available on
     /// direct ESXi host connections.
     /// 
-    /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-    /// 
     /// ## Example Usage
     /// 
     /// The following example creates two virtual machines in a cluster using the

@@ -12,11 +12,11 @@ namespace Pulumi.VSphere
     public static class GetNetwork
     {
         /// <summary>
-        /// The `vsphere.getNetwork` data source can be used to discover the ID of a network
-        /// in vSphere. This can be any network that can be used as the backing for a
-        /// network interface for `vsphere.VirtualMachine` or any other vSphere resource
-        /// that requires a network. This includes standard (host-based) port groups,
-        /// distributed port groups, or opaque networks such as those managed by NSX.
+        /// The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+        /// vSphere. This can be any network that can be used as the backing for a network
+        /// interface for `vsphere.VirtualMachine` or any other vSphere resource that
+        /// requires a network. This includes standard (host-based) port groups, distributed
+        /// port groups, or opaque networks such as those managed by NSX.
         /// 
         /// ## Example Usage
         /// 
@@ -46,11 +46,11 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getNetwork` data source can be used to discover the ID of a network
-        /// in vSphere. This can be any network that can be used as the backing for a
-        /// network interface for `vsphere.VirtualMachine` or any other vSphere resource
-        /// that requires a network. This includes standard (host-based) port groups,
-        /// distributed port groups, or opaque networks such as those managed by NSX.
+        /// The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+        /// vSphere. This can be any network that can be used as the backing for a network
+        /// interface for `vsphere.VirtualMachine` or any other vSphere resource that
+        /// requires a network. This includes standard (host-based) port groups, distributed
+        /// port groups, or opaque networks such as those managed by NSX.
         /// 
         /// ## Example Usage
         /// 
@@ -95,8 +95,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// For distributed port group type
         /// network objects, the ID of the distributed virtual switch for which the port
-        /// group belongs. It is useful to differentiate port groups with same name
-        /// using the distributed virtual switch ID.
+        /// group belongs. It is useful to differentiate port groups with same name using
+        /// the distributed virtual switch ID.
         /// </summary>
         [Input("distributedVirtualSwitchUuid")]
         public string? DistributedVirtualSwitchUuid { get; set; }
@@ -127,8 +127,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// For distributed port group type
         /// network objects, the ID of the distributed virtual switch for which the port
-        /// group belongs. It is useful to differentiate port groups with same name
-        /// using the distributed virtual switch ID.
+        /// group belongs. It is useful to differentiate port groups with same name using
+        /// the distributed virtual switch ID.
         /// </summary>
         [Input("distributedVirtualSwitchUuid")]
         public Input<string>? DistributedVirtualSwitchUuid { get; set; }

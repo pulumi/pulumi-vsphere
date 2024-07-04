@@ -11,38 +11,36 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### S
- *
  * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const dc = vsphere.getDatacenter({
- *     name: "mydc",
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
  * });
- * const h1 = dc.then(dc => vsphere.getHost({
- *     name: "esxi1.host.test",
- *     datacenterId: dc.id,
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
  * }));
- * const d1 = new vsphere.DistributedVirtualSwitch("d1", {
- *     name: "dc_DVPG0",
- *     datacenterId: dc.then(dc => dc.id),
+ * const vds = new vsphere.DistributedVirtualSwitch("vds", {
+ *     name: "vds-01",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
  *     hosts: [{
- *         hostSystemId: h1.then(h1 => h1.id),
+ *         hostSystemId: host.then(host => host.id),
  *         devices: ["vnic3"],
  *     }],
  * });
- * const p1 = new vsphere.DistributedPortGroup("p1", {
- *     name: "test-pg",
+ * const pg = new vsphere.DistributedPortGroup("pg", {
+ *     name: "pg-01",
  *     vlanId: 1234,
- *     distributedVirtualSwitchUuid: d1.id,
+ *     distributedVirtualSwitchUuid: vds.id,
  * });
- * const v1 = new vsphere.Vnic("v1", {
- *     host: h1.then(h1 => h1.id),
- *     distributedSwitchPort: d1.id,
- *     distributedPortGroup: p1.id,
+ * const vnic = new vsphere.Vnic("vnic", {
+ *     host: host.then(host => host.id),
+ *     distributedSwitchPort: vds.id,
+ *     distributedPortGroup: pg.id,
  *     ipv4: {
  *         dhcp: true,
  *     },
@@ -56,16 +54,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const dc = vsphere.getDatacenter({
- *     name: "mydc",
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
  * });
- * const h1 = dc.then(dc => vsphere.getHost({
- *     name: "esxi1.host.test",
- *     datacenterId: dc.id,
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
  * }));
- * const hvs1 = new vsphere.HostVirtualSwitch("hvs1", {
- *     name: "dc_HPG0",
- *     hostSystemId: h1.then(h1 => h1.id),
+ * const hvs = new vsphere.HostVirtualSwitch("hvs", {
+ *     name: "hvs-01",
+ *     hostSystemId: host.then(host => host.id),
  *     networkAdapters: [
  *         "vmnic3",
  *         "vmnic4",
@@ -73,14 +71,14 @@ import * as utilities from "./utilities";
  *     activeNics: ["vmnic3"],
  *     standbyNics: ["vmnic4"],
  * });
- * const p1 = new vsphere.HostPortGroup("p1", {
- *     name: "my-pg",
- *     virtualSwitchName: hvs1.name,
- *     hostSystemId: h1.then(h1 => h1.id),
+ * const pg = new vsphere.HostPortGroup("pg", {
+ *     name: "pg-01",
+ *     virtualSwitchName: hvs.name,
+ *     hostSystemId: host.then(host => host.id),
  * });
- * const v1 = new vsphere.Vnic("v1", {
- *     host: h1.then(h1 => h1.id),
- *     portgroup: p1.name,
+ * const vnic = new vsphere.Vnic("vnic", {
+ *     host: host.then(host => host.id),
+ *     portgroup: pg.name,
  *     ipv4: {
  *         dhcp: true,
  *     },
@@ -133,7 +131,7 @@ export class Vnic extends pulumi.CustomResource {
      */
     public readonly distributedPortGroup!: pulumi.Output<string | undefined>;
     /**
-     * UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+     * UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      */
     public readonly distributedSwitchPort!: pulumi.Output<string | undefined>;
     /**
@@ -222,7 +220,7 @@ export interface VnicState {
      */
     distributedPortGroup?: pulumi.Input<string>;
     /**
-     * UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+     * UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      */
     distributedSwitchPort?: pulumi.Input<string>;
     /**
@@ -268,7 +266,7 @@ export interface VnicArgs {
      */
     distributedPortGroup?: pulumi.Input<string>;
     /**
-     * UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+     * UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      */
     distributedSwitchPort?: pulumi.Input<string>;
     /**

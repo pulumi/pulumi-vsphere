@@ -18,46 +18,52 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/entityPermissions:EntityPermissions")
 public class EntityPermissions extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object id (uuid for some entities) on which permissions are to be created.
+     * The managed object id (uuid for some entities) on
+     * which permissions are to be created.
      * 
      */
     @Export(name="entityId", refs={String.class}, tree="[0]")
     private Output<String> entityId;
 
     /**
-     * @return The managed object id (uuid for some entities) on which permissions are to be created.
+     * @return The managed object id (uuid for some entities) on
+     * which permissions are to be created.
      * 
      */
     public Output<String> entityId() {
         return this.entityId;
     }
     /**
-     * The managed object type, types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * The managed object type, types can be found in the
+     * managed object type section
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
-     * @return The managed object type, types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * @return The managed object type, types can be found in the
+     * managed object type section
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      * 
      */
     public Output<String> entityType() {
         return this.entityType;
     }
     /**
-     * The permissions to be given on this entity. Keep the permissions sorted
-     * alphabetically on `user_or_group` for a better user experience.
+     * The permissions to be given on this entity. Keep
+     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * experience.
      * 
      */
     @Export(name="permissions", refs={List.class,EntityPermissionsPermission.class}, tree="[0,1]")
     private Output<List<EntityPermissionsPermission>> permissions;
 
     /**
-     * @return The permissions to be given on this entity. Keep the permissions sorted
-     * alphabetically on `user_or_group` for a better user experience.
+     * @return The permissions to be given on this entity. Keep
+     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * experience.
      * 
      */
     public Output<List<EntityPermissionsPermission>> permissions() {

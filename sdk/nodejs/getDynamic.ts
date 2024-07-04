@@ -7,9 +7,10 @@ import * as utilities from "./utilities";
 /**
  * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
- * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
- * of any tagged managed object in vCenter Server by providing a list of tag IDs
- * and an optional regular expression to filter objects by name.
+ * The `vsphere.getDynamic` data source can be used to get the
+ * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+ * vCenter Server by providing a list of tag IDs and an optional regular expression
+ * to filter objects by name.
  *
  * ## Example Usage
  *
@@ -58,14 +59,14 @@ export interface GetDynamicArgs {
      */
     filters: string[];
     /**
-     * A regular expression that will be used to match
-     * the object's name.
+     * A regular expression that will be used to match the
+     * object's name.
      */
     nameRegex?: string;
     /**
      * The managed object type the returned object must match.
      * The managed object types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      */
     type?: string;
 }
@@ -85,9 +86,10 @@ export interface GetDynamicResult {
 /**
  * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
- * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
- * of any tagged managed object in vCenter Server by providing a list of tag IDs
- * and an optional regular expression to filter objects by name.
+ * The `vsphere.getDynamic` data source can be used to get the
+ * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+ * vCenter Server by providing a list of tag IDs and an optional regular expression
+ * to filter objects by name.
  *
  * ## Example Usage
  *
@@ -130,14 +132,14 @@ export interface GetDynamicOutputArgs {
      */
     filters: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regular expression that will be used to match
-     * the object's name.
+     * A regular expression that will be used to match the
+     * object's name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
      * The managed object type the returned object must match.
      * The managed object types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      */
     type?: pulumi.Input<string>;
 }

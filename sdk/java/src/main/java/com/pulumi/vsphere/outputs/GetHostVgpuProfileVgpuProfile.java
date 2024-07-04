@@ -18,25 +18,26 @@ public final class GetHostVgpuProfileVgpuProfile {
      */
     private Boolean diskSnapshotSupported;
     /**
-     * @return Indicates whether the GPU plugin on this host is
-     * capable of memory snapshots.
+     * @return Indicates whether the GPU plugin on this host
+     * is capable of memory snapshots.
      * 
      */
     private Boolean memorySnapshotSupported;
     /**
-     * @return Indicates whether the GPU plugin on this host is capable
-     * of migration.
+     * @return Indicates whether the GPU plugin on this host is
+     * capable of migration.
      * 
      */
     private Boolean migrateSupported;
     /**
-     * @return Indicates whether the GPU plugin on this host is capable
-     * of suspend-resume.
+     * @return Indicates whether the GPU plugin on this host is
+     * capable of suspend-resume.
      * 
      */
     private Boolean suspendSupported;
     /**
-     * @return Name of a particular vGPU available as a shared GPU device (vGPU profile).
+     * @return Name of a particular vGPU available as a shared GPU device (vGPU
+     * profile).
      * 
      */
     private String vgpu;
@@ -51,31 +52,32 @@ public final class GetHostVgpuProfileVgpuProfile {
         return this.diskSnapshotSupported;
     }
     /**
-     * @return Indicates whether the GPU plugin on this host is
-     * capable of memory snapshots.
+     * @return Indicates whether the GPU plugin on this host
+     * is capable of memory snapshots.
      * 
      */
     public Boolean memorySnapshotSupported() {
         return this.memorySnapshotSupported;
     }
     /**
-     * @return Indicates whether the GPU plugin on this host is capable
-     * of migration.
+     * @return Indicates whether the GPU plugin on this host is
+     * capable of migration.
      * 
      */
     public Boolean migrateSupported() {
         return this.migrateSupported;
     }
     /**
-     * @return Indicates whether the GPU plugin on this host is capable
-     * of suspend-resume.
+     * @return Indicates whether the GPU plugin on this host is
+     * capable of suspend-resume.
      * 
      */
     public Boolean suspendSupported() {
         return this.suspendSupported;
     }
     /**
-     * @return Name of a particular vGPU available as a shared GPU device (vGPU profile).
+     * @return Name of a particular vGPU available as a shared GPU device (vGPU
+     * profile).
      * 
      */
     public String vgpu() {

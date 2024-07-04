@@ -48,9 +48,6 @@ class FolderArgs:
                Required for all folder types except for datacenter folders. Forces a new
                resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "type", type)
@@ -136,9 +133,6 @@ class FolderArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -180,9 +174,6 @@ class _FolderState:
                any part before the last `/`), your folder will be moved to that new parent. If
                modifying the name (the part after the last `/`), your folder will be renamed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
@@ -259,9 +250,6 @@ class _FolderState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -323,9 +311,6 @@ class Folder(pulumi.CustomResource):
                any part before the last `/`), your folder will be moved to that new parent. If
                modifying the name (the part after the last `/`), your folder will be renamed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
@@ -422,9 +407,6 @@ class Folder(pulumi.CustomResource):
                any part before the last `/`), your folder will be moved to that new parent. If
                modifying the name (the part after the last `/`), your folder will be renamed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
@@ -489,9 +471,6 @@ class Folder(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 

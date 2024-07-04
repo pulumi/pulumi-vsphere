@@ -47,7 +47,8 @@ export interface GetLicenseResult {
     readonly editionKey: string;
     readonly id: string;
     /**
-     * A map of key/value pairs attached as labels (tags) to the license key.
+     * A map of key/value pairs attached as labels (tags) to the license
+     * key.
      */
     readonly labels: {[key: string]: string};
     readonly licenseKey: string;

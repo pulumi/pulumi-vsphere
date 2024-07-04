@@ -10,6 +10,60 @@ import * as utilities from "./utilities";
  * Provides a resource for configuring Workload Management.
  *
  * ## Example Usage
+ *
+ * ### S
+ *
+ * **Enable Workload Management on a compute cluster**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const vmClass = new vsphere.VirtualMachineClass("vm_class", {
+ *     name: "custom-class",
+ *     cpus: 4,
+ *     memory: 4096,
+ * });
+ * const supervisor = new vsphere.Supervisor("supervisor", {
+ *     cluster: "<compute_cluster_id>",
+ *     storagePolicy: "<storage_policy_name>",
+ *     contentLibrary: "<content_library_id>",
+ *     mainDns: "10.0.0.250",
+ *     workerDns: "10.0.0.250",
+ *     edgeCluster: "<edge_cluster_id>",
+ *     dvsUuid: "<distributed_switch_uuid>",
+ *     sizingHint: "MEDIUM",
+ *     managementNetwork: {
+ *         network: "<portgroup_id>",
+ *         subnetMask: "255.255.255.0",
+ *         startingAddress: "10.0.0.150",
+ *         gateway: "10.0.0.250",
+ *         addressCount: 5,
+ *     },
+ *     ingressCidrs: [{
+ *         address: "10.10.10.0",
+ *         prefix: 24,
+ *     }],
+ *     egressCidrs: [{
+ *         address: "10.10.11.0",
+ *         prefix: 24,
+ *     }],
+ *     podCidrs: [{
+ *         address: "10.244.10.0",
+ *         prefix: 23,
+ *     }],
+ *     serviceCidr: {
+ *         address: "10.10.12.0",
+ *         prefix: 24,
+ *     },
+ *     searchDomains: "vsphere.local",
+ *     namespaces: [{
+ *         name: "custom-namespace",
+ *         contentLibraries: [],
+ *         vmClasses: [vmClass.id],
+ *     }],
+ * });
+ * ```
  */
 export class Supervisor extends pulumi.CustomResource {
     /**

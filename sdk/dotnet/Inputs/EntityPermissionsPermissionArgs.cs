@@ -13,19 +13,22 @@ namespace Pulumi.VSphere.Inputs
     public sealed class EntityPermissionsPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+        /// Whether `user_or_group` field refers to a user or a
+        /// group. True for a group and false for a user.
         /// </summary>
         [Input("isGroup", required: true)]
         public Input<bool> IsGroup { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not this permission propagates down the hierarchy to sub-entities.
+        /// Whether or not this permission propagates down the
+        /// hierarchy to sub-entities.
         /// </summary>
         [Input("propagate", required: true)]
         public Input<bool> Propagate { get; set; } = null!;
 
         /// <summary>
-        /// The role id of the role to be given to the user on the specified entity.
+        /// The role id of the role to be given to the user on
+        /// the specified entity.
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;

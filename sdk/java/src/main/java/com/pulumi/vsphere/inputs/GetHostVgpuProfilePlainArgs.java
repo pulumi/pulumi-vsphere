@@ -16,14 +16,16 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
     public static final GetHostVgpuProfilePlainArgs Empty = new GetHostVgpuProfilePlainArgs();
 
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of
+     * a host.
      * 
      */
     @Import(name="hostId", required=true)
     private String hostId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of a host.
+     * @return The [managed object reference ID][docs-about-morefs] of
+     * a host.
      * 
      */
     public String hostId() {
@@ -77,7 +79,8 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of a host.
+         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * a host.
          * 
          * @return builder
          * 

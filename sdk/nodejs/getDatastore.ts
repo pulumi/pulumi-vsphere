@@ -51,9 +51,9 @@ export interface GetDatastoreArgs {
      */
     name: string;
     /**
-     * The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      */
     stats?: {[key: string]: any};
 }
@@ -69,9 +69,9 @@ export interface GetDatastoreResult {
     readonly id: string;
     readonly name: string;
     /**
-     * The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      */
     readonly stats?: {[key: string]: any};
 }
@@ -116,9 +116,9 @@ export interface GetDatastoreOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The disk space usage statistics for the specific datastore. The total
-     * datastore capacity is represented as `capacity` and the free remaining disk is
-     * represented as `free`.
+     * The disk space usage statistics for the specific datastore. The
+     * total datastore capacity is represented as `capacity` and the free remaining
+     * disk is represented as `free`.
      */
     stats?: pulumi.Input<{[key: string]: any}>;
 }

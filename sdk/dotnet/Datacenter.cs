@@ -65,7 +65,7 @@ namespace Pulumi.VSphere
     public partial class Datacenter : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Map of custom attribute ids to value 
+        /// Map of custom attribute ids to value
         /// strings to set for datacenter resource. See
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
@@ -100,9 +100,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
-        /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -157,7 +154,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to value 
+        /// Map of custom attribute ids to value
         /// strings to set for datacenter resource. See
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
@@ -192,9 +189,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
-        /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {
@@ -214,7 +208,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to value 
+        /// Map of custom attribute ids to value
         /// strings to set for datacenter resource. See
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
@@ -255,9 +249,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
-        /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {

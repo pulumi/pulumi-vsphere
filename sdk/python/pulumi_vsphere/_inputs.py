@@ -675,9 +675,12 @@ class EntityPermissionsPermissionArgs:
                  role_id: pulumi.Input[str],
                  user_or_group: pulumi.Input[str]):
         """
-        :param pulumi.Input[bool] is_group: Whether user_or_group field refers to a user or a group. True for a group and false for a user.
-        :param pulumi.Input[bool] propagate: Whether or not this permission propagates down the hierarchy to sub-entities.
-        :param pulumi.Input[str] role_id: The role id of the role to be given to the user on the specified entity.
+        :param pulumi.Input[bool] is_group: Whether `user_or_group` field refers to a user or a
+               group. True for a group and false for a user.
+        :param pulumi.Input[bool] propagate: Whether or not this permission propagates down the
+               hierarchy to sub-entities.
+        :param pulumi.Input[str] role_id: The role id of the role to be given to the user on
+               the specified entity.
         :param pulumi.Input[str] user_or_group: The user/group getting the permission.
         """
         pulumi.set(__self__, "is_group", is_group)
@@ -689,7 +692,8 @@ class EntityPermissionsPermissionArgs:
     @pulumi.getter(name="isGroup")
     def is_group(self) -> pulumi.Input[bool]:
         """
-        Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+        Whether `user_or_group` field refers to a user or a
+        group. True for a group and false for a user.
         """
         return pulumi.get(self, "is_group")
 
@@ -701,7 +705,8 @@ class EntityPermissionsPermissionArgs:
     @pulumi.getter
     def propagate(self) -> pulumi.Input[bool]:
         """
-        Whether or not this permission propagates down the hierarchy to sub-entities.
+        Whether or not this permission propagates down the
+        hierarchy to sub-entities.
         """
         return pulumi.get(self, "propagate")
 
@@ -713,7 +718,8 @@ class EntityPermissionsPermissionArgs:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[str]:
         """
-        The role id of the role to be given to the user on the specified entity.
+        The role id of the role to be given to the user on
+        the specified entity.
         """
         return pulumi.get(self, "role_id")
 

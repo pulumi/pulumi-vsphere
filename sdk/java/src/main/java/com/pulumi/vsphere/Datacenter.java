@@ -184,18 +184,12 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
     /**
      * The IDs of any tags to attach to this resource.
      * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
-     * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
-     * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
      * 
      */
     public Output<Optional<List<String>>> tags() {

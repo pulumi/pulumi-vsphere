@@ -18,16 +18,16 @@ public final class GetHostThumbprintArgs extends com.pulumi.resources.InvokeArgs
     public static final GetHostThumbprintArgs Empty = new GetHostThumbprintArgs();
 
     /**
-     * The address of the ESXi host to retrieve the
-     * thumbprint from.
+     * The address of the ESXi host to retrieve the thumbprint
+     * from.
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return The address of the ESXi host to retrieve the
-     * thumbprint from.
+     * @return The address of the ESXi host to retrieve the thumbprint
+     * from.
      * 
      */
     public Output<String> address() {
@@ -93,8 +93,8 @@ public final class GetHostThumbprintArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param address The address of the ESXi host to retrieve the
-         * thumbprint from.
+         * @param address The address of the ESXi host to retrieve the thumbprint
+         * from.
          * 
          * @return builder
          * 
@@ -105,8 +105,8 @@ public final class GetHostThumbprintArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param address The address of the ESXi host to retrieve the
-         * thumbprint from.
+         * @param address The address of the ESXi host to retrieve the thumbprint
+         * from.
          * 
          * @return builder
          * 

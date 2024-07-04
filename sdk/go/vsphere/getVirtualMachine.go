@@ -19,8 +19,8 @@ import (
 //
 // ## Example Usage
 //
-// In the following example, a virtual machine template is returned by its
-// unique name within the `Datacenter`.
+// In the following example, a virtual machine template is returned by its unique
+// name within the `Datacenter`.
 //
 // ```go
 // package main
@@ -52,6 +52,7 @@ import (
 //	}
 //
 // ```
+//
 // In the following example, each virtual machine template is returned by its
 // unique full path within the `Datacenter`.
 //
@@ -105,7 +106,8 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, o
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineArgs struct {
 	// The alternate guest name of the virtual machine when
-	// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+	// `guestId` is a non-specific operating system, like `otherGuest` or
+	// `otherGuest64`.
 	AlternateGuestName *string `pulumi:"alternateGuestName"`
 	// The user-provided description of this virtual machine.
 	Annotation                    *string `pulumi:"annotation"`
@@ -131,7 +133,8 @@ type LookupVirtualMachineArgs struct {
 	EptRviMode                *string           `pulumi:"eptRviMode"`
 	ExtraConfig               map[string]string `pulumi:"extraConfig"`
 	ExtraConfigRebootRequired *bool             `pulumi:"extraConfigRebootRequired"`
-	// The firmware type for this virtual machine. Can be `bios` or `efi`.
+	// The firmware type for this virtual machine. Can be `bios` or
+	// `efi`.
 	Firmware *string `pulumi:"firmware"`
 	// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
 	Folder *string `pulumi:"folder"`
@@ -156,7 +159,8 @@ type LookupVirtualMachineArgs struct {
 	// is not performed.
 	Name            *string `pulumi:"name"`
 	NestedHvEnabled *bool   `pulumi:"nestedHvEnabled"`
-	// The number of cores per socket for this virtual machine.
+	// The number of cores per socket for this virtual
+	// machine.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
@@ -193,7 +197,8 @@ type LookupVirtualMachineArgs struct {
 // A collection of values returned by getVirtualMachine.
 type LookupVirtualMachineResult struct {
 	// The alternate guest name of the virtual machine when
-	// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+	// `guestId` is a non-specific operating system, like `otherGuest` or
+	// `otherGuest64`.
 	AlternateGuestName *string `pulumi:"alternateGuestName"`
 	// The user-provided description of this virtual machine.
 	Annotation                    string  `pulumi:"annotation"`
@@ -209,28 +214,29 @@ type LookupVirtualMachineResult struct {
 	CpuShareCount                 int     `pulumi:"cpuShareCount"`
 	CpuShareLevel                 *string `pulumi:"cpuShareLevel"`
 	DatacenterId                  *string `pulumi:"datacenterId"`
-	// Whenever possible, this is the first IPv4 address that is reachable through
-	// the default gateway configured on the machine, then the first reachable IPv6
-	// address, and then the first general discovered address if neither exist. If
-	// VMware Tools is not running on the virtual machine, or if the VM is powered
-	// off, this value will be blank.
+	// Whenever possible, this is the first IPv4 address that
+	// is reachable through the default gateway configured on the machine, then the
+	// first reachable IPv6 address, and then the first general discovered address if
+	// neither exist. If VMware Tools is not running on the virtual machine, or if
+	// the VM is powered off, this value will be blank.
 	DefaultIpAddress string `pulumi:"defaultIpAddress"`
 	// Information about each of the disks on this virtual machine or
 	// template. These are sorted by bus and unit number so that they can be applied
 	// to a `VirtualMachine` resource in the order the resource expects
 	// while cloning. This is useful for discovering certain disk settings while
-	// performing a linked clone, as all settings that are output by this data
-	// source must be the same on the destination virtual machine as the source.
-	// Only the first number of controllers defined by `scsiControllerScanCount`
-	// are scanned for disks. The sub-attributes are:
+	// performing a linked clone, as all settings that are output by this data source
+	// must be the same on the destination virtual machine as the source. Only the
+	// first number of controllers defined by `scsiControllerScanCount` are
+	// scanned for disks. The sub-attributes are:
 	Disks                     []GetVirtualMachineDisk `pulumi:"disks"`
 	EfiSecureBootEnabled      *bool                   `pulumi:"efiSecureBootEnabled"`
 	EnableDiskUuid            *bool                   `pulumi:"enableDiskUuid"`
 	EnableLogging             *bool                   `pulumi:"enableLogging"`
-	EptRviMode                *string                 `pulumi:"eptRviMode"`
+	EptRviMode                string                  `pulumi:"eptRviMode"`
 	ExtraConfig               map[string]string       `pulumi:"extraConfig"`
 	ExtraConfigRebootRequired *bool                   `pulumi:"extraConfigRebootRequired"`
-	// The firmware type for this virtual machine. Can be `bios` or `efi`.
+	// The firmware type for this virtual machine. Can be `bios` or
+	// `efi`.
 	Firmware *string `pulumi:"firmware"`
 	Folder   *string `pulumi:"folder"`
 	// The guest ID of the virtual machine or template.
@@ -238,12 +244,14 @@ type LookupVirtualMachineResult struct {
 	// A list of IP addresses as reported by VMware Tools.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The hardware version number on this virtual machine.
-	HardwareVersion int     `pulumi:"hardwareVersion"`
-	HvMode          *string `pulumi:"hvMode"`
+	HardwareVersion int    `pulumi:"hardwareVersion"`
+	HvMode          string `pulumi:"hvMode"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string  `pulumi:"id"`
-	IdeControllerScanCount *int    `pulumi:"ideControllerScanCount"`
-	LatencySensitivity     *string `pulumi:"latencySensitivity"`
+	Id                     string `pulumi:"id"`
+	IdeControllerScanCount *int   `pulumi:"ideControllerScanCount"`
+	// The instance UUID of the virtual machine or template.
+	InstanceUuid       string  `pulumi:"instanceUuid"`
+	LatencySensitivity *string `pulumi:"latencySensitivity"`
 	// The size of the virtual machine's memory, in MB.
 	Memory                       *int    `pulumi:"memory"`
 	MemoryHotAddEnabled          *bool   `pulumi:"memoryHotAddEnabled"`
@@ -257,17 +265,19 @@ type LookupVirtualMachineResult struct {
 	NestedHvEnabled              *bool   `pulumi:"nestedHvEnabled"`
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
-	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
+	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
+	// `vmxnet3`.
 	NetworkInterfaceTypes []string `pulumi:"networkInterfaceTypes"`
-	// Information about each of the network interfaces on this
-	// virtual machine or template. These are sorted by device bus order so that they
-	// can be applied to a `VirtualMachine` resource in the order the resource
-	// expects while cloning. This is useful for discovering certain network interface
-	// settings while performing a linked clone, as all settings that are output by this
-	// data source must be the same on the destination virtual machine as the source.
-	// The sub-attributes are:
+	// Information about each of the network interfaces on
+	// this virtual machine or template. These are sorted by device bus order so that
+	// they can be applied to a `VirtualMachine` resource in the order the
+	// resource expects while cloning. This is useful for discovering certain network
+	// interface settings while performing a linked clone, as all settings that are
+	// output by this data source must be the same on the destination virtual machine
+	// as the source. The sub-attributes are:
 	NetworkInterfaces []GetVirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
-	// The number of cores per socket for this virtual machine.
+	// The number of cores per socket for this virtual
+	// machine.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
@@ -318,7 +328,8 @@ func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOu
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineOutputArgs struct {
 	// The alternate guest name of the virtual machine when
-	// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+	// `guestId` is a non-specific operating system, like `otherGuest` or
+	// `otherGuest64`.
 	AlternateGuestName pulumi.StringPtrInput `pulumi:"alternateGuestName"`
 	// The user-provided description of this virtual machine.
 	Annotation                    pulumi.StringPtrInput `pulumi:"annotation"`
@@ -344,7 +355,8 @@ type LookupVirtualMachineOutputArgs struct {
 	EptRviMode                pulumi.StringPtrInput `pulumi:"eptRviMode"`
 	ExtraConfig               pulumi.StringMapInput `pulumi:"extraConfig"`
 	ExtraConfigRebootRequired pulumi.BoolPtrInput   `pulumi:"extraConfigRebootRequired"`
-	// The firmware type for this virtual machine. Can be `bios` or `efi`.
+	// The firmware type for this virtual machine. Can be `bios` or
+	// `efi`.
 	Firmware pulumi.StringPtrInput `pulumi:"firmware"`
 	// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
 	Folder pulumi.StringPtrInput `pulumi:"folder"`
@@ -369,7 +381,8 @@ type LookupVirtualMachineOutputArgs struct {
 	// is not performed.
 	Name            pulumi.StringPtrInput `pulumi:"name"`
 	NestedHvEnabled pulumi.BoolPtrInput   `pulumi:"nestedHvEnabled"`
-	// The number of cores per socket for this virtual machine.
+	// The number of cores per socket for this virtual
+	// machine.
 	NumCoresPerSocket pulumi.IntPtrInput `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
@@ -423,7 +436,8 @@ func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutputWith
 }
 
 // The alternate guest name of the virtual machine when
-// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+// `guestId` is a non-specific operating system, like `otherGuest` or
+// `otherGuest64`.
 func (o LookupVirtualMachineResultOutput) AlternateGuestName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.AlternateGuestName }).(pulumi.StringPtrOutput)
 }
@@ -481,11 +495,11 @@ func (o LookupVirtualMachineResultOutput) DatacenterId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
 }
 
-// Whenever possible, this is the first IPv4 address that is reachable through
-// the default gateway configured on the machine, then the first reachable IPv6
-// address, and then the first general discovered address if neither exist. If
-// VMware Tools is not running on the virtual machine, or if the VM is powered
-// off, this value will be blank.
+// Whenever possible, this is the first IPv4 address that
+// is reachable through the default gateway configured on the machine, then the
+// first reachable IPv6 address, and then the first general discovered address if
+// neither exist. If VMware Tools is not running on the virtual machine, or if
+// the VM is powered off, this value will be blank.
 func (o LookupVirtualMachineResultOutput) DefaultIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.DefaultIpAddress }).(pulumi.StringOutput)
 }
@@ -494,10 +508,10 @@ func (o LookupVirtualMachineResultOutput) DefaultIpAddress() pulumi.StringOutput
 // template. These are sorted by bus and unit number so that they can be applied
 // to a `VirtualMachine` resource in the order the resource expects
 // while cloning. This is useful for discovering certain disk settings while
-// performing a linked clone, as all settings that are output by this data
-// source must be the same on the destination virtual machine as the source.
-// Only the first number of controllers defined by `scsiControllerScanCount`
-// are scanned for disks. The sub-attributes are:
+// performing a linked clone, as all settings that are output by this data source
+// must be the same on the destination virtual machine as the source. Only the
+// first number of controllers defined by `scsiControllerScanCount` are
+// scanned for disks. The sub-attributes are:
 func (o LookupVirtualMachineResultOutput) Disks() GetVirtualMachineDiskArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []GetVirtualMachineDisk { return v.Disks }).(GetVirtualMachineDiskArrayOutput)
 }
@@ -514,8 +528,8 @@ func (o LookupVirtualMachineResultOutput) EnableLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
 }
 
-func (o LookupVirtualMachineResultOutput) EptRviMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.EptRviMode }).(pulumi.StringPtrOutput)
+func (o LookupVirtualMachineResultOutput) EptRviMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.EptRviMode }).(pulumi.StringOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) ExtraConfig() pulumi.StringMapOutput {
@@ -526,7 +540,8 @@ func (o LookupVirtualMachineResultOutput) ExtraConfigRebootRequired() pulumi.Boo
 	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.ExtraConfigRebootRequired }).(pulumi.BoolPtrOutput)
 }
 
-// The firmware type for this virtual machine. Can be `bios` or `efi`.
+// The firmware type for this virtual machine. Can be `bios` or
+// `efi`.
 func (o LookupVirtualMachineResultOutput) Firmware() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Firmware }).(pulumi.StringPtrOutput)
 }
@@ -550,8 +565,8 @@ func (o LookupVirtualMachineResultOutput) HardwareVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) int { return v.HardwareVersion }).(pulumi.IntOutput)
 }
 
-func (o LookupVirtualMachineResultOutput) HvMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.HvMode }).(pulumi.StringPtrOutput)
+func (o LookupVirtualMachineResultOutput) HvMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.HvMode }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -561,6 +576,11 @@ func (o LookupVirtualMachineResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupVirtualMachineResultOutput) IdeControllerScanCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.IdeControllerScanCount }).(pulumi.IntPtrOutput)
+}
+
+// The instance UUID of the virtual machine or template.
+func (o LookupVirtualMachineResultOutput) InstanceUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.InstanceUuid }).(pulumi.StringOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) LatencySensitivity() pulumi.StringPtrOutput {
@@ -610,23 +630,25 @@ func (o LookupVirtualMachineResultOutput) NestedHvEnabled() pulumi.BoolPtrOutput
 
 // The network interface types for each network
 // interface found on the virtual machine, in device bus order. Will be one of
-// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
+// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
+// `vmxnet3`.
 func (o LookupVirtualMachineResultOutput) NetworkInterfaceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []string { return v.NetworkInterfaceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Information about each of the network interfaces on this
-// virtual machine or template. These are sorted by device bus order so that they
-// can be applied to a `VirtualMachine` resource in the order the resource
-// expects while cloning. This is useful for discovering certain network interface
-// settings while performing a linked clone, as all settings that are output by this
-// data source must be the same on the destination virtual machine as the source.
-// The sub-attributes are:
+// Information about each of the network interfaces on
+// this virtual machine or template. These are sorted by device bus order so that
+// they can be applied to a `VirtualMachine` resource in the order the
+// resource expects while cloning. This is useful for discovering certain network
+// interface settings while performing a linked clone, as all settings that are
+// output by this data source must be the same on the destination virtual machine
+// as the source. The sub-attributes are:
 func (o LookupVirtualMachineResultOutput) NetworkInterfaces() GetVirtualMachineNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []GetVirtualMachineNetworkInterface { return v.NetworkInterfaces }).(GetVirtualMachineNetworkInterfaceArrayOutput)
 }
 
-// The number of cores per socket for this virtual machine.
+// The number of cores per socket for this virtual
+// machine.
 func (o LookupVirtualMachineResultOutput) NumCoresPerSocket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.NumCoresPerSocket }).(pulumi.IntPtrOutput)
 }

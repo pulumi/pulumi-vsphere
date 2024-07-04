@@ -60,7 +60,8 @@ type LookupLicenseResult struct {
 	// The product edition of the license key.
 	EditionKey string `pulumi:"editionKey"`
 	Id         string `pulumi:"id"`
-	// A map of key/value pairs attached as labels (tags) to the license key.
+	// A map of key/value pairs attached as labels (tags) to the license
+	// key.
 	Labels     map[string]string `pulumi:"labels"`
 	LicenseKey string            `pulumi:"licenseKey"`
 	// The display name for the license.
@@ -118,7 +119,8 @@ func (o LookupLicenseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A map of key/value pairs attached as labels (tags) to the license key.
+// A map of key/value pairs attached as labels (tags) to the license
+// key.
 func (o LookupLicenseResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLicenseResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

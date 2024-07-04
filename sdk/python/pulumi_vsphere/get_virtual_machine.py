@@ -23,7 +23,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, instance_uuid=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -114,6 +114,9 @@ class GetVirtualMachineResult:
         if ide_controller_scan_count and not isinstance(ide_controller_scan_count, int):
             raise TypeError("Expected argument 'ide_controller_scan_count' to be a int")
         pulumi.set(__self__, "ide_controller_scan_count", ide_controller_scan_count)
+        if instance_uuid and not isinstance(instance_uuid, str):
+            raise TypeError("Expected argument 'instance_uuid' to be a str")
+        pulumi.set(__self__, "instance_uuid", instance_uuid)
         if latency_sensitivity and not isinstance(latency_sensitivity, str):
             raise TypeError("Expected argument 'latency_sensitivity' to be a str")
         pulumi.set(__self__, "latency_sensitivity", latency_sensitivity)
@@ -225,7 +228,8 @@ class GetVirtualMachineResult:
     def alternate_guest_name(self) -> Optional[str]:
         """
         The alternate guest name of the virtual machine when
-        `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+        `guest_id` is a non-specific operating system, like `otherGuest` or
+        `otherGuest64`.
         """
         return pulumi.get(self, "alternate_guest_name")
 
@@ -301,11 +305,11 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="defaultIpAddress")
     def default_ip_address(self) -> str:
         """
-        Whenever possible, this is the first IPv4 address that is reachable through
-        the default gateway configured on the machine, then the first reachable IPv6
-        address, and then the first general discovered address if neither exist. If
-        VMware Tools is not running on the virtual machine, or if the VM is powered
-        off, this value will be blank.
+        Whenever possible, this is the first IPv4 address that
+        is reachable through the default gateway configured on the machine, then the
+        first reachable IPv6 address, and then the first general discovered address if
+        neither exist. If VMware Tools is not running on the virtual machine, or if
+        the VM is powered off, this value will be blank.
         """
         return pulumi.get(self, "default_ip_address")
 
@@ -317,10 +321,10 @@ class GetVirtualMachineResult:
         template. These are sorted by bus and unit number so that they can be applied
         to a `VirtualMachine` resource in the order the resource expects
         while cloning. This is useful for discovering certain disk settings while
-        performing a linked clone, as all settings that are output by this data
-        source must be the same on the destination virtual machine as the source.
-        Only the first number of controllers defined by `scsi_controller_scan_count`
-        are scanned for disks. The sub-attributes are:
+        performing a linked clone, as all settings that are output by this data source
+        must be the same on the destination virtual machine as the source. Only the
+        first number of controllers defined by `scsi_controller_scan_count` are
+        scanned for disks. The sub-attributes are:
         """
         return pulumi.get(self, "disks")
 
@@ -341,7 +345,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="eptRviMode")
-    def ept_rvi_mode(self) -> Optional[str]:
+    def ept_rvi_mode(self) -> str:
         return pulumi.get(self, "ept_rvi_mode")
 
     @property
@@ -358,7 +362,8 @@ class GetVirtualMachineResult:
     @pulumi.getter
     def firmware(self) -> Optional[str]:
         """
-        The firmware type for this virtual machine. Can be `bios` or `efi`.
+        The firmware type for this virtual machine. Can be `bios` or
+        `efi`.
         """
         return pulumi.get(self, "firmware")
 
@@ -393,7 +398,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="hvMode")
-    def hv_mode(self) -> Optional[str]:
+    def hv_mode(self) -> str:
         return pulumi.get(self, "hv_mode")
 
     @property
@@ -408,6 +413,14 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="ideControllerScanCount")
     def ide_controller_scan_count(self) -> Optional[int]:
         return pulumi.get(self, "ide_controller_scan_count")
+
+    @property
+    @pulumi.getter(name="instanceUuid")
+    def instance_uuid(self) -> str:
+        """
+        The instance UUID of the virtual machine or template.
+        """
+        return pulumi.get(self, "instance_uuid")
 
     @property
     @pulumi.getter(name="latencySensitivity")
@@ -473,7 +486,8 @@ class GetVirtualMachineResult:
         """
         The network interface types for each network
         interface found on the virtual machine, in device bus order. Will be one of
-        `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
+        `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
+        `vmxnet3`.
         """
         return pulumi.get(self, "network_interface_types")
 
@@ -481,13 +495,13 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.GetVirtualMachineNetworkInterfaceResult']:
         """
-        Information about each of the network interfaces on this 
-        virtual machine or template. These are sorted by device bus order so that they
-        can be applied to a `VirtualMachine` resource in the order the resource
-        expects while cloning. This is useful for discovering certain network interface
-        settings while performing a linked clone, as all settings that are output by this
-        data source must be the same on the destination virtual machine as the source.
-        The sub-attributes are:
+        Information about each of the network interfaces on
+        this virtual machine or template. These are sorted by device bus order so that
+        they can be applied to a `VirtualMachine` resource in the order the
+        resource expects while cloning. This is useful for discovering certain network
+        interface settings while performing a linked clone, as all settings that are
+        output by this data source must be the same on the destination virtual machine
+        as the source. The sub-attributes are:
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -495,7 +509,8 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="numCoresPerSocket")
     def num_cores_per_socket(self) -> Optional[int]:
         """
-        The number of cores per socket for this virtual machine.
+        The number of cores per socket for this virtual
+        machine.
         """
         return pulumi.get(self, "num_cores_per_socket")
 
@@ -657,6 +672,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             hv_mode=self.hv_mode,
             id=self.id,
             ide_controller_scan_count=self.ide_controller_scan_count,
+            instance_uuid=self.instance_uuid,
             latency_sensitivity=self.latency_sensitivity,
             memory=self.memory,
             memory_hot_add_enabled=self.memory_hot_add_enabled,
@@ -759,8 +775,8 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
 
     ## Example Usage
 
-    In the following example, a virtual machine template is returned by its
-    unique name within the `Datacenter`.
+    In the following example, a virtual machine template is returned by its unique
+    name within the `Datacenter`.
 
     ```python
     import pulumi
@@ -770,6 +786,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     template = vsphere.get_virtual_machine(name="ubuntu-server-template",
         datacenter_id=datacenter.id)
     ```
+
     In the following example, each virtual machine template is returned by its
     unique full path within the `Datacenter`.
 
@@ -786,14 +803,16 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
 
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when
-           `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+           `guest_id` is a non-specific operating system, like `otherGuest` or
+           `otherGuest64`.
     :param str annotation: The user-provided description of this virtual machine.
     :param str datacenter_id: The managed object reference
            ID of the datacenter the virtual machine is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the `id` attribute from an empty
            `Datacenter` data source.
-    :param str firmware: The firmware type for this virtual machine. Can be `bios` or `efi`.
+    :param str firmware: The firmware type for this virtual machine. Can be `bios` or
+           `efi`.
     :param str folder: The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
     :param str guest_id: The guest ID of the virtual machine or template.
     :param int hardware_version: The hardware version number on this virtual machine.
@@ -801,7 +820,8 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     :param str name: The name of the virtual machine. This can be a name or
            the full path relative to the datacenter. This is required if a UUID lookup
            is not performed.
-    :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
+    :param int num_cores_per_socket: The number of cores per socket for this virtual
+           machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
     :param int scsi_controller_scan_count: The number of SCSI controllers to
@@ -905,6 +925,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         hv_mode=pulumi.get(__ret__, 'hv_mode'),
         id=pulumi.get(__ret__, 'id'),
         ide_controller_scan_count=pulumi.get(__ret__, 'ide_controller_scan_count'),
+        instance_uuid=pulumi.get(__ret__, 'instance_uuid'),
         latency_sensitivity=pulumi.get(__ret__, 'latency_sensitivity'),
         memory=pulumi.get(__ret__, 'memory'),
         memory_hot_add_enabled=pulumi.get(__ret__, 'memory_hot_add_enabled'),
@@ -1008,8 +1029,8 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
 
     ## Example Usage
 
-    In the following example, a virtual machine template is returned by its
-    unique name within the `Datacenter`.
+    In the following example, a virtual machine template is returned by its unique
+    name within the `Datacenter`.
 
     ```python
     import pulumi
@@ -1019,6 +1040,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     template = vsphere.get_virtual_machine(name="ubuntu-server-template",
         datacenter_id=datacenter.id)
     ```
+
     In the following example, each virtual machine template is returned by its
     unique full path within the `Datacenter`.
 
@@ -1035,14 +1057,16 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
 
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when
-           `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
+           `guest_id` is a non-specific operating system, like `otherGuest` or
+           `otherGuest64`.
     :param str annotation: The user-provided description of this virtual machine.
     :param str datacenter_id: The managed object reference
            ID of the datacenter the virtual machine is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the `id` attribute from an empty
            `Datacenter` data source.
-    :param str firmware: The firmware type for this virtual machine. Can be `bios` or `efi`.
+    :param str firmware: The firmware type for this virtual machine. Can be `bios` or
+           `efi`.
     :param str folder: The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
     :param str guest_id: The guest ID of the virtual machine or template.
     :param int hardware_version: The hardware version number on this virtual machine.
@@ -1050,7 +1074,8 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     :param str name: The name of the virtual machine. This can be a name or
            the full path relative to the datacenter. This is required if a UUID lookup
            is not performed.
-    :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
+    :param int num_cores_per_socket: The number of cores per socket for this virtual
+           machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
     :param int scsi_controller_scan_count: The number of SCSI controllers to

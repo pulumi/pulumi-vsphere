@@ -151,7 +151,7 @@ import (
 //
 // * `scaleDescendantsShares`
 //
-// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 type ResourcePool struct {
 	pulumi.CustomResourceState
 

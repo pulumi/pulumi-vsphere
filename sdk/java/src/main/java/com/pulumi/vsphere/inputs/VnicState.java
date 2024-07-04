@@ -35,14 +35,14 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+     * UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      * 
      */
     @Import(name="distributedSwitchPort")
     private @Nullable Output<String> distributedSwitchPort;
 
     /**
-     * @return UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+     * @return UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      * 
      */
     public Optional<Output<String>> distributedSwitchPort() {
@@ -224,7 +224,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param distributedSwitchPort UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+         * @param distributedSwitchPort UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param distributedSwitchPort UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+         * @param distributedSwitchPort UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
          * 
          * @return builder
          * 

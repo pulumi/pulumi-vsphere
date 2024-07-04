@@ -18,16 +18,16 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
     public static final GetDatastoreStatsPlainArgs Empty = new GetDatastoreStatsPlainArgs();
 
     /**
-     * A mapping of the capacity for all datastore in the datacenter
-     * , where the name of the datastore is used as key and the capacity as value.
+     * A mapping of the capacity for all datastore in the datacenter,
+     * where the name of the datastore is used as key and the capacity as value.
      * 
      */
     @Import(name="capacity")
     private @Nullable Map<String,Object> capacity;
 
     /**
-     * @return A mapping of the capacity for all datastore in the datacenter
-     * , where the name of the datastore is used as key and the capacity as value.
+     * @return A mapping of the capacity for all datastore in the datacenter,
+     * where the name of the datastore is used as key and the capacity as value.
      * 
      */
     public Optional<Map<String,Object>> capacity() {
@@ -35,9 +35,10 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The [managed object reference ID][docs-about-morefs]
-     * of the datacenter the datastores are located in. For default datacenters, use
-     * the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * datastores are located in. For default datacenters, use the `id` attribute
+     * from an empty `vsphere.Datacenter` data source.
      * 
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
@@ -46,9 +47,10 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
     private String datacenterId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs]
-     * of the datacenter the datastores are located in. For default datacenters, use
-     * the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * datastores are located in. For default datacenters, use the `id` attribute
+     * from an empty `vsphere.Datacenter` data source.
      * 
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
@@ -59,8 +61,8 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * A mapping of the free space for each datastore in the
-     * datacenter, where the name of the datastore is used as key and the free
-     * space as value.
+     * datacenter, where the name of the datastore is used as key and the free space
+     * as value.
      * 
      */
     @Import(name="freeSpace")
@@ -68,8 +70,8 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * @return A mapping of the free space for each datastore in the
-     * datacenter, where the name of the datastore is used as key and the free
-     * space as value.
+     * datacenter, where the name of the datastore is used as key and the free space
+     * as value.
      * 
      */
     public Optional<Map<String,Object>> freeSpace() {
@@ -103,8 +105,8 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param capacity A mapping of the capacity for all datastore in the datacenter
-         * , where the name of the datastore is used as key and the capacity as value.
+         * @param capacity A mapping of the capacity for all datastore in the datacenter,
+         * where the name of the datastore is used as key and the capacity as value.
          * 
          * @return builder
          * 
@@ -115,9 +117,10 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param datacenterId The [managed object reference ID][docs-about-morefs]
-         * of the datacenter the datastores are located in. For default datacenters, use
-         * the `id` attribute from an empty `vsphere.Datacenter` data source.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter the
+         * datastores are located in. For default datacenters, use the `id` attribute
+         * from an empty `vsphere.Datacenter` data source.
          * 
          * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
@@ -131,8 +134,8 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param freeSpace A mapping of the free space for each datastore in the
-         * datacenter, where the name of the datastore is used as key and the free
-         * space as value.
+         * datacenter, where the name of the datastore is used as key and the free space
+         * as value.
          * 
          * @return builder
          * 

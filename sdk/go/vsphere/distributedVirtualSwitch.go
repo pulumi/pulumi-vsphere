@@ -141,8 +141,7 @@ type DistributedVirtualSwitch struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of seconds after which active flows are forced to be exported to the collector.
 	NetflowActiveFlowTimeout pulumi.IntPtrOutput `pulumi:"netflowActiveFlowTimeout"`
-	// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-	// later.
+	// IP address for the netflow collector, using IPv4 or IPv6.
 	NetflowCollectorIpAddress pulumi.StringPtrOutput `pulumi:"netflowCollectorIpAddress"`
 	// The port for the netflow collector.
 	NetflowCollectorPort pulumi.IntPtrOutput `pulumi:"netflowCollectorPort"`
@@ -178,8 +177,6 @@ type DistributedVirtualSwitch struct {
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
@@ -391,8 +388,7 @@ type distributedVirtualSwitchState struct {
 	Name *string `pulumi:"name"`
 	// The number of seconds after which active flows are forced to be exported to the collector.
 	NetflowActiveFlowTimeout *int `pulumi:"netflowActiveFlowTimeout"`
-	// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-	// later.
+	// IP address for the netflow collector, using IPv4 or IPv6.
 	NetflowCollectorIpAddress *string `pulumi:"netflowCollectorIpAddress"`
 	// The port for the netflow collector.
 	NetflowCollectorPort *int `pulumi:"netflowCollectorPort"`
@@ -428,8 +424,6 @@ type distributedVirtualSwitchState struct {
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
@@ -609,8 +603,7 @@ type DistributedVirtualSwitchState struct {
 	Name pulumi.StringPtrInput
 	// The number of seconds after which active flows are forced to be exported to the collector.
 	NetflowActiveFlowTimeout pulumi.IntPtrInput
-	// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-	// later.
+	// IP address for the netflow collector, using IPv4 or IPv6.
 	NetflowCollectorIpAddress pulumi.StringPtrInput
 	// The port for the netflow collector.
 	NetflowCollectorPort pulumi.IntPtrInput
@@ -646,8 +639,6 @@ type DistributedVirtualSwitchState struct {
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
@@ -828,8 +819,7 @@ type distributedVirtualSwitchArgs struct {
 	Name *string `pulumi:"name"`
 	// The number of seconds after which active flows are forced to be exported to the collector.
 	NetflowActiveFlowTimeout *int `pulumi:"netflowActiveFlowTimeout"`
-	// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-	// later.
+	// IP address for the netflow collector, using IPv4 or IPv6.
 	NetflowCollectorIpAddress *string `pulumi:"netflowCollectorIpAddress"`
 	// The port for the netflow collector.
 	NetflowCollectorPort *int `pulumi:"netflowCollectorPort"`
@@ -865,8 +855,6 @@ type distributedVirtualSwitchArgs struct {
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
@@ -1044,8 +1032,7 @@ type DistributedVirtualSwitchArgs struct {
 	Name pulumi.StringPtrInput
 	// The number of seconds after which active flows are forced to be exported to the collector.
 	NetflowActiveFlowTimeout pulumi.IntPtrInput
-	// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-	// later.
+	// IP address for the netflow collector, using IPv4 or IPv6.
 	NetflowCollectorIpAddress pulumi.StringPtrInput
 	// The port for the netflow collector.
 	NetflowCollectorPort pulumi.IntPtrInput
@@ -1081,8 +1068,6 @@ type DistributedVirtualSwitchArgs struct {
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
 	// failover_explicit, or loadbalance_loadbased.
@@ -1513,8 +1498,7 @@ func (o DistributedVirtualSwitchOutput) NetflowActiveFlowTimeout() pulumi.IntPtr
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowActiveFlowTimeout }).(pulumi.IntPtrOutput)
 }
 
-// IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-// later.
+// IP address for the netflow collector, using IPv4 or IPv6.
 func (o DistributedVirtualSwitchOutput) NetflowCollectorIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.NetflowCollectorIpAddress }).(pulumi.StringPtrOutput)
 }
@@ -1603,8 +1587,6 @@ func (o DistributedVirtualSwitchOutput) StandbyUplinks() pulumi.StringArrayOutpu
 }
 
 // The IDs of any tags to attach to this resource.
-//
-// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 func (o DistributedVirtualSwitchOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

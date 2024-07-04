@@ -762,9 +762,12 @@ class EntityPermissionsPermission(dict):
                  role_id: str,
                  user_or_group: str):
         """
-        :param bool is_group: Whether user_or_group field refers to a user or a group. True for a group and false for a user.
-        :param bool propagate: Whether or not this permission propagates down the hierarchy to sub-entities.
-        :param str role_id: The role id of the role to be given to the user on the specified entity.
+        :param bool is_group: Whether `user_or_group` field refers to a user or a
+               group. True for a group and false for a user.
+        :param bool propagate: Whether or not this permission propagates down the
+               hierarchy to sub-entities.
+        :param str role_id: The role id of the role to be given to the user on
+               the specified entity.
         :param str user_or_group: The user/group getting the permission.
         """
         pulumi.set(__self__, "is_group", is_group)
@@ -776,7 +779,8 @@ class EntityPermissionsPermission(dict):
     @pulumi.getter(name="isGroup")
     def is_group(self) -> bool:
         """
-        Whether user_or_group field refers to a user or a group. True for a group and false for a user.
+        Whether `user_or_group` field refers to a user or a
+        group. True for a group and false for a user.
         """
         return pulumi.get(self, "is_group")
 
@@ -784,7 +788,8 @@ class EntityPermissionsPermission(dict):
     @pulumi.getter
     def propagate(self) -> bool:
         """
-        Whether or not this permission propagates down the hierarchy to sub-entities.
+        Whether or not this permission propagates down the
+        hierarchy to sub-entities.
         """
         return pulumi.get(self, "propagate")
 
@@ -792,7 +797,8 @@ class EntityPermissionsPermission(dict):
     @pulumi.getter(name="roleId")
     def role_id(self) -> str:
         """
-        The role id of the role to be given to the user on the specified entity.
+        The role id of the role to be given to the user on
+        the specified entity.
         """
         return pulumi.get(self, "role_id")
 
@@ -3691,13 +3697,14 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
         """
         :param bool disk_snapshot_supported: Indicates whether the GPU plugin on this host is
                capable of disk-only snapshots when VM is not powered off.
-        :param bool memory_snapshot_supported: Indicates whether the GPU plugin on this host is
-               capable of memory snapshots.
-        :param bool migrate_supported: Indicates whether the GPU plugin on this host is capable
-               of migration.
-        :param bool suspend_supported: Indicates whether the GPU plugin on this host is capable
-               of suspend-resume.
-        :param str vgpu: Name of a particular vGPU available as a shared GPU device (vGPU profile).
+        :param bool memory_snapshot_supported: Indicates whether the GPU plugin on this host
+               is capable of memory snapshots.
+        :param bool migrate_supported: Indicates whether the GPU plugin on this host is
+               capable of migration.
+        :param bool suspend_supported: Indicates whether the GPU plugin on this host is
+               capable of suspend-resume.
+        :param str vgpu: Name of a particular vGPU available as a shared GPU device (vGPU
+               profile).
         """
         pulumi.set(__self__, "disk_snapshot_supported", disk_snapshot_supported)
         pulumi.set(__self__, "memory_snapshot_supported", memory_snapshot_supported)
@@ -3718,8 +3725,8 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
     @pulumi.getter(name="memorySnapshotSupported")
     def memory_snapshot_supported(self) -> bool:
         """
-        Indicates whether the GPU plugin on this host is
-        capable of memory snapshots.
+        Indicates whether the GPU plugin on this host
+        is capable of memory snapshots.
         """
         return pulumi.get(self, "memory_snapshot_supported")
 
@@ -3727,8 +3734,8 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
     @pulumi.getter(name="migrateSupported")
     def migrate_supported(self) -> bool:
         """
-        Indicates whether the GPU plugin on this host is capable
-        of migration.
+        Indicates whether the GPU plugin on this host is
+        capable of migration.
         """
         return pulumi.get(self, "migrate_supported")
 
@@ -3736,8 +3743,8 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
     @pulumi.getter(name="suspendSupported")
     def suspend_supported(self) -> bool:
         """
-        Indicates whether the GPU plugin on this host is capable
-        of suspend-resume.
+        Indicates whether the GPU plugin on this host is
+        capable of suspend-resume.
         """
         return pulumi.get(self, "suspend_supported")
 
@@ -3745,7 +3752,8 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
     @pulumi.getter
     def vgpu(self) -> str:
         """
-        Name of a particular vGPU available as a shared GPU device (vGPU profile).
+        Name of a particular vGPU available as a shared GPU device (vGPU
+        profile).
         """
         return pulumi.get(self, "vgpu")
 
@@ -3824,21 +3832,21 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
                  bandwidth_reservation: Optional[int] = None,
                  bandwidth_share_level: Optional[str] = None):
         """
-        :param str adapter_type: The network interface types for each network interface found 
-               on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-               `vmxnet3vrdma`, or `vmxnet3`.
+        :param str adapter_type: The network interface types for each network interface found
+               on the virtual machine, in device bus order. Will be one of `e1000`,
+               `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
         :param int bandwidth_share_count: The share count for this network interface when the
                share level is custom.
         :param str mac_address: The MAC address of this network interface.
-        :param str network_id: The managed object reference ID of the network this interface is
-               connected to.
+        :param str network_id: The managed object reference ID of the network this interface
+               is connected to.
         :param str physical_function: The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
-        :param int bandwidth_limit: The upper bandwidth limit of this network interface, 
+        :param int bandwidth_limit: The upper bandwidth limit of this network interface,
                in Mbits/sec.
-        :param int bandwidth_reservation: The bandwidth reservation of this network interface,
-               in Mbits/sec.
-        :param str bandwidth_share_level: The bandwidth share allocation level for this interface.
-               Can be one of `low`, `normal`, `high`, or `custom`.
+        :param int bandwidth_reservation: The bandwidth reservation of this network
+               interface, in Mbits/sec.
+        :param str bandwidth_share_level: The bandwidth share allocation level for this
+               interface. Can be one of `low`, `normal`, `high`, or `custom`.
         """
         pulumi.set(__self__, "adapter_type", adapter_type)
         pulumi.set(__self__, "bandwidth_share_count", bandwidth_share_count)
@@ -3856,9 +3864,9 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="adapterType")
     def adapter_type(self) -> str:
         """
-        The network interface types for each network interface found 
-        on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-        `vmxnet3vrdma`, or `vmxnet3`.
+        The network interface types for each network interface found
+        on the virtual machine, in device bus order. Will be one of `e1000`,
+        `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
         """
         return pulumi.get(self, "adapter_type")
 
@@ -3883,8 +3891,8 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
         """
-        The managed object reference ID of the network this interface is
-        connected to.
+        The managed object reference ID of the network this interface
+        is connected to.
         """
         return pulumi.get(self, "network_id")
 
@@ -3900,7 +3908,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="bandwidthLimit")
     def bandwidth_limit(self) -> Optional[int]:
         """
-        The upper bandwidth limit of this network interface, 
+        The upper bandwidth limit of this network interface,
         in Mbits/sec.
         """
         return pulumi.get(self, "bandwidth_limit")
@@ -3909,8 +3917,8 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="bandwidthReservation")
     def bandwidth_reservation(self) -> Optional[int]:
         """
-        The bandwidth reservation of this network interface,
-        in Mbits/sec.
+        The bandwidth reservation of this network
+        interface, in Mbits/sec.
         """
         return pulumi.get(self, "bandwidth_reservation")
 
@@ -3918,8 +3926,8 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="bandwidthShareLevel")
     def bandwidth_share_level(self) -> Optional[str]:
         """
-        The bandwidth share allocation level for this interface.
-        Can be one of `low`, `normal`, `high`, or `custom`.
+        The bandwidth share allocation level for this
+        interface. Can be one of `low`, `normal`, `high`, or `custom`.
         """
         return pulumi.get(self, "bandwidth_share_level")
 

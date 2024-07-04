@@ -102,7 +102,7 @@ export class NasDatastore extends pulumi.CustomResource {
     public /*out*/ readonly protocolEndpoint!: pulumi.Output<boolean>;
     /**
      * The hostnames or IP addresses of the remote
-     * server or servers. Only one element should be present for NFS v3 but multiple
+     * servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
     public readonly remoteHosts!: pulumi.Output<string[]>;
@@ -282,7 +282,7 @@ export interface NasDatastoreState {
     protocolEndpoint?: pulumi.Input<boolean>;
     /**
      * The hostnames or IP addresses of the remote
-     * server or servers. Only one element should be present for NFS v3 but multiple
+     * servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
     remoteHosts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -368,7 +368,7 @@ export interface NasDatastoreArgs {
     name?: pulumi.Input<string>;
     /**
      * The hostnames or IP addresses of the remote
-     * server or servers. Only one element should be present for NFS v3 but multiple
+     * servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
     remoteHosts: pulumi.Input<pulumi.Input<string>[]>;

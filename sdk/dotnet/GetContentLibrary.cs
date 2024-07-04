@@ -12,9 +12,11 @@ namespace Pulumi.VSphere
     public static class GetContentLibrary
     {
         /// <summary>
-        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+        /// content library.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        /// host connections.
         /// 
         /// ## Example Usage
         /// 
@@ -26,7 +28,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var library = VSphere.GetContentLibrary.Invoke(new()
+        ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
         ///     {
         ///         Name = "Content Library",
         ///     });
@@ -38,9 +40,11 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+        /// content library.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        /// host connections.
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +56,7 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var library = VSphere.GetContentLibrary.Invoke(new()
+        ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
         ///     {
         ///         Name = "Content Library",
         ///     });

@@ -32,8 +32,6 @@ import (
 // > **NOTE:** This resource requires vCenter Server and is not available on
 // direct ESXi host connections.
 //
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-//
 // ## Importing
 //
 // An existing rule can be imported into this resource by supplying

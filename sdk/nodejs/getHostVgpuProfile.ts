@@ -63,7 +63,8 @@ export function getHostVgpuProfile(args: GetHostVgpuProfileArgs, opts?: pulumi.I
  */
 export interface GetHostVgpuProfileArgs {
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of
+     * a host.
      */
     hostId: string;
     /**
@@ -150,7 +151,8 @@ export function getHostVgpuProfileOutput(args: GetHostVgpuProfileOutputArgs, opt
  */
 export interface GetHostVgpuProfileOutputArgs {
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of
+     * a host.
      */
     hostId: pulumi.Input<string>;
     /**

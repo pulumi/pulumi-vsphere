@@ -3493,7 +3493,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eptRviMode")
-    def ept_rvi_mode(self) -> pulumi.Output[Optional[str]]:
+    def ept_rvi_mode(self) -> pulumi.Output[str]:
         """
         The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
         """
@@ -3574,7 +3574,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hvMode")
-    def hv_mode(self) -> pulumi.Output[Optional[str]]:
+    def hv_mode(self) -> pulumi.Output[str]:
         """
         The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         """

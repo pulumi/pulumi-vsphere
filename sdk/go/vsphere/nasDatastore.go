@@ -60,7 +60,7 @@ type NasDatastore struct {
 	// This field is only populated if the host supports virtual datastores.
 	ProtocolEndpoint pulumi.BoolOutput `pulumi:"protocolEndpoint"`
 	// The hostnames or IP addresses of the remote
-	// server or servers. Only one element should be present for NFS v3 but multiple
+	// servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.
 	RemoteHosts pulumi.StringArrayOutput `pulumi:"remoteHosts"`
 	// The remote path of the mount point. Forces a new
@@ -170,7 +170,7 @@ type nasDatastoreState struct {
 	// This field is only populated if the host supports virtual datastores.
 	ProtocolEndpoint *bool `pulumi:"protocolEndpoint"`
 	// The hostnames or IP addresses of the remote
-	// server or servers. Only one element should be present for NFS v3 but multiple
+	// servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.
 	RemoteHosts []string `pulumi:"remoteHosts"`
 	// The remote path of the mount point. Forces a new
@@ -242,7 +242,7 @@ type NasDatastoreState struct {
 	// This field is only populated if the host supports virtual datastores.
 	ProtocolEndpoint pulumi.BoolPtrInput
 	// The hostnames or IP addresses of the remote
-	// server or servers. Only one element should be present for NFS v3 but multiple
+	// servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.
 	RemoteHosts pulumi.StringArrayInput
 	// The remote path of the mount point. Forces a new
@@ -303,7 +303,7 @@ type nasDatastoreArgs struct {
 	// changed.
 	Name *string `pulumi:"name"`
 	// The hostnames or IP addresses of the remote
-	// server or servers. Only one element should be present for NFS v3 but multiple
+	// servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.
 	RemoteHosts []string `pulumi:"remoteHosts"`
 	// The remote path of the mount point. Forces a new
@@ -356,7 +356,7 @@ type NasDatastoreArgs struct {
 	// changed.
 	Name pulumi.StringPtrInput
 	// The hostnames or IP addresses of the remote
-	// server or servers. Only one element should be present for NFS v3 but multiple
+	// servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.
 	RemoteHosts pulumi.StringArrayInput
 	// The remote path of the mount point. Forces a new
@@ -545,7 +545,7 @@ func (o NasDatastoreOutput) ProtocolEndpoint() pulumi.BoolOutput {
 }
 
 // The hostnames or IP addresses of the remote
-// server or servers. Only one element should be present for NFS v3 but multiple
+// servers. Only one element should be present for NFS v3 but multiple
 // can be present for NFS v4.1. Forces a new resource if changed.
 func (o NasDatastoreOutput) RemoteHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NasDatastore) pulumi.StringArrayOutput { return v.RemoteHosts }).(pulumi.StringArrayOutput)

@@ -1678,11 +1678,14 @@ func (o DistributedVirtualSwitchVlanRangeArrayOutput) Index(i pulumi.IntInput) D
 }
 
 type EntityPermissionsPermission struct {
-	// Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+	// Whether `userOrGroup` field refers to a user or a
+	// group. True for a group and false for a user.
 	IsGroup bool `pulumi:"isGroup"`
-	// Whether or not this permission propagates down the hierarchy to sub-entities.
+	// Whether or not this permission propagates down the
+	// hierarchy to sub-entities.
 	Propagate bool `pulumi:"propagate"`
-	// The role id of the role to be given to the user on the specified entity.
+	// The role id of the role to be given to the user on
+	// the specified entity.
 	RoleId string `pulumi:"roleId"`
 	// The user/group getting the permission.
 	UserOrGroup string `pulumi:"userOrGroup"`
@@ -1700,11 +1703,14 @@ type EntityPermissionsPermissionInput interface {
 }
 
 type EntityPermissionsPermissionArgs struct {
-	// Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+	// Whether `userOrGroup` field refers to a user or a
+	// group. True for a group and false for a user.
 	IsGroup pulumi.BoolInput `pulumi:"isGroup"`
-	// Whether or not this permission propagates down the hierarchy to sub-entities.
+	// Whether or not this permission propagates down the
+	// hierarchy to sub-entities.
 	Propagate pulumi.BoolInput `pulumi:"propagate"`
-	// The role id of the role to be given to the user on the specified entity.
+	// The role id of the role to be given to the user on
+	// the specified entity.
 	RoleId pulumi.StringInput `pulumi:"roleId"`
 	// The user/group getting the permission.
 	UserOrGroup pulumi.StringInput `pulumi:"userOrGroup"`
@@ -1761,17 +1767,20 @@ func (o EntityPermissionsPermissionOutput) ToEntityPermissionsPermissionOutputWi
 	return o
 }
 
-// Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+// Whether `userOrGroup` field refers to a user or a
+// group. True for a group and false for a user.
 func (o EntityPermissionsPermissionOutput) IsGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v EntityPermissionsPermission) bool { return v.IsGroup }).(pulumi.BoolOutput)
 }
 
-// Whether or not this permission propagates down the hierarchy to sub-entities.
+// Whether or not this permission propagates down the
+// hierarchy to sub-entities.
 func (o EntityPermissionsPermissionOutput) Propagate() pulumi.BoolOutput {
 	return o.ApplyT(func(v EntityPermissionsPermission) bool { return v.Propagate }).(pulumi.BoolOutput)
 }
 
-// The role id of the role to be given to the user on the specified entity.
+// The role id of the role to be given to the user on
+// the specified entity.
 func (o EntityPermissionsPermissionOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityPermissionsPermission) string { return v.RoleId }).(pulumi.StringOutput)
 }
@@ -7430,16 +7439,17 @@ type GetHostVgpuProfileVgpuProfile struct {
 	// Indicates whether the GPU plugin on this host is
 	// capable of disk-only snapshots when VM is not powered off.
 	DiskSnapshotSupported bool `pulumi:"diskSnapshotSupported"`
-	// Indicates whether the GPU plugin on this host is
-	// capable of memory snapshots.
+	// Indicates whether the GPU plugin on this host
+	// is capable of memory snapshots.
 	MemorySnapshotSupported bool `pulumi:"memorySnapshotSupported"`
-	// Indicates whether the GPU plugin on this host is capable
-	// of migration.
+	// Indicates whether the GPU plugin on this host is
+	// capable of migration.
 	MigrateSupported bool `pulumi:"migrateSupported"`
-	// Indicates whether the GPU plugin on this host is capable
-	// of suspend-resume.
+	// Indicates whether the GPU plugin on this host is
+	// capable of suspend-resume.
 	SuspendSupported bool `pulumi:"suspendSupported"`
-	// Name of a particular vGPU available as a shared GPU device (vGPU profile).
+	// Name of a particular vGPU available as a shared GPU device (vGPU
+	// profile).
 	Vgpu string `pulumi:"vgpu"`
 }
 
@@ -7458,16 +7468,17 @@ type GetHostVgpuProfileVgpuProfileArgs struct {
 	// Indicates whether the GPU plugin on this host is
 	// capable of disk-only snapshots when VM is not powered off.
 	DiskSnapshotSupported pulumi.BoolInput `pulumi:"diskSnapshotSupported"`
-	// Indicates whether the GPU plugin on this host is
-	// capable of memory snapshots.
+	// Indicates whether the GPU plugin on this host
+	// is capable of memory snapshots.
 	MemorySnapshotSupported pulumi.BoolInput `pulumi:"memorySnapshotSupported"`
-	// Indicates whether the GPU plugin on this host is capable
-	// of migration.
+	// Indicates whether the GPU plugin on this host is
+	// capable of migration.
 	MigrateSupported pulumi.BoolInput `pulumi:"migrateSupported"`
-	// Indicates whether the GPU plugin on this host is capable
-	// of suspend-resume.
+	// Indicates whether the GPU plugin on this host is
+	// capable of suspend-resume.
 	SuspendSupported pulumi.BoolInput `pulumi:"suspendSupported"`
-	// Name of a particular vGPU available as a shared GPU device (vGPU profile).
+	// Name of a particular vGPU available as a shared GPU device (vGPU
+	// profile).
 	Vgpu pulumi.StringInput `pulumi:"vgpu"`
 }
 
@@ -7528,25 +7539,26 @@ func (o GetHostVgpuProfileVgpuProfileOutput) DiskSnapshotSupported() pulumi.Bool
 	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.DiskSnapshotSupported }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the GPU plugin on this host is
-// capable of memory snapshots.
+// Indicates whether the GPU plugin on this host
+// is capable of memory snapshots.
 func (o GetHostVgpuProfileVgpuProfileOutput) MemorySnapshotSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.MemorySnapshotSupported }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the GPU plugin on this host is capable
-// of migration.
+// Indicates whether the GPU plugin on this host is
+// capable of migration.
 func (o GetHostVgpuProfileVgpuProfileOutput) MigrateSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.MigrateSupported }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the GPU plugin on this host is capable
-// of suspend-resume.
+// Indicates whether the GPU plugin on this host is
+// capable of suspend-resume.
 func (o GetHostVgpuProfileVgpuProfileOutput) SuspendSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) bool { return v.SuspendSupported }).(pulumi.BoolOutput)
 }
 
-// Name of a particular vGPU available as a shared GPU device (vGPU profile).
+// Name of a particular vGPU available as a shared GPU device (vGPU
+// profile).
 func (o GetHostVgpuProfileVgpuProfileOutput) Vgpu() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostVgpuProfileVgpuProfile) string { return v.Vgpu }).(pulumi.StringOutput)
 }
@@ -7706,25 +7718,25 @@ func (o GetVirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) GetVirtualMac
 
 type GetVirtualMachineNetworkInterface struct {
 	// The network interface types for each network interface found
-	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-	// `vmxnet3vrdma`, or `vmxnet3`.
+	// on the virtual machine, in device bus order. Will be one of `e1000`,
+	// `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
 	AdapterType string `pulumi:"adapterType"`
 	// The upper bandwidth limit of this network interface,
 	// in Mbits/sec.
 	BandwidthLimit *int `pulumi:"bandwidthLimit"`
-	// The bandwidth reservation of this network interface,
-	// in Mbits/sec.
+	// The bandwidth reservation of this network
+	// interface, in Mbits/sec.
 	BandwidthReservation *int `pulumi:"bandwidthReservation"`
 	// The share count for this network interface when the
 	// share level is custom.
 	BandwidthShareCount int `pulumi:"bandwidthShareCount"`
-	// The bandwidth share allocation level for this interface.
-	// Can be one of `low`, `normal`, `high`, or `custom`.
+	// The bandwidth share allocation level for this
+	// interface. Can be one of `low`, `normal`, `high`, or `custom`.
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
 	// The MAC address of this network interface.
 	MacAddress string `pulumi:"macAddress"`
-	// The managed object reference ID of the network this interface is
-	// connected to.
+	// The managed object reference ID of the network this interface
+	// is connected to.
 	NetworkId string `pulumi:"networkId"`
 	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction string `pulumi:"physicalFunction"`
@@ -7743,25 +7755,25 @@ type GetVirtualMachineNetworkInterfaceInput interface {
 
 type GetVirtualMachineNetworkInterfaceArgs struct {
 	// The network interface types for each network interface found
-	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-	// `vmxnet3vrdma`, or `vmxnet3`.
+	// on the virtual machine, in device bus order. Will be one of `e1000`,
+	// `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
 	AdapterType pulumi.StringInput `pulumi:"adapterType"`
 	// The upper bandwidth limit of this network interface,
 	// in Mbits/sec.
 	BandwidthLimit pulumi.IntPtrInput `pulumi:"bandwidthLimit"`
-	// The bandwidth reservation of this network interface,
-	// in Mbits/sec.
+	// The bandwidth reservation of this network
+	// interface, in Mbits/sec.
 	BandwidthReservation pulumi.IntPtrInput `pulumi:"bandwidthReservation"`
 	// The share count for this network interface when the
 	// share level is custom.
 	BandwidthShareCount pulumi.IntInput `pulumi:"bandwidthShareCount"`
-	// The bandwidth share allocation level for this interface.
-	// Can be one of `low`, `normal`, `high`, or `custom`.
+	// The bandwidth share allocation level for this
+	// interface. Can be one of `low`, `normal`, `high`, or `custom`.
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
 	// The MAC address of this network interface.
 	MacAddress pulumi.StringInput `pulumi:"macAddress"`
-	// The managed object reference ID of the network this interface is
-	// connected to.
+	// The managed object reference ID of the network this interface
+	// is connected to.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
 	PhysicalFunction pulumi.StringInput `pulumi:"physicalFunction"`
@@ -7819,8 +7831,8 @@ func (o GetVirtualMachineNetworkInterfaceOutput) ToGetVirtualMachineNetworkInter
 }
 
 // The network interface types for each network interface found
-// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-// `vmxnet3vrdma`, or `vmxnet3`.
+// on the virtual machine, in device bus order. Will be one of `e1000`,
+// `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
 func (o GetVirtualMachineNetworkInterfaceOutput) AdapterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.AdapterType }).(pulumi.StringOutput)
 }
@@ -7831,8 +7843,8 @@ func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthLimit() pulumi.IntPtrO
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) *int { return v.BandwidthLimit }).(pulumi.IntPtrOutput)
 }
 
-// The bandwidth reservation of this network interface,
-// in Mbits/sec.
+// The bandwidth reservation of this network
+// interface, in Mbits/sec.
 func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) *int { return v.BandwidthReservation }).(pulumi.IntPtrOutput)
 }
@@ -7843,8 +7855,8 @@ func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthShareCount() pulumi.In
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) int { return v.BandwidthShareCount }).(pulumi.IntOutput)
 }
 
-// The bandwidth share allocation level for this interface.
-// Can be one of `low`, `normal`, `high`, or `custom`.
+// The bandwidth share allocation level for this
+// interface. Can be one of `low`, `normal`, `high`, or `custom`.
 func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
 }
@@ -7854,8 +7866,8 @@ func (o GetVirtualMachineNetworkInterfaceOutput) MacAddress() pulumi.StringOutpu
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.MacAddress }).(pulumi.StringOutput)
 }
 
-// The managed object reference ID of the network this interface is
-// connected to.
+// The managed object reference ID of the network this interface
+// is connected to.
 func (o GetVirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
 }

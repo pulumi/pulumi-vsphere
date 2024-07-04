@@ -34,16 +34,16 @@ public final class GetDynamicPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A regular expression that will be used to match
-     * the object&#39;s name.
+     * A regular expression that will be used to match the
+     * object&#39;s name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regular expression that will be used to match
-     * the object&#39;s name.
+     * @return A regular expression that will be used to match the
+     * object&#39;s name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -53,7 +53,7 @@ public final class GetDynamicPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The managed object type the returned object must match.
      * The managed object types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      * 
      */
     @Import(name="type")
@@ -62,7 +62,7 @@ public final class GetDynamicPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The managed object type the returned object must match.
      * The managed object types can be found in the managed object type section
-     * [here](https://developer.vmware.com/apis/968/vsphere).
+     * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      * 
      */
     public Optional<String> type() {
@@ -119,8 +119,8 @@ public final class GetDynamicPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regular expression that will be used to match
-         * the object&#39;s name.
+         * @param nameRegex A regular expression that will be used to match the
+         * object&#39;s name.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class GetDynamicPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param type The managed object type the returned object must match.
          * The managed object types can be found in the managed object type section
-         * [here](https://developer.vmware.com/apis/968/vsphere).
+         * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
          * 
          * @return builder
          * 

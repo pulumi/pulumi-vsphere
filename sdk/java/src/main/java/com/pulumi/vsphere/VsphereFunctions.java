@@ -356,24 +356,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(vsphereDatacenter)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(vsphereCluster)
+     *             .name("cluster-01")
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name("host_group1")
+     *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
+     *             .name("hostgroup-01")
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
+     *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
-     *             .vmGroupName("vm_group1")
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .vmGroupName("vmgroup-01")
+     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
@@ -421,24 +421,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(vsphereDatacenter)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(vsphereCluster)
+     *             .name("cluster-01")
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name("host_group1")
+     *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
+     *             .name("hostgroup-01")
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
+     *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
-     *             .vmGroupName("vm_group1")
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .vmGroupName("vmgroup-01")
+     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
@@ -486,24 +486,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(vsphereDatacenter)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(vsphereCluster)
+     *             .name("cluster-01")
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name("host_group1")
+     *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
+     *             .name("hostgroup-01")
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
+     *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
-     *             .vmGroupName("vm_group1")
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .vmGroupName("vmgroup-01")
+     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
@@ -551,24 +551,24 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name(vsphereDatacenter)
+     *             .name("dc-01")
      *             .build());
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
-     *             .name(vsphereCluster)
+     *             .name("cluster-01")
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
      *             .build());
      * 
-     *         final var hostGroup1 = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
-     *             .name("host_group1")
+     *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
+     *             .name("hostgroup-01")
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .build());
      * 
-     *         var hostRule1 = new ComputeClusterVmHostRule("hostRule1", ComputeClusterVmHostRuleArgs.builder()
+     *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
      *             .name("terraform-host-rule1")
-     *             .vmGroupName("vm_group1")
-     *             .affinityHostGroupName(hostGroup1.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .vmGroupName("vmgroup-01")
+     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
      * 
      *     }
@@ -582,9 +582,11 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", TypeShape.of(GetComputeClusterHostGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+     * content library.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      * ## Example Usage
      * 
@@ -611,7 +613,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
      *             .name("Content Library")
      *             .build());
      * 
@@ -626,9 +628,11 @@ public final class VsphereFunctions {
         return getContentLibrary(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+     * content library.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      * ## Example Usage
      * 
@@ -655,7 +659,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
      *             .name("Content Library")
      *             .build());
      * 
@@ -670,9 +674,11 @@ public final class VsphereFunctions {
         return getContentLibraryPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+     * content library.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      * ## Example Usage
      * 
@@ -699,7 +705,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
      *             .name("Content Library")
      *             .build());
      * 
@@ -714,9 +720,11 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getContentLibrary:getContentLibrary", TypeShape.of(GetContentLibraryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+     * content library.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      * ## Example Usage
      * 
@@ -743,7 +751,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var library = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
      *             .name("Content Library")
      *             .build());
      * 
@@ -761,8 +769,8 @@ public final class VsphereFunctions {
      * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
      * of a content library item.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on
-     * direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      */
     public static Output<GetContentLibraryItemResult> getContentLibraryItem(GetContentLibraryItemArgs args) {
@@ -772,8 +780,8 @@ public final class VsphereFunctions {
      * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
      * of a content library item.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on
-     * direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      */
     public static CompletableFuture<GetContentLibraryItemResult> getContentLibraryItemPlain(GetContentLibraryItemPlainArgs args) {
@@ -783,8 +791,8 @@ public final class VsphereFunctions {
      * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
      * of a content library item.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on
-     * direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      */
     public static Output<GetContentLibraryItemResult> getContentLibraryItem(GetContentLibraryItemArgs args, InvokeOptions options) {
@@ -794,8 +802,8 @@ public final class VsphereFunctions {
      * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
      * of a content library item.
      * 
-     * &gt; **NOTE:** This resource requires vCenter Server and is not available on
-     * direct ESXi host connections.
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
      * 
      */
     public static CompletableFuture<GetContentLibraryItemResult> getContentLibraryItemPlain(GetContentLibraryItemPlainArgs args, InvokeOptions options) {
@@ -1676,9 +1684,10 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDatastoreCluster:getDatastoreCluster", TypeShape.of(GetDatastoreClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
-     * of all vSphere datastore objects in a datacenter. This can then be used as a
-     * standalone datasource to get information required as input to other data sources.
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+     * stats of all vSphere datastore objects in a datacenter. This can then be used as
+     * a standalone data source to get information required as input to other data
+     * sources.
      * 
      * ## Example Usage
      * 
@@ -1720,9 +1729,8 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * A usefull example of this datasource would be to determine the
-     * datastore with the most free space. For example, in addition to
-     * the above:
+     * A useful example of this data source would be to determine the datastore with
+     * the most free space. For example, in addition to the above:
      * 
      * Create an `outputs.tf` like that:
      * 
@@ -1762,9 +1770,10 @@ public final class VsphereFunctions {
         return getDatastoreStats(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
-     * of all vSphere datastore objects in a datacenter. This can then be used as a
-     * standalone datasource to get information required as input to other data sources.
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+     * stats of all vSphere datastore objects in a datacenter. This can then be used as
+     * a standalone data source to get information required as input to other data
+     * sources.
      * 
      * ## Example Usage
      * 
@@ -1806,9 +1815,8 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * A usefull example of this datasource would be to determine the
-     * datastore with the most free space. For example, in addition to
-     * the above:
+     * A useful example of this data source would be to determine the datastore with
+     * the most free space. For example, in addition to the above:
      * 
      * Create an `outputs.tf` like that:
      * 
@@ -1848,9 +1856,10 @@ public final class VsphereFunctions {
         return getDatastoreStatsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
-     * of all vSphere datastore objects in a datacenter. This can then be used as a
-     * standalone datasource to get information required as input to other data sources.
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+     * stats of all vSphere datastore objects in a datacenter. This can then be used as
+     * a standalone data source to get information required as input to other data
+     * sources.
      * 
      * ## Example Usage
      * 
@@ -1892,9 +1901,8 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * A usefull example of this datasource would be to determine the
-     * datastore with the most free space. For example, in addition to
-     * the above:
+     * A useful example of this data source would be to determine the datastore with
+     * the most free space. For example, in addition to the above:
      * 
      * Create an `outputs.tf` like that:
      * 
@@ -1934,9 +1942,10 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDatastoreStats:getDatastoreStats", TypeShape.of(GetDatastoreStatsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage stats
-     * of all vSphere datastore objects in a datacenter. This can then be used as a
-     * standalone datasource to get information required as input to other data sources.
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+     * stats of all vSphere datastore objects in a datacenter. This can then be used as
+     * a standalone data source to get information required as input to other data
+     * sources.
      * 
      * ## Example Usage
      * 
@@ -1978,9 +1987,8 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * A usefull example of this datasource would be to determine the
-     * datastore with the most free space. For example, in addition to
-     * the above:
+     * A useful example of this data source would be to determine the datastore with
+     * the most free space. For example, in addition to the above:
      * 
      * Create an `outputs.tf` like that:
      * 
@@ -2298,9 +2306,10 @@ public final class VsphereFunctions {
     /**
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
-     * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
-     * of any tagged managed object in vCenter Server by providing a list of tag IDs
-     * and an optional regular expression to filter objects by name.
+     * The `vsphere.getDynamic` data source can be used to get the
+     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * vCenter Server by providing a list of tag IDs and an optional regular expression
+     * to filter objects by name.
      * 
      * ## Example Usage
      * 
@@ -2364,9 +2373,10 @@ public final class VsphereFunctions {
     /**
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
-     * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
-     * of any tagged managed object in vCenter Server by providing a list of tag IDs
-     * and an optional regular expression to filter objects by name.
+     * The `vsphere.getDynamic` data source can be used to get the
+     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * vCenter Server by providing a list of tag IDs and an optional regular expression
+     * to filter objects by name.
      * 
      * ## Example Usage
      * 
@@ -2430,9 +2440,10 @@ public final class VsphereFunctions {
     /**
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
-     * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
-     * of any tagged managed object in vCenter Server by providing a list of tag IDs
-     * and an optional regular expression to filter objects by name.
+     * The `vsphere.getDynamic` data source can be used to get the
+     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * vCenter Server by providing a list of tag IDs and an optional regular expression
+     * to filter objects by name.
      * 
      * ## Example Usage
      * 
@@ -2496,9 +2507,10 @@ public final class VsphereFunctions {
     /**
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
-     * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
-     * of any tagged managed object in vCenter Server by providing a list of tag IDs
-     * and an optional regular expression to filter objects by name.
+     * The `vsphere.getDynamic` data source can be used to get the
+     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * vCenter Server by providing a list of tag IDs and an optional regular expression
+     * to filter objects by name.
      * 
      * ## Example Usage
      * 
@@ -2748,44 +2760,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-     * 
-     * Suggested change
-     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the
+     * details about a customization specification for a guest operating system.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name("linux-spec")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2793,44 +2773,12 @@ public final class VsphereFunctions {
         return getGuestOsCustomization(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-     * 
-     * Suggested change
-     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the
+     * details about a customization specification for a guest operating system.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name("linux-spec")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2838,44 +2786,12 @@ public final class VsphereFunctions {
         return getGuestOsCustomizationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-     * 
-     * Suggested change
-     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the
+     * details about a customization specification for a guest operating system.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name("linux-spec")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2883,44 +2799,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.GuestOsCustomization` data source can be used to discover the details about a customization specification for a guest operating system.
-     * 
-     * Suggested change
-     * &gt; **NOTE:** The name attribute is the unique identifier for the customization specification per vCenter Server instance.
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the
+     * details about a customization specification for a guest operating system.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var gosc1 = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
-     *             .name("linux-spec")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3128,8 +3012,8 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHost:getHost", TypeShape.of(GetHostResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-     * for cluster software management.
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+     * base images available for cluster software management.
      * 
      * ## Example Usage
      * 
@@ -3155,7 +3039,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages();
      * 
      *     }
      * }
@@ -3168,8 +3052,8 @@ public final class VsphereFunctions {
         return getHostBaseImages(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-     * for cluster software management.
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+     * base images available for cluster software management.
      * 
      * ## Example Usage
      * 
@@ -3195,7 +3079,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages();
      * 
      *     }
      * }
@@ -3208,8 +3092,8 @@ public final class VsphereFunctions {
         return getHostBaseImagesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-     * for cluster software management.
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+     * base images available for cluster software management.
      * 
      * ## Example Usage
      * 
@@ -3235,7 +3119,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages();
      * 
      *     }
      * }
@@ -3248,8 +3132,8 @@ public final class VsphereFunctions {
         return getHostBaseImages(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-     * for cluster software management.
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+     * base images available for cluster software management.
      * 
      * ## Example Usage
      * 
@@ -3275,7 +3159,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages();
      * 
      *     }
      * }
@@ -3288,8 +3172,8 @@ public final class VsphereFunctions {
         return getHostBaseImagesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-     * for cluster software management.
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+     * base images available for cluster software management.
      * 
      * ## Example Usage
      * 
@@ -3315,7 +3199,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages();
      * 
      *     }
      * }
@@ -3328,8 +3212,8 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getHostBaseImages:getHostBaseImages", TypeShape.of(GetHostBaseImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi base images available
-     * for cluster software management.
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+     * base images available for cluster software management.
      * 
      * ## Example Usage
      * 
@@ -3355,7 +3239,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseimages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages();
      * 
      *     }
      * }
@@ -3792,10 +3676,10 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHostPciDevice:getHostPciDevice", TypeShape.of(GetHostPciDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host
-     * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
-     * resource. If the ESXi host is using a certificate chain, the first one returned
-     * will be used to generate the thumbprint.
+     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+     * the ESXi host is using a certificate chain, the first one returned will be used
+     * to generate the thumbprint.
      * 
      * ## Example Usage
      * 
@@ -3837,10 +3721,10 @@ public final class VsphereFunctions {
         return getHostThumbprint(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host
-     * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
-     * resource. If the ESXi host is using a certificate chain, the first one returned
-     * will be used to generate the thumbprint.
+     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+     * the ESXi host is using a certificate chain, the first one returned will be used
+     * to generate the thumbprint.
      * 
      * ## Example Usage
      * 
@@ -3882,10 +3766,10 @@ public final class VsphereFunctions {
         return getHostThumbprintPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host
-     * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
-     * resource. If the ESXi host is using a certificate chain, the first one returned
-     * will be used to generate the thumbprint.
+     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+     * the ESXi host is using a certificate chain, the first one returned will be used
+     * to generate the thumbprint.
      * 
      * ## Example Usage
      * 
@@ -3927,10 +3811,10 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host
-     * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
-     * resource. If the ESXi host is using a certificate chain, the first one returned
-     * will be used to generate the thumbprint.
+     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+     * the ESXi host is using a certificate chain, the first one returned will be used
+     * to generate the thumbprint.
      * 
      * ## Example Usage
      * 
@@ -4556,11 +4440,11 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getLicense:getLicense", TypeShape.of(GetLicenseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getNetwork` data source can be used to discover the ID of a network
-     * in vSphere. This can be any network that can be used as the backing for a
-     * network interface for `vsphere.VirtualMachine` or any other vSphere resource
-     * that requires a network. This includes standard (host-based) port groups,
-     * distributed port groups, or opaque networks such as those managed by NSX.
+     * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+     * vSphere. This can be any network that can be used as the backing for a network
+     * interface for `vsphere.VirtualMachine` or any other vSphere resource that
+     * requires a network. This includes standard (host-based) port groups, distributed
+     * port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
      * 
@@ -4608,11 +4492,11 @@ public final class VsphereFunctions {
         return getNetwork(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getNetwork` data source can be used to discover the ID of a network
-     * in vSphere. This can be any network that can be used as the backing for a
-     * network interface for `vsphere.VirtualMachine` or any other vSphere resource
-     * that requires a network. This includes standard (host-based) port groups,
-     * distributed port groups, or opaque networks such as those managed by NSX.
+     * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+     * vSphere. This can be any network that can be used as the backing for a network
+     * interface for `vsphere.VirtualMachine` or any other vSphere resource that
+     * requires a network. This includes standard (host-based) port groups, distributed
+     * port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
      * 
@@ -4660,11 +4544,11 @@ public final class VsphereFunctions {
         return getNetworkPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getNetwork` data source can be used to discover the ID of a network
-     * in vSphere. This can be any network that can be used as the backing for a
-     * network interface for `vsphere.VirtualMachine` or any other vSphere resource
-     * that requires a network. This includes standard (host-based) port groups,
-     * distributed port groups, or opaque networks such as those managed by NSX.
+     * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+     * vSphere. This can be any network that can be used as the backing for a network
+     * interface for `vsphere.VirtualMachine` or any other vSphere resource that
+     * requires a network. This includes standard (host-based) port groups, distributed
+     * port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
      * 
@@ -4712,11 +4596,11 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getNetwork` data source can be used to discover the ID of a network
-     * in vSphere. This can be any network that can be used as the backing for a
-     * network interface for `vsphere.VirtualMachine` or any other vSphere resource
-     * that requires a network. This includes standard (host-based) port groups,
-     * distributed port groups, or opaque networks such as those managed by NSX.
+     * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+     * vSphere. This can be any network that can be used as the backing for a network
+     * interface for `vsphere.VirtualMachine` or any other vSphere resource that
+     * requires a network. This includes standard (host-based) port groups, distributed
+     * port groups, or opaque networks such as those managed by NSX.
      * 
      * ## Example Usage
      * 
@@ -5057,8 +4941,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the
-     * _root resource pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the _root resource
+     * pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5094,9 +4978,11 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+     * For more information on the root resource pool, see
+     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * documentation.
      * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static Output<GetResourcePoolResult> getResourcePool() {
@@ -5156,8 +5042,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the
-     * _root resource pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the _root resource
+     * pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5193,9 +5079,11 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+     * For more information on the root resource pool, see
+     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * documentation.
      * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static CompletableFuture<GetResourcePoolResult> getResourcePoolPlain() {
@@ -5255,8 +5143,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the
-     * _root resource pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the _root resource
+     * pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5292,9 +5180,11 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+     * For more information on the root resource pool, see
+     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * documentation.
      * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static Output<GetResourcePoolResult> getResourcePool(GetResourcePoolArgs args) {
@@ -5354,8 +5244,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the
-     * _root resource pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the _root resource
+     * pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5391,9 +5281,11 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+     * For more information on the root resource pool, see
+     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * documentation.
      * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static CompletableFuture<GetResourcePoolResult> getResourcePoolPlain(GetResourcePoolPlainArgs args) {
@@ -5453,8 +5345,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the
-     * _root resource pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the _root resource
+     * pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5490,9 +5382,11 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+     * For more information on the root resource pool, see
+     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * documentation.
      * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static Output<GetResourcePoolResult> getResourcePool(GetResourcePoolArgs args, InvokeOptions options) {
@@ -5552,8 +5446,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the
-     * _root resource pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the _root resource
+     * pool_ and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5589,17 +5483,19 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+     * For more information on the root resource pool, see
+     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * documentation.
      * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static CompletableFuture<GetResourcePoolResult> getResourcePoolPlain(GetResourcePoolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getResourcePool:getResourcePool", TypeShape.of(GetResourcePoolResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
-     * with a role given its name or display label.
+     * The `vsphere.Role` data source can be used to discover the `id` and privileges
+     * associated with a role given its name or display label.
      * 
      * ## Example Usage
      * 
@@ -5641,8 +5537,8 @@ public final class VsphereFunctions {
         return getRole(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
-     * with a role given its name or display label.
+     * The `vsphere.Role` data source can be used to discover the `id` and privileges
+     * associated with a role given its name or display label.
      * 
      * ## Example Usage
      * 
@@ -5684,8 +5580,8 @@ public final class VsphereFunctions {
         return getRolePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
-     * with a role given its name or display label.
+     * The `vsphere.Role` data source can be used to discover the `id` and privileges
+     * associated with a role given its name or display label.
      * 
      * ## Example Usage
      * 
@@ -5727,8 +5623,8 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
-     * with a role given its name or display label.
+     * The `vsphere.Role` data source can be used to discover the `id` and privileges
+     * associated with a role given its name or display label.
      * 
      * ## Example Usage
      * 
@@ -6398,8 +6294,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * In the following example, a virtual machine template is returned by its
-     * unique name within the `vsphere.Datacenter`.
+     * In the following example, a virtual machine template is returned by its unique
+     * name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -6439,6 +6335,7 @@ public final class VsphereFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
@@ -6499,8 +6396,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * In the following example, a virtual machine template is returned by its
-     * unique name within the `vsphere.Datacenter`.
+     * In the following example, a virtual machine template is returned by its unique
+     * name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -6540,6 +6437,7 @@ public final class VsphereFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
@@ -6600,8 +6498,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * In the following example, a virtual machine template is returned by its
-     * unique name within the `vsphere.Datacenter`.
+     * In the following example, a virtual machine template is returned by its unique
+     * name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -6641,6 +6539,7 @@ public final class VsphereFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
@@ -6701,8 +6600,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * In the following example, a virtual machine template is returned by its
-     * unique name within the `vsphere.Datacenter`.
+     * In the following example, a virtual machine template is returned by its unique
+     * name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -6742,6 +6641,7 @@ public final class VsphereFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
@@ -6802,8 +6702,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * In the following example, a virtual machine template is returned by its
-     * unique name within the `vsphere.Datacenter`.
+     * In the following example, a virtual machine template is returned by its unique
+     * name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -6843,6 +6743,7 @@ public final class VsphereFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 
@@ -6903,8 +6804,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * In the following example, a virtual machine template is returned by its
-     * unique name within the `vsphere.Datacenter`.
+     * In the following example, a virtual machine template is returned by its unique
+     * name within the `vsphere.Datacenter`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -6944,6 +6845,7 @@ public final class VsphereFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * In the following example, each virtual machine template is returned by its
      * unique full path within the `vsphere.Datacenter`.
      * 

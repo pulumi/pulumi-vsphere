@@ -30,30 +30,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef(vsphereDatacenter),
+//				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
-//				Name:         vsphereCluster,
+//				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			hostGroup1, err := vsphere.LookupComputeClusterHostGroup(ctx, &vsphere.LookupComputeClusterHostGroupArgs{
-//				Name:             "host_group1",
+//			hostGroup, err := vsphere.LookupComputeClusterHostGroup(ctx, &vsphere.LookupComputeClusterHostGroupArgs{
+//				Name:             "hostgroup-01",
 //				ComputeClusterId: cluster.Id,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "host_rule1", &vsphere.ComputeClusterVmHostRuleArgs{
+//			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "host_rule", &vsphere.ComputeClusterVmHostRuleArgs{
 //				ComputeClusterId:      pulumi.String(cluster.Id),
 //				Name:                  pulumi.String("terraform-host-rule1"),
-//				VmGroupName:           pulumi.String("vm_group1"),
-//				AffinityHostGroupName: pulumi.String(hostGroup1.Name),
+//				VmGroupName:           pulumi.String("vmgroup-01"),
+//				AffinityHostGroupName: pulumi.String(hostGroup.Name),
 //			})
 //			if err != nil {
 //				return err
@@ -75,8 +75,9 @@ func LookupComputeClusterHostGroup(ctx *pulumi.Context, args *LookupComputeClust
 
 // A collection of arguments for invoking getComputeClusterHostGroup.
 type LookupComputeClusterHostGroupArgs struct {
-	// The [managed object reference ID][docs-about-morefs]
-	// of the compute cluster for the host group.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the compute cluster for
+	// the host group.
 	//
 	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
@@ -110,8 +111,9 @@ func LookupComputeClusterHostGroupOutput(ctx *pulumi.Context, args LookupCompute
 
 // A collection of arguments for invoking getComputeClusterHostGroup.
 type LookupComputeClusterHostGroupOutputArgs struct {
-	// The [managed object reference ID][docs-about-morefs]
-	// of the compute cluster for the host group.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the compute cluster for
+	// the host group.
 	//
 	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput `pulumi:"computeClusterId"`

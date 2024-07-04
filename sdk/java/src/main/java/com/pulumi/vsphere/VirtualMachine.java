@@ -371,14 +371,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="eptRviMode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> eptRviMode;
+    private Output<String> eptRviMode;
 
     /**
      * @return The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
      * 
      */
-    public Output<Optional<String>> eptRviMode() {
-        return Codegen.optional(this.eptRviMode);
+    public Output<String> eptRviMode() {
+        return this.eptRviMode;
     }
     /**
      * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
@@ -513,14 +513,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="hvMode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> hvMode;
+    private Output<String> hvMode;
 
     /**
      * @return The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      * 
      */
-    public Output<Optional<String>> hvMode() {
-        return Codegen.optional(this.hvMode);
+    public Output<String> hvMode() {
+        return this.hvMode;
     }
     @Export(name="ideControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ideControllerCount;

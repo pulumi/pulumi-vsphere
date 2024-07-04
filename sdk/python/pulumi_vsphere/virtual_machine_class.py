@@ -249,6 +249,7 @@ class VirtualMachineClass(pulumi.CustomResource):
         ```
 
         **Create a class with a vGPU**
+
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -296,6 +297,7 @@ class VirtualMachineClass(pulumi.CustomResource):
         ```
 
         **Create a class with a vGPU**
+
         ```python
         import pulumi
         import pulumi_vsphere as vsphere

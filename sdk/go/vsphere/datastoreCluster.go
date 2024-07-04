@@ -86,8 +86,6 @@ type DatastoreCluster struct {
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrOutput `pulumi:"sdrsVmEvacuationAutomationLevel"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -195,8 +193,6 @@ type datastoreClusterState struct {
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -272,8 +268,6 @@ type DatastoreClusterState struct {
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -353,8 +347,6 @@ type datastoreClusterArgs struct {
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -431,8 +423,6 @@ type DatastoreClusterArgs struct {
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -666,8 +656,6 @@ func (o DatastoreClusterOutput) SdrsVmEvacuationAutomationLevel() pulumi.StringP
 }
 
 // The IDs of any tags to attach to this resource.
-//
-// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 func (o DatastoreClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

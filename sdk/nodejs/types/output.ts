@@ -179,15 +179,18 @@ export interface DistributedVirtualSwitchVlanRange {
 
 export interface EntityPermissionsPermission {
     /**
-     * Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+     * Whether `userOrGroup` field refers to a user or a
+     * group. True for a group and false for a user.
      */
     isGroup: boolean;
     /**
-     * Whether or not this permission propagates down the hierarchy to sub-entities.
+     * Whether or not this permission propagates down the
+     * hierarchy to sub-entities.
      */
     propagate: boolean;
     /**
-     * The role id of the role to be given to the user on the specified entity.
+     * The role id of the role to be given to the user on
+     * the specified entity.
      */
     roleId: string;
     /**
@@ -327,22 +330,23 @@ export interface GetHostVgpuProfileVgpuProfile {
      */
     diskSnapshotSupported: boolean;
     /**
-     * Indicates whether the GPU plugin on this host is
-     * capable of memory snapshots.
+     * Indicates whether the GPU plugin on this host
+     * is capable of memory snapshots.
      */
     memorySnapshotSupported: boolean;
     /**
-     * Indicates whether the GPU plugin on this host is capable
-     * of migration.
+     * Indicates whether the GPU plugin on this host is
+     * capable of migration.
      */
     migrateSupported: boolean;
     /**
-     * Indicates whether the GPU plugin on this host is capable
-     * of suspend-resume.
+     * Indicates whether the GPU plugin on this host is
+     * capable of suspend-resume.
      */
     suspendSupported: boolean;
     /**
-     * Name of a particular vGPU available as a shared GPU device (vGPU profile).
+     * Name of a particular vGPU available as a shared GPU device (vGPU
+     * profile).
      */
     vgpu: string;
 }
@@ -372,19 +376,19 @@ export interface GetVirtualMachineDisk {
 
 export interface GetVirtualMachineNetworkInterface {
     /**
-     * The network interface types for each network interface found 
-     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
-     * `vmxnet3vrdma`, or `vmxnet3`.
+     * The network interface types for each network interface found
+     * on the virtual machine, in device bus order. Will be one of `e1000`,
+     * `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
      */
     adapterType: string;
     /**
-     * The upper bandwidth limit of this network interface, 
+     * The upper bandwidth limit of this network interface,
      * in Mbits/sec.
      */
     bandwidthLimit?: number;
     /**
-     * The bandwidth reservation of this network interface,
-     * in Mbits/sec.
+     * The bandwidth reservation of this network
+     * interface, in Mbits/sec.
      */
     bandwidthReservation?: number;
     /**
@@ -393,8 +397,8 @@ export interface GetVirtualMachineNetworkInterface {
      */
     bandwidthShareCount: number;
     /**
-     * The bandwidth share allocation level for this interface.
-     * Can be one of `low`, `normal`, `high`, or `custom`.
+     * The bandwidth share allocation level for this
+     * interface. Can be one of `low`, `normal`, `high`, or `custom`.
      */
     bandwidthShareLevel?: string;
     /**
@@ -402,8 +406,8 @@ export interface GetVirtualMachineNetworkInterface {
      */
     macAddress: string;
     /**
-     * The managed object reference ID of the network this interface is
-     * connected to.
+     * The managed object reference ID of the network this interface
+     * is connected to.
      */
     networkId: string;
     /**

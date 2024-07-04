@@ -62,7 +62,7 @@ import (
 //
 // ```
 //
-// [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
+// [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-host-client/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
 // [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
 type VirtualMachineSnapshot struct {
 	pulumi.CustomResourceState

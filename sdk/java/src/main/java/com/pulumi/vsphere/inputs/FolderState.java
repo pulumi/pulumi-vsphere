@@ -103,18 +103,12 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
     /**
      * The IDs of any tags to attach to this resource.
      * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
-     * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -274,9 +268,6 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-         * requires vCenter 6.0 or higher.
-         * 
          * @return builder
          * 
          */
@@ -288,9 +279,6 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-         * requires vCenter 6.0 or higher.
-         * 
          * @return builder
          * 
          */
@@ -300,9 +288,6 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags The IDs of any tags to attach to this resource.
-         * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-         * requires vCenter 6.0 or higher.
          * 
          * @return builder
          * 

@@ -41,9 +41,6 @@ type Folder struct {
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -114,9 +111,6 @@ type folderState struct {
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path *string `pulumi:"path"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -152,9 +146,6 @@ type FolderState struct {
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -194,9 +185,6 @@ type folderArgs struct {
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path string `pulumi:"path"`
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -233,9 +221,6 @@ type FolderArgs struct {
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringInput
 	// The IDs of any tags to attach to this resource.
-	//
-	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -366,9 +351,6 @@ func (o FolderOutput) Path() pulumi.StringOutput {
 }
 
 // The IDs of any tags to attach to this resource.
-//
-// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-// requires vCenter 6.0 or higher.
 func (o FolderOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

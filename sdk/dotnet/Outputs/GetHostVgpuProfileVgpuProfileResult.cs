@@ -19,22 +19,23 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool DiskSnapshotSupported;
         /// <summary>
-        /// Indicates whether the GPU plugin on this host is
-        /// capable of memory snapshots.
+        /// Indicates whether the GPU plugin on this host
+        /// is capable of memory snapshots.
         /// </summary>
         public readonly bool MemorySnapshotSupported;
         /// <summary>
-        /// Indicates whether the GPU plugin on this host is capable
-        /// of migration.
+        /// Indicates whether the GPU plugin on this host is
+        /// capable of migration.
         /// </summary>
         public readonly bool MigrateSupported;
         /// <summary>
-        /// Indicates whether the GPU plugin on this host is capable
-        /// of suspend-resume.
+        /// Indicates whether the GPU plugin on this host is
+        /// capable of suspend-resume.
         /// </summary>
         public readonly bool SuspendSupported;
         /// <summary>
-        /// Name of a particular vGPU available as a shared GPU device (vGPU profile).
+        /// Name of a particular vGPU available as a shared GPU device (vGPU
+        /// profile).
         /// </summary>
         public readonly string Vgpu;
 

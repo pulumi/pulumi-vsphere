@@ -11,9 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getDatastoreStats` data source can be used to retrieve the usage stats
-// of all vSphere datastore objects in a datacenter. This can then be used as a
-// standalone datasource to get information required as input to other data sources.
+// The `getDatastoreStats` data source can be used to retrieve the usage
+// stats of all vSphere datastore objects in a datacenter. This can then be used as
+// a standalone data source to get information required as input to other data
+// sources.
 //
 // ## Example Usage
 //
@@ -47,9 +48,8 @@ import (
 //
 // ```
 //
-// A usefull example of this datasource would be to determine the
-// datastore with the most free space. For example, in addition to
-// the above:
+// A useful example of this data source would be to determine the datastore with
+// the most free space. For example, in addition to the above:
 //
 // Create an `outputs.tf` like that:
 //
@@ -85,32 +85,33 @@ func GetDatastoreStats(ctx *pulumi.Context, args *GetDatastoreStatsArgs, opts ..
 
 // A collection of arguments for invoking getDatastoreStats.
 type GetDatastoreStatsArgs struct {
-	// A mapping of the capacity for all datastore in the datacenter
-	// , where the name of the datastore is used as key and the capacity as value.
+	// A mapping of the capacity for all datastore in the datacenter,
+	// where the name of the datastore is used as key and the capacity as value.
 	Capacity map[string]interface{} `pulumi:"capacity"`
-	// The [managed object reference ID][docs-about-morefs]
-	// of the datacenter the datastores are located in. For default datacenters, use
-	// the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the
+	// datastores are located in. For default datacenters, use the `id` attribute
+	// from an empty `Datacenter` data source.
 	//
 	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId string `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
-	// datacenter, where the name of the datastore is used as key and the free
-	// space as value.
+	// datacenter, where the name of the datastore is used as key and the free space
+	// as value.
 	FreeSpace map[string]interface{} `pulumi:"freeSpace"`
 }
 
 // A collection of values returned by getDatastoreStats.
 type GetDatastoreStatsResult struct {
-	// A mapping of the capacity for all datastore in the datacenter
-	// , where the name of the datastore is used as key and the capacity as value.
+	// A mapping of the capacity for all datastore in the datacenter,
+	// where the name of the datastore is used as key and the capacity as value.
 	Capacity map[string]interface{} `pulumi:"capacity"`
-	// The [managed object reference ID][docs-about-morefs]
-	// of the datacenter the datastores are located in.
+	// The [managed object reference ID][docs-about-morefs] of the
+	// datacenter the datastores are located in.
 	DatacenterId string `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
-	// datacenter, where the name of the datastore is used as key and the free
-	// space as value.
+	// datacenter, where the name of the datastore is used as key and the free space
+	// as value.
 	FreeSpace map[string]interface{} `pulumi:"freeSpace"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -131,18 +132,19 @@ func GetDatastoreStatsOutput(ctx *pulumi.Context, args GetDatastoreStatsOutputAr
 
 // A collection of arguments for invoking getDatastoreStats.
 type GetDatastoreStatsOutputArgs struct {
-	// A mapping of the capacity for all datastore in the datacenter
-	// , where the name of the datastore is used as key and the capacity as value.
+	// A mapping of the capacity for all datastore in the datacenter,
+	// where the name of the datastore is used as key and the capacity as value.
 	Capacity pulumi.MapInput `pulumi:"capacity"`
-	// The [managed object reference ID][docs-about-morefs]
-	// of the datacenter the datastores are located in. For default datacenters, use
-	// the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the
+	// datastores are located in. For default datacenters, use the `id` attribute
+	// from an empty `Datacenter` data source.
 	//
 	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
-	// datacenter, where the name of the datastore is used as key and the free
-	// space as value.
+	// datacenter, where the name of the datastore is used as key and the free space
+	// as value.
 	FreeSpace pulumi.MapInput `pulumi:"freeSpace"`
 }
 
@@ -165,21 +167,21 @@ func (o GetDatastoreStatsResultOutput) ToGetDatastoreStatsResultOutputWithContex
 	return o
 }
 
-// A mapping of the capacity for all datastore in the datacenter
-// , where the name of the datastore is used as key and the capacity as value.
+// A mapping of the capacity for all datastore in the datacenter,
+// where the name of the datastore is used as key and the capacity as value.
 func (o GetDatastoreStatsResultOutput) Capacity() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDatastoreStatsResult) map[string]interface{} { return v.Capacity }).(pulumi.MapOutput)
 }
 
-// The [managed object reference ID][docs-about-morefs]
-// of the datacenter the datastores are located in.
+// The [managed object reference ID][docs-about-morefs] of the
+// datacenter the datastores are located in.
 func (o GetDatastoreStatsResultOutput) DatacenterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatastoreStatsResult) string { return v.DatacenterId }).(pulumi.StringOutput)
 }
 
 // A mapping of the free space for each datastore in the
-// datacenter, where the name of the datastore is used as key and the free
-// space as value.
+// datacenter, where the name of the datastore is used as key and the free space
+// as value.
 func (o GetDatastoreStatsResultOutput) FreeSpace() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDatastoreStatsResult) map[string]interface{} { return v.FreeSpace }).(pulumi.MapOutput)
 }

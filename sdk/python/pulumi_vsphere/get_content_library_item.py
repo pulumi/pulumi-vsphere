@@ -79,13 +79,15 @@ def get_content_library_item(library_id: Optional[str] = None,
     The `ContentLibraryItem` data source can be used to discover the ID
     of a content library item.
 
-    > **NOTE:** This resource requires vCenter Server and is not available on
-    direct ESXi host connections.
+    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    host connections.
 
 
-    :param str library_id: The ID of the content library in which the item exists.
+    :param str library_id: The ID of the content library in which the item
+           exists.
     :param str name: The name of the content library item.
-    :param str type: The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+    :param str type: The type for the content library item. One of `ovf`,
+           `vm-template`, or `iso`
     """
     __args__ = dict()
     __args__['libraryId'] = library_id
@@ -110,12 +112,14 @@ def get_content_library_item_output(library_id: Optional[pulumi.Input[str]] = No
     The `ContentLibraryItem` data source can be used to discover the ID
     of a content library item.
 
-    > **NOTE:** This resource requires vCenter Server and is not available on
-    direct ESXi host connections.
+    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    host connections.
 
 
-    :param str library_id: The ID of the content library in which the item exists.
+    :param str library_id: The ID of the content library in which the item
+           exists.
     :param str name: The name of the content library item.
-    :param str type: The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+    :param str type: The type for the content library item. One of `ovf`,
+           `vm-template`, or `iso`
     """
     ...

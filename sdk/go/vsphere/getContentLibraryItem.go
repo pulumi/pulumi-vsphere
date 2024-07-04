@@ -14,8 +14,8 @@ import (
 // The `ContentLibraryItem` data source can be used to discover the ID
 // of a content library item.
 //
-// > **NOTE:** This resource requires vCenter Server and is not available on
-// direct ESXi host connections.
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// host connections.
 func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryItemArgs, opts ...pulumi.InvokeOption) (*LookupContentLibraryItemResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentLibraryItemResult
@@ -28,11 +28,13 @@ func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryIte
 
 // A collection of arguments for invoking getContentLibraryItem.
 type LookupContentLibraryItemArgs struct {
-	// The ID of the content library in which the item exists.
+	// The ID of the content library in which the item
+	// exists.
 	LibraryId string `pulumi:"libraryId"`
 	// The name of the content library item.
 	Name string `pulumi:"name"`
-	// The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+	// The type for the content library item. One of `ovf`,
+	// `vm-template`, or `iso`
 	Type string `pulumi:"type"`
 }
 
@@ -60,11 +62,13 @@ func LookupContentLibraryItemOutput(ctx *pulumi.Context, args LookupContentLibra
 
 // A collection of arguments for invoking getContentLibraryItem.
 type LookupContentLibraryItemOutputArgs struct {
-	// The ID of the content library in which the item exists.
+	// The ID of the content library in which the item
+	// exists.
 	LibraryId pulumi.StringInput `pulumi:"libraryId"`
 	// The name of the content library item.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The type for the content library item. One of `ovf`, `vm-template`, or `iso`
+	// The type for the content library item. One of `ovf`,
+	// `vm-template`, or `iso`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 

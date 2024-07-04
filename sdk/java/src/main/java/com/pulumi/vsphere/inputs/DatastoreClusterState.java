@@ -426,16 +426,12 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     /**
      * The IDs of any tags to attach to this resource.
      * 
-     * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
-     * 
-     * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -1041,8 +1037,6 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
-         * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
-         * 
          * @return builder
          * 
          */
@@ -1054,8 +1048,6 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
-         * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
-         * 
          * @return builder
          * 
          */
@@ -1065,8 +1057,6 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param tags The IDs of any tags to attach to this resource.
-         * 
-         * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
          * 
          * @return builder
          * 

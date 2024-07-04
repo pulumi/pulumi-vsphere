@@ -30,7 +30,7 @@ class NasDatastoreArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to mount the datastore on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
-               server or servers. Only one element should be present for NFS v3 but multiple
+               servers. Only one element should be present for NFS v3 but multiple
                can be present for NFS v4.1. Forces a new resource if changed.
         :param pulumi.Input[str] remote_path: The remote path of the mount point. Forces a new
                resource if changed.
@@ -104,7 +104,7 @@ class NasDatastoreArgs:
     def remote_hosts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The hostnames or IP addresses of the remote
-        server or servers. Only one element should be present for NFS v3 but multiple
+        servers. Only one element should be present for NFS v3 but multiple
         can be present for NFS v4.1. Forces a new resource if changed.
         """
         return pulumi.get(self, "remote_hosts")
@@ -303,7 +303,7 @@ class _NasDatastoreState:
         :param pulumi.Input[bool] protocol_endpoint: Indicates that this NAS volume is a protocol endpoint.
                This field is only populated if the host supports virtual datastores.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
-               server or servers. Only one element should be present for NFS v3 but multiple
+               servers. Only one element should be present for NFS v3 but multiple
                can be present for NFS v4.1. Forces a new resource if changed.
         :param pulumi.Input[str] remote_path: The remote path of the mount point. Forces a new
                resource if changed.
@@ -529,7 +529,7 @@ class _NasDatastoreState:
     def remote_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The hostnames or IP addresses of the remote
-        server or servers. Only one element should be present for NFS v3 but multiple
+        servers. Only one element should be present for NFS v3 but multiple
         can be present for NFS v4.1. Forces a new resource if changed.
         """
         return pulumi.get(self, "remote_hosts")
@@ -665,7 +665,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
-               server or servers. Only one element should be present for NFS v3 but multiple
+               servers. Only one element should be present for NFS v3 but multiple
                can be present for NFS v4.1. Forces a new resource if changed.
         :param pulumi.Input[str] remote_path: The remote path of the mount point. Forces a new
                resource if changed.
@@ -817,7 +817,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[bool] protocol_endpoint: Indicates that this NAS volume is a protocol endpoint.
                This field is only populated if the host supports virtual datastores.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
-               server or servers. Only one element should be present for NFS v3 but multiple
+               servers. Only one element should be present for NFS v3 but multiple
                can be present for NFS v4.1. Forces a new resource if changed.
         :param pulumi.Input[str] remote_path: The remote path of the mount point. Forces a new
                resource if changed.
@@ -981,7 +981,7 @@ class NasDatastore(pulumi.CustomResource):
     def remote_hosts(self) -> pulumi.Output[Sequence[str]]:
         """
         The hostnames or IP addresses of the remote
-        server or servers. Only one element should be present for NFS v3 but multiple
+        servers. Only one element should be present for NFS v3 but multiple
         can be present for NFS v4.1. Forces a new resource if changed.
         """
         return pulumi.get(self, "remote_hosts")

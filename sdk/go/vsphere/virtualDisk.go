@@ -49,7 +49,7 @@ type VirtualDisk struct {
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
 	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -129,7 +129,7 @@ type virtualDiskState struct {
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
 	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type *string `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -171,7 +171,7 @@ type VirtualDiskState struct {
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
 	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrInput
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -217,7 +217,7 @@ type virtualDiskArgs struct {
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
 	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type *string `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -260,7 +260,7 @@ type VirtualDiskArgs struct {
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
 	//
-	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrInput
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -403,7 +403,7 @@ func (o VirtualDiskOutput) Size() pulumi.IntOutput {
 // information on what each kind of disk provisioning policy means, click
 // [here][docs-vmware-vm-disk-provisioning].
 //
-// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 func (o VirtualDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

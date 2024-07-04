@@ -74,7 +74,8 @@ export interface GetHostPciDeviceArgs {
      */
     classId?: string;
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of
+     * a host.
      */
     hostId: string;
     /**
@@ -168,7 +169,8 @@ export interface GetHostPciDeviceOutputArgs {
      */
     classId?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of
+     * a host.
      */
     hostId: pulumi.Input<string>;
     /**

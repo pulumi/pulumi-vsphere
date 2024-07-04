@@ -227,7 +227,7 @@ class VmStoragePolicy(pulumi.CustomResource):
             ])
         ```
 
-        Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
+        Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
 
         ```python
         import pulumi
@@ -345,7 +345,7 @@ class VmStoragePolicy(pulumi.CustomResource):
             ])
         ```
 
-        Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
+        Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
 
         ```python
         import pulumi

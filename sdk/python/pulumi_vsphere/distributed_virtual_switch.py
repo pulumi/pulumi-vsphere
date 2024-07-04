@@ -181,8 +181,7 @@ class DistributedVirtualSwitchArgs:
                with the VDS. Can be one of `legacyFiltering` or `snooping`.
         :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which active flows are forced to be exported to the collector.
-        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-               later.
+        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6.
         :param pulumi.Input[int] netflow_collector_port: The port for the netflow collector.
         :param pulumi.Input[bool] netflow_enabled: Indicates whether to enable netflow on all ports.
         :param pulumi.Input[int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
@@ -201,8 +200,6 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
@@ -1086,8 +1083,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="netflowCollectorIpAddress")
     def netflow_collector_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-        later.
+        IP address for the netflow collector, using IPv4 or IPv6.
         """
         return pulumi.get(self, "netflow_collector_ip_address")
 
@@ -1293,8 +1289,6 @@ class DistributedVirtualSwitchArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -1743,8 +1737,7 @@ class _DistributedVirtualSwitchState:
                with the VDS. Can be one of `legacyFiltering` or `snooping`.
         :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which active flows are forced to be exported to the collector.
-        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-               later.
+        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6.
         :param pulumi.Input[int] netflow_collector_port: The port for the netflow collector.
         :param pulumi.Input[bool] netflow_enabled: Indicates whether to enable netflow on all ports.
         :param pulumi.Input[int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
@@ -1763,8 +1756,6 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
@@ -2664,8 +2655,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="netflowCollectorIpAddress")
     def netflow_collector_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-        later.
+        IP address for the netflow collector, using IPv4 or IPv6.
         """
         return pulumi.get(self, "netflow_collector_ip_address")
 
@@ -2871,8 +2861,6 @@ class _DistributedVirtualSwitchState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -3323,8 +3311,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                with the VDS. Can be one of `legacyFiltering` or `snooping`.
         :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which active flows are forced to be exported to the collector.
-        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-               later.
+        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6.
         :param pulumi.Input[int] netflow_collector_port: The port for the netflow collector.
         :param pulumi.Input[bool] netflow_enabled: Indicates whether to enable netflow on all ports.
         :param pulumi.Input[int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
@@ -3343,8 +3330,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchPvlanMappingArgs']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
@@ -3779,8 +3764,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                with the VDS. Can be one of `legacyFiltering` or `snooping`.
         :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which active flows are forced to be exported to the collector.
-        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-               later.
+        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the netflow collector, using IPv4 or IPv6.
         :param pulumi.Input[int] netflow_collector_port: The port for the netflow collector.
         :param pulumi.Input[bool] netflow_enabled: Indicates whether to enable netflow on all ports.
         :param pulumi.Input[int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
@@ -3799,8 +3783,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchPvlanMappingArgs']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-               
-               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
@@ -4390,8 +4372,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="netflowCollectorIpAddress")
     def netflow_collector_ip_address(self) -> pulumi.Output[Optional[str]]:
         """
-        IP address for the netflow collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed Switch Version 6.0 or
-        later.
+        IP address for the netflow collector, using IPv4 or IPv6.
         """
         return pulumi.get(self, "netflow_collector_ip_address")
 
@@ -4529,8 +4510,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
-
-        > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 

@@ -290,7 +290,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         For more information on managing snapshots and how they work in VMware, see
         [here][ext-vm-snapshot-management].
 
-        [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
+        [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-host-client/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
 
         > **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
         can contain the actual running state of the virtual machine, data for all disks
@@ -351,7 +351,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         For more information on managing snapshots and how they work in VMware, see
         [here][ext-vm-snapshot-management].
 
-        [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
+        [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-host-client/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
 
         > **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
         can contain the actual running state of the virtual machine, data for all disks

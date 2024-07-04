@@ -49,8 +49,9 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
+        /// 
         /// ### With Name Regular Expression
-        ///  
+        /// 
         ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,8 +121,9 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
+        /// 
         /// ### With Name Regular Expression
-        ///  
+        /// 
         ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -168,7 +170,8 @@ namespace Pulumi.VSphere
         public string? ClassId { get; set; }
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of a host.
+        /// The [managed object reference ID][docs-about-morefs] of
+        /// a host.
         /// </summary>
         [Input("hostId", required: true)]
         public string HostId { get; set; } = null!;
@@ -205,7 +208,8 @@ namespace Pulumi.VSphere
         public Input<string>? ClassId { get; set; }
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of a host.
+        /// The [managed object reference ID][docs-about-morefs] of
+        /// a host.
         /// </summary>
         [Input("hostId", required: true)]
         public Input<string> HostId { get; set; } = null!;

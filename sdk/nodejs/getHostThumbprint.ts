@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphereThumbprint` data source can be used to discover the host
- * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
- * resource. If the ESXi host is using a certificate chain, the first one returned
- * will be used to generate the thumbprint.
+ * The `vsphereThumbprint` data source can be used to discover the host thumbprint
+ * of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+ * the ESXi host is using a certificate chain, the first one returned will be used
+ * to generate the thumbprint.
  *
  * ## Example Usage
  *
@@ -36,8 +36,8 @@ export function getHostThumbprint(args: GetHostThumbprintArgs, opts?: pulumi.Inv
  */
 export interface GetHostThumbprintArgs {
     /**
-     * The address of the ESXi host to retrieve the
-     * thumbprint from.
+     * The address of the ESXi host to retrieve the thumbprint
+     * from.
      */
     address: string;
     /**
@@ -64,10 +64,10 @@ export interface GetHostThumbprintResult {
     readonly port?: string;
 }
 /**
- * The `vsphereThumbprint` data source can be used to discover the host
- * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
- * resource. If the ESXi host is using a certificate chain, the first one returned
- * will be used to generate the thumbprint.
+ * The `vsphereThumbprint` data source can be used to discover the host thumbprint
+ * of an ESXi host. This can be used when adding the `vsphere.Host` resource. If
+ * the ESXi host is using a certificate chain, the first one returned will be used
+ * to generate the thumbprint.
  *
  * ## Example Usage
  *
@@ -89,8 +89,8 @@ export function getHostThumbprintOutput(args: GetHostThumbprintOutputArgs, opts?
  */
 export interface GetHostThumbprintOutputArgs {
     /**
-     * The address of the ESXi host to retrieve the
-     * thumbprint from.
+     * The address of the ESXi host to retrieve the thumbprint
+     * from.
      */
     address: pulumi.Input<string>;
     /**
