@@ -163,14 +163,16 @@ tfgen_build_only:
 
 upstream:
 ifneq ("$(wildcard upstream)","")
-	scripts/upstream.sh "$@" apply
+	./upstream.sh init
 endif
 
 upstream.finalize:
-	scripts/upstream.sh "$@" end_rebase
+	echo "Deprecated: Use `./upstream.sh format_patches` instead"
+	scripts/upstream_old.sh "$@" end_rebase
 
 upstream.rebase:
-	scripts/upstream.sh "$@" start_rebase
+	echo "Deprecated: Use `./upstream.sh checkout` and `./upstream.sh rebase` instead"
+	scripts/upstream_old.sh "$@" start_rebase
 
 bin/pulumi-java-gen: .pulumi-java-gen.version
 	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
@@ -211,7 +213,7 @@ bin/linux-arm64/$(PROVIDER): TARGET := linux-arm64
 bin/darwin-amd64/$(PROVIDER): TARGET := darwin-amd64
 bin/darwin-arm64/$(PROVIDER): TARGET := darwin-arm64
 bin/windows-amd64/$(PROVIDER).exe: TARGET := windows-amd64
-bin/%/$(PROVIDER) bin/%/$(PROVIDER).exe: provider/cmd/$(PROVIDER)/schema-embed.json
+bin/%/$(PROVIDER) bin/%/$(PROVIDER).exe:
 	@# check the TARGET is set
 	test $(TARGET)
 	cd provider && \
