@@ -149,7 +149,7 @@ class EntityPermissions(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
                  __props__=None):
         """
         Create a EntityPermissions resource with the given unique name, props, and options.
@@ -160,7 +160,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the
                managed object type section
                [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]] permissions: The permissions to be given on this entity. Keep
                the permissions sorted alphabetically on `user_or_group` for a better user
                experience.
         """
@@ -189,7 +189,7 @@ class EntityPermissions(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -220,7 +220,7 @@ class EntityPermissions(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             entity_id: Optional[pulumi.Input[str]] = None,
             entity_type: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None) -> 'EntityPermissions':
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None) -> 'EntityPermissions':
         """
         Get an existing EntityPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -233,7 +233,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the
                managed object type section
                [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]] permissions: The permissions to be given on this entity. Keep
                the permissions sorted alphabetically on `user_or_group` for a better user
                experience.
         """

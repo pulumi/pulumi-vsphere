@@ -134,7 +134,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ComputeClusterVmDependencyRule(String name) {
+    public ComputeClusterVmDependencyRule(java.lang.String name) {
         this(name, ComputeClusterVmDependencyRuleArgs.Empty);
     }
     /**
@@ -142,7 +142,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ComputeClusterVmDependencyRule(String name, ComputeClusterVmDependencyRuleArgs args) {
+    public ComputeClusterVmDependencyRule(java.lang.String name, ComputeClusterVmDependencyRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -151,15 +151,22 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ComputeClusterVmDependencyRule(String name, ComputeClusterVmDependencyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, args == null ? ComputeClusterVmDependencyRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ComputeClusterVmDependencyRule(java.lang.String name, ComputeClusterVmDependencyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ComputeClusterVmDependencyRule(String name, Output<String> id, @Nullable ComputeClusterVmDependencyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, state, makeResourceOptions(options, id));
+    private ComputeClusterVmDependencyRule(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmDependencyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ComputeClusterVmDependencyRuleArgs makeArgs(ComputeClusterVmDependencyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ComputeClusterVmDependencyRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -175,7 +182,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ComputeClusterVmDependencyRule get(String name, Output<String> id, @Nullable ComputeClusterVmDependencyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ComputeClusterVmDependencyRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmDependencyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ComputeClusterVmDependencyRule(name, id, state, options);
     }
 }

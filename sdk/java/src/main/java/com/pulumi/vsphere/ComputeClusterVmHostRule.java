@@ -154,7 +154,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ComputeClusterVmHostRule(String name) {
+    public ComputeClusterVmHostRule(java.lang.String name) {
         this(name, ComputeClusterVmHostRuleArgs.Empty);
     }
     /**
@@ -162,7 +162,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ComputeClusterVmHostRule(String name, ComputeClusterVmHostRuleArgs args) {
+    public ComputeClusterVmHostRule(java.lang.String name, ComputeClusterVmHostRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -171,15 +171,22 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ComputeClusterVmHostRule(String name, ComputeClusterVmHostRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", name, args == null ? ComputeClusterVmHostRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ComputeClusterVmHostRule(java.lang.String name, ComputeClusterVmHostRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ComputeClusterVmHostRule(String name, Output<String> id, @Nullable ComputeClusterVmHostRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", name, state, makeResourceOptions(options, id));
+    private ComputeClusterVmHostRule(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmHostRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ComputeClusterVmHostRuleArgs makeArgs(ComputeClusterVmHostRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ComputeClusterVmHostRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -195,7 +202,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ComputeClusterVmHostRule get(String name, Output<String> id, @Nullable ComputeClusterVmHostRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ComputeClusterVmHostRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmHostRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ComputeClusterVmHostRule(name, id, state, options);
     }
 }
