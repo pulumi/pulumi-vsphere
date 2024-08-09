@@ -267,7 +267,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VmfsDatastore(String name) {
+    public VmfsDatastore(java.lang.String name) {
         this(name, VmfsDatastoreArgs.Empty);
     }
     /**
@@ -275,7 +275,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VmfsDatastore(String name, VmfsDatastoreArgs args) {
+    public VmfsDatastore(java.lang.String name, VmfsDatastoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -284,15 +284,22 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VmfsDatastore(String name, VmfsDatastoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vmfsDatastore:VmfsDatastore", name, args == null ? VmfsDatastoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VmfsDatastore(java.lang.String name, VmfsDatastoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vmfsDatastore:VmfsDatastore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VmfsDatastore(String name, Output<String> id, @Nullable VmfsDatastoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vmfsDatastore:VmfsDatastore", name, state, makeResourceOptions(options, id));
+    private VmfsDatastore(java.lang.String name, Output<java.lang.String> id, @Nullable VmfsDatastoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vmfsDatastore:VmfsDatastore", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VmfsDatastoreArgs makeArgs(VmfsDatastoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VmfsDatastoreArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -308,7 +315,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VmfsDatastore get(String name, Output<String> id, @Nullable VmfsDatastoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VmfsDatastore get(java.lang.String name, Output<java.lang.String> id, @Nullable VmfsDatastoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VmfsDatastore(name, id, state, options);
     }
 }

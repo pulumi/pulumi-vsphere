@@ -200,7 +200,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Datacenter(String name) {
+    public Datacenter(java.lang.String name) {
         this(name, DatacenterArgs.Empty);
     }
     /**
@@ -208,7 +208,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Datacenter(String name, @Nullable DatacenterArgs args) {
+    public Datacenter(java.lang.String name, @Nullable DatacenterArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,15 +217,22 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Datacenter(String name, @Nullable DatacenterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/datacenter:Datacenter", name, args == null ? DatacenterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Datacenter(java.lang.String name, @Nullable DatacenterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/datacenter:Datacenter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Datacenter(String name, Output<String> id, @Nullable DatacenterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/datacenter:Datacenter", name, state, makeResourceOptions(options, id));
+    private Datacenter(java.lang.String name, Output<java.lang.String> id, @Nullable DatacenterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/datacenter:Datacenter", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DatacenterArgs makeArgs(@Nullable DatacenterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatacenterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -241,7 +248,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Datacenter get(String name, Output<String> id, @Nullable DatacenterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Datacenter get(java.lang.String name, Output<java.lang.String> id, @Nullable DatacenterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Datacenter(name, id, state, options);
     }
 }

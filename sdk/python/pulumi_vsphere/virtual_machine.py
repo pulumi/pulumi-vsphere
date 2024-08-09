@@ -2646,8 +2646,8 @@ class VirtualMachine(pulumi.CustomResource):
                  boot_delay: Optional[pulumi.Input[int]] = None,
                  boot_retry_delay: Optional[pulumi.Input[int]] = None,
                  boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
-                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]]]] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
+                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
+                 clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
                  cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
                  cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
                  cpu_limit: Optional[pulumi.Input[int]] = None,
@@ -2659,7 +2659,7 @@ class VirtualMachine(pulumi.CustomResource):
                  datacenter_id: Optional[pulumi.Input[str]] = None,
                  datastore_cluster_id: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
                  efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
                  enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -2686,10 +2686,10 @@ class VirtualMachine(pulumi.CustomResource):
                  migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
                  num_cores_per_socket: Optional[pulumi.Input[int]] = None,
                  num_cpus: Optional[pulumi.Input[int]] = None,
-                 ovf_deploy: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']]] = None,
+                 ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
                  replace_trigger: Optional[pulumi.Input[str]] = None,
@@ -2710,7 +2710,7 @@ class VirtualMachine(pulumi.CustomResource):
                  sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
-                 vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
+                 vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
                  vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
@@ -2726,8 +2726,8 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting the boot sequence.
         :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
         :param pulumi.Input[bool] boot_retry_enabled: If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]]] cdroms: A specification for a CDROM device on this virtual machine.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: A specification for cloning a virtual machine from template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]] cdroms: A specification for a CDROM device on this virtual machine.
+        :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: A specification for cloning a virtual machine from template.
         :param pulumi.Input[bool] cpu_hot_add_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[bool] cpu_hot_remove_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
@@ -2741,7 +2741,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
         :param pulumi.Input[str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
                disks that are created without datastores.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on this virtual machine.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[bool] enable_logging: Enable logging on this virtual machine.
@@ -2773,11 +2773,11 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
         :param pulumi.Input[str] name: The name of this virtual machine.
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
         :param pulumi.Input[int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
                must be evenly divisible by this value.
         :param pulumi.Input[int] num_cpus: The number of virtual processors to assign to this virtual machine.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
+        :param pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: A list of PCI passthrough devices
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
@@ -2798,7 +2798,7 @@ class VirtualMachine(pulumi.CustomResource):
                setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
+        :param pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
         :param pulumi.Input[bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
                I/O Virtualization (AMD-Vi or IOMMU), is enabled.
@@ -2837,8 +2837,8 @@ class VirtualMachine(pulumi.CustomResource):
                  boot_delay: Optional[pulumi.Input[int]] = None,
                  boot_retry_delay: Optional[pulumi.Input[int]] = None,
                  boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
-                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]]]] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
+                 cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
+                 clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
                  cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
                  cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
                  cpu_limit: Optional[pulumi.Input[int]] = None,
@@ -2850,7 +2850,7 @@ class VirtualMachine(pulumi.CustomResource):
                  datacenter_id: Optional[pulumi.Input[str]] = None,
                  datastore_cluster_id: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
                  efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
                  enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -2877,10 +2877,10 @@ class VirtualMachine(pulumi.CustomResource):
                  migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
                  num_cores_per_socket: Optional[pulumi.Input[int]] = None,
                  num_cpus: Optional[pulumi.Input[int]] = None,
-                 ovf_deploy: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']]] = None,
+                 ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
                  replace_trigger: Optional[pulumi.Input[str]] = None,
@@ -2901,7 +2901,7 @@ class VirtualMachine(pulumi.CustomResource):
                  sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
-                 vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
+                 vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
                  vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
@@ -3019,9 +3019,9 @@ class VirtualMachine(pulumi.CustomResource):
             boot_delay: Optional[pulumi.Input[int]] = None,
             boot_retry_delay: Optional[pulumi.Input[int]] = None,
             boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
-            cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]]]] = None,
+            cdroms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]]] = None,
             change_version: Optional[pulumi.Input[str]] = None,
-            clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
+            clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
             cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
             cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
             cpu_limit: Optional[pulumi.Input[int]] = None,
@@ -3034,7 +3034,7 @@ class VirtualMachine(pulumi.CustomResource):
             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
             datastore_id: Optional[pulumi.Input[str]] = None,
             default_ip_address: Optional[pulumi.Input[str]] = None,
-            disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
             efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
             enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
             enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -3064,10 +3064,10 @@ class VirtualMachine(pulumi.CustomResource):
             moid: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
             num_cores_per_socket: Optional[pulumi.Input[int]] = None,
             num_cpus: Optional[pulumi.Input[int]] = None,
-            ovf_deploy: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']]] = None,
+            ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
             pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             power_state: Optional[pulumi.Input[str]] = None,
             poweron_timeout: Optional[pulumi.Input[int]] = None,
@@ -3091,7 +3091,7 @@ class VirtualMachine(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
-            vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
+            vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
             vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vbs_enabled: Optional[pulumi.Input[bool]] = None,
             vmware_tools_status: Optional[pulumi.Input[str]] = None,
@@ -3112,9 +3112,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting the boot sequence.
         :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
         :param pulumi.Input[bool] boot_retry_enabled: If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]]] cdroms: A specification for a CDROM device on this virtual machine.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]]] cdroms: A specification for a CDROM device on this virtual machine.
         :param pulumi.Input[str] change_version: A unique identifier for a given version of the last configuration was applied.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']] clone: A specification for cloning a virtual machine from template.
+        :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: A specification for cloning a virtual machine from template.
         :param pulumi.Input[bool] cpu_hot_add_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[bool] cpu_hot_remove_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
@@ -3129,7 +3129,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
                disks that are created without datastores.
         :param pulumi.Input[str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on this virtual machine.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[bool] enable_logging: Enable logging on this virtual machine.
@@ -3164,11 +3164,11 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] moid: The managed object reference ID of the created virtual machine.
         :param pulumi.Input[str] name: The name of this virtual machine.
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
         :param pulumi.Input[int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
                must be evenly divisible by this value.
         :param pulumi.Input[int] num_cpus: The number of virtual processors to assign to this virtual machine.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
+        :param pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: A list of PCI passthrough devices
         :param pulumi.Input[str] power_state: A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
@@ -3191,7 +3191,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input[str] uuid: The UUID of the virtual machine. Also exposed as the `id` of the resource.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
+        :param pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
         :param pulumi.Input[bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
         :param pulumi.Input[str] vmware_tools_status: The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.

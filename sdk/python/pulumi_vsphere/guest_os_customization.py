@@ -194,7 +194,7 @@ class GuestOsCustomization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['GuestOsCustomizationSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['GuestOsCustomizationSpecArgs', 'GuestOsCustomizationSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -211,27 +211,27 @@ class GuestOsCustomization(pulumi.CustomResource):
         windows = vsphere.GuestOsCustomization("windows",
             name="windows",
             type="Windows",
-            spec=vsphere.GuestOsCustomizationSpecArgs(
-                windows_options=vsphere.GuestOsCustomizationSpecWindowsOptionsArgs(
-                    run_once_command_lists=[
+            spec={
+                "windows_options": {
+                    "run_once_command_lists": [
                         "command-1",
                         "command-2",
                     ],
-                    computer_name="windows",
-                    auto_logon=False,
-                    auto_logon_count=0,
-                    admin_password="VMware1!",
-                    time_zone=4,
-                    workgroup="workgroup",
-                ),
-            ))
+                    "computer_name": "windows",
+                    "auto_logon": False,
+                    "auto_logon_count": 0,
+                    "admin_password": "VMware1!",
+                    "time_zone": 4,
+                    "workgroup": "workgroup",
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the customization specification.
         :param pulumi.Input[str] name: The name of the customization specification is the unique identifier per vCenter Server instance.
-        :param pulumi.Input[pulumi.InputType['GuestOsCustomizationSpecArgs']] spec: Container object for the Guest OS properties about to be customized . See virtual machine customizations
+        :param pulumi.Input[Union['GuestOsCustomizationSpecArgs', 'GuestOsCustomizationSpecArgsDict']] spec: Container object for the Guest OS properties about to be customized . See virtual machine customizations
         :param pulumi.Input[str] type: The type of customization specification: One among: Windows, Linux.
         """
         ...
@@ -254,20 +254,20 @@ class GuestOsCustomization(pulumi.CustomResource):
         windows = vsphere.GuestOsCustomization("windows",
             name="windows",
             type="Windows",
-            spec=vsphere.GuestOsCustomizationSpecArgs(
-                windows_options=vsphere.GuestOsCustomizationSpecWindowsOptionsArgs(
-                    run_once_command_lists=[
+            spec={
+                "windows_options": {
+                    "run_once_command_lists": [
                         "command-1",
                         "command-2",
                     ],
-                    computer_name="windows",
-                    auto_logon=False,
-                    auto_logon_count=0,
-                    admin_password="VMware1!",
-                    time_zone=4,
-                    workgroup="workgroup",
-                ),
-            ))
+                    "computer_name": "windows",
+                    "auto_logon": False,
+                    "auto_logon_count": 0,
+                    "admin_password": "VMware1!",
+                    "time_zone": 4,
+                    "workgroup": "workgroup",
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -287,7 +287,7 @@ class GuestOsCustomization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['GuestOsCustomizationSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['GuestOsCustomizationSpecArgs', 'GuestOsCustomizationSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -322,7 +322,7 @@ class GuestOsCustomization(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             last_update_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['GuestOsCustomizationSpecArgs']]] = None,
+            spec: Optional[pulumi.Input[Union['GuestOsCustomizationSpecArgs', 'GuestOsCustomizationSpecArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'GuestOsCustomization':
         """
         Get an existing GuestOsCustomization resource's state with the given name, id, and optional extra
@@ -335,7 +335,7 @@ class GuestOsCustomization(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description for the customization specification.
         :param pulumi.Input[str] last_update_time: The time of last modification to the customization specification.
         :param pulumi.Input[str] name: The name of the customization specification is the unique identifier per vCenter Server instance.
-        :param pulumi.Input[pulumi.InputType['GuestOsCustomizationSpecArgs']] spec: Container object for the Guest OS properties about to be customized . See virtual machine customizations
+        :param pulumi.Input[Union['GuestOsCustomizationSpecArgs', 'GuestOsCustomizationSpecArgsDict']] spec: Container object for the Guest OS properties about to be customized . See virtual machine customizations
         :param pulumi.Input[str] type: The type of customization specification: One among: Windows, Linux.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

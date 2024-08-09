@@ -329,7 +329,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Vnic(String name) {
+    public Vnic(java.lang.String name) {
         this(name, VnicArgs.Empty);
     }
     /**
@@ -337,7 +337,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Vnic(String name, VnicArgs args) {
+    public Vnic(java.lang.String name, VnicArgs args) {
         this(name, args, null);
     }
     /**
@@ -346,15 +346,22 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Vnic(String name, VnicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vnic:Vnic", name, args == null ? VnicArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Vnic(java.lang.String name, VnicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vnic:Vnic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Vnic(String name, Output<String> id, @Nullable VnicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vnic:Vnic", name, state, makeResourceOptions(options, id));
+    private Vnic(java.lang.String name, Output<java.lang.String> id, @Nullable VnicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vnic:Vnic", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VnicArgs makeArgs(VnicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VnicArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -370,7 +377,7 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Vnic get(String name, Output<String> id, @Nullable VnicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Vnic get(java.lang.String name, Output<java.lang.String> id, @Nullable VnicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Vnic(name, id, state, options);
     }
 }

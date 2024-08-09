@@ -1402,7 +1402,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DistributedVirtualSwitch(String name) {
+    public DistributedVirtualSwitch(java.lang.String name) {
         this(name, DistributedVirtualSwitchArgs.Empty);
     }
     /**
@@ -1410,7 +1410,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DistributedVirtualSwitch(String name, DistributedVirtualSwitchArgs args) {
+    public DistributedVirtualSwitch(java.lang.String name, DistributedVirtualSwitchArgs args) {
         this(name, args, null);
     }
     /**
@@ -1419,15 +1419,22 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DistributedVirtualSwitch(String name, DistributedVirtualSwitchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, args == null ? DistributedVirtualSwitchArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DistributedVirtualSwitch(java.lang.String name, DistributedVirtualSwitchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DistributedVirtualSwitch(String name, Output<String> id, @Nullable DistributedVirtualSwitchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, state, makeResourceOptions(options, id));
+    private DistributedVirtualSwitch(java.lang.String name, Output<java.lang.String> id, @Nullable DistributedVirtualSwitchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DistributedVirtualSwitchArgs makeArgs(DistributedVirtualSwitchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DistributedVirtualSwitchArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1443,7 +1450,7 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DistributedVirtualSwitch get(String name, Output<String> id, @Nullable DistributedVirtualSwitchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DistributedVirtualSwitch get(java.lang.String name, Output<java.lang.String> id, @Nullable DistributedVirtualSwitchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DistributedVirtualSwitch(name, id, state, options);
     }
 }

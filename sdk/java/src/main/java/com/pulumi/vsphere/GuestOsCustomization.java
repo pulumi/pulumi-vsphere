@@ -163,7 +163,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GuestOsCustomization(String name) {
+    public GuestOsCustomization(java.lang.String name) {
         this(name, GuestOsCustomizationArgs.Empty);
     }
     /**
@@ -171,7 +171,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GuestOsCustomization(String name, GuestOsCustomizationArgs args) {
+    public GuestOsCustomization(java.lang.String name, GuestOsCustomizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -180,15 +180,22 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GuestOsCustomization(String name, GuestOsCustomizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/guestOsCustomization:GuestOsCustomization", name, args == null ? GuestOsCustomizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GuestOsCustomization(java.lang.String name, GuestOsCustomizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/guestOsCustomization:GuestOsCustomization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GuestOsCustomization(String name, Output<String> id, @Nullable GuestOsCustomizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/guestOsCustomization:GuestOsCustomization", name, state, makeResourceOptions(options, id));
+    private GuestOsCustomization(java.lang.String name, Output<java.lang.String> id, @Nullable GuestOsCustomizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/guestOsCustomization:GuestOsCustomization", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GuestOsCustomizationArgs makeArgs(GuestOsCustomizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GuestOsCustomizationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -204,7 +211,7 @@ public class GuestOsCustomization extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GuestOsCustomization get(String name, Output<String> id, @Nullable GuestOsCustomizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GuestOsCustomization get(java.lang.String name, Output<java.lang.String> id, @Nullable GuestOsCustomizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GuestOsCustomization(name, id, state, options);
     }
 }

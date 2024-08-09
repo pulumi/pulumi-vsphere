@@ -197,7 +197,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VirtualMachineSnapshot(String name) {
+    public VirtualMachineSnapshot(java.lang.String name) {
         this(name, VirtualMachineSnapshotArgs.Empty);
     }
     /**
@@ -205,7 +205,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VirtualMachineSnapshot(String name, VirtualMachineSnapshotArgs args) {
+    public VirtualMachineSnapshot(java.lang.String name, VirtualMachineSnapshotArgs args) {
         this(name, args, null);
     }
     /**
@@ -214,15 +214,22 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VirtualMachineSnapshot(String name, VirtualMachineSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, args == null ? VirtualMachineSnapshotArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VirtualMachineSnapshot(java.lang.String name, VirtualMachineSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VirtualMachineSnapshot(String name, Output<String> id, @Nullable VirtualMachineSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, state, makeResourceOptions(options, id));
+    private VirtualMachineSnapshot(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualMachineSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VirtualMachineSnapshotArgs makeArgs(VirtualMachineSnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VirtualMachineSnapshotArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -238,7 +245,7 @@ public class VirtualMachineSnapshot extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VirtualMachineSnapshot get(String name, Output<String> id, @Nullable VirtualMachineSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VirtualMachineSnapshot get(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualMachineSnapshotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VirtualMachineSnapshot(name, id, state, options);
     }
 }

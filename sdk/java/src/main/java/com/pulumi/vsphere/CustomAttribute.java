@@ -53,7 +53,7 @@ public class CustomAttribute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomAttribute(String name) {
+    public CustomAttribute(java.lang.String name) {
         this(name, CustomAttributeArgs.Empty);
     }
     /**
@@ -61,7 +61,7 @@ public class CustomAttribute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomAttribute(String name, @Nullable CustomAttributeArgs args) {
+    public CustomAttribute(java.lang.String name, @Nullable CustomAttributeArgs args) {
         this(name, args, null);
     }
     /**
@@ -70,15 +70,22 @@ public class CustomAttribute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomAttribute(String name, @Nullable CustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/customAttribute:CustomAttribute", name, args == null ? CustomAttributeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomAttribute(java.lang.String name, @Nullable CustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/customAttribute:CustomAttribute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomAttribute(String name, Output<String> id, @Nullable CustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/customAttribute:CustomAttribute", name, state, makeResourceOptions(options, id));
+    private CustomAttribute(java.lang.String name, Output<java.lang.String> id, @Nullable CustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/customAttribute:CustomAttribute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomAttributeArgs makeArgs(@Nullable CustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomAttributeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -94,7 +101,7 @@ public class CustomAttribute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomAttribute get(String name, Output<String> id, @Nullable CustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomAttribute get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomAttribute(name, id, state, options);
     }
 }

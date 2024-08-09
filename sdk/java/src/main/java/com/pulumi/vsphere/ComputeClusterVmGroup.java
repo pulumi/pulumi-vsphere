@@ -82,7 +82,7 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ComputeClusterVmGroup(String name) {
+    public ComputeClusterVmGroup(java.lang.String name) {
         this(name, ComputeClusterVmGroupArgs.Empty);
     }
     /**
@@ -90,7 +90,7 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ComputeClusterVmGroup(String name, ComputeClusterVmGroupArgs args) {
+    public ComputeClusterVmGroup(java.lang.String name, ComputeClusterVmGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -99,15 +99,22 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ComputeClusterVmGroup(String name, ComputeClusterVmGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup", name, args == null ? ComputeClusterVmGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ComputeClusterVmGroup(java.lang.String name, ComputeClusterVmGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ComputeClusterVmGroup(String name, Output<String> id, @Nullable ComputeClusterVmGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup", name, state, makeResourceOptions(options, id));
+    private ComputeClusterVmGroup(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ComputeClusterVmGroupArgs makeArgs(ComputeClusterVmGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ComputeClusterVmGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -123,7 +130,7 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ComputeClusterVmGroup get(String name, Output<String> id, @Nullable ComputeClusterVmGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ComputeClusterVmGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ComputeClusterVmGroup(name, id, state, options);
     }
 }

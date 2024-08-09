@@ -341,7 +341,7 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Supervisor(String name) {
+    public Supervisor(java.lang.String name) {
         this(name, SupervisorArgs.Empty);
     }
     /**
@@ -349,7 +349,7 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Supervisor(String name, SupervisorArgs args) {
+    public Supervisor(java.lang.String name, SupervisorArgs args) {
         this(name, args, null);
     }
     /**
@@ -358,15 +358,22 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Supervisor(String name, SupervisorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/supervisor:Supervisor", name, args == null ? SupervisorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Supervisor(java.lang.String name, SupervisorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/supervisor:Supervisor", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Supervisor(String name, Output<String> id, @Nullable SupervisorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/supervisor:Supervisor", name, state, makeResourceOptions(options, id));
+    private Supervisor(java.lang.String name, Output<java.lang.String> id, @Nullable SupervisorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/supervisor:Supervisor", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SupervisorArgs makeArgs(SupervisorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SupervisorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -382,7 +389,7 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Supervisor get(String name, Output<String> id, @Nullable SupervisorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Supervisor get(java.lang.String name, Output<java.lang.String> id, @Nullable SupervisorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Supervisor(name, id, state, options);
     }
 }

@@ -278,13 +278,13 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
                 num_cpus=1,
                 memory=1024,
                 guest_id="otherLinux64Guest",
-                network_interfaces=[vsphere.VirtualMachineNetworkInterfaceArgs(
-                    network_id=network.id,
-                )],
-                disks=[vsphere.VirtualMachineDiskArgs(
-                    label="disk0",
-                    size=20,
-                )]))
+                network_interfaces=[{
+                    "network_id": network.id,
+                }],
+                disks=[{
+                    "label": "disk0",
+                    "size": 20,
+                }]))
         vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
             name="vm-affinity-rule",
             compute_cluster_id=cluster.id,
@@ -394,13 +394,13 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
                 num_cpus=1,
                 memory=1024,
                 guest_id="otherLinux64Guest",
-                network_interfaces=[vsphere.VirtualMachineNetworkInterfaceArgs(
-                    network_id=network.id,
-                )],
-                disks=[vsphere.VirtualMachineDiskArgs(
-                    label="disk0",
-                    size=20,
-                )]))
+                network_interfaces=[{
+                    "network_id": network.id,
+                }],
+                disks=[{
+                    "label": "disk0",
+                    "size": 20,
+                }]))
         vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule",
             name="vm-affinity-rule",
             compute_cluster_id=cluster.id,

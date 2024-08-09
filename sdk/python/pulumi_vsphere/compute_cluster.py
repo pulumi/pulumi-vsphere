@@ -2498,7 +2498,7 @@ class ComputeCluster(pulumi.CustomResource):
                  ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
                  ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
                  host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
-                 host_image: Optional[pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']]] = None,
+                 host_image: Optional[pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
                  host_managed: Optional[pulumi.Input[bool]] = None,
                  host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2510,16 +2510,16 @@ class ComputeCluster(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vsan_compression_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dedup_enabled: Optional[pulumi.Input[bool]] = None,
-                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]]] = None,
+                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
                  vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
                  vsan_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
-                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]]] = None,
+                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
                  vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vsan_stretched_cluster: Optional[pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']]] = None,
+                 vsan_stretched_cluster: Optional[pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
                  vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -2617,7 +2617,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
                proceeding with the next priority.
         :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
-        :param pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']] host_image: Details about the host image which should be applied to the cluster.
+        :param pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[bool] host_managed: Must be set if cluster enrollment is managed from host resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
@@ -2631,16 +2631,16 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
         :param pulumi.Input[bool] vsan_dit_encryption_enabled: Whether the vSAN data-in-transit encryption is enabled for the cluster.
         :param pulumi.Input[int] vsan_dit_rekey_interval: When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
         :param pulumi.Input[bool] vsan_enabled: Whether the vSAN service is enabled for the cluster.
         :param pulumi.Input[bool] vsan_esa_enabled: Whether the vSAN ESA service is enabled for the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]] vsan_fault_domains: The configuration for vSAN fault domains.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]] vsan_fault_domains: The configuration for vSAN fault domains.
         :param pulumi.Input[bool] vsan_network_diagnostic_mode_enabled: Whether the vSAN network diagnostic mode is enabled for the cluster.
         :param pulumi.Input[bool] vsan_performance_enabled: Whether the vSAN performance service is enabled for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vsan_remote_datastore_ids: The managed object IDs of the vSAN datastore to be mounted on the cluster.
-        :param pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']] vsan_stretched_cluster: The configuration for stretched cluster.
+        :param pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']] vsan_stretched_cluster: The configuration for stretched cluster.
         :param pulumi.Input[bool] vsan_unmap_enabled: Whether the vSAN unmap service is enabled for the cluster.
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Whether the vSAN verbose mode is enabled for the cluster.
         """
@@ -2712,7 +2712,7 @@ class ComputeCluster(pulumi.CustomResource):
                  ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
                  ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
                  host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
-                 host_image: Optional[pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']]] = None,
+                 host_image: Optional[pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
                  host_managed: Optional[pulumi.Input[bool]] = None,
                  host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2724,16 +2724,16 @@ class ComputeCluster(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vsan_compression_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dedup_enabled: Optional[pulumi.Input[bool]] = None,
-                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]]] = None,
+                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
                  vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
                  vsan_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
-                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]]] = None,
+                 vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
                  vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vsan_stretched_cluster: Optional[pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']]] = None,
+                 vsan_stretched_cluster: Optional[pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
                  vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -2872,7 +2872,7 @@ class ComputeCluster(pulumi.CustomResource):
             ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
             ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
             host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
-            host_image: Optional[pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']]] = None,
+            host_image: Optional[pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']]] = None,
             host_managed: Optional[pulumi.Input[bool]] = None,
             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -2885,16 +2885,16 @@ class ComputeCluster(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vsan_compression_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_dedup_enabled: Optional[pulumi.Input[bool]] = None,
-            vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]]] = None,
+            vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]]] = None,
             vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
             vsan_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_esa_enabled: Optional[pulumi.Input[bool]] = None,
-            vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]]] = None,
+            vsan_fault_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]]] = None,
             vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            vsan_stretched_cluster: Optional[pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']]] = None,
+            vsan_stretched_cluster: Optional[pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']]] = None,
             vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
             vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None) -> 'ComputeCluster':
         """
@@ -2994,7 +2994,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
                proceeding with the next priority.
         :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
-        :param pulumi.Input[pulumi.InputType['ComputeClusterHostImageArgs']] host_image: Details about the host image which should be applied to the cluster.
+        :param pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[bool] host_managed: Must be set if cluster enrollment is managed from host resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
@@ -3013,16 +3013,16 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
         :param pulumi.Input[bool] vsan_dit_encryption_enabled: Whether the vSAN data-in-transit encryption is enabled for the cluster.
         :param pulumi.Input[int] vsan_dit_rekey_interval: When vsan_dit_encryption_enabled is enabled, sets the rekey interval of data-in-transit encryption (in minutes).
         :param pulumi.Input[bool] vsan_enabled: Whether the vSAN service is enabled for the cluster.
         :param pulumi.Input[bool] vsan_esa_enabled: Whether the vSAN ESA service is enabled for the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanFaultDomainArgs']]]] vsan_fault_domains: The configuration for vSAN fault domains.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanFaultDomainArgs', 'ComputeClusterVsanFaultDomainArgsDict']]]] vsan_fault_domains: The configuration for vSAN fault domains.
         :param pulumi.Input[bool] vsan_network_diagnostic_mode_enabled: Whether the vSAN network diagnostic mode is enabled for the cluster.
         :param pulumi.Input[bool] vsan_performance_enabled: Whether the vSAN performance service is enabled for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vsan_remote_datastore_ids: The managed object IDs of the vSAN datastore to be mounted on the cluster.
-        :param pulumi.Input[pulumi.InputType['ComputeClusterVsanStretchedClusterArgs']] vsan_stretched_cluster: The configuration for stretched cluster.
+        :param pulumi.Input[Union['ComputeClusterVsanStretchedClusterArgs', 'ComputeClusterVsanStretchedClusterArgsDict']] vsan_stretched_cluster: The configuration for stretched cluster.
         :param pulumi.Input[bool] vsan_unmap_enabled: Whether the vSAN unmap service is enabled for the cluster.
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Whether the vSAN verbose mode is enabled for the cluster.
         """

@@ -216,7 +216,7 @@ public class File extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public File(String name) {
+    public File(java.lang.String name) {
         this(name, FileArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public File(String name, FileArgs args) {
+    public File(java.lang.String name, FileArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,15 +233,22 @@ public class File extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public File(String name, FileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/file:File", name, args == null ? FileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public File(java.lang.String name, FileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/file:File", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private File(String name, Output<String> id, @Nullable FileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/file:File", name, state, makeResourceOptions(options, id));
+    private File(java.lang.String name, Output<java.lang.String> id, @Nullable FileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/file:File", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FileArgs makeArgs(FileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FileArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +264,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static File get(String name, Output<String> id, @Nullable FileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static File get(java.lang.String name, Output<java.lang.String> id, @Nullable FileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new File(name, id, state, options);
     }
 }

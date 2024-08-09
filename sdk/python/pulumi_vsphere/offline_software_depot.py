@@ -142,7 +142,7 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OfflineSoftwareDepotComponentArgs']]]]] = None,
+            components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OfflineSoftwareDepotComponentArgs', 'OfflineSoftwareDepotComponentArgsDict']]]]] = None,
             location: Optional[pulumi.Input[str]] = None) -> 'OfflineSoftwareDepot':
         """
         Get an existing OfflineSoftwareDepot resource's state with the given name, id, and optional extra
@@ -151,7 +151,7 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OfflineSoftwareDepotComponentArgs']]]] components: The list of custom components in the depot.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OfflineSoftwareDepotComponentArgs', 'OfflineSoftwareDepotComponentArgsDict']]]] components: The list of custom components in the depot.
         :param pulumi.Input[str] location: The URL where the depot source is hosted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -257,7 +257,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HaVmOverride(String name) {
+    public HaVmOverride(java.lang.String name) {
         this(name, HaVmOverrideArgs.Empty);
     }
     /**
@@ -265,7 +265,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HaVmOverride(String name, HaVmOverrideArgs args) {
+    public HaVmOverride(java.lang.String name, HaVmOverrideArgs args) {
         this(name, args, null);
     }
     /**
@@ -274,15 +274,22 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HaVmOverride(String name, HaVmOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/haVmOverride:HaVmOverride", name, args == null ? HaVmOverrideArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HaVmOverride(java.lang.String name, HaVmOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/haVmOverride:HaVmOverride", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HaVmOverride(String name, Output<String> id, @Nullable HaVmOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/haVmOverride:HaVmOverride", name, state, makeResourceOptions(options, id));
+    private HaVmOverride(java.lang.String name, Output<java.lang.String> id, @Nullable HaVmOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/haVmOverride:HaVmOverride", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HaVmOverrideArgs makeArgs(HaVmOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HaVmOverrideArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -298,7 +305,7 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HaVmOverride get(String name, Output<String> id, @Nullable HaVmOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HaVmOverride get(java.lang.String name, Output<java.lang.String> id, @Nullable HaVmOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HaVmOverride(name, id, state, options);
     }
 }
