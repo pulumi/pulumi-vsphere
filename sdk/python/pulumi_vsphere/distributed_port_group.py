@@ -1696,7 +1696,7 @@ class DistributedPortGroup(pulumi.CustomResource):
                  uplink_teaming_override_allowed: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[int]] = None,
                  vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
-                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]]] = None,
+                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
                  __props__=None):
         """
         Create a DistributedPortGroup resource with the given unique name, props, and options.
@@ -1775,7 +1775,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
         :param pulumi.Input[int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[bool] vlan_override_allowed: Allow the VLAN configuration on a port to override those on the portgroup.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         ...
     @overload
@@ -1845,7 +1845,7 @@ class DistributedPortGroup(pulumi.CustomResource):
                  uplink_teaming_override_allowed: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[int]] = None,
                  vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
-                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]]] = None,
+                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1962,7 +1962,7 @@ class DistributedPortGroup(pulumi.CustomResource):
             uplink_teaming_override_allowed: Optional[pulumi.Input[bool]] = None,
             vlan_id: Optional[pulumi.Input[int]] = None,
             vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
-            vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]]] = None) -> 'DistributedPortGroup':
+            vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None) -> 'DistributedPortGroup':
         """
         Get an existing DistributedPortGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2046,7 +2046,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
         :param pulumi.Input[int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[bool] vlan_override_allowed: Allow the VLAN configuration on a port to override those on the portgroup.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -524,14 +524,14 @@ class Supervisor(pulumi.CustomResource):
                  content_library: Optional[pulumi.Input[str]] = None,
                  dvs_uuid: Optional[pulumi.Input[str]] = None,
                  edge_cluster: Optional[pulumi.Input[str]] = None,
-                 egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorEgressCidrArgs']]]]] = None,
-                 ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorIngressCidrArgs']]]]] = None,
+                 egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
+                 ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
                  main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 management_network: Optional[pulumi.Input[pulumi.InputType['SupervisorManagementNetworkArgs']]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorNamespaceArgs']]]]] = None,
-                 pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorPodCidrArgs']]]]] = None,
+                 management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
+                 pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
                  search_domains: Optional[pulumi.Input[str]] = None,
-                 service_cidr: Optional[pulumi.Input[pulumi.InputType['SupervisorServiceCidrArgs']]] = None,
+                 service_cidr: Optional[pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
                  sizing_hint: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
                  worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -562,35 +562,35 @@ class Supervisor(pulumi.CustomResource):
             edge_cluster="<edge_cluster_id>",
             dvs_uuid="<distributed_switch_uuid>",
             sizing_hint="MEDIUM",
-            management_network=vsphere.SupervisorManagementNetworkArgs(
-                network="<portgroup_id>",
-                subnet_mask="255.255.255.0",
-                starting_address="10.0.0.150",
-                gateway="10.0.0.250",
-                address_count=5,
-            ),
-            ingress_cidrs=[vsphere.SupervisorIngressCidrArgs(
-                address="10.10.10.0",
-                prefix=24,
-            )],
-            egress_cidrs=[vsphere.SupervisorEgressCidrArgs(
-                address="10.10.11.0",
-                prefix=24,
-            )],
-            pod_cidrs=[vsphere.SupervisorPodCidrArgs(
-                address="10.244.10.0",
-                prefix=23,
-            )],
-            service_cidr=vsphere.SupervisorServiceCidrArgs(
-                address="10.10.12.0",
-                prefix=24,
-            ),
+            management_network={
+                "network": "<portgroup_id>",
+                "subnet_mask": "255.255.255.0",
+                "starting_address": "10.0.0.150",
+                "gateway": "10.0.0.250",
+                "address_count": 5,
+            },
+            ingress_cidrs=[{
+                "address": "10.10.10.0",
+                "prefix": 24,
+            }],
+            egress_cidrs=[{
+                "address": "10.10.11.0",
+                "prefix": 24,
+            }],
+            pod_cidrs=[{
+                "address": "10.244.10.0",
+                "prefix": 23,
+            }],
+            service_cidr={
+                "address": "10.10.12.0",
+                "prefix": 24,
+            },
             search_domains="vsphere.local",
-            namespaces=[vsphere.SupervisorNamespaceArgs(
-                name="custom-namespace",
-                content_libraries=[],
-                vm_classes=[vm_class.id],
-            )])
+            namespaces=[{
+                "name": "custom-namespace",
+                "content_libraries": [],
+                "vm_classes": [vm_class.id],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -599,19 +599,19 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[str] content_library: The identifier of the subscribed content library.
         :param pulumi.Input[str] dvs_uuid: The UUID of the distributed switch.
         :param pulumi.Input[str] edge_cluster: The identifier of the NSX Edge Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorEgressCidrArgs']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorIngressCidrArgs']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] main_dns: The list of addresses of the primary DNS servers.
-        :param pulumi.Input[pulumi.InputType['SupervisorManagementNetworkArgs']] management_network: The configuration for the management network which the control plane VMs will be connected to.
+        :param pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']] management_network: The configuration for the management network which the control plane VMs will be connected to.
                * * `network` - ID of the network. (e.g. a distributed port group).
                * * `starting_address` - Starting address of the management network range.
                * * `subnet_mask` - Subnet mask.
                * * `gateway` - Gateway IP address.
                * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorNamespaceArgs']]]] namespaces: The list of namespaces to create in the Supervisor cluster
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorPodCidrArgs']]]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]] namespaces: The list of namespaces to create in the Supervisor cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
         :param pulumi.Input[str] search_domains: List of DNS search domains.
-        :param pulumi.Input[pulumi.InputType['SupervisorServiceCidrArgs']] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
+        :param pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
         :param pulumi.Input[str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[str] storage_policy: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
@@ -648,35 +648,35 @@ class Supervisor(pulumi.CustomResource):
             edge_cluster="<edge_cluster_id>",
             dvs_uuid="<distributed_switch_uuid>",
             sizing_hint="MEDIUM",
-            management_network=vsphere.SupervisorManagementNetworkArgs(
-                network="<portgroup_id>",
-                subnet_mask="255.255.255.0",
-                starting_address="10.0.0.150",
-                gateway="10.0.0.250",
-                address_count=5,
-            ),
-            ingress_cidrs=[vsphere.SupervisorIngressCidrArgs(
-                address="10.10.10.0",
-                prefix=24,
-            )],
-            egress_cidrs=[vsphere.SupervisorEgressCidrArgs(
-                address="10.10.11.0",
-                prefix=24,
-            )],
-            pod_cidrs=[vsphere.SupervisorPodCidrArgs(
-                address="10.244.10.0",
-                prefix=23,
-            )],
-            service_cidr=vsphere.SupervisorServiceCidrArgs(
-                address="10.10.12.0",
-                prefix=24,
-            ),
+            management_network={
+                "network": "<portgroup_id>",
+                "subnet_mask": "255.255.255.0",
+                "starting_address": "10.0.0.150",
+                "gateway": "10.0.0.250",
+                "address_count": 5,
+            },
+            ingress_cidrs=[{
+                "address": "10.10.10.0",
+                "prefix": 24,
+            }],
+            egress_cidrs=[{
+                "address": "10.10.11.0",
+                "prefix": 24,
+            }],
+            pod_cidrs=[{
+                "address": "10.244.10.0",
+                "prefix": 23,
+            }],
+            service_cidr={
+                "address": "10.10.12.0",
+                "prefix": 24,
+            },
             search_domains="vsphere.local",
-            namespaces=[vsphere.SupervisorNamespaceArgs(
-                name="custom-namespace",
-                content_libraries=[],
-                vm_classes=[vm_class.id],
-            )])
+            namespaces=[{
+                "name": "custom-namespace",
+                "content_libraries": [],
+                "vm_classes": [vm_class.id],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -698,14 +698,14 @@ class Supervisor(pulumi.CustomResource):
                  content_library: Optional[pulumi.Input[str]] = None,
                  dvs_uuid: Optional[pulumi.Input[str]] = None,
                  edge_cluster: Optional[pulumi.Input[str]] = None,
-                 egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorEgressCidrArgs']]]]] = None,
-                 ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorIngressCidrArgs']]]]] = None,
+                 egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
+                 ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
                  main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 management_network: Optional[pulumi.Input[pulumi.InputType['SupervisorManagementNetworkArgs']]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorNamespaceArgs']]]]] = None,
-                 pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorPodCidrArgs']]]]] = None,
+                 management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
+                 pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
                  search_domains: Optional[pulumi.Input[str]] = None,
-                 service_cidr: Optional[pulumi.Input[pulumi.InputType['SupervisorServiceCidrArgs']]] = None,
+                 service_cidr: Optional[pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
                  sizing_hint: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
                  worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -775,14 +775,14 @@ class Supervisor(pulumi.CustomResource):
             content_library: Optional[pulumi.Input[str]] = None,
             dvs_uuid: Optional[pulumi.Input[str]] = None,
             edge_cluster: Optional[pulumi.Input[str]] = None,
-            egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorEgressCidrArgs']]]]] = None,
-            ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorIngressCidrArgs']]]]] = None,
+            egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
+            ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
             main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            management_network: Optional[pulumi.Input[pulumi.InputType['SupervisorManagementNetworkArgs']]] = None,
-            namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorNamespaceArgs']]]]] = None,
-            pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorPodCidrArgs']]]]] = None,
+            management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
+            namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
+            pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
             search_domains: Optional[pulumi.Input[str]] = None,
-            service_cidr: Optional[pulumi.Input[pulumi.InputType['SupervisorServiceCidrArgs']]] = None,
+            service_cidr: Optional[pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
             sizing_hint: Optional[pulumi.Input[str]] = None,
             storage_policy: Optional[pulumi.Input[str]] = None,
             worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Supervisor':
@@ -797,19 +797,19 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[str] content_library: The identifier of the subscribed content library.
         :param pulumi.Input[str] dvs_uuid: The UUID of the distributed switch.
         :param pulumi.Input[str] edge_cluster: The identifier of the NSX Edge Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorEgressCidrArgs']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorIngressCidrArgs']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] main_dns: The list of addresses of the primary DNS servers.
-        :param pulumi.Input[pulumi.InputType['SupervisorManagementNetworkArgs']] management_network: The configuration for the management network which the control plane VMs will be connected to.
+        :param pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']] management_network: The configuration for the management network which the control plane VMs will be connected to.
                * * `network` - ID of the network. (e.g. a distributed port group).
                * * `starting_address` - Starting address of the management network range.
                * * `subnet_mask` - Subnet mask.
                * * `gateway` - Gateway IP address.
                * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorNamespaceArgs']]]] namespaces: The list of namespaces to create in the Supervisor cluster
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SupervisorPodCidrArgs']]]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]] namespaces: The list of namespaces to create in the Supervisor cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]] pod_cidrs: CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
         :param pulumi.Input[str] search_domains: List of DNS search domains.
-        :param pulumi.Input[pulumi.InputType['SupervisorServiceCidrArgs']] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
+        :param pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']] service_cidr: CIDR block from which Kubernetes allocates service cluster IP addresses.
         :param pulumi.Input[str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[str] storage_policy: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
