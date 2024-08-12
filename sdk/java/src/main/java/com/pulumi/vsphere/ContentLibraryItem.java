@@ -107,7 +107,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ContentLibraryItem(String name) {
+    public ContentLibraryItem(java.lang.String name) {
         this(name, ContentLibraryItemArgs.Empty);
     }
     /**
@@ -115,7 +115,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ContentLibraryItem(String name, ContentLibraryItemArgs args) {
+    public ContentLibraryItem(java.lang.String name, ContentLibraryItemArgs args) {
         this(name, args, null);
     }
     /**
@@ -124,15 +124,22 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ContentLibraryItem(String name, ContentLibraryItemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/contentLibraryItem:ContentLibraryItem", name, args == null ? ContentLibraryItemArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ContentLibraryItem(java.lang.String name, ContentLibraryItemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/contentLibraryItem:ContentLibraryItem", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ContentLibraryItem(String name, Output<String> id, @Nullable ContentLibraryItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/contentLibraryItem:ContentLibraryItem", name, state, makeResourceOptions(options, id));
+    private ContentLibraryItem(java.lang.String name, Output<java.lang.String> id, @Nullable ContentLibraryItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/contentLibraryItem:ContentLibraryItem", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ContentLibraryItemArgs makeArgs(ContentLibraryItemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContentLibraryItemArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -148,7 +155,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ContentLibraryItem get(String name, Output<String> id, @Nullable ContentLibraryItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ContentLibraryItem get(java.lang.String name, Output<java.lang.String> id, @Nullable ContentLibraryItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ContentLibraryItem(name, id, state, options);
     }
 }

@@ -300,7 +300,7 @@ public class VmStoragePolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VmStoragePolicy(String name) {
+    public VmStoragePolicy(java.lang.String name) {
         this(name, VmStoragePolicyArgs.Empty);
     }
     /**
@@ -308,7 +308,7 @@ public class VmStoragePolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VmStoragePolicy(String name, VmStoragePolicyArgs args) {
+    public VmStoragePolicy(java.lang.String name, VmStoragePolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -317,15 +317,22 @@ public class VmStoragePolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VmStoragePolicy(String name, VmStoragePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vmStoragePolicy:VmStoragePolicy", name, args == null ? VmStoragePolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VmStoragePolicy(java.lang.String name, VmStoragePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vmStoragePolicy:VmStoragePolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VmStoragePolicy(String name, Output<String> id, @Nullable VmStoragePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vmStoragePolicy:VmStoragePolicy", name, state, makeResourceOptions(options, id));
+    private VmStoragePolicy(java.lang.String name, Output<java.lang.String> id, @Nullable VmStoragePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vmStoragePolicy:VmStoragePolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VmStoragePolicyArgs makeArgs(VmStoragePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VmStoragePolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -341,7 +348,7 @@ public class VmStoragePolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VmStoragePolicy get(String name, Output<String> id, @Nullable VmStoragePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VmStoragePolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable VmStoragePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VmStoragePolicy(name, id, state, options);
     }
 }

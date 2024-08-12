@@ -131,7 +131,7 @@ class VmStoragePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]]] = None,
+                 tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         The `VmStoragePolicy` resource can be used to create and manage storage
@@ -189,41 +189,41 @@ class VmStoragePolicy(pulumi.CustomResource):
             name="prod_platinum_replicated",
             description="prod_platinum_replicated",
             tag_rules=[
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=environment["name"],
-                    tags=[production["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=service_level["name"],
-                    tags=[platinum["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=replication["name"],
-                    tags=[replicated["name"]],
-                    include_datastores_with_tags=True,
-                ),
+                {
+                    "tag_category": environment["name"],
+                    "tags": [production["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": service_level["name"],
+                    "tags": [platinum["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": replication["name"],
+                    "tags": [replicated["name"]],
+                    "include_datastores_with_tags": True,
+                },
             ])
         dev_silver_nonreplicated = vsphere.VmStoragePolicy("dev_silver_nonreplicated",
             name="dev_silver_nonreplicated",
             description="dev_silver_nonreplicated",
             tag_rules=[
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=environment["name"],
-                    tags=[development["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=service_level["name"],
-                    tags=[silver["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=replication["name"],
-                    tags=[non_replicated["name"]],
-                    include_datastores_with_tags=True,
-                ),
+                {
+                    "tag_category": environment["name"],
+                    "tags": [development["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": service_level["name"],
+                    "tags": [silver["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": replication["name"],
+                    "tags": [non_replicated["name"]],
+                    "include_datastores_with_tags": True,
+                },
             ])
         ```
 
@@ -243,7 +243,7 @@ class VmStoragePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the storage policy.
         :param pulumi.Input[str] name: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         """
         ...
     @overload
@@ -307,41 +307,41 @@ class VmStoragePolicy(pulumi.CustomResource):
             name="prod_platinum_replicated",
             description="prod_platinum_replicated",
             tag_rules=[
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=environment["name"],
-                    tags=[production["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=service_level["name"],
-                    tags=[platinum["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=replication["name"],
-                    tags=[replicated["name"]],
-                    include_datastores_with_tags=True,
-                ),
+                {
+                    "tag_category": environment["name"],
+                    "tags": [production["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": service_level["name"],
+                    "tags": [platinum["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": replication["name"],
+                    "tags": [replicated["name"]],
+                    "include_datastores_with_tags": True,
+                },
             ])
         dev_silver_nonreplicated = vsphere.VmStoragePolicy("dev_silver_nonreplicated",
             name="dev_silver_nonreplicated",
             description="dev_silver_nonreplicated",
             tag_rules=[
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=environment["name"],
-                    tags=[development["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=service_level["name"],
-                    tags=[silver["name"]],
-                    include_datastores_with_tags=True,
-                ),
-                vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=replication["name"],
-                    tags=[non_replicated["name"]],
-                    include_datastores_with_tags=True,
-                ),
+                {
+                    "tag_category": environment["name"],
+                    "tags": [development["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": service_level["name"],
+                    "tags": [silver["name"]],
+                    "include_datastores_with_tags": True,
+                },
+                {
+                    "tag_category": replication["name"],
+                    "tags": [non_replicated["name"]],
+                    "include_datastores_with_tags": True,
+                },
             ])
         ```
 
@@ -374,7 +374,7 @@ class VmStoragePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]]] = None,
+                 tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -401,7 +401,7 @@ class VmStoragePolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]]] = None) -> 'VmStoragePolicy':
+            tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]]] = None) -> 'VmStoragePolicy':
         """
         Get an existing VmStoragePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -411,7 +411,7 @@ class VmStoragePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the storage policy.
         :param pulumi.Input[str] name: The name of the storage policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmStoragePolicyTagRuleArgs', 'VmStoragePolicyTagRuleArgsDict']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

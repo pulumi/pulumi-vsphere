@@ -187,7 +187,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VappEntity(String name) {
+    public VappEntity(java.lang.String name) {
         this(name, VappEntityArgs.Empty);
     }
     /**
@@ -195,7 +195,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VappEntity(String name, VappEntityArgs args) {
+    public VappEntity(java.lang.String name, VappEntityArgs args) {
         this(name, args, null);
     }
     /**
@@ -204,15 +204,22 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VappEntity(String name, VappEntityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vappEntity:VappEntity", name, args == null ? VappEntityArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VappEntity(java.lang.String name, VappEntityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vappEntity:VappEntity", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VappEntity(String name, Output<String> id, @Nullable VappEntityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/vappEntity:VappEntity", name, state, makeResourceOptions(options, id));
+    private VappEntity(java.lang.String name, Output<java.lang.String> id, @Nullable VappEntityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/vappEntity:VappEntity", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VappEntityArgs makeArgs(VappEntityArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VappEntityArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -228,7 +235,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VappEntity get(String name, Output<String> id, @Nullable VappEntityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VappEntity get(java.lang.String name, Output<java.lang.String> id, @Nullable VappEntityState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VappEntity(name, id, state, options);
     }
 }

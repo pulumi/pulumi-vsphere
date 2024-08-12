@@ -109,7 +109,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ComputeClusterVmAntiAffinityRule(String name) {
+    public ComputeClusterVmAntiAffinityRule(java.lang.String name) {
         this(name, ComputeClusterVmAntiAffinityRuleArgs.Empty);
     }
     /**
@@ -117,7 +117,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ComputeClusterVmAntiAffinityRule(String name, ComputeClusterVmAntiAffinityRuleArgs args) {
+    public ComputeClusterVmAntiAffinityRule(java.lang.String name, ComputeClusterVmAntiAffinityRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -126,15 +126,22 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ComputeClusterVmAntiAffinityRule(String name, ComputeClusterVmAntiAffinityRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule", name, args == null ? ComputeClusterVmAntiAffinityRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ComputeClusterVmAntiAffinityRule(java.lang.String name, ComputeClusterVmAntiAffinityRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ComputeClusterVmAntiAffinityRule(String name, Output<String> id, @Nullable ComputeClusterVmAntiAffinityRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule", name, state, makeResourceOptions(options, id));
+    private ComputeClusterVmAntiAffinityRule(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmAntiAffinityRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ComputeClusterVmAntiAffinityRuleArgs makeArgs(ComputeClusterVmAntiAffinityRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ComputeClusterVmAntiAffinityRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -150,7 +157,7 @@ public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.Custo
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ComputeClusterVmAntiAffinityRule get(String name, Output<String> id, @Nullable ComputeClusterVmAntiAffinityRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ComputeClusterVmAntiAffinityRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ComputeClusterVmAntiAffinityRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ComputeClusterVmAntiAffinityRule(name, id, state, options);
     }
 }
