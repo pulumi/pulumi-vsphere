@@ -195,9 +195,9 @@ class ContentLibrary(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
+                 publication: Optional[pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
                  storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None,
+                 subscription: Optional[pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None,
                  __props__=None):
         """
         Create a ContentLibrary resource with the given unique name, props, and options.
@@ -205,9 +205,9 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the content library.
         :param pulumi.Input[str] name: The name of the content library.
-        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local content library.
+        :param pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']] publication: Options to publish a local content library.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
-        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options subscribe to a published content library.
+        :param pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']] subscription: Options subscribe to a published content library.
         """
         ...
     @overload
@@ -234,9 +234,9 @@ class ContentLibrary(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
+                 publication: Optional[pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
                  storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None,
+                 subscription: Optional[pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -265,9 +265,9 @@ class ContentLibrary(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
+            publication: Optional[pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']]] = None,
             storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None) -> 'ContentLibrary':
+            subscription: Optional[pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None) -> 'ContentLibrary':
         """
         Get an existing ContentLibrary resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -277,9 +277,9 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the content library.
         :param pulumi.Input[str] name: The name of the content library.
-        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local content library.
+        :param pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']] publication: Options to publish a local content library.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
-        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options subscribe to a published content library.
+        :param pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']] subscription: Options subscribe to a published content library.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

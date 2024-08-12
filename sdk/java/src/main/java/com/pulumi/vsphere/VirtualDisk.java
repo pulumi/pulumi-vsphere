@@ -171,7 +171,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VirtualDisk(String name) {
+    public VirtualDisk(java.lang.String name) {
         this(name, VirtualDiskArgs.Empty);
     }
     /**
@@ -179,7 +179,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VirtualDisk(String name, VirtualDiskArgs args) {
+    public VirtualDisk(java.lang.String name, VirtualDiskArgs args) {
         this(name, args, null);
     }
     /**
@@ -188,15 +188,22 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VirtualDisk(String name, VirtualDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/virtualDisk:VirtualDisk", name, args == null ? VirtualDiskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VirtualDisk(java.lang.String name, VirtualDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/virtualDisk:VirtualDisk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VirtualDisk(String name, Output<String> id, @Nullable VirtualDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("vsphere:index/virtualDisk:VirtualDisk", name, state, makeResourceOptions(options, id));
+    private VirtualDisk(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("vsphere:index/virtualDisk:VirtualDisk", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VirtualDiskArgs makeArgs(VirtualDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VirtualDiskArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -212,7 +219,7 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VirtualDisk get(String name, Output<String> id, @Nullable VirtualDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VirtualDisk get(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VirtualDisk(name, id, state, options);
     }
 }
