@@ -2879,7 +2879,7 @@ index 0872bc76..a5b782d1 100644
  ## Importing
  
 diff --git a/website/docs/r/virtual_disk.html.markdown b/website/docs/r/virtual_disk.html.markdown
-index 99c7f91b..6a7a035e 100644
+index 4f600605..9e875ab3 100644
 --- a/website/docs/r/virtual_disk.html.markdown
 +++ b/website/docs/r/virtual_disk.html.markdown
 @@ -10,12 +10,9 @@ description: |-
@@ -2897,7 +2897,7 @@ index 99c7f91b..6a7a035e 100644
  
  ## Example Usage
  
-@@ -65,13 +62,11 @@ immutable and force a new resource if changed.
+@@ -67,13 +64,11 @@ created.
  
  ~> **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
  controller that the virtual disk will be attached to on the virtual machine.
