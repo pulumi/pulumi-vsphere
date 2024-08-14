@@ -58,7 +58,7 @@ export class VirtualDisk extends pulumi.CustomResource {
     public readonly createDirectories!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the datacenter in which to create the
-     * disk. Can be omitted when when ESXi or if there is only one datacenter in
+     * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
     public readonly datacenter!: pulumi.Output<string | undefined>;
@@ -68,7 +68,9 @@ export class VirtualDisk extends pulumi.CustomResource {
      */
     public readonly datastore!: pulumi.Output<string>;
     /**
-     * Size of the disk (in GB).
+     * Size of the disk (in GB). Decreasing the size of a disk is not possible.
+     * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+     * created.
      */
     public readonly size!: pulumi.Output<number>;
     /**
@@ -160,7 +162,7 @@ export interface VirtualDiskState {
     createDirectories?: pulumi.Input<boolean>;
     /**
      * The name of the datacenter in which to create the
-     * disk. Can be omitted when when ESXi or if there is only one datacenter in
+     * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
     datacenter?: pulumi.Input<string>;
@@ -170,7 +172,9 @@ export interface VirtualDiskState {
      */
     datastore?: pulumi.Input<string>;
     /**
-     * Size of the disk (in GB).
+     * Size of the disk (in GB). Decreasing the size of a disk is not possible.
+     * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+     * created.
      */
     size?: pulumi.Input<number>;
     /**
@@ -219,7 +223,7 @@ export interface VirtualDiskArgs {
     createDirectories?: pulumi.Input<boolean>;
     /**
      * The name of the datacenter in which to create the
-     * disk. Can be omitted when when ESXi or if there is only one datacenter in
+     * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
     datacenter?: pulumi.Input<string>;
@@ -229,7 +233,9 @@ export interface VirtualDiskArgs {
      */
     datastore: pulumi.Input<string>;
     /**
-     * Size of the disk (in GB).
+     * Size of the disk (in GB). Decreasing the size of a disk is not possible.
+     * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+     * created.
      */
     size: pulumi.Input<number>;
     /**

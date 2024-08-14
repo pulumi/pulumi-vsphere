@@ -25,7 +25,9 @@ class VirtualDiskArgs:
         The set of arguments for constructing a VirtualDisk resource.
         :param pulumi.Input[str] datastore: The name of the datastore in which to create the
                disk.
-        :param pulumi.Input[int] size: Size of the disk (in GB).
+        :param pulumi.Input[int] size: Size of the disk (in GB). Decreasing the size of a disk is not possible.
+               If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+               created.
         :param pulumi.Input[str] vmdk_path: The path, including filename, of the virtual disk to
                be created.  This needs to end in `.vmdk`.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
@@ -45,7 +47,7 @@ class VirtualDiskArgs:
                `create_directories` is enabled will not be deleted when the resource is
                destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
-               disk. Can be omitted when when ESXi or if there is only one datacenter in
+               disk. Can be omitted when ESXi or if there is only one datacenter in
                your infrastructure.
         :param pulumi.Input[str] type: The type of disk to create. Can be one of
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -86,7 +88,9 @@ class VirtualDiskArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
         """
-        Size of the disk (in GB).
+        Size of the disk (in GB). Decreasing the size of a disk is not possible.
+        If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+        created.
         """
         return pulumi.get(self, "size")
 
@@ -151,7 +155,7 @@ class VirtualDiskArgs:
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the datacenter in which to create the
-        disk. Can be omitted when when ESXi or if there is only one datacenter in
+        disk. Can be omitted when ESXi or if there is only one datacenter in
         your infrastructure.
         """
         return pulumi.get(self, "datacenter")
@@ -207,11 +211,13 @@ class _VirtualDiskState:
                `create_directories` is enabled will not be deleted when the resource is
                destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
-               disk. Can be omitted when when ESXi or if there is only one datacenter in
+               disk. Can be omitted when ESXi or if there is only one datacenter in
                your infrastructure.
         :param pulumi.Input[str] datastore: The name of the datastore in which to create the
                disk.
-        :param pulumi.Input[int] size: Size of the disk (in GB).
+        :param pulumi.Input[int] size: Size of the disk (in GB). Decreasing the size of a disk is not possible.
+               If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+               created.
         :param pulumi.Input[str] type: The type of disk to create. Can be one of
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click
@@ -283,7 +289,7 @@ class _VirtualDiskState:
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the datacenter in which to create the
-        disk. Can be omitted when when ESXi or if there is only one datacenter in
+        disk. Can be omitted when ESXi or if there is only one datacenter in
         your infrastructure.
         """
         return pulumi.get(self, "datacenter")
@@ -309,7 +315,9 @@ class _VirtualDiskState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the disk (in GB).
+        Size of the disk (in GB). Decreasing the size of a disk is not possible.
+        If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+        created.
         """
         return pulumi.get(self, "size")
 
@@ -382,11 +390,13 @@ class VirtualDisk(pulumi.CustomResource):
                `create_directories` is enabled will not be deleted when the resource is
                destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
-               disk. Can be omitted when when ESXi or if there is only one datacenter in
+               disk. Can be omitted when ESXi or if there is only one datacenter in
                your infrastructure.
         :param pulumi.Input[str] datastore: The name of the datastore in which to create the
                disk.
-        :param pulumi.Input[int] size: Size of the disk (in GB).
+        :param pulumi.Input[int] size: Size of the disk (in GB). Decreasing the size of a disk is not possible.
+               If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+               created.
         :param pulumi.Input[str] type: The type of disk to create. Can be one of
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click
@@ -489,11 +499,13 @@ class VirtualDisk(pulumi.CustomResource):
                `create_directories` is enabled will not be deleted when the resource is
                destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
-               disk. Can be omitted when when ESXi or if there is only one datacenter in
+               disk. Can be omitted when ESXi or if there is only one datacenter in
                your infrastructure.
         :param pulumi.Input[str] datastore: The name of the datastore in which to create the
                disk.
-        :param pulumi.Input[int] size: Size of the disk (in GB).
+        :param pulumi.Input[int] size: Size of the disk (in GB). Decreasing the size of a disk is not possible.
+               If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+               created.
         :param pulumi.Input[str] type: The type of disk to create. Can be one of
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click
@@ -552,7 +564,7 @@ class VirtualDisk(pulumi.CustomResource):
     def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the datacenter in which to create the
-        disk. Can be omitted when when ESXi or if there is only one datacenter in
+        disk. Can be omitted when ESXi or if there is only one datacenter in
         your infrastructure.
         """
         return pulumi.get(self, "datacenter")
@@ -570,7 +582,9 @@ class VirtualDisk(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
         """
-        Size of the disk (in GB).
+        Size of the disk (in GB). Decreasing the size of a disk is not possible.
+        If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+        created.
         """
         return pulumi.get(self, "size")
 
