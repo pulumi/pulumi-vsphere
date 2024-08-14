@@ -36,13 +36,15 @@ type VirtualDisk struct {
 	// destroyed.
 	CreateDirectories pulumi.BoolPtrOutput `pulumi:"createDirectories"`
 	// The name of the datacenter in which to create the
-	// disk. Can be omitted when when ESXi or if there is only one datacenter in
+	// disk. Can be omitted when ESXi or if there is only one datacenter in
 	// your infrastructure.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
 	// The name of the datastore in which to create the
 	// disk.
 	Datastore pulumi.StringOutput `pulumi:"datastore"`
-	// Size of the disk (in GB).
+	// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+	// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+	// created.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The type of disk to create. Can be one of
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -116,13 +118,15 @@ type virtualDiskState struct {
 	// destroyed.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of the datacenter in which to create the
-	// disk. Can be omitted when when ESXi or if there is only one datacenter in
+	// disk. Can be omitted when ESXi or if there is only one datacenter in
 	// your infrastructure.
 	Datacenter *string `pulumi:"datacenter"`
 	// The name of the datastore in which to create the
 	// disk.
 	Datastore *string `pulumi:"datastore"`
-	// Size of the disk (in GB).
+	// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+	// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+	// created.
 	Size *int `pulumi:"size"`
 	// The type of disk to create. Can be one of
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -158,13 +162,15 @@ type VirtualDiskState struct {
 	// destroyed.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of the datacenter in which to create the
-	// disk. Can be omitted when when ESXi or if there is only one datacenter in
+	// disk. Can be omitted when ESXi or if there is only one datacenter in
 	// your infrastructure.
 	Datacenter pulumi.StringPtrInput
 	// The name of the datastore in which to create the
 	// disk.
 	Datastore pulumi.StringPtrInput
-	// Size of the disk (in GB).
+	// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+	// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+	// created.
 	Size pulumi.IntPtrInput
 	// The type of disk to create. Can be one of
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -204,13 +210,15 @@ type virtualDiskArgs struct {
 	// destroyed.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of the datacenter in which to create the
-	// disk. Can be omitted when when ESXi or if there is only one datacenter in
+	// disk. Can be omitted when ESXi or if there is only one datacenter in
 	// your infrastructure.
 	Datacenter *string `pulumi:"datacenter"`
 	// The name of the datastore in which to create the
 	// disk.
 	Datastore string `pulumi:"datastore"`
-	// Size of the disk (in GB).
+	// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+	// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+	// created.
 	Size int `pulumi:"size"`
 	// The type of disk to create. Can be one of
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -247,13 +255,15 @@ type VirtualDiskArgs struct {
 	// destroyed.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of the datacenter in which to create the
-	// disk. Can be omitted when when ESXi or if there is only one datacenter in
+	// disk. Can be omitted when ESXi or if there is only one datacenter in
 	// your infrastructure.
 	Datacenter pulumi.StringPtrInput
 	// The name of the datastore in which to create the
 	// disk.
 	Datastore pulumi.StringInput
-	// Size of the disk (in GB).
+	// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+	// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+	// created.
 	Size pulumi.IntInput
 	// The type of disk to create. Can be one of
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -381,7 +391,7 @@ func (o VirtualDiskOutput) CreateDirectories() pulumi.BoolPtrOutput {
 }
 
 // The name of the datacenter in which to create the
-// disk. Can be omitted when when ESXi or if there is only one datacenter in
+// disk. Can be omitted when ESXi or if there is only one datacenter in
 // your infrastructure.
 func (o VirtualDiskOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
@@ -393,7 +403,9 @@ func (o VirtualDiskOutput) Datastore() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.StringOutput { return v.Datastore }).(pulumi.StringOutput)
 }
 
-// Size of the disk (in GB).
+// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+// created.
 func (o VirtualDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

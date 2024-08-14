@@ -40,7 +40,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The name of the datacenter in which to create the
-        /// disk. Can be omitted when when ESXi or if there is only one datacenter in
+        /// disk. Can be omitted when ESXi or if there is only one datacenter in
         /// your infrastructure.
         /// </summary>
         [Output("datacenter")]
@@ -54,7 +54,9 @@ namespace Pulumi.VSphere
         public Output<string> Datastore { get; private set; } = null!;
 
         /// <summary>
-        /// Size of the disk (in GB).
+        /// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+        /// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+        /// created.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -151,7 +153,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The name of the datacenter in which to create the
-        /// disk. Can be omitted when when ESXi or if there is only one datacenter in
+        /// disk. Can be omitted when ESXi or if there is only one datacenter in
         /// your infrastructure.
         /// </summary>
         [Input("datacenter")]
@@ -165,7 +167,9 @@ namespace Pulumi.VSphere
         public Input<string> Datastore { get; set; } = null!;
 
         /// <summary>
-        /// Size of the disk (in GB).
+        /// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+        /// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+        /// created.
         /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
@@ -224,7 +228,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The name of the datacenter in which to create the
-        /// disk. Can be omitted when when ESXi or if there is only one datacenter in
+        /// disk. Can be omitted when ESXi or if there is only one datacenter in
         /// your infrastructure.
         /// </summary>
         [Input("datacenter")]
@@ -238,7 +242,9 @@ namespace Pulumi.VSphere
         public Input<string>? Datastore { get; set; }
 
         /// <summary>
-        /// Size of the disk (in GB).
+        /// Size of the disk (in GB). Decreasing the size of a disk is not possible.
+        /// If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+        /// created.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

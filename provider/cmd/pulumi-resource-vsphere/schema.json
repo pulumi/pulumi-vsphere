@@ -9240,7 +9240,7 @@
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "The name of the datacenter in which to create the\ndisk. Can be omitted when when ESXi or if there is only one datacenter in\nyour infrastructure.\n"
+                    "description": "The name of the datacenter in which to create the\ndisk. Can be omitted when ESXi or if there is only one datacenter in\nyour infrastructure.\n"
                 },
                 "datastore": {
                     "type": "string",
@@ -9248,7 +9248,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "Size of the disk (in GB).\n"
+                    "description": "Size of the disk (in GB). Decreasing the size of a disk is not possible.\nIf a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be\ncreated.\n"
                 },
                 "type": {
                     "type": "string",
@@ -9278,7 +9278,7 @@
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "The name of the datacenter in which to create the\ndisk. Can be omitted when when ESXi or if there is only one datacenter in\nyour infrastructure.\n",
+                    "description": "The name of the datacenter in which to create the\ndisk. Can be omitted when ESXi or if there is only one datacenter in\nyour infrastructure.\n",
                     "willReplaceOnChanges": true
                 },
                 "datastore": {
@@ -9288,8 +9288,7 @@
                 },
                 "size": {
                     "type": "integer",
-                    "description": "Size of the disk (in GB).\n",
-                    "willReplaceOnChanges": true
+                    "description": "Size of the disk (in GB). Decreasing the size of a disk is not possible.\nIf a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be\ncreated.\n"
                 },
                 "type": {
                     "type": "string",
@@ -9323,7 +9322,7 @@
                     },
                     "datacenter": {
                         "type": "string",
-                        "description": "The name of the datacenter in which to create the\ndisk. Can be omitted when when ESXi or if there is only one datacenter in\nyour infrastructure.\n",
+                        "description": "The name of the datacenter in which to create the\ndisk. Can be omitted when ESXi or if there is only one datacenter in\nyour infrastructure.\n",
                         "willReplaceOnChanges": true
                     },
                     "datastore": {
@@ -9333,8 +9332,7 @@
                     },
                     "size": {
                         "type": "integer",
-                        "description": "Size of the disk (in GB).\n",
-                        "willReplaceOnChanges": true
+                        "description": "Size of the disk (in GB). Decreasing the size of a disk is not possible.\nIf a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be\ncreated.\n"
                     },
                     "type": {
                         "type": "string",

@@ -86,7 +86,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The name of the datacenter in which to create the
-     * disk. Can be omitted when when ESXi or if there is only one datacenter in
+     * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      * 
      */
@@ -95,7 +95,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The name of the datacenter in which to create the
-     * disk. Can be omitted when when ESXi or if there is only one datacenter in
+     * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      * 
      */
@@ -121,14 +121,18 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Size of the disk (in GB).
+     * Size of the disk (in GB). Decreasing the size of a disk is not possible.
+     * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+     * created.
      * 
      */
     @Import(name="size", required=true)
     private Output<Integer> size;
 
     /**
-     * @return Size of the disk (in GB).
+     * @return Size of the disk (in GB). Decreasing the size of a disk is not possible.
+     * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+     * created.
      * 
      */
     public Output<Integer> size() {
@@ -287,7 +291,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param datacenter The name of the datacenter in which to create the
-         * disk. Can be omitted when when ESXi or if there is only one datacenter in
+         * disk. Can be omitted when ESXi or if there is only one datacenter in
          * your infrastructure.
          * 
          * @return builder
@@ -300,7 +304,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param datacenter The name of the datacenter in which to create the
-         * disk. Can be omitted when when ESXi or if there is only one datacenter in
+         * disk. Can be omitted when ESXi or if there is only one datacenter in
          * your infrastructure.
          * 
          * @return builder
@@ -334,7 +338,9 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Size of the disk (in GB).
+         * @param size Size of the disk (in GB). Decreasing the size of a disk is not possible.
+         * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+         * created.
          * 
          * @return builder
          * 
@@ -345,7 +351,9 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Size of the disk (in GB).
+         * @param size Size of the disk (in GB). Decreasing the size of a disk is not possible.
+         * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
+         * created.
          * 
          * @return builder
          * 
