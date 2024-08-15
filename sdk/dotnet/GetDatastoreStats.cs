@@ -124,15 +124,15 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreStatsArgs : global::Pulumi.InvokeArgs
     {
         [Input("capacity")]
-        private Dictionary<string, object>? _capacity;
+        private Dictionary<string, string>? _capacity;
 
         /// <summary>
         /// A mapping of the capacity for all datastore in the datacenter,
         /// where the name of the datastore is used as key and the capacity as value.
         /// </summary>
-        public Dictionary<string, object> Capacity
+        public Dictionary<string, string> Capacity
         {
-            get => _capacity ?? (_capacity = new Dictionary<string, object>());
+            get => _capacity ?? (_capacity = new Dictionary<string, string>());
             set => _capacity = value;
         }
 
@@ -148,16 +148,16 @@ namespace Pulumi.VSphere
         public string DatacenterId { get; set; } = null!;
 
         [Input("freeSpace")]
-        private Dictionary<string, object>? _freeSpace;
+        private Dictionary<string, string>? _freeSpace;
 
         /// <summary>
         /// A mapping of the free space for each datastore in the
         /// datacenter, where the name of the datastore is used as key and the free space
         /// as value.
         /// </summary>
-        public Dictionary<string, object> FreeSpace
+        public Dictionary<string, string> FreeSpace
         {
-            get => _freeSpace ?? (_freeSpace = new Dictionary<string, object>());
+            get => _freeSpace ?? (_freeSpace = new Dictionary<string, string>());
             set => _freeSpace = value;
         }
 
@@ -170,15 +170,15 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreStatsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("capacity")]
-        private InputMap<object>? _capacity;
+        private InputMap<string>? _capacity;
 
         /// <summary>
         /// A mapping of the capacity for all datastore in the datacenter,
         /// where the name of the datastore is used as key and the capacity as value.
         /// </summary>
-        public InputMap<object> Capacity
+        public InputMap<string> Capacity
         {
-            get => _capacity ?? (_capacity = new InputMap<object>());
+            get => _capacity ?? (_capacity = new InputMap<string>());
             set => _capacity = value;
         }
 
@@ -194,16 +194,16 @@ namespace Pulumi.VSphere
         public Input<string> DatacenterId { get; set; } = null!;
 
         [Input("freeSpace")]
-        private InputMap<object>? _freeSpace;
+        private InputMap<string>? _freeSpace;
 
         /// <summary>
         /// A mapping of the free space for each datastore in the
         /// datacenter, where the name of the datastore is used as key and the free space
         /// as value.
         /// </summary>
-        public InputMap<object> FreeSpace
+        public InputMap<string> FreeSpace
         {
-            get => _freeSpace ?? (_freeSpace = new InputMap<object>());
+            get => _freeSpace ?? (_freeSpace = new InputMap<string>());
             set => _freeSpace = value;
         }
 
@@ -221,7 +221,7 @@ namespace Pulumi.VSphere
         /// A mapping of the capacity for all datastore in the datacenter,
         /// where the name of the datastore is used as key and the capacity as value.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Capacity;
+        public readonly ImmutableDictionary<string, string>? Capacity;
         /// <summary>
         /// The [managed object reference ID][docs-about-morefs] of the
         /// datacenter the datastores are located in.
@@ -232,7 +232,7 @@ namespace Pulumi.VSphere
         /// datacenter, where the name of the datastore is used as key and the free space
         /// as value.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? FreeSpace;
+        public readonly ImmutableDictionary<string, string>? FreeSpace;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -240,11 +240,11 @@ namespace Pulumi.VSphere
 
         [OutputConstructor]
         private GetDatastoreStatsResult(
-            ImmutableDictionary<string, object>? capacity,
+            ImmutableDictionary<string, string>? capacity,
 
             string datacenterId,
 
-            ImmutableDictionary<string, object>? freeSpace,
+            ImmutableDictionary<string, string>? freeSpace,
 
             string id)
         {

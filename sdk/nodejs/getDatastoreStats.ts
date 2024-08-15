@@ -56,7 +56,7 @@ export interface GetDatastoreStatsArgs {
      * A mapping of the capacity for all datastore in the datacenter,
      * where the name of the datastore is used as key and the capacity as value.
      */
-    capacity?: {[key: string]: any};
+    capacity?: {[key: string]: string};
     /**
      * The
      * [managed object reference ID][docs-about-morefs] of the datacenter the
@@ -71,7 +71,7 @@ export interface GetDatastoreStatsArgs {
      * datacenter, where the name of the datastore is used as key and the free space
      * as value.
      */
-    freeSpace?: {[key: string]: any};
+    freeSpace?: {[key: string]: string};
 }
 
 /**
@@ -82,7 +82,7 @@ export interface GetDatastoreStatsResult {
      * A mapping of the capacity for all datastore in the datacenter,
      * where the name of the datastore is used as key and the capacity as value.
      */
-    readonly capacity?: {[key: string]: any};
+    readonly capacity?: {[key: string]: string};
     /**
      * The [managed object reference ID][docs-about-morefs] of the
      * datacenter the datastores are located in.
@@ -93,7 +93,7 @@ export interface GetDatastoreStatsResult {
      * datacenter, where the name of the datastore is used as key and the free space
      * as value.
      */
-    readonly freeSpace?: {[key: string]: any};
+    readonly freeSpace?: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -145,7 +145,7 @@ export interface GetDatastoreStatsOutputArgs {
      * A mapping of the capacity for all datastore in the datacenter,
      * where the name of the datastore is used as key and the capacity as value.
      */
-    capacity?: pulumi.Input<{[key: string]: any}>;
+    capacity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The
      * [managed object reference ID][docs-about-morefs] of the datacenter the
@@ -160,5 +160,5 @@ export interface GetDatastoreStatsOutputArgs {
      * datacenter, where the name of the datastore is used as key and the free space
      * as value.
      */
-    freeSpace?: pulumi.Input<{[key: string]: any}>;
+    freeSpace?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

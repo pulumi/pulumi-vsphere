@@ -5,7 +5,6 @@ package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -27,7 +26,7 @@ public final class GetDatastoreResult {
      * disk is represented as `free`.
      * 
      */
-    private @Nullable Map<String,Object> stats;
+    private @Nullable Map<String,String> stats;
 
     private GetDatastoreResult() {}
     public Optional<String> datacenterId() {
@@ -49,7 +48,7 @@ public final class GetDatastoreResult {
      * disk is represented as `free`.
      * 
      */
-    public Map<String,Object> stats() {
+    public Map<String,String> stats() {
         return this.stats == null ? Map.of() : this.stats;
     }
 
@@ -65,7 +64,7 @@ public final class GetDatastoreResult {
         private @Nullable String datacenterId;
         private String id;
         private String name;
-        private @Nullable Map<String,Object> stats;
+        private @Nullable Map<String,String> stats;
         public Builder() {}
         public Builder(GetDatastoreResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,7 +97,7 @@ public final class GetDatastoreResult {
             return this;
         }
         @CustomType.Setter
-        public Builder stats(@Nullable Map<String,Object> stats) {
+        public Builder stats(@Nullable Map<String,String> stats) {
 
             this.stats = stats;
             return this;

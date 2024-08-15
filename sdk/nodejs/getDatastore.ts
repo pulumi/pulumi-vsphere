@@ -55,7 +55,7 @@ export interface GetDatastoreArgs {
      * total datastore capacity is represented as `capacity` and the free remaining
      * disk is represented as `free`.
      */
-    stats?: {[key: string]: any};
+    stats?: {[key: string]: string};
 }
 
 /**
@@ -73,7 +73,7 @@ export interface GetDatastoreResult {
      * total datastore capacity is represented as `capacity` and the free remaining
      * disk is represented as `free`.
      */
-    readonly stats?: {[key: string]: any};
+    readonly stats?: {[key: string]: string};
 }
 /**
  * The `vsphere.getDatastore` data source can be used to discover the ID of a
@@ -120,5 +120,5 @@ export interface GetDatastoreOutputArgs {
      * total datastore capacity is represented as `capacity` and the free remaining
      * disk is represented as `free`.
      */
-    stats?: pulumi.Input<{[key: string]: any}>;
+    stats?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

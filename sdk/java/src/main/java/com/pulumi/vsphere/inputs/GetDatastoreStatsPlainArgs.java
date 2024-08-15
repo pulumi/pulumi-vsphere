@@ -5,7 +5,6 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,14 +22,14 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
      * 
      */
     @Import(name="capacity")
-    private @Nullable Map<String,Object> capacity;
+    private @Nullable Map<String,String> capacity;
 
     /**
      * @return A mapping of the capacity for all datastore in the datacenter,
      * where the name of the datastore is used as key and the capacity as value.
      * 
      */
-    public Optional<Map<String,Object>> capacity() {
+    public Optional<Map<String,String>> capacity() {
         return Optional.ofNullable(this.capacity);
     }
 
@@ -66,7 +65,7 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
      * 
      */
     @Import(name="freeSpace")
-    private @Nullable Map<String,Object> freeSpace;
+    private @Nullable Map<String,String> freeSpace;
 
     /**
      * @return A mapping of the free space for each datastore in the
@@ -74,7 +73,7 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
      * as value.
      * 
      */
-    public Optional<Map<String,Object>> freeSpace() {
+    public Optional<Map<String,String>> freeSpace() {
         return Optional.ofNullable(this.freeSpace);
     }
 
@@ -111,7 +110,7 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder capacity(@Nullable Map<String,Object> capacity) {
+        public Builder capacity(@Nullable Map<String,String> capacity) {
             $.capacity = capacity;
             return this;
         }
@@ -140,7 +139,7 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder freeSpace(@Nullable Map<String,Object> freeSpace) {
+        public Builder freeSpace(@Nullable Map<String,String> freeSpace) {
             $.freeSpace = freeSpace;
             return this;
         }
