@@ -5,7 +5,6 @@ package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public final class GetDatastoreStatsResult {
      * where the name of the datastore is used as key and the capacity as value.
      * 
      */
-    private @Nullable Map<String,Object> capacity;
+    private @Nullable Map<String,String> capacity;
     /**
      * @return The [managed object reference ID][docs-about-morefs] of the
      * datacenter the datastores are located in.
@@ -31,7 +30,7 @@ public final class GetDatastoreStatsResult {
      * as value.
      * 
      */
-    private @Nullable Map<String,Object> freeSpace;
+    private @Nullable Map<String,String> freeSpace;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -44,7 +43,7 @@ public final class GetDatastoreStatsResult {
      * where the name of the datastore is used as key and the capacity as value.
      * 
      */
-    public Map<String,Object> capacity() {
+    public Map<String,String> capacity() {
         return this.capacity == null ? Map.of() : this.capacity;
     }
     /**
@@ -61,7 +60,7 @@ public final class GetDatastoreStatsResult {
      * as value.
      * 
      */
-    public Map<String,Object> freeSpace() {
+    public Map<String,String> freeSpace() {
         return this.freeSpace == null ? Map.of() : this.freeSpace;
     }
     /**
@@ -81,9 +80,9 @@ public final class GetDatastoreStatsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> capacity;
+        private @Nullable Map<String,String> capacity;
         private String datacenterId;
-        private @Nullable Map<String,Object> freeSpace;
+        private @Nullable Map<String,String> freeSpace;
         private String id;
         public Builder() {}
         public Builder(GetDatastoreStatsResult defaults) {
@@ -95,7 +94,7 @@ public final class GetDatastoreStatsResult {
         }
 
         @CustomType.Setter
-        public Builder capacity(@Nullable Map<String,Object> capacity) {
+        public Builder capacity(@Nullable Map<String,String> capacity) {
 
             this.capacity = capacity;
             return this;
@@ -109,7 +108,7 @@ public final class GetDatastoreStatsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder freeSpace(@Nullable Map<String,Object> freeSpace) {
+        public Builder freeSpace(@Nullable Map<String,String> freeSpace) {
 
             this.freeSpace = freeSpace;
             return this;
