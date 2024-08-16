@@ -55,7 +55,7 @@ class GetDatastoreResult:
 
     @property
     @pulumi.getter
-    def stats(self) -> Optional[Mapping[str, Any]]:
+    def stats(self) -> Optional[Mapping[str, str]]:
         """
         The disk space usage statistics for the specific datastore. The
         total datastore capacity is represented as `capacity` and the free remaining
@@ -78,7 +78,7 @@ class AwaitableGetDatastoreResult(GetDatastoreResult):
 
 def get_datastore(datacenter_id: Optional[str] = None,
                   name: Optional[str] = None,
-                  stats: Optional[Mapping[str, Any]] = None,
+                  stats: Optional[Mapping[str, str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreResult:
     """
     The `get_datastore` data source can be used to discover the ID of a
@@ -103,7 +103,7 @@ def get_datastore(datacenter_id: Optional[str] = None,
            search path used in `name` is an absolute path. For default datacenters, use
            the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name of the datastore. This can be a name or path.
-    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The
+    :param Mapping[str, str] stats: The disk space usage statistics for the specific datastore. The
            total datastore capacity is represented as `capacity` and the free remaining
            disk is represented as `free`.
     """
@@ -124,7 +124,7 @@ def get_datastore(datacenter_id: Optional[str] = None,
 @_utilities.lift_output_func(get_datastore)
 def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[str]] = None,
-                         stats: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         stats: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreResult]:
     """
     The `get_datastore` data source can be used to discover the ID of a
@@ -149,7 +149,7 @@ def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = 
            search path used in `name` is an absolute path. For default datacenters, use
            the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name of the datastore. This can be a name or path.
-    :param Mapping[str, Any] stats: The disk space usage statistics for the specific datastore. The
+    :param Mapping[str, str] stats: The disk space usage statistics for the specific datastore. The
            total datastore capacity is represented as `capacity` and the free remaining
            disk is represented as `free`.
     """

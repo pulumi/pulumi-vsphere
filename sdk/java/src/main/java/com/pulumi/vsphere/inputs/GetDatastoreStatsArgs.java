@@ -6,7 +6,6 @@ package com.pulumi.vsphere.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,14 +23,14 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="capacity")
-    private @Nullable Output<Map<String,Object>> capacity;
+    private @Nullable Output<Map<String,String>> capacity;
 
     /**
      * @return A mapping of the capacity for all datastore in the datacenter,
      * where the name of the datastore is used as key and the capacity as value.
      * 
      */
-    public Optional<Output<Map<String,Object>>> capacity() {
+    public Optional<Output<Map<String,String>>> capacity() {
         return Optional.ofNullable(this.capacity);
     }
 
@@ -67,7 +66,7 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="freeSpace")
-    private @Nullable Output<Map<String,Object>> freeSpace;
+    private @Nullable Output<Map<String,String>> freeSpace;
 
     /**
      * @return A mapping of the free space for each datastore in the
@@ -75,7 +74,7 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
      * as value.
      * 
      */
-    public Optional<Output<Map<String,Object>>> freeSpace() {
+    public Optional<Output<Map<String,String>>> freeSpace() {
         return Optional.ofNullable(this.freeSpace);
     }
 
@@ -112,7 +111,7 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder capacity(@Nullable Output<Map<String,Object>> capacity) {
+        public Builder capacity(@Nullable Output<Map<String,String>> capacity) {
             $.capacity = capacity;
             return this;
         }
@@ -124,7 +123,7 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder capacity(Map<String,Object> capacity) {
+        public Builder capacity(Map<String,String> capacity) {
             return capacity(Output.of(capacity));
         }
 
@@ -167,7 +166,7 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder freeSpace(@Nullable Output<Map<String,Object>> freeSpace) {
+        public Builder freeSpace(@Nullable Output<Map<String,String>> freeSpace) {
             $.freeSpace = freeSpace;
             return this;
         }
@@ -180,7 +179,7 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder freeSpace(Map<String,Object> freeSpace) {
+        public Builder freeSpace(Map<String,String> freeSpace) {
             return freeSpace(Output.of(freeSpace));
         }
 

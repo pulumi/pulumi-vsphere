@@ -6,7 +6,6 @@ package com.pulumi.vsphere.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -61,7 +60,7 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="stats")
-    private @Nullable Output<Map<String,Object>> stats;
+    private @Nullable Output<Map<String,String>> stats;
 
     /**
      * @return The disk space usage statistics for the specific datastore. The
@@ -69,7 +68,7 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
      * disk is represented as `free`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> stats() {
+    public Optional<Output<Map<String,String>>> stats() {
         return Optional.ofNullable(this.stats);
     }
 
@@ -155,7 +154,7 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder stats(@Nullable Output<Map<String,Object>> stats) {
+        public Builder stats(@Nullable Output<Map<String,String>> stats) {
             $.stats = stats;
             return this;
         }
@@ -168,7 +167,7 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder stats(Map<String,Object> stats) {
+        public Builder stats(Map<String,String> stats) {
             return stats(Output.of(stats));
         }
 

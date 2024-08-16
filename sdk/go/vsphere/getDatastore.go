@@ -70,7 +70,7 @@ type GetDatastoreArgs struct {
 	// The disk space usage statistics for the specific datastore. The
 	// total datastore capacity is represented as `capacity` and the free remaining
 	// disk is represented as `free`.
-	Stats map[string]interface{} `pulumi:"stats"`
+	Stats map[string]string `pulumi:"stats"`
 }
 
 // A collection of values returned by getDatastore.
@@ -82,7 +82,7 @@ type GetDatastoreResult struct {
 	// The disk space usage statistics for the specific datastore. The
 	// total datastore capacity is represented as `capacity` and the free remaining
 	// disk is represented as `free`.
-	Stats map[string]interface{} `pulumi:"stats"`
+	Stats map[string]string `pulumi:"stats"`
 }
 
 func GetDatastoreOutput(ctx *pulumi.Context, args GetDatastoreOutputArgs, opts ...pulumi.InvokeOption) GetDatastoreResultOutput {
@@ -110,7 +110,7 @@ type GetDatastoreOutputArgs struct {
 	// The disk space usage statistics for the specific datastore. The
 	// total datastore capacity is represented as `capacity` and the free remaining
 	// disk is represented as `free`.
-	Stats pulumi.MapInput `pulumi:"stats"`
+	Stats pulumi.StringMapInput `pulumi:"stats"`
 }
 
 func (GetDatastoreOutputArgs) ElementType() reflect.Type {
@@ -148,8 +148,8 @@ func (o GetDatastoreResultOutput) Name() pulumi.StringOutput {
 // The disk space usage statistics for the specific datastore. The
 // total datastore capacity is represented as `capacity` and the free remaining
 // disk is represented as `free`.
-func (o GetDatastoreResultOutput) Stats() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDatastoreResult) map[string]interface{} { return v.Stats }).(pulumi.MapOutput)
+func (o GetDatastoreResultOutput) Stats() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDatastoreResult) map[string]string { return v.Stats }).(pulumi.StringMapOutput)
 }
 
 func init() {
