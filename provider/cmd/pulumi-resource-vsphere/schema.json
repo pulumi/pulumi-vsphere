@@ -11362,7 +11362,7 @@
                     "stats": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "The disk space usage statistics for the specific datastore. The\ntotal datastore capacity is represented as `capacity` and the free remaining\ndisk is represented as `free`.\n"
                     }
@@ -11387,7 +11387,7 @@
                     },
                     "stats": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "The disk space usage statistics for the specific datastore. The\ntotal datastore capacity is represented as `capacity` and the free remaining\ndisk is represented as `free`.\n",
                         "type": "object"
@@ -11448,7 +11448,7 @@
                     "capacity": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "A mapping of the capacity for all datastore in the datacenter,\nwhere the name of the datastore is used as key and the capacity as value.\n"
                     },
@@ -11459,7 +11459,7 @@
                     "freeSpace": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "A mapping of the free space for each datastore in the\ndatacenter, where the name of the datastore is used as key and the free space\nas value.\n"
                     }
@@ -11474,7 +11474,7 @@
                 "properties": {
                     "capacity": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "A mapping of the capacity for all datastore in the datacenter,\nwhere the name of the datastore is used as key and the capacity as value.\n",
                         "type": "object"
@@ -11485,7 +11485,7 @@
                     },
                     "freeSpace": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "A mapping of the free space for each datastore in the\ndatacenter, where the name of the datastore is used as key and the free space\nas value.\n",
                         "type": "object"
