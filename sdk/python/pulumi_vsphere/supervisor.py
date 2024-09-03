@@ -541,7 +541,7 @@ class Supervisor(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### S
+        ### s
 
         **Enable Workload Management on a compute cluster**
 
@@ -627,7 +627,7 @@ class Supervisor(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### S
+        ### s
 
         **Enable Workload Management on a compute cluster**
 

@@ -29,7 +29,7 @@ class DrsVmOverrideArgs:
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
                
-               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               > **NOTE:** Using this resource *always* implies an override, even if one of
                `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
                for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
@@ -77,7 +77,7 @@ class DrsVmOverrideArgs:
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         `fullyAutomated`. Default: `manual`.
 
-        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        > **NOTE:** Using this resource *always* implies an override, even if one of
         `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
         for both options.
         """
@@ -117,7 +117,7 @@ class _DrsVmOverrideState:
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
                
-               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               > **NOTE:** Using this resource *always* implies an override, even if one of
                `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
                for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
@@ -156,7 +156,7 @@ class _DrsVmOverrideState:
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         `fullyAutomated`. Default: `manual`.
 
-        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        > **NOTE:** Using this resource *always* implies an override, even if one of
         `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
         for both options.
         """
@@ -214,7 +214,7 @@ class DrsVmOverride(pulumi.CustomResource):
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
                
-               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               > **NOTE:** Using this resource *always* implies an override, even if one of
                `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
                for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
@@ -294,7 +294,7 @@ class DrsVmOverride(pulumi.CustomResource):
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
                
-               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               > **NOTE:** Using this resource *always* implies an override, even if one of
                `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
                for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
@@ -330,7 +330,7 @@ class DrsVmOverride(pulumi.CustomResource):
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         `fullyAutomated`. Default: `manual`.
 
-        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        > **NOTE:** Using this resource *always* implies an override, even if one of
         `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
         for both options.
         """

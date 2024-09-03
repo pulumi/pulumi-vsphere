@@ -14,7 +14,7 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// ### S
+    /// ### s
     /// 
     /// **Enable Workload Management on a compute cluster**
     /// 

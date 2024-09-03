@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class GetComputeClusterHostGroupResult {
     private String computeClusterId;
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of
+     * @return The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * the ESXi hosts in the host group.
      * 
      */
@@ -30,7 +30,7 @@ public final class GetComputeClusterHostGroupResult {
         return this.computeClusterId;
     }
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of
+     * @return The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * the ESXi hosts in the host group.
      * 
      */

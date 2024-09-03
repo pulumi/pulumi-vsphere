@@ -46,10 +46,9 @@ class DatastoreClusterArgs:
                changed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
@@ -159,10 +158,9 @@ class DatastoreClusterArgs:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
-        [here][docs-setting-custom-attributes] for a reference on how to set values
+        [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -494,10 +492,9 @@ class _DatastoreClusterState:
         Input properties used for looking up and filtering DatastoreCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
@@ -597,10 +594,9 @@ class _DatastoreClusterState:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
-        [here][docs-setting-custom-attributes] for a reference on how to set values
+        [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -951,10 +947,9 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
@@ -1125,10 +1120,9 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
+               [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
                for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
@@ -1208,10 +1202,9 @@ class DatastoreCluster(pulumi.CustomResource):
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
-        [here][docs-setting-custom-attributes] for a reference on how to set values
+        [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
         for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.

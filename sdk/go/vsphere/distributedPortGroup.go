@@ -42,10 +42,9 @@ type DistributedPortGroup struct {
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
 	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	// =======
 	// value string to set for port group.
 	// > > > > > > > 69c6e040 (fork)
@@ -107,9 +106,7 @@ type DistributedPortGroup struct {
 	PortConfigResetAtDisconnect pulumi.BoolPtrOutput `pulumi:"portConfigResetAtDisconnect"`
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
-	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+	// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
 	PortNameFormat pulumi.StringPtrOutput `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
@@ -202,10 +199,9 @@ type distributedPortGroupState struct {
 	ConfigVersion *string `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
 	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	// =======
 	// value string to set for port group.
 	// > > > > > > > 69c6e040 (fork)
@@ -267,9 +263,7 @@ type distributedPortGroupState struct {
 	PortConfigResetAtDisconnect *bool `pulumi:"portConfigResetAtDisconnect"`
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
-	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+	// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -330,10 +324,9 @@ type DistributedPortGroupState struct {
 	ConfigVersion pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
 	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	// =======
 	// value string to set for port group.
 	// > > > > > > > 69c6e040 (fork)
@@ -395,9 +388,7 @@ type DistributedPortGroupState struct {
 	PortConfigResetAtDisconnect pulumi.BoolPtrInput
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
-	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+	// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -459,10 +450,9 @@ type distributedPortGroupArgs struct {
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// Map of custom attribute ids to attribute
 	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	// =======
 	// value string to set for port group.
 	// > > > > > > > 69c6e040 (fork)
@@ -522,9 +512,7 @@ type distributedPortGroupArgs struct {
 	PortConfigResetAtDisconnect *bool `pulumi:"portConfigResetAtDisconnect"`
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
-	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+	// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -583,10 +571,9 @@ type DistributedPortGroupArgs struct {
 	CheckBeacon pulumi.BoolPtrInput
 	// Map of custom attribute ids to attribute
 	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
 	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	// =======
 	// value string to set for port group.
 	// > > > > > > > 69c6e040 (fork)
@@ -646,9 +633,7 @@ type DistributedPortGroupArgs struct {
 	PortConfigResetAtDisconnect pulumi.BoolPtrInput
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
-	// [here][ext-vsphere-portname-format] for details on the format syntax.
-	//
-	// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+	// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -822,10 +807,9 @@ func (o DistributedPortGroupOutput) ConfigVersion() pulumi.StringOutput {
 
 // Map of custom attribute ids to attribute
 // <<<<<<< HEAD
-// value string to set for port group. See [here][docs-setting-custom-attributes]
+// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 // for a reference on how to set values for custom attributes.
 //
-// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 // =======
 // value string to set for port group.
 // > > > > > > > 69c6e040 (fork)
@@ -962,9 +946,7 @@ func (o DistributedPortGroupOutput) PortConfigResetAtDisconnect() pulumi.BoolPtr
 
 // An optional formatting policy for naming of
 // the ports in this port group. See the `portNameFormat` attribute listed
-// [here][ext-vsphere-portname-format] for details on the format syntax.
-//
-// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
 func (o DistributedPortGroupOutput) PortNameFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.PortNameFormat }).(pulumi.StringPtrOutput)
 }

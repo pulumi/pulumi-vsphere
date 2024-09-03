@@ -19,8 +19,6 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The hexadecimal PCI device class ID
      * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
      * 
      */
@@ -30,8 +28,6 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * @return The hexadecimal PCI device class ID
      * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
      * 
      */
@@ -40,7 +36,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      * 
      */
@@ -48,7 +44,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
     private Output<String> hostId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of
+     * @return The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      * 
      */
@@ -118,8 +114,6 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param classId The hexadecimal PCI device class ID
          * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-         * 
          * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
          * 
          * @return builder
@@ -133,8 +127,6 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param classId The hexadecimal PCI device class ID
          * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-         * 
          * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
          * 
          * @return builder
@@ -145,7 +137,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * @param hostId The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
          * a host.
          * 
          * @return builder
@@ -157,7 +149,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * @param hostId The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
          * a host.
          * 
          * @return builder

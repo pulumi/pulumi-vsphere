@@ -22,7 +22,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When this field is used, the
-        /// virtual machines defined in `vm_group_name` will _not_ be
+        /// virtual machines defined in `vm_group_name` will *not* be
         /// run on the hosts defined in this host group.
         /// </summary>
         [Output("antiAffinityHostGroupName")]
@@ -127,7 +127,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When this field is used, the
-        /// virtual machines defined in `vm_group_name` will _not_ be
+        /// virtual machines defined in `vm_group_name` will *not* be
         /// run on the hosts defined in this host group.
         /// </summary>
         [Input("antiAffinityHostGroupName")]
@@ -194,7 +194,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When this field is used, the
-        /// virtual machines defined in `vm_group_name` will _not_ be
+        /// virtual machines defined in `vm_group_name` will *not* be
         /// run on the hosts defined in this host group.
         /// </summary>
         [Input("antiAffinityHostGroupName")]

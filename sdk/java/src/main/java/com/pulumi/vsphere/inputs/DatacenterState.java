@@ -20,10 +20,8 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Map of custom attribute ids to value
      * strings to set for datacenter resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
      * for custom attributes.
-     * 
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -35,10 +33,8 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Map of custom attribute ids to value
      * strings to set for datacenter resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
      * for custom attributes.
-     * 
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -143,10 +139,8 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param customAttributes Map of custom attribute ids to value
          * strings to set for datacenter resource. See
-         * [here][docs-setting-custom-attributes] for a reference on how to set values
+         * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
          * for custom attributes.
-         * 
-         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
          * and require vCenter.
@@ -162,10 +156,8 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param customAttributes Map of custom attribute ids to value
          * strings to set for datacenter resource. See
-         * [here][docs-setting-custom-attributes] for a reference on how to set values
+         * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
          * for custom attributes.
-         * 
-         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
          * and require vCenter.

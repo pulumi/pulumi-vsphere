@@ -74,7 +74,7 @@ def get_datacenter(name: Optional[str] = None,
     :param str name: The name of the datacenter. This can be a name or path.
            Can be omitted if there is only one datacenter in the inventory.
            
-           > **NOTE:** When used with an ESXi host, this data source _always_ returns the
+           > **NOTE:** When used with an ESXi host, this data source *always* returns the
            host's "default" datacenter, which is a special datacenter name unrelated to the
            datacenters that exist in the vSphere inventory when managed by a vCenter Server
            instance. Hence, the `name` attribute is completely ignored.
@@ -111,7 +111,7 @@ def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: The name of the datacenter. This can be a name or path.
            Can be omitted if there is only one datacenter in the inventory.
            
-           > **NOTE:** When used with an ESXi host, this data source _always_ returns the
+           > **NOTE:** When used with an ESXi host, this data source *always* returns the
            host's "default" datacenter, which is a special datacenter name unrelated to the
            datacenters that exist in the vSphere inventory when managed by a vCenter Server
            instance. Hence, the `name` attribute is completely ignored.

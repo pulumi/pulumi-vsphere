@@ -23,7 +23,7 @@ type DrsVmOverride struct {
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DrsAutomationLevel pulumi.StringPtrOutput `pulumi:"drsAutomationLevel"`
@@ -79,7 +79,7 @@ type drsVmOverrideState struct {
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DrsAutomationLevel *string `pulumi:"drsAutomationLevel"`
@@ -100,7 +100,7 @@ type DrsVmOverrideState struct {
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DrsAutomationLevel pulumi.StringPtrInput
@@ -125,7 +125,7 @@ type drsVmOverrideArgs struct {
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DrsAutomationLevel *string `pulumi:"drsAutomationLevel"`
@@ -147,7 +147,7 @@ type DrsVmOverrideArgs struct {
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DrsAutomationLevel pulumi.StringPtrInput
@@ -257,7 +257,7 @@ func (o DrsVmOverrideOutput) ComputeClusterId() pulumi.StringOutput {
 // machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 // `fullyAutomated`. Default: `manual`.
 //
-// > **NOTE:** Using this resource _always_ implies an override, even if one of
+// > **NOTE:** Using this resource *always* implies an override, even if one of
 // `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
 // for both options.
 func (o DrsVmOverrideOutput) DrsAutomationLevel() pulumi.StringPtrOutput {

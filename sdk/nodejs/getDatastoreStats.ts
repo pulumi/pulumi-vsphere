@@ -59,11 +59,9 @@ export interface GetDatastoreStatsArgs {
     capacity?: {[key: string]: string};
     /**
      * The
-     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     datacenterId: string;
     /**
@@ -84,7 +82,7 @@ export interface GetDatastoreStatsResult {
      */
     readonly capacity?: {[key: string]: string};
     /**
-     * The [managed object reference ID][docs-about-morefs] of the
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the
      * datacenter the datastores are located in.
      */
     readonly datacenterId: string;
@@ -148,11 +146,9 @@ export interface GetDatastoreStatsOutputArgs {
     capacity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The
-     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     datacenterId: pulumi.Input<string>;
     /**

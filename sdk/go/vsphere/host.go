@@ -114,10 +114,8 @@ import (
 //
 // ## Importing
 //
-// An existing host can be [imported][docs-import] into this resource by supplying
+// An existing host can be [imported](https://www.terraform.io/docs/import/index.html) into this resource by supplying
 // the host's ID. An example is below:
-//
-// [docs-import]: /docs/import/index.html
 //
 // The above would import the host with ID `host-123`.
 type Host struct {
@@ -141,8 +139,6 @@ type Host struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -175,7 +171,7 @@ type Host struct {
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
 	// trusted and no thumbprint is set then the operation will fail. See data source
-	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
+	// [`getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
 	Thumbprint pulumi.StringPtrOutput `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -246,8 +242,6 @@ type hostState struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -280,7 +274,7 @@ type hostState struct {
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
 	// trusted and no thumbprint is set then the operation will fail. See data source
-	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
+	// [`getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
 	Thumbprint *string `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -306,8 +300,6 @@ type HostState struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -340,7 +332,7 @@ type HostState struct {
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
 	// trusted and no thumbprint is set then the operation will fail. See data source
-	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
+	// [`getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
 	Thumbprint pulumi.StringPtrInput
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -370,8 +362,6 @@ type hostArgs struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -404,7 +394,7 @@ type hostArgs struct {
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
 	// trusted and no thumbprint is set then the operation will fail. See data source
-	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
+	// [`getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
 	Thumbprint *string `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -431,8 +421,6 @@ type HostArgs struct {
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
-	//
-	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -465,7 +453,7 @@ type HostArgs struct {
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
 	// trusted and no thumbprint is set then the operation will fail. See data source
-	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
+	// [`getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
 	Thumbprint pulumi.StringPtrInput
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -586,8 +574,6 @@ func (o HostOutput) Connected() pulumi.BoolPtrOutput {
 //
 // > **NOTE:** Custom attributes are not supported on direct ESXi host
 // connections and require vCenter Server.
-//
-// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 func (o HostOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -647,7 +633,7 @@ func (o HostOutput) Tags() pulumi.StringArrayOutput {
 // Host's certificate SHA-1 thumbprint. If not set the
 // CA that signed the host's certificate should be trusted. If the CA is not
 // trusted and no thumbprint is set then the operation will fail. See data source
-// [`getHostThumbprint`][docs-host-thumbprint-data-source].
+// [`getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
 func (o HostOutput) Thumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.Thumbprint }).(pulumi.StringPtrOutput)
 }

@@ -48,7 +48,7 @@ class GetDatastoreStatsResult:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> str:
         """
-        The [managed object reference ID][docs-about-morefs] of the
+        The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the
         datacenter the datastores are located in.
         """
         return pulumi.get(self, "datacenter_id")
@@ -122,11 +122,9 @@ def get_datastore_stats(capacity: Optional[Mapping[str, str]] = None,
     :param Mapping[str, str] capacity: A mapping of the capacity for all datastore in the datacenter,
            where the name of the datastore is used as key and the capacity as value.
     :param str datacenter_id: The
-           [managed object reference ID][docs-about-morefs] of the datacenter the
+           [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
            datastores are located in. For default datacenters, use the `id` attribute
            from an empty `Datacenter` data source.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param Mapping[str, str] free_space: A mapping of the free space for each datastore in the
            datacenter, where the name of the datastore is used as key and the free space
            as value.
@@ -184,11 +182,9 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
     :param Mapping[str, str] capacity: A mapping of the capacity for all datastore in the datacenter,
            where the name of the datastore is used as key and the capacity as value.
     :param str datacenter_id: The
-           [managed object reference ID][docs-about-morefs] of the datacenter the
+           [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
            datastores are located in. For default datacenters, use the `id` attribute
            from an empty `Datacenter` data source.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param Mapping[str, str] free_space: A mapping of the free space for each datastore in the
            datacenter, where the name of the datastore is used as key and the free space
            as value.

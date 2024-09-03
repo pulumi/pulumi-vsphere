@@ -16,7 +16,7 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
     public static final GetHostVgpuProfilePlainArgs Empty = new GetHostVgpuProfilePlainArgs();
 
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      * 
      */
@@ -24,7 +24,7 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
     private String hostId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of
+     * @return The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      * 
      */
@@ -36,8 +36,6 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
      * A regular expression that will be used to match the
      * host vGPU profile name.
      * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
@@ -45,8 +43,6 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
     /**
      * @return A regular expression that will be used to match the
      * host vGPU profile name.
-     * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<String> nameRegex() {
@@ -79,7 +75,7 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * @param hostId The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
          * a host.
          * 
          * @return builder
@@ -93,8 +89,6 @@ public final class GetHostVgpuProfilePlainArgs extends com.pulumi.resources.Invo
         /**
          * @param nameRegex A regular expression that will be used to match the
          * host vGPU profile name.
-         * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

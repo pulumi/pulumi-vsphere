@@ -40,7 +40,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      * 
-     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * &gt; **NOTE:** Using this resource *always* implies an override, even if one of
      * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
      * for both options.
      * 
@@ -53,7 +53,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      * 
-     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * &gt; **NOTE:** Using this resource *always* implies an override, even if one of
      * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
      * for both options.
      * 

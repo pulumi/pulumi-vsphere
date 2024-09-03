@@ -18,7 +18,7 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// ### With Vendor ID And Class ID
+        /// ### with Vendor ID and Class ID
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -49,10 +49,9 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
+        /// ### with Name Regular Expression
         /// 
-        /// ### With Name Regular Expression
-        /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -90,7 +89,7 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// ### With Vendor ID And Class ID
+        /// ### with Vendor ID and Class ID
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -121,10 +120,9 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
+        /// ### with Name Regular Expression
         /// 
-        /// ### With Name Regular Expression
-        /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -162,7 +160,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The hexadecimal PCI device class ID
         /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// 
         /// &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
         /// </summary>
@@ -170,7 +167,7 @@ namespace Pulumi.VSphere
         public string? ClassId { get; set; }
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of
+        /// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
         /// a host.
         /// </summary>
         [Input("hostId", required: true)]
@@ -200,7 +197,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The hexadecimal PCI device class ID
         /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// 
         /// &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
         /// </summary>
@@ -208,7 +204,7 @@ namespace Pulumi.VSphere
         public Input<string>? ClassId { get; set; }
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of
+        /// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
         /// a host.
         /// </summary>
         [Input("hostId", required: true)]

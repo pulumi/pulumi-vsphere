@@ -71,10 +71,8 @@ import (
 //
 // ## Importing
 //
-// An existing datacenter can be [imported][docs-import] into this resource
+// An existing datacenter can be [imported](https://www.terraform.io/docs/import/index.html) into this resource
 // via supplying the full path to the datacenter. An example is below:
-//
-// [docs-import]: /docs/import/index.html
 //
 // The above would import the datacenter named `dc1`.
 type Datacenter struct {
@@ -82,10 +80,8 @@ type Datacenter struct {
 
 	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -134,10 +130,8 @@ func GetDatacenter(ctx *pulumi.Context,
 type datacenterState struct {
 	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -157,10 +151,8 @@ type datacenterState struct {
 type DatacenterState struct {
 	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -184,10 +176,8 @@ func (DatacenterState) ElementType() reflect.Type {
 type datacenterArgs struct {
 	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -206,10 +196,8 @@ type datacenterArgs struct {
 type DatacenterArgs struct {
 	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
 	// for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -313,10 +301,8 @@ func (o DatacenterOutput) ToDatacenterOutputWithContext(ctx context.Context) Dat
 
 // Map of custom attribute ids to value
 // strings to set for datacenter resource. See
-// [here][docs-setting-custom-attributes] for a reference on how to set values
+// [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
 // for custom attributes.
-//
-// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 //
 // > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 // and require vCenter.

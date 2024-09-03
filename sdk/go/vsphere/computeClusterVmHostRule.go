@@ -20,7 +20,7 @@ type ComputeClusterVmHostRule struct {
 	// hosts defined in this host group.
 	AffinityHostGroupName pulumi.StringPtrOutput `pulumi:"affinityHostGroupName"`
 	// When this field is used, the
-	// virtual machines defined in `vmGroupName` will _not_ be
+	// virtual machines defined in `vmGroupName` will *not* be
 	// run on the hosts defined in this host group.
 	AntiAffinityHostGroupName pulumi.StringPtrOutput `pulumi:"antiAffinityHostGroupName"`
 	// The managed object reference
@@ -89,7 +89,7 @@ type computeClusterVmHostRuleState struct {
 	// hosts defined in this host group.
 	AffinityHostGroupName *string `pulumi:"affinityHostGroupName"`
 	// When this field is used, the
-	// virtual machines defined in `vmGroupName` will _not_ be
+	// virtual machines defined in `vmGroupName` will *not* be
 	// run on the hosts defined in this host group.
 	AntiAffinityHostGroupName *string `pulumi:"antiAffinityHostGroupName"`
 	// The managed object reference
@@ -123,7 +123,7 @@ type ComputeClusterVmHostRuleState struct {
 	// hosts defined in this host group.
 	AffinityHostGroupName pulumi.StringPtrInput
 	// When this field is used, the
-	// virtual machines defined in `vmGroupName` will _not_ be
+	// virtual machines defined in `vmGroupName` will *not* be
 	// run on the hosts defined in this host group.
 	AntiAffinityHostGroupName pulumi.StringPtrInput
 	// The managed object reference
@@ -161,7 +161,7 @@ type computeClusterVmHostRuleArgs struct {
 	// hosts defined in this host group.
 	AffinityHostGroupName *string `pulumi:"affinityHostGroupName"`
 	// When this field is used, the
-	// virtual machines defined in `vmGroupName` will _not_ be
+	// virtual machines defined in `vmGroupName` will *not* be
 	// run on the hosts defined in this host group.
 	AntiAffinityHostGroupName *string `pulumi:"antiAffinityHostGroupName"`
 	// The managed object reference
@@ -196,7 +196,7 @@ type ComputeClusterVmHostRuleArgs struct {
 	// hosts defined in this host group.
 	AffinityHostGroupName pulumi.StringPtrInput
 	// When this field is used, the
-	// virtual machines defined in `vmGroupName` will _not_ be
+	// virtual machines defined in `vmGroupName` will *not* be
 	// run on the hosts defined in this host group.
 	AntiAffinityHostGroupName pulumi.StringPtrInput
 	// The managed object reference
@@ -319,7 +319,7 @@ func (o ComputeClusterVmHostRuleOutput) AffinityHostGroupName() pulumi.StringPtr
 }
 
 // When this field is used, the
-// virtual machines defined in `vmGroupName` will _not_ be
+// virtual machines defined in `vmGroupName` will *not* be
 // run on the hosts defined in this host group.
 func (o ComputeClusterVmHostRuleOutput) AntiAffinityHostGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.StringPtrOutput { return v.AntiAffinityHostGroupName }).(pulumi.StringPtrOutput)

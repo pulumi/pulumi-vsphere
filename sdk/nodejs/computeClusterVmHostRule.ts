@@ -40,7 +40,7 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
     public readonly affinityHostGroupName!: pulumi.Output<string | undefined>;
     /**
      * When this field is used, the
-     * virtual machines defined in `vmGroupName` will _not_ be
+     * virtual machines defined in `vmGroupName` will *not* be
      * run on the hosts defined in this host group.
      */
     public readonly antiAffinityHostGroupName!: pulumi.Output<string | undefined>;
@@ -131,7 +131,7 @@ export interface ComputeClusterVmHostRuleState {
     affinityHostGroupName?: pulumi.Input<string>;
     /**
      * When this field is used, the
-     * virtual machines defined in `vmGroupName` will _not_ be
+     * virtual machines defined in `vmGroupName` will *not* be
      * run on the hosts defined in this host group.
      */
     antiAffinityHostGroupName?: pulumi.Input<string>;
@@ -182,7 +182,7 @@ export interface ComputeClusterVmHostRuleArgs {
     affinityHostGroupName?: pulumi.Input<string>;
     /**
      * When this field is used, the
-     * virtual machines defined in `vmGroupName` will _not_ be
+     * virtual machines defined in `vmGroupName` will *not* be
      * run on the hosts defined in this host group.
      */
     antiAffinityHostGroupName?: pulumi.Input<string>;

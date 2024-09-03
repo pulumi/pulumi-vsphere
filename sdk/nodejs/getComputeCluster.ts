@@ -12,8 +12,8 @@ import * as utilities from "./utilities";
  * data source.
  *
  * > You may also wish to see the `vsphere.ComputeCluster`
- *  resource for more information about clusters and how to managed the resource
- *  in this provider.
+ * resource for more information about clusters and how to managed the resource
+ * in this provider.
  *
  * ## Example Usage
  *
@@ -80,8 +80,8 @@ export interface GetComputeClusterResult {
  * data source.
  *
  * > You may also wish to see the `vsphere.ComputeCluster`
- *  resource for more information about clusters and how to managed the resource
- *  in this provider.
+ * resource for more information about clusters and how to managed the resource
+ * in this provider.
  *
  * ## Example Usage
  *

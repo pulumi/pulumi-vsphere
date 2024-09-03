@@ -62,10 +62,8 @@ import * as utilities from "./utilities";
  *
  * ## Importing
  *
- * An existing host can be [imported][docs-import] into this resource by supplying
+ * An existing host can be [imported](https://www.terraform.io/docs/import/index.html) into this resource by supplying
  * the host's ID. An example is below:
- *
- * [docs-import]: /docs/import/index.html
  *
  * The above would import the host with ID `host-123`.
  */
@@ -122,8 +120,6 @@ export class Host extends pulumi.CustomResource {
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     *
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -174,7 +170,7 @@ export class Host extends pulumi.CustomResource {
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
-     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+     * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
      */
     public readonly thumbprint!: pulumi.Output<string | undefined>;
     /**
@@ -272,8 +268,6 @@ export interface HostState {
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     *
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -324,7 +318,7 @@ export interface HostState {
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
-     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+     * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
      */
     thumbprint?: pulumi.Input<string>;
     /**
@@ -363,8 +357,6 @@ export interface HostArgs {
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     *
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -415,7 +407,7 @@ export interface HostArgs {
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
-     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+     * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
      */
     thumbprint?: pulumi.Input<string>;
     /**

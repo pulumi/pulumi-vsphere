@@ -19,8 +19,8 @@ namespace Pulumi.VSphere
         /// data source.
         /// 
         /// &gt; You may also wish to see the `vsphere.ComputeCluster`
-        ///  resource for more information about clusters and how to managed the resource
-        ///  in this provider.
+        /// resource for more information about clusters and how to managed the resource
+        /// in this provider.
         /// 
         /// ## Example Usage
         /// 
@@ -57,8 +57,8 @@ namespace Pulumi.VSphere
         /// data source.
         /// 
         /// &gt; You may also wish to see the `vsphere.ComputeCluster`
-        ///  resource for more information about clusters and how to managed the resource
-        ///  in this provider.
+        /// resource for more information about clusters and how to managed the resource
+        /// in this provider.
         /// 
         /// ## Example Usage
         /// 

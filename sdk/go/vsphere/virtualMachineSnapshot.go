@@ -16,7 +16,7 @@ import (
 // for a virtual machine.
 //
 // For more information on managing snapshots and how they work in VMware, see
-// [here][ext-vm-snapshot-management].
+// [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-host-client/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html).
 //
 // > **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
 // can contain the actual running state of the virtual machine, data for all disks
@@ -28,7 +28,7 @@ import (
 // included in the original state. Use this resource with care! Neither VMware nor
 // HashiCorp recommends retaining snapshots for a extended period of time and does
 // NOT recommend using them as as backup feature. For more information on the
-// limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
+// limitation of virtual machine snapshots, see [here](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html).
 //
 // ## Example Usage
 //
@@ -61,9 +61,6 @@ import (
 //	}
 //
 // ```
-//
-// [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-host-client/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
-// [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
 type VirtualMachineSnapshot struct {
 	pulumi.CustomResourceState
 

@@ -688,9 +688,7 @@ class HostPortGroup(pulumi.CustomResource):
         can be managed by the `HostVirtualSwitch`
         resource.
 
-        For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
-
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+        For an overview on vSphere networking concepts, see [the product documentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html).
 
         ## Example Usage
 
@@ -798,9 +796,7 @@ class HostPortGroup(pulumi.CustomResource):
         can be managed by the `HostVirtualSwitch`
         resource.
 
-        For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
-
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+        For an overview on vSphere networking concepts, see [the product documentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html).
 
         ## Example Usage
 

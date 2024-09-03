@@ -65,9 +65,7 @@ namespace Pulumi.VSphere
         /// The type of disk to create. Can be one of
         /// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
         /// information on what each kind of disk provisioning policy means, click
-        /// [here][docs-vmware-vm-disk-provisioning].
-        /// 
-        /// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+        /// [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html).
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -178,9 +176,7 @@ namespace Pulumi.VSphere
         /// The type of disk to create. Can be one of
         /// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
         /// information on what each kind of disk provisioning policy means, click
-        /// [here][docs-vmware-vm-disk-provisioning].
-        /// 
-        /// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+        /// [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -253,9 +249,7 @@ namespace Pulumi.VSphere
         /// The type of disk to create. Can be one of
         /// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
         /// information on what each kind of disk provisioning policy means, click
-        /// [here][docs-vmware-vm-disk-provisioning].
-        /// 
-        /// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+        /// [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

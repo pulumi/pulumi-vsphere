@@ -17,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// ### With Vendor ID And Class ID
+// ### with Vendor ID and Class ID
 //
 // ```go
 // package main
@@ -58,7 +58,7 @@ import (
 //
 // ```
 //
-// ### With Name Regular Expression
+// ### with Name Regular Expression
 //
 // ```go
 // package main
@@ -71,29 +71,29 @@ import (
 // )
 //
 //	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//	           Name: pulumi.StringRef("dc-01"),
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
-//	           Name:         pulumi.StringRef("esxi-01.example.com"),
-//	           DatacenterId: datacenter.Id,
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       _, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
-//	           HostId:    host.Id,
-//	           NameRegex: pulumi.StringRef("MMC"),
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       return nil
-//	   })
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
+//				HostId:    host.Id,
+//				NameRegex: pulumi.StringRef("MMC"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
 //	}
 //
 // ```
@@ -111,11 +111,9 @@ func GetHostPciDevice(ctx *pulumi.Context, args *GetHostPciDeviceArgs, opts ...p
 type GetHostPciDeviceArgs struct {
 	// The hexadecimal PCI device class ID
 	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-	//
 	// > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
 	ClassId *string `pulumi:"classId"`
-	// The [managed object reference ID][docs-about-morefs] of
+	// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
 	// a host.
 	HostId string `pulumi:"hostId"`
 	// A regular expression that will be used to match the
@@ -154,11 +152,9 @@ func GetHostPciDeviceOutput(ctx *pulumi.Context, args GetHostPciDeviceOutputArgs
 type GetHostPciDeviceOutputArgs struct {
 	// The hexadecimal PCI device class ID
 	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-	//
 	// > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
 	ClassId pulumi.StringPtrInput `pulumi:"classId"`
-	// The [managed object reference ID][docs-about-morefs] of
+	// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
 	// a host.
 	HostId pulumi.StringInput `pulumi:"hostId"`
 	// A regular expression that will be used to match the

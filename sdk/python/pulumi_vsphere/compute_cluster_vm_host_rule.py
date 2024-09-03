@@ -32,7 +32,7 @@ class ComputeClusterVmHostRuleArgs:
                machines defined in `vm_group_name` will be run on the
                hosts defined in this host group.
         :param pulumi.Input[str] anti_affinity_host_group_name: When this field is used, the
-               virtual machines defined in `vm_group_name` will _not_ be
+               virtual machines defined in `vm_group_name` will *not* be
                run on the hosts defined in this host group.
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
@@ -107,7 +107,7 @@ class ComputeClusterVmHostRuleArgs:
     def anti_affinity_host_group_name(self) -> Optional[pulumi.Input[str]]:
         """
         When this field is used, the
-        virtual machines defined in `vm_group_name` will _not_ be
+        virtual machines defined in `vm_group_name` will *not* be
         run on the hosts defined in this host group.
         """
         return pulumi.get(self, "anti_affinity_host_group_name")
@@ -179,7 +179,7 @@ class _ComputeClusterVmHostRuleState:
                machines defined in `vm_group_name` will be run on the
                hosts defined in this host group.
         :param pulumi.Input[str] anti_affinity_host_group_name: When this field is used, the
-               virtual machines defined in `vm_group_name` will _not_ be
+               virtual machines defined in `vm_group_name` will *not* be
                run on the hosts defined in this host group.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
@@ -234,7 +234,7 @@ class _ComputeClusterVmHostRuleState:
     def anti_affinity_host_group_name(self) -> Optional[pulumi.Input[str]]:
         """
         When this field is used, the
-        virtual machines defined in `vm_group_name` will _not_ be
+        virtual machines defined in `vm_group_name` will *not* be
         run on the hosts defined in this host group.
         """
         return pulumi.get(self, "anti_affinity_host_group_name")
@@ -338,7 +338,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                machines defined in `vm_group_name` will be run on the
                hosts defined in this host group.
         :param pulumi.Input[str] anti_affinity_host_group_name: When this field is used, the
-               virtual machines defined in `vm_group_name` will _not_ be
+               virtual machines defined in `vm_group_name` will *not* be
                run on the hosts defined in this host group.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
@@ -437,7 +437,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                machines defined in `vm_group_name` will be run on the
                hosts defined in this host group.
         :param pulumi.Input[str] anti_affinity_host_group_name: When this field is used, the
-               virtual machines defined in `vm_group_name` will _not_ be
+               virtual machines defined in `vm_group_name` will *not* be
                run on the hosts defined in this host group.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
@@ -486,7 +486,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
     def anti_affinity_host_group_name(self) -> pulumi.Output[Optional[str]]:
         """
         When this field is used, the
-        virtual machines defined in `vm_group_name` will _not_ be
+        virtual machines defined in `vm_group_name` will *not* be
         run on the hosts defined in this host group.
         """
         return pulumi.get(self, "anti_affinity_host_group_name")

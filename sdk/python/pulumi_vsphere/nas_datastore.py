@@ -38,7 +38,7 @@ class NasDatastoreArgs:
                `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
                that the datastore will be read-write depending on the permissions of the
                actual share. Default: `readWrite`. Forces a new resource if changed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set on datasource resource.
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -58,7 +58,7 @@ class NasDatastoreArgs:
         :param pulumi.Input[str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -145,7 +145,7 @@ class NasDatastoreArgs:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of custom attribute ids to attribute 
+        Map of custom attribute ids to attribute
         value strings to set on datasource resource.
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -220,7 +220,7 @@ class NasDatastoreArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource.
 
         > **NOTE:** Tagging support is unsupported on direct ESXi connections and
         requires vCenter 6.0 or higher.
@@ -277,7 +277,7 @@ class _NasDatastoreState:
         :param pulumi.Input[bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[int] capacity: Maximum capacity of the datastore, in megabytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set on datasource resource.
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -310,7 +310,7 @@ class _NasDatastoreState:
         :param pulumi.Input[str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -404,7 +404,7 @@ class _NasDatastoreState:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of custom attribute ids to attribute 
+        Map of custom attribute ids to attribute
         value strings to set on datasource resource.
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -569,7 +569,7 @@ class _NasDatastoreState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource.
 
         > **NOTE:** Tagging support is unsupported on direct ESXi connections and
         requires vCenter 6.0 or higher.
@@ -645,7 +645,7 @@ class NasDatastore(pulumi.CustomResource):
                `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
                that the datastore will be read-write depending on the permissions of the
                actual share. Default: `readWrite`. Forces a new resource if changed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set on datasource resource.
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -672,7 +672,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -791,7 +791,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[int] capacity: Maximum capacity of the datastore, in megabytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set on datasource resource.
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -824,7 +824,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
                
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
@@ -892,7 +892,7 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Map of custom attribute ids to attribute 
+        Map of custom attribute ids to attribute
         value strings to set on datasource resource.
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -1009,7 +1009,7 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource.
 
         > **NOTE:** Tagging support is unsupported on direct ESXi connections and
         requires vCenter 6.0 or higher.

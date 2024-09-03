@@ -80,13 +80,12 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * Map of custom attribute ids to attribute
      * <<<<<<< HEAD
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
+     * value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
      * for a reference on how to set values for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * =======
      * value string to set for port group.
-     * >>>>>>> 69c6e040 (fork)
+     * > > > > > > > 69c6e040 (fork)
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
@@ -195,9 +194,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
-     * [here][ext-vsphere-portname-format] for details on the format syntax.
-     *
-     * [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+     * [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
      */
     public readonly portNameFormat!: pulumi.Output<string | undefined>;
     /**
@@ -426,13 +423,12 @@ export interface DistributedPortGroupState {
     /**
      * Map of custom attribute ids to attribute
      * <<<<<<< HEAD
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
+     * value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
      * for a reference on how to set values for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * =======
      * value string to set for port group.
-     * >>>>>>> 69c6e040 (fork)
+     * > > > > > > > 69c6e040 (fork)
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
@@ -541,9 +537,7 @@ export interface DistributedPortGroupState {
     /**
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
-     * [here][ext-vsphere-portname-format] for details on the format syntax.
-     *
-     * [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+     * [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
      */
     portNameFormat?: pulumi.Input<string>;
     /**
@@ -648,13 +642,12 @@ export interface DistributedPortGroupArgs {
     /**
      * Map of custom attribute ids to attribute
      * <<<<<<< HEAD
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
+     * value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
      * for a reference on how to set values for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * =======
      * value string to set for port group.
-     * >>>>>>> 69c6e040 (fork)
+     * > > > > > > > 69c6e040 (fork)
      *
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
@@ -759,9 +752,7 @@ export interface DistributedPortGroupArgs {
     /**
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
-     * [here][ext-vsphere-portname-format] for details on the format syntax.
-     *
-     * [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+     * [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
      */
     portNameFormat?: pulumi.Input<string>;
     /**

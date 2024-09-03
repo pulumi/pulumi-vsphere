@@ -76,10 +76,8 @@ func LookupComputeClusterHostGroup(ctx *pulumi.Context, args *LookupComputeClust
 // A collection of arguments for invoking getComputeClusterHostGroup.
 type LookupComputeClusterHostGroupArgs struct {
 	// The
-	// [managed object reference ID][docs-about-morefs] of the compute cluster for
+	// [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the compute cluster for
 	// the host group.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The name of the host group.
 	Name string `pulumi:"name"`
@@ -88,7 +86,7 @@ type LookupComputeClusterHostGroupArgs struct {
 // A collection of values returned by getComputeClusterHostGroup.
 type LookupComputeClusterHostGroupResult struct {
 	ComputeClusterId string `pulumi:"computeClusterId"`
-	// The [managed object reference ID][docs-about-morefs] of
+	// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
 	// the ESXi hosts in the host group.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The provider-assigned unique ID for this managed resource.
@@ -112,10 +110,8 @@ func LookupComputeClusterHostGroupOutput(ctx *pulumi.Context, args LookupCompute
 // A collection of arguments for invoking getComputeClusterHostGroup.
 type LookupComputeClusterHostGroupOutputArgs struct {
 	// The
-	// [managed object reference ID][docs-about-morefs] of the compute cluster for
+	// [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the compute cluster for
 	// the host group.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput `pulumi:"computeClusterId"`
 	// The name of the host group.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -144,7 +140,7 @@ func (o LookupComputeClusterHostGroupResultOutput) ComputeClusterId() pulumi.Str
 	return o.ApplyT(func(v LookupComputeClusterHostGroupResult) string { return v.ComputeClusterId }).(pulumi.StringOutput)
 }
 
-// The [managed object reference ID][docs-about-morefs] of
+// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
 // the ESXi hosts in the host group.
 func (o LookupComputeClusterHostGroupResultOutput) HostSystemIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeClusterHostGroupResult) []string { return v.HostSystemIds }).(pulumi.StringArrayOutput)

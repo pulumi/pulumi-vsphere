@@ -49,7 +49,7 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value strings to set on datasource resource.
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -118,7 +118,7 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     public readonly securityType!: pulumi.Output<string | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -229,7 +229,7 @@ export interface NasDatastoreState {
      */
     capacity?: pulumi.Input<number>;
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value strings to set on datasource resource.
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -298,7 +298,7 @@ export interface NasDatastoreState {
      */
     securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -333,7 +333,7 @@ export interface NasDatastoreArgs {
      */
     accessMode?: pulumi.Input<string>;
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value strings to set on datasource resource.
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -384,7 +384,7 @@ export interface NasDatastoreArgs {
      */
     securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.

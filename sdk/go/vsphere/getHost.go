@@ -65,7 +65,7 @@ type LookupHostArgs struct {
 	// The name of the ESXI host. This can be a name or path.
 	// Can be omitted if there is only one host in your inventory.
 	//
-	// > **NOTE:** When used against an ESXi host directly, this data source _always_
+	// > **NOTE:** When used against an ESXi host directly, this data source *always*
 	// returns the ESXi host's object ID, regardless of what is entered into `name`.
 	Name *string `pulumi:"name"`
 }
@@ -102,7 +102,7 @@ type LookupHostOutputArgs struct {
 	// The name of the ESXI host. This can be a name or path.
 	// Can be omitted if there is only one host in your inventory.
 	//
-	// > **NOTE:** When used against an ESXi host directly, this data source _always_
+	// > **NOTE:** When used against an ESXi host directly, this data source *always*
 	// returns the ESXi host's object ID, regardless of what is entered into `name`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }

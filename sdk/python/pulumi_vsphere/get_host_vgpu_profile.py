@@ -40,7 +40,7 @@ class GetHostVgpuProfileResult:
     @pulumi.getter(name="hostId")
     def host_id(self) -> str:
         """
-        The [managed objectID][docs-about-morefs] of the ESXi host.
+        The [managed objectID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the ESXi host.
         """
         return pulumi.get(self, "host_id")
 
@@ -92,7 +92,7 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
 
     ## Example Usage
 
-    ### To Return All VGPU Profiles
+    ### to return all vGPU profiles
 
     ```python
     import pulumi
@@ -104,7 +104,7 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
     vgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id)
     ```
 
-    ### With VGPU Profile Name_regex
+    ### with vGPU profile name_regex
 
     ```python
     import pulumi
@@ -118,12 +118,10 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
     ```
 
 
-    :param str host_id: The [managed object reference ID][docs-about-morefs] of
+    :param str host_id: The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
            a host.
     :param str name_regex: A regular expression that will be used to match the
            host vGPU profile name.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     """
     __args__ = dict()
     __args__['hostId'] = host_id
@@ -148,7 +146,7 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    ### To Return All VGPU Profiles
+    ### to return all vGPU profiles
 
     ```python
     import pulumi
@@ -160,7 +158,7 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
     vgpu_profile = vsphere.get_host_vgpu_profile(host_id=host.id)
     ```
 
-    ### With VGPU Profile Name_regex
+    ### with vGPU profile name_regex
 
     ```python
     import pulumi
@@ -174,11 +172,9 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str host_id: The [managed object reference ID][docs-about-morefs] of
+    :param str host_id: The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
            a host.
     :param str name_regex: A regular expression that will be used to match the
            host vGPU profile name.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     """
     ...

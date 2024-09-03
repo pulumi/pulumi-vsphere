@@ -17,7 +17,7 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
     public static final GetHostVgpuProfileArgs Empty = new GetHostVgpuProfileArgs();
 
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      * 
      */
@@ -25,7 +25,7 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
     private Output<String> hostId;
 
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of
+     * @return The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      * 
      */
@@ -37,8 +37,6 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
      * A regular expression that will be used to match the
      * host vGPU profile name.
      * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
@@ -46,8 +44,6 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return A regular expression that will be used to match the
      * host vGPU profile name.
-     * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -80,7 +76,7 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * @param hostId The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
          * a host.
          * 
          * @return builder
@@ -92,7 +88,7 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param hostId The [managed object reference ID][docs-about-morefs] of
+         * @param hostId The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
          * a host.
          * 
          * @return builder
@@ -106,8 +102,6 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
          * @param nameRegex A regular expression that will be used to match the
          * host vGPU profile name.
          * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-         * 
          * @return builder
          * 
          */
@@ -119,8 +113,6 @@ public final class GetHostVgpuProfileArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param nameRegex A regular expression that will be used to match the
          * host vGPU profile name.
-         * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

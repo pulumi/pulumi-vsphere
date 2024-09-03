@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### S
+// ### s
 //
 // **Create a basic class**
 //
