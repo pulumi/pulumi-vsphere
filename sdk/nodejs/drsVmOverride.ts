@@ -43,7 +43,7 @@ export class DrsVmOverride extends pulumi.CustomResource {
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      *
-     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * > **NOTE:** Using this resource *always* implies an override, even if one of
      * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
@@ -109,7 +109,7 @@ export interface DrsVmOverrideState {
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      *
-     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * > **NOTE:** Using this resource *always* implies an override, even if one of
      * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
@@ -141,7 +141,7 @@ export interface DrsVmOverrideArgs {
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      *
-     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * > **NOTE:** Using this resource *always* implies an override, even if one of
      * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */

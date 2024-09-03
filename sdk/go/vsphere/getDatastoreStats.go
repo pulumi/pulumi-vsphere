@@ -89,11 +89,9 @@ type GetDatastoreStatsArgs struct {
 	// where the name of the datastore is used as key and the capacity as value.
 	Capacity map[string]string `pulumi:"capacity"`
 	// The
-	// [managed object reference ID][docs-about-morefs] of the datacenter the
+	// [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
 	// datastores are located in. For default datacenters, use the `id` attribute
 	// from an empty `Datacenter` data source.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId string `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
 	// datacenter, where the name of the datastore is used as key and the free space
@@ -106,7 +104,7 @@ type GetDatastoreStatsResult struct {
 	// A mapping of the capacity for all datastore in the datacenter,
 	// where the name of the datastore is used as key and the capacity as value.
 	Capacity map[string]string `pulumi:"capacity"`
-	// The [managed object reference ID][docs-about-morefs] of the
+	// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the
 	// datacenter the datastores are located in.
 	DatacenterId string `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
@@ -136,11 +134,9 @@ type GetDatastoreStatsOutputArgs struct {
 	// where the name of the datastore is used as key and the capacity as value.
 	Capacity pulumi.StringMapInput `pulumi:"capacity"`
 	// The
-	// [managed object reference ID][docs-about-morefs] of the datacenter the
+	// [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
 	// datastores are located in. For default datacenters, use the `id` attribute
 	// from an empty `Datacenter` data source.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
 	// datacenter, where the name of the datastore is used as key and the free space
@@ -173,7 +169,7 @@ func (o GetDatastoreStatsResultOutput) Capacity() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDatastoreStatsResult) map[string]string { return v.Capacity }).(pulumi.StringMapOutput)
 }
 
-// The [managed object reference ID][docs-about-morefs] of the
+// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the
 // datacenter the datastores are located in.
 func (o GetDatastoreStatsResultOutput) DatacenterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatastoreStatsResult) string { return v.DatacenterId }).(pulumi.StringOutput)

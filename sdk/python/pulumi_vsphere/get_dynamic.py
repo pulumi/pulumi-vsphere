@@ -76,10 +76,8 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
                 type: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDynamicResult:
     """
-    [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-
     The `get_dynamic` data source can be used to get the
-    [managed object reference ID][docs-about-morefs] of any tagged managed object in
+    [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
     vCenter Server by providing a list of tag IDs and an optional regular expression
     to filter objects by name.
 
@@ -131,10 +129,8 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDynamicResult]:
     """
-    [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-
     The `get_dynamic` data source can be used to get the
-    [managed object reference ID][docs-about-morefs] of any tagged managed object in
+    [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
     vCenter Server by providing a list of tag IDs and an optional regular expression
     to filter objects by name.
 

@@ -23,7 +23,7 @@ type DpmHostOverride struct {
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DpmAutomationLevel pulumi.StringPtrOutput `pulumi:"dpmAutomationLevel"`
@@ -78,7 +78,7 @@ type dpmHostOverrideState struct {
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DpmAutomationLevel *string `pulumi:"dpmAutomationLevel"`
@@ -98,7 +98,7 @@ type DpmHostOverrideState struct {
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DpmAutomationLevel pulumi.StringPtrInput
@@ -122,7 +122,7 @@ type dpmHostOverrideArgs struct {
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DpmAutomationLevel *string `pulumi:"dpmAutomationLevel"`
@@ -143,7 +143,7 @@ type DpmHostOverrideArgs struct {
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
 	//
-	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// > **NOTE:** Using this resource *always* implies an override, even if one of
 	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
 	// for both options.
 	DpmAutomationLevel pulumi.StringPtrInput
@@ -252,7 +252,7 @@ func (o DpmHostOverrideOutput) ComputeClusterId() pulumi.StringOutput {
 // operations on this host. Can be one of `manual` or `automated`. Default:
 // `manual`.
 //
-// > **NOTE:** Using this resource _always_ implies an override, even if one of
+// > **NOTE:** Using this resource *always* implies an override, even if one of
 // `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
 // for both options.
 func (o DpmHostOverrideOutput) DpmAutomationLevel() pulumi.StringPtrOutput {

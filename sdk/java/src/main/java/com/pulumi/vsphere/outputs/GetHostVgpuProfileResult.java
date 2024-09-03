@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetHostVgpuProfileResult {
     /**
-     * @return The [managed objectID][docs-about-morefs] of the ESXi host.
+     * @return The [managed objectID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the ESXi host.
      * 
      */
     private String hostId;
@@ -39,7 +39,7 @@ public final class GetHostVgpuProfileResult {
 
     private GetHostVgpuProfileResult() {}
     /**
-     * @return The [managed objectID][docs-about-morefs] of the ESXi host.
+     * @return The [managed objectID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the ESXi host.
      * 
      */
     public String hostId() {

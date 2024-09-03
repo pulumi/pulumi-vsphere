@@ -17,7 +17,7 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// ### To Return All VGPU Profiles
+        /// ### to return all vGPU profiles
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -46,8 +46,7 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
-        /// ### With VGPU Profile Name_regex
+        /// ### with vGPU profile name_regex
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -86,7 +85,7 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
-        /// ### To Return All VGPU Profiles
+        /// ### to return all vGPU profiles
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -115,8 +114,7 @@ namespace Pulumi.VSphere
         /// });
         /// ```
         /// 
-        /// 
-        /// ### With VGPU Profile Name_regex
+        /// ### with vGPU profile name_regex
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -154,7 +152,7 @@ namespace Pulumi.VSphere
     public sealed class GetHostVgpuProfileArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of
+        /// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
         /// a host.
         /// </summary>
         [Input("hostId", required: true)]
@@ -163,8 +161,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A regular expression that will be used to match the
         /// host vGPU profile name.
-        /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -178,7 +174,7 @@ namespace Pulumi.VSphere
     public sealed class GetHostVgpuProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] of
+        /// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
         /// a host.
         /// </summary>
         [Input("hostId", required: true)]
@@ -187,8 +183,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A regular expression that will be used to match the
         /// host vGPU profile name.
-        /// 
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -204,7 +198,7 @@ namespace Pulumi.VSphere
     public sealed class GetHostVgpuProfileResult
     {
         /// <summary>
-        /// The [managed objectID][docs-about-morefs] of the ESXi host.
+        /// The [managed objectID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the ESXi host.
         /// </summary>
         public readonly string HostId;
         /// <summary>

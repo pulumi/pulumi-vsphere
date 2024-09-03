@@ -91,10 +91,8 @@ import * as utilities from "./utilities";
  *
  * ## Importing
  *
- * An existing vNic can be [imported][docs-import] into this resource
+ * An existing vNic can be [imported](https://www.terraform.io/docs/import/index.html) into this resource
  * via supplying the vNic's ID. An example is below:
- *
- * [docs-import]: /docs/import/index.html
  *
  * The above would import the vnic `vmk2` from host with ID `host-123`.
  */

@@ -35,11 +35,9 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * The
-     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
-     * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="datacenterId", required=true)
@@ -47,11 +45,9 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * @return The
-     * [managed object reference ID][docs-about-morefs] of the datacenter the
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
-     * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public String datacenterId() {
@@ -117,11 +113,9 @@ public final class GetDatastoreStatsPlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param datacenterId The
-         * [managed object reference ID][docs-about-morefs] of the datacenter the
+         * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the datacenter the
          * datastores are located in. For default datacenters, use the `id` attribute
          * from an empty `vsphere.Datacenter` data source.
-         * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

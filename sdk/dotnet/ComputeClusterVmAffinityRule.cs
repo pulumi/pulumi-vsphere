@@ -22,7 +22,7 @@ namespace Pulumi.VSphere
     /// `mandatory` flag.
     /// 
     /// &gt; An affinity rule can only be used to place virtual machines on the same
-    /// _non-specific_ hosts. It cannot be used to pin virtual machines to a host.
+    /// *non-specific* hosts. It cannot be used to pin virtual machines to a host.
     /// To enable this capability, use the
     /// `vsphere.ComputeClusterVmHostRule`
     /// resource.

@@ -104,7 +104,7 @@ def get_host_pci_device(class_id: Optional[str] = None,
 
     ## Example Usage
 
-    ### With Vendor ID And Class ID
+    ### with Vendor ID and Class ID
 
     ```python
     import pulumi
@@ -118,7 +118,7 @@ def get_host_pci_device(class_id: Optional[str] = None,
         vendor_id="456")
     ```
 
-    ### With Name Regular Expression
+    ### with Name Regular Expression
 
     ```python
     import pulumi
@@ -126,18 +126,17 @@ def get_host_pci_device(class_id: Optional[str] = None,
 
     datacenter = vsphere.get_datacenter(name="dc-01")
     host = vsphere.get_host(name="esxi-01.example.com",
-       datacenter_id=datacenter.id)
+        datacenter_id=datacenter.id)
     dev = vsphere.get_host_pci_device(host_id=host.id,
-       name_regex="MMC")
+        name_regex="MMC")
     ```
 
 
     :param str class_id: The hexadecimal PCI device class ID
            
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
            
            > **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
-    :param str host_id: The [managed object reference ID][docs-about-morefs] of
+    :param str host_id: The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
            a host.
     :param str name_regex: A regular expression that will be used to match the
            host PCI device name.
@@ -173,7 +172,7 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    ### With Vendor ID And Class ID
+    ### with Vendor ID and Class ID
 
     ```python
     import pulumi
@@ -187,7 +186,7 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
         vendor_id="456")
     ```
 
-    ### With Name Regular Expression
+    ### with Name Regular Expression
 
     ```python
     import pulumi
@@ -195,18 +194,17 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
 
     datacenter = vsphere.get_datacenter(name="dc-01")
     host = vsphere.get_host(name="esxi-01.example.com",
-       datacenter_id=datacenter.id)
+        datacenter_id=datacenter.id)
     dev = vsphere.get_host_pci_device(host_id=host.id,
-       name_regex="MMC")
+        name_regex="MMC")
     ```
 
 
     :param str class_id: The hexadecimal PCI device class ID
            
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
            
            > **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
-    :param str host_id: The [managed object reference ID][docs-about-morefs] of
+    :param str host_id: The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
            a host.
     :param str name_regex: A regular expression that will be used to match the
            host PCI device name.

@@ -82,13 +82,12 @@ class DistributedPortGroupArgs:
         :param pulumi.Input[bool] check_beacon: Enable beacon probing on the ports this policy applies to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                <<<<<<< HEAD
-               value string to set for port group. See [here][docs-setting-custom-attributes]
+               value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
                for a reference on how to set values for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                =======
                value string to set for port group.
-               >>>>>>> 69c6e040 (fork)
+               > > > > > > > 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -119,9 +118,7 @@ class DistributedPortGroupArgs:
         :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
         :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
                the ports in this port group. See the `portNameFormat` attribute listed
-               [here][ext-vsphere-portname-format] for details on the format syntax.
-               
-               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+               [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -352,13 +349,12 @@ class DistributedPortGroupArgs:
         """
         Map of custom attribute ids to attribute
         <<<<<<< HEAD
-        value string to set for port group. See [here][docs-setting-custom-attributes]
+        value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         for a reference on how to set values for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         =======
         value string to set for port group.
-        >>>>>>> 69c6e040 (fork)
+        > > > > > > > 69c6e040 (fork)
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -642,9 +638,7 @@ class DistributedPortGroupArgs:
         """
         An optional formatting policy for naming of
         the ports in this port group. See the `portNameFormat` attribute listed
-        [here][ext-vsphere-portname-format] for details on the format syntax.
-
-        [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+        [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         """
         return pulumi.get(self, "port_name_format")
 
@@ -883,13 +877,12 @@ class _DistributedPortGroupState:
                incremented by subsequent updates to the port group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                <<<<<<< HEAD
-               value string to set for port group. See [here][docs-setting-custom-attributes]
+               value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
                for a reference on how to set values for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                =======
                value string to set for port group.
-               >>>>>>> 69c6e040 (fork)
+               > > > > > > > 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -923,9 +916,7 @@ class _DistributedPortGroupState:
         :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
         :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
                the ports in this port group. See the `portNameFormat` attribute listed
-               [here][ext-vsphere-portname-format] for details on the format syntax.
-               
-               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+               [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -1161,13 +1152,12 @@ class _DistributedPortGroupState:
         """
         Map of custom attribute ids to attribute
         <<<<<<< HEAD
-        value string to set for port group. See [here][docs-setting-custom-attributes]
+        value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         for a reference on how to set values for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         =======
         value string to set for port group.
-        >>>>>>> 69c6e040 (fork)
+        > > > > > > > 69c6e040 (fork)
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -1476,9 +1466,7 @@ class _DistributedPortGroupState:
         """
         An optional formatting policy for naming of
         the ports in this port group. See the `portNameFormat` attribute listed
-        [here][ext-vsphere-portname-format] for details on the format syntax.
-
-        [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+        [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         """
         return pulumi.get(self, "port_name_format")
 
@@ -1718,13 +1706,12 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] check_beacon: Enable beacon probing on the ports this policy applies to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                <<<<<<< HEAD
-               value string to set for port group. See [here][docs-setting-custom-attributes]
+               value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
                for a reference on how to set values for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                =======
                value string to set for port group.
-               >>>>>>> 69c6e040 (fork)
+               > > > > > > > 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -1757,9 +1744,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
         :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
                the ports in this port group. See the `portNameFormat` attribute listed
-               [here][ext-vsphere-portname-format] for details on the format syntax.
-               
-               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+               [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -1988,13 +1973,12 @@ class DistributedPortGroup(pulumi.CustomResource):
                incremented by subsequent updates to the port group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                <<<<<<< HEAD
-               value string to set for port group. See [here][docs-setting-custom-attributes]
+               value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
                for a reference on how to set values for custom attributes.
                
-               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                =======
                value string to set for port group.
-               >>>>>>> 69c6e040 (fork)
+               > > > > > > > 69c6e040 (fork)
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -2028,9 +2012,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
         :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
                the ports in this port group. See the `portNameFormat` attribute listed
-               [here][ext-vsphere-portname-format] for details on the format syntax.
-               
-               [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+               [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow security policy settings on a port to override those on the portgroup.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
@@ -2187,13 +2169,12 @@ class DistributedPortGroup(pulumi.CustomResource):
         """
         Map of custom attribute ids to attribute
         <<<<<<< HEAD
-        value string to set for port group. See [here][docs-setting-custom-attributes]
+        value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         for a reference on how to set values for custom attributes.
 
-        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         =======
         value string to set for port group.
-        >>>>>>> 69c6e040 (fork)
+        > > > > > > > 69c6e040 (fork)
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -2402,9 +2383,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         """
         An optional formatting policy for naming of
         the ports in this port group. See the `portNameFormat` attribute listed
-        [here][ext-vsphere-portname-format] for details on the format syntax.
-
-        [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+        [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         """
         return pulumi.get(self, "port_name_format")
 

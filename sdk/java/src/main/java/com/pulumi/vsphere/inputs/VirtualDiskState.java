@@ -142,9 +142,7 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * The type of disk to create. Can be one of
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
-     * [here][docs-vmware-vm-disk-provisioning].
-     * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+     * [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html).
      * 
      */
     @Import(name="type")
@@ -154,9 +152,7 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * @return The type of disk to create. Can be one of
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
-     * [here][docs-vmware-vm-disk-provisioning].
-     * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+     * [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html).
      * 
      */
     public Optional<Output<String>> type() {
@@ -365,9 +361,7 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * @param type The type of disk to create. Can be one of
          * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
          * information on what each kind of disk provisioning policy means, click
-         * [here][docs-vmware-vm-disk-provisioning].
-         * 
-         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+         * [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html).
          * 
          * @return builder
          * 
@@ -381,9 +375,7 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * @param type The type of disk to create. Can be one of
          * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
          * information on what each kind of disk provisioning policy means, click
-         * [here][docs-vmware-vm-disk-provisioning].
-         * 
-         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+         * [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html).
          * 
          * @return builder
          * 

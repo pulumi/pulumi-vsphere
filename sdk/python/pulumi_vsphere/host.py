@@ -50,8 +50,6 @@ class HostArgs:
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -72,7 +70,7 @@ class HostArgs:
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "password", password)
@@ -190,8 +188,6 @@ class HostArgs:
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
-
-        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -289,7 +285,7 @@ class HostArgs:
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
         trusted and no thumbprint is set then the operation will fail. See data source
-        [`get_host_thumbprint`][docs-host-thumbprint-data-source].
+        [`get_host_thumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
         """
         return pulumi.get(self, "thumbprint")
 
@@ -332,8 +328,6 @@ class _HostState:
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -357,7 +351,7 @@ class _HostState:
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -442,8 +436,6 @@ class _HostState:
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
-
-        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -566,7 +558,7 @@ class _HostState:
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
         trusted and no thumbprint is set then the operation will fail. See data source
-        [`get_host_thumbprint`][docs-host-thumbprint-data-source].
+        [`get_host_thumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
         """
         return pulumi.get(self, "thumbprint")
 
@@ -654,10 +646,8 @@ class Host(pulumi.CustomResource):
 
         ## Importing
 
-        An existing host can be [imported][docs-import] into this resource by supplying
+        An existing host can be [imported](https://www.terraform.io/docs/import/index.html) into this resource by supplying
         the host's ID. An example is below:
-
-        [docs-import]: /docs/import/index.html
 
         The above would import the host with ID `host-123`.
 
@@ -678,8 +668,6 @@ class Host(pulumi.CustomResource):
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -703,7 +691,7 @@ class Host(pulumi.CustomResource):
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -759,10 +747,8 @@ class Host(pulumi.CustomResource):
 
         ## Importing
 
-        An existing host can be [imported][docs-import] into this resource by supplying
+        An existing host can be [imported](https://www.terraform.io/docs/import/index.html) into this resource by supplying
         the host's ID. An example is below:
-
-        [docs-import]: /docs/import/index.html
 
         The above would import the host with ID `host-123`.
 
@@ -872,8 +858,6 @@ class Host(pulumi.CustomResource):
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
-               
-               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -897,7 +881,7 @@ class Host(pulumi.CustomResource):
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -961,8 +945,6 @@ class Host(pulumi.CustomResource):
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
-
-        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -1049,7 +1031,7 @@ class Host(pulumi.CustomResource):
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
         trusted and no thumbprint is set then the operation will fail. See data source
-        [`get_host_thumbprint`][docs-host-thumbprint-data-source].
+        [`get_host_thumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
         """
         return pulumi.get(self, "thumbprint")
 

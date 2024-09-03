@@ -35,10 +35,9 @@ export class DatastoreCluster extends pulumi.CustomResource {
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
      * for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -236,10 +235,9 @@ export interface DatastoreClusterState {
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
      * for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -364,10 +362,9 @@ export interface DatastoreClusterArgs {
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
      * for custom attributes.
      *
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.

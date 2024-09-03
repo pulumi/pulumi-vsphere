@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### S
+ * ### s
  * 
  * **Enable Workload Management on a compute cluster**
  * 

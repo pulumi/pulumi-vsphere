@@ -22,10 +22,8 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
      * for custom attributes.
-     * 
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -37,10 +35,8 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     /**
      * @return A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
      * for custom attributes.
-     * 
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -489,10 +485,8 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         /**
          * @param customAttributes A map of custom attribute ids to attribute
          * value strings to set for the datastore cluster. See
-         * [here][docs-setting-custom-attributes] for a reference on how to set values
+         * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
          * for custom attributes.
-         * 
-         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
          * and require vCenter.
@@ -508,10 +502,8 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         /**
          * @param customAttributes A map of custom attribute ids to attribute
          * value strings to set for the datastore cluster. See
-         * [here][docs-setting-custom-attributes] for a reference on how to set values
+         * [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource) for a reference on how to set values
          * for custom attributes.
-         * 
-         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
          * and require vCenter.

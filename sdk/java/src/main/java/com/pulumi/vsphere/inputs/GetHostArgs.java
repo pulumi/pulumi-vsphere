@@ -37,7 +37,7 @@ public final class GetHostArgs extends com.pulumi.resources.InvokeArgs {
      * The name of the ESXI host. This can be a name or path.
      * Can be omitted if there is only one host in your inventory.
      * 
-     * &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
+     * &gt; **NOTE:** When used against an ESXi host directly, this data source *always*
      * returns the ESXi host&#39;s object ID, regardless of what is entered into `name`.
      * 
      */
@@ -48,7 +48,7 @@ public final class GetHostArgs extends com.pulumi.resources.InvokeArgs {
      * @return The name of the ESXI host. This can be a name or path.
      * Can be omitted if there is only one host in your inventory.
      * 
-     * &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
+     * &gt; **NOTE:** When used against an ESXi host directly, this data source *always*
      * returns the ESXi host&#39;s object ID, regardless of what is entered into `name`.
      * 
      */
@@ -108,7 +108,7 @@ public final class GetHostArgs extends com.pulumi.resources.InvokeArgs {
          * @param name The name of the ESXI host. This can be a name or path.
          * Can be omitted if there is only one host in your inventory.
          * 
-         * &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
+         * &gt; **NOTE:** When used against an ESXi host directly, this data source *always*
          * returns the ESXi host&#39;s object ID, regardless of what is entered into `name`.
          * 
          * @return builder
@@ -123,7 +123,7 @@ public final class GetHostArgs extends com.pulumi.resources.InvokeArgs {
          * @param name The name of the ESXI host. This can be a name or path.
          * Can be omitted if there is only one host in your inventory.
          * 
-         * &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
+         * &gt; **NOTE:** When used against an ESXi host directly, this data source *always*
          * returns the ESXi host&#39;s object ID, regardless of what is entered into `name`.
          * 
          * @return builder

@@ -16,10 +16,8 @@ type Folder struct {
 	pulumi.CustomResourceState
 
 	// Map of custom attribute ids to attribute
-	// value strings to set for folder. See [here][docs-setting-custom-attributes]
+	// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -86,10 +84,8 @@ func GetFolder(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
 	// Map of custom attribute ids to attribute
-	// value strings to set for folder. See [here][docs-setting-custom-attributes]
+	// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -121,10 +117,8 @@ type folderState struct {
 
 type FolderState struct {
 	// Map of custom attribute ids to attribute
-	// value strings to set for folder. See [here][docs-setting-custom-attributes]
+	// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -160,10 +154,8 @@ func (FolderState) ElementType() reflect.Type {
 
 type folderArgs struct {
 	// Map of custom attribute ids to attribute
-	// value strings to set for folder. See [here][docs-setting-custom-attributes]
+	// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -196,10 +188,8 @@ type folderArgs struct {
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
 	// Map of custom attribute ids to attribute
-	// value strings to set for folder. See [here][docs-setting-custom-attributes]
+	// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
@@ -317,10 +307,8 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 }
 
 // Map of custom attribute ids to attribute
-// value strings to set for folder. See [here][docs-setting-custom-attributes]
+// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
 // for a reference on how to set values for custom attributes.
-//
-// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 //
 // > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 // and require vCenter.

@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### To Return All VGPU Profiles
+ * ### to return all vGPU profiles
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * }));
  * ```
  *
- * ### With VGPU Profile Name_regex
+ * ### with vGPU profile nameRegex
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,15 +63,13 @@ export function getHostVgpuProfile(args: GetHostVgpuProfileArgs, opts?: pulumi.I
  */
 export interface GetHostVgpuProfileArgs {
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      */
     hostId: string;
     /**
      * A regular expression that will be used to match the
      * host vGPU profile name.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     nameRegex?: string;
 }
@@ -81,7 +79,7 @@ export interface GetHostVgpuProfileArgs {
  */
 export interface GetHostVgpuProfileResult {
     /**
-     * The [managed objectID][docs-about-morefs] of the ESXi host.
+     * The [managed objectID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the ESXi host.
      */
     readonly hostId: string;
     /**
@@ -105,7 +103,7 @@ export interface GetHostVgpuProfileResult {
  *
  * ## Example Usage
  *
- * ### To Return All VGPU Profiles
+ * ### to return all vGPU profiles
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -123,7 +121,7 @@ export interface GetHostVgpuProfileResult {
  * }));
  * ```
  *
- * ### With VGPU Profile Name_regex
+ * ### with vGPU profile nameRegex
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -151,15 +149,13 @@ export function getHostVgpuProfileOutput(args: GetHostVgpuProfileOutputArgs, opt
  */
 export interface GetHostVgpuProfileOutputArgs {
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      */
     hostId: pulumi.Input<string>;
     /**
      * A regular expression that will be used to match the
      * host vGPU profile name.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     nameRegex?: pulumi.Input<string>;
 }

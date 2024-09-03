@@ -19,7 +19,7 @@ public final class GetDatastoreStatsResult {
      */
     private @Nullable Map<String,String> capacity;
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of the
+     * @return The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the
      * datacenter the datastores are located in.
      * 
      */
@@ -47,7 +47,7 @@ public final class GetDatastoreStatsResult {
         return this.capacity == null ? Map.of() : this.capacity;
     }
     /**
-     * @return The [managed object reference ID][docs-about-morefs] of the
+     * @return The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the
      * datacenter the datastores are located in.
      * 
      */

@@ -12,10 +12,8 @@ namespace Pulumi.VSphere
     public static class GetDynamic
     {
         /// <summary>
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-        /// 
         /// The `vsphere.getDynamic` data source can be used to get the
-        /// [managed object reference ID][docs-about-morefs] of any tagged managed object in
+        /// [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
         /// vCenter Server by providing a list of tag IDs and an optional regular expression
         /// to filter objects by name.
         /// 
@@ -64,10 +62,8 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-        /// 
         /// The `vsphere.getDynamic` data source can be used to get the
-        /// [managed object reference ID][docs-about-morefs] of any tagged managed object in
+        /// [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
         /// vCenter Server by providing a list of tag IDs and an optional regular expression
         /// to filter objects by name.
         /// 

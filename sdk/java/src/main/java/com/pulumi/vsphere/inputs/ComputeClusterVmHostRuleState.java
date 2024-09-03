@@ -37,7 +37,7 @@ public final class ComputeClusterVmHostRuleState extends com.pulumi.resources.Re
 
     /**
      * When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vm_group_name` will *not* be
      * run on the hosts defined in this host group.
      * 
      */
@@ -46,7 +46,7 @@ public final class ComputeClusterVmHostRuleState extends com.pulumi.resources.Re
 
     /**
      * @return When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vm_group_name` will *not* be
      * run on the hosts defined in this host group.
      * 
      */
@@ -212,7 +212,7 @@ public final class ComputeClusterVmHostRuleState extends com.pulumi.resources.Re
 
         /**
          * @param antiAffinityHostGroupName When this field is used, the
-         * virtual machines defined in `vm_group_name` will _not_ be
+         * virtual machines defined in `vm_group_name` will *not* be
          * run on the hosts defined in this host group.
          * 
          * @return builder
@@ -225,7 +225,7 @@ public final class ComputeClusterVmHostRuleState extends com.pulumi.resources.Re
 
         /**
          * @param antiAffinityHostGroupName When this field is used, the
-         * virtual machines defined in `vm_group_name` will _not_ be
+         * virtual machines defined in `vm_group_name` will *not* be
          * run on the hosts defined in this host group.
          * 
          * @return builder

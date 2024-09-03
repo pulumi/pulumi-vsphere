@@ -76,13 +76,12 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-        /// value string to set for port group. See [here][docs-setting-custom-attributes]
+        /// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         /// for a reference on how to set values for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// =======
         /// value string to set for port group.
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; 69c6e040 (fork)
+        /// &gt; &gt; &gt; &gt; &gt; &gt; &gt; 69c6e040 (fork)
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
         /// connections and require vCenter Server.
@@ -241,9 +240,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// An optional formatting policy for naming of
         /// the ports in this port group. See the `portNameFormat` attribute listed
-        /// [here][ext-vsphere-portname-format] for details on the format syntax.
-        /// 
-        /// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+        /// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         /// </summary>
         [Output("portNameFormat")]
         public Output<string?> PortNameFormat { get; private set; } = null!;
@@ -441,13 +438,12 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-        /// value string to set for port group. See [here][docs-setting-custom-attributes]
+        /// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         /// for a reference on how to set values for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// =======
         /// value string to set for port group.
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; 69c6e040 (fork)
+        /// &gt; &gt; &gt; &gt; &gt; &gt; &gt; 69c6e040 (fork)
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
         /// connections and require vCenter Server.
@@ -603,9 +599,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// An optional formatting policy for naming of
         /// the ports in this port group. See the `portNameFormat` attribute listed
-        /// [here][ext-vsphere-portname-format] for details on the format syntax.
-        /// 
-        /// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+        /// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         /// </summary>
         [Input("portNameFormat")]
         public Input<string>? PortNameFormat { get; set; }
@@ -790,13 +784,12 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-        /// value string to set for port group. See [here][docs-setting-custom-attributes]
+        /// value string to set for port group. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         /// for a reference on how to set values for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// =======
         /// value string to set for port group.
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; 69c6e040 (fork)
+        /// &gt; &gt; &gt; &gt; &gt; &gt; &gt; 69c6e040 (fork)
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
         /// connections and require vCenter Server.
@@ -958,9 +951,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// An optional formatting policy for naming of
         /// the ports in this port group. See the `portNameFormat` attribute listed
-        /// [here][ext-vsphere-portname-format] for details on the format syntax.
-        /// 
-        /// [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
+        /// [here](https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/) for details on the format syntax.
         /// </summary>
         [Input("portNameFormat")]
         public Input<string>? PortNameFormat { get; set; }

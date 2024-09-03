@@ -14,7 +14,7 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// ### S
+    /// ### s
     /// 
     /// **Create a basic class**
     /// 

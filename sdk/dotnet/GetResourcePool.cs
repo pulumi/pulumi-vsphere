@@ -48,8 +48,8 @@ namespace Pulumi.VSphere
         /// data source.
         /// 
         /// All compute resources in vSphere have a resource pool, even if one has not been
-        /// explicitly created. This resource pool is referred to as the _root resource
-        /// pool_ and can be looked up by specifying the path.
+        /// explicitly created. This resource pool is referred to as the *root resource
+        /// pool* and can be looked up by specifying the path.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -69,10 +69,8 @@ namespace Pulumi.VSphere
         /// ```
         /// 
         /// For more information on the root resource pool, see
-        /// [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+        /// [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
         /// documentation.
-        /// 
-        /// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
         /// </summary>
         public static Task<GetResourcePoolResult> InvokeAsync(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolArgs(), options.WithDefaults());
@@ -114,8 +112,8 @@ namespace Pulumi.VSphere
         /// data source.
         /// 
         /// All compute resources in vSphere have a resource pool, even if one has not been
-        /// explicitly created. This resource pool is referred to as the _root resource
-        /// pool_ and can be looked up by specifying the path.
+        /// explicitly created. This resource pool is referred to as the *root resource
+        /// pool* and can be looked up by specifying the path.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -135,10 +133,8 @@ namespace Pulumi.VSphere
         /// ```
         /// 
         /// For more information on the root resource pool, see
-        /// [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+        /// [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
         /// documentation.
-        /// 
-        /// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
         /// </summary>
         public static Output<GetResourcePoolResult> Invoke(GetResourcePoolInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolInvokeArgs(), options.WithDefaults());

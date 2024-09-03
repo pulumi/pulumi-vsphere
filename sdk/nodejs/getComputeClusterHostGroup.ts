@@ -49,10 +49,8 @@ export function getComputeClusterHostGroup(args: GetComputeClusterHostGroupArgs,
 export interface GetComputeClusterHostGroupArgs {
     /**
      * The
-     * [managed object reference ID][docs-about-morefs] of the compute cluster for
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the compute cluster for
      * the host group.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: string;
     /**
@@ -67,7 +65,7 @@ export interface GetComputeClusterHostGroupArgs {
 export interface GetComputeClusterHostGroupResult {
     readonly computeClusterId: string;
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * the ESXi hosts in the host group.
      */
     readonly hostSystemIds: string[];
@@ -117,10 +115,8 @@ export function getComputeClusterHostGroupOutput(args: GetComputeClusterHostGrou
 export interface GetComputeClusterHostGroupOutputArgs {
     /**
      * The
-     * [managed object reference ID][docs-about-morefs] of the compute cluster for
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the compute cluster for
      * the host group.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: pulumi.Input<string>;
     /**

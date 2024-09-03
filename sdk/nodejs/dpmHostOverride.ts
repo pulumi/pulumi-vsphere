@@ -43,7 +43,7 @@ export class DpmHostOverride extends pulumi.CustomResource {
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      *
-     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * > **NOTE:** Using this resource *always* implies an override, even if one of
      * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
@@ -108,7 +108,7 @@ export interface DpmHostOverrideState {
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      *
-     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * > **NOTE:** Using this resource *always* implies an override, even if one of
      * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
@@ -139,7 +139,7 @@ export interface DpmHostOverrideArgs {
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      *
-     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * > **NOTE:** Using this resource *always* implies an override, even if one of
      * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */

@@ -648,9 +648,7 @@ class ResourcePool(pulumi.CustomResource):
         resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
 
         For more information on vSphere resource pools, please refer to the
-        [product documentation][ref-vsphere-resource_pools].
-
-        [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+        [product documentation](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html).
 
         ## Example Usage
 
@@ -770,9 +768,7 @@ class ResourcePool(pulumi.CustomResource):
         resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
 
         For more information on vSphere resource pools, please refer to the
-        [product documentation][ref-vsphere-resource_pools].
-
-        [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+        [product documentation](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html).
 
         ## Example Usage
 

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### With Vendor ID And Class ID
+ * ### with Vendor ID and Class ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,22 +31,22 @@ import * as utilities from "./utilities";
  * }));
  * ```
  *
- * ### With Name Regular Expression
+ * ### with Name Regular Expression
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *    name: "dc-01",
+ *     name: "dc-01",
  * });
  * const host = datacenter.then(datacenter => vsphere.getHost({
- *    name: "esxi-01.example.com",
- *    datacenterId: datacenter.id,
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
  * }));
  * const dev = host.then(host => vsphere.getHostPciDevice({
- *    hostId: host.id,
- *    nameRegex: "MMC",
+ *     hostId: host.id,
+ *     nameRegex: "MMC",
  * }));
  * ```
  */
@@ -68,13 +68,12 @@ export interface GetHostPciDeviceArgs {
     /**
      * The hexadecimal PCI device class ID
      *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      *
      * > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
      */
     classId?: string;
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      */
     hostId: string;
@@ -113,7 +112,7 @@ export interface GetHostPciDeviceResult {
  *
  * ## Example Usage
  *
- * ### With Vendor ID And Class ID
+ * ### with Vendor ID and Class ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -133,22 +132,22 @@ export interface GetHostPciDeviceResult {
  * }));
  * ```
  *
- * ### With Name Regular Expression
+ * ### with Name Regular Expression
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *    name: "dc-01",
+ *     name: "dc-01",
  * });
  * const host = datacenter.then(datacenter => vsphere.getHost({
- *    name: "esxi-01.example.com",
- *    datacenterId: datacenter.id,
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
  * }));
  * const dev = host.then(host => vsphere.getHostPciDevice({
- *    hostId: host.id,
- *    nameRegex: "MMC",
+ *     hostId: host.id,
+ *     nameRegex: "MMC",
  * }));
  * ```
  */
@@ -163,13 +162,12 @@ export interface GetHostPciDeviceOutputArgs {
     /**
      * The hexadecimal PCI device class ID
      *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      *
      * > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
      */
     classId?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of
+     * The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
      * a host.
      */
     hostId: pulumi.Input<string>;

@@ -234,7 +234,7 @@ class VirtualMachineClass(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### S
+        ### s
 
         **Create a basic class**
 
@@ -282,7 +282,7 @@ class VirtualMachineClass(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### S
+        ### s
 
         **Create a basic class**
 

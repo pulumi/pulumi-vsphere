@@ -135,10 +135,8 @@ import javax.annotation.Nullable;
  * 
  * ## Importing
  * 
- * An existing host can be [imported][docs-import] into this resource by supplying
+ * An existing host can be [imported](https://www.terraform.io/docs/import/index.html) into this resource by supplying
  * the host&#39;s ID. An example is below:
- * 
- * [docs-import]: /docs/import/index.html
  * 
  * The above would import the host with ID `host-123`.
  * 
@@ -206,8 +204,6 @@ public class Host extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
      * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
-     * 
      */
     @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -220,8 +216,6 @@ public class Host extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -367,7 +361,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
-     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+     * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
      * 
      */
     @Export(name="thumbprint", refs={String.class}, tree="[0]")
@@ -377,7 +371,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * @return Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
-     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+     * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
      * 
      */
     public Output<Optional<String>> thumbprint() {

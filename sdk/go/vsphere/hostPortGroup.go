@@ -17,7 +17,7 @@ import (
 // can be managed by the `HostVirtualSwitch`
 // resource.
 //
-// For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
+// For an overview on vSphere networking concepts, see [the product documentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html).
 //
 // ## Example Usage
 //
@@ -151,8 +151,6 @@ import (
 // using the host port group's ID. An example is below:
 //
 // The above would import the `management` host port group from host with ID `host-123`.
-//
-// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
 type HostPortGroup struct {
 	pulumi.CustomResourceState
 

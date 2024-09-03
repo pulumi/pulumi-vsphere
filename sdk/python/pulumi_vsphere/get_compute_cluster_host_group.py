@@ -44,7 +44,7 @@ class GetComputeClusterHostGroupResult:
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> Sequence[str]:
         """
-        The [managed object reference ID][docs-about-morefs] of
+        The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
         the ESXi hosts in the host group.
         """
         return pulumi.get(self, "host_system_ids")
@@ -103,10 +103,8 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
 
 
     :param str compute_cluster_id: The
-           [managed object reference ID][docs-about-morefs] of the compute cluster for
+           [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the compute cluster for
            the host group.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param str name: The name of the host group.
     """
     __args__ = dict()
@@ -151,10 +149,8 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
 
 
     :param str compute_cluster_id: The
-           [managed object reference ID][docs-about-morefs] of the compute cluster for
+           [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the compute cluster for
            the host group.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param str name: The name of the host group.
     """
     ...

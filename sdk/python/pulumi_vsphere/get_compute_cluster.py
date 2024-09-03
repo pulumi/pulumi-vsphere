@@ -86,8 +86,8 @@ def get_compute_cluster(datacenter_id: Optional[str] = None,
     data source.
 
     > You may also wish to see the `ComputeCluster`
-     resource for more information about clusters and how to managed the resource
-     in this provider.
+    resource for more information about clusters and how to managed the resource
+    in this provider.
 
     ## Example Usage
 
@@ -132,8 +132,8 @@ def get_compute_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[str
     data source.
 
     > You may also wish to see the `ComputeCluster`
-     resource for more information about clusters and how to managed the resource
-     in this provider.
+    resource for more information about clusters and how to managed the resource
+    in this provider.
 
     ## Example Usage
 

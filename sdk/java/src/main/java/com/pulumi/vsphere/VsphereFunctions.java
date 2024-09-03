@@ -105,8 +105,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
+     * resource for more information about clusters and how to managed the resource
+     * in this provider.
      * 
      * ## Example Usage
      * 
@@ -161,8 +161,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
+     * resource for more information about clusters and how to managed the resource
+     * in this provider.
      * 
      * ## Example Usage
      * 
@@ -217,8 +217,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
+     * resource for more information about clusters and how to managed the resource
+     * in this provider.
      * 
      * ## Example Usage
      * 
@@ -273,8 +273,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
+     * resource for more information about clusters and how to managed the resource
+     * in this provider.
      * 
      * ## Example Usage
      * 
@@ -2304,10 +2304,8 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", TypeShape.of(GetDistributedVirtualSwitchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
-     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
      * to filter objects by name.
      * 
@@ -2371,10 +2369,8 @@ public final class VsphereFunctions {
         return getDynamic(args, InvokeOptions.Empty);
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
-     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
      * to filter objects by name.
      * 
@@ -2438,10 +2434,8 @@ public final class VsphereFunctions {
         return getDynamicPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
-     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
      * to filter objects by name.
      * 
@@ -2505,10 +2499,8 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDynamic:getDynamic", TypeShape.of(GetDynamicResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
-     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
      * to filter objects by name.
      * 
@@ -3258,7 +3250,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### With Vendor ID And Class ID
+     * ### with Vendor ID and Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -3306,9 +3298,9 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With Name Regular Expression
+     * ### with Name Regular Expression
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3364,7 +3356,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### With Vendor ID And Class ID
+     * ### with Vendor ID and Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -3412,9 +3404,9 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With Name Regular Expression
+     * ### with Name Regular Expression
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3470,7 +3462,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### With Vendor ID And Class ID
+     * ### with Vendor ID and Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -3518,9 +3510,9 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With Name Regular Expression
+     * ### with Name Regular Expression
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3576,7 +3568,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### With Vendor ID And Class ID
+     * ### with Vendor ID and Class ID
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -3624,9 +3616,9 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With Name Regular Expression
+     * ### with Name Regular Expression
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -3861,7 +3853,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### To Return All VGPU Profiles
+     * ### to return all vGPU profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -3907,7 +3899,7 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With VGPU Profile Name_regex
+     * ### with vGPU profile name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -3964,7 +3956,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### To Return All VGPU Profiles
+     * ### to return all vGPU profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4010,7 +4002,7 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With VGPU Profile Name_regex
+     * ### with vGPU profile name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4067,7 +4059,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### To Return All VGPU Profiles
+     * ### to return all vGPU profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4113,7 +4105,7 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With VGPU Profile Name_regex
+     * ### with vGPU profile name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4170,7 +4162,7 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
-     * ### To Return All VGPU Profiles
+     * ### to return all vGPU profiles
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4216,7 +4208,7 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### With VGPU Profile Name_regex
+     * ### with vGPU profile name_regex
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4941,8 +4933,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the _root resource
-     * pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the *root resource
+     * pool* and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4979,10 +4971,8 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see
-     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
      * documentation.
-     * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static Output<GetResourcePoolResult> getResourcePool() {
@@ -5042,8 +5032,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the _root resource
-     * pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the *root resource
+     * pool* and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5080,10 +5070,8 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see
-     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
      * documentation.
-     * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static CompletableFuture<GetResourcePoolResult> getResourcePoolPlain() {
@@ -5143,8 +5131,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the _root resource
-     * pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the *root resource
+     * pool* and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5181,10 +5169,8 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see
-     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
      * documentation.
-     * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static Output<GetResourcePoolResult> getResourcePool(GetResourcePoolArgs args) {
@@ -5244,8 +5230,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the _root resource
-     * pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the *root resource
+     * pool* and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5282,10 +5268,8 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see
-     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
      * documentation.
-     * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static CompletableFuture<GetResourcePoolResult> getResourcePoolPlain(GetResourcePoolPlainArgs args) {
@@ -5345,8 +5329,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the _root resource
-     * pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the *root resource
+     * pool* and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5383,10 +5367,8 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see
-     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
      * documentation.
-     * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static Output<GetResourcePoolResult> getResourcePool(GetResourcePoolArgs args, InvokeOptions options) {
@@ -5446,8 +5428,8 @@ public final class VsphereFunctions {
      * data source.
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
-     * explicitly created. This resource pool is referred to as the _root resource
-     * pool_ and can be looked up by specifying the path.
+     * explicitly created. This resource pool is referred to as the *root resource
+     * pool* and can be looked up by specifying the path.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5484,10 +5466,8 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * For more information on the root resource pool, see
-     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * [Managing Resource Pools](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html) in the vSphere
      * documentation.
-     * 
-     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
     public static CompletableFuture<GetResourcePoolResult> getResourcePoolPlain(GetResourcePoolPlainArgs args, InvokeOptions options) {

@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### To Return All VGPU Profiles
+// ### to return all vGPU profiles
 //
 // ```go
 // package main
@@ -55,7 +55,7 @@ import (
 //
 // ```
 //
-// ### With VGPU Profile Name_regex
+// ### with vGPU profile nameRegex
 //
 // ```go
 // package main
@@ -106,19 +106,17 @@ func GetHostVgpuProfile(ctx *pulumi.Context, args *GetHostVgpuProfileArgs, opts 
 
 // A collection of arguments for invoking getHostVgpuProfile.
 type GetHostVgpuProfileArgs struct {
-	// The [managed object reference ID][docs-about-morefs] of
+	// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
 	// a host.
 	HostId string `pulumi:"hostId"`
 	// A regular expression that will be used to match the
 	// host vGPU profile name.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	NameRegex *string `pulumi:"nameRegex"`
 }
 
 // A collection of values returned by getHostVgpuProfile.
 type GetHostVgpuProfileResult struct {
-	// The [managed objectID][docs-about-morefs] of the ESXi host.
+	// The [managed objectID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the ESXi host.
 	HostId string `pulumi:"hostId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -145,13 +143,11 @@ func GetHostVgpuProfileOutput(ctx *pulumi.Context, args GetHostVgpuProfileOutput
 
 // A collection of arguments for invoking getHostVgpuProfile.
 type GetHostVgpuProfileOutputArgs struct {
-	// The [managed object reference ID][docs-about-morefs] of
+	// The [managed object reference ID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of
 	// a host.
 	HostId pulumi.StringInput `pulumi:"hostId"`
 	// A regular expression that will be used to match the
 	// host vGPU profile name.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 }
 
@@ -174,7 +170,7 @@ func (o GetHostVgpuProfileResultOutput) ToGetHostVgpuProfileResultOutputWithCont
 	return o
 }
 
-// The [managed objectID][docs-about-morefs] of the ESXi host.
+// The [managed objectID](https://www.terraform.io/docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider) of the ESXi host.
 func (o GetHostVgpuProfileResultOutput) HostId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostVgpuProfileResult) string { return v.HostId }).(pulumi.StringOutput)
 }

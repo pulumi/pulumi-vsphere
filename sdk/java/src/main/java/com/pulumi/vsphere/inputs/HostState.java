@@ -82,8 +82,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
      * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
-     * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<Map<String,String>> customAttributes;
@@ -96,8 +94,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
-     * 
-     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -252,7 +248,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
      * Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
-     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+     * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
      * 
      */
     @Import(name="thumbprint")
@@ -262,7 +258,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
      * @return Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
-     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+     * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
      * 
      */
     public Optional<Output<String>> thumbprint() {
@@ -405,8 +401,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
          * connections and require vCenter Server.
          * 
-         * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
-         * 
          * @return builder
          * 
          */
@@ -423,8 +417,6 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
          * connections and require vCenter Server.
-         * 
-         * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
          * 
          * @return builder
          * 
@@ -644,7 +636,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
          * @param thumbprint Host&#39;s certificate SHA-1 thumbprint. If not set the
          * CA that signed the host&#39;s certificate should be trusted. If the CA is not
          * trusted and no thumbprint is set then the operation will fail. See data source
-         * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+         * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
          * 
          * @return builder
          * 
@@ -658,7 +650,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
          * @param thumbprint Host&#39;s certificate SHA-1 thumbprint. If not set the
          * CA that signed the host&#39;s certificate should be trusted. If the CA is not
          * trusted and no thumbprint is set then the operation will fail. See data source
-         * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
+         * [`vsphere.getHostThumbprint`](https://www.terraform.io/docs/providers/vsphere/d/host_thumbprint.html).
          * 
          * @return builder
          * 

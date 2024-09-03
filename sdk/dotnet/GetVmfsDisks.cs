@@ -17,7 +17,6 @@ namespace Pulumi.VSphere
         /// `vsphere.VmfsDatastore` resource to create VMFS
         /// datastores based off a set of discovered disks.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -57,7 +56,6 @@ namespace Pulumi.VSphere
         /// devices available on an ESXi host. This data source can be combined with the
         /// `vsphere.VmfsDatastore` resource to create VMFS
         /// datastores based off a set of discovered disks.
-        /// 
         /// 
         /// ## Example Usage
         /// 

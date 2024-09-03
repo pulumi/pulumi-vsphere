@@ -42,7 +42,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value string to set on datastore resource.
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -96,7 +96,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -181,7 +181,7 @@ export interface VmfsDatastoreState {
      */
     capacity?: pulumi.Input<number>;
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value string to set on datastore resource.
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -235,7 +235,7 @@ export interface VmfsDatastoreState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
@@ -257,7 +257,7 @@ export interface VmfsDatastoreState {
  */
 export interface VmfsDatastoreArgs {
     /**
-     * Map of custom attribute ids to attribute 
+     * Map of custom attribute ids to attribute
      * value string to set on datastore resource.
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
@@ -298,7 +298,7 @@ export interface VmfsDatastoreArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.

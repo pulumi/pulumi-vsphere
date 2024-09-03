@@ -37,7 +37,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
     }
     /**
      * When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vm_group_name` will *not* be
      * run on the hosts defined in this host group.
      * 
      */
@@ -46,7 +46,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
 
     /**
      * @return When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vm_group_name` will *not* be
      * run on the hosts defined in this host group.
      * 
      */

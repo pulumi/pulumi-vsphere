@@ -14,10 +14,9 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for folder. See [here][docs-setting-custom-attributes]
+        /// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         /// for a reference on how to set values for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
         /// and require vCenter.
@@ -115,10 +114,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for folder. See [here][docs-setting-custom-attributes]
+        /// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         /// for a reference on how to set values for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
         /// and require vCenter.
@@ -187,10 +185,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for folder. See [here][docs-setting-custom-attributes]
+        /// value strings to set for folder. See [here](https://www.terraform.io/docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource)
         /// for a reference on how to set values for custom attributes.
         /// 
-        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
         /// and require vCenter.

@@ -17,7 +17,6 @@ namespace Pulumi.VSphere
         /// that require a datastore. For example, to create virtual machines in using the
         /// `vsphere.VirtualMachine` resource.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -50,7 +49,6 @@ namespace Pulumi.VSphere
         /// vSphere datastore object. This can then be used with resources or data sources
         /// that require a datastore. For example, to create virtual machines in using the
         /// `vsphere.VirtualMachine` resource.
-        /// 
         /// 
         /// ## Example Usage
         /// 
