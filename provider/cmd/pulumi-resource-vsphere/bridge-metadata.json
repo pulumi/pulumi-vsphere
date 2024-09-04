@@ -301,6 +301,23 @@
                 "current": "vsphere:index/host:Host",
                 "majorVersion": 4,
                 "fields": {
+                    "services": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ntpd": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ntp_servers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
