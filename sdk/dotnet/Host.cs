@@ -49,46 +49,6 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// ### Create host in a compute cluster
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-    ///     {
-    ///         Name = "dc-01",
-    ///     });
-    /// 
-    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
-    ///     {
-    ///         Name = "cluster-01",
-    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-    ///     });
-    /// 
-    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
-    ///     {
-    ///         Address = "esx-01.example.com",
-    ///         Insecure = true,
-    ///     });
-    /// 
-    ///     var esx_01 = new VSphere.Host("esx-01", new()
-    ///     {
-    ///         Hostname = "esx-01.example.com",
-    ///         Username = "root",
-    ///         Password = "password",
-    ///         License = "00000-00000-00000-00000-00000",
-    ///         Thumbprint = thumbprint.Apply(getHostThumbprintResult =&gt; getHostThumbprintResult.Id),
-    ///         Cluster = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Importing
     /// 
     /// An existing host can be [imported][docs-import] into this resource by supplying
@@ -186,6 +146,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// Set Services on host, the settings to be set are based on service being set as part of import.
+        /// </summary>
+        [Output("services")]
+        public Output<ImmutableArray<Outputs.HostService>> Services { get; private set; } = null!;
 
         /// <summary>
         /// The IDs of any tags to attach to this resource. Please
@@ -366,6 +332,18 @@ namespace Pulumi.VSphere
             }
         }
 
+        [Input("services")]
+        private InputList<Inputs.HostServiceArgs>? _services;
+
+        /// <summary>
+        /// Set Services on host, the settings to be set are based on service being set as part of import.
+        /// </summary>
+        public InputList<Inputs.HostServiceArgs> Services
+        {
+            get => _services ?? (_services = new InputList<Inputs.HostServiceArgs>());
+            set => _services = value;
+        }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -507,6 +485,18 @@ namespace Pulumi.VSphere
                 var emptySecret = Output.CreateSecret(0);
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
+        }
+
+        [Input("services")]
+        private InputList<Inputs.HostServiceGetArgs>? _services;
+
+        /// <summary>
+        /// Set Services on host, the settings to be set are based on service being set as part of import.
+        /// </summary>
+        public InputList<Inputs.HostServiceGetArgs> Services
+        {
+            get => _services ?? (_services = new InputList<Inputs.HostServiceGetArgs>());
+            set => _services = value;
         }
 
         [Input("tags")]

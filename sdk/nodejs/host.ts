@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -30,33 +32,6 @@ import * as utilities from "./utilities";
  *     license: "00000-00000-00000-00000-00000",
  *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
  *     datacenter: datacenter.then(datacenter => datacenter.id),
- * });
- * ```
- *
- * ### Create host in a compute cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
- *     name: "cluster-01",
- *     datacenterId: datacenter.id,
- * }));
- * const thumbprint = vsphere.getHostThumbprint({
- *     address: "esx-01.example.com",
- *     insecure: true,
- * });
- * const esx_01 = new vsphere.Host("esx-01", {
- *     hostname: "esx-01.example.com",
- *     username: "root",
- *     password: "password",
- *     license: "00000-00000-00000-00000-00000",
- *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
- *     cluster: cluster.then(cluster => cluster.id),
  * });
  * ```
  *
@@ -162,6 +137,10 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
+     * Set Services on host, the settings to be set are based on service being set as part of import.
+     */
+    public readonly services!: pulumi.Output<outputs.HostService[] | undefined>;
+    /**
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
      * tags to resources.
@@ -207,6 +186,7 @@ export class Host extends pulumi.CustomResource {
             resourceInputs["lockdown"] = state ? state.lockdown : undefined;
             resourceInputs["maintenance"] = state ? state.maintenance : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["thumbprint"] = state ? state.thumbprint : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
@@ -232,6 +212,7 @@ export class Host extends pulumi.CustomResource {
             resourceInputs["lockdown"] = args ? args.lockdown : undefined;
             resourceInputs["maintenance"] = args ? args.maintenance : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["services"] = args ? args.services : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["thumbprint"] = args ? args.thumbprint : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -311,6 +292,10 @@ export interface HostState {
      * to the host.
      */
     password?: pulumi.Input<string>;
+    /**
+     * Set Services on host, the settings to be set are based on service being set as part of import.
+     */
+    services?: pulumi.Input<pulumi.Input<inputs.HostService>[]>;
     /**
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
@@ -402,6 +387,10 @@ export interface HostArgs {
      * to the host.
      */
     password: pulumi.Input<string>;
+    /**
+     * Set Services on host, the settings to be set are based on service being set as part of import.
+     */
+    services?: pulumi.Input<pulumi.Input<inputs.HostService>[]>;
     /**
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying

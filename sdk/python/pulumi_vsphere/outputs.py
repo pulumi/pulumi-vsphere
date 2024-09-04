@@ -29,6 +29,8 @@ __all__ = [
     'GuestOsCustomizationSpecNetworkInterface',
     'GuestOsCustomizationSpecWindowsOptions',
     'HostPortGroupPort',
+    'HostService',
+    'HostServiceNtpd',
     'OfflineSoftwareDepotComponent',
     'SupervisorEgressCidr',
     'SupervisorIngressCidr',
@@ -1412,6 +1414,85 @@ class HostPortGroupPort(dict):
         Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class HostService(dict):
+    def __init__(__self__, *,
+                 ntpd: Optional['outputs.HostServiceNtpd'] = None):
+        """
+        :param 'HostServiceNtpdArgs' ntpd: service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+               
+               > **NOTE:** `services` only supports ntpd service today.
+        """
+        if ntpd is not None:
+            pulumi.set(__self__, "ntpd", ntpd)
+
+    @property
+    @pulumi.getter
+    def ntpd(self) -> Optional['outputs.HostServiceNtpd']:
+        """
+        service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+
+        > **NOTE:** `services` only supports ntpd service today.
+        """
+        return pulumi.get(self, "ntpd")
+
+
+@pulumi.output_type
+class HostServiceNtpd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ntpServers":
+            suggest = "ntp_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostServiceNtpd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostServiceNtpd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostServiceNtpd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 ntp_servers: Optional[Sequence[str]] = None,
+                 policy: Optional[str] = None):
+        """
+        :param bool enabled: Whether the NTP service is enabled. Default is false.
+        :param str policy: The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if ntp_servers is not None:
+            pulumi.set(__self__, "ntp_servers", ntp_servers)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the NTP service is enabled. Default is false.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="ntpServers")
+    def ntp_servers(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "ntp_servers")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+        """
+        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type

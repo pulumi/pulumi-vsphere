@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['HostArgs', 'Host']
 
@@ -26,6 +28,7 @@ class HostArgs:
                  license: Optional[pulumi.Input[str]] = None,
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None):
         """
@@ -63,6 +66,7 @@ class HostArgs:
                `disabled`, `normal`, and `strict`. Default is `disabled`.
         :param pulumi.Input[bool] maintenance: Set the management state of the host.
                Default is `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]] services: Set Services on host, the settings to be set are based on service being set as part of import.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
@@ -95,6 +99,8 @@ class HostArgs:
             pulumi.set(__self__, "lockdown", lockdown)
         if maintenance is not None:
             pulumi.set(__self__, "maintenance", maintenance)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if thumbprint is not None:
@@ -267,6 +273,18 @@ class HostArgs:
 
     @property
     @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]:
+        """
+        Set Services on host, the settings to be set are based on service being set as part of import.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource. Please
@@ -312,6 +330,7 @@ class _HostState:
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -348,6 +367,7 @@ class _HostState:
                Default is `false`.
         :param pulumi.Input[str] password: Password that will be used by vSphere to authenticate
                to the host.
+        :param pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]] services: Set Services on host, the settings to be set are based on service being set as part of import.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
@@ -383,6 +403,8 @@ class _HostState:
             pulumi.set(__self__, "maintenance", maintenance)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if thumbprint is not None:
@@ -544,6 +566,18 @@ class _HostState:
 
     @property
     @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]:
+        """
+        Set Services on host, the settings to be set are based on service being set as part of import.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostServiceArgs']]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource. Please
@@ -604,6 +638,7 @@ class Host(pulumi.CustomResource):
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -630,26 +665,6 @@ class Host(pulumi.CustomResource):
             license="00000-00000-00000-00000-00000",
             thumbprint=thumbprint.id,
             datacenter=datacenter.id)
-        ```
-
-        ### Create host in a compute cluster
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
-            insecure=True)
-        esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
-            username="root",
-            password="password",
-            license="00000-00000-00000-00000-00000",
-            thumbprint=thumbprint.id,
-            cluster=cluster.id)
         ```
 
         ## Importing
@@ -694,6 +709,7 @@ class Host(pulumi.CustomResource):
                Default is `false`.
         :param pulumi.Input[str] password: Password that will be used by vSphere to authenticate
                to the host.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]] services: Set Services on host, the settings to be set are based on service being set as part of import.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
@@ -737,26 +753,6 @@ class Host(pulumi.CustomResource):
             datacenter=datacenter.id)
         ```
 
-        ### Create host in a compute cluster
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
-            insecure=True)
-        esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
-            username="root",
-            password="password",
-            license="00000-00000-00000-00000-00000",
-            thumbprint=thumbprint.id,
-            cluster=cluster.id)
-        ```
-
         ## Importing
 
         An existing host can be [imported][docs-import] into this resource by supplying
@@ -792,6 +788,7 @@ class Host(pulumi.CustomResource):
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -819,6 +816,7 @@ class Host(pulumi.CustomResource):
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["services"] = services
             __props__.__dict__["tags"] = tags
             __props__.__dict__["thumbprint"] = thumbprint
             if username is None and not opts.urn:
@@ -847,6 +845,7 @@ class Host(pulumi.CustomResource):
             lockdown: Optional[pulumi.Input[str]] = None,
             maintenance: Optional[pulumi.Input[bool]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             thumbprint: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'Host':
@@ -888,6 +887,7 @@ class Host(pulumi.CustomResource):
                Default is `false`.
         :param pulumi.Input[str] password: Password that will be used by vSphere to authenticate
                to the host.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostServiceArgs', 'HostServiceArgsDict']]]] services: Set Services on host, the settings to be set are based on service being set as part of import.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
@@ -916,6 +916,7 @@ class Host(pulumi.CustomResource):
         __props__.__dict__["lockdown"] = lockdown
         __props__.__dict__["maintenance"] = maintenance
         __props__.__dict__["password"] = password
+        __props__.__dict__["services"] = services
         __props__.__dict__["tags"] = tags
         __props__.__dict__["thumbprint"] = thumbprint
         __props__.__dict__["username"] = username
@@ -1028,6 +1029,14 @@ class Host(pulumi.CustomResource):
         to the host.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def services(self) -> pulumi.Output[Optional[Sequence['outputs.HostService']]]:
+        """
+        Set Services on host, the settings to be set are based on service being set as part of import.
+        """
+        return pulumi.get(self, "services")
 
     @property
     @pulumi.getter

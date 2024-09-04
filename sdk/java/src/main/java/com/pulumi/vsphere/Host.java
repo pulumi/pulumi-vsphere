@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.vsphere.HostArgs;
 import com.pulumi.vsphere.Utilities;
 import com.pulumi.vsphere.inputs.HostState;
+import com.pulumi.vsphere.outputs.HostService;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -67,64 +68,6 @@ import javax.annotation.Nullable;
  *             .license("00000-00000-00000-00000-00000")
  *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -> getHostThumbprintResult.id()))
  *             .datacenter(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Create host in a compute cluster
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.vsphere.VsphereFunctions;
- * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
- * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
- * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
- * import com.pulumi.vsphere.Host;
- * import com.pulumi.vsphere.HostArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
- *             .name("dc-01")
- *             .build());
- * 
- *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
- *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
- *             .build());
- * 
- *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
- *             .address("esx-01.example.com")
- *             .insecure(true)
- *             .build());
- * 
- *         var esx_01 = new Host("esx-01", HostArgs.builder()
- *             .hostname("esx-01.example.com")
- *             .username("root")
- *             .password("password")
- *             .license("00000-00000-00000-00000-00000")
- *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -> getHostThumbprintResult.id()))
- *             .cluster(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
  *             .build());
  * 
  *     }
@@ -338,6 +281,20 @@ public class Host extends com.pulumi.resources.CustomResource {
      */
     public Output<String> password() {
         return this.password;
+    }
+    /**
+     * Set Services on host, the settings to be set are based on service being set as part of import.
+     * 
+     */
+    @Export(name="services", refs={List.class,HostService.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<HostService>> services;
+
+    /**
+     * @return Set Services on host, the settings to be set are based on service being set as part of import.
+     * 
+     */
+    public Output<Optional<List<HostService>>> services() {
+        return Codegen.optional(this.services);
     }
     /**
      * The IDs of any tags to attach to this resource. Please

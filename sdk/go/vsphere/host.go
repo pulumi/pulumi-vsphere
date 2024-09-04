@@ -61,57 +61,6 @@ import (
 //
 // ```
 //
-// ### Create host in a compute cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef("dc-01"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
-//				Name:         "cluster-01",
-//				DatacenterId: pulumi.StringRef(datacenter.Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
-//				Address:  "esx-01.example.com",
-//				Insecure: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
-//				Hostname:   pulumi.String("esx-01.example.com"),
-//				Username:   pulumi.String("root"),
-//				Password:   pulumi.String("password"),
-//				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Thumbprint: pulumi.String(thumbprint.Id),
-//				Cluster:    pulumi.String(cluster.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Importing
 //
 // An existing host can be [imported][docs-import] into this resource by supplying
@@ -165,6 +114,8 @@ type Host struct {
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// Set Services on host, the settings to be set are based on service being set as part of import.
+	Services HostServiceArrayOutput `pulumi:"services"`
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
@@ -270,6 +221,8 @@ type hostState struct {
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password *string `pulumi:"password"`
+	// Set Services on host, the settings to be set are based on service being set as part of import.
+	Services []HostService `pulumi:"services"`
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
@@ -330,6 +283,8 @@ type HostState struct {
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password pulumi.StringPtrInput
+	// Set Services on host, the settings to be set are based on service being set as part of import.
+	Services HostServiceArrayInput
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
@@ -394,6 +349,8 @@ type hostArgs struct {
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password string `pulumi:"password"`
+	// Set Services on host, the settings to be set are based on service being set as part of import.
+	Services []HostService `pulumi:"services"`
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
@@ -455,6 +412,8 @@ type HostArgs struct {
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password pulumi.StringInput
+	// Set Services on host, the settings to be set are based on service being set as part of import.
+	Services HostServiceArrayInput
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
@@ -632,6 +591,11 @@ func (o HostOutput) Maintenance() pulumi.BoolPtrOutput {
 // to the host.
 func (o HostOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Set Services on host, the settings to be set are based on service being set as part of import.
+func (o HostOutput) Services() HostServiceArrayOutput {
+	return o.ApplyT(func(v *Host) HostServiceArrayOutput { return v.Services }).(HostServiceArrayOutput)
 }
 
 // The IDs of any tags to attach to this resource. Please
