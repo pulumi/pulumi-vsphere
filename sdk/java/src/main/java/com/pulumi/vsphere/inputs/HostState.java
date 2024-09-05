@@ -5,6 +5,7 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.vsphere.inputs.HostServiceArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -224,6 +225,21 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set Services on host, the settings to be set are based on service being set as part of import.
+     * 
+     */
+    @Import(name="services")
+    private @Nullable Output<List<HostServiceArgs>> services;
+
+    /**
+     * @return Set Services on host, the settings to be set are based on service being set as part of import.
+     * 
+     */
+    public Optional<Output<List<HostServiceArgs>>> services() {
+        return Optional.ofNullable(this.services);
+    }
+
+    /**
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
      * tags to resources.
@@ -300,6 +316,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
         this.lockdown = $.lockdown;
         this.maintenance = $.maintenance;
         this.password = $.password;
+        this.services = $.services;
         this.tags = $.tags;
         this.thumbprint = $.thumbprint;
         this.username = $.username;
@@ -592,6 +609,37 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param services Set Services on host, the settings to be set are based on service being set as part of import.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder services(@Nullable Output<List<HostServiceArgs>> services) {
+            $.services = services;
+            return this;
+        }
+
+        /**
+         * @param services Set Services on host, the settings to be set are based on service being set as part of import.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder services(List<HostServiceArgs> services) {
+            return services(Output.of(services));
+        }
+
+        /**
+         * @param services Set Services on host, the settings to be set are based on service being set as part of import.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder services(HostServiceArgs... services) {
+            return services(List.of(services));
         }
 
         /**

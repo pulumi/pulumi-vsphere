@@ -2936,6 +2936,280 @@ func (o HostPortGroupPortArrayOutput) Index(i pulumi.IntInput) HostPortGroupPort
 	}).(HostPortGroupPortOutput)
 }
 
+type HostService struct {
+	// service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+	//
+	// > **NOTE:** `services` only supports ntpd service today.
+	Ntpd *HostServiceNtpd `pulumi:"ntpd"`
+}
+
+// HostServiceInput is an input type that accepts HostServiceArgs and HostServiceOutput values.
+// You can construct a concrete instance of `HostServiceInput` via:
+//
+//	HostServiceArgs{...}
+type HostServiceInput interface {
+	pulumi.Input
+
+	ToHostServiceOutput() HostServiceOutput
+	ToHostServiceOutputWithContext(context.Context) HostServiceOutput
+}
+
+type HostServiceArgs struct {
+	// service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+	//
+	// > **NOTE:** `services` only supports ntpd service today.
+	Ntpd HostServiceNtpdPtrInput `pulumi:"ntpd"`
+}
+
+func (HostServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostService)(nil)).Elem()
+}
+
+func (i HostServiceArgs) ToHostServiceOutput() HostServiceOutput {
+	return i.ToHostServiceOutputWithContext(context.Background())
+}
+
+func (i HostServiceArgs) ToHostServiceOutputWithContext(ctx context.Context) HostServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostServiceOutput)
+}
+
+// HostServiceArrayInput is an input type that accepts HostServiceArray and HostServiceArrayOutput values.
+// You can construct a concrete instance of `HostServiceArrayInput` via:
+//
+//	HostServiceArray{ HostServiceArgs{...} }
+type HostServiceArrayInput interface {
+	pulumi.Input
+
+	ToHostServiceArrayOutput() HostServiceArrayOutput
+	ToHostServiceArrayOutputWithContext(context.Context) HostServiceArrayOutput
+}
+
+type HostServiceArray []HostServiceInput
+
+func (HostServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostService)(nil)).Elem()
+}
+
+func (i HostServiceArray) ToHostServiceArrayOutput() HostServiceArrayOutput {
+	return i.ToHostServiceArrayOutputWithContext(context.Background())
+}
+
+func (i HostServiceArray) ToHostServiceArrayOutputWithContext(ctx context.Context) HostServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostServiceArrayOutput)
+}
+
+type HostServiceOutput struct{ *pulumi.OutputState }
+
+func (HostServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostService)(nil)).Elem()
+}
+
+func (o HostServiceOutput) ToHostServiceOutput() HostServiceOutput {
+	return o
+}
+
+func (o HostServiceOutput) ToHostServiceOutputWithContext(ctx context.Context) HostServiceOutput {
+	return o
+}
+
+// service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+//
+// > **NOTE:** `services` only supports ntpd service today.
+func (o HostServiceOutput) Ntpd() HostServiceNtpdPtrOutput {
+	return o.ApplyT(func(v HostService) *HostServiceNtpd { return v.Ntpd }).(HostServiceNtpdPtrOutput)
+}
+
+type HostServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (HostServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostService)(nil)).Elem()
+}
+
+func (o HostServiceArrayOutput) ToHostServiceArrayOutput() HostServiceArrayOutput {
+	return o
+}
+
+func (o HostServiceArrayOutput) ToHostServiceArrayOutputWithContext(ctx context.Context) HostServiceArrayOutput {
+	return o
+}
+
+func (o HostServiceArrayOutput) Index(i pulumi.IntInput) HostServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostService {
+		return vs[0].([]HostService)[vs[1].(int)]
+	}).(HostServiceOutput)
+}
+
+type HostServiceNtpd struct {
+	// Whether the NTP service is enabled. Default is false.
+	Enabled    *bool    `pulumi:"enabled"`
+	NtpServers []string `pulumi:"ntpServers"`
+	// The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+	Policy *string `pulumi:"policy"`
+}
+
+// HostServiceNtpdInput is an input type that accepts HostServiceNtpdArgs and HostServiceNtpdOutput values.
+// You can construct a concrete instance of `HostServiceNtpdInput` via:
+//
+//	HostServiceNtpdArgs{...}
+type HostServiceNtpdInput interface {
+	pulumi.Input
+
+	ToHostServiceNtpdOutput() HostServiceNtpdOutput
+	ToHostServiceNtpdOutputWithContext(context.Context) HostServiceNtpdOutput
+}
+
+type HostServiceNtpdArgs struct {
+	// Whether the NTP service is enabled. Default is false.
+	Enabled    pulumi.BoolPtrInput     `pulumi:"enabled"`
+	NtpServers pulumi.StringArrayInput `pulumi:"ntpServers"`
+	// The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (HostServiceNtpdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostServiceNtpd)(nil)).Elem()
+}
+
+func (i HostServiceNtpdArgs) ToHostServiceNtpdOutput() HostServiceNtpdOutput {
+	return i.ToHostServiceNtpdOutputWithContext(context.Background())
+}
+
+func (i HostServiceNtpdArgs) ToHostServiceNtpdOutputWithContext(ctx context.Context) HostServiceNtpdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostServiceNtpdOutput)
+}
+
+func (i HostServiceNtpdArgs) ToHostServiceNtpdPtrOutput() HostServiceNtpdPtrOutput {
+	return i.ToHostServiceNtpdPtrOutputWithContext(context.Background())
+}
+
+func (i HostServiceNtpdArgs) ToHostServiceNtpdPtrOutputWithContext(ctx context.Context) HostServiceNtpdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostServiceNtpdOutput).ToHostServiceNtpdPtrOutputWithContext(ctx)
+}
+
+// HostServiceNtpdPtrInput is an input type that accepts HostServiceNtpdArgs, HostServiceNtpdPtr and HostServiceNtpdPtrOutput values.
+// You can construct a concrete instance of `HostServiceNtpdPtrInput` via:
+//
+//	        HostServiceNtpdArgs{...}
+//
+//	or:
+//
+//	        nil
+type HostServiceNtpdPtrInput interface {
+	pulumi.Input
+
+	ToHostServiceNtpdPtrOutput() HostServiceNtpdPtrOutput
+	ToHostServiceNtpdPtrOutputWithContext(context.Context) HostServiceNtpdPtrOutput
+}
+
+type hostServiceNtpdPtrType HostServiceNtpdArgs
+
+func HostServiceNtpdPtr(v *HostServiceNtpdArgs) HostServiceNtpdPtrInput {
+	return (*hostServiceNtpdPtrType)(v)
+}
+
+func (*hostServiceNtpdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostServiceNtpd)(nil)).Elem()
+}
+
+func (i *hostServiceNtpdPtrType) ToHostServiceNtpdPtrOutput() HostServiceNtpdPtrOutput {
+	return i.ToHostServiceNtpdPtrOutputWithContext(context.Background())
+}
+
+func (i *hostServiceNtpdPtrType) ToHostServiceNtpdPtrOutputWithContext(ctx context.Context) HostServiceNtpdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostServiceNtpdPtrOutput)
+}
+
+type HostServiceNtpdOutput struct{ *pulumi.OutputState }
+
+func (HostServiceNtpdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostServiceNtpd)(nil)).Elem()
+}
+
+func (o HostServiceNtpdOutput) ToHostServiceNtpdOutput() HostServiceNtpdOutput {
+	return o
+}
+
+func (o HostServiceNtpdOutput) ToHostServiceNtpdOutputWithContext(ctx context.Context) HostServiceNtpdOutput {
+	return o
+}
+
+func (o HostServiceNtpdOutput) ToHostServiceNtpdPtrOutput() HostServiceNtpdPtrOutput {
+	return o.ToHostServiceNtpdPtrOutputWithContext(context.Background())
+}
+
+func (o HostServiceNtpdOutput) ToHostServiceNtpdPtrOutputWithContext(ctx context.Context) HostServiceNtpdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostServiceNtpd) *HostServiceNtpd {
+		return &v
+	}).(HostServiceNtpdPtrOutput)
+}
+
+// Whether the NTP service is enabled. Default is false.
+func (o HostServiceNtpdOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HostServiceNtpd) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostServiceNtpdOutput) NtpServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HostServiceNtpd) []string { return v.NtpServers }).(pulumi.StringArrayOutput)
+}
+
+// The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+func (o HostServiceNtpdOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostServiceNtpd) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type HostServiceNtpdPtrOutput struct{ *pulumi.OutputState }
+
+func (HostServiceNtpdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostServiceNtpd)(nil)).Elem()
+}
+
+func (o HostServiceNtpdPtrOutput) ToHostServiceNtpdPtrOutput() HostServiceNtpdPtrOutput {
+	return o
+}
+
+func (o HostServiceNtpdPtrOutput) ToHostServiceNtpdPtrOutputWithContext(ctx context.Context) HostServiceNtpdPtrOutput {
+	return o
+}
+
+func (o HostServiceNtpdPtrOutput) Elem() HostServiceNtpdOutput {
+	return o.ApplyT(func(v *HostServiceNtpd) HostServiceNtpd {
+		if v != nil {
+			return *v
+		}
+		var ret HostServiceNtpd
+		return ret
+	}).(HostServiceNtpdOutput)
+}
+
+// Whether the NTP service is enabled. Default is false.
+func (o HostServiceNtpdPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostServiceNtpd) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o HostServiceNtpdPtrOutput) NtpServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostServiceNtpd) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NtpServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+func (o HostServiceNtpdPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostServiceNtpd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
 type OfflineSoftwareDepotComponent struct {
 	// The name of the component. Useful for easier identification.
 	DisplayName *string `pulumi:"displayName"`
@@ -8071,6 +8345,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsCustomizationSpecWindowsOptionsPtrInput)(nil)).Elem(), GuestOsCustomizationSpecWindowsOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortInput)(nil)).Elem(), HostPortGroupPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortArrayInput)(nil)).Elem(), HostPortGroupPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceInput)(nil)).Elem(), HostServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceArrayInput)(nil)).Elem(), HostServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceNtpdInput)(nil)).Elem(), HostServiceNtpdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostServiceNtpdPtrInput)(nil)).Elem(), HostServiceNtpdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentInput)(nil)).Elem(), OfflineSoftwareDepotComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OfflineSoftwareDepotComponentArrayInput)(nil)).Elem(), OfflineSoftwareDepotComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupervisorEgressCidrInput)(nil)).Elem(), SupervisorEgressCidrArgs{})
@@ -8165,6 +8443,10 @@ func init() {
 	pulumi.RegisterOutputType(GuestOsCustomizationSpecWindowsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortArrayOutput{})
+	pulumi.RegisterOutputType(HostServiceOutput{})
+	pulumi.RegisterOutputType(HostServiceArrayOutput{})
+	pulumi.RegisterOutputType(HostServiceNtpdOutput{})
+	pulumi.RegisterOutputType(HostServiceNtpdPtrOutput{})
 	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentOutput{})
 	pulumi.RegisterOutputType(OfflineSoftwareDepotComponentArrayOutput{})
 	pulumi.RegisterOutputType(SupervisorEgressCidrOutput{})

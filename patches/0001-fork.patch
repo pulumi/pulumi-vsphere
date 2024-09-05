@@ -2256,7 +2256,7 @@ index abf14afa..e73922f1 100644
  override on subsequent plan and apply operations after the override has been
  created.
 diff --git a/website/docs/r/host.html.markdown b/website/docs/r/host.html.markdown
-index 18ad95aa..4f0cb3cd 100644
+index 48706051..edd9dbe7 100644
 --- a/website/docs/r/host.html.markdown
 +++ b/website/docs/r/host.html.markdown
 @@ -13,9 +13,9 @@ description: |-

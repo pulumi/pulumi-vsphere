@@ -372,6 +372,27 @@ export interface HostPortGroupPort {
     type?: pulumi.Input<string>;
 }
 
+export interface HostService {
+    /**
+     * service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+     *
+     * > **NOTE:** `services` only supports ntpd service today.
+     */
+    ntpd?: pulumi.Input<inputs.HostServiceNtpd>;
+}
+
+export interface HostServiceNtpd {
+    /**
+     * Whether the NTP service is enabled. Default is false.
+     */
+    enabled?: pulumi.Input<boolean>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+     */
+    policy?: pulumi.Input<string>;
+}
+
 export interface OfflineSoftwareDepotComponent {
     /**
      * The name of the component. Useful for easier identification.
