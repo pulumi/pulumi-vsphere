@@ -651,7 +651,7 @@ index eb1b7f04..eb4ae03a 100644
    searching for disks. This may lengthen the time it takes to perform the
    search. Default: `false`.
 diff --git a/website/docs/r/compute_cluster.html.markdown b/website/docs/r/compute_cluster.html.markdown
-index f91e4b17..4c1074b4 100644
+index 9b04ba1b..27e4bf30 100644
 --- a/website/docs/r/compute_cluster.html.markdown
 +++ b/website/docs/r/compute_cluster.html.markdown
 @@ -12,14 +12,12 @@ description: |-
@@ -679,7 +679,7 @@ index f91e4b17..4c1074b4 100644
 -  name            = "terraform-compute-cluster-test"
 +  name            = "compute-cluster-test"
    datacenter_id   = data.vsphere_datacenter.datacenter.id
-   host_system_ids = [data.vsphere_host.host.*.id]
+   host_system_ids = [for host in data.vsphere_host.host : host.id]
  
 @@ -88,36 +86,29 @@ resource "vsphere_compute_cluster" "compute_cluster" {
  The following arguments are supported:
@@ -2256,7 +2256,7 @@ index abf14afa..e73922f1 100644
  override on subsequent plan and apply operations after the override has been
  created.
 diff --git a/website/docs/r/host.html.markdown b/website/docs/r/host.html.markdown
-index 48706051..edd9dbe7 100644
+index 76ed5a66..9e513b7f 100644
 --- a/website/docs/r/host.html.markdown
 +++ b/website/docs/r/host.html.markdown
 @@ -13,9 +13,9 @@ description: |-
@@ -2913,7 +2913,7 @@ index 4f600605..9e875ab3 100644
    directories that are a part of the `vmdk_path` parameter if they are missing.
    Default: `false`.
 diff --git a/website/docs/r/virtual_machine.html.markdown b/website/docs/r/virtual_machine.html.markdown
-index 05237aad..0b851981 100644
+index 60e3e080..6b1575bc 100644
 --- a/website/docs/r/virtual_machine.html.markdown
 +++ b/website/docs/r/virtual_machine.html.markdown
 @@ -16,7 +16,7 @@ For details on working with virtual machines in VMware vSphere, please refer to
@@ -3031,7 +3031,7 @@ index 05237aad..0b851981 100644
  
  ~> **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
  
-@@ -1246,10 +1227,9 @@ The options are:
+@@ -1277,10 +1258,9 @@ The options are:
  
  * `hw_clock_utc` - (Optional) Tells the operating system that the hardware clock is set to UTC. Default: `true`.
  
@@ -3044,7 +3044,7 @@ index 05237aad..0b851981 100644
  
  * `time_zone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][kb-2145518]. The default is UTC.
  
-@@ -1529,9 +1509,8 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -1560,9 +1540,8 @@ resource "vsphere_virtual_machine" "vm" {
  
  #### Storage Migration Restrictions
  
@@ -3055,7 +3055,7 @@ index 05237aad..0b851981 100644
  
  ## Virtual Machine Reboot
  
-@@ -1590,23 +1569,19 @@ The following attributes are exported on the base level of this resource:
+@@ -1621,23 +1600,19 @@ The following attributes are exported on the base level of this resource:
  
  * `uuid` - The UUID of the virtual machine. Also exposed as the `id` of the resource.
  
@@ -3080,7 +3080,7 @@ index 05237aad..0b851981 100644
 -[docs-import]: /docs/import/index.html
 +An existing virtual machine can be imported into the provider state by providing the full path to the virtual machine.
  
- **Example**:
+ **Examples**:
  
 diff --git a/website/docs/r/virtual_machine_snapshot.html.markdown b/website/docs/r/virtual_machine_snapshot.html.markdown
 index 3b22c0f7..ebdfb0ad 100644
