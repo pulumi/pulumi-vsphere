@@ -6,44 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a VMware vSphere host resource. This represents an ESXi host that
- * can be used either as a member of a cluster or as a standalone host.
- *
- * ## Example Usage
- *
- * ### Create a standalone host
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * const thumbprint = vsphere.getHostThumbprint({
- *     address: "esx-01.example.com",
- *     insecure: true,
- * });
- * const esx_01 = new vsphere.Host("esx-01", {
- *     hostname: "esx-01.example.com",
- *     username: "root",
- *     password: "password",
- *     license: "00000-00000-00000-00000-00000",
- *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
- *     datacenter: datacenter.then(datacenter => datacenter.id),
- * });
- * ```
- *
- * ## Importing
- *
- * An existing host can be [imported][docs-import] into this resource by supplying
- * the host's ID. An example is below:
- *
- * [docs-import]: /docs/import/index.html
- *
- * The above would import the host with ID `host-123`.
- */
 export class Host extends pulumi.CustomResource {
     /**
      * Get an existing Host resource's state with the given name, ID, and optional extra

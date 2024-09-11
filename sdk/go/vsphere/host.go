@@ -12,63 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VMware vSphere host resource. This represents an ESXi host that
-// can be used either as a member of a cluster or as a standalone host.
-//
-// ## Example Usage
-//
-// ### Create a standalone host
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef("dc-01"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
-//				Address:  "esx-01.example.com",
-//				Insecure: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
-//				Hostname:   pulumi.String("esx-01.example.com"),
-//				Username:   pulumi.String("root"),
-//				Password:   pulumi.String("password"),
-//				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Thumbprint: pulumi.String(thumbprint.Id),
-//				Datacenter: pulumi.String(datacenter.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Importing
-//
-// An existing host can be [imported][docs-import] into this resource by supplying
-// the host's ID. An example is below:
-//
-// [docs-import]: /docs/import/index.html
-//
-// The above would import the host with ID `host-123`.
 type Host struct {
 	pulumi.CustomResourceState
 
