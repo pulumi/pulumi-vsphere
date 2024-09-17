@@ -60,6 +60,11 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * `vsphere.ComputeClusterHostGroup`
      * resource. Make sure your names are unique across both resources.
      * 
+     * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+     * import section. When importing a VM group, validate that all virtual machines that
+     * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+     * that are not in `virtual_machine_ids` the included will be removed from the group.
+     * 
      */
     @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> virtualMachineIds;
@@ -72,6 +77,11 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * `name` argument) is shared with the
      * `vsphere.ComputeClusterHostGroup`
      * resource. Make sure your names are unique across both resources.
+     * 
+     * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+     * import section. When importing a VM group, validate that all virtual machines that
+     * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+     * that are not in `virtual_machine_ids` the included will be removed from the group.
      * 
      */
     public Output<Optional<List<String>>> virtualMachineIds() {

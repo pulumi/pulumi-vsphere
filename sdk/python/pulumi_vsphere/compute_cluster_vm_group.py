@@ -31,6 +31,11 @@ class ComputeClusterVmGroupArgs:
                `name` argument) is shared with the
                `ComputeClusterHostGroup`
                resource. Make sure your names are unique across both resources.
+               
+               > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+               import section. When importing a VM group, validate that all virtual machines that
+               need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+               that are not in `virtual_machine_ids` the included will be removed from the group.
         """
         pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
         if name is not None:
@@ -76,6 +81,11 @@ class ComputeClusterVmGroupArgs:
         `name` argument) is shared with the
         `ComputeClusterHostGroup`
         resource. Make sure your names are unique across both resources.
+
+        > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+        import section. When importing a VM group, validate that all virtual machines that
+        need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+        that are not in `virtual_machine_ids` the included will be removed from the group.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -104,6 +114,11 @@ class _ComputeClusterVmGroupState:
                `name` argument) is shared with the
                `ComputeClusterHostGroup`
                resource. Make sure your names are unique across both resources.
+               
+               > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+               import section. When importing a VM group, validate that all virtual machines that
+               need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+               that are not in `virtual_machine_ids` the included will be removed from the group.
         """
         if compute_cluster_id is not None:
             pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
@@ -150,6 +165,11 @@ class _ComputeClusterVmGroupState:
         `name` argument) is shared with the
         `ComputeClusterHostGroup`
         resource. Make sure your names are unique across both resources.
+
+        > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+        import section. When importing a VM group, validate that all virtual machines that
+        need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+        that are not in `virtual_machine_ids` the included will be removed from the group.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -183,6 +203,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                `name` argument) is shared with the
                `ComputeClusterHostGroup`
                resource. Make sure your names are unique across both resources.
+               
+               > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+               import section. When importing a VM group, validate that all virtual machines that
+               need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+               that are not in `virtual_machine_ids` the included will be removed from the group.
         """
         ...
     @overload
@@ -256,6 +281,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                `name` argument) is shared with the
                `ComputeClusterHostGroup`
                resource. Make sure your names are unique across both resources.
+               
+               > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+               import section. When importing a VM group, validate that all virtual machines that
+               need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+               that are not in `virtual_machine_ids` the included will be removed from the group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -296,6 +326,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         `name` argument) is shared with the
         `ComputeClusterHostGroup`
         resource. Make sure your names are unique across both resources.
+
+        > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+        import section. When importing a VM group, validate that all virtual machines that
+        need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+        that are not in `virtual_machine_ids` the included will be removed from the group.
         """
         return pulumi.get(self, "virtual_machine_ids")
 

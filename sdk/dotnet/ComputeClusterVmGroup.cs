@@ -35,6 +35,11 @@ namespace Pulumi.VSphere
         /// `name` argument) is shared with the
         /// `vsphere.ComputeClusterHostGroup`
         /// resource. Make sure your names are unique across both resources.
+        /// 
+        /// &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+        /// import section. When importing a VM group, validate that all virtual machines that
+        /// need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+        /// that are not in `virtual_machine_ids` the included will be removed from the group.
         /// </summary>
         [Output("virtualMachineIds")]
         public Output<ImmutableArray<string>> VirtualMachineIds { get; private set; } = null!;
@@ -111,6 +116,11 @@ namespace Pulumi.VSphere
         /// `name` argument) is shared with the
         /// `vsphere.ComputeClusterHostGroup`
         /// resource. Make sure your names are unique across both resources.
+        /// 
+        /// &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+        /// import section. When importing a VM group, validate that all virtual machines that
+        /// need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+        /// that are not in `virtual_machine_ids` the included will be removed from the group.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {
@@ -152,6 +162,11 @@ namespace Pulumi.VSphere
         /// `name` argument) is shared with the
         /// `vsphere.ComputeClusterHostGroup`
         /// resource. Make sure your names are unique across both resources.
+        /// 
+        /// &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+        /// import section. When importing a VM group, validate that all virtual machines that
+        /// need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+        /// that are not in `virtual_machine_ids` the included will be removed from the group.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {
