@@ -51,6 +51,11 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
      * `name` argument) is shared with the
      * `vsphere.ComputeClusterHostGroup`
      * resource. Make sure your names are unique across both resources.
+     *
+     * > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+     * import section. When importing a VM group, validate that all virtual machines that
+     * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+     * that are not in `virtualMachineIds` the included will be removed from the group.
      */
     public readonly virtualMachineIds!: pulumi.Output<string[] | undefined>;
 
@@ -107,6 +112,11 @@ export interface ComputeClusterVmGroupState {
      * `name` argument) is shared with the
      * `vsphere.ComputeClusterHostGroup`
      * resource. Make sure your names are unique across both resources.
+     *
+     * > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+     * import section. When importing a VM group, validate that all virtual machines that
+     * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+     * that are not in `virtualMachineIds` the included will be removed from the group.
      */
     virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -134,6 +144,11 @@ export interface ComputeClusterVmGroupArgs {
      * `name` argument) is shared with the
      * `vsphere.ComputeClusterHostGroup`
      * resource. Make sure your names are unique across both resources.
+     *
+     * > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+     * import section. When importing a VM group, validate that all virtual machines that
+     * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+     * that are not in `virtualMachineIds` the included will be removed from the group.
      */
     virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

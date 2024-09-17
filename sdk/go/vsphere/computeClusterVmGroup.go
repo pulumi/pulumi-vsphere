@@ -29,6 +29,11 @@ type ComputeClusterVmGroup struct {
 	// `name` argument) is shared with the
 	// `ComputeClusterHostGroup`
 	// resource. Make sure your names are unique across both resources.
+	//
+	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+	// import section. When importing a VM group, validate that all virtual machines that
+	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds pulumi.StringArrayOutput `pulumi:"virtualMachineIds"`
 }
 
@@ -79,6 +84,11 @@ type computeClusterVmGroupState struct {
 	// `name` argument) is shared with the
 	// `ComputeClusterHostGroup`
 	// resource. Make sure your names are unique across both resources.
+	//
+	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+	// import section. When importing a VM group, validate that all virtual machines that
+	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -97,6 +107,11 @@ type ComputeClusterVmGroupState struct {
 	// `name` argument) is shared with the
 	// `ComputeClusterHostGroup`
 	// resource. Make sure your names are unique across both resources.
+	//
+	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+	// import section. When importing a VM group, validate that all virtual machines that
+	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -119,6 +134,11 @@ type computeClusterVmGroupArgs struct {
 	// `name` argument) is shared with the
 	// `ComputeClusterHostGroup`
 	// resource. Make sure your names are unique across both resources.
+	//
+	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+	// import section. When importing a VM group, validate that all virtual machines that
+	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -138,6 +158,11 @@ type ComputeClusterVmGroupArgs struct {
 	// `name` argument) is shared with the
 	// `ComputeClusterHostGroup`
 	// resource. Make sure your names are unique across both resources.
+	//
+	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+	// import section. When importing a VM group, validate that all virtual machines that
+	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -248,6 +273,11 @@ func (o ComputeClusterVmGroupOutput) Name() pulumi.StringOutput {
 // `name` argument) is shared with the
 // `ComputeClusterHostGroup`
 // resource. Make sure your names are unique across both resources.
+//
+// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+// import section. When importing a VM group, validate that all virtual machines that
+// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+// that are not in `virtualMachineIds` the included will be removed from the group.
 func (o ComputeClusterVmGroupOutput) VirtualMachineIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeClusterVmGroup) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
 }
