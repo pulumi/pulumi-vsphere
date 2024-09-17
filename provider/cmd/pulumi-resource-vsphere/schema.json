@@ -3265,7 +3265,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The UUIDs of the virtual machines in this\ngroup.\n\n\u003e **NOTE:** The namespace for cluster names on this resource (defined by the\n`name` argument) is shared with the\n`vsphere.ComputeClusterHostGroup`\nresource. Make sure your names are unique across both resources.\n"
+                    "description": "The UUIDs of the virtual machines in this\ngroup.\n\n\u003e **NOTE:** The namespace for cluster names on this resource (defined by the\n`name` argument) is shared with the\n`vsphere.ComputeClusterHostGroup`\nresource. Make sure your names are unique across both resources.\n\n\u003e **NOTE:** To update a existing VM group, you must first import the group with `import` command in\nimport section. When importing a VM group, validate that all virtual machines that\nneed to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines\nthat are not in `virtual_machine_ids` the included will be removed from the group.\n"
                 }
             },
             "required": [
@@ -3288,7 +3288,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The UUIDs of the virtual machines in this\ngroup.\n\n\u003e **NOTE:** The namespace for cluster names on this resource (defined by the\n`name` argument) is shared with the\n`vsphere.ComputeClusterHostGroup`\nresource. Make sure your names are unique across both resources.\n"
+                    "description": "The UUIDs of the virtual machines in this\ngroup.\n\n\u003e **NOTE:** The namespace for cluster names on this resource (defined by the\n`name` argument) is shared with the\n`vsphere.ComputeClusterHostGroup`\nresource. Make sure your names are unique across both resources.\n\n\u003e **NOTE:** To update a existing VM group, you must first import the group with `import` command in\nimport section. When importing a VM group, validate that all virtual machines that\nneed to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines\nthat are not in `virtual_machine_ids` the included will be removed from the group.\n"
                 }
             },
             "requiredInputs": [
@@ -3312,7 +3312,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The UUIDs of the virtual machines in this\ngroup.\n\n\u003e **NOTE:** The namespace for cluster names on this resource (defined by the\n`name` argument) is shared with the\n`vsphere.ComputeClusterHostGroup`\nresource. Make sure your names are unique across both resources.\n"
+                        "description": "The UUIDs of the virtual machines in this\ngroup.\n\n\u003e **NOTE:** The namespace for cluster names on this resource (defined by the\n`name` argument) is shared with the\n`vsphere.ComputeClusterHostGroup`\nresource. Make sure your names are unique across both resources.\n\n\u003e **NOTE:** To update a existing VM group, you must first import the group with `import` command in\nimport section. When importing a VM group, validate that all virtual machines that\nneed to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines\nthat are not in `virtual_machine_ids` the included will be removed from the group.\n"
                     }
                 },
                 "type": "object"

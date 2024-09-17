@@ -1187,7 +1187,7 @@ index bb6ac90e..acd55b27 100644
  
  ## Importing
 diff --git a/website/docs/r/compute_cluster_vm_group.html.markdown b/website/docs/r/compute_cluster_vm_group.html.markdown
-index cbf0f4da..ec12c125 100644
+index a1cc7619..d0dcc7d7 100644
 --- a/website/docs/r/compute_cluster_vm_group.html.markdown
 +++ b/website/docs/r/compute_cluster_vm_group.html.markdown
 @@ -32,13 +32,11 @@ connections.
@@ -1230,7 +1230,7 @@ index cbf0f4da..ec12c125 100644
    virtual_machine_ids = ["${vsphere_virtual_machine.vm.*.id}"]
  }
  ```
-@@ -92,26 +90,21 @@ The following arguments are supported:
+@@ -92,31 +90,26 @@ The following arguments are supported:
  
  * `name` - (Required) The name of the VM group. This must be unique in the
    cluster. Forces a new resource if changed.
@@ -1253,6 +1253,12 @@ index cbf0f4da..ec12c125 100644
  
 -[tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
 -
+ ~> **NOTE:** To update a existing VM group, you must first import the group with `import` command in
+-[Importing](#importing) section. When importing a VM group, validate that all virtual machines that
++import section. When importing a VM group, validate that all virtual machines that
+ need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
+ that are not in `virtual_machine_ids` the included will be removed from the group.
+ 
  ## Attribute Reference
  
  The only attribute this resource exports is the `id` of the resource, which is
