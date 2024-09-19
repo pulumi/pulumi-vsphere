@@ -53,7 +53,6 @@ import * as utilities from "./utilities";
  */
 export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePoolResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getResourcePool:getResourcePool", {
         "datacenterId": args.datacenterId,
@@ -143,7 +142,12 @@ export interface GetResourcePoolResult {
  * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
  */
 export function getResourcePoolOutput(args?: GetResourcePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcePoolResult> {
-    return pulumi.output(args).apply((a: any) => getResourcePool(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getResourcePool:getResourcePool", {
+        "datacenterId": args.datacenterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

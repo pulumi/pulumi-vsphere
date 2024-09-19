@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getHostPciDevice(args: GetHostPciDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetHostPciDeviceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getHostPciDevice:getHostPciDevice", {
         "classId": args.classId,
@@ -153,7 +152,13 @@ export interface GetHostPciDeviceResult {
  * ```
  */
 export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostPciDeviceResult> {
-    return pulumi.output(args).apply((a: any) => getHostPciDevice(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getHostPciDevice:getHostPciDevice", {
+        "classId": args.classId,
+        "hostId": args.hostId,
+        "nameRegex": args.nameRegex,
+        "vendorId": args.vendorId,
+    }, opts);
 }
 
 /**

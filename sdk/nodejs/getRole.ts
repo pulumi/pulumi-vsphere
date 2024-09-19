@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getRole:getRole", {
         "description": args.description,
@@ -87,7 +86,13 @@ export interface GetRoleResult {
  * ```
  */
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
-    return pulumi.output(args).apply((a: any) => getRole(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getRole:getRole", {
+        "description": args.description,
+        "label": args.label,
+        "name": args.name,
+        "rolePrivileges": args.rolePrivileges,
+    }, opts);
 }
 
 /**

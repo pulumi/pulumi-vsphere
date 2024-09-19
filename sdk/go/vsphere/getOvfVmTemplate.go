@@ -129,14 +129,20 @@ type GetOvfVmTemplateResult struct {
 
 func GetOvfVmTemplateOutput(ctx *pulumi.Context, args GetOvfVmTemplateOutputArgs, opts ...pulumi.InvokeOption) GetOvfVmTemplateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOvfVmTemplateResult, error) {
+		ApplyT(func(v interface{}) (GetOvfVmTemplateResultOutput, error) {
 			args := v.(GetOvfVmTemplateArgs)
-			r, err := GetOvfVmTemplate(ctx, &args, opts...)
-			var s GetOvfVmTemplateResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetOvfVmTemplateResult
+			secret, err := ctx.InvokePackageRaw("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args, &rv, "", opts...)
+			if err != nil {
+				return GetOvfVmTemplateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOvfVmTemplateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOvfVmTemplateResultOutput), nil
+			}
+			return output, nil
 		}).(GetOvfVmTemplateResultOutput)
 }
 

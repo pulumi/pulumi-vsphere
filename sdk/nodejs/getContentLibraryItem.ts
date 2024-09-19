@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * host connections.
  */
 export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", {
         "libraryId": args.libraryId,
@@ -61,7 +60,12 @@ export interface GetContentLibraryItemResult {
  * host connections.
  */
 export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryItemResult> {
-    return pulumi.output(args).apply((a: any) => getContentLibraryItem(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getContentLibraryItem:getContentLibraryItem", {
+        "libraryId": args.libraryId,
+        "name": args.name,
+        "type": args.type,
+    }, opts);
 }
 
 /**

@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * inputs for a `vsphere.VirtualMachine` resource.
  */
 export function getOvfVmTemplate(args: GetOvfVmTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetOvfVmTemplateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", {
         "allowUnverifiedSslCert": args.allowUnverifiedSslCert,
@@ -196,7 +195,23 @@ export interface GetOvfVmTemplateResult {
  * inputs for a `vsphere.VirtualMachine` resource.
  */
 export function getOvfVmTemplateOutput(args: GetOvfVmTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOvfVmTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getOvfVmTemplate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", {
+        "allowUnverifiedSslCert": args.allowUnverifiedSslCert,
+        "datastoreId": args.datastoreId,
+        "deploymentOption": args.deploymentOption,
+        "diskProvisioning": args.diskProvisioning,
+        "enableHiddenProperties": args.enableHiddenProperties,
+        "folder": args.folder,
+        "hostSystemId": args.hostSystemId,
+        "ipAllocationPolicy": args.ipAllocationPolicy,
+        "ipProtocol": args.ipProtocol,
+        "localOvfPath": args.localOvfPath,
+        "name": args.name,
+        "ovfNetworkMap": args.ovfNetworkMap,
+        "remoteOvfUrl": args.remoteOvfUrl,
+        "resourcePoolId": args.resourcePoolId,
+    }, opts);
 }
 
 /**

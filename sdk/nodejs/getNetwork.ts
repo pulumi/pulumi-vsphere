@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getNetwork:getNetwork", {
         "datacenterId": args.datacenterId,
@@ -102,7 +101,12 @@ export interface GetNetworkResult {
  * ```
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getNetwork:getNetwork", {
+        "datacenterId": args.datacenterId,
+        "distributedVirtualSwitchUuid": args.distributedVirtualSwitchUuid,
+        "name": args.name,
+    }, opts);
 }
 
 /**
