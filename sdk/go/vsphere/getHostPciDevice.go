@@ -139,14 +139,20 @@ type GetHostPciDeviceResult struct {
 
 func GetHostPciDeviceOutput(ctx *pulumi.Context, args GetHostPciDeviceOutputArgs, opts ...pulumi.InvokeOption) GetHostPciDeviceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHostPciDeviceResult, error) {
+		ApplyT(func(v interface{}) (GetHostPciDeviceResultOutput, error) {
 			args := v.(GetHostPciDeviceArgs)
-			r, err := GetHostPciDevice(ctx, &args, opts...)
-			var s GetHostPciDeviceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHostPciDeviceResult
+			secret, err := ctx.InvokePackageRaw("vsphere:index/getHostPciDevice:getHostPciDevice", args, &rv, "", opts...)
+			if err != nil {
+				return GetHostPciDeviceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHostPciDeviceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHostPciDeviceResultOutput), nil
+			}
+			return output, nil
 		}).(GetHostPciDeviceResultOutput)
 }
 

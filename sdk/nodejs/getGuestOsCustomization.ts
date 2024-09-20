@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * details about a customization specification for a guest operating system.
  */
 export function getGuestOsCustomization(args: GetGuestOsCustomizationArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestOsCustomizationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", {
         "name": args.name,
@@ -49,7 +48,10 @@ export interface GetGuestOsCustomizationResult {
  * details about a customization specification for a guest operating system.
  */
 export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestOsCustomizationResult> {
-    return pulumi.output(args).apply((a: any) => getGuestOsCustomization(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

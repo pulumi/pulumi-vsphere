@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getHostBaseImages(opts?: pulumi.InvokeOptions): Promise<GetHostBaseImagesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getHostBaseImages:getHostBaseImages", {
     }, opts);
@@ -51,5 +50,7 @@ export interface GetHostBaseImagesResult {
  * ```
  */
 export function getHostBaseImagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetHostBaseImagesResult> {
-    return pulumi.output(getHostBaseImages(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getHostBaseImages:getHostBaseImages", {
+    }, opts);
 }

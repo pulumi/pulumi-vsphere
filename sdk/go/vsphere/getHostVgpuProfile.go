@@ -132,14 +132,20 @@ type GetHostVgpuProfileResult struct {
 
 func GetHostVgpuProfileOutput(ctx *pulumi.Context, args GetHostVgpuProfileOutputArgs, opts ...pulumi.InvokeOption) GetHostVgpuProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHostVgpuProfileResult, error) {
+		ApplyT(func(v interface{}) (GetHostVgpuProfileResultOutput, error) {
 			args := v.(GetHostVgpuProfileArgs)
-			r, err := GetHostVgpuProfile(ctx, &args, opts...)
-			var s GetHostVgpuProfileResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHostVgpuProfileResult
+			secret, err := ctx.InvokePackageRaw("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", args, &rv, "", opts...)
+			if err != nil {
+				return GetHostVgpuProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHostVgpuProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHostVgpuProfileResultOutput), nil
+			}
+			return output, nil
 		}).(GetHostVgpuProfileResultOutput)
 }
 

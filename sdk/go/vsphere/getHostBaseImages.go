@@ -56,13 +56,19 @@ type GetHostBaseImagesResult struct {
 }
 
 func GetHostBaseImagesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetHostBaseImagesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetHostBaseImagesResult, error) {
-		r, err := GetHostBaseImages(ctx, opts...)
-		var s GetHostBaseImagesResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetHostBaseImagesResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetHostBaseImagesResult
+		secret, err := ctx.InvokePackageRaw("vsphere:index/getHostBaseImages:getHostBaseImages", nil, &rv, "", opts...)
+		if err != nil {
+			return GetHostBaseImagesResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetHostBaseImagesResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetHostBaseImagesResultOutput), nil
+		}
+		return output, nil
 	}).(GetHostBaseImagesResultOutput)
 }
 

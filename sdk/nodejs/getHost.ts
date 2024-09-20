@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getHost:getHost", {
         "datacenterId": args.datacenterId,
@@ -89,7 +88,11 @@ export interface GetHostResult {
  * ```
  */
 export function getHostOutput(args: GetHostOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostResult> {
-    return pulumi.output(args).apply((a: any) => getHost(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getHost:getHost", {
+        "datacenterId": args.datacenterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

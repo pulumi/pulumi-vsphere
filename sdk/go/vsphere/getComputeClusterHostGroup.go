@@ -98,14 +98,20 @@ type LookupComputeClusterHostGroupResult struct {
 
 func LookupComputeClusterHostGroupOutput(ctx *pulumi.Context, args LookupComputeClusterHostGroupOutputArgs, opts ...pulumi.InvokeOption) LookupComputeClusterHostGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupComputeClusterHostGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupComputeClusterHostGroupResultOutput, error) {
 			args := v.(LookupComputeClusterHostGroupArgs)
-			r, err := LookupComputeClusterHostGroup(ctx, &args, opts...)
-			var s LookupComputeClusterHostGroupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupComputeClusterHostGroupResult
+			secret, err := ctx.InvokePackageRaw("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupComputeClusterHostGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupComputeClusterHostGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupComputeClusterHostGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupComputeClusterHostGroupResultOutput)
 }
 

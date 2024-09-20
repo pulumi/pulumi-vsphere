@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getCustomAttribute:getCustomAttribute", {
         "name": args.name,
@@ -76,7 +75,10 @@ export interface GetCustomAttributeResult {
  * ```
  */
 export function getCustomAttributeOutput(args: GetCustomAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomAttributeResult> {
-    return pulumi.output(args).apply((a: any) => getCustomAttribute(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getCustomAttribute:getCustomAttribute", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

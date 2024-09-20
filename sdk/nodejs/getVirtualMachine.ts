@@ -53,7 +53,6 @@ import * as utilities from "./utilities";
  */
 export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {
         "alternateGuestName": args.alternateGuestName,
@@ -432,7 +431,65 @@ export interface GetVirtualMachineResult {
  * ```
  */
 export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachine(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getVirtualMachine:getVirtualMachine", {
+        "alternateGuestName": args.alternateGuestName,
+        "annotation": args.annotation,
+        "bootDelay": args.bootDelay,
+        "bootRetryDelay": args.bootRetryDelay,
+        "bootRetryEnabled": args.bootRetryEnabled,
+        "cpuHotAddEnabled": args.cpuHotAddEnabled,
+        "cpuHotRemoveEnabled": args.cpuHotRemoveEnabled,
+        "cpuLimit": args.cpuLimit,
+        "cpuPerformanceCountersEnabled": args.cpuPerformanceCountersEnabled,
+        "cpuReservation": args.cpuReservation,
+        "cpuShareCount": args.cpuShareCount,
+        "cpuShareLevel": args.cpuShareLevel,
+        "datacenterId": args.datacenterId,
+        "efiSecureBootEnabled": args.efiSecureBootEnabled,
+        "enableDiskUuid": args.enableDiskUuid,
+        "enableLogging": args.enableLogging,
+        "eptRviMode": args.eptRviMode,
+        "extraConfig": args.extraConfig,
+        "extraConfigRebootRequired": args.extraConfigRebootRequired,
+        "firmware": args.firmware,
+        "folder": args.folder,
+        "guestId": args.guestId,
+        "hardwareVersion": args.hardwareVersion,
+        "hvMode": args.hvMode,
+        "ideControllerScanCount": args.ideControllerScanCount,
+        "latencySensitivity": args.latencySensitivity,
+        "memory": args.memory,
+        "memoryHotAddEnabled": args.memoryHotAddEnabled,
+        "memoryLimit": args.memoryLimit,
+        "memoryReservation": args.memoryReservation,
+        "memoryReservationLockedToMax": args.memoryReservationLockedToMax,
+        "memoryShareCount": args.memoryShareCount,
+        "memoryShareLevel": args.memoryShareLevel,
+        "moid": args.moid,
+        "name": args.name,
+        "nestedHvEnabled": args.nestedHvEnabled,
+        "numCoresPerSocket": args.numCoresPerSocket,
+        "numCpus": args.numCpus,
+        "replaceTrigger": args.replaceTrigger,
+        "runToolsScriptsAfterPowerOn": args.runToolsScriptsAfterPowerOn,
+        "runToolsScriptsAfterResume": args.runToolsScriptsAfterResume,
+        "runToolsScriptsBeforeGuestReboot": args.runToolsScriptsBeforeGuestReboot,
+        "runToolsScriptsBeforeGuestShutdown": args.runToolsScriptsBeforeGuestShutdown,
+        "runToolsScriptsBeforeGuestStandby": args.runToolsScriptsBeforeGuestStandby,
+        "sataControllerScanCount": args.sataControllerScanCount,
+        "scsiControllerScanCount": args.scsiControllerScanCount,
+        "storagePolicyId": args.storagePolicyId,
+        "swapPlacementPolicy": args.swapPlacementPolicy,
+        "syncTimeWithHost": args.syncTimeWithHost,
+        "syncTimeWithHostPeriodically": args.syncTimeWithHostPeriodically,
+        "toolsUpgradePolicy": args.toolsUpgradePolicy,
+        "uuid": args.uuid,
+        "vapp": args.vapp,
+        "vbsEnabled": args.vbsEnabled,
+        "vvtdEnabled": args.vvtdEnabled,
+    }, opts);
 }
 
 /**

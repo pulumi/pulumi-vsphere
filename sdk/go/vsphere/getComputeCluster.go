@@ -88,14 +88,20 @@ type LookupComputeClusterResult struct {
 
 func LookupComputeClusterOutput(ctx *pulumi.Context, args LookupComputeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupComputeClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupComputeClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupComputeClusterResultOutput, error) {
 			args := v.(LookupComputeClusterArgs)
-			r, err := LookupComputeCluster(ctx, &args, opts...)
-			var s LookupComputeClusterResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupComputeClusterResult
+			secret, err := ctx.InvokePackageRaw("vsphere:index/getComputeCluster:getComputeCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupComputeClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupComputeClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupComputeClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupComputeClusterResultOutput)
 }
 

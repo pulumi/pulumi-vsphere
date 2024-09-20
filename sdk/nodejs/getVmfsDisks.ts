@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getVmfsDisks(args: GetVmfsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetVmfsDisksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getVmfsDisks:getVmfsDisks", {
         "filter": args.filter,
@@ -110,7 +109,12 @@ export interface GetVmfsDisksResult {
  * ```
  */
 export function getVmfsDisksOutput(args: GetVmfsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVmfsDisksResult> {
-    return pulumi.output(args).apply((a: any) => getVmfsDisks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getVmfsDisks:getVmfsDisks", {
+        "filter": args.filter,
+        "hostSystemId": args.hostSystemId,
+        "rescan": args.rescan,
+    }, opts);
 }
 
 /**

@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {
         "datacenterId": args.datacenterId,
@@ -97,7 +96,12 @@ export interface GetDatastoreResult {
  * ```
  */
 export function getDatastoreOutput(args: GetDatastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreResult> {
-    return pulumi.output(args).apply((a: any) => getDatastore(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getDatastore:getDatastore", {
+        "datacenterId": args.datacenterId,
+        "name": args.name,
+        "stats": args.stats,
+    }, opts);
 }
 
 /**

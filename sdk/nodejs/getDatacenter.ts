@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  */
 export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDatacenter:getDatacenter", {
         "name": args.name,
@@ -74,7 +73,11 @@ export interface GetDatacenterResult {
  * ```
  */
 export function getDatacenterOutput(args?: GetDatacenterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatacenterResult> {
-    return pulumi.output(args).apply((a: any) => getDatacenter(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getDatacenter:getDatacenter", {
+        "name": args.name,
+    }, opts);
 }
 
 /**
