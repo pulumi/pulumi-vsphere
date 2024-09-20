@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", {
         "datacenterId": args.datacenterId,
@@ -121,7 +120,11 @@ export interface GetDistributedVirtualSwitchResult {
  * ```
  */
 export function getDistributedVirtualSwitchOutput(args: GetDistributedVirtualSwitchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDistributedVirtualSwitchResult> {
-    return pulumi.output(args).apply((a: any) => getDistributedVirtualSwitch(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", {
+        "datacenterId": args.datacenterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

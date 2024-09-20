@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getLicense(args: GetLicenseArgs, opts?: pulumi.InvokeOptions): Promise<GetLicenseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getLicense:getLicense", {
         "licenseKey": args.licenseKey,
@@ -81,7 +80,10 @@ export interface GetLicenseResult {
  * ```
  */
 export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseResult> {
-    return pulumi.output(args).apply((a: any) => getLicense(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getLicense:getLicense", {
+        "licenseKey": args.licenseKey,
+    }, opts);
 }
 
 /**

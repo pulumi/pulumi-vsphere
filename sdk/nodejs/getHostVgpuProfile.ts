@@ -50,7 +50,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getHostVgpuProfile(args: GetHostVgpuProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetHostVgpuProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", {
         "hostId": args.hostId,
@@ -143,7 +142,11 @@ export interface GetHostVgpuProfileResult {
  * ```
  */
 export function getHostVgpuProfileOutput(args: GetHostVgpuProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostVgpuProfileResult> {
-    return pulumi.output(args).apply((a: any) => getHostVgpuProfile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", {
+        "hostId": args.hostId,
+        "nameRegex": args.nameRegex,
+    }, opts);
 }
 
 /**

@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getContentLibrary:getContentLibrary", {
         "name": args.name,
@@ -69,7 +68,10 @@ export interface GetContentLibraryResult {
  * ```
  */
 export function getContentLibraryOutput(args: GetContentLibraryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryResult> {
-    return pulumi.output(args).apply((a: any) => getContentLibrary(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getContentLibrary:getContentLibrary", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  * and a `locals.tf` like that:
  */
 export function getDatastoreStats(args: GetDatastoreStatsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreStatsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDatastoreStats:getDatastoreStats", {
         "capacity": args.capacity,
@@ -134,7 +133,12 @@ export interface GetDatastoreStatsResult {
  * and a `locals.tf` like that:
  */
 export function getDatastoreStatsOutput(args: GetDatastoreStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreStatsResult> {
-    return pulumi.output(args).apply((a: any) => getDatastoreStats(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getDatastoreStats:getDatastoreStats", {
+        "capacity": args.capacity,
+        "datacenterId": args.datacenterId,
+        "freeSpace": args.freeSpace,
+    }, opts);
 }
 
 /**

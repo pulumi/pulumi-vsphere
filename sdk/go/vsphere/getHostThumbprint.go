@@ -74,14 +74,20 @@ type GetHostThumbprintResult struct {
 
 func GetHostThumbprintOutput(ctx *pulumi.Context, args GetHostThumbprintOutputArgs, opts ...pulumi.InvokeOption) GetHostThumbprintResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHostThumbprintResult, error) {
+		ApplyT(func(v interface{}) (GetHostThumbprintResultOutput, error) {
 			args := v.(GetHostThumbprintArgs)
-			r, err := GetHostThumbprint(ctx, &args, opts...)
-			var s GetHostThumbprintResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHostThumbprintResult
+			secret, err := ctx.InvokePackageRaw("vsphere:index/getHostThumbprint:getHostThumbprint", args, &rv, "", opts...)
+			if err != nil {
+				return GetHostThumbprintResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHostThumbprintResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHostThumbprintResultOutput), nil
+			}
+			return output, nil
 		}).(GetHostThumbprintResultOutput)
 }
 

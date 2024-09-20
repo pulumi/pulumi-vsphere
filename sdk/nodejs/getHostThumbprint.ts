@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getHostThumbprint(args: GetHostThumbprintArgs, opts?: pulumi.InvokeOptions): Promise<GetHostThumbprintResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getHostThumbprint:getHostThumbprint", {
         "address": args.address,
@@ -81,7 +80,12 @@ export interface GetHostThumbprintResult {
  * ```
  */
 export function getHostThumbprintOutput(args: GetHostThumbprintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostThumbprintResult> {
-    return pulumi.output(args).apply((a: any) => getHostThumbprint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getHostThumbprint:getHostThumbprint", {
+        "address": args.address,
+        "insecure": args.insecure,
+        "port": args.port,
+    }, opts);
 }
 
 /**

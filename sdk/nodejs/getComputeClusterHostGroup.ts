@@ -35,7 +35,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getComputeClusterHostGroup(args: GetComputeClusterHostGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterHostGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", {
         "computeClusterId": args.computeClusterId,
@@ -108,7 +107,11 @@ export interface GetComputeClusterHostGroupResult {
  * ```
  */
 export function getComputeClusterHostGroupOutput(args: GetComputeClusterHostGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterHostGroupResult> {
-    return pulumi.output(args).apply((a: any) => getComputeClusterHostGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", {
+        "computeClusterId": args.computeClusterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

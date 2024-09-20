@@ -87,14 +87,20 @@ type GetDatastoreResult struct {
 
 func GetDatastoreOutput(ctx *pulumi.Context, args GetDatastoreOutputArgs, opts ...pulumi.InvokeOption) GetDatastoreResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDatastoreResult, error) {
+		ApplyT(func(v interface{}) (GetDatastoreResultOutput, error) {
 			args := v.(GetDatastoreArgs)
-			r, err := GetDatastore(ctx, &args, opts...)
-			var s GetDatastoreResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDatastoreResult
+			secret, err := ctx.InvokePackageRaw("vsphere:index/getDatastore:getDatastore", args, &rv, "", opts...)
+			if err != nil {
+				return GetDatastoreResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDatastoreResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDatastoreResultOutput), nil
+			}
+			return output, nil
 		}).(GetDatastoreResultOutput)
 }
 

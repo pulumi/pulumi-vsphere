@@ -40,7 +40,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDynamic(args: GetDynamicArgs, opts?: pulumi.InvokeOptions): Promise<GetDynamicResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDynamic:getDynamic", {
         "filters": args.filters,
@@ -119,7 +118,12 @@ export interface GetDynamicResult {
  * ```
  */
 export function getDynamicOutput(args: GetDynamicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicResult> {
-    return pulumi.output(args).apply((a: any) => getDynamic(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getDynamic:getDynamic", {
+        "filters": args.filters,
+        "nameRegex": args.nameRegex,
+        "type": args.type,
+    }, opts);
 }
 
 /**

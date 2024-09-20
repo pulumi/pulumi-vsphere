@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getComputeCluster:getComputeCluster", {
         "datacenterId": args.datacenterId,
@@ -99,7 +98,11 @@ export interface GetComputeClusterResult {
  * ```
  */
 export function getComputeClusterOutput(args: GetComputeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterResult> {
-    return pulumi.output(args).apply((a: any) => getComputeCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("vsphere:index/getComputeCluster:getComputeCluster", {
+        "datacenterId": args.datacenterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**
