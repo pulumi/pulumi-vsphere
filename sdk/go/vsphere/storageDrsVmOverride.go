@@ -12,6 +12,118 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `StorageDrsVmOverride` resource can be used to add a Storage DRS
+// override to a datastore cluster for a specific virtual machine. With this
+// resource, one can enable or disable Storage DRS, and control the automation
+// level and disk affinity for a single virtual machine without affecting the rest
+// of the datastore cluster.
+//
+// For more information on vSphere datastore clusters and Storage DRS, see [this
+// page][ref-vsphere-datastore-clusters].
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastoreCluster, err := vsphere.LookupDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
+//				Name:         "datastore-cluster1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			memberDatastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-cluster1-member1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			pool, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//				Name:         pulumi.StringRef("cluster1/Resources"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "public",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("test"),
+//				ResourcePoolId: pulumi.String(pool.Id),
+//				DatastoreId:    pulumi.String(memberDatastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(1024),
+//				GuestId:        pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewStorageDrsVmOverride(ctx, "drs_vm_override", &vsphere.StorageDrsVmOverrideArgs{
+//				DatastoreClusterId: pulumi.String(datastoreCluster.Id),
+//				VirtualMachineId:   vm.ID(),
+//				SdrsEnabled:        pulumi.String("false"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing override can be imported into this resource by
+//
+// supplying both the path to the datastore cluster and the path to the virtual
+//
+// machine to `pulumi import`. If no override exists, an error will be given.
+//
+// An example is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/storageDrsVmOverride:StorageDrsVmOverride drs_vm_override \
+// ```
+//
+//	'{"datastore_cluster_path": "/dc1/datastore/ds-cluster", \
+//
+//	"virtual_machine_path": "/dc1/vm/srv1"}'
+//
+// [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
 type StorageDrsVmOverride struct {
 	pulumi.CustomResourceState
 

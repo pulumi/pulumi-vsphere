@@ -17,6 +17,126 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.ContentLibrary` resource can be used to manage content libraries.
+ * 
+ * &gt; **NOTE:** This resource requires a vCenter Server instance and is not available on direct ESXi host connections.
+ * 
+ * ## Example Usage
+ * 
+ * The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.ContentLibrary;
+ * import com.pulumi.vsphere.ContentLibraryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenterA = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01-a")
+ *             .build());
+ * 
+ *         final var publisherDatastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("publisher-datastore")
+ *             .datacenterId(datacenterA.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var publisherContentLibrary = new ContentLibrary("publisherContentLibrary", ContentLibraryArgs.builder()
+ *             .name("Publisher Content Library")
+ *             .description("A publishing content library.")
+ *             .storageBackings(publisherDatastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The next example creates a subscribed content library using the URL of the publisher content library as the source and the datastore named `subscriber-datastore` as the storage backing.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.ContentLibrary;
+ * import com.pulumi.vsphere.ContentLibraryArgs;
+ * import com.pulumi.vsphere.inputs.ContentLibrarySubscriptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenterB = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01-b")
+ *             .build());
+ * 
+ *         final var subscriberDatastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("subscriber-datastore")
+ *             .datacenterId(datacenterB.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var subscriberContentLibrary = new ContentLibrary("subscriberContentLibrary", ContentLibraryArgs.builder()
+ *             .name("Subscriber Content Library")
+ *             .description("A subscribing content library.")
+ *             .storageBackings(subscriberDatastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .subscription(ContentLibrarySubscriptionArgs.builder()
+ *                 .subscriptionUrl("https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json")
+ *                 .automaticSync(true)
+ *                 .onDemand(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing content library can be imported into this resource by supplying the content library ID. For example:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
+ * ```
+ * 
+ */
 @ResourceType(type="vsphere:index/contentLibrary:ContentLibrary")
 public class ContentLibrary extends com.pulumi.resources.CustomResource {
     /**

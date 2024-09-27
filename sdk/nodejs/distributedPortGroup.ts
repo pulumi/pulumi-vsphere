@@ -6,6 +6,151 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.DistributedPortGroup` resource can be used to manage
+ * distributed port groups connected to vSphere Distributed Switches (VDS).
+ * A vSphere Distributed Switch can be managed by the
+ * `vsphere.DistributedVirtualSwitch` resource.
+ *
+ * Distributed port groups can be used as networks for virtual machines, allowing
+ * the virtual machines to use the networking supplied by a vSphere Distributed
+ * Switch, with a set of policies that apply to that individual network, if
+ * desired.
+ *
+ * * For an overview on vSphere networking concepts, refer to the vSphere
+ * [product documentation][ref-vsphere-net-concepts].
+ *
+ * * For more information on distributed port groups, refer to the vSphere
+ * [product documentation][ref-vsphere-dvportgroup].
+ *
+ * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+ * [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+ *
+ * > **NOTE:** This resource requires vCenter and is not available on
+ * direct ESXi host connections.
+ *
+ * ## Example Usage
+ *
+ * The configuration below builds on the example given in the
+ * `vsphere.DistributedVirtualSwitch` resource by
+ * adding the `vsphere.DistributedPortGroup` resource, attaching itself to the
+ * vSphere Distributed Switch and assigning VLAN ID 1000.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const hosts = config.getObject("hosts") || [
+ *     "esxi-01.example.com",
+ *     "esxi-02.example.com",
+ *     "esxi-03.example.com",
+ * ];
+ * const networkInterfaces = config.getObject("networkInterfaces") || [
+ *     "vmnic0",
+ *     "vmnic1",
+ *     "vmnic2",
+ *     "vmnic3",
+ * ];
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = (new Array(hosts.length)).map((_, i) => i).map(__index => (vsphere.getHost({
+ *     name: hosts[__index],
+ *     datacenterId: _arg0_.id,
+ * })));
+ * const vds = new vsphere.DistributedVirtualSwitch("vds", {
+ *     name: "vds-01",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ *     uplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ *     activeUplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *     ],
+ *     standbyUplinks: [
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ *     hosts: [
+ *         {
+ *             hostSystemId: host[0].then(host => host.id),
+ *             devices: [networkInterfaces],
+ *         },
+ *         {
+ *             hostSystemId: host[1].then(host => host.id),
+ *             devices: [networkInterfaces],
+ *         },
+ *         {
+ *             hostSystemId: host[2].then(host => host.id),
+ *             devices: [networkInterfaces],
+ *         },
+ *     ],
+ * });
+ * const pg = new vsphere.DistributedPortGroup("pg", {
+ *     name: "pg-01",
+ *     distributedVirtualSwitchUuid: vds.id,
+ *     vlanId: 1000,
+ * });
+ * ```
+ *
+ * ### Overriding VDS policies
+ *
+ * All of the default port policies available in the
+ * `vsphere.DistributedVirtualSwitch` resource can be overridden on the port
+ * group level by specifying new settings for them.
+ *
+ * As an example, we also take this example from the
+ * `vsphere.DistributedVirtualSwitch` resource where we manually specify our
+ * uplink count and uplink order. While the vSphere Distributed Switch has a
+ * default policy of using the first uplink as an active uplink and the second
+ * one as a standby, the overridden port group policy means that both uplinks
+ * will be used as active uplinks in this specific port group.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const vds = new vsphere.DistributedVirtualSwitch("vds", {
+ *     name: "vds-01",
+ *     datacenterId: datacenter.id,
+ *     uplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *     ],
+ *     activeUplinks: ["uplink1"],
+ *     standbyUplinks: ["uplink2"],
+ * });
+ * const pg = new vsphere.DistributedPortGroup("pg", {
+ *     name: "pg-01",
+ *     distributedVirtualSwitchUuid: vds.id,
+ *     vlanId: 1000,
+ *     activeUplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *     ],
+ *     standbyUplinks: [],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing port group can be imported into this resource using
+ *
+ * the managed object id of the port group, via the following command:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/distributedPortGroup:DistributedPortGroup pg /dc-01/network/pg-01
+ * ```
+ *
+ * The above would import the port group named `pg-01` that is located in the `dc-01`
+ *
+ * datacenter.
+ */
 export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * Get an existing DistributedPortGroup resource's state with the given name, ID, and optional extra

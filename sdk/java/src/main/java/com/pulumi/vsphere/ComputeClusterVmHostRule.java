@@ -15,6 +15,42 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.ComputeClusterVmHostRule` resource can be used to manage
+ * VM-to-host rules in a cluster, either created by the
+ * `vsphere.ComputeCluster` resource or looked up
+ * by the `vsphere.ComputeCluster` data source.
+ * 
+ * This resource can create both _affinity rules_, where virtual machines run on
+ * specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
+ * outside of the ones specified in the rule. Virtual machines and hosts are
+ * supplied via groups, which can be managed via the
+ * `vsphere.ComputeClusterVmGroup` and
+ * `vsphere.ComputeClusterHostGroup`
+ * resources.
+ * 
+ * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ * 
+ * ## Import
+ * 
+ * An existing rule can be imported into this resource by supplying
+ * 
+ * both the path to the cluster, and the name the rule. If the name or cluster is
+ * 
+ * not found, or if the rule is of a different type, an error will be returned. An
+ * 
+ * example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule cluster_vm_host_rule \
+ * ```
+ * 
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
+ * 
+ *   &#34;name&#34;: &#34;pulumi-test-cluster-vm-host-rule&#34;}&#39;
+ * 
+ */
 @ResourceType(type="vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule")
 public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResource {
     /**

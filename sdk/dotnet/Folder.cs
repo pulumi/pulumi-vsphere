@@ -9,6 +9,96 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.Folder` resource can be used to manage vSphere inventory folders.
+    /// The resource supports creating folders of the 5 major types - datacenter
+    /// folders, host and cluster folders, virtual machine folders, storage folders,
+    /// and network folders.
+    /// 
+    /// Paths are always relative to the specific type of folder you are creating.
+    /// A subfolder is discovered by parsing the relative path specified in `path`, so
+    /// `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
+    /// as that folder exists.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The basic example below creates a virtual machine folder named
+    /// `test-folder` in the default datacenter's VM hierarchy.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke();
+    /// 
+    ///     var folder = new VSphere.Folder("folder", new()
+    ///     {
+    ///         Path = "test-folder",
+    ///         Type = "vm",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Example with subfolders
+    /// 
+    /// The below example builds off of the above by first creating a folder named
+    /// `test-parent`, and then locating `test-folder` in that
+    /// folder. To ensure the parent is created first, we create an interpolation
+    /// dependency off the parent's `path` attribute.
+    /// 
+    /// Note that if you change parents (for example, went from the above basic
+    /// configuration to this one), your folder will be moved to be under the correct
+    /// parent.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke();
+    /// 
+    ///     var parent = new VSphere.Folder("parent", new()
+    ///     {
+    ///         Path = "test-parent",
+    ///         Type = "vm",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var folder = new VSphere.Folder("folder", new()
+    ///     {
+    ///         Path = parent.Path.Apply(path =&gt; $"{path}/test-folder"),
+    ///         Type = "vm",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing folder can be imported into this resource via
+    /// 
+    /// its full path, via the following command:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+    /// ```
+    /// 
+    /// The above command would import the folder from our examples above, the VM
+    /// 
+    /// folder named `terraform-test-folder` located in the datacenter named
+    /// 
+    /// `default-dc`.
+    /// </summary>
     [VSphereResourceType("vsphere:index/folder:Folder")]
     public partial class Folder : global::Pulumi.CustomResource
     {

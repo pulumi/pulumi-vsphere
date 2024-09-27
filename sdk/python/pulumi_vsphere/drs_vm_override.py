@@ -204,7 +204,37 @@ class DrsVmOverride(pulumi.CustomResource):
                  virtual_machine_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a DrsVmOverride resource with the given unique name, props, and options.
+        The `DrsVmOverride` resource can be used to add a DRS override to a
+        cluster for a specific virtual machine. With this resource, one can enable or
+        disable DRS and control the automation level for a single virtual machine
+        without affecting the rest of the cluster.
+
+        For more information on vSphere clusters and DRS, see [this
+        page][ref-vsphere-drs-clusters].
+
+        [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Import
+
+        An existing override can be imported into this resource by
+
+        supplying both the path to the cluster, and the path to the virtual machine, to
+
+        `pulumi import`. If no override exists, an error will be given.  An example
+
+        is below:
+
+        ```sh
+        $ pulumi import vsphere:index/drsVmOverride:DrsVmOverride drs_vm_override \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "virtual_machine_path": "/dc1/vm/srv1"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
@@ -229,7 +259,37 @@ class DrsVmOverride(pulumi.CustomResource):
                  args: DrsVmOverrideArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DrsVmOverride resource with the given unique name, props, and options.
+        The `DrsVmOverride` resource can be used to add a DRS override to a
+        cluster for a specific virtual machine. With this resource, one can enable or
+        disable DRS and control the automation level for a single virtual machine
+        without affecting the rest of the cluster.
+
+        For more information on vSphere clusters and DRS, see [this
+        page][ref-vsphere-drs-clusters].
+
+        [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Import
+
+        An existing override can be imported into this resource by
+
+        supplying both the path to the cluster, and the path to the virtual machine, to
+
+        `pulumi import`. If no override exists, an error will be given.  An example
+
+        is below:
+
+        ```sh
+        $ pulumi import vsphere:index/drsVmOverride:DrsVmOverride drs_vm_override \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "virtual_machine_path": "/dc1/vm/srv1"}'
+
         :param str resource_name: The name of the resource.
         :param DrsVmOverrideArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

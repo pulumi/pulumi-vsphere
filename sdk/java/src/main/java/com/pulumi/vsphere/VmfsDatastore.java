@@ -18,6 +18,210 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.VmfsDatastore` resource can be used to create and manage VMFS
+ * datastores on an ESXi host or a set of hosts. The resource supports using any
+ * SCSI device that can generally be used in a datastore, such as local disks, or
+ * disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
+ * Devices can be specified manually, or discovered using the
+ * [`vsphere.getVmfsDisks`][data-source-vmfs-disks] data source.
+ * 
+ * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html
+ * 
+ * ## Auto-Mounting of Datastores Within vCenter
+ * 
+ * Note that the current behavior of this resource will auto-mount any created
+ * datastores to any other host within vCenter that has access to the same disk.
+ * 
+ * Example: You want to create a datastore with a iSCSI LUN that is visible on 3
+ * hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
+ * create the datastore on `esxi1`, the datastore will be automatically mounted on
+ * `esxi2` and `esxi3`, without the need to configure the resource on either of
+ * those two hosts.
+ * 
+ * Future versions of this resource may allow you to control the hosts that a
+ * datastore is mounted to, but currently, this automatic behavior cannot be
+ * changed, so keep this in mind when writing your configurations and deploying
+ * your disks.
+ * 
+ * ## Increasing Datastore Size
+ * 
+ * To increase the size of a datastore, you must add additional disks to the
+ * `disks` attribute. Expanding the size of a datastore by increasing the size of
+ * an already provisioned disk is currently not supported (but may be in future
+ * versions of this resource).
+ * 
+ * &gt; **NOTE:** You cannot decrease the size of a datastore. If the resource
+ * detects disks removed from the configuration, the provider will give an error.
+ * 
+ * [cmd-taint]: /docs/commands/taint.html
+ * 
+ * ## Example Usage
+ * 
+ * ### Addition of local disks on a single host
+ * 
+ * The following example uses the default datacenter and default host to add a
+ * datastore with local disks to a single ESXi server.
+ * 
+ * &gt; **NOTE:** There are some situations where datastore creation will not work
+ * when working through vCenter (usually when trying to create a datastore on a
+ * single host with local disks). If you experience trouble creating the datastore
+ * you need through vCenter, break the datastore off into a different configuration
+ * and deploy it using the ESXi server as the provider endpoint, using a similar
+ * configuration to what is below.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.VmfsDatastore;
+ * import com.pulumi.vsphere.VmfsDatastoreArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter();
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var datastore = new VmfsDatastore("datastore", VmfsDatastoreArgs.builder()
+ *             .name("test")
+ *             .hostSystemId(esxiHost.id())
+ *             .disks(            
+ *                 "mpx.vmhba1:C0:T1:L0",
+ *                 "mpx.vmhba1:C0:T2:L0",
+ *                 "mpx.vmhba1:C0:T2:L0")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Auto-detection of disks via `vsphere.getVmfsDisks`
+ * 
+ * The following example makes use of the
+ * `vsphere.getVmfsDisks` data source to auto-detect
+ * exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
+ * exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
+ * into `vsphere.VmfsDatastore`. The datastore is also placed in the
+ * `datastore-folder` folder afterwards.
+ * 
+ * [ext-netapp]: https://kb.netapp.com/support/s/article/ka31A0000000rLRQAY/how-to-match-a-lun-s-naa-number-to-its-serial-number?language=en_US
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
+ * import com.pulumi.vsphere.VmfsDatastore;
+ * import com.pulumi.vsphere.VmfsDatastoreArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var available = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .rescan(true)
+ *             .filter("naa.60a98000")
+ *             .build());
+ * 
+ *         var datastore = new VmfsDatastore("datastore", VmfsDatastoreArgs.builder()
+ *             .name("test")
+ *             .hostSystemId(esxiHost.id())
+ *             .folder("datastore-folder")
+ *             .disks(available.applyValue(getVmfsDisksResult -> getVmfsDisksResult.disks()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing VMFS datastore can be imported into this resource
+ * 
+ * via its managed object ID, via the command below. You also need the host system
+ * 
+ * ID.
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/vmfsDatastore:VmfsDatastore datastore datastore-123:host-10
+ * ```
+ * 
+ * You need a tool like [`govc`][ext-govc] that can display managed object IDs.
+ * 
+ * [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
+ * 
+ * In the case of govc, you can locate a managed object ID from an inventory path
+ * 
+ * by doing the following:
+ * 
+ * $ govc ls -i /dc/datastore/terraform-test
+ * 
+ * Datastore:datastore-123
+ * 
+ * To locate host IDs, it might be a good idea to supply the `-l` flag as well so
+ * 
+ * that you can line up the names with the IDs:
+ * 
+ * $ govc ls -l -i /dc/host/cluster1
+ * 
+ * ResourcePool:resgroup-10 /dc/host/cluster1/Resources
+ * 
+ * HostSystem:host-10 /dc/host/cluster1/esxi1
+ * 
+ * HostSystem:host-11 /dc/host/cluster1/esxi2
+ * 
+ * HostSystem:host-12 /dc/host/cluster1/esxi3
+ * 
+ */
 @ResourceType(type="vsphere:index/vmfsDatastore:VmfsDatastore")
 public class VmfsDatastore extends com.pulumi.resources.CustomResource {
     /**

@@ -6,6 +6,137 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a VMware vSphere host resource. This represents an ESXi host that
+ * can be used either as a member of a cluster or as a standalone host.
+ *
+ * ## Example Usage
+ *
+ * ### Create a standalone host
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const thumbprint = vsphere.getHostThumbprint({
+ *     address: "esx-01.example.com",
+ *     insecure: true,
+ * });
+ * const esx_01 = new vsphere.Host("esx-01", {
+ *     hostname: "esx-01.example.com",
+ *     username: "root",
+ *     password: "password",
+ *     license: "00000-00000-00000-00000-00000",
+ *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
+ *     datacenter: datacenter.then(datacenter => datacenter.id),
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing host can be imported into this resource by supplying
+ *
+ * the host's ID.
+ *
+ * [docs-import]: /docs/import/index.html
+ *
+ * Obtain the host's ID using the data source. For example:
+ *
+ * hcl
+ *
+ * data "vsphere_datacenter" "datacenter" {
+ *
+ *   name = "dc-01"
+ *
+ * }
+ *
+ * data "vsphere_host" "host" {
+ *
+ *   name          = "esx-01.example.com"
+ *
+ *   datacenter_id = data.vsphere_datacenter.datacenter.id
+ *
+ * }
+ *
+ * output "host_id" {
+ *
+ *   value = data.vsphere_host.host.id
+ *
+ * }
+ *
+ * Next, create a resource configuration, For example:
+ *
+ * hcl
+ *
+ * data "vsphere_datacenter" "datacenter" {
+ *
+ *   name = "dc-01"
+ *
+ * }
+ *
+ * data "vsphere_host_thumbprint" "thumbprint" {
+ *
+ *   address = "esx-01.example.com"
+ *
+ *   insecure = true
+ *
+ * }
+ *
+ * resource "vsphere_host" "esx-01" {
+ *
+ *   hostname   = "esx-01.example.com"
+ *
+ *   username   = "root"
+ *
+ *   password   = "password"
+ *
+ *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
+ *
+ *   datacenter = data.vsphere_datacenter.datacenter.id
+ *
+ * }
+ *
+ * hcl
+ *
+ * resource "vsphere_host" "esx-01" {
+ *
+ *   hostname   = "esx-01.example.com"
+ *
+ *   username   = "root"
+ *
+ *   password   = "password"
+ *
+ *   license    = "00000-00000-00000-00000-00000"
+ *
+ *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
+ *
+ *   cluster    = data.vsphere_compute_cluster.cluster.id
+ *
+ *   services {
+ *
+ *     ntpd {
+ *     
+ *       enabled     = true
+ *     
+ *       policy      = "on"
+ *     
+ *       ntp_servers = ["pool.ntp.org"]
+ *     
+ *     }
+ *
+ * }
+ *
+ * console
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/host:Host esx-01 host-123
+ * ```
+ *
+ * The above would import the host `esx-01.example.com` with the host ID `host-123`.
+ */
 export class Host extends pulumi.CustomResource {
     /**
      * Get an existing Host resource's state with the given name, ID, and optional extra

@@ -6,6 +6,137 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.DistributedVirtualSwitch` resource can be used to manage vSphere
+ * Distributed Switches (VDS).
+ *
+ * An essential component of a distributed, scalable vSphere infrastructure, the
+ * VDS provides centralized management and monitoring of the networking
+ * configuration for all the hosts that are associated with the switch.
+ * In addition to adding distributed port groups
+ * (see the `vsphere.DistributedPortGroup` resource)
+ * that can be used as networks for virtual machines, a VDS can be configured to
+ * perform advanced high availability, traffic shaping, network monitoring, etc.
+ *
+ * For an overview on vSphere networking concepts, see
+ * [this page][ref-vsphere-net-concepts].
+ *
+ * For more information on the VDS, see [this page][ref-vsphere-vds].
+ *
+ * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+ * [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+ *
+ * > **NOTE:** This resource requires vCenter and is not available on
+ * direct ESXi host connections.
+ *
+ * ## Example Usage
+ *
+ * The following example below demonstrates a "standard" example of configuring a
+ * VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
+ * used as active, and two being used as passive. Note that the NIC failover order
+ * propagates to any port groups configured on this VDS and can be overridden.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const hosts = config.getObject("hosts") || [
+ *     "esxi-01.example.com",
+ *     "esxi-02.example.com",
+ *     "esxi-03.example.com",
+ * ];
+ * const networkInterfaces = config.getObject("networkInterfaces") || [
+ *     "vmnic0",
+ *     "vmnic1",
+ *     "vmnic2",
+ *     "vmnic3",
+ * ];
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = (new Array(hosts.length)).map((_, i) => i).map(__index => (vsphere.getHost({
+ *     name: hosts[__index],
+ *     datacenterId: _arg0_.id,
+ * })));
+ * const vds = new vsphere.DistributedVirtualSwitch("vds", {
+ *     name: "vds-01",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ *     uplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ *     activeUplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *     ],
+ *     standbyUplinks: [
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ *     hosts: [
+ *         {
+ *             hostSystemId: host[0].then(host => host.id),
+ *             devices: [networkInterfaces],
+ *         },
+ *         {
+ *             hostSystemId: host[1].then(host => host.id),
+ *             devices: [networkInterfaces],
+ *         },
+ *         {
+ *             hostSystemId: host[2].then(host => host.id),
+ *             devices: [networkInterfaces],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Uplink name and count control
+ *
+ * The following abridged example below demonstrates how you can manage the number
+ * of uplinks, and the name of the uplinks via the `uplinks` parameter.
+ *
+ * Note that if you change the uplink naming and count after creating the VDS, you
+ * may need to explicitly specify `activeUplinks` and `standbyUplinks` as these
+ * values are saved to state after creation, regardless of being
+ * specified in config, and will drift if not modified, causing errors.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const vds = new vsphere.DistributedVirtualSwitch("vds", {
+ *     name: "vds-01",
+ *     datacenterId: datacenter.id,
+ *     uplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *     ],
+ *     activeUplinks: ["uplink1"],
+ *     standbyUplinks: ["uplink2"],
+ * });
+ * ```
+ *
+ * > **NOTE:** The default uplink names when a VDS is created are `uplink1`
+ * through to `uplink4`, however this default is not guaranteed to be stable and
+ * you are encouraged to set your own.
+ *
+ * ## Import
+ *
+ * An existing VDS can be imported into this resource via the path
+ *
+ * to the VDS, via the following command:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch vds /dc-01/network/vds-01
+ * ```
+ *
+ * The above would import the VDS named `vds-01` that is located in the `dc-01`
+ *
+ * datacenter.
+ */
 export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * Get an existing DistributedVirtualSwitch resource's state with the given name, ID, and optional extra

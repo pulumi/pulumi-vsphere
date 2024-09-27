@@ -11,6 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// An existing role can be imported into this resource by supplying the role id. An example is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/role:Role role1 -709298051
+// ```
+//
+// Use [`vsphere_role` data source][ref-vsphere-role-data-source]
+//
+// to read information about system roles.
+//
+// [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
 type Role struct {
 	pulumi.CustomResourceState
 

@@ -575,7 +575,85 @@ class HaVmOverride(pulumi.CustomResource):
                  virtual_machine_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a HaVmOverride resource with the given unique name, props, and options.
+        The `HaVmOverride` resource can be used to add an override for
+        vSphere HA settings on a cluster for a specific virtual machine. With this
+        resource, one can control specific HA settings so that they are different than
+        the cluster default, accommodating the needs of that specific virtual machine,
+        while not affecting the rest of the cluster.
+
+        For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
+
+        [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-availability/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Example Usage
+
+        The example below creates a virtual machine in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machine in the cluster looked up by the
+        `ComputeCluster` data source.
+
+        Considering a scenario where this virtual machine is of high value to the
+        application or organization for which it does its work, it's been determined in
+        the event of a host failure, that this should be one of the first virtual
+        machines to be started by vSphere HA during recovery. Hence, it
+        `ha_vm_restart_priority` has been set to `highest`,
+        which, assuming that the default restart priority is `medium` and no other
+        virtual machine has been assigned the `highest` priority, will mean that this
+        VM will be started before any other virtual machine in the event of host
+        failure.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="test",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        ha_vm_override = vsphere.HaVmOverride("ha_vm_override",
+            compute_cluster_id=cluster.id,
+            virtual_machine_id=vm.id,
+            ha_vm_restart_priority="highest")
+        ```
+
+        ## Import
+
+        An existing override can be imported into this resource by
+
+        supplying both the path to the cluster, and the path to the virtual machine, to
+
+        `pulumi import`. If no override exists, an error will be given.  An example
+
+        is below:
+
+        ```sh
+        $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "virtual_machine_path": "/dc1/vm/srv1"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object ID of the cluster.
@@ -613,7 +691,85 @@ class HaVmOverride(pulumi.CustomResource):
                  args: HaVmOverrideArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a HaVmOverride resource with the given unique name, props, and options.
+        The `HaVmOverride` resource can be used to add an override for
+        vSphere HA settings on a cluster for a specific virtual machine. With this
+        resource, one can control specific HA settings so that they are different than
+        the cluster default, accommodating the needs of that specific virtual machine,
+        while not affecting the rest of the cluster.
+
+        For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
+
+        [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-availability/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Example Usage
+
+        The example below creates a virtual machine in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machine in the cluster looked up by the
+        `ComputeCluster` data source.
+
+        Considering a scenario where this virtual machine is of high value to the
+        application or organization for which it does its work, it's been determined in
+        the event of a host failure, that this should be one of the first virtual
+        machines to be started by vSphere HA during recovery. Hence, it
+        `ha_vm_restart_priority` has been set to `highest`,
+        which, assuming that the default restart priority is `medium` and no other
+        virtual machine has been assigned the `highest` priority, will mean that this
+        VM will be started before any other virtual machine in the event of host
+        failure.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="test",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        ha_vm_override = vsphere.HaVmOverride("ha_vm_override",
+            compute_cluster_id=cluster.id,
+            virtual_machine_id=vm.id,
+            ha_vm_restart_priority="highest")
+        ```
+
+        ## Import
+
+        An existing override can be imported into this resource by
+
+        supplying both the path to the cluster, and the path to the virtual machine, to
+
+        `pulumi import`. If no override exists, an error will be given.  An example
+
+        is below:
+
+        ```sh
+        $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "virtual_machine_path": "/dc1/vm/srv1"}'
+
         :param str resource_name: The name of the resource.
         :param HaVmOverrideArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

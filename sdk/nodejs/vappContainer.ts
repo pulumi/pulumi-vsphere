@@ -4,6 +4,101 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.VappContainer` resource can be used to create and manage
+ * vApps.
+ *
+ * For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
+ *
+ * [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
+ *
+ * ## Basic Example
+ *
+ * The example below sets up a vSphere vApp container in a compute cluster which uses
+ * the default settings for CPU and memory reservations, shares, and limits. The compute cluster
+ * needs to already exist in vSphere.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const computeCluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vappContainer = new vsphere.VappContainer("vapp_container", {
+ *     name: "vapp-01",
+ *     parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId),
+ * });
+ * ```
+ *
+ * ### Example with a Virtual Machine
+ *
+ * The example below builds off the basic example, but includes a virtual machine
+ * in the new vApp container. To accomplish this, the `resourcePoolId` of the
+ * virtual machine is set to the `id` of the vApp container.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const computeCluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "VM Network",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vappContainer = new vsphere.VappContainer("vapp_container", {
+ *     name: "vapp-01",
+ *     parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId),
+ * });
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     name: "foo",
+ *     resourcePoolId: vappContainerVsphereVappContainer.id,
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     numCpus: 1,
+ *     memory: 1024,
+ *     guestId: "ubuntu64Guest",
+ *     networkInterfaces: [{
+ *         networkId: network.then(network => network.id),
+ *     }],
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing vApp container can be imported into this resource via
+ *
+ * the path to the vApp container, using the following command:
+ *
+ * Example:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/vappContainer:VappContainer vapp_container /dc-01/host/cluster-01/Resources/resource-pool-01/vapp-01
+ * ```
+ *
+ * The example above would import the vApp container named `vapp-01` that is
+ *
+ * located in the resource pool `resource-pool-01` that is part of the host cluster
+ *
+ * `cluster-01` in the `dc-01` datacenter.
+ */
 export class VappContainer extends pulumi.CustomResource {
     /**
      * Get an existing VappContainer resource's state with the given name, ID, and optional extra

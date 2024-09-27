@@ -12,6 +12,60 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `TagCategory` resource can be used to create and manage tag
+// categories, which determine how tags are grouped together and applied to
+// specific objects.
+//
+// For more information about tags, click [here][ext-tags-general].
+//
+// ## Example Usage
+//
+// This example creates a tag category named `test-category`, with
+// single cardinality (meaning that only one tag in this category can be assigned
+// to an object at any given time). Tags in this category can only be assigned to
+// VMs and datastores.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewTagCategory(ctx, "category", &vsphere.TagCategoryArgs{
+//				Name:        pulumi.String("test-category"),
+//				Description: pulumi.String("Managed by Pulumi"),
+//				Cardinality: pulumi.String("SINGLE"),
+//				AssociableTypes: pulumi.StringArray{
+//					pulumi.String("VirtualMachine"),
+//					pulumi.String("Datastore"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing tag category can be imported into this resource via
+//
+// its name, using the following command:
+//
+// ```sh
+// $ pulumi import vsphere:index/tagCategory:TagCategory category terraform-test-category
+// ```
+//
+// [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
 type TagCategory struct {
 	pulumi.CustomResourceState
 

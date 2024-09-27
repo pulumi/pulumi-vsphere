@@ -4,6 +4,97 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.ComputeClusterVmGroup` resource can be used to manage groups of
+ * virtual machines in a cluster, either created by the
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ *
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+ *
+ * This resource mainly serves as an input to the
+ * [`vsphere.ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
+ * and
+ * [`vsphere.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * resources. See the individual resource documentation pages for more information.
+ *
+ * [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
+ * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+ *
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ *
+ * ## Example Usage
+ *
+ * The example below creates two virtual machines in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machine in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source. It
+ * then creates a group from these two virtual machines.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "network1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vm: vsphere.VirtualMachine[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     vm.push(new vsphere.VirtualMachine(`vm-${range.value}`, {
+ *         name: `test-${range.value}`,
+ *         resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
+ *         datastoreId: datastore.then(datastore => datastore.id),
+ *         numCpus: 2,
+ *         memory: 2048,
+ *         guestId: "otherLinux64Guest",
+ *         networkInterfaces: [{
+ *             networkId: network.then(network => network.id),
+ *         }],
+ *         disks: [{
+ *             label: "disk0",
+ *             size: 20,
+ *         }],
+ *     }));
+ * }
+ * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
+ *     name: "test-cluster-vm-group",
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     virtualMachineIds: [vm.map(__item => __item.id)],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing group can be imported into this resource by
+ *
+ * supplying both the path to the cluster, and the name of the VM group. If the
+ *
+ * name or cluster is not found, or if the group is of a different type, an error
+ *
+ * will be returned. An example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \
+ * ```
+ *
+ *   '{"compute_cluster_path": "/dc1/host/cluster1", \
+ *
+ *   "name": "pulumi-test-cluster-vm-group"}'
+ */
 export class ComputeClusterVmGroup extends pulumi.CustomResource {
     /**
      * Get an existing ComputeClusterVmGroup resource's state with the given name, ID, and optional extra

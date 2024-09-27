@@ -12,6 +12,128 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `HaVmOverride` resource can be used to add an override for
+// vSphere HA settings on a cluster for a specific virtual machine. With this
+// resource, one can control specific HA settings so that they are different than
+// the cluster default, accommodating the needs of that specific virtual machine,
+// while not affecting the rest of the cluster.
+//
+// For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
+//
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// connections.
+//
+// ## Example Usage
+//
+// The example below creates a virtual machine in a cluster using the
+// `VirtualMachine` resource, creating the
+// virtual machine in the cluster looked up by the
+// `ComputeCluster` data source.
+//
+// Considering a scenario where this virtual machine is of high value to the
+// application or organization for which it does its work, it's been determined in
+// the event of a host failure, that this should be one of the first virtual
+// machines to be started by vSphere HA during recovery. Hence, it
+// `haVmRestartPriority` has been set to `highest`,
+// which, assuming that the default restart priority is `medium` and no other
+// virtual machine has been assigned the `highest` priority, will mean that this
+// VM will be started before any other virtual machine in the event of host
+// failure.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "network1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("test"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(2048),
+//				GuestId:        pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHaVmOverride(ctx, "ha_vm_override", &vsphere.HaVmOverrideArgs{
+//				ComputeClusterId:    pulumi.String(cluster.Id),
+//				VirtualMachineId:    vm.ID(),
+//				HaVmRestartPriority: pulumi.String("highest"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing override can be imported into this resource by
+//
+// supplying both the path to the cluster, and the path to the virtual machine, to
+//
+// `pulumi import`. If no override exists, an error will be given.  An example
+//
+// is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \
+// ```
+//
+//	'{"compute_cluster_path": "/dc1/host/cluster1", \
+//
+//	"virtual_machine_path": "/dc1/vm/srv1"}'
+//
+// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-availability/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
 type HaVmOverride struct {
 	pulumi.CustomResourceState
 

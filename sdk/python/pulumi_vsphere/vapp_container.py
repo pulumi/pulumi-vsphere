@@ -640,7 +640,85 @@ class VappContainer(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a VappContainer resource with the given unique name, props, and options.
+        The `VappContainer` resource can be used to create and manage
+        vApps.
+
+        For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
+
+        [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
+
+        ## Basic Example
+
+        The example below sets up a vSphere vApp container in a compute cluster which uses
+        the default settings for CPU and memory reservations, shares, and limits. The compute cluster
+        needs to already exist in vSphere.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        vapp_container = vsphere.VappContainer("vapp_container",
+            name="vapp-01",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
+        ```
+
+        ### Example with a Virtual Machine
+
+        The example below builds off the basic example, but includes a virtual machine
+        in the new vApp container. To accomplish this, the `resource_pool_id` of the
+        virtual machine is set to the `id` of the vApp container.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        datastore = vsphere.get_datastore(name="datastore-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="VM Network",
+            datacenter_id=datacenter.id)
+        vapp_container = vsphere.VappContainer("vapp_container",
+            name="vapp-01",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
+        vm = vsphere.VirtualMachine("vm",
+            name="foo",
+            resource_pool_id=vapp_container_vsphere_vapp_container["id"],
+            datastore_id=datastore.id,
+            num_cpus=1,
+            memory=1024,
+            guest_id="ubuntu64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        ```
+
+        ## Import
+
+        An existing vApp container can be imported into this resource via
+
+        the path to the vApp container, using the following command:
+
+        Example:
+
+        ```sh
+        $ pulumi import vsphere:index/vappContainer:VappContainer vapp_container /dc-01/host/cluster-01/Resources/resource-pool-01/vapp-01
+        ```
+
+        The example above would import the vApp container named `vapp-01` that is
+
+        located in the resource pool `resource-pool-01` that is part of the host cluster
+
+        `cluster-01` in the `dc-01` datacenter.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a vApp
@@ -694,7 +772,85 @@ class VappContainer(pulumi.CustomResource):
                  args: VappContainerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VappContainer resource with the given unique name, props, and options.
+        The `VappContainer` resource can be used to create and manage
+        vApps.
+
+        For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
+
+        [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
+
+        ## Basic Example
+
+        The example below sets up a vSphere vApp container in a compute cluster which uses
+        the default settings for CPU and memory reservations, shares, and limits. The compute cluster
+        needs to already exist in vSphere.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        vapp_container = vsphere.VappContainer("vapp_container",
+            name="vapp-01",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
+        ```
+
+        ### Example with a Virtual Machine
+
+        The example below builds off the basic example, but includes a virtual machine
+        in the new vApp container. To accomplish this, the `resource_pool_id` of the
+        virtual machine is set to the `id` of the vApp container.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        datastore = vsphere.get_datastore(name="datastore-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="VM Network",
+            datacenter_id=datacenter.id)
+        vapp_container = vsphere.VappContainer("vapp_container",
+            name="vapp-01",
+            parent_resource_pool_id=compute_cluster.resource_pool_id)
+        vm = vsphere.VirtualMachine("vm",
+            name="foo",
+            resource_pool_id=vapp_container_vsphere_vapp_container["id"],
+            datastore_id=datastore.id,
+            num_cpus=1,
+            memory=1024,
+            guest_id="ubuntu64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        ```
+
+        ## Import
+
+        An existing vApp container can be imported into this resource via
+
+        the path to the vApp container, using the following command:
+
+        Example:
+
+        ```sh
+        $ pulumi import vsphere:index/vappContainer:VappContainer vapp_container /dc-01/host/cluster-01/Resources/resource-pool-01/vapp-01
+        ```
+
+        The example above would import the vApp container named `vapp-01` that is
+
+        located in the resource pool `resource-pool-01` that is part of the host cluster
+
+        `cluster-01` in the `dc-01` datacenter.
+
         :param str resource_name: The name of the resource.
         :param VappContainerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

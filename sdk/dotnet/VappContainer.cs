@@ -9,6 +9,137 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.VappContainer` resource can be used to create and manage
+    /// vApps.
+    /// 
+    /// For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
+    /// 
+    /// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
+    /// 
+    /// ## Basic Example
+    /// 
+    /// The example below sets up a vSphere vApp container in a compute cluster which uses
+    /// the default settings for CPU and memory reservations, shares, and limits. The compute cluster
+    /// needs to already exist in vSphere.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vappContainer = new VSphere.VappContainer("vapp_container", new()
+    ///     {
+    ///         Name = "vapp-01",
+    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Example with a Virtual Machine
+    /// 
+    /// The example below builds off the basic example, but includes a virtual machine
+    /// in the new vApp container. To accomplish this, the `resource_pool_id` of the
+    /// virtual machine is set to the `id` of the vApp container.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "VM Network",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vappContainer = new VSphere.VappContainer("vapp_container", new()
+    ///     {
+    ///         Name = "vapp-01",
+    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///     });
+    /// 
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     {
+    ///         Name = "foo",
+    ///         ResourcePoolId = vappContainerVsphereVappContainer.Id,
+    ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         NumCpus = 1,
+    ///         Memory = 1024,
+    ///         GuestId = "ubuntu64Guest",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineDiskArgs
+    ///             {
+    ///                 Label = "disk0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing vApp container can be imported into this resource via
+    /// 
+    /// the path to the vApp container, using the following command:
+    /// 
+    /// Example:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/vappContainer:VappContainer vapp_container /dc-01/host/cluster-01/Resources/resource-pool-01/vapp-01
+    /// ```
+    /// 
+    /// The example above would import the vApp container named `vapp-01` that is
+    /// 
+    /// located in the resource pool `resource-pool-01` that is part of the host cluster
+    /// 
+    /// `cluster-01` in the `dc-01` datacenter.
+    /// </summary>
     [VSphereResourceType("vsphere:index/vappContainer:VappContainer")]
     public partial class VappContainer : global::Pulumi.CustomResource
     {

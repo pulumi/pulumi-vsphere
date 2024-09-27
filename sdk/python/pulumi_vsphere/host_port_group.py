@@ -750,10 +750,15 @@ class HostPortGroup(pulumi.CustomResource):
             allow_promiscuous=True)
         ```
 
-        ## Importing
+        ## Import
 
         An existing host port group can be imported into this resource
+
         using the host port group's ID. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
+        ```
 
         The above would import the `management` host port group from host with ID `host-123`.
 
@@ -860,10 +865,15 @@ class HostPortGroup(pulumi.CustomResource):
             allow_promiscuous=True)
         ```
 
-        ## Importing
+        ## Import
 
         An existing host port group can be imported into this resource
+
         using the host port group's ID. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
+        ```
 
         The above would import the `management` host port group from host with ID `host-123`.
 

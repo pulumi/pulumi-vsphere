@@ -9,6 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// An existing role can be imported into this resource by supplying the role id. An example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/role:Role role1 -709298051
+    /// ```
+    /// 
+    /// Use [`vsphere_role` data source][ref-vsphere-role-data-source]
+    /// 
+    /// to read information about system roles.
+    /// 
+    /// [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
+    /// </summary>
     [VSphereResourceType("vsphere:index/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {

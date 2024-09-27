@@ -16,6 +16,135 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.HaVmOverride` resource can be used to add an override for
+ * vSphere HA settings on a cluster for a specific virtual machine. With this
+ * resource, one can control specific HA settings so that they are different than
+ * the cluster default, accommodating the needs of that specific virtual machine,
+ * while not affecting the rest of the cluster.
+ * 
+ * For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
+ * 
+ * [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-availability/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
+ * 
+ * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates a virtual machine in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machine in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source.
+ * 
+ * Considering a scenario where this virtual machine is of high value to the
+ * application or organization for which it does its work, it&#39;s been determined in
+ * the event of a host failure, that this should be one of the first virtual
+ * machines to be started by vSphere HA during recovery. Hence, it
+ * `ha_vm_restart_priority` has been set to `highest`,
+ * which, assuming that the default restart priority is `medium` and no other
+ * virtual machine has been assigned the `highest` priority, will mean that this
+ * VM will be started before any other virtual machine in the event of host
+ * failure.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import com.pulumi.vsphere.HaVmOverride;
+ * import com.pulumi.vsphere.HaVmOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("datastore1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("network1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+ *             .name("test")
+ *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .numCpus(2)
+ *             .memory(2048)
+ *             .guestId("otherLinux64Guest")
+ *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .build())
+ *             .disks(VirtualMachineDiskArgs.builder()
+ *                 .label("disk0")
+ *                 .size(20)
+ *                 .build())
+ *             .build());
+ * 
+ *         var haVmOverride = new HaVmOverride("haVmOverride", HaVmOverrideArgs.builder()
+ *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .virtualMachineId(vm.id())
+ *             .haVmRestartPriority("highest")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing override can be imported into this resource by
+ * 
+ * supplying both the path to the cluster, and the path to the virtual machine, to
+ * 
+ * `pulumi import`. If no override exists, an error will be given.  An example
+ * 
+ * is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \
+ * ```
+ * 
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
+ * 
+ *   &#34;virtual_machine_path&#34;: &#34;/dc1/vm/srv1&#34;}&#39;
+ * 
+ */
 @ResourceType(type="vsphere:index/haVmOverride:HaVmOverride")
 public class HaVmOverride extends com.pulumi.resources.CustomResource {
     /**

@@ -14,6 +14,124 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.StorageDrsVmOverride` resource can be used to add a Storage DRS
+ * override to a datastore cluster for a specific virtual machine. With this
+ * resource, one can enable or disable Storage DRS, and control the automation
+ * level and disk affinity for a single virtual machine without affecting the rest
+ * of the datastore cluster.
+ * 
+ * For more information on vSphere datastore clusters and Storage DRS, see [this
+ * page][ref-vsphere-datastore-clusters].
+ * 
+ * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import com.pulumi.vsphere.StorageDrsVmOverride;
+ * import com.pulumi.vsphere.StorageDrsVmOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
+ *             .name("datastore-cluster1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var memberDatastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("datastore-cluster1-member1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+ *             .name("cluster1/Resources")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("public")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+ *             .name("test")
+ *             .resourcePoolId(pool.applyValue(getResourcePoolResult -> getResourcePoolResult.id()))
+ *             .datastoreId(memberDatastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .numCpus(2)
+ *             .memory(1024)
+ *             .guestId("otherLinux64Guest")
+ *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .build())
+ *             .disks(VirtualMachineDiskArgs.builder()
+ *                 .label("disk0")
+ *                 .size(20)
+ *                 .build())
+ *             .build());
+ * 
+ *         var drsVmOverride = new StorageDrsVmOverride("drsVmOverride", StorageDrsVmOverrideArgs.builder()
+ *             .datastoreClusterId(datastoreCluster.applyValue(getDatastoreClusterResult -> getDatastoreClusterResult.id()))
+ *             .virtualMachineId(vm.id())
+ *             .sdrsEnabled(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing override can be imported into this resource by
+ * 
+ * supplying both the path to the datastore cluster and the path to the virtual
+ * 
+ * machine to `pulumi import`. If no override exists, an error will be given.
+ * 
+ * An example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/storageDrsVmOverride:StorageDrsVmOverride drs_vm_override \
+ * ```
+ * 
+ *   &#39;{&#34;datastore_cluster_path&#34;: &#34;/dc1/datastore/ds-cluster&#34;, \
+ * 
+ *   &#34;virtual_machine_path&#34;: &#34;/dc1/vm/srv1&#34;}&#39;
+ * 
+ */
 @ResourceType(type="vsphere:index/storageDrsVmOverride:StorageDrsVmOverride")
 public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
     /**

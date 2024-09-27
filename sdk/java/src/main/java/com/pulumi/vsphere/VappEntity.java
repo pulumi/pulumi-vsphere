@@ -18,6 +18,127 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.VappEntity` resource can be used to describe the behavior of an
+ * entity (virtual machine or sub-vApp container) in a vApp container.
+ * 
+ * For more information on vSphere vApps, see [this
+ * page][ref-vsphere-vapp].
+ * 
+ * [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+ * 
+ * ## Example Usage
+ * 
+ * The basic example below sets up a vApp container and a virtual machine in a
+ * compute cluster and then creates a vApp entity to change the virtual machine&#39;s
+ * power on behavior in the vApp container.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.VappContainer;
+ * import com.pulumi.vsphere.VappContainerArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.VappEntity;
+ * import com.pulumi.vsphere.VappEntityArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var datacenter = config.get("datacenter").orElse("dc-01");
+ *         final var cluster = config.get("cluster").orElse("cluster-01");
+ *         final var datacenterGetDatacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(datacenter)
+ *             .build());
+ * 
+ *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name(cluster)
+ *             .datacenterId(datacenterGetDatacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("network1")
+ *             .datacenterId(datacenterGetDatacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("datastore1")
+ *             .datacenterId(datacenterGetDatacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var vappContainer = new VappContainer("vappContainer", VappContainerArgs.builder()
+ *             .name("vapp-container-test")
+ *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .build());
+ * 
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+ *             .name("virtual-machine-test")
+ *             .resourcePoolId(vappContainer.id())
+ *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .numCpus(2)
+ *             .memory(1024)
+ *             .guestId("ubuntu64Guest")
+ *             .disks(VirtualMachineDiskArgs.builder()
+ *                 .label("disk0")
+ *                 .size(1)
+ *                 .build())
+ *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .build())
+ *             .build());
+ * 
+ *         var vappEntity = new VappEntity("vappEntity", VappEntityArgs.builder()
+ *             .targetId(vm.moid())
+ *             .containerId(vappContainer.id())
+ *             .startAction("none")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing vApp entity can be imported into this resource via
+ * 
+ * the ID of the vApp Entity.
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
+ * ```
+ * 
+ * The above would import the vApp entity that governs the behavior of the virtual
+ * 
+ * machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
+ * 
+ * container with the [managed object ID][docs-about-morefs] res-456.
+ * 
+ */
 @ResourceType(type="vsphere:index/vappEntity:VappEntity")
 public class VappEntity extends com.pulumi.resources.CustomResource {
     /**

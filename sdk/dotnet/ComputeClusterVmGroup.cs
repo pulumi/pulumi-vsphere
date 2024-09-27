@@ -9,6 +9,126 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.ComputeClusterVmGroup` resource can be used to manage groups of
+    /// virtual machines in a cluster, either created by the
+    /// [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+    /// by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+    /// 
+    /// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+    /// 
+    /// This resource mainly serves as an input to the
+    /// [`vsphere.ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
+    /// and
+    /// [`vsphere.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+    /// resources. See the individual resource documentation pages for more information.
+    /// 
+    /// [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
+    /// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    /// connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The example below creates two virtual machines in a cluster using the
+    /// `vsphere.VirtualMachine` resource, creating the
+    /// virtual machine in the cluster looked up by the
+    /// `vsphere.ComputeCluster` data source. It
+    /// then creates a group from these two virtual machines.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "network1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vm = new List&lt;VSphere.VirtualMachine&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vm.Add(new VSphere.VirtualMachine($"vm-{range.Value}", new()
+    ///         {
+    ///             Name = $"test-{range.Value}",
+    ///             ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///             DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///             NumCpus = 2,
+    ///             Memory = 2048,
+    ///             GuestId = "otherLinux64Guest",
+    ///             NetworkInterfaces = new[]
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///                 },
+    ///             },
+    ///             Disks = new[]
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 20,
+    ///                 },
+    ///             },
+    ///         }));
+    ///     }
+    ///     var clusterVmGroup = new VSphere.ComputeClusterVmGroup("cluster_vm_group", new()
+    ///     {
+    ///         Name = "test-cluster-vm-group",
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         VirtualMachineIds = new[]
+    ///         {
+    ///             vm.Select(__item =&gt; __item.Id).ToList(),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing group can be imported into this resource by
+    /// 
+    /// supplying both the path to the cluster, and the name of the VM group. If the
+    /// 
+    /// name or cluster is not found, or if the group is of a different type, an error
+    /// 
+    /// will be returned. An example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \
+    /// ```
+    /// 
+    ///   '{"compute_cluster_path": "/dc1/host/cluster1", \
+    /// 
+    ///   "name": "pulumi-test-cluster-vm-group"}'
+    /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup")]
     public partial class ComputeClusterVmGroup : global::Pulumi.CustomResource
     {

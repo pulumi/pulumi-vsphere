@@ -370,7 +370,44 @@ class VirtualDisk(pulumi.CustomResource):
                  vmdk_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VirtualDisk resource with the given unique name, props, and options.
+        The `VirtualDisk` resource can be used to create virtual disks outside
+        of any given `VirtualMachine`
+        resource. These disks can be attached to a virtual machine by creating a disk
+        block with the `attach` parameter.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datacenter(name="datastore-01")
+        virtual_disk = vsphere.VirtualDisk("virtual_disk",
+            size=40,
+            type="thin",
+            vmdk_path="/foo/foo.vmdk",
+            create_directories=True,
+            datacenter=datacenter.name,
+            datastore=datastore_vsphere_datastore["name"])
+        ```
+
+        ## Import
+
+        An existing virtual disk can be imported into this resource
+
+        via supplying the full datastore path to the virtual disk. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \\
+        ```
+
+          '{"virtual_disk_path": "/dc-01/[datastore-01]foo/bar.vmdk", \\ "create_directories": "true"}'
+
+        The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
+
+        datastore of the `dc-01` datacenter with `create_directories` set as `true`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
@@ -413,7 +450,44 @@ class VirtualDisk(pulumi.CustomResource):
                  args: VirtualDiskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VirtualDisk resource with the given unique name, props, and options.
+        The `VirtualDisk` resource can be used to create virtual disks outside
+        of any given `VirtualMachine`
+        resource. These disks can be attached to a virtual machine by creating a disk
+        block with the `attach` parameter.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datacenter(name="datastore-01")
+        virtual_disk = vsphere.VirtualDisk("virtual_disk",
+            size=40,
+            type="thin",
+            vmdk_path="/foo/foo.vmdk",
+            create_directories=True,
+            datacenter=datacenter.name,
+            datastore=datastore_vsphere_datastore["name"])
+        ```
+
+        ## Import
+
+        An existing virtual disk can be imported into this resource
+
+        via supplying the full datastore path to the virtual disk. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \\
+        ```
+
+          '{"virtual_disk_path": "/dc-01/[datastore-01]foo/bar.vmdk", \\ "create_directories": "true"}'
+
+        The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
+
+        datastore of the `dc-01` datacenter with `create_directories` set as `true`.
+
         :param str resource_name: The name of the resource.
         :param VirtualDiskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

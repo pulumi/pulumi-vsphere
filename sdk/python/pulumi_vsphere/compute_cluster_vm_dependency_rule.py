@@ -285,7 +285,106 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                  vm_group_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ComputeClusterVmDependencyRule resource with the given unique name, props, and options.
+        The `ComputeClusterVmDependencyRule` resource can be used to manage
+        VM dependency rules in a cluster, either created by the
+        `ComputeCluster` resource or looked up
+        by the `ComputeCluster` data source.
+
+        A virtual machine dependency rule applies to vSphere HA, and allows
+        user-defined startup orders for virtual machines in the case of host failure.
+        Virtual machines are supplied via groups, which can be managed via the
+        `ComputeClusterVmGroup`
+        resource.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Example Usage
+
+        The example below creates two virtual machine in a cluster using the
+        `VirtualMachine` resource in a cluster
+        looked up by the `ComputeCluster`
+        data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+
+        > Note how `dependency_vm_group_name` and
+        `vm_group_name` are sourced off of the `name` attributes from
+        the `ComputeClusterVmGroup`
+        resource. This is to ensure that the rule is not created before the groups
+        exist, which may not possibly happen in the event that the names came from a
+        "static" source such as a variable.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm1 = vsphere.VirtualMachine("vm1",
+            name="test1",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        vm2 = vsphere.VirtualMachine("vm2",
+            name="test2",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        cluster_vm_group1 = vsphere.ComputeClusterVmGroup("cluster_vm_group1",
+            name="test-cluster-vm-group1",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[vm1.id])
+        cluster_vm_group2 = vsphere.ComputeClusterVmGroup("cluster_vm_group2",
+            name="test-cluster-vm-group2",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[vm2.id])
+        cluster_vm_dependency_rule = vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule",
+            compute_cluster_id=cluster.id,
+            name="test-cluster-vm-dependency-rule",
+            dependency_vm_group_name=cluster_vm_group1.name,
+            vm_group_name=cluster_vm_group2.name)
+        ```
+
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-vm-dependency-rule"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
@@ -316,7 +415,106 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                  args: ComputeClusterVmDependencyRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ComputeClusterVmDependencyRule resource with the given unique name, props, and options.
+        The `ComputeClusterVmDependencyRule` resource can be used to manage
+        VM dependency rules in a cluster, either created by the
+        `ComputeCluster` resource or looked up
+        by the `ComputeCluster` data source.
+
+        A virtual machine dependency rule applies to vSphere HA, and allows
+        user-defined startup orders for virtual machines in the case of host failure.
+        Virtual machines are supplied via groups, which can be managed via the
+        `ComputeClusterVmGroup`
+        resource.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Example Usage
+
+        The example below creates two virtual machine in a cluster using the
+        `VirtualMachine` resource in a cluster
+        looked up by the `ComputeCluster`
+        data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+
+        > Note how `dependency_vm_group_name` and
+        `vm_group_name` are sourced off of the `name` attributes from
+        the `ComputeClusterVmGroup`
+        resource. This is to ensure that the rule is not created before the groups
+        exist, which may not possibly happen in the event that the names came from a
+        "static" source such as a variable.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm1 = vsphere.VirtualMachine("vm1",
+            name="test1",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        vm2 = vsphere.VirtualMachine("vm2",
+            name="test2",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        cluster_vm_group1 = vsphere.ComputeClusterVmGroup("cluster_vm_group1",
+            name="test-cluster-vm-group1",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[vm1.id])
+        cluster_vm_group2 = vsphere.ComputeClusterVmGroup("cluster_vm_group2",
+            name="test-cluster-vm-group2",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[vm2.id])
+        cluster_vm_dependency_rule = vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule",
+            compute_cluster_id=cluster.id,
+            name="test-cluster-vm-dependency-rule",
+            dependency_vm_group_name=cluster_vm_group1.name,
+            vm_group_name=cluster_vm_group2.name)
+        ```
+
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-vm-dependency-rule"}'
+
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmDependencyRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

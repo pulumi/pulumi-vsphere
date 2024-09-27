@@ -638,7 +638,37 @@ class NasDatastore(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NasDatastore resource with the given unique name, props, and options.
+        The `NasDatastore` resource can be used to create and manage NAS
+        datastores on an ESXi host or a set of hosts. The resource supports mounting
+        NFS v3 and v4.1 shares to be used as datastores.
+
+        > **NOTE:** Unlike `VmfsDatastore`, a NAS
+        datastore is only mounted on the hosts you choose to mount it on. To mount on
+        multiple hosts, you must specify each host that you want to add in the
+        `host_system_ids` argument.
+
+        ## Import
+
+        An existing NAS datastore can be imported into this resource via
+
+        its managed object ID, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/nasDatastore:NasDatastore datastore datastore-123
+        ```
+
+        You need a tool like [`govc`][ext-govc] that can display managed object IDs.
+
+        [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
+
+        In the case of govc, you can locate a managed object ID from an inventory path
+
+        by doing the following:
+
+        $ govc ls -i /dc/datastore/terraform-test
+
+        Datastore:datastore-123
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for the mount point. Can be one of
@@ -687,7 +717,37 @@ class NasDatastore(pulumi.CustomResource):
                  args: NasDatastoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NasDatastore resource with the given unique name, props, and options.
+        The `NasDatastore` resource can be used to create and manage NAS
+        datastores on an ESXi host or a set of hosts. The resource supports mounting
+        NFS v3 and v4.1 shares to be used as datastores.
+
+        > **NOTE:** Unlike `VmfsDatastore`, a NAS
+        datastore is only mounted on the hosts you choose to mount it on. To mount on
+        multiple hosts, you must specify each host that you want to add in the
+        `host_system_ids` argument.
+
+        ## Import
+
+        An existing NAS datastore can be imported into this resource via
+
+        its managed object ID, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/nasDatastore:NasDatastore datastore datastore-123
+        ```
+
+        You need a tool like [`govc`][ext-govc] that can display managed object IDs.
+
+        [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
+
+        In the case of govc, you can locate a managed object ID from an inventory path
+
+        by doing the following:
+
+        $ govc ls -i /dc/datastore/terraform-test
+
+        Datastore:datastore-123
+
         :param str resource_name: The name of the resource.
         :param NasDatastoreArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

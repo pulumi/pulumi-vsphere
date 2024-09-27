@@ -14,6 +14,179 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.ContentLibraryItem` resource can be used to create items in a
+ * vSphere content library. The `file_url` must be accessible from the vSphere
+ * environment as it will be downloaded from the specified location and stored
+ * on the content library&#39;s storage backing.
+ * 
+ * ## Example Usage
+ * 
+ * The first example below imports an OVF Template to a content
+ * library.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+ * import com.pulumi.vsphere.ContentLibraryItem;
+ * import com.pulumi.vsphere.ContentLibraryItemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+ *             .name("clb-01")
+ *             .build());
+ * 
+ *         var contentLibraryItem = new ContentLibraryItem("contentLibraryItem", ContentLibraryItemArgs.builder()
+ *             .name("ovf-linux-ubuntu-server-lts")
+ *             .description("Ubuntu Server LTS OVF Template")
+ *             .fileUrl("https://releases.example.com/ubuntu/ubuntu/ubuntu-live-server-amd64.ovf")
+ *             .libraryId(contentLibrary.applyValue(getContentLibraryResult -> getContentLibraryResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The next example imports an .iso image to a content library.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+ * import com.pulumi.vsphere.ContentLibraryItem;
+ * import com.pulumi.vsphere.ContentLibraryItemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+ *             .name("clb-01")
+ *             .build());
+ * 
+ *         var contentLibraryItem = new ContentLibraryItem("contentLibraryItem", ContentLibraryItemArgs.builder()
+ *             .name("iso-linux-ubuntu-server-lts")
+ *             .description("Ubuntu Server LTS .iso")
+ *             .type("iso")
+ *             .fileUrl("https://releases.example.com/ubuntu/ubuntu-live-server-amd64.iso")
+ *             .libraryId(contentLibrary.applyValue(getContentLibraryResult -> getContentLibraryResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The last example imports a virtual machine image to a content library from an
+ * existing virtual machine.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+ * import com.pulumi.vsphere.ContentLibraryItem;
+ * import com.pulumi.vsphere.ContentLibraryItemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+ *             .name("clb-01")
+ *             .build());
+ * 
+ *         var contentLibraryItem = new ContentLibraryItem("contentLibraryItem", ContentLibraryItemArgs.builder()
+ *             .name("tpl-linux-ubuntu-server-lts")
+ *             .description("Ubuntu Server LTS")
+ *             .sourceUuid("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .libraryId(contentLibrary.applyValue(getContentLibraryResult -> getContentLibraryResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing content library item can be imported into this resource by
+ * 
+ * supplying the content library ID. An example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/contentLibraryItem:ContentLibraryItem vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ * ```
+ * 
+ */
 @ResourceType(type="vsphere:index/contentLibraryItem:ContentLibraryItem")
 public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
     /**

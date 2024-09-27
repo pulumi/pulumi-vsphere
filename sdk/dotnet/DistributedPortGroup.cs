@@ -9,6 +9,99 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.DistributedPortGroup` resource can be used to manage
+    /// distributed port groups connected to vSphere Distributed Switches (VDS).
+    /// A vSphere Distributed Switch can be managed by the
+    /// `vsphere.DistributedVirtualSwitch` resource.
+    /// 
+    /// Distributed port groups can be used as networks for virtual machines, allowing
+    /// the virtual machines to use the networking supplied by a vSphere Distributed
+    /// Switch, with a set of policies that apply to that individual network, if
+    /// desired.
+    /// 
+    /// * For an overview on vSphere networking concepts, refer to the vSphere
+    /// [product documentation][ref-vsphere-net-concepts].
+    /// 
+    /// * For more information on distributed port groups, refer to the vSphere
+    /// [product documentation][ref-vsphere-dvportgroup].
+    /// 
+    /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+    /// [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on
+    /// direct ESXi host connections.
+    /// 
+    /// ### Overriding VDS policies
+    /// 
+    /// All of the default port policies available in the
+    /// `vsphere.DistributedVirtualSwitch` resource can be overridden on the port
+    /// group level by specifying new settings for them.
+    /// 
+    /// As an example, we also take this example from the
+    /// `vsphere.DistributedVirtualSwitch` resource where we manually specify our
+    /// uplink count and uplink order. While the vSphere Distributed Switch has a
+    /// default policy of using the first uplink as an active uplink and the second
+    /// one as a standby, the overridden port group policy means that both uplinks
+    /// will be used as active uplinks in this specific port group.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+    ///     {
+    ///         Name = "vds-01",
+    ///         DatacenterId = datacenter.Id,
+    ///         Uplinks = new[]
+    ///         {
+    ///             "uplink1",
+    ///             "uplink2",
+    ///         },
+    ///         ActiveUplinks = new[]
+    ///         {
+    ///             "uplink1",
+    ///         },
+    ///         StandbyUplinks = new[]
+    ///         {
+    ///             "uplink2",
+    ///         },
+    ///     });
+    /// 
+    ///     var pg = new VSphere.DistributedPortGroup("pg", new()
+    ///     {
+    ///         Name = "pg-01",
+    ///         DistributedVirtualSwitchUuid = vds.Id,
+    ///         VlanId = 1000,
+    ///         ActiveUplinks = new[]
+    ///         {
+    ///             "uplink1",
+    ///             "uplink2",
+    ///         },
+    ///         StandbyUplinks = new[] {},
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing port group can be imported into this resource using
+    /// 
+    /// the managed object id of the port group, via the following command:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/distributedPortGroup:DistributedPortGroup pg /dc-01/network/pg-01
+    /// ```
+    /// 
+    /// The above would import the port group named `pg-01` that is located in the `dc-01`
+    /// 
+    /// datacenter.
+    /// </summary>
     [VSphereResourceType("vsphere:index/distributedPortGroup:DistributedPortGroup")]
     public partial class DistributedPortGroup : global::Pulumi.CustomResource
     {

@@ -4,6 +4,78 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.Folder` resource can be used to manage vSphere inventory folders.
+ * The resource supports creating folders of the 5 major types - datacenter
+ * folders, host and cluster folders, virtual machine folders, storage folders,
+ * and network folders.
+ *
+ * Paths are always relative to the specific type of folder you are creating.
+ * A subfolder is discovered by parsing the relative path specified in `path`, so
+ * `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
+ * as that folder exists.
+ *
+ * ## Example Usage
+ *
+ * The basic example below creates a virtual machine folder named
+ * `test-folder` in the default datacenter's VM hierarchy.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({});
+ * const folder = new vsphere.Folder("folder", {
+ *     path: "test-folder",
+ *     type: "vm",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ * });
+ * ```
+ *
+ * ### Example with subfolders
+ *
+ * The below example builds off of the above by first creating a folder named
+ * `test-parent`, and then locating `test-folder` in that
+ * folder. To ensure the parent is created first, we create an interpolation
+ * dependency off the parent's `path` attribute.
+ *
+ * Note that if you change parents (for example, went from the above basic
+ * configuration to this one), your folder will be moved to be under the correct
+ * parent.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({});
+ * const parent = new vsphere.Folder("parent", {
+ *     path: "test-parent",
+ *     type: "vm",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ * });
+ * const folder = new vsphere.Folder("folder", {
+ *     path: pulumi.interpolate`${parent.path}/test-folder`,
+ *     type: "vm",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing folder can be imported into this resource via
+ *
+ * its full path, via the following command:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+ * ```
+ *
+ * The above command would import the folder from our examples above, the VM
+ *
+ * folder named `terraform-test-folder` located in the datacenter named
+ *
+ * `default-dc`.
+ */
 export class Folder extends pulumi.CustomResource {
     /**
      * Get an existing Folder resource's state with the given name, ID, and optional extra

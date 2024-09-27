@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * }));
  * const hostRule = new vsphere.ComputeClusterVmHostRule("host_rule", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
- *     name: "terraform-host-rule1",
+ *     name: "pulumi-host-rule1",
  *     vmGroupName: "vmgroup-01",
  *     affinityHostGroupName: hostGroup.then(hostGroup => hostGroup.name),
  * });
@@ -100,7 +100,7 @@ export interface GetComputeClusterHostGroupResult {
  * }));
  * const hostRule = new vsphere.ComputeClusterVmHostRule("host_rule", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
- *     name: "terraform-host-rule1",
+ *     name: "pulumi-host-rule1",
  *     vmGroupName: "vmgroup-01",
  *     affinityHostGroupName: hostGroup.then(hostGroup => hostGroup.name),
  * });

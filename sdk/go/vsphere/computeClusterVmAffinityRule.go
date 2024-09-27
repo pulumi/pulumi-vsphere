@@ -32,12 +32,23 @@ import (
 // > **NOTE:** This resource requires vCenter Server and is not available on
 // direct ESXi host connections.
 //
-// ## Importing
+// ## Import
 //
-// An existing rule can be imported into this resource by supplying
+// # An existing rule can be imported into this resource by supplying
+//
 // both the path to the cluster, and the name the rule. If the name or cluster is
+//
 // not found, or if the rule is of a different type, an error will be returned. An
+//
 // example is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \
+// ```
+//
+//	'{"compute_cluster_path": "/dc-01/host/cluster-01", \
+//
+//	"name": "vm-affinity-rule"}'
 type ComputeClusterVmAffinityRule struct {
 	pulumi.CustomResourceState
 

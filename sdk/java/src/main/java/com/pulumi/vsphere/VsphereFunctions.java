@@ -371,7 +371,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
-     *             .name("terraform-host-rule1")
+     *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
      *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
@@ -436,7 +436,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
-     *             .name("terraform-host-rule1")
+     *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
      *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
@@ -501,7 +501,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
-     *             .name("terraform-host-rule1")
+     *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
      *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());
@@ -566,7 +566,7 @@ public final class VsphereFunctions {
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
      *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
-     *             .name("terraform-host-rule1")
+     *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
      *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
      *             .build());

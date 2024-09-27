@@ -9,6 +9,87 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.DistributedVirtualSwitch` resource can be used to manage vSphere
+    /// Distributed Switches (VDS).
+    /// 
+    /// An essential component of a distributed, scalable vSphere infrastructure, the
+    /// VDS provides centralized management and monitoring of the networking
+    /// configuration for all the hosts that are associated with the switch.
+    /// In addition to adding distributed port groups
+    /// (see the `vsphere.DistributedPortGroup` resource)
+    /// that can be used as networks for virtual machines, a VDS can be configured to
+    /// perform advanced high availability, traffic shaping, network monitoring, etc.
+    /// 
+    /// For an overview on vSphere networking concepts, see
+    /// [this page][ref-vsphere-net-concepts].
+    /// 
+    /// For more information on the VDS, see [this page][ref-vsphere-vds].
+    /// 
+    /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+    /// [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on
+    /// direct ESXi host connections.
+    /// 
+    /// ### Uplink name and count control
+    /// 
+    /// The following abridged example below demonstrates how you can manage the number
+    /// of uplinks, and the name of the uplinks via the `uplinks` parameter.
+    /// 
+    /// Note that if you change the uplink naming and count after creating the VDS, you
+    /// may need to explicitly specify `active_uplinks` and `standby_uplinks` as these
+    /// values are saved to state after creation, regardless of being
+    /// specified in config, and will drift if not modified, causing errors.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+    ///     {
+    ///         Name = "vds-01",
+    ///         DatacenterId = datacenter.Id,
+    ///         Uplinks = new[]
+    ///         {
+    ///             "uplink1",
+    ///             "uplink2",
+    ///         },
+    ///         ActiveUplinks = new[]
+    ///         {
+    ///             "uplink1",
+    ///         },
+    ///         StandbyUplinks = new[]
+    ///         {
+    ///             "uplink2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **NOTE:** The default uplink names when a VDS is created are `uplink1`
+    /// through to `uplink4`, however this default is not guaranteed to be stable and
+    /// you are encouraged to set your own.
+    /// 
+    /// ## Import
+    /// 
+    /// An existing VDS can be imported into this resource via the path
+    /// 
+    /// to the VDS, via the following command:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch vds /dc-01/network/vds-01
+    /// ```
+    /// 
+    /// The above would import the VDS named `vds-01` that is located in the `dc-01`
+    /// 
+    /// datacenter.
+    /// </summary>
     [VSphereResourceType("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch")]
     public partial class DistributedVirtualSwitch : global::Pulumi.CustomResource
     {

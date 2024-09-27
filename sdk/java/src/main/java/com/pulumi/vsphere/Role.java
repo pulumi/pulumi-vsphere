@@ -15,6 +15,22 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * An existing role can be imported into this resource by supplying the role id. An example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/role:Role role1 -709298051
+ * ```
+ * 
+ * Use [`vsphere_role` data source][ref-vsphere-role-data-source]
+ * 
+ * to read information about system roles.
+ * 
+ * [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
+ * 
+ */
 @ResourceType(type="vsphere:index/role:Role")
 public class Role extends com.pulumi.resources.CustomResource {
     /**

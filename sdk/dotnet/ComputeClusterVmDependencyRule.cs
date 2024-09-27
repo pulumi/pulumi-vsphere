@@ -9,6 +9,165 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.ComputeClusterVmDependencyRule` resource can be used to manage
+    /// VM dependency rules in a cluster, either created by the
+    /// `vsphere.ComputeCluster` resource or looked up
+    /// by the `vsphere.ComputeCluster` data source.
+    /// 
+    /// A virtual machine dependency rule applies to vSphere HA, and allows
+    /// user-defined startup orders for virtual machines in the case of host failure.
+    /// Virtual machines are supplied via groups, which can be managed via the
+    /// `vsphere.ComputeClusterVmGroup`
+    /// resource.
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    /// connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The example below creates two virtual machine in a cluster using the
+    /// `vsphere.VirtualMachine` resource in a cluster
+    /// looked up by the `vsphere.ComputeCluster`
+    /// data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+    /// 
+    /// &gt; Note how `dependency_vm_group_name` and
+    /// `vm_group_name` are sourced off of the `name` attributes from
+    /// the `vsphere.ComputeClusterVmGroup`
+    /// resource. This is to ensure that the rule is not created before the groups
+    /// exist, which may not possibly happen in the event that the names came from a
+    /// "static" source such as a variable.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "network1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vm1 = new VSphere.VirtualMachine("vm1", new()
+    ///     {
+    ///         Name = "test1",
+    ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         NumCpus = 2,
+    ///         Memory = 2048,
+    ///         GuestId = "otherLinux64Guest",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineDiskArgs
+    ///             {
+    ///                 Label = "disk0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var vm2 = new VSphere.VirtualMachine("vm2", new()
+    ///     {
+    ///         Name = "test2",
+    ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         NumCpus = 2,
+    ///         Memory = 2048,
+    ///         GuestId = "otherLinux64Guest",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineDiskArgs
+    ///             {
+    ///                 Label = "disk0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var clusterVmGroup1 = new VSphere.ComputeClusterVmGroup("cluster_vm_group1", new()
+    ///     {
+    ///         Name = "test-cluster-vm-group1",
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         VirtualMachineIds = new[]
+    ///         {
+    ///             vm1.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var clusterVmGroup2 = new VSphere.ComputeClusterVmGroup("cluster_vm_group2", new()
+    ///     {
+    ///         Name = "test-cluster-vm-group2",
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         VirtualMachineIds = new[]
+    ///         {
+    ///             vm2.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var clusterVmDependencyRule = new VSphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", new()
+    ///     {
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         Name = "test-cluster-vm-dependency-rule",
+    ///         DependencyVmGroupName = clusterVmGroup1.Name,
+    ///         VmGroupName = clusterVmGroup2.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing rule can be imported into this resource by supplying
+    /// 
+    /// both the path to the cluster, and the name the rule. If the name or cluster is
+    /// 
+    /// not found, or if the rule is of a different type, an error will be returned. An
+    /// 
+    /// example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \
+    /// ```
+    /// 
+    ///   '{"compute_cluster_path": "/dc1/host/cluster1", \
+    /// 
+    ///   "name": "pulumi-test-cluster-vm-dependency-rule"}'
+    /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule")]
     public partial class ComputeClusterVmDependencyRule : global::Pulumi.CustomResource
     {

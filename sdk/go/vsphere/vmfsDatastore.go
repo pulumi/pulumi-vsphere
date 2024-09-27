@@ -12,6 +12,194 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `VmfsDatastore` resource can be used to create and manage VMFS
+// datastores on an ESXi host or a set of hosts. The resource supports using any
+// SCSI device that can generally be used in a datastore, such as local disks, or
+// disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
+// Devices can be specified manually, or discovered using the
+// [`getVmfsDisks`][data-source-vmfs-disks] data source.
+//
+// [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html
+//
+// ## Auto-Mounting of Datastores Within vCenter
+//
+// Note that the current behavior of this resource will auto-mount any created
+// datastores to any other host within vCenter that has access to the same disk.
+//
+// Example: You want to create a datastore with a iSCSI LUN that is visible on 3
+// hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
+// create the datastore on `esxi1`, the datastore will be automatically mounted on
+// `esxi2` and `esxi3`, without the need to configure the resource on either of
+// those two hosts.
+//
+// Future versions of this resource may allow you to control the hosts that a
+// datastore is mounted to, but currently, this automatic behavior cannot be
+// changed, so keep this in mind when writing your configurations and deploying
+// your disks.
+//
+// ## Increasing Datastore Size
+//
+// To increase the size of a datastore, you must add additional disks to the
+// `disks` attribute. Expanding the size of a datastore by increasing the size of
+// an already provisioned disk is currently not supported (but may be in future
+// versions of this resource).
+//
+// > **NOTE:** You cannot decrease the size of a datastore. If the resource
+// detects disks removed from the configuration, the provider will give an error.
+//
+// [cmd-taint]: /docs/commands/taint.html
+//
+// ## Example Usage
+//
+// ### Addition of local disks on a single host
+//
+// The following example uses the default datacenter and default host to add a
+// datastore with local disks to a single ESXi server.
+//
+// > **NOTE:** There are some situations where datastore creation will not work
+// when working through vCenter (usually when trying to create a datastore on a
+// single host with local disks). If you experience trouble creating the datastore
+// you need through vCenter, break the datastore off into a different configuration
+// and deploy it using the ESXi server as the provider endpoint, using a similar
+// configuration to what is below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVmfsDatastore(ctx, "datastore", &vsphere.VmfsDatastoreArgs{
+//				Name:         pulumi.String("test"),
+//				HostSystemId: pulumi.Any(esxiHost.Id),
+//				Disks: pulumi.StringArray{
+//					pulumi.String("mpx.vmhba1:C0:T1:L0"),
+//					pulumi.String("mpx.vmhba1:C0:T2:L0"),
+//					pulumi.String("mpx.vmhba1:C0:T2:L0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Auto-detection of disks via `getVmfsDisks`
+//
+// The following example makes use of the
+// `getVmfsDisks` data source to auto-detect
+// exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
+// exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
+// into `VmfsDatastore`. The datastore is also placed in the
+// `datastore-folder` folder afterwards.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			available, err := vsphere.GetVmfsDisks(ctx, &vsphere.GetVmfsDisksArgs{
+//				HostSystemId: host.Id,
+//				Rescan:       pulumi.BoolRef(true),
+//				Filter:       pulumi.StringRef("naa.60a98000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVmfsDatastore(ctx, "datastore", &vsphere.VmfsDatastoreArgs{
+//				Name:         pulumi.String("test"),
+//				HostSystemId: pulumi.Any(esxiHost.Id),
+//				Folder:       pulumi.String("datastore-folder"),
+//				Disks: pulumi.StringArray{
+//					interface{}(available.Disks),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing VMFS datastore can be imported into this resource
+//
+// via its managed object ID, via the command below. You also need the host system
+//
+// ID.
+//
+// ```sh
+// $ pulumi import vsphere:index/vmfsDatastore:VmfsDatastore datastore datastore-123:host-10
+// ```
+//
+// You need a tool like [`govc`][ext-govc] that can display managed object IDs.
+//
+// # In the case of govc, you can locate a managed object ID from an inventory path
+//
+// by doing the following:
+//
+// $ govc ls -i /dc/datastore/terraform-test
+//
+// Datastore:datastore-123
+//
+// # To locate host IDs, it might be a good idea to supply the `-l` flag as well so
+//
+// that you can line up the names with the IDs:
+//
+// $ govc ls -l -i /dc/host/cluster1
+//
+// ResourcePool:resgroup-10 /dc/host/cluster1/Resources
+//
+// HostSystem:host-10 /dc/host/cluster1/esxi1
+//
+// HostSystem:host-11 /dc/host/cluster1/esxi2
+//
+// HostSystem:host-12 /dc/host/cluster1/esxi3
+//
+// [ext-netapp]: https://kb.netapp.com/support/s/article/ka31A0000000rLRQAY/how-to-match-a-lun-s-naa-number-to-its-serial-number?language=en_US
+// [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
 type VmfsDatastore struct {
 	pulumi.CustomResourceState
 

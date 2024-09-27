@@ -9,6 +9,61 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.VirtualDisk` resource can be used to create virtual disks outside
+    /// of any given `vsphere.VirtualMachine`
+    /// resource. These disks can be attached to a virtual machine by creating a disk
+    /// block with the `attach` parameter.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "datastore-01",
+    ///     });
+    /// 
+    ///     var virtualDisk = new VSphere.VirtualDisk("virtual_disk", new()
+    ///     {
+    ///         Size = 40,
+    ///         Type = "thin",
+    ///         VmdkPath = "/foo/foo.vmdk",
+    ///         CreateDirectories = true,
+    ///         Datacenter = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Name),
+    ///         Datastore = datastoreVsphereDatastore.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing virtual disk can be imported into this resource
+    /// 
+    /// via supplying the full datastore path to the virtual disk. An example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \
+    /// ```
+    /// 
+    ///   '{"virtual_disk_path": "/dc-01/[datastore-01]foo/bar.vmdk", \ "create_directories": "true"}'
+    /// 
+    /// The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
+    /// 
+    /// datastore of the `dc-01` datacenter with `create_directories` set as `true`.
+    /// </summary>
     [VSphereResourceType("vsphere:index/virtualDisk:VirtualDisk")]
     public partial class VirtualDisk : global::Pulumi.CustomResource
     {

@@ -4,6 +4,85 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.VappEntity` resource can be used to describe the behavior of an
+ * entity (virtual machine or sub-vApp container) in a vApp container.
+ *
+ * For more information on vSphere vApps, see [this
+ * page][ref-vsphere-vapp].
+ *
+ * [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+ *
+ * ## Example Usage
+ *
+ * The basic example below sets up a vApp container and a virtual machine in a
+ * compute cluster and then creates a vApp entity to change the virtual machine's
+ * power on behavior in the vApp container.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const datacenter = config.get("datacenter") || "dc-01";
+ * const cluster = config.get("cluster") || "cluster-01";
+ * const datacenterGetDatacenter = vsphere.getDatacenter({
+ *     name: datacenter,
+ * });
+ * const computeCluster = datacenterGetDatacenter.then(datacenterGetDatacenter => vsphere.getComputeCluster({
+ *     name: cluster,
+ *     datacenterId: datacenterGetDatacenter.id,
+ * }));
+ * const network = datacenterGetDatacenter.then(datacenterGetDatacenter => vsphere.getNetwork({
+ *     name: "network1",
+ *     datacenterId: datacenterGetDatacenter.id,
+ * }));
+ * const datastore = datacenterGetDatacenter.then(datacenterGetDatacenter => vsphere.getDatastore({
+ *     name: "datastore1",
+ *     datacenterId: datacenterGetDatacenter.id,
+ * }));
+ * const vappContainer = new vsphere.VappContainer("vapp_container", {
+ *     name: "vapp-container-test",
+ *     parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.id),
+ * });
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     name: "virtual-machine-test",
+ *     resourcePoolId: vappContainer.id,
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     numCpus: 2,
+ *     memory: 1024,
+ *     guestId: "ubuntu64Guest",
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 1,
+ *     }],
+ *     networkInterfaces: [{
+ *         networkId: network.then(network => network.id),
+ *     }],
+ * });
+ * const vappEntity = new vsphere.VappEntity("vapp_entity", {
+ *     targetId: vm.moid,
+ *     containerId: vappContainer.id,
+ *     startAction: "none",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing vApp entity can be imported into this resource via
+ *
+ * the ID of the vApp Entity.
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
+ * ```
+ *
+ * The above would import the vApp entity that governs the behavior of the virtual
+ *
+ * machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
+ *
+ * container with the [managed object ID][docs-about-morefs] res-456.
+ */
 export class VappEntity extends pulumi.CustomResource {
     /**
      * Get an existing VappEntity resource's state with the given name, ID, and optional extra

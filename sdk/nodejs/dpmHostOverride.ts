@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.DpmHostOverride` resource can be used to add a DPM override to a
+ * cluster for a particular host. This allows you to control the power management
+ * settings for individual hosts in the cluster while leaving any unspecified ones
+ * at the default power management settings.
+ *
+ * For more information on DPM within vSphere clusters, see [this
+ * page][ref-vsphere-cluster-dpm].
+ *
+ * [ref-vsphere-cluster-dpm]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-5E5E349A-4644-4C9C-B434-1C0243EBDC80.html
+ *
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ *
+ * ## Import
+ *
+ * An existing override can be imported into this resource by
+ *
+ * supplying both the path to the cluster, and the path to the host, to `terraform
+ *
+ * import`. If no override exists, an error will be given.  An example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \
+ * ```
+ *
+ *   '{"compute_cluster_path": "/dc1/host/cluster1", \
+ *
+ *   "host_path": "/dc1/host/esxi1"}'
+ */
 export class DpmHostOverride extends pulumi.CustomResource {
     /**
      * Get an existing DpmHostOverride resource's state with the given name, ID, and optional extra

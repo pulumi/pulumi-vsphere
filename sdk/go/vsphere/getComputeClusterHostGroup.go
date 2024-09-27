@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "host_rule", &vsphere.ComputeClusterVmHostRuleArgs{
 //				ComputeClusterId:      pulumi.String(cluster.Id),
-//				Name:                  pulumi.String("terraform-host-rule1"),
+//				Name:                  pulumi.String("pulumi-host-rule1"),
 //				VmGroupName:           pulumi.String("vmgroup-01"),
 //				AffinityHostGroupName: pulumi.String(hostGroup.Name),
 //			})

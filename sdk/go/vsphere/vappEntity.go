@@ -12,6 +12,127 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `VappEntity` resource can be used to describe the behavior of an
+// entity (virtual machine or sub-vApp container) in a vApp container.
+//
+// For more information on vSphere vApps, see [this
+// page][ref-vsphere-vapp].
+//
+// ## Example Usage
+//
+// The basic example below sets up a vApp container and a virtual machine in a
+// compute cluster and then creates a vApp entity to change the virtual machine's
+// power on behavior in the vApp container.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			datacenter := "dc-01"
+//			if param := cfg.Get("datacenter"); param != "" {
+//				datacenter = param
+//			}
+//			cluster := "cluster-01"
+//			if param := cfg.Get("cluster"); param != "" {
+//				cluster = param
+//			}
+//			datacenterGetDatacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef(datacenter),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         cluster,
+//				DatacenterId: pulumi.StringRef(datacenterGetDatacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "network1",
+//				DatacenterId: pulumi.StringRef(datacenterGetDatacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore1",
+//				DatacenterId: pulumi.StringRef(datacenterGetDatacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vappContainer, err := vsphere.NewVappContainer(ctx, "vapp_container", &vsphere.VappContainerArgs{
+//				Name:                 pulumi.String("vapp-container-test"),
+//				ParentResourcePoolId: pulumi.String(computeCluster.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("virtual-machine-test"),
+//				ResourcePoolId: vappContainer.ID(),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(1024),
+//				GuestId:        pulumi.String("ubuntu64Guest"),
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(1),
+//					},
+//				},
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVappEntity(ctx, "vapp_entity", &vsphere.VappEntityArgs{
+//				TargetId:    vm.Moid,
+//				ContainerId: vappContainer.ID(),
+//				StartAction: pulumi.String("none"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing vApp entity can be imported into this resource via
+//
+// the ID of the vApp Entity.
+//
+// ```sh
+// $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
+// ```
+//
+// # The above would import the vApp entity that governs the behavior of the virtual
+//
+// machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
+//
+// container with the [managed object ID][docs-about-morefs] res-456.
+//
+// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
 type VappEntity struct {
 	pulumi.CustomResourceState
 

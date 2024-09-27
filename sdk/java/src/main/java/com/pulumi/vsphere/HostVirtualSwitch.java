@@ -17,6 +17,40 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.HostVirtualSwitch` resource can be used to manage vSphere
+ * standard switches on an ESXi host. These switches can be used as a backing for
+ * standard port groups, which can be managed by the
+ * `vsphere.HostPortGroup` resource.
+ * 
+ * For an overview on vSphere networking concepts, see [this
+ * page][ref-vsphere-net-concepts].
+ * 
+ * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+ * 
+ * ## Example Usage
+ * 
+ * ## Import
+ * 
+ * An existing vSwitch can be imported into this resource by its ID.
+ * 
+ * The convention of the id is a prefix, the host system [managed objectID][docs-about-morefs], and the virtual switch
+ * 
+ * name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
+ * 
+ * Import can the be done via the following command:
+ * 
+ * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/hostVirtualSwitch:HostVirtualSwitch switch tf-HostVirtualSwitch:host-10:vSwitchTerraformTest
+ * ```
+ * 
+ * The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
+ * 
+ * vSphere host.
+ * 
+ */
 @ResourceType(type="vsphere:index/hostVirtualSwitch:HostVirtualSwitch")
 public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
     /**

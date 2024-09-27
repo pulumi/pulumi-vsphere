@@ -221,7 +221,83 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a DatastoreClusterVmAntiAffinityRule resource with the given unique name, props, and options.
+        The `DatastoreClusterVmAntiAffinityRule` resource can be used to
+        manage VM anti-affinity rules in a datastore cluster, either created by the
+        `DatastoreCluster` resource or looked up
+        by the `DatastoreCluster` data source.
+
+        This rule can be used to tell a set to virtual machines to run on different
+        datastores within a cluster, useful for preventing single points of failure in
+        application cluster scenarios. When configured, Storage DRS will make a best effort to
+        ensure that the virtual machines run on different datastores, or prevent any
+        operation that would keep that from happening, depending on the value of the
+        `mandatory` flag.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+
+        ## Example Usage
+
+        The example below creates two virtual machines in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machines in the datastore cluster looked up by the
+        `DatastoreCluster` data
+        source. It then creates an anti-affinity rule for these two virtual machines,
+        ensuring they will run on different datastores whenever possible.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                name=f"test-{range['value']}",
+                resource_pool_id=cluster.resource_pool_id,
+                datastore_cluster_id=datastore_cluster.id,
+                num_cpus=2,
+                memory=2048,
+                guest_id="otherLinux64Guest",
+                network_interfaces=[{
+                    "network_id": network.id,
+                }],
+                disks=[{
+                    "label": "disk0",
+                    "size": 20,
+                }]))
+        cluster_vm_anti_affinity_rule = vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule",
+            name="test-datastore-cluster-vm-anti-affinity-rule",
+            datastore_cluster_id=datastore_cluster.id,
+            virtual_machine_ids=[[__item.id for __item in vm]])
+        ```
+
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/datastore/cluster1", \\
+
+          "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datastore_cluster_id: The managed object reference
@@ -243,7 +319,83 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
                  args: DatastoreClusterVmAntiAffinityRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DatastoreClusterVmAntiAffinityRule resource with the given unique name, props, and options.
+        The `DatastoreClusterVmAntiAffinityRule` resource can be used to
+        manage VM anti-affinity rules in a datastore cluster, either created by the
+        `DatastoreCluster` resource or looked up
+        by the `DatastoreCluster` data source.
+
+        This rule can be used to tell a set to virtual machines to run on different
+        datastores within a cluster, useful for preventing single points of failure in
+        application cluster scenarios. When configured, Storage DRS will make a best effort to
+        ensure that the virtual machines run on different datastores, or prevent any
+        operation that would keep that from happening, depending on the value of the
+        `mandatory` flag.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+
+        ## Example Usage
+
+        The example below creates two virtual machines in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machines in the datastore cluster looked up by the
+        `DatastoreCluster` data
+        source. It then creates an anti-affinity rule for these two virtual machines,
+        ensuring they will run on different datastores whenever possible.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                name=f"test-{range['value']}",
+                resource_pool_id=cluster.resource_pool_id,
+                datastore_cluster_id=datastore_cluster.id,
+                num_cpus=2,
+                memory=2048,
+                guest_id="otherLinux64Guest",
+                network_interfaces=[{
+                    "network_id": network.id,
+                }],
+                disks=[{
+                    "label": "disk0",
+                    "size": 20,
+                }]))
+        cluster_vm_anti_affinity_rule = vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule",
+            name="test-datastore-cluster-vm-anti-affinity-rule",
+            datastore_cluster_id=datastore_cluster.id,
+            virtual_machine_ids=[[__item.id for __item in vm]])
+        ```
+
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/datastore/cluster1", \\
+
+          "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+
         :param str resource_name: The name of the resource.
         :param DatastoreClusterVmAntiAffinityRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * An existing role can be imported into this resource by supplying the role id. An example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/role:Role role1 -709298051
+ * ```
+ *
+ * Use [`vsphere_role` data source][ref-vsphere-role-data-source]
+ *
+ * to read information about system roles.
+ *
+ * [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
+ */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra

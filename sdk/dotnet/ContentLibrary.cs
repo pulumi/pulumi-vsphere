@@ -9,6 +9,95 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.ContentLibrary` resource can be used to manage content libraries.
+    /// 
+    /// &gt; **NOTE:** This resource requires a vCenter Server instance and is not available on direct ESXi host connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenterA = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01-a",
+    ///     });
+    /// 
+    ///     var publisherDatastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "publisher-datastore",
+    ///         DatacenterId = datacenterA.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var publisherContentLibrary = new VSphere.ContentLibrary("publisher_content_library", new()
+    ///     {
+    ///         Name = "Publisher Content Library",
+    ///         Description = "A publishing content library.",
+    ///         StorageBackings = new[]
+    ///         {
+    ///             publisherDatastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The next example creates a subscribed content library using the URL of the publisher content library as the source and the datastore named `subscriber-datastore` as the storage backing.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenterB = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01-b",
+    ///     });
+    /// 
+    ///     var subscriberDatastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "subscriber-datastore",
+    ///         DatacenterId = datacenterB.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var subscriberContentLibrary = new VSphere.ContentLibrary("subscriber_content_library", new()
+    ///     {
+    ///         Name = "Subscriber Content Library",
+    ///         Description = "A subscribing content library.",
+    ///         StorageBackings = new[]
+    ///         {
+    ///             subscriberDatastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         },
+    ///         Subscription = new VSphere.Inputs.ContentLibrarySubscriptionArgs
+    ///         {
+    ///             SubscriptionUrl = "https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json",
+    ///             AutomaticSync = true,
+    ///             OnDemand = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing content library can be imported into this resource by supplying the content library ID. For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
+    /// ```
+    /// </summary>
     [VSphereResourceType("vsphere:index/contentLibrary:ContentLibrary")]
     public partial class ContentLibrary : global::Pulumi.CustomResource
     {

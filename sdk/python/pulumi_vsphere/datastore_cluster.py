@@ -946,7 +946,35 @@ class DatastoreCluster(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a DatastoreCluster resource with the given unique name, props, and options.
+        The `DatastoreCluster` resource can be used to create and manage
+        datastore clusters. This can be used to create groups of datastores with a
+        shared management interface, allowing for resource control and load balancing
+        through Storage DRS.
+
+        For more information on vSphere datastore clusters and Storage DRS, see [this
+        page][ref-vsphere-datastore-clusters].
+
+        [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+
+        ## Import
+
+        An existing datastore cluster can be imported into this resource
+
+        via the path to the cluster, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster
+        ```
+
+        The above would import the datastore cluster named `ds-cluster` that is located
+
+        in the `dc1` datacenter.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
@@ -1004,7 +1032,35 @@ class DatastoreCluster(pulumi.CustomResource):
                  args: DatastoreClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DatastoreCluster resource with the given unique name, props, and options.
+        The `DatastoreCluster` resource can be used to create and manage
+        datastore clusters. This can be used to create groups of datastores with a
+        shared management interface, allowing for resource control and load balancing
+        through Storage DRS.
+
+        For more information on vSphere datastore clusters and Storage DRS, see [this
+        page][ref-vsphere-datastore-clusters].
+
+        [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+
+        ## Import
+
+        An existing datastore cluster can be imported into this resource
+
+        via the path to the cluster, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster
+        ```
+
+        The above would import the datastore cluster named `ds-cluster` that is located
+
+        in the `dc1` datacenter.
+
         :param str resource_name: The name of the resource.
         :param DatastoreClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

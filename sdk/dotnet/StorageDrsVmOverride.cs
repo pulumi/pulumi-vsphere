@@ -9,6 +9,110 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.StorageDrsVmOverride` resource can be used to add a Storage DRS
+    /// override to a datastore cluster for a specific virtual machine. With this
+    /// resource, one can enable or disable Storage DRS, and control the automation
+    /// level and disk affinity for a single virtual machine without affecting the rest
+    /// of the datastore cluster.
+    /// 
+    /// For more information on vSphere datastore clusters and Storage DRS, see [this
+    /// page][ref-vsphere-datastore-clusters].
+    /// 
+    /// [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
+    ///     {
+    ///         Name = "datastore-cluster1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var memberDatastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore-cluster1-member1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var pool = VSphere.GetResourcePool.Invoke(new()
+    ///     {
+    ///         Name = "cluster1/Resources",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "public",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     {
+    ///         Name = "test",
+    ///         ResourcePoolId = pool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
+    ///         DatastoreId = memberDatastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         NumCpus = 2,
+    ///         Memory = 1024,
+    ///         GuestId = "otherLinux64Guest",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineDiskArgs
+    ///             {
+    ///                 Label = "disk0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var drsVmOverride = new VSphere.StorageDrsVmOverride("drs_vm_override", new()
+    ///     {
+    ///         DatastoreClusterId = datastoreCluster.Apply(getDatastoreClusterResult =&gt; getDatastoreClusterResult.Id),
+    ///         VirtualMachineId = vm.Id,
+    ///         SdrsEnabled = "false",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing override can be imported into this resource by
+    /// 
+    /// supplying both the path to the datastore cluster and the path to the virtual
+    /// 
+    /// machine to `pulumi import`. If no override exists, an error will be given.
+    /// 
+    /// An example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/storageDrsVmOverride:StorageDrsVmOverride drs_vm_override \
+    /// ```
+    /// 
+    ///   '{"datastore_cluster_path": "/dc1/datastore/ds-cluster", \
+    /// 
+    ///   "virtual_machine_path": "/dc1/vm/srv1"}'
+    /// </summary>
     [VSphereResourceType("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride")]
     public partial class StorageDrsVmOverride : global::Pulumi.CustomResource
     {

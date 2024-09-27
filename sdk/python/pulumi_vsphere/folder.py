@@ -285,7 +285,74 @@ class Folder(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Folder resource with the given unique name, props, and options.
+        The `Folder` resource can be used to manage vSphere inventory folders.
+        The resource supports creating folders of the 5 major types - datacenter
+        folders, host and cluster folders, virtual machine folders, storage folders,
+        and network folders.
+
+        Paths are always relative to the specific type of folder you are creating.
+        A subfolder is discovered by parsing the relative path specified in `path`, so
+        `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
+        as that folder exists.
+
+        ## Example Usage
+
+        The basic example below creates a virtual machine folder named
+        `test-folder` in the default datacenter's VM hierarchy.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter()
+        folder = vsphere.Folder("folder",
+            path="test-folder",
+            type="vm",
+            datacenter_id=datacenter.id)
+        ```
+
+        ### Example with subfolders
+
+        The below example builds off of the above by first creating a folder named
+        `test-parent`, and then locating `test-folder` in that
+        folder. To ensure the parent is created first, we create an interpolation
+        dependency off the parent's `path` attribute.
+
+        Note that if you change parents (for example, went from the above basic
+        configuration to this one), your folder will be moved to be under the correct
+        parent.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter()
+        parent = vsphere.Folder("parent",
+            path="test-parent",
+            type="vm",
+            datacenter_id=datacenter.id)
+        folder = vsphere.Folder("folder",
+            path=parent.path.apply(lambda path: f"{path}/test-folder"),
+            type="vm",
+            datacenter_id=datacenter.id)
+        ```
+
+        ## Import
+
+        An existing folder can be imported into this resource via
+
+        its full path, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+        ```
+
+        The above command would import the folder from our examples above, the VM
+
+        folder named `terraform-test-folder` located in the datacenter named
+
+        `default-dc`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
@@ -323,7 +390,74 @@ class Folder(pulumi.CustomResource):
                  args: FolderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Folder resource with the given unique name, props, and options.
+        The `Folder` resource can be used to manage vSphere inventory folders.
+        The resource supports creating folders of the 5 major types - datacenter
+        folders, host and cluster folders, virtual machine folders, storage folders,
+        and network folders.
+
+        Paths are always relative to the specific type of folder you are creating.
+        A subfolder is discovered by parsing the relative path specified in `path`, so
+        `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
+        as that folder exists.
+
+        ## Example Usage
+
+        The basic example below creates a virtual machine folder named
+        `test-folder` in the default datacenter's VM hierarchy.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter()
+        folder = vsphere.Folder("folder",
+            path="test-folder",
+            type="vm",
+            datacenter_id=datacenter.id)
+        ```
+
+        ### Example with subfolders
+
+        The below example builds off of the above by first creating a folder named
+        `test-parent`, and then locating `test-folder` in that
+        folder. To ensure the parent is created first, we create an interpolation
+        dependency off the parent's `path` attribute.
+
+        Note that if you change parents (for example, went from the above basic
+        configuration to this one), your folder will be moved to be under the correct
+        parent.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter()
+        parent = vsphere.Folder("parent",
+            path="test-parent",
+            type="vm",
+            datacenter_id=datacenter.id)
+        folder = vsphere.Folder("folder",
+            path=parent.path.apply(lambda path: f"{path}/test-folder"),
+            type="vm",
+            datacenter_id=datacenter.id)
+        ```
+
+        ## Import
+
+        An existing folder can be imported into this resource via
+
+        its full path, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+        ```
+
+        The above command would import the folder from our examples above, the VM
+
+        folder named `terraform-test-folder` located in the datacenter named
+
+        `default-dc`.
+
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -96,7 +96,7 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
         compute_cluster_id=cluster.id)
     host_rule = vsphere.ComputeClusterVmHostRule("host_rule",
         compute_cluster_id=cluster.id,
-        name="terraform-host-rule1",
+        name="pulumi-host-rule1",
         vm_group_name="vmgroup-01",
         affinity_host_group_name=host_group.name)
     ```
@@ -144,7 +144,7 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
         compute_cluster_id=cluster.id)
     host_rule = vsphere.ComputeClusterVmHostRule("host_rule",
         compute_cluster_id=cluster.id,
-        name="terraform-host-rule1",
+        name="pulumi-host-rule1",
         vm_group_name="vmgroup-01",
         affinity_host_group_name=host_group.name)
     ```
