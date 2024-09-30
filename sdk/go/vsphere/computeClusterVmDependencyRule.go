@@ -12,6 +12,169 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ComputeClusterVmDependencyRule` resource can be used to manage
+// VM dependency rules in a cluster, either created by the
+// `ComputeCluster` resource or looked up
+// by the `ComputeCluster` data source.
+//
+// A virtual machine dependency rule applies to vSphere HA, and allows
+// user-defined startup orders for virtual machines in the case of host failure.
+// Virtual machines are supplied via groups, which can be managed via the
+// `ComputeClusterVmGroup`
+// resource.
+//
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// connections.
+//
+// ## Example Usage
+//
+// The example below creates two virtual machine in a cluster using the
+// `VirtualMachine` resource in a cluster
+// looked up by the `ComputeCluster`
+// data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+//
+// > Note how `dependencyVmGroupName` and
+// `vmGroupName` are sourced off of the `name` attributes from
+// the `ComputeClusterVmGroup`
+// resource. This is to ensure that the rule is not created before the groups
+// exist, which may not possibly happen in the event that the names came from a
+// "static" source such as a variable.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "network1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vm1, err := vsphere.NewVirtualMachine(ctx, "vm1", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("test1"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(2048),
+//				GuestId:        pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vm2, err := vsphere.NewVirtualMachine(ctx, "vm2", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("test2"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(2048),
+//				GuestId:        pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			clusterVmGroup1, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group1", &vsphere.ComputeClusterVmGroupArgs{
+//				Name:             pulumi.String("test-cluster-vm-group1"),
+//				ComputeClusterId: pulumi.String(cluster.Id),
+//				VirtualMachineIds: pulumi.StringArray{
+//					vm1.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			clusterVmGroup2, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group2", &vsphere.ComputeClusterVmGroupArgs{
+//				Name:             pulumi.String("test-cluster-vm-group2"),
+//				ComputeClusterId: pulumi.String(cluster.Id),
+//				VirtualMachineIds: pulumi.StringArray{
+//					vm2.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewComputeClusterVmDependencyRule(ctx, "cluster_vm_dependency_rule", &vsphere.ComputeClusterVmDependencyRuleArgs{
+//				ComputeClusterId:      pulumi.String(cluster.Id),
+//				Name:                  pulumi.String("test-cluster-vm-dependency-rule"),
+//				DependencyVmGroupName: clusterVmGroup1.Name,
+//				VmGroupName:           clusterVmGroup2.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing rule can be imported into this resource by supplying
+//
+// both the path to the cluster, and the name the rule. If the name or cluster is
+//
+// not found, or if the rule is of a different type, an error will be returned. An
+//
+// example is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \
+// ```
+//
+//	'{"compute_cluster_path": "/dc1/host/cluster1", \
+//
+//	"name": "pulumi-test-cluster-vm-dependency-rule"}'
 type ComputeClusterVmDependencyRule struct {
 	pulumi.CustomResourceState
 

@@ -4,6 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.VirtualDisk` resource can be used to create virtual disks outside
+ * of any given `vsphere.VirtualMachine`
+ * resource. These disks can be attached to a virtual machine by creating a disk
+ * block with the `attach` parameter.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = vsphere.getDatacenter({
+ *     name: "datastore-01",
+ * });
+ * const virtualDisk = new vsphere.VirtualDisk("virtual_disk", {
+ *     size: 40,
+ *     type: "thin",
+ *     vmdkPath: "/foo/foo.vmdk",
+ *     createDirectories: true,
+ *     datacenter: datacenter.then(datacenter => datacenter.name),
+ *     datastore: datastoreVsphereDatastore.name,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing virtual disk can be imported into this resource
+ *
+ * via supplying the full datastore path to the virtual disk. An example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \
+ * ```
+ *
+ *   '{"virtual_disk_path": "/dc-01/[datastore-01]foo/bar.vmdk", \ "create_directories": "true"}'
+ *
+ * The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
+ *
+ * datastore of the `dc-01` datacenter with `create_directories` set as `true`.
+ */
 export class VirtualDisk extends pulumi.CustomResource {
     /**
      * Get an existing VirtualDisk resource's state with the given name, ID, and optional extra

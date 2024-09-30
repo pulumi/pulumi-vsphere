@@ -200,7 +200,55 @@ class ContentLibrary(pulumi.CustomResource):
                  subscription: Optional[pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']]] = None,
                  __props__=None):
         """
-        Create a ContentLibrary resource with the given unique name, props, and options.
+        The `ContentLibrary` resource can be used to manage content libraries.
+
+        > **NOTE:** This resource requires a vCenter Server instance and is not available on direct ESXi host connections.
+
+        ## Example Usage
+
+        The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter_a = vsphere.get_datacenter(name="dc-01-a")
+        publisher_datastore = vsphere.get_datastore(name="publisher-datastore",
+            datacenter_id=datacenter_a.id)
+        publisher_content_library = vsphere.ContentLibrary("publisher_content_library",
+            name="Publisher Content Library",
+            description="A publishing content library.",
+            storage_backings=[publisher_datastore.id])
+        ```
+
+        The next example creates a subscribed content library using the URL of the publisher content library as the source and the datastore named `subscriber-datastore` as the storage backing.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter_b = vsphere.get_datacenter(name="dc-01-b")
+        subscriber_datastore = vsphere.get_datastore(name="subscriber-datastore",
+            datacenter_id=datacenter_b.id)
+        subscriber_content_library = vsphere.ContentLibrary("subscriber_content_library",
+            name="Subscriber Content Library",
+            description="A subscribing content library.",
+            storage_backings=[subscriber_datastore.id],
+            subscription={
+                "subscription_url": "https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json",
+                "automatic_sync": True,
+                "on_demand": False,
+            })
+        ```
+
+        ## Import
+
+        An existing content library can be imported into this resource by supplying the content library ID. For example:
+
+        ```sh
+        $ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the content library.
@@ -216,7 +264,55 @@ class ContentLibrary(pulumi.CustomResource):
                  args: ContentLibraryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ContentLibrary resource with the given unique name, props, and options.
+        The `ContentLibrary` resource can be used to manage content libraries.
+
+        > **NOTE:** This resource requires a vCenter Server instance and is not available on direct ESXi host connections.
+
+        ## Example Usage
+
+        The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter_a = vsphere.get_datacenter(name="dc-01-a")
+        publisher_datastore = vsphere.get_datastore(name="publisher-datastore",
+            datacenter_id=datacenter_a.id)
+        publisher_content_library = vsphere.ContentLibrary("publisher_content_library",
+            name="Publisher Content Library",
+            description="A publishing content library.",
+            storage_backings=[publisher_datastore.id])
+        ```
+
+        The next example creates a subscribed content library using the URL of the publisher content library as the source and the datastore named `subscriber-datastore` as the storage backing.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter_b = vsphere.get_datacenter(name="dc-01-b")
+        subscriber_datastore = vsphere.get_datastore(name="subscriber-datastore",
+            datacenter_id=datacenter_b.id)
+        subscriber_content_library = vsphere.ContentLibrary("subscriber_content_library",
+            name="Subscriber Content Library",
+            description="A subscribing content library.",
+            storage_backings=[subscriber_datastore.id],
+            subscription={
+                "subscription_url": "https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json",
+                "automatic_sync": True,
+                "on_demand": False,
+            })
+        ```
+
+        ## Import
+
+        An existing content library can be imported into this resource by supplying the content library ID. For example:
+
+        ```sh
+        $ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
+        ```
+
         :param str resource_name: The name of the resource.
         :param ContentLibraryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

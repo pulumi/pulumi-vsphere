@@ -1,14 +1,17 @@
 package vsphere
 
 import (
+	"bytes"
 	"fmt"
 	"path"
+	"regexp"
 
 	_ "embed" // Allow embedding state
 
 	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	tks "github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -42,6 +45,7 @@ func Provider() tfbridge.ProviderInfo {
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		DocRules:         &info.DocRule{EditRules: editRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"allow_unverified_ssl": {
 				Default: &tfbridge.DefaultInfo{
@@ -137,4 +141,31 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	return prov
+}
+
+func editRules(defaults []info.DocsEdit) []info.DocsEdit {
+	textReplace := func(old, new string) info.DocsEdit {
+		o, n := []byte(old), []byte(new)
+		return info.DocsEdit{
+			Path: "*",
+			Edit: func(_ string, content []byte) ([]byte, error) {
+				return bytes.ReplaceAll(content, o, n), nil
+			},
+		}
+	}
+
+	docImportLink := regexp.MustCompile(`\[([^\]]+)\]\[docs-import\]`)
+	stripLink := info.DocsEdit{
+		Path: "*",
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return docImportLink.ReplaceAll(content, []byte("$1")), nil
+		},
+	}
+	return append(defaults,
+		textReplace("## Importing", "## Import"),
+		textReplace(`"terraform-`, `"pulumi-`),
+		stripLink, // Strip labeled markdown linkes of the form [<something>][docs-import]
+		textReplace("\n[docs-import]: https://www.terraform.io/docs/import/index.html\n", "\n"),
+		textReplace("\nAll information will be added to the Terraform state after import.\n", "\n"),
+	)
 }

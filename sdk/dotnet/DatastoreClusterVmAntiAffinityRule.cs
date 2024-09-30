@@ -9,6 +9,124 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.DatastoreClusterVmAntiAffinityRule` resource can be used to
+    /// manage VM anti-affinity rules in a datastore cluster, either created by the
+    /// `vsphere.DatastoreCluster` resource or looked up
+    /// by the `vsphere.DatastoreCluster` data source.
+    /// 
+    /// This rule can be used to tell a set to virtual machines to run on different
+    /// datastores within a cluster, useful for preventing single points of failure in
+    /// application cluster scenarios. When configured, Storage DRS will make a best effort to
+    /// ensure that the virtual machines run on different datastores, or prevent any
+    /// operation that would keep that from happening, depending on the value of the
+    /// `mandatory` flag.
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    /// connections.
+    /// 
+    /// &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The example below creates two virtual machines in a cluster using the
+    /// `vsphere.VirtualMachine` resource, creating the
+    /// virtual machines in the datastore cluster looked up by the
+    /// `vsphere.DatastoreCluster` data
+    /// source. It then creates an anti-affinity rule for these two virtual machines,
+    /// ensuring they will run on different datastores whenever possible.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
+    ///     {
+    ///         Name = "datastore-cluster1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "network1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vm = new List&lt;VSphere.VirtualMachine&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vm.Add(new VSphere.VirtualMachine($"vm-{range.Value}", new()
+    ///         {
+    ///             Name = $"test-{range.Value}",
+    ///             ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///             DatastoreClusterId = datastoreCluster.Apply(getDatastoreClusterResult =&gt; getDatastoreClusterResult.Id),
+    ///             NumCpus = 2,
+    ///             Memory = 2048,
+    ///             GuestId = "otherLinux64Guest",
+    ///             NetworkInterfaces = new[]
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///                 },
+    ///             },
+    ///             Disks = new[]
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 20,
+    ///                 },
+    ///             },
+    ///         }));
+    ///     }
+    ///     var clusterVmAntiAffinityRule = new VSphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", new()
+    ///     {
+    ///         Name = "test-datastore-cluster-vm-anti-affinity-rule",
+    ///         DatastoreClusterId = datastoreCluster.Apply(getDatastoreClusterResult =&gt; getDatastoreClusterResult.Id),
+    ///         VirtualMachineIds = new[]
+    ///         {
+    ///             vm.Select(__item =&gt; __item.Id).ToList(),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing rule can be imported into this resource by supplying
+    /// 
+    /// both the path to the cluster, and the name the rule. If the name or cluster is
+    /// 
+    /// not found, or if the rule is of a different type, an error will be returned. An
+    /// 
+    /// example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
+    /// ```
+    /// 
+    ///   '{"compute_cluster_path": "/dc1/datastore/cluster1", \
+    /// 
+    ///   "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+    /// </summary>
     [VSphereResourceType("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")]
     public partial class DatastoreClusterVmAntiAffinityRule : global::Pulumi.CustomResource
     {

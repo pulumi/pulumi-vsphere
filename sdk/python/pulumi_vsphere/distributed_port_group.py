@@ -1699,7 +1699,146 @@ class DistributedPortGroup(pulumi.CustomResource):
                  vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DistributedPortGroupVlanRangeArgs', 'DistributedPortGroupVlanRangeArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a DistributedPortGroup resource with the given unique name, props, and options.
+        The `DistributedPortGroup` resource can be used to manage
+        distributed port groups connected to vSphere Distributed Switches (VDS).
+        A vSphere Distributed Switch can be managed by the
+        `DistributedVirtualSwitch` resource.
+
+        Distributed port groups can be used as networks for virtual machines, allowing
+        the virtual machines to use the networking supplied by a vSphere Distributed
+        Switch, with a set of policies that apply to that individual network, if
+        desired.
+
+        * For an overview on vSphere networking concepts, refer to the vSphere
+        [product documentation][ref-vsphere-net-concepts].
+
+        * For more information on distributed port groups, refer to the vSphere
+        [product documentation][ref-vsphere-dvportgroup].
+
+        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+        [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
+        direct ESXi host connections.
+
+        ## Example Usage
+
+        The configuration below builds on the example given in the
+        `DistributedVirtualSwitch` resource by
+        adding the `DistributedPortGroup` resource, attaching itself to the
+        vSphere Distributed Switch and assigning VLAN ID 1000.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        network_interfaces = config.get_object("networkInterfaces")
+        if network_interfaces is None:
+            network_interfaces = [
+                "vmnic0",
+                "vmnic1",
+                "vmnic2",
+                "vmnic3",
+            ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter.id,
+            uplinks=[
+                "uplink1",
+                "uplink2",
+                "uplink3",
+                "uplink4",
+            ],
+            active_uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            standby_uplinks=[
+                "uplink3",
+                "uplink4",
+            ],
+            hosts=[
+                {
+                    "host_system_id": host[0].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[1].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[2].id,
+                    "devices": [network_interfaces],
+                },
+            ])
+        pg = vsphere.DistributedPortGroup("pg",
+            name="pg-01",
+            distributed_virtual_switch_uuid=vds.id,
+            vlan_id=1000)
+        ```
+
+        ### Overriding VDS policies
+
+        All of the default port policies available in the
+        `DistributedVirtualSwitch` resource can be overridden on the port
+        group level by specifying new settings for them.
+
+        As an example, we also take this example from the
+        `DistributedVirtualSwitch` resource where we manually specify our
+        uplink count and uplink order. While the vSphere Distributed Switch has a
+        default policy of using the first uplink as an active uplink and the second
+        one as a standby, the overridden port group policy means that both uplinks
+        will be used as active uplinks in this specific port group.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter["id"],
+            uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            active_uplinks=["uplink1"],
+            standby_uplinks=["uplink2"])
+        pg = vsphere.DistributedPortGroup("pg",
+            name="pg-01",
+            distributed_virtual_switch_uuid=vds.id,
+            vlan_id=1000,
+            active_uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            standby_uplinks=[])
+        ```
+
+        ## Import
+
+        An existing port group can be imported into this resource using
+
+        the managed object id of the port group, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/distributedPortGroup:DistributedPortGroup pg /dc-01/network/pg-01
+        ```
+
+        The above would import the port group named `pg-01` that is located in the `dc-01`
+
+        datacenter.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
@@ -1784,7 +1923,146 @@ class DistributedPortGroup(pulumi.CustomResource):
                  args: DistributedPortGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DistributedPortGroup resource with the given unique name, props, and options.
+        The `DistributedPortGroup` resource can be used to manage
+        distributed port groups connected to vSphere Distributed Switches (VDS).
+        A vSphere Distributed Switch can be managed by the
+        `DistributedVirtualSwitch` resource.
+
+        Distributed port groups can be used as networks for virtual machines, allowing
+        the virtual machines to use the networking supplied by a vSphere Distributed
+        Switch, with a set of policies that apply to that individual network, if
+        desired.
+
+        * For an overview on vSphere networking concepts, refer to the vSphere
+        [product documentation][ref-vsphere-net-concepts].
+
+        * For more information on distributed port groups, refer to the vSphere
+        [product documentation][ref-vsphere-dvportgroup].
+
+        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+        [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
+        direct ESXi host connections.
+
+        ## Example Usage
+
+        The configuration below builds on the example given in the
+        `DistributedVirtualSwitch` resource by
+        adding the `DistributedPortGroup` resource, attaching itself to the
+        vSphere Distributed Switch and assigning VLAN ID 1000.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        network_interfaces = config.get_object("networkInterfaces")
+        if network_interfaces is None:
+            network_interfaces = [
+                "vmnic0",
+                "vmnic1",
+                "vmnic2",
+                "vmnic3",
+            ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter.id,
+            uplinks=[
+                "uplink1",
+                "uplink2",
+                "uplink3",
+                "uplink4",
+            ],
+            active_uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            standby_uplinks=[
+                "uplink3",
+                "uplink4",
+            ],
+            hosts=[
+                {
+                    "host_system_id": host[0].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[1].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[2].id,
+                    "devices": [network_interfaces],
+                },
+            ])
+        pg = vsphere.DistributedPortGroup("pg",
+            name="pg-01",
+            distributed_virtual_switch_uuid=vds.id,
+            vlan_id=1000)
+        ```
+
+        ### Overriding VDS policies
+
+        All of the default port policies available in the
+        `DistributedVirtualSwitch` resource can be overridden on the port
+        group level by specifying new settings for them.
+
+        As an example, we also take this example from the
+        `DistributedVirtualSwitch` resource where we manually specify our
+        uplink count and uplink order. While the vSphere Distributed Switch has a
+        default policy of using the first uplink as an active uplink and the second
+        one as a standby, the overridden port group policy means that both uplinks
+        will be used as active uplinks in this specific port group.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter["id"],
+            uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            active_uplinks=["uplink1"],
+            standby_uplinks=["uplink2"])
+        pg = vsphere.DistributedPortGroup("pg",
+            name="pg-01",
+            distributed_virtual_switch_uuid=vds.id,
+            vlan_id=1000,
+            active_uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            standby_uplinks=[])
+        ```
+
+        ## Import
+
+        An existing port group can be imported into this resource using
+
+        the managed object id of the port group, via the following command:
+
+        ```sh
+        $ pulumi import vsphere:index/distributedPortGroup:DistributedPortGroup pg /dc-01/network/pg-01
+        ```
+
+        The above would import the port group named `pg-01` that is located in the `dc-01`
+
+        datacenter.
+
         :param str resource_name: The name of the resource.
         :param DistributedPortGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

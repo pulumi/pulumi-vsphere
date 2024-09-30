@@ -9,6 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.ComputeClusterHostGroup` resource can be used to manage groups
+    /// of hosts in a cluster, either created by the
+    /// `vsphere.ComputeCluster` resource or looked up
+    /// by the `vsphere.ComputeCluster` data source.
+    /// 
+    /// This resource mainly serves as an input to the
+    /// `vsphere.ComputeClusterVmHostRule`
+    /// resource - see the documentation for that resource for further details on how
+    /// to use host groups.
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    /// connections.
+    /// 
+    /// ## Import
+    /// 
+    /// An existing group can be imported into this resource by
+    /// 
+    /// supplying both the path to the cluster, and the name of the host group. If the
+    /// 
+    /// name or cluster is not found, or if the group is of a different type, an error
+    /// 
+    /// will be returned. An example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \
+    /// ```
+    /// 
+    ///   '{"compute_cluster_path": "/dc1/host/cluster1", \
+    /// 
+    ///   "name": "pulumi-test-cluster-host-group"}'
+    /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup")]
     public partial class ComputeClusterHostGroup : global::Pulumi.CustomResource
     {

@@ -12,6 +12,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// ### Additional Importing Requirements
+//
+// Many of the requirements for [cloning](#additional-requirements-and-notes-for-cloning) apply to importing. Although importing writes directly to the Terraform state, some rules can not be enforced during import time, so every effort should be made to ensure the correctness of the configuration before the import.
+//
+// The following requirements apply to import:
+//
+// * The disks must have a [`label`](#label) argument assigned in a convention matching `diskN`, starting with disk number 0, based on each virtual disk order on the SCSI bus. As an example, a disk on SCSI controller `0` with a unit number of `0` would be labeled as `disk0`, a disk on the same controller with a unit number of `1` would be `disk1`, but the next disk, which is on SCSI controller `1` with a unit number of `0`, still becomes `disk2`.
+//
+// * Disks are always imported with [`keep_on_remove`](#keep_on_remove) enabled until the first `pulumi up` run which will remove the setting for known disks. This process safeguards against naming or accounting mistakes in the disk configuration.
+//
+// * The storage controller count for the resource is set to the number of contiguous storage controllers found, starting with the controller at SCSI bus number `0`. If no storage controllers are discovered, the virtual machine is not eligible for import. For maximum compatibility, ensure that the virtual machine has the exact number of storage controllers needed and set the storage controller count accordingly.
+//
+// After importing, you should run `pulumi preview`. Unless you have changed anything else in the configuration that would cause other attributes to change. The only difference should be configuration-only changes, which are typically comprised of:
+//
+// * The [`imported`](#imported) flag will transition from `true` to `false`.
+//
+// * The [`keep_on_remove`](#keep_on_remove) of known disks will transition from `true` to `false`.
+//
+// * Configuration supplied in the [`clone`](#clone) block, if present, will be persisted to state. This initial persistence operation does not perform any cloning or customization actions, nor does it force a new resource. After the first apply operation, further changes to `clone` will force the creation of a new resource.
+//
+// These changes only update Terraform state when applied. Hence, it is safe to run when the virtual machine is running. If more settings are modified, you may need to plan maintenance accordingly for any necessary virtual machine re-configurations.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 

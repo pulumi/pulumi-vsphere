@@ -15,6 +15,137 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.ComputeClusterVmGroup` resource can be used to manage groups of
+ * virtual machines in a cluster, either created by the
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ * 
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+ * 
+ * This resource mainly serves as an input to the
+ * [`vsphere.ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
+ * and
+ * [`vsphere.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * resources. See the individual resource documentation pages for more information.
+ * 
+ * [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
+ * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+ * 
+ * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates two virtual machines in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machine in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source. It
+ * then creates a group from these two virtual machines.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import com.pulumi.vsphere.ComputeClusterVmGroup;
+ * import com.pulumi.vsphere.ComputeClusterVmGroupArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("datastore1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("network1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new VirtualMachine("vm-" + i, VirtualMachineArgs.builder()
+ *                 .name(String.format("test-%s", range.value()))
+ *                 .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *                 .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *                 .numCpus(2)
+ *                 .memory(2048)
+ *                 .guestId("otherLinux64Guest")
+ *                 .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                     .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                     .build())
+ *                 .disks(VirtualMachineDiskArgs.builder()
+ *                     .label("disk0")
+ *                     .size(20)
+ *                     .build())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var clusterVmGroup = new ComputeClusterVmGroup("clusterVmGroup", ComputeClusterVmGroupArgs.builder()
+ *             .name("test-cluster-vm-group")
+ *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .virtualMachineIds(vm.stream().map(element -> element.id()).collect(toList()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing group can be imported into this resource by
+ * 
+ * supplying both the path to the cluster, and the name of the VM group. If the
+ * 
+ * name or cluster is not found, or if the group is of a different type, an error
+ * 
+ * will be returned. An example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \
+ * ```
+ * 
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
+ * 
+ *   &#34;name&#34;: &#34;pulumi-test-cluster-vm-group&#34;}&#39;
+ * 
+ */
 @ResourceType(type="vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup")
 public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
     /**

@@ -12,6 +12,136 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ComputeClusterVmGroup` resource can be used to manage groups of
+// virtual machines in a cluster, either created by the
+// [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+// by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+//
+// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+//
+// This resource mainly serves as an input to the
+// [`ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
+// and
+// [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+// resources. See the individual resource documentation pages for more information.
+//
+// [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
+// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+//
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// connections.
+//
+// ## Example Usage
+//
+// The example below creates two virtual machines in a cluster using the
+// `VirtualMachine` resource, creating the
+// virtual machine in the cluster looked up by the
+// `ComputeCluster` data source. It
+// then creates a group from these two virtual machines.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// Name: pulumi.StringRef("dc-01"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+// Name: "datastore1",
+// DatacenterId: pulumi.StringRef(datacenter.Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+// Name: "cluster-01",
+// DatacenterId: pulumi.StringRef(datacenter.Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+// Name: "network1",
+// DatacenterId: pulumi.StringRef(datacenter.Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var vm []*vsphere.VirtualMachine
+//
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
+// Name: pulumi.Sprintf("test-%v", val0),
+// ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+// DatastoreId: pulumi.String(datastore.Id),
+// NumCpus: pulumi.Int(2),
+// Memory: pulumi.Int(2048),
+// GuestId: pulumi.String("otherLinux64Guest"),
+// NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+// &vsphere.VirtualMachineNetworkInterfaceArgs{
+// NetworkId: pulumi.String(network.Id),
+// },
+// },
+// Disks: vsphere.VirtualMachineDiskArray{
+// &vsphere.VirtualMachineDiskArgs{
+// Label: pulumi.String("disk0"),
+// Size: pulumi.Int(20),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// vm = append(vm, __res)
+// }
+// _, err = vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group", &vsphere.ComputeClusterVmGroupArgs{
+// Name: pulumi.String("test-cluster-vm-group"),
+// ComputeClusterId: pulumi.String(cluster.Id),
+// VirtualMachineIds: pulumi.StringArray{
+// pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:42,27-35)),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
+// ## Import
+//
+// # An existing group can be imported into this resource by
+//
+// supplying both the path to the cluster, and the name of the VM group. If the
+//
+// name or cluster is not found, or if the group is of a different type, an error
+//
+// will be returned. An example is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \
+// ```
+//
+//	'{"compute_cluster_path": "/dc1/host/cluster1", \
+//
+//	"name": "pulumi-test-cluster-vm-group"}'
 type ComputeClusterVmGroup struct {
 	pulumi.CustomResourceState
 

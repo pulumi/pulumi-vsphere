@@ -4,6 +4,83 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.StorageDrsVmOverride` resource can be used to add a Storage DRS
+ * override to a datastore cluster for a specific virtual machine. With this
+ * resource, one can enable or disable Storage DRS, and control the automation
+ * level and disk affinity for a single virtual machine without affecting the rest
+ * of the datastore cluster.
+ *
+ * For more information on vSphere datastore clusters and Storage DRS, see [this
+ * page][ref-vsphere-datastore-clusters].
+ *
+ * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastoreCluster = datacenter.then(datacenter => vsphere.getDatastoreCluster({
+ *     name: "datastore-cluster1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const memberDatastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-cluster1-member1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const pool = datacenter.then(datacenter => vsphere.getResourcePool({
+ *     name: "cluster1/Resources",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "public",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     name: "test",
+ *     resourcePoolId: pool.then(pool => pool.id),
+ *     datastoreId: memberDatastore.then(memberDatastore => memberDatastore.id),
+ *     numCpus: 2,
+ *     memory: 1024,
+ *     guestId: "otherLinux64Guest",
+ *     networkInterfaces: [{
+ *         networkId: network.then(network => network.id),
+ *     }],
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ * });
+ * const drsVmOverride = new vsphere.StorageDrsVmOverride("drs_vm_override", {
+ *     datastoreClusterId: datastoreCluster.then(datastoreCluster => datastoreCluster.id),
+ *     virtualMachineId: vm.id,
+ *     sdrsEnabled: "false",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing override can be imported into this resource by
+ *
+ * supplying both the path to the datastore cluster and the path to the virtual
+ *
+ * machine to `pulumi import`. If no override exists, an error will be given.
+ *
+ * An example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/storageDrsVmOverride:StorageDrsVmOverride drs_vm_override \
+ * ```
+ *
+ *   '{"datastore_cluster_path": "/dc1/datastore/ds-cluster", \
+ *
+ *   "virtual_machine_path": "/dc1/vm/srv1"}'
+ */
 export class StorageDrsVmOverride extends pulumi.CustomResource {
     /**
      * Get an existing StorageDrsVmOverride resource's state with the given name, ID, and optional extra

@@ -18,6 +18,167 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a VMware vSphere host resource. This represents an ESXi host that
+ * can be used either as a member of a cluster or as a standalone host.
+ * 
+ * ## Example Usage
+ * 
+ * ### Create a standalone host
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
+ * import com.pulumi.vsphere.Host;
+ * import com.pulumi.vsphere.HostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
+ *             .address("esx-01.example.com")
+ *             .insecure(true)
+ *             .build());
+ * 
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()
+ *             .hostname("esx-01.example.com")
+ *             .username("root")
+ *             .password("password")
+ *             .license("00000-00000-00000-00000-00000")
+ *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -> getHostThumbprintResult.id()))
+ *             .datacenter(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing host can be imported into this resource by supplying
+ * 
+ * the host&#39;s ID.
+ * 
+ * [docs-import]: /docs/import/index.html
+ * 
+ * Obtain the host&#39;s ID using the data source. For example:
+ * 
+ * hcl
+ * 
+ * data &#34;vsphere_datacenter&#34; &#34;datacenter&#34; {
+ * 
+ *   name = &#34;dc-01&#34;
+ * 
+ * }
+ * 
+ * data &#34;vsphere_host&#34; &#34;host&#34; {
+ * 
+ *   name          = &#34;esx-01.example.com&#34;
+ * 
+ *   datacenter_id = data.vsphere_datacenter.datacenter.id
+ * 
+ * }
+ * 
+ * output &#34;host_id&#34; {
+ * 
+ *   value = data.vsphere_host.host.id
+ * 
+ * }
+ * 
+ * Next, create a resource configuration, For example:
+ * 
+ * hcl
+ * 
+ * data &#34;vsphere_datacenter&#34; &#34;datacenter&#34; {
+ * 
+ *   name = &#34;dc-01&#34;
+ * 
+ * }
+ * 
+ * data &#34;vsphere_host_thumbprint&#34; &#34;thumbprint&#34; {
+ * 
+ *   address = &#34;esx-01.example.com&#34;
+ * 
+ *   insecure = true
+ * 
+ * }
+ * 
+ * resource &#34;vsphere_host&#34; &#34;esx-01&#34; {
+ * 
+ *   hostname   = &#34;esx-01.example.com&#34;
+ * 
+ *   username   = &#34;root&#34;
+ * 
+ *   password   = &#34;password&#34;
+ * 
+ *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
+ * 
+ *   datacenter = data.vsphere_datacenter.datacenter.id
+ * 
+ * }
+ * 
+ * hcl
+ * 
+ * resource &#34;vsphere_host&#34; &#34;esx-01&#34; {
+ * 
+ *   hostname   = &#34;esx-01.example.com&#34;
+ * 
+ *   username   = &#34;root&#34;
+ * 
+ *   password   = &#34;password&#34;
+ * 
+ *   license    = &#34;00000-00000-00000-00000-00000&#34;
+ * 
+ *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
+ * 
+ *   cluster    = data.vsphere_compute_cluster.cluster.id
+ * 
+ *   services {
+ * 
+ *     ntpd {
+ *     
+ *       enabled     = true
+ *     
+ *       policy      = &#34;on&#34;
+ *     
+ *       ntp_servers = [&#34;pool.ntp.org&#34;]
+ *     
+ *     }
+ * 
+ * }
+ * 
+ * console
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/host:Host esx-01 host-123
+ * ```
+ * 
+ * The above would import the host `esx-01.example.com` with the host ID `host-123`.
+ * 
+ */
 @ResourceType(type="vsphere:index/host:Host")
 public class Host extends com.pulumi.resources.CustomResource {
     /**

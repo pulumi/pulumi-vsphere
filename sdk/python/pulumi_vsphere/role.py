@@ -116,7 +116,20 @@ class Role(pulumi.CustomResource):
                  role_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        ## Import
+
+        An existing role can be imported into this resource by supplying the role id. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/role:Role role1 -709298051
+        ```
+
+        Use [`vsphere_role` data source][ref-vsphere-role-data-source]
+
+        to read information about system roles.
+
+        [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the role.
@@ -129,7 +142,20 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        ## Import
+
+        An existing role can be imported into this resource by supplying the role id. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/role:Role role1 -709298051
+        ```
+
+        Use [`vsphere_role` data source][ref-vsphere-role-data-source]
+
+        to read information about system roles.
+
+        [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
+
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

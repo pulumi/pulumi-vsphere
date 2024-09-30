@@ -14,6 +14,69 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.CustomAttribute` resource can be used to create and manage custom
+ * attributes, which allow users to associate user-specific meta-information with
+ * vSphere managed objects. Custom attribute values must be strings and are stored
+ * on the vCenter Server and not the managed object.
+ * 
+ * For more information about custom attributes, click [here][ext-custom-attributes].
+ * 
+ * [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
+ * 
+ * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+ * and require vCenter Server.
+ * 
+ * ## Example Usage
+ * 
+ * This example creates a custom attribute named `test-attribute`. The
+ * resulting custom attribute can be assigned to VMs only.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.CustomAttribute;
+ * import com.pulumi.vsphere.CustomAttributeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var attribute = new CustomAttribute("attribute", CustomAttributeArgs.builder()
+ *             .name("test-attribute")
+ *             .managedObjectType("VirtualMachine")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing custom attribute can be imported into this resource
+ * 
+ * via its name, using the following command:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
+ * ```
+ * 
+ */
 @ResourceType(type="vsphere:index/customAttribute:CustomAttribute")
 public class CustomAttribute extends com.pulumi.resources.CustomResource {
     /**

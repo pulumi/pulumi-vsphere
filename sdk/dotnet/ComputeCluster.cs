@@ -9,6 +9,95 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// &gt; **A note on the naming of this resource:** VMware refers to clusters of
+    /// hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
+    /// clusters_. All of these refer to the same kind of resource (with the latter two
+    /// referring to specific features of clustering). We use
+    /// `vsphere.ComputeCluster` to differentiate host clusters from _datastore
+    /// clusters_, which are clusters of datastores that can be used to distribute load
+    /// and ensure fault tolerance via distribution of virtual machines. Datastore
+    /// clusters can also be managed through the provider, via the
+    /// `vsphere.DatastoreCluster` resource.
+    /// 
+    /// The `vsphere.ComputeCluster` resource can be used to create and manage
+    /// clusters of hosts allowing for resource control of compute resources, load
+    /// balancing through DRS, and high availability through vSphere HA.
+    /// 
+    /// For more information on vSphere clusters and DRS, see [this
+    /// page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
+    /// page][ref-vsphere-ha-clusters].
+    /// 
+    /// [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+    /// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-availability/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on
+    /// direct ESXi connections.
+    /// 
+    /// ## Import
+    /// 
+    /// An existing cluster can be imported into this resource via the
+    /// 
+    /// path to the cluster, via the following command:
+    /// 
+    /// hcl
+    /// 
+    /// variable "datacenter" {
+    /// 
+    ///   default = "dc-01"
+    /// 
+    /// }
+    /// 
+    /// data "vsphere_datacenter" "datacenter" {
+    /// 
+    ///   name = var.datacenter
+    /// 
+    /// }
+    /// 
+    /// resource "vsphere_compute_cluster" "compute_cluster" {
+    /// 
+    ///   name            = "cluster-01"
+    /// 
+    ///   datacenter_id   = data.vsphere_datacenter.datacenter.id
+    /// 
+    /// }
+    /// 
+    /// hcl
+    /// 
+    /// resource "vsphere_compute_cluster" "compute_cluster" {
+    /// 
+    ///   name                      = "cluster-01"
+    /// 
+    ///   datacenter_id             = data.vsphere_datacenter.datacenter.id
+    /// 
+    ///   vsan_enabled              = true
+    /// 
+    ///   vsan_performance_enabled  = true
+    /// 
+    ///   host_system_ids           = [for host in data.vsphere_host.host : host.id]
+    /// 
+    ///   dpm_automation_level      = "automated"
+    /// 
+    ///   drs_automation_level      = "fullyAutomated"
+    /// 
+    ///   drs_enabled               = true
+    /// 
+    ///   ha_datastore_apd_response = "restartConservative"
+    /// 
+    ///   ha_datastore_pdl_response = "restartAggressive"
+    /// 
+    ///   ... etc.
+    /// 
+    /// console
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/computeCluster:ComputeCluster compute_cluster /dc-01/host/cluster-01
+    /// ```
+    /// 
+    /// The above would import the cluster named `cluster-01` that is located in
+    /// 
+    /// the `dc-01` datacenter.
+    /// </summary>
     [VSphereResourceType("vsphere:index/computeCluster:ComputeCluster")]
     public partial class ComputeCluster : global::Pulumi.CustomResource
     {

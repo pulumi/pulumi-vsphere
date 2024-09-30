@@ -4,6 +4,91 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.ContentLibraryItem` resource can be used to create items in a
+ * vSphere content library. The `fileUrl` must be accessible from the vSphere
+ * environment as it will be downloaded from the specified location and stored
+ * on the content library's storage backing.
+ *
+ * ## Example Usage
+ *
+ * The first example below imports an OVF Template to a content
+ * library.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const contentLibrary = vsphere.getContentLibrary({
+ *     name: "clb-01",
+ * });
+ * const contentLibraryItem = new vsphere.ContentLibraryItem("content_library_item", {
+ *     name: "ovf-linux-ubuntu-server-lts",
+ *     description: "Ubuntu Server LTS OVF Template",
+ *     fileUrl: "https://releases.example.com/ubuntu/ubuntu/ubuntu-live-server-amd64.ovf",
+ *     libraryId: contentLibrary.then(contentLibrary => contentLibrary.id),
+ * });
+ * ```
+ *
+ * The next example imports an .iso image to a content library.
+ *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const contentLibrary = vsphere.getContentLibrary({
+ *     name: "clb-01",
+ * });
+ * const contentLibraryItem = new vsphere.ContentLibraryItem("content_library_item", {
+ *     name: "iso-linux-ubuntu-server-lts",
+ *     description: "Ubuntu Server LTS .iso",
+ *     type: "iso",
+ *     fileUrl: "https://releases.example.com/ubuntu/ubuntu-live-server-amd64.iso",
+ *     libraryId: contentLibrary.then(contentLibrary => contentLibrary.id),
+ * });
+ * ```
+ *
+ * The last example imports a virtual machine image to a content library from an
+ * existing virtual machine.
+ *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const contentLibrary = vsphere.getContentLibrary({
+ *     name: "clb-01",
+ * });
+ * const contentLibraryItem = new vsphere.ContentLibraryItem("content_library_item", {
+ *     name: "tpl-linux-ubuntu-server-lts",
+ *     description: "Ubuntu Server LTS",
+ *     sourceUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     libraryId: contentLibrary.then(contentLibrary => contentLibrary.id),
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing content library item can be imported into this resource by
+ *
+ * supplying the content library ID. An example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/contentLibraryItem:ContentLibraryItem vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ * ```
+ */
 export class ContentLibraryItem extends pulumi.CustomResource {
     /**
      * Get an existing ContentLibraryItem resource's state with the given name, ID, and optional extra

@@ -229,7 +229,24 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a ComputeClusterVmAntiAffinityRule resource with the given unique name, props, and options.
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule vm_anti_affinity_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc-01/host/cluster-01", \\
+
+          "name": "vm-anti-affinity-rule"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
@@ -253,7 +270,24 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
                  args: ComputeClusterVmAntiAffinityRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ComputeClusterVmAntiAffinityRule resource with the given unique name, props, and options.
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule vm_anti_affinity_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc-01/host/cluster-01", \\
+
+          "name": "vm-anti-affinity-rule"}'
+
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmAntiAffinityRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

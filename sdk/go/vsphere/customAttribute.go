@@ -11,6 +11,57 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `CustomAttribute` resource can be used to create and manage custom
+// attributes, which allow users to associate user-specific meta-information with
+// vSphere managed objects. Custom attribute values must be strings and are stored
+// on the vCenter Server and not the managed object.
+//
+// For more information about custom attributes, click [here][ext-custom-attributes].
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+// and require vCenter Server.
+//
+// ## Example Usage
+//
+// This example creates a custom attribute named `test-attribute`. The
+// resulting custom attribute can be assigned to VMs only.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewCustomAttribute(ctx, "attribute", &vsphere.CustomAttributeArgs{
+//				Name:              pulumi.String("test-attribute"),
+//				ManagedObjectType: pulumi.String("VirtualMachine"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing custom attribute can be imported into this resource
+//
+// via its name, using the following command:
+//
+// ```sh
+// $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
+// ```
+//
+// [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
 type CustomAttribute struct {
 	pulumi.CustomResourceState
 

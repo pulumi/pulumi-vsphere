@@ -116,12 +116,23 @@ namespace Pulumi.VSphere
     /// in the cluster by looking up the virtual machine UUIDs from the
     /// `vsphere.VirtualMachine` data source.
     /// 
-    /// ## Importing
+    /// ## Import
     /// 
     /// An existing rule can be imported into this resource by supplying
+    /// 
     /// both the path to the cluster, and the name the rule. If the name or cluster is
+    /// 
     /// not found, or if the rule is of a different type, an error will be returned. An
+    /// 
     /// example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \
+    /// ```
+    /// 
+    ///   '{"compute_cluster_path": "/dc-01/host/cluster-01", \
+    /// 
+    ///   "name": "vm-affinity-rule"}'
     /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule")]
     public partial class ComputeClusterVmAffinityRule : global::Pulumi.CustomResource

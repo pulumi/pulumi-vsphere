@@ -18,6 +18,169 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.VappContainer` resource can be used to create and manage
+ * vApps.
+ * 
+ * For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
+ * 
+ * [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
+ * 
+ * ## Basic Example
+ * 
+ * The example below sets up a vSphere vApp container in a compute cluster which uses
+ * the default settings for CPU and memory reservations, shares, and limits. The compute cluster
+ * needs to already exist in vSphere.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.VappContainer;
+ * import com.pulumi.vsphere.VappContainerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var vappContainer = new VappContainer("vappContainer", VappContainerArgs.builder()
+ *             .name("vapp-01")
+ *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Example with a Virtual Machine
+ * 
+ * The example below builds off the basic example, but includes a virtual machine
+ * in the new vApp container. To accomplish this, the `resource_pool_id` of the
+ * virtual machine is set to the `id` of the vApp container.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.VappContainer;
+ * import com.pulumi.vsphere.VappContainerArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("datastore-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("VM Network")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var vappContainer = new VappContainer("vappContainer", VappContainerArgs.builder()
+ *             .name("vapp-01")
+ *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *             .build());
+ * 
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+ *             .name("foo")
+ *             .resourcePoolId(vappContainerVsphereVappContainer.id())
+ *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .numCpus(1)
+ *             .memory(1024)
+ *             .guestId("ubuntu64Guest")
+ *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .build())
+ *             .disks(VirtualMachineDiskArgs.builder()
+ *                 .label("disk0")
+ *                 .size(20)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing vApp container can be imported into this resource via
+ * 
+ * the path to the vApp container, using the following command:
+ * 
+ * Example:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/vappContainer:VappContainer vapp_container /dc-01/host/cluster-01/Resources/resource-pool-01/vapp-01
+ * ```
+ * 
+ * The example above would import the vApp container named `vapp-01` that is
+ * 
+ * located in the resource pool `resource-pool-01` that is part of the host cluster
+ * 
+ * `cluster-01` in the `dc-01` datacenter.
+ * 
+ */
 @ResourceType(type="vsphere:index/vappContainer:VappContainer")
 public class VappContainer extends com.pulumi.resources.CustomResource {
     /**

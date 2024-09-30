@@ -16,6 +16,79 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.VirtualDisk` resource can be used to create virtual disks outside
+ * of any given `vsphere.VirtualMachine`
+ * resource. These disks can be attached to a virtual machine by creating a disk
+ * block with the `attach` parameter.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.VirtualDisk;
+ * import com.pulumi.vsphere.VirtualDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var datastore = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("datastore-01")
+ *             .build());
+ * 
+ *         var virtualDisk = new VirtualDisk("virtualDisk", VirtualDiskArgs.builder()
+ *             .size(40)
+ *             .type("thin")
+ *             .vmdkPath("/foo/foo.vmdk")
+ *             .createDirectories(true)
+ *             .datacenter(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.name()))
+ *             .datastore(datastoreVsphereDatastore.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing virtual disk can be imported into this resource
+ * 
+ * via supplying the full datastore path to the virtual disk. An example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \
+ * ```
+ * 
+ *   &#39;{&#34;virtual_disk_path&#34;: &#34;/dc-01/[datastore-01]foo/bar.vmdk&#34;, \ &#34;create_directories&#34;: &#34;true&#34;}&#39;
+ * 
+ * The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
+ * 
+ * datastore of the `dc-01` datacenter with `create_directories` set as `true`.
+ * 
+ */
 @ResourceType(type="vsphere:index/virtualDisk:VirtualDisk")
 public class VirtualDisk extends com.pulumi.resources.CustomResource {
     /**

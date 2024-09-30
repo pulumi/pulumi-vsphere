@@ -16,6 +16,134 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.Folder` resource can be used to manage vSphere inventory folders.
+ * The resource supports creating folders of the 5 major types - datacenter
+ * folders, host and cluster folders, virtual machine folders, storage folders,
+ * and network folders.
+ * 
+ * Paths are always relative to the specific type of folder you are creating.
+ * A subfolder is discovered by parsing the relative path specified in `path`, so
+ * `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
+ * as that folder exists.
+ * 
+ * ## Example Usage
+ * 
+ * The basic example below creates a virtual machine folder named
+ * `test-folder` in the default datacenter&#39;s VM hierarchy.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.Folder;
+ * import com.pulumi.vsphere.FolderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter();
+ * 
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .path("test-folder")
+ *             .type("vm")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Example with subfolders
+ * 
+ * The below example builds off of the above by first creating a folder named
+ * `test-parent`, and then locating `test-folder` in that
+ * folder. To ensure the parent is created first, we create an interpolation
+ * dependency off the parent&#39;s `path` attribute.
+ * 
+ * Note that if you change parents (for example, went from the above basic
+ * configuration to this one), your folder will be moved to be under the correct
+ * parent.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.Folder;
+ * import com.pulumi.vsphere.FolderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter();
+ * 
+ *         var parent = new Folder("parent", FolderArgs.builder()
+ *             .path("test-parent")
+ *             .type("vm")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .path(parent.path().applyValue(path -> String.format("%s/test-folder", path)))
+ *             .type("vm")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing folder can be imported into this resource via
+ * 
+ * its full path, via the following command:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+ * ```
+ * 
+ * The above command would import the folder from our examples above, the VM
+ * 
+ * folder named `terraform-test-folder` located in the datacenter named
+ * 
+ * `default-dc`.
+ * 
+ */
 @ResourceType(type="vsphere:index/folder:Folder")
 public class Folder extends com.pulumi.resources.CustomResource {
     /**

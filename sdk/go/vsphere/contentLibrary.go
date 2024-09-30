@@ -12,6 +12,110 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ContentLibrary` resource can be used to manage content libraries.
+//
+// > **NOTE:** This resource requires a vCenter Server instance and is not available on direct ESXi host connections.
+//
+// ## Example Usage
+//
+// The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenterA, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01-a"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			publisherDatastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "publisher-datastore",
+//				DatacenterId: pulumi.StringRef(datacenterA.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewContentLibrary(ctx, "publisher_content_library", &vsphere.ContentLibraryArgs{
+//				Name:        pulumi.String("Publisher Content Library"),
+//				Description: pulumi.String("A publishing content library."),
+//				StorageBackings: pulumi.StringArray{
+//					pulumi.String(publisherDatastore.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The next example creates a subscribed content library using the URL of the publisher content library as the source and the datastore named `subscriber-datastore` as the storage backing.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenterB, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01-b"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			subscriberDatastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "subscriber-datastore",
+//				DatacenterId: pulumi.StringRef(datacenterB.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewContentLibrary(ctx, "subscriber_content_library", &vsphere.ContentLibraryArgs{
+//				Name:        pulumi.String("Subscriber Content Library"),
+//				Description: pulumi.String("A subscribing content library."),
+//				StorageBackings: pulumi.StringArray{
+//					pulumi.String(subscriberDatastore.Id),
+//				},
+//				Subscription: &vsphere.ContentLibrarySubscriptionArgs{
+//					SubscriptionUrl: pulumi.String("https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json"),
+//					AutomaticSync:   pulumi.Bool(true),
+//					OnDemand:        pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// An existing content library can be imported into this resource by supplying the content library ID. For example:
+//
+// ```sh
+// $ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
+// ```
 type ContentLibrary struct {
 	pulumi.CustomResourceState
 

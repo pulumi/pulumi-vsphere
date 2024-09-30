@@ -161,10 +161,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Importing
+ * ## Import
  * 
  * An existing host port group can be imported into this resource
+ * 
  * using the host port group&#39;s ID. An example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
+ * ```
  * 
  * The above would import the `management` host port group from host with ID `host-123`.
  * 

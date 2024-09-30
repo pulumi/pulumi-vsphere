@@ -12,6 +12,154 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `VappContainer` resource can be used to create and manage
+// vApps.
+//
+// For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
+//
+// ## Basic Example
+//
+// The example below sets up a vSphere vApp container in a compute cluster which uses
+// the default settings for CPU and memory reservations, shares, and limits. The compute cluster
+// needs to already exist in vSphere.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVappContainer(ctx, "vapp_container", &vsphere.VappContainerArgs{
+//				Name:                 pulumi.String("vapp-01"),
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Example with a Virtual Machine
+//
+// The example below builds off the basic example, but includes a virtual machine
+// in the new vApp container. To accomplish this, the `resourcePoolId` of the
+// virtual machine is set to the `id` of the vApp container.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "VM Network",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVappContainer(ctx, "vapp_container", &vsphere.VappContainerArgs{
+//				Name:                 pulumi.String("vapp-01"),
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("foo"),
+//				ResourcePoolId: pulumi.Any(vappContainerVsphereVappContainer.Id),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(1),
+//				Memory:         pulumi.Int(1024),
+//				GuestId:        pulumi.String("ubuntu64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing vApp container can be imported into this resource via
+//
+// the path to the vApp container, using the following command:
+//
+// Example:
+//
+// ```sh
+// $ pulumi import vsphere:index/vappContainer:VappContainer vapp_container /dc-01/host/cluster-01/Resources/resource-pool-01/vapp-01
+// ```
+//
+// # The example above would import the vApp container named `vapp-01` that is
+//
+// located in the resource pool `resource-pool-01` that is part of the host cluster
+//
+// `cluster-01` in the `dc-01` datacenter.
+//
+// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
 type VappContainer struct {
 	pulumi.CustomResourceState
 

@@ -168,7 +168,37 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ComputeClusterHostGroup resource with the given unique name, props, and options.
+        The `ComputeClusterHostGroup` resource can be used to manage groups
+        of hosts in a cluster, either created by the
+        `ComputeCluster` resource or looked up
+        by the `ComputeCluster` data source.
+
+        This resource mainly serves as an input to the
+        `ComputeClusterVmHostRule`
+        resource - see the documentation for that resource for further details on how
+        to use host groups.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Import
+
+        An existing group can be imported into this resource by
+
+        supplying both the path to the cluster, and the name of the host group. If the
+
+        name or cluster is not found, or if the group is of a different type, an error
+
+        will be returned. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-host-group"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
@@ -191,7 +221,37 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
                  args: ComputeClusterHostGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ComputeClusterHostGroup resource with the given unique name, props, and options.
+        The `ComputeClusterHostGroup` resource can be used to manage groups
+        of hosts in a cluster, either created by the
+        `ComputeCluster` resource or looked up
+        by the `ComputeCluster` data source.
+
+        This resource mainly serves as an input to the
+        `ComputeClusterVmHostRule`
+        resource - see the documentation for that resource for further details on how
+        to use host groups.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Import
+
+        An existing group can be imported into this resource by
+
+        supplying both the path to the cluster, and the name of the host group. If the
+
+        name or cluster is not found, or if the group is of a different type, an error
+
+        will be returned. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-host-group"}'
+
         :param str resource_name: The name of the resource.
         :param ComputeClusterHostGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

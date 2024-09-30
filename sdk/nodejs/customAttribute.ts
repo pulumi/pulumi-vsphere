@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.CustomAttribute` resource can be used to create and manage custom
+ * attributes, which allow users to associate user-specific meta-information with
+ * vSphere managed objects. Custom attribute values must be strings and are stored
+ * on the vCenter Server and not the managed object.
+ *
+ * For more information about custom attributes, click [here][ext-custom-attributes].
+ *
+ * [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
+ *
+ * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+ * and require vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * This example creates a custom attribute named `test-attribute`. The
+ * resulting custom attribute can be assigned to VMs only.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const attribute = new vsphere.CustomAttribute("attribute", {
+ *     name: "test-attribute",
+ *     managedObjectType: "VirtualMachine",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing custom attribute can be imported into this resource
+ *
+ * via its name, using the following command:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
+ * ```
+ */
 export class CustomAttribute extends pulumi.CustomResource {
     /**
      * Get an existing CustomAttribute resource's state with the given name, ID, and optional extra

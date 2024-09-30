@@ -16,6 +16,135 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.DatastoreClusterVmAntiAffinityRule` resource can be used to
+ * manage VM anti-affinity rules in a datastore cluster, either created by the
+ * `vsphere.DatastoreCluster` resource or looked up
+ * by the `vsphere.DatastoreCluster` data source.
+ * 
+ * This rule can be used to tell a set to virtual machines to run on different
+ * datastores within a cluster, useful for preventing single points of failure in
+ * application cluster scenarios. When configured, Storage DRS will make a best effort to
+ * ensure that the virtual machines run on different datastores, or prevent any
+ * operation that would keep that from happening, depending on the value of the
+ * `mandatory` flag.
+ * 
+ * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ * 
+ * &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates two virtual machines in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machines in the datastore cluster looked up by the
+ * `vsphere.DatastoreCluster` data
+ * source. It then creates an anti-affinity rule for these two virtual machines,
+ * ensuring they will run on different datastores whenever possible.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import com.pulumi.vsphere.DatastoreClusterVmAntiAffinityRule;
+ * import com.pulumi.vsphere.DatastoreClusterVmAntiAffinityRuleArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
+ *             .name("datastore-cluster1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("network1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new VirtualMachine("vm-" + i, VirtualMachineArgs.builder()
+ *                 .name(String.format("test-%s", range.value()))
+ *                 .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *                 .datastoreClusterId(datastoreCluster.applyValue(getDatastoreClusterResult -> getDatastoreClusterResult.id()))
+ *                 .numCpus(2)
+ *                 .memory(2048)
+ *                 .guestId("otherLinux64Guest")
+ *                 .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                     .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                     .build())
+ *                 .disks(VirtualMachineDiskArgs.builder()
+ *                     .label("disk0")
+ *                     .size(20)
+ *                     .build())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var clusterVmAntiAffinityRule = new DatastoreClusterVmAntiAffinityRule("clusterVmAntiAffinityRule", DatastoreClusterVmAntiAffinityRuleArgs.builder()
+ *             .name("test-datastore-cluster-vm-anti-affinity-rule")
+ *             .datastoreClusterId(datastoreCluster.applyValue(getDatastoreClusterResult -> getDatastoreClusterResult.id()))
+ *             .virtualMachineIds(vm.stream().map(element -> element.id()).collect(toList()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * An existing rule can be imported into this resource by supplying
+ * 
+ * both the path to the cluster, and the name the rule. If the name or cluster is
+ * 
+ * not found, or if the rule is of a different type, an error will be returned. An
+ * 
+ * example is below:
+ * 
+ * ```sh
+ * $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
+ * ```
+ * 
+ *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/datastore/cluster1&#34;, \
+ * 
+ *   &#34;name&#34;: &#34;pulumi-test-datastore-cluster-vm-anti-affinity-rule&#34;}&#39;
+ * 
+ */
 @ResourceType(type="vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")
 public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.CustomResource {
     /**

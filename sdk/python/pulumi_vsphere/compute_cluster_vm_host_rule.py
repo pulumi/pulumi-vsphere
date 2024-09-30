@@ -331,7 +331,40 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                  vm_group_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ComputeClusterVmHostRule resource with the given unique name, props, and options.
+        The `ComputeClusterVmHostRule` resource can be used to manage
+        VM-to-host rules in a cluster, either created by the
+        `ComputeCluster` resource or looked up
+        by the `ComputeCluster` data source.
+
+        This resource can create both _affinity rules_, where virtual machines run on
+        specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
+        outside of the ones specified in the rule. Virtual machines and hosts are
+        supplied via groups, which can be managed via the
+        `ComputeClusterVmGroup` and
+        `ComputeClusterHostGroup`
+        resources.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule cluster_vm_host_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-vm-host-rule"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] affinity_host_group_name: When this field is used, the virtual
@@ -366,7 +399,40 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                  args: ComputeClusterVmHostRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ComputeClusterVmHostRule resource with the given unique name, props, and options.
+        The `ComputeClusterVmHostRule` resource can be used to manage
+        VM-to-host rules in a cluster, either created by the
+        `ComputeCluster` resource or looked up
+        by the `ComputeCluster` data source.
+
+        This resource can create both _affinity rules_, where virtual machines run on
+        specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
+        outside of the ones specified in the rule. Virtual machines and hosts are
+        supplied via groups, which can be managed via the
+        `ComputeClusterVmGroup` and
+        `ComputeClusterHostGroup`
+        resources.
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Import
+
+        An existing rule can be imported into this resource by supplying
+
+        both the path to the cluster, and the name the rule. If the name or cluster is
+
+        not found, or if the rule is of a different type, an error will be returned. An
+
+        example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule cluster_vm_host_rule \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-vm-host-rule"}'
+
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmHostRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

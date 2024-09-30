@@ -46,7 +46,7 @@ namespace Pulumi.VSphere
         ///     var hostRule = new VSphere.ComputeClusterVmHostRule("host_rule", new()
         ///     {
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
-        ///         Name = "terraform-host-rule1",
+        ///         Name = "pulumi-host-rule1",
         ///         VmGroupName = "vmgroup-01",
         ///         AffinityHostGroupName = hostGroup.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
         ///     });
@@ -92,7 +92,7 @@ namespace Pulumi.VSphere
         ///     var hostRule = new VSphere.ComputeClusterVmHostRule("host_rule", new()
         ///     {
         ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
-        ///         Name = "terraform-host-rule1",
+        ///         Name = "pulumi-host-rule1",
         ///         VmGroupName = "vmgroup-01",
         ///         AffinityHostGroupName = hostGroup.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
         ///     });

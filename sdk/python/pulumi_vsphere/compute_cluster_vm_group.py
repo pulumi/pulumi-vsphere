@@ -188,7 +188,85 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a ComputeClusterVmGroup resource with the given unique name, props, and options.
+        The `ComputeClusterVmGroup` resource can be used to manage groups of
+        virtual machines in a cluster, either created by the
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+
+        This resource mainly serves as an input to the
+        [`ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
+        and
+        [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+        resources. See the individual resource documentation pages for more information.
+
+        [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
+        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Example Usage
+
+        The example below creates two virtual machines in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machine in the cluster looked up by the
+        `ComputeCluster` data source. It
+        then creates a group from these two virtual machines.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                name=f"test-{range['value']}",
+                resource_pool_id=cluster.resource_pool_id,
+                datastore_id=datastore.id,
+                num_cpus=2,
+                memory=2048,
+                guest_id="otherLinux64Guest",
+                network_interfaces=[{
+                    "network_id": network.id,
+                }],
+                disks=[{
+                    "label": "disk0",
+                    "size": 20,
+                }]))
+        cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
+            name="test-cluster-vm-group",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[[__item.id for __item in vm]])
+        ```
+
+        ## Import
+
+        An existing group can be imported into this resource by
+
+        supplying both the path to the cluster, and the name of the VM group. If the
+
+        name or cluster is not found, or if the group is of a different type, an error
+
+        will be returned. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-vm-group"}'
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
@@ -216,7 +294,85 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                  args: ComputeClusterVmGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ComputeClusterVmGroup resource with the given unique name, props, and options.
+        The `ComputeClusterVmGroup` resource can be used to manage groups of
+        virtual machines in a cluster, either created by the
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+
+        This resource mainly serves as an input to the
+        [`ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
+        and
+        [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+        resources. See the individual resource documentation pages for more information.
+
+        [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
+        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Example Usage
+
+        The example below creates two virtual machines in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machine in the cluster looked up by the
+        `ComputeCluster` data source. It
+        then creates a group from these two virtual machines.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                name=f"test-{range['value']}",
+                resource_pool_id=cluster.resource_pool_id,
+                datastore_id=datastore.id,
+                num_cpus=2,
+                memory=2048,
+                guest_id="otherLinux64Guest",
+                network_interfaces=[{
+                    "network_id": network.id,
+                }],
+                disks=[{
+                    "label": "disk0",
+                    "size": 20,
+                }]))
+        cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
+            name="test-cluster-vm-group",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[[__item.id for __item in vm]])
+        ```
+
+        ## Import
+
+        An existing group can be imported into this resource by
+
+        supplying both the path to the cluster, and the name of the VM group. If the
+
+        name or cluster is not found, or if the group is of a different type, an error
+
+        will be returned. An example is below:
+
+        ```sh
+        $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \\
+        ```
+
+          '{"compute_cluster_path": "/dc1/host/cluster1", \\
+
+          "name": "pulumi-test-cluster-vm-group"}'
+
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

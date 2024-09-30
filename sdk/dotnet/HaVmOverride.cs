@@ -9,6 +9,121 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.HaVmOverride` resource can be used to add an override for
+    /// vSphere HA settings on a cluster for a specific virtual machine. With this
+    /// resource, one can control specific HA settings so that they are different than
+    /// the cluster default, accommodating the needs of that specific virtual machine,
+    /// while not affecting the rest of the cluster.
+    /// 
+    /// For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
+    /// 
+    /// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-availability/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
+    /// 
+    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    /// connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The example below creates a virtual machine in a cluster using the
+    /// `vsphere.VirtualMachine` resource, creating the
+    /// virtual machine in the cluster looked up by the
+    /// `vsphere.ComputeCluster` data source.
+    /// 
+    /// Considering a scenario where this virtual machine is of high value to the
+    /// application or organization for which it does its work, it's been determined in
+    /// the event of a host failure, that this should be one of the first virtual
+    /// machines to be started by vSphere HA during recovery. Hence, it
+    /// `ha_vm_restart_priority` has been set to `highest`,
+    /// which, assuming that the default restart priority is `medium` and no other
+    /// virtual machine has been assigned the `highest` priority, will mean that this
+    /// VM will be started before any other virtual machine in the event of host
+    /// failure.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "network1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     {
+    ///         Name = "test",
+    ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         NumCpus = 2,
+    ///         Memory = 2048,
+    ///         GuestId = "otherLinux64Guest",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineDiskArgs
+    ///             {
+    ///                 Label = "disk0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var haVmOverride = new VSphere.HaVmOverride("ha_vm_override", new()
+    ///     {
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         VirtualMachineId = vm.Id,
+    ///         HaVmRestartPriority = "highest",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing override can be imported into this resource by
+    /// 
+    /// supplying both the path to the cluster, and the path to the virtual machine, to
+    /// 
+    /// `pulumi import`. If no override exists, an error will be given.  An example
+    /// 
+    /// is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \
+    /// ```
+    /// 
+    ///   '{"compute_cluster_path": "/dc1/host/cluster1", \
+    /// 
+    ///   "virtual_machine_path": "/dc1/vm/srv1"}'
+    /// </summary>
     [VSphereResourceType("vsphere:index/haVmOverride:HaVmOverride")]
     public partial class HaVmOverride : global::Pulumi.CustomResource
     {

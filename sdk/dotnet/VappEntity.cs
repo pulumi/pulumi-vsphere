@@ -9,6 +9,112 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.VappEntity` resource can be used to describe the behavior of an
+    /// entity (virtual machine or sub-vApp container) in a vApp container.
+    /// 
+    /// For more information on vSphere vApps, see [this
+    /// page][ref-vsphere-vapp].
+    /// 
+    /// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The basic example below sets up a vApp container and a virtual machine in a
+    /// compute cluster and then creates a vApp entity to change the virtual machine's
+    /// power on behavior in the vApp container.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var datacenter = config.Get("datacenter") ?? "dc-01";
+    ///     var cluster = config.Get("cluster") ?? "cluster-01";
+    ///     var datacenterGetDatacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = datacenter,
+    ///     });
+    /// 
+    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = cluster,
+    ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "network1",
+    ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore1",
+    ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vappContainer = new VSphere.VappContainer("vapp_container", new()
+    ///     {
+    ///         Name = "vapp-container-test",
+    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///     });
+    /// 
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     {
+    ///         Name = "virtual-machine-test",
+    ///         ResourcePoolId = vappContainer.Id,
+    ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         NumCpus = 2,
+    ///         Memory = 1024,
+    ///         GuestId = "ubuntu64Guest",
+    ///         Disks = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineDiskArgs
+    ///             {
+    ///                 Label = "disk0",
+    ///                 Size = 1,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var vappEntity = new VSphere.VappEntity("vapp_entity", new()
+    ///     {
+    ///         TargetId = vm.Moid,
+    ///         ContainerId = vappContainer.Id,
+    ///         StartAction = "none",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing vApp entity can be imported into this resource via
+    /// 
+    /// the ID of the vApp Entity.
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
+    /// ```
+    /// 
+    /// The above would import the vApp entity that governs the behavior of the virtual
+    /// 
+    /// machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
+    /// 
+    /// container with the [managed object ID][docs-about-morefs] res-456.
+    /// </summary>
     [VSphereResourceType("vsphere:index/vappEntity:VappEntity")]
     public partial class VappEntity : global::Pulumi.CustomResource
     {

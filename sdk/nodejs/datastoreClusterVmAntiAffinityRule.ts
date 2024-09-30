@@ -4,6 +4,95 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.DatastoreClusterVmAntiAffinityRule` resource can be used to
+ * manage VM anti-affinity rules in a datastore cluster, either created by the
+ * `vsphere.DatastoreCluster` resource or looked up
+ * by the `vsphere.DatastoreCluster` data source.
+ *
+ * This rule can be used to tell a set to virtual machines to run on different
+ * datastores within a cluster, useful for preventing single points of failure in
+ * application cluster scenarios. When configured, Storage DRS will make a best effort to
+ * ensure that the virtual machines run on different datastores, or prevent any
+ * operation that would keep that from happening, depending on the value of the
+ * `mandatory` flag.
+ *
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ *
+ * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+ *
+ * ## Example Usage
+ *
+ * The example below creates two virtual machines in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machines in the datastore cluster looked up by the
+ * `vsphere.DatastoreCluster` data
+ * source. It then creates an anti-affinity rule for these two virtual machines,
+ * ensuring they will run on different datastores whenever possible.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastoreCluster = datacenter.then(datacenter => vsphere.getDatastoreCluster({
+ *     name: "datastore-cluster1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "network1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vm: vsphere.VirtualMachine[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     vm.push(new vsphere.VirtualMachine(`vm-${range.value}`, {
+ *         name: `test-${range.value}`,
+ *         resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
+ *         datastoreClusterId: datastoreCluster.then(datastoreCluster => datastoreCluster.id),
+ *         numCpus: 2,
+ *         memory: 2048,
+ *         guestId: "otherLinux64Guest",
+ *         networkInterfaces: [{
+ *             networkId: network.then(network => network.id),
+ *         }],
+ *         disks: [{
+ *             label: "disk0",
+ *             size: 20,
+ *         }],
+ *     }));
+ * }
+ * const clusterVmAntiAffinityRule = new vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
+ *     name: "test-datastore-cluster-vm-anti-affinity-rule",
+ *     datastoreClusterId: datastoreCluster.then(datastoreCluster => datastoreCluster.id),
+ *     virtualMachineIds: [vm.map(__item => __item.id)],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing rule can be imported into this resource by supplying
+ *
+ * both the path to the cluster, and the name the rule. If the name or cluster is
+ *
+ * not found, or if the rule is of a different type, an error will be returned. An
+ *
+ * example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
+ * ```
+ *
+ *   '{"compute_cluster_path": "/dc1/datastore/cluster1", \
+ *
+ *   "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+ */
 export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     /**
      * Get an existing DatastoreClusterVmAntiAffinityRule resource's state with the given name, ID, and optional extra

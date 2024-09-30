@@ -12,6 +12,152 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ContentLibraryItem` resource can be used to create items in a
+// vSphere content library. The `fileUrl` must be accessible from the vSphere
+// environment as it will be downloaded from the specified location and stored
+// on the content library's storage backing.
+//
+// ## Example Usage
+//
+// The first example below imports an OVF Template to a content
+// library.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			contentLibrary, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+//				Name: "clb-01",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewContentLibraryItem(ctx, "content_library_item", &vsphere.ContentLibraryItemArgs{
+//				Name:        pulumi.String("ovf-linux-ubuntu-server-lts"),
+//				Description: pulumi.String("Ubuntu Server LTS OVF Template"),
+//				FileUrl:     pulumi.String("https://releases.example.com/ubuntu/ubuntu/ubuntu-live-server-amd64.ovf"),
+//				LibraryId:   pulumi.String(contentLibrary.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The next example imports an .iso image to a content library.
+//
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			contentLibrary, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+//				Name: "clb-01",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewContentLibraryItem(ctx, "content_library_item", &vsphere.ContentLibraryItemArgs{
+//				Name:        pulumi.String("iso-linux-ubuntu-server-lts"),
+//				Description: pulumi.String("Ubuntu Server LTS .iso"),
+//				Type:        pulumi.String("iso"),
+//				FileUrl:     pulumi.String("https://releases.example.com/ubuntu/ubuntu-live-server-amd64.iso"),
+//				LibraryId:   pulumi.String(contentLibrary.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The last example imports a virtual machine image to a content library from an
+// existing virtual machine.
+//
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			contentLibrary, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+//				Name: "clb-01",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewContentLibraryItem(ctx, "content_library_item", &vsphere.ContentLibraryItemArgs{
+//				Name:        pulumi.String("tpl-linux-ubuntu-server-lts"),
+//				Description: pulumi.String("Ubuntu Server LTS"),
+//				SourceUuid:  pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				LibraryId:   pulumi.String(contentLibrary.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # An existing content library item can be imported into this resource by
+//
+// supplying the content library ID. An example is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/contentLibraryItem:ContentLibraryItem vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+// ```
 type ContentLibraryItem struct {
 	pulumi.CustomResourceState
 

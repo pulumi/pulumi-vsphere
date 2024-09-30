@@ -12,6 +12,134 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `DatastoreClusterVmAntiAffinityRule` resource can be used to
+// manage VM anti-affinity rules in a datastore cluster, either created by the
+// `DatastoreCluster` resource or looked up
+// by the `DatastoreCluster` data source.
+//
+// This rule can be used to tell a set to virtual machines to run on different
+// datastores within a cluster, useful for preventing single points of failure in
+// application cluster scenarios. When configured, Storage DRS will make a best effort to
+// ensure that the virtual machines run on different datastores, or prevent any
+// operation that would keep that from happening, depending on the value of the
+// `mandatory` flag.
+//
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// connections.
+//
+// > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+//
+// ## Example Usage
+//
+// The example below creates two virtual machines in a cluster using the
+// `VirtualMachine` resource, creating the
+// virtual machines in the datastore cluster looked up by the
+// `DatastoreCluster` data
+// source. It then creates an anti-affinity rule for these two virtual machines,
+// ensuring they will run on different datastores whenever possible.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// Name: pulumi.StringRef("dc-01"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// datastoreCluster, err := vsphere.LookupDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
+// Name: "datastore-cluster1",
+// DatacenterId: pulumi.StringRef(datacenter.Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+// Name: "cluster-01",
+// DatacenterId: pulumi.StringRef(datacenter.Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+// Name: "network1",
+// DatacenterId: pulumi.StringRef(datacenter.Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var vm []*vsphere.VirtualMachine
+//
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
+// Name: pulumi.Sprintf("test-%v", val0),
+// ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+// DatastoreClusterId: pulumi.String(datastoreCluster.Id),
+// NumCpus: pulumi.Int(2),
+// Memory: pulumi.Int(2048),
+// GuestId: pulumi.String("otherLinux64Guest"),
+// NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+// &vsphere.VirtualMachineNetworkInterfaceArgs{
+// NetworkId: pulumi.String(network.Id),
+// },
+// },
+// Disks: vsphere.VirtualMachineDiskArray{
+// &vsphere.VirtualMachineDiskArgs{
+// Label: pulumi.String("disk0"),
+// Size: pulumi.Int(20),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// vm = append(vm, __res)
+// }
+// _, err = vsphere.NewDatastoreClusterVmAntiAffinityRule(ctx, "cluster_vm_anti_affinity_rule", &vsphere.DatastoreClusterVmAntiAffinityRuleArgs{
+// Name: pulumi.String("test-datastore-cluster-vm-anti-affinity-rule"),
+// DatastoreClusterId: pulumi.String(datastoreCluster.Id),
+// VirtualMachineIds: pulumi.StringArray{
+// pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:42,28-36)),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
+// ## Import
+//
+// # An existing rule can be imported into this resource by supplying
+//
+// both the path to the cluster, and the name the rule. If the name or cluster is
+//
+// not found, or if the rule is of a different type, an error will be returned. An
+//
+// example is below:
+//
+// ```sh
+// $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
+// ```
+//
+//	'{"compute_cluster_path": "/dc1/datastore/cluster1", \
+//
+//	"name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
 type DatastoreClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 

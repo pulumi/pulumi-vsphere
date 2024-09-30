@@ -9,6 +9,124 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.ContentLibraryItem` resource can be used to create items in a
+    /// vSphere content library. The `file_url` must be accessible from the vSphere
+    /// environment as it will be downloaded from the specified location and stored
+    /// on the content library's storage backing.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The first example below imports an OVF Template to a content
+    /// library.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+    ///     {
+    ///         Name = "clb-01",
+    ///     });
+    /// 
+    ///     var contentLibraryItem = new VSphere.ContentLibraryItem("content_library_item", new()
+    ///     {
+    ///         Name = "ovf-linux-ubuntu-server-lts",
+    ///         Description = "Ubuntu Server LTS OVF Template",
+    ///         FileUrl = "https://releases.example.com/ubuntu/ubuntu/ubuntu-live-server-amd64.ovf",
+    ///         LibraryId = contentLibrary.Apply(getContentLibraryResult =&gt; getContentLibraryResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The next example imports an .iso image to a content library.
+    /// 
+    /// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+    ///     {
+    ///         Name = "clb-01",
+    ///     });
+    /// 
+    ///     var contentLibraryItem = new VSphere.ContentLibraryItem("content_library_item", new()
+    ///     {
+    ///         Name = "iso-linux-ubuntu-server-lts",
+    ///         Description = "Ubuntu Server LTS .iso",
+    ///         Type = "iso",
+    ///         FileUrl = "https://releases.example.com/ubuntu/ubuntu-live-server-amd64.iso",
+    ///         LibraryId = contentLibrary.Apply(getContentLibraryResult =&gt; getContentLibraryResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The last example imports a virtual machine image to a content library from an
+    /// existing virtual machine.
+    /// 
+    /// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+    ///     {
+    ///         Name = "clb-01",
+    ///     });
+    /// 
+    ///     var contentLibraryItem = new VSphere.ContentLibraryItem("content_library_item", new()
+    ///     {
+    ///         Name = "tpl-linux-ubuntu-server-lts",
+    ///         Description = "Ubuntu Server LTS",
+    ///         SourceUuid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         LibraryId = contentLibrary.Apply(getContentLibraryResult =&gt; getContentLibraryResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing content library item can be imported into this resource by
+    /// 
+    /// supplying the content library ID. An example is below:
+    /// 
+    /// ```sh
+    /// $ pulumi import vsphere:index/contentLibraryItem:ContentLibraryItem vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    /// ```
+    /// </summary>
     [VSphereResourceType("vsphere:index/contentLibraryItem:ContentLibraryItem")]
     public partial class ContentLibraryItem : global::Pulumi.CustomResource
     {

@@ -406,7 +406,77 @@ class VappEntity(pulumi.CustomResource):
                  wait_for_guest: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a VappEntity resource with the given unique name, props, and options.
+        The `VappEntity` resource can be used to describe the behavior of an
+        entity (virtual machine or sub-vApp container) in a vApp container.
+
+        For more information on vSphere vApps, see [this
+        page][ref-vsphere-vapp].
+
+        [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+
+        ## Example Usage
+
+        The basic example below sets up a vApp container and a virtual machine in a
+        compute cluster and then creates a vApp entity to change the virtual machine's
+        power on behavior in the vApp container.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        cluster = config.get("cluster")
+        if cluster is None:
+            cluster = "cluster-01"
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        compute_cluster = vsphere.get_compute_cluster(name=cluster,
+            datacenter_id=datacenter_get_datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter_get_datacenter.id)
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter_get_datacenter.id)
+        vapp_container = vsphere.VappContainer("vapp_container",
+            name="vapp-container-test",
+            parent_resource_pool_id=compute_cluster.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="virtual-machine-test",
+            resource_pool_id=vapp_container.id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=1024,
+            guest_id="ubuntu64Guest",
+            disks=[{
+                "label": "disk0",
+                "size": 1,
+            }],
+            network_interfaces=[{
+                "network_id": network.id,
+            }])
+        vapp_entity = vsphere.VappEntity("vapp_entity",
+            target_id=vm.moid,
+            container_id=vapp_container.id,
+            start_action="none")
+        ```
+
+        ## Import
+
+        An existing vApp entity can be imported into this resource via
+
+        the ID of the vApp Entity.
+
+        ```sh
+        $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
+        ```
+
+        The above would import the vApp entity that governs the behavior of the virtual
+
+        machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
+
+        container with the [managed object ID][docs-about-morefs] res-456.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_id: Managed object ID of the vApp
@@ -438,7 +508,77 @@ class VappEntity(pulumi.CustomResource):
                  args: VappEntityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VappEntity resource with the given unique name, props, and options.
+        The `VappEntity` resource can be used to describe the behavior of an
+        entity (virtual machine or sub-vApp container) in a vApp container.
+
+        For more information on vSphere vApps, see [this
+        page][ref-vsphere-vapp].
+
+        [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+
+        ## Example Usage
+
+        The basic example below sets up a vApp container and a virtual machine in a
+        compute cluster and then creates a vApp entity to change the virtual machine's
+        power on behavior in the vApp container.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        cluster = config.get("cluster")
+        if cluster is None:
+            cluster = "cluster-01"
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        compute_cluster = vsphere.get_compute_cluster(name=cluster,
+            datacenter_id=datacenter_get_datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter_get_datacenter.id)
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter_get_datacenter.id)
+        vapp_container = vsphere.VappContainer("vapp_container",
+            name="vapp-container-test",
+            parent_resource_pool_id=compute_cluster.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="virtual-machine-test",
+            resource_pool_id=vapp_container.id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=1024,
+            guest_id="ubuntu64Guest",
+            disks=[{
+                "label": "disk0",
+                "size": 1,
+            }],
+            network_interfaces=[{
+                "network_id": network.id,
+            }])
+        vapp_entity = vsphere.VappEntity("vapp_entity",
+            target_id=vm.moid,
+            container_id=vapp_container.id,
+            start_action="none")
+        ```
+
+        ## Import
+
+        An existing vApp entity can be imported into this resource via
+
+        the ID of the vApp Entity.
+
+        ```sh
+        $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
+        ```
+
+        The above would import the vApp entity that governs the behavior of the virtual
+
+        machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
+
+        container with the [managed object ID][docs-about-morefs] res-456.
+
         :param str resource_name: The name of the resource.
         :param VappEntityArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * An existing rule can be imported into this resource by supplying
+ *
+ * both the path to the cluster, and the name the rule. If the name or cluster is
+ *
+ * not found, or if the rule is of a different type, an error will be returned. An
+ *
+ * example is below:
+ *
+ * ```sh
+ * $ pulumi import vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule vm_anti_affinity_rule \
+ * ```
+ *
+ *   '{"compute_cluster_path": "/dc-01/host/cluster-01", \
+ *
+ *   "name": "vm-anti-affinity-rule"}'
+ */
 export class ComputeClusterVmAntiAffinityRule extends pulumi.CustomResource {
     /**
      * Get an existing ComputeClusterVmAntiAffinityRule resource's state with the given name, ID, and optional extra
