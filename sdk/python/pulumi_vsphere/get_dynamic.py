@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -123,9 +128,6 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_dynamic)
 def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -166,4 +168,14 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
            The managed object types can be found in the managed object type section
            [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['nameRegex'] = name_regex
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDynamic:getDynamic', __args__, opts=opts, typ=GetDynamicResult)
+    return __ret__.apply(lambda __response__: GetDynamicResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        type=pulumi.get(__response__, 'type')))

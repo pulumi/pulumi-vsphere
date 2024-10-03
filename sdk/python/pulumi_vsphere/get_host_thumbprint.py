@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -109,9 +114,6 @@ def get_host_thumbprint(address: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         insecure=pulumi.get(__ret__, 'insecure'),
         port=pulumi.get(__ret__, 'port'))
-
-
-@_utilities.lift_output_func(get_host_thumbprint)
 def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
                                insecure: Optional[pulumi.Input[Optional[bool]]] = None,
                                port: Optional[pulumi.Input[Optional[str]]] = None,
@@ -138,4 +140,14 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
            Default: `false`
     :param str port: The port to use connecting to the ESXi host. Default: 443
     """
-    ...
+    __args__ = dict()
+    __args__['address'] = address
+    __args__['insecure'] = insecure
+    __args__['port'] = port
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getHostThumbprint:getHostThumbprint', __args__, opts=opts, typ=GetHostThumbprintResult)
+    return __ret__.apply(lambda __response__: GetHostThumbprintResult(
+        address=pulumi.get(__response__, 'address'),
+        id=pulumi.get(__response__, 'id'),
+        insecure=pulumi.get(__response__, 'insecure'),
+        port=pulumi.get(__response__, 'port')))

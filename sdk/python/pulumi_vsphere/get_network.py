@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -132,9 +137,6 @@ def get_network(datacenter_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_network)
 def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
                        distributed_virtual_switch_uuid: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
@@ -168,4 +170,15 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
            the distributed virtual switch ID.
     :param str name: The name of the network. This can be a name or path.
     """
-    ...
+    __args__ = dict()
+    __args__['datacenterId'] = datacenter_id
+    __args__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
+    return __ret__.apply(lambda __response__: GetNetworkResult(
+        datacenter_id=pulumi.get(__response__, 'datacenter_id'),
+        distributed_virtual_switch_uuid=pulumi.get(__response__, 'distributed_virtual_switch_uuid'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        type=pulumi.get(__response__, 'type')))

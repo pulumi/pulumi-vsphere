@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -961,9 +966,6 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         vapp_transports=pulumi.get(__ret__, 'vapp_transports'),
         vbs_enabled=pulumi.get(__ret__, 'vbs_enabled'),
         vvtd_enabled=pulumi.get(__ret__, 'vvtd_enabled'))
-
-
-@_utilities.lift_output_func(get_virtual_machine)
 def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optional[str]]] = None,
                                annotation: Optional[pulumi.Input[Optional[str]]] = None,
                                boot_delay: Optional[pulumi.Input[Optional[int]]] = None,
@@ -1089,4 +1091,128 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     :param str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
            are not required if this is specified.
     """
-    ...
+    __args__ = dict()
+    __args__['alternateGuestName'] = alternate_guest_name
+    __args__['annotation'] = annotation
+    __args__['bootDelay'] = boot_delay
+    __args__['bootRetryDelay'] = boot_retry_delay
+    __args__['bootRetryEnabled'] = boot_retry_enabled
+    __args__['cpuHotAddEnabled'] = cpu_hot_add_enabled
+    __args__['cpuHotRemoveEnabled'] = cpu_hot_remove_enabled
+    __args__['cpuLimit'] = cpu_limit
+    __args__['cpuPerformanceCountersEnabled'] = cpu_performance_counters_enabled
+    __args__['cpuReservation'] = cpu_reservation
+    __args__['cpuShareCount'] = cpu_share_count
+    __args__['cpuShareLevel'] = cpu_share_level
+    __args__['datacenterId'] = datacenter_id
+    __args__['efiSecureBootEnabled'] = efi_secure_boot_enabled
+    __args__['enableDiskUuid'] = enable_disk_uuid
+    __args__['enableLogging'] = enable_logging
+    __args__['eptRviMode'] = ept_rvi_mode
+    __args__['extraConfig'] = extra_config
+    __args__['extraConfigRebootRequired'] = extra_config_reboot_required
+    __args__['firmware'] = firmware
+    __args__['folder'] = folder
+    __args__['guestId'] = guest_id
+    __args__['hardwareVersion'] = hardware_version
+    __args__['hvMode'] = hv_mode
+    __args__['ideControllerScanCount'] = ide_controller_scan_count
+    __args__['latencySensitivity'] = latency_sensitivity
+    __args__['memory'] = memory
+    __args__['memoryHotAddEnabled'] = memory_hot_add_enabled
+    __args__['memoryLimit'] = memory_limit
+    __args__['memoryReservation'] = memory_reservation
+    __args__['memoryReservationLockedToMax'] = memory_reservation_locked_to_max
+    __args__['memoryShareCount'] = memory_share_count
+    __args__['memoryShareLevel'] = memory_share_level
+    __args__['moid'] = moid
+    __args__['name'] = name
+    __args__['nestedHvEnabled'] = nested_hv_enabled
+    __args__['numCoresPerSocket'] = num_cores_per_socket
+    __args__['numCpus'] = num_cpus
+    __args__['replaceTrigger'] = replace_trigger
+    __args__['runToolsScriptsAfterPowerOn'] = run_tools_scripts_after_power_on
+    __args__['runToolsScriptsAfterResume'] = run_tools_scripts_after_resume
+    __args__['runToolsScriptsBeforeGuestReboot'] = run_tools_scripts_before_guest_reboot
+    __args__['runToolsScriptsBeforeGuestShutdown'] = run_tools_scripts_before_guest_shutdown
+    __args__['runToolsScriptsBeforeGuestStandby'] = run_tools_scripts_before_guest_standby
+    __args__['sataControllerScanCount'] = sata_controller_scan_count
+    __args__['scsiControllerScanCount'] = scsi_controller_scan_count
+    __args__['storagePolicyId'] = storage_policy_id
+    __args__['swapPlacementPolicy'] = swap_placement_policy
+    __args__['syncTimeWithHost'] = sync_time_with_host
+    __args__['syncTimeWithHostPeriodically'] = sync_time_with_host_periodically
+    __args__['toolsUpgradePolicy'] = tools_upgrade_policy
+    __args__['uuid'] = uuid
+    __args__['vapp'] = vapp
+    __args__['vbsEnabled'] = vbs_enabled
+    __args__['vvtdEnabled'] = vvtd_enabled
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getVirtualMachine:getVirtualMachine', __args__, opts=opts, typ=GetVirtualMachineResult)
+    return __ret__.apply(lambda __response__: GetVirtualMachineResult(
+        alternate_guest_name=pulumi.get(__response__, 'alternate_guest_name'),
+        annotation=pulumi.get(__response__, 'annotation'),
+        boot_delay=pulumi.get(__response__, 'boot_delay'),
+        boot_retry_delay=pulumi.get(__response__, 'boot_retry_delay'),
+        boot_retry_enabled=pulumi.get(__response__, 'boot_retry_enabled'),
+        change_version=pulumi.get(__response__, 'change_version'),
+        cpu_hot_add_enabled=pulumi.get(__response__, 'cpu_hot_add_enabled'),
+        cpu_hot_remove_enabled=pulumi.get(__response__, 'cpu_hot_remove_enabled'),
+        cpu_limit=pulumi.get(__response__, 'cpu_limit'),
+        cpu_performance_counters_enabled=pulumi.get(__response__, 'cpu_performance_counters_enabled'),
+        cpu_reservation=pulumi.get(__response__, 'cpu_reservation'),
+        cpu_share_count=pulumi.get(__response__, 'cpu_share_count'),
+        cpu_share_level=pulumi.get(__response__, 'cpu_share_level'),
+        datacenter_id=pulumi.get(__response__, 'datacenter_id'),
+        default_ip_address=pulumi.get(__response__, 'default_ip_address'),
+        disks=pulumi.get(__response__, 'disks'),
+        efi_secure_boot_enabled=pulumi.get(__response__, 'efi_secure_boot_enabled'),
+        enable_disk_uuid=pulumi.get(__response__, 'enable_disk_uuid'),
+        enable_logging=pulumi.get(__response__, 'enable_logging'),
+        ept_rvi_mode=pulumi.get(__response__, 'ept_rvi_mode'),
+        extra_config=pulumi.get(__response__, 'extra_config'),
+        extra_config_reboot_required=pulumi.get(__response__, 'extra_config_reboot_required'),
+        firmware=pulumi.get(__response__, 'firmware'),
+        folder=pulumi.get(__response__, 'folder'),
+        guest_id=pulumi.get(__response__, 'guest_id'),
+        guest_ip_addresses=pulumi.get(__response__, 'guest_ip_addresses'),
+        hardware_version=pulumi.get(__response__, 'hardware_version'),
+        hv_mode=pulumi.get(__response__, 'hv_mode'),
+        id=pulumi.get(__response__, 'id'),
+        ide_controller_scan_count=pulumi.get(__response__, 'ide_controller_scan_count'),
+        instance_uuid=pulumi.get(__response__, 'instance_uuid'),
+        latency_sensitivity=pulumi.get(__response__, 'latency_sensitivity'),
+        memory=pulumi.get(__response__, 'memory'),
+        memory_hot_add_enabled=pulumi.get(__response__, 'memory_hot_add_enabled'),
+        memory_limit=pulumi.get(__response__, 'memory_limit'),
+        memory_reservation=pulumi.get(__response__, 'memory_reservation'),
+        memory_reservation_locked_to_max=pulumi.get(__response__, 'memory_reservation_locked_to_max'),
+        memory_share_count=pulumi.get(__response__, 'memory_share_count'),
+        memory_share_level=pulumi.get(__response__, 'memory_share_level'),
+        moid=pulumi.get(__response__, 'moid'),
+        name=pulumi.get(__response__, 'name'),
+        nested_hv_enabled=pulumi.get(__response__, 'nested_hv_enabled'),
+        network_interface_types=pulumi.get(__response__, 'network_interface_types'),
+        network_interfaces=pulumi.get(__response__, 'network_interfaces'),
+        num_cores_per_socket=pulumi.get(__response__, 'num_cores_per_socket'),
+        num_cpus=pulumi.get(__response__, 'num_cpus'),
+        replace_trigger=pulumi.get(__response__, 'replace_trigger'),
+        run_tools_scripts_after_power_on=pulumi.get(__response__, 'run_tools_scripts_after_power_on'),
+        run_tools_scripts_after_resume=pulumi.get(__response__, 'run_tools_scripts_after_resume'),
+        run_tools_scripts_before_guest_reboot=pulumi.get(__response__, 'run_tools_scripts_before_guest_reboot'),
+        run_tools_scripts_before_guest_shutdown=pulumi.get(__response__, 'run_tools_scripts_before_guest_shutdown'),
+        run_tools_scripts_before_guest_standby=pulumi.get(__response__, 'run_tools_scripts_before_guest_standby'),
+        sata_controller_scan_count=pulumi.get(__response__, 'sata_controller_scan_count'),
+        scsi_bus_sharing=pulumi.get(__response__, 'scsi_bus_sharing'),
+        scsi_controller_scan_count=pulumi.get(__response__, 'scsi_controller_scan_count'),
+        scsi_type=pulumi.get(__response__, 'scsi_type'),
+        storage_policy_id=pulumi.get(__response__, 'storage_policy_id'),
+        swap_placement_policy=pulumi.get(__response__, 'swap_placement_policy'),
+        sync_time_with_host=pulumi.get(__response__, 'sync_time_with_host'),
+        sync_time_with_host_periodically=pulumi.get(__response__, 'sync_time_with_host_periodically'),
+        tools_upgrade_policy=pulumi.get(__response__, 'tools_upgrade_policy'),
+        uuid=pulumi.get(__response__, 'uuid'),
+        vapp=pulumi.get(__response__, 'vapp'),
+        vapp_transports=pulumi.get(__response__, 'vapp_transports'),
+        vbs_enabled=pulumi.get(__response__, 'vbs_enabled'),
+        vvtd_enabled=pulumi.get(__response__, 'vvtd_enabled')))
