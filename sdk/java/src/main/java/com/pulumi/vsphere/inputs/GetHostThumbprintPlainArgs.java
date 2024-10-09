@@ -34,16 +34,14 @@ public final class GetHostThumbprintPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Disables SSL certificate verification.
-     * Default: `false`
+     * Disables SSL certificate verification. Default: `false`
      * 
      */
     @Import(name="insecure")
     private @Nullable Boolean insecure;
 
     /**
-     * @return Disables SSL certificate verification.
-     * Default: `false`
+     * @return Disables SSL certificate verification. Default: `false`
      * 
      */
     public Optional<Boolean> insecure() {
@@ -104,8 +102,7 @@ public final class GetHostThumbprintPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param insecure Disables SSL certificate verification.
-         * Default: `false`
+         * @param insecure Disables SSL certificate verification. Default: `false`
          * 
          * @return builder
          * 

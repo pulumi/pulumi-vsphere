@@ -9,153 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere.ResourcePool` resource can be used to create and manage
-    /// resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
-    /// 
-    /// For more information on vSphere resource pools, please refer to the
-    /// [product documentation][ref-vsphere-resource_pools].
-    /// 
-    /// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
-    /// 
-    /// ## Example Usage
-    /// 
-    /// The following example sets up a resource pool in an existing compute cluster
-    /// with the default settings for CPU and memory reservations, shares, and limits.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-    ///     {
-    ///         Name = "dc-01",
-    ///     });
-    /// 
-    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
-    ///     {
-    ///         Name = "cluster-01",
-    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-    ///     });
-    /// 
-    ///     var resourcePool = new VSphere.ResourcePool("resource_pool", new()
-    ///     {
-    ///         Name = "resource-pool-01",
-    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// A virtual machine resource could be targeted to use the default resource pool
-    /// of the cluster using the following:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vm = new VSphere.VirtualMachine("vm", new()
-    ///     {
-    ///         ResourcePoolId = cluster.ResourcePoolId,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// The following example sets up a parent resource pool in an existing compute cluster
-    /// with a child resource pool nested below. Each resource pool is configured with
-    /// the default settings for CPU and memory reservations, shares, and limits.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-    ///     {
-    ///         Name = "dc-01",
-    ///     });
-    /// 
-    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
-    ///     {
-    ///         Name = "cluster-01",
-    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-    ///     });
-    /// 
-    ///     var resourcePoolParent = new VSphere.ResourcePool("resource_pool_parent", new()
-    ///     {
-    ///         Name = "parent",
-    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
-    ///     });
-    /// 
-    ///     var resourcePoolChild = new VSphere.ResourcePool("resource_pool_child", new()
-    ///     {
-    ///         Name = "child",
-    ///         ParentResourcePoolId = resourcePoolParent.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ### Settings that Require vSphere 7.0 or higher
-    /// 
-    /// These settings require vSphere 7.0 or higher:
-    /// 
-    /// * [`scale_descendants_shares`](#scale_descendants_shares)
-    /// </summary>
     [VSphereResourceType("vsphere:index/resourcePool:ResourcePool")]
     public partial class ResourcePool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Determines if the reservation on a resource
-        /// pool can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+        /// unreserved resources.
         /// </summary>
         [Output("cpuExpandable")]
         public Output<bool?> CpuExpandable { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU utilization of a resource pool will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited. Default: `-1`
+        /// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+        /// unlimited.
         /// </summary>
         [Output("cpuLimit")]
         public Output<int?> CpuLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
-        /// available to the resource pool. Default: `0`
+        /// Amount of CPU (MHz) that is guaranteed available to the resource pool.
         /// </summary>
         [Output("cpuReservation")]
         public Output<int?> CpuReservation { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU allocation level. The level is a
-        /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-        /// ignored.  Default: `normal`
+        /// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+        /// shares. Can be one of low, normal, high, or custom.
         /// </summary>
         [Output("cpuShareLevel")]
         public Output<string?> CpuShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `cpu_share_level` must be `custom`.
+        /// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+        /// cpu_share_level must be custom.
         /// </summary>
         [Output("cpuShares")]
         public Output<int> CpuShares { get; private set; } = null!;
@@ -167,73 +53,60 @@ namespace Pulumi.VSphere
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Determines if the reservation on a resource
-        /// pool can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+        /// unreserved resources.
         /// </summary>
         [Output("memoryExpandable")]
         public Output<bool?> MemoryExpandable { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU utilization of a resource pool will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited. Default: `-1`
+        /// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+        /// unlimited.
         /// </summary>
         [Output("memoryLimit")]
         public Output<int?> MemoryLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
-        /// available to the resource pool. Default: `0`
+        /// Amount of memory (MB) that is guaranteed available to the resource pool.
         /// </summary>
         [Output("memoryReservation")]
         public Output<int?> MemoryReservation { get; private set; } = null!;
 
         /// <summary>
-        /// The CPU allocation level. The level is a
-        /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `memory_shares` will be
-        /// ignored.  Default: `normal`
+        /// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+        /// shares. Can be one of low, normal, high, or custom.
         /// </summary>
         [Output("memoryShareLevel")]
         public Output<string?> MemoryShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `memory_share_level` must be `custom`.
+        /// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+        /// memory_share_level must be custom.
         /// </summary>
         [Output("memoryShares")]
         public Output<int> MemoryShares { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource pool.
+        /// Name of resource pool.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object ID
-        /// of the parent resource pool. This can be the root resource pool for a cluster
-        /// or standalone host, or a resource pool itself. When moving a resource pool
-        /// from one parent resource pool to another, both must share a common root
-        /// resource pool.
+        /// The ID of the root resource pool of the compute resource the resource pool is in.
         /// </summary>
         [Output("parentResourcePoolId")]
         public Output<string> ParentResourcePoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Determines if the shares of all
-        /// descendants of the resource pool are scaled up or down when the shares
-        /// of the resource pool are scaled up or down. Can be one of `disabled` or
-        /// `scaleCpuAndMemoryShares`. Default: `disabled`.
+        /// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
+        /// pool are scaled up or down.
         /// </summary>
         [Output("scaleDescendantsShares")]
         public Output<string?> ScaleDescendantsShares { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// A list of tag IDs to apply to this object.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -285,42 +158,35 @@ namespace Pulumi.VSphere
     public sealed class ResourcePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines if the reservation on a resource
-        /// pool can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+        /// unreserved resources.
         /// </summary>
         [Input("cpuExpandable")]
         public Input<bool>? CpuExpandable { get; set; }
 
         /// <summary>
-        /// The CPU utilization of a resource pool will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited. Default: `-1`
+        /// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+        /// unlimited.
         /// </summary>
         [Input("cpuLimit")]
         public Input<int>? CpuLimit { get; set; }
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
-        /// available to the resource pool. Default: `0`
+        /// Amount of CPU (MHz) that is guaranteed available to the resource pool.
         /// </summary>
         [Input("cpuReservation")]
         public Input<int>? CpuReservation { get; set; }
 
         /// <summary>
-        /// The CPU allocation level. The level is a
-        /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-        /// ignored.  Default: `normal`
+        /// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+        /// shares. Can be one of low, normal, high, or custom.
         /// </summary>
         [Input("cpuShareLevel")]
         public Input<string>? CpuShareLevel { get; set; }
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `cpu_share_level` must be `custom`.
+        /// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+        /// cpu_share_level must be custom.
         /// </summary>
         [Input("cpuShares")]
         public Input<int>? CpuShares { get; set; }
@@ -338,67 +204,54 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Determines if the reservation on a resource
-        /// pool can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+        /// unreserved resources.
         /// </summary>
         [Input("memoryExpandable")]
         public Input<bool>? MemoryExpandable { get; set; }
 
         /// <summary>
-        /// The CPU utilization of a resource pool will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited. Default: `-1`
+        /// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+        /// unlimited.
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
-        /// available to the resource pool. Default: `0`
+        /// Amount of memory (MB) that is guaranteed available to the resource pool.
         /// </summary>
         [Input("memoryReservation")]
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// The CPU allocation level. The level is a
-        /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `memory_shares` will be
-        /// ignored.  Default: `normal`
+        /// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+        /// shares. Can be one of low, normal, high, or custom.
         /// </summary>
         [Input("memoryShareLevel")]
         public Input<string>? MemoryShareLevel { get; set; }
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `memory_share_level` must be `custom`.
+        /// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+        /// memory_share_level must be custom.
         /// </summary>
         [Input("memoryShares")]
         public Input<int>? MemoryShares { get; set; }
 
         /// <summary>
-        /// The name of the resource pool.
+        /// Name of resource pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The managed object ID
-        /// of the parent resource pool. This can be the root resource pool for a cluster
-        /// or standalone host, or a resource pool itself. When moving a resource pool
-        /// from one parent resource pool to another, both must share a common root
-        /// resource pool.
+        /// The ID of the root resource pool of the compute resource the resource pool is in.
         /// </summary>
         [Input("parentResourcePoolId", required: true)]
         public Input<string> ParentResourcePoolId { get; set; } = null!;
 
         /// <summary>
-        /// Determines if the shares of all
-        /// descendants of the resource pool are scaled up or down when the shares
-        /// of the resource pool are scaled up or down. Can be one of `disabled` or
-        /// `scaleCpuAndMemoryShares`. Default: `disabled`.
+        /// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
+        /// pool are scaled up or down.
         /// </summary>
         [Input("scaleDescendantsShares")]
         public Input<string>? ScaleDescendantsShares { get; set; }
@@ -407,7 +260,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// A list of tag IDs to apply to this object.
         /// </summary>
         public InputList<string> Tags
         {
@@ -424,42 +277,35 @@ namespace Pulumi.VSphere
     public sealed class ResourcePoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines if the reservation on a resource
-        /// pool can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+        /// unreserved resources.
         /// </summary>
         [Input("cpuExpandable")]
         public Input<bool>? CpuExpandable { get; set; }
 
         /// <summary>
-        /// The CPU utilization of a resource pool will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited. Default: `-1`
+        /// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+        /// unlimited.
         /// </summary>
         [Input("cpuLimit")]
         public Input<int>? CpuLimit { get; set; }
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
-        /// available to the resource pool. Default: `0`
+        /// Amount of CPU (MHz) that is guaranteed available to the resource pool.
         /// </summary>
         [Input("cpuReservation")]
         public Input<int>? CpuReservation { get; set; }
 
         /// <summary>
-        /// The CPU allocation level. The level is a
-        /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-        /// ignored.  Default: `normal`
+        /// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+        /// shares. Can be one of low, normal, high, or custom.
         /// </summary>
         [Input("cpuShareLevel")]
         public Input<string>? CpuShareLevel { get; set; }
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `cpu_share_level` must be `custom`.
+        /// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+        /// cpu_share_level must be custom.
         /// </summary>
         [Input("cpuShares")]
         public Input<int>? CpuShares { get; set; }
@@ -477,67 +323,54 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Determines if the reservation on a resource
-        /// pool can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+        /// unreserved resources.
         /// </summary>
         [Input("memoryExpandable")]
         public Input<bool>? MemoryExpandable { get; set; }
 
         /// <summary>
-        /// The CPU utilization of a resource pool will not
-        /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited. Default: `-1`
+        /// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+        /// unlimited.
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// Amount of CPU (MHz) that is guaranteed
-        /// available to the resource pool. Default: `0`
+        /// Amount of memory (MB) that is guaranteed available to the resource pool.
         /// </summary>
         [Input("memoryReservation")]
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// The CPU allocation level. The level is a
-        /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `memory_shares` will be
-        /// ignored.  Default: `normal`
+        /// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+        /// shares. Can be one of low, normal, high, or custom.
         /// </summary>
         [Input("memoryShareLevel")]
         public Input<string>? MemoryShareLevel { get; set; }
 
         /// <summary>
-        /// The number of shares allocated for CPU. Used to
-        /// determine resource allocation in case of resource contention. If this is set,
-        /// `memory_share_level` must be `custom`.
+        /// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+        /// memory_share_level must be custom.
         /// </summary>
         [Input("memoryShares")]
         public Input<int>? MemoryShares { get; set; }
 
         /// <summary>
-        /// The name of the resource pool.
+        /// Name of resource pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The managed object ID
-        /// of the parent resource pool. This can be the root resource pool for a cluster
-        /// or standalone host, or a resource pool itself. When moving a resource pool
-        /// from one parent resource pool to another, both must share a common root
-        /// resource pool.
+        /// The ID of the root resource pool of the compute resource the resource pool is in.
         /// </summary>
         [Input("parentResourcePoolId")]
         public Input<string>? ParentResourcePoolId { get; set; }
 
         /// <summary>
-        /// Determines if the shares of all
-        /// descendants of the resource pool are scaled up or down when the shares
-        /// of the resource pool are scaled up or down. Can be one of `disabled` or
-        /// `scaleCpuAndMemoryShares`. Default: `disabled`.
+        /// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
+        /// pool are scaled up or down.
         /// </summary>
         [Input("scaleDescendantsShares")]
         public Input<string>? ScaleDescendantsShares { get; set; }
@@ -546,7 +379,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// A list of tag IDs to apply to this object.
         /// </summary>
         public InputList<string> Tags
         {

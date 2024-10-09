@@ -38,14 +38,14 @@ import (
 //				return err
 //			}
 //			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
-//				Address:  "esx-01.example.com",
+//				Address:  "esxi-01.example.com",
 //				Insecure: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
-//				Hostname:   pulumi.String("esx-01.example.com"),
+//				Hostname:   pulumi.String("esxi-01.example.com"),
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
 //				License:    pulumi.String("00000-00000-00000-00000-00000"),
@@ -81,7 +81,7 @@ import (
 //
 // data "vsphere_host" "host" {
 //
-//	name          = "esx-01.example.com"
+//	name          = "esxi-01.example.com"
 //
 //	datacenter_id = data.vsphere_datacenter.datacenter.id
 //
@@ -105,7 +105,7 @@ import (
 //
 // data "vsphere_host_thumbprint" "thumbprint" {
 //
-//	address = "esx-01.example.com"
+//	address = "esxi-01.example.com"
 //
 //	insecure = true
 //
@@ -113,7 +113,7 @@ import (
 //
 // resource "vsphere_host" "esx-01" {
 //
-//	hostname   = "esx-01.example.com"
+//	hostname   = "esxi-01.example.com"
 //
 //	username   = "root"
 //
@@ -129,7 +129,7 @@ import (
 //
 // resource "vsphere_host" "esx-01" {
 //
-//	hostname   = "esx-01.example.com"
+//	hostname   = "esxi-01.example.com"
 //
 //	username   = "root"
 //
@@ -161,7 +161,7 @@ import (
 // $ pulumi import vsphere:index/host:Host esx-01 host-123
 // ```
 //
-// The above would import the host `esx-01.example.com` with the host ID `host-123`.
+// The above would import the host `esxi-01.example.com` with the host ID `host-123`.
 type Host struct {
 	pulumi.CustomResourceState
 

@@ -2726,7 +2726,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         The following requirements apply to import:
 
-        * The disks must have a [`label`](#label) argument assigned in a convention matching `diskN`, starting with disk number 0, based on each virtual disk order on the SCSI bus. As an example, a disk on SCSI controller `0` with a unit number of `0` would be labeled as `disk0`, a disk on the same controller with a unit number of `1` would be `disk1`, but the next disk, which is on SCSI controller `1` with a unit number of `0`, still becomes `disk2`.
+        * The disks must have a [`label`](#label) argument assigned in a convention matching `Hard Disk`, starting with disk number 0, based on each virtual disk order on the SCSI bus. As an example, a disk on SCSI controller `0` with a unit number of `0` would be labeled as `Hard Disk 0`, a disk on the same controller with a unit number of `1` would be `Hard Disk 1`, but the next disk, which is on SCSI controller `1` with a unit number of `0`, still becomes `Hard Disk 2`.
 
         * Disks are always imported with [`keep_on_remove`](#keep_on_remove) enabled until the first `pulumi up` run which will remove the setting for known disks. This process safeguards against naming or accounting mistakes in the disk configuration.
 
@@ -2847,7 +2847,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         The following requirements apply to import:
 
-        * The disks must have a [`label`](#label) argument assigned in a convention matching `diskN`, starting with disk number 0, based on each virtual disk order on the SCSI bus. As an example, a disk on SCSI controller `0` with a unit number of `0` would be labeled as `disk0`, a disk on the same controller with a unit number of `1` would be `disk1`, but the next disk, which is on SCSI controller `1` with a unit number of `0`, still becomes `disk2`.
+        * The disks must have a [`label`](#label) argument assigned in a convention matching `Hard Disk`, starting with disk number 0, based on each virtual disk order on the SCSI bus. As an example, a disk on SCSI controller `0` with a unit number of `0` would be labeled as `Hard Disk 0`, a disk on the same controller with a unit number of `1` would be `Hard Disk 1`, but the next disk, which is on SCSI controller `1` with a unit number of `0`, still becomes `Hard Disk 2`.
 
         * Disks are always imported with [`keep_on_remove`](#keep_on_remove) enabled until the first `pulumi up` run which will remove the setting for known disks. This process safeguards against naming or accounting mistakes in the disk configuration.
 

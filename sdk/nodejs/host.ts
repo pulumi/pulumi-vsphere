@@ -22,11 +22,11 @@ import * as utilities from "./utilities";
  *     name: "dc-01",
  * });
  * const thumbprint = vsphere.getHostThumbprint({
- *     address: "esx-01.example.com",
+ *     address: "esxi-01.example.com",
  *     insecure: true,
  * });
  * const esx_01 = new vsphere.Host("esx-01", {
- *     hostname: "esx-01.example.com",
+ *     hostname: "esxi-01.example.com",
  *     username: "root",
  *     password: "password",
  *     license: "00000-00000-00000-00000-00000",
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  *
  * data "vsphere_host" "host" {
  *
- *   name          = "esx-01.example.com"
+ *   name          = "esxi-01.example.com"
  *
  *   datacenter_id = data.vsphere_datacenter.datacenter.id
  *
@@ -79,7 +79,7 @@ import * as utilities from "./utilities";
  *
  * data "vsphere_host_thumbprint" "thumbprint" {
  *
- *   address = "esx-01.example.com"
+ *   address = "esxi-01.example.com"
  *
  *   insecure = true
  *
@@ -87,7 +87,7 @@ import * as utilities from "./utilities";
  *
  * resource "vsphere_host" "esx-01" {
  *
- *   hostname   = "esx-01.example.com"
+ *   hostname   = "esxi-01.example.com"
  *
  *   username   = "root"
  *
@@ -103,7 +103,7 @@ import * as utilities from "./utilities";
  *
  * resource "vsphere_host" "esx-01" {
  *
- *   hostname   = "esx-01.example.com"
+ *   hostname   = "esxi-01.example.com"
  *
  *   username   = "root"
  *
@@ -135,7 +135,7 @@ import * as utilities from "./utilities";
  * $ pulumi import vsphere:index/host:Host esx-01 host-123
  * ```
  *
- * The above would import the host `esx-01.example.com` with the host ID `host-123`.
+ * The above would import the host `esxi-01.example.com` with the host ID `host-123`.
  */
 export class Host extends pulumi.CustomResource {
     /**

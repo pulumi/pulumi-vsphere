@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
- *             .address("esx-01.example.com")
+ *             .address("esxi-01.example.com")
  *             .insecure(true)
  *             .build());
  * 
  *         var esx_01 = new Host("esx-01", HostArgs.builder()
- *             .hostname("esx-01.example.com")
+ *             .hostname("esxi-01.example.com")
  *             .username("root")
  *             .password("password")
  *             .license("00000-00000-00000-00000-00000")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * 
  * data &#34;vsphere_host&#34; &#34;host&#34; {
  * 
- *   name          = &#34;esx-01.example.com&#34;
+ *   name          = &#34;esxi-01.example.com&#34;
  * 
  *   datacenter_id = data.vsphere_datacenter.datacenter.id
  * 
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  * 
  * data &#34;vsphere_host_thumbprint&#34; &#34;thumbprint&#34; {
  * 
- *   address = &#34;esx-01.example.com&#34;
+ *   address = &#34;esxi-01.example.com&#34;
  * 
  *   insecure = true
  * 
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  * resource &#34;vsphere_host&#34; &#34;esx-01&#34; {
  * 
- *   hostname   = &#34;esx-01.example.com&#34;
+ *   hostname   = &#34;esxi-01.example.com&#34;
  * 
  *   username   = &#34;root&#34;
  * 
@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  * 
  * resource &#34;vsphere_host&#34; &#34;esx-01&#34; {
  * 
- *   hostname   = &#34;esx-01.example.com&#34;
+ *   hostname   = &#34;esxi-01.example.com&#34;
  * 
  *   username   = &#34;root&#34;
  * 
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  * $ pulumi import vsphere:index/host:Host esx-01 host-123
  * ```
  * 
- * The above would import the host `esx-01.example.com` with the host ID `host-123`.
+ * The above would import the host `esxi-01.example.com` with the host ID `host-123`.
  * 
  */
 @ResourceType(type="vsphere:index/host:Host")
