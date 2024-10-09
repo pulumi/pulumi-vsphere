@@ -20,18 +20,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     public static final ResourcePoolState Empty = new ResourcePoolState();
 
     /**
-     * Determines if the reservation on a resource
-     * pool can grow beyond the specified value if the parent resource pool has
-     * unreserved resources. Default: `true`
+     * Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+     * unreserved resources.
      * 
      */
     @Import(name="cpuExpandable")
     private @Nullable Output<Boolean> cpuExpandable;
 
     /**
-     * @return Determines if the reservation on a resource
-     * pool can grow beyond the specified value if the parent resource pool has
-     * unreserved resources. Default: `true`
+     * @return Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+     * unreserved resources.
      * 
      */
     public Optional<Output<Boolean>> cpuExpandable() {
@@ -39,18 +37,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU utilization of a resource pool will not
-     * exceed this limit, even if there are available resources. Set to `-1` for
-     * unlimited. Default: `-1`
+     * The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+     * unlimited.
      * 
      */
     @Import(name="cpuLimit")
     private @Nullable Output<Integer> cpuLimit;
 
     /**
-     * @return The CPU utilization of a resource pool will not
-     * exceed this limit, even if there are available resources. Set to `-1` for
-     * unlimited. Default: `-1`
+     * @return The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+     * unlimited.
      * 
      */
     public Optional<Output<Integer>> cpuLimit() {
@@ -58,16 +54,14 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Amount of CPU (MHz) that is guaranteed
-     * available to the resource pool. Default: `0`
+     * Amount of CPU (MHz) that is guaranteed available to the resource pool.
      * 
      */
     @Import(name="cpuReservation")
     private @Nullable Output<Integer> cpuReservation;
 
     /**
-     * @return Amount of CPU (MHz) that is guaranteed
-     * available to the resource pool. Default: `0`
+     * @return Amount of CPU (MHz) that is guaranteed available to the resource pool.
      * 
      */
     public Optional<Output<Integer>> cpuReservation() {
@@ -75,22 +69,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU allocation level. The level is a
-     * simplified view of shares. Levels map to a pre-determined set of numeric
-     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-     * ignored.  Default: `normal`
+     * The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+     * shares. Can be one of low, normal, high, or custom.
      * 
      */
     @Import(name="cpuShareLevel")
     private @Nullable Output<String> cpuShareLevel;
 
     /**
-     * @return The CPU allocation level. The level is a
-     * simplified view of shares. Levels map to a pre-determined set of numeric
-     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-     * ignored.  Default: `normal`
+     * @return The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+     * shares. Can be one of low, normal, high, or custom.
      * 
      */
     public Optional<Output<String>> cpuShareLevel() {
@@ -98,18 +86,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+     * cpu_share_level must be custom.
      * 
      */
     @Import(name="cpuShares")
     private @Nullable Output<Integer> cpuShares;
 
     /**
-     * @return The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * @return The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+     * cpu_share_level must be custom.
      * 
      */
     public Optional<Output<Integer>> cpuShares() {
@@ -132,18 +118,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines if the reservation on a resource
-     * pool can grow beyond the specified value if the parent resource pool has
-     * unreserved resources. Default: `true`
+     * Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+     * unreserved resources.
      * 
      */
     @Import(name="memoryExpandable")
     private @Nullable Output<Boolean> memoryExpandable;
 
     /**
-     * @return Determines if the reservation on a resource
-     * pool can grow beyond the specified value if the parent resource pool has
-     * unreserved resources. Default: `true`
+     * @return Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+     * unreserved resources.
      * 
      */
     public Optional<Output<Boolean>> memoryExpandable() {
@@ -151,18 +135,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU utilization of a resource pool will not
-     * exceed this limit, even if there are available resources. Set to `-1` for
-     * unlimited. Default: `-1`
+     * The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+     * unlimited.
      * 
      */
     @Import(name="memoryLimit")
     private @Nullable Output<Integer> memoryLimit;
 
     /**
-     * @return The CPU utilization of a resource pool will not
-     * exceed this limit, even if there are available resources. Set to `-1` for
-     * unlimited. Default: `-1`
+     * @return The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+     * unlimited.
      * 
      */
     public Optional<Output<Integer>> memoryLimit() {
@@ -170,16 +152,14 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Amount of CPU (MHz) that is guaranteed
-     * available to the resource pool. Default: `0`
+     * Amount of memory (MB) that is guaranteed available to the resource pool.
      * 
      */
     @Import(name="memoryReservation")
     private @Nullable Output<Integer> memoryReservation;
 
     /**
-     * @return Amount of CPU (MHz) that is guaranteed
-     * available to the resource pool. Default: `0`
+     * @return Amount of memory (MB) that is guaranteed available to the resource pool.
      * 
      */
     public Optional<Output<Integer>> memoryReservation() {
@@ -187,22 +167,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CPU allocation level. The level is a
-     * simplified view of shares. Levels map to a pre-determined set of numeric
-     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
-     * ignored.  Default: `normal`
+     * The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+     * shares. Can be one of low, normal, high, or custom.
      * 
      */
     @Import(name="memoryShareLevel")
     private @Nullable Output<String> memoryShareLevel;
 
     /**
-     * @return The CPU allocation level. The level is a
-     * simplified view of shares. Levels map to a pre-determined set of numeric
-     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
-     * ignored.  Default: `normal`
+     * @return The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+     * shares. Can be one of low, normal, high, or custom.
      * 
      */
     public Optional<Output<String>> memoryShareLevel() {
@@ -210,18 +184,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+     * memory_share_level must be custom.
      * 
      */
     @Import(name="memoryShares")
     private @Nullable Output<Integer> memoryShares;
 
     /**
-     * @return The number of shares allocated for CPU. Used to
-     * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * @return The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+     * memory_share_level must be custom.
      * 
      */
     public Optional<Output<Integer>> memoryShares() {
@@ -229,14 +201,14 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the resource pool.
+     * Name of resource pool.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the resource pool.
+     * @return Name of resource pool.
      * 
      */
     public Optional<Output<String>> name() {
@@ -244,22 +216,14 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The managed object ID
-     * of the parent resource pool. This can be the root resource pool for a cluster
-     * or standalone host, or a resource pool itself. When moving a resource pool
-     * from one parent resource pool to another, both must share a common root
-     * resource pool.
+     * The ID of the root resource pool of the compute resource the resource pool is in.
      * 
      */
     @Import(name="parentResourcePoolId")
     private @Nullable Output<String> parentResourcePoolId;
 
     /**
-     * @return The managed object ID
-     * of the parent resource pool. This can be the root resource pool for a cluster
-     * or standalone host, or a resource pool itself. When moving a resource pool
-     * from one parent resource pool to another, both must share a common root
-     * resource pool.
+     * @return The ID of the root resource pool of the compute resource the resource pool is in.
      * 
      */
     public Optional<Output<String>> parentResourcePoolId() {
@@ -267,20 +231,16 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines if the shares of all
-     * descendants of the resource pool are scaled up or down when the shares
-     * of the resource pool are scaled up or down. Can be one of `disabled` or
-     * `scaleCpuAndMemoryShares`. Default: `disabled`.
+     * Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
+     * pool are scaled up or down.
      * 
      */
     @Import(name="scaleDescendantsShares")
     private @Nullable Output<String> scaleDescendantsShares;
 
     /**
-     * @return Determines if the shares of all
-     * descendants of the resource pool are scaled up or down when the shares
-     * of the resource pool are scaled up or down. Can be one of `disabled` or
-     * `scaleCpuAndMemoryShares`. Default: `disabled`.
+     * @return Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
+     * pool are scaled up or down.
      * 
      */
     public Optional<Output<String>> scaleDescendantsShares() {
@@ -288,14 +248,14 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * A list of tag IDs to apply to this object.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return A list of tag IDs to apply to this object.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -341,9 +301,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuExpandable Determines if the reservation on a resource
-         * pool can grow beyond the specified value if the parent resource pool has
-         * unreserved resources. Default: `true`
+         * @param cpuExpandable Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+         * unreserved resources.
          * 
          * @return builder
          * 
@@ -354,9 +313,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuExpandable Determines if the reservation on a resource
-         * pool can grow beyond the specified value if the parent resource pool has
-         * unreserved resources. Default: `true`
+         * @param cpuExpandable Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+         * unreserved resources.
          * 
          * @return builder
          * 
@@ -366,9 +324,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuLimit The CPU utilization of a resource pool will not
-         * exceed this limit, even if there are available resources. Set to `-1` for
-         * unlimited. Default: `-1`
+         * @param cpuLimit The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+         * unlimited.
          * 
          * @return builder
          * 
@@ -379,9 +336,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuLimit The CPU utilization of a resource pool will not
-         * exceed this limit, even if there are available resources. Set to `-1` for
-         * unlimited. Default: `-1`
+         * @param cpuLimit The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+         * unlimited.
          * 
          * @return builder
          * 
@@ -391,8 +347,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuReservation Amount of CPU (MHz) that is guaranteed
-         * available to the resource pool. Default: `0`
+         * @param cpuReservation Amount of CPU (MHz) that is guaranteed available to the resource pool.
          * 
          * @return builder
          * 
@@ -403,8 +358,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuReservation Amount of CPU (MHz) that is guaranteed
-         * available to the resource pool. Default: `0`
+         * @param cpuReservation Amount of CPU (MHz) that is guaranteed available to the resource pool.
          * 
          * @return builder
          * 
@@ -414,11 +368,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuShareLevel The CPU allocation level. The level is a
-         * simplified view of shares. Levels map to a pre-determined set of numeric
-         * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-         * ignored.  Default: `normal`
+         * @param cpuShareLevel The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+         * shares. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -429,11 +380,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuShareLevel The CPU allocation level. The level is a
-         * simplified view of shares. Levels map to a pre-determined set of numeric
-         * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-         * ignored.  Default: `normal`
+         * @param cpuShareLevel The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+         * shares. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -443,9 +391,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuShares The number of shares allocated for CPU. Used to
-         * determine resource allocation in case of resource contention. If this is set,
-         * `cpu_share_level` must be `custom`.
+         * @param cpuShares The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+         * cpu_share_level must be custom.
          * 
          * @return builder
          * 
@@ -456,9 +403,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuShares The number of shares allocated for CPU. Used to
-         * determine resource allocation in case of resource contention. If this is set,
-         * `cpu_share_level` must be `custom`.
+         * @param cpuShares The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+         * cpu_share_level must be custom.
          * 
          * @return builder
          * 
@@ -489,9 +435,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryExpandable Determines if the reservation on a resource
-         * pool can grow beyond the specified value if the parent resource pool has
-         * unreserved resources. Default: `true`
+         * @param memoryExpandable Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+         * unreserved resources.
          * 
          * @return builder
          * 
@@ -502,9 +447,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryExpandable Determines if the reservation on a resource
-         * pool can grow beyond the specified value if the parent resource pool has
-         * unreserved resources. Default: `true`
+         * @param memoryExpandable Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
+         * unreserved resources.
          * 
          * @return builder
          * 
@@ -514,9 +458,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryLimit The CPU utilization of a resource pool will not
-         * exceed this limit, even if there are available resources. Set to `-1` for
-         * unlimited. Default: `-1`
+         * @param memoryLimit The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+         * unlimited.
          * 
          * @return builder
          * 
@@ -527,9 +470,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryLimit The CPU utilization of a resource pool will not
-         * exceed this limit, even if there are available resources. Set to `-1` for
-         * unlimited. Default: `-1`
+         * @param memoryLimit The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
+         * unlimited.
          * 
          * @return builder
          * 
@@ -539,8 +481,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryReservation Amount of CPU (MHz) that is guaranteed
-         * available to the resource pool. Default: `0`
+         * @param memoryReservation Amount of memory (MB) that is guaranteed available to the resource pool.
          * 
          * @return builder
          * 
@@ -551,8 +492,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryReservation Amount of CPU (MHz) that is guaranteed
-         * available to the resource pool. Default: `0`
+         * @param memoryReservation Amount of memory (MB) that is guaranteed available to the resource pool.
          * 
          * @return builder
          * 
@@ -562,11 +502,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShareLevel The CPU allocation level. The level is a
-         * simplified view of shares. Levels map to a pre-determined set of numeric
-         * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `memory_shares` will be
-         * ignored.  Default: `normal`
+         * @param memoryShareLevel The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+         * shares. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -577,11 +514,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShareLevel The CPU allocation level. The level is a
-         * simplified view of shares. Levels map to a pre-determined set of numeric
-         * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `memory_shares` will be
-         * ignored.  Default: `normal`
+         * @param memoryShareLevel The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
+         * shares. Can be one of low, normal, high, or custom.
          * 
          * @return builder
          * 
@@ -591,9 +525,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShares The number of shares allocated for CPU. Used to
-         * determine resource allocation in case of resource contention. If this is set,
-         * `memory_share_level` must be `custom`.
+         * @param memoryShares The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+         * memory_share_level must be custom.
          * 
          * @return builder
          * 
@@ -604,9 +537,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memoryShares The number of shares allocated for CPU. Used to
-         * determine resource allocation in case of resource contention. If this is set,
-         * `memory_share_level` must be `custom`.
+         * @param memoryShares The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
+         * memory_share_level must be custom.
          * 
          * @return builder
          * 
@@ -616,7 +548,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the resource pool.
+         * @param name Name of resource pool.
          * 
          * @return builder
          * 
@@ -627,7 +559,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the resource pool.
+         * @param name Name of resource pool.
          * 
          * @return builder
          * 
@@ -637,11 +569,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentResourcePoolId The managed object ID
-         * of the parent resource pool. This can be the root resource pool for a cluster
-         * or standalone host, or a resource pool itself. When moving a resource pool
-         * from one parent resource pool to another, both must share a common root
-         * resource pool.
+         * @param parentResourcePoolId The ID of the root resource pool of the compute resource the resource pool is in.
          * 
          * @return builder
          * 
@@ -652,11 +580,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentResourcePoolId The managed object ID
-         * of the parent resource pool. This can be the root resource pool for a cluster
-         * or standalone host, or a resource pool itself. When moving a resource pool
-         * from one parent resource pool to another, both must share a common root
-         * resource pool.
+         * @param parentResourcePoolId The ID of the root resource pool of the compute resource the resource pool is in.
          * 
          * @return builder
          * 
@@ -666,10 +590,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleDescendantsShares Determines if the shares of all
-         * descendants of the resource pool are scaled up or down when the shares
-         * of the resource pool are scaled up or down. Can be one of `disabled` or
-         * `scaleCpuAndMemoryShares`. Default: `disabled`.
+         * @param scaleDescendantsShares Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
+         * pool are scaled up or down.
          * 
          * @return builder
          * 
@@ -680,10 +602,8 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleDescendantsShares Determines if the shares of all
-         * descendants of the resource pool are scaled up or down when the shares
-         * of the resource pool are scaled up or down. Can be one of `disabled` or
-         * `scaleCpuAndMemoryShares`. Default: `disabled`.
+         * @param scaleDescendantsShares Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
+         * pool are scaled up or down.
          * 
          * @return builder
          * 
@@ -693,7 +613,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags A list of tag IDs to apply to this object.
          * 
          * @return builder
          * 
@@ -704,7 +624,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags A list of tag IDs to apply to this object.
          * 
          * @return builder
          * 
@@ -714,7 +634,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags A list of tag IDs to apply to this object.
          * 
          * @return builder
          * 

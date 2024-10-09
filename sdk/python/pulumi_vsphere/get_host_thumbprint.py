@@ -77,9 +77,14 @@ def get_host_thumbprint(address: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostThumbprintResult:
     """
     The `vsphere_thumbprint` data source can be used to discover the host thumbprint
-    of an ESXi host. This can be used when adding the `Host` resource. If
-    the ESXi host is using a certificate chain, the first one returned will be used
-    to generate the thumbprint.
+    of an ESXi host. This can be used when adding the `Host` resource to a
+    cluster or a vCenter Server instance.
+
+    * If the ESXi host is using a certificate chain, the first one returned will be
+    used to generate the thumbprint.
+
+    * If the ESXi host has a certificate issued by a certificate authority, ensure
+    that the the certificate authority is trusted on the system running the plan.
 
     ## Example Usage
 
@@ -93,8 +98,7 @@ def get_host_thumbprint(address: Optional[str] = None,
 
     :param str address: The address of the ESXi host to retrieve the thumbprint
            from.
-    :param bool insecure: Disables SSL certificate verification.
-           Default: `false`
+    :param bool insecure: Disables SSL certificate verification. Default: `false`
     :param str port: The port to use connecting to the ESXi host. Default: 443
     """
     __args__ = dict()
@@ -118,9 +122,14 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostThumbprintResult]:
     """
     The `vsphere_thumbprint` data source can be used to discover the host thumbprint
-    of an ESXi host. This can be used when adding the `Host` resource. If
-    the ESXi host is using a certificate chain, the first one returned will be used
-    to generate the thumbprint.
+    of an ESXi host. This can be used when adding the `Host` resource to a
+    cluster or a vCenter Server instance.
+
+    * If the ESXi host is using a certificate chain, the first one returned will be
+    used to generate the thumbprint.
+
+    * If the ESXi host has a certificate issued by a certificate authority, ensure
+    that the the certificate authority is trusted on the system running the plan.
 
     ## Example Usage
 
@@ -134,8 +143,7 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
 
     :param str address: The address of the ESXi host to retrieve the thumbprint
            from.
-    :param bool insecure: Disables SSL certificate verification.
-           Default: `false`
+    :param bool insecure: Disables SSL certificate verification. Default: `false`
     :param str port: The port to use connecting to the ESXi host. Default: 443
     """
     ...

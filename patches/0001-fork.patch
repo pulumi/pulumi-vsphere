@@ -2262,7 +2262,7 @@ index abf14afa..e73922f1 100644
  override on subsequent plan and apply operations after the override has been
  created.
 diff --git a/website/docs/r/host.html.markdown b/website/docs/r/host.html.markdown
-index 76ed5a66..9e513b7f 100644
+index 5a9422df..367a2d74 100644
 --- a/website/docs/r/host.html.markdown
 +++ b/website/docs/r/host.html.markdown
 @@ -13,9 +13,9 @@ description: |-
@@ -2570,10 +2570,10 @@ index bf6ef2b0..fa073b9e 100644
    some other computed attributes may be out of date.
  * `capacity` - Maximum capacity of the datastore, in megabytes.
 diff --git a/website/docs/r/resource_pool.html.markdown b/website/docs/r/resource_pool.html.markdown
-index dddfa111..352b9f64 100644
+index 084361b2..a0289e4a 100644
 --- a/website/docs/r/resource_pool.html.markdown
 +++ b/website/docs/r/resource_pool.html.markdown
-@@ -80,7 +80,7 @@ resource "vsphere_resource_pool" "resource_pool_child" {
+@@ -116,7 +116,7 @@ resource "vsphere_resource_pool" "resource_pool" {
  The following arguments are supported:
  
  * `name` - (Required) The name of the resource pool.
@@ -2582,7 +2582,7 @@ index dddfa111..352b9f64 100644
    of the parent resource pool. This can be the root resource pool for a cluster
    or standalone host, or a resource pool itself. When moving a resource pool
    from one parent resource pool to another, both must share a common root
-@@ -121,24 +121,18 @@ The following arguments are supported:
+@@ -157,24 +157,18 @@ The following arguments are supported:
    descendants of the resource pool are scaled up or down when the shares
    of the resource pool are scaled up or down. Can be one of `disabled` or
    `scaleCpuAndMemoryShares`. Default: `disabled`.
@@ -2919,7 +2919,7 @@ index 4f600605..9e875ab3 100644
    directories that are a part of the `vmdk_path` parameter if they are missing.
    Default: `false`.
 diff --git a/website/docs/r/virtual_machine.html.markdown b/website/docs/r/virtual_machine.html.markdown
-index 60e3e080..6b1575bc 100644
+index 7aaaee32..caeeac20 100644
 --- a/website/docs/r/virtual_machine.html.markdown
 +++ b/website/docs/r/virtual_machine.html.markdown
 @@ -16,7 +16,7 @@ For details on working with virtual machines in VMware vSphere, please refer to

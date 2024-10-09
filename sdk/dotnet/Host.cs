@@ -32,13 +32,13 @@ namespace Pulumi.VSphere
     /// 
     ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
     ///     {
-    ///         Address = "esx-01.example.com",
+    ///         Address = "esxi-01.example.com",
     ///         Insecure = true,
     ///     });
     /// 
     ///     var esx_01 = new VSphere.Host("esx-01", new()
     ///     {
-    ///         Hostname = "esx-01.example.com",
+    ///         Hostname = "esxi-01.example.com",
     ///         Username = "root",
     ///         Password = "password",
     ///         License = "00000-00000-00000-00000-00000",
@@ -69,7 +69,7 @@ namespace Pulumi.VSphere
     /// 
     /// data "vsphere_host" "host" {
     /// 
-    ///   name          = "esx-01.example.com"
+    ///   name          = "esxi-01.example.com"
     /// 
     ///   datacenter_id = data.vsphere_datacenter.datacenter.id
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.VSphere
     /// 
     /// data "vsphere_host_thumbprint" "thumbprint" {
     /// 
-    ///   address = "esx-01.example.com"
+    ///   address = "esxi-01.example.com"
     /// 
     ///   insecure = true
     /// 
@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
     /// 
     /// resource "vsphere_host" "esx-01" {
     /// 
-    ///   hostname   = "esx-01.example.com"
+    ///   hostname   = "esxi-01.example.com"
     /// 
     ///   username   = "root"
     /// 
@@ -117,7 +117,7 @@ namespace Pulumi.VSphere
     /// 
     /// resource "vsphere_host" "esx-01" {
     /// 
-    ///   hostname   = "esx-01.example.com"
+    ///   hostname   = "esxi-01.example.com"
     /// 
     ///   username   = "root"
     /// 
@@ -149,7 +149,7 @@ namespace Pulumi.VSphere
     /// $ pulumi import vsphere:index/host:Host esx-01 host-123
     /// ```
     /// 
-    /// The above would import the host `esx-01.example.com` with the host ID `host-123`.
+    /// The above would import the host `esxi-01.example.com` with the host ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/host:Host")]
     public partial class Host : global::Pulumi.CustomResource

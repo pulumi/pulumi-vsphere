@@ -656,10 +656,10 @@ class Host(pulumi.CustomResource):
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
+        thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com",
             insecure=True)
         esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
+            hostname="esxi-01.example.com",
             username="root",
             password="password",
             license="00000-00000-00000-00000-00000",
@@ -687,7 +687,7 @@ class Host(pulumi.CustomResource):
 
         data "vsphere_host" "host" {
 
-          name          = "esx-01.example.com"
+          name          = "esxi-01.example.com"
 
           datacenter_id = data.vsphere_datacenter.datacenter.id
 
@@ -711,7 +711,7 @@ class Host(pulumi.CustomResource):
 
         data "vsphere_host_thumbprint" "thumbprint" {
 
-          address = "esx-01.example.com"
+          address = "esxi-01.example.com"
 
           insecure = true
 
@@ -719,7 +719,7 @@ class Host(pulumi.CustomResource):
 
         resource "vsphere_host" "esx-01" {
 
-          hostname   = "esx-01.example.com"
+          hostname   = "esxi-01.example.com"
 
           username   = "root"
 
@@ -735,7 +735,7 @@ class Host(pulumi.CustomResource):
 
         resource "vsphere_host" "esx-01" {
 
-          hostname   = "esx-01.example.com"
+          hostname   = "esxi-01.example.com"
 
           username   = "root"
 
@@ -767,7 +767,7 @@ class Host(pulumi.CustomResource):
         $ pulumi import vsphere:index/host:Host esx-01 host-123
         ```
 
-        The above would import the host `esx-01.example.com` with the host ID `host-123`.
+        The above would import the host `esxi-01.example.com` with the host ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -835,10 +835,10 @@ class Host(pulumi.CustomResource):
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
+        thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com",
             insecure=True)
         esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
+            hostname="esxi-01.example.com",
             username="root",
             password="password",
             license="00000-00000-00000-00000-00000",
@@ -866,7 +866,7 @@ class Host(pulumi.CustomResource):
 
         data "vsphere_host" "host" {
 
-          name          = "esx-01.example.com"
+          name          = "esxi-01.example.com"
 
           datacenter_id = data.vsphere_datacenter.datacenter.id
 
@@ -890,7 +890,7 @@ class Host(pulumi.CustomResource):
 
         data "vsphere_host_thumbprint" "thumbprint" {
 
-          address = "esx-01.example.com"
+          address = "esxi-01.example.com"
 
           insecure = true
 
@@ -898,7 +898,7 @@ class Host(pulumi.CustomResource):
 
         resource "vsphere_host" "esx-01" {
 
-          hostname   = "esx-01.example.com"
+          hostname   = "esxi-01.example.com"
 
           username   = "root"
 
@@ -914,7 +914,7 @@ class Host(pulumi.CustomResource):
 
         resource "vsphere_host" "esx-01" {
 
-          hostname   = "esx-01.example.com"
+          hostname   = "esxi-01.example.com"
 
           username   = "root"
 
@@ -946,7 +946,7 @@ class Host(pulumi.CustomResource):
         $ pulumi import vsphere:index/host:Host esx-01 host-123
         ```
 
-        The above would import the host `esx-01.example.com` with the host ID `host-123`.
+        The above would import the host `esxi-01.example.com` with the host ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param HostArgs args: The arguments to use to populate this resource's properties.
