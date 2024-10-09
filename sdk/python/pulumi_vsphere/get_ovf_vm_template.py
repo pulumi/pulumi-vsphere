@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -468,9 +473,6 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
         scsi_controller_count=pulumi.get(__ret__, 'scsi_controller_count'),
         scsi_type=pulumi.get(__ret__, 'scsi_type'),
         swap_placement_policy=pulumi.get(__ret__, 'swap_placement_policy'))
-
-
-@_utilities.lift_output_func(get_ovf_vm_template)
 def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[Optional[bool]]] = None,
                                datastore_id: Optional[pulumi.Input[Optional[str]]] = None,
                                deployment_option: Optional[pulumi.Input[Optional[str]]] = None,
@@ -523,4 +525,53 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
     :param str resource_pool_id: The ID of a resource pool in which to place
            the virtual machine.
     """
-    ...
+    __args__ = dict()
+    __args__['allowUnverifiedSslCert'] = allow_unverified_ssl_cert
+    __args__['datastoreId'] = datastore_id
+    __args__['deploymentOption'] = deployment_option
+    __args__['diskProvisioning'] = disk_provisioning
+    __args__['enableHiddenProperties'] = enable_hidden_properties
+    __args__['folder'] = folder
+    __args__['hostSystemId'] = host_system_id
+    __args__['ipAllocationPolicy'] = ip_allocation_policy
+    __args__['ipProtocol'] = ip_protocol
+    __args__['localOvfPath'] = local_ovf_path
+    __args__['name'] = name
+    __args__['ovfNetworkMap'] = ovf_network_map
+    __args__['remoteOvfUrl'] = remote_ovf_url
+    __args__['resourcePoolId'] = resource_pool_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getOvfVmTemplate:getOvfVmTemplate', __args__, opts=opts, typ=GetOvfVmTemplateResult)
+    return __ret__.apply(lambda __response__: GetOvfVmTemplateResult(
+        allow_unverified_ssl_cert=pulumi.get(__response__, 'allow_unverified_ssl_cert'),
+        alternate_guest_name=pulumi.get(__response__, 'alternate_guest_name'),
+        annotation=pulumi.get(__response__, 'annotation'),
+        cpu_hot_add_enabled=pulumi.get(__response__, 'cpu_hot_add_enabled'),
+        cpu_hot_remove_enabled=pulumi.get(__response__, 'cpu_hot_remove_enabled'),
+        cpu_performance_counters_enabled=pulumi.get(__response__, 'cpu_performance_counters_enabled'),
+        datastore_id=pulumi.get(__response__, 'datastore_id'),
+        deployment_option=pulumi.get(__response__, 'deployment_option'),
+        disk_provisioning=pulumi.get(__response__, 'disk_provisioning'),
+        enable_hidden_properties=pulumi.get(__response__, 'enable_hidden_properties'),
+        firmware=pulumi.get(__response__, 'firmware'),
+        folder=pulumi.get(__response__, 'folder'),
+        guest_id=pulumi.get(__response__, 'guest_id'),
+        host_system_id=pulumi.get(__response__, 'host_system_id'),
+        id=pulumi.get(__response__, 'id'),
+        ide_controller_count=pulumi.get(__response__, 'ide_controller_count'),
+        ip_allocation_policy=pulumi.get(__response__, 'ip_allocation_policy'),
+        ip_protocol=pulumi.get(__response__, 'ip_protocol'),
+        local_ovf_path=pulumi.get(__response__, 'local_ovf_path'),
+        memory=pulumi.get(__response__, 'memory'),
+        memory_hot_add_enabled=pulumi.get(__response__, 'memory_hot_add_enabled'),
+        name=pulumi.get(__response__, 'name'),
+        nested_hv_enabled=pulumi.get(__response__, 'nested_hv_enabled'),
+        num_cores_per_socket=pulumi.get(__response__, 'num_cores_per_socket'),
+        num_cpus=pulumi.get(__response__, 'num_cpus'),
+        ovf_network_map=pulumi.get(__response__, 'ovf_network_map'),
+        remote_ovf_url=pulumi.get(__response__, 'remote_ovf_url'),
+        resource_pool_id=pulumi.get(__response__, 'resource_pool_id'),
+        sata_controller_count=pulumi.get(__response__, 'sata_controller_count'),
+        scsi_controller_count=pulumi.get(__response__, 'scsi_controller_count'),
+        scsi_type=pulumi.get(__response__, 'scsi_type'),
+        swap_placement_policy=pulumi.get(__response__, 'swap_placement_policy')))

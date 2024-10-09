@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -142,9 +147,6 @@ def get_license(license_key: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         total=pulumi.get(__ret__, 'total'),
         used=pulumi.get(__ret__, 'used'))
-
-
-@_utilities.lift_output_func(get_license)
 def get_license_output(license_key: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLicenseResult]:
     """
@@ -163,4 +165,15 @@ def get_license_output(license_key: Optional[pulumi.Input[str]] = None,
 
     :param str license_key: The license key.
     """
-    ...
+    __args__ = dict()
+    __args__['licenseKey'] = license_key
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getLicense:getLicense', __args__, opts=opts, typ=GetLicenseResult)
+    return __ret__.apply(lambda __response__: GetLicenseResult(
+        edition_key=pulumi.get(__response__, 'edition_key'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        license_key=pulumi.get(__response__, 'license_key'),
+        name=pulumi.get(__response__, 'name'),
+        total=pulumi.get(__response__, 'total'),
+        used=pulumi.get(__response__, 'used')))

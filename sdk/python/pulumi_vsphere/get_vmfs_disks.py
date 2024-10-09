@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -134,9 +139,6 @@ def get_vmfs_disks(filter: Optional[str] = None,
         host_system_id=pulumi.get(__ret__, 'host_system_id'),
         id=pulumi.get(__ret__, 'id'),
         rescan=pulumi.get(__ret__, 'rescan'))
-
-
-@_utilities.lift_output_func(get_vmfs_disks)
 def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                           host_system_id: Optional[pulumi.Input[str]] = None,
                           rescan: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -174,4 +176,15 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
            searching for disks. This may lengthen the time it takes to perform the
            search. Default: `false`.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['hostSystemId'] = host_system_id
+    __args__['rescan'] = rescan
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getVmfsDisks:getVmfsDisks', __args__, opts=opts, typ=GetVmfsDisksResult)
+    return __ret__.apply(lambda __response__: GetVmfsDisksResult(
+        disks=pulumi.get(__response__, 'disks'),
+        filter=pulumi.get(__response__, 'filter'),
+        host_system_id=pulumi.get(__response__, 'host_system_id'),
+        id=pulumi.get(__response__, 'id'),
+        rescan=pulumi.get(__response__, 'rescan')))
