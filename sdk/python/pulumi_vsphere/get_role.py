@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -126,9 +131,6 @@ def get_role(description: Optional[str] = None,
         label=pulumi.get(__ret__, 'label'),
         name=pulumi.get(__ret__, 'name'),
         role_privileges=pulumi.get(__ret__, 'role_privileges'))
-
-
-@_utilities.lift_output_func(get_role)
 def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                     label: Optional[pulumi.Input[str]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -152,4 +154,16 @@ def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     :param str label: The label of the role.
     :param Sequence[str] role_privileges: The privileges associated with the role.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['label'] = label
+    __args__['name'] = name
+    __args__['rolePrivileges'] = role_privileges
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
+    return __ret__.apply(lambda __response__: GetRoleResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        label=pulumi.get(__response__, 'label'),
+        name=pulumi.get(__response__, 'name'),
+        role_privileges=pulumi.get(__response__, 'role_privileges')))

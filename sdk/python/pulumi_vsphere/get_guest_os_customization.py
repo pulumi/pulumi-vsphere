@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -122,9 +127,6 @@ def get_guest_os_customization(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         specs=pulumi.get(__ret__, 'specs'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_guest_os_customization)
 def get_guest_os_customization_output(name: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGuestOsCustomizationResult]:
     """
@@ -135,4 +137,15 @@ def get_guest_os_customization_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the customization specification is the unique
            identifier per vCenter Server instance. ## Attribute Reference
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getGuestOsCustomization:getGuestOsCustomization', __args__, opts=opts, typ=GetGuestOsCustomizationResult)
+    return __ret__.apply(lambda __response__: GetGuestOsCustomizationResult(
+        change_version=pulumi.get(__response__, 'change_version'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        last_update_time=pulumi.get(__response__, 'last_update_time'),
+        name=pulumi.get(__response__, 'name'),
+        specs=pulumi.get(__response__, 'specs'),
+        type=pulumi.get(__response__, 'type')))

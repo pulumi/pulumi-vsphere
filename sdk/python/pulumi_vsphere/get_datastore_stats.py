@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -143,9 +148,6 @@ def get_datastore_stats(capacity: Optional[Mapping[str, str]] = None,
         datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
         free_space=pulumi.get(__ret__, 'free_space'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_datastore_stats)
 def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                datacenter_id: Optional[pulumi.Input[str]] = None,
                                free_space: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
@@ -193,4 +195,14 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
            datacenter, where the name of the datastore is used as key and the free space
            as value.
     """
-    ...
+    __args__ = dict()
+    __args__['capacity'] = capacity
+    __args__['datacenterId'] = datacenter_id
+    __args__['freeSpace'] = free_space
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDatastoreStats:getDatastoreStats', __args__, opts=opts, typ=GetDatastoreStatsResult)
+    return __ret__.apply(lambda __response__: GetDatastoreStatsResult(
+        capacity=pulumi.get(__response__, 'capacity'),
+        datacenter_id=pulumi.get(__response__, 'datacenter_id'),
+        free_space=pulumi.get(__response__, 'free_space'),
+        id=pulumi.get(__response__, 'id')))
