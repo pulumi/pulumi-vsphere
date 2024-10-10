@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -115,9 +120,6 @@ def get_tag_category(name: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_tag_category)
 def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagCategoryResult]:
     """
@@ -142,4 +144,13 @@ def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the tag category.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts, typ=GetTagCategoryResult)
+    return __ret__.apply(lambda __response__: GetTagCategoryResult(
+        associable_types=pulumi.get(__response__, 'associable_types'),
+        cardinality=pulumi.get(__response__, 'cardinality'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name')))

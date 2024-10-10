@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -136,9 +141,6 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         vgpu_profiles=pulumi.get(__ret__, 'vgpu_profiles'))
-
-
-@_utilities.lift_output_func(get_host_vgpu_profile)
 def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostVgpuProfileResult]:
@@ -181,4 +183,13 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
            
            [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     """
-    ...
+    __args__ = dict()
+    __args__['hostId'] = host_id
+    __args__['nameRegex'] = name_regex
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getHostVgpuProfile:getHostVgpuProfile', __args__, opts=opts, typ=GetHostVgpuProfileResult)
+    return __ret__.apply(lambda __response__: GetHostVgpuProfileResult(
+        host_id=pulumi.get(__response__, 'host_id'),
+        id=pulumi.get(__response__, 'id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        vgpu_profiles=pulumi.get(__response__, 'vgpu_profiles')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -77,9 +82,6 @@ def get_host_base_images(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
     return AwaitableGetHostBaseImagesResult(
         id=pulumi.get(__ret__, 'id'),
         versions=pulumi.get(__ret__, 'versions'))
-
-
-@_utilities.lift_output_func(get_host_base_images)
 def get_host_base_images_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostBaseImagesResult]:
     """
     The `get_host_base_images` data source can be used to get the list of ESXi
@@ -94,4 +96,9 @@ def get_host_base_images_output(opts: Optional[pulumi.InvokeOptions] = None) -> 
     base_images = vsphere.get_host_base_images()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('vsphere:index/getHostBaseImages:getHostBaseImages', __args__, opts=opts, typ=GetHostBaseImagesResult)
+    return __ret__.apply(lambda __response__: GetHostBaseImagesResult(
+        id=pulumi.get(__response__, 'id'),
+        versions=pulumi.get(__response__, 'versions')))
