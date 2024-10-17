@@ -387,6 +387,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly vmxPath!: pulumi.Output<string>;
     /**
+     * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+     */
+    public readonly vtpm!: pulumi.Output<outputs.VirtualMachineVtpm | undefined>;
+    /**
      * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
      * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      */
@@ -502,6 +506,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["vbsEnabled"] = state ? state.vbsEnabled : undefined;
             resourceInputs["vmwareToolsStatus"] = state ? state.vmwareToolsStatus : undefined;
             resourceInputs["vmxPath"] = state ? state.vmxPath : undefined;
+            resourceInputs["vtpm"] = state ? state.vtpm : undefined;
             resourceInputs["vvtdEnabled"] = state ? state.vvtdEnabled : undefined;
             resourceInputs["waitForGuestIpTimeout"] = state ? state.waitForGuestIpTimeout : undefined;
             resourceInputs["waitForGuestNetRoutable"] = state ? state.waitForGuestNetRoutable : undefined;
@@ -582,6 +587,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["toolsUpgradePolicy"] = args ? args.toolsUpgradePolicy : undefined;
             resourceInputs["vapp"] = args ? args.vapp : undefined;
             resourceInputs["vbsEnabled"] = args ? args.vbsEnabled : undefined;
+            resourceInputs["vtpm"] = args ? args.vtpm : undefined;
             resourceInputs["vvtdEnabled"] = args ? args.vvtdEnabled : undefined;
             resourceInputs["waitForGuestIpTimeout"] = args ? args.waitForGuestIpTimeout : undefined;
             resourceInputs["waitForGuestNetRoutable"] = args ? args.waitForGuestNetRoutable : undefined;
@@ -935,6 +941,10 @@ export interface VirtualMachineState {
      */
     vmxPath?: pulumi.Input<string>;
     /**
+     * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+     */
+    vtpm?: pulumi.Input<inputs.VirtualMachineVtpm>;
+    /**
      * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
      * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      */
@@ -1246,6 +1256,10 @@ export interface VirtualMachineArgs {
      * Flag to specify if Virtualization-based security is enabled for this virtual machine.
      */
     vbsEnabled?: pulumi.Input<boolean>;
+    /**
+     * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+     */
+    vtpm?: pulumi.Input<inputs.VirtualMachineVtpm>;
     /**
      * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
      * I/O Virtualization (AMD-Vi or IOMMU), is enabled.

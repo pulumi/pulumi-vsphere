@@ -49,6 +49,44 @@ import (
 //	}
 //
 // ```
+//
+// ### Additional Examples
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//				Name:         "VM Network",
+//				Filters: []vsphere.GetNetworkFilter{
+//					{
+//						NetworkType: pulumi.StringRef("Network"),
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNetwork(ctx *pulumi.Context, args *GetNetworkArgs, opts ...pulumi.InvokeOption) (*GetNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkResult
@@ -71,14 +109,17 @@ type GetNetworkArgs struct {
 	// group belongs. It is useful to differentiate port groups with same name using
 	// the distributed virtual switch ID.
 	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
+	// Apply a filter for the discovered network.
+	Filters []GetNetworkFilter `pulumi:"filters"`
 	// The name of the network. This can be a name or path.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getNetwork.
 type GetNetworkResult struct {
-	DatacenterId                 *string `pulumi:"datacenterId"`
-	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
+	DatacenterId                 *string            `pulumi:"datacenterId"`
+	DistributedVirtualSwitchUuid *string            `pulumi:"distributedVirtualSwitchUuid"`
+	Filters                      []GetNetworkFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
@@ -120,6 +161,8 @@ type GetNetworkOutputArgs struct {
 	// group belongs. It is useful to differentiate port groups with same name using
 	// the distributed virtual switch ID.
 	DistributedVirtualSwitchUuid pulumi.StringPtrInput `pulumi:"distributedVirtualSwitchUuid"`
+	// Apply a filter for the discovered network.
+	Filters GetNetworkFilterArrayInput `pulumi:"filters"`
 	// The name of the network. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -149,6 +192,10 @@ func (o GetNetworkResultOutput) DatacenterId() pulumi.StringPtrOutput {
 
 func (o GetNetworkResultOutput) DistributedVirtualSwitchUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkResult) *string { return v.DistributedVirtualSwitchUuid }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkResultOutput) Filters() GetNetworkFilterArrayOutput {
+	return o.ApplyT(func(v GetNetworkResult) []GetNetworkFilter { return v.Filters }).(GetNetworkFilterArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

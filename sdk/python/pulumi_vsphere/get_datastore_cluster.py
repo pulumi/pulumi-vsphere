@@ -26,10 +26,13 @@ class GetDatastoreClusterResult:
     """
     A collection of values returned by getDatastoreCluster.
     """
-    def __init__(__self__, datacenter_id=None, id=None, name=None):
+    def __init__(__self__, datacenter_id=None, datastores=None, id=None, name=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
+        if datastores and not isinstance(datastores, list):
+            raise TypeError("Expected argument 'datastores' to be a list")
+        pulumi.set(__self__, "datastores", datastores)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -41,6 +44,15 @@ class GetDatastoreClusterResult:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> Optional[str]:
         return pulumi.get(self, "datacenter_id")
+
+    @property
+    @pulumi.getter
+    def datastores(self) -> Sequence[str]:
+        """
+        (Optional) The names of the datastores included in the specific 
+        cluster.
+        """
+        return pulumi.get(self, "datastores")
 
     @property
     @pulumi.getter
@@ -63,6 +75,7 @@ class AwaitableGetDatastoreClusterResult(GetDatastoreClusterResult):
             yield self
         return GetDatastoreClusterResult(
             datacenter_id=self.datacenter_id,
+            datastores=self.datastores,
             id=self.id,
             name=self.name)
 
@@ -103,6 +116,7 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
 
     return AwaitableGetDatastoreClusterResult(
         datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
+        datastores=pulumi.get(__ret__, 'datastores'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
 def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -140,5 +154,6 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[s
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__, opts=opts, typ=GetDatastoreClusterResult)
     return __ret__.apply(lambda __response__: GetDatastoreClusterResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),
+        datastores=pulumi.get(__response__, 'datastores'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name')))

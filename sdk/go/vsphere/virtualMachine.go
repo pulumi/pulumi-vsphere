@@ -209,6 +209,8 @@ type VirtualMachine struct {
 	VmwareToolsStatus pulumi.StringOutput `pulumi:"vmwareToolsStatus"`
 	// The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
 	VmxPath pulumi.StringOutput `pulumi:"vmxPath"`
+	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+	Vtpm VirtualMachineVtpmPtrOutput `pulumi:"vtpm"`
 	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
 	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled pulumi.BoolPtrOutput `pulumi:"vvtdEnabled"`
@@ -427,6 +429,8 @@ type virtualMachineState struct {
 	VmwareToolsStatus *string `pulumi:"vmwareToolsStatus"`
 	// The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
 	VmxPath *string `pulumi:"vmxPath"`
+	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+	Vtpm *VirtualMachineVtpm `pulumi:"vtpm"`
 	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
 	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
@@ -613,6 +617,8 @@ type VirtualMachineState struct {
 	VmwareToolsStatus pulumi.StringPtrInput
 	// The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
 	VmxPath pulumi.StringPtrInput
+	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+	Vtpm VirtualMachineVtpmPtrInput
 	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
 	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled pulumi.BoolPtrInput
@@ -782,6 +788,8 @@ type virtualMachineArgs struct {
 	Vapp *VirtualMachineVapp `pulumi:"vapp"`
 	// Flag to specify if Virtualization-based security is enabled for this virtual machine.
 	VbsEnabled *bool `pulumi:"vbsEnabled"`
+	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+	Vtpm *VirtualMachineVtpm `pulumi:"vtpm"`
 	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
 	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
@@ -948,6 +956,8 @@ type VirtualMachineArgs struct {
 	Vapp VirtualMachineVappPtrInput
 	// Flag to specify if Virtualization-based security is enabled for this virtual machine.
 	VbsEnabled pulumi.BoolPtrInput
+	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+	Vtpm VirtualMachineVtpmPtrInput
 	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
 	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled pulumi.BoolPtrInput
@@ -1464,6 +1474,11 @@ func (o VirtualMachineOutput) VmwareToolsStatus() pulumi.StringOutput {
 // The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
 func (o VirtualMachineOutput) VmxPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.VmxPath }).(pulumi.StringOutput)
+}
+
+// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+func (o VirtualMachineOutput) Vtpm() VirtualMachineVtpmPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVtpmPtrOutput { return v.Vtpm }).(VirtualMachineVtpmPtrOutput)
 }
 
 // Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD

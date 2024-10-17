@@ -5,7 +5,9 @@ package com.pulumi.vsphere.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.vsphere.inputs.GetNetworkFilter;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -58,6 +60,21 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Apply a filter for the discovered network.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable List<GetNetworkFilter> filters;
+
+    /**
+     * @return Apply a filter for the discovered network.
+     * 
+     */
+    public Optional<List<GetNetworkFilter>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
      * The name of the network. This can be a name or path.
      * 
      */
@@ -77,6 +94,7 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetNetworkPlainArgs(GetNetworkPlainArgs $) {
         this.datacenterId = $.datacenterId;
         this.distributedVirtualSwitchUuid = $.distributedVirtualSwitchUuid;
+        this.filters = $.filters;
         this.name = $.name;
     }
 
@@ -124,6 +142,27 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder distributedVirtualSwitchUuid(@Nullable String distributedVirtualSwitchUuid) {
             $.distributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
             return this;
+        }
+
+        /**
+         * @param filters Apply a filter for the discovered network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable List<GetNetworkFilter> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters Apply a filter for the discovered network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(GetNetworkFilter... filters) {
+            return filters(List.of(filters));
         }
 
         /**

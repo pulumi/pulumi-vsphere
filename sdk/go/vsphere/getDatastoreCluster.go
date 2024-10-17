@@ -73,6 +73,9 @@ type LookupDatastoreClusterArgs struct {
 // A collection of values returned by getDatastoreCluster.
 type LookupDatastoreClusterResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
+	// (Optional) The names of the datastores included in the specific
+	// cluster.
+	Datastores []string `pulumi:"datastores"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
@@ -130,6 +133,12 @@ func (o LookupDatastoreClusterResultOutput) ToLookupDatastoreClusterResultOutput
 
 func (o LookupDatastoreClusterResultOutput) DatacenterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatastoreClusterResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
+}
+
+// (Optional) The names of the datastores included in the specific
+// cluster.
+func (o LookupDatastoreClusterResultOutput) Datastores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDatastoreClusterResult) []string { return v.Datastores }).(pulumi.StringArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -25,12 +27,31 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ *
+ * ### Additional Examples
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const myPortGroup = datacenter.then(datacenter => vsphere.getNetwork({
+ *     datacenterId: datacenter.id,
+ *     name: "VM Network",
+ *     filters: [{
+ *         networkType: "Network",
+ *     }],
+ * }));
+ * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getNetwork:getNetwork", {
         "datacenterId": args.datacenterId,
         "distributedVirtualSwitchUuid": args.distributedVirtualSwitchUuid,
+        "filters": args.filters,
         "name": args.name,
     }, opts);
 }
@@ -54,6 +75,10 @@ export interface GetNetworkArgs {
      */
     distributedVirtualSwitchUuid?: string;
     /**
+     * Apply a filter for the discovered network.
+     */
+    filters?: inputs.GetNetworkFilter[];
+    /**
      * The name of the network. This can be a name or path.
      */
     name: string;
@@ -65,6 +90,7 @@ export interface GetNetworkArgs {
 export interface GetNetworkResult {
     readonly datacenterId?: string;
     readonly distributedVirtualSwitchUuid?: string;
+    readonly filters?: outputs.GetNetworkFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -99,12 +125,31 @@ export interface GetNetworkResult {
  *     datacenterId: datacenter.id,
  * }));
  * ```
+ *
+ * ### Additional Examples
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const myPortGroup = datacenter.then(datacenter => vsphere.getNetwork({
+ *     datacenterId: datacenter.id,
+ *     name: "VM Network",
+ *     filters: [{
+ *         networkType: "Network",
+ *     }],
+ * }));
+ * ```
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getNetwork:getNetwork", {
         "datacenterId": args.datacenterId,
         "distributedVirtualSwitchUuid": args.distributedVirtualSwitchUuid,
+        "filters": args.filters,
         "name": args.name,
     }, opts);
 }
@@ -127,6 +172,10 @@ export interface GetNetworkOutputArgs {
      * the distributed virtual switch ID.
      */
     distributedVirtualSwitchUuid?: pulumi.Input<string>;
+    /**
+     * Apply a filter for the discovered network.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkFilterArgs>[]>;
     /**
      * The name of the network. This can be a name or path.
      */

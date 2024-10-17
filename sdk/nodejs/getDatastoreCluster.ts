@@ -57,6 +57,11 @@ export interface GetDatastoreClusterArgs {
 export interface GetDatastoreClusterResult {
     readonly datacenterId?: string;
     /**
+     * (Optional) The names of the datastores included in the specific 
+     * cluster.
+     */
+    readonly datastores: string[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

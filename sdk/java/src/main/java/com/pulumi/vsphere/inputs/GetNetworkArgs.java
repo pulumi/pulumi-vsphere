@@ -6,7 +6,9 @@ package com.pulumi.vsphere.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.vsphere.inputs.GetNetworkFilterArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,6 +61,21 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Apply a filter for the discovered network.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<List<GetNetworkFilterArgs>> filters;
+
+    /**
+     * @return Apply a filter for the discovered network.
+     * 
+     */
+    public Optional<Output<List<GetNetworkFilterArgs>>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
      * The name of the network. This can be a name or path.
      * 
      */
@@ -78,6 +95,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
     private GetNetworkArgs(GetNetworkArgs $) {
         this.datacenterId = $.datacenterId;
         this.distributedVirtualSwitchUuid = $.distributedVirtualSwitchUuid;
+        this.filters = $.filters;
         this.name = $.name;
     }
 
@@ -151,6 +169,37 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder distributedVirtualSwitchUuid(String distributedVirtualSwitchUuid) {
             return distributedVirtualSwitchUuid(Output.of(distributedVirtualSwitchUuid));
+        }
+
+        /**
+         * @param filters Apply a filter for the discovered network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<List<GetNetworkFilterArgs>> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters Apply a filter for the discovered network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(List<GetNetworkFilterArgs> filters) {
+            return filters(Output.of(filters));
+        }
+
+        /**
+         * @param filters Apply a filter for the discovered network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(GetNetworkFilterArgs... filters) {
+            return filters(List.of(filters));
         }
 
         /**

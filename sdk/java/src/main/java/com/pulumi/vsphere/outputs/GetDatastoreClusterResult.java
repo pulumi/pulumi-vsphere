@@ -6,6 +6,7 @@ package com.pulumi.vsphere.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,6 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatastoreClusterResult {
     private @Nullable String datacenterId;
+    /**
+     * @return (Optional) The names of the datastores included in the specific
+     * cluster.
+     * 
+     */
+    private List<String> datastores;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -23,6 +30,14 @@ public final class GetDatastoreClusterResult {
     private GetDatastoreClusterResult() {}
     public Optional<String> datacenterId() {
         return Optional.ofNullable(this.datacenterId);
+    }
+    /**
+     * @return (Optional) The names of the datastores included in the specific
+     * cluster.
+     * 
+     */
+    public List<String> datastores() {
+        return this.datastores;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -45,12 +60,14 @@ public final class GetDatastoreClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String datacenterId;
+        private List<String> datastores;
         private String id;
         private String name;
         public Builder() {}
         public Builder(GetDatastoreClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenterId = defaults.datacenterId;
+    	      this.datastores = defaults.datastores;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
         }
@@ -60,6 +77,17 @@ public final class GetDatastoreClusterResult {
 
             this.datacenterId = datacenterId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder datastores(List<String> datastores) {
+            if (datastores == null) {
+              throw new MissingRequiredPropertyException("GetDatastoreClusterResult", "datastores");
+            }
+            this.datastores = datastores;
+            return this;
+        }
+        public Builder datastores(String... datastores) {
+            return datastores(List.of(datastores));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -80,6 +108,7 @@ public final class GetDatastoreClusterResult {
         public GetDatastoreClusterResult build() {
             final var _resultValue = new GetDatastoreClusterResult();
             _resultValue.datacenterId = datacenterId;
+            _resultValue.datastores = datastores;
             _resultValue.id = id;
             _resultValue.name = name;
             return _resultValue;

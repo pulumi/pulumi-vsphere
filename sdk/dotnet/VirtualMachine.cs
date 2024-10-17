@@ -529,6 +529,12 @@ namespace Pulumi.VSphere
         public Output<string> VmxPath { get; private set; } = null!;
 
         /// <summary>
+        /// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+        /// </summary>
+        [Output("vtpm")]
+        public Output<Outputs.VirtualMachineVtpm?> Vtpm { get; private set; } = null!;
+
+        /// <summary>
         /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
         /// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         /// </summary>
@@ -1077,6 +1083,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("vbsEnabled")]
         public Input<bool>? VbsEnabled { get; set; }
+
+        /// <summary>
+        /// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+        /// </summary>
+        [Input("vtpm")]
+        public Input<Inputs.VirtualMachineVtpmArgs>? Vtpm { get; set; }
 
         /// <summary>
         /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
@@ -1664,6 +1676,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("vmxPath")]
         public Input<string>? VmxPath { get; set; }
+
+        /// <summary>
+        /// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+        /// </summary>
+        [Input("vtpm")]
+        public Input<Inputs.VirtualMachineVtpmGetArgs>? Vtpm { get; set; }
 
         /// <summary>
         /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD

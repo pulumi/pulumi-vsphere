@@ -116,15 +116,22 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Id;
         public readonly string? Name;
+        /// <summary>
+        /// List of all virtual machines included in the vSphere datacenter object.
+        /// </summary>
+        public readonly ImmutableArray<string> VirtualMachines;
 
         [OutputConstructor]
         private GetDatacenterResult(
             string id,
 
-            string? name)
+            string? name,
+
+            ImmutableArray<string> virtualMachines)
         {
             Id = id;
             Name = name;
+            VirtualMachines = virtualMachines;
         }
     }
 }

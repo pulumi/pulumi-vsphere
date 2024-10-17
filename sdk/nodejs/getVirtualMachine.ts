@@ -383,6 +383,10 @@ export interface GetVirtualMachineResult {
     readonly vapp?: outputs.GetVirtualMachineVapp;
     readonly vappTransports: string[];
     readonly vbsEnabled?: boolean;
+    /**
+     * Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
+     */
+    readonly vtpm: boolean;
     readonly vvtdEnabled?: boolean;
 }
 /**

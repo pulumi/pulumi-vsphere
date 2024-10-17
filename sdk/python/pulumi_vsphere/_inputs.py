@@ -91,12 +91,16 @@ __all__ = [
     'VirtualMachineOvfDeployArgsDict',
     'VirtualMachineVappArgs',
     'VirtualMachineVappArgsDict',
+    'VirtualMachineVtpmArgs',
+    'VirtualMachineVtpmArgsDict',
     'VmStoragePolicyTagRuleArgs',
     'VmStoragePolicyTagRuleArgsDict',
     'VnicIpv4Args',
     'VnicIpv4ArgsDict',
     'VnicIpv6Args',
     'VnicIpv6ArgsDict',
+    'GetNetworkFilterArgs',
+    'GetNetworkFilterArgsDict',
     'GetVirtualMachineVappArgs',
     'GetVirtualMachineVappArgsDict',
 ]
@@ -4287,6 +4291,38 @@ class VirtualMachineVappArgs:
 
 
 if not MYPY:
+    class VirtualMachineVtpmArgsDict(TypedDict):
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the TPM device. Default is 2.0.
+        """
+elif False:
+    VirtualMachineVtpmArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VirtualMachineVtpmArgs:
+    def __init__(__self__, *,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] version: The version of the TPM device. Default is 2.0.
+        """
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the TPM device. Default is 2.0.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
     class VmStoragePolicyTagRuleArgsDict(TypedDict):
         tag_category: pulumi.Input[str]
         """
@@ -4538,6 +4574,38 @@ class VnicIpv6Args:
     @gw.setter
     def gw(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gw", value)
+
+
+if not MYPY:
+    class GetNetworkFilterArgsDict(TypedDict):
+        network_type: NotRequired[str]
+        """
+        This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+        """
+elif False:
+    GetNetworkFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetNetworkFilterArgs:
+    def __init__(__self__, *,
+                 network_type: Optional[str] = None):
+        """
+        :param str network_type: This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+        """
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[str]:
+        """
+        This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[str]):
+        pulumi.set(self, "network_type", value)
 
 
 if not MYPY:
