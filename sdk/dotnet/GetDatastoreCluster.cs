@@ -133,6 +133,11 @@ namespace Pulumi.VSphere
     {
         public readonly string? DatacenterId;
         /// <summary>
+        /// (Optional) The names of the datastores included in the specific 
+        /// cluster.
+        /// </summary>
+        public readonly ImmutableArray<string> Datastores;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -142,11 +147,14 @@ namespace Pulumi.VSphere
         private GetDatastoreClusterResult(
             string? datacenterId,
 
+            ImmutableArray<string> datastores,
+
             string id,
 
             string name)
         {
             DatacenterId = datacenterId;
+            Datastores = datastores;
             Id = id;
             Name = name;
         }

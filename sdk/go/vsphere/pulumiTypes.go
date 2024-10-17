@@ -6598,6 +6598,143 @@ func (o VirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type VirtualMachineVtpm struct {
+	// The version of the TPM device. Default is 2.0.
+	Version *string `pulumi:"version"`
+}
+
+// VirtualMachineVtpmInput is an input type that accepts VirtualMachineVtpmArgs and VirtualMachineVtpmOutput values.
+// You can construct a concrete instance of `VirtualMachineVtpmInput` via:
+//
+//	VirtualMachineVtpmArgs{...}
+type VirtualMachineVtpmInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVtpmOutput() VirtualMachineVtpmOutput
+	ToVirtualMachineVtpmOutputWithContext(context.Context) VirtualMachineVtpmOutput
+}
+
+type VirtualMachineVtpmArgs struct {
+	// The version of the TPM device. Default is 2.0.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (VirtualMachineVtpmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVtpm)(nil)).Elem()
+}
+
+func (i VirtualMachineVtpmArgs) ToVirtualMachineVtpmOutput() VirtualMachineVtpmOutput {
+	return i.ToVirtualMachineVtpmOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVtpmArgs) ToVirtualMachineVtpmOutputWithContext(ctx context.Context) VirtualMachineVtpmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVtpmOutput)
+}
+
+func (i VirtualMachineVtpmArgs) ToVirtualMachineVtpmPtrOutput() VirtualMachineVtpmPtrOutput {
+	return i.ToVirtualMachineVtpmPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineVtpmArgs) ToVirtualMachineVtpmPtrOutputWithContext(ctx context.Context) VirtualMachineVtpmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVtpmOutput).ToVirtualMachineVtpmPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineVtpmPtrInput is an input type that accepts VirtualMachineVtpmArgs, VirtualMachineVtpmPtr and VirtualMachineVtpmPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineVtpmPtrInput` via:
+//
+//	        VirtualMachineVtpmArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineVtpmPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineVtpmPtrOutput() VirtualMachineVtpmPtrOutput
+	ToVirtualMachineVtpmPtrOutputWithContext(context.Context) VirtualMachineVtpmPtrOutput
+}
+
+type virtualMachineVtpmPtrType VirtualMachineVtpmArgs
+
+func VirtualMachineVtpmPtr(v *VirtualMachineVtpmArgs) VirtualMachineVtpmPtrInput {
+	return (*virtualMachineVtpmPtrType)(v)
+}
+
+func (*virtualMachineVtpmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineVtpm)(nil)).Elem()
+}
+
+func (i *virtualMachineVtpmPtrType) ToVirtualMachineVtpmPtrOutput() VirtualMachineVtpmPtrOutput {
+	return i.ToVirtualMachineVtpmPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineVtpmPtrType) ToVirtualMachineVtpmPtrOutputWithContext(ctx context.Context) VirtualMachineVtpmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineVtpmPtrOutput)
+}
+
+type VirtualMachineVtpmOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVtpmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineVtpm)(nil)).Elem()
+}
+
+func (o VirtualMachineVtpmOutput) ToVirtualMachineVtpmOutput() VirtualMachineVtpmOutput {
+	return o
+}
+
+func (o VirtualMachineVtpmOutput) ToVirtualMachineVtpmOutputWithContext(ctx context.Context) VirtualMachineVtpmOutput {
+	return o
+}
+
+func (o VirtualMachineVtpmOutput) ToVirtualMachineVtpmPtrOutput() VirtualMachineVtpmPtrOutput {
+	return o.ToVirtualMachineVtpmPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineVtpmOutput) ToVirtualMachineVtpmPtrOutputWithContext(ctx context.Context) VirtualMachineVtpmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineVtpm) *VirtualMachineVtpm {
+		return &v
+	}).(VirtualMachineVtpmPtrOutput)
+}
+
+// The version of the TPM device. Default is 2.0.
+func (o VirtualMachineVtpmOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineVtpm) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineVtpmPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineVtpmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineVtpm)(nil)).Elem()
+}
+
+func (o VirtualMachineVtpmPtrOutput) ToVirtualMachineVtpmPtrOutput() VirtualMachineVtpmPtrOutput {
+	return o
+}
+
+func (o VirtualMachineVtpmPtrOutput) ToVirtualMachineVtpmPtrOutputWithContext(ctx context.Context) VirtualMachineVtpmPtrOutput {
+	return o
+}
+
+func (o VirtualMachineVtpmPtrOutput) Elem() VirtualMachineVtpmOutput {
+	return o.ApplyT(func(v *VirtualMachineVtpm) VirtualMachineVtpm {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineVtpm
+		return ret
+	}).(VirtualMachineVtpmOutput)
+}
+
+// The version of the TPM device. Default is 2.0.
+func (o VirtualMachineVtpmPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineVtpm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 type VmStoragePolicyTagRule struct {
 	// Include datastores with the given tags or exclude. Default `true`.
 	IncludeDatastoresWithTags *bool `pulumi:"includeDatastoresWithTags"`
@@ -7857,6 +7994,103 @@ func (o GetHostVgpuProfileVgpuProfileArrayOutput) Index(i pulumi.IntInput) GetHo
 	}).(GetHostVgpuProfileVgpuProfileOutput)
 }
 
+type GetNetworkFilter struct {
+	// This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+	NetworkType *string `pulumi:"networkType"`
+}
+
+// GetNetworkFilterInput is an input type that accepts GetNetworkFilterArgs and GetNetworkFilterOutput values.
+// You can construct a concrete instance of `GetNetworkFilterInput` via:
+//
+//	GetNetworkFilterArgs{...}
+type GetNetworkFilterInput interface {
+	pulumi.Input
+
+	ToGetNetworkFilterOutput() GetNetworkFilterOutput
+	ToGetNetworkFilterOutputWithContext(context.Context) GetNetworkFilterOutput
+}
+
+type GetNetworkFilterArgs struct {
+	// This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+}
+
+func (GetNetworkFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkFilter)(nil)).Elem()
+}
+
+func (i GetNetworkFilterArgs) ToGetNetworkFilterOutput() GetNetworkFilterOutput {
+	return i.ToGetNetworkFilterOutputWithContext(context.Background())
+}
+
+func (i GetNetworkFilterArgs) ToGetNetworkFilterOutputWithContext(ctx context.Context) GetNetworkFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkFilterOutput)
+}
+
+// GetNetworkFilterArrayInput is an input type that accepts GetNetworkFilterArray and GetNetworkFilterArrayOutput values.
+// You can construct a concrete instance of `GetNetworkFilterArrayInput` via:
+//
+//	GetNetworkFilterArray{ GetNetworkFilterArgs{...} }
+type GetNetworkFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkFilterArrayOutput() GetNetworkFilterArrayOutput
+	ToGetNetworkFilterArrayOutputWithContext(context.Context) GetNetworkFilterArrayOutput
+}
+
+type GetNetworkFilterArray []GetNetworkFilterInput
+
+func (GetNetworkFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkFilter)(nil)).Elem()
+}
+
+func (i GetNetworkFilterArray) ToGetNetworkFilterArrayOutput() GetNetworkFilterArrayOutput {
+	return i.ToGetNetworkFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkFilterArray) ToGetNetworkFilterArrayOutputWithContext(ctx context.Context) GetNetworkFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkFilterArrayOutput)
+}
+
+type GetNetworkFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkFilter)(nil)).Elem()
+}
+
+func (o GetNetworkFilterOutput) ToGetNetworkFilterOutput() GetNetworkFilterOutput {
+	return o
+}
+
+func (o GetNetworkFilterOutput) ToGetNetworkFilterOutputWithContext(ctx context.Context) GetNetworkFilterOutput {
+	return o
+}
+
+// This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+func (o GetNetworkFilterOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkFilter) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+type GetNetworkFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkFilter)(nil)).Elem()
+}
+
+func (o GetNetworkFilterArrayOutput) ToGetNetworkFilterArrayOutput() GetNetworkFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkFilterArrayOutput) ToGetNetworkFilterArrayOutputWithContext(ctx context.Context) GetNetworkFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkFilter {
+		return vs[0].([]GetNetworkFilter)[vs[1].(int)]
+	}).(GetNetworkFilterOutput)
+}
+
 type GetVirtualMachineDisk struct {
 	// Set to `true` if the disk has been eager zeroed.
 	EagerlyScrub bool `pulumi:"eagerlyScrub"`
@@ -8385,6 +8619,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOvfDeployPtrInput)(nil)).Elem(), VirtualMachineOvfDeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVappInput)(nil)).Elem(), VirtualMachineVappArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVappPtrInput)(nil)).Elem(), VirtualMachineVappArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVtpmInput)(nil)).Elem(), VirtualMachineVtpmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVtpmPtrInput)(nil)).Elem(), VirtualMachineVtpmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyTagRuleInput)(nil)).Elem(), VmStoragePolicyTagRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyTagRuleArrayInput)(nil)).Elem(), VmStoragePolicyTagRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv4Input)(nil)).Elem(), VnicIpv4Args{})
@@ -8401,6 +8637,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGuestOsCustomizationSpecWindowsOptionArrayInput)(nil)).Elem(), GetGuestOsCustomizationSpecWindowsOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostVgpuProfileVgpuProfileArrayInput)(nil)).Elem(), GetHostVgpuProfileVgpuProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterInput)(nil)).Elem(), GetNetworkFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkFilterArrayInput)(nil)).Elem(), GetNetworkFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskInput)(nil)).Elem(), GetVirtualMachineDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskArrayInput)(nil)).Elem(), GetVirtualMachineDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArgs{})
@@ -8483,6 +8721,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineOvfDeployPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVtpmOutput{})
+	pulumi.RegisterOutputType(VirtualMachineVtpmPtrOutput{})
 	pulumi.RegisterOutputType(VmStoragePolicyTagRuleOutput{})
 	pulumi.RegisterOutputType(VmStoragePolicyTagRuleArrayOutput{})
 	pulumi.RegisterOutputType(VnicIpv4Output{})
@@ -8499,6 +8739,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGuestOsCustomizationSpecWindowsOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileOutput{})
 	pulumi.RegisterOutputType(GetHostVgpuProfileVgpuProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkFilterOutput{})
+	pulumi.RegisterOutputType(GetNetworkFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceOutput{})

@@ -92,6 +92,7 @@ class VirtualMachineArgs:
                  tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
                  vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
+                 vtpm: Optional[pulumi.Input['VirtualMachineVtpmArgs']] = None,
                  vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
@@ -177,6 +178,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input['VirtualMachineVappArgs'] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
+        :param pulumi.Input['VirtualMachineVtpmArgs'] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         :param pulumi.Input[bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
                I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
@@ -327,6 +329,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "vapp", vapp)
         if vbs_enabled is not None:
             pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+        if vtpm is not None:
+            pulumi.set(__self__, "vtpm", vtpm)
         if vvtd_enabled is not None:
             pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
         if wait_for_guest_ip_timeout is not None:
@@ -1191,6 +1195,18 @@ class VirtualMachineArgs:
         pulumi.set(self, "vbs_enabled", value)
 
     @property
+    @pulumi.getter
+    def vtpm(self) -> Optional[pulumi.Input['VirtualMachineVtpmArgs']]:
+        """
+        A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+        """
+        return pulumi.get(self, "vtpm")
+
+    @vtpm.setter
+    def vtpm(self, value: Optional[pulumi.Input['VirtualMachineVtpmArgs']]):
+        pulumi.set(self, "vtpm", value)
+
+    @property
     @pulumi.getter(name="vvtdEnabled")
     def vvtd_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1328,6 +1344,7 @@ class _VirtualMachineState:
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
                  vmware_tools_status: Optional[pulumi.Input[str]] = None,
                  vmx_path: Optional[pulumi.Input[str]] = None,
+                 vtpm: Optional[pulumi.Input['VirtualMachineVtpmArgs']] = None,
                  vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
@@ -1423,6 +1440,7 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
         :param pulumi.Input[str] vmware_tools_status: The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
         :param pulumi.Input[str] vmx_path: The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
+        :param pulumi.Input['VirtualMachineVtpmArgs'] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         :param pulumi.Input[bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
                I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
@@ -1596,6 +1614,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "vmware_tools_status", vmware_tools_status)
         if vmx_path is not None:
             pulumi.set(__self__, "vmx_path", vmx_path)
+        if vtpm is not None:
+            pulumi.set(__self__, "vtpm", vtpm)
         if vvtd_enabled is not None:
             pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
         if wait_for_guest_ip_timeout is not None:
@@ -2589,6 +2609,18 @@ class _VirtualMachineState:
         pulumi.set(self, "vmx_path", value)
 
     @property
+    @pulumi.getter
+    def vtpm(self) -> Optional[pulumi.Input['VirtualMachineVtpmArgs']]:
+        """
+        A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+        """
+        return pulumi.get(self, "vtpm")
+
+    @vtpm.setter
+    def vtpm(self, value: Optional[pulumi.Input['VirtualMachineVtpmArgs']]):
+        pulumi.set(self, "vtpm", value)
+
+    @property
     @pulumi.getter(name="vvtdEnabled")
     def vvtd_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2717,6 +2749,7 @@ class VirtualMachine(pulumi.CustomResource):
                  tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
                  vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
+                 vtpm: Optional[pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
                  vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
@@ -2828,6 +2861,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
+        :param pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         :param pulumi.Input[bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
                I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
@@ -2954,6 +2988,7 @@ class VirtualMachine(pulumi.CustomResource):
                  tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
                  vapp: Optional[pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']]] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
+                 vtpm: Optional[pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
                  vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
@@ -3040,6 +3075,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["tools_upgrade_policy"] = tools_upgrade_policy
             __props__.__dict__["vapp"] = vapp
             __props__.__dict__["vbs_enabled"] = vbs_enabled
+            __props__.__dict__["vtpm"] = vtpm
             __props__.__dict__["vvtd_enabled"] = vvtd_enabled
             __props__.__dict__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
             __props__.__dict__["wait_for_guest_net_routable"] = wait_for_guest_net_routable
@@ -3147,6 +3183,7 @@ class VirtualMachine(pulumi.CustomResource):
             vbs_enabled: Optional[pulumi.Input[bool]] = None,
             vmware_tools_status: Optional[pulumi.Input[str]] = None,
             vmx_path: Optional[pulumi.Input[str]] = None,
+            vtpm: Optional[pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']]] = None,
             vvtd_enabled: Optional[pulumi.Input[bool]] = None,
             wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
             wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
@@ -3247,6 +3284,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
         :param pulumi.Input[str] vmware_tools_status: The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
         :param pulumi.Input[str] vmx_path: The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
+        :param pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
         :param pulumi.Input[bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
                I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
@@ -3342,6 +3380,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["vbs_enabled"] = vbs_enabled
         __props__.__dict__["vmware_tools_status"] = vmware_tools_status
         __props__.__dict__["vmx_path"] = vmx_path
+        __props__.__dict__["vtpm"] = vtpm
         __props__.__dict__["vvtd_enabled"] = vvtd_enabled
         __props__.__dict__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
         __props__.__dict__["wait_for_guest_net_routable"] = wait_for_guest_net_routable
@@ -4002,6 +4041,14 @@ class VirtualMachine(pulumi.CustomResource):
         The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
         """
         return pulumi.get(self, "vmx_path")
+
+    @property
+    @pulumi.getter
+    def vtpm(self) -> pulumi.Output[Optional['outputs.VirtualMachineVtpm']]:
+        """
+        A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+        """
+        return pulumi.get(self, "vtpm")
 
     @property
     @pulumi.getter(name="vvtdEnabled")

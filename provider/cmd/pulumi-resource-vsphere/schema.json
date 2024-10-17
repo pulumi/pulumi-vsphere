@@ -1360,6 +1360,15 @@
             },
             "type": "object"
         },
+        "vsphere:index/VirtualMachineVtpm:VirtualMachineVtpm": {
+            "properties": {
+                "version": {
+                    "type": "string",
+                    "description": "The version of the TPM device. Default is 2.0.\n"
+                }
+            },
+            "type": "object"
+        },
         "vsphere:index/VmStoragePolicyTagRule:VmStoragePolicyTagRule": {
             "properties": {
                 "includeDatastoresWithTags": {
@@ -1677,6 +1686,15 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "vsphere:index/getNetworkFilter:getNetworkFilter": {
+            "properties": {
+                "networkType": {
+                    "type": "string",
+                    "description": "This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.\n"
+                }
+            },
+            "type": "object"
         },
         "vsphere:index/getVirtualMachineDisk:getVirtualMachineDisk": {
             "properties": {
@@ -9780,6 +9798,10 @@
                     "type": "string",
                     "description": "The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.\n"
                 },
+                "vtpm": {
+                    "$ref": "#/types/vsphere:index/VirtualMachineVtpm:VirtualMachineVtpm",
+                    "description": "A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.\n"
+                },
                 "vvtdEnabled": {
                     "type": "boolean",
                     "description": "Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD\nI/O Virtualization (AMD-Vi or IOMMU), is enabled.\n"
@@ -10129,6 +10151,10 @@
                 "vbsEnabled": {
                     "type": "boolean",
                     "description": "Flag to specify if Virtualization-based security is enabled for this virtual machine.\n"
+                },
+                "vtpm": {
+                    "$ref": "#/types/vsphere:index/VirtualMachineVtpm:VirtualMachineVtpm",
+                    "description": "A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.\n"
                 },
                 "vvtdEnabled": {
                     "type": "boolean",
@@ -10507,6 +10533,10 @@
                     "vmxPath": {
                         "type": "string",
                         "description": "The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.\n"
+                    },
+                    "vtpm": {
+                        "$ref": "#/types/vsphere:index/VirtualMachineVtpm:VirtualMachineVtpm",
+                        "description": "A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.\n"
                     },
                     "vvtdEnabled": {
                         "type": "boolean",
@@ -11415,9 +11445,17 @@
                     },
                     "name": {
                         "type": "string"
+                    },
+                    "virtualMachines": {
+                        "description": "List of all virtual machines included in the vSphere datacenter object.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
+                    "virtualMachines",
                     "id"
                 ],
                 "type": "object"
@@ -11502,6 +11540,13 @@
                     "datacenterId": {
                         "type": "string"
                     },
+                    "datastores": {
+                        "description": "(Optional) The names of the datastores included in the specific \ncluster.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -11511,6 +11556,7 @@
                     }
                 },
                 "required": [
+                    "datastores",
                     "name",
                     "id"
                 ],
@@ -12055,7 +12101,7 @@
             }
         },
         "vsphere:index/getNetwork:getNetwork": {
-            "description": "The `vsphere.getNetwork` data source can be used to discover the ID of a network in\nvSphere. This can be any network that can be used as the backing for a network\ninterface for `vsphere.VirtualMachine` or any other vSphere resource that\nrequires a network. This includes standard (host-based) port groups, distributed\nport groups, or opaque networks such as those managed by NSX.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst network = datacenter.then(datacenter =\u003e vsphere.getNetwork({\n    name: \"VM Network\",\n    datacenterId: datacenter.id,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\nnetwork = vsphere.get_network(name=\"VM Network\",\n    datacenter_id=datacenter.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var network = VSphere.GetNetwork.Invoke(new()\n    {\n        Name = \"VM Network\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetNetwork(ctx, \u0026vsphere.GetNetworkArgs{\n\t\t\tName:         \"VM Network\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenter.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()\n            .name(\"VM Network\")\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  network:\n    fn::invoke:\n      Function: vsphere:getNetwork\n      Arguments:\n        name: VM Network\n        datacenterId: ${datacenter.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The `vsphere.getNetwork` data source can be used to discover the ID of a network in\nvSphere. This can be any network that can be used as the backing for a network\ninterface for `vsphere.VirtualMachine` or any other vSphere resource that\nrequires a network. This includes standard (host-based) port groups, distributed\nport groups, or opaque networks such as those managed by NSX.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst network = datacenter.then(datacenter =\u003e vsphere.getNetwork({\n    name: \"VM Network\",\n    datacenterId: datacenter.id,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\nnetwork = vsphere.get_network(name=\"VM Network\",\n    datacenter_id=datacenter.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var network = VSphere.GetNetwork.Invoke(new()\n    {\n        Name = \"VM Network\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetNetwork(ctx, \u0026vsphere.GetNetworkArgs{\n\t\t\tName:         \"VM Network\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenter.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()\n            .name(\"VM Network\")\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  network:\n    fn::invoke:\n      Function: vsphere:getNetwork\n      Arguments:\n        name: VM Network\n        datacenterId: ${datacenter.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n### Additional Examples\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst myPortGroup = datacenter.then(datacenter =\u003e vsphere.getNetwork({\n    datacenterId: datacenter.id,\n    name: \"VM Network\",\n    filters: [{\n        networkType: \"Network\",\n    }],\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\nmy_port_group = vsphere.get_network(datacenter_id=datacenter.id,\n    name=\"VM Network\",\n    filters=[{\n        \"network_type\": \"Network\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var myPortGroup = VSphere.GetNetwork.Invoke(new()\n    {\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n        Name = \"VM Network\",\n        Filters = new[]\n        {\n            new VSphere.Inputs.GetNetworkFilterInputArgs\n            {\n                NetworkType = \"Network\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.GetNetwork(ctx, \u0026vsphere.GetNetworkArgs{\n\t\t\tDatacenterId: pulumi.StringRef(datacenter.Id),\n\t\t\tName:         \"VM Network\",\n\t\t\tFilters: []vsphere.GetNetworkFilter{\n\t\t\t\t{\n\t\t\t\t\tNetworkType: pulumi.StringRef(\"Network\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()\n            .datacenterId(datacenter.applyValue(getDatacenterResult -\u003e getDatacenterResult.id()))\n            .name(\"VM Network\")\n            .filters(GetNetworkFilterArgs.builder()\n                .networkType(\"Network\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      Function: vsphere:getDatacenter\n      Arguments:\n        name: dc-01\n  myPortGroup:\n    fn::invoke:\n      Function: vsphere:getNetwork\n      Arguments:\n        datacenterId: ${datacenter.id}\n        name: VM Network\n        filters:\n          - networkType: Network\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNetwork.\n",
                 "properties": {
@@ -12066,6 +12112,13 @@
                     "distributedVirtualSwitchUuid": {
                         "type": "string",
                         "description": "For distributed port group type\nnetwork objects, the ID of the distributed virtual switch for which the port\ngroup belongs. It is useful to differentiate port groups with same name using\nthe distributed virtual switch ID.\n"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getNetworkFilter:getNetworkFilter"
+                        },
+                        "description": "Apply a filter for the discovered network.\n"
                     },
                     "name": {
                         "type": "string",
@@ -12085,6 +12138,12 @@
                     },
                     "distributedVirtualSwitchUuid": {
                         "type": "string"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/vsphere:index/getNetworkFilter:getNetworkFilter"
+                        },
+                        "type": "array"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
@@ -13018,6 +13077,10 @@
                     "vbsEnabled": {
                         "type": "boolean"
                     },
+                    "vtpm": {
+                        "description": "Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.\n",
+                        "type": "boolean"
+                    },
                     "vvtdEnabled": {
                         "type": "boolean"
                     }
@@ -13043,6 +13106,7 @@
                     "storagePolicyId",
                     "uuid",
                     "vappTransports",
+                    "vtpm",
                     "id"
                 ],
                 "type": "object"

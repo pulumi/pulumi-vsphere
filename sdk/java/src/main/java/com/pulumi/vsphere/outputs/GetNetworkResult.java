@@ -5,7 +5,9 @@ package com.pulumi.vsphere.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.vsphere.outputs.GetNetworkFilter;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetNetworkResult {
     private @Nullable String datacenterId;
     private @Nullable String distributedVirtualSwitchUuid;
+    private @Nullable List<GetNetworkFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -35,6 +38,9 @@ public final class GetNetworkResult {
     }
     public Optional<String> distributedVirtualSwitchUuid() {
         return Optional.ofNullable(this.distributedVirtualSwitchUuid);
+    }
+    public List<GetNetworkFilter> filters() {
+        return this.filters == null ? List.of() : this.filters;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -68,6 +74,7 @@ public final class GetNetworkResult {
     public static final class Builder {
         private @Nullable String datacenterId;
         private @Nullable String distributedVirtualSwitchUuid;
+        private @Nullable List<GetNetworkFilter> filters;
         private String id;
         private String name;
         private String type;
@@ -76,6 +83,7 @@ public final class GetNetworkResult {
     	      Objects.requireNonNull(defaults);
     	      this.datacenterId = defaults.datacenterId;
     	      this.distributedVirtualSwitchUuid = defaults.distributedVirtualSwitchUuid;
+    	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.type = defaults.type;
@@ -92,6 +100,15 @@ public final class GetNetworkResult {
 
             this.distributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
             return this;
+        }
+        @CustomType.Setter
+        public Builder filters(@Nullable List<GetNetworkFilter> filters) {
+
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(GetNetworkFilter... filters) {
+            return filters(List.of(filters));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -121,6 +138,7 @@ public final class GetNetworkResult {
             final var _resultValue = new GetNetworkResult();
             _resultValue.datacenterId = datacenterId;
             _resultValue.distributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
+            _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.type = type;

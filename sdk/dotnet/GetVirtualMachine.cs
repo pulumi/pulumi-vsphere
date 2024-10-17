@@ -772,6 +772,10 @@ namespace Pulumi.VSphere
         public readonly Outputs.GetVirtualMachineVappResult? Vapp;
         public readonly ImmutableArray<string> VappTransports;
         public readonly bool? VbsEnabled;
+        /// <summary>
+        /// Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
+        /// </summary>
+        public readonly bool Vtpm;
         public readonly bool? VvtdEnabled;
 
         [OutputConstructor]
@@ -906,6 +910,8 @@ namespace Pulumi.VSphere
 
             bool? vbsEnabled,
 
+            bool vtpm,
+
             bool? vvtdEnabled)
         {
             AlternateGuestName = alternateGuestName;
@@ -973,6 +979,7 @@ namespace Pulumi.VSphere
             Vapp = vapp;
             VappTransports = vappTransports;
             VbsEnabled = vbsEnabled;
+            Vtpm = vtpm;
             VvtdEnabled = vvtdEnabled;
         }
     }

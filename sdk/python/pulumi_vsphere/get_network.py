@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetNetworkResult',
@@ -26,13 +28,16 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, id=None, name=None, type=None):
+    def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, filters=None, id=None, name=None, type=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
         if distributed_virtual_switch_uuid and not isinstance(distributed_virtual_switch_uuid, str):
             raise TypeError("Expected argument 'distributed_virtual_switch_uuid' to be a str")
         pulumi.set(__self__, "distributed_virtual_switch_uuid", distributed_virtual_switch_uuid)
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,6 +57,11 @@ class GetNetworkResult:
     @pulumi.getter(name="distributedVirtualSwitchUuid")
     def distributed_virtual_switch_uuid(self) -> Optional[str]:
         return pulumi.get(self, "distributed_virtual_switch_uuid")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.GetNetworkFilterResult']]:
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
@@ -86,6 +96,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
         return GetNetworkResult(
             datacenter_id=self.datacenter_id,
             distributed_virtual_switch_uuid=self.distributed_virtual_switch_uuid,
+            filters=self.filters,
             id=self.id,
             name=self.name,
             type=self.type)
@@ -93,6 +104,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 
 def get_network(datacenter_id: Optional[str] = None,
                 distributed_virtual_switch_uuid: Optional[str] = None,
+                filters: Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]] = None,
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
@@ -113,6 +125,20 @@ def get_network(datacenter_id: Optional[str] = None,
         datacenter_id=datacenter.id)
     ```
 
+    ### Additional Examples
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    my_port_group = vsphere.get_network(datacenter_id=datacenter.id,
+        name="VM Network",
+        filters=[{
+            "network_type": "Network",
+        }])
+    ```
+
 
     :param str datacenter_id: The managed object reference ID
            of the datacenter the network is located in. This can be omitted if the
@@ -122,11 +148,13 @@ def get_network(datacenter_id: Optional[str] = None,
            network objects, the ID of the distributed virtual switch for which the port
            group belongs. It is useful to differentiate port groups with same name using
            the distributed virtual switch ID.
+    :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']] filters: Apply a filter for the discovered network.
     :param str name: The name of the network. This can be a name or path.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
+    __args__['filters'] = filters
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
@@ -134,11 +162,13 @@ def get_network(datacenter_id: Optional[str] = None,
     return AwaitableGetNetworkResult(
         datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
         distributed_virtual_switch_uuid=pulumi.get(__ret__, 'distributed_virtual_switch_uuid'),
+        filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
 def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
                        distributed_virtual_switch_uuid: Optional[pulumi.Input[Optional[str]]] = None,
+                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
@@ -159,6 +189,20 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
         datacenter_id=datacenter.id)
     ```
 
+    ### Additional Examples
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    my_port_group = vsphere.get_network(datacenter_id=datacenter.id,
+        name="VM Network",
+        filters=[{
+            "network_type": "Network",
+        }])
+    ```
+
 
     :param str datacenter_id: The managed object reference ID
            of the datacenter the network is located in. This can be omitted if the
@@ -168,17 +212,20 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
            network objects, the ID of the distributed virtual switch for which the port
            group belongs. It is useful to differentiate port groups with same name using
            the distributed virtual switch ID.
+    :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']] filters: Apply a filter for the discovered network.
     :param str name: The name of the network. This can be a name or path.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
+    __args__['filters'] = filters
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),
         distributed_virtual_switch_uuid=pulumi.get(__response__, 'distributed_virtual_switch_uuid'),
+        filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         type=pulumi.get(__response__, 'type')))

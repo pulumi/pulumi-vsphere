@@ -6,6 +6,7 @@ package com.pulumi.vsphere.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,11 @@ public final class GetDatacenterResult {
      */
     private String id;
     private @Nullable String name;
+    /**
+     * @return List of all virtual machines included in the vSphere datacenter object.
+     * 
+     */
+    private List<String> virtualMachines;
 
     private GetDatacenterResult() {}
     /**
@@ -29,6 +35,13 @@ public final class GetDatacenterResult {
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return List of all virtual machines included in the vSphere datacenter object.
+     * 
+     */
+    public List<String> virtualMachines() {
+        return this.virtualMachines;
     }
 
     public static Builder builder() {
@@ -42,11 +55,13 @@ public final class GetDatacenterResult {
     public static final class Builder {
         private String id;
         private @Nullable String name;
+        private List<String> virtualMachines;
         public Builder() {}
         public Builder(GetDatacenterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.virtualMachines = defaults.virtualMachines;
         }
 
         @CustomType.Setter
@@ -63,10 +78,22 @@ public final class GetDatacenterResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder virtualMachines(List<String> virtualMachines) {
+            if (virtualMachines == null) {
+              throw new MissingRequiredPropertyException("GetDatacenterResult", "virtualMachines");
+            }
+            this.virtualMachines = virtualMachines;
+            return this;
+        }
+        public Builder virtualMachines(String... virtualMachines) {
+            return virtualMachines(List.of(virtualMachines));
+        }
         public GetDatacenterResult build() {
             final var _resultValue = new GetDatacenterResult();
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.virtualMachines = virtualMachines;
             return _resultValue;
         }
     }

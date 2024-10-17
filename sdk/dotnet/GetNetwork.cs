@@ -41,6 +41,38 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
+        /// 
+        /// ### Additional Examples
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var myPortGroup = VSphere.GetNetwork.Invoke(new()
+        ///     {
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         Name = "VM Network",
+        ///         Filters = new[]
+        ///         {
+        ///             new VSphere.Inputs.GetNetworkFilterInputArgs
+        ///             {
+        ///                 NetworkType = "Network",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
@@ -75,6 +107,38 @@ namespace Pulumi.VSphere
         /// 
         /// });
         /// ```
+        /// 
+        /// 
+        /// ### Additional Examples
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var myPortGroup = VSphere.GetNetwork.Invoke(new()
+        ///     {
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         Name = "VM Network",
+        ///         Filters = new[]
+        ///         {
+        ///             new VSphere.Inputs.GetNetworkFilterInputArgs
+        ///             {
+        ///                 NetworkType = "Network",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
@@ -100,6 +164,18 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("distributedVirtualSwitchUuid")]
         public string? DistributedVirtualSwitchUuid { get; set; }
+
+        [Input("filters")]
+        private List<Inputs.GetNetworkFilterArgs>? _filters;
+
+        /// <summary>
+        /// Apply a filter for the discovered network.
+        /// </summary>
+        public List<Inputs.GetNetworkFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new List<Inputs.GetNetworkFilterArgs>());
+            set => _filters = value;
+        }
 
         /// <summary>
         /// The name of the network. This can be a name or path.
@@ -133,6 +209,18 @@ namespace Pulumi.VSphere
         [Input("distributedVirtualSwitchUuid")]
         public Input<string>? DistributedVirtualSwitchUuid { get; set; }
 
+        [Input("filters")]
+        private InputList<Inputs.GetNetworkFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Apply a filter for the discovered network.
+        /// </summary>
+        public InputList<Inputs.GetNetworkFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetNetworkFilterInputArgs>());
+            set => _filters = value;
+        }
+
         /// <summary>
         /// The name of the network. This can be a name or path.
         /// </summary>
@@ -151,6 +239,7 @@ namespace Pulumi.VSphere
     {
         public readonly string? DatacenterId;
         public readonly string? DistributedVirtualSwitchUuid;
+        public readonly ImmutableArray<Outputs.GetNetworkFilterResult> Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -170,6 +259,8 @@ namespace Pulumi.VSphere
 
             string? distributedVirtualSwitchUuid,
 
+            ImmutableArray<Outputs.GetNetworkFilterResult> filters,
+
             string id,
 
             string name,
@@ -178,6 +269,7 @@ namespace Pulumi.VSphere
         {
             DatacenterId = datacenterId;
             DistributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
+            Filters = filters;
             Id = id;
             Name = name;
             Type = type;

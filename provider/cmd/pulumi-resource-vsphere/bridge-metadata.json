@@ -574,6 +574,9 @@
                     },
                     "vapp_transport": {
                         "maxItemsOne": false
+                    },
+                    "vtpm": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -669,7 +672,12 @@
             },
             "vsphere_datacenter": {
                 "current": "vsphere:index/getDatacenter:getDatacenter",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "virtual_machines": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "vsphere_datastore": {
                 "current": "vsphere:index/getDatastore:getDatastore",
@@ -677,7 +685,12 @@
             },
             "vsphere_datastore_cluster": {
                 "current": "vsphere:index/getDatastoreCluster:getDatastoreCluster",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "datastores": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "vsphere_datastore_stats": {
                 "current": "vsphere:index/getDatastoreStats:getDatastoreStats",
@@ -783,7 +796,12 @@
             },
             "vsphere_network": {
                 "current": "vsphere:index/getNetwork:getNetwork",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "vsphere_ovf_vm_template": {
                 "current": "vsphere:index/getOvfVmTemplate:getOvfVmTemplate",

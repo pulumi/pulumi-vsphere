@@ -12,6 +12,7 @@ import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineOvfDeployArgs;
 import com.pulumi.vsphere.inputs.VirtualMachineVappArgs;
+import com.pulumi.vsphere.inputs.VirtualMachineVtpmArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1090,6 +1091,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+     * 
+     */
+    @Import(name="vtpm")
+    private @Nullable Output<VirtualMachineVtpmArgs> vtpm;
+
+    /**
+     * @return A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+     * 
+     */
+    public Optional<Output<VirtualMachineVtpmArgs>> vtpm() {
+        return Optional.ofNullable(this.vtpm);
+    }
+
+    /**
      * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
      * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
@@ -1231,6 +1247,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.toolsUpgradePolicy = $.toolsUpgradePolicy;
         this.vapp = $.vapp;
         this.vbsEnabled = $.vbsEnabled;
+        this.vtpm = $.vtpm;
         this.vvtdEnabled = $.vvtdEnabled;
         this.waitForGuestIpTimeout = $.waitForGuestIpTimeout;
         this.waitForGuestNetRoutable = $.waitForGuestNetRoutable;
@@ -2790,6 +2807,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder vbsEnabled(Boolean vbsEnabled) {
             return vbsEnabled(Output.of(vbsEnabled));
+        }
+
+        /**
+         * @param vtpm A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vtpm(@Nullable Output<VirtualMachineVtpmArgs> vtpm) {
+            $.vtpm = vtpm;
+            return this;
+        }
+
+        /**
+         * @param vtpm A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vtpm(VirtualMachineVtpmArgs vtpm) {
+            return vtpm(Output.of(vtpm));
         }
 
         /**

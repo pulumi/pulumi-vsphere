@@ -199,6 +199,20 @@ export interface EntityPermissionsPermission {
     userOrGroup: pulumi.Input<string>;
 }
 
+export interface GetNetworkFilter {
+    /**
+     * This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+     */
+    networkType?: string;
+}
+
+export interface GetNetworkFilterArgs {
+    /**
+     * This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+     */
+    networkType?: pulumi.Input<string>;
+}
+
 export interface GetVirtualMachineVapp {
     /**
      * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
@@ -885,6 +899,13 @@ export interface VirtualMachineVapp {
      * A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface VirtualMachineVtpm {
+    /**
+     * The version of the TPM device. Default is 2.0.
+     */
+    version?: pulumi.Input<string>;
 }
 
 export interface VmStoragePolicyTagRule {

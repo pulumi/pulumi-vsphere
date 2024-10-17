@@ -309,7 +309,9 @@ type LookupVirtualMachineResult struct {
 	Vapp                         *GetVirtualMachineVapp `pulumi:"vapp"`
 	VappTransports               []string               `pulumi:"vappTransports"`
 	VbsEnabled                   *bool                  `pulumi:"vbsEnabled"`
-	VvtdEnabled                  *bool                  `pulumi:"vvtdEnabled"`
+	// Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
+	Vtpm        bool  `pulumi:"vtpm"`
+	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
 }
 
 func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineResultOutput {
@@ -747,6 +749,11 @@ func (o LookupVirtualMachineResultOutput) VappTransports() pulumi.StringArrayOut
 
 func (o LookupVirtualMachineResultOutput) VbsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.VbsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
+func (o LookupVirtualMachineResultOutput) Vtpm() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) bool { return v.Vtpm }).(pulumi.BoolOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) VvtdEnabled() pulumi.BoolPtrOutput {

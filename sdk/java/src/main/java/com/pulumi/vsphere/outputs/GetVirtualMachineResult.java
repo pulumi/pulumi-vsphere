@@ -183,6 +183,11 @@ public final class GetVirtualMachineResult {
     private @Nullable GetVirtualMachineVapp vapp;
     private List<String> vappTransports;
     private @Nullable Boolean vbsEnabled;
+    /**
+     * @return Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
+     * 
+     */
+    private Boolean vtpm;
     private @Nullable Boolean vvtdEnabled;
 
     private GetVirtualMachineResult() {}
@@ -480,6 +485,13 @@ public final class GetVirtualMachineResult {
     public Optional<Boolean> vbsEnabled() {
         return Optional.ofNullable(this.vbsEnabled);
     }
+    /**
+     * @return Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
+     * 
+     */
+    public Boolean vtpm() {
+        return this.vtpm;
+    }
     public Optional<Boolean> vvtdEnabled() {
         return Optional.ofNullable(this.vvtdEnabled);
     }
@@ -558,6 +570,7 @@ public final class GetVirtualMachineResult {
         private @Nullable GetVirtualMachineVapp vapp;
         private List<String> vappTransports;
         private @Nullable Boolean vbsEnabled;
+        private Boolean vtpm;
         private @Nullable Boolean vvtdEnabled;
         public Builder() {}
         public Builder(GetVirtualMachineResult defaults) {
@@ -627,6 +640,7 @@ public final class GetVirtualMachineResult {
     	      this.vapp = defaults.vapp;
     	      this.vappTransports = defaults.vappTransports;
     	      this.vbsEnabled = defaults.vbsEnabled;
+    	      this.vtpm = defaults.vtpm;
     	      this.vvtdEnabled = defaults.vvtdEnabled;
         }
 
@@ -1078,6 +1092,14 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder vtpm(Boolean vtpm) {
+            if (vtpm == null) {
+              throw new MissingRequiredPropertyException("GetVirtualMachineResult", "vtpm");
+            }
+            this.vtpm = vtpm;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vvtdEnabled(@Nullable Boolean vvtdEnabled) {
 
             this.vvtdEnabled = vvtdEnabled;
@@ -1150,6 +1172,7 @@ public final class GetVirtualMachineResult {
             _resultValue.vapp = vapp;
             _resultValue.vappTransports = vappTransports;
             _resultValue.vbsEnabled = vbsEnabled;
+            _resultValue.vtpm = vtpm;
             _resultValue.vvtdEnabled = vvtdEnabled;
             return _resultValue;
         }

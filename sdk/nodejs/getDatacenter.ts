@@ -54,6 +54,10 @@ export interface GetDatacenterResult {
      */
     readonly id: string;
     readonly name?: string;
+    /**
+     * List of all virtual machines included in the vSphere datacenter object.
+     */
+    readonly virtualMachines: string[];
 }
 /**
  * The `vsphere.Datacenter` data source can be used to discover the ID of a

@@ -54,6 +54,7 @@ __all__ = [
     'VirtualMachineNetworkInterface',
     'VirtualMachineOvfDeploy',
     'VirtualMachineVapp',
+    'VirtualMachineVtpm',
     'VmStoragePolicyTagRule',
     'VnicIpv4',
     'VnicIpv6',
@@ -62,6 +63,7 @@ __all__ = [
     'GetGuestOsCustomizationSpecNetworkInterfaceResult',
     'GetGuestOsCustomizationSpecWindowsOptionResult',
     'GetHostVgpuProfileVgpuProfileResult',
+    'GetNetworkFilterResult',
     'GetVirtualMachineDiskResult',
     'GetVirtualMachineNetworkInterfaceResult',
     'GetVirtualMachineVappResult',
@@ -3266,6 +3268,25 @@ class VirtualMachineVapp(dict):
 
 
 @pulumi.output_type
+class VirtualMachineVtpm(dict):
+    def __init__(__self__, *,
+                 version: Optional[str] = None):
+        """
+        :param str version: The version of the TPM device. Default is 2.0.
+        """
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        The version of the TPM device. Default is 2.0.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class VmStoragePolicyTagRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3842,6 +3863,25 @@ class GetHostVgpuProfileVgpuProfileResult(dict):
         profile).
         """
         return pulumi.get(self, "vgpu")
+
+
+@pulumi.output_type
+class GetNetworkFilterResult(dict):
+    def __init__(__self__, *,
+                 network_type: Optional[str] = None):
+        """
+        :param str network_type: This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+        """
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[str]:
+        """
+        This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+        """
+        return pulumi.get(self, "network_type")
 
 
 @pulumi.output_type

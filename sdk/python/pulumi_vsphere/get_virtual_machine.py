@@ -28,7 +28,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, instance_uuid=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, instance_uuid=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vtpm=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -224,6 +224,9 @@ class GetVirtualMachineResult:
         if vbs_enabled and not isinstance(vbs_enabled, bool):
             raise TypeError("Expected argument 'vbs_enabled' to be a bool")
         pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+        if vtpm and not isinstance(vtpm, bool):
+            raise TypeError("Expected argument 'vtpm' to be a bool")
+        pulumi.set(__self__, "vtpm", vtpm)
         if vvtd_enabled and not isinstance(vvtd_enabled, bool):
             raise TypeError("Expected argument 'vvtd_enabled' to be a bool")
         pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
@@ -636,6 +639,14 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "vbs_enabled")
 
     @property
+    @pulumi.getter
+    def vtpm(self) -> bool:
+        """
+        Indicates whether a virtual Trusted Platform Module (TPM) device is present on the virtual machine.
+        """
+        return pulumi.get(self, "vtpm")
+
+    @property
     @pulumi.getter(name="vvtdEnabled")
     def vvtd_enabled(self) -> Optional[bool]:
         return pulumi.get(self, "vvtd_enabled")
@@ -712,6 +723,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             vapp=self.vapp,
             vapp_transports=self.vapp_transports,
             vbs_enabled=self.vbs_enabled,
+            vtpm=self.vtpm,
             vvtd_enabled=self.vvtd_enabled)
 
 
@@ -965,6 +977,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         vapp=pulumi.get(__ret__, 'vapp'),
         vapp_transports=pulumi.get(__ret__, 'vapp_transports'),
         vbs_enabled=pulumi.get(__ret__, 'vbs_enabled'),
+        vtpm=pulumi.get(__ret__, 'vtpm'),
         vvtd_enabled=pulumi.get(__ret__, 'vvtd_enabled'))
 def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optional[str]]] = None,
                                annotation: Optional[pulumi.Input[Optional[str]]] = None,
@@ -1215,4 +1228,5 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
         vapp=pulumi.get(__response__, 'vapp'),
         vapp_transports=pulumi.get(__response__, 'vapp_transports'),
         vbs_enabled=pulumi.get(__response__, 'vbs_enabled'),
+        vtpm=pulumi.get(__response__, 'vtpm'),
         vvtd_enabled=pulumi.get(__response__, 'vvtd_enabled')))

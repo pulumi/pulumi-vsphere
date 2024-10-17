@@ -16,6 +16,7 @@ import com.pulumi.vsphere.outputs.VirtualMachineDisk;
 import com.pulumi.vsphere.outputs.VirtualMachineNetworkInterface;
 import com.pulumi.vsphere.outputs.VirtualMachineOvfDeploy;
 import com.pulumi.vsphere.outputs.VirtualMachineVapp;
+import com.pulumi.vsphere.outputs.VirtualMachineVtpm;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1189,6 +1190,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vmxPath() {
         return this.vmxPath;
+    }
+    /**
+     * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+     * 
+     */
+    @Export(name="vtpm", refs={VirtualMachineVtpm.class}, tree="[0]")
+    private Output</* @Nullable */ VirtualMachineVtpm> vtpm;
+
+    /**
+     * @return A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
+     * 
+     */
+    public Output<Optional<VirtualMachineVtpm>> vtpm() {
+        return Codegen.optional(this.vtpm);
     }
     /**
      * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD

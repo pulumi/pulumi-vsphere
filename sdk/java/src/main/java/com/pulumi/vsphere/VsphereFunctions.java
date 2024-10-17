@@ -4507,6 +4507,50 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * ### Additional Examples
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .filters(GetNetworkFilterArgs.builder()
+     *                 .networkType("Network")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
         return getNetwork(args, InvokeOptions.Empty);
@@ -4551,6 +4595,50 @@ public final class VsphereFunctions {
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name("VM Network")
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Additional Examples
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .filters(GetNetworkFilterArgs.builder()
+     *                 .networkType("Network")
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -4611,6 +4699,50 @@ public final class VsphereFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * ### Additional Examples
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .filters(GetNetworkFilterArgs.builder()
+     *                 .networkType("Network")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
@@ -4655,6 +4787,50 @@ public final class VsphereFunctions {
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name("VM Network")
      *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Additional Examples
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .filters(GetNetworkFilterArgs.builder()
+     *                 .networkType("Network")
+     *                 .build())
      *             .build());
      * 
      *     }

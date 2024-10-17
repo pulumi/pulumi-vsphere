@@ -26,13 +26,16 @@ class GetDatacenterResult:
     """
     A collection of values returned by getDatacenter.
     """
-    def __init__(__self__, id=None, name=None):
+    def __init__(__self__, id=None, name=None, virtual_machines=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if virtual_machines and not isinstance(virtual_machines, list):
+            raise TypeError("Expected argument 'virtual_machines' to be a list")
+        pulumi.set(__self__, "virtual_machines", virtual_machines)
 
     @property
     @pulumi.getter
@@ -47,6 +50,14 @@ class GetDatacenterResult:
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter(name="virtualMachines")
+    def virtual_machines(self) -> Sequence[str]:
+        """
+        List of all virtual machines included in the vSphere datacenter object.
+        """
+        return pulumi.get(self, "virtual_machines")
+
 
 class AwaitableGetDatacenterResult(GetDatacenterResult):
     # pylint: disable=using-constant-test
@@ -55,7 +66,8 @@ class AwaitableGetDatacenterResult(GetDatacenterResult):
             yield self
         return GetDatacenterResult(
             id=self.id,
-            name=self.name)
+            name=self.name,
+            virtual_machines=self.virtual_machines)
 
 
 def get_datacenter(name: Optional[str] = None,
@@ -91,7 +103,8 @@ def get_datacenter(name: Optional[str] = None,
 
     return AwaitableGetDatacenterResult(
         id=pulumi.get(__ret__, 'id'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        virtual_machines=pulumi.get(__ret__, 'virtual_machines'))
 def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatacenterResult]:
     """
@@ -124,4 +137,5 @@ def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDatacenter:getDatacenter', __args__, opts=opts, typ=GetDatacenterResult)
     return __ret__.apply(lambda __response__: GetDatacenterResult(
         id=pulumi.get(__response__, 'id'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        virtual_machines=pulumi.get(__response__, 'virtual_machines')))

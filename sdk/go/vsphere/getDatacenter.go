@@ -68,6 +68,8 @@ type LookupDatacenterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
+	// List of all virtual machines included in the vSphere datacenter object.
+	VirtualMachines []string `pulumi:"virtualMachines"`
 }
 
 func LookupDatacenterOutput(ctx *pulumi.Context, args LookupDatacenterOutputArgs, opts ...pulumi.InvokeOption) LookupDatacenterResultOutput {
@@ -127,6 +129,11 @@ func (o LookupDatacenterResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupDatacenterResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatacenterResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of all virtual machines included in the vSphere datacenter object.
+func (o LookupDatacenterResultOutput) VirtualMachines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDatacenterResult) []string { return v.VirtualMachines }).(pulumi.StringArrayOutput)
 }
 
 func init() {
