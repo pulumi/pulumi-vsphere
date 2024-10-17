@@ -115,7 +115,7 @@ index ed557e91..fe85521c 100644
 +the `vsphere_custom_attribute` resource are also
  populated.
 diff --git a/website/docs/d/datacenter.html.markdown b/website/docs/d/datacenter.html.markdown
-index 6484b04d..dd180f13 100644
+index 580866c8..608808aa 100644
 --- a/website/docs/d/datacenter.html.markdown
 +++ b/website/docs/d/datacenter.html.markdown
 @@ -9,13 +9,11 @@ description: |-
@@ -135,16 +135,15 @@ index 6484b04d..dd180f13 100644
  ## Example Usage
  
  ```hcl
-@@ -38,7 +36,5 @@ instance. Hence, the `name` attribute is completely ignored.
+@@ -40,7 +38,5 @@ instance. Hence, the `name` attribute is completely ignored.
  
- ## Attribute Reference
+ The following attributes are exported:
  
--The only exported attribute is `id`, which is the [managed object
--ID][docs-about-morefs] of this datacenter.
+-* `id` - The [managed objectID][docs-about-morefs] of the vSphere datacenter object.
++* `id` - The managed objectID of the vSphere datacenter object.
+ * `virtual_machines` - List of all virtual machines included in the vSphere datacenter object.
 -
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-+The only exported attribute is `id`, which is the managed object
-+ID of this datacenter.
 diff --git a/website/docs/d/datastore.html.markdown b/website/docs/d/datastore.html.markdown
 index 8777c024..1df6a00b 100644
 --- a/website/docs/d/datastore.html.markdown
@@ -185,7 +184,7 @@ index 8777c024..1df6a00b 100644
  ## Attribute Reference
  
 diff --git a/website/docs/d/datastore_cluster.html.markdown b/website/docs/d/datastore_cluster.html.markdown
-index 21f45255..a0119b8a 100644
+index 17e862a6..652f9ab9 100644
 --- a/website/docs/d/datastore_cluster.html.markdown
 +++ b/website/docs/d/datastore_cluster.html.markdown
 @@ -10,16 +10,9 @@ description: |-
@@ -208,7 +207,7 @@ index 21f45255..a0119b8a 100644
  
  ## Example Usage
  
-@@ -39,14 +32,12 @@ data "vsphere_datastore_cluster" "datastore_cluster" {
+@@ -39,20 +32,17 @@ data "vsphere_datastore_cluster" "datastore_cluster" {
  The following arguments are supported:
  
  * `name` - (Required) The name or absolute path to the datastore cluster.
@@ -220,11 +219,18 @@ index 21f45255..a0119b8a 100644
    For default datacenters, use the id attribute from an empty
    `vsphere_datacenter` data source.
  
+-
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 -
  ## Attribute Reference
  
- The only exported attribute from this data source is `id`, which represents the
+ The following attributes are exported:
+ 
+-* `id` - The [managed objectID][docs-about-morefs] of the vSphere datastore cluster object.
++* `id` - The managed objectID of the vSphere datastore cluster object.
+ 
+ * `datastores` - (Optional) The names of the datastores included in the specific 
+   cluster.
 diff --git a/website/docs/d/distributed_virtual_switch.html.markdown b/website/docs/d/distributed_virtual_switch.html.markdown
 index fd7c5169..cb84377f 100644
 --- a/website/docs/d/distributed_virtual_switch.html.markdown
@@ -356,10 +362,10 @@ index 50e01bd4..9087fe5f 100644
 +  resource pool will belong to the host only; however, if it is a member of a
 +  cluster, the resource pool will be the root for the cluster.
 diff --git a/website/docs/d/network.html.markdown b/website/docs/d/network.html.markdown
-index 1b51a93c..3c2417e5 100644
+index fa135b14..e5fcf4fb 100644
 --- a/website/docs/d/network.html.markdown
 +++ b/website/docs/d/network.html.markdown
-@@ -34,23 +34,20 @@ data "vsphere_network" "network" {
+@@ -51,24 +51,22 @@ data "vsphere_network" "my_port_group" {
  The following arguments are supported:
  
  * `name` - (Required) The name of the network. This can be a name or path.
@@ -376,9 +382,10 @@ index 1b51a93c..3c2417e5 100644
    network objects, the ID of the distributed virtual switch for which the port
    group belongs. It is useful to differentiate port groups with same name using
    the distributed virtual switch ID.
- 
+ * `filter` - (Optional) Apply a filter for the discovered network.
+   * `network_type`: This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
--
+ 
  ## Attribute Reference
  
  The following attributes are exported:
@@ -545,7 +552,7 @@ index a9c2ddcd..dae572d0 100644
  ## Attribute Reference
  
 diff --git a/website/docs/d/virtual_machine.html.markdown b/website/docs/d/virtual_machine.html.markdown
-index a7faf9fa..3d4286ad 100644
+index e0599ecd..d4d41ab7 100644
 --- a/website/docs/d/virtual_machine.html.markdown
 +++ b/website/docs/d/virtual_machine.html.markdown
 @@ -11,13 +11,11 @@ description: |-
@@ -615,7 +622,7 @@ index a7faf9fa..3d4286ad 100644
  
  ## Attribute Reference
  
-@@ -163,4 +152,4 @@ The following attributes are exported:
+@@ -164,4 +153,4 @@ The following attributes are exported:
  ~> **NOTE:** Keep in mind when using the results of `scsi_type` and
  `network_interface_types`, that the `vsphere_virtual_machine` resource only
  supports a subset of the types returned from this data source. See the
@@ -2919,7 +2926,7 @@ index 4f600605..9e875ab3 100644
    directories that are a part of the `vmdk_path` parameter if they are missing.
    Default: `false`.
 diff --git a/website/docs/r/virtual_machine.html.markdown b/website/docs/r/virtual_machine.html.markdown
-index 7aaaee32..caeeac20 100644
+index ecd8dffa..bbcce2ac 100644
 --- a/website/docs/r/virtual_machine.html.markdown
 +++ b/website/docs/r/virtual_machine.html.markdown
 @@ -16,7 +16,7 @@ For details on working with virtual machines in VMware vSphere, please refer to
@@ -3050,7 +3057,7 @@ index 7aaaee32..caeeac20 100644
  
  * `time_zone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][kb-2145518]. The default is UTC.
  
-@@ -1560,9 +1540,8 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -1578,9 +1558,8 @@ resource "vsphere_virtual_machine" "vm" {
  
  #### Storage Migration Restrictions
  
@@ -3061,7 +3068,7 @@ index 7aaaee32..caeeac20 100644
  
  ## Virtual Machine Reboot
  
-@@ -1621,23 +1600,19 @@ The following attributes are exported on the base level of this resource:
+@@ -1640,23 +1619,19 @@ The following attributes are exported on the base level of this resource:
  
  * `uuid` - The UUID of the virtual machine. Also exposed as the `id` of the resource.
  
