@@ -20,7 +20,7 @@ This provider can be used to manage many aspects of a vSphere environment,
 including virtual machines, standard and distributed switches, datastores,
 content libraries, and more.
 
-Use the navigation to read about the resources and data sources supported by
+Use the navigation to read about the resources and functions supported by
 this provider.
 
 > **NOTE:** This provider requires API write access and hence is not supported
@@ -34,7 +34,7 @@ The datacenter, datastore, resource pool, and network are discovered using the
 [`vsphere.Datacenter`](https://www.terraform.io/docs/providers/vsphere/d/datacenter.html),
 [`vsphere.getDatastore`](https://www.terraform.io/docs/providers/vsphere/d/datastore.html),
 [`vsphere.ResourcePool`](https://www.terraform.io/docs/providers/vsphere/d/resource_pool.html), and
-[`vsphere.getNetwork`](https://www.terraform.io/docs/providers/vsphere/d/network.html) data sources respectively.
+[`vsphere.getNetwork`](https://www.terraform.io/docs/providers/vsphere/d/network.html) functions respectively.
 
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
 {{% choosable language typescript %}}
@@ -444,7 +444,7 @@ public class App {
 {{< /chooser >}}
 
 Refer to the provider documentation for information on all of the resources
-and data sources supported by this provider. Each includes a detailed
+and functions supported by this provider. Each includes a detailed
 description of the purpose and how to use it.
 ## Configuration Reference
 
@@ -524,7 +524,7 @@ user account used for Pulumi has the privilege to be able to read event data.
 ### Storage
 
 The provider implementation requires the ability to read storage profiles
-from vSphere for some resource and data source operations. Ensure that the
+from vSphere for some resource and function operations. Ensure that the
 user account used for Pulumi is provided the Profile-driven Storage > View
 (`StorageProfile.View`) privilege to be able to read the available storage
 policies.
@@ -543,13 +543,13 @@ interface for providing necessary data to downstream resources, in addition to
 minimizing the issues that can arise from the flexibility in how an individual
 object's name or inventory path can be supplied.
 
-There are several data sources (such as
+There are several functions (such as
 [`vsphere.Datacenter`](https://www.terraform.io/docs/providers/vsphere/d/datacenter.html),
 [`vsphere.Host`](https://www.terraform.io/docs/providers/vsphere/d/host.html),
 [`vsphere.ResourcePool`](https://www.terraform.io/docs/providers/vsphere/d/resource_pool.html),
 [`vsphere.getDatastore`](https://www.terraform.io/docs/providers/vsphere/d/datastore.html), and
 [`vsphere.getNetwork`](https://www.terraform.io/docs/providers/vsphere/d/network.html)) that assist with searching for a
-specific resource. For usage details on a specific data source, look for a
+specific resource. For usage details on a specific function, look for a
 link in the provider documentation. In addition, most vSphere
 resources in Pulumi supply the managed object ID (or UUID, when it makes
 more sense) as the `id` attribute, which can be supplied to downstream
@@ -598,4 +598,4 @@ click [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID
 
 For more information how how to submit bug reports, feature requests, or
 details on how to make your own contributions to the provider, see the vSphere
-provider project page.
+provider [project page](https://github.com/pulumi/pulumi-provider-vsphere).
