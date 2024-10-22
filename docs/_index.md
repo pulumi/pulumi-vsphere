@@ -594,8 +594,3 @@ security reasons should be used sparingly. Modern vSphere installations may
 have the MOB disabled by default, at the very least on ESXi systems. For more
 information on current security best practices related to the MOB on ESXi,
 click [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-0EF83EA7-277C-400B-B697-04BDC9173EA3.html).
-## Bug Reports and Contributing
-
-For more information how how to submit bug reports, feature requests, or
-details on how to make your own contributions to the provider, see the vSphere
-provider [project page](https://github.com/pulumi/pulumi-provider-vsphere).
