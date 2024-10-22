@@ -3,6 +3,7 @@ major-version: 4
 makeTemplate: bridged
 team: ecosystem
 pulumiConvert: 1
+registryDocs: true
 plugins:
   - name: terraform
     version: "1.0.16"
