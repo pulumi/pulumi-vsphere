@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The vsphere provider is available as a package in all Pulumi languages:
+The Vsphere provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/vsphere`](https://www.npmjs.com/package/@pulumi/vsphere)
 * Python: [`pulumi-vsphere`](https://pypi.org/project/pulumi-vsphere/)
