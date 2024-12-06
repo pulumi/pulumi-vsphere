@@ -141,7 +141,7 @@ export interface GetHostVgpuProfileResult {
  * }));
  * ```
  */
-export function getHostVgpuProfileOutput(args: GetHostVgpuProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostVgpuProfileResult> {
+export function getHostVgpuProfileOutput(args: GetHostVgpuProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostVgpuProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", {
         "hostId": args.hostId,

@@ -136,7 +136,7 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'))
 def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcePoolResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcePoolResult]:
     """
     The `ResourcePool` data source can be used to discover the ID of a
     resource pool in vSphere. This is useful to return the ID of a resource pool
@@ -194,7 +194,7 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getResourcePool:getResourcePool', __args__, opts=opts, typ=GetResourcePoolResult)
     return __ret__.apply(lambda __response__: GetResourcePoolResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),

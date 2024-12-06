@@ -194,7 +194,7 @@ export interface GetOvfVmTemplateResult {
  * vSphere and extract its hardware settings in a form that can be then used as
  * inputs for a `vsphere.VirtualMachine` resource.
  */
-export function getOvfVmTemplateOutput(args: GetOvfVmTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOvfVmTemplateResult> {
+export function getOvfVmTemplateOutput(args: GetOvfVmTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOvfVmTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", {
         "allowUnverifiedSslCert": args.allowUnverifiedSslCert,

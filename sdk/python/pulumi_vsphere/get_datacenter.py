@@ -106,7 +106,7 @@ def get_datacenter(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         virtual_machines=pulumi.get(__ret__, 'virtual_machines'))
 def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatacenterResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatacenterResult]:
     """
     The `Datacenter` data source can be used to discover the ID of a
     vSphere datacenter object. This can then be used with resources or data sources
@@ -133,7 +133,7 @@ def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDatacenter:getDatacenter', __args__, opts=opts, typ=GetDatacenterResult)
     return __ret__.apply(lambda __response__: GetDatacenterResult(
         id=pulumi.get(__response__, 'id'),

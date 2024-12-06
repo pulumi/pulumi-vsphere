@@ -170,7 +170,7 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
                        distributed_virtual_switch_uuid: Optional[pulumi.Input[Optional[str]]] = None,
                        filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     The `get_network` data source can be used to discover the ID of a network in
     vSphere. This can be any network that can be used as the backing for a network
@@ -220,7 +220,7 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
     __args__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
     __args__['filters'] = filters
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),

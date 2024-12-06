@@ -74,7 +74,7 @@ export interface GetCustomAttributeResult {
  * });
  * ```
  */
-export function getCustomAttributeOutput(args: GetCustomAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomAttributeResult> {
+export function getCustomAttributeOutput(args: GetCustomAttributeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomAttributeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getCustomAttribute:getCustomAttribute", {
         "name": args.name,

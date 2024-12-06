@@ -121,7 +121,7 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'))
 def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreClusterResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreClusterResult]:
     """
     The `DatastoreCluster` data source can be used to discover the ID of a
     vSphere datastore cluster object. This can then be used with resources or data sources
@@ -150,7 +150,7 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[s
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__, opts=opts, typ=GetDatastoreClusterResult)
     return __ret__.apply(lambda __response__: GetDatastoreClusterResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),

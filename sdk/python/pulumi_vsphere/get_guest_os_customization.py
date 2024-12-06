@@ -128,7 +128,7 @@ def get_guest_os_customization(name: Optional[str] = None,
         specs=pulumi.get(__ret__, 'specs'),
         type=pulumi.get(__ret__, 'type'))
 def get_guest_os_customization_output(name: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGuestOsCustomizationResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGuestOsCustomizationResult]:
     """
     The `GuestOsCustomization` data source can be used to discover the
     details about a customization specification for a guest operating system.
@@ -139,7 +139,7 @@ def get_guest_os_customization_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getGuestOsCustomization:getGuestOsCustomization', __args__, opts=opts, typ=GetGuestOsCustomizationResult)
     return __ret__.apply(lambda __response__: GetGuestOsCustomizationResult(
         change_version=pulumi.get(__response__, 'change_version'),
