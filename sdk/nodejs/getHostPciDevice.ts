@@ -151,7 +151,7 @@ export interface GetHostPciDeviceResult {
  * }));
  * ```
  */
-export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostPciDeviceResult> {
+export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostPciDeviceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getHostPciDevice:getHostPciDevice", {
         "classId": args.classId,

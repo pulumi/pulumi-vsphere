@@ -121,7 +121,7 @@ def get_host(datacenter_id: Optional[str] = None,
         resource_pool_id=pulumi.get(__ret__, 'resource_pool_id'))
 def get_host_output(datacenter_id: Optional[pulumi.Input[str]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostResult]:
     """
     The `Host` data source can be used to discover the ID of an ESXi host.
     This can then be used with resources or data sources that require an ESX
@@ -150,7 +150,7 @@ def get_host_output(datacenter_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getHost:getHost', __args__, opts=opts, typ=GetHostResult)
     return __ret__.apply(lambda __response__: GetHostResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),

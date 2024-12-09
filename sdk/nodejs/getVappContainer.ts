@@ -81,7 +81,7 @@ export interface GetVappContainerResult {
  * }));
  * ```
  */
-export function getVappContainerOutput(args: GetVappContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVappContainerResult> {
+export function getVappContainerOutput(args: GetVappContainerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVappContainerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getVappContainer:getVappContainer", {
         "datacenterId": args.datacenterId,

@@ -136,7 +136,7 @@ def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
         uplinks=pulumi.get(__ret__, 'uplinks'))
 def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
                                           name: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDistributedVirtualSwitchResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDistributedVirtualSwitchResult]:
     """
     The `DistributedVirtualSwitch` data source can be used to discover
     the ID and uplink data of a of a vSphere distributed switch (VDS). This
@@ -178,7 +178,7 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__, opts=opts, typ=GetDistributedVirtualSwitchResult)
     return __ret__.apply(lambda __response__: GetDistributedVirtualSwitchResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),

@@ -97,7 +97,7 @@ export interface GetComputeClusterResult {
  * }));
  * ```
  */
-export function getComputeClusterOutput(args: GetComputeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterResult> {
+export function getComputeClusterOutput(args: GetComputeClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetComputeClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getComputeCluster:getComputeCluster", {
         "datacenterId": args.datacenterId,

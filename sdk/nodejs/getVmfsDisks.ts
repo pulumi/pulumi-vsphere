@@ -108,7 +108,7 @@ export interface GetVmfsDisksResult {
  * }));
  * ```
  */
-export function getVmfsDisksOutput(args: GetVmfsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVmfsDisksResult> {
+export function getVmfsDisksOutput(args: GetVmfsDisksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVmfsDisksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getVmfsDisks:getVmfsDisks", {
         "filter": args.filter,

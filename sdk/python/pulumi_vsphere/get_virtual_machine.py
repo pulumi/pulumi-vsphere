@@ -1034,7 +1034,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                vapp: Optional[pulumi.Input[Optional[Union['GetVirtualMachineVappArgs', 'GetVirtualMachineVappArgsDict']]]] = None,
                                vbs_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                vvtd_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachineResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualMachineResult]:
     """
     The `VirtualMachine` data source can be used to find the UUID of an
     existing virtual machine or template. The most common purpose is for finding
@@ -1160,7 +1160,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     __args__['vapp'] = vapp
     __args__['vbsEnabled'] = vbs_enabled
     __args__['vvtdEnabled'] = vvtd_enabled
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getVirtualMachine:getVirtualMachine', __args__, opts=opts, typ=GetVirtualMachineResult)
     return __ret__.apply(lambda __response__: GetVirtualMachineResult(
         alternate_guest_name=pulumi.get(__response__, 'alternate_guest_name'),

@@ -167,7 +167,7 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
                                host_id: Optional[pulumi.Input[str]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                vendor_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostPciDeviceResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostPciDeviceResult]:
     """
     The `get_host_pci_device` data source can be used to discover the device ID
     of a vSphere host's PCI device. This can then be used with
@@ -219,7 +219,7 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
     __args__['hostId'] = host_id
     __args__['nameRegex'] = name_regex
     __args__['vendorId'] = vendor_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getHostPciDevice:getHostPciDevice', __args__, opts=opts, typ=GetHostPciDeviceResult)
     return __ret__.apply(lambda __response__: GetHostPciDeviceResult(
         class_id=pulumi.get(__response__, 'class_id'),
