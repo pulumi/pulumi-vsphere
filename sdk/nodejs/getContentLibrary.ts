@@ -67,7 +67,7 @@ export interface GetContentLibraryResult {
  * });
  * ```
  */
-export function getContentLibraryOutput(args: GetContentLibraryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryResult> {
+export function getContentLibraryOutput(args: GetContentLibraryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentLibraryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getContentLibrary:getContentLibrary", {
         "name": args.name,

@@ -59,7 +59,7 @@ export interface GetContentLibraryItemResult {
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * host connections.
  */
-export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryItemResult> {
+export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentLibraryItemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getContentLibraryItem:getContentLibraryItem", {
         "libraryId": args.libraryId,

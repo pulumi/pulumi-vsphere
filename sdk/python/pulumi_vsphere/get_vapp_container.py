@@ -105,7 +105,7 @@ def get_vapp_container(datacenter_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'))
 def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVappContainerResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVappContainerResult]:
     """
     The `VappContainer` data source can be used to discover the ID of a
     vApp container in vSphere. This is useful to return the ID of a vApp container
@@ -132,7 +132,7 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getVappContainer:getVappContainer', __args__, opts=opts, typ=GetVappContainerResult)
     return __ret__.apply(lambda __response__: GetVappContainerResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),

@@ -101,7 +101,7 @@ def get_custom_attribute(name: Optional[str] = None,
         managed_object_type=pulumi.get(__ret__, 'managed_object_type'),
         name=pulumi.get(__ret__, 'name'))
 def get_custom_attribute_output(name: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomAttributeResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomAttributeResult]:
     """
     The `CustomAttribute` data source can be used to reference custom
     attributes that are not managed by this provider. Its attributes are exactly the
@@ -126,7 +126,7 @@ def get_custom_attribute_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getCustomAttribute:getCustomAttribute', __args__, opts=opts, typ=GetCustomAttributeResult)
     return __ret__.apply(lambda __response__: GetCustomAttributeResult(
         id=pulumi.get(__response__, 'id'),

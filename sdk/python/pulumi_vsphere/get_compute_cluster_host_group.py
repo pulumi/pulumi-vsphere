@@ -127,7 +127,7 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'))
 def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.Input[str]] = None,
                                           name: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeClusterHostGroupResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetComputeClusterHostGroupResult]:
     """
     The `ComputeClusterHostGroup` data source can be used to discover
     the IDs ESXi hosts in a host group and return host group attributes to other
@@ -162,7 +162,7 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
     __args__ = dict()
     __args__['computeClusterId'] = compute_cluster_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup', __args__, opts=opts, typ=GetComputeClusterHostGroupResult)
     return __ret__.apply(lambda __response__: GetComputeClusterHostGroupResult(
         compute_cluster_id=pulumi.get(__response__, 'compute_cluster_id'),

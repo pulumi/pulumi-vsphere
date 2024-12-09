@@ -487,7 +487,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
                                ovf_network_map: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                remote_ovf_url: Optional[pulumi.Input[Optional[str]]] = None,
                                resource_pool_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOvfVmTemplateResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOvfVmTemplateResult]:
     """
     The `get_ovf_vm_template` data source can be used to submit an OVF to
     vSphere and extract its hardware settings in a form that can be then used as
@@ -540,7 +540,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
     __args__['ovfNetworkMap'] = ovf_network_map
     __args__['remoteOvfUrl'] = remote_ovf_url
     __args__['resourcePoolId'] = resource_pool_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getOvfVmTemplate:getOvfVmTemplate', __args__, opts=opts, typ=GetOvfVmTemplateResult)
     return __ret__.apply(lambda __response__: GetOvfVmTemplateResult(
         allow_unverified_ssl_cert=pulumi.get(__response__, 'allow_unverified_ssl_cert'),

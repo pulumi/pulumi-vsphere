@@ -121,7 +121,7 @@ def get_host_thumbprint(address: Optional[str] = None,
 def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
                                insecure: Optional[pulumi.Input[Optional[bool]]] = None,
                                port: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostThumbprintResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostThumbprintResult]:
     """
     The `vsphere_thumbprint` data source can be used to discover the host thumbprint
     of an ESXi host. This can be used when adding the `Host` resource to a
@@ -152,7 +152,7 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
     __args__['address'] = address
     __args__['insecure'] = insecure
     __args__['port'] = port
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getHostThumbprint:getHostThumbprint', __args__, opts=opts, typ=GetHostThumbprintResult)
     return __ret__.apply(lambda __response__: GetHostThumbprintResult(
         address=pulumi.get(__response__, 'address'),

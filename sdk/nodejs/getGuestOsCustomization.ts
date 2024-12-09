@@ -47,7 +47,7 @@ export interface GetGuestOsCustomizationResult {
  * The `vsphere.GuestOsCustomization` data source can be used to discover the
  * details about a customization specification for a guest operating system.
  */
-export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestOsCustomizationResult> {
+export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGuestOsCustomizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", {
         "name": args.name,
