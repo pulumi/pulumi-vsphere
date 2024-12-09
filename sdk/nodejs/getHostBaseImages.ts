@@ -49,7 +49,7 @@ export interface GetHostBaseImagesResult {
  * const baseImages = vsphere.getHostBaseImages({});
  * ```
  */
-export function getHostBaseImagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetHostBaseImagesResult> {
+export function getHostBaseImagesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostBaseImagesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getHostBaseImages:getHostBaseImages", {
     }, opts);

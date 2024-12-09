@@ -143,7 +143,7 @@ def get_host_vgpu_profile(host_id: Optional[str] = None,
         vgpu_profiles=pulumi.get(__ret__, 'vgpu_profiles'))
 def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostVgpuProfileResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostVgpuProfileResult]:
     """
     The `get_host_vgpu_profile` data source can be used to discover the
     available vGPU profiles of a vSphere host.
@@ -186,7 +186,7 @@ def get_host_vgpu_profile_output(host_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['hostId'] = host_id
     __args__['nameRegex'] = name_regex
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getHostVgpuProfile:getHostVgpuProfile', __args__, opts=opts, typ=GetHostVgpuProfileResult)
     return __ret__.apply(lambda __response__: GetHostVgpuProfileResult(
         host_id=pulumi.get(__response__, 'host_id'),

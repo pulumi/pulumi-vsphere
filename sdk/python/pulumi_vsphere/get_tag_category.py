@@ -121,7 +121,7 @@ def get_tag_category(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
 def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagCategoryResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagCategoryResult]:
     """
     The `TagCategory` data source can be used to reference tag categories
     that are not managed by this provider. Its attributes are the same as the
@@ -146,7 +146,7 @@ def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts, typ=GetTagCategoryResult)
     return __ret__.apply(lambda __response__: GetTagCategoryResult(
         associable_types=pulumi.get(__response__, 'associable_types'),

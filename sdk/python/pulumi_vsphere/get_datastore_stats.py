@@ -151,7 +151,7 @@ def get_datastore_stats(capacity: Optional[Mapping[str, str]] = None,
 def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                datacenter_id: Optional[pulumi.Input[str]] = None,
                                free_space: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreStatsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreStatsResult]:
     """
     The `get_datastore_stats` data source can be used to retrieve the usage
     stats of all vSphere datastore objects in a datacenter. This can then be used as
@@ -199,7 +199,7 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
     __args__['capacity'] = capacity
     __args__['datacenterId'] = datacenter_id
     __args__['freeSpace'] = free_space
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDatastoreStats:getDatastoreStats', __args__, opts=opts, typ=GetDatastoreStatsResult)
     return __ret__.apply(lambda __response__: GetDatastoreStatsResult(
         capacity=pulumi.get(__response__, 'capacity'),

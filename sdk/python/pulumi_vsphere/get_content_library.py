@@ -88,7 +88,7 @@ def get_content_library(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
 def get_content_library_output(name: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContentLibraryResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContentLibraryResult]:
     """
     The `ContentLibrary` data source can be used to discover the ID of a
     content library.
@@ -110,7 +110,7 @@ def get_content_library_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getContentLibrary:getContentLibrary', __args__, opts=opts, typ=GetContentLibraryResult)
     return __ret__.apply(lambda __response__: GetContentLibraryResult(
         id=pulumi.get(__response__, 'id'),

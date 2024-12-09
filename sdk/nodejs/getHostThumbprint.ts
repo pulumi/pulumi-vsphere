@@ -88,7 +88,7 @@ export interface GetHostThumbprintResult {
  * });
  * ```
  */
-export function getHostThumbprintOutput(args: GetHostThumbprintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostThumbprintResult> {
+export function getHostThumbprintOutput(args: GetHostThumbprintOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostThumbprintResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getHostThumbprint:getHostThumbprint", {
         "address": args.address,

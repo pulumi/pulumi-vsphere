@@ -131,7 +131,7 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
 def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDynamicResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDynamicResult]:
     """
     [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
@@ -172,7 +172,7 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
     __args__['filters'] = filters
     __args__['nameRegex'] = name_regex
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getDynamic:getDynamic', __args__, opts=opts, typ=GetDynamicResult)
     return __ret__.apply(lambda __response__: GetDynamicResult(
         filters=pulumi.get(__response__, 'filters'),
