@@ -117,7 +117,7 @@ export interface GetDynamicResult {
  * }));
  * ```
  */
-export function getDynamicOutput(args: GetDynamicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicResult> {
+export function getDynamicOutput(args: GetDynamicOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDynamicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getDynamic:getDynamic", {
         "filters": args.filters,

@@ -148,7 +148,7 @@ def get_license(license_key: Optional[str] = None,
         total=pulumi.get(__ret__, 'total'),
         used=pulumi.get(__ret__, 'used'))
 def get_license_output(license_key: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLicenseResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLicenseResult]:
     """
     The `License` data source can be used to get the general attributes of
     a license keys from a vCenter Server instance.
@@ -167,7 +167,7 @@ def get_license_output(license_key: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['licenseKey'] = license_key
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getLicense:getLicense', __args__, opts=opts, typ=GetLicenseResult)
     return __ret__.apply(lambda __response__: GetLicenseResult(
         edition_key=pulumi.get(__response__, 'edition_key'),

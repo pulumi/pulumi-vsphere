@@ -88,7 +88,7 @@ export interface GetDatastoreClusterResult {
  * }));
  * ```
  */
-export function getDatastoreClusterOutput(args: GetDatastoreClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreClusterResult> {
+export function getDatastoreClusterOutput(args: GetDatastoreClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatastoreClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getDatastoreCluster:getDatastoreCluster", {
         "datacenterId": args.datacenterId,
