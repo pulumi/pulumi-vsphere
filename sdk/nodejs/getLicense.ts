@@ -79,7 +79,7 @@ export interface GetLicenseResult {
  * });
  * ```
  */
-export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseResult> {
+export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLicenseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getLicense:getLicense", {
         "licenseKey": args.licenseKey,

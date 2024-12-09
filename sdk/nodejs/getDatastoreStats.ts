@@ -132,7 +132,7 @@ export interface GetDatastoreStatsResult {
  *
  * and a `locals.tf` like that:
  */
-export function getDatastoreStatsOutput(args: GetDatastoreStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreStatsResult> {
+export function getDatastoreStatsOutput(args: GetDatastoreStatsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatastoreStatsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getDatastoreStats:getDatastoreStats", {
         "capacity": args.capacity,

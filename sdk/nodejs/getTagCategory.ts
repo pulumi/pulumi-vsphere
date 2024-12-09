@@ -76,7 +76,7 @@ export interface GetTagCategoryResult {
  * });
  * ```
  */
-export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagCategoryResult> {
+export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagCategoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getTagCategory:getTagCategory", {
         "name": args.name,

@@ -142,7 +142,7 @@ def get_vmfs_disks(filter: Optional[str] = None,
 def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                           host_system_id: Optional[pulumi.Input[str]] = None,
                           rescan: Optional[pulumi.Input[Optional[bool]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVmfsDisksResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmfsDisksResult]:
     """
     The `get_vmfs_disks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
@@ -180,7 +180,7 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['filter'] = filter
     __args__['hostSystemId'] = host_system_id
     __args__['rescan'] = rescan
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getVmfsDisks:getVmfsDisks', __args__, opts=opts, typ=GetVmfsDisksResult)
     return __ret__.apply(lambda __response__: GetVmfsDisksResult(
         disks=pulumi.get(__response__, 'disks'),

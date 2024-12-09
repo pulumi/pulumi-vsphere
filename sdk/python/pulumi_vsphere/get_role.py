@@ -135,7 +135,7 @@ def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                     label: Optional[pulumi.Input[str]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     role_privileges: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleResult]:
     """
     The `Role` data source can be used to discover the `id` and privileges
     associated with a role given its name or display label.
@@ -159,7 +159,7 @@ def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['label'] = label
     __args__['name'] = name
     __args__['rolePrivileges'] = role_privileges
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
     return __ret__.apply(lambda __response__: GetRoleResult(
         description=pulumi.get(__response__, 'description'),

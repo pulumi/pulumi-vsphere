@@ -106,7 +106,7 @@ export interface GetComputeClusterHostGroupResult {
  * });
  * ```
  */
-export function getComputeClusterHostGroupOutput(args: GetComputeClusterHostGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterHostGroupResult> {
+export function getComputeClusterHostGroupOutput(args: GetComputeClusterHostGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetComputeClusterHostGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", {
         "computeClusterId": args.computeClusterId,
