@@ -74,6 +74,38 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetHostThumbprintResult> Invoke(GetHostThumbprintInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+        /// of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
+        /// cluster or a vCenter Server instance.
+        /// 
+        /// * If the ESXi host is using a certificate chain, the first one returned will be
+        /// used to generate the thumbprint.
+        /// 
+        /// * If the ESXi host has a certificate issued by a certificate authority, ensure
+        /// that the the certificate authority is trusted on the system running the plan.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+        ///     {
+        ///         Address = "esxi-01.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostThumbprintResult> Invoke(GetHostThumbprintInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -66,6 +66,34 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetContentLibraryResult> Invoke(GetContentLibraryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+        /// content library.
+        /// 
+        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        /// host connections.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var contentLibrary = VSphere.GetContentLibrary.Invoke(new()
+        ///     {
+        ///         Name = "Content Library",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetContentLibraryResult> Invoke(GetContentLibraryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryInvokeArgs(), options.WithDefaults());
     }
 
 

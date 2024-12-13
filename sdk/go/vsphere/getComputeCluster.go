@@ -87,21 +87,11 @@ type LookupComputeClusterResult struct {
 }
 
 func LookupComputeClusterOutput(ctx *pulumi.Context, args LookupComputeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupComputeClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComputeClusterResultOutput, error) {
 			args := v.(LookupComputeClusterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupComputeClusterResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getComputeCluster:getComputeCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComputeClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComputeClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComputeClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getComputeCluster:getComputeCluster", args, LookupComputeClusterResultOutput{}, options).(LookupComputeClusterResultOutput), nil
 		}).(LookupComputeClusterResultOutput)
 }
 

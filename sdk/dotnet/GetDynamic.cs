@@ -114,6 +114,58 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetDynamicResult> Invoke(GetDynamicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
+        /// The `vsphere.getDynamic` data source can be used to get the
+        /// [managed object reference ID][docs-about-morefs] of any tagged managed object in
+        /// vCenter Server by providing a list of tag IDs and an optional regular expression
+        /// to filter objects by name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Name = "SomeCategory",
+        ///     });
+        /// 
+        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "FirstTag",
+        ///         CategoryId = cat.Id,
+        ///     });
+        /// 
+        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "SecondTag",
+        ///         CategoryId = cat.Id,
+        ///     });
+        /// 
+        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///         },
+        ///         NameRegex = "ubuntu",
+        ///         Type = "Datacenter",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDynamicResult> Invoke(GetDynamicInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicInvokeArgs(), options.WithDefaults());
     }
 
 

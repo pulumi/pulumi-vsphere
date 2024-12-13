@@ -48,21 +48,11 @@ type LookupContentLibraryItemResult struct {
 }
 
 func LookupContentLibraryItemOutput(ctx *pulumi.Context, args LookupContentLibraryItemOutputArgs, opts ...pulumi.InvokeOption) LookupContentLibraryItemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContentLibraryItemResultOutput, error) {
 			args := v.(LookupContentLibraryItemArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupContentLibraryItemResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getContentLibraryItem:getContentLibraryItem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContentLibraryItemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContentLibraryItemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContentLibraryItemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getContentLibraryItem:getContentLibraryItem", args, LookupContentLibraryItemResultOutput{}, options).(LookupContentLibraryItemResultOutput), nil
 		}).(LookupContentLibraryItemResultOutput)
 }
 

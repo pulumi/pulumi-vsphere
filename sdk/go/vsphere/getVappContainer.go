@@ -77,21 +77,11 @@ type LookupVappContainerResult struct {
 }
 
 func LookupVappContainerOutput(ctx *pulumi.Context, args LookupVappContainerOutputArgs, opts ...pulumi.InvokeOption) LookupVappContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVappContainerResultOutput, error) {
 			args := v.(LookupVappContainerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupVappContainerResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getVappContainer:getVappContainer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVappContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVappContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVappContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getVappContainer:getVappContainer", args, LookupVappContainerResultOutput{}, options).(LookupVappContainerResultOutput), nil
 		}).(LookupVappContainerResultOutput)
 }
 

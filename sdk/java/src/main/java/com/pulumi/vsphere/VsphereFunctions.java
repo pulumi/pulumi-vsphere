@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import com.pulumi.vsphere.Utilities;
 import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
@@ -263,6 +264,62 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetComputeClusterResult> getComputeCluster(GetComputeClusterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getComputeCluster:getComputeCluster", TypeShape.of(GetComputeClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
+     * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster&#39;s root resource pool directly versus
+     * using the alias available through the `vsphere.ResourcePool`
+     * data source.
+     * 
+     * &gt; You may also wish to see the `vsphere.ComputeCluster`
+     *  resource for more information about clusters and how to managed the resource
+     *  in this provider.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetComputeClusterResult> getComputeCluster(GetComputeClusterArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getComputeCluster:getComputeCluster", TypeShape.of(GetComputeClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -578,6 +635,71 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetComputeClusterHostGroupResult> getComputeClusterHostGroup(GetComputeClusterHostGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", TypeShape.of(GetComputeClusterHostGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ComputeClusterHostGroup` data source can be used to discover
+     * the IDs ESXi hosts in a host group and return host group attributes to other
+     * resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
+     * import com.pulumi.vsphere.ComputeClusterVmHostRule;
+     * import com.pulumi.vsphere.ComputeClusterVmHostRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
+     *             .name("hostgroup-01")
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .build());
+     * 
+     *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
+     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .name("pulumi-host-rule1")
+     *             .vmGroupName("vmgroup-01")
+     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetComputeClusterHostGroupResult> getComputeClusterHostGroupPlain(GetComputeClusterHostGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", TypeShape.of(GetComputeClusterHostGroupResult.class), args, Utilities.withVersion(options));
     }
@@ -762,6 +884,52 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetContentLibraryResult> getContentLibrary(GetContentLibraryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getContentLibrary:getContentLibrary", TypeShape.of(GetContentLibraryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ContentLibrary` data source can be used to discover the ID of a
+     * content library.
+     * 
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()
+     *             .name("Content Library")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetContentLibraryResult> getContentLibraryPlain(GetContentLibraryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getContentLibrary:getContentLibrary", TypeShape.of(GetContentLibraryResult.class), args, Utilities.withVersion(options));
     }
@@ -796,6 +964,17 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetContentLibraryItemResult> getContentLibraryItem(GetContentLibraryItemArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", TypeShape.of(GetContentLibraryItemResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
+     * of a content library item.
+     * 
+     * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+     * host connections.
+     * 
+     */
+    public static Output<GetContentLibraryItemResult> getContentLibraryItem(GetContentLibraryItemArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", TypeShape.of(GetContentLibraryItemResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -954,6 +1133,55 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetCustomAttributeResult> getCustomAttribute(GetCustomAttributeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getCustomAttribute:getCustomAttribute", TypeShape.of(GetCustomAttributeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.CustomAttribute` data source can be used to reference custom
+     * attributes that are not managed by this provider. Its attributes are exactly the
+     * same as the `vsphere.CustomAttribute` resource,
+     * and, like importing, the data source takes a name argument for the search. The
+     * `id` and other attributes are then populated with the data found by the search.
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and require vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetCustomAttributeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
+     *             .name("test-attribute")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCustomAttributeResult> getCustomAttribute(GetCustomAttributeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getCustomAttribute:getCustomAttribute", TypeShape.of(GetCustomAttributeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1272,6 +1500,51 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatacenterResult> getDatacenter(GetDatacenterArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getDatacenter:getDatacenter", TypeShape.of(GetDatacenterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a
+     * vSphere datacenter object. This can then be used with resources or data sources
+     * that require a datacenter, such as the `vsphere.Host`
+     * data source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatacenterResult> getDatacenterPlain(GetDatacenterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDatacenter:getDatacenter", TypeShape.of(GetDatacenterResult.class), args, Utilities.withVersion(options));
     }
@@ -1476,6 +1749,57 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatastoreResult> getDatastore(GetDatastoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getDatastore` data source can be used to discover the ID of a
+     * vSphere datastore object. This can then be used with resources or data sources
+     * that require a datastore. For example, to create virtual machines in using the
+     * `vsphere.VirtualMachine` resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .name("datastore-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatastoreResult> getDatastorePlain(GetDatastorePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
     }
@@ -1630,6 +1954,57 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetDatastoreClusterResult> getDatastoreCluster(GetDatastoreClusterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getDatastoreCluster:getDatastoreCluster", TypeShape.of(GetDatastoreClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
+     * vSphere datastore cluster object. This can then be used with resources or data sources
+     * that require a datastore. For example, to assign datastores using the
+     * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatastoreClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
+     *             .name("datastore-cluster-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatastoreClusterResult> getDatastoreCluster(GetDatastoreClusterArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getDatastoreCluster:getDatastoreCluster", TypeShape.of(GetDatastoreClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2024,6 +2399,92 @@ public final class VsphereFunctions {
      * and a `locals.tf` like that:
      * 
      */
+    public static Output<GetDatastoreStatsResult> getDatastoreStats(GetDatastoreStatsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getDatastoreStats:getDatastoreStats", TypeShape.of(GetDatastoreStatsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+     * stats of all vSphere datastore objects in a datacenter. This can then be used as
+     * a standalone data source to get information required as input to other data
+     * sources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatastoreStatsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A useful example of this data source would be to determine the datastore with
+     * the most free space. For example, in addition to the above:
+     * 
+     * Create an `outputs.tf` like that:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export("maxFreeSpaceName", theirMaxFreeSpaceName);
+     *         ctx.export("maxFreeSpace", theirMaxFreeSpace);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * and a `locals.tf` like that:
+     * 
+     */
     public static CompletableFuture<GetDatastoreStatsResult> getDatastoreStatsPlain(GetDatastoreStatsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDatastoreStats:getDatastoreStats", TypeShape.of(GetDatastoreStatsResult.class), args, Utilities.withVersion(options));
     }
@@ -2232,6 +2693,75 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetDistributedVirtualSwitchResult> getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", TypeShape.of(GetDistributedVirtualSwitchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
+     * the ID and uplink data of a of a vSphere distributed switch (VDS). This
+     * can then be used with resources or data sources that require a VDS, such as the
+     * `vsphere.DistributedPortGroup` resource, for which
+     * an example is shown below.
+     * 
+     * &gt; **NOTE:** This data source requires vCenter Server and is not available on
+     * direct ESXi host connections.
+     * 
+     * ## Example Usage
+     * 
+     * The following example locates a distributed switch named `vds-01`, in the
+     * datacenter `dc-01`. It then uses this distributed switch to set up a
+     * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
+     * primary uplink and the second uplink as a secondary.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDistributedVirtualSwitchArgs;
+     * import com.pulumi.vsphere.DistributedPortGroup;
+     * import com.pulumi.vsphere.DistributedPortGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
+     *             .name("vds-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
+     *             .name("dvpg-01")
+     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
+     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
+     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDistributedVirtualSwitchResult> getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", TypeShape.of(GetDistributedVirtualSwitchResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2568,6 +3098,73 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDynamicResult> getDynamic(GetDynamicArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getDynamic:getDynamic", TypeShape.of(GetDynamicResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * The `vsphere.getDynamic` data source can be used to get the
+     * [managed object reference ID][docs-about-morefs] of any tagged managed object in
+     * vCenter Server by providing a list of tag IDs and an optional regular expression
+     * to filter objects by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import com.pulumi.vsphere.inputs.GetDynamicArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .name("SomeCategory")
+     *             .build());
+     * 
+     *         final var tag1 = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .name("FirstTag")
+     *             .categoryId(cat.id())
+     *             .build());
+     * 
+     *         final var tag2 = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .name("SecondTag")
+     *             .categoryId(cat.id())
+     *             .build());
+     * 
+     *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
+     *             .filters(            
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
+     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *             .nameRegex("ubuntu")
+     *             .type("Datacenter")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDynamicResult> getDynamicPlain(GetDynamicPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDynamic:getDynamic", TypeShape.of(GetDynamicResult.class), args, Utilities.withVersion(options));
     }
@@ -2756,6 +3353,53 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFolderResult> getFolder(GetFolderArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Folder` data source can be used to get the general attributes of a
+     * vSphere inventory folder. The data source supports creating folders of the 5
+     * major types - datacenter folders, host and cluster folders, virtual machine
+     * folders, storage folders, and network folders.
+     * 
+     * Paths are absolute and must include the datacenter.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path("/dc-01/datastore-01/folder-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
     }
@@ -2796,6 +3440,19 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.GuestOsCustomization` data source can be used to discover the
+     * details about a customization specification for a guest operating system.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2959,6 +3616,56 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetHostResult> getHost(GetHostArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getHost:getHost", TypeShape.of(GetHostResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
+     * This can then be used with resources or data sources that require an ESX
+     * host&#39;s managed object reference ID.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostResult> getHost(GetHostArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getHost:getHost", TypeShape.of(GetHostResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3209,6 +3916,46 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetHostBaseImagesResult> getHostBaseImages(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getHostBaseImages:getHostBaseImages", TypeShape.of(GetHostBaseImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+     * base images available for cluster software management.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostBaseImagesResult> getHostBaseImages(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getHostBaseImages:getHostBaseImages", TypeShape.of(GetHostBaseImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3672,6 +4419,112 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHostPciDeviceResult> getHostPciDevice(GetHostPciDeviceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getHostPciDevice:getHostPciDevice", TypeShape.of(GetHostPciDeviceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
+     * of a vSphere host&#39;s PCI device. This can then be used with
+     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * 
+     * ## Example Usage
+     * 
+     * ### With Vendor ID And Class ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .classId(123)
+     *             .vendorId(456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With Name Regular Expression
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("MMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHostPciDeviceResult> getHostPciDevicePlain(GetHostPciDevicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHostPciDevice:getHostPciDevice", TypeShape.of(GetHostPciDeviceResult.class), args, Utilities.withVersion(options));
     }
@@ -3823,6 +4676,56 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetHostThumbprintResult> getHostThumbprint(GetHostThumbprintArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
+     * cluster or a vCenter Server instance.
+     * 
+     * * If the ESXi host is using a certificate chain, the first one returned will be
+     * used to generate the thumbprint.
+     * 
+     * * If the ESXi host has a certificate issued by a certificate authority, ensure
+     * that the the certificate authority is trusted on the system running the plan.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
+     *             .address("esxi-01.example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostThumbprintResult> getHostThumbprint(GetHostThumbprintArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4284,6 +5187,109 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHostVgpuProfileResult> getHostVgpuProfile(GetHostVgpuProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", TypeShape.of(GetHostVgpuProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getHostVgpuProfile` data source can be used to discover the
+     * available vGPU profiles of a vSphere host.
+     * 
+     * ## Example Usage
+     * 
+     * ### To Return All VGPU Profiles
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With VGPU Profile Name_regex
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetHostVgpuProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
+     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .nameRegex("a100")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHostVgpuProfileResult> getHostVgpuProfilePlain(GetHostVgpuProfilePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", TypeShape.of(GetHostVgpuProfileResult.class), args, Utilities.withVersion(options));
     }
@@ -4414,6 +5420,49 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetLicenseResult> getLicense(GetLicenseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getLicense:getLicense", TypeShape.of(GetLicenseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.License` data source can be used to get the general attributes of
+     * a license keys from a vCenter Server instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetLicenseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var license = VsphereFunctions.getLicense(GetLicenseArgs.builder()
+     *             .licenseKey("00000-00000-00000-00000-00000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLicenseResult> getLicense(GetLicenseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getLicense:getLicense", TypeShape.of(GetLicenseResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4840,6 +5889,102 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
+     * vSphere. This can be any network that can be used as the backing for a network
+     * interface for `vsphere.VirtualMachine` or any other vSphere resource that
+     * requires a network. This includes standard (host-based) port groups, distributed
+     * port groups, or opaque networks such as those managed by NSX.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("VM Network")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Additional Examples
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .name("VM Network")
+     *             .filters(GetNetworkFilterArgs.builder()
+     *                 .networkType("Network")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
     }
@@ -4868,6 +6013,15 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetOvfVmTemplateResult> getOvfVmTemplate(GetOvfVmTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", TypeShape.of(GetOvfVmTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
+     * vSphere and extract its hardware settings in a form that can be then used as
+     * inputs for a `vsphere.VirtualMachine` resource.
+     * 
+     */
+    public static Output<GetOvfVmTemplateResult> getOvfVmTemplate(GetOvfVmTemplateArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", TypeShape.of(GetOvfVmTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5030,6 +6184,57 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getPolicy:getPolicy", TypeShape.of(GetPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getPolicy` data source can be used to discover the UUID of a
+     * storage policy. This can then be used with other resources or data sources that
+     * use a storage policy.
+     * 
+     * &gt; **NOTE:** Storage policies are not supported on direct ESXi hosts and
+     * requires vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prodPlatinumReplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .name("prod_platinum_replicated")
+     *             .build());
+     * 
+     *         final var devSilverNonreplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .name("dev_silver_nonreplicated")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getPolicy:getPolicy", TypeShape.of(GetPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5686,6 +6891,107 @@ public final class VsphereFunctions {
      * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
      * 
      */
+    public static Output<GetResourcePoolResult> getResourcePool(GetResourcePoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getResourcePool:getResourcePool", TypeShape.of(GetResourcePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ResourcePool` data source can be used to discover the ID of a
+     * resource pool in vSphere. This is useful to return the ID of a resource pool
+     * that you want to use to create virtual machines in using the
+     * `vsphere.VirtualMachine` resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("resource-pool-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Specifying the Root Resource Pool for a Standalone ESXi Host
+     * 
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
+     * directly via the `vsphere.ComputeCluster`
+     * data source.
+     * 
+     * All compute resources in vSphere have a resource pool, even if one has not been
+     * explicitly created. This resource pool is referred to as the _root resource
+     * pool_ and can be looked up by specifying the path.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("esxi-01.example.com/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * For more information on the root resource pool, see
+     * [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
+     * documentation.
+     * 
+     * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+     * 
+     */
     public static CompletableFuture<GetResourcePoolResult> getResourcePoolPlain(GetResourcePoolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getResourcePool:getResourcePool", TypeShape.of(GetResourcePoolResult.class), args, Utilities.withVersion(options));
     }
@@ -5816,6 +7122,49 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetRoleResult> getRole(GetRoleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Role` data source can be used to discover the `id` and privileges
+     * associated with a role given its name or display label.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var terraformRole = VsphereFunctions.getRole(GetRoleArgs.builder()
+     *             .label("Terraform to vSphere Integration Role")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRoleResult> getRole(GetRoleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6078,6 +7427,61 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not
+     * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
+     * resource, and, like importing, the data source takes a name and
+     * category to search on. The `id` and other attributes are then populated with
+     * the data found by the search.
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import com.pulumi.vsphere.inputs.GetTagArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .name("example-category")
+     *             .build());
+     * 
+     *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
+     *             .name("example-tag")
+     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
@@ -6226,6 +7630,55 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetTagCategoryResult> getTagCategory(GetTagCategoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getTagCategory:getTagCategory", TypeShape.of(GetTagCategoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by this provider. Its attributes are the same as the
+     * `vsphere.TagCategory` resource, and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var category = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+     *             .name("example-category")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTagCategoryResult> getTagCategory(GetTagCategoryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getTagCategory:getTagCategory", TypeShape.of(GetTagCategoryResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6428,6 +7881,57 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetVappContainerResult> getVappContainer(GetVappContainerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getVappContainer:getVappContainer", TypeShape.of(GetVappContainerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.VappContainer` data source can be used to discover the ID of a
+     * vApp container in vSphere. This is useful to return the ID of a vApp container
+     * that you want to use to create virtual machines in using the
+     * `vsphere.VirtualMachine` resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVappContainerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
+     *             .name("vapp-container-01")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVappContainerResult> getVappContainer(GetVappContainerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getVappContainer:getVappContainer", TypeShape.of(GetVappContainerResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -7090,6 +8594,108 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVirtualMachineResult> getVirtualMachine(GetVirtualMachineArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getVirtualMachine:getVirtualMachine", TypeShape.of(GetVirtualMachineResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
+     * existing virtual machine or template. The most common purpose is for finding
+     * the UUID of a template to be used as the source for cloning to a new
+     * `vsphere.VirtualMachine` resource. It also
+     * reads the guest ID so that can be supplied as well.
+     * 
+     * ## Example Usage
+     * 
+     * In the following example, a virtual machine template is returned by its unique
+     * name within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * In the following example, each virtual machine template is returned by its
+     * unique full path within the `vsphere.Datacenter`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("production/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("development/templates/ubuntu-server-template")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVirtualMachineResult> getVirtualMachinePlain(GetVirtualMachinePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getVirtualMachine:getVirtualMachine", TypeShape.of(GetVirtualMachineResult.class), args, Utilities.withVersion(options));
     }
@@ -7265,6 +8871,64 @@ public final class VsphereFunctions {
      * 
      */
     public static Output<GetVmfsDisksResult> getVmfsDisks(GetVmfsDisksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getVmfsDisks:getVmfsDisks", TypeShape.of(GetVmfsDisksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.getVmfsDisks` data source can be used to discover the storage
+     * devices available on an ESXi host. This data source can be combined with the
+     * `vsphere.VmfsDatastore` resource to create VMFS
+     * datastores based off a set of discovered disks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetHostArgs;
+     * import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+     *             .name("esxi-01.example.com")
+     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .build());
+     * 
+     *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
+     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .rescan(true)
+     *             .filter("mpx.vmhba1:C0:T[12]:L0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmfsDisksResult> getVmfsDisks(GetVmfsDisksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getVmfsDisks:getVmfsDisks", TypeShape.of(GetVmfsDisksResult.class), args, Utilities.withVersion(options));
     }
     /**

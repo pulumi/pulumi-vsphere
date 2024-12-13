@@ -86,6 +86,44 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetComputeClusterResult> Invoke(GetComputeClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+        /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want
+        /// to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
+        /// using the alias available through the `vsphere.ResourcePool`
+        /// data source.
+        /// 
+        /// &gt; You may also wish to see the `vsphere.ComputeCluster`
+        ///  resource for more information about clusters and how to managed the resource
+        ///  in this provider.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetComputeClusterResult> Invoke(GetComputeClusterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterInvokeArgs(), options.WithDefaults());
     }
 
 

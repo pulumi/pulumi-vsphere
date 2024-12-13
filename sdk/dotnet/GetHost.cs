@@ -74,6 +74,38 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetHostResult> Invoke(GetHostInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
+        /// This can then be used with resources or data sources that require an ESX
+        /// host's managed object reference ID.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostResult> Invoke(GetHostInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostInvokeArgs(), options.WithDefaults());
     }
 
 
