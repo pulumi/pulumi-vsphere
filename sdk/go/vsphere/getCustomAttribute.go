@@ -70,21 +70,11 @@ type LookupCustomAttributeResult struct {
 }
 
 func LookupCustomAttributeOutput(ctx *pulumi.Context, args LookupCustomAttributeOutputArgs, opts ...pulumi.InvokeOption) LookupCustomAttributeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomAttributeResultOutput, error) {
 			args := v.(LookupCustomAttributeArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomAttributeResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getCustomAttribute:getCustomAttribute", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomAttributeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomAttributeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomAttributeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getCustomAttribute:getCustomAttribute", args, LookupCustomAttributeResultOutput{}, options).(LookupCustomAttributeResultOutput), nil
 		}).(LookupCustomAttributeResultOutput)
 }
 

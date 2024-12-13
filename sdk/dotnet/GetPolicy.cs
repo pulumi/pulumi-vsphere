@@ -78,6 +78,40 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getPolicy` data source can be used to discover the UUID of a
+        /// storage policy. This can then be used with other resources or data sources that
+        /// use a storage policy.
+        /// 
+        /// &gt; **NOTE:** Storage policies are not supported on direct ESXi hosts and
+        /// requires vCenter Server.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
+        ///     {
+        ///         Name = "prod_platinum_replicated",
+        ///     });
+        /// 
+        ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+        ///     {
+        ///         Name = "dev_silver_nonreplicated",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

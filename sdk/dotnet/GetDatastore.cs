@@ -78,6 +78,40 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetDatastoreResult> Invoke(GetDatastoreInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getDatastore` data source can be used to discover the ID of a
+        /// vSphere datastore object. This can then be used with resources or data sources
+        /// that require a datastore. For example, to create virtual machines in using the
+        /// `vsphere.VirtualMachine` resource.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     {
+        ///         Name = "datastore-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatastoreResult> Invoke(GetDatastoreInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithDefaults());
     }
 
 

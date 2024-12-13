@@ -72,6 +72,37 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetCustomAttributeResult> Invoke(GetCustomAttributeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.CustomAttribute` data source can be used to reference custom
+        /// attributes that are not managed by this provider. Its attributes are exactly the
+        /// same as the `vsphere.CustomAttribute` resource,
+        /// and, like importing, the data source takes a name argument for the search. The
+        /// `id` and other attributes are then populated with the data found by the search.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        /// and require vCenter Server.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
+        ///     {
+        ///         Name = "test-attribute",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCustomAttributeResult> Invoke(GetCustomAttributeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeInvokeArgs(), options.WithDefaults());
     }
 
 

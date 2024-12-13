@@ -74,7 +74,7 @@ import * as utilities from "./utilities";
  * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vm_affinity_rule", {
  *     name: "vm-affinity-rule",
  *     computeClusterId: cluster.then(cluster => cluster.id),
- *     virtualMachineIds: vm.map((v, k) => [k, v]).map(([, ]) => (v.id)),
+ *     virtualMachineIds: vm.map((v, k) => [k, v]).map(([k, v]) => (v.id)),
  * });
  * ```
  *

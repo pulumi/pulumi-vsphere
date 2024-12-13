@@ -131,21 +131,11 @@ type GetNetworkResult struct {
 }
 
 func GetNetworkOutput(ctx *pulumi.Context, args GetNetworkOutputArgs, opts ...pulumi.InvokeOption) GetNetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNetworkResultOutput, error) {
 			args := v.(GetNetworkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNetworkResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getNetwork:getNetwork", args, &rv, "", opts...)
-			if err != nil {
-				return GetNetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getNetwork:getNetwork", args, GetNetworkResultOutput{}, options).(GetNetworkResultOutput), nil
 		}).(GetNetworkResultOutput)
 }
 

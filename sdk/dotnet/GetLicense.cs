@@ -60,6 +60,31 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetLicenseResult> Invoke(GetLicenseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.License` data source can be used to get the general attributes of
+        /// a license keys from a vCenter Server instance.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var license = VSphere.GetLicense.Invoke(new()
+        ///     {
+        ///         LicenseKey = "00000-00000-00000-00000-00000",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLicenseResult> Invoke(GetLicenseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithDefaults());
     }
 
 
