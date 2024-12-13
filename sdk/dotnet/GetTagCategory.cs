@@ -72,6 +72,37 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetTagCategoryResult> Invoke(GetTagCategoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.TagCategory` data source can be used to reference tag categories
+        /// that are not managed by this provider. Its attributes are the same as the
+        /// `vsphere.TagCategory` resource, and, like importing,
+        /// the data source uses a name and category as search criteria. The `id` and other
+        /// attributes are populated with the data found by the search.
+        /// 
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Name = "example-category",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTagCategoryResult> Invoke(GetTagCategoryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithDefaults());
     }
 
 

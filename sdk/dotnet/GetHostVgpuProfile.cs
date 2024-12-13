@@ -148,6 +148,75 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetHostVgpuProfileResult> Invoke(GetHostVgpuProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostVgpuProfileResult>("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", args ?? new GetHostVgpuProfileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getHostVgpuProfile` data source can be used to discover the
+        /// available vGPU profiles of a vSphere host.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### To Return All VGPU Profiles
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vgpuProfile = VSphere.GetHostVgpuProfile.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ### With VGPU Profile Name_regex
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vgpuProfile = VSphere.GetHostVgpuProfile.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         NameRegex = "a100",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostVgpuProfileResult> Invoke(GetHostVgpuProfileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostVgpuProfileResult>("vsphere:index/getHostVgpuProfile:getHostVgpuProfile", args ?? new GetHostVgpuProfileInvokeArgs(), options.WithDefaults());
     }
 
 

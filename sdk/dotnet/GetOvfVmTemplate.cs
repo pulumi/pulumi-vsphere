@@ -26,6 +26,14 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetOvfVmTemplateResult> Invoke(GetOvfVmTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
+        /// vSphere and extract its hardware settings in a form that can be then used as
+        /// inputs for a `vsphere.VirtualMachine` resource.
+        /// </summary>
+        public static Output<GetOvfVmTemplateResult> Invoke(GetOvfVmTemplateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -97,21 +97,11 @@ type LookupComputeClusterHostGroupResult struct {
 }
 
 func LookupComputeClusterHostGroupOutput(ctx *pulumi.Context, args LookupComputeClusterHostGroupOutputArgs, opts ...pulumi.InvokeOption) LookupComputeClusterHostGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComputeClusterHostGroupResultOutput, error) {
 			args := v.(LookupComputeClusterHostGroupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupComputeClusterHostGroupResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComputeClusterHostGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComputeClusterHostGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComputeClusterHostGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args, LookupComputeClusterHostGroupResultOutput{}, options).(LookupComputeClusterHostGroupResultOutput), nil
 		}).(LookupComputeClusterHostGroupResultOutput)
 }
 

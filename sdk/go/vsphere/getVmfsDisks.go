@@ -97,21 +97,11 @@ type GetVmfsDisksResult struct {
 }
 
 func GetVmfsDisksOutput(ctx *pulumi.Context, args GetVmfsDisksOutputArgs, opts ...pulumi.InvokeOption) GetVmfsDisksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVmfsDisksResultOutput, error) {
 			args := v.(GetVmfsDisksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVmfsDisksResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getVmfsDisks:getVmfsDisks", args, &rv, "", opts...)
-			if err != nil {
-				return GetVmfsDisksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVmfsDisksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVmfsDisksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getVmfsDisks:getVmfsDisks", args, GetVmfsDisksResultOutput{}, options).(GetVmfsDisksResultOutput), nil
 		}).(GetVmfsDisksResultOutput)
 }
 

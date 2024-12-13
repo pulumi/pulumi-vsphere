@@ -118,6 +118,60 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetDatastoreStatsResult> Invoke(GetDatastoreStatsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreStatsResult>("vsphere:index/getDatastoreStats:getDatastoreStats", args ?? new GetDatastoreStatsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getDatastoreStats` data source can be used to retrieve the usage
+        /// stats of all vSphere datastore objects in a datacenter. This can then be used as
+        /// a standalone data source to get information required as input to other data
+        /// sources.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var datastoreStats = VSphere.GetDatastoreStats.Invoke(new()
+        ///     {
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// A useful example of this data source would be to determine the datastore with
+        /// the most free space. For example, in addition to the above:
+        /// 
+        /// Create an `outputs.tf` like that:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["maxFreeSpaceName"] = theirMaxFreeSpaceName,
+        ///         ["maxFreeSpace"] = theirMaxFreeSpace,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// and a `locals.tf` like that:
+        /// </summary>
+        public static Output<GetDatastoreStatsResult> Invoke(GetDatastoreStatsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreStatsResult>("vsphere:index/getDatastoreStats:getDatastoreStats", args ?? new GetDatastoreStatsInvokeArgs(), options.WithDefaults());
     }
 
 

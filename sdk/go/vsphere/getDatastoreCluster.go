@@ -82,21 +82,11 @@ type LookupDatastoreClusterResult struct {
 }
 
 func LookupDatastoreClusterOutput(ctx *pulumi.Context, args LookupDatastoreClusterOutputArgs, opts ...pulumi.InvokeOption) LookupDatastoreClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatastoreClusterResultOutput, error) {
 			args := v.(LookupDatastoreClusterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatastoreClusterResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getDatastoreCluster:getDatastoreCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatastoreClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatastoreClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatastoreClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getDatastoreCluster:getDatastoreCluster", args, LookupDatastoreClusterResultOutput{}, options).(LookupDatastoreClusterResultOutput), nil
 		}).(LookupDatastoreClusterResultOutput)
 }
 

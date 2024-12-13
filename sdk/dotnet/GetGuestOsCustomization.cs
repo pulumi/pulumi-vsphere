@@ -24,6 +24,13 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.GuestOsCustomization` data source can be used to discover the
+        /// details about a customization specification for a guest operating system.
+        /// </summary>
+        public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -43,21 +43,11 @@ type LookupGuestOsCustomizationResult struct {
 }
 
 func LookupGuestOsCustomizationOutput(ctx *pulumi.Context, args LookupGuestOsCustomizationOutputArgs, opts ...pulumi.InvokeOption) LookupGuestOsCustomizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGuestOsCustomizationResultOutput, error) {
 			args := v.(LookupGuestOsCustomizationArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupGuestOsCustomizationResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGuestOsCustomizationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGuestOsCustomizationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGuestOsCustomizationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args, LookupGuestOsCustomizationResultOutput{}, options).(LookupGuestOsCustomizationResultOutput), nil
 		}).(LookupGuestOsCustomizationResultOutput)
 }
 

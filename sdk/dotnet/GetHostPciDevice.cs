@@ -154,6 +154,78 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetHostPciDeviceResult> Invoke(GetHostPciDeviceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getHostPciDevice` data source can be used to discover the device ID
+        /// of a vSphere host's PCI device. This can then be used with
+        /// `vsphere.VirtualMachine`'s `pci_device_id`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### With Vendor ID And Class ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dev = VSphere.GetHostPciDevice.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ClassId = "123",
+        ///         VendorId = "456",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ### With Name Regular Expression
+        /// 
+        ///  ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dev = VSphere.GetHostPciDevice.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         NameRegex = "MMC",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostPciDeviceResult> Invoke(GetHostPciDeviceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceInvokeArgs(), options.WithDefaults());
     }
 
 

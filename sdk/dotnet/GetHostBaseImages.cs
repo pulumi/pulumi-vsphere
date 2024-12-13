@@ -54,6 +54,28 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetHostBaseImagesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostBaseImagesResult>("vsphere:index/getHostBaseImages:getHostBaseImages", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getHostBaseImages` data source can be used to get the list of ESXi
+        /// base images available for cluster software management.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var baseImages = VSphere.GetHostBaseImages.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostBaseImagesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostBaseImagesResult>("vsphere:index/getHostBaseImages:getHostBaseImages", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

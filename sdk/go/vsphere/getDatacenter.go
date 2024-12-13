@@ -73,21 +73,11 @@ type LookupDatacenterResult struct {
 }
 
 func LookupDatacenterOutput(ctx *pulumi.Context, args LookupDatacenterOutputArgs, opts ...pulumi.InvokeOption) LookupDatacenterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatacenterResultOutput, error) {
 			args := v.(LookupDatacenterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatacenterResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getDatacenter:getDatacenter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatacenterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatacenterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatacenterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getDatacenter:getDatacenter", args, LookupDatacenterResultOutput{}, options).(LookupDatacenterResultOutput), nil
 		}).(LookupDatacenterResultOutput)
 }
 

@@ -76,6 +76,39 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetVappContainerResult> Invoke(GetVappContainerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.VappContainer` data source can be used to discover the ID of a
+        /// vApp container in vSphere. This is useful to return the ID of a vApp container
+        /// that you want to use to create virtual machines in using the
+        /// `vsphere.VirtualMachine` resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var pool = VSphere.GetVappContainer.Invoke(new()
+        ///     {
+        ///         Name = "vapp-container-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVappContainerResult> Invoke(GetVappContainerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerInvokeArgs(), options.WithDefaults());
     }
 
 

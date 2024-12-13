@@ -72,21 +72,11 @@ type LookupTagCategoryResult struct {
 }
 
 func LookupTagCategoryOutput(ctx *pulumi.Context, args LookupTagCategoryOutputArgs, opts ...pulumi.InvokeOption) LookupTagCategoryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTagCategoryResultOutput, error) {
 			args := v.(LookupTagCategoryArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTagCategoryResult
-			secret, err := ctx.InvokePackageRaw("vsphere:index/getTagCategory:getTagCategory", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTagCategoryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTagCategoryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTagCategoryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("vsphere:index/getTagCategory:getTagCategory", args, LookupTagCategoryResultOutput{}, options).(LookupTagCategoryResultOutput), nil
 		}).(LookupTagCategoryResultOutput)
 }
 

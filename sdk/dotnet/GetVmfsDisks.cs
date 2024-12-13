@@ -92,6 +92,47 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetVmfsDisksResult> Invoke(GetVmfsDisksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.getVmfsDisks` data source can be used to discover the storage
+        /// devices available on an ESXi host. This data source can be combined with the
+        /// `vsphere.VmfsDatastore` resource to create VMFS
+        /// datastores based off a set of discovered disks.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vmfsDisks = VSphere.GetVmfsDisks.Invoke(new()
+        ///     {
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         Rescan = true,
+        ///         Filter = "mpx.vmhba1:C0:T[12]:L0",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVmfsDisksResult> Invoke(GetVmfsDisksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksInvokeArgs(), options.WithDefaults());
     }
 
 

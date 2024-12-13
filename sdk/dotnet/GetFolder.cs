@@ -68,6 +68,35 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `vsphere.Folder` data source can be used to get the general attributes of a
+        /// vSphere inventory folder. The data source supports creating folders of the 5
+        /// major types - datacenter folders, host and cluster folders, virtual machine
+        /// folders, storage folders, and network folders.
+        /// 
+        /// Paths are absolute and must include the datacenter.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var folder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
     }
 
 
