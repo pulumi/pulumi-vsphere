@@ -95,11 +95,6 @@ func Provider() tfbridge.ProviderInfo {
 			}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			Dependencies: map[string]string{
-				"builtin-modules":   "3.0.0",
-				"read-package-tree": "^5.2.1",
-				"resolve":           "^1.8.1",
-			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.9.2",
 			},
