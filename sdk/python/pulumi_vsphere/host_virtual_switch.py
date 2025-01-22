@@ -777,9 +777,57 @@ class HostVirtualSwitch(pulumi.CustomResource):
         For an overview on vSphere networking concepts, see [this
         page][ref-vsphere-net-concepts].
 
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 
         ## Example Usage
+
+        ### Create a virtual switch with one active and one standby NIC
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        switch = vsphere.HostVirtualSwitch("switch",
+            name="vSwitchTest",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"])
+        ```
+
+        ### Create a virtual switch with extra networking policy options
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        switch = vsphere.HostVirtualSwitch("switch",
+            name="vSwitchTest",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"],
+            teaming_policy="failover_explicit",
+            allow_promiscuous=False,
+            allow_forged_transmits=False,
+            allow_mac_changes=False,
+            shaping_enabled=True,
+            shaping_average_bandwidth=50000000,
+            shaping_peak_bandwidth=100000000,
+            shaping_burst_size=1000000000)
+        ```
 
         ## Import
 
@@ -850,9 +898,57 @@ class HostVirtualSwitch(pulumi.CustomResource):
         For an overview on vSphere networking concepts, see [this
         page][ref-vsphere-net-concepts].
 
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 
         ## Example Usage
+
+        ### Create a virtual switch with one active and one standby NIC
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        switch = vsphere.HostVirtualSwitch("switch",
+            name="vSwitchTest",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"])
+        ```
+
+        ### Create a virtual switch with extra networking policy options
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        switch = vsphere.HostVirtualSwitch("switch",
+            name="vSwitchTest",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"],
+            teaming_policy="failover_explicit",
+            allow_promiscuous=False,
+            allow_forged_transmits=False,
+            allow_mac_changes=False,
+            shaping_enabled=True,
+            shaping_average_bandwidth=50000000,
+            shaping_peak_bandwidth=100000000,
+            shaping_burst_size=1000000000)
+        ```
 
         ## Import
 

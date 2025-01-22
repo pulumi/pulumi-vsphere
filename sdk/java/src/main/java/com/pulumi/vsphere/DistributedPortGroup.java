@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * * For more information on distributed port groups, refer to the vSphere
  * [product documentation][ref-vsphere-dvportgroup].
  * 
- * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
- * [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+ * [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+ * [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
  * 
  * &gt; **NOTE:** This resource requires vCenter and is not available on
  * direct ESXi host connections.
@@ -275,14 +275,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Map of custom attribute ids to attribute
-     * &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
-     * for a reference on how to set values for custom attributes.
-     * 
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-     * =======
      * value string to set for port group.
-     * &gt; &gt; &gt; &gt; &gt; &gt; &gt; 69c6e040 (fork)
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
@@ -293,14 +286,7 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Map of custom attribute ids to attribute
-     * &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
-     * for a reference on how to set values for custom attributes.
-     * 
-     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-     * =======
      * value string to set for port group.
-     * &gt; &gt; &gt; &gt; &gt; &gt; &gt; 69c6e040 (fork)
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.

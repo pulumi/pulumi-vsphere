@@ -23,6 +23,102 @@ import (
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 //
+// ## Example Usage
+//
+// The example below creates a virtual machine in a cluster using the
+// `VirtualMachine` resource, creating the
+// virtual machine in the cluster looked up by the
+// `ComputeCluster` data source, but also
+// pinning the VM to a host defined by the
+// `Host` data source, which is assumed to
+// be a host within the cluster. To ensure that the VM stays on this host and does
+// not need to be migrated back at any point in time, an override is entered using
+// the `DrsVmOverride` resource that disables DRS for this virtual
+// machine, ensuring that it does not move.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "network1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("test"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				HostSystemId:   pulumi.String(host.Id),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(2048),
+//				GuestId:        pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewDrsVmOverride(ctx, "drs_vm_override", &vsphere.DrsVmOverrideArgs{
+//				ComputeClusterId: pulumi.String(cluster.Id),
+//				VirtualMachineId: vm.ID(),
+//				DrsEnabled:       pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # An existing override can be imported into this resource by
@@ -41,7 +137,7 @@ import (
 //
 //	"virtual_machine_path": "/dc1/vm/srv1"}'
 //
-// [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+// [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
 type DrsVmOverride struct {
 	pulumi.CustomResourceState
 

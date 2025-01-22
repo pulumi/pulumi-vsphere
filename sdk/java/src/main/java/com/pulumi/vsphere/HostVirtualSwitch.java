@@ -26,9 +26,123 @@ import javax.annotation.Nullable;
  * For an overview on vSphere networking concepts, see [this
  * page][ref-vsphere-net-concepts].
  * 
- * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+ * [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
  * 
  * ## Example Usage
+ * 
+ * ### Create a virtual switch with one active and one standby NIC
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.HostVirtualSwitch;
+ * import com.pulumi.vsphere.HostVirtualSwitchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var switch_ = new HostVirtualSwitch("switch", HostVirtualSwitchArgs.builder()
+ *             .name("vSwitchTest")
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .networkAdapters(            
+ *                 "vmnic0",
+ *                 "vmnic1")
+ *             .activeNics("vmnic0")
+ *             .standbyNics("vmnic1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Create a virtual switch with extra networking policy options
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.HostVirtualSwitch;
+ * import com.pulumi.vsphere.HostVirtualSwitchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var switch_ = new HostVirtualSwitch("switch", HostVirtualSwitchArgs.builder()
+ *             .name("vSwitchTest")
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .networkAdapters(            
+ *                 "vmnic0",
+ *                 "vmnic1")
+ *             .activeNics("vmnic0")
+ *             .standbyNics("vmnic1")
+ *             .teamingPolicy("failover_explicit")
+ *             .allowPromiscuous(false)
+ *             .allowForgedTransmits(false)
+ *             .allowMacChanges(false)
+ *             .shapingEnabled(true)
+ *             .shapingAverageBandwidth(50000000)
+ *             .shapingPeakBandwidth(100000000)
+ *             .shapingBurstSize(1000000000)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

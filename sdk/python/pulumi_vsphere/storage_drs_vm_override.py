@@ -259,7 +259,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         For more information on vSphere datastore clusters and Storage DRS, see [this
         page][ref-vsphere-datastore-clusters].
 
-        [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+        [ref-vsphere-datastore-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-datastore-cluster.html
 
         ## Example Usage
 
@@ -350,7 +350,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         For more information on vSphere datastore clusters and Storage DRS, see [this
         page][ref-vsphere-datastore-clusters].
 
-        [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+        [ref-vsphere-datastore-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-datastore-cluster.html
 
         ## Example Usage
 

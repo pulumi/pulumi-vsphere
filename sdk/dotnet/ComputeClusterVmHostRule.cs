@@ -26,6 +26,119 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The example below creates a virtual machine in a cluster using the
+    /// `vsphere.VirtualMachine` resource in a cluster
+    /// looked up by the `vsphere.ComputeCluster`
+    /// data source. It then creates a group with this virtual machine. It also creates
+    /// a host group off of the host looked up via the
+    /// `vsphere.Host` data source. Finally, this
+    /// virtual machine is configured to run specifically on that host via a
+    /// `vsphere.ComputeClusterVmHostRule` resource.
+    /// 
+    /// &gt; Note how `vm_group_name` and
+    /// `affinity_host_group_name` are sourced off of the
+    /// `name` attributes from the
+    /// `vsphere.ComputeClusterVmGroup` and
+    /// `vsphere.ComputeClusterHostGroup`
+    /// resources. This is to ensure that the rule is not created before the groups
+    /// exist, which may not possibly happen in the event that the names came from a
+    /// "static" source such as a variable.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi-01.example.com",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "network1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     {
+    ///         Name = "test",
+    ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///         NumCpus = 2,
+    ///         Memory = 2048,
+    ///         GuestId = "otherLinux64Guest",
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///             },
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new VSphere.Inputs.VirtualMachineDiskArgs
+    ///             {
+    ///                 Label = "disk0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var clusterVmGroup = new VSphere.ComputeClusterVmGroup("cluster_vm_group", new()
+    ///     {
+    ///         Name = "test-cluster-vm-group",
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         VirtualMachineIds = new[]
+    ///         {
+    ///             vm.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var clusterHostGroup = new VSphere.ComputeClusterHostGroup("cluster_host_group", new()
+    ///     {
+    ///         Name = "test-cluster-vm-group",
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         HostSystemIds = new[]
+    ///         {
+    ///             host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         },
+    ///     });
+    /// 
+    ///     var clusterVmHostRule = new VSphere.ComputeClusterVmHostRule("cluster_vm_host_rule", new()
+    ///     {
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         Name = "test-cluster-vm-host-rule",
+    ///         VmGroupName = clusterVmGroup.Name,
+    ///         AffinityHostGroupName = clusterHostGroup.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An existing rule can be imported into this resource by supplying

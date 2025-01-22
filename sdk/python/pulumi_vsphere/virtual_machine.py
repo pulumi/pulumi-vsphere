@@ -70,6 +70,7 @@ class VirtualMachineArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
                  num_cores_per_socket: Optional[pulumi.Input[int]] = None,
                  num_cpus: Optional[pulumi.Input[int]] = None,
+                 nvme_controller_count: Optional[pulumi.Input[int]] = None,
                  ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
@@ -285,6 +286,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
         if num_cpus is not None:
             pulumi.set(__self__, "num_cpus", num_cpus)
+        if nvme_controller_count is not None:
+            pulumi.set(__self__, "nvme_controller_count", nvme_controller_count)
         if ovf_deploy is not None:
             pulumi.set(__self__, "ovf_deploy", ovf_deploy)
         if pci_device_ids is not None:
@@ -935,6 +938,15 @@ class VirtualMachineArgs:
         pulumi.set(self, "num_cpus", value)
 
     @property
+    @pulumi.getter(name="nvmeControllerCount")
+    def nvme_controller_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "nvme_controller_count")
+
+    @nvme_controller_count.setter
+    def nvme_controller_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nvme_controller_count", value)
+
+    @property
     @pulumi.getter(name="ovfDeploy")
     def ovf_deploy(self) -> Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]:
         """
@@ -1315,6 +1327,7 @@ class _VirtualMachineState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
                  num_cores_per_socket: Optional[pulumi.Input[int]] = None,
                  num_cpus: Optional[pulumi.Input[int]] = None,
+                 nvme_controller_count: Optional[pulumi.Input[int]] = None,
                  ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  power_state: Optional[pulumi.Input[str]] = None,
@@ -1556,6 +1569,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
         if num_cpus is not None:
             pulumi.set(__self__, "num_cpus", num_cpus)
+        if nvme_controller_count is not None:
+            pulumi.set(__self__, "nvme_controller_count", nvme_controller_count)
         if ovf_deploy is not None:
             pulumi.set(__self__, "ovf_deploy", ovf_deploy)
         if pci_device_ids is not None:
@@ -2268,6 +2283,15 @@ class _VirtualMachineState:
         pulumi.set(self, "num_cpus", value)
 
     @property
+    @pulumi.getter(name="nvmeControllerCount")
+    def nvme_controller_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "nvme_controller_count")
+
+    @nvme_controller_count.setter
+    def nvme_controller_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nvme_controller_count", value)
+
+    @property
     @pulumi.getter(name="ovfDeploy")
     def ovf_deploy(self) -> Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]:
         """
@@ -2726,6 +2750,7 @@ class VirtualMachine(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
                  num_cores_per_socket: Optional[pulumi.Input[int]] = None,
                  num_cpus: Optional[pulumi.Input[int]] = None,
+                 nvme_controller_count: Optional[pulumi.Input[int]] = None,
                  ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
@@ -2965,6 +2990,7 @@ class VirtualMachine(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
                  num_cores_per_socket: Optional[pulumi.Input[int]] = None,
                  num_cpus: Optional[pulumi.Input[int]] = None,
+                 nvme_controller_count: Optional[pulumi.Input[int]] = None,
                  ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
@@ -3050,6 +3076,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
             __props__.__dict__["num_cpus"] = num_cpus
+            __props__.__dict__["nvme_controller_count"] = nvme_controller_count
             __props__.__dict__["ovf_deploy"] = ovf_deploy
             __props__.__dict__["pci_device_ids"] = pci_device_ids
             __props__.__dict__["poweron_timeout"] = poweron_timeout
@@ -3154,6 +3181,7 @@ class VirtualMachine(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]]] = None,
             num_cores_per_socket: Optional[pulumi.Input[int]] = None,
             num_cpus: Optional[pulumi.Input[int]] = None,
+            nvme_controller_count: Optional[pulumi.Input[int]] = None,
             ovf_deploy: Optional[pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']]] = None,
             pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             power_state: Optional[pulumi.Input[str]] = None,
@@ -3351,6 +3379,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
         __props__.__dict__["num_cpus"] = num_cpus
+        __props__.__dict__["nvme_controller_count"] = nvme_controller_count
         __props__.__dict__["ovf_deploy"] = ovf_deploy
         __props__.__dict__["pci_device_ids"] = pci_device_ids
         __props__.__dict__["power_state"] = power_state
@@ -3816,6 +3845,11 @@ class VirtualMachine(pulumi.CustomResource):
         The number of virtual processors to assign to this virtual machine.
         """
         return pulumi.get(self, "num_cpus")
+
+    @property
+    @pulumi.getter(name="nvmeControllerCount")
+    def nvme_controller_count(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "nvme_controller_count")
 
     @property
     @pulumi.getter(name="ovfDeploy")

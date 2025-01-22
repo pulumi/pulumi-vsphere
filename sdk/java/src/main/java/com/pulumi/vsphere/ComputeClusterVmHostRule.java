@@ -32,6 +32,128 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
+ * ## Example Usage
+ * 
+ * The example below creates a virtual machine in a cluster using the
+ * `vsphere.VirtualMachine` resource in a cluster
+ * looked up by the `vsphere.ComputeCluster`
+ * data source. It then creates a group with this virtual machine. It also creates
+ * a host group off of the host looked up via the
+ * `vsphere.Host` data source. Finally, this
+ * virtual machine is configured to run specifically on that host via a
+ * `vsphere.ComputeClusterVmHostRule` resource.
+ * 
+ * &gt; Note how `vm_group_name` and
+ * `affinity_host_group_name` are sourced off of the
+ * `name` attributes from the
+ * `vsphere.ComputeClusterVmGroup` and
+ * `vsphere.ComputeClusterHostGroup`
+ * resources. This is to ensure that the rule is not created before the groups
+ * exist, which may not possibly happen in the event that the names came from a
+ * &#34;static&#34; source such as a variable.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import com.pulumi.vsphere.ComputeClusterVmGroup;
+ * import com.pulumi.vsphere.ComputeClusterVmGroupArgs;
+ * import com.pulumi.vsphere.ComputeClusterHostGroup;
+ * import com.pulumi.vsphere.ComputeClusterHostGroupArgs;
+ * import com.pulumi.vsphere.ComputeClusterVmHostRule;
+ * import com.pulumi.vsphere.ComputeClusterVmHostRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("datastore1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("network1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+ *             .name("test")
+ *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .numCpus(2)
+ *             .memory(2048)
+ *             .guestId("otherLinux64Guest")
+ *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .build())
+ *             .disks(VirtualMachineDiskArgs.builder()
+ *                 .label("disk0")
+ *                 .size(20)
+ *                 .build())
+ *             .build());
+ * 
+ *         var clusterVmGroup = new ComputeClusterVmGroup("clusterVmGroup", ComputeClusterVmGroupArgs.builder()
+ *             .name("test-cluster-vm-group")
+ *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .virtualMachineIds(vm.id())
+ *             .build());
+ * 
+ *         var clusterHostGroup = new ComputeClusterHostGroup("clusterHostGroup", ComputeClusterHostGroupArgs.builder()
+ *             .name("test-cluster-vm-group")
+ *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .hostSystemIds(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .build());
+ * 
+ *         var clusterVmHostRule = new ComputeClusterVmHostRule("clusterVmHostRule", ComputeClusterVmHostRuleArgs.builder()
+ *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .name("test-cluster-vm-host-rule")
+ *             .vmGroupName(clusterVmGroup.name())
+ *             .affinityHostGroupName(clusterHostGroup.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * An existing rule can be imported into this resource by supplying

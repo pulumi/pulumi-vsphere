@@ -39,7 +39,7 @@ import (
 //
 //	"host_path": "/dc1/host/esxi1"}'
 //
-// [ref-vsphere-cluster-dpm]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-5E5E349A-4644-4C9C-B434-1C0243EBDC80.html
+// [ref-vsphere-cluster-dpm]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/using-drs-clusters-to-manage-resources/managing-power-resources.html
 type DpmHostOverride struct {
 	pulumi.CustomResourceState
 

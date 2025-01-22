@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For more information about custom attributes, click [here][ext-custom-attributes].
  * 
- * [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
+ * [ext-custom-attributes]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/custom-attributes-in-the-vsphere-client-host-management.html
  * 
  * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
  * and require vCenter Server.

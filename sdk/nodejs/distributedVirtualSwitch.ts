@@ -23,8 +23,8 @@ import * as utilities from "./utilities";
  *
  * For more information on the VDS, see [this page][ref-vsphere-vds].
  *
- * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
- * [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+ * [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+ * [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
  *
  * > **NOTE:** This resource requires vCenter and is not available on
  * direct ESXi host connections.
@@ -304,7 +304,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly hosts!: pulumi.Output<outputs.DistributedVirtualSwitchHost[] | undefined>;
     /**
-     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource.
      */
     public readonly ignoreOtherPvlanMappings!: pulumi.Output<boolean | undefined>;
     /**
@@ -925,7 +925,7 @@ export interface DistributedVirtualSwitchState {
      */
     hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
-     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource.
      */
     ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
     /**
@@ -1328,7 +1328,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
-     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource.
      */
     ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
     /**

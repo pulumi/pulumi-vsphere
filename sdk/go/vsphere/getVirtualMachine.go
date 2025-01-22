@@ -164,7 +164,16 @@ type LookupVirtualMachineArgs struct {
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
-	NumCpus                            *int    `pulumi:"numCpus"`
+	NumCpus *int `pulumi:"numCpus"`
+	// The number of NVMe controllers to
+	// scan for disk attributes and controller types on. Default: `1`.
+	//
+	// > **NOTE:** For best results, ensure that all the disks on any templates you
+	// use with this data source reside on the primary controller, and leave this
+	// value at the default. See the `VirtualMachine`
+	// resource documentation for the significance of this setting, specifically the
+	// additional requirements and notes for cloning section.
+	NvmeControllerScanCount            *int    `pulumi:"nvmeControllerScanCount"`
 	ReplaceTrigger                     *string `pulumi:"replaceTrigger"`
 	RunToolsScriptsAfterPowerOn        *bool   `pulumi:"runToolsScriptsAfterPowerOn"`
 	RunToolsScriptsAfterResume         *bool   `pulumi:"runToolsScriptsAfterResume"`
@@ -174,12 +183,6 @@ type LookupVirtualMachineArgs struct {
 	SataControllerScanCount            *int    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	//
-	// > **NOTE:** For best results, ensure that all the disks on any templates you
-	// use with this data source reside on the primary controller, and leave this
-	// value at the default. See the `VirtualMachine`
-	// resource documentation for the significance of this setting, specifically the
-	// additional requirements and notes for cloning section.
 	ScsiControllerScanCount      *int    `pulumi:"scsiControllerScanCount"`
 	StoragePolicyId              *string `pulumi:"storagePolicyId"`
 	SwapPlacementPolicy          *string `pulumi:"swapPlacementPolicy"`
@@ -282,6 +285,7 @@ type LookupVirtualMachineResult struct {
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
 	NumCpus                            *int    `pulumi:"numCpus"`
+	NvmeControllerScanCount            *int    `pulumi:"nvmeControllerScanCount"`
 	ReplaceTrigger                     *string `pulumi:"replaceTrigger"`
 	RunToolsScriptsAfterPowerOn        *bool   `pulumi:"runToolsScriptsAfterPowerOn"`
 	RunToolsScriptsAfterResume         *bool   `pulumi:"runToolsScriptsAfterResume"`
@@ -384,7 +388,16 @@ type LookupVirtualMachineOutputArgs struct {
 	NumCoresPerSocket pulumi.IntPtrInput `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
-	NumCpus                            pulumi.IntPtrInput    `pulumi:"numCpus"`
+	NumCpus pulumi.IntPtrInput `pulumi:"numCpus"`
+	// The number of NVMe controllers to
+	// scan for disk attributes and controller types on. Default: `1`.
+	//
+	// > **NOTE:** For best results, ensure that all the disks on any templates you
+	// use with this data source reside on the primary controller, and leave this
+	// value at the default. See the `VirtualMachine`
+	// resource documentation for the significance of this setting, specifically the
+	// additional requirements and notes for cloning section.
+	NvmeControllerScanCount            pulumi.IntPtrInput    `pulumi:"nvmeControllerScanCount"`
 	ReplaceTrigger                     pulumi.StringPtrInput `pulumi:"replaceTrigger"`
 	RunToolsScriptsAfterPowerOn        pulumi.BoolPtrInput   `pulumi:"runToolsScriptsAfterPowerOn"`
 	RunToolsScriptsAfterResume         pulumi.BoolPtrInput   `pulumi:"runToolsScriptsAfterResume"`
@@ -394,12 +407,6 @@ type LookupVirtualMachineOutputArgs struct {
 	SataControllerScanCount            pulumi.IntPtrInput    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	//
-	// > **NOTE:** For best results, ensure that all the disks on any templates you
-	// use with this data source reside on the primary controller, and leave this
-	// value at the default. See the `VirtualMachine`
-	// resource documentation for the significance of this setting, specifically the
-	// additional requirements and notes for cloning section.
 	ScsiControllerScanCount      pulumi.IntPtrInput    `pulumi:"scsiControllerScanCount"`
 	StoragePolicyId              pulumi.StringPtrInput `pulumi:"storagePolicyId"`
 	SwapPlacementPolicy          pulumi.StringPtrInput `pulumi:"swapPlacementPolicy"`
@@ -655,6 +662,10 @@ func (o LookupVirtualMachineResultOutput) NumCoresPerSocket() pulumi.IntPtrOutpu
 // virtual machine.
 func (o LookupVirtualMachineResultOutput) NumCpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.NumCpus }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupVirtualMachineResultOutput) NvmeControllerScanCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *int { return v.NvmeControllerScanCount }).(pulumi.IntPtrOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) ReplaceTrigger() pulumi.StringPtrOutput {

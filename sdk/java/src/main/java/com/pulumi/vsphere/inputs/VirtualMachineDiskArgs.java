@@ -34,14 +34,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
+     * The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, &#39;nvme&#39;, or &#39;ide&#39;.
      * 
      */
     @Import(name="controllerType")
     private @Nullable Output<String> controllerType;
 
     /**
-     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
+     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, &#39;nvme&#39;, or &#39;ide&#39;.
      * 
      */
     public Optional<Output<String>> controllerType() {
@@ -399,7 +399,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param controllerType The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
+         * @param controllerType The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, &#39;nvme&#39;, or &#39;ide&#39;.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param controllerType The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
+         * @param controllerType The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, &#39;nvme&#39;, or &#39;ide&#39;.
          * 
          * @return builder
          * 

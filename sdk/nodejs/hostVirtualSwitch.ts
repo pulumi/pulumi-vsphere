@@ -13,9 +13,67 @@ import * as utilities from "./utilities";
  * For an overview on vSphere networking concepts, see [this
  * page][ref-vsphere-net-concepts].
  *
- * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+ * [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
  *
  * ## Example Usage
+ *
+ * ### Create a virtual switch with one active and one standby NIC
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const _switch = new vsphere.HostVirtualSwitch("switch", {
+ *     name: "vSwitchTest",
+ *     hostSystemId: host.then(host => host.id),
+ *     networkAdapters: [
+ *         "vmnic0",
+ *         "vmnic1",
+ *     ],
+ *     activeNics: ["vmnic0"],
+ *     standbyNics: ["vmnic1"],
+ * });
+ * ```
+ *
+ * ### Create a virtual switch with extra networking policy options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const _switch = new vsphere.HostVirtualSwitch("switch", {
+ *     name: "vSwitchTest",
+ *     hostSystemId: host.then(host => host.id),
+ *     networkAdapters: [
+ *         "vmnic0",
+ *         "vmnic1",
+ *     ],
+ *     activeNics: ["vmnic0"],
+ *     standbyNics: ["vmnic1"],
+ *     teamingPolicy: "failover_explicit",
+ *     allowPromiscuous: false,
+ *     allowForgedTransmits: false,
+ *     allowMacChanges: false,
+ *     shapingEnabled: true,
+ *     shapingAverageBandwidth: 50000000,
+ *     shapingPeakBandwidth: 100000000,
+ *     shapingBurstSize: 1000000000,
+ * });
+ * ```
  *
  * ## Import
  *

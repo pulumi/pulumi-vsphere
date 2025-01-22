@@ -20,6 +20,7 @@ from .datastore_cluster import *
 from .datastore_cluster_vm_anti_affinity_rule import *
 from .distributed_port_group import *
 from .distributed_virtual_switch import *
+from .distributed_virtual_switch_pvlan_mapping import *
 from .dpm_host_override import *
 from .drs_vm_override import *
 from .entity_permissions import *
@@ -209,6 +210,14 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch": "DistributedVirtualSwitch"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/distributedVirtualSwitchPvlanMapping",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/distributedVirtualSwitchPvlanMapping:DistributedVirtualSwitchPvlanMapping": "DistributedVirtualSwitchPvlanMapping"
   }
  },
  {

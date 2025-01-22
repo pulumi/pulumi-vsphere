@@ -352,6 +352,68 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+        ## Example Usage
+
+        The example below creates a virtual machine in a cluster using the
+        `VirtualMachine` resource in a cluster
+        looked up by the `ComputeCluster`
+        data source. It then creates a group with this virtual machine. It also creates
+        a host group off of the host looked up via the
+        `Host` data source. Finally, this
+        virtual machine is configured to run specifically on that host via a
+        `ComputeClusterVmHostRule` resource.
+
+        > Note how `vm_group_name` and
+        `affinity_host_group_name` are sourced off of the
+        `name` attributes from the
+        `ComputeClusterVmGroup` and
+        `ComputeClusterHostGroup`
+        resources. This is to ensure that the rule is not created before the groups
+        exist, which may not possibly happen in the event that the names came from a
+        "static" source such as a variable.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="test",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
+            name="test-cluster-vm-group",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[vm.id])
+        cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
+            name="test-cluster-vm-group",
+            compute_cluster_id=cluster.id,
+            host_system_ids=[host.id])
+        cluster_vm_host_rule = vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule",
+            compute_cluster_id=cluster.id,
+            name="test-cluster-vm-host-rule",
+            vm_group_name=cluster_vm_group.name,
+            affinity_host_group_name=cluster_host_group.name)
+        ```
+
         ## Import
 
         An existing rule can be imported into this resource by supplying
@@ -419,6 +481,68 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
+
+        ## Example Usage
+
+        The example below creates a virtual machine in a cluster using the
+        `VirtualMachine` resource in a cluster
+        looked up by the `ComputeCluster`
+        data source. It then creates a group with this virtual machine. It also creates
+        a host group off of the host looked up via the
+        `Host` data source. Finally, this
+        virtual machine is configured to run specifically on that host via a
+        `ComputeClusterVmHostRule` resource.
+
+        > Note how `vm_group_name` and
+        `affinity_host_group_name` are sourced off of the
+        `name` attributes from the
+        `ComputeClusterVmGroup` and
+        `ComputeClusterHostGroup`
+        resources. This is to ensure that the rule is not created before the groups
+        exist, which may not possibly happen in the event that the names came from a
+        "static" source such as a variable.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="test",
+            resource_pool_id=cluster.resource_pool_id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
+            name="test-cluster-vm-group",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[vm.id])
+        cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
+            name="test-cluster-vm-group",
+            compute_cluster_id=cluster.id,
+            host_system_ids=[host.id])
+        cluster_vm_host_rule = vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule",
+            compute_cluster_id=cluster.id,
+            name="test-cluster-vm-host-rule",
+            vm_group_name=cluster_vm_group.name,
+            affinity_host_group_name=cluster_host_group.name)
+        ```
 
         ## Import
 

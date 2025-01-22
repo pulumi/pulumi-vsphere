@@ -18,9 +18,103 @@ namespace Pulumi.VSphere
     /// For an overview on vSphere networking concepts, see [this
     /// page][ref-vsphere-net-concepts].
     /// 
-    /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+    /// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Create a virtual switch with one active and one standby NIC
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi-01.example.com",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var @switch = new VSphere.HostVirtualSwitch("switch", new()
+    ///     {
+    ///         Name = "vSwitchTest",
+    ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         NetworkAdapters = new[]
+    ///         {
+    ///             "vmnic0",
+    ///             "vmnic1",
+    ///         },
+    ///         ActiveNics = new[]
+    ///         {
+    ///             "vmnic0",
+    ///         },
+    ///         StandbyNics = new[]
+    ///         {
+    ///             "vmnic1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a virtual switch with extra networking policy options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi-01.example.com",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var @switch = new VSphere.HostVirtualSwitch("switch", new()
+    ///     {
+    ///         Name = "vSwitchTest",
+    ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         NetworkAdapters = new[]
+    ///         {
+    ///             "vmnic0",
+    ///             "vmnic1",
+    ///         },
+    ///         ActiveNics = new[]
+    ///         {
+    ///             "vmnic0",
+    ///         },
+    ///         StandbyNics = new[]
+    ///         {
+    ///             "vmnic1",
+    ///         },
+    ///         TeamingPolicy = "failover_explicit",
+    ///         AllowPromiscuous = false,
+    ///         AllowForgedTransmits = false,
+    ///         AllowMacChanges = false,
+    ///         ShapingEnabled = true,
+    ///         ShapingAverageBandwidth = 50000000,
+    ///         ShapingPeakBandwidth = 100000000,
+    ///         ShapingBurstSize = 1000000000,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

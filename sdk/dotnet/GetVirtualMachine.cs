@@ -382,6 +382,19 @@ namespace Pulumi.VSphere
         [Input("numCpus")]
         public int? NumCpus { get; set; }
 
+        /// <summary>
+        /// The number of NVMe controllers to
+        /// scan for disk attributes and controller types on. Default: `1`.
+        /// 
+        /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+        /// use with this data source reside on the primary controller, and leave this
+        /// value at the default. See the `vsphere.VirtualMachine`
+        /// resource documentation for the significance of this setting, specifically the
+        /// additional requirements and notes for cloning section.
+        /// </summary>
+        [Input("nvmeControllerScanCount")]
+        public int? NvmeControllerScanCount { get; set; }
+
         [Input("replaceTrigger")]
         public string? ReplaceTrigger { get; set; }
 
@@ -406,12 +419,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of SCSI controllers to
         /// scan for disk attributes and controller types on. Default: `1`.
-        /// 
-        /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-        /// use with this data source reside on the primary controller, and leave this
-        /// value at the default. See the `vsphere.VirtualMachine`
-        /// resource documentation for the significance of this setting, specifically the
-        /// additional requirements and notes for cloning section.
         /// </summary>
         [Input("scsiControllerScanCount")]
         public int? ScsiControllerScanCount { get; set; }
@@ -618,6 +625,19 @@ namespace Pulumi.VSphere
         [Input("numCpus")]
         public Input<int>? NumCpus { get; set; }
 
+        /// <summary>
+        /// The number of NVMe controllers to
+        /// scan for disk attributes and controller types on. Default: `1`.
+        /// 
+        /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+        /// use with this data source reside on the primary controller, and leave this
+        /// value at the default. See the `vsphere.VirtualMachine`
+        /// resource documentation for the significance of this setting, specifically the
+        /// additional requirements and notes for cloning section.
+        /// </summary>
+        [Input("nvmeControllerScanCount")]
+        public Input<int>? NvmeControllerScanCount { get; set; }
+
         [Input("replaceTrigger")]
         public Input<string>? ReplaceTrigger { get; set; }
 
@@ -642,12 +662,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of SCSI controllers to
         /// scan for disk attributes and controller types on. Default: `1`.
-        /// 
-        /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-        /// use with this data source reside on the primary controller, and leave this
-        /// value at the default. See the `vsphere.VirtualMachine`
-        /// resource documentation for the significance of this setting, specifically the
-        /// additional requirements and notes for cloning section.
         /// </summary>
         [Input("scsiControllerScanCount")]
         public Input<int>? ScsiControllerScanCount { get; set; }
@@ -809,6 +823,7 @@ namespace Pulumi.VSphere
         /// virtual machine.
         /// </summary>
         public readonly int? NumCpus;
+        public readonly int? NvmeControllerScanCount;
         public readonly string? ReplaceTrigger;
         public readonly bool? RunToolsScriptsAfterPowerOn;
         public readonly bool? RunToolsScriptsAfterResume;
@@ -940,6 +955,8 @@ namespace Pulumi.VSphere
 
             int? numCpus,
 
+            int? nvmeControllerScanCount,
+
             string? replaceTrigger,
 
             bool? runToolsScriptsAfterPowerOn,
@@ -1028,6 +1045,7 @@ namespace Pulumi.VSphere
             NetworkInterfaces = networkInterfaces;
             NumCoresPerSocket = numCoresPerSocket;
             NumCpus = numCpus;
+            NvmeControllerScanCount = nvmeControllerScanCount;
             ReplaceTrigger = replaceTrigger;
             RunToolsScriptsAfterPowerOn = runToolsScriptsAfterPowerOn;
             RunToolsScriptsAfterResume = runToolsScriptsAfterResume;

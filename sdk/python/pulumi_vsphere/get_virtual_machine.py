@@ -28,7 +28,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, instance_uuid=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vtpm=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, folder=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, instance_uuid=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_reservation_locked_to_max=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, nvme_controller_scan_count=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vtpm=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -167,6 +167,9 @@ class GetVirtualMachineResult:
         if num_cpus and not isinstance(num_cpus, int):
             raise TypeError("Expected argument 'num_cpus' to be a int")
         pulumi.set(__self__, "num_cpus", num_cpus)
+        if nvme_controller_scan_count and not isinstance(nvme_controller_scan_count, int):
+            raise TypeError("Expected argument 'nvme_controller_scan_count' to be a int")
+        pulumi.set(__self__, "nvme_controller_scan_count", nvme_controller_scan_count)
         if replace_trigger and not isinstance(replace_trigger, str):
             raise TypeError("Expected argument 'replace_trigger' to be a str")
         pulumi.set(__self__, "replace_trigger", replace_trigger)
@@ -532,6 +535,11 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "num_cpus")
 
     @property
+    @pulumi.getter(name="nvmeControllerScanCount")
+    def nvme_controller_scan_count(self) -> Optional[int]:
+        return pulumi.get(self, "nvme_controller_scan_count")
+
+    @property
     @pulumi.getter(name="replaceTrigger")
     def replace_trigger(self) -> Optional[str]:
         return pulumi.get(self, "replace_trigger")
@@ -704,6 +712,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             network_interfaces=self.network_interfaces,
             num_cores_per_socket=self.num_cores_per_socket,
             num_cpus=self.num_cpus,
+            nvme_controller_scan_count=self.nvme_controller_scan_count,
             replace_trigger=self.replace_trigger,
             run_tools_scripts_after_power_on=self.run_tools_scripts_after_power_on,
             run_tools_scripts_after_resume=self.run_tools_scripts_after_resume,
@@ -765,6 +774,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         nested_hv_enabled: Optional[bool] = None,
                         num_cores_per_socket: Optional[int] = None,
                         num_cpus: Optional[int] = None,
+                        nvme_controller_scan_count: Optional[int] = None,
                         replace_trigger: Optional[str] = None,
                         run_tools_scripts_after_power_on: Optional[bool] = None,
                         run_tools_scripts_after_resume: Optional[bool] = None,
@@ -841,7 +851,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
            machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
-    :param int scsi_controller_scan_count: The number of SCSI controllers to
+    :param int nvme_controller_scan_count: The number of NVMe controllers to
            scan for disk attributes and controller types on. Default: `1`.
            
            > **NOTE:** For best results, ensure that all the disks on any templates you
@@ -849,6 +859,8 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
            value at the default. See the `VirtualMachine`
            resource documentation for the significance of this setting, specifically the
            additional requirements and notes for cloning section.
+    :param int scsi_controller_scan_count: The number of SCSI controllers to
+           scan for disk attributes and controller types on. Default: `1`.
     :param str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
            are not required if this is specified.
     """
@@ -891,6 +903,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['nestedHvEnabled'] = nested_hv_enabled
     __args__['numCoresPerSocket'] = num_cores_per_socket
     __args__['numCpus'] = num_cpus
+    __args__['nvmeControllerScanCount'] = nvme_controller_scan_count
     __args__['replaceTrigger'] = replace_trigger
     __args__['runToolsScriptsAfterPowerOn'] = run_tools_scripts_after_power_on
     __args__['runToolsScriptsAfterResume'] = run_tools_scripts_after_resume
@@ -958,6 +971,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         network_interfaces=pulumi.get(__ret__, 'network_interfaces'),
         num_cores_per_socket=pulumi.get(__ret__, 'num_cores_per_socket'),
         num_cpus=pulumi.get(__ret__, 'num_cpus'),
+        nvme_controller_scan_count=pulumi.get(__ret__, 'nvme_controller_scan_count'),
         replace_trigger=pulumi.get(__ret__, 'replace_trigger'),
         run_tools_scripts_after_power_on=pulumi.get(__ret__, 'run_tools_scripts_after_power_on'),
         run_tools_scripts_after_resume=pulumi.get(__ret__, 'run_tools_scripts_after_resume'),
@@ -1017,6 +1031,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                nested_hv_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                num_cores_per_socket: Optional[pulumi.Input[Optional[int]]] = None,
                                num_cpus: Optional[pulumi.Input[Optional[int]]] = None,
+                               nvme_controller_scan_count: Optional[pulumi.Input[Optional[int]]] = None,
                                replace_trigger: Optional[pulumi.Input[Optional[str]]] = None,
                                run_tools_scripts_after_power_on: Optional[pulumi.Input[Optional[bool]]] = None,
                                run_tools_scripts_after_resume: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -1093,7 +1108,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
            machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
-    :param int scsi_controller_scan_count: The number of SCSI controllers to
+    :param int nvme_controller_scan_count: The number of NVMe controllers to
            scan for disk attributes and controller types on. Default: `1`.
            
            > **NOTE:** For best results, ensure that all the disks on any templates you
@@ -1101,6 +1116,8 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
            value at the default. See the `VirtualMachine`
            resource documentation for the significance of this setting, specifically the
            additional requirements and notes for cloning section.
+    :param int scsi_controller_scan_count: The number of SCSI controllers to
+           scan for disk attributes and controller types on. Default: `1`.
     :param str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
            are not required if this is specified.
     """
@@ -1143,6 +1160,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     __args__['nestedHvEnabled'] = nested_hv_enabled
     __args__['numCoresPerSocket'] = num_cores_per_socket
     __args__['numCpus'] = num_cpus
+    __args__['nvmeControllerScanCount'] = nvme_controller_scan_count
     __args__['replaceTrigger'] = replace_trigger
     __args__['runToolsScriptsAfterPowerOn'] = run_tools_scripts_after_power_on
     __args__['runToolsScriptsAfterResume'] = run_tools_scripts_after_resume
@@ -1209,6 +1227,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
         network_interfaces=pulumi.get(__response__, 'network_interfaces'),
         num_cores_per_socket=pulumi.get(__response__, 'num_cores_per_socket'),
         num_cpus=pulumi.get(__response__, 'num_cpus'),
+        nvme_controller_scan_count=pulumi.get(__response__, 'nvme_controller_scan_count'),
         replace_trigger=pulumi.get(__response__, 'replace_trigger'),
         run_tools_scripts_after_power_on=pulumi.get(__response__, 'run_tools_scripts_after_power_on'),
         run_tools_scripts_after_resume=pulumi.get(__response__, 'run_tools_scripts_after_resume'),

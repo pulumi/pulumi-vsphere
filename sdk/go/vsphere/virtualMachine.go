@@ -151,7 +151,8 @@ type VirtualMachine struct {
 	// must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrOutput `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus pulumi.IntPtrOutput `pulumi:"numCpus"`
+	NumCpus             pulumi.IntPtrOutput `pulumi:"numCpus"`
+	NvmeControllerCount pulumi.IntPtrOutput `pulumi:"nvmeControllerCount"`
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy VirtualMachineOvfDeployPtrOutput `pulumi:"ovfDeploy"`
 	// A list of PCI passthrough devices
@@ -371,7 +372,8 @@ type virtualMachineState struct {
 	// must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus *int `pulumi:"numCpus"`
+	NumCpus             *int `pulumi:"numCpus"`
+	NvmeControllerCount *int `pulumi:"nvmeControllerCount"`
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// A list of PCI passthrough devices
@@ -559,7 +561,8 @@ type VirtualMachineState struct {
 	// must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus pulumi.IntPtrInput
+	NumCpus             pulumi.IntPtrInput
+	NvmeControllerCount pulumi.IntPtrInput
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// A list of PCI passthrough devices
@@ -741,7 +744,8 @@ type virtualMachineArgs struct {
 	// must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus *int `pulumi:"numCpus"`
+	NumCpus             *int `pulumi:"numCpus"`
+	NvmeControllerCount *int `pulumi:"nvmeControllerCount"`
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// A list of PCI passthrough devices
@@ -909,7 +913,8 @@ type VirtualMachineArgs struct {
 	// must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus pulumi.IntPtrInput
+	NumCpus             pulumi.IntPtrInput
+	NvmeControllerCount pulumi.IntPtrInput
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// A list of PCI passthrough devices
@@ -1330,6 +1335,10 @@ func (o VirtualMachineOutput) NumCoresPerSocket() pulumi.IntPtrOutput {
 // The number of virtual processors to assign to this virtual machine.
 func (o VirtualMachineOutput) NumCpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.NumCpus }).(pulumi.IntPtrOutput)
+}
+
+func (o VirtualMachineOutput) NvmeControllerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.NvmeControllerCount }).(pulumi.IntPtrOutput)
 }
 
 // A specification for deploying a virtual machine from ovf/ova template.

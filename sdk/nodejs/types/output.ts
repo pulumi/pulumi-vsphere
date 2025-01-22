@@ -926,7 +926,7 @@ export interface VirtualMachineDisk {
      */
     attach?: boolean;
     /**
-     * The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+     * The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
      */
     controllerType?: string;
     /**

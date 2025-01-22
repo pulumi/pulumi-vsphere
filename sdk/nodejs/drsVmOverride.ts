@@ -13,10 +13,69 @@ import * as utilities from "./utilities";
  * For more information on vSphere clusters and DRS, see [this
  * page][ref-vsphere-drs-clusters].
  *
- * [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+ * [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
  *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ *
+ * ## Example Usage
+ *
+ * The example below creates a virtual machine in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machine in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source, but also
+ * pinning the VM to a host defined by the
+ * `vsphere.Host` data source, which is assumed to
+ * be a host within the cluster. To ensure that the VM stays on this host and does
+ * not need to be migrated back at any point in time, an override is entered using
+ * the `vsphere.DrsVmOverride` resource that disables DRS for this virtual
+ * machine, ensuring that it does not move.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "network1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     name: "test",
+ *     resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
+ *     hostSystemId: host.then(host => host.id),
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     numCpus: 2,
+ *     memory: 2048,
+ *     guestId: "otherLinux64Guest",
+ *     networkInterfaces: [{
+ *         networkId: network.then(network => network.id),
+ *     }],
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ * });
+ * const drsVmOverride = new vsphere.DrsVmOverride("drs_vm_override", {
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     virtualMachineId: vm.id,
+ *     drsEnabled: false,
+ * });
+ * ```
  *
  * ## Import
  *

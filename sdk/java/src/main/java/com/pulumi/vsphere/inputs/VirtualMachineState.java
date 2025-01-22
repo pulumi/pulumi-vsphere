@@ -831,6 +831,13 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.numCpus);
     }
 
+    @Import(name="nvmeControllerCount")
+    private @Nullable Output<Integer> nvmeControllerCount;
+
+    public Optional<Output<Integer>> nvmeControllerCount() {
+        return Optional.ofNullable(this.nvmeControllerCount);
+    }
+
     /**
      * A specification for deploying a virtual machine from ovf/ova template.
      * 
@@ -1385,6 +1392,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         this.networkInterfaces = $.networkInterfaces;
         this.numCoresPerSocket = $.numCoresPerSocket;
         this.numCpus = $.numCpus;
+        this.nvmeControllerCount = $.nvmeControllerCount;
         this.ovfDeploy = $.ovfDeploy;
         this.pciDeviceIds = $.pciDeviceIds;
         this.powerState = $.powerState;
@@ -2606,6 +2614,15 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
          */
         public Builder numCpus(Integer numCpus) {
             return numCpus(Output.of(numCpus));
+        }
+
+        public Builder nvmeControllerCount(@Nullable Output<Integer> nvmeControllerCount) {
+            $.nvmeControllerCount = nvmeControllerCount;
+            return this;
+        }
+
+        public Builder nvmeControllerCount(Integer nvmeControllerCount) {
+            return nvmeControllerCount(Output.of(nvmeControllerCount));
         }
 
         /**

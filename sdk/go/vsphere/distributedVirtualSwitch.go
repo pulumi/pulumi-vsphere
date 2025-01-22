@@ -94,8 +94,8 @@ import (
 //
 // datacenter.
 //
-// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-// [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+// [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
 type DistributedVirtualSwitch struct {
 	pulumi.CustomResourceState
 
@@ -173,7 +173,7 @@ type DistributedVirtualSwitch struct {
 	HbrShareLevel pulumi.StringOutput `pulumi:"hbrShareLevel"`
 	// A host member specification.
 	Hosts DistributedVirtualSwitchHostArrayOutput `pulumi:"hosts"`
-	// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+	// Whether to ignore existing PVLAN mappings not managed by this resource.
 	IgnoreOtherPvlanMappings pulumi.BoolPtrOutput `pulumi:"ignoreOtherPvlanMappings"`
 	// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
 	IngressShapingAverageBandwidth pulumi.IntOutput `pulumi:"ingressShapingAverageBandwidth"`
@@ -257,7 +257,7 @@ type DistributedVirtualSwitch struct {
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
 	// A private VLAN (PVLAN) mapping.
-	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayOutput `pulumi:"pvlanMappings"`
+	PvlanMappings DistributedVirtualSwitchPvlanMappingTypeArrayOutput `pulumi:"pvlanMappings"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
@@ -420,7 +420,7 @@ type distributedVirtualSwitchState struct {
 	HbrShareLevel *string `pulumi:"hbrShareLevel"`
 	// A host member specification.
 	Hosts []DistributedVirtualSwitchHost `pulumi:"hosts"`
-	// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+	// Whether to ignore existing PVLAN mappings not managed by this resource.
 	IgnoreOtherPvlanMappings *bool `pulumi:"ignoreOtherPvlanMappings"`
 	// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
 	IngressShapingAverageBandwidth *int `pulumi:"ingressShapingAverageBandwidth"`
@@ -504,7 +504,7 @@ type distributedVirtualSwitchState struct {
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
 	// A private VLAN (PVLAN) mapping.
-	PvlanMappings []DistributedVirtualSwitchPvlanMapping `pulumi:"pvlanMappings"`
+	PvlanMappings []DistributedVirtualSwitchPvlanMappingType `pulumi:"pvlanMappings"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
@@ -635,7 +635,7 @@ type DistributedVirtualSwitchState struct {
 	HbrShareLevel pulumi.StringPtrInput
 	// A host member specification.
 	Hosts DistributedVirtualSwitchHostArrayInput
-	// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+	// Whether to ignore existing PVLAN mappings not managed by this resource.
 	IgnoreOtherPvlanMappings pulumi.BoolPtrInput
 	// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
 	IngressShapingAverageBandwidth pulumi.IntPtrInput
@@ -719,7 +719,7 @@ type DistributedVirtualSwitchState struct {
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
 	// A private VLAN (PVLAN) mapping.
-	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayInput
+	PvlanMappings DistributedVirtualSwitchPvlanMappingTypeArrayInput
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
@@ -851,7 +851,7 @@ type distributedVirtualSwitchArgs struct {
 	HbrShareLevel *string `pulumi:"hbrShareLevel"`
 	// A host member specification.
 	Hosts []DistributedVirtualSwitchHost `pulumi:"hosts"`
-	// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+	// Whether to ignore existing PVLAN mappings not managed by this resource.
 	IgnoreOtherPvlanMappings *bool `pulumi:"ignoreOtherPvlanMappings"`
 	// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
 	IngressShapingAverageBandwidth *int `pulumi:"ingressShapingAverageBandwidth"`
@@ -935,7 +935,7 @@ type distributedVirtualSwitchArgs struct {
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
 	// A private VLAN (PVLAN) mapping.
-	PvlanMappings []DistributedVirtualSwitchPvlanMapping `pulumi:"pvlanMappings"`
+	PvlanMappings []DistributedVirtualSwitchPvlanMappingType `pulumi:"pvlanMappings"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
@@ -1064,7 +1064,7 @@ type DistributedVirtualSwitchArgs struct {
 	HbrShareLevel pulumi.StringPtrInput
 	// A host member specification.
 	Hosts DistributedVirtualSwitchHostArrayInput
-	// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+	// Whether to ignore existing PVLAN mappings not managed by this resource.
 	IgnoreOtherPvlanMappings pulumi.BoolPtrInput
 	// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
 	IngressShapingAverageBandwidth pulumi.IntPtrInput
@@ -1148,7 +1148,7 @@ type DistributedVirtualSwitchArgs struct {
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
 	// A private VLAN (PVLAN) mapping.
-	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayInput
+	PvlanMappings DistributedVirtualSwitchPvlanMappingTypeArrayInput
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
@@ -1461,7 +1461,7 @@ func (o DistributedVirtualSwitchOutput) Hosts() DistributedVirtualSwitchHostArra
 	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchHostArrayOutput { return v.Hosts }).(DistributedVirtualSwitchHostArrayOutput)
 }
 
-// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+// Whether to ignore existing PVLAN mappings not managed by this resource.
 func (o DistributedVirtualSwitchOutput) IgnoreOtherPvlanMappings() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolPtrOutput { return v.IgnoreOtherPvlanMappings }).(pulumi.BoolPtrOutput)
 }
@@ -1659,10 +1659,10 @@ func (o DistributedVirtualSwitchOutput) PortPrivateSecondaryVlanId() pulumi.IntO
 }
 
 // A private VLAN (PVLAN) mapping.
-func (o DistributedVirtualSwitchOutput) PvlanMappings() DistributedVirtualSwitchPvlanMappingArrayOutput {
-	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchPvlanMappingArrayOutput {
+func (o DistributedVirtualSwitchOutput) PvlanMappings() DistributedVirtualSwitchPvlanMappingTypeArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchPvlanMappingTypeArrayOutput {
 		return v.PvlanMappings
-	}).(DistributedVirtualSwitchPvlanMappingArrayOutput)
+	}).(DistributedVirtualSwitchPvlanMappingTypeArrayOutput)
 }
 
 // List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.

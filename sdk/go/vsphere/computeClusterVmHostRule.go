@@ -28,6 +28,129 @@ import (
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 //
+// ## Example Usage
+//
+// The example below creates a virtual machine in a cluster using the
+// `VirtualMachine` resource in a cluster
+// looked up by the `ComputeCluster`
+// data source. It then creates a group with this virtual machine. It also creates
+// a host group off of the host looked up via the
+// `Host` data source. Finally, this
+// virtual machine is configured to run specifically on that host via a
+// `ComputeClusterVmHostRule` resource.
+//
+// > Note how `vmGroupName` and
+// `affinityHostGroupName` are sourced off of the
+// `name` attributes from the
+// `ComputeClusterVmGroup` and
+// `ComputeClusterHostGroup`
+// resources. This is to ensure that the rule is not created before the groups
+// exist, which may not possibly happen in the event that the names came from a
+// "static" source such as a variable.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "network1",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("test"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(2048),
+//				GuestId:        pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("disk0"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			clusterVmGroup, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group", &vsphere.ComputeClusterVmGroupArgs{
+//				Name:             pulumi.String("test-cluster-vm-group"),
+//				ComputeClusterId: pulumi.String(cluster.Id),
+//				VirtualMachineIds: pulumi.StringArray{
+//					vm.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			clusterHostGroup, err := vsphere.NewComputeClusterHostGroup(ctx, "cluster_host_group", &vsphere.ComputeClusterHostGroupArgs{
+//				Name:             pulumi.String("test-cluster-vm-group"),
+//				ComputeClusterId: pulumi.String(cluster.Id),
+//				HostSystemIds: pulumi.StringArray{
+//					pulumi.String(host.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "cluster_vm_host_rule", &vsphere.ComputeClusterVmHostRuleArgs{
+//				ComputeClusterId:      pulumi.String(cluster.Id),
+//				Name:                  pulumi.String("test-cluster-vm-host-rule"),
+//				VmGroupName:           clusterVmGroup.Name,
+//				AffinityHostGroupName: clusterHostGroup.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # An existing rule can be imported into this resource by supplying

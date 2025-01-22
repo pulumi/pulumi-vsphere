@@ -396,7 +396,7 @@ index fa135b14..e5fcf4fb 100644
    of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
    standard (host-based) port groups, or `OpaqueNetwork` for networks managed
 diff --git a/website/docs/d/resource_pool.html.markdown b/website/docs/d/resource_pool.html.markdown
-index 88b0bbdc..41f66df7 100644
+index 1ee79cc8..61c89581 100644
 --- a/website/docs/d/resource_pool.html.markdown
 +++ b/website/docs/d/resource_pool.html.markdown
 @@ -13,9 +13,7 @@ description: |-
@@ -552,7 +552,7 @@ index a9c2ddcd..dae572d0 100644
  ## Attribute Reference
  
 diff --git a/website/docs/d/virtual_machine.html.markdown b/website/docs/d/virtual_machine.html.markdown
-index e0599ecd..d4d41ab7 100644
+index 4ed2d303..e03932b4 100644
 --- a/website/docs/d/virtual_machine.html.markdown
 +++ b/website/docs/d/virtual_machine.html.markdown
 @@ -11,13 +11,11 @@ description: |-
@@ -572,7 +572,7 @@ index e0599ecd..d4d41ab7 100644
  ## Example Usage
  
  In the following example, a virtual machine template is returned by its unique
-@@ -57,34 +55,25 @@ data "vsphere_virtual_machine" "development_template" {
+@@ -57,36 +55,27 @@ data "vsphere_virtual_machine" "development_template" {
  
  The following arguments are supported:
  
@@ -603,6 +603,8 @@ index e0599ecd..d4d41ab7 100644
 +  `vsphere_datacenter` data source.
  * `scsi_controller_scan_count` - (Optional) The number of SCSI controllers to
    scan for disk attributes and controller types on. Default: `1`.
+ * `nvme_controller_scan_count` - (Optional) The number of NVMe controllers to
+   scan for disk attributes and controller types on. Default: `1`.
  
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 -
@@ -622,7 +624,7 @@ index e0599ecd..d4d41ab7 100644
  
  ## Attribute Reference
  
-@@ -164,4 +153,4 @@ The following attributes are exported:
+@@ -166,4 +155,4 @@ The following attributes are exported:
  ~> **NOTE:** Keep in mind when using the results of `scsi_type` and
  `network_interface_types`, that the `vsphere_virtual_machine` resource only
  supports a subset of the types returned from this data source. See the
@@ -658,7 +660,7 @@ index eb1b7f04..eb4ae03a 100644
    searching for disks. This may lengthen the time it takes to perform the
    search. Default: `false`.
 diff --git a/website/docs/r/compute_cluster.html.markdown b/website/docs/r/compute_cluster.html.markdown
-index 9b04ba1b..27e4bf30 100644
+index fd3a5b9c..27799622 100644
 --- a/website/docs/r/compute_cluster.html.markdown
 +++ b/website/docs/r/compute_cluster.html.markdown
 @@ -12,14 +12,12 @@ description: |-
@@ -1275,7 +1277,7 @@ index a1cc7619..d0dcc7d7 100644
  
  ## Importing
 diff --git a/website/docs/r/compute_cluster_vm_host_rule.html.markdown b/website/docs/r/compute_cluster_vm_host_rule.html.markdown
-index 4c4f2d2e..d97f3dda 100644
+index 6eb62463..3ff665a6 100644
 --- a/website/docs/r/compute_cluster_vm_host_rule.html.markdown
 +++ b/website/docs/r/compute_cluster_vm_host_rule.html.markdown
 @@ -11,45 +11,36 @@ description: |-
@@ -1461,7 +1463,7 @@ index 4eee84d6..8a2d7ae5 100644
  
  [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 diff --git a/website/docs/r/custom_attribute.html.markdown b/website/docs/r/custom_attribute.html.markdown
-index 31accdba..6ee04b51 100644
+index cc04217f..2bc7d689 100644
 --- a/website/docs/r/custom_attribute.html.markdown
 +++ b/website/docs/r/custom_attribute.html.markdown
 @@ -23,12 +23,12 @@ and require vCenter Server.
@@ -1543,7 +1545,7 @@ index bd2a6919..cd56ff74 100644
  ## Importing
  
 diff --git a/website/docs/r/datastore_cluster.html.markdown b/website/docs/r/datastore_cluster.html.markdown
-index 539bd73d..23efaa1f 100644
+index aceb5f08..1eb27ee1 100644
 --- a/website/docs/r/datastore_cluster.html.markdown
 +++ b/website/docs/r/datastore_cluster.html.markdown
 @@ -28,10 +28,9 @@ connections.
@@ -1746,7 +1748,7 @@ index ce8b6604..562627c1 100644
  
  ## Importing
 diff --git a/website/docs/r/distributed_port_group.html.markdown b/website/docs/r/distributed_port_group.html.markdown
-index d229c8f8..785178c1 100644
+index e54f6055..a119dcce 100644
 --- a/website/docs/r/distributed_port_group.html.markdown
 +++ b/website/docs/r/distributed_port_group.html.markdown
 @@ -13,7 +13,7 @@ description: |-
@@ -1758,18 +1760,16 @@ index d229c8f8..785178c1 100644
  
  Distributed port groups can be used as networks for virtual machines, allowing
  the virtual machines to use the networking supplied by a vSphere Distributed
-@@ -26,9 +26,8 @@ desired.
+@@ -26,8 +26,7 @@ desired.
  * For more information on distributed port groups, refer to the vSphere
    [product documentation][ref-vsphere-dvportgroup].
  
 -[distributed-virtual-switch]: /docs/providers/vsphere/r/distributed_virtual_switch.html
--[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-8CDF29B2-ABA8-4F34-9FEF-14987BC13265.html
--[ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
-+[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-+[ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+-[ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
++[ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+ [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
  
  ~> **NOTE:** This resource requires vCenter and is not available on
- direct ESXi host connections.
 @@ -36,7 +35,7 @@ direct ESXi host connections.
  ## Example Usage
  
@@ -1802,22 +1802,19 @@ index d229c8f8..785178c1 100644
  As an example, we also take this example from the
  `vsphere_distributed_virtual_switch` resource where we manually specify our
  uplink count and uplink order. While the vSphere Distributed Switch has a
-@@ -195,10 +192,14 @@ specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+@@ -195,10 +192,7 @@ specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
    to associate with this port group. The default is `-1`, which implies no
    association.
  * `custom_attributes` (Optional) Map of custom attribute ids to attribute
-+<<<<<<< HEAD
-   value string to set for port group. See [here][docs-setting-custom-attributes]
-   for a reference on how to set values for custom attributes.
- 
- [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-+=======
+-  value string to set for port group. See [here][docs-setting-custom-attributes]
+-  for a reference on how to set values for custom attributes.
+-
+-[docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 +  value string to set for port group.
-+>>>>>>> 69c6e040 (fork)
  
  ~> **NOTE:** Custom attributes are not supported on direct ESXi host
  connections and require vCenter Server.
-@@ -218,8 +219,8 @@ See the link for a full list of options that can be set.
+@@ -218,8 +212,8 @@ See the link for a full list of options that can be set.
  The following options below control whether or not the policies set in the port
  group can be overridden on the individual port:
  
@@ -1828,7 +1825,7 @@ index d229c8f8..785178c1 100644
  * `live_port_moving_allowed` - (Optional) Allow a port in this port group to be
    moved to another port group while it is connected.
  * `netflow_override_allowed` - (Optional) Allow the
-@@ -244,27 +245,18 @@ group can be overridden on the individual port:
+@@ -244,27 +238,18 @@ group can be overridden on the individual port:
    [VLAN settings][vlan-settings] on this port group to be overridden on an
    individual port.
  
@@ -1859,7 +1856,7 @@ index d229c8f8..785178c1 100644
  
  * `config_version`: The current version of the port group configuration,
 diff --git a/website/docs/r/distributed_virtual_switch.html.markdown b/website/docs/r/distributed_virtual_switch.html.markdown
-index 7a95ca98..eabb5d1d 100644
+index 1e4c4e58..edd0a4cb 100644
 --- a/website/docs/r/distributed_virtual_switch.html.markdown
 +++ b/website/docs/r/distributed_virtual_switch.html.markdown
 @@ -17,7 +17,7 @@ An essential component of a distributed, scalable vSphere infrastructure, the
@@ -1871,18 +1868,14 @@ index 7a95ca98..eabb5d1d 100644
  that can be used as networks for virtual machines, a VDS can be configured to
  perform advanced high availability, traffic shaping, network monitoring, etc.
  
-@@ -26,9 +26,8 @@ For an overview on vSphere networking concepts, see
+@@ -26,7 +26,6 @@ For an overview on vSphere networking concepts, see
  
  For more information on the VDS, see [this page][ref-vsphere-vds].
  
 -[distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
--[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
--[ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
-+[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-+[ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+ [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+ [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
  
- ~> **NOTE:** This resource requires vCenter and is not available on
- direct ESXi host connections.
 @@ -100,7 +99,7 @@ of uplinks, and the name of the uplinks via the `uplinks` parameter.
  
  Note that if you change the uplink naming and count after creating the VDS, you
@@ -1921,7 +1914,7 @@ index 7a95ca98..eabb5d1d 100644
  groups on this VDS that do not have these values otherwise overridden. Not
  defining these options in a VDS will infer defaults that can be seen in the
 diff --git a/website/docs/r/dpm_host_override.html.markdown b/website/docs/r/dpm_host_override.html.markdown
-index fb3a6fff..d7ae0741 100644
+index 865f0d1d..6cbdfb0d 100644
 --- a/website/docs/r/dpm_host_override.html.markdown
 +++ b/website/docs/r/dpm_host_override.html.markdown
 @@ -26,16 +26,13 @@ connections.
@@ -1981,7 +1974,7 @@ index fb3a6fff..d7ae0741 100644
  up the override on subsequent plan and apply operations after the override has
  been created.
 diff --git a/website/docs/r/drs_vm_override.html.markdown b/website/docs/r/drs_vm_override.html.markdown
-index 04a48b9f..de990da5 100644
+index 4018f1e0..9c806481 100644
 --- a/website/docs/r/drs_vm_override.html.markdown
 +++ b/website/docs/r/drs_vm_override.html.markdown
 @@ -25,20 +25,16 @@ connections.
@@ -2149,7 +2142,7 @@ index b9af99ba..cdf5e526 100644
  ## Importing
  
 diff --git a/website/docs/r/ha_vm_override.html.markdown b/website/docs/r/ha_vm_override.html.markdown
-index abf14afa..e73922f1 100644
+index f16aa8fe..ca1bb1bd 100644
 --- a/website/docs/r/ha_vm_override.html.markdown
 +++ b/website/docs/r/ha_vm_override.html.markdown
 @@ -25,23 +25,20 @@ connections.
@@ -2294,7 +2287,7 @@ index 5a9422df..367a2d74 100644
  ```hcl
  data "vsphere_datacenter" "datacenter" {
 diff --git a/website/docs/r/host_port_group.html.markdown b/website/docs/r/host_port_group.html.markdown
-index eb5f09d4..f4ecc0aa 100644
+index ee01e2e4..08fb1ef6 100644
 --- a/website/docs/r/host_port_group.html.markdown
 +++ b/website/docs/r/host_port_group.html.markdown
 @@ -11,15 +11,14 @@ description: |-
@@ -2308,8 +2301,8 @@ index eb5f09d4..f4ecc0aa 100644
  For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
  
 -[host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
--[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-8CDF29B2-ABA8-4F34-9FEF-14987BC13265.html
-+[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+-[ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
++[ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
  
 -## Example Usages
 +## Example Usage
@@ -2384,7 +2377,7 @@ index eb5f09d4..f4ecc0aa 100644
  terraform import vsphere_host_port_group.management tf-HostPortGroup:host-123:management
  ```
 diff --git a/website/docs/r/host_virtual_switch.html.markdown b/website/docs/r/host_virtual_switch.html.markdown
-index 5e96e49f..321e3e20 100644
+index 844e83d4..bb2edcbf 100644
 --- a/website/docs/r/host_virtual_switch.html.markdown
 +++ b/website/docs/r/host_virtual_switch.html.markdown
 @@ -12,17 +12,16 @@ description: |-
@@ -2398,8 +2391,8 @@ index 5e96e49f..321e3e20 100644
  page][ref-vsphere-net-concepts].
  
 -[host-port-group]: /docs/providers/vsphere/r/host_port_group.html
--[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-8CDF29B2-ABA8-4F34-9FEF-14987BC13265.html
-+[ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+-[ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
++[ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
  
 -## Example Usages
 +## Example Usage
@@ -2577,7 +2570,7 @@ index bf6ef2b0..fa073b9e 100644
    some other computed attributes may be out of date.
  * `capacity` - Maximum capacity of the datastore, in megabytes.
 diff --git a/website/docs/r/resource_pool.html.markdown b/website/docs/r/resource_pool.html.markdown
-index 084361b2..a0289e4a 100644
+index 581dc337..b293fe6b 100644
 --- a/website/docs/r/resource_pool.html.markdown
 +++ b/website/docs/r/resource_pool.html.markdown
 @@ -116,7 +116,7 @@ resource "vsphere_resource_pool" "resource_pool" {
@@ -2618,7 +2611,7 @@ index 084361b2..a0289e4a 100644
  terraform import vsphere_resource_pool.resource_pool /dc-01/host/cluster-01/Resources/resource-pool-01
  ```
 diff --git a/website/docs/r/storage_drs_vm_override.html.markdown b/website/docs/r/storage_drs_vm_override.html.markdown
-index 16f5b7e9..9cf57fed 100644
+index c2cf5427..d3e91bff 100644
 --- a/website/docs/r/storage_drs_vm_override.html.markdown
 +++ b/website/docs/r/storage_drs_vm_override.html.markdown
 @@ -22,22 +22,6 @@ page][ref-vsphere-datastore-clusters].
@@ -2695,7 +2688,7 @@ index 16f5b7e9..9cf57fed 100644
  the override on subsequent plan and apply operations after the override has
  been created.
 diff --git a/website/docs/r/tag.html.markdown b/website/docs/r/tag.html.markdown
-index 0afb82d2..1920e7d6 100644
+index eb499338..3b3f08aa 100644
 --- a/website/docs/r/tag.html.markdown
 +++ b/website/docs/r/tag.html.markdown
 @@ -19,20 +19,18 @@ For more information about tags, click [here][ext-tags-general].
@@ -2773,7 +2766,7 @@ index 0afb82d2..1920e7d6 100644
  
  resource "vsphere_virtual_machine" "web" {
 diff --git a/website/docs/r/tag_category.html.markdown b/website/docs/r/tag_category.html.markdown
-index 1256e9ba..e25310de 100644
+index a3e97454..7dfbba66 100644
 --- a/website/docs/r/tag_category.html.markdown
 +++ b/website/docs/r/tag_category.html.markdown
 @@ -19,15 +19,15 @@ For more information about tags, click [here][ext-tags-general].
@@ -2796,7 +2789,7 @@ index 1256e9ba..e25310de 100644
  
    associable_types = [
 diff --git a/website/docs/r/vapp_container.html.markdown b/website/docs/r/vapp_container.html.markdown
-index 8442b148..23784cf7 100644
+index e82800b6..e15c60d1 100644
 --- a/website/docs/r/vapp_container.html.markdown
 +++ b/website/docs/r/vapp_container.html.markdown
 @@ -93,12 +93,12 @@ resource "vsphere_virtual_machine" "vm" {
@@ -2834,7 +2827,7 @@ index 8442b148..23784cf7 100644
  ## Importing
  
 diff --git a/website/docs/r/vapp_entity.html.markdown b/website/docs/r/vapp_entity.html.markdown
-index 0872bc76..a5b782d1 100644
+index 906a189d..b3e4d68d 100644
 --- a/website/docs/r/vapp_entity.html.markdown
 +++ b/website/docs/r/vapp_entity.html.markdown
 @@ -52,8 +52,8 @@ data "vsphere_datastore" "datastore" {
@@ -2892,7 +2885,7 @@ index 0872bc76..a5b782d1 100644
  ## Importing
  
 diff --git a/website/docs/r/virtual_disk.html.markdown b/website/docs/r/virtual_disk.html.markdown
-index 4f600605..9e875ab3 100644
+index 15c346df..03f1f105 100644
 --- a/website/docs/r/virtual_disk.html.markdown
 +++ b/website/docs/r/virtual_disk.html.markdown
 @@ -10,12 +10,9 @@ description: |-
@@ -2926,12 +2919,12 @@ index 4f600605..9e875ab3 100644
    directories that are a part of the `vmdk_path` parameter if they are missing.
    Default: `false`.
 diff --git a/website/docs/r/virtual_machine.html.markdown b/website/docs/r/virtual_machine.html.markdown
-index ecd8dffa..bbcce2ac 100644
+index cef9abde..1d3d7c49 100644
 --- a/website/docs/r/virtual_machine.html.markdown
 +++ b/website/docs/r/virtual_machine.html.markdown
 @@ -16,7 +16,7 @@ For details on working with virtual machines in VMware vSphere, please refer to
  
- [vmware-docs-vm-management]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-55238059-912E-411F-A0E9-A7A536972A91.html
+ [vmware-docs-vm-management]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html
  
 -## About Working with Virtual Machines in Terraform
 +## About Working with Virtual Machines
@@ -3044,7 +3037,7 @@ index ecd8dffa..bbcce2ac 100644
  
  ~> **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
  
-@@ -1277,10 +1258,9 @@ The options are:
+@@ -1281,10 +1262,9 @@ The options are:
  
  * `hw_clock_utc` - (Optional) Tells the operating system that the hardware clock is set to UTC. Default: `true`.
  
@@ -3057,7 +3050,7 @@ index ecd8dffa..bbcce2ac 100644
  
  * `time_zone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][kb-2145518]. The default is UTC.
  
-@@ -1578,9 +1558,8 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -1582,9 +1562,8 @@ resource "vsphere_virtual_machine" "vm" {
  
  #### Storage Migration Restrictions
  
@@ -3068,7 +3061,7 @@ index ecd8dffa..bbcce2ac 100644
  
  ## Virtual Machine Reboot
  
-@@ -1640,23 +1619,19 @@ The following attributes are exported on the base level of this resource:
+@@ -1644,23 +1623,19 @@ The following attributes are exported on the base level of this resource:
  
  * `uuid` - The UUID of the virtual machine. Also exposed as the `id` of the resource.
  
@@ -3096,7 +3089,7 @@ index ecd8dffa..bbcce2ac 100644
  **Examples**:
  
 diff --git a/website/docs/r/virtual_machine_snapshot.html.markdown b/website/docs/r/virtual_machine_snapshot.html.markdown
-index 3b22c0f7..ebdfb0ad 100644
+index 8e49cc4c..ce105f8c 100644
 --- a/website/docs/r/virtual_machine_snapshot.html.markdown
 +++ b/website/docs/r/virtual_machine_snapshot.html.markdown
 @@ -20,7 +20,7 @@ For more information on managing snapshots and how they work in VMware, see
@@ -3108,16 +3101,14 @@ index 3b22c0f7..ebdfb0ad 100644
  parameter to the `vsphere_virtual_machine` `disk` block), and even the
  configuration of the virtual machine at the time of the snapshot. Virtual
  machine, disk activity, and configuration changes post-snapshot are not
-@@ -29,8 +29,7 @@ HashiCorp recommends retaining snapshots for a extended period of time and does
+@@ -29,7 +29,6 @@ HashiCorp recommends retaining snapshots for a extended period of time and does
  NOT recommend using them as as backup feature. For more information on the
  limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
  
 -[docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
--[ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-38F4D574-ADE7-4B80-AEAB-7EC502A379F4.html
-+[ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
+ [ext-vm-snap-limitations]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/using-snapshots-to-manage-virtual-machinesvsphere-vm-admin/snapshot-file-names-and-descriptionvsphere-vm-admin.html
  
  ## Example Usage
- 
 @@ -70,6 +69,4 @@ are immutable and force a new resource if changed.
  ## Attribute Reference
  

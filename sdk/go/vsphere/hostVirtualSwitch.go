@@ -22,6 +22,114 @@ import (
 //
 // ## Example Usage
 //
+// ### Create a virtual switch with one active and one standby NIC
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
+//				Name:         pulumi.String("vSwitchTest"),
+//				HostSystemId: pulumi.String(host.Id),
+//				NetworkAdapters: pulumi.StringArray{
+//					pulumi.String("vmnic0"),
+//					pulumi.String("vmnic1"),
+//				},
+//				ActiveNics: pulumi.StringArray{
+//					pulumi.String("vmnic0"),
+//				},
+//				StandbyNics: pulumi.StringArray{
+//					pulumi.String("vmnic1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a virtual switch with extra networking policy options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
+//				Name:         pulumi.String("vSwitchTest"),
+//				HostSystemId: pulumi.String(host.Id),
+//				NetworkAdapters: pulumi.StringArray{
+//					pulumi.String("vmnic0"),
+//					pulumi.String("vmnic1"),
+//				},
+//				ActiveNics: pulumi.StringArray{
+//					pulumi.String("vmnic0"),
+//				},
+//				StandbyNics: pulumi.StringArray{
+//					pulumi.String("vmnic1"),
+//				},
+//				TeamingPolicy:           pulumi.String("failover_explicit"),
+//				AllowPromiscuous:        pulumi.Bool(false),
+//				AllowForgedTransmits:    pulumi.Bool(false),
+//				AllowMacChanges:         pulumi.Bool(false),
+//				ShapingEnabled:          pulumi.Bool(true),
+//				ShapingAverageBandwidth: pulumi.Int(50000000),
+//				ShapingPeakBandwidth:    pulumi.Int(100000000),
+//				ShapingBurstSize:        pulumi.Int(1000000000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // An existing vSwitch can be imported into this resource by its ID.
@@ -42,7 +150,7 @@ import (
 //
 // vSphere host.
 //
-// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 type HostVirtualSwitch struct {
 	pulumi.CustomResourceState
 

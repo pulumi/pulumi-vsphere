@@ -19,7 +19,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? Attach { get; set; }
 
         /// <summary>
-        /// The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        /// The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         /// </summary>
         [Input("controllerType")]
         public Input<string>? ControllerType { get; set; }

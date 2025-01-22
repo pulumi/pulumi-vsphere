@@ -21,6 +21,82 @@ import * as utilities from "./utilities";
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  *
+ * ## Example Usage
+ *
+ * The example below creates a virtual machine in a cluster using the
+ * `vsphere.VirtualMachine` resource in a cluster
+ * looked up by the `vsphere.ComputeCluster`
+ * data source. It then creates a group with this virtual machine. It also creates
+ * a host group off of the host looked up via the
+ * `vsphere.Host` data source. Finally, this
+ * virtual machine is configured to run specifically on that host via a
+ * `vsphere.ComputeClusterVmHostRule` resource.
+ *
+ * > Note how `vmGroupName` and
+ * `affinityHostGroupName` are sourced off of the
+ * `name` attributes from the
+ * `vsphere.ComputeClusterVmGroup` and
+ * `vsphere.ComputeClusterHostGroup`
+ * resources. This is to ensure that the rule is not created before the groups
+ * exist, which may not possibly happen in the event that the names came from a
+ * "static" source such as a variable.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "network1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     name: "test",
+ *     resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     numCpus: 2,
+ *     memory: 2048,
+ *     guestId: "otherLinux64Guest",
+ *     networkInterfaces: [{
+ *         networkId: network.then(network => network.id),
+ *     }],
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ * });
+ * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
+ *     name: "test-cluster-vm-group",
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     virtualMachineIds: [vm.id],
+ * });
+ * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
+ *     name: "test-cluster-vm-group",
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     hostSystemIds: [host.then(host => host.id)],
+ * });
+ * const clusterVmHostRule = new vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule", {
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     name: "test-cluster-vm-host-rule",
+ *     vmGroupName: clusterVmGroup.name,
+ *     affinityHostGroupName: clusterHostGroup.name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing rule can be imported into this resource by supplying

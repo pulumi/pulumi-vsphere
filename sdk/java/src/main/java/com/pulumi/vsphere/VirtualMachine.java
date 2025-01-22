@@ -805,6 +805,12 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> numCpus() {
         return Codegen.optional(this.numCpus);
     }
+    @Export(name="nvmeControllerCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> nvmeControllerCount;
+
+    public Output<Optional<Integer>> nvmeControllerCount() {
+        return Codegen.optional(this.nvmeControllerCount);
+    }
     /**
      * A specification for deploying a virtual machine from ovf/ova template.
      * 

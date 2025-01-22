@@ -20,7 +20,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable Boolean attach;
     /**
-     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
+     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, &#39;nvme&#39;, or &#39;ide&#39;.
      * 
      */
     private @Nullable String controllerType;
@@ -129,7 +129,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.attach);
     }
     /**
-     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, or &#39;ide&#39;.
+     * @return The type of controller the disk should be connected to. Must be &#39;scsi&#39;, &#39;sata&#39;, &#39;nvme&#39;, or &#39;ide&#39;.
      * 
      */
     public Optional<String> controllerType() {

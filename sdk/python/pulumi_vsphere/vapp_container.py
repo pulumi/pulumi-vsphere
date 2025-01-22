@@ -650,7 +650,7 @@ class VappContainer(pulumi.CustomResource):
 
         For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
 
-        [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
+        [ref-vsphere-vapp]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-multi-tiered-applications-with-vsphere-vapp-in-the-vsphere-web-clientvsphere-vm-admin.html
 
         ## Basic Example
 
@@ -782,7 +782,7 @@ class VappContainer(pulumi.CustomResource):
 
         For more information on vSphere vApps, see the VMware vSphere [product documentation][ref-vsphere-vapp].
 
-        [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-E6E9D2A9-D358-4996-9BC7-F8D9D9645290.html
+        [ref-vsphere-vapp]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-multi-tiered-applications-with-vsphere-vapp-in-the-vsphere-web-clientvsphere-vm-admin.html
 
         ## Basic Example
 
