@@ -61,7 +61,7 @@ import (
 // $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
 // ```
 //
-// [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
+// [ext-custom-attributes]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/custom-attributes-in-the-vsphere-client-host-management.html
 type CustomAttribute struct {
 	pulumi.CustomResourceState
 

@@ -18,7 +18,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool? Attach;
         /// <summary>
-        /// The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        /// The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         /// </summary>
         public readonly string? ControllerType;
         /// <summary>

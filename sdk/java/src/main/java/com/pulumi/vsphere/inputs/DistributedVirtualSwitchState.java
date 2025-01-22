@@ -523,14 +523,14 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+     * Whether to ignore existing PVLAN mappings not managed by this resource.
      * 
      */
     @Import(name="ignoreOtherPvlanMappings")
     private @Nullable Output<Boolean> ignoreOtherPvlanMappings;
 
     /**
-     * @return Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+     * @return Whether to ignore existing PVLAN mappings not managed by this resource.
      * 
      */
     public Optional<Output<Boolean>> ignoreOtherPvlanMappings() {
@@ -2322,7 +2322,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN mappings not managed by this resource.
          * 
          * @return builder
          * 
@@ -2333,7 +2333,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+         * @param ignoreOtherPvlanMappings Whether to ignore existing PVLAN mappings not managed by this resource.
          * 
          * @return builder
          * 

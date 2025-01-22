@@ -217,10 +217,57 @@ class DrsVmOverride(pulumi.CustomResource):
         For more information on vSphere clusters and DRS, see [this
         page][ref-vsphere-drs-clusters].
 
-        [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+        [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
+
+        ## Example Usage
+
+        The example below creates a virtual machine in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machine in the cluster looked up by the
+        `ComputeCluster` data source, but also
+        pinning the VM to a host defined by the
+        `Host` data source, which is assumed to
+        be a host within the cluster. To ensure that the VM stays on this host and does
+        not need to be migrated back at any point in time, an override is entered using
+        the `DrsVmOverride` resource that disables DRS for this virtual
+        machine, ensuring that it does not move.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="test",
+            resource_pool_id=cluster.resource_pool_id,
+            host_system_id=host.id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        drs_vm_override = vsphere.DrsVmOverride("drs_vm_override",
+            compute_cluster_id=cluster.id,
+            virtual_machine_id=vm.id,
+            drs_enabled=False)
+        ```
 
         ## Import
 
@@ -272,10 +319,57 @@ class DrsVmOverride(pulumi.CustomResource):
         For more information on vSphere clusters and DRS, see [this
         page][ref-vsphere-drs-clusters].
 
-        [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+        [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
+
+        ## Example Usage
+
+        The example below creates a virtual machine in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machine in the cluster looked up by the
+        `ComputeCluster` data source, but also
+        pinning the VM to a host defined by the
+        `Host` data source, which is assumed to
+        be a host within the cluster. To ensure that the VM stays on this host and does
+        not need to be migrated back at any point in time, an override is entered using
+        the `DrsVmOverride` resource that disables DRS for this virtual
+        machine, ensuring that it does not move.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore1",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="network1",
+            datacenter_id=datacenter.id)
+        vm = vsphere.VirtualMachine("vm",
+            name="test",
+            resource_pool_id=cluster.resource_pool_id,
+            host_system_id=host.id,
+            datastore_id=datastore.id,
+            num_cpus=2,
+            memory=2048,
+            guest_id="otherLinux64Guest",
+            network_interfaces=[{
+                "network_id": network.id,
+            }],
+            disks=[{
+                "label": "disk0",
+                "size": 20,
+            }])
+        drs_vm_override = vsphere.DrsVmOverride("drs_vm_override",
+            compute_cluster_id=cluster.id,
+            virtual_machine_id=vm.id,
+            drs_enabled=False)
+        ```
 
         ## Import
 

@@ -24,10 +24,109 @@ import javax.annotation.Nullable;
  * For more information on vSphere clusters and DRS, see [this
  * page][ref-vsphere-drs-clusters].
  * 
- * [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+ * [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
  * 
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates a virtual machine in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machine in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source, but also
+ * pinning the VM to a host defined by the
+ * `vsphere.Host` data source, which is assumed to
+ * be a host within the cluster. To ensure that the VM stays on this host and does
+ * not need to be migrated back at any point in time, an override is entered using
+ * the `vsphere.DrsVmOverride` resource that disables DRS for this virtual
+ * machine, ensuring that it does not move.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.inputs.GetNetworkArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineNetworkInterfaceArgs;
+ * import com.pulumi.vsphere.inputs.VirtualMachineDiskArgs;
+ * import com.pulumi.vsphere.DrsVmOverride;
+ * import com.pulumi.vsphere.DrsVmOverrideArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
+ *             .name("datastore1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("network1")
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+ *             .name("test")
+ *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .numCpus(2)
+ *             .memory(2048)
+ *             .guestId("otherLinux64Guest")
+ *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
+ *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .build())
+ *             .disks(VirtualMachineDiskArgs.builder()
+ *                 .label("disk0")
+ *                 .size(20)
+ *                 .build())
+ *             .build());
+ * 
+ *         var drsVmOverride = new DrsVmOverride("drsVmOverride", DrsVmOverrideArgs.builder()
+ *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .virtualMachineId(vm.id())
+ *             .drsEnabled(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

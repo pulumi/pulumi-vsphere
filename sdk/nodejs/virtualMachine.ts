@@ -277,6 +277,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The number of virtual processors to assign to this virtual machine.
      */
     public readonly numCpus!: pulumi.Output<number | undefined>;
+    public readonly nvmeControllerCount!: pulumi.Output<number | undefined>;
     /**
      * A specification for deploying a virtual machine from ovf/ova template.
      */
@@ -477,6 +478,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["numCoresPerSocket"] = state ? state.numCoresPerSocket : undefined;
             resourceInputs["numCpus"] = state ? state.numCpus : undefined;
+            resourceInputs["nvmeControllerCount"] = state ? state.nvmeControllerCount : undefined;
             resourceInputs["ovfDeploy"] = state ? state.ovfDeploy : undefined;
             resourceInputs["pciDeviceIds"] = state ? state.pciDeviceIds : undefined;
             resourceInputs["powerState"] = state ? state.powerState : undefined;
@@ -564,6 +566,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["numCoresPerSocket"] = args ? args.numCoresPerSocket : undefined;
             resourceInputs["numCpus"] = args ? args.numCpus : undefined;
+            resourceInputs["nvmeControllerCount"] = args ? args.nvmeControllerCount : undefined;
             resourceInputs["ovfDeploy"] = args ? args.ovfDeploy : undefined;
             resourceInputs["pciDeviceIds"] = args ? args.pciDeviceIds : undefined;
             resourceInputs["poweronTimeout"] = args ? args.poweronTimeout : undefined;
@@ -831,6 +834,7 @@ export interface VirtualMachineState {
      * The number of virtual processors to assign to this virtual machine.
      */
     numCpus?: pulumi.Input<number>;
+    nvmeControllerCount?: pulumi.Input<number>;
     /**
      * A specification for deploying a virtual machine from ovf/ova template.
      */
@@ -1168,6 +1172,7 @@ export interface VirtualMachineArgs {
      * The number of virtual processors to assign to this virtual machine.
      */
     numCpus?: pulumi.Input<number>;
+    nvmeControllerCount?: pulumi.Input<number>;
     /**
      * A specification for deploying a virtual machine from ovf/ova template.
      */

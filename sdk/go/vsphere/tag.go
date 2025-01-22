@@ -134,7 +134,7 @@ import (
 //
 //	'{"category_name": "pulumi-test-category", "tag_name": "pulumi-test-tag"}'
 //
-// [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
+// [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
 type Tag struct {
 	pulumi.CustomResourceState
 

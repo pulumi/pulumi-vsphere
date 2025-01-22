@@ -72,7 +72,7 @@ namespace Pulumi.VSphere
         /// [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
         /// documentation.
         /// 
-        /// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+        /// [vmware-docs-resource-pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
         /// </summary>
         public static Task<GetResourcePoolResult> InvokeAsync(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolArgs(), options.WithDefaults());
@@ -138,7 +138,7 @@ namespace Pulumi.VSphere
         /// [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
         /// documentation.
         /// 
-        /// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+        /// [vmware-docs-resource-pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
         /// </summary>
         public static Output<GetResourcePoolResult> Invoke(GetResourcePoolInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolInvokeArgs(), options.WithDefaults());
@@ -204,7 +204,7 @@ namespace Pulumi.VSphere
         /// [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere
         /// documentation.
         /// 
-        /// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-resource-management/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+        /// [vmware-docs-resource-pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
         /// </summary>
         public static Output<GetResourcePoolResult> Invoke(GetResourcePoolInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolInvokeArgs(), options.WithDefaults());

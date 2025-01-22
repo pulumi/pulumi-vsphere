@@ -157,7 +157,7 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
         :param pulumi.Input[str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]] hosts: A host member specification.
-        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource.
         :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         :param pulumi.Input[int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         :param pulumi.Input[bool] ingress_shaping_enabled: True if the traffic shaper is enabled for ingress traffic on the port.
@@ -806,7 +806,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="ignoreOtherPvlanMappings")
     def ignore_other_pvlan_mappings(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        Whether to ignore existing PVLAN mappings not managed by this resource.
         """
         return pulumi.get(self, "ignore_other_pvlan_mappings")
 
@@ -1713,7 +1713,7 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
         :param pulumi.Input[str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]] hosts: A host member specification.
-        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource.
         :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         :param pulumi.Input[int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         :param pulumi.Input[bool] ingress_shaping_enabled: True if the traffic shaper is enabled for ingress traffic on the port.
@@ -2378,7 +2378,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="ignoreOtherPvlanMappings")
     def ignore_other_pvlan_mappings(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        Whether to ignore existing PVLAN mappings not managed by this resource.
         """
         return pulumi.get(self, "ignore_other_pvlan_mappings")
 
@@ -3260,8 +3260,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
         For more information on the VDS, see [this page][ref-vsphere-vds].
 
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-        [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+        [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
 
         > **NOTE:** This resource requires vCenter and is not available on
         direct ESXi host connections.
@@ -3414,7 +3414,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
         :param pulumi.Input[str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict']]]] hosts: A host member specification.
-        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource.
         :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         :param pulumi.Input[int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         :param pulumi.Input[bool] ingress_shaping_enabled: True if the traffic shaper is enabled for ingress traffic on the port.
@@ -3513,8 +3513,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
         For more information on the VDS, see [this page][ref-vsphere-vds].
 
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-        [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+        [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
 
         > **NOTE:** This resource requires vCenter and is not available on
         direct ESXi host connections.
@@ -3994,7 +3994,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
         :param pulumi.Input[str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchHostArgs', 'DistributedVirtualSwitchHostArgsDict']]]] hosts: A host member specification.
-        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN mappings not managed by this resource.
         :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         :param pulumi.Input[int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         :param pulumi.Input[bool] ingress_shaping_enabled: True if the traffic shaper is enabled for ingress traffic on the port.
@@ -4441,7 +4441,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="ignoreOtherPvlanMappings")
     def ignore_other_pvlan_mappings(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        Whether to ignore existing PVLAN mappings not managed by this resource.
         """
         return pulumi.get(self, "ignore_other_pvlan_mappings")
 

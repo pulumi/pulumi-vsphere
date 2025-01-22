@@ -150,6 +150,7 @@ public final class GetVirtualMachineResult {
      * 
      */
     private @Nullable Integer numCpus;
+    private @Nullable Integer nvmeControllerScanCount;
     private @Nullable String replaceTrigger;
     private @Nullable Boolean runToolsScriptsAfterPowerOn;
     private @Nullable Boolean runToolsScriptsAfterResume;
@@ -414,6 +415,9 @@ public final class GetVirtualMachineResult {
     public Optional<Integer> numCpus() {
         return Optional.ofNullable(this.numCpus);
     }
+    public Optional<Integer> nvmeControllerScanCount() {
+        return Optional.ofNullable(this.nvmeControllerScanCount);
+    }
     public Optional<String> replaceTrigger() {
         return Optional.ofNullable(this.replaceTrigger);
     }
@@ -551,6 +555,7 @@ public final class GetVirtualMachineResult {
         private List<GetVirtualMachineNetworkInterface> networkInterfaces;
         private @Nullable Integer numCoresPerSocket;
         private @Nullable Integer numCpus;
+        private @Nullable Integer nvmeControllerScanCount;
         private @Nullable String replaceTrigger;
         private @Nullable Boolean runToolsScriptsAfterPowerOn;
         private @Nullable Boolean runToolsScriptsAfterResume;
@@ -621,6 +626,7 @@ public final class GetVirtualMachineResult {
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.numCoresPerSocket = defaults.numCoresPerSocket;
     	      this.numCpus = defaults.numCpus;
+    	      this.nvmeControllerScanCount = defaults.nvmeControllerScanCount;
     	      this.replaceTrigger = defaults.replaceTrigger;
     	      this.runToolsScriptsAfterPowerOn = defaults.runToolsScriptsAfterPowerOn;
     	      this.runToolsScriptsAfterResume = defaults.runToolsScriptsAfterResume;
@@ -965,6 +971,12 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder nvmeControllerScanCount(@Nullable Integer nvmeControllerScanCount) {
+
+            this.nvmeControllerScanCount = nvmeControllerScanCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder replaceTrigger(@Nullable String replaceTrigger) {
 
             this.replaceTrigger = replaceTrigger;
@@ -1153,6 +1165,7 @@ public final class GetVirtualMachineResult {
             _resultValue.networkInterfaces = networkInterfaces;
             _resultValue.numCoresPerSocket = numCoresPerSocket;
             _resultValue.numCpus = numCpus;
+            _resultValue.nvmeControllerScanCount = nvmeControllerScanCount;
             _resultValue.replaceTrigger = replaceTrigger;
             _resultValue.runToolsScriptsAfterPowerOn = runToolsScriptsAfterPowerOn;
             _resultValue.runToolsScriptsAfterResume = runToolsScriptsAfterResume;

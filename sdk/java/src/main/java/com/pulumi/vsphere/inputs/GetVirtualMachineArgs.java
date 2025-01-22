@@ -395,6 +395,35 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.numCpus);
     }
 
+    /**
+     * The number of NVMe controllers to
+     * scan for disk attributes and controller types on. Default: `1`.
+     * 
+     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
+     * 
+     */
+    @Import(name="nvmeControllerScanCount")
+    private @Nullable Output<Integer> nvmeControllerScanCount;
+
+    /**
+     * @return The number of NVMe controllers to
+     * scan for disk attributes and controller types on. Default: `1`.
+     * 
+     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
+     * 
+     */
+    public Optional<Output<Integer>> nvmeControllerScanCount() {
+        return Optional.ofNullable(this.nvmeControllerScanCount);
+    }
+
     @Import(name="replaceTrigger")
     private @Nullable Output<String> replaceTrigger;
 
@@ -448,12 +477,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      * 
-     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
-     * 
      */
     @Import(name="scsiControllerScanCount")
     private @Nullable Output<Integer> scsiControllerScanCount;
@@ -461,12 +484,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     /**
      * @return The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
-     * 
-     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
      * 
      */
     public Optional<Output<Integer>> scsiControllerScanCount() {
@@ -587,6 +604,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         this.nestedHvEnabled = $.nestedHvEnabled;
         this.numCoresPerSocket = $.numCoresPerSocket;
         this.numCpus = $.numCpus;
+        this.nvmeControllerScanCount = $.nvmeControllerScanCount;
         this.replaceTrigger = $.replaceTrigger;
         this.runToolsScriptsAfterPowerOn = $.runToolsScriptsAfterPowerOn;
         this.runToolsScriptsAfterResume = $.runToolsScriptsAfterResume;
@@ -1120,6 +1138,41 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
             return numCpus(Output.of(numCpus));
         }
 
+        /**
+         * @param nvmeControllerScanCount The number of NVMe controllers to
+         * scan for disk attributes and controller types on. Default: `1`.
+         * 
+         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+         * use with this data source reside on the primary controller, and leave this
+         * value at the default. See the `vsphere.VirtualMachine`
+         * resource documentation for the significance of this setting, specifically the
+         * additional requirements and notes for cloning section.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nvmeControllerScanCount(@Nullable Output<Integer> nvmeControllerScanCount) {
+            $.nvmeControllerScanCount = nvmeControllerScanCount;
+            return this;
+        }
+
+        /**
+         * @param nvmeControllerScanCount The number of NVMe controllers to
+         * scan for disk attributes and controller types on. Default: `1`.
+         * 
+         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+         * use with this data source reside on the primary controller, and leave this
+         * value at the default. See the `vsphere.VirtualMachine`
+         * resource documentation for the significance of this setting, specifically the
+         * additional requirements and notes for cloning section.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nvmeControllerScanCount(Integer nvmeControllerScanCount) {
+            return nvmeControllerScanCount(Output.of(nvmeControllerScanCount));
+        }
+
         public Builder replaceTrigger(@Nullable Output<String> replaceTrigger) {
             $.replaceTrigger = replaceTrigger;
             return this;
@@ -1187,12 +1240,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
          * @param scsiControllerScanCount The number of SCSI controllers to
          * scan for disk attributes and controller types on. Default: `1`.
          * 
-         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-         * use with this data source reside on the primary controller, and leave this
-         * value at the default. See the `vsphere.VirtualMachine`
-         * resource documentation for the significance of this setting, specifically the
-         * additional requirements and notes for cloning section.
-         * 
          * @return builder
          * 
          */
@@ -1204,12 +1251,6 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         /**
          * @param scsiControllerScanCount The number of SCSI controllers to
          * scan for disk attributes and controller types on. Default: `1`.
-         * 
-         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-         * use with this data source reside on the primary controller, and leave this
-         * value at the default. See the `vsphere.VirtualMachine`
-         * resource documentation for the significance of this setting, specifically the
-         * additional requirements and notes for cloning section.
          * 
          * @return builder
          * 

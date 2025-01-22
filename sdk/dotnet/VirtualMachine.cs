@@ -361,6 +361,9 @@ namespace Pulumi.VSphere
         [Output("numCpus")]
         public Output<int?> NumCpus { get; private set; } = null!;
 
+        [Output("nvmeControllerCount")]
+        public Output<int?> NvmeControllerCount { get; private set; } = null!;
+
         /// <summary>
         /// A specification for deploying a virtual machine from ovf/ova template.
         /// </summary>
@@ -938,6 +941,9 @@ namespace Pulumi.VSphere
         [Input("numCpus")]
         public Input<int>? NumCpus { get; set; }
 
+        [Input("nvmeControllerCount")]
+        public Input<int>? NvmeControllerCount { get; set; }
+
         /// <summary>
         /// A specification for deploying a virtual machine from ovf/ova template.
         /// </summary>
@@ -1491,6 +1497,9 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("numCpus")]
         public Input<int>? NumCpus { get; set; }
+
+        [Input("nvmeControllerCount")]
+        public Input<int>? NvmeControllerCount { get; set; }
 
         /// <summary>
         /// A specification for deploying a virtual machine from ovf/ova template.

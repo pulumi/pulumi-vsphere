@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DistributedPortGroup{}
 	case "vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch":
 		r = &DistributedVirtualSwitch{}
+	case "vsphere:index/distributedVirtualSwitchPvlanMapping:DistributedVirtualSwitchPvlanMapping":
+		r = &DistributedVirtualSwitchPvlanMapping{}
 	case "vsphere:index/dpmHostOverride:DpmHostOverride":
 		r = &DpmHostOverride{}
 	case "vsphere:index/drsVmOverride:DrsVmOverride":
@@ -211,6 +213,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/distributedVirtualSwitch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/distributedVirtualSwitchPvlanMapping",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

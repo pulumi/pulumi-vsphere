@@ -132,7 +132,7 @@ import (
 //
 // container with the [managed object ID][docs-about-morefs] res-456.
 //
-// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+// [ref-vsphere-vapp]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/create-a-vapp-h5-and-flex.html
 type VappEntity struct {
 	pulumi.CustomResourceState
 

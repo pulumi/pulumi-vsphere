@@ -93,6 +93,7 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
         "nestedHvEnabled": args.nestedHvEnabled,
         "numCoresPerSocket": args.numCoresPerSocket,
         "numCpus": args.numCpus,
+        "nvmeControllerScanCount": args.nvmeControllerScanCount,
         "replaceTrigger": args.replaceTrigger,
         "runToolsScriptsAfterPowerOn": args.runToolsScriptsAfterPowerOn,
         "runToolsScriptsAfterResume": args.runToolsScriptsAfterResume,
@@ -199,6 +200,17 @@ export interface GetVirtualMachineArgs {
      * virtual machine.
      */
     numCpus?: number;
+    /**
+     * The number of NVMe controllers to
+     * scan for disk attributes and controller types on. Default: `1`.
+     *
+     * > **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
+     */
+    nvmeControllerScanCount?: number;
     replaceTrigger?: string;
     runToolsScriptsAfterPowerOn?: boolean;
     runToolsScriptsAfterResume?: boolean;
@@ -209,12 +221,6 @@ export interface GetVirtualMachineArgs {
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
-     *
-     * > **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
      */
     scsiControllerScanCount?: number;
     storagePolicyId?: string;
@@ -352,6 +358,7 @@ export interface GetVirtualMachineResult {
      * virtual machine.
      */
     readonly numCpus?: number;
+    readonly nvmeControllerScanCount?: number;
     readonly replaceTrigger?: string;
     readonly runToolsScriptsAfterPowerOn?: boolean;
     readonly runToolsScriptsAfterResume?: boolean;
@@ -476,6 +483,7 @@ export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts
         "nestedHvEnabled": args.nestedHvEnabled,
         "numCoresPerSocket": args.numCoresPerSocket,
         "numCpus": args.numCpus,
+        "nvmeControllerScanCount": args.nvmeControllerScanCount,
         "replaceTrigger": args.replaceTrigger,
         "runToolsScriptsAfterPowerOn": args.runToolsScriptsAfterPowerOn,
         "runToolsScriptsAfterResume": args.runToolsScriptsAfterResume,
@@ -582,6 +590,17 @@ export interface GetVirtualMachineOutputArgs {
      * virtual machine.
      */
     numCpus?: pulumi.Input<number>;
+    /**
+     * The number of NVMe controllers to
+     * scan for disk attributes and controller types on. Default: `1`.
+     *
+     * > **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
+     */
+    nvmeControllerScanCount?: pulumi.Input<number>;
     replaceTrigger?: pulumi.Input<string>;
     runToolsScriptsAfterPowerOn?: pulumi.Input<boolean>;
     runToolsScriptsAfterResume?: pulumi.Input<boolean>;
@@ -592,12 +611,6 @@ export interface GetVirtualMachineOutputArgs {
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
-     *
-     * > **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
      */
     scsiControllerScanCount?: pulumi.Input<number>;
     storagePolicyId?: pulumi.Input<string>;

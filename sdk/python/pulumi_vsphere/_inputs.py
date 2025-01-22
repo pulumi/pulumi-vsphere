@@ -3396,7 +3396,7 @@ if not MYPY:
         """
         controller_type: NotRequired[pulumi.Input[str]]
         """
-        The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         """
         datastore_id: NotRequired[pulumi.Input[str]]
         """
@@ -3500,7 +3500,7 @@ class VirtualMachineDiskArgs:
         """
         :param pulumi.Input[str] label: A unique label for this disk.
         :param pulumi.Input[bool] attach: If this is true, the disk is attached instead of created. Implies keep_on_remove.
-        :param pulumi.Input[str] controller_type: The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        :param pulumi.Input[str] controller_type: The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         :param pulumi.Input[str] datastore_id: The datastore ID for this virtual disk, if different than the virtual machine.
         :param pulumi.Input[str] device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
         :param pulumi.Input[str] disk_mode: The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
@@ -3590,7 +3590,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="controllerType")
     def controller_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         """
         return pulumi.get(self, "controller_type")
 

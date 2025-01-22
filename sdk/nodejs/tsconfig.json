@@ -30,6 +30,7 @@
         "datastoreClusterVmAntiAffinityRule.ts",
         "distributedPortGroup.ts",
         "distributedVirtualSwitch.ts",
+        "distributedVirtualSwitchPvlanMapping.ts",
         "dpmHostOverride.ts",
         "drsVmOverride.ts",
         "entityPermissions.ts",

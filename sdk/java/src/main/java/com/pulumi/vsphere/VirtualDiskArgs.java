@@ -145,7 +145,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+     * [docs-vmware-vm-disk-provisioning]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-single-host-management-vmware-host-client-8-0/virtual-machine-management-with-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/configuring-virtual-machines-in-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/virtual-disk-configuration-vSphereSingleHostManagementVMwareHostClient/about-virtual-disk-provisioning-policies-vSphereSingleHostManagementVMwareHostClient.html
      * 
      */
     @Import(name="type")
@@ -157,7 +157,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      * 
-     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+     * [docs-vmware-vm-disk-provisioning]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-single-host-management-vmware-host-client-8-0/virtual-machine-management-with-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/configuring-virtual-machines-in-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/virtual-disk-configuration-vSphereSingleHostManagementVMwareHostClient/about-virtual-disk-provisioning-policies-vSphereSingleHostManagementVMwareHostClient.html
      * 
      */
     public Optional<Output<String>> type() {
@@ -368,7 +368,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * information on what each kind of disk provisioning policy means, click
          * [here][docs-vmware-vm-disk-provisioning].
          * 
-         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+         * [docs-vmware-vm-disk-provisioning]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-single-host-management-vmware-host-client-8-0/virtual-machine-management-with-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/configuring-virtual-machines-in-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/virtual-disk-configuration-vSphereSingleHostManagementVMwareHostClient/about-virtual-disk-provisioning-policies-vSphereSingleHostManagementVMwareHostClient.html
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * information on what each kind of disk provisioning policy means, click
          * [here][docs-vmware-vm-disk-provisioning].
          * 
-         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+         * [docs-vmware-vm-disk-provisioning]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-single-host-management-vmware-host-client-8-0/virtual-machine-management-with-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/configuring-virtual-machines-in-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/virtual-disk-configuration-vSphereSingleHostManagementVMwareHostClient/about-virtual-disk-provisioning-policies-vSphereSingleHostManagementVMwareHostClient.html
          * 
          * @return builder
          * 

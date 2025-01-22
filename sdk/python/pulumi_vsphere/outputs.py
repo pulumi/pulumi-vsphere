@@ -2682,7 +2682,7 @@ class VirtualMachineDisk(dict):
         """
         :param str label: A unique label for this disk.
         :param bool attach: If this is true, the disk is attached instead of created. Implies keep_on_remove.
-        :param str controller_type: The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        :param str controller_type: The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         :param str datastore_id: The datastore ID for this virtual disk, if different than the virtual machine.
         :param str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
         :param str disk_mode: The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
@@ -2764,7 +2764,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="controllerType")
     def controller_type(self) -> Optional[str]:
         """
-        The type of controller the disk should be connected to. Must be 'scsi', 'sata', or 'ide'.
+        The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         """
         return pulumi.get(self, "controller_type")
 

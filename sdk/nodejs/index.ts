@@ -80,6 +80,11 @@ export type DistributedVirtualSwitch = import("./distributedVirtualSwitch").Dist
 export const DistributedVirtualSwitch: typeof import("./distributedVirtualSwitch").DistributedVirtualSwitch = null as any;
 utilities.lazyLoad(exports, ["DistributedVirtualSwitch"], () => require("./distributedVirtualSwitch"));
 
+export { DistributedVirtualSwitchPvlanMappingArgs, DistributedVirtualSwitchPvlanMappingState } from "./distributedVirtualSwitchPvlanMapping";
+export type DistributedVirtualSwitchPvlanMapping = import("./distributedVirtualSwitchPvlanMapping").DistributedVirtualSwitchPvlanMapping;
+export const DistributedVirtualSwitchPvlanMapping: typeof import("./distributedVirtualSwitchPvlanMapping").DistributedVirtualSwitchPvlanMapping = null as any;
+utilities.lazyLoad(exports, ["DistributedVirtualSwitchPvlanMapping"], () => require("./distributedVirtualSwitchPvlanMapping"));
+
 export { DpmHostOverrideArgs, DpmHostOverrideState } from "./dpmHostOverride";
 export type DpmHostOverride = import("./dpmHostOverride").DpmHostOverride;
 export const DpmHostOverride: typeof import("./dpmHostOverride").DpmHostOverride = null as any;
@@ -414,6 +419,8 @@ const _module = {
                 return new DistributedPortGroup(name, <any>undefined, { urn })
             case "vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch":
                 return new DistributedVirtualSwitch(name, <any>undefined, { urn })
+            case "vsphere:index/distributedVirtualSwitchPvlanMapping:DistributedVirtualSwitchPvlanMapping":
+                return new DistributedVirtualSwitchPvlanMapping(name, <any>undefined, { urn })
             case "vsphere:index/dpmHostOverride:DpmHostOverride":
                 return new DpmHostOverride(name, <any>undefined, { urn })
             case "vsphere:index/drsVmOverride:DrsVmOverride":
@@ -490,6 +497,7 @@ pulumi.runtime.registerResourceModule("vsphere", "index/datastoreCluster", _modu
 pulumi.runtime.registerResourceModule("vsphere", "index/datastoreClusterVmAntiAffinityRule", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/distributedPortGroup", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/distributedVirtualSwitch", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/distributedVirtualSwitchPvlanMapping", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/dpmHostOverride", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/drsVmOverride", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/entityPermissions", _module)

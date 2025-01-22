@@ -26,8 +26,8 @@ namespace Pulumi.VSphere
     /// 
     /// For more information on the VDS, see [this page][ref-vsphere-vds].
     /// 
-    /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-    /// [ref-vsphere-vds]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+    /// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+    /// [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on
     /// direct ESXi host connections.
@@ -296,7 +296,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchHost>> Hosts { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        /// Whether to ignore existing PVLAN mappings not managed by this resource.
         /// </summary>
         [Output("ignoreOtherPvlanMappings")]
         public Output<bool?> IgnoreOtherPvlanMappings { get; private set; } = null!;
@@ -945,7 +945,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        /// Whether to ignore existing PVLAN mappings not managed by this resource.
         /// </summary>
         [Input("ignoreOtherPvlanMappings")]
         public Input<bool>? IgnoreOtherPvlanMappings { get; set; }
@@ -1593,7 +1593,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Whether to ignore existing PVLAN mappings not managed by this resource. Defaults to false.
+        /// Whether to ignore existing PVLAN mappings not managed by this resource.
         /// </summary>
         [Input("ignoreOtherPvlanMappings")]
         public Input<bool>? IgnoreOtherPvlanMappings { get; set; }

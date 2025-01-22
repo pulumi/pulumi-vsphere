@@ -157,7 +157,7 @@ import (
 //
 // The above would import the `management` host port group from host with ID `host-123`.
 //
-// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 type HostPortGroup struct {
 	pulumi.CustomResourceState
 

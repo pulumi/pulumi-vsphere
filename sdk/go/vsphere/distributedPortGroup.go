@@ -106,8 +106,8 @@ import (
 //
 // datacenter.
 //
-// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-// [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
+// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+// [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
 type DistributedPortGroup struct {
 	pulumi.CustomResourceState
 
@@ -137,14 +137,7 @@ type DistributedPortGroup struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
-	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
-	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	// =======
 	// value string to set for port group.
-	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -297,14 +290,7 @@ type distributedPortGroupState struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion *string `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
-	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
-	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	// =======
 	// value string to set for port group.
-	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -425,14 +411,7 @@ type DistributedPortGroupState struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
-	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	// =======
 	// value string to set for port group.
-	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -554,14 +533,7 @@ type distributedPortGroupArgs struct {
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// Map of custom attribute ids to attribute
-	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
-	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	// =======
 	// value string to set for port group.
-	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -678,14 +650,7 @@ type DistributedPortGroupArgs struct {
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolPtrInput
 	// Map of custom attribute ids to attribute
-	// <<<<<<< HEAD
-	// value string to set for port group. See [here][docs-setting-custom-attributes]
-	// for a reference on how to set values for custom attributes.
-	//
-	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-	// =======
 	// value string to set for port group.
-	// > > > > > > > 69c6e040 (fork)
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -917,14 +882,7 @@ func (o DistributedPortGroupOutput) ConfigVersion() pulumi.StringOutput {
 }
 
 // Map of custom attribute ids to attribute
-// <<<<<<< HEAD
-// value string to set for port group. See [here][docs-setting-custom-attributes]
-// for a reference on how to set values for custom attributes.
-//
-// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
-// =======
 // value string to set for port group.
-// > > > > > > > 69c6e040 (fork)
 //
 // > **NOTE:** Custom attributes are not supported on direct ESXi host
 // connections and require vCenter Server.
