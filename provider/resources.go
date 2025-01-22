@@ -88,6 +88,13 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
+		Resources: map[string]*info.Resource{
+			"vsphere_distributed_virtual_switch_pvlan_mapping": {
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
+		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"vsphere_storage_policy": {Tok: vsphereDataSource(vsphereMod, "getPolicy")},
 			"vsphere_datastore_stats": {Docs: &tfbridge.DocInfo{

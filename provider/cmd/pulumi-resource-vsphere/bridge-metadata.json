@@ -221,6 +221,10 @@
                     }
                 }
             },
+            "vsphere_distributed_virtual_switch_pvlan_mapping": {
+                "current": "vsphere:index/distributedVirtualSwitchPvlanMapping:DistributedVirtualSwitchPvlanMapping",
+                "majorVersion": 4
+            },
             "vsphere_dpm_host_override": {
                 "current": "vsphere:index/dpmHostOverride:DpmHostOverride",
                 "majorVersion": 4
