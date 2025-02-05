@@ -122,6 +122,10 @@ export class Supervisor extends pulumi.CustomResource {
      */
     public readonly mainDns!: pulumi.Output<string[]>;
     /**
+     * The list of addresses of the primary NTP servers.
+     */
+    public readonly mainNtps!: pulumi.Output<string[]>;
+    /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
      * * * `startingAddress` - Starting address of the management network range.
@@ -158,6 +162,10 @@ export class Supervisor extends pulumi.CustomResource {
      * The list of addresses of the DNS servers to use for the worker nodes.
      */
     public readonly workerDns!: pulumi.Output<string[]>;
+    /**
+     * The list of addresses of the NTP servers to use for the worker nodes.
+     */
+    public readonly workerNtps!: pulumi.Output<string[]>;
 
     /**
      * Create a Supervisor resource with the given unique name, arguments, and options.
@@ -179,6 +187,7 @@ export class Supervisor extends pulumi.CustomResource {
             resourceInputs["egressCidrs"] = state ? state.egressCidrs : undefined;
             resourceInputs["ingressCidrs"] = state ? state.ingressCidrs : undefined;
             resourceInputs["mainDns"] = state ? state.mainDns : undefined;
+            resourceInputs["mainNtps"] = state ? state.mainNtps : undefined;
             resourceInputs["managementNetwork"] = state ? state.managementNetwork : undefined;
             resourceInputs["namespaces"] = state ? state.namespaces : undefined;
             resourceInputs["podCidrs"] = state ? state.podCidrs : undefined;
@@ -187,6 +196,7 @@ export class Supervisor extends pulumi.CustomResource {
             resourceInputs["sizingHint"] = state ? state.sizingHint : undefined;
             resourceInputs["storagePolicy"] = state ? state.storagePolicy : undefined;
             resourceInputs["workerDns"] = state ? state.workerDns : undefined;
+            resourceInputs["workerNtps"] = state ? state.workerNtps : undefined;
         } else {
             const args = argsOrState as SupervisorArgs | undefined;
             if ((!args || args.cluster === undefined) && !opts.urn) {
@@ -210,6 +220,9 @@ export class Supervisor extends pulumi.CustomResource {
             if ((!args || args.mainDns === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mainDns'");
             }
+            if ((!args || args.mainNtps === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'mainNtps'");
+            }
             if ((!args || args.managementNetwork === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managementNetwork'");
             }
@@ -231,6 +244,9 @@ export class Supervisor extends pulumi.CustomResource {
             if ((!args || args.workerDns === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerDns'");
             }
+            if ((!args || args.workerNtps === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workerNtps'");
+            }
             resourceInputs["cluster"] = args ? args.cluster : undefined;
             resourceInputs["contentLibrary"] = args ? args.contentLibrary : undefined;
             resourceInputs["dvsUuid"] = args ? args.dvsUuid : undefined;
@@ -238,6 +254,7 @@ export class Supervisor extends pulumi.CustomResource {
             resourceInputs["egressCidrs"] = args ? args.egressCidrs : undefined;
             resourceInputs["ingressCidrs"] = args ? args.ingressCidrs : undefined;
             resourceInputs["mainDns"] = args ? args.mainDns : undefined;
+            resourceInputs["mainNtps"] = args ? args.mainNtps : undefined;
             resourceInputs["managementNetwork"] = args ? args.managementNetwork : undefined;
             resourceInputs["namespaces"] = args ? args.namespaces : undefined;
             resourceInputs["podCidrs"] = args ? args.podCidrs : undefined;
@@ -246,6 +263,7 @@ export class Supervisor extends pulumi.CustomResource {
             resourceInputs["sizingHint"] = args ? args.sizingHint : undefined;
             resourceInputs["storagePolicy"] = args ? args.storagePolicy : undefined;
             resourceInputs["workerDns"] = args ? args.workerDns : undefined;
+            resourceInputs["workerNtps"] = args ? args.workerNtps : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Supervisor.__pulumiType, name, resourceInputs, opts);
@@ -285,6 +303,10 @@ export interface SupervisorState {
      */
     mainDns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The list of addresses of the primary NTP servers.
+     */
+    mainNtps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
      * * * `startingAddress` - Starting address of the management network range.
@@ -321,6 +343,10 @@ export interface SupervisorState {
      * The list of addresses of the DNS servers to use for the worker nodes.
      */
     workerDns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of addresses of the NTP servers to use for the worker nodes.
+     */
+    workerNtps?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -355,6 +381,10 @@ export interface SupervisorArgs {
      * The list of addresses of the primary DNS servers.
      */
     mainDns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of addresses of the primary NTP servers.
+     */
+    mainNtps: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
@@ -392,4 +422,8 @@ export interface SupervisorArgs {
      * The list of addresses of the DNS servers to use for the worker nodes.
      */
     workerDns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of addresses of the NTP servers to use for the worker nodes.
+     */
+    workerNtps: pulumi.Input<pulumi.Input<string>[]>;
 }

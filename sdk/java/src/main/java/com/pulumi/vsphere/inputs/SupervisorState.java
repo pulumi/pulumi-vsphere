@@ -128,6 +128,21 @@ public final class SupervisorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of addresses of the primary NTP servers.
+     * 
+     */
+    @Import(name="mainNtps")
+    private @Nullable Output<List<String>> mainNtps;
+
+    /**
+     * @return The list of addresses of the primary NTP servers.
+     * 
+     */
+    public Optional<Output<List<String>>> mainNtps() {
+        return Optional.ofNullable(this.mainNtps);
+    }
+
+    /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
      * * * `starting_address` - Starting address of the management network range.
@@ -257,6 +272,21 @@ public final class SupervisorState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.workerDns);
     }
 
+    /**
+     * The list of addresses of the NTP servers to use for the worker nodes.
+     * 
+     */
+    @Import(name="workerNtps")
+    private @Nullable Output<List<String>> workerNtps;
+
+    /**
+     * @return The list of addresses of the NTP servers to use for the worker nodes.
+     * 
+     */
+    public Optional<Output<List<String>>> workerNtps() {
+        return Optional.ofNullable(this.workerNtps);
+    }
+
     private SupervisorState() {}
 
     private SupervisorState(SupervisorState $) {
@@ -267,6 +297,7 @@ public final class SupervisorState extends com.pulumi.resources.ResourceArgs {
         this.egressCidrs = $.egressCidrs;
         this.ingressCidrs = $.ingressCidrs;
         this.mainDns = $.mainDns;
+        this.mainNtps = $.mainNtps;
         this.managementNetwork = $.managementNetwork;
         this.namespaces = $.namespaces;
         this.podCidrs = $.podCidrs;
@@ -275,6 +306,7 @@ public final class SupervisorState extends com.pulumi.resources.ResourceArgs {
         this.sizingHint = $.sizingHint;
         this.storagePolicy = $.storagePolicy;
         this.workerDns = $.workerDns;
+        this.workerNtps = $.workerNtps;
     }
 
     public static Builder builder() {
@@ -470,6 +502,37 @@ public final class SupervisorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mainDns(String... mainDns) {
             return mainDns(List.of(mainDns));
+        }
+
+        /**
+         * @param mainNtps The list of addresses of the primary NTP servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mainNtps(@Nullable Output<List<String>> mainNtps) {
+            $.mainNtps = mainNtps;
+            return this;
+        }
+
+        /**
+         * @param mainNtps The list of addresses of the primary NTP servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mainNtps(List<String> mainNtps) {
+            return mainNtps(Output.of(mainNtps));
+        }
+
+        /**
+         * @param mainNtps The list of addresses of the primary NTP servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mainNtps(String... mainNtps) {
+            return mainNtps(List.of(mainNtps));
         }
 
         /**
@@ -678,6 +741,37 @@ public final class SupervisorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder workerDns(String... workerDns) {
             return workerDns(List.of(workerDns));
+        }
+
+        /**
+         * @param workerNtps The list of addresses of the NTP servers to use for the worker nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerNtps(@Nullable Output<List<String>> workerNtps) {
+            $.workerNtps = workerNtps;
+            return this;
+        }
+
+        /**
+         * @param workerNtps The list of addresses of the NTP servers to use for the worker nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerNtps(List<String> workerNtps) {
+            return workerNtps(Output.of(workerNtps));
+        }
+
+        /**
+         * @param workerNtps The list of addresses of the NTP servers to use for the worker nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerNtps(String... workerNtps) {
+            return workerNtps(List.of(workerNtps));
         }
 
         public SupervisorState build() {

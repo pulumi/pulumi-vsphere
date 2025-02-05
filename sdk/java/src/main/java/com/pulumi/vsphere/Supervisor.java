@@ -215,6 +215,20 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
         return this.mainDns;
     }
     /**
+     * The list of addresses of the primary NTP servers.
+     * 
+     */
+    @Export(name="mainNtps", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> mainNtps;
+
+    /**
+     * @return The list of addresses of the primary NTP servers.
+     * 
+     */
+    public Output<List<String>> mainNtps() {
+        return this.mainNtps;
+    }
+    /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
      * * * `starting_address` - Starting address of the management network range.
@@ -335,6 +349,20 @@ public class Supervisor extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> workerDns() {
         return this.workerDns;
+    }
+    /**
+     * The list of addresses of the NTP servers to use for the worker nodes.
+     * 
+     */
+    @Export(name="workerNtps", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> workerNtps;
+
+    /**
+     * @return The list of addresses of the NTP servers to use for the worker nodes.
+     * 
+     */
+    public Output<List<String>> workerNtps() {
+        return this.workerNtps;
     }
 
     /**

@@ -8635,6 +8635,13 @@
                     },
                     "description": "The list of addresses of the primary DNS servers.\n"
                 },
+                "mainNtps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the primary NTP servers.\n"
+                },
                 "managementNetwork": {
                     "$ref": "#/types/vsphere:index/SupervisorManagementNetwork:SupervisorManagementNetwork",
                     "description": "The configuration for the management network which the control plane VMs will be connected to.\n* * `network` - ID of the network. (e.g. a distributed port group).\n* * `starting_address` - Starting address of the management network range.\n* * `subnet_mask` - Subnet mask.\n* * `gateway` - Gateway IP address.\n* * `address_count` - Number of addresses to allocate. Starts from `starting_address`\n"
@@ -8675,6 +8682,13 @@
                         "type": "string"
                     },
                     "description": "The list of addresses of the DNS servers to use for the worker nodes.\n"
+                },
+                "workerNtps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the NTP servers to use for the worker nodes.\n"
                 }
             },
             "required": [
@@ -8685,13 +8699,15 @@
                 "egressCidrs",
                 "ingressCidrs",
                 "mainDns",
+                "mainNtps",
                 "managementNetwork",
                 "podCidrs",
                 "searchDomains",
                 "serviceCidr",
                 "sizingHint",
                 "storagePolicy",
-                "workerDns"
+                "workerDns",
+                "workerNtps"
             ],
             "inputProperties": {
                 "cluster": {
@@ -8731,6 +8747,13 @@
                     },
                     "description": "The list of addresses of the primary DNS servers.\n"
                 },
+                "mainNtps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the primary NTP servers.\n"
+                },
                 "managementNetwork": {
                     "$ref": "#/types/vsphere:index/SupervisorManagementNetwork:SupervisorManagementNetwork",
                     "description": "The configuration for the management network which the control plane VMs will be connected to.\n* * `network` - ID of the network. (e.g. a distributed port group).\n* * `starting_address` - Starting address of the management network range.\n* * `subnet_mask` - Subnet mask.\n* * `gateway` - Gateway IP address.\n* * `address_count` - Number of addresses to allocate. Starts from `starting_address`\n"
@@ -8771,6 +8794,13 @@
                         "type": "string"
                     },
                     "description": "The list of addresses of the DNS servers to use for the worker nodes.\n"
+                },
+                "workerNtps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of addresses of the NTP servers to use for the worker nodes.\n"
                 }
             },
             "requiredInputs": [
@@ -8781,13 +8811,15 @@
                 "egressCidrs",
                 "ingressCidrs",
                 "mainDns",
+                "mainNtps",
                 "managementNetwork",
                 "podCidrs",
                 "searchDomains",
                 "serviceCidr",
                 "sizingHint",
                 "storagePolicy",
-                "workerDns"
+                "workerDns",
+                "workerNtps"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Supervisor resources.\n",
@@ -8829,6 +8861,13 @@
                         },
                         "description": "The list of addresses of the primary DNS servers.\n"
                     },
+                    "mainNtps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of addresses of the primary NTP servers.\n"
+                    },
                     "managementNetwork": {
                         "$ref": "#/types/vsphere:index/SupervisorManagementNetwork:SupervisorManagementNetwork",
                         "description": "The configuration for the management network which the control plane VMs will be connected to.\n* * `network` - ID of the network. (e.g. a distributed port group).\n* * `starting_address` - Starting address of the management network range.\n* * `subnet_mask` - Subnet mask.\n* * `gateway` - Gateway IP address.\n* * `address_count` - Number of addresses to allocate. Starts from `starting_address`\n"
@@ -8869,6 +8908,13 @@
                             "type": "string"
                         },
                         "description": "The list of addresses of the DNS servers to use for the worker nodes.\n"
+                    },
+                    "workerNtps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of addresses of the NTP servers to use for the worker nodes.\n"
                     }
                 },
                 "type": "object"
