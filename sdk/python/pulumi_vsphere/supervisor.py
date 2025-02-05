@@ -28,6 +28,7 @@ class SupervisorArgs:
                  egress_cidrs: pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]],
                  ingress_cidrs: pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]],
                  main_dns: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 main_ntps: pulumi.Input[Sequence[pulumi.Input[str]]],
                  management_network: pulumi.Input['SupervisorManagementNetworkArgs'],
                  pod_cidrs: pulumi.Input[Sequence[pulumi.Input['SupervisorPodCidrArgs']]],
                  search_domains: pulumi.Input[str],
@@ -35,6 +36,7 @@ class SupervisorArgs:
                  sizing_hint: pulumi.Input[str],
                  storage_policy: pulumi.Input[str],
                  worker_dns: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 worker_ntps: pulumi.Input[Sequence[pulumi.Input[str]]],
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]] = None):
         """
         The set of arguments for constructing a Supervisor resource.
@@ -45,6 +47,7 @@ class SupervisorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] main_dns: The list of addresses of the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] main_ntps: The list of addresses of the primary NTP servers.
         :param pulumi.Input['SupervisorManagementNetworkArgs'] management_network: The configuration for the management network which the control plane VMs will be connected to.
                * * `network` - ID of the network. (e.g. a distributed port group).
                * * `starting_address` - Starting address of the management network range.
@@ -57,6 +60,7 @@ class SupervisorArgs:
         :param pulumi.Input[str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[str] storage_policy: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]] namespaces: The list of namespaces to create in the Supervisor cluster
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -66,6 +70,7 @@ class SupervisorArgs:
         pulumi.set(__self__, "egress_cidrs", egress_cidrs)
         pulumi.set(__self__, "ingress_cidrs", ingress_cidrs)
         pulumi.set(__self__, "main_dns", main_dns)
+        pulumi.set(__self__, "main_ntps", main_ntps)
         pulumi.set(__self__, "management_network", management_network)
         pulumi.set(__self__, "pod_cidrs", pod_cidrs)
         pulumi.set(__self__, "search_domains", search_domains)
@@ -73,6 +78,7 @@ class SupervisorArgs:
         pulumi.set(__self__, "sizing_hint", sizing_hint)
         pulumi.set(__self__, "storage_policy", storage_policy)
         pulumi.set(__self__, "worker_dns", worker_dns)
+        pulumi.set(__self__, "worker_ntps", worker_ntps)
         if namespaces is not None:
             pulumi.set(__self__, "namespaces", namespaces)
 
@@ -159,6 +165,18 @@ class SupervisorArgs:
     @main_dns.setter
     def main_dns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "main_dns", value)
+
+    @property
+    @pulumi.getter(name="mainNtps")
+    def main_ntps(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of addresses of the primary NTP servers.
+        """
+        return pulumi.get(self, "main_ntps")
+
+    @main_ntps.setter
+    def main_ntps(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "main_ntps", value)
 
     @property
     @pulumi.getter(name="managementNetwork")
@@ -250,6 +268,18 @@ class SupervisorArgs:
         pulumi.set(self, "worker_dns", value)
 
     @property
+    @pulumi.getter(name="workerNtps")
+    def worker_ntps(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of addresses of the NTP servers to use for the worker nodes.
+        """
+        return pulumi.get(self, "worker_ntps")
+
+    @worker_ntps.setter
+    def worker_ntps(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "worker_ntps", value)
+
+    @property
     @pulumi.getter
     def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]]:
         """
@@ -272,6 +302,7 @@ class _SupervisorState:
                  egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]]] = None,
                  ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]]] = None,
                  main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management_network: Optional[pulumi.Input['SupervisorManagementNetworkArgs']] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]] = None,
                  pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorPodCidrArgs']]]] = None,
@@ -279,7 +310,8 @@ class _SupervisorState:
                  service_cidr: Optional[pulumi.Input['SupervisorServiceCidrArgs']] = None,
                  sizing_hint: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
-                 worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Supervisor resources.
         :param pulumi.Input[str] cluster: The identifier of the compute cluster.
@@ -289,6 +321,7 @@ class _SupervisorState:
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorEgressCidrArgs']]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input['SupervisorIngressCidrArgs']]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] main_dns: The list of addresses of the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] main_ntps: The list of addresses of the primary NTP servers.
         :param pulumi.Input['SupervisorManagementNetworkArgs'] management_network: The configuration for the management network which the control plane VMs will be connected to.
                * * `network` - ID of the network. (e.g. a distributed port group).
                * * `starting_address` - Starting address of the management network range.
@@ -302,6 +335,7 @@ class _SupervisorState:
         :param pulumi.Input[str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[str] storage_policy: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -317,6 +351,8 @@ class _SupervisorState:
             pulumi.set(__self__, "ingress_cidrs", ingress_cidrs)
         if main_dns is not None:
             pulumi.set(__self__, "main_dns", main_dns)
+        if main_ntps is not None:
+            pulumi.set(__self__, "main_ntps", main_ntps)
         if management_network is not None:
             pulumi.set(__self__, "management_network", management_network)
         if namespaces is not None:
@@ -333,6 +369,8 @@ class _SupervisorState:
             pulumi.set(__self__, "storage_policy", storage_policy)
         if worker_dns is not None:
             pulumi.set(__self__, "worker_dns", worker_dns)
+        if worker_ntps is not None:
+            pulumi.set(__self__, "worker_ntps", worker_ntps)
 
     @property
     @pulumi.getter
@@ -417,6 +455,18 @@ class _SupervisorState:
     @main_dns.setter
     def main_dns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "main_dns", value)
+
+    @property
+    @pulumi.getter(name="mainNtps")
+    def main_ntps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of addresses of the primary NTP servers.
+        """
+        return pulumi.get(self, "main_ntps")
+
+    @main_ntps.setter
+    def main_ntps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "main_ntps", value)
 
     @property
     @pulumi.getter(name="managementNetwork")
@@ -519,6 +569,18 @@ class _SupervisorState:
     def worker_dns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "worker_dns", value)
 
+    @property
+    @pulumi.getter(name="workerNtps")
+    def worker_ntps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of addresses of the NTP servers to use for the worker nodes.
+        """
+        return pulumi.get(self, "worker_ntps")
+
+    @worker_ntps.setter
+    def worker_ntps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "worker_ntps", value)
+
 
 class Supervisor(pulumi.CustomResource):
     @overload
@@ -532,6 +594,7 @@ class Supervisor(pulumi.CustomResource):
                  egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
                  ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
                  main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
                  pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
@@ -540,6 +603,7 @@ class Supervisor(pulumi.CustomResource):
                  sizing_hint: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
                  worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a resource for configuring Workload Management.
@@ -607,6 +671,7 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] main_dns: The list of addresses of the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] main_ntps: The list of addresses of the primary NTP servers.
         :param pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']] management_network: The configuration for the management network which the control plane VMs will be connected to.
                * * `network` - ID of the network. (e.g. a distributed port group).
                * * `starting_address` - Starting address of the management network range.
@@ -620,6 +685,7 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[str] storage_policy: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
         """
         ...
     @overload
@@ -706,6 +772,7 @@ class Supervisor(pulumi.CustomResource):
                  egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
                  ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
                  main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
                  pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
@@ -714,6 +781,7 @@ class Supervisor(pulumi.CustomResource):
                  sizing_hint: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
                  worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -744,6 +812,9 @@ class Supervisor(pulumi.CustomResource):
             if main_dns is None and not opts.urn:
                 raise TypeError("Missing required property 'main_dns'")
             __props__.__dict__["main_dns"] = main_dns
+            if main_ntps is None and not opts.urn:
+                raise TypeError("Missing required property 'main_ntps'")
+            __props__.__dict__["main_ntps"] = main_ntps
             if management_network is None and not opts.urn:
                 raise TypeError("Missing required property 'management_network'")
             __props__.__dict__["management_network"] = management_network
@@ -766,6 +837,9 @@ class Supervisor(pulumi.CustomResource):
             if worker_dns is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_dns'")
             __props__.__dict__["worker_dns"] = worker_dns
+            if worker_ntps is None and not opts.urn:
+                raise TypeError("Missing required property 'worker_ntps'")
+            __props__.__dict__["worker_ntps"] = worker_ntps
         super(Supervisor, __self__).__init__(
             'vsphere:index/supervisor:Supervisor',
             resource_name,
@@ -783,6 +857,7 @@ class Supervisor(pulumi.CustomResource):
             egress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]]] = None,
             ingress_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]]] = None,
             main_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            main_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             management_network: Optional[pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']]] = None,
             namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorNamespaceArgs', 'SupervisorNamespaceArgsDict']]]]] = None,
             pod_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SupervisorPodCidrArgs', 'SupervisorPodCidrArgsDict']]]]] = None,
@@ -790,7 +865,8 @@ class Supervisor(pulumi.CustomResource):
             service_cidr: Optional[pulumi.Input[Union['SupervisorServiceCidrArgs', 'SupervisorServiceCidrArgsDict']]] = None,
             sizing_hint: Optional[pulumi.Input[str]] = None,
             storage_policy: Optional[pulumi.Input[str]] = None,
-            worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Supervisor':
+            worker_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Supervisor':
         """
         Get an existing Supervisor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -805,6 +881,7 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorEgressCidrArgs', 'SupervisorEgressCidrArgsDict']]]] egress_cidrs: CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SupervisorIngressCidrArgs', 'SupervisorIngressCidrArgsDict']]]] ingress_cidrs: CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] main_dns: The list of addresses of the primary DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] main_ntps: The list of addresses of the primary NTP servers.
         :param pulumi.Input[Union['SupervisorManagementNetworkArgs', 'SupervisorManagementNetworkArgsDict']] management_network: The configuration for the management network which the control plane VMs will be connected to.
                * * `network` - ID of the network. (e.g. a distributed port group).
                * * `starting_address` - Starting address of the management network range.
@@ -818,6 +895,7 @@ class Supervisor(pulumi.CustomResource):
         :param pulumi.Input[str] sizing_hint: The size of the Kubernetes API server.
         :param pulumi.Input[str] storage_policy: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_dns: The list of addresses of the DNS servers to use for the worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_ntps: The list of addresses of the NTP servers to use for the worker nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -830,6 +908,7 @@ class Supervisor(pulumi.CustomResource):
         __props__.__dict__["egress_cidrs"] = egress_cidrs
         __props__.__dict__["ingress_cidrs"] = ingress_cidrs
         __props__.__dict__["main_dns"] = main_dns
+        __props__.__dict__["main_ntps"] = main_ntps
         __props__.__dict__["management_network"] = management_network
         __props__.__dict__["namespaces"] = namespaces
         __props__.__dict__["pod_cidrs"] = pod_cidrs
@@ -838,6 +917,7 @@ class Supervisor(pulumi.CustomResource):
         __props__.__dict__["sizing_hint"] = sizing_hint
         __props__.__dict__["storage_policy"] = storage_policy
         __props__.__dict__["worker_dns"] = worker_dns
+        __props__.__dict__["worker_ntps"] = worker_ntps
         return Supervisor(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -895,6 +975,14 @@ class Supervisor(pulumi.CustomResource):
         The list of addresses of the primary DNS servers.
         """
         return pulumi.get(self, "main_dns")
+
+    @property
+    @pulumi.getter(name="mainNtps")
+    def main_ntps(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of addresses of the primary NTP servers.
+        """
+        return pulumi.get(self, "main_ntps")
 
     @property
     @pulumi.getter(name="managementNetwork")
@@ -964,4 +1052,12 @@ class Supervisor(pulumi.CustomResource):
         The list of addresses of the DNS servers to use for the worker nodes.
         """
         return pulumi.get(self, "worker_dns")
+
+    @property
+    @pulumi.getter(name="workerNtps")
+    def worker_ntps(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of addresses of the NTP servers to use for the worker nodes.
+        """
+        return pulumi.get(self, "worker_ntps")
 

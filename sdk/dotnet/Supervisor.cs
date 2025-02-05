@@ -144,6 +144,12 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> MainDns { get; private set; } = null!;
 
         /// <summary>
+        /// The list of addresses of the primary NTP servers.
+        /// </summary>
+        [Output("mainNtps")]
+        public Output<ImmutableArray<string>> MainNtps { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
         /// * * `network` - ID of the network. (e.g. a distributed port group).
         /// * * `starting_address` - Starting address of the management network range.
@@ -195,6 +201,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("workerDns")]
         public Output<ImmutableArray<string>> WorkerDns { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of addresses of the NTP servers to use for the worker nodes.
+        /// </summary>
+        [Output("workerNtps")]
+        public Output<ImmutableArray<string>> WorkerNtps { get; private set; } = null!;
 
 
         /// <summary>
@@ -302,6 +314,18 @@ namespace Pulumi.VSphere
             set => _mainDns = value;
         }
 
+        [Input("mainNtps", required: true)]
+        private InputList<string>? _mainNtps;
+
+        /// <summary>
+        /// The list of addresses of the primary NTP servers.
+        /// </summary>
+        public InputList<string> MainNtps
+        {
+            get => _mainNtps ?? (_mainNtps = new InputList<string>());
+            set => _mainNtps = value;
+        }
+
         /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
         /// * * `network` - ID of the network. (e.g. a distributed port group).
@@ -373,6 +397,18 @@ namespace Pulumi.VSphere
             set => _workerDns = value;
         }
 
+        [Input("workerNtps", required: true)]
+        private InputList<string>? _workerNtps;
+
+        /// <summary>
+        /// The list of addresses of the NTP servers to use for the worker nodes.
+        /// </summary>
+        public InputList<string> WorkerNtps
+        {
+            get => _workerNtps ?? (_workerNtps = new InputList<string>());
+            set => _workerNtps = value;
+        }
+
         public SupervisorArgs()
         {
         }
@@ -439,6 +475,18 @@ namespace Pulumi.VSphere
         {
             get => _mainDns ?? (_mainDns = new InputList<string>());
             set => _mainDns = value;
+        }
+
+        [Input("mainNtps")]
+        private InputList<string>? _mainNtps;
+
+        /// <summary>
+        /// The list of addresses of the primary NTP servers.
+        /// </summary>
+        public InputList<string> MainNtps
+        {
+            get => _mainNtps ?? (_mainNtps = new InputList<string>());
+            set => _mainNtps = value;
         }
 
         /// <summary>
@@ -510,6 +558,18 @@ namespace Pulumi.VSphere
         {
             get => _workerDns ?? (_workerDns = new InputList<string>());
             set => _workerDns = value;
+        }
+
+        [Input("workerNtps")]
+        private InputList<string>? _workerNtps;
+
+        /// <summary>
+        /// The list of addresses of the NTP servers to use for the worker nodes.
+        /// </summary>
+        public InputList<string> WorkerNtps
+        {
+            get => _workerNtps ?? (_workerNtps = new InputList<string>());
+            set => _workerNtps = value;
         }
 
         public SupervisorState()

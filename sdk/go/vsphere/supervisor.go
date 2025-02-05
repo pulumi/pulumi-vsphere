@@ -114,6 +114,8 @@ type Supervisor struct {
 	IngressCidrs SupervisorIngressCidrArrayOutput `pulumi:"ingressCidrs"`
 	// The list of addresses of the primary DNS servers.
 	MainDns pulumi.StringArrayOutput `pulumi:"mainDns"`
+	// The list of addresses of the primary NTP servers.
+	MainNtps pulumi.StringArrayOutput `pulumi:"mainNtps"`
 	// The configuration for the management network which the control plane VMs will be connected to.
 	// * * `network` - ID of the network. (e.g. a distributed port group).
 	// * * `startingAddress` - Starting address of the management network range.
@@ -135,6 +137,8 @@ type Supervisor struct {
 	StoragePolicy pulumi.StringOutput `pulumi:"storagePolicy"`
 	// The list of addresses of the DNS servers to use for the worker nodes.
 	WorkerDns pulumi.StringArrayOutput `pulumi:"workerDns"`
+	// The list of addresses of the NTP servers to use for the worker nodes.
+	WorkerNtps pulumi.StringArrayOutput `pulumi:"workerNtps"`
 }
 
 // NewSupervisor registers a new resource with the given unique name, arguments, and options.
@@ -165,6 +169,9 @@ func NewSupervisor(ctx *pulumi.Context,
 	if args.MainDns == nil {
 		return nil, errors.New("invalid value for required argument 'MainDns'")
 	}
+	if args.MainNtps == nil {
+		return nil, errors.New("invalid value for required argument 'MainNtps'")
+	}
 	if args.ManagementNetwork == nil {
 		return nil, errors.New("invalid value for required argument 'ManagementNetwork'")
 	}
@@ -185,6 +192,9 @@ func NewSupervisor(ctx *pulumi.Context,
 	}
 	if args.WorkerDns == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerDns'")
+	}
+	if args.WorkerNtps == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerNtps'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Supervisor
@@ -223,6 +233,8 @@ type supervisorState struct {
 	IngressCidrs []SupervisorIngressCidr `pulumi:"ingressCidrs"`
 	// The list of addresses of the primary DNS servers.
 	MainDns []string `pulumi:"mainDns"`
+	// The list of addresses of the primary NTP servers.
+	MainNtps []string `pulumi:"mainNtps"`
 	// The configuration for the management network which the control plane VMs will be connected to.
 	// * * `network` - ID of the network. (e.g. a distributed port group).
 	// * * `startingAddress` - Starting address of the management network range.
@@ -244,6 +256,8 @@ type supervisorState struct {
 	StoragePolicy *string `pulumi:"storagePolicy"`
 	// The list of addresses of the DNS servers to use for the worker nodes.
 	WorkerDns []string `pulumi:"workerDns"`
+	// The list of addresses of the NTP servers to use for the worker nodes.
+	WorkerNtps []string `pulumi:"workerNtps"`
 }
 
 type SupervisorState struct {
@@ -261,6 +275,8 @@ type SupervisorState struct {
 	IngressCidrs SupervisorIngressCidrArrayInput
 	// The list of addresses of the primary DNS servers.
 	MainDns pulumi.StringArrayInput
+	// The list of addresses of the primary NTP servers.
+	MainNtps pulumi.StringArrayInput
 	// The configuration for the management network which the control plane VMs will be connected to.
 	// * * `network` - ID of the network. (e.g. a distributed port group).
 	// * * `startingAddress` - Starting address of the management network range.
@@ -282,6 +298,8 @@ type SupervisorState struct {
 	StoragePolicy pulumi.StringPtrInput
 	// The list of addresses of the DNS servers to use for the worker nodes.
 	WorkerDns pulumi.StringArrayInput
+	// The list of addresses of the NTP servers to use for the worker nodes.
+	WorkerNtps pulumi.StringArrayInput
 }
 
 func (SupervisorState) ElementType() reflect.Type {
@@ -303,6 +321,8 @@ type supervisorArgs struct {
 	IngressCidrs []SupervisorIngressCidr `pulumi:"ingressCidrs"`
 	// The list of addresses of the primary DNS servers.
 	MainDns []string `pulumi:"mainDns"`
+	// The list of addresses of the primary NTP servers.
+	MainNtps []string `pulumi:"mainNtps"`
 	// The configuration for the management network which the control plane VMs will be connected to.
 	// * * `network` - ID of the network. (e.g. a distributed port group).
 	// * * `startingAddress` - Starting address of the management network range.
@@ -324,6 +344,8 @@ type supervisorArgs struct {
 	StoragePolicy string `pulumi:"storagePolicy"`
 	// The list of addresses of the DNS servers to use for the worker nodes.
 	WorkerDns []string `pulumi:"workerDns"`
+	// The list of addresses of the NTP servers to use for the worker nodes.
+	WorkerNtps []string `pulumi:"workerNtps"`
 }
 
 // The set of arguments for constructing a Supervisor resource.
@@ -342,6 +364,8 @@ type SupervisorArgs struct {
 	IngressCidrs SupervisorIngressCidrArrayInput
 	// The list of addresses of the primary DNS servers.
 	MainDns pulumi.StringArrayInput
+	// The list of addresses of the primary NTP servers.
+	MainNtps pulumi.StringArrayInput
 	// The configuration for the management network which the control plane VMs will be connected to.
 	// * * `network` - ID of the network. (e.g. a distributed port group).
 	// * * `startingAddress` - Starting address of the management network range.
@@ -363,6 +387,8 @@ type SupervisorArgs struct {
 	StoragePolicy pulumi.StringInput
 	// The list of addresses of the DNS servers to use for the worker nodes.
 	WorkerDns pulumi.StringArrayInput
+	// The list of addresses of the NTP servers to use for the worker nodes.
+	WorkerNtps pulumi.StringArrayInput
 }
 
 func (SupervisorArgs) ElementType() reflect.Type {
@@ -487,6 +513,11 @@ func (o SupervisorOutput) MainDns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.MainDns }).(pulumi.StringArrayOutput)
 }
 
+// The list of addresses of the primary NTP servers.
+func (o SupervisorOutput) MainNtps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.MainNtps }).(pulumi.StringArrayOutput)
+}
+
 // The configuration for the management network which the control plane VMs will be connected to.
 // * * `network` - ID of the network. (e.g. a distributed port group).
 // * * `startingAddress` - Starting address of the management network range.
@@ -530,6 +561,11 @@ func (o SupervisorOutput) StoragePolicy() pulumi.StringOutput {
 // The list of addresses of the DNS servers to use for the worker nodes.
 func (o SupervisorOutput) WorkerDns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.WorkerDns }).(pulumi.StringArrayOutput)
+}
+
+// The list of addresses of the NTP servers to use for the worker nodes.
+func (o SupervisorOutput) WorkerNtps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Supervisor) pulumi.StringArrayOutput { return v.WorkerNtps }).(pulumi.StringArrayOutput)
 }
 
 type SupervisorArrayOutput struct{ *pulumi.OutputState }
