@@ -434,6 +434,9 @@
                     "main_dns": {
                         "maxItemsOne": false
                     },
+                    "main_ntp": {
+                        "maxItemsOne": false
+                    },
                     "management_network": {
                         "maxItemsOne": true
                     },
@@ -460,6 +463,9 @@
                         "maxItemsOne": true
                     },
                     "worker_dns": {
+                        "maxItemsOne": false
+                    },
+                    "worker_ntp": {
                         "maxItemsOne": false
                     }
                 }
