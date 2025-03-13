@@ -11,7 +11,7 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-provider-vsphere v2.3.1+incompatible
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.104.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.104.1-0.20250313133841-de5510662e1c
 	github.com/pulumi/pulumi/sdk/v3 v3.153.1
 )
 
