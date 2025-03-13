@@ -4055,51 +4055,6 @@ public final class VsphereFunctions {
      * 
      * ### With Name Regular Expression
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name("dc-01")
-     *             .build());
-     * 
-     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
-     *             .build());
-     * 
-     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .nameRegex("MMC")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetHostPciDeviceResult> getHostPciDevice(GetHostPciDeviceArgs args) {
         return getHostPciDevice(args, InvokeOptions.Empty);
@@ -4160,51 +4115,6 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With Name Regular Expression
-     * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name("dc-01")
-     *             .build());
-     * 
-     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
-     *             .build());
-     * 
-     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .nameRegex("MMC")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostPciDeviceResult> getHostPciDevicePlain(GetHostPciDevicePlainArgs args) {
@@ -4267,51 +4177,6 @@ public final class VsphereFunctions {
      * 
      * ### With Name Regular Expression
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name("dc-01")
-     *             .build());
-     * 
-     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
-     *             .build());
-     * 
-     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .nameRegex("MMC")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetHostPciDeviceResult> getHostPciDevice(GetHostPciDeviceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getHostPciDevice:getHostPciDevice", TypeShape.of(GetHostPciDeviceResult.class), args, Utilities.withVersion(options));
@@ -4373,51 +4238,6 @@ public final class VsphereFunctions {
      * 
      * ### With Name Regular Expression
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name("dc-01")
-     *             .build());
-     * 
-     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
-     *             .build());
-     * 
-     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .nameRegex("MMC")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetHostPciDeviceResult> getHostPciDevice(GetHostPciDeviceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getHostPciDevice:getHostPciDevice", TypeShape.of(GetHostPciDeviceResult.class), args, Utilities.withVersion(options));
@@ -4478,51 +4298,6 @@ public final class VsphereFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### With Name Regular Expression
-     * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.vsphere.VsphereFunctions;
-     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
-     * import com.pulumi.vsphere.inputs.GetHostArgs;
-     * import com.pulumi.vsphere.inputs.GetHostPciDeviceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
-     *             .name("dc-01")
-     *             .build());
-     * 
-     *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
-     *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
-     *             .build());
-     * 
-     *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .nameRegex("MMC")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostPciDeviceResult> getHostPciDevicePlain(GetHostPciDevicePlainArgs args, InvokeOptions options) {

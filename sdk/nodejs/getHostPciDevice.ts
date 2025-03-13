@@ -32,23 +32,6 @@ import * as utilities from "./utilities";
  * ```
  *
  * ### With Name Regular Expression
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *    name: "dc-01",
- * });
- * const host = datacenter.then(datacenter => vsphere.getHost({
- *    name: "esxi-01.example.com",
- *    datacenterId: datacenter.id,
- * }));
- * const dev = host.then(host => vsphere.getHostPciDevice({
- *    hostId: host.id,
- *    nameRegex: "MMC",
- * }));
- * ```
  */
 export function getHostPciDevice(args: GetHostPciDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetHostPciDeviceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -133,23 +116,6 @@ export interface GetHostPciDeviceResult {
  * ```
  *
  * ### With Name Regular Expression
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *    name: "dc-01",
- * });
- * const host = datacenter.then(datacenter => vsphere.getHost({
- *    name: "esxi-01.example.com",
- *    datacenterId: datacenter.id,
- * }));
- * const dev = host.then(host => vsphere.getHostPciDevice({
- *    hostId: host.id,
- *    nameRegex: "MMC",
- * }));
- * ```
  */
 export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostPciDeviceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
