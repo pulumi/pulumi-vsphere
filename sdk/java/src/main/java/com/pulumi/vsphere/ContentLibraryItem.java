@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .name("ovf-linux-ubuntu-server-lts")
  *             .description("Ubuntu Server LTS OVF Template")
  *             .fileUrl("https://releases.example.com/ubuntu/ubuntu/ubuntu-live-server-amd64.ovf")
- *             .libraryId(contentLibrary.applyValue(getContentLibraryResult -> getContentLibraryResult.id()))
+ *             .libraryId(contentLibrary.id())
  *             .build());
  * 
  *     }
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .description("Ubuntu Server LTS .iso")
  *             .type("iso")
  *             .fileUrl("https://releases.example.com/ubuntu/ubuntu-live-server-amd64.iso")
- *             .libraryId(contentLibrary.applyValue(getContentLibraryResult -> getContentLibraryResult.id()))
+ *             .libraryId(contentLibrary.id())
  *             .build());
  * 
  *     }
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *             .name("tpl-linux-ubuntu-server-lts")
  *             .description("Ubuntu Server LTS")
  *             .sourceUuid("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
- *             .libraryId(contentLibrary.applyValue(getContentLibraryResult -> getContentLibraryResult.id()))
+ *             .libraryId(contentLibrary.id())
  *             .build());
  * 
  *     }

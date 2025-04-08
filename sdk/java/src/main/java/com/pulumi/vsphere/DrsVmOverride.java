@@ -81,34 +81,34 @@ import javax.annotation.Nullable;
  * 
  *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("datastore1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("network1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .name("test")
- *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
- *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .resourcePoolId(cluster.resourcePoolId())
+ *             .hostSystemId(host.id())
+ *             .datastoreId(datastore.id())
  *             .numCpus(2)
  *             .memory(2048)
  *             .guestId("otherLinux64Guest")
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .networkId(network.id())
  *                 .build())
  *             .disks(VirtualMachineDiskArgs.builder()
  *                 .label("disk0")
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var drsVmOverride = new DrsVmOverride("drsVmOverride", DrsVmOverrideArgs.builder()
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .computeClusterId(cluster.id())
  *             .virtualMachineId(vm.id())
  *             .drsEnabled(false)
  *             .build());

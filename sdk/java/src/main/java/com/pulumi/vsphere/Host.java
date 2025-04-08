@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .username("root")
  *             .password("password")
  *             .license("00000-00000-00000-00000-00000")
- *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -> getHostThumbprintResult.id()))
- *             .datacenter(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .thumbprint(thumbprint.id())
+ *             .datacenter(datacenter.id())
  *             .build());
  * 
  *     }

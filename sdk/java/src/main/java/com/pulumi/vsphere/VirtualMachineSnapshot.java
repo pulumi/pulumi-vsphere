@@ -67,10 +67,10 @@ import javax.annotation.Nullable;
  *             .virtualMachineUuid("9aac5551-a351-4158-8c5c-15a71e8ec5c9")
  *             .snapshotName("Snapshot Name")
  *             .description("This is Demo Snapshot")
- *             .memory("true")
- *             .quiesce("true")
- *             .removeChildren("false")
- *             .consolidate("true")
+ *             .memory(true)
+ *             .quiesce(true)
+ *             .removeChildren(false)
+ *             .consolidate(true)
  *             .build());
  * 
  *     }

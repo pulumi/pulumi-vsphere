@@ -82,29 +82,29 @@ import javax.annotation.Nullable;
  * 
  *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
  *             .name("datastore-cluster1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("network1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         for (var i = 0; i < 2; i++) {
  *             new VirtualMachine("vm-" + i, VirtualMachineArgs.builder()
  *                 .name(String.format("test-%s", range.value()))
- *                 .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
- *                 .datastoreClusterId(datastoreCluster.applyValue(getDatastoreClusterResult -> getDatastoreClusterResult.id()))
+ *                 .resourcePoolId(cluster.resourcePoolId())
+ *                 .datastoreClusterId(datastoreCluster.id())
  *                 .numCpus(2)
  *                 .memory(2048)
  *                 .guestId("otherLinux64Guest")
  *                 .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                     .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                     .networkId(network.id())
  *                     .build())
  *                 .disks(VirtualMachineDiskArgs.builder()
  *                     .label("disk0")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * }
  *         var clusterVmAntiAffinityRule = new DatastoreClusterVmAntiAffinityRule("clusterVmAntiAffinityRule", DatastoreClusterVmAntiAffinityRuleArgs.builder()
  *             .name("test-datastore-cluster-vm-anti-affinity-rule")
- *             .datastoreClusterId(datastoreCluster.applyValue(getDatastoreClusterResult -> getDatastoreClusterResult.id()))
+ *             .datastoreClusterId(datastoreCluster.id())
  *             .virtualMachineIds(vm.stream().map(element -> element.id()).collect(toList()))
  *             .build());
  * 

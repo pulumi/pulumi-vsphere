@@ -63,14 +63,14 @@ import javax.annotation.Nullable;
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var vds = new DistributedVirtualSwitch("vds", DistributedVirtualSwitchArgs.builder()
  *             .name("vds-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .hosts(DistributedVirtualSwitchHostArgs.builder()
- *                 .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *                 .hostSystemId(host.id())
  *                 .devices("vnic3")
  *                 .build())
  *             .build());
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vnic = new Vnic("vnic", VnicArgs.builder()
- *             .host(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .host(host.id())
  *             .distributedSwitchPort(vds.id())
  *             .distributedPortGroup(pg.id())
  *             .ipv4(VnicIpv4Args.builder()
@@ -136,12 +136,12 @@ import javax.annotation.Nullable;
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var hvs = new HostVirtualSwitch("hvs", HostVirtualSwitchArgs.builder()
  *             .name("hvs-01")
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .networkAdapters(            
  *                 "vmnic3",
  *                 "vmnic4")
@@ -152,11 +152,11 @@ import javax.annotation.Nullable;
  *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()
  *             .name("pg-01")
  *             .virtualSwitchName(hvs.name())
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .build());
  * 
  *         var vnic = new Vnic("vnic", VnicArgs.builder()
- *             .host(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .host(host.id())
  *             .portgroup(pg.name())
  *             .ipv4(VnicIpv4Args.builder()
  *                 .dhcp(true)

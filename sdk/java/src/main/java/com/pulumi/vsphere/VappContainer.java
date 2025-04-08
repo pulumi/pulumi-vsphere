@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * 
  *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var vappContainer = new VappContainer("vappContainer", VappContainerArgs.builder()
  *             .name("vapp-01")
- *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *             .parentResourcePoolId(computeCluster.resourcePoolId())
  *             .build());
  * 
  *     }
@@ -122,33 +122,33 @@ import javax.annotation.Nullable;
  * 
  *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("datastore-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("VM Network")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var vappContainer = new VappContainer("vappContainer", VappContainerArgs.builder()
  *             .name("vapp-01")
- *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
+ *             .parentResourcePoolId(computeCluster.resourcePoolId())
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .name("foo")
  *             .resourcePoolId(vappContainerVsphereVappContainer.id())
- *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .datastoreId(datastore.id())
  *             .numCpus(1)
  *             .memory(1024)
  *             .guestId("ubuntu64Guest")
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .networkId(network.id())
  *                 .build())
  *             .disks(VirtualMachineDiskArgs.builder()
  *                 .label("disk0")

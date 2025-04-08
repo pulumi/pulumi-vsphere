@@ -84,28 +84,28 @@ import javax.annotation.Nullable;
  * 
  *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("datastore1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("network1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var vm1 = new VirtualMachine("vm1", VirtualMachineArgs.builder()
  *             .name("test1")
- *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
- *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .resourcePoolId(cluster.resourcePoolId())
+ *             .datastoreId(datastore.id())
  *             .numCpus(2)
  *             .memory(2048)
  *             .guestId("otherLinux64Guest")
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .networkId(network.id())
  *                 .build())
  *             .disks(VirtualMachineDiskArgs.builder()
  *                 .label("disk0")
@@ -115,13 +115,13 @@ import javax.annotation.Nullable;
  * 
  *         var vm2 = new VirtualMachine("vm2", VirtualMachineArgs.builder()
  *             .name("test2")
- *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
- *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .resourcePoolId(cluster.resourcePoolId())
+ *             .datastoreId(datastore.id())
  *             .numCpus(2)
  *             .memory(2048)
  *             .guestId("otherLinux64Guest")
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .networkId(network.id())
  *                 .build())
  *             .disks(VirtualMachineDiskArgs.builder()
  *                 .label("disk0")
@@ -131,18 +131,18 @@ import javax.annotation.Nullable;
  * 
  *         var clusterVmGroup1 = new ComputeClusterVmGroup("clusterVmGroup1", ComputeClusterVmGroupArgs.builder()
  *             .name("test-cluster-vm-group1")
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .computeClusterId(cluster.id())
  *             .virtualMachineIds(vm1.id())
  *             .build());
  * 
  *         var clusterVmGroup2 = new ComputeClusterVmGroup("clusterVmGroup2", ComputeClusterVmGroupArgs.builder()
  *             .name("test-cluster-vm-group2")
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .computeClusterId(cluster.id())
  *             .virtualMachineIds(vm2.id())
  *             .build());
  * 
  *         var clusterVmDependencyRule = new ComputeClusterVmDependencyRule("clusterVmDependencyRule", ComputeClusterVmDependencyRuleArgs.builder()
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .computeClusterId(cluster.id())
  *             .name("test-cluster-vm-dependency-rule")
  *             .dependencyVmGroupName(clusterVmGroup1.name())
  *             .vmGroupName(clusterVmGroup2.name())
