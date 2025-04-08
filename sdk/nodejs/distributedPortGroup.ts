@@ -41,12 +41,12 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const config = new pulumi.Config();
- * const hosts = config.getObject("hosts") || [
+ * const hosts = config.getObject<any>("hosts") || [
  *     "esxi-01.example.com",
  *     "esxi-02.example.com",
  *     "esxi-03.example.com",
  * ];
- * const networkInterfaces = config.getObject("networkInterfaces") || [
+ * const networkInterfaces = config.getObject<any>("networkInterfaces") || [
  *     "vmnic0",
  *     "vmnic1",
  *     "vmnic2",

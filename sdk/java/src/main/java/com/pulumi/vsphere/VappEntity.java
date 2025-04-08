@@ -76,28 +76,28 @@ import javax.annotation.Nullable;
  * 
  *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name(cluster)
- *             .datacenterId(datacenterGetDatacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenterGetDatacenter.id())
  *             .build());
  * 
  *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("network1")
- *             .datacenterId(datacenterGetDatacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenterGetDatacenter.id())
  *             .build());
  * 
  *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("datastore1")
- *             .datacenterId(datacenterGetDatacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenterGetDatacenter.id())
  *             .build());
  * 
  *         var vappContainer = new VappContainer("vappContainer", VappContainerArgs.builder()
  *             .name("vapp-container-test")
- *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .parentResourcePoolId(computeCluster.id())
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .name("virtual-machine-test")
  *             .resourcePoolId(vappContainer.id())
- *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .datastoreId(datastore.id())
  *             .numCpus(2)
  *             .memory(1024)
  *             .guestId("ubuntu64Guest")
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *                 .size(1)
  *                 .build())
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .networkId(network.id())
  *                 .build())
  *             .build());
  * 

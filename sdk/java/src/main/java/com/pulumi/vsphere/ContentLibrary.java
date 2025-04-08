@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  * 
  *         final var publisherDatastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("publisher-datastore")
- *             .datacenterId(datacenterA.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenterA.id())
  *             .build());
  * 
  *         var publisherContentLibrary = new ContentLibrary("publisherContentLibrary", ContentLibraryArgs.builder()
  *             .name("Publisher Content Library")
  *             .description("A publishing content library.")
- *             .storageBackings(publisherDatastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .storageBackings(publisherDatastore.id())
  *             .build());
  * 
  *     }
@@ -108,13 +108,13 @@ import javax.annotation.Nullable;
  * 
  *         final var subscriberDatastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("subscriber-datastore")
- *             .datacenterId(datacenterB.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenterB.id())
  *             .build());
  * 
  *         var subscriberContentLibrary = new ContentLibrary("subscriberContentLibrary", ContentLibraryArgs.builder()
  *             .name("Subscriber Content Library")
  *             .description("A subscribing content library.")
- *             .storageBackings(subscriberDatastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .storageBackings(subscriberDatastore.id())
  *             .subscription(ContentLibrarySubscriptionArgs.builder()
  *                 .subscriptionUrl("https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json")
  *                 .automaticSync(true)

@@ -57,12 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var datacenter = VsphereFunctions.getDatacenter();
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .build());
  * 
  *         var folder = new Folder("folder", FolderArgs.builder()
  *             .path("test-folder")
  *             .type("vm")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *     }
@@ -107,18 +108,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var datacenter = VsphereFunctions.getDatacenter();
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .build());
  * 
  *         var parent = new Folder("parent", FolderArgs.builder()
  *             .path("test-parent")
  *             .type("vm")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var folder = new Folder("folder", FolderArgs.builder()
- *             .path(parent.path().applyValue(path -> String.format("%s/test-folder", path)))
+ *             .path(parent.path().applyValue(_path -> String.format("%s/test-folder", _path)))
  *             .type("vm")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *     }

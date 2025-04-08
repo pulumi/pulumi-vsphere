@@ -95,33 +95,33 @@ import javax.annotation.Nullable;
  * 
  *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("datastore1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("network1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .name("test")
- *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
- *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .resourcePoolId(cluster.resourcePoolId())
+ *             .datastoreId(datastore.id())
  *             .numCpus(2)
  *             .memory(2048)
  *             .guestId("otherLinux64Guest")
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .networkId(network.id())
  *                 .build())
  *             .disks(VirtualMachineDiskArgs.builder()
  *                 .label("disk0")
@@ -131,18 +131,18 @@ import javax.annotation.Nullable;
  * 
  *         var clusterVmGroup = new ComputeClusterVmGroup("clusterVmGroup", ComputeClusterVmGroupArgs.builder()
  *             .name("test-cluster-vm-group")
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .computeClusterId(cluster.id())
  *             .virtualMachineIds(vm.id())
  *             .build());
  * 
  *         var clusterHostGroup = new ComputeClusterHostGroup("clusterHostGroup", ComputeClusterHostGroupArgs.builder()
  *             .name("test-cluster-vm-group")
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
- *             .hostSystemIds(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .computeClusterId(cluster.id())
+ *             .hostSystemIds(host.id())
  *             .build());
  * 
  *         var clusterVmHostRule = new ComputeClusterVmHostRule("clusterVmHostRule", ComputeClusterVmHostRuleArgs.builder()
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .computeClusterId(cluster.id())
  *             .name("test-cluster-vm-host-rule")
  *             .vmGroupName(clusterVmGroup.name())
  *             .affinityHostGroupName(clusterHostGroup.name())

@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()
  *             .name("switch-01")
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .networkAdapters(            
  *                 "vmnic0",
  *                 "vmnic1")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()
  *             .name("portgroup-01")
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .virtualSwitchName(hostVirtualSwitch.name())
  *             .build());
  * 
@@ -134,12 +134,12 @@ import javax.annotation.Nullable;
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var hostVirtualSwitch = new HostVirtualSwitch("hostVirtualSwitch", HostVirtualSwitchArgs.builder()
  *             .name("switch-01")
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .networkAdapters(            
  *                 "vmnic0",
  *                 "vmnic1")
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  * 
  *         var pg = new HostPortGroup("pg", HostPortGroupArgs.builder()
  *             .name("portgroup-01")
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .virtualSwitchName(hostVirtualSwitch.name())
  *             .vlanId(4095)
  *             .allowPromiscuous(true)
