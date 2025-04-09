@@ -96,10 +96,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var datacenter = VsphereFunctions.getDatacenter();
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .build());
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var datastore = new VmfsDatastore("datastore", VmfsDatastoreArgs.builder()
@@ -161,11 +162,11 @@ import javax.annotation.Nullable;
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var available = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .rescan(true)
  *             .filter("naa.60a98000")
  *             .build());
@@ -174,7 +175,7 @@ import javax.annotation.Nullable;
  *             .name("test")
  *             .hostSystemId(esxiHost.id())
  *             .folder("datastore-folder")
- *             .disks(available.applyValue(getVmfsDisksResult -> getVmfsDisksResult.disks()))
+ *             .disks(available.disks())
  *             .build());
  * 
  *     }

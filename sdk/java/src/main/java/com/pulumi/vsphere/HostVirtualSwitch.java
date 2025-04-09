@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var switch_ = new HostVirtualSwitch("switch", HostVirtualSwitchArgs.builder()
  *             .name("vSwitchTest")
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .networkAdapters(            
  *                 "vmnic0",
  *                 "vmnic1")
@@ -117,12 +117,12 @@ import javax.annotation.Nullable;
  * 
  *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
  *             .name("esxi-01.example.com")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var switch_ = new HostVirtualSwitch("switch", HostVirtualSwitchArgs.builder()
  *             .name("vSwitchTest")
- *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+ *             .hostSystemId(host.id())
  *             .networkAdapters(            
  *                 "vmnic0",
  *                 "vmnic1")
