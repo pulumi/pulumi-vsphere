@@ -141,7 +141,7 @@ public final class VsphereFunctions {
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -197,7 +197,7 @@ public final class VsphereFunctions {
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -253,7 +253,7 @@ public final class VsphereFunctions {
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -309,7 +309,7 @@ public final class VsphereFunctions {
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -365,7 +365,7 @@ public final class VsphereFunctions {
      * 
      *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -418,19 +418,19 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
      *             .name("hostgroup-01")
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .build());
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
-     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .affinityHostGroupName(hostGroup.name())
      *             .build());
      * 
      *     }
@@ -483,19 +483,19 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
      *             .name("hostgroup-01")
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .build());
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
-     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .affinityHostGroupName(hostGroup.name())
      *             .build());
      * 
      *     }
@@ -548,19 +548,19 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
      *             .name("hostgroup-01")
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .build());
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
-     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .affinityHostGroupName(hostGroup.name())
      *             .build());
      * 
      *     }
@@ -613,19 +613,19 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
      *             .name("hostgroup-01")
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .build());
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
-     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .affinityHostGroupName(hostGroup.name())
      *             .build());
      * 
      *     }
@@ -678,19 +678,19 @@ public final class VsphereFunctions {
      * 
      *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
      *             .name("cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var hostGroup = VsphereFunctions.getComputeClusterHostGroup(GetComputeClusterHostGroupArgs.builder()
      *             .name("hostgroup-01")
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .build());
      * 
      *         var hostRule = new ComputeClusterVmHostRule("hostRule", ComputeClusterVmHostRuleArgs.builder()
-     *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+     *             .computeClusterId(cluster.id())
      *             .name("pulumi-host-rule1")
      *             .vmGroupName("vmgroup-01")
-     *             .affinityHostGroupName(hostGroup.applyValue(getComputeClusterHostGroupResult -> getComputeClusterHostGroupResult.name()))
+     *             .affinityHostGroupName(hostGroup.name())
      *             .build());
      * 
      *     }
@@ -1586,7 +1586,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
      *             .name("datastore-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1637,7 +1637,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
      *             .name("datastore-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1688,7 +1688,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
      *             .name("datastore-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1739,7 +1739,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
      *             .name("datastore-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1790,7 +1790,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
      *             .name("datastore-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1841,7 +1841,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
      *             .name("datastore-cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1892,7 +1892,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
      *             .name("datastore-cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1943,7 +1943,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
      *             .name("datastore-cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -1994,7 +1994,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
      *             .name("datastore-cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -2045,7 +2045,7 @@ public final class VsphereFunctions {
      * 
      *         final var datastoreCluster = VsphereFunctions.getDatastoreCluster(GetDatastoreClusterArgs.builder()
      *             .name("datastore-cluster-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -2095,7 +2095,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -2181,7 +2181,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -2267,7 +2267,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -2353,7 +2353,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -2439,7 +2439,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var datastoreStats = VsphereFunctions.getDatastoreStats(GetDatastoreStatsArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -2537,14 +2537,14 @@ public final class VsphereFunctions {
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
      *             .name("vds-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
+     *             .distributedVirtualSwitchUuid(vds.id())
+     *             .activeUplinks(vds.uplinks()[0])
+     *             .standbyUplinks(vds.uplinks()[1])
      *             .build());
      * 
      *     }
@@ -2606,14 +2606,14 @@ public final class VsphereFunctions {
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
      *             .name("vds-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
+     *             .distributedVirtualSwitchUuid(vds.id())
+     *             .activeUplinks(vds.uplinks()[0])
+     *             .standbyUplinks(vds.uplinks()[1])
      *             .build());
      * 
      *     }
@@ -2675,14 +2675,14 @@ public final class VsphereFunctions {
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
      *             .name("vds-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
+     *             .distributedVirtualSwitchUuid(vds.id())
+     *             .activeUplinks(vds.uplinks()[0])
+     *             .standbyUplinks(vds.uplinks()[1])
      *             .build());
      * 
      *     }
@@ -2744,14 +2744,14 @@ public final class VsphereFunctions {
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
      *             .name("vds-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
+     *             .distributedVirtualSwitchUuid(vds.id())
+     *             .activeUplinks(vds.uplinks()[0])
+     *             .standbyUplinks(vds.uplinks()[1])
      *             .build());
      * 
      *     }
@@ -2813,14 +2813,14 @@ public final class VsphereFunctions {
      * 
      *         final var vds = VsphereFunctions.getDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs.builder()
      *             .name("vds-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         var dvpg = new DistributedPortGroup("dvpg", DistributedPortGroupArgs.builder()
      *             .name("dvpg-01")
-     *             .distributedVirtualSwitchUuid(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.id()))
-     *             .activeUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[0]))
-     *             .standbyUplinks(vds.applyValue(getDistributedVirtualSwitchResult -> getDistributedVirtualSwitchResult.uplinks()[1]))
+     *             .distributedVirtualSwitchUuid(vds.id())
+     *             .activeUplinks(vds.uplinks()[0])
+     *             .standbyUplinks(vds.uplinks()[1])
      *             .build());
      * 
      *     }
@@ -2884,8 +2884,8 @@ public final class VsphereFunctions {
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *                 tag1.id(),
+     *                 tag1.id())
      *             .nameRegex("ubuntu")
      *             .type("Datacenter")
      *             .build());
@@ -2951,8 +2951,8 @@ public final class VsphereFunctions {
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *                 tag1.id(),
+     *                 tag1.id())
      *             .nameRegex("ubuntu")
      *             .type("Datacenter")
      *             .build());
@@ -3018,8 +3018,8 @@ public final class VsphereFunctions {
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *                 tag1.id(),
+     *                 tag1.id())
      *             .nameRegex("ubuntu")
      *             .type("Datacenter")
      *             .build());
@@ -3085,8 +3085,8 @@ public final class VsphereFunctions {
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *                 tag1.id(),
+     *                 tag1.id())
      *             .nameRegex("ubuntu")
      *             .type("Datacenter")
      *             .build());
@@ -3152,8 +3152,8 @@ public final class VsphereFunctions {
      * 
      *         final var dyn = VsphereFunctions.getDynamic(GetDynamicArgs.builder()
      *             .filters(            
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()),
-     *                 tag1.applyValue(getTagResult -> getTagResult.id()))
+     *                 tag1.id(),
+     *                 tag1.id())
      *             .nameRegex("ubuntu")
      *             .type("Datacenter")
      *             .build());
@@ -3505,7 +3505,7 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -3555,7 +3555,7 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -3605,7 +3605,7 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -3655,7 +3655,7 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -3705,7 +3705,7 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -3746,7 +3746,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3786,7 +3786,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3826,7 +3826,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3866,7 +3866,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3906,7 +3906,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3946,7 +3946,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3986,7 +3986,7 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var baseImages = VsphereFunctions.getHostBaseImages();
+     *         final var baseImages = VsphereFunctions.getHostBaseImages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4038,13 +4038,13 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .classId(123)
-     *             .vendorId(456)
+     *             .hostId(host.id())
+     *             .classId("123")
+     *             .vendorId("456")
      *             .build());
      * 
      *     }
@@ -4086,11 +4086,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("MMC")
      *             .build());
      * 
@@ -4144,13 +4144,13 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .classId(123)
-     *             .vendorId(456)
+     *             .hostId(host.id())
+     *             .classId("123")
+     *             .vendorId("456")
      *             .build());
      * 
      *     }
@@ -4192,11 +4192,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("MMC")
      *             .build());
      * 
@@ -4250,13 +4250,13 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .classId(123)
-     *             .vendorId(456)
+     *             .hostId(host.id())
+     *             .classId("123")
+     *             .vendorId("456")
      *             .build());
      * 
      *     }
@@ -4298,11 +4298,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("MMC")
      *             .build());
      * 
@@ -4356,13 +4356,13 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .classId(123)
-     *             .vendorId(456)
+     *             .hostId(host.id())
+     *             .classId("123")
+     *             .vendorId("456")
      *             .build());
      * 
      *     }
@@ -4404,11 +4404,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("MMC")
      *             .build());
      * 
@@ -4462,13 +4462,13 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
-     *             .classId(123)
-     *             .vendorId(456)
+     *             .hostId(host.id())
+     *             .classId("123")
+     *             .vendorId("456")
      *             .build());
      * 
      *     }
@@ -4510,11 +4510,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var dev = VsphereFunctions.getHostPciDevice(GetHostPciDeviceArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("MMC")
      *             .build());
      * 
@@ -4817,11 +4817,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .build());
      * 
      *     }
@@ -4863,11 +4863,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("a100")
      *             .build());
      * 
@@ -4920,11 +4920,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .build());
      * 
      *     }
@@ -4966,11 +4966,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("a100")
      *             .build());
      * 
@@ -5023,11 +5023,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .build());
      * 
      *     }
@@ -5069,11 +5069,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("a100")
      *             .build());
      * 
@@ -5126,11 +5126,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .build());
      * 
      *     }
@@ -5172,11 +5172,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("a100")
      *             .build());
      * 
@@ -5229,11 +5229,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .build());
      * 
      *     }
@@ -5275,11 +5275,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vgpuProfile = VsphereFunctions.getHostVgpuProfile(GetHostVgpuProfileArgs.builder()
-     *             .hostId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostId(host.id())
      *             .nameRegex("a100")
      *             .build());
      * 
@@ -5547,7 +5547,7 @@ public final class VsphereFunctions {
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name("VM Network")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -5587,7 +5587,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .name("VM Network")
      *             .filters(GetNetworkFilterArgs.builder()
      *                 .networkType("Network")
@@ -5643,7 +5643,7 @@ public final class VsphereFunctions {
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name("VM Network")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -5683,7 +5683,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .name("VM Network")
      *             .filters(GetNetworkFilterArgs.builder()
      *                 .networkType("Network")
@@ -5739,7 +5739,7 @@ public final class VsphereFunctions {
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name("VM Network")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -5779,7 +5779,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .name("VM Network")
      *             .filters(GetNetworkFilterArgs.builder()
      *                 .networkType("Network")
@@ -5835,7 +5835,7 @@ public final class VsphereFunctions {
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name("VM Network")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -5875,7 +5875,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .name("VM Network")
      *             .filters(GetNetworkFilterArgs.builder()
      *                 .networkType("Network")
@@ -5931,7 +5931,7 @@ public final class VsphereFunctions {
      * 
      *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name("VM Network")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -5971,7 +5971,7 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var myPortGroup = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .name("VM Network")
      *             .filters(GetNetworkFilterArgs.builder()
      *                 .networkType("Network")
@@ -6326,7 +6326,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("resource-pool-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -6427,7 +6427,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("resource-pool-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -6528,7 +6528,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("resource-pool-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -6629,7 +6629,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("resource-pool-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -6730,7 +6730,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("resource-pool-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -6831,7 +6831,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("resource-pool-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -6932,7 +6932,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
      *             .name("resource-pool-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -7252,7 +7252,7 @@ public final class VsphereFunctions {
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
-     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
+     *             .categoryId(category.id())
      *             .build());
      * 
      *     }
@@ -7307,7 +7307,7 @@ public final class VsphereFunctions {
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
-     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
+     *             .categoryId(category.id())
      *             .build());
      * 
      *     }
@@ -7362,7 +7362,7 @@ public final class VsphereFunctions {
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
-     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
+     *             .categoryId(category.id())
      *             .build());
      * 
      *     }
@@ -7417,7 +7417,7 @@ public final class VsphereFunctions {
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
-     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
+     *             .categoryId(category.id())
      *             .build());
      * 
      *     }
@@ -7472,7 +7472,7 @@ public final class VsphereFunctions {
      * 
      *         final var tag = VsphereFunctions.getTag(GetTagArgs.builder()
      *             .name("example-tag")
-     *             .categoryId(category.applyValue(getTagCategoryResult -> getTagCategoryResult.id()))
+     *             .categoryId(category.id())
      *             .build());
      * 
      *     }
@@ -7768,7 +7768,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
      *             .name("vapp-container-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -7819,7 +7819,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
      *             .name("vapp-container-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -7870,7 +7870,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
      *             .name("vapp-container-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -7921,7 +7921,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
      *             .name("vapp-container-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -7972,7 +7972,7 @@ public final class VsphereFunctions {
      * 
      *         final var pool = VsphereFunctions.getVappContainer(GetVappContainerArgs.builder()
      *             .name("vapp-container-01")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8027,7 +8027,7 @@ public final class VsphereFunctions {
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8069,12 +8069,12 @@ public final class VsphereFunctions {
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("production/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("development/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8129,7 +8129,7 @@ public final class VsphereFunctions {
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8171,12 +8171,12 @@ public final class VsphereFunctions {
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("production/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("development/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8231,7 +8231,7 @@ public final class VsphereFunctions {
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8273,12 +8273,12 @@ public final class VsphereFunctions {
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("production/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("development/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8333,7 +8333,7 @@ public final class VsphereFunctions {
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8375,12 +8375,12 @@ public final class VsphereFunctions {
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("production/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("development/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8435,7 +8435,7 @@ public final class VsphereFunctions {
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8477,12 +8477,12 @@ public final class VsphereFunctions {
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("production/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("development/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8537,7 +8537,7 @@ public final class VsphereFunctions {
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8579,12 +8579,12 @@ public final class VsphereFunctions {
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("production/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("development/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8639,7 +8639,7 @@ public final class VsphereFunctions {
      * 
      *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8681,12 +8681,12 @@ public final class VsphereFunctions {
      * 
      *         final var productionTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("production/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var developmentTemplate = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
      *             .name("development/templates/ubuntu-server-template")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *     }
@@ -8738,11 +8738,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostSystemId(host.id())
      *             .rescan(true)
      *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
@@ -8796,11 +8796,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostSystemId(host.id())
      *             .rescan(true)
      *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
@@ -8854,11 +8854,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostSystemId(host.id())
      *             .rescan(true)
      *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
@@ -8912,11 +8912,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostSystemId(host.id())
      *             .rescan(true)
      *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());
@@ -8970,11 +8970,11 @@ public final class VsphereFunctions {
      * 
      *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
      *             .name("esxi-01.example.com")
-     *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+     *             .datacenterId(datacenter.id())
      *             .build());
      * 
      *         final var vmfsDisks = VsphereFunctions.getVmfsDisks(GetVmfsDisksArgs.builder()
-     *             .hostSystemId(host.applyValue(getHostResult -> getHostResult.id()))
+     *             .hostSystemId(host.id())
      *             .rescan(true)
      *             .filter("mpx.vmhba1:C0:T[12]:L0")
      *             .build());

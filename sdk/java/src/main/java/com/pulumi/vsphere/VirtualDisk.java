@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .type("thin")
  *             .vmdkPath("/foo/foo.vmdk")
  *             .createDirectories(true)
- *             .datacenter(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.name()))
+ *             .datacenter(datacenter.name())
  *             .datastore(datastoreVsphereDatastore.name())
  *             .build());
  * 

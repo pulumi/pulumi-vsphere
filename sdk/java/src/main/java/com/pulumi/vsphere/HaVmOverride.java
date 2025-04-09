@@ -85,28 +85,28 @@ import javax.annotation.Nullable;
  * 
  *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("datastore1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
  *             .name("cluster-01")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name("network1")
- *             .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+ *             .datacenterId(datacenter.id())
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
  *             .name("test")
- *             .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
- *             .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+ *             .resourcePoolId(cluster.resourcePoolId())
+ *             .datastoreId(datastore.id())
  *             .numCpus(2)
  *             .memory(2048)
  *             .guestId("otherLinux64Guest")
  *             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
- *                 .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+ *                 .networkId(network.id())
  *                 .build())
  *             .disks(VirtualMachineDiskArgs.builder()
  *                 .label("disk0")
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var haVmOverride = new HaVmOverride("haVmOverride", HaVmOverrideArgs.builder()
- *             .computeClusterId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.id()))
+ *             .computeClusterId(cluster.id())
  *             .virtualMachineId(vm.id())
  *             .haVmRestartPriority("highest")
  *             .build());
