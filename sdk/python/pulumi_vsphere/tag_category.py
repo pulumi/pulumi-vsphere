@@ -192,6 +192,9 @@ class _TagCategoryState:
 
 
 class TagCategory(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/tagCategory:TagCategory"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

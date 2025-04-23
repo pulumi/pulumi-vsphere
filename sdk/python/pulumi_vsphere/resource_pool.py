@@ -549,6 +549,9 @@ class _ResourcePoolState:
 
 
 class ResourcePool(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/resourcePool:ResourcePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

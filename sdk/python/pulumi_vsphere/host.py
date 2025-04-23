@@ -629,6 +629,9 @@ class _HostState:
 
 
 class Host(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/host:Host"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

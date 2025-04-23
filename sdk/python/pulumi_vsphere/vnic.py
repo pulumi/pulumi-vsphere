@@ -355,6 +355,9 @@ class _VnicState:
 
 
 class Vnic(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/vnic:Vnic"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

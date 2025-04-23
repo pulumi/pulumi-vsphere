@@ -560,6 +560,9 @@ class _HaVmOverrideState:
 
 
 class HaVmOverride(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/haVmOverride:HaVmOverride"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

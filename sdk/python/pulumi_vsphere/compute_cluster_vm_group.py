@@ -185,6 +185,9 @@ class _ComputeClusterVmGroupState:
 
 
 class ComputeClusterVmGroup(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

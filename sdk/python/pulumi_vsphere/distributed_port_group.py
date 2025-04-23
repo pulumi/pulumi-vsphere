@@ -1625,6 +1625,9 @@ class _DistributedPortGroupState:
 
 
 class DistributedPortGroup(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/distributedPortGroup:DistributedPortGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
