@@ -240,6 +240,9 @@ class _StorageDrsVmOverrideState:
 
 
 class StorageDrsVmOverride(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

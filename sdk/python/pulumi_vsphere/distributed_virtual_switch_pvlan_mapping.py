@@ -158,6 +158,9 @@ class _DistributedVirtualSwitchPvlanMappingState:
 
 
 class DistributedVirtualSwitchPvlanMapping(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/distributedVirtualSwitchPvlanMapping:DistributedVirtualSwitchPvlanMapping"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

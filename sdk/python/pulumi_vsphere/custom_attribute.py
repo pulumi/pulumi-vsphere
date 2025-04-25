@@ -106,6 +106,9 @@ class _CustomAttributeState:
 
 
 class CustomAttribute(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/customAttribute:CustomAttribute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

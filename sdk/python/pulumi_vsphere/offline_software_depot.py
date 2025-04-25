@@ -83,6 +83,9 @@ class _OfflineSoftwareDepotState:
 
 
 class OfflineSoftwareDepot(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

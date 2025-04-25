@@ -2699,6 +2699,9 @@ class _VirtualMachineState:
 
 
 class VirtualMachine(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/virtualMachine:VirtualMachine"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

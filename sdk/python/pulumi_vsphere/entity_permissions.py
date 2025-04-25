@@ -149,6 +149,9 @@ class _EntityPermissionsState:
 
 
 class EntityPermissions(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/entityPermissions:EntityPermissions"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

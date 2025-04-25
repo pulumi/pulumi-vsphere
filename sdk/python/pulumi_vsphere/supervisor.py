@@ -584,6 +584,9 @@ class _SupervisorState:
 
 
 class Supervisor(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/supervisor:Supervisor"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

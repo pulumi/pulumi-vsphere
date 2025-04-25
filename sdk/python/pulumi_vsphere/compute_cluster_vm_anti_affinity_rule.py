@@ -224,6 +224,9 @@ class _ComputeClusterVmAntiAffinityRuleState:
 
 
 class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

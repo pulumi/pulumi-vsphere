@@ -921,6 +921,9 @@ class _DatastoreClusterState:
 
 
 class DatastoreCluster(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/datastoreCluster:DatastoreCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
