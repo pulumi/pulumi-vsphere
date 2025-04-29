@@ -279,6 +279,9 @@ class _ComputeClusterVmDependencyRuleState:
 
 
 class ComputeClusterVmDependencyRule(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

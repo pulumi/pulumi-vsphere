@@ -131,6 +131,9 @@ class _VmStoragePolicyState:
 
 
 class VmStoragePolicy(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/vmStoragePolicy:VmStoragePolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -196,6 +196,9 @@ class _DpmHostOverrideState:
 
 
 class DpmHostOverride(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/dpmHostOverride:DpmHostOverride"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

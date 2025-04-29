@@ -277,6 +277,9 @@ class _VirtualMachineSnapshotState:
 
 
 class VirtualMachineSnapshot(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

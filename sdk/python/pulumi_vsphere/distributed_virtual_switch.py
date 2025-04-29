@@ -3145,6 +3145,9 @@ class _DistributedVirtualSwitchState:
 
 
 class DistributedVirtualSwitch(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
