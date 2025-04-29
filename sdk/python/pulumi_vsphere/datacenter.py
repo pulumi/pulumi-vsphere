@@ -218,6 +218,9 @@ class _DatacenterState:
 
 
 class Datacenter(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/datacenter:Datacenter"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

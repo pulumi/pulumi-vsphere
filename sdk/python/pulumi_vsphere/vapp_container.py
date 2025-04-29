@@ -625,6 +625,9 @@ class _VappContainerState:
 
 
 class VappContainer(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/vappContainer:VappContainer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

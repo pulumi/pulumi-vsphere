@@ -666,6 +666,9 @@ class _HostPortGroupState:
 
 
 class HostPortGroup(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/hostPortGroup:HostPortGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

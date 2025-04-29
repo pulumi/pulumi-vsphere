@@ -363,6 +363,9 @@ class _VirtualDiskState:
 
 
 class VirtualDisk(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/virtualDisk:VirtualDisk"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

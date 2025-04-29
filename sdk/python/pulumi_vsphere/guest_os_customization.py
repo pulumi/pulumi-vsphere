@@ -194,6 +194,9 @@ class _GuestOsCustomizationState:
 
 
 class GuestOsCustomization(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/guestOsCustomization:GuestOsCustomization"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

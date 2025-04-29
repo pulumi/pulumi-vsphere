@@ -216,6 +216,9 @@ class _DatastoreClusterVmAntiAffinityRuleState:
 
 
 class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

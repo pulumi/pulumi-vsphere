@@ -743,6 +743,9 @@ class _HostVirtualSwitchState:
 
 
 class HostVirtualSwitch(pulumi.CustomResource):
+
+    pulumi_type = "vsphere:index/hostVirtualSwitch:HostVirtualSwitch"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
