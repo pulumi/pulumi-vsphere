@@ -130,10 +130,8 @@ class _VmStoragePolicyState:
         pulumi.set(self, "tag_rules", value)
 
 
+@pulumi.type_token("vsphere:index/vmStoragePolicy:VmStoragePolicy")
 class VmStoragePolicy(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/vmStoragePolicy:VmStoragePolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

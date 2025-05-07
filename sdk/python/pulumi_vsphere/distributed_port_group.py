@@ -1624,10 +1624,8 @@ class _DistributedPortGroupState:
         pulumi.set(self, "vlan_ranges", value)
 
 
+@pulumi.type_token("vsphere:index/distributedPortGroup:DistributedPortGroup")
 class DistributedPortGroup(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/distributedPortGroup:DistributedPortGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -160,10 +160,8 @@ class _LicenseState:
         pulumi.set(self, "used", value)
 
 
+@pulumi.type_token("vsphere:index/license:License")
 class License(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/license:License"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

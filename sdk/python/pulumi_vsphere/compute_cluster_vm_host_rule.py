@@ -323,10 +323,8 @@ class _ComputeClusterVmHostRuleState:
         pulumi.set(self, "vm_group_name", value)
 
 
+@pulumi.type_token("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule")
 class ComputeClusterVmHostRule(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

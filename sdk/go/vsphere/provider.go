@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,11 +23,11 @@ type Provider struct {
 	// govmomi debug path for a single run
 	ClientDebugPathRun pulumi.StringPtrOutput `pulumi:"clientDebugPathRun"`
 	// The user password for vSphere API operations.
-	Password pulumi.StringOutput `pulumi:"password"`
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath pulumi.StringPtrOutput `pulumi:"restSessionPath"`
 	// The user name for vSphere API operations.
-	User pulumi.StringOutput `pulumi:"user"`
+	User pulumi.StringPtrOutput `pulumi:"user"`
 	// Deprecated: This field has been renamed to vsphere_server.
 	VcenterServer pulumi.StringPtrOutput `pulumi:"vcenterServer"`
 	// The directory to save vSphere SOAP API sessions to
@@ -41,15 +40,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.Password == nil {
-		return nil, errors.New("invalid value for required argument 'Password'")
-	}
-	if args.User == nil {
-		return nil, errors.New("invalid value for required argument 'User'")
-	}
 	if args.AllowUnverifiedSsl == nil {
 		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL"); d != nil {
 			args.AllowUnverifiedSsl = pulumi.BoolPtr(d.(bool))
@@ -111,13 +104,13 @@ type providerArgs struct {
 	// govmomi debug path for a single run
 	ClientDebugPathRun *string `pulumi:"clientDebugPathRun"`
 	// The user password for vSphere API operations.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// Persist vSphere client sessions to disk
 	PersistSession *bool `pulumi:"persistSession"`
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath *string `pulumi:"restSessionPath"`
 	// The user name for vSphere API operations.
-	User string `pulumi:"user"`
+	User *string `pulumi:"user"`
 	// Deprecated: This field has been renamed to vsphere_server.
 	VcenterServer *string `pulumi:"vcenterServer"`
 	// Keep alive interval for the VIM session in minutes
@@ -141,13 +134,13 @@ type ProviderArgs struct {
 	// govmomi debug path for a single run
 	ClientDebugPathRun pulumi.StringPtrInput
 	// The user password for vSphere API operations.
-	Password pulumi.StringInput
+	Password pulumi.StringPtrInput
 	// Persist vSphere client sessions to disk
 	PersistSession pulumi.BoolPtrInput
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath pulumi.StringPtrInput
 	// The user name for vSphere API operations.
-	User pulumi.StringInput
+	User pulumi.StringPtrInput
 	// Deprecated: This field has been renamed to vsphere_server.
 	VcenterServer pulumi.StringPtrInput
 	// Keep alive interval for the VIM session in minutes
@@ -160,6 +153,29 @@ type ProviderArgs struct {
 
 func (ProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerArgs)(nil)).Elem()
+}
+
+// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+func (r *Provider) TerraformConfig(ctx *pulumi.Context) (ProviderTerraformConfigResultOutput, error) {
+	out, err := ctx.Call("pulumi:providers:vsphere/terraformConfig", nil, ProviderTerraformConfigResultOutput{}, r)
+	if err != nil {
+		return ProviderTerraformConfigResultOutput{}, err
+	}
+	return out.(ProviderTerraformConfigResultOutput), nil
+}
+
+type ProviderTerraformConfigResult struct {
+	Result map[string]interface{} `pulumi:"result"`
+}
+
+type ProviderTerraformConfigResultOutput struct{ *pulumi.OutputState }
+
+func (ProviderTerraformConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderTerraformConfigResult)(nil)).Elem()
+}
+
+func (o ProviderTerraformConfigResultOutput) Result() pulumi.MapOutput {
+	return o.ApplyT(func(v ProviderTerraformConfigResult) map[string]interface{} { return v.Result }).(pulumi.MapOutput)
 }
 
 type ProviderInput interface {
@@ -206,8 +222,8 @@ func (o ProviderOutput) ClientDebugPathRun() pulumi.StringPtrOutput {
 }
 
 // The user password for vSphere API operations.
-func (o ProviderOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+func (o ProviderOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The directory to save vSphere REST API sessions to
@@ -216,8 +232,8 @@ func (o ProviderOutput) RestSessionPath() pulumi.StringPtrOutput {
 }
 
 // The user name for vSphere API operations.
-func (o ProviderOutput) User() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+func (o ProviderOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.User }).(pulumi.StringPtrOutput)
 }
 
 // Deprecated: This field has been renamed to vsphere_server.
@@ -238,4 +254,5 @@ func (o ProviderOutput) VsphereServer() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderTerraformConfigResultOutput{})
 }

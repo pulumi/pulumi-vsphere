@@ -278,10 +278,8 @@ class _ComputeClusterVmDependencyRuleState:
         pulumi.set(self, "vm_group_name", value)
 
 
+@pulumi.type_token("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule")
 class ComputeClusterVmDependencyRule(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

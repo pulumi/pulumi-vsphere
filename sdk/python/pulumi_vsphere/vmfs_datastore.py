@@ -453,10 +453,8 @@ class _VmfsDatastoreState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("vsphere:index/vmfsDatastore:VmfsDatastore")
 class VmfsDatastore(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/vmfsDatastore:VmfsDatastore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

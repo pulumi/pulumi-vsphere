@@ -559,10 +559,8 @@ class _HaVmOverrideState:
         pulumi.set(self, "virtual_machine_id", value)
 
 
+@pulumi.type_token("vsphere:index/haVmOverride:HaVmOverride")
 class HaVmOverride(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/haVmOverride:HaVmOverride"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -354,10 +354,8 @@ class _VnicState:
         pulumi.set(self, "services", value)
 
 
+@pulumi.type_token("vsphere:index/vnic:Vnic")
 class Vnic(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/vnic:Vnic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

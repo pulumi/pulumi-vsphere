@@ -223,10 +223,8 @@ class _VirtualMachineClassState:
         pulumi.set(self, "vgpu_devices", value)
 
 
+@pulumi.type_token("vsphere:index/virtualMachineClass:VirtualMachineClass")
 class VirtualMachineClass(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/virtualMachineClass:VirtualMachineClass"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

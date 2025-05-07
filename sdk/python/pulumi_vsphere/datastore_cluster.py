@@ -920,10 +920,8 @@ class _DatastoreClusterState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("vsphere:index/datastoreCluster:DatastoreCluster")
 class DatastoreCluster(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/datastoreCluster:DatastoreCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

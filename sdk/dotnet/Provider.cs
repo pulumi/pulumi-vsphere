@@ -34,7 +34,7 @@ namespace Pulumi.VSphere
         /// The user password for vSphere API operations.
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
         /// The directory to save vSphere REST API sessions to
@@ -46,7 +46,7 @@ namespace Pulumi.VSphere
         /// The user name for vSphere API operations.
         /// </summary>
         [Output("user")]
-        public Output<string> User { get; private set; } = null!;
+        public Output<string?> User { get; private set; } = null!;
 
         [Output("vcenterServer")]
         public Output<string?> VcenterServer { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.VSphere
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("vsphere", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -87,6 +87,12 @@ namespace Pulumi.VSphere
             merged.Id = id ?? merged.Id;
             return merged;
         }
+
+        /// <summary>
+        /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        /// </summary>
+        public global::Pulumi.Output<ProviderTerraformConfigResult> TerraformConfig()
+            => global::Pulumi.Deployment.Instance.Call<ProviderTerraformConfigResult>("pulumi:providers:vsphere/terraformConfig", CallArgs.Empty, this);
     }
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
@@ -124,8 +130,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The user password for vSphere API operations.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// Persist vSphere client sessions to disk
@@ -142,8 +148,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The user name for vSphere API operations.
         /// </summary>
-        [Input("user", required: true)]
-        public Input<string> User { get; set; } = null!;
+        [Input("user")]
+        public Input<string>? User { get; set; }
 
         [Input("vcenterServer")]
         public Input<string>? VcenterServer { get; set; }
@@ -178,5 +184,20 @@ namespace Pulumi.VSphere
             VimSessionPath = Utilities.GetEnv("VSPHERE_VIM_SESSION_PATH");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
+    }
+
+    /// <summary>
+    /// The results of the <see cref="Provider.TerraformConfig"/> method.
+    /// </summary>
+    [OutputType]
+    public sealed class ProviderTerraformConfigResult
+    {
+        public readonly ImmutableDictionary<string, object> Result;
+
+        [OutputConstructor]
+        private ProviderTerraformConfigResult(ImmutableDictionary<string, object> result)
+        {
+            Result = result;
+        }
     }
 }

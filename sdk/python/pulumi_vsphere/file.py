@@ -286,10 +286,8 @@ class _FileState:
         pulumi.set(self, "source_file", value)
 
 
+@pulumi.type_token("vsphere:index/file:File")
 class File(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/file:File"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

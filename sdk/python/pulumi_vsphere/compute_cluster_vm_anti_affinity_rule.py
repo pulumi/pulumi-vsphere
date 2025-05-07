@@ -223,10 +223,8 @@ class _ComputeClusterVmAntiAffinityRuleState:
         pulumi.set(self, "virtual_machine_ids", value)
 
 
+@pulumi.type_token("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule")
 class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

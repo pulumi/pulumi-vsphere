@@ -113,10 +113,8 @@ class _RoleState:
         pulumi.set(self, "role_privileges", value)
 
 
+@pulumi.type_token("vsphere:index/role:Role")
 class Role(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/role:Role"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

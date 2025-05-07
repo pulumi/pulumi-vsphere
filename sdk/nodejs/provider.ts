@@ -36,7 +36,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The user password for vSphere API operations.
      */
-    public readonly password!: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The directory to save vSphere REST API sessions to
      */
@@ -44,7 +44,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The user name for vSphere API operations.
      */
-    public readonly user!: pulumi.Output<string>;
+    public readonly user!: pulumi.Output<string | undefined>;
     /**
      * @deprecated This field has been renamed to vsphere_server.
      */
@@ -65,16 +65,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.password === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'password'");
-            }
-            if ((!args || args.user === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'user'");
-            }
             resourceInputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) ?? utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
             resourceInputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
             resourceInputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) ?? utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
@@ -91,6 +85,15 @@ export class Provider extends pulumi.ProviderResource {
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
+    }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<Provider.TerraformConfigResult> {
+        return pulumi.runtime.call("pulumi:providers:vsphere/terraformConfig", {
+            "__self__": this,
+        }, this);
     }
 }
 
@@ -121,7 +124,7 @@ export interface ProviderArgs {
     /**
      * The user password for vSphere API operations.
      */
-    password: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Persist vSphere client sessions to disk
      */
@@ -133,7 +136,7 @@ export interface ProviderArgs {
     /**
      * The user name for vSphere API operations.
      */
-    user: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
     /**
      * @deprecated This field has been renamed to vsphere_server.
      */
@@ -150,4 +153,14 @@ export interface ProviderArgs {
      * The vSphere Server name for vSphere API operations.
      */
     vsphereServer?: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }
