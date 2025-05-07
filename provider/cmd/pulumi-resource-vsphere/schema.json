@@ -1846,10 +1846,6 @@
                 "description": "The vSphere Server name for vSphere API operations.\n"
             }
         },
-        "required": [
-            "password",
-            "user"
-        ],
         "inputProperties": {
             "allowUnverifiedSsl": {
                 "type": "boolean",
@@ -1944,10 +1940,9 @@
                 "description": "The vSphere Server name for vSphere API operations.\n"
             }
         },
-        "requiredInputs": [
-            "password",
-            "user"
-        ]
+        "methods": {
+            "terraformConfig": "pulumi:providers:vsphere/terraformConfig"
+        }
     },
     "resources": {
         "vsphere:index/computeCluster:ComputeCluster": {
@@ -11335,6 +11330,35 @@
         }
     },
     "functions": {
+        "pulumi:providers:vsphere/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:vsphere"
+                    }
+                },
+                "type": "pulumi:providers:vsphere/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
         "vsphere:index/getComputeCluster:getComputeCluster": {
             "description": "The `vsphere.ComputeCluster` data source can be used to discover the ID of a\ncluster in vSphere. This is useful to fetch the ID of a cluster that you want\nto use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus\nusing the alias available through the `vsphere.ResourcePool`\ndata source.\n\n\u003e You may also wish to see the `vsphere.ComputeCluster`\n resource for more information about clusters and how to managed the resource\n in this provider.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst computeCluster = datacenter.then(datacenter =\u003e vsphere.getComputeCluster({\n    name: \"cluster-01\",\n    datacenterId: datacenter.id,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\ncompute_cluster = vsphere.get_compute_cluster(name=\"cluster-01\",\n    datacenter_id=datacenter.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var computeCluster = VSphere.GetComputeCluster.Invoke(new()\n    {\n        Name = \"cluster-01\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.LookupComputeCluster(ctx, \u0026vsphere.LookupComputeClusterArgs{\n\t\t\tName:         \"cluster-01\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenter.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetComputeClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()\n            .name(\"cluster-01\")\n            .datacenterId(datacenter.id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      function: vsphere:getDatacenter\n      arguments:\n        name: dc-01\n  computeCluster:\n    fn::invoke:\n      function: vsphere:getComputeCluster\n      arguments:\n        name: cluster-01\n        datacenterId: ${datacenter.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
