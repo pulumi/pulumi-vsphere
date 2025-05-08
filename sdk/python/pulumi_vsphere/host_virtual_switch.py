@@ -742,10 +742,8 @@ class _HostVirtualSwitchState:
         pulumi.set(self, "teaming_policy", value)
 
 
+@pulumi.type_token("vsphere:index/hostVirtualSwitch:HostVirtualSwitch")
 class HostVirtualSwitch(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/hostVirtualSwitch:HostVirtualSwitch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

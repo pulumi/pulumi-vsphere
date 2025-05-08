@@ -2454,10 +2454,8 @@ class _ComputeClusterState:
         pulumi.set(self, "vsan_verbose_mode_enabled", value)
 
 
+@pulumi.type_token("vsphere:index/computeCluster:ComputeCluster")
 class ComputeCluster(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/computeCluster:ComputeCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

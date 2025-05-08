@@ -239,10 +239,8 @@ class _StorageDrsVmOverrideState:
         pulumi.set(self, "virtual_machine_id", value)
 
 
+@pulumi.type_token("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride")
 class StorageDrsVmOverride(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -276,10 +276,8 @@ class _VirtualMachineSnapshotState:
         pulumi.set(self, "virtual_machine_uuid", value)
 
 
+@pulumi.type_token("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot")
 class VirtualMachineSnapshot(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

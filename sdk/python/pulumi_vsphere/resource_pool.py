@@ -548,10 +548,8 @@ class _ResourcePoolState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("vsphere:index/resourcePool:ResourcePool")
 class ResourcePool(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/resourcePool:ResourcePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

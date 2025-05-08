@@ -2698,10 +2698,8 @@ class _VirtualMachineState:
         pulumi.set(self, "wait_for_guest_net_timeout", value)
 
 
+@pulumi.type_token("vsphere:index/virtualMachine:VirtualMachine")
 class VirtualMachine(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/virtualMachine:VirtualMachine"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

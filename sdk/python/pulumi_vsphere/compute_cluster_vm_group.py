@@ -184,10 +184,8 @@ class _ComputeClusterVmGroupState:
         pulumi.set(self, "virtual_machine_ids", value)
 
 
+@pulumi.type_token("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup")
 class ComputeClusterVmGroup(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

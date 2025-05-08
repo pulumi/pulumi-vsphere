@@ -279,10 +279,8 @@ class _FolderState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("vsphere:index/folder:Folder")
 class Folder(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/folder:Folder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

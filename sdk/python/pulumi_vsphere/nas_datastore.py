@@ -626,10 +626,8 @@ class _NasDatastoreState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("vsphere:index/nasDatastore:NasDatastore")
 class NasDatastore(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/nasDatastore:NasDatastore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
