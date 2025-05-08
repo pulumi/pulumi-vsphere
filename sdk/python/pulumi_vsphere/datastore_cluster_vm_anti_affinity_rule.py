@@ -215,10 +215,8 @@ class _DatastoreClusterVmAntiAffinityRuleState:
         pulumi.set(self, "virtual_machine_ids", value)
 
 
+@pulumi.type_token("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")
 class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

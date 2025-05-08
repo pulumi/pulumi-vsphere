@@ -624,10 +624,8 @@ class _VappContainerState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("vsphere:index/vappContainer:VappContainer")
 class VappContainer(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/vappContainer:VappContainer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

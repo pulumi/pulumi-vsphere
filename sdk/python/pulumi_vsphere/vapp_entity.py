@@ -395,10 +395,8 @@ class _VappEntityState:
         pulumi.set(self, "wait_for_guest", value)
 
 
+@pulumi.type_token("vsphere:index/vappEntity:VappEntity")
 class VappEntity(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/vappEntity:VappEntity"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

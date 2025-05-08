@@ -164,10 +164,8 @@ class _ComputeClusterHostGroupState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup")
 class ComputeClusterHostGroup(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -665,10 +665,8 @@ class _HostPortGroupState:
         pulumi.set(self, "vlan_id", value)
 
 
+@pulumi.type_token("vsphere:index/hostPortGroup:HostPortGroup")
 class HostPortGroup(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/hostPortGroup:HostPortGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

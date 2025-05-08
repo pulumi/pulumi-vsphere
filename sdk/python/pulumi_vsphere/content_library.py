@@ -194,10 +194,8 @@ class _ContentLibraryState:
         pulumi.set(self, "subscription", value)
 
 
+@pulumi.type_token("vsphere:index/contentLibrary:ContentLibrary")
 class ContentLibrary(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/contentLibrary:ContentLibrary"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

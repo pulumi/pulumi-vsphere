@@ -148,10 +148,8 @@ class _EntityPermissionsState:
         pulumi.set(self, "permissions", value)
 
 
+@pulumi.type_token("vsphere:index/entityPermissions:EntityPermissions")
 class EntityPermissions(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/entityPermissions:EntityPermissions"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

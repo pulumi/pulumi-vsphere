@@ -217,10 +217,8 @@ class _DatacenterState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("vsphere:index/datacenter:Datacenter")
 class Datacenter(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/datacenter:Datacenter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

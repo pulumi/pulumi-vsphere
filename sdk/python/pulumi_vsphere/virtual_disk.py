@@ -362,10 +362,8 @@ class _VirtualDiskState:
         pulumi.set(self, "vmdk_path", value)
 
 
+@pulumi.type_token("vsphere:index/virtualDisk:VirtualDisk")
 class VirtualDisk(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/virtualDisk:VirtualDisk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

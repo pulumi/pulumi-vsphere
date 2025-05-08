@@ -583,10 +583,8 @@ class _SupervisorState:
         pulumi.set(self, "worker_ntps", value)
 
 
+@pulumi.type_token("vsphere:index/supervisor:Supervisor")
 class Supervisor(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/supervisor:Supervisor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

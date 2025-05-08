@@ -3144,10 +3144,8 @@ class _DistributedVirtualSwitchState:
         pulumi.set(self, "vsan_share_level", value)
 
 
+@pulumi.type_token("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch")
 class DistributedVirtualSwitch(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

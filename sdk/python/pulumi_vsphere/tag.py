@@ -136,10 +136,8 @@ class _TagState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("vsphere:index/tag:Tag")
 class Tag(pulumi.CustomResource):
-
-    pulumi_type = "vsphere:index/tag:Tag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
