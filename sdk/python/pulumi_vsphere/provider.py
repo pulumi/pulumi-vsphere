@@ -20,36 +20,34 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 password: pulumi.Input[builtins.str],
-                 user: pulumi.Input[builtins.str],
                  allow_unverified_ssl: Optional[pulumi.Input[builtins.bool]] = None,
                  api_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  client_debug: Optional[pulumi.Input[builtins.bool]] = None,
                  client_debug_path: Optional[pulumi.Input[builtins.str]] = None,
                  client_debug_path_run: Optional[pulumi.Input[builtins.str]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
                  persist_session: Optional[pulumi.Input[builtins.bool]] = None,
                  rest_session_path: Optional[pulumi.Input[builtins.str]] = None,
+                 user: Optional[pulumi.Input[builtins.str]] = None,
                  vcenter_server: Optional[pulumi.Input[builtins.str]] = None,
                  vim_keep_alive: Optional[pulumi.Input[builtins.int]] = None,
                  vim_session_path: Optional[pulumi.Input[builtins.str]] = None,
                  vsphere_server: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[builtins.str] password: The user password for vSphere API operations.
-        :param pulumi.Input[builtins.str] user: The user name for vSphere API operations.
         :param pulumi.Input[builtins.bool] allow_unverified_ssl: If set, VMware vSphere client will permit unverifiable SSL certificates.
         :param pulumi.Input[builtins.int] api_timeout: API timeout in minutes (Default: 5)
         :param pulumi.Input[builtins.bool] client_debug: govmomi debug
         :param pulumi.Input[builtins.str] client_debug_path: govmomi debug path for debug
         :param pulumi.Input[builtins.str] client_debug_path_run: govmomi debug path for a single run
+        :param pulumi.Input[builtins.str] password: The user password for vSphere API operations.
         :param pulumi.Input[builtins.bool] persist_session: Persist vSphere client sessions to disk
         :param pulumi.Input[builtins.str] rest_session_path: The directory to save vSphere REST API sessions to
+        :param pulumi.Input[builtins.str] user: The user name for vSphere API operations.
         :param pulumi.Input[builtins.int] vim_keep_alive: Keep alive interval for the VIM session in minutes
         :param pulumi.Input[builtins.str] vim_session_path: The directory to save vSphere SOAP API sessions to
         :param pulumi.Input[builtins.str] vsphere_server: The vSphere Server name for vSphere API operations.
         """
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "user", user)
         if allow_unverified_ssl is None:
             allow_unverified_ssl = _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
         if allow_unverified_ssl is not None:
@@ -68,6 +66,8 @@ class ProviderArgs:
             client_debug_path_run = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
         if client_debug_path_run is not None:
             pulumi.set(__self__, "client_debug_path_run", client_debug_path_run)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if persist_session is None:
             persist_session = _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
         if persist_session is not None:
@@ -76,6 +76,8 @@ class ProviderArgs:
             rest_session_path = _utilities.get_env('VSPHERE_REST_SESSION_PATH')
         if rest_session_path is not None:
             pulumi.set(__self__, "rest_session_path", rest_session_path)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
         if vcenter_server is not None:
             warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
             pulumi.log.warn("""vcenter_server is deprecated: This field has been renamed to vsphere_server.""")
@@ -91,30 +93,6 @@ class ProviderArgs:
             pulumi.set(__self__, "vim_session_path", vim_session_path)
         if vsphere_server is not None:
             pulumi.set(__self__, "vsphere_server", vsphere_server)
-
-    @property
-    @pulumi.getter
-    def password(self) -> pulumi.Input[builtins.str]:
-        """
-        The user password for vSphere API operations.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def user(self) -> pulumi.Input[builtins.str]:
-        """
-        The user name for vSphere API operations.
-        """
-        return pulumi.get(self, "user")
-
-    @user.setter
-    def user(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "user", value)
 
     @property
     @pulumi.getter(name="allowUnverifiedSsl")
@@ -177,6 +155,18 @@ class ProviderArgs:
         pulumi.set(self, "client_debug_path_run", value)
 
     @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The user password for vSphere API operations.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @property
     @pulumi.getter(name="persistSession")
     def persist_session(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -199,6 +189,18 @@ class ProviderArgs:
     @rest_session_path.setter
     def rest_session_path(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "rest_session_path", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The user name for vSphere API operations.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "user", value)
 
     @property
     @pulumi.getter(name="vcenterServer")
@@ -292,7 +294,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the vsphere package. By default, resources use package-wide configuration
@@ -350,8 +352,6 @@ class Provider(pulumi.ProviderResource):
             if client_debug_path_run is None:
                 client_debug_path_run = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
             __props__.__dict__["client_debug_path_run"] = client_debug_path_run
-            if password is None and not opts.urn:
-                raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = password
             if persist_session is None:
                 persist_session = _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
@@ -359,8 +359,6 @@ class Provider(pulumi.ProviderResource):
             if rest_session_path is None:
                 rest_session_path = _utilities.get_env('VSPHERE_REST_SESSION_PATH')
             __props__.__dict__["rest_session_path"] = rest_session_path
-            if user is None and not opts.urn:
-                raise TypeError("Missing required property 'user'")
             __props__.__dict__["user"] = user
             __props__.__dict__["vcenter_server"] = vcenter_server
             if vim_keep_alive is None:
@@ -394,7 +392,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Output[builtins.str]:
+    def password(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The user password for vSphere API operations.
         """
@@ -410,7 +408,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def user(self) -> pulumi.Output[builtins.str]:
+    def user(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The user name for vSphere API operations.
         """
