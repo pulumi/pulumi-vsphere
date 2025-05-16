@@ -29,6 +29,11 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * An existing group can be imported into this resource by
@@ -38,6 +43,8 @@ import javax.annotation.Nullable;
  * name or cluster is not found, or if the group is of a different type, an error
  * 
  * will be returned. An example is below:
+ * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
  * $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \

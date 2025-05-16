@@ -53,6 +53,8 @@ import javax.annotation.Nullable;
  * 
  * path to the cluster, via the following command:
  * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ * 
  * hcl
  * 
  * variable &#34;datacenter&#34; {
@@ -69,9 +71,9 @@ import javax.annotation.Nullable;
  * 
  * resource &#34;vsphere_compute_cluster&#34; &#34;compute_cluster&#34; {
  * 
- *   name            = &#34;cluster-01&#34;
+ *   name          = &#34;cluster-01&#34;
  * 
- *   datacenter_id   = data.vsphere_datacenter.datacenter.id
+ *   datacenter_id = data.vsphere_datacenter.datacenter.id
  * 
  * }
  * 
@@ -99,9 +101,7 @@ import javax.annotation.Nullable;
  * 
  *   ha_datastore_pdl_response = &#34;restartAggressive&#34;
  * 
- *   ... etc.
- * 
- * console
+ * }
  * 
  * ```sh
  * $ pulumi import vsphere:index/computeCluster:ComputeCluster compute_cluster /dc-01/host/cluster-01

@@ -51,10 +51,25 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
      */
     private String domainOu;
     /**
+     * @return The full name of the user of this virtual machine.
+     * 
+     */
+    private String fullName;
+    /**
      * @return The Active Directory domain for the virtual machine to join.
      * 
      */
     private String joinDomain;
+    /**
+     * @return The organization name this virtual machine is being installed for.
+     * 
+     */
+    private String organizationName;
+    /**
+     * @return The product key for this virtual machine.
+     * 
+     */
+    private String productKey;
     /**
      * @return A list of commands to run at first user logon, after guest customization.
      * 
@@ -122,11 +137,32 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
         return this.domainOu;
     }
     /**
+     * @return The full name of the user of this virtual machine.
+     * 
+     */
+    public String fullName() {
+        return this.fullName;
+    }
+    /**
      * @return The Active Directory domain for the virtual machine to join.
      * 
      */
     public String joinDomain() {
         return this.joinDomain;
+    }
+    /**
+     * @return The organization name this virtual machine is being installed for.
+     * 
+     */
+    public String organizationName() {
+        return this.organizationName;
+    }
+    /**
+     * @return The product key for this virtual machine.
+     * 
+     */
+    public String productKey() {
+        return this.productKey;
     }
     /**
      * @return A list of commands to run at first user logon, after guest customization.
@@ -166,7 +202,10 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
         private @Nullable String domainAdminPassword;
         private String domainAdminUser;
         private String domainOu;
+        private String fullName;
         private String joinDomain;
+        private String organizationName;
+        private String productKey;
         private List<String> runOnceCommandLists;
         private Integer timeZone;
         private String workgroup;
@@ -180,7 +219,10 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
     	      this.domainAdminPassword = defaults.domainAdminPassword;
     	      this.domainAdminUser = defaults.domainAdminUser;
     	      this.domainOu = defaults.domainOu;
+    	      this.fullName = defaults.fullName;
     	      this.joinDomain = defaults.joinDomain;
+    	      this.organizationName = defaults.organizationName;
+    	      this.productKey = defaults.productKey;
     	      this.runOnceCommandLists = defaults.runOnceCommandLists;
     	      this.timeZone = defaults.timeZone;
     	      this.workgroup = defaults.workgroup;
@@ -241,11 +283,35 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
             return this;
         }
         @CustomType.Setter
+        public Builder fullName(String fullName) {
+            if (fullName == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "fullName");
+            }
+            this.fullName = fullName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder joinDomain(String joinDomain) {
             if (joinDomain == null) {
               throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "joinDomain");
             }
             this.joinDomain = joinDomain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder organizationName(String organizationName) {
+            if (organizationName == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "organizationName");
+            }
+            this.organizationName = organizationName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder productKey(String productKey) {
+            if (productKey == null) {
+              throw new MissingRequiredPropertyException("GetGuestOsCustomizationSpecWindowsOption", "productKey");
+            }
+            this.productKey = productKey;
             return this;
         }
         @CustomType.Setter
@@ -284,7 +350,10 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
             _resultValue.domainAdminPassword = domainAdminPassword;
             _resultValue.domainAdminUser = domainAdminUser;
             _resultValue.domainOu = domainOu;
+            _resultValue.fullName = fullName;
             _resultValue.joinDomain = joinDomain;
+            _resultValue.organizationName = organizationName;
+            _resultValue.productKey = productKey;
             _resultValue.runOnceCommandLists = runOnceCommandLists;
             _resultValue.timeZone = timeZone;
             _resultValue.workgroup = workgroup;

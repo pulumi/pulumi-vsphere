@@ -17,9 +17,16 @@ public final class GetFolderArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The absolute path of the folder. For example, given a
      * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-     * of `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`. The valid folder types to be used in
-     * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     * of `example-vm-folder`, the resulting `path` would be
+     * `/default-dc/vm/example-vm-folder`.
+     * 
+     * For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+     * `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+     * `/parent-folder/default-dc/vm/example-vm-folder`.
+     * 
+     * The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     * 
+     * Always include a leading slash in the `path`.
      * 
      */
     @Import(name="path", required=true)
@@ -28,9 +35,16 @@ public final class GetFolderArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The absolute path of the folder. For example, given a
      * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-     * of `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`. The valid folder types to be used in
-     * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     * of `example-vm-folder`, the resulting `path` would be
+     * `/default-dc/vm/example-vm-folder`.
+     * 
+     * For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+     * `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+     * `/parent-folder/default-dc/vm/example-vm-folder`.
+     * 
+     * The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     * 
+     * Always include a leading slash in the `path`.
      * 
      */
     public Output<String> path() {
@@ -64,9 +78,16 @@ public final class GetFolderArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param path The absolute path of the folder. For example, given a
          * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-         * of `test-folder`, the resulting path would be
-         * `/default-dc/vm/test-folder`. The valid folder types to be used in
-         * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+         * of `example-vm-folder`, the resulting `path` would be
+         * `/default-dc/vm/example-vm-folder`.
+         * 
+         * For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+         * `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+         * `/parent-folder/default-dc/vm/example-vm-folder`.
+         * 
+         * The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+         * 
+         * Always include a leading slash in the `path`.
          * 
          * @return builder
          * 
@@ -79,9 +100,16 @@ public final class GetFolderArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param path The absolute path of the folder. For example, given a
          * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-         * of `test-folder`, the resulting path would be
-         * `/default-dc/vm/test-folder`. The valid folder types to be used in
-         * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+         * of `example-vm-folder`, the resulting `path` would be
+         * `/default-dc/vm/example-vm-folder`.
+         * 
+         * For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+         * `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+         * `/parent-folder/default-dc/vm/example-vm-folder`.
+         * 
+         * The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+         * 
+         * Always include a leading slash in the `path`.
          * 
          * @return builder
          * 

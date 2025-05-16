@@ -147,6 +147,8 @@ import javax.annotation.Nullable;
  * 
  * `pulumi import`, as per the example below:
  * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ * 
  * ```sh
  * $ pulumi import vsphere:index/tag:Tag tag \
  * ```

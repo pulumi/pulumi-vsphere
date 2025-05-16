@@ -18,8 +18,6 @@ public final class GetComputeClusterHostGroupPlainArgs extends com.pulumi.resour
      * [managed object reference ID][docs-about-morefs] of the compute cluster for
      * the host group.
      * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      */
     @Import(name="computeClusterId", required=true)
     private String computeClusterId;
@@ -28,8 +26,6 @@ public final class GetComputeClusterHostGroupPlainArgs extends com.pulumi.resour
      * @return The
      * [managed object reference ID][docs-about-morefs] of the compute cluster for
      * the host group.
-     * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public String computeClusterId() {
@@ -80,8 +76,6 @@ public final class GetComputeClusterHostGroupPlainArgs extends com.pulumi.resour
          * @param computeClusterId The
          * [managed object reference ID][docs-about-morefs] of the compute cluster for
          * the host group.
-         * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

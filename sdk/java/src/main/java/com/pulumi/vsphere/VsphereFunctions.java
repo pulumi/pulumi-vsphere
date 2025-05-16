@@ -2834,8 +2834,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", TypeShape.of(GetDistributedVirtualSwitchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
      * [managed object reference ID][docs-about-morefs] of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
@@ -2901,8 +2899,6 @@ public final class VsphereFunctions {
         return getDynamic(args, InvokeOptions.Empty);
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
      * [managed object reference ID][docs-about-morefs] of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
@@ -2968,8 +2964,6 @@ public final class VsphereFunctions {
         return getDynamicPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
      * [managed object reference ID][docs-about-morefs] of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
@@ -3035,8 +3029,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDynamic:getDynamic", TypeShape.of(GetDynamicResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
      * [managed object reference ID][docs-about-morefs] of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
@@ -3102,8 +3094,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDynamic:getDynamic", TypeShape.of(GetDynamicResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      * The `vsphere.getDynamic` data source can be used to get the
      * [managed object reference ID][docs-about-morefs] of any tagged managed object in
      * vCenter Server by providing a list of tag IDs and an optional regular expression
@@ -3186,8 +3176,14 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.Folder;
+     * import com.pulumi.vsphere.FolderArgs;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetFolderArgs;
+     * import com.pulumi.vsphere.Datacenter;
+     * import com.pulumi.vsphere.DatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3201,10 +3197,92 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path("/dc-01/datastore-01/folder-01")
+     *         var datacenterFolderFolder = new Folder("datacenterFolderFolder", FolderArgs.builder()
+     *             .path("example-datacenter-folder")
+     *             .type("datacenter")
      *             .build());
      * 
+     *         final var datacenterFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(datacenterFolderFolder.path().applyValue(_path -> String.format("/%s", _path)))
+     *             .build());
+     * 
+     *         var datacenterDatacenter = new Datacenter("datacenterDatacenter", DatacenterArgs.builder()
+     *             .name("example-datacenter")
+     *             .folder(datacenterFolder.applyValue(_datacenterFolder -> _datacenterFolder.path()))
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(datacenterFolder)
+     *                 .build());
+     * 
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(datacenterDatacenter.name())
+     *             .build());
+     * 
+     *         var vmFolderFolder = new Folder("vmFolderFolder", FolderArgs.builder()
+     *             .path("example-vm-folder")
+     *             .type("vm")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var datastoreFolderFolder = new Folder("datastoreFolderFolder", FolderArgs.builder()
+     *             .path("example-datastore-folder")
+     *             .type("datastore")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var networkFolderFolder = new Folder("networkFolderFolder", FolderArgs.builder()
+     *             .path("example-network-folder")
+     *             .type("network")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var hostFolderFolder = new Folder("hostFolderFolder", FolderArgs.builder()
+     *             .path("example-host-folder")
+     *             .type("host")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         final var vmFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), vmFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var vmFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/vm/%s", datacenterFolderFolderPath,name,vmFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var datastoreFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), datastoreFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var datastoreFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/datastore/%s", datacenterFolderFolderPath,name,datastoreFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var networkFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), networkFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var networkFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/network/%s", datacenterFolderFolderPath,name,networkFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var hostFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), hostFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var hostFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/host/%s", datacenterFolderFolderPath,name,hostFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         ctx.export("vmFolderId", vmFolder.applyValue(_vmFolder -> _vmFolder.id()));
+     *         ctx.export("datastoreFolderId", datastoreFolder.applyValue(_datastoreFolder -> _datastoreFolder.id()));
+     *         ctx.export("networkFolderId", networkFolder.applyValue(_networkFolder -> _networkFolder.id()));
+     *         ctx.export("hostFolderId", hostFolder.applyValue(_hostFolder -> _hostFolder.id()));
+     *         ctx.export("datacenterId", datacenter.applyValue(_datacenter -> _datacenter.id()));
+     *         ctx.export("datacenterFolderPath", datacenterFolderFolder.path());
      *     }
      * }
      * }
@@ -3233,8 +3311,14 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.Folder;
+     * import com.pulumi.vsphere.FolderArgs;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetFolderArgs;
+     * import com.pulumi.vsphere.Datacenter;
+     * import com.pulumi.vsphere.DatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3248,10 +3332,92 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path("/dc-01/datastore-01/folder-01")
+     *         var datacenterFolderFolder = new Folder("datacenterFolderFolder", FolderArgs.builder()
+     *             .path("example-datacenter-folder")
+     *             .type("datacenter")
      *             .build());
      * 
+     *         final var datacenterFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(datacenterFolderFolder.path().applyValue(_path -> String.format("/%s", _path)))
+     *             .build());
+     * 
+     *         var datacenterDatacenter = new Datacenter("datacenterDatacenter", DatacenterArgs.builder()
+     *             .name("example-datacenter")
+     *             .folder(datacenterFolder.applyValue(_datacenterFolder -> _datacenterFolder.path()))
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(datacenterFolder)
+     *                 .build());
+     * 
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(datacenterDatacenter.name())
+     *             .build());
+     * 
+     *         var vmFolderFolder = new Folder("vmFolderFolder", FolderArgs.builder()
+     *             .path("example-vm-folder")
+     *             .type("vm")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var datastoreFolderFolder = new Folder("datastoreFolderFolder", FolderArgs.builder()
+     *             .path("example-datastore-folder")
+     *             .type("datastore")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var networkFolderFolder = new Folder("networkFolderFolder", FolderArgs.builder()
+     *             .path("example-network-folder")
+     *             .type("network")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var hostFolderFolder = new Folder("hostFolderFolder", FolderArgs.builder()
+     *             .path("example-host-folder")
+     *             .type("host")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         final var vmFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), vmFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var vmFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/vm/%s", datacenterFolderFolderPath,name,vmFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var datastoreFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), datastoreFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var datastoreFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/datastore/%s", datacenterFolderFolderPath,name,datastoreFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var networkFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), networkFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var networkFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/network/%s", datacenterFolderFolderPath,name,networkFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var hostFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), hostFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var hostFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/host/%s", datacenterFolderFolderPath,name,hostFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         ctx.export("vmFolderId", vmFolder.applyValue(_vmFolder -> _vmFolder.id()));
+     *         ctx.export("datastoreFolderId", datastoreFolder.applyValue(_datastoreFolder -> _datastoreFolder.id()));
+     *         ctx.export("networkFolderId", networkFolder.applyValue(_networkFolder -> _networkFolder.id()));
+     *         ctx.export("hostFolderId", hostFolder.applyValue(_hostFolder -> _hostFolder.id()));
+     *         ctx.export("datacenterId", datacenter.applyValue(_datacenter -> _datacenter.id()));
+     *         ctx.export("datacenterFolderPath", datacenterFolderFolder.path());
      *     }
      * }
      * }
@@ -3280,8 +3446,14 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.Folder;
+     * import com.pulumi.vsphere.FolderArgs;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetFolderArgs;
+     * import com.pulumi.vsphere.Datacenter;
+     * import com.pulumi.vsphere.DatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3295,10 +3467,92 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path("/dc-01/datastore-01/folder-01")
+     *         var datacenterFolderFolder = new Folder("datacenterFolderFolder", FolderArgs.builder()
+     *             .path("example-datacenter-folder")
+     *             .type("datacenter")
      *             .build());
      * 
+     *         final var datacenterFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(datacenterFolderFolder.path().applyValue(_path -> String.format("/%s", _path)))
+     *             .build());
+     * 
+     *         var datacenterDatacenter = new Datacenter("datacenterDatacenter", DatacenterArgs.builder()
+     *             .name("example-datacenter")
+     *             .folder(datacenterFolder.applyValue(_datacenterFolder -> _datacenterFolder.path()))
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(datacenterFolder)
+     *                 .build());
+     * 
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(datacenterDatacenter.name())
+     *             .build());
+     * 
+     *         var vmFolderFolder = new Folder("vmFolderFolder", FolderArgs.builder()
+     *             .path("example-vm-folder")
+     *             .type("vm")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var datastoreFolderFolder = new Folder("datastoreFolderFolder", FolderArgs.builder()
+     *             .path("example-datastore-folder")
+     *             .type("datastore")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var networkFolderFolder = new Folder("networkFolderFolder", FolderArgs.builder()
+     *             .path("example-network-folder")
+     *             .type("network")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var hostFolderFolder = new Folder("hostFolderFolder", FolderArgs.builder()
+     *             .path("example-host-folder")
+     *             .type("host")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         final var vmFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), vmFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var vmFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/vm/%s", datacenterFolderFolderPath,name,vmFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var datastoreFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), datastoreFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var datastoreFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/datastore/%s", datacenterFolderFolderPath,name,datastoreFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var networkFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), networkFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var networkFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/network/%s", datacenterFolderFolderPath,name,networkFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var hostFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), hostFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var hostFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/host/%s", datacenterFolderFolderPath,name,hostFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         ctx.export("vmFolderId", vmFolder.applyValue(_vmFolder -> _vmFolder.id()));
+     *         ctx.export("datastoreFolderId", datastoreFolder.applyValue(_datastoreFolder -> _datastoreFolder.id()));
+     *         ctx.export("networkFolderId", networkFolder.applyValue(_networkFolder -> _networkFolder.id()));
+     *         ctx.export("hostFolderId", hostFolder.applyValue(_hostFolder -> _hostFolder.id()));
+     *         ctx.export("datacenterId", datacenter.applyValue(_datacenter -> _datacenter.id()));
+     *         ctx.export("datacenterFolderPath", datacenterFolderFolder.path());
      *     }
      * }
      * }
@@ -3327,8 +3581,14 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.Folder;
+     * import com.pulumi.vsphere.FolderArgs;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetFolderArgs;
+     * import com.pulumi.vsphere.Datacenter;
+     * import com.pulumi.vsphere.DatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3342,10 +3602,92 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path("/dc-01/datastore-01/folder-01")
+     *         var datacenterFolderFolder = new Folder("datacenterFolderFolder", FolderArgs.builder()
+     *             .path("example-datacenter-folder")
+     *             .type("datacenter")
      *             .build());
      * 
+     *         final var datacenterFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(datacenterFolderFolder.path().applyValue(_path -> String.format("/%s", _path)))
+     *             .build());
+     * 
+     *         var datacenterDatacenter = new Datacenter("datacenterDatacenter", DatacenterArgs.builder()
+     *             .name("example-datacenter")
+     *             .folder(datacenterFolder.applyValue(_datacenterFolder -> _datacenterFolder.path()))
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(datacenterFolder)
+     *                 .build());
+     * 
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(datacenterDatacenter.name())
+     *             .build());
+     * 
+     *         var vmFolderFolder = new Folder("vmFolderFolder", FolderArgs.builder()
+     *             .path("example-vm-folder")
+     *             .type("vm")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var datastoreFolderFolder = new Folder("datastoreFolderFolder", FolderArgs.builder()
+     *             .path("example-datastore-folder")
+     *             .type("datastore")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var networkFolderFolder = new Folder("networkFolderFolder", FolderArgs.builder()
+     *             .path("example-network-folder")
+     *             .type("network")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var hostFolderFolder = new Folder("hostFolderFolder", FolderArgs.builder()
+     *             .path("example-host-folder")
+     *             .type("host")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         final var vmFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), vmFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var vmFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/vm/%s", datacenterFolderFolderPath,name,vmFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var datastoreFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), datastoreFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var datastoreFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/datastore/%s", datacenterFolderFolderPath,name,datastoreFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var networkFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), networkFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var networkFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/network/%s", datacenterFolderFolderPath,name,networkFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var hostFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), hostFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var hostFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/host/%s", datacenterFolderFolderPath,name,hostFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         ctx.export("vmFolderId", vmFolder.applyValue(_vmFolder -> _vmFolder.id()));
+     *         ctx.export("datastoreFolderId", datastoreFolder.applyValue(_datastoreFolder -> _datastoreFolder.id()));
+     *         ctx.export("networkFolderId", networkFolder.applyValue(_networkFolder -> _networkFolder.id()));
+     *         ctx.export("hostFolderId", hostFolder.applyValue(_hostFolder -> _hostFolder.id()));
+     *         ctx.export("datacenterId", datacenter.applyValue(_datacenter -> _datacenter.id()));
+     *         ctx.export("datacenterFolderPath", datacenterFolderFolder.path());
      *     }
      * }
      * }
@@ -3374,8 +3716,14 @@ public final class VsphereFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.Folder;
+     * import com.pulumi.vsphere.FolderArgs;
      * import com.pulumi.vsphere.VsphereFunctions;
      * import com.pulumi.vsphere.inputs.GetFolderArgs;
+     * import com.pulumi.vsphere.Datacenter;
+     * import com.pulumi.vsphere.DatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3389,10 +3737,92 @@ public final class VsphereFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = VsphereFunctions.getFolder(GetFolderArgs.builder()
-     *             .path("/dc-01/datastore-01/folder-01")
+     *         var datacenterFolderFolder = new Folder("datacenterFolderFolder", FolderArgs.builder()
+     *             .path("example-datacenter-folder")
+     *             .type("datacenter")
      *             .build());
      * 
+     *         final var datacenterFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(datacenterFolderFolder.path().applyValue(_path -> String.format("/%s", _path)))
+     *             .build());
+     * 
+     *         var datacenterDatacenter = new Datacenter("datacenterDatacenter", DatacenterArgs.builder()
+     *             .name("example-datacenter")
+     *             .folder(datacenterFolder.applyValue(_datacenterFolder -> _datacenterFolder.path()))
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(datacenterFolder)
+     *                 .build());
+     * 
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name(datacenterDatacenter.name())
+     *             .build());
+     * 
+     *         var vmFolderFolder = new Folder("vmFolderFolder", FolderArgs.builder()
+     *             .path("example-vm-folder")
+     *             .type("vm")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var datastoreFolderFolder = new Folder("datastoreFolderFolder", FolderArgs.builder()
+     *             .path("example-datastore-folder")
+     *             .type("datastore")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var networkFolderFolder = new Folder("networkFolderFolder", FolderArgs.builder()
+     *             .path("example-network-folder")
+     *             .type("network")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         var hostFolderFolder = new Folder("hostFolderFolder", FolderArgs.builder()
+     *             .path("example-host-folder")
+     *             .type("host")
+     *             .datacenterId(datacenter.applyValue(_datacenter -> _datacenter.id()))
+     *             .build());
+     * 
+     *         final var vmFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), vmFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var vmFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/vm/%s", datacenterFolderFolderPath,name,vmFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var datastoreFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), datastoreFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var datastoreFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/datastore/%s", datacenterFolderFolderPath,name,datastoreFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var networkFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), networkFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var networkFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/network/%s", datacenterFolderFolderPath,name,networkFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         final var hostFolder = VsphereFunctions.getFolder(GetFolderArgs.builder()
+     *             .path(Output.tuple(datacenterFolderFolder.path(), datacenterDatacenter.name(), hostFolderFolder.path()).applyValue(values -> {
+     *                 var datacenterFolderFolderPath = values.t1;
+     *                 var name = values.t2;
+     *                 var hostFolderFolderPath = values.t3;
+     *                 return String.format("/%s/%s/host/%s", datacenterFolderFolderPath,name,hostFolderFolderPath);
+     *             }))
+     *             .build());
+     * 
+     *         ctx.export("vmFolderId", vmFolder.applyValue(_vmFolder -> _vmFolder.id()));
+     *         ctx.export("datastoreFolderId", datastoreFolder.applyValue(_datastoreFolder -> _datastoreFolder.id()));
+     *         ctx.export("networkFolderId", networkFolder.applyValue(_networkFolder -> _networkFolder.id()));
+     *         ctx.export("hostFolderId", hostFolder.applyValue(_hostFolder -> _hostFolder.id()));
+     *         ctx.export("datacenterId", datacenter.applyValue(_datacenter -> _datacenter.id()));
+     *         ctx.export("datacenterFolderPath", datacenterFolderFolder.path());
      *     }
      * }
      * }

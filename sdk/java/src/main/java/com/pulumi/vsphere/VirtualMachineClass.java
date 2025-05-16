@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * ### S
  * 
- * **Create a basic class**
+ * ### Create a Basic Class
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * **Create a class with a vGPU**
+ * ### Create a Class with a vGPU
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

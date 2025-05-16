@@ -33,14 +33,18 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A map of key/value pairs to be attached as labels (tags) to the license key.
+     * A map of labels to be applied to the license key.
+     * 
+     * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A map of key/value pairs to be attached as labels (tags) to the license key.
+     * @return A map of labels to be applied to the license key.
+     * 
+     * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -48,14 +52,14 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The license key to add.
+     * The license key value.
      * 
      */
     @Import(name="licenseKey")
     private @Nullable Output<String> licenseKey;
 
     /**
-     * @return The license key to add.
+     * @return The license key value.
      * 
      */
     public Optional<Output<String>> licenseKey() {
@@ -63,14 +67,14 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The display name for the license.
+     * The display name for the license key.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The display name for the license.
+     * @return The display name for the license key.
      * 
      */
     public Optional<Output<String>> name() {
@@ -78,14 +82,14 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Total number of units (example: CPUs) contained in the license.
+     * The total number of units contained in the license key.
      * 
      */
     @Import(name="total")
     private @Nullable Output<Integer> total;
 
     /**
-     * @return Total number of units (example: CPUs) contained in the license.
+     * @return The total number of units contained in the license key.
      * 
      */
     public Optional<Output<Integer>> total() {
@@ -93,14 +97,14 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of units (example: CPUs) assigned to this license.
+     * The number of units assigned to this license key.
      * 
      */
     @Import(name="used")
     private @Nullable Output<Integer> used;
 
     /**
-     * @return The number of units (example: CPUs) assigned to this license.
+     * @return The number of units assigned to this license key.
      * 
      */
     public Optional<Output<Integer>> used() {
@@ -158,7 +162,9 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A map of key/value pairs to be attached as labels (tags) to the license key.
+         * @param labels A map of labels to be applied to the license key.
+         * 
+         * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
          * 
          * @return builder
          * 
@@ -169,7 +175,9 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A map of key/value pairs to be attached as labels (tags) to the license key.
+         * @param labels A map of labels to be applied to the license key.
+         * 
+         * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
          * 
          * @return builder
          * 
@@ -179,7 +187,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseKey The license key to add.
+         * @param licenseKey The license key value.
          * 
          * @return builder
          * 
@@ -190,7 +198,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseKey The license key to add.
+         * @param licenseKey The license key value.
          * 
          * @return builder
          * 
@@ -200,7 +208,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The display name for the license.
+         * @param name The display name for the license key.
          * 
          * @return builder
          * 
@@ -211,7 +219,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The display name for the license.
+         * @param name The display name for the license key.
          * 
          * @return builder
          * 
@@ -221,7 +229,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param total Total number of units (example: CPUs) contained in the license.
+         * @param total The total number of units contained in the license key.
          * 
          * @return builder
          * 
@@ -232,7 +240,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param total Total number of units (example: CPUs) contained in the license.
+         * @param total The total number of units contained in the license key.
          * 
          * @return builder
          * 
@@ -242,7 +250,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param used The number of units (example: CPUs) assigned to this license.
+         * @param used The number of units assigned to this license key.
          * 
          * @return builder
          * 
@@ -253,7 +261,7 @@ public final class LicenseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param used The number of units (example: CPUs) assigned to this license.
+         * @param used The number of units assigned to this license key.
          * 
          * @return builder
          * 

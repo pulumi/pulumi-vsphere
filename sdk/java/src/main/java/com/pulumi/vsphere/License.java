@@ -22,6 +22,37 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.License;
+ * import com.pulumi.vsphere.LicenseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var licenseKey = new License("licenseKey", LicenseArgs.builder()
+ *             .licenseKey("00000-00000-00000-00000-00000")
+ *             .labels(Map.of("VpxClientLicenseLabel", "example"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
@@ -42,70 +73,74 @@ public class License extends com.pulumi.resources.CustomResource {
         return this.editionKey;
     }
     /**
-     * A map of key/value pairs to be attached as labels (tags) to the license key.
+     * A map of labels to be applied to the license key.
+     * 
+     * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return A map of key/value pairs to be attached as labels (tags) to the license key.
+     * @return A map of labels to be applied to the license key.
+     * 
+     * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * The license key to add.
+     * The license key value.
      * 
      */
     @Export(name="licenseKey", refs={String.class}, tree="[0]")
     private Output<String> licenseKey;
 
     /**
-     * @return The license key to add.
+     * @return The license key value.
      * 
      */
     public Output<String> licenseKey() {
         return this.licenseKey;
     }
     /**
-     * The display name for the license.
+     * The display name for the license key.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The display name for the license.
+     * @return The display name for the license key.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Total number of units (example: CPUs) contained in the license.
+     * The total number of units contained in the license key.
      * 
      */
     @Export(name="total", refs={Integer.class}, tree="[0]")
     private Output<Integer> total;
 
     /**
-     * @return Total number of units (example: CPUs) contained in the license.
+     * @return The total number of units contained in the license key.
      * 
      */
     public Output<Integer> total() {
         return this.total;
     }
     /**
-     * The number of units (example: CPUs) assigned to this license.
+     * The number of units assigned to this license key.
      * 
      */
     @Export(name="used", refs={Integer.class}, tree="[0]")
     private Output<Integer> used;
 
     /**
-     * @return The number of units (example: CPUs) assigned to this license.
+     * @return The number of units assigned to this license key.
      * 
      */
     public Output<Integer> used() {

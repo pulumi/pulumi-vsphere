@@ -40,8 +40,6 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
      * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-     * 
      */
     @Import(name="datacenterId", required=true)
     private Output<String> datacenterId;
@@ -51,8 +49,6 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
      * [managed object reference ID][docs-about-morefs] of the datacenter the
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
-     * 
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> datacenterId() {
@@ -133,8 +129,6 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
          * datastores are located in. For default datacenters, use the `id` attribute
          * from an empty `vsphere.Datacenter` data source.
          * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-         * 
          * @return builder
          * 
          */
@@ -148,8 +142,6 @@ public final class GetDatastoreStatsArgs extends com.pulumi.resources.InvokeArgs
          * [managed object reference ID][docs-about-morefs] of the datacenter the
          * datastores are located in. For default datacenters, use the `id` attribute
          * from an empty `vsphere.Datacenter` data source.
-         * 
-         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

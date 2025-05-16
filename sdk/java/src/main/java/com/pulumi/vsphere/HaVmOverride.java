@@ -136,6 +136,8 @@ import javax.annotation.Nullable;
  * 
  * is below:
  * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ * 
  * ```sh
  * $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \
  * ```
