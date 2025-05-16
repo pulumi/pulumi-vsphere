@@ -674,6 +674,33 @@ class Host(pulumi.CustomResource):
             datacenter=datacenter.id)
         ```
 
+        ### Create host in a compute cluster
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com",
+            insecure=True)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esxi-01.example.com",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000-00000",
+            thumbprint=thumbprint.id,
+            cluster=cluster.id,
+            services=[{
+                "ntpd": {
+                    "enabled": True,
+                    "policy": "on",
+                    "ntp_servers": ["pool.ntp.org"],
+                },
+            }])
+        ```
+
         ## Import
 
         An existing host can be imported into this resource by supplying
@@ -718,7 +745,7 @@ class Host(pulumi.CustomResource):
 
         data "vsphere_host_thumbprint" "thumbprint" {
 
-          address = "esxi-01.example.com"
+          address  = "esxi-01.example.com"
 
           insecure = true
 
@@ -766,9 +793,9 @@ class Host(pulumi.CustomResource):
             
             }
 
-        }
+          }
 
-        console
+        }
 
         ```sh
         $ pulumi import vsphere:index/host:Host esx-01 host-123
@@ -853,6 +880,33 @@ class Host(pulumi.CustomResource):
             datacenter=datacenter.id)
         ```
 
+        ### Create host in a compute cluster
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com",
+            insecure=True)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esxi-01.example.com",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000-00000",
+            thumbprint=thumbprint.id,
+            cluster=cluster.id,
+            services=[{
+                "ntpd": {
+                    "enabled": True,
+                    "policy": "on",
+                    "ntp_servers": ["pool.ntp.org"],
+                },
+            }])
+        ```
+
         ## Import
 
         An existing host can be imported into this resource by supplying
@@ -897,7 +951,7 @@ class Host(pulumi.CustomResource):
 
         data "vsphere_host_thumbprint" "thumbprint" {
 
-          address = "esxi-01.example.com"
+          address  = "esxi-01.example.com"
 
           insecure = true
 
@@ -945,9 +999,9 @@ class Host(pulumi.CustomResource):
             
             }
 
-        }
+          }
 
-        console
+        }
 
         ```sh
         $ pulumi import vsphere:index/host:Host esx-01 host-123

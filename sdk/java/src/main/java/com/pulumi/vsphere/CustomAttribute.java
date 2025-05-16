@@ -72,6 +72,8 @@ import javax.annotation.Nullable;
  * 
  * via its name, using the following command:
  * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ * 
  * ```sh
  * $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
  * ```

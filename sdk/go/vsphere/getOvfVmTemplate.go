@@ -37,8 +37,8 @@ type GetOvfVmTemplateArgs struct {
 	// empty, the default option is chosen.
 	DeploymentOption *string `pulumi:"deploymentOption"`
 	// The disk provisioning type. If set, all the
-	// disks in the deployed OVA/OVF will have the same specified disk type. Can be
-	// one of `thin`, `flat`, `thick` or `sameAsSource`.
+	// disks included in the OVF/OVA will have the same specified policy. Can be
+	// one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
 	DiskProvisioning *string `pulumi:"diskProvisioning"`
 	// Allow properties with
 	// `ovf:userConfigurable=false` to be set.
@@ -149,8 +149,8 @@ type GetOvfVmTemplateOutputArgs struct {
 	// empty, the default option is chosen.
 	DeploymentOption pulumi.StringPtrInput `pulumi:"deploymentOption"`
 	// The disk provisioning type. If set, all the
-	// disks in the deployed OVA/OVF will have the same specified disk type. Can be
-	// one of `thin`, `flat`, `thick` or `sameAsSource`.
+	// disks included in the OVF/OVA will have the same specified policy. Can be
+	// one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
 	DiskProvisioning pulumi.StringPtrInput `pulumi:"diskProvisioning"`
 	// Allow properties with
 	// `ovf:userConfigurable=false` to be set.

@@ -51,7 +51,7 @@ func LookupLicense(ctx *pulumi.Context, args *LookupLicenseArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getLicense.
 type LookupLicenseArgs struct {
-	// The license key.
+	// The license key value.
 	LicenseKey string `pulumi:"licenseKey"`
 }
 
@@ -59,16 +59,16 @@ type LookupLicenseArgs struct {
 type LookupLicenseResult struct {
 	// The product edition of the license key.
 	EditionKey string `pulumi:"editionKey"`
-	Id         string `pulumi:"id"`
-	// A map of key/value pairs attached as labels (tags) to the license
-	// key.
+	// The license key ID.
+	Id string `pulumi:"id"`
+	// A map of labels applied to the license key.
 	Labels     map[string]string `pulumi:"labels"`
 	LicenseKey string            `pulumi:"licenseKey"`
 	// The display name for the license.
 	Name string `pulumi:"name"`
-	// Total number of units (example: CPUs) contained in the license.
+	// The total number of units contained in the license key.
 	Total int `pulumi:"total"`
-	// The number of units (example: CPUs) assigned to this license.
+	// The number of units assigned to this license key.
 	Used int `pulumi:"used"`
 }
 
@@ -83,7 +83,7 @@ func LookupLicenseOutput(ctx *pulumi.Context, args LookupLicenseOutputArgs, opts
 
 // A collection of arguments for invoking getLicense.
 type LookupLicenseOutputArgs struct {
-	// The license key.
+	// The license key value.
 	LicenseKey pulumi.StringInput `pulumi:"licenseKey"`
 }
 
@@ -111,12 +111,12 @@ func (o LookupLicenseResultOutput) EditionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseResult) string { return v.EditionKey }).(pulumi.StringOutput)
 }
 
+// The license key ID.
 func (o LookupLicenseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A map of key/value pairs attached as labels (tags) to the license
-// key.
+// A map of labels applied to the license key.
 func (o LookupLicenseResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLicenseResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -130,12 +130,12 @@ func (o LookupLicenseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Total number of units (example: CPUs) contained in the license.
+// The total number of units contained in the license key.
 func (o LookupLicenseResultOutput) Total() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLicenseResult) int { return v.Total }).(pulumi.IntOutput)
 }
 
-// The number of units (example: CPUs) assigned to this license.
+// The number of units assigned to this license key.
 func (o LookupLicenseResultOutput) Used() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLicenseResult) int { return v.Used }).(pulumi.IntOutput)
 }

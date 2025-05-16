@@ -151,6 +151,8 @@ import (
 // vSphere host.
 //
 // [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type HostVirtualSwitch struct {
 	pulumi.CustomResourceState
 

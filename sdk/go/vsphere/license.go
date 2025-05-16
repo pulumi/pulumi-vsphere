@@ -13,20 +13,51 @@ import (
 )
 
 // Provides a VMware vSphere license resource. This can be used to add and remove license keys.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewLicense(ctx, "licenseKey", &vsphere.LicenseArgs{
+//				LicenseKey: pulumi.String("00000-00000-00000-00000-00000"),
+//				Labels: pulumi.StringMap{
+//					"VpxClientLicenseLabel": pulumi.String("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type License struct {
 	pulumi.CustomResourceState
 
 	// The product edition of the license key.
 	EditionKey pulumi.StringOutput `pulumi:"editionKey"`
-	// A map of key/value pairs to be attached as labels (tags) to the license key.
+	// A map of labels to be applied to the license key.
+	//
+	// > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The license key to add.
+	// The license key value.
 	LicenseKey pulumi.StringOutput `pulumi:"licenseKey"`
-	// The display name for the license.
+	// The display name for the license key.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Total number of units (example: CPUs) contained in the license.
+	// The total number of units contained in the license key.
 	Total pulumi.IntOutput `pulumi:"total"`
-	// The number of units (example: CPUs) assigned to this license.
+	// The number of units assigned to this license key.
 	Used pulumi.IntOutput `pulumi:"used"`
 }
 
@@ -65,30 +96,34 @@ func GetLicense(ctx *pulumi.Context,
 type licenseState struct {
 	// The product edition of the license key.
 	EditionKey *string `pulumi:"editionKey"`
-	// A map of key/value pairs to be attached as labels (tags) to the license key.
+	// A map of labels to be applied to the license key.
+	//
+	// > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
 	Labels map[string]string `pulumi:"labels"`
-	// The license key to add.
+	// The license key value.
 	LicenseKey *string `pulumi:"licenseKey"`
-	// The display name for the license.
+	// The display name for the license key.
 	Name *string `pulumi:"name"`
-	// Total number of units (example: CPUs) contained in the license.
+	// The total number of units contained in the license key.
 	Total *int `pulumi:"total"`
-	// The number of units (example: CPUs) assigned to this license.
+	// The number of units assigned to this license key.
 	Used *int `pulumi:"used"`
 }
 
 type LicenseState struct {
 	// The product edition of the license key.
 	EditionKey pulumi.StringPtrInput
-	// A map of key/value pairs to be attached as labels (tags) to the license key.
+	// A map of labels to be applied to the license key.
+	//
+	// > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
 	Labels pulumi.StringMapInput
-	// The license key to add.
+	// The license key value.
 	LicenseKey pulumi.StringPtrInput
-	// The display name for the license.
+	// The display name for the license key.
 	Name pulumi.StringPtrInput
-	// Total number of units (example: CPUs) contained in the license.
+	// The total number of units contained in the license key.
 	Total pulumi.IntPtrInput
-	// The number of units (example: CPUs) assigned to this license.
+	// The number of units assigned to this license key.
 	Used pulumi.IntPtrInput
 }
 
@@ -97,17 +132,21 @@ func (LicenseState) ElementType() reflect.Type {
 }
 
 type licenseArgs struct {
-	// A map of key/value pairs to be attached as labels (tags) to the license key.
+	// A map of labels to be applied to the license key.
+	//
+	// > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
 	Labels map[string]string `pulumi:"labels"`
-	// The license key to add.
+	// The license key value.
 	LicenseKey string `pulumi:"licenseKey"`
 }
 
 // The set of arguments for constructing a License resource.
 type LicenseArgs struct {
-	// A map of key/value pairs to be attached as labels (tags) to the license key.
+	// A map of labels to be applied to the license key.
+	//
+	// > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
 	Labels pulumi.StringMapInput
-	// The license key to add.
+	// The license key value.
 	LicenseKey pulumi.StringInput
 }
 
@@ -203,27 +242,29 @@ func (o LicenseOutput) EditionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.EditionKey }).(pulumi.StringOutput)
 }
 
-// A map of key/value pairs to be attached as labels (tags) to the license key.
+// A map of labels to be applied to the license key.
+//
+// > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
 func (o LicenseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *License) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The license key to add.
+// The license key value.
 func (o LicenseOutput) LicenseKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.LicenseKey }).(pulumi.StringOutput)
 }
 
-// The display name for the license.
+// The display name for the license key.
 func (o LicenseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Total number of units (example: CPUs) contained in the license.
+// The total number of units contained in the license key.
 func (o LicenseOutput) Total() pulumi.IntOutput {
 	return o.ApplyT(func(v *License) pulumi.IntOutput { return v.Total }).(pulumi.IntOutput)
 }
 
-// The number of units (example: CPUs) assigned to this license.
+// The number of units assigned to this license key.
 func (o LicenseOutput) Used() pulumi.IntOutput {
 	return o.ApplyT(func(v *License) pulumi.IntOutput { return v.Used }).(pulumi.IntOutput)
 }

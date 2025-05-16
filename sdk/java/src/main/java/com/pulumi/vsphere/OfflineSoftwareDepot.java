@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### S
+ * 
  */
 @ResourceType(type="vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot")
 public class OfflineSoftwareDepot extends com.pulumi.resources.CustomResource {

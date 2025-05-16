@@ -103,7 +103,7 @@ type VirtualMachine struct {
 	ForcePowerOff pulumi.BoolPtrOutput `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system.
 	GuestId pulumi.StringOutput `pulumi:"guestId"`
-	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayOutput `pulumi:"guestIpAddresses"`
 	// The hardware version for the virtual machine.
 	HardwareVersion pulumi.IntOutput `pulumi:"hardwareVersion"`
@@ -324,7 +324,7 @@ type virtualMachineState struct {
 	ForcePowerOff *bool `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system.
 	GuestId *string `pulumi:"guestId"`
-	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The hardware version for the virtual machine.
 	HardwareVersion *int `pulumi:"hardwareVersion"`
@@ -513,7 +513,7 @@ type VirtualMachineState struct {
 	ForcePowerOff pulumi.BoolPtrInput
 	// The guest ID for the operating system.
 	GuestId pulumi.StringPtrInput
-	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayInput
 	// The hardware version for the virtual machine.
 	HardwareVersion pulumi.IntPtrInput
@@ -1222,7 +1222,7 @@ func (o VirtualMachineOutput) GuestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.GuestId }).(pulumi.StringOutput)
 }
 
-// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
 func (o VirtualMachineOutput) GuestIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.GuestIpAddresses }).(pulumi.StringArrayOutput)
 }

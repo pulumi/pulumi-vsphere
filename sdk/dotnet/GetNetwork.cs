@@ -249,6 +249,18 @@ namespace Pulumi.VSphere
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+        /// </summary>
+        [Input("retryInterval")]
+        public int? RetryInterval { get; set; }
+
+        /// <summary>
+        /// The timeout duration in seconds for the data source to retry read operations.
+        /// </summary>
+        [Input("retryTimeout")]
+        public int? RetryTimeout { get; set; }
+
         public GetNetworkArgs()
         {
         }
@@ -293,6 +305,18 @@ namespace Pulumi.VSphere
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+        /// </summary>
+        [Input("retryInterval")]
+        public Input<int>? RetryInterval { get; set; }
+
+        /// <summary>
+        /// The timeout duration in seconds for the data source to retry read operations.
+        /// </summary>
+        [Input("retryTimeout")]
+        public Input<int>? RetryTimeout { get; set; }
+
         public GetNetworkInvokeArgs()
         {
         }
@@ -311,6 +335,8 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        public readonly int? RetryInterval;
+        public readonly int? RetryTimeout;
         /// <summary>
         /// The managed object type for the discovered network. This will be one
         /// of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
@@ -331,6 +357,10 @@ namespace Pulumi.VSphere
 
             string name,
 
+            int? retryInterval,
+
+            int? retryTimeout,
+
             string type)
         {
             DatacenterId = datacenterId;
@@ -338,6 +368,8 @@ namespace Pulumi.VSphere
             Filters = filters;
             Id = id;
             Name = name;
+            RetryInterval = retryInterval;
+            RetryTimeout = retryTimeout;
             Type = type;
         }
     }

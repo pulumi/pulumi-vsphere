@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ### S
  *
- * **Enable Workload Management on a compute cluster**
+ * ### Enable Workload Management on a Compute Cluster
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -75,6 +75,8 @@ import javax.annotation.Nullable;
  * 
  * its name, using the following command:
  * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ * 
  * ```sh
  * $ pulumi import vsphere:index/tagCategory:TagCategory category terraform-test-category
  * ```

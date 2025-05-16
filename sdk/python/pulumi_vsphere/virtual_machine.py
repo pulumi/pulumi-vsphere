@@ -1399,7 +1399,7 @@ class _VirtualMachineState:
         :param pulumi.Input[builtins.str] folder: The name of the folder to locate the virtual machine in.
         :param pulumi.Input[builtins.bool] force_power_off: Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         :param pulumi.Input[builtins.str] guest_id: The guest ID for the operating system.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         :param pulumi.Input[builtins.int] hardware_version: The hardware version for the virtual machine.
         :param pulumi.Input[builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
@@ -2020,7 +2020,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="guestIpAddresses")
     def guest_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+        The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         """
         return pulumi.get(self, "guest_ip_addresses")
 
@@ -3259,7 +3259,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] folder: The name of the folder to locate the virtual machine in.
         :param pulumi.Input[builtins.bool] force_power_off: Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         :param pulumi.Input[builtins.str] guest_id: The guest ID for the operating system.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         :param pulumi.Input[builtins.int] hardware_version: The hardware version for the virtual machine.
         :param pulumi.Input[builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
@@ -3673,7 +3673,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="guestIpAddresses")
     def guest_ip_addresses(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+        The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         """
         return pulumi.get(self, "guest_ip_addresses")
 

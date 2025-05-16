@@ -78,8 +78,6 @@ type LookupComputeClusterHostGroupArgs struct {
 	// The
 	// [managed object reference ID][docs-about-morefs] of the compute cluster for
 	// the host group.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The name of the host group.
 	Name string `pulumi:"name"`
@@ -110,8 +108,6 @@ type LookupComputeClusterHostGroupOutputArgs struct {
 	// The
 	// [managed object reference ID][docs-about-morefs] of the compute cluster for
 	// the host group.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput `pulumi:"computeClusterId"`
 	// The name of the host group.
 	Name pulumi.StringInput `pulumi:"name"`

@@ -297,6 +297,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
         example is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \\
         ```
@@ -394,6 +396,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         not found, or if the rule is of a different type, an error will be returned. An
 
         example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \\

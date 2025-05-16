@@ -62,12 +62,7 @@ namespace Pulumi.VSphere
     public partial class File : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Create directories in `destination_file`
-        /// path parameter on first apply if any are missing for copy operation.
-        /// 
-        /// &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-        /// will not be deleted when the resource is destroyed. New directories are not
-        /// created if the `destination_file` path is changed in subsequent applies.
+        /// Specifies whether to create the parent directories of the destination file if they do not exist.
         /// </summary>
         [Output("createDirectories")]
         public Output<bool?> CreateDirectories { get; private set; } = null!;
@@ -88,7 +83,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The path to where the file should be uploaded
-        /// or copied to on the destination `datastore` in vSphere.
+        /// or copied to on the destination datastore.
         /// </summary>
         [Output("destinationFile")]
         public Output<string> DestinationFile { get; private set; } = null!;
@@ -107,6 +102,10 @@ namespace Pulumi.VSphere
         [Output("sourceDatastore")]
         public Output<string?> SourceDatastore { get; private set; } = null!;
 
+        /// <summary>
+        /// The path to the file being uploaded from or copied.
+        /// Forces a new resource if changed.
+        /// </summary>
         [Output("sourceFile")]
         public Output<string> SourceFile { get; private set; } = null!;
 
@@ -157,12 +156,7 @@ namespace Pulumi.VSphere
     public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create directories in `destination_file`
-        /// path parameter on first apply if any are missing for copy operation.
-        /// 
-        /// &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-        /// will not be deleted when the resource is destroyed. New directories are not
-        /// created if the `destination_file` path is changed in subsequent applies.
+        /// Specifies whether to create the parent directories of the destination file if they do not exist.
         /// </summary>
         [Input("createDirectories")]
         public Input<bool>? CreateDirectories { get; set; }
@@ -183,7 +177,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The path to where the file should be uploaded
-        /// or copied to on the destination `datastore` in vSphere.
+        /// or copied to on the destination datastore.
         /// </summary>
         [Input("destinationFile", required: true)]
         public Input<string> DestinationFile { get; set; } = null!;
@@ -202,6 +196,10 @@ namespace Pulumi.VSphere
         [Input("sourceDatastore")]
         public Input<string>? SourceDatastore { get; set; }
 
+        /// <summary>
+        /// The path to the file being uploaded from or copied.
+        /// Forces a new resource if changed.
+        /// </summary>
         [Input("sourceFile", required: true)]
         public Input<string> SourceFile { get; set; } = null!;
 
@@ -214,12 +212,7 @@ namespace Pulumi.VSphere
     public sealed class FileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create directories in `destination_file`
-        /// path parameter on first apply if any are missing for copy operation.
-        /// 
-        /// &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-        /// will not be deleted when the resource is destroyed. New directories are not
-        /// created if the `destination_file` path is changed in subsequent applies.
+        /// Specifies whether to create the parent directories of the destination file if they do not exist.
         /// </summary>
         [Input("createDirectories")]
         public Input<bool>? CreateDirectories { get; set; }
@@ -240,7 +233,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The path to where the file should be uploaded
-        /// or copied to on the destination `datastore` in vSphere.
+        /// or copied to on the destination datastore.
         /// </summary>
         [Input("destinationFile")]
         public Input<string>? DestinationFile { get; set; }
@@ -259,6 +252,10 @@ namespace Pulumi.VSphere
         [Input("sourceDatastore")]
         public Input<string>? SourceDatastore { get; set; }
 
+        /// <summary>
+        /// The path to the file being uploaded from or copied.
+        /// Forces a new resource if changed.
+        /// </summary>
         [Input("sourceFile")]
         public Input<string>? SourceFile { get; set; }
 

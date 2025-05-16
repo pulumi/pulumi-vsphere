@@ -78,12 +78,7 @@ import (
 type File struct {
 	pulumi.CustomResourceState
 
-	// Create directories in `destinationFile`
-	// path parameter on first apply if any are missing for copy operation.
-	//
-	// > **NOTE:** Any directory created as part of the `createDirectories` argument
-	// will not be deleted when the resource is destroyed. New directories are not
-	// created if the `destinationFile` path is changed in subsequent applies.
+	// Specifies whether to create the parent directories of the destination file if they do not exist.
 	CreateDirectories pulumi.BoolPtrOutput `pulumi:"createDirectories"`
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -92,7 +87,7 @@ type File struct {
 	// file.
 	Datastore pulumi.StringOutput `pulumi:"datastore"`
 	// The path to where the file should be uploaded
-	// or copied to on the destination `datastore` in vSphere.
+	// or copied to on the destination datastore.
 	DestinationFile pulumi.StringOutput `pulumi:"destinationFile"`
 	// The name of a datacenter from which the file
 	// will be copied. Forces a new resource if changed.
@@ -100,7 +95,9 @@ type File struct {
 	// The name of the datastore from which file will
 	// be copied. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrOutput `pulumi:"sourceDatastore"`
-	SourceFile      pulumi.StringOutput    `pulumi:"sourceFile"`
+	// The path to the file being uploaded from or copied.
+	// Forces a new resource if changed.
+	SourceFile pulumi.StringOutput `pulumi:"sourceFile"`
 }
 
 // NewFile registers a new resource with the given unique name, arguments, and options.
@@ -142,12 +139,7 @@ func GetFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering File resources.
 type fileState struct {
-	// Create directories in `destinationFile`
-	// path parameter on first apply if any are missing for copy operation.
-	//
-	// > **NOTE:** Any directory created as part of the `createDirectories` argument
-	// will not be deleted when the resource is destroyed. New directories are not
-	// created if the `destinationFile` path is changed in subsequent applies.
+	// Specifies whether to create the parent directories of the destination file if they do not exist.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -156,7 +148,7 @@ type fileState struct {
 	// file.
 	Datastore *string `pulumi:"datastore"`
 	// The path to where the file should be uploaded
-	// or copied to on the destination `datastore` in vSphere.
+	// or copied to on the destination datastore.
 	DestinationFile *string `pulumi:"destinationFile"`
 	// The name of a datacenter from which the file
 	// will be copied. Forces a new resource if changed.
@@ -164,16 +156,13 @@ type fileState struct {
 	// The name of the datastore from which file will
 	// be copied. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	SourceFile      *string `pulumi:"sourceFile"`
+	// The path to the file being uploaded from or copied.
+	// Forces a new resource if changed.
+	SourceFile *string `pulumi:"sourceFile"`
 }
 
 type FileState struct {
-	// Create directories in `destinationFile`
-	// path parameter on first apply if any are missing for copy operation.
-	//
-	// > **NOTE:** Any directory created as part of the `createDirectories` argument
-	// will not be deleted when the resource is destroyed. New directories are not
-	// created if the `destinationFile` path is changed in subsequent applies.
+	// Specifies whether to create the parent directories of the destination file if they do not exist.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -182,7 +171,7 @@ type FileState struct {
 	// file.
 	Datastore pulumi.StringPtrInput
 	// The path to where the file should be uploaded
-	// or copied to on the destination `datastore` in vSphere.
+	// or copied to on the destination datastore.
 	DestinationFile pulumi.StringPtrInput
 	// The name of a datacenter from which the file
 	// will be copied. Forces a new resource if changed.
@@ -190,7 +179,9 @@ type FileState struct {
 	// The name of the datastore from which file will
 	// be copied. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	SourceFile      pulumi.StringPtrInput
+	// The path to the file being uploaded from or copied.
+	// Forces a new resource if changed.
+	SourceFile pulumi.StringPtrInput
 }
 
 func (FileState) ElementType() reflect.Type {
@@ -198,12 +189,7 @@ func (FileState) ElementType() reflect.Type {
 }
 
 type fileArgs struct {
-	// Create directories in `destinationFile`
-	// path parameter on first apply if any are missing for copy operation.
-	//
-	// > **NOTE:** Any directory created as part of the `createDirectories` argument
-	// will not be deleted when the resource is destroyed. New directories are not
-	// created if the `destinationFile` path is changed in subsequent applies.
+	// Specifies whether to create the parent directories of the destination file if they do not exist.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -212,7 +198,7 @@ type fileArgs struct {
 	// file.
 	Datastore string `pulumi:"datastore"`
 	// The path to where the file should be uploaded
-	// or copied to on the destination `datastore` in vSphere.
+	// or copied to on the destination datastore.
 	DestinationFile string `pulumi:"destinationFile"`
 	// The name of a datacenter from which the file
 	// will be copied. Forces a new resource if changed.
@@ -220,17 +206,14 @@ type fileArgs struct {
 	// The name of the datastore from which file will
 	// be copied. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	SourceFile      string  `pulumi:"sourceFile"`
+	// The path to the file being uploaded from or copied.
+	// Forces a new resource if changed.
+	SourceFile string `pulumi:"sourceFile"`
 }
 
 // The set of arguments for constructing a File resource.
 type FileArgs struct {
-	// Create directories in `destinationFile`
-	// path parameter on first apply if any are missing for copy operation.
-	//
-	// > **NOTE:** Any directory created as part of the `createDirectories` argument
-	// will not be deleted when the resource is destroyed. New directories are not
-	// created if the `destinationFile` path is changed in subsequent applies.
+	// Specifies whether to create the parent directories of the destination file if they do not exist.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -239,7 +222,7 @@ type FileArgs struct {
 	// file.
 	Datastore pulumi.StringInput
 	// The path to where the file should be uploaded
-	// or copied to on the destination `datastore` in vSphere.
+	// or copied to on the destination datastore.
 	DestinationFile pulumi.StringInput
 	// The name of a datacenter from which the file
 	// will be copied. Forces a new resource if changed.
@@ -247,7 +230,9 @@ type FileArgs struct {
 	// The name of the datastore from which file will
 	// be copied. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	SourceFile      pulumi.StringInput
+	// The path to the file being uploaded from or copied.
+	// Forces a new resource if changed.
+	SourceFile pulumi.StringInput
 }
 
 func (FileArgs) ElementType() reflect.Type {
@@ -337,12 +322,7 @@ func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
 }
 
-// Create directories in `destinationFile`
-// path parameter on first apply if any are missing for copy operation.
-//
-// > **NOTE:** Any directory created as part of the `createDirectories` argument
-// will not be deleted when the resource is destroyed. New directories are not
-// created if the `destinationFile` path is changed in subsequent applies.
+// Specifies whether to create the parent directories of the destination file if they do not exist.
 func (o FileOutput) CreateDirectories() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolPtrOutput { return v.CreateDirectories }).(pulumi.BoolPtrOutput)
 }
@@ -360,7 +340,7 @@ func (o FileOutput) Datastore() pulumi.StringOutput {
 }
 
 // The path to where the file should be uploaded
-// or copied to on the destination `datastore` in vSphere.
+// or copied to on the destination datastore.
 func (o FileOutput) DestinationFile() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.DestinationFile }).(pulumi.StringOutput)
 }
@@ -377,6 +357,8 @@ func (o FileOutput) SourceDatastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.SourceDatastore }).(pulumi.StringPtrOutput)
 }
 
+// The path to the file being uploaded from or copied.
+// Forces a new resource if changed.
 func (o FileOutput) SourceFile() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.SourceFile }).(pulumi.StringOutput)
 }

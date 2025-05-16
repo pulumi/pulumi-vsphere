@@ -108,6 +108,8 @@ import (
 //
 // [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 // [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type DistributedPortGroup struct {
 	pulumi.CustomResourceState
 

@@ -29,7 +29,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, filters=None, id=None, name=None, type=None):
+    def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, filters=None, id=None, name=None, retry_interval=None, retry_timeout=None, type=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
@@ -45,6 +45,12 @@ class GetNetworkResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if retry_interval and not isinstance(retry_interval, int):
+            raise TypeError("Expected argument 'retry_interval' to be a int")
+        pulumi.set(__self__, "retry_interval", retry_interval)
+        if retry_timeout and not isinstance(retry_timeout, int):
+            raise TypeError("Expected argument 'retry_timeout' to be a int")
+        pulumi.set(__self__, "retry_timeout", retry_timeout)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -78,6 +84,16 @@ class GetNetworkResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="retryInterval")
+    def retry_interval(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "retry_interval")
+
+    @property
+    @pulumi.getter(name="retryTimeout")
+    def retry_timeout(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "retry_timeout")
+
+    @property
     @pulumi.getter
     def type(self) -> builtins.str:
         """
@@ -100,6 +116,8 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             filters=self.filters,
             id=self.id,
             name=self.name,
+            retry_interval=self.retry_interval,
+            retry_timeout=self.retry_timeout,
             type=self.type)
 
 
@@ -107,6 +125,8 @@ def get_network(datacenter_id: Optional[builtins.str] = None,
                 distributed_virtual_switch_uuid: Optional[builtins.str] = None,
                 filters: Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]] = None,
                 name: Optional[builtins.str] = None,
+                retry_interval: Optional[builtins.int] = None,
+                retry_timeout: Optional[builtins.int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
     The `get_network` data source can be used to discover the ID of a network in
@@ -151,12 +171,16 @@ def get_network(datacenter_id: Optional[builtins.str] = None,
            the distributed virtual switch ID.
     :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']] filters: Apply a filter for the discovered network.
     :param builtins.str name: The name of the network. This can be a name or path.
+    :param builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+    :param builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
     __args__['filters'] = filters
     __args__['name'] = name
+    __args__['retryInterval'] = retry_interval
+    __args__['retryTimeout'] = retry_timeout
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
@@ -166,11 +190,15 @@ def get_network(datacenter_id: Optional[builtins.str] = None,
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        retry_interval=pulumi.get(__ret__, 'retry_interval'),
+        retry_timeout=pulumi.get(__ret__, 'retry_timeout'),
         type=pulumi.get(__ret__, 'type'))
 def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        distributed_virtual_switch_uuid: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]]]] = None,
                        name: Optional[pulumi.Input[builtins.str]] = None,
+                       retry_interval: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                       retry_timeout: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     The `get_network` data source can be used to discover the ID of a network in
@@ -215,12 +243,16 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.st
            the distributed virtual switch ID.
     :param Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']] filters: Apply a filter for the discovered network.
     :param builtins.str name: The name of the network. This can be a name or path.
+    :param builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+    :param builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
     __args__['filters'] = filters
     __args__['name'] = name
+    __args__['retryInterval'] = retry_interval
+    __args__['retryTimeout'] = retry_timeout
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
@@ -229,4 +261,6 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.st
         filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        retry_interval=pulumi.get(__response__, 'retry_interval'),
+        retry_timeout=pulumi.get(__response__, 'retry_timeout'),
         type=pulumi.get(__response__, 'type')))

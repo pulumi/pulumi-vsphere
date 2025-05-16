@@ -66,6 +66,8 @@ import (
 // ```
 //
 // [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type TagCategory struct {
 	pulumi.CustomResourceState
 

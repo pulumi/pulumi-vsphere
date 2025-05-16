@@ -405,6 +405,8 @@ class VirtualDisk(pulumi.CustomResource):
 
         via supplying the full datastore path to the virtual disk. An example is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \\
         ```
@@ -484,6 +486,8 @@ class VirtualDisk(pulumi.CustomResource):
         An existing virtual disk can be imported into this resource
 
         via supplying the full datastore path to the virtual disk. An example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \\

@@ -15,14 +15,14 @@ public final class GetLicenseArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetLicenseArgs Empty = new GetLicenseArgs();
 
     /**
-     * The license key.
+     * The license key value.
      * 
      */
     @Import(name="licenseKey", required=true)
     private Output<String> licenseKey;
 
     /**
-     * @return The license key.
+     * @return The license key value.
      * 
      */
     public Output<String> licenseKey() {
@@ -54,7 +54,7 @@ public final class GetLicenseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param licenseKey The license key.
+         * @param licenseKey The license key value.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetLicenseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param licenseKey The license key.
+         * @param licenseKey The license key value.
          * 
          * @return builder
          * 

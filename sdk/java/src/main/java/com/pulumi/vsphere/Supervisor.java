@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * ### S
  * 
- * **Enable Workload Management on a compute cluster**
+ * ### Enable Workload Management on a Compute Cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

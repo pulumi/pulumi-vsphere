@@ -6,6 +6,7 @@ package com.pulumi.vsphere.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.inputs.GetNetworkFilter;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -89,6 +90,36 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    /**
+     * The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+     * 
+     */
+    @Import(name="retryInterval")
+    private @Nullable Integer retryInterval;
+
+    /**
+     * @return The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+     * 
+     */
+    public Optional<Integer> retryInterval() {
+        return Optional.ofNullable(this.retryInterval);
+    }
+
+    /**
+     * The timeout duration in seconds for the data source to retry read operations.
+     * 
+     */
+    @Import(name="retryTimeout")
+    private @Nullable Integer retryTimeout;
+
+    /**
+     * @return The timeout duration in seconds for the data source to retry read operations.
+     * 
+     */
+    public Optional<Integer> retryTimeout() {
+        return Optional.ofNullable(this.retryTimeout);
+    }
+
     private GetNetworkPlainArgs() {}
 
     private GetNetworkPlainArgs(GetNetworkPlainArgs $) {
@@ -96,6 +127,8 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.distributedVirtualSwitchUuid = $.distributedVirtualSwitchUuid;
         this.filters = $.filters;
         this.name = $.name;
+        this.retryInterval = $.retryInterval;
+        this.retryTimeout = $.retryTimeout;
     }
 
     public static Builder builder() {
@@ -173,6 +206,28 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param retryInterval The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryInterval(@Nullable Integer retryInterval) {
+            $.retryInterval = retryInterval;
+            return this;
+        }
+
+        /**
+         * @param retryTimeout The timeout duration in seconds for the data source to retry read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryTimeout(@Nullable Integer retryTimeout) {
+            $.retryTimeout = retryTimeout;
             return this;
         }
 

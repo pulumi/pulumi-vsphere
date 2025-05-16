@@ -42,9 +42,21 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string DomainOu;
         /// <summary>
+        /// The full name of the user of this virtual machine.
+        /// </summary>
+        public readonly string FullName;
+        /// <summary>
         /// The Active Directory domain for the virtual machine to join.
         /// </summary>
         public readonly string JoinDomain;
+        /// <summary>
+        /// The organization name this virtual machine is being installed for.
+        /// </summary>
+        public readonly string OrganizationName;
+        /// <summary>
+        /// The product key for this virtual machine.
+        /// </summary>
+        public readonly string ProductKey;
         /// <summary>
         /// A list of commands to run at first user logon, after guest customization.
         /// </summary>
@@ -74,7 +86,13 @@ namespace Pulumi.VSphere.Outputs
 
             string domainOu,
 
+            string fullName,
+
             string joinDomain,
+
+            string organizationName,
+
+            string productKey,
 
             ImmutableArray<string> runOnceCommandLists,
 
@@ -89,7 +107,10 @@ namespace Pulumi.VSphere.Outputs
             DomainAdminPassword = domainAdminPassword;
             DomainAdminUser = domainAdminUser;
             DomainOu = domainOu;
+            FullName = fullName;
             JoinDomain = joinDomain;
+            OrganizationName = organizationName;
+            ProductKey = productKey;
             RunOnceCommandLists = runOnceCommandLists;
             TimeZone = timeZone;
             Workgroup = workgroup;

@@ -34,11 +34,23 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
  * 
+ * ## Example Usage
+ * 
+ * The following example sets up a datastore cluster and enables Storage DRS with
+ * the default settings. It then creates two NAS datastores using the
+ * `vsphere.NasDatastore` resource and assigns them to
+ * the datastore cluster.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * An existing datastore cluster can be imported into this resource
  * 
  * via the path to the cluster, via the following command:
+ * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
  * $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster

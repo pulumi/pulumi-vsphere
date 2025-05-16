@@ -841,6 +841,8 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
         Import can the be done via the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
         ```sh
@@ -961,6 +963,8 @@ class HostVirtualSwitch(pulumi.CustomResource):
         name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
 
         Import can the be done via the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 

@@ -40,6 +40,8 @@ import (
 //	"host_path": "/dc1/host/esxi1"}'
 //
 // [ref-vsphere-cluster-dpm]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/using-drs-clusters-to-manage-resources/managing-power-resources.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type DpmHostOverride struct {
 	pulumi.CustomResourceState
 

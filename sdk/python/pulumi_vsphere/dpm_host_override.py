@@ -220,6 +220,48 @@ class DpmHostOverride(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+        ## Example Usage
+
+        The following example creates a compute cluster comprised of three hosts,
+        making use of the
+        `ComputeCluster` resource. DPM
+        will be disabled in the cluster as it is the default setting, but we override
+        the setting of the first host referenced by the
+        `Host` data source (`esxi1`) by using
+        the `DpmHostOverride` resource so it will be powered off when the
+        cluster does not need it to service virtual machines.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="compute-cluster-test",
+            datacenter_id=dc["id"],
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated")
+        dpm_host_override = vsphere.DpmHostOverride("dpm_host_override",
+            compute_cluster_id=compute_cluster.id,
+            host_system_id=hosts_get_host[0].id,
+            dpm_enabled=True,
+            dpm_automation_level="automated")
+        ```
+
         ## Import
 
         An existing override can be imported into this resource by
@@ -227,6 +269,8 @@ class DpmHostOverride(pulumi.CustomResource):
         supplying both the path to the cluster, and the path to the host, to `terraform
 
         import`. If no override exists, an error will be given.  An example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \\
@@ -272,6 +316,48 @@ class DpmHostOverride(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+        ## Example Usage
+
+        The following example creates a compute cluster comprised of three hosts,
+        making use of the
+        `ComputeCluster` resource. DPM
+        will be disabled in the cluster as it is the default setting, but we override
+        the setting of the first host referenced by the
+        `Host` data source (`esxi1`) by using
+        the `DpmHostOverride` resource so it will be powered off when the
+        cluster does not need it to service virtual machines.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="compute-cluster-test",
+            datacenter_id=dc["id"],
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated")
+        dpm_host_override = vsphere.DpmHostOverride("dpm_host_override",
+            compute_cluster_id=compute_cluster.id,
+            host_system_id=hosts_get_host[0].id,
+            dpm_enabled=True,
+            dpm_automation_level="automated")
+        ```
+
         ## Import
 
         An existing override can be imported into this resource by
@@ -279,6 +365,8 @@ class DpmHostOverride(pulumi.CustomResource):
         supplying both the path to the cluster, and the path to the host, to `terraform
 
         import`. If no override exists, an error will be given.  An example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \\

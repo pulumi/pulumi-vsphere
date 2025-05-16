@@ -105,6 +105,8 @@ namespace Pulumi.VSphere
     /// 
     /// An example is below:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/storageDrsVmOverride:StorageDrsVmOverride drs_vm_override \
     /// ```

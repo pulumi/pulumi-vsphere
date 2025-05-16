@@ -653,6 +653,8 @@ class HaVmOverride(pulumi.CustomResource):
 
         is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \\
         ```
@@ -768,6 +770,8 @@ class HaVmOverride(pulumi.CustomResource):
         `pulumi import`. If no override exists, an error will be given.  An example
 
         is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \\

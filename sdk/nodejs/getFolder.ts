@@ -18,9 +18,60 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const folder = vsphere.getFolder({
- *     path: "/dc-01/datastore-01/folder-01",
+ * const datacenterFolderFolder = new vsphere.Folder("datacenter_folder", {
+ *     path: "example-datacenter-folder",
+ *     type: "datacenter",
  * });
+ * const datacenterFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}`,
+ * });
+ * const datacenterDatacenter = new vsphere.Datacenter("datacenter", {
+ *     name: "example-datacenter",
+ *     folder: datacenterFolder.apply(datacenterFolder => datacenterFolder.path),
+ * }, {
+ *     dependsOn: [datacenterFolder],
+ * });
+ * const datacenter = vsphere.getDatacenterOutput({
+ *     name: datacenterDatacenter.name,
+ * });
+ * const vmFolderFolder = new vsphere.Folder("vm_folder", {
+ *     path: "example-vm-folder",
+ *     type: "vm",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const datastoreFolderFolder = new vsphere.Folder("datastore_folder", {
+ *     path: "example-datastore-folder",
+ *     type: "datastore",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const networkFolderFolder = new vsphere.Folder("network_folder", {
+ *     path: "example-network-folder",
+ *     type: "network",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const hostFolderFolder = new vsphere.Folder("host_folder", {
+ *     path: "example-host-folder",
+ *     type: "host",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const vmFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/vm/${vmFolderFolder.path}`,
+ * });
+ * const datastoreFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/datastore/${datastoreFolderFolder.path}`,
+ * });
+ * const networkFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/network/${networkFolderFolder.path}`,
+ * });
+ * const hostFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/host/${hostFolderFolder.path}`,
+ * });
+ * export const vmFolderId = vmFolder.apply(vmFolder => vmFolder.id);
+ * export const datastoreFolderId = datastoreFolder.apply(datastoreFolder => datastoreFolder.id);
+ * export const networkFolderId = networkFolder.apply(networkFolder => networkFolder.id);
+ * export const hostFolderId = hostFolder.apply(hostFolder => hostFolder.id);
+ * export const datacenterId = datacenter.apply(datacenter => datacenter.id);
+ * export const datacenterFolderPath = datacenterFolderFolder.path;
  * ```
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
@@ -37,9 +88,16 @@ export interface GetFolderArgs {
     /**
      * The absolute path of the folder. For example, given a
      * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-     * of `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`. The valid folder types to be used in
-     * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     * of `example-vm-folder`, the resulting `path` would be
+     * `/default-dc/vm/example-vm-folder`.
+     *
+     * For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+     * `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+     * `/parent-folder/default-dc/vm/example-vm-folder`.
+     *
+     * The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     *
+     * Always include a leading slash in the `path`.
      */
     path: string;
 }
@@ -68,9 +126,60 @@ export interface GetFolderResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const folder = vsphere.getFolder({
- *     path: "/dc-01/datastore-01/folder-01",
+ * const datacenterFolderFolder = new vsphere.Folder("datacenter_folder", {
+ *     path: "example-datacenter-folder",
+ *     type: "datacenter",
  * });
+ * const datacenterFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}`,
+ * });
+ * const datacenterDatacenter = new vsphere.Datacenter("datacenter", {
+ *     name: "example-datacenter",
+ *     folder: datacenterFolder.apply(datacenterFolder => datacenterFolder.path),
+ * }, {
+ *     dependsOn: [datacenterFolder],
+ * });
+ * const datacenter = vsphere.getDatacenterOutput({
+ *     name: datacenterDatacenter.name,
+ * });
+ * const vmFolderFolder = new vsphere.Folder("vm_folder", {
+ *     path: "example-vm-folder",
+ *     type: "vm",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const datastoreFolderFolder = new vsphere.Folder("datastore_folder", {
+ *     path: "example-datastore-folder",
+ *     type: "datastore",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const networkFolderFolder = new vsphere.Folder("network_folder", {
+ *     path: "example-network-folder",
+ *     type: "network",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const hostFolderFolder = new vsphere.Folder("host_folder", {
+ *     path: "example-host-folder",
+ *     type: "host",
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * });
+ * const vmFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/vm/${vmFolderFolder.path}`,
+ * });
+ * const datastoreFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/datastore/${datastoreFolderFolder.path}`,
+ * });
+ * const networkFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/network/${networkFolderFolder.path}`,
+ * });
+ * const hostFolder = vsphere.getFolderOutput({
+ *     path: pulumi.interpolate`/${datacenterFolderFolder.path}/${datacenterDatacenter.name}/host/${hostFolderFolder.path}`,
+ * });
+ * export const vmFolderId = vmFolder.apply(vmFolder => vmFolder.id);
+ * export const datastoreFolderId = datastoreFolder.apply(datastoreFolder => datastoreFolder.id);
+ * export const networkFolderId = networkFolder.apply(networkFolder => networkFolder.id);
+ * export const hostFolderId = hostFolder.apply(hostFolder => hostFolder.id);
+ * export const datacenterId = datacenter.apply(datacenter => datacenter.id);
+ * export const datacenterFolderPath = datacenterFolderFolder.path;
  * ```
  */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFolderResult> {
@@ -87,9 +196,16 @@ export interface GetFolderOutputArgs {
     /**
      * The absolute path of the folder. For example, given a
      * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-     * of `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`. The valid folder types to be used in
-     * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     * of `example-vm-folder`, the resulting `path` would be
+     * `/default-dc/vm/example-vm-folder`.
+     *
+     * For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+     * `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+     * `/parent-folder/default-dc/vm/example-vm-folder`.
+     *
+     * The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     *
+     * Always include a leading slash in the `path`.
      */
     path: pulumi.Input<string>;
 }

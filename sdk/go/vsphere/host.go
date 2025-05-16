@@ -61,6 +61,68 @@ import (
 //
 // ```
 //
+// ### Create host in a compute cluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
+//				Address:  "esxi-01.example.com",
+//				Insecure: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+//				Hostname:   pulumi.String("esxi-01.example.com"),
+//				Username:   pulumi.String("root"),
+//				Password:   pulumi.String("password"),
+//				License:    pulumi.String("00000-00000-00000-00000-00000"),
+//				Thumbprint: pulumi.String(thumbprint.Id),
+//				Cluster:    pulumi.String(cluster.Id),
+//				Services: vsphere.HostServiceArray{
+//					&vsphere.HostServiceArgs{
+//						Ntpd: &vsphere.HostServiceNtpdArgs{
+//							Enabled: pulumi.Bool(true),
+//							Policy:  pulumi.String("on"),
+//							NtpServers: pulumi.StringArray{
+//								pulumi.String("pool.ntp.org"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # An existing host can be imported into this resource by supplying
@@ -105,7 +167,7 @@ import (
 //
 // data "vsphere_host_thumbprint" "thumbprint" {
 //
-//	address = "esxi-01.example.com"
+//	address  = "esxi-01.example.com"
 //
 //	insecure = true
 //
@@ -153,9 +215,9 @@ import (
 //
 //	  }
 //
-// }
+//	}
 //
-// console
+// }
 //
 // ```sh
 // $ pulumi import vsphere:index/host:Host esx-01 host-123

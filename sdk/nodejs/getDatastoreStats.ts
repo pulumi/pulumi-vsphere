@@ -61,8 +61,6 @@ export interface GetDatastoreStatsArgs {
      * [managed object reference ID][docs-about-morefs] of the datacenter the
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     datacenterId: string;
     /**
@@ -155,8 +153,6 @@ export interface GetDatastoreStatsOutputArgs {
      * [managed object reference ID][docs-about-morefs] of the datacenter the
      * datastores are located in. For default datacenters, use the `id` attribute
      * from an empty `vsphere.Datacenter` data source.
-     *
-     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     datacenterId: pulumi.Input<string>;
     /**

@@ -20,11 +20,58 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
  *
+ * ## Example Usage
+ *
+ * The following example sets up a datastore cluster and enables Storage DRS with
+ * the default settings. It then creates two NAS datastores using the
+ * `vsphere.NasDatastore` resource and assigns them to
+ * the datastore cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const hosts = config.getObject<any>("hosts") || [
+ *     "esxi-01.example.com",
+ *     "esxi-02.example.com",
+ *     "esxi-03.example.com",
+ * ];
+ * const datacenter = vsphere.getDatacenter({});
+ * const hostsGetHost = (new Array(hosts.length)).map((_, i) => i).map(__index => (vsphere.getHost({
+ *     name: hosts[__index],
+ *     datacenterId: _arg0_.id,
+ * })));
+ * const datastoreCluster = new vsphere.DatastoreCluster("datastore_cluster", {
+ *     name: "datastore-cluster-test",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ *     sdrsEnabled: true,
+ * });
+ * const datastore1 = new vsphere.NasDatastore("datastore1", {
+ *     name: "datastore-test1",
+ *     hostSystemIds: [esxiHosts.map(__item => __item.id)],
+ *     datastoreClusterId: datastoreCluster.id,
+ *     type: "NFS",
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/test1",
+ * });
+ * const datastore2 = new vsphere.NasDatastore("datastore2", {
+ *     name: "datastore-test2",
+ *     hostSystemIds: [esxiHosts.map(__item => __item.id)],
+ *     datastoreClusterId: datastoreCluster.id,
+ *     type: "NFS",
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/test2",
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing datastore cluster can be imported into this resource
  *
  * via the path to the cluster, via the following command:
+ *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
  * $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster

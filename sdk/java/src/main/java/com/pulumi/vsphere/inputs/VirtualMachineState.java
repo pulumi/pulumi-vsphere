@@ -498,14 +498,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+     * The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      * 
      */
     @Import(name="guestIpAddresses")
     private @Nullable Output<List<String>> guestIpAddresses;
 
     /**
-     * @return The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+     * @return The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      * 
      */
     public Optional<Output<List<String>>> guestIpAddresses() {
@@ -2125,7 +2125,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param guestIpAddresses The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+         * @param guestIpAddresses The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
          * 
          * @return builder
          * 
@@ -2136,7 +2136,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param guestIpAddresses The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+         * @param guestIpAddresses The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
          * 
          * @return builder
          * 
@@ -2146,7 +2146,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param guestIpAddresses The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+         * @param guestIpAddresses The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
          * 
          * @return builder
          * 

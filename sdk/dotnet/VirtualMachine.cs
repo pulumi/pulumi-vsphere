@@ -227,7 +227,7 @@ namespace Pulumi.VSphere
         public Output<string> GuestId { get; private set; } = null!;
 
         /// <summary>
-        /// The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+        /// The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         /// </summary>
         [Output("guestIpAddresses")]
         public Output<ImmutableArray<string>> GuestIpAddresses { get; private set; } = null!;
@@ -1349,7 +1349,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _guestIpAddresses;
 
         /// <summary>
-        /// The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+        /// The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         /// </summary>
         public InputList<string> GuestIpAddresses
         {

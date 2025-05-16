@@ -246,6 +246,8 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
 
         example is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule vm_anti_affinity_rule \\
         ```
@@ -286,6 +288,8 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         not found, or if the rule is of a different type, an error will be returned. An
 
         example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule vm_anti_affinity_rule \\

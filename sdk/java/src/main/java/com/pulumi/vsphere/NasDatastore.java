@@ -28,11 +28,22 @@ import javax.annotation.Nullable;
  * multiple hosts, you must specify each host that you want to add in the
  * `host_system_ids` argument.
  * 
+ * ## Example Usage
+ * 
+ * The following example would set up a NFS v3 share on 3 hosts connected through
+ * vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+ * is named `nfs` and has `/export/test` exported.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * An existing NAS datastore can be imported into this resource via
  * 
  * its managed object ID, via the following command:
+ * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
  * $ pulumi import vsphere:index/nasDatastore:NasDatastore datastore datastore-123

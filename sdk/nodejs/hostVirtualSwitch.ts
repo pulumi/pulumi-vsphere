@@ -85,6 +85,8 @@ import * as utilities from "./utilities";
  *
  * Import can the be done via the following command:
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
  * ```sh

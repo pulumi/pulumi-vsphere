@@ -128,6 +128,8 @@ namespace Pulumi.VSphere
     /// 
     /// the path to the vApp container, using the following command:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// Example:
     /// 
     /// ```sh

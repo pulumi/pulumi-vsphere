@@ -110,6 +110,8 @@ import * as utilities from "./utilities";
  *
  * example is below:
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * ```sh
  * $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \
  * ```

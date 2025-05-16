@@ -12,47 +12,280 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ResourcePool` resource can be used to create and manage
+// resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
+//
+// For more information on vSphere resource pools, please refer to the
+// [product documentation][ref-vsphere-resource_pools].
+//
+// ## Example Usage
+//
+// The following example sets up a resource pool in an existing compute cluster
+// with the default settings for CPU and memory reservations, shares, and limits.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewResourcePool(ctx, "resource_pool", &vsphere.ResourcePoolArgs{
+//				Name:                 pulumi.String("resource-pool-01"),
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// A virtual machine resource could be targeted to use the default resource pool
+// of the cluster using the following:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				ResourcePoolId: pulumi.Any(cluster.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The following example sets up a parent resource pool in an existing compute cluster
+// with a child resource pool nested below. Each resource pool is configured with
+// the default settings for CPU and memory reservations, shares, and limits.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resource_pool_parent", &vsphere.ResourcePoolArgs{
+//				Name:                 pulumi.String("parent"),
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewResourcePool(ctx, "resource_pool_child", &vsphere.ResourcePoolArgs{
+//				Name:                 pulumi.String("child"),
+//				ParentResourcePoolId: resourcePoolParent.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The following example set up a parent resource pool on a standalone ESXi host with the default
+// settings for CPU and memory reservations, shares, and limits.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
+//				Address:  "esxi-01.example.com",
+//				Insecure: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+//				Hostname:   pulumi.String("esxi-01.example.com"),
+//				Username:   pulumi.String("root"),
+//				Password:   pulumi.String("password"),
+//				License:    pulumi.String("00000-00000-00000-00000-00000"),
+//				Thumbprint: pulumi.String(thumbprint.Id),
+//				Datacenter: pulumi.String(datacenter.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// After the hosts are added to the datacenter, a resource pool can then be created on the host.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewResourcePool(ctx, "resource_pool", &vsphere.ResourcePoolArgs{
+//				Name:                 pulumi.String("site1-resource-pool"),
+//				ParentResourcePoolId: pulumi.String(host.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ### Settings that Require vSphere 7.0 or higher
+//
+// These settings require vSphere 7.0 or higher:
+//
+// * [`scale_descendants_shares`](#scale_descendants_shares)
+//
+// [ref-vsphere-resource_pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
 type ResourcePool struct {
 	pulumi.CustomResourceState
 
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	CpuExpandable pulumi.BoolPtrOutput `pulumi:"cpuExpandable"`
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit pulumi.IntPtrOutput `pulumi:"cpuLimit"`
-	// Amount of CPU (MHz) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	CpuReservation pulumi.IntPtrOutput `pulumi:"cpuReservation"`
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
+	// ignored.  Default: `normal`
 	CpuShareLevel pulumi.StringPtrOutput `pulumi:"cpuShareLevel"`
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// cpuShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `cpuShareLevel` must be `custom`.
 	CpuShares pulumi.IntOutput `pulumi:"cpuShares"`
 	// A list of custom attributes to set on this resource.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrOutput `pulumi:"memoryExpandable"`
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
-	// Amount of memory (MB) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	MemoryReservation pulumi.IntPtrOutput `pulumi:"memoryReservation"`
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
+	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrOutput `pulumi:"memoryShareLevel"`
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// memoryShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntOutput `pulumi:"memoryShares"`
-	// Name of resource pool.
+	// The name of the resource pool.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the root resource pool of the compute resource the resource pool is in.
+	// The managed object ID
+	// of the parent resource pool. This can be the root resource pool for a cluster
+	// or standalone host, or a resource pool itself. When moving a resource pool
+	// from one parent resource pool to another, both must share a common root
+	// resource pool.
 	ParentResourcePoolId pulumi.StringOutput `pulumi:"parentResourcePoolId"`
-	// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-	// pool are scaled up or down.
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares pulumi.StringPtrOutput `pulumi:"scaleDescendantsShares"`
-	// A list of tag IDs to apply to this object.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -89,86 +322,126 @@ func GetResourcePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourcePool resources.
 type resourcePoolState struct {
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	CpuExpandable *bool `pulumi:"cpuExpandable"`
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit *int `pulumi:"cpuLimit"`
-	// Amount of CPU (MHz) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	CpuReservation *int `pulumi:"cpuReservation"`
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
+	// ignored.  Default: `normal`
 	CpuShareLevel *string `pulumi:"cpuShareLevel"`
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// cpuShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `cpuShareLevel` must be `custom`.
 	CpuShares *int `pulumi:"cpuShares"`
 	// A list of custom attributes to set on this resource.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
-	// Amount of memory (MB) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
+	// ignored.  Default: `normal`
 	MemoryShareLevel *string `pulumi:"memoryShareLevel"`
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// memoryShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares *int `pulumi:"memoryShares"`
-	// Name of resource pool.
+	// The name of the resource pool.
 	Name *string `pulumi:"name"`
-	// The ID of the root resource pool of the compute resource the resource pool is in.
+	// The managed object ID
+	// of the parent resource pool. This can be the root resource pool for a cluster
+	// or standalone host, or a resource pool itself. When moving a resource pool
+	// from one parent resource pool to another, both must share a common root
+	// resource pool.
 	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
-	// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-	// pool are scaled up or down.
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares *string `pulumi:"scaleDescendantsShares"`
-	// A list of tag IDs to apply to this object.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
 type ResourcePoolState struct {
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	CpuExpandable pulumi.BoolPtrInput
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit pulumi.IntPtrInput
-	// Amount of CPU (MHz) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	CpuReservation pulumi.IntPtrInput
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
+	// ignored.  Default: `normal`
 	CpuShareLevel pulumi.StringPtrInput
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// cpuShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `cpuShareLevel` must be `custom`.
 	CpuShares pulumi.IntPtrInput
 	// A list of custom attributes to set on this resource.
 	CustomAttributes pulumi.StringMapInput
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
-	// Amount of memory (MB) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	MemoryReservation pulumi.IntPtrInput
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
+	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrInput
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// memoryShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntPtrInput
-	// Name of resource pool.
+	// The name of the resource pool.
 	Name pulumi.StringPtrInput
-	// The ID of the root resource pool of the compute resource the resource pool is in.
+	// The managed object ID
+	// of the parent resource pool. This can be the root resource pool for a cluster
+	// or standalone host, or a resource pool itself. When moving a resource pool
+	// from one parent resource pool to another, both must share a common root
+	// resource pool.
 	ParentResourcePoolId pulumi.StringPtrInput
-	// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-	// pool are scaled up or down.
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares pulumi.StringPtrInput
-	// A list of tag IDs to apply to this object.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -177,87 +450,127 @@ func (ResourcePoolState) ElementType() reflect.Type {
 }
 
 type resourcePoolArgs struct {
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	CpuExpandable *bool `pulumi:"cpuExpandable"`
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit *int `pulumi:"cpuLimit"`
-	// Amount of CPU (MHz) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	CpuReservation *int `pulumi:"cpuReservation"`
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
+	// ignored.  Default: `normal`
 	CpuShareLevel *string `pulumi:"cpuShareLevel"`
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// cpuShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `cpuShareLevel` must be `custom`.
 	CpuShares *int `pulumi:"cpuShares"`
 	// A list of custom attributes to set on this resource.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
-	// Amount of memory (MB) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
+	// ignored.  Default: `normal`
 	MemoryShareLevel *string `pulumi:"memoryShareLevel"`
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// memoryShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares *int `pulumi:"memoryShares"`
-	// Name of resource pool.
+	// The name of the resource pool.
 	Name *string `pulumi:"name"`
-	// The ID of the root resource pool of the compute resource the resource pool is in.
+	// The managed object ID
+	// of the parent resource pool. This can be the root resource pool for a cluster
+	// or standalone host, or a resource pool itself. When moving a resource pool
+	// from one parent resource pool to another, both must share a common root
+	// resource pool.
 	ParentResourcePoolId string `pulumi:"parentResourcePoolId"`
-	// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-	// pool are scaled up or down.
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares *string `pulumi:"scaleDescendantsShares"`
-	// A list of tag IDs to apply to this object.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ResourcePool resource.
 type ResourcePoolArgs struct {
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	CpuExpandable pulumi.BoolPtrInput
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit pulumi.IntPtrInput
-	// Amount of CPU (MHz) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	CpuReservation pulumi.IntPtrInput
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
+	// ignored.  Default: `normal`
 	CpuShareLevel pulumi.StringPtrInput
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// cpuShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `cpuShareLevel` must be `custom`.
 	CpuShares pulumi.IntPtrInput
 	// A list of custom attributes to set on this resource.
 	CustomAttributes pulumi.StringMapInput
-	// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-	// unreserved resources.
+	// Determines if the reservation on a resource
+	// pool can grow beyond the specified value if the parent resource pool has
+	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-	// unlimited.
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
-	// Amount of memory (MB) that is guaranteed available to the resource pool.
+	// Amount of CPU (MHz) that is guaranteed
+	// available to the resource pool. Default: `0`
 	MemoryReservation pulumi.IntPtrInput
-	// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-	// shares. Can be one of low, normal, high, or custom.
+	// The CPU allocation level. The level is a
+	// simplified view of shares. Levels map to a pre-determined set of numeric
+	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
+	// ignored.  Default: `normal`
 	MemoryShareLevel pulumi.StringPtrInput
-	// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-	// memoryShareLevel must be custom.
+	// The number of shares allocated for CPU. Used to
+	// determine resource allocation in case of resource contention. If this is set,
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares pulumi.IntPtrInput
-	// Name of resource pool.
+	// The name of the resource pool.
 	Name pulumi.StringPtrInput
-	// The ID of the root resource pool of the compute resource the resource pool is in.
+	// The managed object ID
+	// of the parent resource pool. This can be the root resource pool for a cluster
+	// or standalone host, or a resource pool itself. When moving a resource pool
+	// from one parent resource pool to another, both must share a common root
+	// resource pool.
 	ParentResourcePoolId pulumi.StringInput
-	// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-	// pool are scaled up or down.
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares pulumi.StringPtrInput
-	// A list of tag IDs to apply to this object.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -348,31 +661,38 @@ func (o ResourcePoolOutput) ToResourcePoolOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-// unreserved resources.
+// Determines if the reservation on a resource
+// pool can grow beyond the specified value if the parent resource pool has
+// unreserved resources. Default: `true`
 func (o ResourcePoolOutput) CpuExpandable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.BoolPtrOutput { return v.CpuExpandable }).(pulumi.BoolPtrOutput)
 }
 
-// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-// unlimited.
+// The CPU utilization of a resource pool will not
+// exceed this limit, even if there are available resources. Set to `-1` for
+// unlimited. Default: `-1`
 func (o ResourcePoolOutput) CpuLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntPtrOutput { return v.CpuLimit }).(pulumi.IntPtrOutput)
 }
 
-// Amount of CPU (MHz) that is guaranteed available to the resource pool.
+// Amount of CPU (MHz) that is guaranteed
+// available to the resource pool. Default: `0`
 func (o ResourcePoolOutput) CpuReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntPtrOutput { return v.CpuReservation }).(pulumi.IntPtrOutput)
 }
 
-// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-// shares. Can be one of low, normal, high, or custom.
+// The CPU allocation level. The level is a
+// simplified view of shares. Levels map to a pre-determined set of numeric
+// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+// `low`, `normal`, or `high` are specified values in `cpuShares` will be
+// ignored.  Default: `normal`
 func (o ResourcePoolOutput) CpuShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringPtrOutput { return v.CpuShareLevel }).(pulumi.StringPtrOutput)
 }
 
-// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-// cpuShareLevel must be custom.
+// The number of shares allocated for CPU. Used to
+// determine resource allocation in case of resource contention. If this is set,
+// `cpuShareLevel` must be `custom`.
 func (o ResourcePoolOutput) CpuShares() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntOutput { return v.CpuShares }).(pulumi.IntOutput)
 }
@@ -382,52 +702,65 @@ func (o ResourcePoolOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
 
-// Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-// unreserved resources.
+// Determines if the reservation on a resource
+// pool can grow beyond the specified value if the parent resource pool has
+// unreserved resources. Default: `true`
 func (o ResourcePoolOutput) MemoryExpandable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.BoolPtrOutput { return v.MemoryExpandable }).(pulumi.BoolPtrOutput)
 }
 
-// The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-// unlimited.
+// The CPU utilization of a resource pool will not
+// exceed this limit, even if there are available resources. Set to `-1` for
+// unlimited. Default: `-1`
 func (o ResourcePoolOutput) MemoryLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntPtrOutput { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
 
-// Amount of memory (MB) that is guaranteed available to the resource pool.
+// Amount of CPU (MHz) that is guaranteed
+// available to the resource pool. Default: `0`
 func (o ResourcePoolOutput) MemoryReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntPtrOutput { return v.MemoryReservation }).(pulumi.IntPtrOutput)
 }
 
-// The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-// shares. Can be one of low, normal, high, or custom.
+// The CPU allocation level. The level is a
+// simplified view of shares. Levels map to a pre-determined set of numeric
+// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+// `low`, `normal`, or `high` are specified values in `memoryShares` will be
+// ignored.  Default: `normal`
 func (o ResourcePoolOutput) MemoryShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringPtrOutput { return v.MemoryShareLevel }).(pulumi.StringPtrOutput)
 }
 
-// The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-// memoryShareLevel must be custom.
+// The number of shares allocated for CPU. Used to
+// determine resource allocation in case of resource contention. If this is set,
+// `memoryShareLevel` must be `custom`.
 func (o ResourcePoolOutput) MemoryShares() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.IntOutput { return v.MemoryShares }).(pulumi.IntOutput)
 }
 
-// Name of resource pool.
+// The name of the resource pool.
 func (o ResourcePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the root resource pool of the compute resource the resource pool is in.
+// The managed object ID
+// of the parent resource pool. This can be the root resource pool for a cluster
+// or standalone host, or a resource pool itself. When moving a resource pool
+// from one parent resource pool to another, both must share a common root
+// resource pool.
 func (o ResourcePoolOutput) ParentResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringOutput { return v.ParentResourcePoolId }).(pulumi.StringOutput)
 }
 
-// Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-// pool are scaled up or down.
+// Determines if the shares of all
+// descendants of the resource pool are scaled up or down when the shares
+// of the resource pool are scaled up or down. Can be one of `disabled` or
+// `scaleCpuAndMemoryShares`. Default: `disabled`.
 func (o ResourcePoolOutput) ScaleDescendantsShares() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringPtrOutput { return v.ScaleDescendantsShares }).(pulumi.StringPtrOutput)
 }
 
-// A list of tag IDs to apply to this object.
+// The IDs of any tags to attach to this resource.
 func (o ResourcePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

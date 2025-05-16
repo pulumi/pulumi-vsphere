@@ -149,6 +149,8 @@ namespace Pulumi.VSphere
     /// 
     /// example is below:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule cluster_vm_host_rule \
     /// ```

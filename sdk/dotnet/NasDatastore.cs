@@ -25,6 +25,8 @@ namespace Pulumi.VSphere
     /// 
     /// its managed object ID, via the following command:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/nasDatastore:NasDatastore datastore datastore-123
     /// ```

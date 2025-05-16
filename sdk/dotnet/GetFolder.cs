@@ -29,11 +29,91 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var folder = VSphere.GetFolder.Invoke(new()
+        ///     var datacenterFolderFolder = new VSphere.Folder("datacenter_folder", new()
         ///     {
-        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///         Path = "example-datacenter-folder",
+        ///         Type = "datacenter",
         ///     });
         /// 
+        ///     var datacenterFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var datacenterDatacenter = new VSphere.Datacenter("datacenter", new()
+        ///     {
+        ///         Name = "example-datacenter",
+        ///         Folder = datacenterFolder.Apply(getFolderResult =&gt; getFolderResult.Path),
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             datacenterFolder,
+        ///         },
+        ///     });
+        /// 
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = datacenterDatacenter.Name,
+        ///     });
+        /// 
+        ///     var vmFolderFolder = new VSphere.Folder("vm_folder", new()
+        ///     {
+        ///         Path = "example-vm-folder",
+        ///         Type = "vm",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var datastoreFolderFolder = new VSphere.Folder("datastore_folder", new()
+        ///     {
+        ///         Path = "example-datastore-folder",
+        ///         Type = "datastore",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var networkFolderFolder = new VSphere.Folder("network_folder", new()
+        ///     {
+        ///         Path = "example-network-folder",
+        ///         Type = "network",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var hostFolderFolder = new VSphere.Folder("host_folder", new()
+        ///     {
+        ///         Path = "example-host-folder",
+        ///         Type = "host",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vmFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/vm/{vmFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var datastoreFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/datastore/{datastoreFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var networkFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/network/{networkFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var hostFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/host/{hostFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vmFolderId"] = vmFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["datastoreFolderId"] = datastoreFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["networkFolderId"] = networkFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["hostFolderId"] = hostFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["datacenterId"] = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         ["datacenterFolderPath"] = datacenterFolderFolder.Path,
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -58,11 +138,91 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var folder = VSphere.GetFolder.Invoke(new()
+        ///     var datacenterFolderFolder = new VSphere.Folder("datacenter_folder", new()
         ///     {
-        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///         Path = "example-datacenter-folder",
+        ///         Type = "datacenter",
         ///     });
         /// 
+        ///     var datacenterFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var datacenterDatacenter = new VSphere.Datacenter("datacenter", new()
+        ///     {
+        ///         Name = "example-datacenter",
+        ///         Folder = datacenterFolder.Apply(getFolderResult =&gt; getFolderResult.Path),
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             datacenterFolder,
+        ///         },
+        ///     });
+        /// 
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = datacenterDatacenter.Name,
+        ///     });
+        /// 
+        ///     var vmFolderFolder = new VSphere.Folder("vm_folder", new()
+        ///     {
+        ///         Path = "example-vm-folder",
+        ///         Type = "vm",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var datastoreFolderFolder = new VSphere.Folder("datastore_folder", new()
+        ///     {
+        ///         Path = "example-datastore-folder",
+        ///         Type = "datastore",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var networkFolderFolder = new VSphere.Folder("network_folder", new()
+        ///     {
+        ///         Path = "example-network-folder",
+        ///         Type = "network",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var hostFolderFolder = new VSphere.Folder("host_folder", new()
+        ///     {
+        ///         Path = "example-host-folder",
+        ///         Type = "host",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vmFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/vm/{vmFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var datastoreFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/datastore/{datastoreFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var networkFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/network/{networkFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var hostFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/host/{hostFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vmFolderId"] = vmFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["datastoreFolderId"] = datastoreFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["networkFolderId"] = networkFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["hostFolderId"] = hostFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["datacenterId"] = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         ["datacenterFolderPath"] = datacenterFolderFolder.Path,
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -87,11 +247,91 @@ namespace Pulumi.VSphere
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var folder = VSphere.GetFolder.Invoke(new()
+        ///     var datacenterFolderFolder = new VSphere.Folder("datacenter_folder", new()
         ///     {
-        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///         Path = "example-datacenter-folder",
+        ///         Type = "datacenter",
         ///     });
         /// 
+        ///     var datacenterFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var datacenterDatacenter = new VSphere.Datacenter("datacenter", new()
+        ///     {
+        ///         Name = "example-datacenter",
+        ///         Folder = datacenterFolder.Apply(getFolderResult =&gt; getFolderResult.Path),
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             datacenterFolder,
+        ///         },
+        ///     });
+        /// 
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = datacenterDatacenter.Name,
+        ///     });
+        /// 
+        ///     var vmFolderFolder = new VSphere.Folder("vm_folder", new()
+        ///     {
+        ///         Path = "example-vm-folder",
+        ///         Type = "vm",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var datastoreFolderFolder = new VSphere.Folder("datastore_folder", new()
+        ///     {
+        ///         Path = "example-datastore-folder",
+        ///         Type = "datastore",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var networkFolderFolder = new VSphere.Folder("network_folder", new()
+        ///     {
+        ///         Path = "example-network-folder",
+        ///         Type = "network",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var hostFolderFolder = new VSphere.Folder("host_folder", new()
+        ///     {
+        ///         Path = "example-host-folder",
+        ///         Type = "host",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vmFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/vm/{vmFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var datastoreFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/datastore/{datastoreFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var networkFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/network/{networkFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     var hostFolder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = $"/{datacenterFolderFolder.Path}/{datacenterDatacenter.Name}/host/{hostFolderFolder.Path}",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vmFolderId"] = vmFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["datastoreFolderId"] = datastoreFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["networkFolderId"] = networkFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["hostFolderId"] = hostFolder.Apply(getFolderResult =&gt; getFolderResult.Id),
+        ///         ["datacenterId"] = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         ["datacenterFolderPath"] = datacenterFolderFolder.Path,
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -105,9 +345,16 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The absolute path of the folder. For example, given a
         /// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-        /// of `test-folder`, the resulting path would be
-        /// `/default-dc/vm/test-folder`. The valid folder types to be used in
-        /// the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+        /// of `example-vm-folder`, the resulting `path` would be
+        /// `/default-dc/vm/example-vm-folder`.
+        /// 
+        /// For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+        /// `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+        /// `/parent-folder/default-dc/vm/example-vm-folder`.
+        /// 
+        /// The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+        /// 
+        /// Always include a leading slash in the `path`.
         /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
@@ -123,9 +370,16 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The absolute path of the folder. For example, given a
         /// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-        /// of `test-folder`, the resulting path would be
-        /// `/default-dc/vm/test-folder`. The valid folder types to be used in
-        /// the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+        /// of `example-vm-folder`, the resulting `path` would be
+        /// `/default-dc/vm/example-vm-folder`.
+        /// 
+        /// For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+        /// `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+        /// `/parent-folder/default-dc/vm/example-vm-folder`.
+        /// 
+        /// The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+        /// 
+        /// Always include a leading slash in the `path`.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

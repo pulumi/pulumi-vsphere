@@ -23,7 +23,7 @@ export function getGuestOsCustomization(args: GetGuestOsCustomizationArgs, opts?
 export interface GetGuestOsCustomizationArgs {
     /**
      * The name of the customization specification is the unique
-     * identifier per vCenter Server instance. ## Attribute Reference
+     * identifier per vCenter Server instance.
      */
     name: string;
 }
@@ -32,15 +32,34 @@ export interface GetGuestOsCustomizationArgs {
  * A collection of values returned by getGuestOsCustomization.
  */
 export interface GetGuestOsCustomizationResult {
+    /**
+     * The number of last changed version to the customization
+     * specification.
+     */
     readonly changeVersion: string;
+    /**
+     * The description for the customization specification.
+     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The time of last modification to the customization
+     * specification.
+     */
     readonly lastUpdateTime: string;
     readonly name: string;
+    /**
+     * Container object for the guest operating system properties to be
+     * customized. See
+     * virtual machine customizations
+     */
     readonly specs: outputs.GetGuestOsCustomizationSpec[];
+    /**
+     * The type of customization specification: One among: Windows, Linux.
+     */
     readonly type: string;
 }
 /**
@@ -60,7 +79,7 @@ export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutpu
 export interface GetGuestOsCustomizationOutputArgs {
     /**
      * The name of the customization specification is the unique
-     * identifier per vCenter Server instance. ## Attribute Reference
+     * identifier per vCenter Server instance.
      */
     name: pulumi.Input<string>;
 }

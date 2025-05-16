@@ -15,7 +15,7 @@ public final class GetGuestOsCustomizationPlainArgs extends com.pulumi.resources
 
     /**
      * The name of the customization specification is the unique
-     * identifier per vCenter Server instance. ## Attribute Reference
+     * identifier per vCenter Server instance.
      * 
      */
     @Import(name="name", required=true)
@@ -23,7 +23,7 @@ public final class GetGuestOsCustomizationPlainArgs extends com.pulumi.resources
 
     /**
      * @return The name of the customization specification is the unique
-     * identifier per vCenter Server instance. ## Attribute Reference
+     * identifier per vCenter Server instance.
      * 
      */
     public String name() {
@@ -56,7 +56,7 @@ public final class GetGuestOsCustomizationPlainArgs extends com.pulumi.resources
 
         /**
          * @param name The name of the customization specification is the unique
-         * identifier per vCenter Server instance. ## Attribute Reference
+         * identifier per vCenter Server instance.
          * 
          * @return builder
          * 

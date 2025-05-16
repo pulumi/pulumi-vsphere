@@ -16,7 +16,7 @@ namespace Pulumi.VSphere
     /// 
     /// ### S
     /// 
-    /// **Create a basic class**
+    /// ### Create a Basic Class
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -36,7 +36,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// **Create a class with a vGPU**
+    /// ### Create a Class with a vGPU
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

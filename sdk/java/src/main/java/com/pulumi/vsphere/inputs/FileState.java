@@ -17,24 +17,14 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
     public static final FileState Empty = new FileState();
 
     /**
-     * Create directories in `destination_file`
-     * path parameter on first apply if any are missing for copy operation.
-     * 
-     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-     * will not be deleted when the resource is destroyed. New directories are not
-     * created if the `destination_file` path is changed in subsequent applies.
+     * Specifies whether to create the parent directories of the destination file if they do not exist.
      * 
      */
     @Import(name="createDirectories")
     private @Nullable Output<Boolean> createDirectories;
 
     /**
-     * @return Create directories in `destination_file`
-     * path parameter on first apply if any are missing for copy operation.
-     * 
-     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-     * will not be deleted when the resource is destroyed. New directories are not
-     * created if the `destination_file` path is changed in subsequent applies.
+     * @return Specifies whether to create the parent directories of the destination file if they do not exist.
      * 
      */
     public Optional<Output<Boolean>> createDirectories() {
@@ -77,7 +67,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The path to where the file should be uploaded
-     * or copied to on the destination `datastore` in vSphere.
+     * or copied to on the destination datastore.
      * 
      */
     @Import(name="destinationFile")
@@ -85,7 +75,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The path to where the file should be uploaded
-     * or copied to on the destination `datastore` in vSphere.
+     * or copied to on the destination datastore.
      * 
      */
     public Optional<Output<String>> destinationFile() {
@@ -126,9 +116,19 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sourceDatastore);
     }
 
+    /**
+     * The path to the file being uploaded from or copied.
+     * Forces a new resource if changed.
+     * 
+     */
     @Import(name="sourceFile")
     private @Nullable Output<String> sourceFile;
 
+    /**
+     * @return The path to the file being uploaded from or copied.
+     * Forces a new resource if changed.
+     * 
+     */
     public Optional<Output<String>> sourceFile() {
         return Optional.ofNullable(this.sourceFile);
     }
@@ -164,12 +164,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createDirectories Create directories in `destination_file`
-         * path parameter on first apply if any are missing for copy operation.
-         * 
-         * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-         * will not be deleted when the resource is destroyed. New directories are not
-         * created if the `destination_file` path is changed in subsequent applies.
+         * @param createDirectories Specifies whether to create the parent directories of the destination file if they do not exist.
          * 
          * @return builder
          * 
@@ -180,12 +175,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createDirectories Create directories in `destination_file`
-         * path parameter on first apply if any are missing for copy operation.
-         * 
-         * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-         * will not be deleted when the resource is destroyed. New directories are not
-         * created if the `destination_file` path is changed in subsequent applies.
+         * @param createDirectories Specifies whether to create the parent directories of the destination file if they do not exist.
          * 
          * @return builder
          * 
@@ -242,7 +232,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param destinationFile The path to where the file should be uploaded
-         * or copied to on the destination `datastore` in vSphere.
+         * or copied to on the destination datastore.
          * 
          * @return builder
          * 
@@ -254,7 +244,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param destinationFile The path to where the file should be uploaded
-         * or copied to on the destination `datastore` in vSphere.
+         * or copied to on the destination datastore.
          * 
          * @return builder
          * 
@@ -309,11 +299,25 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
             return sourceDatastore(Output.of(sourceDatastore));
         }
 
+        /**
+         * @param sourceFile The path to the file being uploaded from or copied.
+         * Forces a new resource if changed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceFile(@Nullable Output<String> sourceFile) {
             $.sourceFile = sourceFile;
             return this;
         }
 
+        /**
+         * @param sourceFile The path to the file being uploaded from or copied.
+         * Forces a new resource if changed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceFile(String sourceFile) {
             return sourceFile(Output.of(sourceFile));
         }

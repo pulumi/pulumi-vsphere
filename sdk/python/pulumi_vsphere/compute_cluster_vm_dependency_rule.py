@@ -384,6 +384,8 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
         example is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \\
         ```
@@ -513,6 +515,8 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         not found, or if the rule is of a different type, an error will be returned. An
 
         example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \\

@@ -18,6 +18,50 @@ import * as utilities from "./utilities";
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  *
+ * ## Example Usage
+ *
+ * The following example creates a compute cluster comprised of three hosts,
+ * making use of the
+ * `vsphere.ComputeCluster` resource. DPM
+ * will be disabled in the cluster as it is the default setting, but we override
+ * the setting of the first host referenced by the
+ * `vsphere.Host` data source (`esxi1`) by using
+ * the `vsphere.DpmHostOverride` resource so it will be powered off when the
+ * cluster does not need it to service virtual machines.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const datacenter = config.get("datacenter") || "dc-01";
+ * const hosts = config.getObject<any>("hosts") || [
+ *     "esxi-01.example.com",
+ *     "esxi-02.example.com",
+ *     "esxi-03.example.com",
+ * ];
+ * const datacenterGetDatacenter = vsphere.getDatacenter({
+ *     name: datacenter,
+ * });
+ * const hostsGetHost = (new Array(hosts.length)).map((_, i) => i).map(__index => (vsphere.getHost({
+ *     name: hosts[__index],
+ *     datacenterId: _arg0_.id,
+ * })));
+ * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     name: "compute-cluster-test",
+ *     datacenterId: dc.id,
+ *     hostSystemIds: [hostsGetHost.map(__item => __item.id)],
+ *     drsEnabled: true,
+ *     drsAutomationLevel: "fullyAutomated",
+ * });
+ * const dpmHostOverride = new vsphere.DpmHostOverride("dpm_host_override", {
+ *     computeClusterId: computeCluster.id,
+ *     hostSystemId: hostsGetHost[0].then(hostsGetHost => hostsGetHost.id),
+ *     dpmEnabled: true,
+ *     dpmAutomationLevel: "automated",
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing override can be imported into this resource by
@@ -25,6 +69,8 @@ import * as utilities from "./utilities";
  * supplying both the path to the cluster, and the path to the host, to `terraform
  *
  * import`. If no override exists, an error will be given.  An example is below:
+ *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
  * $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \

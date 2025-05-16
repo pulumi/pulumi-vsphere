@@ -15,6 +15,8 @@ import (
 // Provides a VMware vSphere offline software depot resource.
 //
 // ## Example Usage
+//
+// ### S
 type OfflineSoftwareDepot struct {
 	pulumi.CustomResourceState
 

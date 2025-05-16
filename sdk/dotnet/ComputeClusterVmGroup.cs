@@ -121,6 +121,8 @@ namespace Pulumi.VSphere
     /// 
     /// will be returned. An example is below:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \
     /// ```

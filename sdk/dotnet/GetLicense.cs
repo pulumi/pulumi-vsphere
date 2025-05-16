@@ -91,7 +91,7 @@ namespace Pulumi.VSphere
     public sealed class GetLicenseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The license key.
+        /// The license key value.
         /// </summary>
         [Input("licenseKey", required: true)]
         public string LicenseKey { get; set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.VSphere
     public sealed class GetLicenseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The license key.
+        /// The license key value.
         /// </summary>
         [Input("licenseKey", required: true)]
         public Input<string> LicenseKey { get; set; } = null!;
@@ -124,10 +124,12 @@ namespace Pulumi.VSphere
         /// The product edition of the license key.
         /// </summary>
         public readonly string EditionKey;
+        /// <summary>
+        /// The license key ID.
+        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A map of key/value pairs attached as labels (tags) to the license
-        /// key.
+        /// A map of labels applied to the license key.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string LicenseKey;
@@ -136,11 +138,11 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Total number of units (example: CPUs) contained in the license.
+        /// The total number of units contained in the license key.
         /// </summary>
         public readonly int Total;
         /// <summary>
-        /// The number of units (example: CPUs) assigned to this license.
+        /// The number of units assigned to this license key.
         /// </summary>
         public readonly int Used;
 

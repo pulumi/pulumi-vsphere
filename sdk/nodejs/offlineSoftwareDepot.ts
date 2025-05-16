@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  * Provides a VMware vSphere offline software depot resource.
  *
  * ## Example Usage
+ *
+ * ### S
  */
 export class OfflineSoftwareDepot extends pulumi.CustomResource {
     /**

@@ -243,7 +243,7 @@ class VirtualMachineClass(pulumi.CustomResource):
 
         ### S
 
-        **Create a basic class**
+        ### Create a Basic Class
 
         ```python
         import pulumi
@@ -255,7 +255,7 @@ class VirtualMachineClass(pulumi.CustomResource):
             memory=4096)
         ```
 
-        **Create a class with a vGPU**
+        ### Create a Class with a vGPU
 
         ```python
         import pulumi
@@ -291,7 +291,7 @@ class VirtualMachineClass(pulumi.CustomResource):
 
         ### S
 
-        **Create a basic class**
+        ### Create a Basic Class
 
         ```python
         import pulumi
@@ -303,7 +303,7 @@ class VirtualMachineClass(pulumi.CustomResource):
             memory=4096)
         ```
 
-        **Create a class with a vGPU**
+        ### Create a Class with a vGPU
 
         ```python
         import pulumi

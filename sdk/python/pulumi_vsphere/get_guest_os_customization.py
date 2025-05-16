@@ -54,11 +54,18 @@ class GetGuestOsCustomizationResult:
     @property
     @pulumi.getter(name="changeVersion")
     def change_version(self) -> builtins.str:
+        """
+        The number of last changed version to the customization
+        specification.
+        """
         return pulumi.get(self, "change_version")
 
     @property
     @pulumi.getter
     def description(self) -> builtins.str:
+        """
+        The description for the customization specification.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -72,6 +79,10 @@ class GetGuestOsCustomizationResult:
     @property
     @pulumi.getter(name="lastUpdateTime")
     def last_update_time(self) -> builtins.str:
+        """
+        The time of last modification to the customization
+        specification.
+        """
         return pulumi.get(self, "last_update_time")
 
     @property
@@ -82,11 +93,19 @@ class GetGuestOsCustomizationResult:
     @property
     @pulumi.getter
     def specs(self) -> Sequence['outputs.GetGuestOsCustomizationSpecResult']:
+        """
+        Container object for the guest operating system properties to be
+        customized. See
+        virtual machine customizations
+        """
         return pulumi.get(self, "specs")
 
     @property
     @pulumi.getter
     def type(self) -> builtins.str:
+        """
+        The type of customization specification: One among: Windows, Linux.
+        """
         return pulumi.get(self, "type")
 
 
@@ -113,7 +132,7 @@ def get_guest_os_customization(name: Optional[builtins.str] = None,
 
 
     :param builtins.str name: The name of the customization specification is the unique
-           identifier per vCenter Server instance. ## Attribute Reference
+           identifier per vCenter Server instance.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -136,7 +155,7 @@ def get_guest_os_customization_output(name: Optional[pulumi.Input[builtins.str]]
 
 
     :param builtins.str name: The name of the customization specification is the unique
-           identifier per vCenter Server instance. ## Attribute Reference
+           identifier per vCenter Server instance.
     """
     __args__ = dict()
     __args__['name'] = name

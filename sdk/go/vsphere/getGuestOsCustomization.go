@@ -26,20 +26,29 @@ func LookupGuestOsCustomization(ctx *pulumi.Context, args *LookupGuestOsCustomiz
 // A collection of arguments for invoking getGuestOsCustomization.
 type LookupGuestOsCustomizationArgs struct {
 	// The name of the customization specification is the unique
-	// identifier per vCenter Server instance. ## Attribute Reference
+	// identifier per vCenter Server instance.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getGuestOsCustomization.
 type LookupGuestOsCustomizationResult struct {
+	// The number of last changed version to the customization
+	// specification.
 	ChangeVersion string `pulumi:"changeVersion"`
-	Description   string `pulumi:"description"`
+	// The description for the customization specification.
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                        `pulumi:"id"`
-	LastUpdateTime string                        `pulumi:"lastUpdateTime"`
-	Name           string                        `pulumi:"name"`
-	Specs          []GetGuestOsCustomizationSpec `pulumi:"specs"`
-	Type           string                        `pulumi:"type"`
+	Id string `pulumi:"id"`
+	// The time of last modification to the customization
+	// specification.
+	LastUpdateTime string `pulumi:"lastUpdateTime"`
+	Name           string `pulumi:"name"`
+	// Container object for the guest operating system properties to be
+	// customized. See
+	// virtual machine customizations
+	Specs []GetGuestOsCustomizationSpec `pulumi:"specs"`
+	// The type of customization specification: One among: Windows, Linux.
+	Type string `pulumi:"type"`
 }
 
 func LookupGuestOsCustomizationOutput(ctx *pulumi.Context, args LookupGuestOsCustomizationOutputArgs, opts ...pulumi.InvokeOption) LookupGuestOsCustomizationResultOutput {
@@ -54,7 +63,7 @@ func LookupGuestOsCustomizationOutput(ctx *pulumi.Context, args LookupGuestOsCus
 // A collection of arguments for invoking getGuestOsCustomization.
 type LookupGuestOsCustomizationOutputArgs struct {
 	// The name of the customization specification is the unique
-	// identifier per vCenter Server instance. ## Attribute Reference
+	// identifier per vCenter Server instance.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -77,10 +86,13 @@ func (o LookupGuestOsCustomizationResultOutput) ToLookupGuestOsCustomizationResu
 	return o
 }
 
+// The number of last changed version to the customization
+// specification.
 func (o LookupGuestOsCustomizationResultOutput) ChangeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestOsCustomizationResult) string { return v.ChangeVersion }).(pulumi.StringOutput)
 }
 
+// The description for the customization specification.
 func (o LookupGuestOsCustomizationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestOsCustomizationResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -90,6 +102,8 @@ func (o LookupGuestOsCustomizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestOsCustomizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The time of last modification to the customization
+// specification.
 func (o LookupGuestOsCustomizationResultOutput) LastUpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestOsCustomizationResult) string { return v.LastUpdateTime }).(pulumi.StringOutput)
 }
@@ -98,10 +112,14 @@ func (o LookupGuestOsCustomizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestOsCustomizationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Container object for the guest operating system properties to be
+// customized. See
+// virtual machine customizations
 func (o LookupGuestOsCustomizationResultOutput) Specs() GetGuestOsCustomizationSpecArrayOutput {
 	return o.ApplyT(func(v LookupGuestOsCustomizationResult) []GetGuestOsCustomizationSpec { return v.Specs }).(GetGuestOsCustomizationSpecArrayOutput)
 }
 
+// The type of customization specification: One among: Windows, Linux.
 func (o LookupGuestOsCustomizationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestOsCustomizationResult) string { return v.Type }).(pulumi.StringOutput)
 }

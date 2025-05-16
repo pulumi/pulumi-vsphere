@@ -51,8 +51,8 @@ export interface GetOvfVmTemplateArgs {
     deploymentOption?: string;
     /**
      * The disk provisioning type. If set, all the
-     * disks in the deployed OVA/OVF will have the same specified disk type. Can be
-     * one of `thin`, `flat`, `thick` or `sameAsSource`.
+     * disks included in the OVF/OVA will have the same specified policy. Can be
+     * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
      */
     diskProvisioning?: string;
     /**
@@ -236,8 +236,8 @@ export interface GetOvfVmTemplateOutputArgs {
     deploymentOption?: pulumi.Input<string>;
     /**
      * The disk provisioning type. If set, all the
-     * disks in the deployed OVA/OVF will have the same specified disk type. Can be
-     * one of `thin`, `flat`, `thick` or `sameAsSource`.
+     * disks included in the OVF/OVA will have the same specified policy. Can be
+     * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
      */
     diskProvisioning?: pulumi.Input<string>;
     /**

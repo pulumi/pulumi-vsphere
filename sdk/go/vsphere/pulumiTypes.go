@@ -7674,8 +7674,14 @@ type GetGuestOsCustomizationSpecWindowsOption struct {
 	DomainAdminUser string `pulumi:"domainAdminUser"`
 	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
 	DomainOu string `pulumi:"domainOu"`
+	// The full name of the user of this virtual machine.
+	FullName string `pulumi:"fullName"`
 	// The Active Directory domain for the virtual machine to join.
 	JoinDomain string `pulumi:"joinDomain"`
+	// The organization name this virtual machine is being installed for.
+	OrganizationName string `pulumi:"organizationName"`
+	// The product key for this virtual machine.
+	ProductKey string `pulumi:"productKey"`
 	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists []string `pulumi:"runOnceCommandLists"`
 	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
@@ -7710,8 +7716,14 @@ type GetGuestOsCustomizationSpecWindowsOptionArgs struct {
 	DomainAdminUser pulumi.StringInput `pulumi:"domainAdminUser"`
 	// The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
 	DomainOu pulumi.StringInput `pulumi:"domainOu"`
+	// The full name of the user of this virtual machine.
+	FullName pulumi.StringInput `pulumi:"fullName"`
 	// The Active Directory domain for the virtual machine to join.
 	JoinDomain pulumi.StringInput `pulumi:"joinDomain"`
+	// The organization name this virtual machine is being installed for.
+	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
+	// The product key for this virtual machine.
+	ProductKey pulumi.StringInput `pulumi:"productKey"`
 	// A list of commands to run at first user logon, after guest customization.
 	RunOnceCommandLists pulumi.StringArrayInput `pulumi:"runOnceCommandLists"`
 	// The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
@@ -7806,9 +7818,24 @@ func (o GetGuestOsCustomizationSpecWindowsOptionOutput) DomainOu() pulumi.String
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.DomainOu }).(pulumi.StringOutput)
 }
 
+// The full name of the user of this virtual machine.
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.FullName }).(pulumi.StringOutput)
+}
+
 // The Active Directory domain for the virtual machine to join.
 func (o GetGuestOsCustomizationSpecWindowsOptionOutput) JoinDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.JoinDomain }).(pulumi.StringOutput)
+}
+
+// The organization name this virtual machine is being installed for.
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+// The product key for this virtual machine.
+func (o GetGuestOsCustomizationSpecWindowsOptionOutput) ProductKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGuestOsCustomizationSpecWindowsOption) string { return v.ProductKey }).(pulumi.StringOutput)
 }
 
 // A list of commands to run at first user logon, after guest customization.

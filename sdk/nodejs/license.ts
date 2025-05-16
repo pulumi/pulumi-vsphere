@@ -6,6 +6,20 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a VMware vSphere license resource. This can be used to add and remove license keys.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const licenseKey = new vsphere.License("licenseKey", {
+ *     licenseKey: "00000-00000-00000-00000-00000",
+ *     labels: {
+ *         VpxClientLicenseLabel: "example",
+ *     },
+ * });
+ * ```
  */
 export class License extends pulumi.CustomResource {
     /**
@@ -40,23 +54,25 @@ export class License extends pulumi.CustomResource {
      */
     public /*out*/ readonly editionKey!: pulumi.Output<string>;
     /**
-     * A map of key/value pairs to be attached as labels (tags) to the license key.
+     * A map of labels to be applied to the license key.
+     *
+     * > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The license key to add.
+     * The license key value.
      */
     public readonly licenseKey!: pulumi.Output<string>;
     /**
-     * The display name for the license.
+     * The display name for the license key.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Total number of units (example: CPUs) contained in the license.
+     * The total number of units contained in the license key.
      */
     public /*out*/ readonly total!: pulumi.Output<number>;
     /**
-     * The number of units (example: CPUs) assigned to this license.
+     * The number of units assigned to this license key.
      */
     public /*out*/ readonly used!: pulumi.Output<number>;
 
@@ -105,23 +121,25 @@ export interface LicenseState {
      */
     editionKey?: pulumi.Input<string>;
     /**
-     * A map of key/value pairs to be attached as labels (tags) to the license key.
+     * A map of labels to be applied to the license key.
+     *
+     * > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The license key to add.
+     * The license key value.
      */
     licenseKey?: pulumi.Input<string>;
     /**
-     * The display name for the license.
+     * The display name for the license key.
      */
     name?: pulumi.Input<string>;
     /**
-     * Total number of units (example: CPUs) contained in the license.
+     * The total number of units contained in the license key.
      */
     total?: pulumi.Input<number>;
     /**
-     * The number of units (example: CPUs) assigned to this license.
+     * The number of units assigned to this license key.
      */
     used?: pulumi.Input<number>;
 }
@@ -131,11 +149,13 @@ export interface LicenseState {
  */
 export interface LicenseArgs {
     /**
-     * A map of key/value pairs to be attached as labels (tags) to the license key.
+     * A map of labels to be applied to the license key.
+     *
+     * > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The license key to add.
+     * The license key value.
      */
     licenseKey: pulumi.Input<string>;
 }

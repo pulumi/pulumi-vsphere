@@ -160,6 +160,8 @@ import (
 // `cluster-01` in the `dc-01` datacenter.
 //
 // [ref-vsphere-vapp]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-multi-tiered-applications-with-vsphere-vapp-in-the-vsphere-web-clientvsphere-vm-admin.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type VappContainer struct {
 	pulumi.CustomResourceState
 

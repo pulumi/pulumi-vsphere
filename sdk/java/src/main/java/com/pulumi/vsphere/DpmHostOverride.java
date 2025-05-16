@@ -29,6 +29,20 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
+ * ## Example Usage
+ * 
+ * The following example creates a compute cluster comprised of three hosts,
+ * making use of the
+ * `vsphere.ComputeCluster` resource. DPM
+ * will be disabled in the cluster as it is the default setting, but we override
+ * the setting of the first host referenced by the
+ * `vsphere.Host` data source (`esxi1`) by using
+ * the `vsphere.DpmHostOverride` resource so it will be powered off when the
+ * cluster does not need it to service virtual machines.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * An existing override can be imported into this resource by
@@ -36,6 +50,8 @@ import javax.annotation.Nullable;
  * supplying both the path to the cluster, and the path to the host, to `terraform
  * 
  * import`. If no override exists, an error will be given.  An example is below:
+ * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
  * $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \

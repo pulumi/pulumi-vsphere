@@ -18,81 +18,351 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.ResourcePool` resource can be used to create and manage
+ * resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
+ * 
+ * For more information on vSphere resource pools, please refer to the
+ * [product documentation][ref-vsphere-resource_pools].
+ * 
+ * [ref-vsphere-resource_pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
+ * 
+ * ## Example Usage
+ * 
+ * The following example sets up a resource pool in an existing compute cluster
+ * with the default settings for CPU and memory reservations, shares, and limits.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.ResourcePool;
+ * import com.pulumi.vsphere.ResourcePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         var resourcePool = new ResourcePool("resourcePool", ResourcePoolArgs.builder()
+ *             .name("resource-pool-01")
+ *             .parentResourcePoolId(computeCluster.resourcePoolId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * A virtual machine resource could be targeted to use the default resource pool
+ * of the cluster using the following:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+ *             .resourcePoolId(cluster.resourcePoolId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The following example sets up a parent resource pool in an existing compute cluster
+ * with a child resource pool nested below. Each resource pool is configured with
+ * the default settings for CPU and memory reservations, shares, and limits.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.ResourcePool;
+ * import com.pulumi.vsphere.ResourcePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         var resourcePoolParent = new ResourcePool("resourcePoolParent", ResourcePoolArgs.builder()
+ *             .name("parent")
+ *             .parentResourcePoolId(computeCluster.resourcePoolId())
+ *             .build());
+ * 
+ *         var resourcePoolChild = new ResourcePool("resourcePoolChild", ResourcePoolArgs.builder()
+ *             .name("child")
+ *             .parentResourcePoolId(resourcePoolParent.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The following example set up a parent resource pool on a standalone ESXi host with the default
+ * settings for CPU and memory reservations, shares, and limits.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
+ * import com.pulumi.vsphere.Host;
+ * import com.pulumi.vsphere.HostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
+ *             .address("esxi-01.example.com")
+ *             .insecure(true)
+ *             .build());
+ * 
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()
+ *             .hostname("esxi-01.example.com")
+ *             .username("root")
+ *             .password("password")
+ *             .license("00000-00000-00000-00000-00000")
+ *             .thumbprint(thumbprint.id())
+ *             .datacenter(datacenter.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * After the hosts are added to the datacenter, a resource pool can then be created on the host.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.ResourcePool;
+ * import com.pulumi.vsphere.ResourcePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         var resourcePool = new ResourcePool("resourcePool", ResourcePoolArgs.builder()
+ *             .name("site1-resource-pool")
+ *             .parentResourcePoolId(host.resourcePoolId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ### Settings that Require vSphere 7.0 or higher
+ * 
+ * These settings require vSphere 7.0 or higher:
+ * 
+ * * [`scale_descendants_shares`](#scale_descendants_shares)
+ * 
+ */
 @ResourceType(type="vsphere:index/resourcePool:ResourcePool")
 public class ResourcePool extends com.pulumi.resources.CustomResource {
     /**
-     * Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-     * unreserved resources.
+     * Determines if the reservation on a resource
+     * pool can grow beyond the specified value if the parent resource pool has
+     * unreserved resources. Default: `true`
      * 
      */
     @Export(name="cpuExpandable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuExpandable;
 
     /**
-     * @return Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-     * unreserved resources.
+     * @return Determines if the reservation on a resource
+     * pool can grow beyond the specified value if the parent resource pool has
+     * unreserved resources. Default: `true`
      * 
      */
     public Output<Optional<Boolean>> cpuExpandable() {
         return Codegen.optional(this.cpuExpandable);
     }
     /**
-     * The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-     * unlimited.
+     * The CPU utilization of a resource pool will not
+     * exceed this limit, even if there are available resources. Set to `-1` for
+     * unlimited. Default: `-1`
      * 
      */
     @Export(name="cpuLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuLimit;
 
     /**
-     * @return The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-     * unlimited.
+     * @return The CPU utilization of a resource pool will not
+     * exceed this limit, even if there are available resources. Set to `-1` for
+     * unlimited. Default: `-1`
      * 
      */
     public Output<Optional<Integer>> cpuLimit() {
         return Codegen.optional(this.cpuLimit);
     }
     /**
-     * Amount of CPU (MHz) that is guaranteed available to the resource pool.
+     * Amount of CPU (MHz) that is guaranteed
+     * available to the resource pool. Default: `0`
      * 
      */
     @Export(name="cpuReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuReservation;
 
     /**
-     * @return Amount of CPU (MHz) that is guaranteed available to the resource pool.
+     * @return Amount of CPU (MHz) that is guaranteed
+     * available to the resource pool. Default: `0`
      * 
      */
     public Output<Optional<Integer>> cpuReservation() {
         return Codegen.optional(this.cpuReservation);
     }
     /**
-     * The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-     * shares. Can be one of low, normal, high, or custom.
+     * The CPU allocation level. The level is a
+     * simplified view of shares. Levels map to a pre-determined set of numeric
+     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * ignored.  Default: `normal`
      * 
      */
     @Export(name="cpuShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cpuShareLevel;
 
     /**
-     * @return The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-     * shares. Can be one of low, normal, high, or custom.
+     * @return The CPU allocation level. The level is a
+     * simplified view of shares. Levels map to a pre-determined set of numeric
+     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * ignored.  Default: `normal`
      * 
      */
     public Output<Optional<String>> cpuShareLevel() {
         return Codegen.optional(this.cpuShareLevel);
     }
     /**
-     * The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-     * cpu_share_level must be custom.
+     * The number of shares allocated for CPU. Used to
+     * determine resource allocation in case of resource contention. If this is set,
+     * `cpu_share_level` must be `custom`.
      * 
      */
     @Export(name="cpuShares", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpuShares;
 
     /**
-     * @return The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-     * cpu_share_level must be custom.
+     * @return The number of shares allocated for CPU. Used to
+     * determine resource allocation in case of resource contention. If this is set,
+     * `cpu_share_level` must be `custom`.
      * 
      */
     public Output<Integer> cpuShares() {
@@ -113,136 +383,162 @@ public class ResourcePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customAttributes);
     }
     /**
-     * Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-     * unreserved resources.
+     * Determines if the reservation on a resource
+     * pool can grow beyond the specified value if the parent resource pool has
+     * unreserved resources. Default: `true`
      * 
      */
     @Export(name="memoryExpandable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> memoryExpandable;
 
     /**
-     * @return Determines if the reservation on a resource pool can grow beyond the specified value, if the parent resource pool has
-     * unreserved resources.
+     * @return Determines if the reservation on a resource
+     * pool can grow beyond the specified value if the parent resource pool has
+     * unreserved resources. Default: `true`
      * 
      */
     public Output<Optional<Boolean>> memoryExpandable() {
         return Codegen.optional(this.memoryExpandable);
     }
     /**
-     * The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-     * unlimited.
+     * The CPU utilization of a resource pool will not
+     * exceed this limit, even if there are available resources. Set to `-1` for
+     * unlimited. Default: `-1`
      * 
      */
     @Export(name="memoryLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryLimit;
 
     /**
-     * @return The utilization of a resource pool will not exceed this limit, even if there are available resources. Set to -1 for
-     * unlimited.
+     * @return The CPU utilization of a resource pool will not
+     * exceed this limit, even if there are available resources. Set to `-1` for
+     * unlimited. Default: `-1`
      * 
      */
     public Output<Optional<Integer>> memoryLimit() {
         return Codegen.optional(this.memoryLimit);
     }
     /**
-     * Amount of memory (MB) that is guaranteed available to the resource pool.
+     * Amount of CPU (MHz) that is guaranteed
+     * available to the resource pool. Default: `0`
      * 
      */
     @Export(name="memoryReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryReservation;
 
     /**
-     * @return Amount of memory (MB) that is guaranteed available to the resource pool.
+     * @return Amount of CPU (MHz) that is guaranteed
+     * available to the resource pool. Default: `0`
      * 
      */
     public Output<Optional<Integer>> memoryReservation() {
         return Codegen.optional(this.memoryReservation);
     }
     /**
-     * The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-     * shares. Can be one of low, normal, high, or custom.
+     * The CPU allocation level. The level is a
+     * simplified view of shares. Levels map to a pre-determined set of numeric
+     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * ignored.  Default: `normal`
      * 
      */
     @Export(name="memoryShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memoryShareLevel;
 
     /**
-     * @return The allocation level. The level is a simplified view of shares. Levels map to a pre-determined set of numeric values for
-     * shares. Can be one of low, normal, high, or custom.
+     * @return The CPU allocation level. The level is a
+     * simplified view of shares. Levels map to a pre-determined set of numeric
+     * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * ignored.  Default: `normal`
      * 
      */
     public Output<Optional<String>> memoryShareLevel() {
         return Codegen.optional(this.memoryShareLevel);
     }
     /**
-     * The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-     * memory_share_level must be custom.
+     * The number of shares allocated for CPU. Used to
+     * determine resource allocation in case of resource contention. If this is set,
+     * `memory_share_level` must be `custom`.
      * 
      */
     @Export(name="memoryShares", refs={Integer.class}, tree="[0]")
     private Output<Integer> memoryShares;
 
     /**
-     * @return The number of shares allocated. Used to determine resource allocation in case of resource contention. If this is set,
-     * memory_share_level must be custom.
+     * @return The number of shares allocated for CPU. Used to
+     * determine resource allocation in case of resource contention. If this is set,
+     * `memory_share_level` must be `custom`.
      * 
      */
     public Output<Integer> memoryShares() {
         return this.memoryShares;
     }
     /**
-     * Name of resource pool.
+     * The name of the resource pool.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of resource pool.
+     * @return The name of the resource pool.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The ID of the root resource pool of the compute resource the resource pool is in.
+     * The managed object ID
+     * of the parent resource pool. This can be the root resource pool for a cluster
+     * or standalone host, or a resource pool itself. When moving a resource pool
+     * from one parent resource pool to another, both must share a common root
+     * resource pool.
      * 
      */
     @Export(name="parentResourcePoolId", refs={String.class}, tree="[0]")
     private Output<String> parentResourcePoolId;
 
     /**
-     * @return The ID of the root resource pool of the compute resource the resource pool is in.
+     * @return The managed object ID
+     * of the parent resource pool. This can be the root resource pool for a cluster
+     * or standalone host, or a resource pool itself. When moving a resource pool
+     * from one parent resource pool to another, both must share a common root
+     * resource pool.
      * 
      */
     public Output<String> parentResourcePoolId() {
         return this.parentResourcePoolId;
     }
     /**
-     * Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-     * pool are scaled up or down.
+     * Determines if the shares of all
+     * descendants of the resource pool are scaled up or down when the shares
+     * of the resource pool are scaled up or down. Can be one of `disabled` or
+     * `scaleCpuAndMemoryShares`. Default: `disabled`.
      * 
      */
     @Export(name="scaleDescendantsShares", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scaleDescendantsShares;
 
     /**
-     * @return Determines if the shares of all descendants of the resource pool are scaled up or down when the shares of the resource
-     * pool are scaled up or down.
+     * @return Determines if the shares of all
+     * descendants of the resource pool are scaled up or down when the shares
+     * of the resource pool are scaled up or down. Can be one of `disabled` or
+     * `scaleCpuAndMemoryShares`. Default: `disabled`.
      * 
      */
     public Output<Optional<String>> scaleDescendantsShares() {
         return Codegen.optional(this.scaleDescendantsShares);
     }
     /**
-     * A list of tag IDs to apply to this object.
+     * The IDs of any tags to attach to this resource.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return A list of tag IDs to apply to this object.
+     * @return The IDs of any tags to attach to this resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

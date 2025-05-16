@@ -54,6 +54,8 @@ namespace Pulumi.VSphere
     /// 
     /// via supplying the full datastore path to the virtual disk. An example is below:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \
     /// ```

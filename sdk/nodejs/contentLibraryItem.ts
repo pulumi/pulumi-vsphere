@@ -85,6 +85,8 @@ import * as utilities from "./utilities";
  *
  * supplying the content library ID. An example is below:
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * ```sh
  * $ pulumi import vsphere:index/contentLibraryItem:ContentLibraryItem vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
  * ```

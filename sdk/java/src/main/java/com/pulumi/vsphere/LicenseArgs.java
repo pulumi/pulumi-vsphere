@@ -18,14 +18,18 @@ public final class LicenseArgs extends com.pulumi.resources.ResourceArgs {
     public static final LicenseArgs Empty = new LicenseArgs();
 
     /**
-     * A map of key/value pairs to be attached as labels (tags) to the license key.
+     * A map of labels to be applied to the license key.
+     * 
+     * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A map of key/value pairs to be attached as labels (tags) to the license key.
+     * @return A map of labels to be applied to the license key.
+     * 
+     * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -33,14 +37,14 @@ public final class LicenseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The license key to add.
+     * The license key value.
      * 
      */
     @Import(name="licenseKey", required=true)
     private Output<String> licenseKey;
 
     /**
-     * @return The license key to add.
+     * @return The license key value.
      * 
      */
     public Output<String> licenseKey() {
@@ -73,7 +77,9 @@ public final class LicenseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A map of key/value pairs to be attached as labels (tags) to the license key.
+         * @param labels A map of labels to be applied to the license key.
+         * 
+         * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
          * 
          * @return builder
          * 
@@ -84,7 +90,9 @@ public final class LicenseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A map of key/value pairs to be attached as labels (tags) to the license key.
+         * @param labels A map of labels to be applied to the license key.
+         * 
+         * &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
          * 
          * @return builder
          * 
@@ -94,7 +102,7 @@ public final class LicenseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseKey The license key to add.
+         * @param licenseKey The license key value.
          * 
          * @return builder
          * 
@@ -105,7 +113,7 @@ public final class LicenseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseKey The license key to add.
+         * @param licenseKey The license key value.
          * 
          * @return builder
          * 

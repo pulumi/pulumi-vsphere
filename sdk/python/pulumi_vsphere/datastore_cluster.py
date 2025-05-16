@@ -968,11 +968,55 @@ class DatastoreCluster(pulumi.CustomResource):
 
         > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
 
+        ## Example Usage
+
+        The following example sets up a datastore cluster and enables Storage DRS with
+        the default settings. It then creates two NAS datastores using the
+        `NasDatastore` resource and assigns them to
+        the datastore cluster.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter = vsphere.get_datacenter()
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        datastore_cluster = vsphere.DatastoreCluster("datastore_cluster",
+            name="datastore-cluster-test",
+            datacenter_id=datacenter.id,
+            sdrs_enabled=True)
+        datastore1 = vsphere.NasDatastore("datastore1",
+            name="datastore-test1",
+            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            datastore_cluster_id=datastore_cluster.id,
+            type="NFS",
+            remote_hosts=["nfs"],
+            remote_path="/export/test1")
+        datastore2 = vsphere.NasDatastore("datastore2",
+            name="datastore-test2",
+            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            datastore_cluster_id=datastore_cluster.id,
+            type="NFS",
+            remote_hosts=["nfs"],
+            remote_path="/export/test2")
+        ```
+
         ## Import
 
         An existing datastore cluster can be imported into this resource
 
         via the path to the cluster, via the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster
@@ -1054,11 +1098,55 @@ class DatastoreCluster(pulumi.CustomResource):
 
         > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
 
+        ## Example Usage
+
+        The following example sets up a datastore cluster and enables Storage DRS with
+        the default settings. It then creates two NAS datastores using the
+        `NasDatastore` resource and assigns them to
+        the datastore cluster.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter = vsphere.get_datacenter()
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        datastore_cluster = vsphere.DatastoreCluster("datastore_cluster",
+            name="datastore-cluster-test",
+            datacenter_id=datacenter.id,
+            sdrs_enabled=True)
+        datastore1 = vsphere.NasDatastore("datastore1",
+            name="datastore-test1",
+            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            datastore_cluster_id=datastore_cluster.id,
+            type="NFS",
+            remote_hosts=["nfs"],
+            remote_path="/export/test1")
+        datastore2 = vsphere.NasDatastore("datastore2",
+            name="datastore-test2",
+            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            datastore_cluster_id=datastore_cluster.id,
+            type="NFS",
+            remote_hosts=["nfs"],
+            remote_path="/export/test2")
+        ```
+
         ## Import
 
         An existing datastore cluster can be imported into this resource
 
         via the path to the cluster, via the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster

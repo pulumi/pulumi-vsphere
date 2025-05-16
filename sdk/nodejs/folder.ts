@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * Paths are always relative to the specific type of folder you are creating.
  * A subfolder is discovered by parsing the relative path specified in `path`, so
  * `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
- * as that folder exists.
+ * as the folder `foo` exists.
  *
  * ## Example Usage
  *
@@ -24,7 +24,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = vsphere.getDatacenter({});
+ * const datacenter = vsphere.getDatacenter({
+ *     name: vsphereDatacenter,
+ * });
  * const folder = new vsphere.Folder("folder", {
  *     path: "test-folder",
  *     type: "vm",
@@ -32,7 +34,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Example with subfolders
+ * ### Example with Sub-folders
  *
  * The below example builds off of the above by first creating a folder named
  * `test-parent`, and then locating `test-folder` in that
@@ -47,7 +49,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = vsphere.getDatacenter({});
+ * const datacenter = vsphere.getDatacenter({
+ *     name: vsphereDatacenter,
+ * });
  * const parent = new vsphere.Folder("parent", {
  *     path: "test-parent",
  *     type: "vm",
@@ -66,13 +70,15 @@ import * as utilities from "./utilities";
  *
  * its full path, via the following command:
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * ```sh
- * $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+ * $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/example-vm-folder
  * ```
  *
  * The above command would import the folder from our examples above, the VM
  *
- * folder named `terraform-test-folder` located in the datacenter named
+ * folder named `example-vm-folder` located in the datacenter named
  *
  * `default-dc`.
  */

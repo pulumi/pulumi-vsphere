@@ -306,9 +306,21 @@ export interface GetGuestOsCustomizationSpecWindowsOption {
      */
     domainOu: string;
     /**
+     * The full name of the user of this virtual machine.
+     */
+    fullName: string;
+    /**
      * The Active Directory domain for the virtual machine to join.
      */
     joinDomain: string;
+    /**
+     * The organization name this virtual machine is being installed for.
+     */
+    organizationName: string;
+    /**
+     * The product key for this virtual machine.
+     */
+    productKey: string;
     /**
      * A list of commands to run at first user logon, after guest customization.
      */

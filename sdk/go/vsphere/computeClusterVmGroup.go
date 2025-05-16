@@ -142,6 +142,8 @@ import (
 //	'{"compute_cluster_path": "/dc1/host/cluster1", \
 //
 //	"name": "pulumi-test-cluster-vm-group"}'
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type ComputeClusterVmGroup struct {
 	pulumi.CustomResourceState
 

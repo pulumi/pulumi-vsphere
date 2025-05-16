@@ -714,6 +714,8 @@ class VappContainer(pulumi.CustomResource):
 
         the path to the vApp container, using the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         Example:
 
         ```sh
@@ -845,6 +847,8 @@ class VappContainer(pulumi.CustomResource):
         An existing vApp container can be imported into this resource via
 
         the path to the vApp container, using the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         Example:
 

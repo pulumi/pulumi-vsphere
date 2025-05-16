@@ -40,6 +40,8 @@ namespace Pulumi.VSphere
     /// 
     /// path to the cluster, via the following command:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// hcl
     /// 
     /// variable "datacenter" {
@@ -56,9 +58,9 @@ namespace Pulumi.VSphere
     /// 
     /// resource "vsphere_compute_cluster" "compute_cluster" {
     /// 
-    ///   name            = "cluster-01"
+    ///   name          = "cluster-01"
     /// 
-    ///   datacenter_id   = data.vsphere_datacenter.datacenter.id
+    ///   datacenter_id = data.vsphere_datacenter.datacenter.id
     /// 
     /// }
     /// 
@@ -86,9 +88,7 @@ namespace Pulumi.VSphere
     /// 
     ///   ha_datastore_pdl_response = "restartAggressive"
     /// 
-    ///   ... etc.
-    /// 
-    /// console
+    /// }
     /// 
     /// ```sh
     /// $ pulumi import vsphere:index/computeCluster:ComputeCluster compute_cluster /dc-01/host/cluster-01

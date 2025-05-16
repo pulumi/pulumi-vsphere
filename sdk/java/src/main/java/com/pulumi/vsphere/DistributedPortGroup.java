@@ -122,6 +122,8 @@ import javax.annotation.Nullable;
  * 
  * the managed object id of the port group, via the following command:
  * 
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ * 
  * ```sh
  * $ pulumi import vsphere:index/distributedPortGroup:DistributedPortGroup pg /dc-01/network/pg-01
  * ```
