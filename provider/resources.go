@@ -8,7 +8,7 @@ import (
 
 	_ "embed" // Allow embedding state
 
-	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
+	"github.com/vmware/terraform-provider-vsphere/vsphere"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
@@ -41,7 +41,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:          "Apache-2.0",
 		Homepage:         "https://pulumi.io",
 		Repository:       "https://github.com/pulumi/pulumi-vsphere",
-		GitHubOrg:        "hashicorp",
+		GitHubOrg:        "vmware",
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
