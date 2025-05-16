@@ -55,9 +55,9 @@ import (
 //
 // resource "vsphere_compute_cluster" "compute_cluster" {
 //
-//	name            = "cluster-01"
+//	name          = "cluster-01"
 //
-//	datacenter_id   = data.vsphere_datacenter.datacenter.id
+//	datacenter_id = data.vsphere_datacenter.datacenter.id
 //
 // }
 //
@@ -85,9 +85,7 @@ import (
 //
 //	ha_datastore_pdl_response = "restartAggressive"
 //
-//	... etc.
-//
-// console
+// }
 //
 // ```sh
 // $ pulumi import vsphere:index/computeCluster:ComputeCluster compute_cluster /dc-01/host/cluster-01
@@ -99,6 +97,8 @@ import (
 //
 // [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
 // [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type ComputeCluster struct {
 	pulumi.CustomResourceState
 

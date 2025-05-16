@@ -38,7 +38,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The name of the customization specification is the unique
-        /// identifier per vCenter Server instance. ## Attribute Reference
+        /// identifier per vCenter Server instance.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -53,7 +53,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The name of the customization specification is the unique
-        /// identifier per vCenter Server instance. ## Attribute Reference
+        /// identifier per vCenter Server instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -68,15 +68,34 @@ namespace Pulumi.VSphere
     [OutputType]
     public sealed class GetGuestOsCustomizationResult
     {
+        /// <summary>
+        /// The number of last changed version to the customization
+        /// specification.
+        /// </summary>
         public readonly string ChangeVersion;
+        /// <summary>
+        /// The description for the customization specification.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The time of last modification to the customization
+        /// specification.
+        /// </summary>
         public readonly string LastUpdateTime;
         public readonly string Name;
+        /// <summary>
+        /// Container object for the guest operating system properties to be
+        /// customized. See
+        /// virtual machine customizations
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGuestOsCustomizationSpecResult> Specs;
+        /// <summary>
+        /// The type of customization specification: One among: Windows, Linux.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

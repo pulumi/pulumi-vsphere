@@ -29,6 +29,8 @@ import (
 //	'{"compute_cluster_path": "/dc-01/host/cluster-01", \
 //
 //	"name": "vm-anti-affinity-rule"}'
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type ComputeClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 

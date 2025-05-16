@@ -281,6 +281,8 @@ class DrsVmOverride(pulumi.CustomResource):
 
         is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/drsVmOverride:DrsVmOverride drs_vm_override \\
         ```
@@ -382,6 +384,8 @@ class DrsVmOverride(pulumi.CustomResource):
         `pulumi import`. If no override exists, an error will be given.  An example
 
         is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/drsVmOverride:DrsVmOverride drs_vm_override \\

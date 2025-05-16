@@ -1810,6 +1810,8 @@ class DistributedPortGroup(pulumi.CustomResource):
 
         the managed object id of the port group, via the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/distributedPortGroup:DistributedPortGroup pg /dc-01/network/pg-01
         ```
@@ -2026,6 +2028,8 @@ class DistributedPortGroup(pulumi.CustomResource):
         An existing port group can be imported into this resource using
 
         the managed object id of the port group, via the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/distributedPortGroup:DistributedPortGroup pg /dc-01/network/pg-01

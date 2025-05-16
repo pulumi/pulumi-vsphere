@@ -31,6 +31,8 @@ namespace Pulumi.VSphere
     /// 
     /// import`. If no override exists, an error will be given.  An example is below:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \
     /// ```

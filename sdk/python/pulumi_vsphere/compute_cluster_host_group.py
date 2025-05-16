@@ -188,6 +188,39 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="compute-cluster-test",
+            datacenter_id=dc["id"],
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated",
+            ha_enabled=True)
+        cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
+            name="test-cluster-host-group",
+            compute_cluster_id=compute_cluster.id,
+            host_system_ids=[[__item.id for __item in hosts_get_host]])
+        ```
+
         ## Import
 
         An existing group can be imported into this resource by
@@ -197,6 +230,8 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         name or cluster is not found, or if the group is of a different type, an error
 
         will be returned. An example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \\
@@ -241,6 +276,39 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="compute-cluster-test",
+            datacenter_id=dc["id"],
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated",
+            ha_enabled=True)
+        cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
+            name="test-cluster-host-group",
+            compute_cluster_id=compute_cluster.id,
+            host_system_ids=[[__item.id for __item in hosts_get_host]])
+        ```
+
         ## Import
 
         An existing group can be imported into this resource by
@@ -250,6 +318,8 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         name or cluster is not found, or if the group is of a different type, an error
 
         will be returned. An example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \\

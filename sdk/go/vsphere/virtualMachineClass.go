@@ -18,7 +18,7 @@ import (
 //
 // ### S
 //
-// **Create a basic class**
+// ### Create a Basic Class
 //
 // ```go
 // package main
@@ -46,7 +46,7 @@ import (
 //
 // ```
 //
-// **Create a class with a vGPU**
+// ### Create a Class with a vGPU
 //
 // ```go
 // package main

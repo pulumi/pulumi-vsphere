@@ -31,6 +31,8 @@ namespace Pulumi.VSphere
     /// 
     /// via the path to the cluster, via the following command:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster
     /// ```

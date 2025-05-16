@@ -14,11 +14,45 @@ import * as utilities from "./utilities";
  * multiple hosts, you must specify each host that you want to add in the
  * `hostSystemIds` argument.
  *
+ * ## Example Usage
+ *
+ * The following example would set up a NFS v3 share on 3 hosts connected through
+ * vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+ * is named `nfs` and has `/export/test` exported.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const hosts = config.getObject<any>("hosts") || [
+ *     "esxi-01.example.com",
+ *     "esxi-02.example.com",
+ *     "esxi-03.example.com",
+ * ];
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const hostsGetHost = (new Array(hosts.length)).map((_, i) => i).map(__index => (vsphere.getHost({
+ *     name: hosts[__index],
+ *     datacenterId: _arg0_.id,
+ * })));
+ * const datastore = new vsphere.NasDatastore("datastore", {
+ *     name: "test",
+ *     hostSystemIds: [esxiHosts.map(__item => __item.id)],
+ *     type: "NFS",
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/test",
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing NAS datastore can be imported into this resource via
  *
  * its managed object ID, via the following command:
+ *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
  * $ pulumi import vsphere:index/nasDatastore:NasDatastore datastore datastore-123

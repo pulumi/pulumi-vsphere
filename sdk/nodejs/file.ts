@@ -68,12 +68,7 @@ export class File extends pulumi.CustomResource {
     }
 
     /**
-     * Create directories in `destinationFile`
-     * path parameter on first apply if any are missing for copy operation.
-     *
-     * > **NOTE:** Any directory created as part of the `createDirectories` argument
-     * will not be deleted when the resource is destroyed. New directories are not
-     * created if the `destinationFile` path is changed in subsequent applies.
+     * Specifies whether to create the parent directories of the destination file if they do not exist.
      */
     public readonly createDirectories!: pulumi.Output<boolean | undefined>;
     /**
@@ -88,7 +83,7 @@ export class File extends pulumi.CustomResource {
     public readonly datastore!: pulumi.Output<string>;
     /**
      * The path to where the file should be uploaded
-     * or copied to on the destination `datastore` in vSphere.
+     * or copied to on the destination datastore.
      */
     public readonly destinationFile!: pulumi.Output<string>;
     /**
@@ -101,6 +96,10 @@ export class File extends pulumi.CustomResource {
      * be copied. Forces a new resource if changed.
      */
     public readonly sourceDatastore!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the file being uploaded from or copied.
+     * Forces a new resource if changed.
+     */
     public readonly sourceFile!: pulumi.Output<string>;
 
     /**
@@ -152,12 +151,7 @@ export class File extends pulumi.CustomResource {
  */
 export interface FileState {
     /**
-     * Create directories in `destinationFile`
-     * path parameter on first apply if any are missing for copy operation.
-     *
-     * > **NOTE:** Any directory created as part of the `createDirectories` argument
-     * will not be deleted when the resource is destroyed. New directories are not
-     * created if the `destinationFile` path is changed in subsequent applies.
+     * Specifies whether to create the parent directories of the destination file if they do not exist.
      */
     createDirectories?: pulumi.Input<boolean>;
     /**
@@ -172,7 +166,7 @@ export interface FileState {
     datastore?: pulumi.Input<string>;
     /**
      * The path to where the file should be uploaded
-     * or copied to on the destination `datastore` in vSphere.
+     * or copied to on the destination datastore.
      */
     destinationFile?: pulumi.Input<string>;
     /**
@@ -185,6 +179,10 @@ export interface FileState {
      * be copied. Forces a new resource if changed.
      */
     sourceDatastore?: pulumi.Input<string>;
+    /**
+     * The path to the file being uploaded from or copied.
+     * Forces a new resource if changed.
+     */
     sourceFile?: pulumi.Input<string>;
 }
 
@@ -193,12 +191,7 @@ export interface FileState {
  */
 export interface FileArgs {
     /**
-     * Create directories in `destinationFile`
-     * path parameter on first apply if any are missing for copy operation.
-     *
-     * > **NOTE:** Any directory created as part of the `createDirectories` argument
-     * will not be deleted when the resource is destroyed. New directories are not
-     * created if the `destinationFile` path is changed in subsequent applies.
+     * Specifies whether to create the parent directories of the destination file if they do not exist.
      */
     createDirectories?: pulumi.Input<boolean>;
     /**
@@ -213,7 +206,7 @@ export interface FileArgs {
     datastore: pulumi.Input<string>;
     /**
      * The path to where the file should be uploaded
-     * or copied to on the destination `datastore` in vSphere.
+     * or copied to on the destination datastore.
      */
     destinationFile: pulumi.Input<string>;
     /**
@@ -226,5 +219,9 @@ export interface FileArgs {
      * be copied. Forces a new resource if changed.
      */
     sourceDatastore?: pulumi.Input<string>;
+    /**
+     * The path to the file being uploaded from or copied.
+     * Forces a new resource if changed.
+     */
     sourceFile: pulumi.Input<string>;
 }

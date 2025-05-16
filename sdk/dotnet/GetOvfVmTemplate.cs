@@ -63,8 +63,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The disk provisioning type. If set, all the
-        /// disks in the deployed OVA/OVF will have the same specified disk type. Can be
-        /// one of `thin`, `flat`, `thick` or `sameAsSource`.
+        /// disks included in the OVF/OVA will have the same specified policy. Can be
+        /// one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
         /// </summary>
         [Input("diskProvisioning")]
         public string? DiskProvisioning { get; set; }
@@ -177,8 +177,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The disk provisioning type. If set, all the
-        /// disks in the deployed OVA/OVF will have the same specified disk type. Can be
-        /// one of `thin`, `flat`, `thick` or `sameAsSource`.
+        /// disks included in the OVF/OVA will have the same specified policy. Can be
+        /// one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
         /// </summary>
         [Input("diskProvisioning")]
         public Input<string>? DiskProvisioning { get; set; }

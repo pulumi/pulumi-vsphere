@@ -18,7 +18,7 @@ namespace Pulumi.VSphere
     /// Paths are always relative to the specific type of folder you are creating.
     /// A subfolder is discovered by parsing the relative path specified in `path`, so
     /// `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
-    /// as that folder exists.
+    /// as the folder `foo` exists.
     /// 
     /// ## Example Usage
     /// 
@@ -33,7 +33,10 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke();
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = vsphereDatacenter,
+    ///     });
     /// 
     ///     var folder = new VSphere.Folder("folder", new()
     ///     {
@@ -45,7 +48,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// ### Example with subfolders
+    /// ### Example with Sub-folders
     /// 
     /// The below example builds off of the above by first creating a folder named
     /// `test-parent`, and then locating `test-folder` in that
@@ -64,7 +67,10 @@ namespace Pulumi.VSphere
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var datacenter = VSphere.GetDatacenter.Invoke();
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = vsphereDatacenter,
+    ///     });
     /// 
     ///     var parent = new VSphere.Folder("parent", new()
     ///     {
@@ -89,13 +95,15 @@ namespace Pulumi.VSphere
     /// 
     /// its full path, via the following command:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
-    /// $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+    /// $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/example-vm-folder
     /// ```
     /// 
     /// The above command would import the folder from our examples above, the VM
     /// 
-    /// folder named `terraform-test-folder` located in the datacenter named
+    /// folder named `example-vm-folder` located in the datacenter named
     /// 
     /// `default-dc`.
     /// </summary>

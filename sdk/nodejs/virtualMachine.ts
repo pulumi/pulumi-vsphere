@@ -187,7 +187,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly guestId!: pulumi.Output<string>;
     /**
-     * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+     * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      */
     public /*out*/ readonly guestIpAddresses!: pulumi.Output<string[]>;
     /**
@@ -744,7 +744,7 @@ export interface VirtualMachineState {
      */
     guestId?: pulumi.Input<string>;
     /**
-     * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+     * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      */
     guestIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**

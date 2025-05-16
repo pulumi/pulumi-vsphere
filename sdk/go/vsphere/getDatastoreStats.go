@@ -92,8 +92,6 @@ type GetDatastoreStatsArgs struct {
 	// [managed object reference ID][docs-about-morefs] of the datacenter the
 	// datastores are located in. For default datacenters, use the `id` attribute
 	// from an empty `Datacenter` data source.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId string `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
 	// datacenter, where the name of the datastore is used as key and the free space
@@ -135,8 +133,6 @@ type GetDatastoreStatsOutputArgs struct {
 	// [managed object reference ID][docs-about-morefs] of the datacenter the
 	// datastores are located in. For default datacenters, use the `id` attribute
 	// from an empty `Datacenter` data source.
-	//
-	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
 	// A mapping of the free space for each datastore in the
 	// datacenter, where the name of the datastore is used as key and the free space

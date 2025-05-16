@@ -426,6 +426,8 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
         example is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule cluster_vm_host_rule \\
         ```
@@ -555,6 +557,8 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         not found, or if the rule is of a different type, an error will be returned. An
 
         example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule cluster_vm_host_rule \\

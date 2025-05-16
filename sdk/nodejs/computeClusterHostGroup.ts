@@ -18,6 +18,41 @@ import * as utilities from "./utilities";
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const datacenter = config.get("datacenter") || "dc-01";
+ * const hosts = config.getObject<any>("hosts") || [
+ *     "esxi-01.example.com",
+ *     "esxi-02.example.com",
+ *     "esxi-03.example.com",
+ * ];
+ * const datacenterGetDatacenter = vsphere.getDatacenter({
+ *     name: datacenter,
+ * });
+ * const hostsGetHost = (new Array(hosts.length)).map((_, i) => i).map(__index => (vsphere.getHost({
+ *     name: hosts[__index],
+ *     datacenterId: _arg0_.id,
+ * })));
+ * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     name: "compute-cluster-test",
+ *     datacenterId: dc.id,
+ *     hostSystemIds: [hostsGetHost.map(__item => __item.id)],
+ *     drsEnabled: true,
+ *     drsAutomationLevel: "fullyAutomated",
+ *     haEnabled: true,
+ * });
+ * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
+ *     name: "test-cluster-host-group",
+ *     computeClusterId: computeCluster.id,
+ *     hostSystemIds: [hostsGetHost.map(__item => __item.id)],
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing group can be imported into this resource by
@@ -27,6 +62,8 @@ import * as utilities from "./utilities";
  * name or cluster is not found, or if the group is of a different type, an error
  *
  * will be returned. An example is below:
+ *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
  * $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \

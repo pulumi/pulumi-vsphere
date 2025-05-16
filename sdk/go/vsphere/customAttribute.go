@@ -62,6 +62,8 @@ import (
 // ```
 //
 // [ext-custom-attributes]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/custom-attributes-in-the-vsphere-client-host-management.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type CustomAttribute struct {
 	pulumi.CustomResourceState
 

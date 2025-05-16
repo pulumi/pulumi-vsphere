@@ -49,6 +49,61 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
+    /// ### Create host in a compute cluster
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     {
+    ///         Address = "esxi-01.example.com",
+    ///         Insecure = true,
+    ///     });
+    /// 
+    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     {
+    ///         Hostname = "esxi-01.example.com",
+    ///         Username = "root",
+    ///         Password = "password",
+    ///         License = "00000-00000-00000-00000-00000",
+    ///         Thumbprint = thumbprint.Apply(getHostThumbprintResult =&gt; getHostThumbprintResult.Id),
+    ///         Cluster = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         Services = new[]
+    ///         {
+    ///             new VSphere.Inputs.HostServiceArgs
+    ///             {
+    ///                 Ntpd = new VSphere.Inputs.HostServiceNtpdArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Policy = "on",
+    ///                     NtpServers = new[]
+    ///                     {
+    ///                         "pool.ntp.org",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An existing host can be imported into this resource by supplying
@@ -93,7 +148,7 @@ namespace Pulumi.VSphere
     /// 
     /// data "vsphere_host_thumbprint" "thumbprint" {
     /// 
-    ///   address = "esxi-01.example.com"
+    ///   address  = "esxi-01.example.com"
     /// 
     ///   insecure = true
     /// 
@@ -141,9 +196,9 @@ namespace Pulumi.VSphere
     ///     
     ///     }
     /// 
-    /// }
+    ///   }
     /// 
-    /// console
+    /// }
     /// 
     /// ```sh
     /// $ pulumi import vsphere:index/host:Host esx-01 host-123

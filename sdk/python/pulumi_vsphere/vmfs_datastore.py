@@ -571,6 +571,8 @@ class VmfsDatastore(pulumi.CustomResource):
 
         ID.
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/vmfsDatastore:VmfsDatastore datastore datastore-123:host-10
         ```
@@ -740,6 +742,8 @@ class VmfsDatastore(pulumi.CustomResource):
         via its managed object ID, via the command below. You also need the host system
 
         ID.
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/vmfsDatastore:VmfsDatastore datastore datastore-123:host-10

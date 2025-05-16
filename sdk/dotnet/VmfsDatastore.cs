@@ -150,6 +150,8 @@ namespace Pulumi.VSphere
     /// 
     /// ID.
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/vmfsDatastore:VmfsDatastore datastore datastore-123:host-10
     /// ```

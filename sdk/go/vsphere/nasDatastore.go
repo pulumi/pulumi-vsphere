@@ -42,6 +42,8 @@ import (
 // Datastore:datastore-123
 //
 // [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type NasDatastore struct {
 	pulumi.CustomResourceState
 

@@ -200,6 +200,8 @@ import (
 //
 // [ext-netapp]: https://kb.netapp.com/support/s/article/ka31A0000000rLRQAY/how-to-match-a-lun-s-naa-number-to-its-serial-number?language=en_US
 // [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type VmfsDatastore struct {
 	pulumi.CustomResourceState
 

@@ -80,6 +80,8 @@ import * as utilities from "./utilities";
  *
  * `pulumi import`, as per the example below:
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * ```sh
  * $ pulumi import vsphere:index/tag:Tag tag \
  * ```

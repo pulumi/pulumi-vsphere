@@ -35,6 +35,40 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Create host in a compute cluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const thumbprint = vsphere.getHostThumbprint({
+ *     address: "esxi-01.example.com",
+ *     insecure: true,
+ * });
+ * const esx_01 = new vsphere.Host("esx-01", {
+ *     hostname: "esxi-01.example.com",
+ *     username: "root",
+ *     password: "password",
+ *     license: "00000-00000-00000-00000-00000",
+ *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
+ *     cluster: cluster.then(cluster => cluster.id),
+ *     services: [{
+ *         ntpd: {
+ *             enabled: true,
+ *             policy: "on",
+ *             ntpServers: ["pool.ntp.org"],
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing host can be imported into this resource by supplying
@@ -79,7 +113,7 @@ import * as utilities from "./utilities";
  *
  * data "vsphere_host_thumbprint" "thumbprint" {
  *
- *   address = "esxi-01.example.com"
+ *   address  = "esxi-01.example.com"
  *
  *   insecure = true
  *
@@ -127,9 +161,9 @@ import * as utilities from "./utilities";
  *     
  *     }
  *
- * }
+ *   }
  *
- * console
+ * }
  *
  * ```sh
  * $ pulumi import vsphere:index/host:Host esx-01 host-123

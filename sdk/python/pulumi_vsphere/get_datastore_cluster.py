@@ -50,7 +50,7 @@ class GetDatastoreClusterResult:
     @pulumi.getter
     def datastores(self) -> Sequence[builtins.str]:
         """
-        (Optional) The names of the datastores included in the specific 
+        (Optional) The names of the datastores included in the specific
         cluster.
         """
         return pulumi.get(self, "datastores")

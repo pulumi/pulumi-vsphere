@@ -134,6 +134,8 @@ import (
 //	"virtual_machine_path": "/dc1/vm/srv1"}'
 //
 // [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type HaVmOverride struct {
 	pulumi.CustomResourceState
 

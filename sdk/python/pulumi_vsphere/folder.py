@@ -300,7 +300,7 @@ class Folder(pulumi.CustomResource):
         Paths are always relative to the specific type of folder you are creating.
         A subfolder is discovered by parsing the relative path specified in `path`, so
         `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
-        as that folder exists.
+        as the folder `foo` exists.
 
         ## Example Usage
 
@@ -311,14 +311,14 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        datacenter = vsphere.get_datacenter()
+        datacenter = vsphere.get_datacenter(name=vsphere_datacenter)
         folder = vsphere.Folder("folder",
             path="test-folder",
             type="vm",
             datacenter_id=datacenter.id)
         ```
 
-        ### Example with subfolders
+        ### Example with Sub-folders
 
         The below example builds off of the above by first creating a folder named
         `test-parent`, and then locating `test-folder` in that
@@ -333,7 +333,7 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        datacenter = vsphere.get_datacenter()
+        datacenter = vsphere.get_datacenter(name=vsphere_datacenter)
         parent = vsphere.Folder("parent",
             path="test-parent",
             type="vm",
@@ -350,13 +350,15 @@ class Folder(pulumi.CustomResource):
 
         its full path, via the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
-        $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+        $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/example-vm-folder
         ```
 
         The above command would import the folder from our examples above, the VM
 
-        folder named `terraform-test-folder` located in the datacenter named
+        folder named `example-vm-folder` located in the datacenter named
 
         `default-dc`.
 
@@ -405,7 +407,7 @@ class Folder(pulumi.CustomResource):
         Paths are always relative to the specific type of folder you are creating.
         A subfolder is discovered by parsing the relative path specified in `path`, so
         `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
-        as that folder exists.
+        as the folder `foo` exists.
 
         ## Example Usage
 
@@ -416,14 +418,14 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        datacenter = vsphere.get_datacenter()
+        datacenter = vsphere.get_datacenter(name=vsphere_datacenter)
         folder = vsphere.Folder("folder",
             path="test-folder",
             type="vm",
             datacenter_id=datacenter.id)
         ```
 
-        ### Example with subfolders
+        ### Example with Sub-folders
 
         The below example builds off of the above by first creating a folder named
         `test-parent`, and then locating `test-folder` in that
@@ -438,7 +440,7 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        datacenter = vsphere.get_datacenter()
+        datacenter = vsphere.get_datacenter(name=vsphere_datacenter)
         parent = vsphere.Folder("parent",
             path="test-parent",
             type="vm",
@@ -455,13 +457,15 @@ class Folder(pulumi.CustomResource):
 
         its full path, via the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
-        $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/terraform-test-folder
+        $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/example-vm-folder
         ```
 
         The above command would import the folder from our examples above, the VM
 
-        folder named `terraform-test-folder` located in the datacenter named
+        folder named `example-vm-folder` located in the datacenter named
 
         `default-dc`.
 

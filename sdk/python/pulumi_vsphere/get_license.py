@@ -61,14 +61,16 @@ class GetLicenseResult:
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
+        """
+        The license key ID.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, builtins.str]:
         """
-        A map of key/value pairs attached as labels (tags) to the license
-        key.
+        A map of labels applied to the license key.
         """
         return pulumi.get(self, "labels")
 
@@ -89,7 +91,7 @@ class GetLicenseResult:
     @pulumi.getter
     def total(self) -> builtins.int:
         """
-        Total number of units (example: CPUs) contained in the license.
+        The total number of units contained in the license key.
         """
         return pulumi.get(self, "total")
 
@@ -97,7 +99,7 @@ class GetLicenseResult:
     @pulumi.getter
     def used(self) -> builtins.int:
         """
-        The number of units (example: CPUs) assigned to this license.
+        The number of units assigned to this license key.
         """
         return pulumi.get(self, "used")
 
@@ -133,7 +135,7 @@ def get_license(license_key: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str license_key: The license key.
+    :param builtins.str license_key: The license key value.
     """
     __args__ = dict()
     __args__['licenseKey'] = license_key
@@ -164,7 +166,7 @@ def get_license_output(license_key: Optional[pulumi.Input[builtins.str]] = None,
     ```
 
 
-    :param builtins.str license_key: The license key.
+    :param builtins.str license_key: The license key value.
     """
     __args__ = dict()
     __args__['licenseKey'] = license_key

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ### S
  *
- * **Create a basic class**
+ * ### Create a Basic Class
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * **Create a class with a vGPU**
+ * ### Create a Class with a vGPU
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -266,6 +266,8 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         will be returned. An example is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \\
         ```
@@ -371,6 +373,8 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         name or cluster is not found, or if the group is of a different type, an error
 
         will be returned. An example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \\

@@ -73,6 +73,8 @@ import * as utilities from "./utilities";
  *
  * the ID of the vApp Entity.
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * ```sh
  * $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
  * ```

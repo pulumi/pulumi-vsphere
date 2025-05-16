@@ -82,6 +82,8 @@ namespace Pulumi.VSphere
     /// 
     /// to the VDS, via the following command:
     /// 
+    /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch vds /dc-01/network/vds-01
     /// ```

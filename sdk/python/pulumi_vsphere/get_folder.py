@@ -75,15 +75,76 @@ def get_folder(path: Optional[builtins.str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    folder = vsphere.get_folder(path="/dc-01/datastore-01/folder-01")
+    datacenter_folder_folder = vsphere.Folder("datacenter_folder",
+        path="example-datacenter-folder",
+        type="datacenter")
+    datacenter_folder = vsphere.get_folder_output(path=datacenter_folder_folder.path.apply(lambda path: f"/{path}"))
+    datacenter_datacenter = vsphere.Datacenter("datacenter",
+        name="example-datacenter",
+        folder=datacenter_folder.path,
+        opts = pulumi.ResourceOptions(depends_on=[datacenter_folder]))
+    datacenter = vsphere.get_datacenter_output(name=datacenter_datacenter.name)
+    vm_folder_folder = vsphere.Folder("vm_folder",
+        path="example-vm-folder",
+        type="vm",
+        datacenter_id=datacenter.id)
+    datastore_folder_folder = vsphere.Folder("datastore_folder",
+        path="example-datastore-folder",
+        type="datastore",
+        datacenter_id=datacenter.id)
+    network_folder_folder = vsphere.Folder("network_folder",
+        path="example-network-folder",
+        type="network",
+        datacenter_id=datacenter.id)
+    host_folder_folder = vsphere.Folder("host_folder",
+        path="example-host-folder",
+        type="host",
+        datacenter_id=datacenter.id)
+    vm_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        vmFolderFolderPath=vm_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/vm/{resolved_outputs['vmFolderFolderPath']}")
+    )
+    datastore_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        datastoreFolderFolderPath=datastore_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/datastore/{resolved_outputs['datastoreFolderFolderPath']}")
+    )
+    network_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        networkFolderFolderPath=network_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/network/{resolved_outputs['networkFolderFolderPath']}")
+    )
+    host_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        hostFolderFolderPath=host_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/host/{resolved_outputs['hostFolderFolderPath']}")
+    )
+    pulumi.export("vmFolderId", vm_folder.id)
+    pulumi.export("datastoreFolderId", datastore_folder.id)
+    pulumi.export("networkFolderId", network_folder.id)
+    pulumi.export("hostFolderId", host_folder.id)
+    pulumi.export("datacenterId", datacenter.id)
+    pulumi.export("datacenterFolderPath", datacenter_folder_folder.path)
     ```
 
 
     :param builtins.str path: The absolute path of the folder. For example, given a
            default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-           of `test-folder`, the resulting path would be
-           `/default-dc/vm/test-folder`. The valid folder types to be used in
-           the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+           of `example-vm-folder`, the resulting `path` would be
+           `/default-dc/vm/example-vm-folder`.
+           
+           For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+           `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+           `/parent-folder/default-dc/vm/example-vm-folder`.
+           
+           The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+           
+           Always include a leading slash in the `path`.
     """
     __args__ = dict()
     __args__['path'] = path
@@ -109,15 +170,76 @@ def get_folder_output(path: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    folder = vsphere.get_folder(path="/dc-01/datastore-01/folder-01")
+    datacenter_folder_folder = vsphere.Folder("datacenter_folder",
+        path="example-datacenter-folder",
+        type="datacenter")
+    datacenter_folder = vsphere.get_folder_output(path=datacenter_folder_folder.path.apply(lambda path: f"/{path}"))
+    datacenter_datacenter = vsphere.Datacenter("datacenter",
+        name="example-datacenter",
+        folder=datacenter_folder.path,
+        opts = pulumi.ResourceOptions(depends_on=[datacenter_folder]))
+    datacenter = vsphere.get_datacenter_output(name=datacenter_datacenter.name)
+    vm_folder_folder = vsphere.Folder("vm_folder",
+        path="example-vm-folder",
+        type="vm",
+        datacenter_id=datacenter.id)
+    datastore_folder_folder = vsphere.Folder("datastore_folder",
+        path="example-datastore-folder",
+        type="datastore",
+        datacenter_id=datacenter.id)
+    network_folder_folder = vsphere.Folder("network_folder",
+        path="example-network-folder",
+        type="network",
+        datacenter_id=datacenter.id)
+    host_folder_folder = vsphere.Folder("host_folder",
+        path="example-host-folder",
+        type="host",
+        datacenter_id=datacenter.id)
+    vm_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        vmFolderFolderPath=vm_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/vm/{resolved_outputs['vmFolderFolderPath']}")
+    )
+    datastore_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        datastoreFolderFolderPath=datastore_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/datastore/{resolved_outputs['datastoreFolderFolderPath']}")
+    )
+    network_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        networkFolderFolderPath=network_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/network/{resolved_outputs['networkFolderFolderPath']}")
+    )
+    host_folder = vsphere.get_folder_output(path=pulumi.Output.all(
+        datacenterFolderFolderPath=datacenter_folder_folder.path,
+        name=datacenter_datacenter.name,
+        hostFolderFolderPath=host_folder_folder.path
+    ).apply(lambda resolved_outputs: f"/{resolved_outputs['datacenterFolderFolderPath']}/{resolved_outputs['name']}/host/{resolved_outputs['hostFolderFolderPath']}")
+    )
+    pulumi.export("vmFolderId", vm_folder.id)
+    pulumi.export("datastoreFolderId", datastore_folder.id)
+    pulumi.export("networkFolderId", network_folder.id)
+    pulumi.export("hostFolderId", host_folder.id)
+    pulumi.export("datacenterId", datacenter.id)
+    pulumi.export("datacenterFolderPath", datacenter_folder_folder.path)
     ```
 
 
     :param builtins.str path: The absolute path of the folder. For example, given a
            default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-           of `test-folder`, the resulting path would be
-           `/default-dc/vm/test-folder`. The valid folder types to be used in
-           the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+           of `example-vm-folder`, the resulting `path` would be
+           `/default-dc/vm/example-vm-folder`.
+           
+           For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+           `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+           `/parent-folder/default-dc/vm/example-vm-folder`.
+           
+           The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+           
+           Always include a leading slash in the `path`.
     """
     __args__ = dict()
     __args__['path'] = path

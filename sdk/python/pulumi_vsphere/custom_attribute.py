@@ -147,6 +147,8 @@ class CustomAttribute(pulumi.CustomResource):
 
         via its name, using the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute
         ```
@@ -196,6 +198,8 @@ class CustomAttribute(pulumi.CustomResource):
         An existing custom attribute can be imported into this resource
 
         via its name, using the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/customAttribute:CustomAttribute attribute terraform-test-attribute

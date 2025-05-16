@@ -11,6 +11,28 @@ namespace Pulumi.VSphere
 {
     /// <summary>
     /// Provides a VMware vSphere license resource. This can be used to add and remove license keys.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var licenseKey = new VSphere.License("licenseKey", new()
+    ///     {
+    ///         LicenseKey = "00000-00000-00000-00000-00000",
+    ///         Labels = 
+    ///         {
+    ///             { "VpxClientLicenseLabel", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/license:License")]
     public partial class License : global::Pulumi.CustomResource
@@ -22,31 +44,33 @@ namespace Pulumi.VSphere
         public Output<string> EditionKey { get; private set; } = null!;
 
         /// <summary>
-        /// A map of key/value pairs to be attached as labels (tags) to the license key.
+        /// A map of labels to be applied to the license key.
+        /// 
+        /// &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The license key to add.
+        /// The license key value.
         /// </summary>
         [Output("licenseKey")]
         public Output<string> LicenseKey { get; private set; } = null!;
 
         /// <summary>
-        /// The display name for the license.
+        /// The display name for the license key.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Total number of units (example: CPUs) contained in the license.
+        /// The total number of units contained in the license key.
         /// </summary>
         [Output("total")]
         public Output<int> Total { get; private set; } = null!;
 
         /// <summary>
-        /// The number of units (example: CPUs) assigned to this license.
+        /// The number of units assigned to this license key.
         /// </summary>
         [Output("used")]
         public Output<int> Used { get; private set; } = null!;
@@ -101,7 +125,9 @@ namespace Pulumi.VSphere
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A map of key/value pairs to be attached as labels (tags) to the license key.
+        /// A map of labels to be applied to the license key.
+        /// 
+        /// &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -110,7 +136,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The license key to add.
+        /// The license key value.
         /// </summary>
         [Input("licenseKey", required: true)]
         public Input<string> LicenseKey { get; set; } = null!;
@@ -133,7 +159,9 @@ namespace Pulumi.VSphere
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A map of key/value pairs to be attached as labels (tags) to the license key.
+        /// A map of labels to be applied to the license key.
+        /// 
+        /// &gt; **NOTE:** Labels are not allowed for unmanaged ESX hosts.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -142,25 +170,25 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The license key to add.
+        /// The license key value.
         /// </summary>
         [Input("licenseKey")]
         public Input<string>? LicenseKey { get; set; }
 
         /// <summary>
-        /// The display name for the license.
+        /// The display name for the license key.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Total number of units (example: CPUs) contained in the license.
+        /// The total number of units contained in the license key.
         /// </summary>
         [Input("total")]
         public Input<int>? Total { get; set; }
 
         /// <summary>
-        /// The number of units (example: CPUs) assigned to this license.
+        /// The number of units assigned to this license key.
         /// </summary>
         [Input("used")]
         public Input<int>? Used { get; set; }

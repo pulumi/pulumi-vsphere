@@ -32,13 +32,10 @@ class FileArgs:
         :param pulumi.Input[builtins.str] datastore: The name of the datastore to which to upload the
                file.
         :param pulumi.Input[builtins.str] destination_file: The path to where the file should be uploaded
-               or copied to on the destination `datastore` in vSphere.
-        :param pulumi.Input[builtins.bool] create_directories: Create directories in `destination_file`
-               path parameter on first apply if any are missing for copy operation.
-               
-               > **NOTE:** Any directory created as part of the `create_directories` argument
-               will not be deleted when the resource is destroyed. New directories are not
-               created if the `destination_file` path is changed in subsequent applies.
+               or copied to on the destination datastore.
+        :param pulumi.Input[builtins.str] source_file: The path to the file being uploaded from or copied.
+               Forces a new resource if changed.
+        :param pulumi.Input[builtins.bool] create_directories: Specifies whether to create the parent directories of the destination file if they do not exist.
         :param pulumi.Input[builtins.str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[builtins.str] source_datacenter: The name of a datacenter from which the file
@@ -76,7 +73,7 @@ class FileArgs:
     def destination_file(self) -> pulumi.Input[builtins.str]:
         """
         The path to where the file should be uploaded
-        or copied to on the destination `datastore` in vSphere.
+        or copied to on the destination datastore.
         """
         return pulumi.get(self, "destination_file")
 
@@ -87,6 +84,10 @@ class FileArgs:
     @property
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> pulumi.Input[builtins.str]:
+        """
+        The path to the file being uploaded from or copied.
+        Forces a new resource if changed.
+        """
         return pulumi.get(self, "source_file")
 
     @source_file.setter
@@ -97,12 +98,7 @@ class FileArgs:
     @pulumi.getter(name="createDirectories")
     def create_directories(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Create directories in `destination_file`
-        path parameter on first apply if any are missing for copy operation.
-
-        > **NOTE:** Any directory created as part of the `create_directories` argument
-        will not be deleted when the resource is destroyed. New directories are not
-        created if the `destination_file` path is changed in subsequent applies.
+        Specifies whether to create the parent directories of the destination file if they do not exist.
         """
         return pulumi.get(self, "create_directories")
 
@@ -162,22 +158,19 @@ class _FileState:
                  source_file: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering File resources.
-        :param pulumi.Input[builtins.bool] create_directories: Create directories in `destination_file`
-               path parameter on first apply if any are missing for copy operation.
-               
-               > **NOTE:** Any directory created as part of the `create_directories` argument
-               will not be deleted when the resource is destroyed. New directories are not
-               created if the `destination_file` path is changed in subsequent applies.
+        :param pulumi.Input[builtins.bool] create_directories: Specifies whether to create the parent directories of the destination file if they do not exist.
         :param pulumi.Input[builtins.str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[builtins.str] datastore: The name of the datastore to which to upload the
                file.
         :param pulumi.Input[builtins.str] destination_file: The path to where the file should be uploaded
-               or copied to on the destination `datastore` in vSphere.
+               or copied to on the destination datastore.
         :param pulumi.Input[builtins.str] source_datacenter: The name of a datacenter from which the file
                will be copied. Forces a new resource if changed.
         :param pulumi.Input[builtins.str] source_datastore: The name of the datastore from which file will
                be copied. Forces a new resource if changed.
+        :param pulumi.Input[builtins.str] source_file: The path to the file being uploaded from or copied.
+               Forces a new resource if changed.
         """
         if create_directories is not None:
             pulumi.set(__self__, "create_directories", create_directories)
@@ -198,12 +191,7 @@ class _FileState:
     @pulumi.getter(name="createDirectories")
     def create_directories(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Create directories in `destination_file`
-        path parameter on first apply if any are missing for copy operation.
-
-        > **NOTE:** Any directory created as part of the `create_directories` argument
-        will not be deleted when the resource is destroyed. New directories are not
-        created if the `destination_file` path is changed in subsequent applies.
+        Specifies whether to create the parent directories of the destination file if they do not exist.
         """
         return pulumi.get(self, "create_directories")
 
@@ -242,7 +230,7 @@ class _FileState:
     def destination_file(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The path to where the file should be uploaded
-        or copied to on the destination `datastore` in vSphere.
+        or copied to on the destination datastore.
         """
         return pulumi.get(self, "destination_file")
 
@@ -279,6 +267,10 @@ class _FileState:
     @property
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The path to the file being uploaded from or copied.
+        Forces a new resource if changed.
+        """
         return pulumi.get(self, "source_file")
 
     @source_file.setter
@@ -335,22 +327,19 @@ class File(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] create_directories: Create directories in `destination_file`
-               path parameter on first apply if any are missing for copy operation.
-               
-               > **NOTE:** Any directory created as part of the `create_directories` argument
-               will not be deleted when the resource is destroyed. New directories are not
-               created if the `destination_file` path is changed in subsequent applies.
+        :param pulumi.Input[builtins.bool] create_directories: Specifies whether to create the parent directories of the destination file if they do not exist.
         :param pulumi.Input[builtins.str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[builtins.str] datastore: The name of the datastore to which to upload the
                file.
         :param pulumi.Input[builtins.str] destination_file: The path to where the file should be uploaded
-               or copied to on the destination `datastore` in vSphere.
+               or copied to on the destination datastore.
         :param pulumi.Input[builtins.str] source_datacenter: The name of a datacenter from which the file
                will be copied. Forces a new resource if changed.
         :param pulumi.Input[builtins.str] source_datastore: The name of the datastore from which file will
                be copied. Forces a new resource if changed.
+        :param pulumi.Input[builtins.str] source_file: The path to the file being uploaded from or copied.
+               Forces a new resource if changed.
         """
         ...
     @overload
@@ -459,22 +448,19 @@ class File(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] create_directories: Create directories in `destination_file`
-               path parameter on first apply if any are missing for copy operation.
-               
-               > **NOTE:** Any directory created as part of the `create_directories` argument
-               will not be deleted when the resource is destroyed. New directories are not
-               created if the `destination_file` path is changed in subsequent applies.
+        :param pulumi.Input[builtins.bool] create_directories: Specifies whether to create the parent directories of the destination file if they do not exist.
         :param pulumi.Input[builtins.str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[builtins.str] datastore: The name of the datastore to which to upload the
                file.
         :param pulumi.Input[builtins.str] destination_file: The path to where the file should be uploaded
-               or copied to on the destination `datastore` in vSphere.
+               or copied to on the destination datastore.
         :param pulumi.Input[builtins.str] source_datacenter: The name of a datacenter from which the file
                will be copied. Forces a new resource if changed.
         :param pulumi.Input[builtins.str] source_datastore: The name of the datastore from which file will
                be copied. Forces a new resource if changed.
+        :param pulumi.Input[builtins.str] source_file: The path to the file being uploaded from or copied.
+               Forces a new resource if changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -493,12 +479,7 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="createDirectories")
     def create_directories(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Create directories in `destination_file`
-        path parameter on first apply if any are missing for copy operation.
-
-        > **NOTE:** Any directory created as part of the `create_directories` argument
-        will not be deleted when the resource is destroyed. New directories are not
-        created if the `destination_file` path is changed in subsequent applies.
+        Specifies whether to create the parent directories of the destination file if they do not exist.
         """
         return pulumi.get(self, "create_directories")
 
@@ -525,7 +506,7 @@ class File(pulumi.CustomResource):
     def destination_file(self) -> pulumi.Output[builtins.str]:
         """
         The path to where the file should be uploaded
-        or copied to on the destination `datastore` in vSphere.
+        or copied to on the destination datastore.
         """
         return pulumi.get(self, "destination_file")
 
@@ -550,5 +531,9 @@ class File(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> pulumi.Output[builtins.str]:
+        """
+        The path to the file being uploaded from or copied.
+        Forces a new resource if changed.
+        """
         return pulumi.get(self, "source_file")
 
