@@ -44,7 +44,7 @@ jobs:
     uses: ./.github/workflows/prerequisites.yml
     secrets: inherit
     with:
-      default_branch: ${{ github.event.repository.default_branch }}
+      default_branch: ${{ github.event.pull_request.base.ref }}
       is_pr: ${{ github.event_name == 'pull_request' }}
       is_automated: ${{ github.actor == 'dependabot[bot]' }}
 
@@ -54,6 +54,13 @@ jobs:
     secrets: inherit
     with:
       version: ${{ needs.prerequisites.outputs.version }}
+      matrix: |
+        {
+          "platform": [
+            {"os": "linux", "arch": "amd64"},
+            {"os": "windows", "arch": "amd64"}
+          ]
+        }
 
   build_sdk:
     if: github.event_name == 'repository_dispatch' ||
