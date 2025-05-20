@@ -143,8 +143,8 @@ func Provider() tfbridge.ProviderInfo {
 }
 
 func editRules(defaults []info.DocsEdit) []info.DocsEdit {
-	textReplace := func(old, new string) info.DocsEdit {
-		o, n := []byte(old), []byte(new)
+	textReplace := func(old, newS string) info.DocsEdit {
+		o, n := []byte(old), []byte(newS)
 		return info.DocsEdit{
 			Path: "*",
 			Edit: func(_ string, content []byte) ([]byte, error) {
