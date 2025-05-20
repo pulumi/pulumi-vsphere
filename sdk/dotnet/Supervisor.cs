@@ -16,7 +16,7 @@ namespace Pulumi.VSphere
     /// 
     /// ### S
     /// 
-    /// **Enable Workload Management on a compute cluster**
+    /// ### Enable Workload Management on a Compute Cluster
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -87,6 +87,8 @@ import * as utilities from "./utilities";
  *
  * is below:
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * ```sh
  * $ pulumi import vsphere:index/drsVmOverride:DrsVmOverride drs_vm_override \
  * ```

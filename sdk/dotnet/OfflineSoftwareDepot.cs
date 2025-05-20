@@ -13,6 +13,8 @@ namespace Pulumi.VSphere
     /// Provides a VMware vSphere offline software depot resource.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### S
     /// </summary>
     [VSphereResourceType("vsphere:index/offlineSoftwareDepot:OfflineSoftwareDepot")]
     public partial class OfflineSoftwareDepot : global::Pulumi.CustomResource

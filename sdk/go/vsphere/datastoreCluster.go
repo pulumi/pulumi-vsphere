@@ -40,6 +40,8 @@ import (
 // in the `dc1` datacenter.
 //
 // [ref-vsphere-datastore-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-datastore-cluster.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type DatastoreCluster struct {
 	pulumi.CustomResourceState
 

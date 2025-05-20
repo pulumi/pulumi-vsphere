@@ -131,8 +131,6 @@ def get_datastore_stats(capacity: Optional[Mapping[str, builtins.str]] = None,
            [managed object reference ID][docs-about-morefs] of the datacenter the
            datastores are located in. For default datacenters, use the `id` attribute
            from an empty `Datacenter` data source.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param Mapping[str, builtins.str] free_space: A mapping of the free space for each datastore in the
            datacenter, where the name of the datastore is used as key and the free space
            as value.
@@ -190,8 +188,6 @@ def get_datastore_stats_output(capacity: Optional[pulumi.Input[Optional[Mapping[
            [managed object reference ID][docs-about-morefs] of the datacenter the
            datastores are located in. For default datacenters, use the `id` attribute
            from an empty `Datacenter` data source.
-           
-           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param Mapping[str, builtins.str] free_space: A mapping of the free space for each datastore in the
            datacenter, where the name of the datastore is used as key and the free space
            as value.

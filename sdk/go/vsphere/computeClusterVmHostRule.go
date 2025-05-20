@@ -168,6 +168,8 @@ import (
 //	'{"compute_cluster_path": "/dc1/host/cluster1", \
 //
 //	"name": "pulumi-test-cluster-vm-host-rule"}'
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type ComputeClusterVmHostRule struct {
 	pulumi.CustomResourceState
 

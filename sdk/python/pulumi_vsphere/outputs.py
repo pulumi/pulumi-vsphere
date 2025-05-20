@@ -3674,7 +3674,10 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
                  computer_name: builtins.str,
                  domain_admin_user: builtins.str,
                  domain_ou: builtins.str,
+                 full_name: builtins.str,
                  join_domain: builtins.str,
+                 organization_name: builtins.str,
+                 product_key: builtins.str,
                  run_once_command_lists: Sequence[builtins.str],
                  time_zone: builtins.int,
                  workgroup: builtins.str,
@@ -3686,7 +3689,10 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
         :param builtins.str computer_name: The hostname for this virtual machine.
         :param builtins.str domain_admin_user: The user account of the domain administrator used to join this virtual machine to the domain.
         :param builtins.str domain_ou: The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+        :param builtins.str full_name: The full name of the user of this virtual machine.
         :param builtins.str join_domain: The Active Directory domain for the virtual machine to join.
+        :param builtins.str organization_name: The organization name this virtual machine is being installed for.
+        :param builtins.str product_key: The product key for this virtual machine.
         :param Sequence[builtins.str] run_once_command_lists: A list of commands to run at first user logon, after guest customization.
         :param builtins.int time_zone: The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
         :param builtins.str workgroup: The workgroup for this virtual machine if not joining an Active Directory domain.
@@ -3698,7 +3704,10 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
         pulumi.set(__self__, "computer_name", computer_name)
         pulumi.set(__self__, "domain_admin_user", domain_admin_user)
         pulumi.set(__self__, "domain_ou", domain_ou)
+        pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "join_domain", join_domain)
+        pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "product_key", product_key)
         pulumi.set(__self__, "run_once_command_lists", run_once_command_lists)
         pulumi.set(__self__, "time_zone", time_zone)
         pulumi.set(__self__, "workgroup", workgroup)
@@ -3754,12 +3763,36 @@ class GetGuestOsCustomizationSpecWindowsOptionResult(dict):
         return pulumi.get(self, "domain_ou")
 
     @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> builtins.str:
+        """
+        The full name of the user of this virtual machine.
+        """
+        return pulumi.get(self, "full_name")
+
+    @property
     @pulumi.getter(name="joinDomain")
     def join_domain(self) -> builtins.str:
         """
         The Active Directory domain for the virtual machine to join.
         """
         return pulumi.get(self, "join_domain")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> builtins.str:
+        """
+        The organization name this virtual machine is being installed for.
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="productKey")
+    def product_key(self) -> builtins.str:
+        """
+        The product key for this virtual machine.
+        """
+        return pulumi.get(self, "product_key")
 
     @property
     @pulumi.getter(name="runOnceCommandLists")

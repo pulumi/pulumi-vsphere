@@ -57,7 +57,7 @@ export interface GetDatastoreClusterArgs {
 export interface GetDatastoreClusterResult {
     readonly datacenterId?: string;
     /**
-     * (Optional) The names of the datastores included in the specific 
+     * (Optional) The names of the datastores included in the specific
      * cluster.
      */
     readonly datastores: string[];

@@ -614,7 +614,7 @@ class Supervisor(pulumi.CustomResource):
 
         ### S
 
-        **Enable Workload Management on a compute cluster**
+        ### Enable Workload Management on a Compute Cluster
 
         ```python
         import pulumi
@@ -702,7 +702,7 @@ class Supervisor(pulumi.CustomResource):
 
         ### S
 
-        **Enable Workload Management on a compute cluster**
+        ### Enable Workload Management on a Compute Cluster
 
         ```python
         import pulumi

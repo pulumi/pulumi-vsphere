@@ -140,6 +140,8 @@ import (
 //	'{"compute_cluster_path": "/dc1/datastore/cluster1", \
 //
 //	"name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type DatastoreClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 

@@ -17,10 +17,13 @@ public final class GetLicenseResult {
      * 
      */
     private String editionKey;
+    /**
+     * @return The license key ID.
+     * 
+     */
     private String id;
     /**
-     * @return A map of key/value pairs attached as labels (tags) to the license
-     * key.
+     * @return A map of labels applied to the license key.
      * 
      */
     private Map<String,String> labels;
@@ -31,12 +34,12 @@ public final class GetLicenseResult {
      */
     private String name;
     /**
-     * @return Total number of units (example: CPUs) contained in the license.
+     * @return The total number of units contained in the license key.
      * 
      */
     private Integer total;
     /**
-     * @return The number of units (example: CPUs) assigned to this license.
+     * @return The number of units assigned to this license key.
      * 
      */
     private Integer used;
@@ -49,12 +52,15 @@ public final class GetLicenseResult {
     public String editionKey() {
         return this.editionKey;
     }
+    /**
+     * @return The license key ID.
+     * 
+     */
     public String id() {
         return this.id;
     }
     /**
-     * @return A map of key/value pairs attached as labels (tags) to the license
-     * key.
+     * @return A map of labels applied to the license key.
      * 
      */
     public Map<String,String> labels() {
@@ -71,14 +77,14 @@ public final class GetLicenseResult {
         return this.name;
     }
     /**
-     * @return Total number of units (example: CPUs) contained in the license.
+     * @return The total number of units contained in the license key.
      * 
      */
     public Integer total() {
         return this.total;
     }
     /**
-     * @return The number of units (example: CPUs) assigned to this license.
+     * @return The number of units assigned to this license key.
      * 
      */
     public Integer used() {

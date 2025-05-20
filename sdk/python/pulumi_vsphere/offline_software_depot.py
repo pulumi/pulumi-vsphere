@@ -95,6 +95,8 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### S
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] location: The URL where the depot source is hosted.
@@ -109,6 +111,8 @@ class OfflineSoftwareDepot(pulumi.CustomResource):
         Provides a VMware vSphere offline software depot resource.
 
         ## Example Usage
+
+        ### S
 
         :param str resource_name: The name of the resource.
         :param OfflineSoftwareDepotArgs args: The arguments to use to populate this resource's properties.

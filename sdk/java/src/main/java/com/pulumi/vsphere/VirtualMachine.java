@@ -494,14 +494,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.guestId;
     }
     /**
-     * The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+     * The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      * 
      */
     @Export(name="guestIpAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> guestIpAddresses;
 
     /**
-     * @return The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
+     * @return The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      * 
      */
     public Output<List<String>> guestIpAddresses() {

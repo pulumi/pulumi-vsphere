@@ -113,6 +113,10 @@ type GetNetworkArgs struct {
 	Filters []GetNetworkFilter `pulumi:"filters"`
 	// The name of the network. This can be a name or path.
 	Name string `pulumi:"name"`
+	// The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
+	RetryInterval *int `pulumi:"retryInterval"`
+	// The timeout duration in seconds for the data source to retry read operations.
+	RetryTimeout *int `pulumi:"retryTimeout"`
 }
 
 // A collection of values returned by getNetwork.
@@ -121,8 +125,10 @@ type GetNetworkResult struct {
 	DistributedVirtualSwitchUuid *string            `pulumi:"distributedVirtualSwitchUuid"`
 	Filters                      []GetNetworkFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id            string `pulumi:"id"`
+	Name          string `pulumi:"name"`
+	RetryInterval *int   `pulumi:"retryInterval"`
+	RetryTimeout  *int   `pulumi:"retryTimeout"`
 	// The managed object type for the discovered network. This will be one
 	// of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
 	// standard (host-based) port groups, or `OpaqueNetwork` for networks managed
@@ -155,6 +161,10 @@ type GetNetworkOutputArgs struct {
 	Filters GetNetworkFilterArrayInput `pulumi:"filters"`
 	// The name of the network. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
+	RetryInterval pulumi.IntPtrInput `pulumi:"retryInterval"`
+	// The timeout duration in seconds for the data source to retry read operations.
+	RetryTimeout pulumi.IntPtrInput `pulumi:"retryTimeout"`
 }
 
 func (GetNetworkOutputArgs) ElementType() reflect.Type {
@@ -195,6 +205,14 @@ func (o GetNetworkResultOutput) Id() pulumi.StringOutput {
 
 func (o GetNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkResultOutput) RetryInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNetworkResult) *int { return v.RetryInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o GetNetworkResultOutput) RetryTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNetworkResult) *int { return v.RetryTimeout }).(pulumi.IntPtrOutput)
 }
 
 // The managed object type for the discovered network. This will be one

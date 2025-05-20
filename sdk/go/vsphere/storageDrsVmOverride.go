@@ -124,6 +124,8 @@ import (
 //	"virtual_machine_path": "/dc1/vm/srv1"}'
 //
 // [ref-vsphere-datastore-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-datastore-cluster.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type StorageDrsVmOverride struct {
 	pulumi.CustomResourceState
 

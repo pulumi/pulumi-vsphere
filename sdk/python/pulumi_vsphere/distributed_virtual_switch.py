@@ -3366,6 +3366,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
         to the VDS, via the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch vds /dc-01/network/vds-01
         ```
@@ -3618,6 +3620,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         An existing VDS can be imported into this resource via the path
 
         to the VDS, via the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch vds /dc-01/network/vds-01

@@ -6,6 +6,7 @@ package com.pulumi.vsphere.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.vsphere.outputs.GetNetworkFilter;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,8 @@ public final class GetNetworkResult {
      */
     private String id;
     private String name;
+    private @Nullable Integer retryInterval;
+    private @Nullable Integer retryTimeout;
     /**
      * @return The managed object type for the discovered network. This will be one
      * of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
@@ -52,6 +55,12 @@ public final class GetNetworkResult {
     public String name() {
         return this.name;
     }
+    public Optional<Integer> retryInterval() {
+        return Optional.ofNullable(this.retryInterval);
+    }
+    public Optional<Integer> retryTimeout() {
+        return Optional.ofNullable(this.retryTimeout);
+    }
     /**
      * @return The managed object type for the discovered network. This will be one
      * of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
@@ -77,6 +86,8 @@ public final class GetNetworkResult {
         private @Nullable List<GetNetworkFilter> filters;
         private String id;
         private String name;
+        private @Nullable Integer retryInterval;
+        private @Nullable Integer retryTimeout;
         private String type;
         public Builder() {}
         public Builder(GetNetworkResult defaults) {
@@ -86,6 +97,8 @@ public final class GetNetworkResult {
     	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.retryInterval = defaults.retryInterval;
+    	      this.retryTimeout = defaults.retryTimeout;
     	      this.type = defaults.type;
         }
 
@@ -127,6 +140,18 @@ public final class GetNetworkResult {
             return this;
         }
         @CustomType.Setter
+        public Builder retryInterval(@Nullable Integer retryInterval) {
+
+            this.retryInterval = retryInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder retryTimeout(@Nullable Integer retryTimeout) {
+
+            this.retryTimeout = retryTimeout;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetNetworkResult", "type");
@@ -141,6 +166,8 @@ public final class GetNetworkResult {
             _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.retryInterval = retryInterval;
+            _resultValue.retryTimeout = retryTimeout;
             _resultValue.type = type;
             return _resultValue;
         }

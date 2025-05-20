@@ -166,7 +166,7 @@ namespace Pulumi.VSphere
     {
         public readonly string? DatacenterId;
         /// <summary>
-        /// (Optional) The names of the datastores included in the specific 
+        /// (Optional) The names of the datastores included in the specific
         /// cluster.
         /// </summary>
         public readonly ImmutableArray<string> Datastores;

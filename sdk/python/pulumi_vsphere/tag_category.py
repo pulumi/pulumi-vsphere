@@ -238,6 +238,8 @@ class TagCategory(pulumi.CustomResource):
 
         its name, using the following command:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/tagCategory:TagCategory category terraform-test-category
         ```
@@ -298,6 +300,8 @@ class TagCategory(pulumi.CustomResource):
         An existing tag category can be imported into this resource via
 
         its name, using the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/tagCategory:TagCategory category terraform-test-category

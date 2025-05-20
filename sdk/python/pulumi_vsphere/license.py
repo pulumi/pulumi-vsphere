@@ -24,8 +24,10 @@ class LicenseArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a License resource.
-        :param pulumi.Input[builtins.str] license_key: The license key to add.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
+        :param pulumi.Input[builtins.str] license_key: The license key value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of labels to be applied to the license key.
+               
+               > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
         """
         pulumi.set(__self__, "license_key", license_key)
         if labels is not None:
@@ -35,7 +37,7 @@ class LicenseArgs:
     @pulumi.getter(name="licenseKey")
     def license_key(self) -> pulumi.Input[builtins.str]:
         """
-        The license key to add.
+        The license key value.
         """
         return pulumi.get(self, "license_key")
 
@@ -47,7 +49,9 @@ class LicenseArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        A map of key/value pairs to be attached as labels (tags) to the license key.
+        A map of labels to be applied to the license key.
+
+        > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
         """
         return pulumi.get(self, "labels")
 
@@ -68,11 +72,13 @@ class _LicenseState:
         """
         Input properties used for looking up and filtering License resources.
         :param pulumi.Input[builtins.str] edition_key: The product edition of the license key.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
-        :param pulumi.Input[builtins.str] license_key: The license key to add.
-        :param pulumi.Input[builtins.str] name: The display name for the license.
-        :param pulumi.Input[builtins.int] total: Total number of units (example: CPUs) contained in the license.
-        :param pulumi.Input[builtins.int] used: The number of units (example: CPUs) assigned to this license.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of labels to be applied to the license key.
+               
+               > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
+        :param pulumi.Input[builtins.str] license_key: The license key value.
+        :param pulumi.Input[builtins.str] name: The display name for the license key.
+        :param pulumi.Input[builtins.int] total: The total number of units contained in the license key.
+        :param pulumi.Input[builtins.int] used: The number of units assigned to this license key.
         """
         if edition_key is not None:
             pulumi.set(__self__, "edition_key", edition_key)
@@ -103,7 +109,9 @@ class _LicenseState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        A map of key/value pairs to be attached as labels (tags) to the license key.
+        A map of labels to be applied to the license key.
+
+        > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
         """
         return pulumi.get(self, "labels")
 
@@ -115,7 +123,7 @@ class _LicenseState:
     @pulumi.getter(name="licenseKey")
     def license_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The license key to add.
+        The license key value.
         """
         return pulumi.get(self, "license_key")
 
@@ -127,7 +135,7 @@ class _LicenseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The display name for the license.
+        The display name for the license key.
         """
         return pulumi.get(self, "name")
 
@@ -139,7 +147,7 @@ class _LicenseState:
     @pulumi.getter
     def total(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Total number of units (example: CPUs) contained in the license.
+        The total number of units contained in the license key.
         """
         return pulumi.get(self, "total")
 
@@ -151,7 +159,7 @@ class _LicenseState:
     @pulumi.getter
     def used(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of units (example: CPUs) assigned to this license.
+        The number of units assigned to this license key.
         """
         return pulumi.get(self, "used")
 
@@ -172,10 +180,25 @@ class License(pulumi.CustomResource):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        license_key = vsphere.License("licenseKey",
+            license_key="00000-00000-00000-00000-00000",
+            labels={
+                "VpxClientLicenseLabel": "example",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
-        :param pulumi.Input[builtins.str] license_key: The license key to add.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of labels to be applied to the license key.
+               
+               > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
+        :param pulumi.Input[builtins.str] license_key: The license key value.
         """
         ...
     @overload
@@ -185,6 +208,19 @@ class License(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        license_key = vsphere.License("licenseKey",
+            license_key="00000-00000-00000-00000-00000",
+            labels={
+                "VpxClientLicenseLabel": "example",
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.
@@ -244,11 +280,13 @@ class License(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] edition_key: The product edition of the license key.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
-        :param pulumi.Input[builtins.str] license_key: The license key to add.
-        :param pulumi.Input[builtins.str] name: The display name for the license.
-        :param pulumi.Input[builtins.int] total: Total number of units (example: CPUs) contained in the license.
-        :param pulumi.Input[builtins.int] used: The number of units (example: CPUs) assigned to this license.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of labels to be applied to the license key.
+               
+               > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
+        :param pulumi.Input[builtins.str] license_key: The license key value.
+        :param pulumi.Input[builtins.str] name: The display name for the license key.
+        :param pulumi.Input[builtins.int] total: The total number of units contained in the license key.
+        :param pulumi.Input[builtins.int] used: The number of units assigned to this license key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -274,7 +312,9 @@ class License(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        A map of key/value pairs to be attached as labels (tags) to the license key.
+        A map of labels to be applied to the license key.
+
+        > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
         """
         return pulumi.get(self, "labels")
 
@@ -282,7 +322,7 @@ class License(pulumi.CustomResource):
     @pulumi.getter(name="licenseKey")
     def license_key(self) -> pulumi.Output[builtins.str]:
         """
-        The license key to add.
+        The license key value.
         """
         return pulumi.get(self, "license_key")
 
@@ -290,7 +330,7 @@ class License(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        The display name for the license.
+        The display name for the license key.
         """
         return pulumi.get(self, "name")
 
@@ -298,7 +338,7 @@ class License(pulumi.CustomResource):
     @pulumi.getter
     def total(self) -> pulumi.Output[builtins.int]:
         """
-        Total number of units (example: CPUs) contained in the license.
+        The total number of units contained in the license key.
         """
         return pulumi.get(self, "total")
 
@@ -306,7 +346,7 @@ class License(pulumi.CustomResource):
     @pulumi.getter
     def used(self) -> pulumi.Output[builtins.int]:
         """
-        The number of units (example: CPUs) assigned to this license.
+        The number of units assigned to this license key.
         """
         return pulumi.get(self, "used")
 

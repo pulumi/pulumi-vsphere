@@ -158,6 +158,8 @@ import (
 // ```sh
 // $ pulumi import vsphere:index/contentLibraryItem:ContentLibraryItem vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 // ```
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type ContentLibraryItem struct {
 	pulumi.CustomResourceState
 

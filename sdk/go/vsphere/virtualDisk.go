@@ -75,6 +75,8 @@ import (
 // The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
 //
 // datastore of the `dc-01` datacenter with `create_directories` set as `true`.
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type VirtualDisk struct {
 	pulumi.CustomResourceState
 

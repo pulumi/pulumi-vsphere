@@ -25,6 +25,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,12 +34,120 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupFolder(ctx, &vsphere.LookupFolderArgs{
-//				Path: "/dc-01/datastore-01/folder-01",
-//			}, nil)
+//			datacenterFolderFolder, err := vsphere.NewFolder(ctx, "datacenter_folder", &vsphere.FolderArgs{
+//				Path: pulumi.String("example-datacenter-folder"),
+//				Type: pulumi.String("datacenter"),
+//			})
 //			if err != nil {
 //				return err
 //			}
+//			datacenterFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//				Path: datacenterFolderFolder.Path.ApplyT(func(path string) (string, error) {
+//					return fmt.Sprintf("/%v", path), nil
+//				}).(pulumi.StringOutput),
+//			}, nil)
+//			datacenterDatacenter, err := vsphere.NewDatacenter(ctx, "datacenter", &vsphere.DatacenterArgs{
+//				Name: pulumi.String("example-datacenter"),
+//				Folder: pulumi.String(datacenterFolder.ApplyT(func(datacenterFolder vsphere.GetFolderResult) (*string, error) {
+//					return &datacenterFolder.Path, nil
+//				}).(pulumi.StringPtrOutput)),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				datacenterFolder,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			datacenter := vsphere.LookupDatacenterOutput(ctx, vsphere.GetDatacenterOutputArgs{
+//				Name: datacenterDatacenter.Name,
+//			}, nil)
+//			vmFolderFolder, err := vsphere.NewFolder(ctx, "vm_folder", &vsphere.FolderArgs{
+//				Path: pulumi.String("example-vm-folder"),
+//				Type: pulumi.String("vm"),
+//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
+//					return &datacenter.Id, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			datastoreFolderFolder, err := vsphere.NewFolder(ctx, "datastore_folder", &vsphere.FolderArgs{
+//				Path: pulumi.String("example-datastore-folder"),
+//				Type: pulumi.String("datastore"),
+//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
+//					return &datacenter.Id, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			networkFolderFolder, err := vsphere.NewFolder(ctx, "network_folder", &vsphere.FolderArgs{
+//				Path: pulumi.String("example-network-folder"),
+//				Type: pulumi.String("network"),
+//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
+//					return &datacenter.Id, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			hostFolderFolder, err := vsphere.NewFolder(ctx, "host_folder", &vsphere.FolderArgs{
+//				Path: pulumi.String("example-host-folder"),
+//				Type: pulumi.String("host"),
+//				DatacenterId: pulumi.String(datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
+//					return &datacenter.Id, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vmFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, vmFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
+//					datacenterFolderFolderPath := _args[0].(string)
+//					name := _args[1].(string)
+//					vmFolderFolderPath := _args[2].(string)
+//					return fmt.Sprintf("/%v/%v/vm/%v", datacenterFolderFolderPath, name, vmFolderFolderPath), nil
+//				}).(pulumi.StringOutput),
+//			}, nil)
+//			datastoreFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, datastoreFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
+//					datacenterFolderFolderPath := _args[0].(string)
+//					name := _args[1].(string)
+//					datastoreFolderFolderPath := _args[2].(string)
+//					return fmt.Sprintf("/%v/%v/datastore/%v", datacenterFolderFolderPath, name, datastoreFolderFolderPath), nil
+//				}).(pulumi.StringOutput),
+//			}, nil)
+//			networkFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, networkFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
+//					datacenterFolderFolderPath := _args[0].(string)
+//					name := _args[1].(string)
+//					networkFolderFolderPath := _args[2].(string)
+//					return fmt.Sprintf("/%v/%v/network/%v", datacenterFolderFolderPath, name, networkFolderFolderPath), nil
+//				}).(pulumi.StringOutput),
+//			}, nil)
+//			hostFolder := vsphere.LookupFolderOutput(ctx, vsphere.GetFolderOutputArgs{
+//				Path: pulumi.All(datacenterFolderFolder.Path, datacenterDatacenter.Name, hostFolderFolder.Path).ApplyT(func(_args []interface{}) (string, error) {
+//					datacenterFolderFolderPath := _args[0].(string)
+//					name := _args[1].(string)
+//					hostFolderFolderPath := _args[2].(string)
+//					return fmt.Sprintf("/%v/%v/host/%v", datacenterFolderFolderPath, name, hostFolderFolderPath), nil
+//				}).(pulumi.StringOutput),
+//			}, nil)
+//			ctx.Export("vmFolderId", vmFolder.ApplyT(func(vmFolder vsphere.GetFolderResult) (*string, error) {
+//				return &vmFolder.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("datastoreFolderId", datastoreFolder.ApplyT(func(datastoreFolder vsphere.GetFolderResult) (*string, error) {
+//				return &datastoreFolder.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("networkFolderId", networkFolder.ApplyT(func(networkFolder vsphere.GetFolderResult) (*string, error) {
+//				return &networkFolder.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("hostFolderId", hostFolder.ApplyT(func(hostFolder vsphere.GetFolderResult) (*string, error) {
+//				return &hostFolder.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("datacenterId", datacenter.ApplyT(func(datacenter vsphere.GetDatacenterResult) (*string, error) {
+//				return &datacenter.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("datacenterFolderPath", datacenterFolderFolder.Path)
 //			return nil
 //		})
 //	}
@@ -57,9 +167,16 @@ func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.In
 type LookupFolderArgs struct {
 	// The absolute path of the folder. For example, given a
 	// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-	// of `test-folder`, the resulting path would be
-	// `/default-dc/vm/test-folder`. The valid folder types to be used in
-	// the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+	// of `example-vm-folder`, the resulting `path` would be
+	// `/default-dc/vm/example-vm-folder`.
+	//
+	// For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+	// `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+	// `/parent-folder/default-dc/vm/example-vm-folder`.
+	//
+	// The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+	//
+	// Always include a leading slash in the `path`.
 	Path string `pulumi:"path"`
 }
 
@@ -83,9 +200,16 @@ func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts .
 type LookupFolderOutputArgs struct {
 	// The absolute path of the folder. For example, given a
 	// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-	// of `test-folder`, the resulting path would be
-	// `/default-dc/vm/test-folder`. The valid folder types to be used in
-	// the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+	// of `example-vm-folder`, the resulting `path` would be
+	// `/default-dc/vm/example-vm-folder`.
+	//
+	// For nested datacenters, include the full hierarchy in the path. For example, if datacenter
+	// `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
+	// `/parent-folder/default-dc/vm/example-vm-folder`.
+	//
+	// The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+	//
+	// Always include a leading slash in the `path`.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 

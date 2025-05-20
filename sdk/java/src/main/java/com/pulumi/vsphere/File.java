@@ -102,24 +102,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/file:File")
 public class File extends com.pulumi.resources.CustomResource {
     /**
-     * Create directories in `destination_file`
-     * path parameter on first apply if any are missing for copy operation.
-     * 
-     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-     * will not be deleted when the resource is destroyed. New directories are not
-     * created if the `destination_file` path is changed in subsequent applies.
+     * Specifies whether to create the parent directories of the destination file if they do not exist.
      * 
      */
     @Export(name="createDirectories", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createDirectories;
 
     /**
-     * @return Create directories in `destination_file`
-     * path parameter on first apply if any are missing for copy operation.
-     * 
-     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
-     * will not be deleted when the resource is destroyed. New directories are not
-     * created if the `destination_file` path is changed in subsequent applies.
+     * @return Specifies whether to create the parent directories of the destination file if they do not exist.
      * 
      */
     public Output<Optional<Boolean>> createDirectories() {
@@ -159,7 +149,7 @@ public class File extends com.pulumi.resources.CustomResource {
     }
     /**
      * The path to where the file should be uploaded
-     * or copied to on the destination `datastore` in vSphere.
+     * or copied to on the destination datastore.
      * 
      */
     @Export(name="destinationFile", refs={String.class}, tree="[0]")
@@ -167,7 +157,7 @@ public class File extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The path to where the file should be uploaded
-     * or copied to on the destination `datastore` in vSphere.
+     * or copied to on the destination datastore.
      * 
      */
     public Output<String> destinationFile() {
@@ -205,9 +195,19 @@ public class File extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> sourceDatastore() {
         return Codegen.optional(this.sourceDatastore);
     }
+    /**
+     * The path to the file being uploaded from or copied.
+     * Forces a new resource if changed.
+     * 
+     */
     @Export(name="sourceFile", refs={String.class}, tree="[0]")
     private Output<String> sourceFile;
 
+    /**
+     * @return The path to the file being uploaded from or copied.
+     * Forces a new resource if changed.
+     * 
+     */
     public Output<String> sourceFile() {
         return this.sourceFile;
     }

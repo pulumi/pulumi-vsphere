@@ -53,6 +53,8 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
         "distributedVirtualSwitchUuid": args.distributedVirtualSwitchUuid,
         "filters": args.filters,
         "name": args.name,
+        "retryInterval": args.retryInterval,
+        "retryTimeout": args.retryTimeout,
     }, opts);
 }
 
@@ -82,6 +84,14 @@ export interface GetNetworkArgs {
      * The name of the network. This can be a name or path.
      */
     name: string;
+    /**
+     * The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
+     */
+    retryInterval?: number;
+    /**
+     * The timeout duration in seconds for the data source to retry read operations.
+     */
+    retryTimeout?: number;
 }
 
 /**
@@ -96,6 +106,8 @@ export interface GetNetworkResult {
      */
     readonly id: string;
     readonly name: string;
+    readonly retryInterval?: number;
+    readonly retryTimeout?: number;
     /**
      * The managed object type for the discovered network. This will be one
      * of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
@@ -151,6 +163,8 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
         "distributedVirtualSwitchUuid": args.distributedVirtualSwitchUuid,
         "filters": args.filters,
         "name": args.name,
+        "retryInterval": args.retryInterval,
+        "retryTimeout": args.retryTimeout,
     }, opts);
 }
 
@@ -180,4 +194,12 @@ export interface GetNetworkOutputArgs {
      * The name of the network. This can be a name or path.
      */
     name: pulumi.Input<string>;
+    /**
+     * The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
+     */
+    retryInterval?: pulumi.Input<number>;
+    /**
+     * The timeout duration in seconds for the data source to retry read operations.
+     */
+    retryTimeout?: pulumi.Input<number>;
 }

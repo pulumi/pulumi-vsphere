@@ -400,8 +400,8 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[builtins.bool] = Non
     :param builtins.str deployment_option: The key of the chosen deployment option. If
            empty, the default option is chosen.
     :param builtins.str disk_provisioning: The disk provisioning type. If set, all the
-           disks in the deployed OVA/OVF will have the same specified disk type. Can be
-           one of `thin`, `flat`, `thick` or `sameAsSource`.
+           disks included in the OVF/OVA will have the same specified policy. Can be
+           one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
     :param builtins.bool enable_hidden_properties: Allow properties with
            `ovf:userConfigurable=false` to be set.
     :param builtins.str folder: The name of the folder in which to place the virtual
@@ -503,8 +503,8 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
     :param builtins.str deployment_option: The key of the chosen deployment option. If
            empty, the default option is chosen.
     :param builtins.str disk_provisioning: The disk provisioning type. If set, all the
-           disks in the deployed OVA/OVF will have the same specified disk type. Can be
-           one of `thin`, `flat`, `thick` or `sameAsSource`.
+           disks included in the OVF/OVA will have the same specified policy. Can be
+           one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
     :param builtins.bool enable_hidden_properties: Allow properties with
            `ovf:userConfigurable=false` to be set.
     :param builtins.str folder: The name of the folder in which to place the virtual

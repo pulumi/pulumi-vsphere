@@ -31,7 +31,7 @@ export function getLicense(args: GetLicenseArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetLicenseArgs {
     /**
-     * The license key.
+     * The license key value.
      */
     licenseKey: string;
 }
@@ -44,10 +44,12 @@ export interface GetLicenseResult {
      * The product edition of the license key.
      */
     readonly editionKey: string;
+    /**
+     * The license key ID.
+     */
     readonly id: string;
     /**
-     * A map of key/value pairs attached as labels (tags) to the license
-     * key.
+     * A map of labels applied to the license key.
      */
     readonly labels: {[key: string]: string};
     readonly licenseKey: string;
@@ -56,11 +58,11 @@ export interface GetLicenseResult {
      */
     readonly name: string;
     /**
-     * Total number of units (example: CPUs) contained in the license.
+     * The total number of units contained in the license key.
      */
     readonly total: number;
     /**
-     * The number of units (example: CPUs) assigned to this license.
+     * The number of units assigned to this license key.
      */
     readonly used: number;
 }
@@ -91,7 +93,7 @@ export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.Invok
  */
 export interface GetLicenseOutputArgs {
     /**
-     * The license key.
+     * The license key value.
      */
     licenseKey: pulumi.Input<string>;
 }

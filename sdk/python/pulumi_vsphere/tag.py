@@ -218,6 +218,8 @@ class Tag(pulumi.CustomResource):
 
         `pulumi import`, as per the example below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/tag:Tag tag \\
         ```
@@ -309,6 +311,8 @@ class Tag(pulumi.CustomResource):
         both the tag's category name and the name of the tag as a JSON string to
 
         `pulumi import`, as per the example below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/tag:Tag tag \\
