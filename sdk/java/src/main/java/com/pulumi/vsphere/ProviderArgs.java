@@ -6,7 +6,6 @@ package com.pulumi.vsphere;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -98,15 +97,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The user password for vSphere API operations.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return The user password for vSphere API operations.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -143,15 +142,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The user name for vSphere API operations.
      * 
      */
-    @Import(name="user", required=true)
-    private Output<String> user;
+    @Import(name="user")
+    private @Nullable Output<String> user;
 
     /**
      * @return The user name for vSphere API operations.
      * 
      */
-    public Output<String> user() {
-        return this.user;
+    public Optional<Output<String>> user() {
+        return Optional.ofNullable(this.user);
     }
 
     /**
@@ -365,7 +364,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -428,7 +427,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder user(Output<String> user) {
+        public Builder user(@Nullable Output<String> user) {
             $.user = user;
             return this;
         }
@@ -536,14 +535,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             $.clientDebug = Codegen.booleanProp("clientDebug").output().arg($.clientDebug).env("VSPHERE_CLIENT_DEBUG").getNullable();
             $.clientDebugPath = Codegen.stringProp("clientDebugPath").output().arg($.clientDebugPath).env("VSPHERE_CLIENT_DEBUG_PATH").getNullable();
             $.clientDebugPathRun = Codegen.stringProp("clientDebugPathRun").output().arg($.clientDebugPathRun).env("VSPHERE_CLIENT_DEBUG_PATH_RUN").getNullable();
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "password");
-            }
             $.persistSession = Codegen.booleanProp("persistSession").output().arg($.persistSession).env("VSPHERE_PERSIST_SESSION").getNullable();
             $.restSessionPath = Codegen.stringProp("restSessionPath").output().arg($.restSessionPath).env("VSPHERE_REST_SESSION_PATH").getNullable();
-            if ($.user == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "user");
-            }
             $.vimKeepAlive = Codegen.integerProp("vimKeepAlive").output().arg($.vimKeepAlive).env("VSPHERE_VIM_KEEP_ALIVE").getNullable();
             $.vimSessionPath = Codegen.stringProp("vimSessionPath").output().arg($.vimSessionPath).env("VSPHERE_VIM_SESSION_PATH").getNullable();
             return $;
