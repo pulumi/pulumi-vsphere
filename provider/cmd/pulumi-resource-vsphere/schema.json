@@ -1861,10 +1861,6 @@
                 "description": "The vSphere Server name for vSphere API operations.\n"
             }
         },
-        "required": [
-            "password",
-            "user"
-        ],
         "inputProperties": {
             "allowUnverifiedSsl": {
                 "type": "boolean",
@@ -1959,10 +1955,6 @@
                 "description": "The vSphere Server name for vSphere API operations.\n"
             }
         },
-        "requiredInputs": [
-            "password",
-            "user"
-        ],
         "methods": {
             "terraformConfig": "pulumi:providers:vsphere/terraformConfig"
         }
