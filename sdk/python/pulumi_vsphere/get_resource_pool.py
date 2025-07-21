@@ -27,7 +27,7 @@ class GetResourcePoolResult:
     """
     A collection of values returned by getResourcePool.
     """
-    def __init__(__self__, datacenter_id=None, id=None, name=None):
+    def __init__(__self__, datacenter_id=None, id=None, name=None, parent_resource_pool_id=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
@@ -37,6 +37,9 @@ class GetResourcePoolResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if parent_resource_pool_id and not isinstance(parent_resource_pool_id, str):
+            raise TypeError("Expected argument 'parent_resource_pool_id' to be a str")
+        pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
 
     @property
     @pulumi.getter(name="datacenterId")
@@ -56,6 +59,11 @@ class GetResourcePoolResult:
     def name(self) -> Optional[builtins.str]:
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter(name="parentResourcePoolId")
+    def parent_resource_pool_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "parent_resource_pool_id")
+
 
 class AwaitableGetResourcePoolResult(GetResourcePoolResult):
     # pylint: disable=using-constant-test
@@ -65,11 +73,13 @@ class AwaitableGetResourcePoolResult(GetResourcePoolResult):
         return GetResourcePoolResult(
             datacenter_id=self.datacenter_id,
             id=self.id,
-            name=self.name)
+            name=self.name,
+            parent_resource_pool_id=self.parent_resource_pool_id)
 
 
 def get_resource_pool(datacenter_id: Optional[builtins.str] = None,
                       name: Optional[builtins.str] = None,
+                      parent_resource_pool_id: Optional[builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcePoolResult:
     """
     The `ResourcePool` data source can be used to discover the ID of a
@@ -79,13 +89,28 @@ def get_resource_pool(datacenter_id: Optional[builtins.str] = None,
 
     ## Example Usage
 
+    ### Find a Resource Pool by Path
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     datacenter = vsphere.get_datacenter(name="dc-01")
-    pool = vsphere.get_resource_pool(name="resource-pool-01",
+    pool = vsphere.get_resource_pool(name="cluster-01/Resources",
         datacenter_id=datacenter.id)
+    ```
+
+    ### Find a Child Resource Pool Using the Parent ID
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    parent_pool = vsphere.get_resource_pool(name="cluster-01/Resources",
+        datacenter_id=datacenter.id)
+    child_pool = vsphere.get_resource_pool(name="example",
+        parent_resource_pool_id=parent_pool.id)
     ```
 
     ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -117,26 +142,32 @@ def get_resource_pool(datacenter_id: Optional[builtins.str] = None,
            of the datacenter in which the resource pool is located. This can be omitted
            if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `Datacenter` data
-           source.
+           source..
+    :param builtins.str name: The name of the resource pool. This can be a name or
+           path. This is required when using vCenter.
+    :param builtins.str parent_resource_pool_id: The managed object ID
+           of the parent resource pool. When specified, the `name` parameter is used to find
+           a child resource pool with the given name under this parent resource pool.
            
            > **Note:** When using ESXi without a vCenter Server instance, you do not
            need to specify either attribute to use this data source. An empty declaration
            will load the ESXi host's root resource pool.
-    :param builtins.str name: The name of the resource pool. This can be a name or
-           path. This is required when using vCenter.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
+    __args__['parentResourcePoolId'] = parent_resource_pool_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('vsphere:index/getResourcePool:getResourcePool', __args__, opts=opts, typ=GetResourcePoolResult).value
 
     return AwaitableGetResourcePoolResult(
         datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
         id=pulumi.get(__ret__, 'id'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        parent_resource_pool_id=pulumi.get(__ret__, 'parent_resource_pool_id'))
 def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                             parent_resource_pool_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcePoolResult]:
     """
     The `ResourcePool` data source can be used to discover the ID of a
@@ -146,13 +177,28 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[built
 
     ## Example Usage
 
+    ### Find a Resource Pool by Path
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
     datacenter = vsphere.get_datacenter(name="dc-01")
-    pool = vsphere.get_resource_pool(name="resource-pool-01",
+    pool = vsphere.get_resource_pool(name="cluster-01/Resources",
         datacenter_id=datacenter.id)
+    ```
+
+    ### Find a Child Resource Pool Using the Parent ID
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    parent_pool = vsphere.get_resource_pool(name="cluster-01/Resources",
+        datacenter_id=datacenter.id)
+    child_pool = vsphere.get_resource_pool(name="example",
+        parent_resource_pool_id=parent_pool.id)
     ```
 
     ### Specifying the Root Resource Pool for a Standalone ESXi Host
@@ -184,20 +230,25 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[built
            of the datacenter in which the resource pool is located. This can be omitted
            if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `Datacenter` data
-           source.
+           source..
+    :param builtins.str name: The name of the resource pool. This can be a name or
+           path. This is required when using vCenter.
+    :param builtins.str parent_resource_pool_id: The managed object ID
+           of the parent resource pool. When specified, the `name` parameter is used to find
+           a child resource pool with the given name under this parent resource pool.
            
            > **Note:** When using ESXi without a vCenter Server instance, you do not
            need to specify either attribute to use this data source. An empty declaration
            will load the ESXi host's root resource pool.
-    :param builtins.str name: The name of the resource pool. This can be a name or
-           path. This is required when using vCenter.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
+    __args__['parentResourcePoolId'] = parent_resource_pool_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getResourcePool:getResourcePool', __args__, opts=opts, typ=GetResourcePoolResult)
     return __ret__.apply(lambda __response__: GetResourcePoolResult(
         datacenter_id=pulumi.get(__response__, 'datacenter_id'),
         id=pulumi.get(__response__, 'id'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        parent_resource_pool_id=pulumi.get(__response__, 'parent_resource_pool_id')))

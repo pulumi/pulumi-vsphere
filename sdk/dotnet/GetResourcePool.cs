@@ -19,6 +19,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Find a Resource Pool by Path
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +36,38 @@ namespace Pulumi.VSphere
         /// 
         ///     var pool = VSphere.GetResourcePool.Invoke(new()
         ///     {
-        ///         Name = "resource-pool-01",
+        ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Find a Child Resource Pool Using the Parent ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var parentPool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01/Resources",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var childPool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///         ParentResourcePoolId = parentPool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
         ///     });
         /// 
         /// });
@@ -85,6 +117,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Find a Resource Pool by Path
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,8 +134,38 @@ namespace Pulumi.VSphere
         /// 
         ///     var pool = VSphere.GetResourcePool.Invoke(new()
         ///     {
-        ///         Name = "resource-pool-01",
+        ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Find a Child Resource Pool Using the Parent ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var parentPool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01/Resources",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var childPool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///         ParentResourcePoolId = parentPool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
         ///     });
         /// 
         /// });
@@ -151,6 +215,8 @@ namespace Pulumi.VSphere
         /// 
         /// ## Example Usage
         /// 
+        /// ### Find a Resource Pool by Path
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -166,8 +232,38 @@ namespace Pulumi.VSphere
         /// 
         ///     var pool = VSphere.GetResourcePool.Invoke(new()
         ///     {
-        ///         Name = "resource-pool-01",
+        ///         Name = "cluster-01/Resources",
         ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Find a Child Resource Pool Using the Parent ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var parentPool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01/Resources",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var childPool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///         ParentResourcePoolId = parentPool.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
         ///     });
         /// 
         /// });
@@ -218,11 +314,7 @@ namespace Pulumi.VSphere
         /// of the datacenter in which the resource pool is located. This can be omitted
         /// if the search path used in `name` is an absolute path. For default
         /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-        /// source.
-        /// 
-        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-        /// need to specify either attribute to use this data source. An empty declaration
-        /// will load the ESXi host's root resource pool.
+        /// source..
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -233,6 +325,18 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// The managed object ID
+        /// of the parent resource pool. When specified, the `name` parameter is used to find
+        /// a child resource pool with the given name under this parent resource pool.
+        /// 
+        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+        /// need to specify either attribute to use this data source. An empty declaration
+        /// will load the ESXi host's root resource pool.
+        /// </summary>
+        [Input("parentResourcePoolId")]
+        public string? ParentResourcePoolId { get; set; }
 
         public GetResourcePoolArgs()
         {
@@ -247,11 +351,7 @@ namespace Pulumi.VSphere
         /// of the datacenter in which the resource pool is located. This can be omitted
         /// if the search path used in `name` is an absolute path. For default
         /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-        /// source.
-        /// 
-        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-        /// need to specify either attribute to use this data source. An empty declaration
-        /// will load the ESXi host's root resource pool.
+        /// source..
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -262,6 +362,18 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The managed object ID
+        /// of the parent resource pool. When specified, the `name` parameter is used to find
+        /// a child resource pool with the given name under this parent resource pool.
+        /// 
+        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+        /// need to specify either attribute to use this data source. An empty declaration
+        /// will load the ESXi host's root resource pool.
+        /// </summary>
+        [Input("parentResourcePoolId")]
+        public Input<string>? ParentResourcePoolId { get; set; }
 
         public GetResourcePoolInvokeArgs()
         {
@@ -279,6 +391,7 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Id;
         public readonly string? Name;
+        public readonly string? ParentResourcePoolId;
 
         [OutputConstructor]
         private GetResourcePoolResult(
@@ -286,11 +399,14 @@ namespace Pulumi.VSphere
 
             string id,
 
-            string? name)
+            string? name,
+
+            string? parentResourcePoolId)
         {
             DatacenterId = datacenterId;
             Id = id;
             Name = name;
+            ParentResourcePoolId = parentResourcePoolId;
         }
     }
 }

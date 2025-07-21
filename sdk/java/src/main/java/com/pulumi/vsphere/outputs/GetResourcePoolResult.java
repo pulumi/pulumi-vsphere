@@ -19,6 +19,7 @@ public final class GetResourcePoolResult {
      */
     private String id;
     private @Nullable String name;
+    private @Nullable String parentResourcePoolId;
 
     private GetResourcePoolResult() {}
     public Optional<String> datacenterId() {
@@ -34,6 +35,9 @@ public final class GetResourcePoolResult {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    public Optional<String> parentResourcePoolId() {
+        return Optional.ofNullable(this.parentResourcePoolId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -47,12 +51,14 @@ public final class GetResourcePoolResult {
         private @Nullable String datacenterId;
         private String id;
         private @Nullable String name;
+        private @Nullable String parentResourcePoolId;
         public Builder() {}
         public Builder(GetResourcePoolResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenterId = defaults.datacenterId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.parentResourcePoolId = defaults.parentResourcePoolId;
         }
 
         @CustomType.Setter
@@ -75,11 +81,18 @@ public final class GetResourcePoolResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder parentResourcePoolId(@Nullable String parentResourcePoolId) {
+
+            this.parentResourcePoolId = parentResourcePoolId;
+            return this;
+        }
         public GetResourcePoolResult build() {
             final var _resultValue = new GetResourcePoolResult();
             _resultValue.datacenterId = datacenterId;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.parentResourcePoolId = parentResourcePoolId;
             return _resultValue;
         }
     }

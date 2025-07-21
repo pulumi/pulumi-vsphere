@@ -117,6 +117,8 @@ type GetNetworkArgs struct {
 	RetryInterval *int `pulumi:"retryInterval"`
 	// The timeout duration in seconds for the data source to retry read operations.
 	RetryTimeout *int `pulumi:"retryTimeout"`
+	// Select a VPC scope for retrieval of VPC subnets.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getNetwork.
@@ -133,7 +135,8 @@ type GetNetworkResult struct {
 	// of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
 	// standard (host-based) port groups, or `OpaqueNetwork` for networks managed
 	// externally, such as those managed by NSX.
-	Type string `pulumi:"type"`
+	Type  string  `pulumi:"type"`
+	VpcId *string `pulumi:"vpcId"`
 }
 
 func GetNetworkOutput(ctx *pulumi.Context, args GetNetworkOutputArgs, opts ...pulumi.InvokeOption) GetNetworkResultOutput {
@@ -165,6 +168,8 @@ type GetNetworkOutputArgs struct {
 	RetryInterval pulumi.IntPtrInput `pulumi:"retryInterval"`
 	// The timeout duration in seconds for the data source to retry read operations.
 	RetryTimeout pulumi.IntPtrInput `pulumi:"retryTimeout"`
+	// Select a VPC scope for retrieval of VPC subnets.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetNetworkOutputArgs) ElementType() reflect.Type {
@@ -221,6 +226,10 @@ func (o GetNetworkResultOutput) RetryTimeout() pulumi.IntPtrOutput {
 // externally, such as those managed by NSX.
 func (o GetNetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

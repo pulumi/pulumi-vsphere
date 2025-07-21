@@ -6726,6 +6726,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Find a Resource Pool by Path
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -6755,8 +6757,54 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name("resource-pool-01")
+     *             .name("cluster-01/Resources")
      *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Find a Child Resource Pool Using the Parent ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var parentPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("cluster-01/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var childPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("example")
+     *             .parentResourcePoolId(parentPool.id())
      *             .build());
      * 
      *     }
@@ -6827,6 +6875,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Find a Resource Pool by Path
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -6856,8 +6906,54 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name("resource-pool-01")
+     *             .name("cluster-01/Resources")
      *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Find a Child Resource Pool Using the Parent ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var parentPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("cluster-01/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var childPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("example")
+     *             .parentResourcePoolId(parentPool.id())
      *             .build());
      * 
      *     }
@@ -6928,6 +7024,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Find a Resource Pool by Path
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -6957,8 +7055,54 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name("resource-pool-01")
+     *             .name("cluster-01/Resources")
      *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Find a Child Resource Pool Using the Parent ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var parentPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("cluster-01/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var childPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("example")
+     *             .parentResourcePoolId(parentPool.id())
      *             .build());
      * 
      *     }
@@ -7029,6 +7173,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Find a Resource Pool by Path
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -7058,8 +7204,54 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name("resource-pool-01")
+     *             .name("cluster-01/Resources")
      *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Find a Child Resource Pool Using the Parent ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var parentPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("cluster-01/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var childPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("example")
+     *             .parentResourcePoolId(parentPool.id())
      *             .build());
      * 
      *     }
@@ -7130,6 +7322,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Find a Resource Pool by Path
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -7159,8 +7353,54 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name("resource-pool-01")
+     *             .name("cluster-01/Resources")
      *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Find a Child Resource Pool Using the Parent ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var parentPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("cluster-01/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var childPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("example")
+     *             .parentResourcePoolId(parentPool.id())
      *             .build());
      * 
      *     }
@@ -7231,6 +7471,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Find a Resource Pool by Path
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -7260,8 +7502,54 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name("resource-pool-01")
+     *             .name("cluster-01/Resources")
      *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Find a Child Resource Pool Using the Parent ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var parentPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("cluster-01/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var childPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("example")
+     *             .parentResourcePoolId(parentPool.id())
      *             .build());
      * 
      *     }
@@ -7332,6 +7620,8 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Find a Resource Pool by Path
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -7361,8 +7651,54 @@ public final class VsphereFunctions {
      *             .build());
      * 
      *         final var pool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
-     *             .name("resource-pool-01")
+     *             .name("cluster-01/Resources")
      *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Find a Child Resource Pool Using the Parent ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetResourcePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var parentPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("cluster-01/Resources")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var childPool = VsphereFunctions.getResourcePool(GetResourcePoolArgs.builder()
+     *             .name("example")
+     *             .parentResourcePoolId(parentPool.id())
      *             .build());
      * 
      *     }
