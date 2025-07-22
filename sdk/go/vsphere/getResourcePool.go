@@ -18,6 +18,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Find a Resource Pool by Path
+//
 // ```go
 // package main
 //
@@ -37,8 +39,48 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
-//				Name:         pulumi.StringRef("resource-pool-01"),
+//				Name:         pulumi.StringRef("cluster-01/Resources"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Find a Child Resource Pool Using the Parent ID
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			parentPool, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//				Name:         pulumi.StringRef("cluster-01/Resources"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//				Name:                 pulumi.StringRef("example"),
+//				ParentResourcePoolId: pulumi.StringRef(parentPool.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -105,23 +147,28 @@ type LookupResourcePoolArgs struct {
 	// of the datacenter in which the resource pool is located. This can be omitted
 	// if the search path used in `name` is an absolute path. For default
 	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source.
-	//
-	// > **Note:** When using ESXi without a vCenter Server instance, you do not
-	// need to specify either attribute to use this data source. An empty declaration
-	// will load the ESXi host's root resource pool.
+	// source..
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.
 	Name *string `pulumi:"name"`
+	// The managed object ID
+	// of the parent resource pool. When specified, the `name` parameter is used to find
+	// a child resource pool with the given name under this parent resource pool.
+	//
+	// > **Note:** When using ESXi without a vCenter Server instance, you do not
+	// need to specify either attribute to use this data source. An empty declaration
+	// will load the ESXi host's root resource pool.
+	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
 }
 
 // A collection of values returned by getResourcePool.
 type LookupResourcePoolResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string  `pulumi:"id"`
-	Name *string `pulumi:"name"`
+	Id                   string  `pulumi:"id"`
+	Name                 *string `pulumi:"name"`
+	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
 }
 
 func LookupResourcePoolOutput(ctx *pulumi.Context, args LookupResourcePoolOutputArgs, opts ...pulumi.InvokeOption) LookupResourcePoolResultOutput {
@@ -139,15 +186,19 @@ type LookupResourcePoolOutputArgs struct {
 	// of the datacenter in which the resource pool is located. This can be omitted
 	// if the search path used in `name` is an absolute path. For default
 	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source.
-	//
-	// > **Note:** When using ESXi without a vCenter Server instance, you do not
-	// need to specify either attribute to use this data source. An empty declaration
-	// will load the ESXi host's root resource pool.
+	// source..
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The managed object ID
+	// of the parent resource pool. When specified, the `name` parameter is used to find
+	// a child resource pool with the given name under this parent resource pool.
+	//
+	// > **Note:** When using ESXi without a vCenter Server instance, you do not
+	// need to specify either attribute to use this data source. An empty declaration
+	// will load the ESXi host's root resource pool.
+	ParentResourcePoolId pulumi.StringPtrInput `pulumi:"parentResourcePoolId"`
 }
 
 func (LookupResourcePoolOutputArgs) ElementType() reflect.Type {
@@ -180,6 +231,10 @@ func (o LookupResourcePoolResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupResourcePoolResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupResourcePoolResultOutput) ParentResourcePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) *string { return v.ParentResourcePoolId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

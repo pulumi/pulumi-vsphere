@@ -120,6 +120,21 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.retryTimeout);
     }
 
+    /**
+     * Select a VPC scope for retrieval of VPC subnets.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable String vpcId;
+
+    /**
+     * @return Select a VPC scope for retrieval of VPC subnets.
+     * 
+     */
+    public Optional<String> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
     private GetNetworkPlainArgs() {}
 
     private GetNetworkPlainArgs(GetNetworkPlainArgs $) {
@@ -129,6 +144,7 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.name = $.name;
         this.retryInterval = $.retryInterval;
         this.retryTimeout = $.retryTimeout;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -228,6 +244,17 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder retryTimeout(@Nullable Integer retryTimeout) {
             $.retryTimeout = retryTimeout;
+            return this;
+        }
+
+        /**
+         * @param vpcId Select a VPC scope for retrieval of VPC subnets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable String vpcId) {
+            $.vpcId = vpcId;
             return this;
         }
 

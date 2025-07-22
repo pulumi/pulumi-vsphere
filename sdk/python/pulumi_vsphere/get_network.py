@@ -29,7 +29,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, filters=None, id=None, name=None, retry_interval=None, retry_timeout=None, type=None):
+    def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, filters=None, id=None, name=None, retry_interval=None, retry_timeout=None, type=None, vpc_id=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
@@ -54,6 +54,9 @@ class GetNetworkResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if vpc_id and not isinstance(vpc_id, str):
+            raise TypeError("Expected argument 'vpc_id' to be a str")
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="datacenterId")
@@ -104,6 +107,11 @@ class GetNetworkResult:
         """
         return pulumi.get(self, "type")
 
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "vpc_id")
+
 
 class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
@@ -118,7 +126,8 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             name=self.name,
             retry_interval=self.retry_interval,
             retry_timeout=self.retry_timeout,
-            type=self.type)
+            type=self.type,
+            vpc_id=self.vpc_id)
 
 
 def get_network(datacenter_id: Optional[builtins.str] = None,
@@ -127,6 +136,7 @@ def get_network(datacenter_id: Optional[builtins.str] = None,
                 name: Optional[builtins.str] = None,
                 retry_interval: Optional[builtins.int] = None,
                 retry_timeout: Optional[builtins.int] = None,
+                vpc_id: Optional[builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
     The `get_network` data source can be used to discover the ID of a network in
@@ -173,6 +183,7 @@ def get_network(datacenter_id: Optional[builtins.str] = None,
     :param builtins.str name: The name of the network. This can be a name or path.
     :param builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
     :param builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.
+    :param builtins.str vpc_id: Select a VPC scope for retrieval of VPC subnets.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
@@ -181,6 +192,7 @@ def get_network(datacenter_id: Optional[builtins.str] = None,
     __args__['name'] = name
     __args__['retryInterval'] = retry_interval
     __args__['retryTimeout'] = retry_timeout
+    __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
@@ -192,13 +204,15 @@ def get_network(datacenter_id: Optional[builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         retry_interval=pulumi.get(__ret__, 'retry_interval'),
         retry_timeout=pulumi.get(__ret__, 'retry_timeout'),
-        type=pulumi.get(__ret__, 'type'))
+        type=pulumi.get(__ret__, 'type'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        distributed_virtual_switch_uuid: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkFilterArgs', 'GetNetworkFilterArgsDict']]]]] = None,
                        name: Optional[pulumi.Input[builtins.str]] = None,
                        retry_interval: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                        retry_timeout: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                       vpc_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     The `get_network` data source can be used to discover the ID of a network in
@@ -245,6 +259,7 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.st
     :param builtins.str name: The name of the network. This can be a name or path.
     :param builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
     :param builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.
+    :param builtins.str vpc_id: Select a VPC scope for retrieval of VPC subnets.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
@@ -253,6 +268,7 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.st
     __args__['name'] = name
     __args__['retryInterval'] = retry_interval
     __args__['retryTimeout'] = retry_timeout
+    __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
@@ -263,4 +279,5 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[builtins.st
         name=pulumi.get(__response__, 'name'),
         retry_interval=pulumi.get(__response__, 'retry_interval'),
         retry_timeout=pulumi.get(__response__, 'retry_timeout'),
-        type=pulumi.get(__response__, 'type')))
+        type=pulumi.get(__response__, 'type'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

@@ -336,7 +336,7 @@ index f2480a46..9a835f67 100644
 +  resource pool will belong to the host only; however, if it is a member of a
 +  cluster, the resource pool will be the root for the cluster.
 diff --git a/docs/data-sources/network.md b/docs/data-sources/network.md
-index eb5479d4..24a5a38b 100644
+index 7613c5f2..f8092658 100644
 --- a/docs/data-sources/network.md
 +++ b/docs/data-sources/network.md
 @@ -49,11 +49,10 @@ data "vsphere_network" "my_port_group" {
@@ -355,11 +355,11 @@ index eb5479d4..24a5a38b 100644
  * `distributed_virtual_switch_uuid` - (Optional) For distributed port group type
    network objects, the ID of the distributed virtual switch for which the port
    group belongs. It is useful to differentiate port groups with same name using
-@@ -62,13 +61,12 @@ The following arguments are supported:
-   * `network_type`: This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+@@ -63,16 +62,14 @@ The following arguments are supported:
  * `retry_timeout` - (Optional) The timeout duration in seconds for the data source to retry read operations.
  * `retry_interval` - (Optional) The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
--[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+ * `vpc_id` - (Optional) Select a VPC scope for retrieval of VPC subnets.
+-  [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  
  ## Attribute Reference
  
@@ -370,8 +370,11 @@ index eb5479d4..24a5a38b 100644
  * `type`: The managed object type for the discovered network. This will be one
    of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
    standard (host-based) port groups, or `OpaqueNetwork` for networks managed
+   externally, such as those managed by NSX.
+ 
+-[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 diff --git a/docs/data-sources/resource_pool.md b/docs/data-sources/resource_pool.md
-index 703b388d..457f4613 100644
+index 4ab6960e..c44465ed 100644
 --- a/docs/data-sources/resource_pool.md
 +++ b/docs/data-sources/resource_pool.md
 @@ -12,9 +12,7 @@ description: |-
@@ -385,7 +388,7 @@ index 703b388d..457f4613 100644
  
  ## Example Usage
  
-@@ -31,11 +29,9 @@ data "vsphere_resource_pool" "pool" {
+@@ -51,11 +49,9 @@ data "vsphere_resource_pool" "child_pool" {
  
  ### Specifying the Root Resource Pool for a Standalone ESXi Host
  
@@ -400,7 +403,7 @@ index 703b388d..457f4613 100644
  
  All compute resources in vSphere have a resource pool, even if one has not been
  explicitly created. This resource pool is referred to as the _root resource
-@@ -60,17 +56,15 @@ The following arguments are supported:
+@@ -80,20 +76,18 @@ The following arguments are supported:
  
  * `name` - (Optional) The name of the resource pool. This can be a name or
    path. This is required when using vCenter.
@@ -409,18 +412,21 @@ index 703b388d..457f4613 100644
 -  the resource pool is located. This can be omitted if the search path used in
 -  `name` is an absolute path. For default datacenters, use the id attribute from
 -  an empty `vsphere_datacenter` data source.
--
+-* `parent_resource_pool_id` - (Optional) The [managed object ID][docs-about-morefs]
++* `datacenter_id` - (Optional) The managed object reference ID
++  of the datacenter in which the resource pool is located. This can be omitted
++  if the search path used in `name` is an absolute path. For default
++  datacenters, use the id attribute from an empty `vsphere_datacenter` data
++  source..
++* `parent_resource_pool_id` - (Optional) The managed object ID
+   of the parent resource pool. When specified, the `name` parameter is used to find 
+   a child resource pool with the given name under this parent resource pool.
+ 
 -[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 -
 -~> **Note:** When using ESXi without a vCenter Server instance, you do not need
 -to specify either attribute to use this data source. An empty declaration will
 -load the ESXi host's root resource pool.
-+* `datacenter_id` - (Optional) The managed object reference ID
-+  of the datacenter in which the resource pool is located. This can be omitted
-+  if the search path used in `name` is an absolute path. For default
-+  datacenters, use the id attribute from an empty `vsphere_datacenter` data
-+  source.
-+
 +~> **Note:** When using ESXi without a vCenter Server instance, you do not
 +need to specify either attribute to use this data source. An empty declaration
 +will load the ESXi host's root resource pool.
@@ -1524,7 +1530,7 @@ index 0e7183fb..6051d3fb 100644
  ## Importing
  
 diff --git a/docs/resources/datastore_cluster.md b/docs/resources/datastore_cluster.md
-index d1bd25d7..2df2117a 100644
+index 07c1c980..12682e7d 100644
 --- a/docs/resources/datastore_cluster.md
 +++ b/docs/resources/datastore_cluster.md
 @@ -27,10 +27,9 @@ connections.
@@ -1608,7 +1614,7 @@ index d1bd25d7..2df2117a 100644
  
  * `custom_attributes` - (Optional) A map of custom attribute ids to attribute
    value strings to set for the datastore cluster. See
-@@ -173,6 +168,11 @@ datastore cluster.
+@@ -175,6 +170,11 @@ I/O load balancing for Storage DRS is not available on vSphere 9.0 and later.
  The following options control disk space load balancing for Storage DRS on the
  datastore cluster.
  
@@ -1620,7 +1626,7 @@ index d1bd25d7..2df2117a 100644
  * `sdrs_free_space_utilization_difference` - (Optional) The threshold, in
    percent of used space, that storage DRS uses to make decisions to migrate VMs
    out of a datastore. Default: `80` percent.
-@@ -197,12 +197,12 @@ require changing during basic operation:
+@@ -199,12 +199,12 @@ require changing during basic operation:
  * `sdrs_load_balance_interval` - (Optional) The storage DRS poll interval, in
    minutes. Default: `480` minutes.
  * `sdrs_advanced_options` - (Optional) A key/value map of advanced Storage DRS

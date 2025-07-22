@@ -20,11 +20,7 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
      * of the datacenter in which the resource pool is located. This can be omitted
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source.
-     * 
-     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host&#39;s root resource pool.
+     * source..
      * 
      */
     @Import(name="datacenterId")
@@ -35,11 +31,7 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
      * of the datacenter in which the resource pool is located. This can be omitted
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source.
-     * 
-     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host&#39;s root resource pool.
+     * source..
      * 
      */
     public Optional<Output<String>> datacenterId() {
@@ -63,11 +55,39 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The managed object ID
+     * of the parent resource pool. When specified, the `name` parameter is used to find
+     * a child resource pool with the given name under this parent resource pool.
+     * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host&#39;s root resource pool.
+     * 
+     */
+    @Import(name="parentResourcePoolId")
+    private @Nullable Output<String> parentResourcePoolId;
+
+    /**
+     * @return The managed object ID
+     * of the parent resource pool. When specified, the `name` parameter is used to find
+     * a child resource pool with the given name under this parent resource pool.
+     * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host&#39;s root resource pool.
+     * 
+     */
+    public Optional<Output<String>> parentResourcePoolId() {
+        return Optional.ofNullable(this.parentResourcePoolId);
+    }
+
     private GetResourcePoolArgs() {}
 
     private GetResourcePoolArgs(GetResourcePoolArgs $) {
         this.datacenterId = $.datacenterId;
         this.name = $.name;
+        this.parentResourcePoolId = $.parentResourcePoolId;
     }
 
     public static Builder builder() {
@@ -93,11 +113,7 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
          * of the datacenter in which the resource pool is located. This can be omitted
          * if the search path used in `name` is an absolute path. For default
          * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-         * source.
-         * 
-         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-         * need to specify either attribute to use this data source. An empty declaration
-         * will load the ESXi host&#39;s root resource pool.
+         * source..
          * 
          * @return builder
          * 
@@ -112,11 +128,7 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
          * of the datacenter in which the resource pool is located. This can be omitted
          * if the search path used in `name` is an absolute path. For default
          * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-         * source.
-         * 
-         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-         * need to specify either attribute to use this data source. An empty declaration
-         * will load the ESXi host&#39;s root resource pool.
+         * source..
          * 
          * @return builder
          * 
@@ -146,6 +158,39 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param parentResourcePoolId The managed object ID
+         * of the parent resource pool. When specified, the `name` parameter is used to find
+         * a child resource pool with the given name under this parent resource pool.
+         * 
+         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+         * need to specify either attribute to use this data source. An empty declaration
+         * will load the ESXi host&#39;s root resource pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentResourcePoolId(@Nullable Output<String> parentResourcePoolId) {
+            $.parentResourcePoolId = parentResourcePoolId;
+            return this;
+        }
+
+        /**
+         * @param parentResourcePoolId The managed object ID
+         * of the parent resource pool. When specified, the `name` parameter is used to find
+         * a child resource pool with the given name under this parent resource pool.
+         * 
+         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+         * need to specify either attribute to use this data source. An empty declaration
+         * will load the ESXi host&#39;s root resource pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentResourcePoolId(String parentResourcePoolId) {
+            return parentResourcePoolId(Output.of(parentResourcePoolId));
         }
 
         public GetResourcePoolArgs build() {

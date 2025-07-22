@@ -55,6 +55,7 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
         "name": args.name,
         "retryInterval": args.retryInterval,
         "retryTimeout": args.retryTimeout,
+        "vpcId": args.vpcId,
     }, opts);
 }
 
@@ -92,6 +93,10 @@ export interface GetNetworkArgs {
      * The timeout duration in seconds for the data source to retry read operations.
      */
     retryTimeout?: number;
+    /**
+     * Select a VPC scope for retrieval of VPC subnets.
+     */
+    vpcId?: string;
 }
 
 /**
@@ -115,6 +120,7 @@ export interface GetNetworkResult {
      * externally, such as those managed by NSX.
      */
     readonly type: string;
+    readonly vpcId?: string;
 }
 /**
  * The `vsphere.getNetwork` data source can be used to discover the ID of a network in
@@ -165,6 +171,7 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
         "name": args.name,
         "retryInterval": args.retryInterval,
         "retryTimeout": args.retryTimeout,
+        "vpcId": args.vpcId,
     }, opts);
 }
 
@@ -202,4 +209,8 @@ export interface GetNetworkOutputArgs {
      * The timeout duration in seconds for the data source to retry read operations.
      */
     retryTimeout?: pulumi.Input<number>;
+    /**
+     * Select a VPC scope for retrieval of VPC subnets.
+     */
+    vpcId?: pulumi.Input<string>;
 }

@@ -261,6 +261,12 @@ namespace Pulumi.VSphere
         [Input("retryTimeout")]
         public int? RetryTimeout { get; set; }
 
+        /// <summary>
+        /// Select a VPC scope for retrieval of VPC subnets.
+        /// </summary>
+        [Input("vpcId")]
+        public string? VpcId { get; set; }
+
         public GetNetworkArgs()
         {
         }
@@ -317,6 +323,12 @@ namespace Pulumi.VSphere
         [Input("retryTimeout")]
         public Input<int>? RetryTimeout { get; set; }
 
+        /// <summary>
+        /// Select a VPC scope for retrieval of VPC subnets.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
         public GetNetworkInvokeArgs()
         {
         }
@@ -344,6 +356,7 @@ namespace Pulumi.VSphere
         /// externally, such as those managed by NSX.
         /// </summary>
         public readonly string Type;
+        public readonly string? VpcId;
 
         [OutputConstructor]
         private GetNetworkResult(
@@ -361,7 +374,9 @@ namespace Pulumi.VSphere
 
             int? retryTimeout,
 
-            string type)
+            string type,
+
+            string? vpcId)
         {
             DatacenterId = datacenterId;
             DistributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
@@ -371,6 +386,7 @@ namespace Pulumi.VSphere
             RetryInterval = retryInterval;
             RetryTimeout = retryTimeout;
             Type = type;
+            VpcId = vpcId;
         }
     }
 }

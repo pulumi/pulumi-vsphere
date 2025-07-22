@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Find a Resource Pool by Path
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -20,8 +22,27 @@ import * as utilities from "./utilities";
  *     name: "dc-01",
  * });
  * const pool = datacenter.then(datacenter => vsphere.getResourcePool({
- *     name: "resource-pool-01",
+ *     name: "cluster-01/Resources",
  *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ *
+ * ### Find a Child Resource Pool Using the Parent ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const parentPool = datacenter.then(datacenter => vsphere.getResourcePool({
+ *     name: "cluster-01/Resources",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const childPool = parentPool.then(parentPool => vsphere.getResourcePool({
+ *     name: "example",
+ *     parentResourcePoolId: parentPool.id,
  * }));
  * ```
  *
@@ -57,6 +78,7 @@ export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.Invoke
     return pulumi.runtime.invoke("vsphere:index/getResourcePool:getResourcePool", {
         "datacenterId": args.datacenterId,
         "name": args.name,
+        "parentResourcePoolId": args.parentResourcePoolId,
     }, opts);
 }
 
@@ -69,11 +91,7 @@ export interface GetResourcePoolArgs {
      * of the datacenter in which the resource pool is located. This can be omitted
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source.
-     *
-     * > **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host's root resource pool.
+     * source..
      */
     datacenterId?: string;
     /**
@@ -81,6 +99,16 @@ export interface GetResourcePoolArgs {
      * path. This is required when using vCenter.
      */
     name?: string;
+    /**
+     * The managed object ID
+     * of the parent resource pool. When specified, the `name` parameter is used to find
+     * a child resource pool with the given name under this parent resource pool.
+     *
+     * > **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host's root resource pool.
+     */
+    parentResourcePoolId?: string;
 }
 
 /**
@@ -93,6 +121,7 @@ export interface GetResourcePoolResult {
      */
     readonly id: string;
     readonly name?: string;
+    readonly parentResourcePoolId?: string;
 }
 /**
  * The `vsphere.ResourcePool` data source can be used to discover the ID of a
@@ -102,6 +131,8 @@ export interface GetResourcePoolResult {
  *
  * ## Example Usage
  *
+ * ### Find a Resource Pool by Path
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -110,8 +141,27 @@ export interface GetResourcePoolResult {
  *     name: "dc-01",
  * });
  * const pool = datacenter.then(datacenter => vsphere.getResourcePool({
- *     name: "resource-pool-01",
+ *     name: "cluster-01/Resources",
  *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ *
+ * ### Find a Child Resource Pool Using the Parent ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const parentPool = datacenter.then(datacenter => vsphere.getResourcePool({
+ *     name: "cluster-01/Resources",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const childPool = parentPool.then(parentPool => vsphere.getResourcePool({
+ *     name: "example",
+ *     parentResourcePoolId: parentPool.id,
  * }));
  * ```
  *
@@ -147,6 +197,7 @@ export function getResourcePoolOutput(args?: GetResourcePoolOutputArgs, opts?: p
     return pulumi.runtime.invokeOutput("vsphere:index/getResourcePool:getResourcePool", {
         "datacenterId": args.datacenterId,
         "name": args.name,
+        "parentResourcePoolId": args.parentResourcePoolId,
     }, opts);
 }
 
@@ -159,11 +210,7 @@ export interface GetResourcePoolOutputArgs {
      * of the datacenter in which the resource pool is located. This can be omitted
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source.
-     *
-     * > **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host's root resource pool.
+     * source..
      */
     datacenterId?: pulumi.Input<string>;
     /**
@@ -171,4 +218,14 @@ export interface GetResourcePoolOutputArgs {
      * path. This is required when using vCenter.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The managed object ID
+     * of the parent resource pool. When specified, the `name` parameter is used to find
+     * a child resource pool with the given name under this parent resource pool.
+     *
+     * > **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host's root resource pool.
+     */
+    parentResourcePoolId?: pulumi.Input<string>;
 }

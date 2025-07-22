@@ -19,11 +19,7 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
      * of the datacenter in which the resource pool is located. This can be omitted
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source.
-     * 
-     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host&#39;s root resource pool.
+     * source..
      * 
      */
     @Import(name="datacenterId")
@@ -34,11 +30,7 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
      * of the datacenter in which the resource pool is located. This can be omitted
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source.
-     * 
-     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host&#39;s root resource pool.
+     * source..
      * 
      */
     public Optional<String> datacenterId() {
@@ -62,11 +54,39 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The managed object ID
+     * of the parent resource pool. When specified, the `name` parameter is used to find
+     * a child resource pool with the given name under this parent resource pool.
+     * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host&#39;s root resource pool.
+     * 
+     */
+    @Import(name="parentResourcePoolId")
+    private @Nullable String parentResourcePoolId;
+
+    /**
+     * @return The managed object ID
+     * of the parent resource pool. When specified, the `name` parameter is used to find
+     * a child resource pool with the given name under this parent resource pool.
+     * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host&#39;s root resource pool.
+     * 
+     */
+    public Optional<String> parentResourcePoolId() {
+        return Optional.ofNullable(this.parentResourcePoolId);
+    }
+
     private GetResourcePoolPlainArgs() {}
 
     private GetResourcePoolPlainArgs(GetResourcePoolPlainArgs $) {
         this.datacenterId = $.datacenterId;
         this.name = $.name;
+        this.parentResourcePoolId = $.parentResourcePoolId;
     }
 
     public static Builder builder() {
@@ -92,11 +112,7 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
          * of the datacenter in which the resource pool is located. This can be omitted
          * if the search path used in `name` is an absolute path. For default
          * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-         * source.
-         * 
-         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-         * need to specify either attribute to use this data source. An empty declaration
-         * will load the ESXi host&#39;s root resource pool.
+         * source..
          * 
          * @return builder
          * 
@@ -115,6 +131,23 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param parentResourcePoolId The managed object ID
+         * of the parent resource pool. When specified, the `name` parameter is used to find
+         * a child resource pool with the given name under this parent resource pool.
+         * 
+         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+         * need to specify either attribute to use this data source. An empty declaration
+         * will load the ESXi host&#39;s root resource pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentResourcePoolId(@Nullable String parentResourcePoolId) {
+            $.parentResourcePoolId = parentResourcePoolId;
             return this;
         }
 
