@@ -37,8 +37,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef("datastore-01"),
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name: "datastore-01",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +49,7 @@ import (
 //				VmdkPath:          pulumi.String("/foo/foo.vmdk"),
 //				CreateDirectories: pulumi.Bool(true),
 //				Datacenter:        pulumi.String(datacenter.Name),
-//				Datastore:         pulumi.Any(datastoreVsphereDatastore.Name),
+//				Datastore:         pulumi.String(datastore.Name),
 //			})
 //			if err != nil {
 //				return err
