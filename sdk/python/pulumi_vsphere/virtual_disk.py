@@ -388,14 +388,14 @@ class VirtualDisk(pulumi.CustomResource):
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
-        datastore = vsphere.get_datacenter(name="datastore-01")
+        datastore = vsphere.get_datastore(name="datastore-01")
         virtual_disk = vsphere.VirtualDisk("virtual_disk",
             size=40,
             type="thin",
             vmdk_path="/foo/foo.vmdk",
             create_directories=True,
             datacenter=datacenter.name,
-            datastore=datastore_vsphere_datastore["name"])
+            datastore=datastore.name)
         ```
 
         ## Import
@@ -470,14 +470,14 @@ class VirtualDisk(pulumi.CustomResource):
         import pulumi_vsphere as vsphere
 
         datacenter = vsphere.get_datacenter(name="dc-01")
-        datastore = vsphere.get_datacenter(name="datastore-01")
+        datastore = vsphere.get_datastore(name="datastore-01")
         virtual_disk = vsphere.VirtualDisk("virtual_disk",
             size=40,
             type="thin",
             vmdk_path="/foo/foo.vmdk",
             create_directories=True,
             datacenter=datacenter.name,
-            datastore=datastore_vsphere_datastore["name"])
+            datastore=datastore.name)
         ```
 
         ## Import

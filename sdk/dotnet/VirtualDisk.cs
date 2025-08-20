@@ -30,7 +30,7 @@ namespace Pulumi.VSphere
     ///         Name = "dc-01",
     ///     });
     /// 
-    ///     var datastore = VSphere.GetDatacenter.Invoke(new()
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
     ///     {
     ///         Name = "datastore-01",
     ///     });
@@ -42,7 +42,7 @@ namespace Pulumi.VSphere
     ///         VmdkPath = "/foo/foo.vmdk",
     ///         CreateDirectories = true,
     ///         Datacenter = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Name),
-    ///         Datastore = datastoreVsphereDatastore.Name,
+    ///         Datastore = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Name),
     ///     });
     /// 
     /// });

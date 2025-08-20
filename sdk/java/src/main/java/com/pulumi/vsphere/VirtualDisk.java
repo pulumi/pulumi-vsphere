@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.vsphere.VsphereFunctions;
  * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetDatastoreArgs;
  * import com.pulumi.vsphere.VirtualDisk;
  * import com.pulumi.vsphere.VirtualDiskArgs;
  * import java.util.List;
@@ -53,7 +54,7 @@ import javax.annotation.Nullable;
  *             .name("dc-01")
  *             .build());
  * 
- *         final var datastore = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
  *             .name("datastore-01")
  *             .build());
  * 
@@ -63,7 +64,7 @@ import javax.annotation.Nullable;
  *             .vmdkPath("/foo/foo.vmdk")
  *             .createDirectories(true)
  *             .datacenter(datacenter.name())
- *             .datastore(datastoreVsphereDatastore.name())
+ *             .datastore(datastore.name())
  *             .build());
  * 
  *     }

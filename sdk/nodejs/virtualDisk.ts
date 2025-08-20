@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const datacenter = vsphere.getDatacenter({
  *     name: "dc-01",
  * });
- * const datastore = vsphere.getDatacenter({
+ * const datastore = vsphere.getDatastore({
  *     name: "datastore-01",
  * });
  * const virtualDisk = new vsphere.VirtualDisk("virtual_disk", {
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *     vmdkPath: "/foo/foo.vmdk",
  *     createDirectories: true,
  *     datacenter: datacenter.then(datacenter => datacenter.name),
- *     datastore: datastoreVsphereDatastore.name,
+ *     datastore: datastore.then(datastore => datastore.name),
  * });
  * ```
  *
