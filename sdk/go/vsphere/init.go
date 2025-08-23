@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ComputeClusterVmGroup{}
 	case "vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule":
 		r = &ComputeClusterVmHostRule{}
+	case "vsphere:index/configurationProfile:ConfigurationProfile":
+		r = &ConfigurationProfile{}
 	case "vsphere:index/contentLibrary:ContentLibrary":
 		r = &ContentLibrary{}
 	case "vsphere:index/contentLibraryItem:ContentLibraryItem":
@@ -173,6 +175,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"vsphere",
 		"index/computeClusterVmHostRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"vsphere",
+		"index/configurationProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

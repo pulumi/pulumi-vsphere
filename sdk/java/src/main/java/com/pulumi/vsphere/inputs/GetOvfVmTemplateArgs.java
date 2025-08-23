@@ -74,7 +74,7 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The disk provisioning type. If set, all the
      * disks included in the OVF/OVA will have the same specified policy. Can be
-     * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+     * one of `thin`, `thick`, or `eagerZeroedThick`.
      * 
      */
     @Import(name="diskProvisioning")
@@ -83,7 +83,7 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * @return The disk provisioning type. If set, all the
      * disks included in the OVF/OVA will have the same specified policy. Can be
-     * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+     * one of `thin`, `thick`, or `eagerZeroedThick`.
      * 
      */
     public Optional<Output<String>> diskProvisioning() {
@@ -371,7 +371,7 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param diskProvisioning The disk provisioning type. If set, all the
          * disks included in the OVF/OVA will have the same specified policy. Can be
-         * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+         * one of `thin`, `thick`, or `eagerZeroedThick`.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param diskProvisioning The disk provisioning type. If set, all the
          * disks included in the OVF/OVA will have the same specified policy. Can be
-         * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+         * one of `thin`, `thick`, or `eagerZeroedThick`.
          * 
          * @return builder
          * 

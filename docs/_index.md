@@ -4,6 +4,7 @@ title: Vsphere Provider
 meta_desc: Provides an overview on how to configure the Pulumi Vsphere provider.
 layout: package
 ---
+
 ## Installation
 
 The Vsphere provider is available as a package in all Pulumi languages:
@@ -13,19 +14,28 @@ The Vsphere provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere`](https://github.com/pulumi/pulumi-vsphere)
 * .NET: [`Pulumi.Vsphere`](https://www.nuget.org/packages/Pulumi.Vsphere)
 * Java: [`com.pulumi/vsphere`](https://central.sonatype.com/artifact/com.pulumi/vsphere)
+
 ## Overview
 
-This provider gives Pulumi the ability to work with VMware vSphere,
-notably [vCenter Server](https://www.vmware.com/products/vcenter.html) and [ESXi](https://www.vmware.com/content/vmware/vmware-published-sites/us/products/esxi-and-esx.html).
-This provider can be used to manage many aspects of a vSphere environment,
-including virtual machines, standard and distributed switches, datastores,
-content libraries, and more.
+<img src="https://raw.githubusercontent.com/vmware/pulumi-provider-vsphere/main/docs/images/icon-color.svg" alt="VMware vSphere" width="150">
+This provider gives Pulumi the ability to work with VMware vSphere. This
+provider can be used to manage many aspects of a vSphere environment, including
+virtual machines, standard and distributed switches, datastores, content
+libraries, and more.
 
 Use the navigation to read about the resources and functions supported by
 this provider.
 
-> **NOTE:** This provider requires API write access and hence is not supported
-on a free ESXi license.
+This release is supported with:
+
+- VMware vSphere 8.x
+- VMware vSphere 7.x
+
+Refer to the [Broadcom Product Lifecycle](https://support.broadcom.com/group/ecx/productlifecycle).
+
+> **NOTE:** This provider requires API write access and is therefore not
+compatible with VMware vSphere Hypervisor version 8, the free entry-level
+hypervisor.
 ## Example Usage
 
 The following abridged example demonstrates basic usage of the provider to
@@ -334,25 +344,25 @@ resources:
 variables:
   datacenter:
     fn::invoke:
-      Function: vsphere:getDatacenter
-      Arguments:
+      function: vsphere:getDatacenter
+      arguments:
         name: dc-01
   datastore:
     fn::invoke:
-      Function: vsphere:getDatastore
-      Arguments:
+      function: vsphere:getDatastore
+      arguments:
         name: datastore-01
         datacenterId: ${datacenter.id}
   cluster:
     fn::invoke:
-      Function: vsphere:getComputeCluster
-      Arguments:
+      function: vsphere:getComputeCluster
+      arguments:
         name: cluster-01
         datacenterId: ${datacenter.id}
   network:
     fn::invoke:
-      Function: vsphere:getNetwork
-      Arguments:
+      function: vsphere:getNetwork
+      arguments:
         name: VM Network
         datacenterId: ${datacenter.id}
 ```
@@ -409,28 +419,28 @@ public class App {
 
         final var datastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()
             .name("datastore-01")
-            .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+            .datacenterId(datacenter.id())
             .build());
 
         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
             .name("cluster-01")
-            .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+            .datacenterId(datacenter.id())
             .build());
 
         final var network = VsphereFunctions.getNetwork(GetNetworkArgs.builder()
             .name("VM Network")
-            .datacenterId(datacenter.applyValue(getDatacenterResult -> getDatacenterResult.id()))
+            .datacenterId(datacenter.id())
             .build());
 
         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
             .name("foo")
-            .resourcePoolId(cluster.applyValue(getComputeClusterResult -> getComputeClusterResult.resourcePoolId()))
-            .datastoreId(datastore.applyValue(getDatastoreResult -> getDatastoreResult.id()))
+            .resourcePoolId(cluster.resourcePoolId())
+            .datastoreId(datastore.id())
             .numCpus(1)
             .memory(1024)
             .guestId("otherLinux64Guest")
             .networkInterfaces(VirtualMachineNetworkInterfaceArgs.builder()
-                .networkId(network.applyValue(getNetworkResult -> getNetworkResult.id()))
+                .networkId(network.id())
                 .build())
             .disks(VirtualMachineDiskArgs.builder()
                 .label("disk0")
@@ -497,7 +507,7 @@ will no longer need them.
 #### Session Interoperability for vmware/govc and the Provider
 
 The session format used to save VIM SOAP sessions is the same used
-with [vmware/govc](https://github.com/vmware/govmomi/tree/main/govc). If you use govc as part of your provisioning
+with [`vmware/govc`](https://github.com/vmware/govmomi/tree/main/govc). If you use `govc` as part of your provisioning
 process, Pulumi will use the saved session if present and if
 `persistSession` is enabled.
 ## Notes on Required Privileges
@@ -508,13 +518,13 @@ require both read and write privileges to the resources they are managing. Make
 sure that the user has appropriate read-write access to the resources you need
 to work with. Read-only access should be sufficient when only using data
 sources on some features. You can read more about vSphere permissions and user
-management [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-5372F580-5C23-4E9C-8A4E-EF1B4DD9033E.html).
+management [here](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/vsphere-permissions-and-user-management-tasks.html).
 
 There are a some notable exceptions to keep in mind when setting up a restricted
 provisioning user:
 ### Tags
 
-The provider will always attempt to read [tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html) from a
+The provider will always attempt to read [tags](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html) from a
 resource, even if you do not have any tags defined. Ensure that your user has
 access to read tags.
 ### Events
@@ -594,4 +604,4 @@ inventory as it's presented to the API. It's normally accessed using
 security reasons should be used sparingly. Modern vSphere installations may
 have the MOB disabled by default, at the very least on ESXi systems. For more
 information on current security best practices related to the MOB on ESXi,
-click [here](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-0EF83EA7-277C-400B-B697-04BDC9173EA3.html).
+click [here](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/securing-esxi-hosts/general-security-recommendations/disable-the-managed-object-browser.html).

@@ -215,7 +215,7 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[_builtins.str] version: The version of the VDS. BY default, a VDS is created
+        :param pulumi.Input[_builtins.str] version: The version of the VDS. By default, a VDS is created
                at the latest version supported by the vSphere version if not specified.
                A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[_builtins.int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
@@ -1392,7 +1392,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The version of the VDS. BY default, a VDS is created
+        The version of the VDS. By default, a VDS is created
         at the latest version supported by the vSphere version if not specified.
         A VDS can be upgraded to a newer version, but can not be downgraded.
         """
@@ -1771,7 +1771,7 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[_builtins.str] version: The version of the VDS. BY default, a VDS is created
+        :param pulumi.Input[_builtins.str] version: The version of the VDS. By default, a VDS is created
                at the latest version supported by the vSphere version if not specified.
                A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[_builtins.int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
@@ -2964,7 +2964,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The version of the VDS. BY default, a VDS is created
+        The version of the VDS. By default, a VDS is created
         at the latest version supported by the vSphere version if not specified.
         A VDS can be upgraded to a newer version, but can not be downgraded.
         """
@@ -3475,7 +3475,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[_builtins.str] version: The version of the VDS. BY default, a VDS is created
+        :param pulumi.Input[_builtins.str] version: The version of the VDS. By default, a VDS is created
                at the latest version supported by the vSphere version if not specified.
                A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[_builtins.int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
@@ -4057,7 +4057,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[_builtins.str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[_builtins.str] version: The version of the VDS. BY default, a VDS is created
+        :param pulumi.Input[_builtins.str] version: The version of the VDS. By default, a VDS is created
                at the latest version supported by the vSphere version if not specified.
                A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[_builtins.int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
@@ -4840,7 +4840,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
         """
-        The version of the VDS. BY default, a VDS is created
+        The version of the VDS. By default, a VDS is created
         at the latest version supported by the vSphere version if not specified.
         A VDS can be upgraded to a newer version, but can not be downgraded.
         """

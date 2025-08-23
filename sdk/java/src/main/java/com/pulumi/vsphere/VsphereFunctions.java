@@ -14,6 +14,8 @@ import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
 import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupArgs;
 import com.pulumi.vsphere.inputs.GetComputeClusterHostGroupPlainArgs;
 import com.pulumi.vsphere.inputs.GetComputeClusterPlainArgs;
+import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
+import com.pulumi.vsphere.inputs.GetConfigurationProfilePlainArgs;
 import com.pulumi.vsphere.inputs.GetContentLibraryArgs;
 import com.pulumi.vsphere.inputs.GetContentLibraryItemArgs;
 import com.pulumi.vsphere.inputs.GetContentLibraryItemPlainArgs;
@@ -68,6 +70,7 @@ import com.pulumi.vsphere.inputs.GetVmfsDisksArgs;
 import com.pulumi.vsphere.inputs.GetVmfsDisksPlainArgs;
 import com.pulumi.vsphere.outputs.GetComputeClusterHostGroupResult;
 import com.pulumi.vsphere.outputs.GetComputeClusterResult;
+import com.pulumi.vsphere.outputs.GetConfigurationProfileResult;
 import com.pulumi.vsphere.outputs.GetContentLibraryItemResult;
 import com.pulumi.vsphere.outputs.GetContentLibraryResult;
 import com.pulumi.vsphere.outputs.GetCustomAttributeResult;
@@ -702,6 +705,276 @@ public final class VsphereFunctions {
      */
     public static CompletableFuture<GetComputeClusterHostGroupResult> getComputeClusterHostGroupPlain(GetComputeClusterHostGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", TypeShape.of(GetComputeClusterHostGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ConfigurationProfile` data source can be used to export the configuration and schema
+     * of a cluster that is already managed via configuration profiles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+     * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var profile = VsphereFunctions.getConfigurationProfile(GetConfigurationProfileArgs.builder()
+     *             .clusterId(computeCluster.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConfigurationProfileResult> getConfigurationProfile(GetConfigurationProfileArgs args) {
+        return getConfigurationProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.ConfigurationProfile` data source can be used to export the configuration and schema
+     * of a cluster that is already managed via configuration profiles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+     * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var profile = VsphereFunctions.getConfigurationProfile(GetConfigurationProfileArgs.builder()
+     *             .clusterId(computeCluster.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConfigurationProfileResult> getConfigurationProfilePlain(GetConfigurationProfilePlainArgs args) {
+        return getConfigurationProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `vsphere.ConfigurationProfile` data source can be used to export the configuration and schema
+     * of a cluster that is already managed via configuration profiles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+     * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var profile = VsphereFunctions.getConfigurationProfile(GetConfigurationProfileArgs.builder()
+     *             .clusterId(computeCluster.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConfigurationProfileResult> getConfigurationProfile(GetConfigurationProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getConfigurationProfile:getConfigurationProfile", TypeShape.of(GetConfigurationProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ConfigurationProfile` data source can be used to export the configuration and schema
+     * of a cluster that is already managed via configuration profiles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+     * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var profile = VsphereFunctions.getConfigurationProfile(GetConfigurationProfileArgs.builder()
+     *             .clusterId(computeCluster.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConfigurationProfileResult> getConfigurationProfile(GetConfigurationProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("vsphere:index/getConfigurationProfile:getConfigurationProfile", TypeShape.of(GetConfigurationProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `vsphere.ConfigurationProfile` data source can be used to export the configuration and schema
+     * of a cluster that is already managed via configuration profiles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+     * import com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+     *             .name("cluster-01")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var profile = VsphereFunctions.getConfigurationProfile(GetConfigurationProfileArgs.builder()
+     *             .clusterId(computeCluster.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConfigurationProfileResult> getConfigurationProfilePlain(GetConfigurationProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("vsphere:index/getConfigurationProfile:getConfigurationProfile", TypeShape.of(GetConfigurationProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `vsphere.ContentLibrary` data source can be used to discover the ID of a

@@ -508,7 +508,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly vdpShareLevel!: pulumi.Output<string>;
     /**
-     * The version of the VDS. BY default, a VDS is created
+     * The version of the VDS. By default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
@@ -1129,7 +1129,7 @@ export interface DistributedVirtualSwitchState {
      */
     vdpShareLevel?: pulumi.Input<string>;
     /**
-     * The version of the VDS. BY default, a VDS is created
+     * The version of the VDS. By default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
@@ -1532,7 +1532,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     vdpShareLevel?: pulumi.Input<string>;
     /**
-     * The version of the VDS. BY default, a VDS is created
+     * The version of the VDS. By default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      */

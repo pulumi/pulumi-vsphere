@@ -40,6 +40,11 @@ export type ComputeClusterVmHostRule = import("./computeClusterVmHostRule").Comp
 export const ComputeClusterVmHostRule: typeof import("./computeClusterVmHostRule").ComputeClusterVmHostRule = null as any;
 utilities.lazyLoad(exports, ["ComputeClusterVmHostRule"], () => require("./computeClusterVmHostRule"));
 
+export { ConfigurationProfileArgs, ConfigurationProfileState } from "./configurationProfile";
+export type ConfigurationProfile = import("./configurationProfile").ConfigurationProfile;
+export const ConfigurationProfile: typeof import("./configurationProfile").ConfigurationProfile = null as any;
+utilities.lazyLoad(exports, ["ConfigurationProfile"], () => require("./configurationProfile"));
+
 export { ContentLibraryArgs, ContentLibraryState } from "./contentLibrary";
 export type ContentLibrary = import("./contentLibrary").ContentLibrary;
 export const ContentLibrary: typeof import("./contentLibrary").ContentLibrary = null as any;
@@ -119,6 +124,11 @@ export { GetComputeClusterHostGroupArgs, GetComputeClusterHostGroupResult, GetCo
 export const getComputeClusterHostGroup: typeof import("./getComputeClusterHostGroup").getComputeClusterHostGroup = null as any;
 export const getComputeClusterHostGroupOutput: typeof import("./getComputeClusterHostGroup").getComputeClusterHostGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getComputeClusterHostGroup","getComputeClusterHostGroupOutput"], () => require("./getComputeClusterHostGroup"));
+
+export { GetConfigurationProfileArgs, GetConfigurationProfileResult, GetConfigurationProfileOutputArgs } from "./getConfigurationProfile";
+export const getConfigurationProfile: typeof import("./getConfigurationProfile").getConfigurationProfile = null as any;
+export const getConfigurationProfileOutput: typeof import("./getConfigurationProfile").getConfigurationProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getConfigurationProfile","getConfigurationProfileOutput"], () => require("./getConfigurationProfile"));
 
 export { GetContentLibraryArgs, GetContentLibraryResult, GetContentLibraryOutputArgs } from "./getContentLibrary";
 export const getContentLibrary: typeof import("./getContentLibrary").getContentLibrary = null as any;
@@ -401,6 +411,8 @@ const _module = {
                 return new ComputeClusterVmGroup(name, <any>undefined, { urn })
             case "vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule":
                 return new ComputeClusterVmHostRule(name, <any>undefined, { urn })
+            case "vsphere:index/configurationProfile:ConfigurationProfile":
+                return new ConfigurationProfile(name, <any>undefined, { urn })
             case "vsphere:index/contentLibrary:ContentLibrary":
                 return new ContentLibrary(name, <any>undefined, { urn })
             case "vsphere:index/contentLibraryItem:ContentLibraryItem":
@@ -487,6 +499,7 @@ pulumi.runtime.registerResourceModule("vsphere", "index/computeClusterVmAntiAffi
 pulumi.runtime.registerResourceModule("vsphere", "index/computeClusterVmDependencyRule", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/computeClusterVmGroup", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/computeClusterVmHostRule", _module)
+pulumi.runtime.registerResourceModule("vsphere", "index/configurationProfile", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/contentLibrary", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/contentLibraryItem", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/customAttribute", _module)

@@ -400,7 +400,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
            empty, the default option is chosen.
     :param _builtins.str disk_provisioning: The disk provisioning type. If set, all the
            disks included in the OVF/OVA will have the same specified policy. Can be
-           one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+           one of `thin`, `thick`, or `eagerZeroedThick`.
     :param _builtins.bool enable_hidden_properties: Allow properties with
            `ovf:userConfigurable=false` to be set.
     :param _builtins.str folder: The name of the folder in which to place the virtual
@@ -503,7 +503,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
            empty, the default option is chosen.
     :param _builtins.str disk_provisioning: The disk provisioning type. If set, all the
            disks included in the OVF/OVA will have the same specified policy. Can be
-           one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+           one of `thin`, `thick`, or `eagerZeroedThick`.
     :param _builtins.bool enable_hidden_properties: Allow properties with
            `ovf:userConfigurable=false` to be set.
     :param _builtins.str folder: The name of the folder in which to place the virtual

@@ -133,7 +133,7 @@ class VirtualMachineArgs:
         :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the virtual machine in.
         :param pulumi.Input[_builtins.bool] force_power_off: Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         :param pulumi.Input[_builtins.str] guest_id: The guest ID for the operating system.
-        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine.
+        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         :param pulumi.Input[_builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
@@ -710,7 +710,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="hardwareVersion")
     def hardware_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The hardware version for the virtual machine.
+        The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         """
         return pulumi.get(self, "hardware_version")
 
@@ -1399,7 +1399,7 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.bool] force_power_off: Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         :param pulumi.Input[_builtins.str] guest_id: The guest ID for the operating system.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
-        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine.
+        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         :param pulumi.Input[_builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
@@ -2031,7 +2031,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="hardwareVersion")
     def hardware_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The hardware version for the virtual machine.
+        The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         """
         return pulumi.get(self, "hardware_version")
 
@@ -2840,7 +2840,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the virtual machine in.
         :param pulumi.Input[_builtins.bool] force_power_off: Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         :param pulumi.Input[_builtins.str] guest_id: The guest ID for the operating system.
-        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine.
+        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         :param pulumi.Input[_builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
@@ -3259,7 +3259,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_power_off: Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
         :param pulumi.Input[_builtins.str] guest_id: The guest ID for the operating system.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
-        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine.
+        :param pulumi.Input[_builtins.int] hardware_version: The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         :param pulumi.Input[_builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
@@ -3680,7 +3680,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="hardwareVersion")
     def hardware_version(self) -> pulumi.Output[_builtins.int]:
         """
-        The hardware version for the virtual machine.
+        The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         """
         return pulumi.get(self, "hardware_version")
 

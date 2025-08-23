@@ -13,6 +13,7 @@ from .compute_cluster_vm_anti_affinity_rule import *
 from .compute_cluster_vm_dependency_rule import *
 from .compute_cluster_vm_group import *
 from .compute_cluster_vm_host_rule import *
+from .configuration_profile import *
 from .content_library import *
 from .content_library_item import *
 from .custom_attribute import *
@@ -29,6 +30,7 @@ from .file import *
 from .folder import *
 from .get_compute_cluster import *
 from .get_compute_cluster_host_group import *
+from .get_configuration_profile import *
 from .get_content_library import *
 from .get_content_library_item import *
 from .get_custom_attribute import *
@@ -147,6 +149,14 @@ _utilities.register(
   "fqn": "pulumi_vsphere",
   "classes": {
    "vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule": "ComputeClusterVmHostRule"
+  }
+ },
+ {
+  "pkg": "vsphere",
+  "mod": "index/configurationProfile",
+  "fqn": "pulumi_vsphere",
+  "classes": {
+   "vsphere:index/configurationProfile:ConfigurationProfile": "ConfigurationProfile"
   }
  },
  {
