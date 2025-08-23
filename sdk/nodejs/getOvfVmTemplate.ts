@@ -52,7 +52,7 @@ export interface GetOvfVmTemplateArgs {
     /**
      * The disk provisioning type. If set, all the
      * disks included in the OVF/OVA will have the same specified policy. Can be
-     * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+     * one of `thin`, `thick`, or `eagerZeroedThick`.
      */
     diskProvisioning?: string;
     /**
@@ -237,7 +237,7 @@ export interface GetOvfVmTemplateOutputArgs {
     /**
      * The disk provisioning type. If set, all the
      * disks included in the OVF/OVA will have the same specified policy. Can be
-     * one of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.
+     * one of `thin`, `thick`, or `eagerZeroedThick`.
      */
     diskProvisioning?: pulumi.Input<string>;
     /**

@@ -1247,7 +1247,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The version of the VDS. BY default, a VDS is created
+     * The version of the VDS. By default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      * 
@@ -1256,7 +1256,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> version;
 
     /**
-     * @return The version of the VDS. BY default, a VDS is created
+     * @return The version of the VDS. By default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      * 
@@ -3351,7 +3351,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param version The version of the VDS. BY default, a VDS is created
+         * @param version The version of the VDS. By default, a VDS is created
          * at the latest version supported by the vSphere version if not specified.
          * A VDS can be upgraded to a newer version, but can not be downgraded.
          * 
@@ -3364,7 +3364,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param version The version of the VDS. BY default, a VDS is created
+         * @param version The version of the VDS. By default, a VDS is created
          * at the latest version supported by the vSphere version if not specified.
          * A VDS can be upgraded to a newer version, but can not be downgraded.
          * 

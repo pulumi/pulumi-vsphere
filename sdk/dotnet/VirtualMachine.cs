@@ -233,7 +233,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> GuestIpAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The hardware version for the virtual machine.
+        /// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         /// </summary>
         [Output("hardwareVersion")]
         public Output<int> HardwareVersion { get; private set; } = null!;
@@ -813,7 +813,7 @@ namespace Pulumi.VSphere
         public Input<string>? GuestId { get; set; }
 
         /// <summary>
-        /// The hardware version for the virtual machine.
+        /// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         /// </summary>
         [Input("hardwareVersion")]
         public Input<int>? HardwareVersion { get; set; }
@@ -1358,7 +1358,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The hardware version for the virtual machine.
+        /// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
         /// </summary>
         [Input("hardwareVersion")]
         public Input<int>? HardwareVersion { get; set; }

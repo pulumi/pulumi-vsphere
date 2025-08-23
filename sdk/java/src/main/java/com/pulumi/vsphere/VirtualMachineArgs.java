@@ -469,14 +469,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The hardware version for the virtual machine.
+     * The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      * 
      */
     @Import(name="hardwareVersion")
     private @Nullable Output<Integer> hardwareVersion;
 
     /**
-     * @return The hardware version for the virtual machine.
+     * @return The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      * 
      */
     public Optional<Output<Integer>> hardwareVersion() {
@@ -1916,7 +1916,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hardwareVersion The hardware version for the virtual machine.
+         * @param hardwareVersion The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
          * 
          * @return builder
          * 
@@ -1927,7 +1927,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hardwareVersion The hardware version for the virtual machine.
+         * @param hardwareVersion The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
          * 
          * @return builder
          * 

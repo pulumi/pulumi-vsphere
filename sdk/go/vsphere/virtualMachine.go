@@ -105,7 +105,7 @@ type VirtualMachine struct {
 	GuestId pulumi.StringOutput `pulumi:"guestId"`
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayOutput `pulumi:"guestIpAddresses"`
-	// The hardware version for the virtual machine.
+	// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
 	HardwareVersion pulumi.IntOutput `pulumi:"hardwareVersion"`
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
@@ -326,7 +326,7 @@ type virtualMachineState struct {
 	GuestId *string `pulumi:"guestId"`
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
-	// The hardware version for the virtual machine.
+	// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
 	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId *string `pulumi:"hostSystemId"`
@@ -515,7 +515,7 @@ type VirtualMachineState struct {
 	GuestId pulumi.StringPtrInput
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayInput
-	// The hardware version for the virtual machine.
+	// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
 	HardwareVersion pulumi.IntPtrInput
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringPtrInput
@@ -702,7 +702,7 @@ type virtualMachineArgs struct {
 	ForcePowerOff *bool `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system.
 	GuestId *string `pulumi:"guestId"`
-	// The hardware version for the virtual machine.
+	// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
 	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId *string `pulumi:"hostSystemId"`
@@ -871,7 +871,7 @@ type VirtualMachineArgs struct {
 	ForcePowerOff pulumi.BoolPtrInput
 	// The guest ID for the operating system.
 	GuestId pulumi.StringPtrInput
-	// The hardware version for the virtual machine.
+	// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
 	HardwareVersion pulumi.IntPtrInput
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringPtrInput
@@ -1227,7 +1227,7 @@ func (o VirtualMachineOutput) GuestIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.GuestIpAddresses }).(pulumi.StringArrayOutput)
 }
 
-// The hardware version for the virtual machine.
+// The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
 func (o VirtualMachineOutput) HardwareVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.HardwareVersion }).(pulumi.IntOutput)
 }

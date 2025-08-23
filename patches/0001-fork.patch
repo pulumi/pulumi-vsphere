@@ -1841,7 +1841,7 @@ index 1c91af94..2d569ffa 100644
  
  * `config_version`: The current version of the port group configuration,
 diff --git a/docs/resources/distributed_virtual_switch.md b/docs/resources/distributed_virtual_switch.md
-index bd64914f..24a115d9 100644
+index 7cd1e4b6..8d7c1f88 100644
 --- a/docs/resources/distributed_virtual_switch.md
 +++ b/docs/resources/distributed_virtual_switch.md
 @@ -16,7 +16,7 @@ An essential component of a distributed, scalable vSphere infrastructure, the
@@ -1871,7 +1871,7 @@ index bd64914f..24a115d9 100644
  
  ```hcl
 @@ -146,16 +145,10 @@ The following arguments are supported:
- - `version` - (Optional) - The version of the VDS. BY default, a VDS is created
+ - `version` - (Optional) - The version of the VDS. By default, a VDS is created
    at the latest version supported by the vSphere version if not specified.
    A VDS can be upgraded to a newer version, but can not be downgraded.
 -- `tags` - (Optional) The IDs of any tags to attach to this resource. See
@@ -2917,7 +2917,7 @@ index d52dd749..5e1e3e0d 100644
    directories that are a part of the `vmdk_path` parameter if they are missing.
    Default: `false`.
 diff --git a/docs/resources/virtual_machine.md b/docs/resources/virtual_machine.md
-index 292e5732..851f3148 100644
+index 3b633880..9b5771bc 100644
 --- a/docs/resources/virtual_machine.md
 +++ b/docs/resources/virtual_machine.md
 @@ -15,7 +15,7 @@ For details on working with virtual machines in VMware vSphere, please refer to
@@ -2963,7 +2963,7 @@ index 292e5732..851f3148 100644
  
  ~> **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
  
-@@ -564,15 +558,10 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -558,15 +552,10 @@ resource "vsphere_virtual_machine" "vm" {
  
  The `vsphere_virtual_machine` resource also supports vSphere Storage DRS, allowing the assignment of virtual machines to datastore clusters. When assigned to a datastore cluster, changes to a virtual machine's underlying datastores are ignored unless disks drift outside of the datastore cluster. Note that the [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-resource] resource also exists to allow for management of datastore clusters using the Terraform provider.
  
@@ -2980,7 +2980,7 @@ index 292e5732..851f3148 100644
  **Example**:
  
  ```hcl
-@@ -630,15 +619,13 @@ The following options are general virtual machine and provider workflow options:
+@@ -624,15 +613,13 @@ The following options are general virtual machine and provider workflow options:
  
  * `extra_config_reboot_required` - (Optional) Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
  
@@ -2999,7 +2999,7 @@ index 292e5732..851f3148 100644
  
  ~> **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
  
-@@ -676,7 +663,7 @@ The following options are general virtual machine and provider workflow options:
+@@ -670,7 +657,7 @@ The following options are general virtual machine and provider workflow options:
  [virtual-machine-hardware-versions]: https://knowledge.broadcom.com/external/article?articleNumber=315655
  [virtual-machine-hardware-compatibility]: https://knowledge.broadcom.com/external/article?articleNumber=312100
  
@@ -3008,7 +3008,7 @@ index 292e5732..851f3148 100644
  
  * `name` - (Required) The name of the virtual machine.
  
-@@ -692,13 +679,9 @@ The following options are general virtual machine and provider workflow options:
+@@ -686,13 +673,9 @@ The following options are general virtual machine and provider workflow options:
  
  For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
  
@@ -3024,7 +3024,7 @@ index 292e5732..851f3148 100644
  
  * `scsi_type` - (Optional) The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
  
-@@ -706,9 +689,7 @@ For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_i
+@@ -700,9 +683,7 @@ For example, `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_i
  
  * `storage_policy_id` - (Optional) The ID of the storage policy to assign to the home directory of a virtual machine.
  
@@ -3035,7 +3035,7 @@ index 292e5732..851f3148 100644
  
  ~> **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
  
-@@ -1275,10 +1256,9 @@ The options are:
+@@ -1269,10 +1250,9 @@ The options are:
  
  * `hw_clock_utc` - (Optional) Tells the operating system that the hardware clock is set to UTC. Default: `true`.
  
@@ -3048,7 +3048,7 @@ index 292e5732..851f3148 100644
  
  * `time_zone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][kb-2145518]. The default is UTC.
  
-@@ -1581,9 +1561,8 @@ resource "vsphere_virtual_machine" "vm" {
+@@ -1574,9 +1554,8 @@ resource "vsphere_virtual_machine" "vm" {
  
  #### Storage Migration Restrictions
  
@@ -3059,7 +3059,7 @@ index 292e5732..851f3148 100644
  
  ## Virtual Machine Reboot
  
-@@ -1643,11 +1622,11 @@ The following attributes are exported on the base level of this resource:
+@@ -1636,11 +1615,11 @@ The following attributes are exported on the base level of this resource:
  
  * `uuid` - The UUID of the virtual machine. Also exposed as the `id` of the resource.
  
@@ -3073,7 +3073,7 @@ index 292e5732..851f3148 100644
  
  * `vapp_transport` - Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
  
-@@ -1655,9 +1634,7 @@ The following attributes are exported on the base level of this resource:
+@@ -1648,9 +1627,7 @@ The following attributes are exported on the base level of this resource:
  
  ## Importing
  

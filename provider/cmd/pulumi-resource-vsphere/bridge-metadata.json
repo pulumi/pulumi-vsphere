@@ -119,6 +119,10 @@
                 "current": "vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule",
                 "majorVersion": 4
             },
+            "vsphere_configuration_profile": {
+                "current": "vsphere:index/configurationProfile:ConfigurationProfile",
+                "majorVersion": 4
+            },
             "vsphere_content_library": {
                 "current": "vsphere:index/contentLibrary:ContentLibrary",
                 "majorVersion": 4,
@@ -667,6 +671,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "vsphere_configuration_profile": {
+                "current": "vsphere:index/getConfigurationProfile:getConfigurationProfile",
+                "majorVersion": 4
             },
             "vsphere_content_library": {
                 "current": "vsphere:index/getContentLibrary:getContentLibrary",

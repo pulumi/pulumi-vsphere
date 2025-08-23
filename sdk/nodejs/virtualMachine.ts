@@ -191,7 +191,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly guestIpAddresses!: pulumi.Output<string[]>;
     /**
-     * The hardware version for the virtual machine.
+     * The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      */
     public readonly hardwareVersion!: pulumi.Output<number>;
     /**
@@ -748,7 +748,7 @@ export interface VirtualMachineState {
      */
     guestIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The hardware version for the virtual machine.
+     * The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      */
     hardwareVersion?: pulumi.Input<number>;
     /**
@@ -1094,7 +1094,7 @@ export interface VirtualMachineArgs {
      */
     guestId?: pulumi.Input<string>;
     /**
-     * The hardware version for the virtual machine.
+     * The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      */
     hardwareVersion?: pulumi.Input<number>;
     /**

@@ -3450,6 +3450,70 @@
                 "type": "object"
             }
         },
+        "vsphere:index/configurationProfile:ConfigurationProfile": {
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The identifier of the cluster.\n"
+                },
+                "configuration": {
+                    "type": "string",
+                    "description": "The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.\n"
+                },
+                "referenceHostId": {
+                    "type": "string",
+                    "description": "The identifier of the host to use as a configuration source.\nThe host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if\n`configuration` is not set.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The JSON schema for the profile.\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "configuration",
+                "schema"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The identifier of the cluster.\n"
+                },
+                "configuration": {
+                    "type": "string",
+                    "description": "The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.\n"
+                },
+                "referenceHostId": {
+                    "type": "string",
+                    "description": "The identifier of the host to use as a configuration source.\nThe host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if\n`configuration` is not set.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConfigurationProfile resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The identifier of the cluster.\n"
+                    },
+                    "configuration": {
+                        "type": "string",
+                        "description": "The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.\n"
+                    },
+                    "referenceHostId": {
+                        "type": "string",
+                        "description": "The identifier of the host to use as a configuration source.\nThe host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if\n`configuration` is not set.\n"
+                    },
+                    "schema": {
+                        "type": "string",
+                        "description": "The JSON schema for the profile.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "vsphere:index/contentLibrary:ContentLibrary": {
             "description": "The `vsphere.ContentLibrary` resource can be used to manage content libraries.\n\n\u003e **NOTE:** This resource requires a vCenter Server instance and is not available on direct ESXi host connections.\n\n## Example Usage\n\nThe following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenterA = vsphere.getDatacenter({\n    name: \"dc-01-a\",\n});\nconst publisherDatastore = datacenterA.then(datacenterA =\u003e vsphere.getDatastore({\n    name: \"publisher-datastore\",\n    datacenterId: datacenterA.id,\n}));\nconst publisherContentLibrary = new vsphere.ContentLibrary(\"publisher_content_library\", {\n    name: \"Publisher Content Library\",\n    description: \"A publishing content library.\",\n    storageBackings: [publisherDatastore.then(publisherDatastore =\u003e publisherDatastore.id)],\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter_a = vsphere.get_datacenter(name=\"dc-01-a\")\npublisher_datastore = vsphere.get_datastore(name=\"publisher-datastore\",\n    datacenter_id=datacenter_a.id)\npublisher_content_library = vsphere.ContentLibrary(\"publisher_content_library\",\n    name=\"Publisher Content Library\",\n    description=\"A publishing content library.\",\n    storage_backings=[publisher_datastore.id])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenterA = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01-a\",\n    });\n\n    var publisherDatastore = VSphere.GetDatastore.Invoke(new()\n    {\n        Name = \"publisher-datastore\",\n        DatacenterId = datacenterA.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n    var publisherContentLibrary = new VSphere.ContentLibrary(\"publisher_content_library\", new()\n    {\n        Name = \"Publisher Content Library\",\n        Description = \"A publishing content library.\",\n        StorageBackings = new[]\n        {\n            publisherDatastore.Apply(getDatastoreResult =\u003e getDatastoreResult.Id),\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenterA, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01-a\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tpublisherDatastore, err := vsphere.GetDatastore(ctx, \u0026vsphere.GetDatastoreArgs{\n\t\t\tName:         \"publisher-datastore\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenterA.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.NewContentLibrary(ctx, \"publisher_content_library\", \u0026vsphere.ContentLibraryArgs{\n\t\t\tName:        pulumi.String(\"Publisher Content Library\"),\n\t\t\tDescription: pulumi.String(\"A publishing content library.\"),\n\t\t\tStorageBackings: pulumi.StringArray{\n\t\t\t\tpulumi.String(publisherDatastore.Id),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetDatastoreArgs;\nimport com.pulumi.vsphere.ContentLibrary;\nimport com.pulumi.vsphere.ContentLibraryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenterA = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01-a\")\n            .build());\n\n        final var publisherDatastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()\n            .name(\"publisher-datastore\")\n            .datacenterId(datacenterA.id())\n            .build());\n\n        var publisherContentLibrary = new ContentLibrary(\"publisherContentLibrary\", ContentLibraryArgs.builder()\n            .name(\"Publisher Content Library\")\n            .description(\"A publishing content library.\")\n            .storageBackings(publisherDatastore.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  publisherContentLibrary:\n    type: vsphere:ContentLibrary\n    name: publisher_content_library\n    properties:\n      name: Publisher Content Library\n      description: A publishing content library.\n      storageBackings:\n        - ${publisherDatastore.id}\nvariables:\n  datacenterA:\n    fn::invoke:\n      function: vsphere:getDatacenter\n      arguments:\n        name: dc-01-a\n  publisherDatastore:\n    fn::invoke:\n      function: vsphere:getDatastore\n      arguments:\n        name: publisher-datastore\n        datacenterId: ${datacenterA.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe next example creates a subscribed content library using the URL of the publisher content library as the source and the datastore named `subscriber-datastore` as the storage backing.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenterB = vsphere.getDatacenter({\n    name: \"dc-01-b\",\n});\nconst subscriberDatastore = datacenterB.then(datacenterB =\u003e vsphere.getDatastore({\n    name: \"subscriber-datastore\",\n    datacenterId: datacenterB.id,\n}));\nconst subscriberContentLibrary = new vsphere.ContentLibrary(\"subscriber_content_library\", {\n    name: \"Subscriber Content Library\",\n    description: \"A subscribing content library.\",\n    storageBackings: [subscriberDatastore.then(subscriberDatastore =\u003e subscriberDatastore.id)],\n    subscription: {\n        subscriptionUrl: \"https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json\",\n        automaticSync: true,\n        onDemand: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter_b = vsphere.get_datacenter(name=\"dc-01-b\")\nsubscriber_datastore = vsphere.get_datastore(name=\"subscriber-datastore\",\n    datacenter_id=datacenter_b.id)\nsubscriber_content_library = vsphere.ContentLibrary(\"subscriber_content_library\",\n    name=\"Subscriber Content Library\",\n    description=\"A subscribing content library.\",\n    storage_backings=[subscriber_datastore.id],\n    subscription={\n        \"subscription_url\": \"https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json\",\n        \"automatic_sync\": True,\n        \"on_demand\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenterB = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01-b\",\n    });\n\n    var subscriberDatastore = VSphere.GetDatastore.Invoke(new()\n    {\n        Name = \"subscriber-datastore\",\n        DatacenterId = datacenterB.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n    var subscriberContentLibrary = new VSphere.ContentLibrary(\"subscriber_content_library\", new()\n    {\n        Name = \"Subscriber Content Library\",\n        Description = \"A subscribing content library.\",\n        StorageBackings = new[]\n        {\n            subscriberDatastore.Apply(getDatastoreResult =\u003e getDatastoreResult.Id),\n        },\n        Subscription = new VSphere.Inputs.ContentLibrarySubscriptionArgs\n        {\n            SubscriptionUrl = \"https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json\",\n            AutomaticSync = true,\n            OnDemand = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenterB, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01-b\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubscriberDatastore, err := vsphere.GetDatastore(ctx, \u0026vsphere.GetDatastoreArgs{\n\t\t\tName:         \"subscriber-datastore\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenterB.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.NewContentLibrary(ctx, \"subscriber_content_library\", \u0026vsphere.ContentLibraryArgs{\n\t\t\tName:        pulumi.String(\"Subscriber Content Library\"),\n\t\t\tDescription: pulumi.String(\"A subscribing content library.\"),\n\t\t\tStorageBackings: pulumi.StringArray{\n\t\t\t\tpulumi.String(subscriberDatastore.Id),\n\t\t\t},\n\t\t\tSubscription: \u0026vsphere.ContentLibrarySubscriptionArgs{\n\t\t\t\tSubscriptionUrl: pulumi.String(\"https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json\"),\n\t\t\t\tAutomaticSync:   pulumi.Bool(true),\n\t\t\t\tOnDemand:        pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetDatastoreArgs;\nimport com.pulumi.vsphere.ContentLibrary;\nimport com.pulumi.vsphere.ContentLibraryArgs;\nimport com.pulumi.vsphere.inputs.ContentLibrarySubscriptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenterB = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01-b\")\n            .build());\n\n        final var subscriberDatastore = VsphereFunctions.getDatastore(GetDatastoreArgs.builder()\n            .name(\"subscriber-datastore\")\n            .datacenterId(datacenterB.id())\n            .build());\n\n        var subscriberContentLibrary = new ContentLibrary(\"subscriberContentLibrary\", ContentLibraryArgs.builder()\n            .name(\"Subscriber Content Library\")\n            .description(\"A subscribing content library.\")\n            .storageBackings(subscriberDatastore.id())\n            .subscription(ContentLibrarySubscriptionArgs.builder()\n                .subscriptionUrl(\"https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json\")\n                .automaticSync(true)\n                .onDemand(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  subscriberContentLibrary:\n    type: vsphere:ContentLibrary\n    name: subscriber_content_library\n    properties:\n      name: Subscriber Content Library\n      description: A subscribing content library.\n      storageBackings:\n        - ${subscriberDatastore.id}\n      subscription:\n        subscriptionUrl: https://vc-01-a.example.com:443/cls/vcsp/lib/f42a4b25-844a-44ec-9063-a3a5e9cc88c7/lib.json\n        automaticSync: true\n        onDemand: false\nvariables:\n  datacenterB:\n    fn::invoke:\n      function: vsphere:getDatacenter\n      arguments:\n        name: dc-01-b\n  subscriberDatastore:\n    fn::invoke:\n      function: vsphere:getDatastore\n      arguments:\n        name: subscriber-datastore\n        datacenterId: ${datacenterB.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn existing content library can be imported into this resource by supplying the content library ID. For example:\n\n[docs-import]: https://developer.hashicorp.com/terraform/cli/import\n\n```sh\n$ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7\n```\n\n",
             "properties": {
@@ -5244,7 +5308,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "The version of the VDS. BY default, a VDS is created\nat the latest version supported by the vSphere version if not specified.\nA VDS can be upgraded to a newer version, but can not be downgraded.\n"
+                    "description": "The version of the VDS. By default, a VDS is created\nat the latest version supported by the vSphere version if not specified.\nA VDS can be upgraded to a newer version, but can not be downgraded.\n"
                 },
                 "virtualmachineMaximumMbit": {
                     "type": "integer",
@@ -5725,7 +5789,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "The version of the VDS. BY default, a VDS is created\nat the latest version supported by the vSphere version if not specified.\nA VDS can be upgraded to a newer version, but can not be downgraded.\n"
+                    "description": "The version of the VDS. By default, a VDS is created\nat the latest version supported by the vSphere version if not specified.\nA VDS can be upgraded to a newer version, but can not be downgraded.\n"
                 },
                 "virtualmachineMaximumMbit": {
                     "type": "integer",
@@ -6138,7 +6202,7 @@
                     },
                     "version": {
                         "type": "string",
-                        "description": "The version of the VDS. BY default, a VDS is created\nat the latest version supported by the vSphere version if not specified.\nA VDS can be upgraded to a newer version, but can not be downgraded.\n"
+                        "description": "The version of the VDS. By default, a VDS is created\nat the latest version supported by the vSphere version if not specified.\nA VDS can be upgraded to a newer version, but can not be downgraded.\n"
                     },
                     "virtualmachineMaximumMbit": {
                         "type": "integer",
@@ -9728,7 +9792,7 @@
                 },
                 "hardwareVersion": {
                     "type": "integer",
-                    "description": "The hardware version for the virtual machine.\n"
+                    "description": "The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.\n"
                 },
                 "hostSystemId": {
                     "type": "string",
@@ -10118,7 +10182,7 @@
                 },
                 "hardwareVersion": {
                     "type": "integer",
-                    "description": "The hardware version for the virtual machine.\n"
+                    "description": "The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.\n"
                 },
                 "hostSystemId": {
                     "type": "string",
@@ -10469,7 +10533,7 @@
                     },
                     "hardwareVersion": {
                         "type": "integer",
-                        "description": "The hardware version for the virtual machine.\n"
+                        "description": "The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.\n"
                     },
                     "hostSystemId": {
                         "type": "string",
@@ -11477,6 +11541,49 @@
                 "type": "object"
             }
         },
+        "vsphere:index/getConfigurationProfile:getConfigurationProfile": {
+            "description": "The `vsphere.ConfigurationProfile` data source can be used to export the configuration and schema\nof a cluster that is already managed via configuration profiles.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc-01\",\n});\nconst computeCluster = datacenter.then(datacenter =\u003e vsphere.getComputeCluster({\n    name: \"cluster-01\",\n    datacenterId: datacenter.id,\n}));\nconst profile = computeCluster.then(computeCluster =\u003e vsphere.getConfigurationProfile({\n    clusterId: computeCluster.id,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc-01\")\ncompute_cluster = vsphere.get_compute_cluster(name=\"cluster-01\",\n    datacenter_id=datacenter.id)\nprofile = vsphere.get_configuration_profile(cluster_id=compute_cluster.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var datacenter = VSphere.GetDatacenter.Invoke(new()\n    {\n        Name = \"dc-01\",\n    });\n\n    var computeCluster = VSphere.GetComputeCluster.Invoke(new()\n    {\n        Name = \"cluster-01\",\n        DatacenterId = datacenter.Apply(getDatacenterResult =\u003e getDatacenterResult.Id),\n    });\n\n    var profile = VSphere.GetConfigurationProfile.Invoke(new()\n    {\n        ClusterId = computeCluster.Apply(getComputeClusterResult =\u003e getComputeClusterResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: pulumi.StringRef(\"dc-01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcomputeCluster, err := vsphere.LookupComputeCluster(ctx, \u0026vsphere.LookupComputeClusterArgs{\n\t\t\tName:         \"cluster-01\",\n\t\t\tDatacenterId: pulumi.StringRef(datacenter.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = vsphere.LookupConfigurationProfile(ctx, \u0026vsphere.LookupConfigurationProfileArgs{\n\t\t\tClusterId: computeCluster.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetDatacenterArgs;\nimport com.pulumi.vsphere.inputs.GetComputeClusterArgs;\nimport com.pulumi.vsphere.inputs.GetConfigurationProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()\n            .name(\"dc-01\")\n            .build());\n\n        final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()\n            .name(\"cluster-01\")\n            .datacenterId(datacenter.id())\n            .build());\n\n        final var profile = VsphereFunctions.getConfigurationProfile(GetConfigurationProfileArgs.builder()\n            .clusterId(computeCluster.id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  datacenter:\n    fn::invoke:\n      function: vsphere:getDatacenter\n      arguments:\n        name: dc-01\n  computeCluster:\n    fn::invoke:\n      function: vsphere:getComputeCluster\n      arguments:\n        name: cluster-01\n        datacenterId: ${datacenter.id}\n  profile:\n    fn::invoke:\n      function: vsphere:getConfigurationProfile\n      arguments:\n        clusterId: ${computeCluster.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConfigurationProfile.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The identifier of the compute cluster.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConfigurationProfile.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "configuration": {
+                        "description": "The current configuration which is active on the cluster.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "schema": {
+                        "description": "The JSON schema for the profile.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "clusterId",
+                    "configuration",
+                    "schema",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "vsphere:index/getContentLibrary:getContentLibrary": {
             "description": "The `vsphere.ContentLibrary` data source can be used to discover the ID of a\ncontent library.\n\n\u003e **NOTE:** This resource requires vCenter and is not available on direct ESXi\nhost connections.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst contentLibrary = vsphere.getContentLibrary({\n    name: \"Content Library\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncontent_library = vsphere.get_content_library(name=\"Content Library\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var contentLibrary = VSphere.GetContentLibrary.Invoke(new()\n    {\n        Name = \"Content Library\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.LookupContentLibrary(ctx, \u0026vsphere.LookupContentLibraryArgs{\n\t\t\tName: \"Content Library\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.vsphere.VsphereFunctions;\nimport com.pulumi.vsphere.inputs.GetContentLibraryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var contentLibrary = VsphereFunctions.getContentLibrary(GetContentLibraryArgs.builder()\n            .name(\"Content Library\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  contentLibrary:\n    fn::invoke:\n      function: vsphere:getContentLibrary\n      arguments:\n        name: Content Library\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -12389,7 +12496,7 @@
                     },
                     "diskProvisioning": {
                         "type": "string",
-                        "description": "The disk provisioning type. If set, all the\ndisks included in the OVF/OVA will have the same specified policy. Can be\none of `thin`, `thick`, `eagerZeroedThick`, or `sameAsSource`.\n",
+                        "description": "The disk provisioning type. If set, all the\ndisks included in the OVF/OVA will have the same specified policy. Can be\none of `thin`, `thick`, or `eagerZeroedThick`.\n",
                         "willReplaceOnChanges": true
                     },
                     "enableHiddenProperties": {

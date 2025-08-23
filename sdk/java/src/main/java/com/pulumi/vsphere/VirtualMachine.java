@@ -508,14 +508,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.guestIpAddresses;
     }
     /**
-     * The hardware version for the virtual machine.
+     * The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      * 
      */
     @Export(name="hardwareVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> hardwareVersion;
 
     /**
-     * @return The hardware version for the virtual machine.
+     * @return The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      * 
      */
     public Output<Integer> hardwareVersion() {

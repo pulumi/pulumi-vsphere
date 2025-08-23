@@ -281,7 +281,7 @@ type DistributedVirtualSwitch struct {
 	VdpShareCount pulumi.IntOutput `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringOutput `pulumi:"vdpShareLevel"`
-	// The version of the VDS. BY default, a VDS is created
+	// The version of the VDS. By default, a VDS is created
 	// at the latest version supported by the vSphere version if not specified.
 	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -528,7 +528,7 @@ type distributedVirtualSwitchState struct {
 	VdpShareCount *int `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel *string `pulumi:"vdpShareLevel"`
-	// The version of the VDS. BY default, a VDS is created
+	// The version of the VDS. By default, a VDS is created
 	// at the latest version supported by the vSphere version if not specified.
 	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version *string `pulumi:"version"`
@@ -743,7 +743,7 @@ type DistributedVirtualSwitchState struct {
 	VdpShareCount pulumi.IntPtrInput
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringPtrInput
-	// The version of the VDS. BY default, a VDS is created
+	// The version of the VDS. By default, a VDS is created
 	// at the latest version supported by the vSphere version if not specified.
 	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringPtrInput
@@ -959,7 +959,7 @@ type distributedVirtualSwitchArgs struct {
 	VdpShareCount *int `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel *string `pulumi:"vdpShareLevel"`
-	// The version of the VDS. BY default, a VDS is created
+	// The version of the VDS. By default, a VDS is created
 	// at the latest version supported by the vSphere version if not specified.
 	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version *string `pulumi:"version"`
@@ -1172,7 +1172,7 @@ type DistributedVirtualSwitchArgs struct {
 	VdpShareCount pulumi.IntPtrInput
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringPtrInput
-	// The version of the VDS. BY default, a VDS is created
+	// The version of the VDS. By default, a VDS is created
 	// at the latest version supported by the vSphere version if not specified.
 	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringPtrInput
@@ -1715,7 +1715,7 @@ func (o DistributedVirtualSwitchOutput) VdpShareLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.VdpShareLevel }).(pulumi.StringOutput)
 }
 
-// The version of the VDS. BY default, a VDS is created
+// The version of the VDS. By default, a VDS is created
 // at the latest version supported by the vSphere version if not specified.
 // A VDS can be upgraded to a newer version, but can not be downgraded.
 func (o DistributedVirtualSwitchOutput) Version() pulumi.StringOutput {
