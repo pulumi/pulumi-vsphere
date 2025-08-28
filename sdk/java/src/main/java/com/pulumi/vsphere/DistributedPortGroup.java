@@ -150,16 +150,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.activeUplinks;
     }
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     @Export(name="allowForgedTransmits", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     public Output<Boolean> allowForgedTransmits() {
@@ -734,16 +732,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     @Export(name="teamingPolicy", refs={String.class}, tree="[0]")
     private Output<String> teamingPolicy;
 
     /**
-     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     public Output<String> teamingPolicy() {
@@ -764,16 +760,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.trafficFilterOverrideAllowed);
     }
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     @Export(name="txUplink", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> txUplink;
 
     /**
-     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     public Output<Boolean> txUplink() {

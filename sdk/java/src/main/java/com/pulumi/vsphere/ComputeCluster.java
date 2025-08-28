@@ -167,34 +167,28 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dpmAutomationLevel);
     }
     /**
-     * Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-     * machines in the cluster. Requires that DRS be enabled.
+     * Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
      * 
      */
     @Export(name="dpmEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dpmEnabled;
 
     /**
-     * @return Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-     * machines in the cluster. Requires that DRS be enabled.
+     * @return Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
      * 
      */
     public Output<Optional<Boolean>> dpmEnabled() {
         return Codegen.optional(this.dpmEnabled);
     }
     /**
-     * A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-     * affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-     * setting.
+     * A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
      * 
      */
     @Export(name="dpmThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dpmThreshold;
 
     /**
-     * @return A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-     * affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-     * setting.
+     * @return A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
      * 
      */
     public Output<Optional<Integer>> dpmThreshold() {
@@ -215,16 +209,14 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.drsAdvancedOptions);
     }
     /**
-     * The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-     * fullyAutomated.
+     * The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
      * 
      */
     @Export(name="drsAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> drsAutomationLevel;
 
     /**
-     * @return The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-     * fullyAutomated.
+     * @return The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
      * 
      */
     public Output<Optional<String>> drsAutomationLevel() {
@@ -273,16 +265,14 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.drsEnabled);
     }
     /**
-     * A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-     * more imbalance while a higher setting will tolerate less.
+     * A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
      * 
      */
     @Export(name="drsMigrationThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> drsMigrationThreshold;
 
     /**
-     * @return A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-     * more imbalance while a higher setting will tolerate less.
+     * @return A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
      * 
      */
     public Output<Optional<Integer>> drsMigrationThreshold() {
@@ -327,136 +317,112 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.folder);
     }
     /**
-     * Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-     * for testing and is not recommended in normal use.
+     * Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
      * 
      */
     @Export(name="forceEvacuateOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceEvacuateOnDestroy;
 
     /**
-     * @return Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-     * for testing and is not recommended in normal use.
+     * @return Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
      * 
      */
     public Output<Optional<Boolean>> forceEvacuateOnDestroy() {
         return Codegen.optional(this.forceEvacuateOnDestroy);
     }
     /**
-     * When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-     * failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-     * will ignore the host when making recommendations.
+     * When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
      * 
      */
     @Export(name="haAdmissionControlFailoverHostSystemIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> haAdmissionControlFailoverHostSystemIds;
 
     /**
-     * @return When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-     * failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-     * will ignore the host when making recommendations.
+     * @return When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
      * 
      */
     public Output<Optional<List<String>>> haAdmissionControlFailoverHostSystemIds() {
         return Codegen.optional(this.haAdmissionControlFailoverHostSystemIds);
     }
     /**
-     * The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-     * machine operations. The maximum is one less than the number of hosts in the cluster.
+     * The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
      * 
      */
     @Export(name="haAdmissionControlHostFailureTolerance", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlHostFailureTolerance;
 
     /**
-     * @return The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-     * machine operations. The maximum is one less than the number of hosts in the cluster.
+     * @return The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
      * 
      */
     public Output<Optional<Integer>> haAdmissionControlHostFailureTolerance() {
         return Codegen.optional(this.haAdmissionControlHostFailureTolerance);
     }
     /**
-     * The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-     * warnings only, whereas a value of 100 disables the setting.
+     * The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
      * 
      */
     @Export(name="haAdmissionControlPerformanceTolerance", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlPerformanceTolerance;
 
     /**
-     * @return The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-     * warnings only, whereas a value of 100 disables the setting.
+     * @return The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
      * 
      */
     public Output<Optional<Integer>> haAdmissionControlPerformanceTolerance() {
         return Codegen.optional(this.haAdmissionControlPerformanceTolerance);
     }
     /**
-     * The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-     * permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-     * slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-     * issues.
+     * The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
      * 
      */
     @Export(name="haAdmissionControlPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haAdmissionControlPolicy;
 
     /**
-     * @return The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-     * permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-     * slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-     * issues.
+     * @return The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
      * 
      */
     public Output<Optional<String>> haAdmissionControlPolicy() {
         return Codegen.optional(this.haAdmissionControlPolicy);
     }
     /**
-     * When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-     * subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-     * from the total amount of resources in the cluster. Disable to supply user-defined values.
+     * When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
      * 
      */
     @Export(name="haAdmissionControlResourcePercentageAutoCompute", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> haAdmissionControlResourcePercentageAutoCompute;
 
     /**
-     * @return When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-     * subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-     * from the total amount of resources in the cluster. Disable to supply user-defined values.
+     * @return When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
      * 
      */
     public Output<Optional<Boolean>> haAdmissionControlResourcePercentageAutoCompute() {
         return Codegen.optional(this.haAdmissionControlResourcePercentageAutoCompute);
     }
     /**
-     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-     * the cluster to reserve for failover.
+     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
      * 
      */
     @Export(name="haAdmissionControlResourcePercentageCpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlResourcePercentageCpu;
 
     /**
-     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-     * the cluster to reserve for failover.
+     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
      * 
      */
     public Output<Optional<Integer>> haAdmissionControlResourcePercentageCpu() {
         return Codegen.optional(this.haAdmissionControlResourcePercentageCpu);
     }
     /**
-     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-     * the cluster to reserve for failover.
+     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
      * 
      */
     @Export(name="haAdmissionControlResourcePercentageMemory", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haAdmissionControlResourcePercentageMemory;
 
     /**
-     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-     * the cluster to reserve for failover.
+     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
      * 
      */
     public Output<Optional<Integer>> haAdmissionControlResourcePercentageMemory() {
@@ -491,18 +457,14 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haAdmissionControlSlotPolicyExplicitMemory);
     }
     /**
-     * When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-     * to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-     * currently in the cluster.
+     * When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
      * 
      */
     @Export(name="haAdmissionControlSlotPolicyUseExplicitSize", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> haAdmissionControlSlotPolicyUseExplicitSize;
 
     /**
-     * @return When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-     * to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-     * currently in the cluster.
+     * @return When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
      * 
      */
     public Output<Optional<Boolean>> haAdmissionControlSlotPolicyUseExplicitSize() {
@@ -523,66 +485,56 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haAdvancedOptions);
     }
     /**
-     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-     * affected datastore clears in the middle of an APD event. Can be one of none or reset.
+     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
      * 
      */
     @Export(name="haDatastoreApdRecoveryAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdRecoveryAction;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-     * affected datastore clears in the middle of an APD event. Can be one of none or reset.
+     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
      * 
      */
     public Output<Optional<String>> haDatastoreApdRecoveryAction() {
         return Codegen.optional(this.haDatastoreApdRecoveryAction);
     }
     /**
-     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-     * restartAggressive.
+     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     @Export(name="haDatastoreApdResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastoreApdResponse;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-     * restartAggressive.
+     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     public Output<Optional<String>> haDatastoreApdResponse() {
         return Codegen.optional(this.haDatastoreApdResponse);
     }
     /**
-     * When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-     * the response action defined in ha_datastore_apd_response.
+     * When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
      * 
      */
     @Export(name="haDatastoreApdResponseDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haDatastoreApdResponseDelay;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-     * the response action defined in ha_datastore_apd_response.
+     * @return When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
      * 
      */
     public Output<Optional<Integer>> haDatastoreApdResponseDelay() {
         return Codegen.optional(this.haDatastoreApdResponseDelay);
     }
     /**
-     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
      * 
      */
     @Export(name="haDatastorePdlResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haDatastorePdlResponse;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
      * 
      */
     public Output<Optional<String>> haDatastorePdlResponse() {
@@ -603,48 +555,42 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haEnabled);
     }
     /**
-     * The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-     * ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+     * The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
      * 
      */
     @Export(name="haHeartbeatDatastoreIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> haHeartbeatDatastoreIds;
 
     /**
-     * @return The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-     * ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+     * @return The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
      * 
      */
     public Output<Optional<List<String>>> haHeartbeatDatastoreIds() {
         return Codegen.optional(this.haHeartbeatDatastoreIds);
     }
     /**
-     * The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-     * allFeasibleDsWithUserPreference.
+     * The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
      * 
      */
     @Export(name="haHeartbeatDatastorePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haHeartbeatDatastorePolicy;
 
     /**
-     * @return The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-     * allFeasibleDsWithUserPreference.
+     * @return The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
      * 
      */
     public Output<Optional<String>> haHeartbeatDatastorePolicy() {
         return Codegen.optional(this.haHeartbeatDatastorePolicy);
     }
     /**
-     * The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-     * Can be one of none, powerOff, or shutdown.
+     * The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
      * 
      */
     @Export(name="haHostIsolationResponse", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haHostIsolationResponse;
 
     /**
-     * @return The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-     * Can be one of none, powerOff, or shutdown.
+     * @return The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
      * 
      */
     public Output<Optional<String>> haHostIsolationResponse() {
@@ -665,66 +611,56 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haHostMonitoring);
     }
     /**
-     * Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-     * failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+     * Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
      * 
      */
     @Export(name="haVmComponentProtection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmComponentProtection;
 
     /**
-     * @return Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-     * failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+     * @return Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
      * 
      */
     public Output<Optional<String>> haVmComponentProtection() {
         return Codegen.optional(this.haVmComponentProtection);
     }
     /**
-     * The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-     * on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+     * The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
      * 
      */
     @Export(name="haVmDependencyRestartCondition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmDependencyRestartCondition;
 
     /**
-     * @return The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-     * on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+     * @return The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
      * 
      */
     public Output<Optional<String>> haVmDependencyRestartCondition() {
         return Codegen.optional(this.haVmDependencyRestartCondition);
     }
     /**
-     * If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-     * failed. The value is in seconds.
+     * If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      * 
      */
     @Export(name="haVmFailureInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmFailureInterval;
 
     /**
-     * @return If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-     * failed. The value is in seconds.
+     * @return If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      * 
      */
     public Output<Optional<Integer>> haVmFailureInterval() {
         return Codegen.optional(this.haVmFailureInterval);
     }
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-     * time is allotted.
+     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     @Export(name="haVmMaximumFailureWindow", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumFailureWindow;
 
     /**
-     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-     * time is allotted.
+     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     public Output<Optional<Integer>> haVmMaximumFailureWindow() {
@@ -759,16 +695,14 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haVmMinimumUptime);
     }
     /**
-     * The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-     * vmMonitoringOnly, or vmAndAppMonitoring.
+     * The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     @Export(name="haVmMonitoring", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmMonitoring;
 
     /**
-     * @return The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-     * vmMonitoringOnly, or vmAndAppMonitoring.
+     * @return The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     public Output<Optional<String>> haVmMonitoring() {
@@ -789,32 +723,28 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haVmRestartAdditionalDelay);
     }
     /**
-     * The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-     * high, or highest.
+     * The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
      * 
      */
     @Export(name="haVmRestartPriority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> haVmRestartPriority;
 
     /**
-     * @return The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-     * high, or highest.
+     * @return The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
      * 
      */
     public Output<Optional<String>> haVmRestartPriority() {
         return Codegen.optional(this.haVmRestartPriority);
     }
     /**
-     * The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-     * proceeding with the next priority.
+     * The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
      * 
      */
     @Export(name="haVmRestartTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmRestartTimeout;
 
     /**
-     * @return The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-     * proceeding with the next priority.
+     * @return The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
      * 
      */
     public Output<Optional<Integer>> haVmRestartTimeout() {
@@ -919,16 +849,14 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.proactiveHaEnabled);
     }
     /**
-     * The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-     * this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+     * The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
      * 
      */
     @Export(name="proactiveHaModerateRemediation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proactiveHaModerateRemediation;
 
     /**
-     * @return The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-     * this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+     * @return The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
      * 
      */
     public Output<Optional<String>> proactiveHaModerateRemediation() {
@@ -949,16 +877,14 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.proactiveHaProviderIds);
     }
     /**
-     * The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-     * cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+     * The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
      * 
      */
     @Export(name="proactiveHaSevereRemediation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proactiveHaSevereRemediation;
 
     /**
-     * @return The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-     * cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+     * @return The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
      * 
      */
     public Output<Optional<String>> proactiveHaSevereRemediation() {

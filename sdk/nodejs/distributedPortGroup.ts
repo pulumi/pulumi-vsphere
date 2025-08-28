@@ -184,20 +184,19 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    public readonly activeUplinks!: pulumi.Output<string[]>;
+    declare public readonly activeUplinks: pulumi.Output<string[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
-    public readonly allowForgedTransmits!: pulumi.Output<boolean>;
+    declare public readonly allowForgedTransmits: pulumi.Output<boolean>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    public readonly allowMacChanges!: pulumi.Output<boolean>;
+    declare public readonly allowMacChanges: pulumi.Output<boolean>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    public readonly allowPromiscuous!: pulumi.Output<boolean>;
+    declare public readonly allowPromiscuous: pulumi.Output<boolean>;
     /**
      * Allows the port group to create additional ports
      * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
@@ -206,24 +205,24 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      * may lead to errors when the port count grows past the amount specified.  If you
      * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      */
-    public readonly autoExpand!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoExpand: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether to block all ports by default.
      */
-    public readonly blockAllPorts!: pulumi.Output<boolean>;
+    declare public readonly blockAllPorts: pulumi.Output<boolean>;
     /**
      * Allow the blocked setting of an individual port to override the setting in the portgroup.
      */
-    public readonly blockOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly blockOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * Enable beacon probing on the ports this policy applies to.
      */
-    public readonly checkBeacon!: pulumi.Output<boolean>;
+    declare public readonly checkBeacon: pulumi.Output<boolean>;
     /**
      * The current version of the port group configuration,
      * incremented by subsequent updates to the port group.
      */
-    public /*out*/ readonly configVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly configVersion: pulumi.Output<string>;
     /**
      * Map of custom attribute ids to attribute
      * value string to set for port group.
@@ -231,107 +230,107 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      * > **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An optional description for the port group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
-    public readonly directpathGen2Allowed!: pulumi.Output<boolean>;
+    declare public readonly directpathGen2Allowed: pulumi.Output<boolean>;
     /**
      * The ID of the VDS to add the
      * port group to. Forces a new resource if changed.
      */
-    public readonly distributedVirtualSwitchUuid!: pulumi.Output<string>;
+    declare public readonly distributedVirtualSwitchUuid: pulumi.Output<string>;
     /**
      * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
-    public readonly egressShapingAverageBandwidth!: pulumi.Output<number>;
+    declare public readonly egressShapingAverageBandwidth: pulumi.Output<number>;
     /**
      * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
-    public readonly egressShapingBurstSize!: pulumi.Output<number>;
+    declare public readonly egressShapingBurstSize: pulumi.Output<number>;
     /**
      * True if the traffic shaper is enabled for egress traffic on the port.
      */
-    public readonly egressShapingEnabled!: pulumi.Output<boolean>;
+    declare public readonly egressShapingEnabled: pulumi.Output<boolean>;
     /**
      * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
-    public readonly egressShapingPeakBandwidth!: pulumi.Output<number>;
+    declare public readonly egressShapingPeakBandwidth: pulumi.Output<number>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    public readonly failback!: pulumi.Output<boolean>;
+    declare public readonly failback: pulumi.Output<boolean>;
     /**
      * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
-    public readonly ingressShapingAverageBandwidth!: pulumi.Output<number>;
+    declare public readonly ingressShapingAverageBandwidth: pulumi.Output<number>;
     /**
      * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
-    public readonly ingressShapingBurstSize!: pulumi.Output<number>;
+    declare public readonly ingressShapingBurstSize: pulumi.Output<number>;
     /**
      * True if the traffic shaper is enabled for ingress traffic on the port.
      */
-    public readonly ingressShapingEnabled!: pulumi.Output<boolean>;
+    declare public readonly ingressShapingEnabled: pulumi.Output<boolean>;
     /**
      * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
-    public readonly ingressShapingPeakBandwidth!: pulumi.Output<number>;
+    declare public readonly ingressShapingPeakBandwidth: pulumi.Output<number>;
     /**
      * The generated UUID of the port group.
      */
-    public /*out*/ readonly key!: pulumi.Output<string>;
+    declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
      * Whether or not to enable LACP on all uplink ports.
      */
-    public readonly lacpEnabled!: pulumi.Output<boolean>;
+    declare public readonly lacpEnabled: pulumi.Output<boolean>;
     /**
      * The uplink LACP mode to use. Can be one of active or passive.
      */
-    public readonly lacpMode!: pulumi.Output<string>;
+    declare public readonly lacpMode: pulumi.Output<string>;
     /**
      * Allow a live port to be moved in and out of the portgroup.
      */
-    public readonly livePortMovingAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly livePortMovingAllowed: pulumi.Output<boolean | undefined>;
     /**
      * The name of the port group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates whether to enable netflow on all ports.
      */
-    public readonly netflowEnabled!: pulumi.Output<boolean>;
+    declare public readonly netflowEnabled: pulumi.Output<boolean>;
     /**
      * Allow the enabling or disabling of Netflow on a port, contrary to the policy in the portgroup.
      */
-    public readonly netflowOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly netflowOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * The key of a network resource pool
      * to associate with this port group. The default is `-1`, which implies no
      * association.
      */
-    public readonly networkResourcePoolKey!: pulumi.Output<string | undefined>;
+    declare public readonly networkResourcePoolKey: pulumi.Output<string | undefined>;
     /**
      * Allow the network resource pool of an individual port to override the setting in the portgroup.
      */
-    public readonly networkResourcePoolOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly networkResourcePoolOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    public readonly notifySwitches!: pulumi.Output<boolean>;
+    declare public readonly notifySwitches: pulumi.Output<boolean>;
     /**
      * The number of ports available on this port
      * group. Cannot be decreased below the amount of used ports on the port group.
      */
-    public readonly numberOfPorts!: pulumi.Output<number>;
+    declare public readonly numberOfPorts: pulumi.Output<number>;
     /**
      * Reset the setting of any ports in this portgroup back to the default setting when the port disconnects.
      */
-    public readonly portConfigResetAtDisconnect!: pulumi.Output<boolean | undefined>;
+    declare public readonly portConfigResetAtDisconnect: pulumi.Output<boolean | undefined>;
     /**
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
@@ -339,62 +338,60 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      *
      * [ext-vsphere-portname-format]: https://developer.broadcom.com/xapis/virtual-infrastructure-json-api/latest/data-structures/DVPortgroupConfigInfo/
      */
-    public readonly portNameFormat!: pulumi.Output<string | undefined>;
+    declare public readonly portNameFormat: pulumi.Output<string | undefined>;
     /**
      * The secondary VLAN ID for this port.
      */
-    public readonly portPrivateSecondaryVlanId!: pulumi.Output<number>;
+    declare public readonly portPrivateSecondaryVlanId: pulumi.Output<number>;
     /**
      * Allow security policy settings on a port to override those on the portgroup.
      */
-    public readonly securityPolicyOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly securityPolicyOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
      */
-    public readonly shapingOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly shapingOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    public readonly standbyUplinks!: pulumi.Output<string[]>;
+    declare public readonly standbyUplinks: pulumi.Output<string[]>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
-    public readonly teamingPolicy!: pulumi.Output<string>;
+    declare public readonly teamingPolicy: pulumi.Output<string>;
     /**
      * Allow any filter policies set on the individual port to override those in the portgroup.
      */
-    public readonly trafficFilterOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly trafficFilterOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
-    public readonly txUplink!: pulumi.Output<boolean>;
+    declare public readonly txUplink: pulumi.Output<boolean>;
     /**
      * The port group type. Can be one of `earlyBinding` (static
      * binding) or `ephemeral`. Default: `earlyBinding`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Allow the uplink teaming policies on a port to override those on the portgroup.
      */
-    public readonly uplinkTeamingOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly uplinkTeamingOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    public readonly vlanId!: pulumi.Output<number>;
+    declare public readonly vlanId: pulumi.Output<number>;
     /**
      * Allow the VLAN configuration on a port to override those on the portgroup.
      */
-    public readonly vlanOverrideAllowed!: pulumi.Output<boolean | undefined>;
+    declare public readonly vlanOverrideAllowed: pulumi.Output<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    public readonly vlanRanges!: pulumi.Output<outputs.DistributedPortGroupVlanRange[]>;
+    declare public readonly vlanRanges: pulumi.Output<outputs.DistributedPortGroupVlanRange[]>;
 
     /**
      * Create a DistributedPortGroup resource with the given unique name, arguments, and options.
@@ -409,105 +406,105 @@ export class DistributedPortGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DistributedPortGroupState | undefined;
-            resourceInputs["activeUplinks"] = state ? state.activeUplinks : undefined;
-            resourceInputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
-            resourceInputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;
-            resourceInputs["allowPromiscuous"] = state ? state.allowPromiscuous : undefined;
-            resourceInputs["autoExpand"] = state ? state.autoExpand : undefined;
-            resourceInputs["blockAllPorts"] = state ? state.blockAllPorts : undefined;
-            resourceInputs["blockOverrideAllowed"] = state ? state.blockOverrideAllowed : undefined;
-            resourceInputs["checkBeacon"] = state ? state.checkBeacon : undefined;
-            resourceInputs["configVersion"] = state ? state.configVersion : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["directpathGen2Allowed"] = state ? state.directpathGen2Allowed : undefined;
-            resourceInputs["distributedVirtualSwitchUuid"] = state ? state.distributedVirtualSwitchUuid : undefined;
-            resourceInputs["egressShapingAverageBandwidth"] = state ? state.egressShapingAverageBandwidth : undefined;
-            resourceInputs["egressShapingBurstSize"] = state ? state.egressShapingBurstSize : undefined;
-            resourceInputs["egressShapingEnabled"] = state ? state.egressShapingEnabled : undefined;
-            resourceInputs["egressShapingPeakBandwidth"] = state ? state.egressShapingPeakBandwidth : undefined;
-            resourceInputs["failback"] = state ? state.failback : undefined;
-            resourceInputs["ingressShapingAverageBandwidth"] = state ? state.ingressShapingAverageBandwidth : undefined;
-            resourceInputs["ingressShapingBurstSize"] = state ? state.ingressShapingBurstSize : undefined;
-            resourceInputs["ingressShapingEnabled"] = state ? state.ingressShapingEnabled : undefined;
-            resourceInputs["ingressShapingPeakBandwidth"] = state ? state.ingressShapingPeakBandwidth : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["lacpEnabled"] = state ? state.lacpEnabled : undefined;
-            resourceInputs["lacpMode"] = state ? state.lacpMode : undefined;
-            resourceInputs["livePortMovingAllowed"] = state ? state.livePortMovingAllowed : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["netflowEnabled"] = state ? state.netflowEnabled : undefined;
-            resourceInputs["netflowOverrideAllowed"] = state ? state.netflowOverrideAllowed : undefined;
-            resourceInputs["networkResourcePoolKey"] = state ? state.networkResourcePoolKey : undefined;
-            resourceInputs["networkResourcePoolOverrideAllowed"] = state ? state.networkResourcePoolOverrideAllowed : undefined;
-            resourceInputs["notifySwitches"] = state ? state.notifySwitches : undefined;
-            resourceInputs["numberOfPorts"] = state ? state.numberOfPorts : undefined;
-            resourceInputs["portConfigResetAtDisconnect"] = state ? state.portConfigResetAtDisconnect : undefined;
-            resourceInputs["portNameFormat"] = state ? state.portNameFormat : undefined;
-            resourceInputs["portPrivateSecondaryVlanId"] = state ? state.portPrivateSecondaryVlanId : undefined;
-            resourceInputs["securityPolicyOverrideAllowed"] = state ? state.securityPolicyOverrideAllowed : undefined;
-            resourceInputs["shapingOverrideAllowed"] = state ? state.shapingOverrideAllowed : undefined;
-            resourceInputs["standbyUplinks"] = state ? state.standbyUplinks : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["teamingPolicy"] = state ? state.teamingPolicy : undefined;
-            resourceInputs["trafficFilterOverrideAllowed"] = state ? state.trafficFilterOverrideAllowed : undefined;
-            resourceInputs["txUplink"] = state ? state.txUplink : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uplinkTeamingOverrideAllowed"] = state ? state.uplinkTeamingOverrideAllowed : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
-            resourceInputs["vlanOverrideAllowed"] = state ? state.vlanOverrideAllowed : undefined;
-            resourceInputs["vlanRanges"] = state ? state.vlanRanges : undefined;
+            resourceInputs["activeUplinks"] = state?.activeUplinks;
+            resourceInputs["allowForgedTransmits"] = state?.allowForgedTransmits;
+            resourceInputs["allowMacChanges"] = state?.allowMacChanges;
+            resourceInputs["allowPromiscuous"] = state?.allowPromiscuous;
+            resourceInputs["autoExpand"] = state?.autoExpand;
+            resourceInputs["blockAllPorts"] = state?.blockAllPorts;
+            resourceInputs["blockOverrideAllowed"] = state?.blockOverrideAllowed;
+            resourceInputs["checkBeacon"] = state?.checkBeacon;
+            resourceInputs["configVersion"] = state?.configVersion;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["directpathGen2Allowed"] = state?.directpathGen2Allowed;
+            resourceInputs["distributedVirtualSwitchUuid"] = state?.distributedVirtualSwitchUuid;
+            resourceInputs["egressShapingAverageBandwidth"] = state?.egressShapingAverageBandwidth;
+            resourceInputs["egressShapingBurstSize"] = state?.egressShapingBurstSize;
+            resourceInputs["egressShapingEnabled"] = state?.egressShapingEnabled;
+            resourceInputs["egressShapingPeakBandwidth"] = state?.egressShapingPeakBandwidth;
+            resourceInputs["failback"] = state?.failback;
+            resourceInputs["ingressShapingAverageBandwidth"] = state?.ingressShapingAverageBandwidth;
+            resourceInputs["ingressShapingBurstSize"] = state?.ingressShapingBurstSize;
+            resourceInputs["ingressShapingEnabled"] = state?.ingressShapingEnabled;
+            resourceInputs["ingressShapingPeakBandwidth"] = state?.ingressShapingPeakBandwidth;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["lacpEnabled"] = state?.lacpEnabled;
+            resourceInputs["lacpMode"] = state?.lacpMode;
+            resourceInputs["livePortMovingAllowed"] = state?.livePortMovingAllowed;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["netflowEnabled"] = state?.netflowEnabled;
+            resourceInputs["netflowOverrideAllowed"] = state?.netflowOverrideAllowed;
+            resourceInputs["networkResourcePoolKey"] = state?.networkResourcePoolKey;
+            resourceInputs["networkResourcePoolOverrideAllowed"] = state?.networkResourcePoolOverrideAllowed;
+            resourceInputs["notifySwitches"] = state?.notifySwitches;
+            resourceInputs["numberOfPorts"] = state?.numberOfPorts;
+            resourceInputs["portConfigResetAtDisconnect"] = state?.portConfigResetAtDisconnect;
+            resourceInputs["portNameFormat"] = state?.portNameFormat;
+            resourceInputs["portPrivateSecondaryVlanId"] = state?.portPrivateSecondaryVlanId;
+            resourceInputs["securityPolicyOverrideAllowed"] = state?.securityPolicyOverrideAllowed;
+            resourceInputs["shapingOverrideAllowed"] = state?.shapingOverrideAllowed;
+            resourceInputs["standbyUplinks"] = state?.standbyUplinks;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["teamingPolicy"] = state?.teamingPolicy;
+            resourceInputs["trafficFilterOverrideAllowed"] = state?.trafficFilterOverrideAllowed;
+            resourceInputs["txUplink"] = state?.txUplink;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uplinkTeamingOverrideAllowed"] = state?.uplinkTeamingOverrideAllowed;
+            resourceInputs["vlanId"] = state?.vlanId;
+            resourceInputs["vlanOverrideAllowed"] = state?.vlanOverrideAllowed;
+            resourceInputs["vlanRanges"] = state?.vlanRanges;
         } else {
             const args = argsOrState as DistributedPortGroupArgs | undefined;
-            if ((!args || args.distributedVirtualSwitchUuid === undefined) && !opts.urn) {
+            if (args?.distributedVirtualSwitchUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'distributedVirtualSwitchUuid'");
             }
-            resourceInputs["activeUplinks"] = args ? args.activeUplinks : undefined;
-            resourceInputs["allowForgedTransmits"] = args ? args.allowForgedTransmits : undefined;
-            resourceInputs["allowMacChanges"] = args ? args.allowMacChanges : undefined;
-            resourceInputs["allowPromiscuous"] = args ? args.allowPromiscuous : undefined;
-            resourceInputs["autoExpand"] = args ? args.autoExpand : undefined;
-            resourceInputs["blockAllPorts"] = args ? args.blockAllPorts : undefined;
-            resourceInputs["blockOverrideAllowed"] = args ? args.blockOverrideAllowed : undefined;
-            resourceInputs["checkBeacon"] = args ? args.checkBeacon : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["directpathGen2Allowed"] = args ? args.directpathGen2Allowed : undefined;
-            resourceInputs["distributedVirtualSwitchUuid"] = args ? args.distributedVirtualSwitchUuid : undefined;
-            resourceInputs["egressShapingAverageBandwidth"] = args ? args.egressShapingAverageBandwidth : undefined;
-            resourceInputs["egressShapingBurstSize"] = args ? args.egressShapingBurstSize : undefined;
-            resourceInputs["egressShapingEnabled"] = args ? args.egressShapingEnabled : undefined;
-            resourceInputs["egressShapingPeakBandwidth"] = args ? args.egressShapingPeakBandwidth : undefined;
-            resourceInputs["failback"] = args ? args.failback : undefined;
-            resourceInputs["ingressShapingAverageBandwidth"] = args ? args.ingressShapingAverageBandwidth : undefined;
-            resourceInputs["ingressShapingBurstSize"] = args ? args.ingressShapingBurstSize : undefined;
-            resourceInputs["ingressShapingEnabled"] = args ? args.ingressShapingEnabled : undefined;
-            resourceInputs["ingressShapingPeakBandwidth"] = args ? args.ingressShapingPeakBandwidth : undefined;
-            resourceInputs["lacpEnabled"] = args ? args.lacpEnabled : undefined;
-            resourceInputs["lacpMode"] = args ? args.lacpMode : undefined;
-            resourceInputs["livePortMovingAllowed"] = args ? args.livePortMovingAllowed : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["netflowEnabled"] = args ? args.netflowEnabled : undefined;
-            resourceInputs["netflowOverrideAllowed"] = args ? args.netflowOverrideAllowed : undefined;
-            resourceInputs["networkResourcePoolKey"] = args ? args.networkResourcePoolKey : undefined;
-            resourceInputs["networkResourcePoolOverrideAllowed"] = args ? args.networkResourcePoolOverrideAllowed : undefined;
-            resourceInputs["notifySwitches"] = args ? args.notifySwitches : undefined;
-            resourceInputs["numberOfPorts"] = args ? args.numberOfPorts : undefined;
-            resourceInputs["portConfigResetAtDisconnect"] = args ? args.portConfigResetAtDisconnect : undefined;
-            resourceInputs["portNameFormat"] = args ? args.portNameFormat : undefined;
-            resourceInputs["portPrivateSecondaryVlanId"] = args ? args.portPrivateSecondaryVlanId : undefined;
-            resourceInputs["securityPolicyOverrideAllowed"] = args ? args.securityPolicyOverrideAllowed : undefined;
-            resourceInputs["shapingOverrideAllowed"] = args ? args.shapingOverrideAllowed : undefined;
-            resourceInputs["standbyUplinks"] = args ? args.standbyUplinks : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
-            resourceInputs["trafficFilterOverrideAllowed"] = args ? args.trafficFilterOverrideAllowed : undefined;
-            resourceInputs["txUplink"] = args ? args.txUplink : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["uplinkTeamingOverrideAllowed"] = args ? args.uplinkTeamingOverrideAllowed : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
-            resourceInputs["vlanOverrideAllowed"] = args ? args.vlanOverrideAllowed : undefined;
-            resourceInputs["vlanRanges"] = args ? args.vlanRanges : undefined;
+            resourceInputs["activeUplinks"] = args?.activeUplinks;
+            resourceInputs["allowForgedTransmits"] = args?.allowForgedTransmits;
+            resourceInputs["allowMacChanges"] = args?.allowMacChanges;
+            resourceInputs["allowPromiscuous"] = args?.allowPromiscuous;
+            resourceInputs["autoExpand"] = args?.autoExpand;
+            resourceInputs["blockAllPorts"] = args?.blockAllPorts;
+            resourceInputs["blockOverrideAllowed"] = args?.blockOverrideAllowed;
+            resourceInputs["checkBeacon"] = args?.checkBeacon;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["directpathGen2Allowed"] = args?.directpathGen2Allowed;
+            resourceInputs["distributedVirtualSwitchUuid"] = args?.distributedVirtualSwitchUuid;
+            resourceInputs["egressShapingAverageBandwidth"] = args?.egressShapingAverageBandwidth;
+            resourceInputs["egressShapingBurstSize"] = args?.egressShapingBurstSize;
+            resourceInputs["egressShapingEnabled"] = args?.egressShapingEnabled;
+            resourceInputs["egressShapingPeakBandwidth"] = args?.egressShapingPeakBandwidth;
+            resourceInputs["failback"] = args?.failback;
+            resourceInputs["ingressShapingAverageBandwidth"] = args?.ingressShapingAverageBandwidth;
+            resourceInputs["ingressShapingBurstSize"] = args?.ingressShapingBurstSize;
+            resourceInputs["ingressShapingEnabled"] = args?.ingressShapingEnabled;
+            resourceInputs["ingressShapingPeakBandwidth"] = args?.ingressShapingPeakBandwidth;
+            resourceInputs["lacpEnabled"] = args?.lacpEnabled;
+            resourceInputs["lacpMode"] = args?.lacpMode;
+            resourceInputs["livePortMovingAllowed"] = args?.livePortMovingAllowed;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["netflowEnabled"] = args?.netflowEnabled;
+            resourceInputs["netflowOverrideAllowed"] = args?.netflowOverrideAllowed;
+            resourceInputs["networkResourcePoolKey"] = args?.networkResourcePoolKey;
+            resourceInputs["networkResourcePoolOverrideAllowed"] = args?.networkResourcePoolOverrideAllowed;
+            resourceInputs["notifySwitches"] = args?.notifySwitches;
+            resourceInputs["numberOfPorts"] = args?.numberOfPorts;
+            resourceInputs["portConfigResetAtDisconnect"] = args?.portConfigResetAtDisconnect;
+            resourceInputs["portNameFormat"] = args?.portNameFormat;
+            resourceInputs["portPrivateSecondaryVlanId"] = args?.portPrivateSecondaryVlanId;
+            resourceInputs["securityPolicyOverrideAllowed"] = args?.securityPolicyOverrideAllowed;
+            resourceInputs["shapingOverrideAllowed"] = args?.shapingOverrideAllowed;
+            resourceInputs["standbyUplinks"] = args?.standbyUplinks;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["teamingPolicy"] = args?.teamingPolicy;
+            resourceInputs["trafficFilterOverrideAllowed"] = args?.trafficFilterOverrideAllowed;
+            resourceInputs["txUplink"] = args?.txUplink;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["uplinkTeamingOverrideAllowed"] = args?.uplinkTeamingOverrideAllowed;
+            resourceInputs["vlanId"] = args?.vlanId;
+            resourceInputs["vlanOverrideAllowed"] = args?.vlanOverrideAllowed;
+            resourceInputs["vlanRanges"] = args?.vlanRanges;
             resourceInputs["configVersion"] = undefined /*out*/;
             resourceInputs["key"] = undefined /*out*/;
         }
@@ -525,8 +522,7 @@ export interface DistributedPortGroupState {
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -700,8 +696,7 @@ export interface DistributedPortGroupState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
@@ -709,8 +704,7 @@ export interface DistributedPortGroupState {
      */
     trafficFilterOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
     txUplink?: pulumi.Input<boolean>;
     /**
@@ -745,8 +739,7 @@ export interface DistributedPortGroupArgs {
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -911,8 +904,7 @@ export interface DistributedPortGroupArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
@@ -920,8 +912,7 @@ export interface DistributedPortGroupArgs {
      */
     trafficFilterOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
     txUplink?: pulumi.Input<boolean>;
     /**

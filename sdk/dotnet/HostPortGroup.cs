@@ -151,8 +151,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> ActiveNics { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        /// that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         /// </summary>
         [Output("allowForgedTransmits")]
         public Output<bool?> AllowForgedTransmits { get; private set; } = null!;
@@ -170,8 +169,7 @@ namespace Pulumi.VSphere
         public Output<bool?> AllowPromiscuous { get; private set; } = null!;
 
         /// <summary>
-        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-        /// only.
+        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         /// </summary>
         [Output("checkBeacon")]
         public Output<bool?> CheckBeacon { get; private set; } = null!;
@@ -253,8 +251,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> StandbyNics { get; private set; } = null!;
 
         /// <summary>
-        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-        /// failover_explicit.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         /// </summary>
         [Output("teamingPolicy")]
         public Output<string?> TeamingPolicy { get; private set; } = null!;
@@ -334,8 +331,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        /// that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -353,8 +349,7 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowPromiscuous { get; set; }
 
         /// <summary>
-        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-        /// only.
+        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -422,8 +417,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-        /// failover_explicit.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }
@@ -465,8 +459,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        /// that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -484,8 +477,7 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowPromiscuous { get; set; }
 
         /// <summary>
-        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-        /// only.
+        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -585,8 +577,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-        /// failover_explicit.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }

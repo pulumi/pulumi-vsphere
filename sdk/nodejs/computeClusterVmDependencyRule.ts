@@ -153,18 +153,18 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId!: pulumi.Output<string>;
+    declare public readonly computeClusterId: pulumi.Output<string>;
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
      * `vmGroupName` will not be started until the VMs in this
      * group are started.
      */
-    public readonly dependencyVmGroupName!: pulumi.Output<string>;
+    declare public readonly dependencyVmGroupName: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -173,19 +173,19 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    public readonly mandatory!: pulumi.Output<boolean | undefined>;
+    declare public readonly mandatory: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
      * `dependencyVmGroupName` are started.
      */
-    public readonly vmGroupName!: pulumi.Output<string>;
+    declare public readonly vmGroupName: pulumi.Output<string>;
 
     /**
      * Create a ComputeClusterVmDependencyRule resource with the given unique name, arguments, and options.
@@ -200,29 +200,29 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmDependencyRuleState | undefined;
-            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            resourceInputs["dependencyVmGroupName"] = state ? state.dependencyVmGroupName : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["vmGroupName"] = state ? state.vmGroupName : undefined;
+            resourceInputs["computeClusterId"] = state?.computeClusterId;
+            resourceInputs["dependencyVmGroupName"] = state?.dependencyVmGroupName;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["mandatory"] = state?.mandatory;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["vmGroupName"] = state?.vmGroupName;
         } else {
             const args = argsOrState as ComputeClusterVmDependencyRuleArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
+            if (args?.computeClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.dependencyVmGroupName === undefined) && !opts.urn) {
+            if (args?.dependencyVmGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dependencyVmGroupName'");
             }
-            if ((!args || args.vmGroupName === undefined) && !opts.urn) {
+            if (args?.vmGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmGroupName'");
             }
-            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            resourceInputs["dependencyVmGroupName"] = args ? args.dependencyVmGroupName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["vmGroupName"] = args ? args.vmGroupName : undefined;
+            resourceInputs["computeClusterId"] = args?.computeClusterId;
+            resourceInputs["dependencyVmGroupName"] = args?.dependencyVmGroupName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["mandatory"] = args?.mandatory;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["vmGroupName"] = args?.vmGroupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeClusterVmDependencyRule.__pulumiType, name, resourceInputs, opts);

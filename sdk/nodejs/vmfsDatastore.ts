@@ -182,11 +182,11 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    public /*out*/ readonly accessible!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly accessible: pulumi.Output<boolean>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    public /*out*/ readonly capacity!: pulumi.Output<number>;
+    declare public /*out*/ readonly capacity: pulumi.Output<number>;
     /**
      * Map of custom attribute ids to attribute 
      * value string to set on datastore resource.
@@ -194,17 +194,17 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The managed object
      * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
+    declare public readonly datastoreClusterId: pulumi.Output<string | undefined>;
     /**
      * The disks to use with the datastore.
      */
-    public readonly disks!: pulumi.Output<string[]>;
+    declare public readonly disks: pulumi.Output<string[]>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -214,11 +214,11 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * `/dc1/datastore/foo/bar/test`. Conflicts with
      * `datastoreClusterId`.
      */
-    public readonly folder!: pulumi.Output<string | undefined>;
+    declare public readonly folder: pulumi.Output<string | undefined>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    public /*out*/ readonly freeSpace!: pulumi.Output<number>;
+    declare public /*out*/ readonly freeSpace: pulumi.Output<number>;
     /**
      * The managed object ID of
      * the host to set the datastore up on. Note that this is not necessarily the
@@ -226,37 +226,37 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * here for more info. Forces a
      * new resource if changed.
      */
-    public readonly hostSystemId!: pulumi.Output<string>;
+    declare public readonly hostSystemId: pulumi.Output<string>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    public /*out*/ readonly maintenanceMode!: pulumi.Output<string>;
+    declare public /*out*/ readonly maintenanceMode: pulumi.Output<string>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    public /*out*/ readonly multipleHostAccess!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly multipleHostAccess: pulumi.Output<boolean>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource. 
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    public /*out*/ readonly uncommittedSpace!: pulumi.Output<number>;
+    declare public /*out*/ readonly uncommittedSpace: pulumi.Output<number>;
     /**
      * The unique locator for the datastore.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a VmfsDatastore resource with the given unique name, arguments, and options.
@@ -271,35 +271,35 @@ export class VmfsDatastore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VmfsDatastoreState | undefined;
-            resourceInputs["accessible"] = state ? state.accessible : undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            resourceInputs["disks"] = state ? state.disks : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["freeSpace"] = state ? state.freeSpace : undefined;
-            resourceInputs["hostSystemId"] = state ? state.hostSystemId : undefined;
-            resourceInputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
-            resourceInputs["multipleHostAccess"] = state ? state.multipleHostAccess : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["uncommittedSpace"] = state ? state.uncommittedSpace : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["accessible"] = state?.accessible;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["datastoreClusterId"] = state?.datastoreClusterId;
+            resourceInputs["disks"] = state?.disks;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["freeSpace"] = state?.freeSpace;
+            resourceInputs["hostSystemId"] = state?.hostSystemId;
+            resourceInputs["maintenanceMode"] = state?.maintenanceMode;
+            resourceInputs["multipleHostAccess"] = state?.multipleHostAccess;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["uncommittedSpace"] = state?.uncommittedSpace;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as VmfsDatastoreArgs | undefined;
-            if ((!args || args.disks === undefined) && !opts.urn) {
+            if (args?.disks === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disks'");
             }
-            if ((!args || args.hostSystemId === undefined) && !opts.urn) {
+            if (args?.hostSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            resourceInputs["disks"] = args ? args.disks : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["hostSystemId"] = args ? args.hostSystemId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["datastoreClusterId"] = args?.datastoreClusterId;
+            resourceInputs["disks"] = args?.disks;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["hostSystemId"] = args?.hostSystemId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["accessible"] = undefined /*out*/;
             resourceInputs["capacity"] = undefined /*out*/;
             resourceInputs["freeSpace"] = undefined /*out*/;

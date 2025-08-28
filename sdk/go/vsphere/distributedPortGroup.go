@@ -115,8 +115,7 @@ type DistributedPortGroup struct {
 
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks pulumi.StringArrayOutput `pulumi:"activeUplinks"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolOutput `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolOutput `pulumi:"allowMacChanges"`
@@ -212,13 +211,11 @@ type DistributedPortGroup struct {
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringOutput `pulumi:"teamingPolicy"`
 	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed pulumi.BoolPtrOutput `pulumi:"trafficFilterOverrideAllowed"`
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink pulumi.BoolOutput `pulumi:"txUplink"`
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
@@ -268,8 +265,7 @@ func GetDistributedPortGroup(ctx *pulumi.Context,
 type distributedPortGroupState struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks []string `pulumi:"activeUplinks"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits *bool `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges *bool `pulumi:"allowMacChanges"`
@@ -365,13 +361,11 @@ type distributedPortGroupState struct {
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
 	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed *bool `pulumi:"trafficFilterOverrideAllowed"`
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink *bool `pulumi:"txUplink"`
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
@@ -389,8 +383,7 @@ type distributedPortGroupState struct {
 type DistributedPortGroupState struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks pulumi.StringArrayInput
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolPtrInput
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolPtrInput
@@ -486,13 +479,11 @@ type DistributedPortGroupState struct {
 	StandbyUplinks pulumi.StringArrayInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringPtrInput
 	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed pulumi.BoolPtrInput
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink pulumi.BoolPtrInput
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
@@ -514,8 +505,7 @@ func (DistributedPortGroupState) ElementType() reflect.Type {
 type distributedPortGroupArgs struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks []string `pulumi:"activeUplinks"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits *bool `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges *bool `pulumi:"allowMacChanges"`
@@ -606,13 +596,11 @@ type distributedPortGroupArgs struct {
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
 	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed *bool `pulumi:"trafficFilterOverrideAllowed"`
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink *bool `pulumi:"txUplink"`
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
@@ -631,8 +619,7 @@ type distributedPortGroupArgs struct {
 type DistributedPortGroupArgs struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks pulumi.StringArrayInput
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolPtrInput
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolPtrInput
@@ -723,13 +710,11 @@ type DistributedPortGroupArgs struct {
 	StandbyUplinks pulumi.StringArrayInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringPtrInput
 	// Allow any filter policies set on the individual port to override those in the portgroup.
 	TrafficFilterOverrideAllowed pulumi.BoolPtrInput
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink pulumi.BoolPtrInput
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
@@ -836,8 +821,7 @@ func (o DistributedPortGroupOutput) ActiveUplinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringArrayOutput { return v.ActiveUplinks }).(pulumi.StringArrayOutput)
 }
 
-// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-// that of its own.
+// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 func (o DistributedPortGroupOutput) AllowForgedTransmits() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.AllowForgedTransmits }).(pulumi.BoolOutput)
 }
@@ -1050,8 +1034,7 @@ func (o DistributedPortGroupOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-// failover_explicit, or loadbalance_loadbased.
+// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 func (o DistributedPortGroupOutput) TeamingPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.TeamingPolicy }).(pulumi.StringOutput)
 }
@@ -1061,8 +1044,7 @@ func (o DistributedPortGroupOutput) TrafficFilterOverrideAllowed() pulumi.BoolPt
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.TrafficFilterOverrideAllowed }).(pulumi.BoolPtrOutput)
 }
 
-// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-// forwarded done by the switch.
+// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 func (o DistributedPortGroupOutput) TxUplink() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.TxUplink }).(pulumi.BoolOutput)
 }

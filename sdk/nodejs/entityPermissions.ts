@@ -38,19 +38,19 @@ export class EntityPermissions extends pulumi.CustomResource {
      * The managed object id (uuid for some entities) on
      * which permissions are to be created.
      */
-    public readonly entityId!: pulumi.Output<string>;
+    declare public readonly entityId: pulumi.Output<string>;
     /**
      * The managed object type, types can be found in the
      * managed object type section
      * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
      */
-    public readonly entityType!: pulumi.Output<string>;
+    declare public readonly entityType: pulumi.Output<string>;
     /**
      * The permissions to be given on this entity. Keep
      * the permissions sorted alphabetically on `userOrGroup` for a better user
      * experience.
      */
-    public readonly permissions!: pulumi.Output<outputs.EntityPermissionsPermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.EntityPermissionsPermission[]>;
 
     /**
      * Create a EntityPermissions resource with the given unique name, arguments, and options.
@@ -65,23 +65,23 @@ export class EntityPermissions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntityPermissionsState | undefined;
-            resourceInputs["entityId"] = state ? state.entityId : undefined;
-            resourceInputs["entityType"] = state ? state.entityType : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
+            resourceInputs["entityId"] = state?.entityId;
+            resourceInputs["entityType"] = state?.entityType;
+            resourceInputs["permissions"] = state?.permissions;
         } else {
             const args = argsOrState as EntityPermissionsArgs | undefined;
-            if ((!args || args.entityId === undefined) && !opts.urn) {
+            if (args?.entityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entityId'");
             }
-            if ((!args || args.entityType === undefined) && !opts.urn) {
+            if (args?.entityType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entityType'");
             }
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            resourceInputs["entityId"] = args ? args.entityId : undefined;
-            resourceInputs["entityType"] = args ? args.entityType : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
+            resourceInputs["entityId"] = args?.entityId;
+            resourceInputs["entityType"] = args?.entityType;
+            resourceInputs["permissions"] = args?.permissions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EntityPermissions.__pulumiType, name, resourceInputs, opts);

@@ -72,8 +72,7 @@ class DistributedPortGroupArgs:
         :param pulumi.Input[_builtins.str] distributed_virtual_switch_uuid: The ID of the VDS to add the
                port group to. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.bool] auto_expand: Allows the port group to create additional ports
@@ -125,11 +124,9 @@ class DistributedPortGroupArgs:
         :param pulumi.Input[_builtins.bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] traffic_filter_override_allowed: Allow any filter policies set on the individual port to override those in the portgroup.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[_builtins.str] type: The port group type. Can be one of `earlyBinding` (static
                binding) or `ephemeral`. Default: `earlyBinding`.
         :param pulumi.Input[_builtins.bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
@@ -258,8 +255,7 @@ class DistributedPortGroupArgs:
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -707,8 +703,7 @@ class DistributedPortGroupArgs:
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        failover_explicit, or loadbalance_loadbased.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -732,8 +727,7 @@ class DistributedPortGroupArgs:
     @pulumi.getter(name="txUplink")
     def tx_uplink(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        forwarded done by the switch.
+        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -857,8 +851,7 @@ class _DistributedPortGroupState:
         """
         Input properties used for looking up and filtering DistributedPortGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.bool] auto_expand: Allows the port group to create additional ports
@@ -915,11 +908,9 @@ class _DistributedPortGroupState:
         :param pulumi.Input[_builtins.bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] traffic_filter_override_allowed: Allow any filter policies set on the individual port to override those in the portgroup.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[_builtins.str] type: The port group type. Can be one of `earlyBinding` (static
                binding) or `ephemeral`. Default: `earlyBinding`.
         :param pulumi.Input[_builtins.bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
@@ -1040,8 +1031,7 @@ class _DistributedPortGroupState:
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -1527,8 +1517,7 @@ class _DistributedPortGroupState:
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        failover_explicit, or loadbalance_loadbased.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -1552,8 +1541,7 @@ class _DistributedPortGroupState:
     @pulumi.getter(name="txUplink")
     def tx_uplink(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        forwarded done by the switch.
+        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -1822,8 +1810,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.bool] auto_expand: Allows the port group to create additional ports
@@ -1877,11 +1864,9 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] traffic_filter_override_allowed: Allow any filter policies set on the individual port to override those in the portgroup.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[_builtins.str] type: The port group type. Can be one of `earlyBinding` (static
                binding) or `ephemeral`. Default: `earlyBinding`.
         :param pulumi.Input[_builtins.bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
@@ -2224,8 +2209,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.bool] auto_expand: Allows the port group to create additional ports
@@ -2282,11 +2266,9 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] shaping_override_allowed: Allow the traffic shaping policies of an individual port to override the settings in the portgroup.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] traffic_filter_override_allowed: Allow any filter policies set on the individual port to override those in the portgroup.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[_builtins.str] type: The port group type. Can be one of `earlyBinding` (static
                binding) or `ephemeral`. Default: `earlyBinding`.
         :param pulumi.Input[_builtins.bool] uplink_teaming_override_allowed: Allow the uplink teaming policies on a port to override those on the portgroup.
@@ -2360,8 +2342,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> pulumi.Output[_builtins.bool]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -2691,8 +2672,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        failover_explicit, or loadbalance_loadbased.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -2708,8 +2688,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="txUplink")
     def tx_uplink(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        forwarded done by the switch.
+        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 

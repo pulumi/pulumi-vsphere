@@ -116,20 +116,20 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
      * ID of the datastore cluster to put the override in.
      * Forces a new resource if changed.
      */
-    public readonly datastoreClusterId!: pulumi.Output<string>;
+    declare public readonly datastoreClusterId: pulumi.Output<string>;
     /**
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster's settings are used according to the
      * specific SDRS subsystem.
      */
-    public readonly sdrsAutomationLevel!: pulumi.Output<string | undefined>;
+    declare public readonly sdrsAutomationLevel: pulumi.Output<string | undefined>;
     /**
      * Overrides the default Storage DRS setting for
      * this virtual machine. When not specified, the datastore cluster setting is
      * used.
      */
-    public readonly sdrsEnabled!: pulumi.Output<string | undefined>;
+    declare public readonly sdrsEnabled: pulumi.Output<string | undefined>;
     /**
      * Overrides the intra-VM affinity setting
      * for this virtual machine. When `true`, all disks for this virtual machine
@@ -137,12 +137,12 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
      * individual disks on different datastores if it helps satisfy cluster
      * requirements. When not specified, the datastore cluster's settings are used.
      */
-    public readonly sdrsIntraVmAffinity!: pulumi.Output<string | undefined>;
+    declare public readonly sdrsIntraVmAffinity: pulumi.Output<string | undefined>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    public readonly virtualMachineId!: pulumi.Output<string>;
+    declare public readonly virtualMachineId: pulumi.Output<string>;
 
     /**
      * Create a StorageDrsVmOverride resource with the given unique name, arguments, and options.
@@ -157,24 +157,24 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageDrsVmOverrideState | undefined;
-            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            resourceInputs["sdrsAutomationLevel"] = state ? state.sdrsAutomationLevel : undefined;
-            resourceInputs["sdrsEnabled"] = state ? state.sdrsEnabled : undefined;
-            resourceInputs["sdrsIntraVmAffinity"] = state ? state.sdrsIntraVmAffinity : undefined;
-            resourceInputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
+            resourceInputs["datastoreClusterId"] = state?.datastoreClusterId;
+            resourceInputs["sdrsAutomationLevel"] = state?.sdrsAutomationLevel;
+            resourceInputs["sdrsEnabled"] = state?.sdrsEnabled;
+            resourceInputs["sdrsIntraVmAffinity"] = state?.sdrsIntraVmAffinity;
+            resourceInputs["virtualMachineId"] = state?.virtualMachineId;
         } else {
             const args = argsOrState as StorageDrsVmOverrideArgs | undefined;
-            if ((!args || args.datastoreClusterId === undefined) && !opts.urn) {
+            if (args?.datastoreClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastoreClusterId'");
             }
-            if ((!args || args.virtualMachineId === undefined) && !opts.urn) {
+            if (args?.virtualMachineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
-            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            resourceInputs["sdrsAutomationLevel"] = args ? args.sdrsAutomationLevel : undefined;
-            resourceInputs["sdrsEnabled"] = args ? args.sdrsEnabled : undefined;
-            resourceInputs["sdrsIntraVmAffinity"] = args ? args.sdrsIntraVmAffinity : undefined;
-            resourceInputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
+            resourceInputs["datastoreClusterId"] = args?.datastoreClusterId;
+            resourceInputs["sdrsAutomationLevel"] = args?.sdrsAutomationLevel;
+            resourceInputs["sdrsEnabled"] = args?.sdrsEnabled;
+            resourceInputs["sdrsIntraVmAffinity"] = args?.sdrsIntraVmAffinity;
+            resourceInputs["virtualMachineId"] = args?.virtualMachineId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StorageDrsVmOverride.__pulumiType, name, resourceInputs, opts);

@@ -141,16 +141,14 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
         return this.activeUplinks;
     }
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     @Export(name="allowForgedTransmits", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     public Output<Boolean> allowForgedTransmits() {
@@ -1013,16 +1011,14 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.netflowObservationDomainId);
     }
     /**
-     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-     * packets are analyzed.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
      * 
      */
     @Export(name="netflowSamplingRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> netflowSamplingRate;
 
     /**
-     * @return The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-     * packets are analyzed.
+     * @return The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
      * 
      */
     public Output<Optional<Integer>> netflowSamplingRate() {
@@ -1183,48 +1179,42 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.tags);
     }
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     @Export(name="teamingPolicy", refs={String.class}, tree="[0]")
     private Output<String> teamingPolicy;
 
     /**
-     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     public Output<String> teamingPolicy() {
         return this.teamingPolicy;
     }
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     @Export(name="txUplink", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> txUplink;
 
     /**
-     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     public Output<Boolean> txUplink() {
         return this.txUplink;
     }
     /**
-     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-     * across hosts.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
      * 
      */
     @Export(name="uplinks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> uplinks;
 
     /**
-     * @return A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-     * across hosts.
+     * @return A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
      * 
      */
     public Output<List<String>> uplinks() {

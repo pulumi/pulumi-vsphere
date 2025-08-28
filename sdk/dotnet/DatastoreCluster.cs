@@ -116,15 +116,13 @@ namespace Pulumi.VSphere
         public Output<int?> SdrsFreeSpaceThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-        /// freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         /// </summary>
         [Output("sdrsFreeSpaceThresholdMode")]
         public Output<string?> SdrsFreeSpaceThresholdMode { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-        /// balance the space.
+        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         /// </summary>
         [Output("sdrsFreeSpaceUtilizationDifference")]
         public Output<int?> SdrsFreeSpaceUtilizationDifference { get; private set; } = null!;
@@ -136,8 +134,7 @@ namespace Pulumi.VSphere
         public Output<string?> SdrsIoBalanceAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-        /// datastore.
+        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         /// </summary>
         [Output("sdrsIoLatencyThreshold")]
         public Output<int?> SdrsIoLatencyThreshold { get; private set; } = null!;
@@ -155,15 +152,13 @@ namespace Pulumi.VSphere
         public Output<int?> SdrsIoLoadImbalanceThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-        /// move VMs off of a datastore.
+        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         /// </summary>
         [Output("sdrsIoReservableIopsThreshold")]
         public Output<int?> SdrsIoReservableIopsThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-        /// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         /// </summary>
         [Output("sdrsIoReservablePercentThreshold")]
         public Output<int?> SdrsIoReservablePercentThreshold { get; private set; } = null!;
@@ -346,15 +341,13 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-        /// freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         /// </summary>
         [Input("sdrsFreeSpaceThresholdMode")]
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }
 
         /// <summary>
-        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-        /// balance the space.
+        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         /// </summary>
         [Input("sdrsFreeSpaceUtilizationDifference")]
         public Input<int>? SdrsFreeSpaceUtilizationDifference { get; set; }
@@ -366,8 +359,7 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsIoBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-        /// datastore.
+        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         /// </summary>
         [Input("sdrsIoLatencyThreshold")]
         public Input<int>? SdrsIoLatencyThreshold { get; set; }
@@ -385,15 +377,13 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsIoLoadImbalanceThreshold { get; set; }
 
         /// <summary>
-        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-        /// move VMs off of a datastore.
+        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         /// </summary>
         [Input("sdrsIoReservableIopsThreshold")]
         public Input<int>? SdrsIoReservableIopsThreshold { get; set; }
 
         /// <summary>
-        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-        /// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         /// </summary>
         [Input("sdrsIoReservablePercentThreshold")]
         public Input<int>? SdrsIoReservablePercentThreshold { get; set; }
@@ -544,15 +534,13 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-        /// freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         /// </summary>
         [Input("sdrsFreeSpaceThresholdMode")]
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }
 
         /// <summary>
-        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-        /// balance the space.
+        /// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         /// </summary>
         [Input("sdrsFreeSpaceUtilizationDifference")]
         public Input<int>? SdrsFreeSpaceUtilizationDifference { get; set; }
@@ -564,8 +552,7 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsIoBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-        /// datastore.
+        /// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         /// </summary>
         [Input("sdrsIoLatencyThreshold")]
         public Input<int>? SdrsIoLatencyThreshold { get; set; }
@@ -583,15 +570,13 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsIoLoadImbalanceThreshold { get; set; }
 
         /// <summary>
-        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-        /// move VMs off of a datastore.
+        /// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         /// </summary>
         [Input("sdrsIoReservableIopsThreshold")]
         public Input<int>? SdrsIoReservableIopsThreshold { get; set; }
 
         /// <summary>
-        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-        /// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        /// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         /// </summary>
         [Input("sdrsIoReservablePercentThreshold")]
         public Input<int>? SdrsIoReservablePercentThreshold { get; set; }

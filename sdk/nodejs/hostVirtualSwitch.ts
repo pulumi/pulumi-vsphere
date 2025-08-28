@@ -128,64 +128,62 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
     /**
      * List of active network adapters used for load balancing.
      */
-    public readonly activeNics!: pulumi.Output<string[]>;
+    declare public readonly activeNics: pulumi.Output<string[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
-    public readonly allowForgedTransmits!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowForgedTransmits: pulumi.Output<boolean | undefined>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    public readonly allowMacChanges!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowMacChanges: pulumi.Output<boolean | undefined>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    public readonly allowPromiscuous!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowPromiscuous: pulumi.Output<boolean | undefined>;
     /**
      * Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
      */
-    public readonly beaconInterval!: pulumi.Output<number | undefined>;
+    declare public readonly beaconInterval: pulumi.Output<number | undefined>;
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-     * only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      */
-    public readonly checkBeacon!: pulumi.Output<boolean | undefined>;
+    declare public readonly checkBeacon: pulumi.Output<boolean | undefined>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    public readonly failback!: pulumi.Output<boolean | undefined>;
+    declare public readonly failback: pulumi.Output<boolean | undefined>;
     /**
      * The managed object ID of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      */
-    public readonly hostSystemId!: pulumi.Output<string>;
+    declare public readonly hostSystemId: pulumi.Output<string>;
     /**
      * Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
      */
-    public readonly linkDiscoveryOperation!: pulumi.Output<string | undefined>;
+    declare public readonly linkDiscoveryOperation: pulumi.Output<string | undefined>;
     /**
      * The discovery protocol type. Valid values are cdp and lldp.
      */
-    public readonly linkDiscoveryProtocol!: pulumi.Output<string | undefined>;
+    declare public readonly linkDiscoveryProtocol: pulumi.Output<string | undefined>;
     /**
      * The maximum transmission unit (MTU) for the virtual
      * switch. Default: `1500`.
      */
-    public readonly mtu!: pulumi.Output<number | undefined>;
+    declare public readonly mtu: pulumi.Output<number | undefined>;
     /**
      * The name of the virtual switch. Forces a new resource if
      * changed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The list of network adapters to bind to this virtual switch.
      */
-    public readonly networkAdapters!: pulumi.Output<string[]>;
+    declare public readonly networkAdapters: pulumi.Output<string[]>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    public readonly notifySwitches!: pulumi.Output<boolean | undefined>;
+    declare public readonly notifySwitches: pulumi.Output<boolean | undefined>;
     /**
      * The number of ports to create with this
      * virtual switch. Default: `128`.
@@ -193,32 +191,31 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      * > **NOTE:** Changing the port count requires a reboot of the host. This provider
      * will not restart the host for you.
      */
-    public readonly numberOfPorts!: pulumi.Output<number | undefined>;
+    declare public readonly numberOfPorts: pulumi.Output<number | undefined>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */
-    public readonly shapingAverageBandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly shapingAverageBandwidth: pulumi.Output<number | undefined>;
     /**
      * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
-    public readonly shapingBurstSize!: pulumi.Output<number | undefined>;
+    declare public readonly shapingBurstSize: pulumi.Output<number | undefined>;
     /**
      * Enable traffic shaping on this virtual switch or port group.
      */
-    public readonly shapingEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly shapingEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
-    public readonly shapingPeakBandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly shapingPeakBandwidth: pulumi.Output<number | undefined>;
     /**
      * List of standby network adapters used for failover.
      */
-    public readonly standbyNics!: pulumi.Output<string[] | undefined>;
+    declare public readonly standbyNics: pulumi.Output<string[] | undefined>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-     * failover_explicit.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      */
-    public readonly teamingPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly teamingPolicy: pulumi.Output<string | undefined>;
 
     /**
      * Create a HostVirtualSwitch resource with the given unique name, arguments, and options.
@@ -233,59 +230,59 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostVirtualSwitchState | undefined;
-            resourceInputs["activeNics"] = state ? state.activeNics : undefined;
-            resourceInputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
-            resourceInputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;
-            resourceInputs["allowPromiscuous"] = state ? state.allowPromiscuous : undefined;
-            resourceInputs["beaconInterval"] = state ? state.beaconInterval : undefined;
-            resourceInputs["checkBeacon"] = state ? state.checkBeacon : undefined;
-            resourceInputs["failback"] = state ? state.failback : undefined;
-            resourceInputs["hostSystemId"] = state ? state.hostSystemId : undefined;
-            resourceInputs["linkDiscoveryOperation"] = state ? state.linkDiscoveryOperation : undefined;
-            resourceInputs["linkDiscoveryProtocol"] = state ? state.linkDiscoveryProtocol : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkAdapters"] = state ? state.networkAdapters : undefined;
-            resourceInputs["notifySwitches"] = state ? state.notifySwitches : undefined;
-            resourceInputs["numberOfPorts"] = state ? state.numberOfPorts : undefined;
-            resourceInputs["shapingAverageBandwidth"] = state ? state.shapingAverageBandwidth : undefined;
-            resourceInputs["shapingBurstSize"] = state ? state.shapingBurstSize : undefined;
-            resourceInputs["shapingEnabled"] = state ? state.shapingEnabled : undefined;
-            resourceInputs["shapingPeakBandwidth"] = state ? state.shapingPeakBandwidth : undefined;
-            resourceInputs["standbyNics"] = state ? state.standbyNics : undefined;
-            resourceInputs["teamingPolicy"] = state ? state.teamingPolicy : undefined;
+            resourceInputs["activeNics"] = state?.activeNics;
+            resourceInputs["allowForgedTransmits"] = state?.allowForgedTransmits;
+            resourceInputs["allowMacChanges"] = state?.allowMacChanges;
+            resourceInputs["allowPromiscuous"] = state?.allowPromiscuous;
+            resourceInputs["beaconInterval"] = state?.beaconInterval;
+            resourceInputs["checkBeacon"] = state?.checkBeacon;
+            resourceInputs["failback"] = state?.failback;
+            resourceInputs["hostSystemId"] = state?.hostSystemId;
+            resourceInputs["linkDiscoveryOperation"] = state?.linkDiscoveryOperation;
+            resourceInputs["linkDiscoveryProtocol"] = state?.linkDiscoveryProtocol;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkAdapters"] = state?.networkAdapters;
+            resourceInputs["notifySwitches"] = state?.notifySwitches;
+            resourceInputs["numberOfPorts"] = state?.numberOfPorts;
+            resourceInputs["shapingAverageBandwidth"] = state?.shapingAverageBandwidth;
+            resourceInputs["shapingBurstSize"] = state?.shapingBurstSize;
+            resourceInputs["shapingEnabled"] = state?.shapingEnabled;
+            resourceInputs["shapingPeakBandwidth"] = state?.shapingPeakBandwidth;
+            resourceInputs["standbyNics"] = state?.standbyNics;
+            resourceInputs["teamingPolicy"] = state?.teamingPolicy;
         } else {
             const args = argsOrState as HostVirtualSwitchArgs | undefined;
-            if ((!args || args.activeNics === undefined) && !opts.urn) {
+            if (args?.activeNics === undefined && !opts.urn) {
                 throw new Error("Missing required property 'activeNics'");
             }
-            if ((!args || args.hostSystemId === undefined) && !opts.urn) {
+            if (args?.hostSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            if ((!args || args.networkAdapters === undefined) && !opts.urn) {
+            if (args?.networkAdapters === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkAdapters'");
             }
-            resourceInputs["activeNics"] = args ? args.activeNics : undefined;
-            resourceInputs["allowForgedTransmits"] = args ? args.allowForgedTransmits : undefined;
-            resourceInputs["allowMacChanges"] = args ? args.allowMacChanges : undefined;
-            resourceInputs["allowPromiscuous"] = args ? args.allowPromiscuous : undefined;
-            resourceInputs["beaconInterval"] = args ? args.beaconInterval : undefined;
-            resourceInputs["checkBeacon"] = args ? args.checkBeacon : undefined;
-            resourceInputs["failback"] = args ? args.failback : undefined;
-            resourceInputs["hostSystemId"] = args ? args.hostSystemId : undefined;
-            resourceInputs["linkDiscoveryOperation"] = args ? args.linkDiscoveryOperation : undefined;
-            resourceInputs["linkDiscoveryProtocol"] = args ? args.linkDiscoveryProtocol : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkAdapters"] = args ? args.networkAdapters : undefined;
-            resourceInputs["notifySwitches"] = args ? args.notifySwitches : undefined;
-            resourceInputs["numberOfPorts"] = args ? args.numberOfPorts : undefined;
-            resourceInputs["shapingAverageBandwidth"] = args ? args.shapingAverageBandwidth : undefined;
-            resourceInputs["shapingBurstSize"] = args ? args.shapingBurstSize : undefined;
-            resourceInputs["shapingEnabled"] = args ? args.shapingEnabled : undefined;
-            resourceInputs["shapingPeakBandwidth"] = args ? args.shapingPeakBandwidth : undefined;
-            resourceInputs["standbyNics"] = args ? args.standbyNics : undefined;
-            resourceInputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
+            resourceInputs["activeNics"] = args?.activeNics;
+            resourceInputs["allowForgedTransmits"] = args?.allowForgedTransmits;
+            resourceInputs["allowMacChanges"] = args?.allowMacChanges;
+            resourceInputs["allowPromiscuous"] = args?.allowPromiscuous;
+            resourceInputs["beaconInterval"] = args?.beaconInterval;
+            resourceInputs["checkBeacon"] = args?.checkBeacon;
+            resourceInputs["failback"] = args?.failback;
+            resourceInputs["hostSystemId"] = args?.hostSystemId;
+            resourceInputs["linkDiscoveryOperation"] = args?.linkDiscoveryOperation;
+            resourceInputs["linkDiscoveryProtocol"] = args?.linkDiscoveryProtocol;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkAdapters"] = args?.networkAdapters;
+            resourceInputs["notifySwitches"] = args?.notifySwitches;
+            resourceInputs["numberOfPorts"] = args?.numberOfPorts;
+            resourceInputs["shapingAverageBandwidth"] = args?.shapingAverageBandwidth;
+            resourceInputs["shapingBurstSize"] = args?.shapingBurstSize;
+            resourceInputs["shapingEnabled"] = args?.shapingEnabled;
+            resourceInputs["shapingPeakBandwidth"] = args?.shapingPeakBandwidth;
+            resourceInputs["standbyNics"] = args?.standbyNics;
+            resourceInputs["teamingPolicy"] = args?.teamingPolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostVirtualSwitch.__pulumiType, name, resourceInputs, opts);
@@ -301,8 +298,7 @@ export interface HostVirtualSwitchState {
      */
     activeNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -318,8 +314,7 @@ export interface HostVirtualSwitchState {
      */
     beaconInterval?: pulumi.Input<number>;
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-     * only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
@@ -386,8 +381,7 @@ export interface HostVirtualSwitchState {
      */
     standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-     * failover_explicit.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      */
     teamingPolicy?: pulumi.Input<string>;
 }
@@ -401,8 +395,7 @@ export interface HostVirtualSwitchArgs {
      */
     activeNics: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -418,8 +411,7 @@ export interface HostVirtualSwitchArgs {
      */
     beaconInterval?: pulumi.Input<number>;
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-     * only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
@@ -486,8 +478,7 @@ export interface HostVirtualSwitchArgs {
      */
     standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-     * failover_explicit.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      */
     teamingPolicy?: pulumi.Input<string>;
 }

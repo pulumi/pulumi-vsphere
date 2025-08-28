@@ -77,11 +77,11 @@ export class CustomAttribute extends pulumi.CustomResource {
      * applied to. If not set, the custom attribute may be applied to any object
      * type. For a full list, review the Managed Object Types. Forces a new resource if changed.
      */
-    public readonly managedObjectType!: pulumi.Output<string | undefined>;
+    declare public readonly managedObjectType: pulumi.Output<string | undefined>;
     /**
      * The name of the custom attribute.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a CustomAttribute resource with the given unique name, arguments, and options.
@@ -96,12 +96,12 @@ export class CustomAttribute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomAttributeState | undefined;
-            resourceInputs["managedObjectType"] = state ? state.managedObjectType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["managedObjectType"] = state?.managedObjectType;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as CustomAttributeArgs | undefined;
-            resourceInputs["managedObjectType"] = args ? args.managedObjectType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["managedObjectType"] = args?.managedObjectType;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomAttribute.__pulumiType, name, resourceInputs, opts);

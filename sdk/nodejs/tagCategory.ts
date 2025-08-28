@@ -80,25 +80,25 @@ export class TagCategory extends pulumi.CustomResource {
      * valid to be assigned to. For a full list, click
      * here.
      */
-    public readonly associableTypes!: pulumi.Output<string[]>;
+    declare public readonly associableTypes: pulumi.Output<string[]>;
     /**
      * The number of tags that can be assigned from this
      * category to a single object at once. Can be one of `SINGLE` (object can only
      * be assigned one tag in this category), to `MULTIPLE` (object can be assigned
      * multiple tags in this category). Forces a new resource if changed.
      */
-    public readonly cardinality!: pulumi.Output<string>;
+    declare public readonly cardinality: pulumi.Output<string>;
     /**
      * A description for the category.
      *
      * > **NOTE:** You can add associable types to a category, but you cannot remove
      * them. Attempting to do so will result in an error.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the category.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a TagCategory resource with the given unique name, arguments, and options.
@@ -113,22 +113,22 @@ export class TagCategory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagCategoryState | undefined;
-            resourceInputs["associableTypes"] = state ? state.associableTypes : undefined;
-            resourceInputs["cardinality"] = state ? state.cardinality : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["associableTypes"] = state?.associableTypes;
+            resourceInputs["cardinality"] = state?.cardinality;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as TagCategoryArgs | undefined;
-            if ((!args || args.associableTypes === undefined) && !opts.urn) {
+            if (args?.associableTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'associableTypes'");
             }
-            if ((!args || args.cardinality === undefined) && !opts.urn) {
+            if (args?.cardinality === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cardinality'");
             }
-            resourceInputs["associableTypes"] = args ? args.associableTypes : undefined;
-            resourceInputs["cardinality"] = args ? args.cardinality : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["associableTypes"] = args?.associableTypes;
+            resourceInputs["cardinality"] = args?.cardinality;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TagCategory.__pulumiType, name, resourceInputs, opts);

@@ -28,35 +28,35 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * govmomi debug path for debug
      */
-    public readonly clientDebugPath!: pulumi.Output<string | undefined>;
+    declare public readonly clientDebugPath: pulumi.Output<string | undefined>;
     /**
      * govmomi debug path for a single run
      */
-    public readonly clientDebugPathRun!: pulumi.Output<string | undefined>;
+    declare public readonly clientDebugPathRun: pulumi.Output<string | undefined>;
     /**
      * The user password for vSphere API operations.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The directory to save vSphere REST API sessions to
      */
-    public readonly restSessionPath!: pulumi.Output<string | undefined>;
+    declare public readonly restSessionPath: pulumi.Output<string | undefined>;
     /**
      * The user name for vSphere API operations.
      */
-    public readonly user!: pulumi.Output<string | undefined>;
+    declare public readonly user: pulumi.Output<string | undefined>;
     /**
      * @deprecated This field has been renamed to vsphere_server.
      */
-    public readonly vcenterServer!: pulumi.Output<string | undefined>;
+    declare public readonly vcenterServer: pulumi.Output<string | undefined>;
     /**
      * The directory to save vSphere SOAP API sessions to
      */
-    public readonly vimSessionPath!: pulumi.Output<string | undefined>;
+    declare public readonly vimSessionPath: pulumi.Output<string | undefined>;
     /**
      * The vSphere Server name for vSphere API operations.
      */
-    public readonly vsphereServer!: pulumi.Output<string | undefined>;
+    declare public readonly vsphereServer: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -69,19 +69,19 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) ?? utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
-            resourceInputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
-            resourceInputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) ?? utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
-            resourceInputs["clientDebugPath"] = (args ? args.clientDebugPath : undefined) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
-            resourceInputs["clientDebugPathRun"] = (args ? args.clientDebugPathRun : undefined) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["persistSession"] = pulumi.output((args ? args.persistSession : undefined) ?? utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION")).apply(JSON.stringify);
-            resourceInputs["restSessionPath"] = (args ? args.restSessionPath : undefined) ?? utilities.getEnv("VSPHERE_REST_SESSION_PATH");
-            resourceInputs["user"] = args ? args.user : undefined;
-            resourceInputs["vcenterServer"] = args ? args.vcenterServer : undefined;
-            resourceInputs["vimKeepAlive"] = pulumi.output((args ? args.vimKeepAlive : undefined) ?? utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE")).apply(JSON.stringify);
-            resourceInputs["vimSessionPath"] = (args ? args.vimSessionPath : undefined) ?? utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
-            resourceInputs["vsphereServer"] = args ? args.vsphereServer : undefined;
+            resourceInputs["allowUnverifiedSsl"] = pulumi.output((args?.allowUnverifiedSsl) ?? utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
+            resourceInputs["apiTimeout"] = pulumi.output(args?.apiTimeout).apply(JSON.stringify);
+            resourceInputs["clientDebug"] = pulumi.output((args?.clientDebug) ?? utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
+            resourceInputs["clientDebugPath"] = (args?.clientDebugPath) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
+            resourceInputs["clientDebugPathRun"] = (args?.clientDebugPathRun) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
+            resourceInputs["password"] = args?.password;
+            resourceInputs["persistSession"] = pulumi.output((args?.persistSession) ?? utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION")).apply(JSON.stringify);
+            resourceInputs["restSessionPath"] = (args?.restSessionPath) ?? utilities.getEnv("VSPHERE_REST_SESSION_PATH");
+            resourceInputs["user"] = args?.user;
+            resourceInputs["vcenterServer"] = args?.vcenterServer;
+            resourceInputs["vimKeepAlive"] = pulumi.output((args?.vimKeepAlive) ?? utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE")).apply(JSON.stringify);
+            resourceInputs["vimSessionPath"] = (args?.vimSessionPath) ?? utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
+            resourceInputs["vsphereServer"] = args?.vsphereServer;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

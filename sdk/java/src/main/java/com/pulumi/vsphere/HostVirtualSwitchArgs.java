@@ -35,16 +35,14 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     @Import(name="allowForgedTransmits")
     private @Nullable Output<Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     public Optional<Output<Boolean>> allowForgedTransmits() {
@@ -97,16 +95,14 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-     * only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      * 
      */
     @Import(name="checkBeacon")
     private @Nullable Output<Boolean> checkBeacon;
 
     /**
-     * @return Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-     * only.
+     * @return Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      * 
      */
     public Optional<Output<Boolean>> checkBeacon() {
@@ -338,16 +334,14 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-     * failover_explicit.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      * 
      */
     @Import(name="teamingPolicy")
     private @Nullable Output<String> teamingPolicy;
 
     /**
-     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-     * failover_explicit.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      * 
      */
     public Optional<Output<String>> teamingPolicy() {
@@ -430,8 +424,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-         * that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
          * 
          * @return builder
          * 
@@ -442,8 +435,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-         * that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
          * 
          * @return builder
          * 
@@ -516,8 +508,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param checkBeacon Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-         * only.
+         * @param checkBeacon Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
          * 
          * @return builder
          * 
@@ -528,8 +519,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param checkBeacon Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-         * only.
+         * @param checkBeacon Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
          * 
          * @return builder
          * 
@@ -867,8 +857,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-         * failover_explicit.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
          * 
          * @return builder
          * 
@@ -879,8 +868,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-         * failover_explicit.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
          * 
          * @return builder
          * 

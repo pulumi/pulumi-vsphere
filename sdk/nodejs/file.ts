@@ -70,37 +70,37 @@ export class File extends pulumi.CustomResource {
     /**
      * Specifies whether to create the parent directories of the destination file if they do not exist.
      */
-    public readonly createDirectories!: pulumi.Output<boolean | undefined>;
+    declare public readonly createDirectories: pulumi.Output<boolean | undefined>;
     /**
      * The name of a datacenter to which the file will be
      * uploaded.
      */
-    public readonly datacenter!: pulumi.Output<string | undefined>;
+    declare public readonly datacenter: pulumi.Output<string | undefined>;
     /**
      * The name of the datastore to which to upload the
      * file.
      */
-    public readonly datastore!: pulumi.Output<string>;
+    declare public readonly datastore: pulumi.Output<string>;
     /**
      * The path to where the file should be uploaded
      * or copied to on the destination datastore.
      */
-    public readonly destinationFile!: pulumi.Output<string>;
+    declare public readonly destinationFile: pulumi.Output<string>;
     /**
      * The name of a datacenter from which the file
      * will be copied. Forces a new resource if changed.
      */
-    public readonly sourceDatacenter!: pulumi.Output<string | undefined>;
+    declare public readonly sourceDatacenter: pulumi.Output<string | undefined>;
     /**
      * The name of the datastore from which file will
      * be copied. Forces a new resource if changed.
      */
-    public readonly sourceDatastore!: pulumi.Output<string | undefined>;
+    declare public readonly sourceDatastore: pulumi.Output<string | undefined>;
     /**
      * The path to the file being uploaded from or copied.
      * Forces a new resource if changed.
      */
-    public readonly sourceFile!: pulumi.Output<string>;
+    declare public readonly sourceFile: pulumi.Output<string>;
 
     /**
      * Create a File resource with the given unique name, arguments, and options.
@@ -115,31 +115,31 @@ export class File extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileState | undefined;
-            resourceInputs["createDirectories"] = state ? state.createDirectories : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["datastore"] = state ? state.datastore : undefined;
-            resourceInputs["destinationFile"] = state ? state.destinationFile : undefined;
-            resourceInputs["sourceDatacenter"] = state ? state.sourceDatacenter : undefined;
-            resourceInputs["sourceDatastore"] = state ? state.sourceDatastore : undefined;
-            resourceInputs["sourceFile"] = state ? state.sourceFile : undefined;
+            resourceInputs["createDirectories"] = state?.createDirectories;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["datastore"] = state?.datastore;
+            resourceInputs["destinationFile"] = state?.destinationFile;
+            resourceInputs["sourceDatacenter"] = state?.sourceDatacenter;
+            resourceInputs["sourceDatastore"] = state?.sourceDatastore;
+            resourceInputs["sourceFile"] = state?.sourceFile;
         } else {
             const args = argsOrState as FileArgs | undefined;
-            if ((!args || args.datastore === undefined) && !opts.urn) {
+            if (args?.datastore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if ((!args || args.destinationFile === undefined) && !opts.urn) {
+            if (args?.destinationFile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationFile'");
             }
-            if ((!args || args.sourceFile === undefined) && !opts.urn) {
+            if (args?.sourceFile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceFile'");
             }
-            resourceInputs["createDirectories"] = args ? args.createDirectories : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["datastore"] = args ? args.datastore : undefined;
-            resourceInputs["destinationFile"] = args ? args.destinationFile : undefined;
-            resourceInputs["sourceDatacenter"] = args ? args.sourceDatacenter : undefined;
-            resourceInputs["sourceDatastore"] = args ? args.sourceDatastore : undefined;
-            resourceInputs["sourceFile"] = args ? args.sourceFile : undefined;
+            resourceInputs["createDirectories"] = args?.createDirectories;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["datastore"] = args?.datastore;
+            resourceInputs["destinationFile"] = args?.destinationFile;
+            resourceInputs["sourceDatacenter"] = args?.sourceDatacenter;
+            resourceInputs["sourceDatastore"] = args?.sourceDatastore;
+            resourceInputs["sourceFile"] = args?.sourceFile;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(File.__pulumiType, name, resourceInputs, opts);

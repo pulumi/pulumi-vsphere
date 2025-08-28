@@ -58,8 +58,7 @@ type VirtualMachine struct {
 	CpuHotAddEnabled pulumi.BoolPtrOutput `pulumi:"cpuHotAddEnabled"`
 	// Allow CPUs to be added to this virtual machine while it is running.
 	CpuHotRemoveEnabled pulumi.BoolPtrOutput `pulumi:"cpuHotRemoveEnabled"`
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	CpuLimit pulumi.IntPtrOutput `pulumi:"cpuLimit"`
 	// Enable CPU performance counters on this virtual machine.
 	CpuPerformanceCountersEnabled pulumi.BoolPtrOutput `pulumi:"cpuPerformanceCountersEnabled"`
@@ -75,8 +74,7 @@ type VirtualMachine struct {
 	DatacenterId pulumi.StringPtrOutput `pulumi:"datacenterId"`
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
-	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-	// disks that are created without datastores.
+	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringOutput `pulumi:"defaultIpAddress"`
@@ -90,8 +88,7 @@ type VirtualMachine struct {
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode pulumi.StringOutput `pulumi:"eptRviMode"`
-	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-	// configuration, such as instance metadata, or configuration data for OVF images.
+	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapOutput `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired pulumi.BoolPtrOutput `pulumi:"extraConfigRebootRequired"`
@@ -116,22 +113,17 @@ type VirtualMachine struct {
 	IgnoredGuestIps pulumi.StringArrayOutput `pulumi:"ignoredGuestIps"`
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
 	Imported pulumi.BoolOutput `pulumi:"imported"`
-	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-	// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-	// devices. Can be one of low, normal, medium, or high.
+	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
 	LatencySensitivity pulumi.StringPtrOutput `pulumi:"latencySensitivity"`
 	// The size of the virtual machine's memory, in MB.
 	Memory pulumi.IntPtrOutput `pulumi:"memory"`
 	// Allow memory to be added to this virtual machine while it is running.
 	MemoryHotAddEnabled pulumi.BoolPtrOutput `pulumi:"memoryHotAddEnabled"`
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation pulumi.IntPtrOutput `pulumi:"memoryReservation"`
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
 	MemoryReservationLockedToMax pulumi.BoolPtrOutput `pulumi:"memoryReservationLockedToMax"`
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount pulumi.IntOutput `pulumi:"memoryShareCount"`
@@ -147,8 +139,7 @@ type VirtualMachine struct {
 	NestedHvEnabled pulumi.BoolPtrOutput `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-	// must be evenly divisible by this value.
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrOutput `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
 	NumCpus             pulumi.IntPtrOutput `pulumi:"numCpus"`
@@ -188,11 +179,9 @@ type VirtualMachine struct {
 	StoragePolicyId pulumi.StringOutput `pulumi:"storagePolicyId"`
 	// The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
 	SwapPlacementPolicy pulumi.StringPtrOutput `pulumi:"swapPlacementPolicy"`
-	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-	// synchronized on startup and resume. Requires VMware Tools to be installed.
+	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost pulumi.BoolPtrOutput `pulumi:"syncTimeWithHost"`
-	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrOutput `pulumi:"syncTimeWithHostPeriodically"`
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -212,17 +201,13 @@ type VirtualMachine struct {
 	VmxPath pulumi.StringOutput `pulumi:"vmxPath"`
 	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
 	Vtpm VirtualMachineVtpmPtrOutput `pulumi:"vtpm"`
-	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled pulumi.BoolPtrOutput `pulumi:"vvtdEnabled"`
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestIpTimeout pulumi.IntPtrOutput `pulumi:"waitForGuestIpTimeout"`
-	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-	// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
 	WaitForGuestNetRoutable pulumi.BoolPtrOutput `pulumi:"waitForGuestNetRoutable"`
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestNetTimeout pulumi.IntPtrOutput `pulumi:"waitForGuestNetTimeout"`
 }
 
@@ -279,8 +264,7 @@ type virtualMachineState struct {
 	CpuHotAddEnabled *bool `pulumi:"cpuHotAddEnabled"`
 	// Allow CPUs to be added to this virtual machine while it is running.
 	CpuHotRemoveEnabled *bool `pulumi:"cpuHotRemoveEnabled"`
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	CpuLimit *int `pulumi:"cpuLimit"`
 	// Enable CPU performance counters on this virtual machine.
 	CpuPerformanceCountersEnabled *bool `pulumi:"cpuPerformanceCountersEnabled"`
@@ -296,8 +280,7 @@ type virtualMachineState struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-	// disks that are created without datastores.
+	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress *string `pulumi:"defaultIpAddress"`
@@ -311,8 +294,7 @@ type virtualMachineState struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode *string `pulumi:"eptRviMode"`
-	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-	// configuration, such as instance metadata, or configuration data for OVF images.
+	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired *bool `pulumi:"extraConfigRebootRequired"`
@@ -337,22 +319,17 @@ type virtualMachineState struct {
 	IgnoredGuestIps []string `pulumi:"ignoredGuestIps"`
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
 	Imported *bool `pulumi:"imported"`
-	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-	// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-	// devices. Can be one of low, normal, medium, or high.
+	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
 	LatencySensitivity *string `pulumi:"latencySensitivity"`
 	// The size of the virtual machine's memory, in MB.
 	Memory *int `pulumi:"memory"`
 	// Allow memory to be added to this virtual machine while it is running.
 	MemoryHotAddEnabled *bool `pulumi:"memoryHotAddEnabled"`
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
 	MemoryReservationLockedToMax *bool `pulumi:"memoryReservationLockedToMax"`
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount *int `pulumi:"memoryShareCount"`
@@ -368,8 +345,7 @@ type virtualMachineState struct {
 	NestedHvEnabled *bool `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces []VirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-	// must be evenly divisible by this value.
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
 	NumCpus             *int `pulumi:"numCpus"`
@@ -409,11 +385,9 @@ type virtualMachineState struct {
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
-	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-	// synchronized on startup and resume. Requires VMware Tools to be installed.
+	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
-	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
@@ -433,17 +407,13 @@ type virtualMachineState struct {
 	VmxPath *string `pulumi:"vmxPath"`
 	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
 	Vtpm *VirtualMachineVtpm `pulumi:"vtpm"`
-	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestIpTimeout *int `pulumi:"waitForGuestIpTimeout"`
-	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-	// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
 	WaitForGuestNetRoutable *bool `pulumi:"waitForGuestNetRoutable"`
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestNetTimeout *int `pulumi:"waitForGuestNetTimeout"`
 }
 
@@ -468,8 +438,7 @@ type VirtualMachineState struct {
 	CpuHotAddEnabled pulumi.BoolPtrInput
 	// Allow CPUs to be added to this virtual machine while it is running.
 	CpuHotRemoveEnabled pulumi.BoolPtrInput
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	CpuLimit pulumi.IntPtrInput
 	// Enable CPU performance counters on this virtual machine.
 	CpuPerformanceCountersEnabled pulumi.BoolPtrInput
@@ -485,8 +454,7 @@ type VirtualMachineState struct {
 	DatacenterId pulumi.StringPtrInput
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-	// disks that are created without datastores.
+	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
 	DatastoreId pulumi.StringPtrInput
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringPtrInput
@@ -500,8 +468,7 @@ type VirtualMachineState struct {
 	EnableLogging pulumi.BoolPtrInput
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode pulumi.StringPtrInput
-	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-	// configuration, such as instance metadata, or configuration data for OVF images.
+	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapInput
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired pulumi.BoolPtrInput
@@ -526,22 +493,17 @@ type VirtualMachineState struct {
 	IgnoredGuestIps pulumi.StringArrayInput
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
 	Imported pulumi.BoolPtrInput
-	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-	// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-	// devices. Can be one of low, normal, medium, or high.
+	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
 	LatencySensitivity pulumi.StringPtrInput
 	// The size of the virtual machine's memory, in MB.
 	Memory pulumi.IntPtrInput
 	// Allow memory to be added to this virtual machine while it is running.
 	MemoryHotAddEnabled pulumi.BoolPtrInput
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	MemoryLimit pulumi.IntPtrInput
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation pulumi.IntPtrInput
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
 	MemoryReservationLockedToMax pulumi.BoolPtrInput
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount pulumi.IntPtrInput
@@ -557,8 +519,7 @@ type VirtualMachineState struct {
 	NestedHvEnabled pulumi.BoolPtrInput
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayInput
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-	// must be evenly divisible by this value.
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
 	NumCpus             pulumi.IntPtrInput
@@ -598,11 +559,9 @@ type VirtualMachineState struct {
 	StoragePolicyId pulumi.StringPtrInput
 	// The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
 	SwapPlacementPolicy pulumi.StringPtrInput
-	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-	// synchronized on startup and resume. Requires VMware Tools to be installed.
+	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost pulumi.BoolPtrInput
-	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
@@ -622,17 +581,13 @@ type VirtualMachineState struct {
 	VmxPath pulumi.StringPtrInput
 	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
 	Vtpm VirtualMachineVtpmPtrInput
-	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled pulumi.BoolPtrInput
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestIpTimeout pulumi.IntPtrInput
-	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-	// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
 	WaitForGuestNetRoutable pulumi.BoolPtrInput
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestNetTimeout pulumi.IntPtrInput
 }
 
@@ -659,8 +614,7 @@ type virtualMachineArgs struct {
 	CpuHotAddEnabled *bool `pulumi:"cpuHotAddEnabled"`
 	// Allow CPUs to be added to this virtual machine while it is running.
 	CpuHotRemoveEnabled *bool `pulumi:"cpuHotRemoveEnabled"`
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	CpuLimit *int `pulumi:"cpuLimit"`
 	// Enable CPU performance counters on this virtual machine.
 	CpuPerformanceCountersEnabled *bool `pulumi:"cpuPerformanceCountersEnabled"`
@@ -676,8 +630,7 @@ type virtualMachineArgs struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-	// disks that are created without datastores.
+	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// A specification for a virtual disk device on this virtual machine.
 	Disks []VirtualMachineDisk `pulumi:"disks"`
@@ -689,8 +642,7 @@ type virtualMachineArgs struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode *string `pulumi:"eptRviMode"`
-	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-	// configuration, such as instance metadata, or configuration data for OVF images.
+	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired *bool `pulumi:"extraConfigRebootRequired"`
@@ -711,22 +663,17 @@ type virtualMachineArgs struct {
 	IdeControllerCount *int    `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps []string `pulumi:"ignoredGuestIps"`
-	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-	// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-	// devices. Can be one of low, normal, medium, or high.
+	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
 	LatencySensitivity *string `pulumi:"latencySensitivity"`
 	// The size of the virtual machine's memory, in MB.
 	Memory *int `pulumi:"memory"`
 	// Allow memory to be added to this virtual machine while it is running.
 	MemoryHotAddEnabled *bool `pulumi:"memoryHotAddEnabled"`
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation *int `pulumi:"memoryReservation"`
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
 	MemoryReservationLockedToMax *bool `pulumi:"memoryReservationLockedToMax"`
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount *int `pulumi:"memoryShareCount"`
@@ -740,8 +687,7 @@ type virtualMachineArgs struct {
 	NestedHvEnabled *bool `pulumi:"nestedHvEnabled"`
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces []VirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-	// must be evenly divisible by this value.
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
 	NumCpus             *int `pulumi:"numCpus"`
@@ -778,11 +724,9 @@ type virtualMachineArgs struct {
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
-	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-	// synchronized on startup and resume. Requires VMware Tools to be installed.
+	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
-	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
@@ -794,17 +738,13 @@ type virtualMachineArgs struct {
 	VbsEnabled *bool `pulumi:"vbsEnabled"`
 	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
 	Vtpm *VirtualMachineVtpm `pulumi:"vtpm"`
-	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestIpTimeout *int `pulumi:"waitForGuestIpTimeout"`
-	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-	// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
 	WaitForGuestNetRoutable *bool `pulumi:"waitForGuestNetRoutable"`
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestNetTimeout *int `pulumi:"waitForGuestNetTimeout"`
 }
 
@@ -828,8 +768,7 @@ type VirtualMachineArgs struct {
 	CpuHotAddEnabled pulumi.BoolPtrInput
 	// Allow CPUs to be added to this virtual machine while it is running.
 	CpuHotRemoveEnabled pulumi.BoolPtrInput
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	CpuLimit pulumi.IntPtrInput
 	// Enable CPU performance counters on this virtual machine.
 	CpuPerformanceCountersEnabled pulumi.BoolPtrInput
@@ -845,8 +784,7 @@ type VirtualMachineArgs struct {
 	DatacenterId pulumi.StringPtrInput
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-	// disks that are created without datastores.
+	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
 	DatastoreId pulumi.StringPtrInput
 	// A specification for a virtual disk device on this virtual machine.
 	Disks VirtualMachineDiskArrayInput
@@ -858,8 +796,7 @@ type VirtualMachineArgs struct {
 	EnableLogging pulumi.BoolPtrInput
 	// The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
 	EptRviMode pulumi.StringPtrInput
-	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-	// configuration, such as instance metadata, or configuration data for OVF images.
+	// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 	ExtraConfig pulumi.StringMapInput
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
 	ExtraConfigRebootRequired pulumi.BoolPtrInput
@@ -880,22 +817,17 @@ type VirtualMachineArgs struct {
 	IdeControllerCount pulumi.IntPtrInput
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayInput
-	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-	// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-	// devices. Can be one of low, normal, medium, or high.
+	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
 	LatencySensitivity pulumi.StringPtrInput
 	// The size of the virtual machine's memory, in MB.
 	Memory pulumi.IntPtrInput
 	// Allow memory to be added to this virtual machine while it is running.
 	MemoryHotAddEnabled pulumi.BoolPtrInput
-	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-	// resources.
+	// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 	MemoryLimit pulumi.IntPtrInput
 	// The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
 	MemoryReservation pulumi.IntPtrInput
-	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-	// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-	// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+	// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
 	MemoryReservationLockedToMax pulumi.BoolPtrInput
 	// The amount of shares to allocate to memory for a custom share level.
 	MemoryShareCount pulumi.IntPtrInput
@@ -909,8 +841,7 @@ type VirtualMachineArgs struct {
 	NestedHvEnabled pulumi.BoolPtrInput
 	// A specification for a virtual NIC on this virtual machine.
 	NetworkInterfaces VirtualMachineNetworkInterfaceArrayInput
-	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-	// must be evenly divisible by this value.
+	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
 	NumCpus             pulumi.IntPtrInput
@@ -947,11 +878,9 @@ type VirtualMachineArgs struct {
 	StoragePolicyId pulumi.StringPtrInput
 	// The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
 	SwapPlacementPolicy pulumi.StringPtrInput
-	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-	// synchronized on startup and resume. Requires VMware Tools to be installed.
+	// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
 	SyncTimeWithHost pulumi.BoolPtrInput
-	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-	// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+	// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
@@ -963,17 +892,13 @@ type VirtualMachineArgs struct {
 	VbsEnabled pulumi.BoolPtrInput
 	// A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
 	Vtpm VirtualMachineVtpmPtrInput
-	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-	// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+	// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 	VvtdEnabled pulumi.BoolPtrInput
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestIpTimeout pulumi.IntPtrInput
-	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-	// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+	// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
 	WaitForGuestNetRoutable pulumi.BoolPtrInput
-	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter.
+	// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 	WaitForGuestNetTimeout pulumi.IntPtrInput
 }
 
@@ -1114,8 +1039,7 @@ func (o VirtualMachineOutput) CpuHotRemoveEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.CpuHotRemoveEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-// resources.
+// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 func (o VirtualMachineOutput) CpuLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.CpuLimit }).(pulumi.IntPtrOutput)
 }
@@ -1155,8 +1079,7 @@ func (o VirtualMachineOutput) DatastoreClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-// disks that are created without datastores.
+// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
 func (o VirtualMachineOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
@@ -1191,8 +1114,7 @@ func (o VirtualMachineOutput) EptRviMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.EptRviMode }).(pulumi.StringOutput)
 }
 
-// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-// configuration, such as instance metadata, or configuration data for OVF images.
+// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
 func (o VirtualMachineOutput) ExtraConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringMapOutput { return v.ExtraConfig }).(pulumi.StringMapOutput)
 }
@@ -1256,9 +1178,7 @@ func (o VirtualMachineOutput) Imported() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolOutput { return v.Imported }).(pulumi.BoolOutput)
 }
 
-// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-// devices. Can be one of low, normal, medium, or high.
+// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
 func (o VirtualMachineOutput) LatencySensitivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.LatencySensitivity }).(pulumi.StringPtrOutput)
 }
@@ -1273,8 +1193,7 @@ func (o VirtualMachineOutput) MemoryHotAddEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.MemoryHotAddEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-// resources.
+// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
 func (o VirtualMachineOutput) MemoryLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.MemoryLimit }).(pulumi.IntPtrOutput)
 }
@@ -1284,9 +1203,7 @@ func (o VirtualMachineOutput) MemoryReservation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.MemoryReservation }).(pulumi.IntPtrOutput)
 }
 
-// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
 func (o VirtualMachineOutput) MemoryReservationLockedToMax() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.MemoryReservationLockedToMax }).(pulumi.BoolPtrOutput)
 }
@@ -1326,8 +1243,7 @@ func (o VirtualMachineOutput) NetworkInterfaces() VirtualMachineNetworkInterface
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(VirtualMachineNetworkInterfaceArrayOutput)
 }
 
-// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-// must be evenly divisible by this value.
+// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 func (o VirtualMachineOutput) NumCoresPerSocket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.NumCoresPerSocket }).(pulumi.IntPtrOutput)
 }
@@ -1433,14 +1349,12 @@ func (o VirtualMachineOutput) SwapPlacementPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.SwapPlacementPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-// synchronized on startup and resume. Requires VMware Tools to be installed.
+// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
 func (o VirtualMachineOutput) SyncTimeWithHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.SyncTimeWithHost }).(pulumi.BoolPtrOutput)
 }
 
-// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-// setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
 func (o VirtualMachineOutput) SyncTimeWithHostPeriodically() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.SyncTimeWithHostPeriodically }).(pulumi.BoolPtrOutput)
 }
@@ -1490,26 +1404,22 @@ func (o VirtualMachineOutput) Vtpm() VirtualMachineVtpmPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineVtpmPtrOutput { return v.Vtpm }).(VirtualMachineVtpmPtrOutput)
 }
 
-// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
 func (o VirtualMachineOutput) VvtdEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.VvtdEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-// disables the waiter.
+// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 func (o VirtualMachineOutput) WaitForGuestIpTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.WaitForGuestIpTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
 func (o VirtualMachineOutput) WaitForGuestNetRoutable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.WaitForGuestNetRoutable }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-// disables the waiter.
+// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
 func (o VirtualMachineOutput) WaitForGuestNetTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.WaitForGuestNetTimeout }).(pulumi.IntPtrOutput)
 }
