@@ -158,8 +158,7 @@ type HostVirtualSwitch struct {
 
 	// List of active network adapters used for load balancing.
 	ActiveNics pulumi.StringArrayOutput `pulumi:"activeNics"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolPtrOutput `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolPtrOutput `pulumi:"allowMacChanges"`
@@ -167,8 +166,7 @@ type HostVirtualSwitch struct {
 	AllowPromiscuous pulumi.BoolPtrOutput `pulumi:"allowPromiscuous"`
 	// Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
 	BeaconInterval pulumi.IntPtrOutput `pulumi:"beaconInterval"`
-	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-	// only.
+	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon pulumi.BoolPtrOutput `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrOutput `pulumi:"failback"`
@@ -205,8 +203,7 @@ type HostVirtualSwitch struct {
 	ShapingPeakBandwidth pulumi.IntPtrOutput `pulumi:"shapingPeakBandwidth"`
 	// List of standby network adapters used for failover.
 	StandbyNics pulumi.StringArrayOutput `pulumi:"standbyNics"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-	// failover_explicit.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
 	TeamingPolicy pulumi.StringPtrOutput `pulumi:"teamingPolicy"`
 }
 
@@ -251,8 +248,7 @@ func GetHostVirtualSwitch(ctx *pulumi.Context,
 type hostVirtualSwitchState struct {
 	// List of active network adapters used for load balancing.
 	ActiveNics []string `pulumi:"activeNics"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits *bool `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges *bool `pulumi:"allowMacChanges"`
@@ -260,8 +256,7 @@ type hostVirtualSwitchState struct {
 	AllowPromiscuous *bool `pulumi:"allowPromiscuous"`
 	// Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
 	BeaconInterval *int `pulumi:"beaconInterval"`
-	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-	// only.
+	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
@@ -298,16 +293,14 @@ type hostVirtualSwitchState struct {
 	ShapingPeakBandwidth *int `pulumi:"shapingPeakBandwidth"`
 	// List of standby network adapters used for failover.
 	StandbyNics []string `pulumi:"standbyNics"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-	// failover_explicit.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
 }
 
 type HostVirtualSwitchState struct {
 	// List of active network adapters used for load balancing.
 	ActiveNics pulumi.StringArrayInput
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolPtrInput
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolPtrInput
@@ -315,8 +308,7 @@ type HostVirtualSwitchState struct {
 	AllowPromiscuous pulumi.BoolPtrInput
 	// Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
 	BeaconInterval pulumi.IntPtrInput
-	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-	// only.
+	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon pulumi.BoolPtrInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
@@ -353,8 +345,7 @@ type HostVirtualSwitchState struct {
 	ShapingPeakBandwidth pulumi.IntPtrInput
 	// List of standby network adapters used for failover.
 	StandbyNics pulumi.StringArrayInput
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-	// failover_explicit.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
 	TeamingPolicy pulumi.StringPtrInput
 }
 
@@ -365,8 +356,7 @@ func (HostVirtualSwitchState) ElementType() reflect.Type {
 type hostVirtualSwitchArgs struct {
 	// List of active network adapters used for load balancing.
 	ActiveNics []string `pulumi:"activeNics"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits *bool `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges *bool `pulumi:"allowMacChanges"`
@@ -374,8 +364,7 @@ type hostVirtualSwitchArgs struct {
 	AllowPromiscuous *bool `pulumi:"allowPromiscuous"`
 	// Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
 	BeaconInterval *int `pulumi:"beaconInterval"`
-	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-	// only.
+	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
@@ -412,8 +401,7 @@ type hostVirtualSwitchArgs struct {
 	ShapingPeakBandwidth *int `pulumi:"shapingPeakBandwidth"`
 	// List of standby network adapters used for failover.
 	StandbyNics []string `pulumi:"standbyNics"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-	// failover_explicit.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
 }
 
@@ -421,8 +409,7 @@ type hostVirtualSwitchArgs struct {
 type HostVirtualSwitchArgs struct {
 	// List of active network adapters used for load balancing.
 	ActiveNics pulumi.StringArrayInput
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolPtrInput
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolPtrInput
@@ -430,8 +417,7 @@ type HostVirtualSwitchArgs struct {
 	AllowPromiscuous pulumi.BoolPtrInput
 	// Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
 	BeaconInterval pulumi.IntPtrInput
-	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-	// only.
+	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon pulumi.BoolPtrInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
@@ -468,8 +454,7 @@ type HostVirtualSwitchArgs struct {
 	ShapingPeakBandwidth pulumi.IntPtrInput
 	// List of standby network adapters used for failover.
 	StandbyNics pulumi.StringArrayInput
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-	// failover_explicit.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
 	TeamingPolicy pulumi.StringPtrInput
 }
 
@@ -565,8 +550,7 @@ func (o HostVirtualSwitchOutput) ActiveNics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringArrayOutput { return v.ActiveNics }).(pulumi.StringArrayOutput)
 }
 
-// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-// that of its own.
+// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 func (o HostVirtualSwitchOutput) AllowForgedTransmits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.AllowForgedTransmits }).(pulumi.BoolPtrOutput)
 }
@@ -586,8 +570,7 @@ func (o HostVirtualSwitchOutput) BeaconInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.BeaconInterval }).(pulumi.IntPtrOutput)
 }
 
-// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-// only.
+// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 func (o HostVirtualSwitchOutput) CheckBeacon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.CheckBeacon }).(pulumi.BoolPtrOutput)
 }
@@ -669,8 +652,7 @@ func (o HostVirtualSwitchOutput) StandbyNics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringArrayOutput { return v.StandbyNics }).(pulumi.StringArrayOutput)
 }
 
-// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-// failover_explicit.
+// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
 func (o HostVirtualSwitchOutput) TeamingPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringPtrOutput { return v.TeamingPolicy }).(pulumi.StringPtrOutput)
 }

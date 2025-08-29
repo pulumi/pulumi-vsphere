@@ -160,11 +160,11 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId!: pulumi.Output<string>;
+    declare public readonly computeClusterId: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -173,16 +173,16 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    public readonly mandatory!: pulumi.Output<boolean | undefined>;
+    declare public readonly mandatory: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The UUIDs of the virtual machines to run
      * on the same host together.
      */
-    public readonly virtualMachineIds!: pulumi.Output<string[]>;
+    declare public readonly virtualMachineIds: pulumi.Output<string[]>;
 
     /**
      * Create a ComputeClusterVmAffinityRule resource with the given unique name, arguments, and options.
@@ -197,24 +197,24 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmAffinityRuleState | undefined;
-            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = state?.computeClusterId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["mandatory"] = state?.mandatory;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["virtualMachineIds"] = state?.virtualMachineIds;
         } else {
             const args = argsOrState as ComputeClusterVmAffinityRuleArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
+            if (args?.computeClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.virtualMachineIds === undefined) && !opts.urn) {
+            if (args?.virtualMachineIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
-            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = args?.computeClusterId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["mandatory"] = args?.mandatory;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["virtualMachineIds"] = args?.virtualMachineIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeClusterVmAffinityRule.__pulumiType, name, resourceInputs, opts);

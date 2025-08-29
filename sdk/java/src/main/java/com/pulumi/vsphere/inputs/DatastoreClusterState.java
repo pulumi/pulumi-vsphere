@@ -189,16 +189,14 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-     * freeSpace, drs_free_space_threshold is used.
+     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
      * 
      */
     @Import(name="sdrsFreeSpaceThresholdMode")
     private @Nullable Output<String> sdrsFreeSpaceThresholdMode;
 
     /**
-     * @return The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-     * freeSpace, drs_free_space_threshold is used.
+     * @return The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
      * 
      */
     public Optional<Output<String>> sdrsFreeSpaceThresholdMode() {
@@ -206,16 +204,14 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-     * balance the space.
+     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
      * 
      */
     @Import(name="sdrsFreeSpaceUtilizationDifference")
     private @Nullable Output<Integer> sdrsFreeSpaceUtilizationDifference;
 
     /**
-     * @return The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-     * balance the space.
+     * @return The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
      * 
      */
     public Optional<Output<Integer>> sdrsFreeSpaceUtilizationDifference() {
@@ -238,16 +234,14 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-     * datastore.
+     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
      * 
      */
     @Import(name="sdrsIoLatencyThreshold")
     private @Nullable Output<Integer> sdrsIoLatencyThreshold;
 
     /**
-     * @return The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-     * datastore.
+     * @return The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
      * 
      */
     public Optional<Output<Integer>> sdrsIoLatencyThreshold() {
@@ -285,16 +279,14 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-     * move VMs off of a datastore.
+     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
      * 
      */
     @Import(name="sdrsIoReservableIopsThreshold")
     private @Nullable Output<Integer> sdrsIoReservableIopsThreshold;
 
     /**
-     * @return The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-     * move VMs off of a datastore.
+     * @return The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
      * 
      */
     public Optional<Output<Integer>> sdrsIoReservableIopsThreshold() {
@@ -302,16 +294,14 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      * 
      */
     @Import(name="sdrsIoReservablePercentThreshold")
     private @Nullable Output<Integer> sdrsIoReservablePercentThreshold;
 
     /**
-     * @return The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+     * @return The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      * 
      */
     public Optional<Output<Integer>> sdrsIoReservablePercentThreshold() {
@@ -710,8 +700,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-         * freeSpace, drs_free_space_threshold is used.
+         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
          * 
          * @return builder
          * 
@@ -722,8 +711,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-         * freeSpace, drs_free_space_threshold is used.
+         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
          * 
          * @return builder
          * 
@@ -733,8 +721,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsFreeSpaceUtilizationDifference The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-         * balance the space.
+         * @param sdrsFreeSpaceUtilizationDifference The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
          * 
          * @return builder
          * 
@@ -745,8 +732,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsFreeSpaceUtilizationDifference The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-         * balance the space.
+         * @param sdrsFreeSpaceUtilizationDifference The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
          * 
          * @return builder
          * 
@@ -777,8 +763,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsIoLatencyThreshold The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-         * datastore.
+         * @param sdrsIoLatencyThreshold The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
          * 
          * @return builder
          * 
@@ -789,8 +774,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsIoLatencyThreshold The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-         * datastore.
+         * @param sdrsIoLatencyThreshold The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
          * 
          * @return builder
          * 
@@ -842,8 +826,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsIoReservableIopsThreshold The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-         * move VMs off of a datastore.
+         * @param sdrsIoReservableIopsThreshold The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
          * 
          * @return builder
          * 
@@ -854,8 +837,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsIoReservableIopsThreshold The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-         * move VMs off of a datastore.
+         * @param sdrsIoReservableIopsThreshold The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
          * 
          * @return builder
          * 
@@ -865,8 +847,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsIoReservablePercentThreshold The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-         * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+         * @param sdrsIoReservablePercentThreshold The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
          * 
          * @return builder
          * 
@@ -877,8 +858,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sdrsIoReservablePercentThreshold The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-         * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+         * @param sdrsIoReservablePercentThreshold The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
          * 
          * @return builder
          * 

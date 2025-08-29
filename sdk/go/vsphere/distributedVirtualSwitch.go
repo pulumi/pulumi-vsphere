@@ -103,8 +103,7 @@ type DistributedVirtualSwitch struct {
 
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks pulumi.StringArrayOutput `pulumi:"activeUplinks"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolOutput `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolOutput `pulumi:"allowMacChanges"`
@@ -239,8 +238,7 @@ type DistributedVirtualSwitch struct {
 	NetflowInternalFlowsOnly pulumi.BoolPtrOutput `pulumi:"netflowInternalFlowsOnly"`
 	// The observation Domain ID for the netflow collector.
 	NetflowObservationDomainId pulumi.IntPtrOutput `pulumi:"netflowObservationDomainId"`
-	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-	// packets are analyzed.
+	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
 	NetflowSamplingRate pulumi.IntPtrOutput `pulumi:"netflowSamplingRate"`
 	// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
 	NetworkResourceControlEnabled pulumi.BoolPtrOutput `pulumi:"networkResourceControlEnabled"`
@@ -264,14 +262,11 @@ type DistributedVirtualSwitch struct {
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringOutput `pulumi:"teamingPolicy"`
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink pulumi.BoolOutput `pulumi:"txUplink"`
-	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-	// across hosts.
+	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
 	Uplinks pulumi.StringArrayOutput `pulumi:"uplinks"`
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
 	VdpMaximumMbit pulumi.IntOutput `pulumi:"vdpMaximumMbit"`
@@ -350,8 +345,7 @@ func GetDistributedVirtualSwitch(ctx *pulumi.Context,
 type distributedVirtualSwitchState struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks []string `pulumi:"activeUplinks"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits *bool `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges *bool `pulumi:"allowMacChanges"`
@@ -486,8 +480,7 @@ type distributedVirtualSwitchState struct {
 	NetflowInternalFlowsOnly *bool `pulumi:"netflowInternalFlowsOnly"`
 	// The observation Domain ID for the netflow collector.
 	NetflowObservationDomainId *int `pulumi:"netflowObservationDomainId"`
-	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-	// packets are analyzed.
+	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
 	NetworkResourceControlEnabled *bool `pulumi:"networkResourceControlEnabled"`
@@ -511,14 +504,11 @@ type distributedVirtualSwitchState struct {
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink *bool `pulumi:"txUplink"`
-	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-	// across hosts.
+	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
 	Uplinks []string `pulumi:"uplinks"`
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
 	VdpMaximumMbit *int `pulumi:"vdpMaximumMbit"`
@@ -565,8 +555,7 @@ type distributedVirtualSwitchState struct {
 type DistributedVirtualSwitchState struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks pulumi.StringArrayInput
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolPtrInput
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolPtrInput
@@ -701,8 +690,7 @@ type DistributedVirtualSwitchState struct {
 	NetflowInternalFlowsOnly pulumi.BoolPtrInput
 	// The observation Domain ID for the netflow collector.
 	NetflowObservationDomainId pulumi.IntPtrInput
-	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-	// packets are analyzed.
+	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
 	NetworkResourceControlEnabled pulumi.BoolPtrInput
@@ -726,14 +714,11 @@ type DistributedVirtualSwitchState struct {
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringPtrInput
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink pulumi.BoolPtrInput
-	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-	// across hosts.
+	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
 	Uplinks pulumi.StringArrayInput
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
 	VdpMaximumMbit pulumi.IntPtrInput
@@ -784,8 +769,7 @@ func (DistributedVirtualSwitchState) ElementType() reflect.Type {
 type distributedVirtualSwitchArgs struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks []string `pulumi:"activeUplinks"`
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits *bool `pulumi:"allowForgedTransmits"`
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges *bool `pulumi:"allowMacChanges"`
@@ -917,8 +901,7 @@ type distributedVirtualSwitchArgs struct {
 	NetflowInternalFlowsOnly *bool `pulumi:"netflowInternalFlowsOnly"`
 	// The observation Domain ID for the netflow collector.
 	NetflowObservationDomainId *int `pulumi:"netflowObservationDomainId"`
-	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-	// packets are analyzed.
+	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
 	NetworkResourceControlEnabled *bool `pulumi:"networkResourceControlEnabled"`
@@ -942,14 +925,11 @@ type distributedVirtualSwitchArgs struct {
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink *bool `pulumi:"txUplink"`
-	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-	// across hosts.
+	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
 	Uplinks []string `pulumi:"uplinks"`
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
 	VdpMaximumMbit *int `pulumi:"vdpMaximumMbit"`
@@ -997,8 +977,7 @@ type distributedVirtualSwitchArgs struct {
 type DistributedVirtualSwitchArgs struct {
 	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	ActiveUplinks pulumi.StringArrayInput
-	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-	// that of its own.
+	// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 	AllowForgedTransmits pulumi.BoolPtrInput
 	// Controls whether or not the Media Access Control (MAC) address can be changed.
 	AllowMacChanges pulumi.BoolPtrInput
@@ -1130,8 +1109,7 @@ type DistributedVirtualSwitchArgs struct {
 	NetflowInternalFlowsOnly pulumi.BoolPtrInput
 	// The observation Domain ID for the netflow collector.
 	NetflowObservationDomainId pulumi.IntPtrInput
-	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-	// packets are analyzed.
+	// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
 	NetworkResourceControlEnabled pulumi.BoolPtrInput
@@ -1155,14 +1133,11 @@ type DistributedVirtualSwitchArgs struct {
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
-	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-	// failover_explicit, or loadbalance_loadbased.
+	// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 	TeamingPolicy pulumi.StringPtrInput
-	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-	// forwarded done by the switch.
+	// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 	TxUplink pulumi.BoolPtrInput
-	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-	// across hosts.
+	// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
 	Uplinks pulumi.StringArrayInput
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
 	VdpMaximumMbit pulumi.IntPtrInput
@@ -1298,8 +1273,7 @@ func (o DistributedVirtualSwitchOutput) ActiveUplinks() pulumi.StringArrayOutput
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.ActiveUplinks }).(pulumi.StringArrayOutput)
 }
 
-// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-// that of its own.
+// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
 func (o DistributedVirtualSwitchOutput) AllowForgedTransmits() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.AllowForgedTransmits }).(pulumi.BoolOutput)
 }
@@ -1614,8 +1588,7 @@ func (o DistributedVirtualSwitchOutput) NetflowObservationDomainId() pulumi.IntP
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowObservationDomainId }).(pulumi.IntPtrOutput)
 }
 
-// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-// packets are analyzed.
+// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
 func (o DistributedVirtualSwitchOutput) NetflowSamplingRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowSamplingRate }).(pulumi.IntPtrOutput)
 }
@@ -1677,20 +1650,17 @@ func (o DistributedVirtualSwitchOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-// failover_explicit, or loadbalance_loadbased.
+// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
 func (o DistributedVirtualSwitchOutput) TeamingPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.TeamingPolicy }).(pulumi.StringOutput)
 }
 
-// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-// forwarded done by the switch.
+// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
 func (o DistributedVirtualSwitchOutput) TxUplink() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.TxUplink }).(pulumi.BoolOutput)
 }
 
-// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-// across hosts.
+// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
 func (o DistributedVirtualSwitchOutput) Uplinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.Uplinks }).(pulumi.StringArrayOutput)
 }

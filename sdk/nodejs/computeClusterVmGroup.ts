@@ -130,12 +130,12 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId!: pulumi.Output<string>;
+    declare public readonly computeClusterId: pulumi.Output<string>;
     /**
      * The name of the VM group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The UUIDs of the virtual machines in this
      * group.
@@ -150,7 +150,7 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      */
-    public readonly virtualMachineIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly virtualMachineIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ComputeClusterVmGroup resource with the given unique name, arguments, and options.
@@ -165,17 +165,17 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmGroupState | undefined;
-            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = state?.computeClusterId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["virtualMachineIds"] = state?.virtualMachineIds;
         } else {
             const args = argsOrState as ComputeClusterVmGroupArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
+            if (args?.computeClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = args?.computeClusterId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["virtualMachineIds"] = args?.virtualMachineIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeClusterVmGroup.__pulumiType, name, resourceInputs, opts);

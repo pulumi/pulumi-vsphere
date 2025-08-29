@@ -100,19 +100,14 @@ class ComputeClusterArgs:
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter Server.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
-        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-               machines in the cluster. Requires that DRS be enabled.
-        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-               affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-               setting.
+        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
+        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] drs_advanced_options: Advanced configuration options for DRS and DPM.
-        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-               fullyAutomated.
+        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         :param pulumi.Input[_builtins.bool] drs_enable_predictive_drs: When true, enables DRS to use data from vRealize Operations Manager to make proactive DRS recommendations.
         :param pulumi.Input[_builtins.bool] drs_enable_vm_overrides: When true, allows individual VM overrides within this cluster to be set.
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
-        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-               more imbalance while a higher setting will tolerate less.
+        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
@@ -120,67 +115,37 @@ class ComputeClusterArgs:
                The provider will place a cluster named `compute-cluster-test` in a
                host folder located at `/dc1/host/foo/bar`, with the final inventory path
                being `/dc1/host/foo/bar/datastore-cluster-test`.
-        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-               for testing and is not recommended in normal use.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-               failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-               will ignore the host when making recommendations.
-        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-               machine operations. The maximum is one less than the number of hosts in the cluster.
-        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-               warnings only, whereas a value of 100 disables the setting.
-        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-               permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-               slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-               issues.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-               subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-               from the total amount of resources in the cluster. Disable to supply user-defined values.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-               the cluster to reserve for failover.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-               the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
+        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
+        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
+        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_cpu: When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_memory: When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-               to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-               currently in the cluster.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ha_advanced_options: Advanced configuration options for vSphere HA.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-               affected datastore clears in the middle of an APD event. Can be one of none or reset.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-               restartAggressive.
-        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-               the response action defined in ha_datastore_apd_response.
-        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
+        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         :param pulumi.Input[_builtins.bool] ha_enabled: Enable vSphere HA for this cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-               ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-               allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-               Can be one of none, powerOff, or shutdown.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         :param pulumi.Input[_builtins.str] ha_host_monitoring: Global setting that controls whether vSphere HA remediates VMs on host failure. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-               failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-               on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
-        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-               failed. The value is in seconds.
-        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-               time is allotted.
+        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
+        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         :param pulumi.Input[_builtins.int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to a virtual machine when responding to a failure event.
         :param pulumi.Input[_builtins.int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on a virtual machine before monitoring for heartbeats.
-        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         :param pulumi.Input[_builtins.int] ha_vm_restart_additional_delay: Additional delay in seconds after ready condition is met. A VM is considered ready at this point.
-        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-               high, or highest.
-        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-               proceeding with the next priority.
+        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
+        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         :param pulumi.Input[_builtins.int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
         :param pulumi.Input['ComputeClusterHostImageArgs'] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[_builtins.bool] host_managed: Must be set if cluster enrollment is managed from host resource.
@@ -188,11 +153,9 @@ class ComputeClusterArgs:
         :param pulumi.Input[_builtins.str] name: The name of the cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_automation_level: The DRS behavior for proactive HA recommendations. Can be one of Automated or Manual.
         :param pulumi.Input[_builtins.bool] proactive_ha_enabled: Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
-        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-               this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
-        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-               cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[_builtins.bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[_builtins.bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
@@ -392,8 +355,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="dpmEnabled")
     def dpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-        machines in the cluster. Requires that DRS be enabled.
+        Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
         """
         return pulumi.get(self, "dpm_enabled")
 
@@ -405,9 +367,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="dpmThreshold")
     def dpm_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-        affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-        setting.
+        A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         """
         return pulumi.get(self, "dpm_threshold")
 
@@ -431,8 +391,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="drsAutomationLevel")
     def drs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-        fullyAutomated.
+        The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         """
         return pulumi.get(self, "drs_automation_level")
 
@@ -480,8 +439,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="drsMigrationThreshold")
     def drs_migration_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-        more imbalance while a higher setting will tolerate less.
+        A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         """
         return pulumi.get(self, "drs_migration_threshold")
 
@@ -522,8 +480,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="forceEvacuateOnDestroy")
     def force_evacuate_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-        for testing and is not recommended in normal use.
+        Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 
@@ -535,9 +492,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlFailoverHostSystemIds")
     def ha_admission_control_failover_host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-        failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-        will ignore the host when making recommendations.
+        When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         """
         return pulumi.get(self, "ha_admission_control_failover_host_system_ids")
 
@@ -549,8 +504,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlHostFailureTolerance")
     def ha_admission_control_host_failure_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-        machine operations. The maximum is one less than the number of hosts in the cluster.
+        The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_host_failure_tolerance")
 
@@ -562,8 +516,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlPerformanceTolerance")
     def ha_admission_control_performance_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-        warnings only, whereas a value of 100 disables the setting.
+        The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
         """
         return pulumi.get(self, "ha_admission_control_performance_tolerance")
 
@@ -575,10 +528,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlPolicy")
     def ha_admission_control_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-        permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-        slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-        issues.
+        The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
         """
         return pulumi.get(self, "ha_admission_control_policy")
 
@@ -590,9 +540,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlResourcePercentageAutoCompute")
     def ha_admission_control_resource_percentage_auto_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-        subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-        from the total amount of resources in the cluster. Disable to supply user-defined values.
+        When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_auto_compute")
 
@@ -604,8 +552,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlResourcePercentageCpu")
     def ha_admission_control_resource_percentage_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-        the cluster to reserve for failover.
+        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_cpu")
 
@@ -617,8 +564,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlResourcePercentageMemory")
     def ha_admission_control_resource_percentage_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-        the cluster to reserve for failover.
+        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_memory")
 
@@ -654,9 +600,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haAdmissionControlSlotPolicyUseExplicitSize")
     def ha_admission_control_slot_policy_use_explicit_size(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-        to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-        currently in the cluster.
+        When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_use_explicit_size")
 
@@ -680,8 +624,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
     def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-        affected datastore clears in the middle of an APD event. Can be one of none or reset.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
@@ -693,9 +636,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haDatastoreApdResponse")
     def ha_datastore_apd_response(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-        detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-        restartAggressive.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
@@ -707,8 +648,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-        the response action defined in ha_datastore_apd_response.
+        When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -720,8 +660,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haDatastorePdlResponse")
     def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-        detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
@@ -745,8 +684,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haHeartbeatDatastoreIds")
     def ha_heartbeat_datastore_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-        ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+        The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_ids")
 
@@ -758,8 +696,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haHeartbeatDatastorePolicy")
     def ha_heartbeat_datastore_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-        allFeasibleDsWithUserPreference.
+        The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_policy")
 
@@ -771,8 +708,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haHostIsolationResponse")
     def ha_host_isolation_response(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-        Can be one of none, powerOff, or shutdown.
+        The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
@@ -796,8 +732,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmComponentProtection")
     def ha_vm_component_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-        failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+        Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
         """
         return pulumi.get(self, "ha_vm_component_protection")
 
@@ -809,8 +744,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmDependencyRestartCondition")
     def ha_vm_dependency_restart_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-        on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+        The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
         """
         return pulumi.get(self, "ha_vm_dependency_restart_condition")
 
@@ -822,8 +756,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-        failed. The value is in seconds.
+        If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -835,9 +768,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-        attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-        time is allotted.
+        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -873,8 +804,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmMonitoring")
     def ha_vm_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-        vmMonitoringOnly, or vmAndAppMonitoring.
+        The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
@@ -898,8 +828,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmRestartPriority")
     def ha_vm_restart_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-        high, or highest.
+        The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
@@ -911,8 +840,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmRestartTimeout")
     def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-        proceeding with the next priority.
+        The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
@@ -1008,8 +936,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="proactiveHaModerateRemediation")
     def proactive_ha_moderate_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-        this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+        The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         """
         return pulumi.get(self, "proactive_ha_moderate_remediation")
 
@@ -1033,8 +960,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="proactiveHaSevereRemediation")
     def proactive_ha_severe_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-        cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+        The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         """
         return pulumi.get(self, "proactive_ha_severe_remediation")
 
@@ -1306,19 +1232,14 @@ class _ComputeClusterState:
         :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
-        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-               machines in the cluster. Requires that DRS be enabled.
-        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-               affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-               setting.
+        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
+        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] drs_advanced_options: Advanced configuration options for DRS and DPM.
-        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-               fullyAutomated.
+        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         :param pulumi.Input[_builtins.bool] drs_enable_predictive_drs: When true, enables DRS to use data from vRealize Operations Manager to make proactive DRS recommendations.
         :param pulumi.Input[_builtins.bool] drs_enable_vm_overrides: When true, allows individual VM overrides within this cluster to be set.
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
-        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-               more imbalance while a higher setting will tolerate less.
+        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
@@ -1326,67 +1247,37 @@ class _ComputeClusterState:
                The provider will place a cluster named `compute-cluster-test` in a
                host folder located at `/dc1/host/foo/bar`, with the final inventory path
                being `/dc1/host/foo/bar/datastore-cluster-test`.
-        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-               for testing and is not recommended in normal use.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-               failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-               will ignore the host when making recommendations.
-        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-               machine operations. The maximum is one less than the number of hosts in the cluster.
-        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-               warnings only, whereas a value of 100 disables the setting.
-        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-               permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-               slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-               issues.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-               subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-               from the total amount of resources in the cluster. Disable to supply user-defined values.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-               the cluster to reserve for failover.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-               the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
+        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
+        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
+        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_cpu: When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_memory: When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-               to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-               currently in the cluster.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ha_advanced_options: Advanced configuration options for vSphere HA.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-               affected datastore clears in the middle of an APD event. Can be one of none or reset.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-               restartAggressive.
-        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-               the response action defined in ha_datastore_apd_response.
-        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
+        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         :param pulumi.Input[_builtins.bool] ha_enabled: Enable vSphere HA for this cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-               ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-               allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-               Can be one of none, powerOff, or shutdown.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         :param pulumi.Input[_builtins.str] ha_host_monitoring: Global setting that controls whether vSphere HA remediates VMs on host failure. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-               failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-               on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
-        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-               failed. The value is in seconds.
-        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-               time is allotted.
+        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
+        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         :param pulumi.Input[_builtins.int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to a virtual machine when responding to a failure event.
         :param pulumi.Input[_builtins.int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on a virtual machine before monitoring for heartbeats.
-        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         :param pulumi.Input[_builtins.int] ha_vm_restart_additional_delay: Additional delay in seconds after ready condition is met. A VM is considered ready at this point.
-        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-               high, or highest.
-        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-               proceeding with the next priority.
+        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
+        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         :param pulumi.Input[_builtins.int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
         :param pulumi.Input['ComputeClusterHostImageArgs'] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[_builtins.bool] host_managed: Must be set if cluster enrollment is managed from host resource.
@@ -1394,11 +1285,9 @@ class _ComputeClusterState:
         :param pulumi.Input[_builtins.str] name: The name of the cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_automation_level: The DRS behavior for proactive HA recommendations. Can be one of Automated or Manual.
         :param pulumi.Input[_builtins.bool] proactive_ha_enabled: Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
-        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-               this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
-        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-               cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         :param pulumi.Input[_builtins.str] resource_pool_id: The managed object ID of the primary
                resource pool for this cluster. This can be passed directly to the
                `resource_pool_id`
@@ -1606,8 +1495,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="dpmEnabled")
     def dpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-        machines in the cluster. Requires that DRS be enabled.
+        Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
         """
         return pulumi.get(self, "dpm_enabled")
 
@@ -1619,9 +1507,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="dpmThreshold")
     def dpm_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-        affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-        setting.
+        A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         """
         return pulumi.get(self, "dpm_threshold")
 
@@ -1645,8 +1531,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="drsAutomationLevel")
     def drs_automation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-        fullyAutomated.
+        The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         """
         return pulumi.get(self, "drs_automation_level")
 
@@ -1694,8 +1579,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="drsMigrationThreshold")
     def drs_migration_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-        more imbalance while a higher setting will tolerate less.
+        A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         """
         return pulumi.get(self, "drs_migration_threshold")
 
@@ -1736,8 +1620,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="forceEvacuateOnDestroy")
     def force_evacuate_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-        for testing and is not recommended in normal use.
+        Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 
@@ -1749,9 +1632,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlFailoverHostSystemIds")
     def ha_admission_control_failover_host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-        failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-        will ignore the host when making recommendations.
+        When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         """
         return pulumi.get(self, "ha_admission_control_failover_host_system_ids")
 
@@ -1763,8 +1644,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlHostFailureTolerance")
     def ha_admission_control_host_failure_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-        machine operations. The maximum is one less than the number of hosts in the cluster.
+        The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_host_failure_tolerance")
 
@@ -1776,8 +1656,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlPerformanceTolerance")
     def ha_admission_control_performance_tolerance(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-        warnings only, whereas a value of 100 disables the setting.
+        The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
         """
         return pulumi.get(self, "ha_admission_control_performance_tolerance")
 
@@ -1789,10 +1668,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlPolicy")
     def ha_admission_control_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-        permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-        slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-        issues.
+        The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
         """
         return pulumi.get(self, "ha_admission_control_policy")
 
@@ -1804,9 +1680,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlResourcePercentageAutoCompute")
     def ha_admission_control_resource_percentage_auto_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-        subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-        from the total amount of resources in the cluster. Disable to supply user-defined values.
+        When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_auto_compute")
 
@@ -1818,8 +1692,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlResourcePercentageCpu")
     def ha_admission_control_resource_percentage_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-        the cluster to reserve for failover.
+        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_cpu")
 
@@ -1831,8 +1704,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlResourcePercentageMemory")
     def ha_admission_control_resource_percentage_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-        the cluster to reserve for failover.
+        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_memory")
 
@@ -1868,9 +1740,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haAdmissionControlSlotPolicyUseExplicitSize")
     def ha_admission_control_slot_policy_use_explicit_size(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-        to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-        currently in the cluster.
+        When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_use_explicit_size")
 
@@ -1894,8 +1764,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
     def ha_datastore_apd_recovery_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-        affected datastore clears in the middle of an APD event. Can be one of none or reset.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
@@ -1907,9 +1776,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haDatastoreApdResponse")
     def ha_datastore_apd_response(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-        detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-        restartAggressive.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
@@ -1921,8 +1788,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-        the response action defined in ha_datastore_apd_response.
+        When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -1934,8 +1800,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haDatastorePdlResponse")
     def ha_datastore_pdl_response(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-        detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
@@ -1959,8 +1824,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haHeartbeatDatastoreIds")
     def ha_heartbeat_datastore_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-        ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+        The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_ids")
 
@@ -1972,8 +1836,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haHeartbeatDatastorePolicy")
     def ha_heartbeat_datastore_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-        allFeasibleDsWithUserPreference.
+        The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_policy")
 
@@ -1985,8 +1848,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haHostIsolationResponse")
     def ha_host_isolation_response(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-        Can be one of none, powerOff, or shutdown.
+        The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
@@ -2010,8 +1872,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmComponentProtection")
     def ha_vm_component_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-        failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+        Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
         """
         return pulumi.get(self, "ha_vm_component_protection")
 
@@ -2023,8 +1884,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmDependencyRestartCondition")
     def ha_vm_dependency_restart_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-        on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+        The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
         """
         return pulumi.get(self, "ha_vm_dependency_restart_condition")
 
@@ -2036,8 +1896,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-        failed. The value is in seconds.
+        If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -2049,9 +1908,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-        attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-        time is allotted.
+        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -2087,8 +1944,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmMonitoring")
     def ha_vm_monitoring(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-        vmMonitoringOnly, or vmAndAppMonitoring.
+        The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
@@ -2112,8 +1968,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmRestartPriority")
     def ha_vm_restart_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-        high, or highest.
+        The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
@@ -2125,8 +1980,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmRestartTimeout")
     def ha_vm_restart_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-        proceeding with the next priority.
+        The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
@@ -2222,8 +2076,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="proactiveHaModerateRemediation")
     def proactive_ha_moderate_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-        this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+        The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         """
         return pulumi.get(self, "proactive_ha_moderate_remediation")
 
@@ -2247,8 +2100,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="proactiveHaSevereRemediation")
     def proactive_ha_severe_remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-        cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+        The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         """
         return pulumi.get(self, "proactive_ha_severe_remediation")
 
@@ -2628,19 +2480,14 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
-        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-               machines in the cluster. Requires that DRS be enabled.
-        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-               affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-               setting.
+        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
+        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] drs_advanced_options: Advanced configuration options for DRS and DPM.
-        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-               fullyAutomated.
+        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         :param pulumi.Input[_builtins.bool] drs_enable_predictive_drs: When true, enables DRS to use data from vRealize Operations Manager to make proactive DRS recommendations.
         :param pulumi.Input[_builtins.bool] drs_enable_vm_overrides: When true, allows individual VM overrides within this cluster to be set.
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
-        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-               more imbalance while a higher setting will tolerate less.
+        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
@@ -2648,67 +2495,37 @@ class ComputeCluster(pulumi.CustomResource):
                The provider will place a cluster named `compute-cluster-test` in a
                host folder located at `/dc1/host/foo/bar`, with the final inventory path
                being `/dc1/host/foo/bar/datastore-cluster-test`.
-        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-               for testing and is not recommended in normal use.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-               failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-               will ignore the host when making recommendations.
-        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-               machine operations. The maximum is one less than the number of hosts in the cluster.
-        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-               warnings only, whereas a value of 100 disables the setting.
-        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-               permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-               slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-               issues.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-               subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-               from the total amount of resources in the cluster. Disable to supply user-defined values.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-               the cluster to reserve for failover.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-               the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
+        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
+        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
+        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_cpu: When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_memory: When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-               to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-               currently in the cluster.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ha_advanced_options: Advanced configuration options for vSphere HA.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-               affected datastore clears in the middle of an APD event. Can be one of none or reset.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-               restartAggressive.
-        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-               the response action defined in ha_datastore_apd_response.
-        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
+        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         :param pulumi.Input[_builtins.bool] ha_enabled: Enable vSphere HA for this cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-               ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-               allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-               Can be one of none, powerOff, or shutdown.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         :param pulumi.Input[_builtins.str] ha_host_monitoring: Global setting that controls whether vSphere HA remediates VMs on host failure. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-               failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-               on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
-        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-               failed. The value is in seconds.
-        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-               time is allotted.
+        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
+        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         :param pulumi.Input[_builtins.int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to a virtual machine when responding to a failure event.
         :param pulumi.Input[_builtins.int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on a virtual machine before monitoring for heartbeats.
-        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         :param pulumi.Input[_builtins.int] ha_vm_restart_additional_delay: Additional delay in seconds after ready condition is met. A VM is considered ready at this point.
-        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-               high, or highest.
-        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-               proceeding with the next priority.
+        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
+        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         :param pulumi.Input[_builtins.int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
         :param pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[_builtins.bool] host_managed: Must be set if cluster enrollment is managed from host resource.
@@ -2716,11 +2533,9 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_automation_level: The DRS behavior for proactive HA recommendations. Can be one of Automated or Manual.
         :param pulumi.Input[_builtins.bool] proactive_ha_enabled: Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
-        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-               this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
-        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-               cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[_builtins.bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[_builtins.bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
@@ -3092,19 +2907,14 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
-        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-               machines in the cluster. Requires that DRS be enabled.
-        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-               affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-               setting.
+        :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
+        :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] drs_advanced_options: Advanced configuration options for DRS and DPM.
-        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-               fullyAutomated.
+        :param pulumi.Input[_builtins.str] drs_automation_level: The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         :param pulumi.Input[_builtins.bool] drs_enable_predictive_drs: When true, enables DRS to use data from vRealize Operations Manager to make proactive DRS recommendations.
         :param pulumi.Input[_builtins.bool] drs_enable_vm_overrides: When true, allows individual VM overrides within this cluster to be set.
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
-        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-               more imbalance while a higher setting will tolerate less.
+        :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
         :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
@@ -3112,67 +2922,37 @@ class ComputeCluster(pulumi.CustomResource):
                The provider will place a cluster named `compute-cluster-test` in a
                host folder located at `/dc1/host/foo/bar`, with the final inventory path
                being `/dc1/host/foo/bar/datastore-cluster-test`.
-        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-               for testing and is not recommended in normal use.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-               failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-               will ignore the host when making recommendations.
-        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-               machine operations. The maximum is one less than the number of hosts in the cluster.
-        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-               warnings only, whereas a value of 100 disables the setting.
-        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-               permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-               slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-               issues.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-               subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-               from the total amount of resources in the cluster. Disable to supply user-defined values.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-               the cluster to reserve for failover.
-        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-               the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
+        :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
+        :param pulumi.Input[_builtins.int] ha_admission_control_performance_tolerance: The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
+        :param pulumi.Input[_builtins.str] ha_admission_control_policy: The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_resource_percentage_auto_compute: When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_cpu: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
+        :param pulumi.Input[_builtins.int] ha_admission_control_resource_percentage_memory: When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_cpu: When ha_admission_control_policy is slotPolicy, this controls the user-defined CPU slot size, in MHz.
         :param pulumi.Input[_builtins.int] ha_admission_control_slot_policy_explicit_memory: When ha_admission_control_policy is slotPolicy, this controls the user-defined memory slot size, in MB.
-        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-               to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-               currently in the cluster.
+        :param pulumi.Input[_builtins.bool] ha_admission_control_slot_policy_use_explicit_size: When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ha_advanced_options: Advanced configuration options for vSphere HA.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-               affected datastore clears in the middle of an APD event. Can be one of none or reset.
-        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-               restartAggressive.
-        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-               the response action defined in ha_datastore_apd_response.
-        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-               detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
+        :param pulumi.Input[_builtins.str] ha_datastore_apd_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
+        :param pulumi.Input[_builtins.int] ha_datastore_apd_response_delay: When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
+        :param pulumi.Input[_builtins.str] ha_datastore_pdl_response: When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         :param pulumi.Input[_builtins.bool] ha_enabled: Enable vSphere HA for this cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-               ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-               allFeasibleDsWithUserPreference.
-        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-               Can be one of none, powerOff, or shutdown.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_heartbeat_datastore_policy: The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
+        :param pulumi.Input[_builtins.str] ha_host_isolation_response: The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         :param pulumi.Input[_builtins.str] ha_host_monitoring: Global setting that controls whether vSphere HA remediates VMs on host failure. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-               failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
-        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-               on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
-        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-               failed. The value is in seconds.
-        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-               attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-               time is allotted.
+        :param pulumi.Input[_builtins.str] ha_vm_component_protection: Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+        :param pulumi.Input[_builtins.str] ha_vm_dependency_restart_condition: The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+        :param pulumi.Input[_builtins.int] ha_vm_failure_interval: If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
+        :param pulumi.Input[_builtins.int] ha_vm_maximum_failure_window: The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         :param pulumi.Input[_builtins.int] ha_vm_maximum_resets: The maximum number of resets that HA will perform to a virtual machine when responding to a failure event.
         :param pulumi.Input[_builtins.int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after powering on a virtual machine before monitoring for heartbeats.
-        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-               vmMonitoringOnly, or vmAndAppMonitoring.
+        :param pulumi.Input[_builtins.str] ha_vm_monitoring: The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         :param pulumi.Input[_builtins.int] ha_vm_restart_additional_delay: Additional delay in seconds after ready condition is met. A VM is considered ready at this point.
-        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-               high, or highest.
-        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-               proceeding with the next priority.
+        :param pulumi.Input[_builtins.str] ha_vm_restart_priority: The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
+        :param pulumi.Input[_builtins.int] ha_vm_restart_timeout: The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         :param pulumi.Input[_builtins.int] host_cluster_exit_timeout: The timeout for each host maintenance mode operation when removing hosts from a cluster.
         :param pulumi.Input[Union['ComputeClusterHostImageArgs', 'ComputeClusterHostImageArgsDict']] host_image: Details about the host image which should be applied to the cluster.
         :param pulumi.Input[_builtins.bool] host_managed: Must be set if cluster enrollment is managed from host resource.
@@ -3180,11 +2960,9 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_automation_level: The DRS behavior for proactive HA recommendations. Can be one of Automated or Manual.
         :param pulumi.Input[_builtins.bool] proactive_ha_enabled: Enables proactive HA, allowing for vSphere to get HA data from external providers and use DRS to perform remediation.
-        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-               this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
-        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-               cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+        :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         :param pulumi.Input[_builtins.str] resource_pool_id: The managed object ID of the primary
                resource pool for this cluster. This can be passed directly to the
                `resource_pool_id`
@@ -3315,8 +3093,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="dpmEnabled")
     def dpm_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-        machines in the cluster. Requires that DRS be enabled.
+        Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
         """
         return pulumi.get(self, "dpm_enabled")
 
@@ -3324,9 +3101,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="dpmThreshold")
     def dpm_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-        affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-        setting.
+        A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
         """
         return pulumi.get(self, "dpm_threshold")
 
@@ -3342,8 +3117,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="drsAutomationLevel")
     def drs_automation_level(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-        fullyAutomated.
+        The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
         """
         return pulumi.get(self, "drs_automation_level")
 
@@ -3375,8 +3149,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="drsMigrationThreshold")
     def drs_migration_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-        more imbalance while a higher setting will tolerate less.
+        A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         """
         return pulumi.get(self, "drs_migration_threshold")
 
@@ -3405,8 +3178,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="forceEvacuateOnDestroy")
     def force_evacuate_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-        for testing and is not recommended in normal use.
+        Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 
@@ -3414,9 +3186,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlFailoverHostSystemIds")
     def ha_admission_control_failover_host_system_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-        failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-        will ignore the host when making recommendations.
+        When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         """
         return pulumi.get(self, "ha_admission_control_failover_host_system_ids")
 
@@ -3424,8 +3194,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlHostFailureTolerance")
     def ha_admission_control_host_failure_tolerance(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-        machine operations. The maximum is one less than the number of hosts in the cluster.
+        The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_host_failure_tolerance")
 
@@ -3433,8 +3202,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlPerformanceTolerance")
     def ha_admission_control_performance_tolerance(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-        warnings only, whereas a value of 100 disables the setting.
+        The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
         """
         return pulumi.get(self, "ha_admission_control_performance_tolerance")
 
@@ -3442,10 +3210,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlPolicy")
     def ha_admission_control_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-        permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-        slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-        issues.
+        The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
         """
         return pulumi.get(self, "ha_admission_control_policy")
 
@@ -3453,9 +3218,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlResourcePercentageAutoCompute")
     def ha_admission_control_resource_percentage_auto_compute(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-        subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-        from the total amount of resources in the cluster. Disable to supply user-defined values.
+        When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_auto_compute")
 
@@ -3463,8 +3226,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlResourcePercentageCpu")
     def ha_admission_control_resource_percentage_cpu(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-        the cluster to reserve for failover.
+        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_cpu")
 
@@ -3472,8 +3234,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlResourcePercentageMemory")
     def ha_admission_control_resource_percentage_memory(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-        the cluster to reserve for failover.
+        When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
         """
         return pulumi.get(self, "ha_admission_control_resource_percentage_memory")
 
@@ -3497,9 +3258,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haAdmissionControlSlotPolicyUseExplicitSize")
     def ha_admission_control_slot_policy_use_explicit_size(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-        to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-        currently in the cluster.
+        When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
         """
         return pulumi.get(self, "ha_admission_control_slot_policy_use_explicit_size")
 
@@ -3515,8 +3274,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
     def ha_datastore_apd_recovery_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-        affected datastore clears in the middle of an APD event. Can be one of none or reset.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
         """
         return pulumi.get(self, "ha_datastore_apd_recovery_action")
 
@@ -3524,9 +3282,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdResponse")
     def ha_datastore_apd_response(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-        detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-        restartAggressive.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_apd_response")
 
@@ -3534,8 +3290,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-        the response action defined in ha_datastore_apd_response.
+        When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -3543,8 +3298,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haDatastorePdlResponse")
     def ha_datastore_pdl_response(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-        detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+        When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
         """
         return pulumi.get(self, "ha_datastore_pdl_response")
 
@@ -3560,8 +3314,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haHeartbeatDatastoreIds")
     def ha_heartbeat_datastore_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-        ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+        The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_ids")
 
@@ -3569,8 +3322,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haHeartbeatDatastorePolicy")
     def ha_heartbeat_datastore_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-        allFeasibleDsWithUserPreference.
+        The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
         """
         return pulumi.get(self, "ha_heartbeat_datastore_policy")
 
@@ -3578,8 +3330,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haHostIsolationResponse")
     def ha_host_isolation_response(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-        Can be one of none, powerOff, or shutdown.
+        The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
         """
         return pulumi.get(self, "ha_host_isolation_response")
 
@@ -3595,8 +3346,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmComponentProtection")
     def ha_vm_component_protection(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-        failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+        Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
         """
         return pulumi.get(self, "ha_vm_component_protection")
 
@@ -3604,8 +3354,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmDependencyRestartCondition")
     def ha_vm_dependency_restart_condition(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-        on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+        The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
         """
         return pulumi.get(self, "ha_vm_dependency_restart_condition")
 
@@ -3613,8 +3362,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-        failed. The value is in seconds.
+        If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -3622,9 +3370,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-        attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-        time is allotted.
+        The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -3648,8 +3394,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmMonitoring")
     def ha_vm_monitoring(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-        vmMonitoringOnly, or vmAndAppMonitoring.
+        The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
         """
         return pulumi.get(self, "ha_vm_monitoring")
 
@@ -3665,8 +3410,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmRestartPriority")
     def ha_vm_restart_priority(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-        high, or highest.
+        The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
 
@@ -3674,8 +3418,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmRestartTimeout")
     def ha_vm_restart_timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-        proceeding with the next priority.
+        The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
 
@@ -3739,8 +3482,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="proactiveHaModerateRemediation")
     def proactive_ha_moderate_remediation(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-        this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+        The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         """
         return pulumi.get(self, "proactive_ha_moderate_remediation")
 
@@ -3756,8 +3498,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="proactiveHaSevereRemediation")
     def proactive_ha_severe_remediation(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-        cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+        The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
         """
         return pulumi.get(self, "proactive_ha_severe_remediation")
 

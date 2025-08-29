@@ -52,29 +52,29 @@ export class License extends pulumi.CustomResource {
     /**
      * The product edition of the license key.
      */
-    public /*out*/ readonly editionKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly editionKey: pulumi.Output<string>;
     /**
      * A map of labels to be applied to the license key.
      *
      * > **NOTE:** Labels are not allowed for unmanaged ESX hosts.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The license key value.
      */
-    public readonly licenseKey!: pulumi.Output<string>;
+    declare public readonly licenseKey: pulumi.Output<string>;
     /**
      * The display name for the license key.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The total number of units contained in the license key.
      */
-    public /*out*/ readonly total!: pulumi.Output<number>;
+    declare public /*out*/ readonly total: pulumi.Output<number>;
     /**
      * The number of units assigned to this license key.
      */
-    public /*out*/ readonly used!: pulumi.Output<number>;
+    declare public /*out*/ readonly used: pulumi.Output<number>;
 
     /**
      * Create a License resource with the given unique name, arguments, and options.
@@ -89,19 +89,19 @@ export class License extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LicenseState | undefined;
-            resourceInputs["editionKey"] = state ? state.editionKey : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["licenseKey"] = state ? state.licenseKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["total"] = state ? state.total : undefined;
-            resourceInputs["used"] = state ? state.used : undefined;
+            resourceInputs["editionKey"] = state?.editionKey;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["licenseKey"] = state?.licenseKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["total"] = state?.total;
+            resourceInputs["used"] = state?.used;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
-            if ((!args || args.licenseKey === undefined) && !opts.urn) {
+            if (args?.licenseKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'licenseKey'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["licenseKey"] = args ? args.licenseKey : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["licenseKey"] = args?.licenseKey;
             resourceInputs["editionKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["total"] = undefined /*out*/;

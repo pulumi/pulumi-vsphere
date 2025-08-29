@@ -117,53 +117,53 @@ export class VappEntity extends pulumi.CustomResource {
      * Managed object ID of the vApp
      * container the entity is a member of.
      */
-    public readonly containerId!: pulumi.Output<string>;
+    declare public readonly containerId: pulumi.Output<string>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
      * Default: powerOn
      */
-    public readonly startAction!: pulumi.Output<string | undefined>;
+    declare public readonly startAction: pulumi.Output<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order of entities to be started. Default: 120
      */
-    public readonly startDelay!: pulumi.Output<number | undefined>;
+    declare public readonly startDelay: pulumi.Output<number | undefined>;
     /**
      * Order to start and stop target in vApp. Default: 1
      */
-    public readonly startOrder!: pulumi.Output<number | undefined>;
+    declare public readonly startOrder: pulumi.Output<number | undefined>;
     /**
      * Defines the stop action for the entity. Can be set
      * to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
      * does not participate in auto-stop. Default: powerOff
      */
-    public readonly stopAction!: pulumi.Output<string | undefined>;
+    declare public readonly stopAction: pulumi.Output<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order sequence. This is only used if the stopAction is
      * guestShutdown. Default: 120
      */
-    public readonly stopDelay!: pulumi.Output<number | undefined>;
+    declare public readonly stopDelay: pulumi.Output<number | undefined>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Managed object ID of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
-    public readonly targetId!: pulumi.Output<string>;
+    declare public readonly targetId: pulumi.Output<string>;
     /**
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      */
-    public readonly waitForGuest!: pulumi.Output<boolean | undefined>;
+    declare public readonly waitForGuest: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a VappEntity resource with the given unique name, arguments, and options.
@@ -178,34 +178,34 @@ export class VappEntity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VappEntityState | undefined;
-            resourceInputs["containerId"] = state ? state.containerId : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["startAction"] = state ? state.startAction : undefined;
-            resourceInputs["startDelay"] = state ? state.startDelay : undefined;
-            resourceInputs["startOrder"] = state ? state.startOrder : undefined;
-            resourceInputs["stopAction"] = state ? state.stopAction : undefined;
-            resourceInputs["stopDelay"] = state ? state.stopDelay : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetId"] = state ? state.targetId : undefined;
-            resourceInputs["waitForGuest"] = state ? state.waitForGuest : undefined;
+            resourceInputs["containerId"] = state?.containerId;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["startAction"] = state?.startAction;
+            resourceInputs["startDelay"] = state?.startDelay;
+            resourceInputs["startOrder"] = state?.startOrder;
+            resourceInputs["stopAction"] = state?.stopAction;
+            resourceInputs["stopDelay"] = state?.stopDelay;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetId"] = state?.targetId;
+            resourceInputs["waitForGuest"] = state?.waitForGuest;
         } else {
             const args = argsOrState as VappEntityArgs | undefined;
-            if ((!args || args.containerId === undefined) && !opts.urn) {
+            if (args?.containerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'containerId'");
             }
-            if ((!args || args.targetId === undefined) && !opts.urn) {
+            if (args?.targetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            resourceInputs["containerId"] = args ? args.containerId : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["startAction"] = args ? args.startAction : undefined;
-            resourceInputs["startDelay"] = args ? args.startDelay : undefined;
-            resourceInputs["startOrder"] = args ? args.startOrder : undefined;
-            resourceInputs["stopAction"] = args ? args.stopAction : undefined;
-            resourceInputs["stopDelay"] = args ? args.stopDelay : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetId"] = args ? args.targetId : undefined;
-            resourceInputs["waitForGuest"] = args ? args.waitForGuest : undefined;
+            resourceInputs["containerId"] = args?.containerId;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["startAction"] = args?.startAction;
+            resourceInputs["startDelay"] = args?.startDelay;
+            resourceInputs["startOrder"] = args?.startOrder;
+            resourceInputs["stopAction"] = args?.stopAction;
+            resourceInputs["stopDelay"] = args?.stopDelay;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetId"] = args?.targetId;
+            resourceInputs["waitForGuest"] = args?.waitForGuest;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VappEntity.__pulumiType, name, resourceInputs, opts);

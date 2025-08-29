@@ -170,59 +170,58 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    public readonly activeUplinks!: pulumi.Output<string[]>;
+    declare public readonly activeUplinks: pulumi.Output<string[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
-    public readonly allowForgedTransmits!: pulumi.Output<boolean>;
+    declare public readonly allowForgedTransmits: pulumi.Output<boolean>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    public readonly allowMacChanges!: pulumi.Output<boolean>;
+    declare public readonly allowMacChanges: pulumi.Output<boolean>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    public readonly allowPromiscuous!: pulumi.Output<boolean>;
+    declare public readonly allowPromiscuous: pulumi.Output<boolean>;
     /**
      * The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
      */
-    public readonly backupnfcMaximumMbit!: pulumi.Output<number>;
+    declare public readonly backupnfcMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
      */
-    public readonly backupnfcReservationMbit!: pulumi.Output<number>;
+    declare public readonly backupnfcReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the backupNfc traffic class for a custom share level.
      */
-    public readonly backupnfcShareCount!: pulumi.Output<number>;
+    declare public readonly backupnfcShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly backupnfcShareLevel!: pulumi.Output<string>;
+    declare public readonly backupnfcShareLevel: pulumi.Output<string>;
     /**
      * Indicates whether to block all ports by default.
      */
-    public readonly blockAllPorts!: pulumi.Output<boolean>;
+    declare public readonly blockAllPorts: pulumi.Output<boolean>;
     /**
      * Enable beacon probing on the ports this policy applies to.
      */
-    public readonly checkBeacon!: pulumi.Output<boolean>;
+    declare public readonly checkBeacon: pulumi.Output<boolean>;
     /**
      * The current version of the VDS configuration, incremented
      * by subsequent updates to the VDS.
      */
-    public /*out*/ readonly configVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly configVersion: pulumi.Output<string>;
     /**
      * The detailed contact information for the person
      * who is responsible for the VDS.
      */
-    public readonly contactDetail!: pulumi.Output<string | undefined>;
+    declare public readonly contactDetail: pulumi.Output<string | undefined>;
     /**
      * The name of the person who is responsible for the
      * VDS.
      */
-    public readonly contactName!: pulumi.Output<string | undefined>;
+    declare public readonly contactName: pulumi.Output<string | undefined>;
     /**
      * Map of custom attribute ids to attribute
      * value strings to set for VDS.
@@ -230,345 +229,341 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
      * and requires vCenter Server.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the datacenter where the VDS will be
      * created. Forces a new resource if changed.
      */
-    public readonly datacenterId!: pulumi.Output<string>;
+    declare public readonly datacenterId: pulumi.Output<string>;
     /**
      * A detailed description for the VDS.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
-    public readonly directpathGen2Allowed!: pulumi.Output<boolean>;
+    declare public readonly directpathGen2Allowed: pulumi.Output<boolean>;
     /**
      * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
-    public readonly egressShapingAverageBandwidth!: pulumi.Output<number>;
+    declare public readonly egressShapingAverageBandwidth: pulumi.Output<number>;
     /**
      * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
-    public readonly egressShapingBurstSize!: pulumi.Output<number>;
+    declare public readonly egressShapingBurstSize: pulumi.Output<number>;
     /**
      * True if the traffic shaper is enabled for egress traffic on the port.
      */
-    public readonly egressShapingEnabled!: pulumi.Output<boolean>;
+    declare public readonly egressShapingEnabled: pulumi.Output<boolean>;
     /**
      * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
-    public readonly egressShapingPeakBandwidth!: pulumi.Output<number>;
+    declare public readonly egressShapingPeakBandwidth: pulumi.Output<number>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    public readonly failback!: pulumi.Output<boolean>;
+    declare public readonly failback: pulumi.Output<boolean>;
     /**
      * The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
      */
-    public readonly faulttoleranceMaximumMbit!: pulumi.Output<number>;
+    declare public readonly faulttoleranceMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
      */
-    public readonly faulttoleranceReservationMbit!: pulumi.Output<number>;
+    declare public readonly faulttoleranceReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
      */
-    public readonly faulttoleranceShareCount!: pulumi.Output<number>;
+    declare public readonly faulttoleranceShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly faulttoleranceShareLevel!: pulumi.Output<string>;
+    declare public readonly faulttoleranceShareLevel: pulumi.Output<string>;
     /**
      * The folder in which to create the VDS.
      * Forces a new resource if changed.
      */
-    public readonly folder!: pulumi.Output<string | undefined>;
+    declare public readonly folder: pulumi.Output<string | undefined>;
     /**
      * The maximum allowed usage for the hbr traffic class, in Mbits/sec.
      */
-    public readonly hbrMaximumMbit!: pulumi.Output<number>;
+    declare public readonly hbrMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
      */
-    public readonly hbrReservationMbit!: pulumi.Output<number>;
+    declare public readonly hbrReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the hbr traffic class for a custom share level.
      */
-    public readonly hbrShareCount!: pulumi.Output<number>;
+    declare public readonly hbrShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly hbrShareLevel!: pulumi.Output<string>;
+    declare public readonly hbrShareLevel: pulumi.Output<string>;
     /**
      * A host member specification.
      */
-    public readonly hosts!: pulumi.Output<outputs.DistributedVirtualSwitchHost[] | undefined>;
+    declare public readonly hosts: pulumi.Output<outputs.DistributedVirtualSwitchHost[] | undefined>;
     /**
      * Whether to ignore existing PVLAN mappings not managed by this resource.
      */
-    public readonly ignoreOtherPvlanMappings!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreOtherPvlanMappings: pulumi.Output<boolean | undefined>;
     /**
      * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
-    public readonly ingressShapingAverageBandwidth!: pulumi.Output<number>;
+    declare public readonly ingressShapingAverageBandwidth: pulumi.Output<number>;
     /**
      * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
-    public readonly ingressShapingBurstSize!: pulumi.Output<number>;
+    declare public readonly ingressShapingBurstSize: pulumi.Output<number>;
     /**
      * True if the traffic shaper is enabled for ingress traffic on the port.
      */
-    public readonly ingressShapingEnabled!: pulumi.Output<boolean>;
+    declare public readonly ingressShapingEnabled: pulumi.Output<boolean>;
     /**
      * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
-    public readonly ingressShapingPeakBandwidth!: pulumi.Output<number>;
+    declare public readonly ingressShapingPeakBandwidth: pulumi.Output<number>;
     /**
      * An IPv4 address to identify the switch. This is
      * mostly useful when used with the Netflow arguments.
      */
-    public readonly ipv4Address!: pulumi.Output<string | undefined>;
+    declare public readonly ipv4Address: pulumi.Output<string | undefined>;
     /**
      * The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
      */
-    public readonly iscsiMaximumMbit!: pulumi.Output<number>;
+    declare public readonly iscsiMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
      */
-    public readonly iscsiReservationMbit!: pulumi.Output<number>;
+    declare public readonly iscsiReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the iSCSI traffic class for a custom share level.
      */
-    public readonly iscsiShareCount!: pulumi.Output<number>;
+    declare public readonly iscsiShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly iscsiShareLevel!: pulumi.Output<string>;
+    declare public readonly iscsiShareLevel: pulumi.Output<string>;
     /**
      * The Link Aggregation Control Protocol group
      * version to use with the VDS. Possible values are `singleLag` and
      * `multipleLag`.
      */
-    public readonly lacpApiVersion!: pulumi.Output<string>;
+    declare public readonly lacpApiVersion: pulumi.Output<string>;
     /**
      * Whether or not to enable LACP on all uplink ports.
      */
-    public readonly lacpEnabled!: pulumi.Output<boolean>;
+    declare public readonly lacpEnabled: pulumi.Output<boolean>;
     /**
      * The uplink LACP mode to use. Can be one of active or passive.
      */
-    public readonly lacpMode!: pulumi.Output<string>;
+    declare public readonly lacpMode: pulumi.Output<string>;
     /**
      * Whether to `advertise` or `listen`
      * for link discovery traffic.
      */
-    public readonly linkDiscoveryOperation!: pulumi.Output<string | undefined>;
+    declare public readonly linkDiscoveryOperation: pulumi.Output<string | undefined>;
     /**
      * The discovery protocol type. Valid
      * types are `cdp` and `lldp`.
      */
-    public readonly linkDiscoveryProtocol!: pulumi.Output<string | undefined>;
+    declare public readonly linkDiscoveryProtocol: pulumi.Output<string | undefined>;
     /**
      * The maximum allowed usage for the management traffic class, in Mbits/sec.
      */
-    public readonly managementMaximumMbit!: pulumi.Output<number>;
+    declare public readonly managementMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
      */
-    public readonly managementReservationMbit!: pulumi.Output<number>;
+    declare public readonly managementReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the management traffic class for a custom share level.
      */
-    public readonly managementShareCount!: pulumi.Output<number>;
+    declare public readonly managementShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly managementShareLevel!: pulumi.Output<string>;
+    declare public readonly managementShareLevel: pulumi.Output<string>;
     /**
      * The maximum transmission unit (MTU) for the VDS.
      */
-    public readonly maxMtu!: pulumi.Output<number>;
+    declare public readonly maxMtu: pulumi.Output<number>;
     /**
      * The multicast filtering mode to use
      * with the VDS. Can be one of `legacyFiltering` or `snooping`.
      */
-    public readonly multicastFilteringMode!: pulumi.Output<string>;
+    declare public readonly multicastFilteringMode: pulumi.Output<string>;
     /**
      * The name of the VDS.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of seconds after which active flows are forced to be exported to the collector.
      */
-    public readonly netflowActiveFlowTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly netflowActiveFlowTimeout: pulumi.Output<number | undefined>;
     /**
      * IP address for the netflow collector, using IPv4 or IPv6.
      */
-    public readonly netflowCollectorIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly netflowCollectorIpAddress: pulumi.Output<string | undefined>;
     /**
      * The port for the netflow collector.
      */
-    public readonly netflowCollectorPort!: pulumi.Output<number | undefined>;
+    declare public readonly netflowCollectorPort: pulumi.Output<number | undefined>;
     /**
      * Indicates whether to enable netflow on all ports.
      */
-    public readonly netflowEnabled!: pulumi.Output<boolean>;
+    declare public readonly netflowEnabled: pulumi.Output<boolean>;
     /**
      * The number of seconds after which idle flows are forced to be exported to the collector.
      */
-    public readonly netflowIdleFlowTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly netflowIdleFlowTimeout: pulumi.Output<number | undefined>;
     /**
      * Whether to limit analysis to traffic that has both source and destination served by the same host.
      */
-    public readonly netflowInternalFlowsOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly netflowInternalFlowsOnly: pulumi.Output<boolean | undefined>;
     /**
      * The observation Domain ID for the netflow collector.
      */
-    public readonly netflowObservationDomainId!: pulumi.Output<number | undefined>;
+    declare public readonly netflowObservationDomainId: pulumi.Output<number | undefined>;
     /**
-     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-     * packets are analyzed.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
      */
-    public readonly netflowSamplingRate!: pulumi.Output<number | undefined>;
+    declare public readonly netflowSamplingRate: pulumi.Output<number | undefined>;
     /**
      * Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
      */
-    public readonly networkResourceControlEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly networkResourceControlEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The network I/O control version to use. Can be one of version2 or version3.
      */
-    public readonly networkResourceControlVersion!: pulumi.Output<string>;
+    declare public readonly networkResourceControlVersion: pulumi.Output<string>;
     /**
      * The maximum allowed usage for the nfs traffic class, in Mbits/sec.
      */
-    public readonly nfsMaximumMbit!: pulumi.Output<number>;
+    declare public readonly nfsMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
      */
-    public readonly nfsReservationMbit!: pulumi.Output<number>;
+    declare public readonly nfsReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the nfs traffic class for a custom share level.
      */
-    public readonly nfsShareCount!: pulumi.Output<number>;
+    declare public readonly nfsShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly nfsShareLevel!: pulumi.Output<string>;
+    declare public readonly nfsShareLevel: pulumi.Output<string>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    public readonly notifySwitches!: pulumi.Output<boolean>;
+    declare public readonly notifySwitches: pulumi.Output<boolean>;
     /**
      * The secondary VLAN ID for this port.
      */
-    public readonly portPrivateSecondaryVlanId!: pulumi.Output<number>;
+    declare public readonly portPrivateSecondaryVlanId: pulumi.Output<number>;
     /**
      * A private VLAN (PVLAN) mapping.
      */
-    public readonly pvlanMappings!: pulumi.Output<outputs.DistributedVirtualSwitchPvlanMapping[] | undefined>;
+    declare public readonly pvlanMappings: pulumi.Output<outputs.DistributedVirtualSwitchPvlanMapping[] | undefined>;
     /**
      * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    public readonly standbyUplinks!: pulumi.Output<string[]>;
+    declare public readonly standbyUplinks: pulumi.Output<string[]>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
-    public readonly teamingPolicy!: pulumi.Output<string>;
+    declare public readonly teamingPolicy: pulumi.Output<string>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
-    public readonly txUplink!: pulumi.Output<boolean>;
+    declare public readonly txUplink: pulumi.Output<boolean>;
     /**
-     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-     * across hosts.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
      */
-    public readonly uplinks!: pulumi.Output<string[]>;
+    declare public readonly uplinks: pulumi.Output<string[]>;
     /**
      * The maximum allowed usage for the vdp traffic class, in Mbits/sec.
      */
-    public readonly vdpMaximumMbit!: pulumi.Output<number>;
+    declare public readonly vdpMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
      */
-    public readonly vdpReservationMbit!: pulumi.Output<number>;
+    declare public readonly vdpReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the vdp traffic class for a custom share level.
      */
-    public readonly vdpShareCount!: pulumi.Output<number>;
+    declare public readonly vdpShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly vdpShareLevel!: pulumi.Output<string>;
+    declare public readonly vdpShareLevel: pulumi.Output<string>;
     /**
      * The version of the VDS. By default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
      */
-    public readonly virtualmachineMaximumMbit!: pulumi.Output<number>;
+    declare public readonly virtualmachineMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
      */
-    public readonly virtualmachineReservationMbit!: pulumi.Output<number>;
+    declare public readonly virtualmachineReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
      */
-    public readonly virtualmachineShareCount!: pulumi.Output<number>;
+    declare public readonly virtualmachineShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly virtualmachineShareLevel!: pulumi.Output<string>;
+    declare public readonly virtualmachineShareLevel: pulumi.Output<string>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    public readonly vlanId!: pulumi.Output<number>;
+    declare public readonly vlanId: pulumi.Output<number>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    public readonly vlanRanges!: pulumi.Output<outputs.DistributedVirtualSwitchVlanRange[]>;
+    declare public readonly vlanRanges: pulumi.Output<outputs.DistributedVirtualSwitchVlanRange[]>;
     /**
      * The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
      */
-    public readonly vmotionMaximumMbit!: pulumi.Output<number>;
+    declare public readonly vmotionMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
      */
-    public readonly vmotionReservationMbit!: pulumi.Output<number>;
+    declare public readonly vmotionReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the vmotion traffic class for a custom share level.
      */
-    public readonly vmotionShareCount!: pulumi.Output<number>;
+    declare public readonly vmotionShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly vmotionShareLevel!: pulumi.Output<string>;
+    declare public readonly vmotionShareLevel: pulumi.Output<string>;
     /**
      * The maximum allowed usage for the vsan traffic class, in Mbits/sec.
      */
-    public readonly vsanMaximumMbit!: pulumi.Output<number>;
+    declare public readonly vsanMaximumMbit: pulumi.Output<number>;
     /**
      * The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
      */
-    public readonly vsanReservationMbit!: pulumi.Output<number>;
+    declare public readonly vsanReservationMbit: pulumi.Output<number>;
     /**
      * The amount of shares to allocate to the vsan traffic class for a custom share level.
      */
-    public readonly vsanShareCount!: pulumi.Output<number>;
+    declare public readonly vsanShareCount: pulumi.Output<number>;
     /**
      * The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
      */
-    public readonly vsanShareLevel!: pulumi.Output<string>;
+    declare public readonly vsanShareLevel: pulumi.Output<string>;
 
     /**
      * Create a DistributedVirtualSwitch resource with the given unique name, arguments, and options.
@@ -583,200 +578,200 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DistributedVirtualSwitchState | undefined;
-            resourceInputs["activeUplinks"] = state ? state.activeUplinks : undefined;
-            resourceInputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
-            resourceInputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;
-            resourceInputs["allowPromiscuous"] = state ? state.allowPromiscuous : undefined;
-            resourceInputs["backupnfcMaximumMbit"] = state ? state.backupnfcMaximumMbit : undefined;
-            resourceInputs["backupnfcReservationMbit"] = state ? state.backupnfcReservationMbit : undefined;
-            resourceInputs["backupnfcShareCount"] = state ? state.backupnfcShareCount : undefined;
-            resourceInputs["backupnfcShareLevel"] = state ? state.backupnfcShareLevel : undefined;
-            resourceInputs["blockAllPorts"] = state ? state.blockAllPorts : undefined;
-            resourceInputs["checkBeacon"] = state ? state.checkBeacon : undefined;
-            resourceInputs["configVersion"] = state ? state.configVersion : undefined;
-            resourceInputs["contactDetail"] = state ? state.contactDetail : undefined;
-            resourceInputs["contactName"] = state ? state.contactName : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["datacenterId"] = state ? state.datacenterId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["directpathGen2Allowed"] = state ? state.directpathGen2Allowed : undefined;
-            resourceInputs["egressShapingAverageBandwidth"] = state ? state.egressShapingAverageBandwidth : undefined;
-            resourceInputs["egressShapingBurstSize"] = state ? state.egressShapingBurstSize : undefined;
-            resourceInputs["egressShapingEnabled"] = state ? state.egressShapingEnabled : undefined;
-            resourceInputs["egressShapingPeakBandwidth"] = state ? state.egressShapingPeakBandwidth : undefined;
-            resourceInputs["failback"] = state ? state.failback : undefined;
-            resourceInputs["faulttoleranceMaximumMbit"] = state ? state.faulttoleranceMaximumMbit : undefined;
-            resourceInputs["faulttoleranceReservationMbit"] = state ? state.faulttoleranceReservationMbit : undefined;
-            resourceInputs["faulttoleranceShareCount"] = state ? state.faulttoleranceShareCount : undefined;
-            resourceInputs["faulttoleranceShareLevel"] = state ? state.faulttoleranceShareLevel : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["hbrMaximumMbit"] = state ? state.hbrMaximumMbit : undefined;
-            resourceInputs["hbrReservationMbit"] = state ? state.hbrReservationMbit : undefined;
-            resourceInputs["hbrShareCount"] = state ? state.hbrShareCount : undefined;
-            resourceInputs["hbrShareLevel"] = state ? state.hbrShareLevel : undefined;
-            resourceInputs["hosts"] = state ? state.hosts : undefined;
-            resourceInputs["ignoreOtherPvlanMappings"] = state ? state.ignoreOtherPvlanMappings : undefined;
-            resourceInputs["ingressShapingAverageBandwidth"] = state ? state.ingressShapingAverageBandwidth : undefined;
-            resourceInputs["ingressShapingBurstSize"] = state ? state.ingressShapingBurstSize : undefined;
-            resourceInputs["ingressShapingEnabled"] = state ? state.ingressShapingEnabled : undefined;
-            resourceInputs["ingressShapingPeakBandwidth"] = state ? state.ingressShapingPeakBandwidth : undefined;
-            resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
-            resourceInputs["iscsiMaximumMbit"] = state ? state.iscsiMaximumMbit : undefined;
-            resourceInputs["iscsiReservationMbit"] = state ? state.iscsiReservationMbit : undefined;
-            resourceInputs["iscsiShareCount"] = state ? state.iscsiShareCount : undefined;
-            resourceInputs["iscsiShareLevel"] = state ? state.iscsiShareLevel : undefined;
-            resourceInputs["lacpApiVersion"] = state ? state.lacpApiVersion : undefined;
-            resourceInputs["lacpEnabled"] = state ? state.lacpEnabled : undefined;
-            resourceInputs["lacpMode"] = state ? state.lacpMode : undefined;
-            resourceInputs["linkDiscoveryOperation"] = state ? state.linkDiscoveryOperation : undefined;
-            resourceInputs["linkDiscoveryProtocol"] = state ? state.linkDiscoveryProtocol : undefined;
-            resourceInputs["managementMaximumMbit"] = state ? state.managementMaximumMbit : undefined;
-            resourceInputs["managementReservationMbit"] = state ? state.managementReservationMbit : undefined;
-            resourceInputs["managementShareCount"] = state ? state.managementShareCount : undefined;
-            resourceInputs["managementShareLevel"] = state ? state.managementShareLevel : undefined;
-            resourceInputs["maxMtu"] = state ? state.maxMtu : undefined;
-            resourceInputs["multicastFilteringMode"] = state ? state.multicastFilteringMode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["netflowActiveFlowTimeout"] = state ? state.netflowActiveFlowTimeout : undefined;
-            resourceInputs["netflowCollectorIpAddress"] = state ? state.netflowCollectorIpAddress : undefined;
-            resourceInputs["netflowCollectorPort"] = state ? state.netflowCollectorPort : undefined;
-            resourceInputs["netflowEnabled"] = state ? state.netflowEnabled : undefined;
-            resourceInputs["netflowIdleFlowTimeout"] = state ? state.netflowIdleFlowTimeout : undefined;
-            resourceInputs["netflowInternalFlowsOnly"] = state ? state.netflowInternalFlowsOnly : undefined;
-            resourceInputs["netflowObservationDomainId"] = state ? state.netflowObservationDomainId : undefined;
-            resourceInputs["netflowSamplingRate"] = state ? state.netflowSamplingRate : undefined;
-            resourceInputs["networkResourceControlEnabled"] = state ? state.networkResourceControlEnabled : undefined;
-            resourceInputs["networkResourceControlVersion"] = state ? state.networkResourceControlVersion : undefined;
-            resourceInputs["nfsMaximumMbit"] = state ? state.nfsMaximumMbit : undefined;
-            resourceInputs["nfsReservationMbit"] = state ? state.nfsReservationMbit : undefined;
-            resourceInputs["nfsShareCount"] = state ? state.nfsShareCount : undefined;
-            resourceInputs["nfsShareLevel"] = state ? state.nfsShareLevel : undefined;
-            resourceInputs["notifySwitches"] = state ? state.notifySwitches : undefined;
-            resourceInputs["portPrivateSecondaryVlanId"] = state ? state.portPrivateSecondaryVlanId : undefined;
-            resourceInputs["pvlanMappings"] = state ? state.pvlanMappings : undefined;
-            resourceInputs["standbyUplinks"] = state ? state.standbyUplinks : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["teamingPolicy"] = state ? state.teamingPolicy : undefined;
-            resourceInputs["txUplink"] = state ? state.txUplink : undefined;
-            resourceInputs["uplinks"] = state ? state.uplinks : undefined;
-            resourceInputs["vdpMaximumMbit"] = state ? state.vdpMaximumMbit : undefined;
-            resourceInputs["vdpReservationMbit"] = state ? state.vdpReservationMbit : undefined;
-            resourceInputs["vdpShareCount"] = state ? state.vdpShareCount : undefined;
-            resourceInputs["vdpShareLevel"] = state ? state.vdpShareLevel : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["virtualmachineMaximumMbit"] = state ? state.virtualmachineMaximumMbit : undefined;
-            resourceInputs["virtualmachineReservationMbit"] = state ? state.virtualmachineReservationMbit : undefined;
-            resourceInputs["virtualmachineShareCount"] = state ? state.virtualmachineShareCount : undefined;
-            resourceInputs["virtualmachineShareLevel"] = state ? state.virtualmachineShareLevel : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
-            resourceInputs["vlanRanges"] = state ? state.vlanRanges : undefined;
-            resourceInputs["vmotionMaximumMbit"] = state ? state.vmotionMaximumMbit : undefined;
-            resourceInputs["vmotionReservationMbit"] = state ? state.vmotionReservationMbit : undefined;
-            resourceInputs["vmotionShareCount"] = state ? state.vmotionShareCount : undefined;
-            resourceInputs["vmotionShareLevel"] = state ? state.vmotionShareLevel : undefined;
-            resourceInputs["vsanMaximumMbit"] = state ? state.vsanMaximumMbit : undefined;
-            resourceInputs["vsanReservationMbit"] = state ? state.vsanReservationMbit : undefined;
-            resourceInputs["vsanShareCount"] = state ? state.vsanShareCount : undefined;
-            resourceInputs["vsanShareLevel"] = state ? state.vsanShareLevel : undefined;
+            resourceInputs["activeUplinks"] = state?.activeUplinks;
+            resourceInputs["allowForgedTransmits"] = state?.allowForgedTransmits;
+            resourceInputs["allowMacChanges"] = state?.allowMacChanges;
+            resourceInputs["allowPromiscuous"] = state?.allowPromiscuous;
+            resourceInputs["backupnfcMaximumMbit"] = state?.backupnfcMaximumMbit;
+            resourceInputs["backupnfcReservationMbit"] = state?.backupnfcReservationMbit;
+            resourceInputs["backupnfcShareCount"] = state?.backupnfcShareCount;
+            resourceInputs["backupnfcShareLevel"] = state?.backupnfcShareLevel;
+            resourceInputs["blockAllPorts"] = state?.blockAllPorts;
+            resourceInputs["checkBeacon"] = state?.checkBeacon;
+            resourceInputs["configVersion"] = state?.configVersion;
+            resourceInputs["contactDetail"] = state?.contactDetail;
+            resourceInputs["contactName"] = state?.contactName;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["datacenterId"] = state?.datacenterId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["directpathGen2Allowed"] = state?.directpathGen2Allowed;
+            resourceInputs["egressShapingAverageBandwidth"] = state?.egressShapingAverageBandwidth;
+            resourceInputs["egressShapingBurstSize"] = state?.egressShapingBurstSize;
+            resourceInputs["egressShapingEnabled"] = state?.egressShapingEnabled;
+            resourceInputs["egressShapingPeakBandwidth"] = state?.egressShapingPeakBandwidth;
+            resourceInputs["failback"] = state?.failback;
+            resourceInputs["faulttoleranceMaximumMbit"] = state?.faulttoleranceMaximumMbit;
+            resourceInputs["faulttoleranceReservationMbit"] = state?.faulttoleranceReservationMbit;
+            resourceInputs["faulttoleranceShareCount"] = state?.faulttoleranceShareCount;
+            resourceInputs["faulttoleranceShareLevel"] = state?.faulttoleranceShareLevel;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["hbrMaximumMbit"] = state?.hbrMaximumMbit;
+            resourceInputs["hbrReservationMbit"] = state?.hbrReservationMbit;
+            resourceInputs["hbrShareCount"] = state?.hbrShareCount;
+            resourceInputs["hbrShareLevel"] = state?.hbrShareLevel;
+            resourceInputs["hosts"] = state?.hosts;
+            resourceInputs["ignoreOtherPvlanMappings"] = state?.ignoreOtherPvlanMappings;
+            resourceInputs["ingressShapingAverageBandwidth"] = state?.ingressShapingAverageBandwidth;
+            resourceInputs["ingressShapingBurstSize"] = state?.ingressShapingBurstSize;
+            resourceInputs["ingressShapingEnabled"] = state?.ingressShapingEnabled;
+            resourceInputs["ingressShapingPeakBandwidth"] = state?.ingressShapingPeakBandwidth;
+            resourceInputs["ipv4Address"] = state?.ipv4Address;
+            resourceInputs["iscsiMaximumMbit"] = state?.iscsiMaximumMbit;
+            resourceInputs["iscsiReservationMbit"] = state?.iscsiReservationMbit;
+            resourceInputs["iscsiShareCount"] = state?.iscsiShareCount;
+            resourceInputs["iscsiShareLevel"] = state?.iscsiShareLevel;
+            resourceInputs["lacpApiVersion"] = state?.lacpApiVersion;
+            resourceInputs["lacpEnabled"] = state?.lacpEnabled;
+            resourceInputs["lacpMode"] = state?.lacpMode;
+            resourceInputs["linkDiscoveryOperation"] = state?.linkDiscoveryOperation;
+            resourceInputs["linkDiscoveryProtocol"] = state?.linkDiscoveryProtocol;
+            resourceInputs["managementMaximumMbit"] = state?.managementMaximumMbit;
+            resourceInputs["managementReservationMbit"] = state?.managementReservationMbit;
+            resourceInputs["managementShareCount"] = state?.managementShareCount;
+            resourceInputs["managementShareLevel"] = state?.managementShareLevel;
+            resourceInputs["maxMtu"] = state?.maxMtu;
+            resourceInputs["multicastFilteringMode"] = state?.multicastFilteringMode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["netflowActiveFlowTimeout"] = state?.netflowActiveFlowTimeout;
+            resourceInputs["netflowCollectorIpAddress"] = state?.netflowCollectorIpAddress;
+            resourceInputs["netflowCollectorPort"] = state?.netflowCollectorPort;
+            resourceInputs["netflowEnabled"] = state?.netflowEnabled;
+            resourceInputs["netflowIdleFlowTimeout"] = state?.netflowIdleFlowTimeout;
+            resourceInputs["netflowInternalFlowsOnly"] = state?.netflowInternalFlowsOnly;
+            resourceInputs["netflowObservationDomainId"] = state?.netflowObservationDomainId;
+            resourceInputs["netflowSamplingRate"] = state?.netflowSamplingRate;
+            resourceInputs["networkResourceControlEnabled"] = state?.networkResourceControlEnabled;
+            resourceInputs["networkResourceControlVersion"] = state?.networkResourceControlVersion;
+            resourceInputs["nfsMaximumMbit"] = state?.nfsMaximumMbit;
+            resourceInputs["nfsReservationMbit"] = state?.nfsReservationMbit;
+            resourceInputs["nfsShareCount"] = state?.nfsShareCount;
+            resourceInputs["nfsShareLevel"] = state?.nfsShareLevel;
+            resourceInputs["notifySwitches"] = state?.notifySwitches;
+            resourceInputs["portPrivateSecondaryVlanId"] = state?.portPrivateSecondaryVlanId;
+            resourceInputs["pvlanMappings"] = state?.pvlanMappings;
+            resourceInputs["standbyUplinks"] = state?.standbyUplinks;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["teamingPolicy"] = state?.teamingPolicy;
+            resourceInputs["txUplink"] = state?.txUplink;
+            resourceInputs["uplinks"] = state?.uplinks;
+            resourceInputs["vdpMaximumMbit"] = state?.vdpMaximumMbit;
+            resourceInputs["vdpReservationMbit"] = state?.vdpReservationMbit;
+            resourceInputs["vdpShareCount"] = state?.vdpShareCount;
+            resourceInputs["vdpShareLevel"] = state?.vdpShareLevel;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["virtualmachineMaximumMbit"] = state?.virtualmachineMaximumMbit;
+            resourceInputs["virtualmachineReservationMbit"] = state?.virtualmachineReservationMbit;
+            resourceInputs["virtualmachineShareCount"] = state?.virtualmachineShareCount;
+            resourceInputs["virtualmachineShareLevel"] = state?.virtualmachineShareLevel;
+            resourceInputs["vlanId"] = state?.vlanId;
+            resourceInputs["vlanRanges"] = state?.vlanRanges;
+            resourceInputs["vmotionMaximumMbit"] = state?.vmotionMaximumMbit;
+            resourceInputs["vmotionReservationMbit"] = state?.vmotionReservationMbit;
+            resourceInputs["vmotionShareCount"] = state?.vmotionShareCount;
+            resourceInputs["vmotionShareLevel"] = state?.vmotionShareLevel;
+            resourceInputs["vsanMaximumMbit"] = state?.vsanMaximumMbit;
+            resourceInputs["vsanReservationMbit"] = state?.vsanReservationMbit;
+            resourceInputs["vsanShareCount"] = state?.vsanShareCount;
+            resourceInputs["vsanShareLevel"] = state?.vsanShareLevel;
         } else {
             const args = argsOrState as DistributedVirtualSwitchArgs | undefined;
-            if ((!args || args.datacenterId === undefined) && !opts.urn) {
+            if (args?.datacenterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datacenterId'");
             }
-            resourceInputs["activeUplinks"] = args ? args.activeUplinks : undefined;
-            resourceInputs["allowForgedTransmits"] = args ? args.allowForgedTransmits : undefined;
-            resourceInputs["allowMacChanges"] = args ? args.allowMacChanges : undefined;
-            resourceInputs["allowPromiscuous"] = args ? args.allowPromiscuous : undefined;
-            resourceInputs["backupnfcMaximumMbit"] = args ? args.backupnfcMaximumMbit : undefined;
-            resourceInputs["backupnfcReservationMbit"] = args ? args.backupnfcReservationMbit : undefined;
-            resourceInputs["backupnfcShareCount"] = args ? args.backupnfcShareCount : undefined;
-            resourceInputs["backupnfcShareLevel"] = args ? args.backupnfcShareLevel : undefined;
-            resourceInputs["blockAllPorts"] = args ? args.blockAllPorts : undefined;
-            resourceInputs["checkBeacon"] = args ? args.checkBeacon : undefined;
-            resourceInputs["contactDetail"] = args ? args.contactDetail : undefined;
-            resourceInputs["contactName"] = args ? args.contactName : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["datacenterId"] = args ? args.datacenterId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["directpathGen2Allowed"] = args ? args.directpathGen2Allowed : undefined;
-            resourceInputs["egressShapingAverageBandwidth"] = args ? args.egressShapingAverageBandwidth : undefined;
-            resourceInputs["egressShapingBurstSize"] = args ? args.egressShapingBurstSize : undefined;
-            resourceInputs["egressShapingEnabled"] = args ? args.egressShapingEnabled : undefined;
-            resourceInputs["egressShapingPeakBandwidth"] = args ? args.egressShapingPeakBandwidth : undefined;
-            resourceInputs["failback"] = args ? args.failback : undefined;
-            resourceInputs["faulttoleranceMaximumMbit"] = args ? args.faulttoleranceMaximumMbit : undefined;
-            resourceInputs["faulttoleranceReservationMbit"] = args ? args.faulttoleranceReservationMbit : undefined;
-            resourceInputs["faulttoleranceShareCount"] = args ? args.faulttoleranceShareCount : undefined;
-            resourceInputs["faulttoleranceShareLevel"] = args ? args.faulttoleranceShareLevel : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["hbrMaximumMbit"] = args ? args.hbrMaximumMbit : undefined;
-            resourceInputs["hbrReservationMbit"] = args ? args.hbrReservationMbit : undefined;
-            resourceInputs["hbrShareCount"] = args ? args.hbrShareCount : undefined;
-            resourceInputs["hbrShareLevel"] = args ? args.hbrShareLevel : undefined;
-            resourceInputs["hosts"] = args ? args.hosts : undefined;
-            resourceInputs["ignoreOtherPvlanMappings"] = args ? args.ignoreOtherPvlanMappings : undefined;
-            resourceInputs["ingressShapingAverageBandwidth"] = args ? args.ingressShapingAverageBandwidth : undefined;
-            resourceInputs["ingressShapingBurstSize"] = args ? args.ingressShapingBurstSize : undefined;
-            resourceInputs["ingressShapingEnabled"] = args ? args.ingressShapingEnabled : undefined;
-            resourceInputs["ingressShapingPeakBandwidth"] = args ? args.ingressShapingPeakBandwidth : undefined;
-            resourceInputs["ipv4Address"] = args ? args.ipv4Address : undefined;
-            resourceInputs["iscsiMaximumMbit"] = args ? args.iscsiMaximumMbit : undefined;
-            resourceInputs["iscsiReservationMbit"] = args ? args.iscsiReservationMbit : undefined;
-            resourceInputs["iscsiShareCount"] = args ? args.iscsiShareCount : undefined;
-            resourceInputs["iscsiShareLevel"] = args ? args.iscsiShareLevel : undefined;
-            resourceInputs["lacpApiVersion"] = args ? args.lacpApiVersion : undefined;
-            resourceInputs["lacpEnabled"] = args ? args.lacpEnabled : undefined;
-            resourceInputs["lacpMode"] = args ? args.lacpMode : undefined;
-            resourceInputs["linkDiscoveryOperation"] = args ? args.linkDiscoveryOperation : undefined;
-            resourceInputs["linkDiscoveryProtocol"] = args ? args.linkDiscoveryProtocol : undefined;
-            resourceInputs["managementMaximumMbit"] = args ? args.managementMaximumMbit : undefined;
-            resourceInputs["managementReservationMbit"] = args ? args.managementReservationMbit : undefined;
-            resourceInputs["managementShareCount"] = args ? args.managementShareCount : undefined;
-            resourceInputs["managementShareLevel"] = args ? args.managementShareLevel : undefined;
-            resourceInputs["maxMtu"] = args ? args.maxMtu : undefined;
-            resourceInputs["multicastFilteringMode"] = args ? args.multicastFilteringMode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["netflowActiveFlowTimeout"] = args ? args.netflowActiveFlowTimeout : undefined;
-            resourceInputs["netflowCollectorIpAddress"] = args ? args.netflowCollectorIpAddress : undefined;
-            resourceInputs["netflowCollectorPort"] = args ? args.netflowCollectorPort : undefined;
-            resourceInputs["netflowEnabled"] = args ? args.netflowEnabled : undefined;
-            resourceInputs["netflowIdleFlowTimeout"] = args ? args.netflowIdleFlowTimeout : undefined;
-            resourceInputs["netflowInternalFlowsOnly"] = args ? args.netflowInternalFlowsOnly : undefined;
-            resourceInputs["netflowObservationDomainId"] = args ? args.netflowObservationDomainId : undefined;
-            resourceInputs["netflowSamplingRate"] = args ? args.netflowSamplingRate : undefined;
-            resourceInputs["networkResourceControlEnabled"] = args ? args.networkResourceControlEnabled : undefined;
-            resourceInputs["networkResourceControlVersion"] = args ? args.networkResourceControlVersion : undefined;
-            resourceInputs["nfsMaximumMbit"] = args ? args.nfsMaximumMbit : undefined;
-            resourceInputs["nfsReservationMbit"] = args ? args.nfsReservationMbit : undefined;
-            resourceInputs["nfsShareCount"] = args ? args.nfsShareCount : undefined;
-            resourceInputs["nfsShareLevel"] = args ? args.nfsShareLevel : undefined;
-            resourceInputs["notifySwitches"] = args ? args.notifySwitches : undefined;
-            resourceInputs["portPrivateSecondaryVlanId"] = args ? args.portPrivateSecondaryVlanId : undefined;
-            resourceInputs["pvlanMappings"] = args ? args.pvlanMappings : undefined;
-            resourceInputs["standbyUplinks"] = args ? args.standbyUplinks : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
-            resourceInputs["txUplink"] = args ? args.txUplink : undefined;
-            resourceInputs["uplinks"] = args ? args.uplinks : undefined;
-            resourceInputs["vdpMaximumMbit"] = args ? args.vdpMaximumMbit : undefined;
-            resourceInputs["vdpReservationMbit"] = args ? args.vdpReservationMbit : undefined;
-            resourceInputs["vdpShareCount"] = args ? args.vdpShareCount : undefined;
-            resourceInputs["vdpShareLevel"] = args ? args.vdpShareLevel : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["virtualmachineMaximumMbit"] = args ? args.virtualmachineMaximumMbit : undefined;
-            resourceInputs["virtualmachineReservationMbit"] = args ? args.virtualmachineReservationMbit : undefined;
-            resourceInputs["virtualmachineShareCount"] = args ? args.virtualmachineShareCount : undefined;
-            resourceInputs["virtualmachineShareLevel"] = args ? args.virtualmachineShareLevel : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
-            resourceInputs["vlanRanges"] = args ? args.vlanRanges : undefined;
-            resourceInputs["vmotionMaximumMbit"] = args ? args.vmotionMaximumMbit : undefined;
-            resourceInputs["vmotionReservationMbit"] = args ? args.vmotionReservationMbit : undefined;
-            resourceInputs["vmotionShareCount"] = args ? args.vmotionShareCount : undefined;
-            resourceInputs["vmotionShareLevel"] = args ? args.vmotionShareLevel : undefined;
-            resourceInputs["vsanMaximumMbit"] = args ? args.vsanMaximumMbit : undefined;
-            resourceInputs["vsanReservationMbit"] = args ? args.vsanReservationMbit : undefined;
-            resourceInputs["vsanShareCount"] = args ? args.vsanShareCount : undefined;
-            resourceInputs["vsanShareLevel"] = args ? args.vsanShareLevel : undefined;
+            resourceInputs["activeUplinks"] = args?.activeUplinks;
+            resourceInputs["allowForgedTransmits"] = args?.allowForgedTransmits;
+            resourceInputs["allowMacChanges"] = args?.allowMacChanges;
+            resourceInputs["allowPromiscuous"] = args?.allowPromiscuous;
+            resourceInputs["backupnfcMaximumMbit"] = args?.backupnfcMaximumMbit;
+            resourceInputs["backupnfcReservationMbit"] = args?.backupnfcReservationMbit;
+            resourceInputs["backupnfcShareCount"] = args?.backupnfcShareCount;
+            resourceInputs["backupnfcShareLevel"] = args?.backupnfcShareLevel;
+            resourceInputs["blockAllPorts"] = args?.blockAllPorts;
+            resourceInputs["checkBeacon"] = args?.checkBeacon;
+            resourceInputs["contactDetail"] = args?.contactDetail;
+            resourceInputs["contactName"] = args?.contactName;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["datacenterId"] = args?.datacenterId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["directpathGen2Allowed"] = args?.directpathGen2Allowed;
+            resourceInputs["egressShapingAverageBandwidth"] = args?.egressShapingAverageBandwidth;
+            resourceInputs["egressShapingBurstSize"] = args?.egressShapingBurstSize;
+            resourceInputs["egressShapingEnabled"] = args?.egressShapingEnabled;
+            resourceInputs["egressShapingPeakBandwidth"] = args?.egressShapingPeakBandwidth;
+            resourceInputs["failback"] = args?.failback;
+            resourceInputs["faulttoleranceMaximumMbit"] = args?.faulttoleranceMaximumMbit;
+            resourceInputs["faulttoleranceReservationMbit"] = args?.faulttoleranceReservationMbit;
+            resourceInputs["faulttoleranceShareCount"] = args?.faulttoleranceShareCount;
+            resourceInputs["faulttoleranceShareLevel"] = args?.faulttoleranceShareLevel;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["hbrMaximumMbit"] = args?.hbrMaximumMbit;
+            resourceInputs["hbrReservationMbit"] = args?.hbrReservationMbit;
+            resourceInputs["hbrShareCount"] = args?.hbrShareCount;
+            resourceInputs["hbrShareLevel"] = args?.hbrShareLevel;
+            resourceInputs["hosts"] = args?.hosts;
+            resourceInputs["ignoreOtherPvlanMappings"] = args?.ignoreOtherPvlanMappings;
+            resourceInputs["ingressShapingAverageBandwidth"] = args?.ingressShapingAverageBandwidth;
+            resourceInputs["ingressShapingBurstSize"] = args?.ingressShapingBurstSize;
+            resourceInputs["ingressShapingEnabled"] = args?.ingressShapingEnabled;
+            resourceInputs["ingressShapingPeakBandwidth"] = args?.ingressShapingPeakBandwidth;
+            resourceInputs["ipv4Address"] = args?.ipv4Address;
+            resourceInputs["iscsiMaximumMbit"] = args?.iscsiMaximumMbit;
+            resourceInputs["iscsiReservationMbit"] = args?.iscsiReservationMbit;
+            resourceInputs["iscsiShareCount"] = args?.iscsiShareCount;
+            resourceInputs["iscsiShareLevel"] = args?.iscsiShareLevel;
+            resourceInputs["lacpApiVersion"] = args?.lacpApiVersion;
+            resourceInputs["lacpEnabled"] = args?.lacpEnabled;
+            resourceInputs["lacpMode"] = args?.lacpMode;
+            resourceInputs["linkDiscoveryOperation"] = args?.linkDiscoveryOperation;
+            resourceInputs["linkDiscoveryProtocol"] = args?.linkDiscoveryProtocol;
+            resourceInputs["managementMaximumMbit"] = args?.managementMaximumMbit;
+            resourceInputs["managementReservationMbit"] = args?.managementReservationMbit;
+            resourceInputs["managementShareCount"] = args?.managementShareCount;
+            resourceInputs["managementShareLevel"] = args?.managementShareLevel;
+            resourceInputs["maxMtu"] = args?.maxMtu;
+            resourceInputs["multicastFilteringMode"] = args?.multicastFilteringMode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["netflowActiveFlowTimeout"] = args?.netflowActiveFlowTimeout;
+            resourceInputs["netflowCollectorIpAddress"] = args?.netflowCollectorIpAddress;
+            resourceInputs["netflowCollectorPort"] = args?.netflowCollectorPort;
+            resourceInputs["netflowEnabled"] = args?.netflowEnabled;
+            resourceInputs["netflowIdleFlowTimeout"] = args?.netflowIdleFlowTimeout;
+            resourceInputs["netflowInternalFlowsOnly"] = args?.netflowInternalFlowsOnly;
+            resourceInputs["netflowObservationDomainId"] = args?.netflowObservationDomainId;
+            resourceInputs["netflowSamplingRate"] = args?.netflowSamplingRate;
+            resourceInputs["networkResourceControlEnabled"] = args?.networkResourceControlEnabled;
+            resourceInputs["networkResourceControlVersion"] = args?.networkResourceControlVersion;
+            resourceInputs["nfsMaximumMbit"] = args?.nfsMaximumMbit;
+            resourceInputs["nfsReservationMbit"] = args?.nfsReservationMbit;
+            resourceInputs["nfsShareCount"] = args?.nfsShareCount;
+            resourceInputs["nfsShareLevel"] = args?.nfsShareLevel;
+            resourceInputs["notifySwitches"] = args?.notifySwitches;
+            resourceInputs["portPrivateSecondaryVlanId"] = args?.portPrivateSecondaryVlanId;
+            resourceInputs["pvlanMappings"] = args?.pvlanMappings;
+            resourceInputs["standbyUplinks"] = args?.standbyUplinks;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["teamingPolicy"] = args?.teamingPolicy;
+            resourceInputs["txUplink"] = args?.txUplink;
+            resourceInputs["uplinks"] = args?.uplinks;
+            resourceInputs["vdpMaximumMbit"] = args?.vdpMaximumMbit;
+            resourceInputs["vdpReservationMbit"] = args?.vdpReservationMbit;
+            resourceInputs["vdpShareCount"] = args?.vdpShareCount;
+            resourceInputs["vdpShareLevel"] = args?.vdpShareLevel;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["virtualmachineMaximumMbit"] = args?.virtualmachineMaximumMbit;
+            resourceInputs["virtualmachineReservationMbit"] = args?.virtualmachineReservationMbit;
+            resourceInputs["virtualmachineShareCount"] = args?.virtualmachineShareCount;
+            resourceInputs["virtualmachineShareLevel"] = args?.virtualmachineShareLevel;
+            resourceInputs["vlanId"] = args?.vlanId;
+            resourceInputs["vlanRanges"] = args?.vlanRanges;
+            resourceInputs["vmotionMaximumMbit"] = args?.vmotionMaximumMbit;
+            resourceInputs["vmotionReservationMbit"] = args?.vmotionReservationMbit;
+            resourceInputs["vmotionShareCount"] = args?.vmotionShareCount;
+            resourceInputs["vmotionShareLevel"] = args?.vmotionShareLevel;
+            resourceInputs["vsanMaximumMbit"] = args?.vsanMaximumMbit;
+            resourceInputs["vsanReservationMbit"] = args?.vsanReservationMbit;
+            resourceInputs["vsanShareCount"] = args?.vsanShareCount;
+            resourceInputs["vsanShareLevel"] = args?.vsanShareLevel;
             resourceInputs["configVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -793,8 +788,7 @@ export interface DistributedVirtualSwitchState {
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -1049,8 +1043,7 @@ export interface DistributedVirtualSwitchState {
      */
     netflowObservationDomainId?: pulumi.Input<number>;
     /**
-     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-     * packets are analyzed.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**
@@ -1098,18 +1091,15 @@ export interface DistributedVirtualSwitchState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
     txUplink?: pulumi.Input<boolean>;
     /**
-     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-     * across hosts.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
      */
     uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1201,8 +1191,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      */
     allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -1452,8 +1441,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     netflowObservationDomainId?: pulumi.Input<number>;
     /**
-     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-     * packets are analyzed.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
      */
     netflowSamplingRate?: pulumi.Input<number>;
     /**
@@ -1501,18 +1489,15 @@ export interface DistributedVirtualSwitchArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      */
     txUplink?: pulumi.Input<boolean>;
     /**
-     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-     * across hosts.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
      */
     uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**

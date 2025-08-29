@@ -128,27 +128,27 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
      * ID of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
      */
-    public readonly datastoreClusterId!: pulumi.Output<string>;
+    declare public readonly datastoreClusterId: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    public readonly mandatory!: pulumi.Output<boolean | undefined>;
+    declare public readonly mandatory: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
      *
      * > **NOTE:** The minimum length of `virtualMachineIds` is 2.
      */
-    public readonly virtualMachineIds!: pulumi.Output<string[]>;
+    declare public readonly virtualMachineIds: pulumi.Output<string[]>;
 
     /**
      * Create a DatastoreClusterVmAntiAffinityRule resource with the given unique name, arguments, and options.
@@ -163,24 +163,24 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatastoreClusterVmAntiAffinityRuleState | undefined;
-            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
+            resourceInputs["datastoreClusterId"] = state?.datastoreClusterId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["mandatory"] = state?.mandatory;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["virtualMachineIds"] = state?.virtualMachineIds;
         } else {
             const args = argsOrState as DatastoreClusterVmAntiAffinityRuleArgs | undefined;
-            if ((!args || args.datastoreClusterId === undefined) && !opts.urn) {
+            if (args?.datastoreClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastoreClusterId'");
             }
-            if ((!args || args.virtualMachineIds === undefined) && !opts.urn) {
+            if (args?.virtualMachineIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
-            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
+            resourceInputs["datastoreClusterId"] = args?.datastoreClusterId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["mandatory"] = args?.mandatory;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["virtualMachineIds"] = args?.virtualMachineIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatastoreClusterVmAntiAffinityRule.__pulumiType, name, resourceInputs, opts);

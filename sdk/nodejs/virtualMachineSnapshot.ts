@@ -77,35 +77,35 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
      * snapshot will be consolidated into the parent when this resource is
      * destroyed.
      */
-    public readonly consolidate!: pulumi.Output<boolean | undefined>;
+    declare public readonly consolidate: pulumi.Output<boolean | undefined>;
     /**
      * A description for the snapshot.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * If set to `true`, a dump of the internal state of the
      * virtual machine is included in the snapshot.
      */
-    public readonly memory!: pulumi.Output<boolean>;
+    declare public readonly memory: pulumi.Output<boolean>;
     /**
      * If set to `true`, and the virtual machine is powered
      * on when the snapshot is taken, VMware Tools is used to quiesce the file
      * system in the virtual machine.
      */
-    public readonly quiesce!: pulumi.Output<boolean>;
+    declare public readonly quiesce: pulumi.Output<boolean>;
     /**
      * If set to `true`, the entire snapshot subtree
      * is removed when this resource is destroyed.
      */
-    public readonly removeChildren!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeChildren: pulumi.Output<boolean | undefined>;
     /**
      * The name of the snapshot.
      */
-    public readonly snapshotName!: pulumi.Output<string>;
+    declare public readonly snapshotName: pulumi.Output<string>;
     /**
      * The virtual machine UUID.
      */
-    public readonly virtualMachineUuid!: pulumi.Output<string>;
+    declare public readonly virtualMachineUuid: pulumi.Output<string>;
 
     /**
      * Create a VirtualMachineSnapshot resource with the given unique name, arguments, and options.
@@ -120,37 +120,37 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualMachineSnapshotState | undefined;
-            resourceInputs["consolidate"] = state ? state.consolidate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["quiesce"] = state ? state.quiesce : undefined;
-            resourceInputs["removeChildren"] = state ? state.removeChildren : undefined;
-            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
-            resourceInputs["virtualMachineUuid"] = state ? state.virtualMachineUuid : undefined;
+            resourceInputs["consolidate"] = state?.consolidate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["quiesce"] = state?.quiesce;
+            resourceInputs["removeChildren"] = state?.removeChildren;
+            resourceInputs["snapshotName"] = state?.snapshotName;
+            resourceInputs["virtualMachineUuid"] = state?.virtualMachineUuid;
         } else {
             const args = argsOrState as VirtualMachineSnapshotArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.memory === undefined) && !opts.urn) {
+            if (args?.memory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memory'");
             }
-            if ((!args || args.quiesce === undefined) && !opts.urn) {
+            if (args?.quiesce === undefined && !opts.urn) {
                 throw new Error("Missing required property 'quiesce'");
             }
-            if ((!args || args.snapshotName === undefined) && !opts.urn) {
+            if (args?.snapshotName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snapshotName'");
             }
-            if ((!args || args.virtualMachineUuid === undefined) && !opts.urn) {
+            if (args?.virtualMachineUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineUuid'");
             }
-            resourceInputs["consolidate"] = args ? args.consolidate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["quiesce"] = args ? args.quiesce : undefined;
-            resourceInputs["removeChildren"] = args ? args.removeChildren : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
-            resourceInputs["virtualMachineUuid"] = args ? args.virtualMachineUuid : undefined;
+            resourceInputs["consolidate"] = args?.consolidate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["quiesce"] = args?.quiesce;
+            resourceInputs["removeChildren"] = args?.removeChildren;
+            resourceInputs["snapshotName"] = args?.snapshotName;
+            resourceInputs["virtualMachineUuid"] = args?.virtualMachineUuid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualMachineSnapshot.__pulumiType, name, resourceInputs, opts);

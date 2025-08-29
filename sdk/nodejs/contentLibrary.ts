@@ -99,23 +99,23 @@ export class ContentLibrary extends pulumi.CustomResource {
     /**
      * A description for the content library.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the content library.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Options to publish a local content library.
      */
-    public readonly publication!: pulumi.Output<outputs.ContentLibraryPublication>;
+    declare public readonly publication: pulumi.Output<outputs.ContentLibraryPublication>;
     /**
      * The managed object reference ID of the datastore on which to store the content library items.
      */
-    public readonly storageBackings!: pulumi.Output<string[]>;
+    declare public readonly storageBackings: pulumi.Output<string[]>;
     /**
      * Options subscribe to a published content library.
      */
-    public readonly subscription!: pulumi.Output<outputs.ContentLibrarySubscription | undefined>;
+    declare public readonly subscription: pulumi.Output<outputs.ContentLibrarySubscription | undefined>;
 
     /**
      * Create a ContentLibrary resource with the given unique name, arguments, and options.
@@ -130,21 +130,21 @@ export class ContentLibrary extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContentLibraryState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["publication"] = state ? state.publication : undefined;
-            resourceInputs["storageBackings"] = state ? state.storageBackings : undefined;
-            resourceInputs["subscription"] = state ? state.subscription : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["publication"] = state?.publication;
+            resourceInputs["storageBackings"] = state?.storageBackings;
+            resourceInputs["subscription"] = state?.subscription;
         } else {
             const args = argsOrState as ContentLibraryArgs | undefined;
-            if ((!args || args.storageBackings === undefined) && !opts.urn) {
+            if (args?.storageBackings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageBackings'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["publication"] = args ? args.publication : undefined;
-            resourceInputs["storageBackings"] = args ? args.storageBackings : undefined;
-            resourceInputs["subscription"] = args ? args.subscription : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["publication"] = args?.publication;
+            resourceInputs["storageBackings"] = args?.storageBackings;
+            resourceInputs["subscription"] = args?.subscription;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContentLibrary.__pulumiType, name, resourceInputs, opts);

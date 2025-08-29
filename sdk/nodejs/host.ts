@@ -204,18 +204,18 @@ export class Host extends pulumi.CustomResource {
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
      * `clusterManaged`.
      */
-    public readonly cluster!: pulumi.Output<string | undefined>;
+    declare public readonly cluster: pulumi.Output<string | undefined>;
     /**
      * Can be set to `true` if compute cluster
      * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      */
-    public readonly clusterManaged!: pulumi.Output<boolean | undefined>;
+    declare public readonly clusterManaged: pulumi.Output<boolean | undefined>;
     /**
      * If set to false then the host will be disconnected.
      * Default is `false`.
      */
-    public readonly connected!: pulumi.Output<boolean | undefined>;
+    declare public readonly connected: pulumi.Output<boolean | undefined>;
     /**
      * A map of custom attribute IDs and string
      * values to apply to the resource. Please refer to the
@@ -227,46 +227,46 @@ export class Host extends pulumi.CustomResource {
      *
      * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
-    public readonly datacenter!: pulumi.Output<string | undefined>;
+    declare public readonly datacenter: pulumi.Output<string | undefined>;
     /**
      * If set to `true` then it will force the host to be added,
      * even if the host is already connected to a different vCenter Server instance.
      * Default is `false`.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * FQDN or IP address of the host to be added.
      */
-    public readonly hostname!: pulumi.Output<string>;
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * The license key that will be applied to the host.
      * The license key is expected to be present in vSphere.
      */
-    public readonly license!: pulumi.Output<string | undefined>;
+    declare public readonly license: pulumi.Output<string | undefined>;
     /**
      * Set the lockdown state of the host. Valid options are
      * `disabled`, `normal`, and `strict`. Default is `disabled`.
      */
-    public readonly lockdown!: pulumi.Output<string | undefined>;
+    declare public readonly lockdown: pulumi.Output<string | undefined>;
     /**
      * Set the management state of the host.
      * Default is `false`.
      */
-    public readonly maintenance!: pulumi.Output<boolean | undefined>;
+    declare public readonly maintenance: pulumi.Output<boolean | undefined>;
     /**
      * Password that will be used by vSphere to authenticate
      * to the host.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * Set Services on host, the settings to be set are based on service being set as part of import.
      */
-    public readonly services!: pulumi.Output<outputs.HostService[] | undefined>;
+    declare public readonly services: pulumi.Output<outputs.HostService[] | undefined>;
     /**
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
@@ -275,19 +275,19 @@ export class Host extends pulumi.CustomResource {
      * > **NOTE:** Tagging support is not supported on direct ESXi host
      * connections and require vCenter Server.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
      * trusted and no thumbprint is set then the operation will fail. See data source
      * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      */
-    public readonly thumbprint!: pulumi.Output<string | undefined>;
+    declare public readonly thumbprint: pulumi.Output<string | undefined>;
     /**
      * Username that will be used by vSphere to authenticate
      * to the host.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a Host resource with the given unique name, arguments, and options.
@@ -302,47 +302,47 @@ export class Host extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostState | undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["clusterManaged"] = state ? state.clusterManaged : undefined;
-            resourceInputs["connected"] = state ? state.connected : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["license"] = state ? state.license : undefined;
-            resourceInputs["lockdown"] = state ? state.lockdown : undefined;
-            resourceInputs["maintenance"] = state ? state.maintenance : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["thumbprint"] = state ? state.thumbprint : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["clusterManaged"] = state?.clusterManaged;
+            resourceInputs["connected"] = state?.connected;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["license"] = state?.license;
+            resourceInputs["lockdown"] = state?.lockdown;
+            resourceInputs["maintenance"] = state?.maintenance;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["thumbprint"] = state?.thumbprint;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as HostArgs | undefined;
-            if ((!args || args.hostname === undefined) && !opts.urn) {
+            if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["clusterManaged"] = args ? args.clusterManaged : undefined;
-            resourceInputs["connected"] = args ? args.connected : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["license"] = args ? args.license : undefined;
-            resourceInputs["lockdown"] = args ? args.lockdown : undefined;
-            resourceInputs["maintenance"] = args ? args.maintenance : undefined;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["clusterManaged"] = args?.clusterManaged;
+            resourceInputs["connected"] = args?.connected;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["license"] = args?.license;
+            resourceInputs["lockdown"] = args?.lockdown;
+            resourceInputs["maintenance"] = args?.maintenance;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["thumbprint"] = args ? args.thumbprint : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["services"] = args?.services;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["thumbprint"] = args?.thumbprint;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

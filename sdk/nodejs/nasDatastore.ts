@@ -104,16 +104,16 @@ export class NasDatastore extends pulumi.CustomResource {
      * that the datastore will be read-write depending on the permissions of the
      * actual share. Default: `readWrite`. Forces a new resource if changed.
      */
-    public readonly accessMode!: pulumi.Output<string | undefined>;
+    declare public readonly accessMode: pulumi.Output<string | undefined>;
     /**
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    public /*out*/ readonly accessible!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly accessible: pulumi.Output<boolean>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    public /*out*/ readonly capacity!: pulumi.Output<number>;
+    declare public /*out*/ readonly capacity: pulumi.Output<number>;
     /**
      * Map of custom attribute ids to attribute 
      * value strings to set on datasource resource.
@@ -121,13 +121,13 @@ export class NasDatastore extends pulumi.CustomResource {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The managed object
      * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
+    declare public readonly datastoreClusterId: pulumi.Output<string | undefined>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -137,74 +137,74 @@ export class NasDatastore extends pulumi.CustomResource {
      * `/dc1/datastore/foo/bar/test`. Conflicts with
      * `datastoreClusterId`.
      */
-    public readonly folder!: pulumi.Output<string | undefined>;
+    declare public readonly folder: pulumi.Output<string | undefined>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    public /*out*/ readonly freeSpace!: pulumi.Output<number>;
+    declare public /*out*/ readonly freeSpace: pulumi.Output<number>;
     /**
      * The managed object IDs of
      * the hosts to mount the datastore on.
      */
-    public readonly hostSystemIds!: pulumi.Output<string[]>;
+    declare public readonly hostSystemIds: pulumi.Output<string[]>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    public /*out*/ readonly maintenanceMode!: pulumi.Output<string>;
+    declare public /*out*/ readonly maintenanceMode: pulumi.Output<string>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    public /*out*/ readonly multipleHostAccess!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly multipleHostAccess: pulumi.Output<boolean>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates that this NAS volume is a protocol endpoint.
      * This field is only populated if the host supports virtual datastores.
      */
-    public /*out*/ readonly protocolEndpoint!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly protocolEndpoint: pulumi.Output<boolean>;
     /**
      * The hostnames or IP addresses of the remote
      * servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
-    public readonly remoteHosts!: pulumi.Output<string[]>;
+    declare public readonly remoteHosts: pulumi.Output<string[]>;
     /**
      * The remote path of the mount point. Forces a new
      * resource if changed.
      */
-    public readonly remotePath!: pulumi.Output<string>;
+    declare public readonly remotePath: pulumi.Output<string>;
     /**
      * The security type to use when using NFS v4.1.
      * Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
      * if changed.
      */
-    public readonly securityType!: pulumi.Output<string | undefined>;
+    declare public readonly securityType: pulumi.Output<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. 
      *
      * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
      * requires vCenter 6.0 or higher.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The type of NAS volume. Can be one of `NFS` (to denote
      * v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
      * changed.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    public /*out*/ readonly uncommittedSpace!: pulumi.Output<number>;
+    declare public /*out*/ readonly uncommittedSpace: pulumi.Output<number>;
     /**
      * The unique locator for the datastore.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a NasDatastore resource with the given unique name, arguments, and options.
@@ -219,47 +219,47 @@ export class NasDatastore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NasDatastoreState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["accessible"] = state ? state.accessible : undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["freeSpace"] = state ? state.freeSpace : undefined;
-            resourceInputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
-            resourceInputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
-            resourceInputs["multipleHostAccess"] = state ? state.multipleHostAccess : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protocolEndpoint"] = state ? state.protocolEndpoint : undefined;
-            resourceInputs["remoteHosts"] = state ? state.remoteHosts : undefined;
-            resourceInputs["remotePath"] = state ? state.remotePath : undefined;
-            resourceInputs["securityType"] = state ? state.securityType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uncommittedSpace"] = state ? state.uncommittedSpace : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["accessible"] = state?.accessible;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["datastoreClusterId"] = state?.datastoreClusterId;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["freeSpace"] = state?.freeSpace;
+            resourceInputs["hostSystemIds"] = state?.hostSystemIds;
+            resourceInputs["maintenanceMode"] = state?.maintenanceMode;
+            resourceInputs["multipleHostAccess"] = state?.multipleHostAccess;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protocolEndpoint"] = state?.protocolEndpoint;
+            resourceInputs["remoteHosts"] = state?.remoteHosts;
+            resourceInputs["remotePath"] = state?.remotePath;
+            resourceInputs["securityType"] = state?.securityType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uncommittedSpace"] = state?.uncommittedSpace;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as NasDatastoreArgs | undefined;
-            if ((!args || args.hostSystemIds === undefined) && !opts.urn) {
+            if (args?.hostSystemIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemIds'");
             }
-            if ((!args || args.remoteHosts === undefined) && !opts.urn) {
+            if (args?.remoteHosts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteHosts'");
             }
-            if ((!args || args.remotePath === undefined) && !opts.urn) {
+            if (args?.remotePath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remotePath'");
             }
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["remoteHosts"] = args ? args.remoteHosts : undefined;
-            resourceInputs["remotePath"] = args ? args.remotePath : undefined;
-            resourceInputs["securityType"] = args ? args.securityType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["datastoreClusterId"] = args?.datastoreClusterId;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["hostSystemIds"] = args?.hostSystemIds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["remoteHosts"] = args?.remoteHosts;
+            resourceInputs["remotePath"] = args?.remotePath;
+            resourceInputs["securityType"] = args?.securityType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["accessible"] = undefined /*out*/;
             resourceInputs["capacity"] = undefined /*out*/;
             resourceInputs["freeSpace"] = undefined /*out*/;

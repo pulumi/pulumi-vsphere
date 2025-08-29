@@ -44,11 +44,11 @@ export class OfflineSoftwareDepot extends pulumi.CustomResource {
     /**
      * The list of custom components in the depot.
      */
-    public /*out*/ readonly components!: pulumi.Output<outputs.OfflineSoftwareDepotComponent[]>;
+    declare public /*out*/ readonly components: pulumi.Output<outputs.OfflineSoftwareDepotComponent[]>;
     /**
      * The URL where the depot source is hosted.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
 
     /**
      * Create a OfflineSoftwareDepot resource with the given unique name, arguments, and options.
@@ -63,14 +63,14 @@ export class OfflineSoftwareDepot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OfflineSoftwareDepotState | undefined;
-            resourceInputs["components"] = state ? state.components : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["components"] = state?.components;
+            resourceInputs["location"] = state?.location;
         } else {
             const args = argsOrState as OfflineSoftwareDepotArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["location"] = args?.location;
             resourceInputs["components"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

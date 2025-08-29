@@ -191,16 +191,14 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.activeNics);
     }
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     @Export(name="allowForgedTransmits", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     public Output<Optional<Boolean>> allowForgedTransmits() {
@@ -235,16 +233,14 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowPromiscuous);
     }
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-     * only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      * 
      */
     @Export(name="checkBeacon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> checkBeacon;
 
     /**
-     * @return Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-     * only.
+     * @return Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
      * 
      */
     public Output<Optional<Boolean>> checkBeacon() {
@@ -427,16 +423,14 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.standbyNics);
     }
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-     * failover_explicit.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      * 
      */
     @Export(name="teamingPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> teamingPolicy;
 
     /**
-     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-     * failover_explicit.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
      * 
      */
     public Output<Optional<String>> teamingPolicy() {

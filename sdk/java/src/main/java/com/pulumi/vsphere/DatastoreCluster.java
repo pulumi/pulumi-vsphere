@@ -224,32 +224,28 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsFreeSpaceThreshold);
     }
     /**
-     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-     * freeSpace, drs_free_space_threshold is used.
+     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
      * 
      */
     @Export(name="sdrsFreeSpaceThresholdMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsFreeSpaceThresholdMode;
 
     /**
-     * @return The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-     * freeSpace, drs_free_space_threshold is used.
+     * @return The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
      * 
      */
     public Output<Optional<String>> sdrsFreeSpaceThresholdMode() {
         return Codegen.optional(this.sdrsFreeSpaceThresholdMode);
     }
     /**
-     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-     * balance the space.
+     * The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
      * 
      */
     @Export(name="sdrsFreeSpaceUtilizationDifference", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsFreeSpaceUtilizationDifference;
 
     /**
-     * @return The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-     * balance the space.
+     * @return The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
      * 
      */
     public Output<Optional<Integer>> sdrsFreeSpaceUtilizationDifference() {
@@ -270,16 +266,14 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsIoBalanceAutomationLevel);
     }
     /**
-     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-     * datastore.
+     * The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
      * 
      */
     @Export(name="sdrsIoLatencyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoLatencyThreshold;
 
     /**
-     * @return The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-     * datastore.
+     * @return The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
      * 
      */
     public Output<Optional<Integer>> sdrsIoLatencyThreshold() {
@@ -314,32 +308,28 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsIoLoadImbalanceThreshold);
     }
     /**
-     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-     * move VMs off of a datastore.
+     * The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
      * 
      */
     @Export(name="sdrsIoReservableIopsThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoReservableIopsThreshold;
 
     /**
-     * @return The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-     * move VMs off of a datastore.
+     * @return The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
      * 
      */
     public Output<Optional<Integer>> sdrsIoReservableIopsThreshold() {
         return Codegen.optional(this.sdrsIoReservableIopsThreshold);
     }
     /**
-     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+     * The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      * 
      */
     @Export(name="sdrsIoReservablePercentThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sdrsIoReservablePercentThreshold;
 
     /**
-     * @return The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-     * recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+     * @return The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
      * 
      */
     public Output<Optional<Integer>> sdrsIoReservablePercentThreshold() {

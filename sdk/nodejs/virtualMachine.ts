@@ -62,355 +62,340 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The guest name for the operating system when guestId is otherGuest or otherGuest64.
      */
-    public readonly alternateGuestName!: pulumi.Output<string | undefined>;
+    declare public readonly alternateGuestName: pulumi.Output<string | undefined>;
     /**
      * User-provided description of the virtual machine.
      */
-    public readonly annotation!: pulumi.Output<string>;
+    declare public readonly annotation: pulumi.Output<string>;
     /**
      * The number of milliseconds to wait before starting the boot sequence.
      */
-    public readonly bootDelay!: pulumi.Output<number | undefined>;
+    declare public readonly bootDelay: pulumi.Output<number | undefined>;
     /**
      * The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      */
-    public readonly bootRetryDelay!: pulumi.Output<number | undefined>;
+    declare public readonly bootRetryDelay: pulumi.Output<number | undefined>;
     /**
      * If set to true, a virtual machine that fails to boot will try again after the delay defined in boot_retry_delay.
      */
-    public readonly bootRetryEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly bootRetryEnabled: pulumi.Output<boolean | undefined>;
     /**
      * A specification for a CDROM device on this virtual machine.
      */
-    public readonly cdroms!: pulumi.Output<outputs.VirtualMachineCdrom[] | undefined>;
+    declare public readonly cdroms: pulumi.Output<outputs.VirtualMachineCdrom[] | undefined>;
     /**
      * A unique identifier for a given version of the last configuration was applied.
      */
-    public /*out*/ readonly changeVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly changeVersion: pulumi.Output<string>;
     /**
      * A specification for cloning a virtual machine from template.
      */
-    public readonly clone!: pulumi.Output<outputs.VirtualMachineClone | undefined>;
+    declare public readonly clone: pulumi.Output<outputs.VirtualMachineClone | undefined>;
     /**
      * Allow CPUs to be added to this virtual machine while it is running.
      */
-    public readonly cpuHotAddEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly cpuHotAddEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Allow CPUs to be added to this virtual machine while it is running.
      */
-    public readonly cpuHotRemoveEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly cpuHotRemoveEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      */
-    public readonly cpuLimit!: pulumi.Output<number | undefined>;
+    declare public readonly cpuLimit: pulumi.Output<number | undefined>;
     /**
      * Enable CPU performance counters on this virtual machine.
      */
-    public readonly cpuPerformanceCountersEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly cpuPerformanceCountersEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      */
-    public readonly cpuReservation!: pulumi.Output<number | undefined>;
+    declare public readonly cpuReservation: pulumi.Output<number | undefined>;
     /**
      * The amount of shares to allocate to cpu for a custom share level.
      */
-    public readonly cpuShareCount!: pulumi.Output<number>;
+    declare public readonly cpuShareCount: pulumi.Output<number>;
     /**
      * The allocation level for cpu resources. Can be one of high, low, normal, or custom.
      */
-    public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
+    declare public readonly cpuShareLevel: pulumi.Output<string | undefined>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the datacenter where the VM is to be created.
      */
-    public readonly datacenterId!: pulumi.Output<string | undefined>;
+    declare public readonly datacenterId: pulumi.Output<string | undefined>;
     /**
      * The ID of a datastore cluster to put the virtual machine in.
      */
-    public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
+    declare public readonly datastoreClusterId: pulumi.Output<string | undefined>;
     /**
-     * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-     * disks that are created without datastores.
+     * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      */
-    public readonly datastoreId!: pulumi.Output<string>;
+    declare public readonly datastoreId: pulumi.Output<string>;
     /**
      * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
      */
-    public /*out*/ readonly defaultIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultIpAddress: pulumi.Output<string>;
     /**
      * A specification for a virtual disk device on this virtual machine.
      */
-    public readonly disks!: pulumi.Output<outputs.VirtualMachineDisk[]>;
+    declare public readonly disks: pulumi.Output<outputs.VirtualMachineDisk[]>;
     /**
      * When the boot type set in firmware is efi, this enables EFI secure boot.
      */
-    public readonly efiSecureBootEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly efiSecureBootEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
      */
-    public readonly enableDiskUuid!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDiskUuid: pulumi.Output<boolean | undefined>;
     /**
      * Enable logging on this virtual machine.
      */
-    public readonly enableLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLogging: pulumi.Output<boolean | undefined>;
     /**
      * The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
      */
-    public readonly eptRviMode!: pulumi.Output<string>;
+    declare public readonly eptRviMode: pulumi.Output<string>;
     /**
-     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata, or configuration data for OVF images.
+     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      */
-    public readonly extraConfig!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly extraConfig: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      */
-    public readonly extraConfigRebootRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly extraConfigRebootRequired: pulumi.Output<boolean | undefined>;
     /**
      * The firmware interface to use on the virtual machine. Can be one of bios or efi.
      */
-    public readonly firmware!: pulumi.Output<string | undefined>;
+    declare public readonly firmware: pulumi.Output<string | undefined>;
     /**
      * The name of the folder to locate the virtual machine in.
      */
-    public readonly folder!: pulumi.Output<string | undefined>;
+    declare public readonly folder: pulumi.Output<string | undefined>;
     /**
      * Set to true to force power-off a virtual machine if a graceful guest shutdown failed for a necessary operation.
      */
-    public readonly forcePowerOff!: pulumi.Output<boolean | undefined>;
+    declare public readonly forcePowerOff: pulumi.Output<boolean | undefined>;
     /**
      * The guest ID for the operating system.
      */
-    public readonly guestId!: pulumi.Output<string>;
+    declare public readonly guestId: pulumi.Output<string>;
     /**
      * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      */
-    public /*out*/ readonly guestIpAddresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly guestIpAddresses: pulumi.Output<string[]>;
     /**
      * The hardware version for the virtual machine. Allows versions within ranges: 4, 7-11, 13-15, 17-22.
      */
-    public readonly hardwareVersion!: pulumi.Output<number>;
+    declare public readonly hardwareVersion: pulumi.Output<number>;
     /**
      * The ID of an optional host system to pin the virtual machine to.
      */
-    public readonly hostSystemId!: pulumi.Output<string>;
+    declare public readonly hostSystemId: pulumi.Output<string>;
     /**
      * The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
      */
-    public readonly hvMode!: pulumi.Output<string>;
-    public readonly ideControllerCount!: pulumi.Output<number | undefined>;
+    declare public readonly hvMode: pulumi.Output<string>;
+    declare public readonly ideControllerCount: pulumi.Output<number | undefined>;
     /**
      * List of IP addresses and CIDR networks to ignore while waiting for an IP
      */
-    public readonly ignoredGuestIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly ignoredGuestIps: pulumi.Output<string[] | undefined>;
     /**
      * Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
      */
-    public /*out*/ readonly imported!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly imported: pulumi.Output<boolean>;
     /**
-     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-     * devices. Can be one of low, normal, medium, or high.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
      */
-    public readonly latencySensitivity!: pulumi.Output<string | undefined>;
+    declare public readonly latencySensitivity: pulumi.Output<string | undefined>;
     /**
      * The size of the virtual machine's memory, in MB.
      */
-    public readonly memory!: pulumi.Output<number | undefined>;
+    declare public readonly memory: pulumi.Output<number | undefined>;
     /**
      * Allow memory to be added to this virtual machine while it is running.
      */
-    public readonly memoryHotAddEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly memoryHotAddEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      */
-    public readonly memoryLimit!: pulumi.Output<number | undefined>;
+    declare public readonly memoryLimit: pulumi.Output<number | undefined>;
     /**
      * The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
      */
-    public readonly memoryReservation!: pulumi.Output<number | undefined>;
+    declare public readonly memoryReservation: pulumi.Output<number | undefined>;
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-     * may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
      */
-    public readonly memoryReservationLockedToMax!: pulumi.Output<boolean | undefined>;
+    declare public readonly memoryReservationLockedToMax: pulumi.Output<boolean | undefined>;
     /**
      * The amount of shares to allocate to memory for a custom share level.
      */
-    public readonly memoryShareCount!: pulumi.Output<number>;
+    declare public readonly memoryShareCount: pulumi.Output<number>;
     /**
      * The allocation level for memory resources. Can be one of high, low, normal, or custom.
      */
-    public readonly memoryShareLevel!: pulumi.Output<string | undefined>;
+    declare public readonly memoryShareLevel: pulumi.Output<string | undefined>;
     /**
      * The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
      */
-    public readonly migrateWaitTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly migrateWaitTimeout: pulumi.Output<number | undefined>;
     /**
      * The managed object reference ID of the created virtual machine.
      */
-    public /*out*/ readonly moid!: pulumi.Output<string>;
+    declare public /*out*/ readonly moid: pulumi.Output<string>;
     /**
      * The name of this virtual machine.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
      */
-    public readonly nestedHvEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly nestedHvEnabled: pulumi.Output<boolean | undefined>;
     /**
      * A specification for a virtual NIC on this virtual machine.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.VirtualMachineNetworkInterface[] | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.VirtualMachineNetworkInterface[] | undefined>;
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-     * must be evenly divisible by this value.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      */
-    public readonly numCoresPerSocket!: pulumi.Output<number | undefined>;
+    declare public readonly numCoresPerSocket: pulumi.Output<number | undefined>;
     /**
      * The number of virtual processors to assign to this virtual machine.
      */
-    public readonly numCpus!: pulumi.Output<number | undefined>;
-    public readonly nvmeControllerCount!: pulumi.Output<number | undefined>;
+    declare public readonly numCpus: pulumi.Output<number | undefined>;
+    declare public readonly nvmeControllerCount: pulumi.Output<number | undefined>;
     /**
      * A specification for deploying a virtual machine from ovf/ova template.
      */
-    public readonly ovfDeploy!: pulumi.Output<outputs.VirtualMachineOvfDeploy | undefined>;
+    declare public readonly ovfDeploy: pulumi.Output<outputs.VirtualMachineOvfDeploy | undefined>;
     /**
      * A list of PCI passthrough devices
      */
-    public readonly pciDeviceIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly pciDeviceIds: pulumi.Output<string[] | undefined>;
     /**
      * A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
      */
-    public /*out*/ readonly powerState!: pulumi.Output<string>;
+    declare public /*out*/ readonly powerState: pulumi.Output<string>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
-    public readonly poweronTimeout!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly rebootRequired!: pulumi.Output<boolean>;
+    declare public readonly poweronTimeout: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly rebootRequired: pulumi.Output<boolean>;
     /**
      * Triggers replacement of resource whenever it changes.
      */
-    public readonly replaceTrigger!: pulumi.Output<string | undefined>;
+    declare public readonly replaceTrigger: pulumi.Output<string | undefined>;
     /**
      * The ID of a resource pool to put the virtual machine in.
      */
-    public readonly resourcePoolId!: pulumi.Output<string>;
+    declare public readonly resourcePoolId: pulumi.Output<string>;
     /**
      * Enable the run of scripts after virtual machine power-on when VMware Tools is installed.
      */
-    public readonly runToolsScriptsAfterPowerOn!: pulumi.Output<boolean | undefined>;
+    declare public readonly runToolsScriptsAfterPowerOn: pulumi.Output<boolean | undefined>;
     /**
      * Enable the run of scripts after virtual machine resume when when VMware Tools is installed.
      */
-    public readonly runToolsScriptsAfterResume!: pulumi.Output<boolean | undefined>;
+    declare public readonly runToolsScriptsAfterResume: pulumi.Output<boolean | undefined>;
     /**
      * Enable the run of scripts before guest operating system reboot when VMware Tools is installed.
      */
-    public readonly runToolsScriptsBeforeGuestReboot!: pulumi.Output<boolean | undefined>;
+    declare public readonly runToolsScriptsBeforeGuestReboot: pulumi.Output<boolean | undefined>;
     /**
      * Enable the run of scripts before guest operating system shutdown when VMware Tools is installed.
      */
-    public readonly runToolsScriptsBeforeGuestShutdown!: pulumi.Output<boolean | undefined>;
+    declare public readonly runToolsScriptsBeforeGuestShutdown: pulumi.Output<boolean | undefined>;
     /**
      * Enable the run of scripts before guest operating system standby when VMware Tools is installed.
      */
-    public readonly runToolsScriptsBeforeGuestStandby!: pulumi.Output<boolean | undefined>;
-    public readonly sataControllerCount!: pulumi.Output<number | undefined>;
+    declare public readonly runToolsScriptsBeforeGuestStandby: pulumi.Output<boolean | undefined>;
+    declare public readonly sataControllerCount: pulumi.Output<number | undefined>;
     /**
      * Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
      */
-    public readonly scsiBusSharing!: pulumi.Output<string | undefined>;
-    public readonly scsiControllerCount!: pulumi.Output<number | undefined>;
+    declare public readonly scsiBusSharing: pulumi.Output<string | undefined>;
+    declare public readonly scsiControllerCount: pulumi.Output<number | undefined>;
     /**
      * The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
      */
-    public readonly scsiType!: pulumi.Output<string | undefined>;
+    declare public readonly scsiType: pulumi.Output<string | undefined>;
     /**
      * The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
      */
-    public readonly shutdownWaitTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly shutdownWaitTimeout: pulumi.Output<number | undefined>;
     /**
      * The ID of the storage policy to assign to the virtual machine home directory.
      */
-    public readonly storagePolicyId!: pulumi.Output<string>;
+    declare public readonly storagePolicyId: pulumi.Output<string>;
     /**
      * The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
      */
-    public readonly swapPlacementPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly swapPlacementPolicy: pulumi.Output<string | undefined>;
     /**
-     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-     * synchronized on startup and resume. Requires VMware Tools to be installed.
+     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
      */
-    public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
+    declare public readonly syncTimeWithHost: pulumi.Output<boolean | undefined>;
     /**
-     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      */
-    public readonly syncTimeWithHostPeriodically!: pulumi.Output<boolean | undefined>;
+    declare public readonly syncTimeWithHostPeriodically: pulumi.Output<boolean | undefined>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
      */
-    public readonly toolsUpgradePolicy!: pulumi.Output<string | undefined>;
+    declare public readonly toolsUpgradePolicy: pulumi.Output<string | undefined>;
     /**
      * The UUID of the virtual machine. Also exposed as the `id` of the resource.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
     /**
      * vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
      */
-    public readonly vapp!: pulumi.Output<outputs.VirtualMachineVapp | undefined>;
+    declare public readonly vapp: pulumi.Output<outputs.VirtualMachineVapp | undefined>;
     /**
      * Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
      */
-    public /*out*/ readonly vappTransports!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly vappTransports: pulumi.Output<string[]>;
     /**
      * Flag to specify if Virtualization-based security is enabled for this virtual machine.
      */
-    public readonly vbsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly vbsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
      */
-    public /*out*/ readonly vmwareToolsStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmwareToolsStatus: pulumi.Output<string>;
     /**
      * The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
      */
-    public /*out*/ readonly vmxPath!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmxPath: pulumi.Output<string>;
     /**
      * A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
      */
-    public readonly vtpm!: pulumi.Output<outputs.VirtualMachineVtpm | undefined>;
+    declare public readonly vtpm: pulumi.Output<outputs.VirtualMachineVtpm | undefined>;
     /**
-     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      */
-    public readonly vvtdEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly vvtdEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      */
-    public readonly waitForGuestIpTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly waitForGuestIpTimeout: pulumi.Output<number | undefined>;
     /**
-     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      */
-    public readonly waitForGuestNetRoutable!: pulumi.Output<boolean | undefined>;
+    declare public readonly waitForGuestNetRoutable: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      */
-    public readonly waitForGuestNetTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly waitForGuestNetTimeout: pulumi.Output<number | undefined>;
 
     /**
      * Create a VirtualMachine resource with the given unique name, arguments, and options.
@@ -425,176 +410,176 @@ export class VirtualMachine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualMachineState | undefined;
-            resourceInputs["alternateGuestName"] = state ? state.alternateGuestName : undefined;
-            resourceInputs["annotation"] = state ? state.annotation : undefined;
-            resourceInputs["bootDelay"] = state ? state.bootDelay : undefined;
-            resourceInputs["bootRetryDelay"] = state ? state.bootRetryDelay : undefined;
-            resourceInputs["bootRetryEnabled"] = state ? state.bootRetryEnabled : undefined;
-            resourceInputs["cdroms"] = state ? state.cdroms : undefined;
-            resourceInputs["changeVersion"] = state ? state.changeVersion : undefined;
-            resourceInputs["clone"] = state ? state.clone : undefined;
-            resourceInputs["cpuHotAddEnabled"] = state ? state.cpuHotAddEnabled : undefined;
-            resourceInputs["cpuHotRemoveEnabled"] = state ? state.cpuHotRemoveEnabled : undefined;
-            resourceInputs["cpuLimit"] = state ? state.cpuLimit : undefined;
-            resourceInputs["cpuPerformanceCountersEnabled"] = state ? state.cpuPerformanceCountersEnabled : undefined;
-            resourceInputs["cpuReservation"] = state ? state.cpuReservation : undefined;
-            resourceInputs["cpuShareCount"] = state ? state.cpuShareCount : undefined;
-            resourceInputs["cpuShareLevel"] = state ? state.cpuShareLevel : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["datacenterId"] = state ? state.datacenterId : undefined;
-            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            resourceInputs["datastoreId"] = state ? state.datastoreId : undefined;
-            resourceInputs["defaultIpAddress"] = state ? state.defaultIpAddress : undefined;
-            resourceInputs["disks"] = state ? state.disks : undefined;
-            resourceInputs["efiSecureBootEnabled"] = state ? state.efiSecureBootEnabled : undefined;
-            resourceInputs["enableDiskUuid"] = state ? state.enableDiskUuid : undefined;
-            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
-            resourceInputs["eptRviMode"] = state ? state.eptRviMode : undefined;
-            resourceInputs["extraConfig"] = state ? state.extraConfig : undefined;
-            resourceInputs["extraConfigRebootRequired"] = state ? state.extraConfigRebootRequired : undefined;
-            resourceInputs["firmware"] = state ? state.firmware : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["forcePowerOff"] = state ? state.forcePowerOff : undefined;
-            resourceInputs["guestId"] = state ? state.guestId : undefined;
-            resourceInputs["guestIpAddresses"] = state ? state.guestIpAddresses : undefined;
-            resourceInputs["hardwareVersion"] = state ? state.hardwareVersion : undefined;
-            resourceInputs["hostSystemId"] = state ? state.hostSystemId : undefined;
-            resourceInputs["hvMode"] = state ? state.hvMode : undefined;
-            resourceInputs["ideControllerCount"] = state ? state.ideControllerCount : undefined;
-            resourceInputs["ignoredGuestIps"] = state ? state.ignoredGuestIps : undefined;
-            resourceInputs["imported"] = state ? state.imported : undefined;
-            resourceInputs["latencySensitivity"] = state ? state.latencySensitivity : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["memoryHotAddEnabled"] = state ? state.memoryHotAddEnabled : undefined;
-            resourceInputs["memoryLimit"] = state ? state.memoryLimit : undefined;
-            resourceInputs["memoryReservation"] = state ? state.memoryReservation : undefined;
-            resourceInputs["memoryReservationLockedToMax"] = state ? state.memoryReservationLockedToMax : undefined;
-            resourceInputs["memoryShareCount"] = state ? state.memoryShareCount : undefined;
-            resourceInputs["memoryShareLevel"] = state ? state.memoryShareLevel : undefined;
-            resourceInputs["migrateWaitTimeout"] = state ? state.migrateWaitTimeout : undefined;
-            resourceInputs["moid"] = state ? state.moid : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nestedHvEnabled"] = state ? state.nestedHvEnabled : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["numCoresPerSocket"] = state ? state.numCoresPerSocket : undefined;
-            resourceInputs["numCpus"] = state ? state.numCpus : undefined;
-            resourceInputs["nvmeControllerCount"] = state ? state.nvmeControllerCount : undefined;
-            resourceInputs["ovfDeploy"] = state ? state.ovfDeploy : undefined;
-            resourceInputs["pciDeviceIds"] = state ? state.pciDeviceIds : undefined;
-            resourceInputs["powerState"] = state ? state.powerState : undefined;
-            resourceInputs["poweronTimeout"] = state ? state.poweronTimeout : undefined;
-            resourceInputs["rebootRequired"] = state ? state.rebootRequired : undefined;
-            resourceInputs["replaceTrigger"] = state ? state.replaceTrigger : undefined;
-            resourceInputs["resourcePoolId"] = state ? state.resourcePoolId : undefined;
-            resourceInputs["runToolsScriptsAfterPowerOn"] = state ? state.runToolsScriptsAfterPowerOn : undefined;
-            resourceInputs["runToolsScriptsAfterResume"] = state ? state.runToolsScriptsAfterResume : undefined;
-            resourceInputs["runToolsScriptsBeforeGuestReboot"] = state ? state.runToolsScriptsBeforeGuestReboot : undefined;
-            resourceInputs["runToolsScriptsBeforeGuestShutdown"] = state ? state.runToolsScriptsBeforeGuestShutdown : undefined;
-            resourceInputs["runToolsScriptsBeforeGuestStandby"] = state ? state.runToolsScriptsBeforeGuestStandby : undefined;
-            resourceInputs["sataControllerCount"] = state ? state.sataControllerCount : undefined;
-            resourceInputs["scsiBusSharing"] = state ? state.scsiBusSharing : undefined;
-            resourceInputs["scsiControllerCount"] = state ? state.scsiControllerCount : undefined;
-            resourceInputs["scsiType"] = state ? state.scsiType : undefined;
-            resourceInputs["shutdownWaitTimeout"] = state ? state.shutdownWaitTimeout : undefined;
-            resourceInputs["storagePolicyId"] = state ? state.storagePolicyId : undefined;
-            resourceInputs["swapPlacementPolicy"] = state ? state.swapPlacementPolicy : undefined;
-            resourceInputs["syncTimeWithHost"] = state ? state.syncTimeWithHost : undefined;
-            resourceInputs["syncTimeWithHostPeriodically"] = state ? state.syncTimeWithHostPeriodically : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["toolsUpgradePolicy"] = state ? state.toolsUpgradePolicy : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
-            resourceInputs["vapp"] = state ? state.vapp : undefined;
-            resourceInputs["vappTransports"] = state ? state.vappTransports : undefined;
-            resourceInputs["vbsEnabled"] = state ? state.vbsEnabled : undefined;
-            resourceInputs["vmwareToolsStatus"] = state ? state.vmwareToolsStatus : undefined;
-            resourceInputs["vmxPath"] = state ? state.vmxPath : undefined;
-            resourceInputs["vtpm"] = state ? state.vtpm : undefined;
-            resourceInputs["vvtdEnabled"] = state ? state.vvtdEnabled : undefined;
-            resourceInputs["waitForGuestIpTimeout"] = state ? state.waitForGuestIpTimeout : undefined;
-            resourceInputs["waitForGuestNetRoutable"] = state ? state.waitForGuestNetRoutable : undefined;
-            resourceInputs["waitForGuestNetTimeout"] = state ? state.waitForGuestNetTimeout : undefined;
+            resourceInputs["alternateGuestName"] = state?.alternateGuestName;
+            resourceInputs["annotation"] = state?.annotation;
+            resourceInputs["bootDelay"] = state?.bootDelay;
+            resourceInputs["bootRetryDelay"] = state?.bootRetryDelay;
+            resourceInputs["bootRetryEnabled"] = state?.bootRetryEnabled;
+            resourceInputs["cdroms"] = state?.cdroms;
+            resourceInputs["changeVersion"] = state?.changeVersion;
+            resourceInputs["clone"] = state?.clone;
+            resourceInputs["cpuHotAddEnabled"] = state?.cpuHotAddEnabled;
+            resourceInputs["cpuHotRemoveEnabled"] = state?.cpuHotRemoveEnabled;
+            resourceInputs["cpuLimit"] = state?.cpuLimit;
+            resourceInputs["cpuPerformanceCountersEnabled"] = state?.cpuPerformanceCountersEnabled;
+            resourceInputs["cpuReservation"] = state?.cpuReservation;
+            resourceInputs["cpuShareCount"] = state?.cpuShareCount;
+            resourceInputs["cpuShareLevel"] = state?.cpuShareLevel;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["datacenterId"] = state?.datacenterId;
+            resourceInputs["datastoreClusterId"] = state?.datastoreClusterId;
+            resourceInputs["datastoreId"] = state?.datastoreId;
+            resourceInputs["defaultIpAddress"] = state?.defaultIpAddress;
+            resourceInputs["disks"] = state?.disks;
+            resourceInputs["efiSecureBootEnabled"] = state?.efiSecureBootEnabled;
+            resourceInputs["enableDiskUuid"] = state?.enableDiskUuid;
+            resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["eptRviMode"] = state?.eptRviMode;
+            resourceInputs["extraConfig"] = state?.extraConfig;
+            resourceInputs["extraConfigRebootRequired"] = state?.extraConfigRebootRequired;
+            resourceInputs["firmware"] = state?.firmware;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["forcePowerOff"] = state?.forcePowerOff;
+            resourceInputs["guestId"] = state?.guestId;
+            resourceInputs["guestIpAddresses"] = state?.guestIpAddresses;
+            resourceInputs["hardwareVersion"] = state?.hardwareVersion;
+            resourceInputs["hostSystemId"] = state?.hostSystemId;
+            resourceInputs["hvMode"] = state?.hvMode;
+            resourceInputs["ideControllerCount"] = state?.ideControllerCount;
+            resourceInputs["ignoredGuestIps"] = state?.ignoredGuestIps;
+            resourceInputs["imported"] = state?.imported;
+            resourceInputs["latencySensitivity"] = state?.latencySensitivity;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["memoryHotAddEnabled"] = state?.memoryHotAddEnabled;
+            resourceInputs["memoryLimit"] = state?.memoryLimit;
+            resourceInputs["memoryReservation"] = state?.memoryReservation;
+            resourceInputs["memoryReservationLockedToMax"] = state?.memoryReservationLockedToMax;
+            resourceInputs["memoryShareCount"] = state?.memoryShareCount;
+            resourceInputs["memoryShareLevel"] = state?.memoryShareLevel;
+            resourceInputs["migrateWaitTimeout"] = state?.migrateWaitTimeout;
+            resourceInputs["moid"] = state?.moid;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nestedHvEnabled"] = state?.nestedHvEnabled;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["numCoresPerSocket"] = state?.numCoresPerSocket;
+            resourceInputs["numCpus"] = state?.numCpus;
+            resourceInputs["nvmeControllerCount"] = state?.nvmeControllerCount;
+            resourceInputs["ovfDeploy"] = state?.ovfDeploy;
+            resourceInputs["pciDeviceIds"] = state?.pciDeviceIds;
+            resourceInputs["powerState"] = state?.powerState;
+            resourceInputs["poweronTimeout"] = state?.poweronTimeout;
+            resourceInputs["rebootRequired"] = state?.rebootRequired;
+            resourceInputs["replaceTrigger"] = state?.replaceTrigger;
+            resourceInputs["resourcePoolId"] = state?.resourcePoolId;
+            resourceInputs["runToolsScriptsAfterPowerOn"] = state?.runToolsScriptsAfterPowerOn;
+            resourceInputs["runToolsScriptsAfterResume"] = state?.runToolsScriptsAfterResume;
+            resourceInputs["runToolsScriptsBeforeGuestReboot"] = state?.runToolsScriptsBeforeGuestReboot;
+            resourceInputs["runToolsScriptsBeforeGuestShutdown"] = state?.runToolsScriptsBeforeGuestShutdown;
+            resourceInputs["runToolsScriptsBeforeGuestStandby"] = state?.runToolsScriptsBeforeGuestStandby;
+            resourceInputs["sataControllerCount"] = state?.sataControllerCount;
+            resourceInputs["scsiBusSharing"] = state?.scsiBusSharing;
+            resourceInputs["scsiControllerCount"] = state?.scsiControllerCount;
+            resourceInputs["scsiType"] = state?.scsiType;
+            resourceInputs["shutdownWaitTimeout"] = state?.shutdownWaitTimeout;
+            resourceInputs["storagePolicyId"] = state?.storagePolicyId;
+            resourceInputs["swapPlacementPolicy"] = state?.swapPlacementPolicy;
+            resourceInputs["syncTimeWithHost"] = state?.syncTimeWithHost;
+            resourceInputs["syncTimeWithHostPeriodically"] = state?.syncTimeWithHostPeriodically;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["toolsUpgradePolicy"] = state?.toolsUpgradePolicy;
+            resourceInputs["uuid"] = state?.uuid;
+            resourceInputs["vapp"] = state?.vapp;
+            resourceInputs["vappTransports"] = state?.vappTransports;
+            resourceInputs["vbsEnabled"] = state?.vbsEnabled;
+            resourceInputs["vmwareToolsStatus"] = state?.vmwareToolsStatus;
+            resourceInputs["vmxPath"] = state?.vmxPath;
+            resourceInputs["vtpm"] = state?.vtpm;
+            resourceInputs["vvtdEnabled"] = state?.vvtdEnabled;
+            resourceInputs["waitForGuestIpTimeout"] = state?.waitForGuestIpTimeout;
+            resourceInputs["waitForGuestNetRoutable"] = state?.waitForGuestNetRoutable;
+            resourceInputs["waitForGuestNetTimeout"] = state?.waitForGuestNetTimeout;
         } else {
             const args = argsOrState as VirtualMachineArgs | undefined;
-            if ((!args || args.resourcePoolId === undefined) && !opts.urn) {
+            if (args?.resourcePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourcePoolId'");
             }
-            resourceInputs["alternateGuestName"] = args ? args.alternateGuestName : undefined;
-            resourceInputs["annotation"] = args ? args.annotation : undefined;
-            resourceInputs["bootDelay"] = args ? args.bootDelay : undefined;
-            resourceInputs["bootRetryDelay"] = args ? args.bootRetryDelay : undefined;
-            resourceInputs["bootRetryEnabled"] = args ? args.bootRetryEnabled : undefined;
-            resourceInputs["cdroms"] = args ? args.cdroms : undefined;
-            resourceInputs["clone"] = args ? args.clone : undefined;
-            resourceInputs["cpuHotAddEnabled"] = args ? args.cpuHotAddEnabled : undefined;
-            resourceInputs["cpuHotRemoveEnabled"] = args ? args.cpuHotRemoveEnabled : undefined;
-            resourceInputs["cpuLimit"] = args ? args.cpuLimit : undefined;
-            resourceInputs["cpuPerformanceCountersEnabled"] = args ? args.cpuPerformanceCountersEnabled : undefined;
-            resourceInputs["cpuReservation"] = args ? args.cpuReservation : undefined;
-            resourceInputs["cpuShareCount"] = args ? args.cpuShareCount : undefined;
-            resourceInputs["cpuShareLevel"] = args ? args.cpuShareLevel : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["datacenterId"] = args ? args.datacenterId : undefined;
-            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            resourceInputs["datastoreId"] = args ? args.datastoreId : undefined;
-            resourceInputs["disks"] = args ? args.disks : undefined;
-            resourceInputs["efiSecureBootEnabled"] = args ? args.efiSecureBootEnabled : undefined;
-            resourceInputs["enableDiskUuid"] = args ? args.enableDiskUuid : undefined;
-            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
-            resourceInputs["eptRviMode"] = args ? args.eptRviMode : undefined;
-            resourceInputs["extraConfig"] = args ? args.extraConfig : undefined;
-            resourceInputs["extraConfigRebootRequired"] = args ? args.extraConfigRebootRequired : undefined;
-            resourceInputs["firmware"] = args ? args.firmware : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["forcePowerOff"] = args ? args.forcePowerOff : undefined;
-            resourceInputs["guestId"] = args ? args.guestId : undefined;
-            resourceInputs["hardwareVersion"] = args ? args.hardwareVersion : undefined;
-            resourceInputs["hostSystemId"] = args ? args.hostSystemId : undefined;
-            resourceInputs["hvMode"] = args ? args.hvMode : undefined;
-            resourceInputs["ideControllerCount"] = args ? args.ideControllerCount : undefined;
-            resourceInputs["ignoredGuestIps"] = args ? args.ignoredGuestIps : undefined;
-            resourceInputs["latencySensitivity"] = args ? args.latencySensitivity : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["memoryHotAddEnabled"] = args ? args.memoryHotAddEnabled : undefined;
-            resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
-            resourceInputs["memoryReservation"] = args ? args.memoryReservation : undefined;
-            resourceInputs["memoryReservationLockedToMax"] = args ? args.memoryReservationLockedToMax : undefined;
-            resourceInputs["memoryShareCount"] = args ? args.memoryShareCount : undefined;
-            resourceInputs["memoryShareLevel"] = args ? args.memoryShareLevel : undefined;
-            resourceInputs["migrateWaitTimeout"] = args ? args.migrateWaitTimeout : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nestedHvEnabled"] = args ? args.nestedHvEnabled : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["numCoresPerSocket"] = args ? args.numCoresPerSocket : undefined;
-            resourceInputs["numCpus"] = args ? args.numCpus : undefined;
-            resourceInputs["nvmeControllerCount"] = args ? args.nvmeControllerCount : undefined;
-            resourceInputs["ovfDeploy"] = args ? args.ovfDeploy : undefined;
-            resourceInputs["pciDeviceIds"] = args ? args.pciDeviceIds : undefined;
-            resourceInputs["poweronTimeout"] = args ? args.poweronTimeout : undefined;
-            resourceInputs["replaceTrigger"] = args ? args.replaceTrigger : undefined;
-            resourceInputs["resourcePoolId"] = args ? args.resourcePoolId : undefined;
-            resourceInputs["runToolsScriptsAfterPowerOn"] = args ? args.runToolsScriptsAfterPowerOn : undefined;
-            resourceInputs["runToolsScriptsAfterResume"] = args ? args.runToolsScriptsAfterResume : undefined;
-            resourceInputs["runToolsScriptsBeforeGuestReboot"] = args ? args.runToolsScriptsBeforeGuestReboot : undefined;
-            resourceInputs["runToolsScriptsBeforeGuestShutdown"] = args ? args.runToolsScriptsBeforeGuestShutdown : undefined;
-            resourceInputs["runToolsScriptsBeforeGuestStandby"] = args ? args.runToolsScriptsBeforeGuestStandby : undefined;
-            resourceInputs["sataControllerCount"] = args ? args.sataControllerCount : undefined;
-            resourceInputs["scsiBusSharing"] = args ? args.scsiBusSharing : undefined;
-            resourceInputs["scsiControllerCount"] = args ? args.scsiControllerCount : undefined;
-            resourceInputs["scsiType"] = args ? args.scsiType : undefined;
-            resourceInputs["shutdownWaitTimeout"] = args ? args.shutdownWaitTimeout : undefined;
-            resourceInputs["storagePolicyId"] = args ? args.storagePolicyId : undefined;
-            resourceInputs["swapPlacementPolicy"] = args ? args.swapPlacementPolicy : undefined;
-            resourceInputs["syncTimeWithHost"] = args ? args.syncTimeWithHost : undefined;
-            resourceInputs["syncTimeWithHostPeriodically"] = args ? args.syncTimeWithHostPeriodically : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["toolsUpgradePolicy"] = args ? args.toolsUpgradePolicy : undefined;
-            resourceInputs["vapp"] = args ? args.vapp : undefined;
-            resourceInputs["vbsEnabled"] = args ? args.vbsEnabled : undefined;
-            resourceInputs["vtpm"] = args ? args.vtpm : undefined;
-            resourceInputs["vvtdEnabled"] = args ? args.vvtdEnabled : undefined;
-            resourceInputs["waitForGuestIpTimeout"] = args ? args.waitForGuestIpTimeout : undefined;
-            resourceInputs["waitForGuestNetRoutable"] = args ? args.waitForGuestNetRoutable : undefined;
-            resourceInputs["waitForGuestNetTimeout"] = args ? args.waitForGuestNetTimeout : undefined;
+            resourceInputs["alternateGuestName"] = args?.alternateGuestName;
+            resourceInputs["annotation"] = args?.annotation;
+            resourceInputs["bootDelay"] = args?.bootDelay;
+            resourceInputs["bootRetryDelay"] = args?.bootRetryDelay;
+            resourceInputs["bootRetryEnabled"] = args?.bootRetryEnabled;
+            resourceInputs["cdroms"] = args?.cdroms;
+            resourceInputs["clone"] = args?.clone;
+            resourceInputs["cpuHotAddEnabled"] = args?.cpuHotAddEnabled;
+            resourceInputs["cpuHotRemoveEnabled"] = args?.cpuHotRemoveEnabled;
+            resourceInputs["cpuLimit"] = args?.cpuLimit;
+            resourceInputs["cpuPerformanceCountersEnabled"] = args?.cpuPerformanceCountersEnabled;
+            resourceInputs["cpuReservation"] = args?.cpuReservation;
+            resourceInputs["cpuShareCount"] = args?.cpuShareCount;
+            resourceInputs["cpuShareLevel"] = args?.cpuShareLevel;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["datacenterId"] = args?.datacenterId;
+            resourceInputs["datastoreClusterId"] = args?.datastoreClusterId;
+            resourceInputs["datastoreId"] = args?.datastoreId;
+            resourceInputs["disks"] = args?.disks;
+            resourceInputs["efiSecureBootEnabled"] = args?.efiSecureBootEnabled;
+            resourceInputs["enableDiskUuid"] = args?.enableDiskUuid;
+            resourceInputs["enableLogging"] = args?.enableLogging;
+            resourceInputs["eptRviMode"] = args?.eptRviMode;
+            resourceInputs["extraConfig"] = args?.extraConfig;
+            resourceInputs["extraConfigRebootRequired"] = args?.extraConfigRebootRequired;
+            resourceInputs["firmware"] = args?.firmware;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["forcePowerOff"] = args?.forcePowerOff;
+            resourceInputs["guestId"] = args?.guestId;
+            resourceInputs["hardwareVersion"] = args?.hardwareVersion;
+            resourceInputs["hostSystemId"] = args?.hostSystemId;
+            resourceInputs["hvMode"] = args?.hvMode;
+            resourceInputs["ideControllerCount"] = args?.ideControllerCount;
+            resourceInputs["ignoredGuestIps"] = args?.ignoredGuestIps;
+            resourceInputs["latencySensitivity"] = args?.latencySensitivity;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["memoryHotAddEnabled"] = args?.memoryHotAddEnabled;
+            resourceInputs["memoryLimit"] = args?.memoryLimit;
+            resourceInputs["memoryReservation"] = args?.memoryReservation;
+            resourceInputs["memoryReservationLockedToMax"] = args?.memoryReservationLockedToMax;
+            resourceInputs["memoryShareCount"] = args?.memoryShareCount;
+            resourceInputs["memoryShareLevel"] = args?.memoryShareLevel;
+            resourceInputs["migrateWaitTimeout"] = args?.migrateWaitTimeout;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nestedHvEnabled"] = args?.nestedHvEnabled;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["numCoresPerSocket"] = args?.numCoresPerSocket;
+            resourceInputs["numCpus"] = args?.numCpus;
+            resourceInputs["nvmeControllerCount"] = args?.nvmeControllerCount;
+            resourceInputs["ovfDeploy"] = args?.ovfDeploy;
+            resourceInputs["pciDeviceIds"] = args?.pciDeviceIds;
+            resourceInputs["poweronTimeout"] = args?.poweronTimeout;
+            resourceInputs["replaceTrigger"] = args?.replaceTrigger;
+            resourceInputs["resourcePoolId"] = args?.resourcePoolId;
+            resourceInputs["runToolsScriptsAfterPowerOn"] = args?.runToolsScriptsAfterPowerOn;
+            resourceInputs["runToolsScriptsAfterResume"] = args?.runToolsScriptsAfterResume;
+            resourceInputs["runToolsScriptsBeforeGuestReboot"] = args?.runToolsScriptsBeforeGuestReboot;
+            resourceInputs["runToolsScriptsBeforeGuestShutdown"] = args?.runToolsScriptsBeforeGuestShutdown;
+            resourceInputs["runToolsScriptsBeforeGuestStandby"] = args?.runToolsScriptsBeforeGuestStandby;
+            resourceInputs["sataControllerCount"] = args?.sataControllerCount;
+            resourceInputs["scsiBusSharing"] = args?.scsiBusSharing;
+            resourceInputs["scsiControllerCount"] = args?.scsiControllerCount;
+            resourceInputs["scsiType"] = args?.scsiType;
+            resourceInputs["shutdownWaitTimeout"] = args?.shutdownWaitTimeout;
+            resourceInputs["storagePolicyId"] = args?.storagePolicyId;
+            resourceInputs["swapPlacementPolicy"] = args?.swapPlacementPolicy;
+            resourceInputs["syncTimeWithHost"] = args?.syncTimeWithHost;
+            resourceInputs["syncTimeWithHostPeriodically"] = args?.syncTimeWithHostPeriodically;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["toolsUpgradePolicy"] = args?.toolsUpgradePolicy;
+            resourceInputs["vapp"] = args?.vapp;
+            resourceInputs["vbsEnabled"] = args?.vbsEnabled;
+            resourceInputs["vtpm"] = args?.vtpm;
+            resourceInputs["vvtdEnabled"] = args?.vvtdEnabled;
+            resourceInputs["waitForGuestIpTimeout"] = args?.waitForGuestIpTimeout;
+            resourceInputs["waitForGuestNetRoutable"] = args?.waitForGuestNetRoutable;
+            resourceInputs["waitForGuestNetTimeout"] = args?.waitForGuestNetTimeout;
             resourceInputs["changeVersion"] = undefined /*out*/;
             resourceInputs["defaultIpAddress"] = undefined /*out*/;
             resourceInputs["guestIpAddresses"] = undefined /*out*/;
@@ -657,8 +642,7 @@ export interface VirtualMachineState {
      */
     cpuHotRemoveEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      */
     cpuLimit?: pulumi.Input<number>;
     /**
@@ -690,8 +674,7 @@ export interface VirtualMachineState {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-     * disks that are created without datastores.
+     * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -719,8 +702,7 @@ export interface VirtualMachineState {
      */
     eptRviMode?: pulumi.Input<string>;
     /**
-     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata, or configuration data for OVF images.
+     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -769,9 +751,7 @@ export interface VirtualMachineState {
      */
     imported?: pulumi.Input<boolean>;
     /**
-     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-     * devices. Can be one of low, normal, medium, or high.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
      */
     latencySensitivity?: pulumi.Input<string>;
     /**
@@ -783,8 +763,7 @@ export interface VirtualMachineState {
      */
     memoryHotAddEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      */
     memoryLimit?: pulumi.Input<number>;
     /**
@@ -792,9 +771,7 @@ export interface VirtualMachineState {
      */
     memoryReservation?: pulumi.Input<number>;
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-     * may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
      */
     memoryReservationLockedToMax?: pulumi.Input<boolean>;
     /**
@@ -826,8 +803,7 @@ export interface VirtualMachineState {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-     * must be evenly divisible by this value.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      */
     numCoresPerSocket?: pulumi.Input<number>;
     /**
@@ -903,13 +879,11 @@ export interface VirtualMachineState {
      */
     swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-     * synchronized on startup and resume. Requires VMware Tools to be installed.
+     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
      */
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
@@ -949,23 +923,19 @@ export interface VirtualMachineState {
      */
     vtpm?: pulumi.Input<inputs.VirtualMachineVtpm>;
     /**
-     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      */
     vvtdEnabled?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      */
     waitForGuestIpTimeout?: pulumi.Input<number>;
     /**
-     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      */
     waitForGuestNetRoutable?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      */
     waitForGuestNetTimeout?: pulumi.Input<number>;
 }
@@ -1011,8 +981,7 @@ export interface VirtualMachineArgs {
      */
     cpuHotRemoveEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      */
     cpuLimit?: pulumi.Input<number>;
     /**
@@ -1044,8 +1013,7 @@ export interface VirtualMachineArgs {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-     * disks that are created without datastores.
+     * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -1069,8 +1037,7 @@ export interface VirtualMachineArgs {
      */
     eptRviMode?: pulumi.Input<string>;
     /**
-     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata, or configuration data for OVF images.
+     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1111,9 +1078,7 @@ export interface VirtualMachineArgs {
      */
     ignoredGuestIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-     * devices. Can be one of low, normal, medium, or high.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
      */
     latencySensitivity?: pulumi.Input<string>;
     /**
@@ -1125,8 +1090,7 @@ export interface VirtualMachineArgs {
      */
     memoryHotAddEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      */
     memoryLimit?: pulumi.Input<number>;
     /**
@@ -1134,9 +1098,7 @@ export interface VirtualMachineArgs {
      */
     memoryReservation?: pulumi.Input<number>;
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-     * may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
      */
     memoryReservationLockedToMax?: pulumi.Input<boolean>;
     /**
@@ -1164,8 +1126,7 @@ export interface VirtualMachineArgs {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus
-     * must be evenly divisible by this value.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      */
     numCoresPerSocket?: pulumi.Input<number>;
     /**
@@ -1236,13 +1197,11 @@ export interface VirtualMachineArgs {
      */
     swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-     * synchronized on startup and resume. Requires VMware Tools to be installed.
+     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
      */
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
@@ -1266,23 +1225,19 @@ export interface VirtualMachineArgs {
      */
     vtpm?: pulumi.Input<inputs.VirtualMachineVtpm>;
     /**
-     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      */
     vvtdEnabled?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      */
     waitForGuestIpTimeout?: pulumi.Input<number>;
     /**
-     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      */
     waitForGuestNetRoutable?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      */
     waitForGuestNetTimeout?: pulumi.Input<number>;
 }

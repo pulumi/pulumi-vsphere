@@ -120,13 +120,13 @@ export class Folder extends pulumi.CustomResource {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
      * resource if changed.
      */
-    public readonly datacenterId!: pulumi.Output<string | undefined>;
+    declare public readonly datacenterId: pulumi.Output<string | undefined>;
     /**
      * The path of the folder to be created. This is relative to
      * the root of the type of folder you are creating, and the supplied datacenter.
@@ -140,18 +140,18 @@ export class Folder extends pulumi.CustomResource {
      * any part before the last `/`), your folder will be moved to that new parent. If
      * modifying the name (the part after the last `/`), your folder will be renamed.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The type of folder to create. Allowed options are
      * `datacenter` for datacenter folders, `host` for host and cluster folders,
      * `vm` for virtual machine folders, `datastore` for datastore folders, and
      * `network` for network folders. Forces a new resource if changed.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -166,24 +166,24 @@ export class Folder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["datacenterId"] = state ? state.datacenterId : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["datacenterId"] = state?.datacenterId;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["datacenterId"] = args ? args.datacenterId : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["datacenterId"] = args?.datacenterId;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Folder.__pulumiType, name, resourceInputs, opts);

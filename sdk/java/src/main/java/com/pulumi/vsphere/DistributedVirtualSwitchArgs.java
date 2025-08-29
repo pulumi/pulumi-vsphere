@@ -39,16 +39,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     @Import(name="allowForgedTransmits")
     private @Nullable Output<Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     public Optional<Output<Boolean>> allowForgedTransmits() {
@@ -954,16 +952,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-     * packets are analyzed.
+     * The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
      * 
      */
     @Import(name="netflowSamplingRate")
     private @Nullable Output<Integer> netflowSamplingRate;
 
     /**
-     * @return The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-     * packets are analyzed.
+     * @return The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
      * 
      */
     public Optional<Output<Integer>> netflowSamplingRate() {
@@ -1136,16 +1132,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     @Import(name="teamingPolicy")
     private @Nullable Output<String> teamingPolicy;
 
     /**
-     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     public Optional<Output<String>> teamingPolicy() {
@@ -1153,16 +1147,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     @Import(name="txUplink")
     private @Nullable Output<Boolean> txUplink;
 
     /**
-     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     public Optional<Output<Boolean>> txUplink() {
@@ -1170,16 +1162,14 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-     * across hosts.
+     * A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
      * 
      */
     @Import(name="uplinks")
     private @Nullable Output<List<String>> uplinks;
 
     /**
-     * @return A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-     * across hosts.
+     * @return A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
      * 
      */
     public Optional<Output<List<String>>> uplinks() {
@@ -1624,8 +1614,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-         * that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
          * 
          * @return builder
          * 
@@ -1636,8 +1625,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-         * that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
          * 
          * @return builder
          * 
@@ -2903,8 +2891,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowSamplingRate The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-         * packets are analyzed.
+         * @param netflowSamplingRate The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
          * 
          * @return builder
          * 
@@ -2915,8 +2902,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param netflowSamplingRate The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-         * packets are analyzed.
+         * @param netflowSamplingRate The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
          * 
          * @return builder
          * 
@@ -3187,8 +3173,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-         * failover_explicit, or loadbalance_loadbased.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
          * 
          * @return builder
          * 
@@ -3199,8 +3184,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-         * failover_explicit, or loadbalance_loadbased.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
          * 
          * @return builder
          * 
@@ -3210,8 +3194,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-         * forwarded done by the switch.
+         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
          * 
          * @return builder
          * 
@@ -3222,8 +3205,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-         * forwarded done by the switch.
+         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
          * 
          * @return builder
          * 
@@ -3233,8 +3215,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-         * across hosts.
+         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
          * 
          * @return builder
          * 
@@ -3245,8 +3226,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-         * across hosts.
+         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
          * 
          * @return builder
          * 
@@ -3256,8 +3236,7 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-         * across hosts.
+         * @param uplinks A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
          * 
          * @return builder
          * 

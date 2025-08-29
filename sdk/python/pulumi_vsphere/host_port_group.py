@@ -45,12 +45,10 @@ class HostPortGroupArgs:
         :param pulumi.Input[_builtins.str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
-        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-               only.
+        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         :param pulumi.Input[_builtins.str] name: The name of the port group.  Forces a new resource if
                changed.
@@ -60,8 +58,7 @@ class HostPortGroupArgs:
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
         :param pulumi.Input[_builtins.int] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_nics: List of standby network adapters used for failover.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-               failover_explicit.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
@@ -142,8 +139,7 @@ class HostPortGroupArgs:
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -179,8 +175,7 @@ class HostPortGroupArgs:
     @pulumi.getter(name="checkBeacon")
     def check_beacon(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-        only.
+        Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         """
         return pulumi.get(self, "check_beacon")
 
@@ -289,8 +284,7 @@ class HostPortGroupArgs:
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-        failover_explicit.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -340,12 +334,10 @@ class _HostPortGroupState:
         """
         Input properties used for looking up and filtering HostPortGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
-        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-               only.
+        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] computed_policy: A map with a full set of the policy
                options computed from defaults and overrides,
                explaining the effective policy for this port group.
@@ -362,8 +354,7 @@ class _HostPortGroupState:
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
         :param pulumi.Input[_builtins.int] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_nics: List of standby network adapters used for failover.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-               failover_explicit.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         :param pulumi.Input[_builtins.str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
@@ -428,8 +419,7 @@ class _HostPortGroupState:
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -465,8 +455,7 @@ class _HostPortGroupState:
     @pulumi.getter(name="checkBeacon")
     def check_beacon(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-        only.
+        Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         """
         return pulumi.get(self, "check_beacon")
 
@@ -626,8 +615,7 @@ class _HostPortGroupState:
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-        failover_explicit.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -771,12 +759,10 @@ class HostPortGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
-        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-               only.
+        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
                the host to set the port group up on. Forces a new resource if changed.
@@ -788,8 +774,7 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
         :param pulumi.Input[_builtins.int] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_nics: List of standby network adapters used for failover.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-               failover_explicit.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         :param pulumi.Input[_builtins.str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
@@ -986,12 +971,10 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
-        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-               only.
+        :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] computed_policy: A map with a full set of the policy
                options computed from defaults and overrides,
                explaining the effective policy for this port group.
@@ -1008,8 +991,7 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
         :param pulumi.Input[_builtins.int] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_nics: List of standby network adapters used for failover.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-               failover_explicit.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         :param pulumi.Input[_builtins.str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
@@ -1055,8 +1037,7 @@ class HostPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -1080,8 +1061,7 @@ class HostPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="checkBeacon")
     def check_beacon(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
-        only.
+        Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         """
         return pulumi.get(self, "check_beacon")
 
@@ -1189,8 +1169,7 @@ class HostPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
-        failover_explicit.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or failover_explicit.
         """
         return pulumi.get(self, "teaming_policy")
 

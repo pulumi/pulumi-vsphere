@@ -150,23 +150,23 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
      * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
-    public readonly affinityHostGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly affinityHostGroupName: pulumi.Output<string | undefined>;
     /**
      * When this field is used, the
      * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
-    public readonly antiAffinityHostGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly antiAffinityHostGroupName: pulumi.Output<string | undefined>;
     /**
      * The managed object reference
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId!: pulumi.Output<string>;
+    declare public readonly computeClusterId: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
@@ -179,17 +179,17 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
      * `name` argument) is shared with all rules in the cluster - consider
      * this when naming your rules.
      */
-    public readonly mandatory!: pulumi.Output<boolean | undefined>;
+    declare public readonly mandatory: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the virtual machine group to use
      * with this rule.
      */
-    public readonly vmGroupName!: pulumi.Output<string>;
+    declare public readonly vmGroupName: pulumi.Output<string>;
 
     /**
      * Create a ComputeClusterVmHostRule resource with the given unique name, arguments, and options.
@@ -204,28 +204,28 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmHostRuleState | undefined;
-            resourceInputs["affinityHostGroupName"] = state ? state.affinityHostGroupName : undefined;
-            resourceInputs["antiAffinityHostGroupName"] = state ? state.antiAffinityHostGroupName : undefined;
-            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["vmGroupName"] = state ? state.vmGroupName : undefined;
+            resourceInputs["affinityHostGroupName"] = state?.affinityHostGroupName;
+            resourceInputs["antiAffinityHostGroupName"] = state?.antiAffinityHostGroupName;
+            resourceInputs["computeClusterId"] = state?.computeClusterId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["mandatory"] = state?.mandatory;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["vmGroupName"] = state?.vmGroupName;
         } else {
             const args = argsOrState as ComputeClusterVmHostRuleArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
+            if (args?.computeClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.vmGroupName === undefined) && !opts.urn) {
+            if (args?.vmGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmGroupName'");
             }
-            resourceInputs["affinityHostGroupName"] = args ? args.affinityHostGroupName : undefined;
-            resourceInputs["antiAffinityHostGroupName"] = args ? args.antiAffinityHostGroupName : undefined;
-            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["vmGroupName"] = args ? args.vmGroupName : undefined;
+            resourceInputs["affinityHostGroupName"] = args?.affinityHostGroupName;
+            resourceInputs["antiAffinityHostGroupName"] = args?.antiAffinityHostGroupName;
+            resourceInputs["computeClusterId"] = args?.computeClusterId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["mandatory"] = args?.mandatory;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["vmGroupName"] = args?.vmGroupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeClusterVmHostRule.__pulumiType, name, resourceInputs, opts);

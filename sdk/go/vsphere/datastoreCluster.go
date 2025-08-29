@@ -80,26 +80,21 @@ type DatastoreCluster struct {
 	SdrsEnabled pulumi.BoolPtrOutput `pulumi:"sdrsEnabled"`
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold pulumi.IntPtrOutput `pulumi:"sdrsFreeSpaceThreshold"`
-	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
-	// freeSpace, drsFreeSpaceThreshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrOutput `pulumi:"sdrsFreeSpaceThresholdMode"`
-	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-	// balance the space.
+	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
 	SdrsFreeSpaceUtilizationDifference pulumi.IntPtrOutput `pulumi:"sdrsFreeSpaceUtilizationDifference"`
 	// Overrides the default automation settings when correcting I/O load imbalances.
 	SdrsIoBalanceAutomationLevel pulumi.StringPtrOutput `pulumi:"sdrsIoBalanceAutomationLevel"`
-	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-	// datastore.
+	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
 	SdrsIoLatencyThreshold pulumi.IntPtrOutput `pulumi:"sdrsIoLatencyThreshold"`
 	// Enable I/O load balancing for this datastore cluster.
 	SdrsIoLoadBalanceEnabled pulumi.BoolPtrOutput `pulumi:"sdrsIoLoadBalanceEnabled"`
 	// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
 	SdrsIoLoadImbalanceThreshold pulumi.IntPtrOutput `pulumi:"sdrsIoLoadImbalanceThreshold"`
-	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-	// move VMs off of a datastore.
+	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
 	SdrsIoReservableIopsThreshold pulumi.IntPtrOutput `pulumi:"sdrsIoReservableIopsThreshold"`
-	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-	// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
 	SdrsIoReservablePercentThreshold pulumi.IntPtrOutput `pulumi:"sdrsIoReservablePercentThreshold"`
 	// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
 	SdrsIoReservableThresholdMode pulumi.StringPtrOutput `pulumi:"sdrsIoReservableThresholdMode"`
@@ -187,26 +182,21 @@ type datastoreClusterState struct {
 	SdrsEnabled *bool `pulumi:"sdrsEnabled"`
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold *int `pulumi:"sdrsFreeSpaceThreshold"`
-	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
-	// freeSpace, drsFreeSpaceThreshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode *string `pulumi:"sdrsFreeSpaceThresholdMode"`
-	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-	// balance the space.
+	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
 	SdrsFreeSpaceUtilizationDifference *int `pulumi:"sdrsFreeSpaceUtilizationDifference"`
 	// Overrides the default automation settings when correcting I/O load imbalances.
 	SdrsIoBalanceAutomationLevel *string `pulumi:"sdrsIoBalanceAutomationLevel"`
-	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-	// datastore.
+	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
 	SdrsIoLatencyThreshold *int `pulumi:"sdrsIoLatencyThreshold"`
 	// Enable I/O load balancing for this datastore cluster.
 	SdrsIoLoadBalanceEnabled *bool `pulumi:"sdrsIoLoadBalanceEnabled"`
 	// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
 	SdrsIoLoadImbalanceThreshold *int `pulumi:"sdrsIoLoadImbalanceThreshold"`
-	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-	// move VMs off of a datastore.
+	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
 	SdrsIoReservableIopsThreshold *int `pulumi:"sdrsIoReservableIopsThreshold"`
-	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-	// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
 	SdrsIoReservablePercentThreshold *int `pulumi:"sdrsIoReservablePercentThreshold"`
 	// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
 	SdrsIoReservableThresholdMode *string `pulumi:"sdrsIoReservableThresholdMode"`
@@ -262,26 +252,21 @@ type DatastoreClusterState struct {
 	SdrsEnabled pulumi.BoolPtrInput
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold pulumi.IntPtrInput
-	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
-	// freeSpace, drsFreeSpaceThreshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrInput
-	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-	// balance the space.
+	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
 	SdrsFreeSpaceUtilizationDifference pulumi.IntPtrInput
 	// Overrides the default automation settings when correcting I/O load imbalances.
 	SdrsIoBalanceAutomationLevel pulumi.StringPtrInput
-	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-	// datastore.
+	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
 	SdrsIoLatencyThreshold pulumi.IntPtrInput
 	// Enable I/O load balancing for this datastore cluster.
 	SdrsIoLoadBalanceEnabled pulumi.BoolPtrInput
 	// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
 	SdrsIoLoadImbalanceThreshold pulumi.IntPtrInput
-	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-	// move VMs off of a datastore.
+	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
 	SdrsIoReservableIopsThreshold pulumi.IntPtrInput
-	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-	// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
 	SdrsIoReservablePercentThreshold pulumi.IntPtrInput
 	// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
 	SdrsIoReservableThresholdMode pulumi.StringPtrInput
@@ -341,26 +326,21 @@ type datastoreClusterArgs struct {
 	SdrsEnabled *bool `pulumi:"sdrsEnabled"`
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold *int `pulumi:"sdrsFreeSpaceThreshold"`
-	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
-	// freeSpace, drsFreeSpaceThreshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode *string `pulumi:"sdrsFreeSpaceThresholdMode"`
-	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-	// balance the space.
+	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
 	SdrsFreeSpaceUtilizationDifference *int `pulumi:"sdrsFreeSpaceUtilizationDifference"`
 	// Overrides the default automation settings when correcting I/O load imbalances.
 	SdrsIoBalanceAutomationLevel *string `pulumi:"sdrsIoBalanceAutomationLevel"`
-	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-	// datastore.
+	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
 	SdrsIoLatencyThreshold *int `pulumi:"sdrsIoLatencyThreshold"`
 	// Enable I/O load balancing for this datastore cluster.
 	SdrsIoLoadBalanceEnabled *bool `pulumi:"sdrsIoLoadBalanceEnabled"`
 	// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
 	SdrsIoLoadImbalanceThreshold *int `pulumi:"sdrsIoLoadImbalanceThreshold"`
-	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-	// move VMs off of a datastore.
+	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
 	SdrsIoReservableIopsThreshold *int `pulumi:"sdrsIoReservableIopsThreshold"`
-	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-	// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
 	SdrsIoReservablePercentThreshold *int `pulumi:"sdrsIoReservablePercentThreshold"`
 	// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
 	SdrsIoReservableThresholdMode *string `pulumi:"sdrsIoReservableThresholdMode"`
@@ -417,26 +397,21 @@ type DatastoreClusterArgs struct {
 	SdrsEnabled pulumi.BoolPtrInput
 	// The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
 	SdrsFreeSpaceThreshold pulumi.IntPtrInput
-	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
-	// freeSpace, drsFreeSpaceThreshold is used.
+	// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrInput
-	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-	// balance the space.
+	// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
 	SdrsFreeSpaceUtilizationDifference pulumi.IntPtrInput
 	// Overrides the default automation settings when correcting I/O load imbalances.
 	SdrsIoBalanceAutomationLevel pulumi.StringPtrInput
-	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-	// datastore.
+	// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
 	SdrsIoLatencyThreshold pulumi.IntPtrInput
 	// Enable I/O load balancing for this datastore cluster.
 	SdrsIoLoadBalanceEnabled pulumi.BoolPtrInput
 	// The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
 	SdrsIoLoadImbalanceThreshold pulumi.IntPtrInput
-	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-	// move VMs off of a datastore.
+	// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
 	SdrsIoReservableIopsThreshold pulumi.IntPtrInput
-	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-	// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+	// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
 	SdrsIoReservablePercentThreshold pulumi.IntPtrInput
 	// The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
 	SdrsIoReservableThresholdMode pulumi.StringPtrInput
@@ -605,14 +580,12 @@ func (o DatastoreClusterOutput) SdrsFreeSpaceThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsFreeSpaceThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to
-// freeSpace, drsFreeSpaceThreshold is used.
+// The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
 func (o DatastoreClusterOutput) SdrsFreeSpaceThresholdMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringPtrOutput { return v.SdrsFreeSpaceThresholdMode }).(pulumi.StringPtrOutput)
 }
 
-// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-// balance the space.
+// The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
 func (o DatastoreClusterOutput) SdrsFreeSpaceUtilizationDifference() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsFreeSpaceUtilizationDifference }).(pulumi.IntPtrOutput)
 }
@@ -622,8 +595,7 @@ func (o DatastoreClusterOutput) SdrsIoBalanceAutomationLevel() pulumi.StringPtrO
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringPtrOutput { return v.SdrsIoBalanceAutomationLevel }).(pulumi.StringPtrOutput)
 }
 
-// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-// datastore.
+// The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
 func (o DatastoreClusterOutput) SdrsIoLatencyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsIoLatencyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -638,14 +610,12 @@ func (o DatastoreClusterOutput) SdrsIoLoadImbalanceThreshold() pulumi.IntPtrOutp
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsIoLoadImbalanceThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-// move VMs off of a datastore.
+// The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
 func (o DatastoreClusterOutput) SdrsIoReservableIopsThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsIoReservableIopsThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-// recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+// The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
 func (o DatastoreClusterOutput) SdrsIoReservablePercentThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.IntPtrOutput { return v.SdrsIoReservablePercentThreshold }).(pulumi.IntPtrOutput)
 }

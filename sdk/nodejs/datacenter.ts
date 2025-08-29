@@ -84,25 +84,25 @@ export class Datacenter extends pulumi.CustomResource {
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The folder where the datacenter should be created.
      * Forces a new resource if changed.
      */
-    public readonly folder!: pulumi.Output<string | undefined>;
+    declare public readonly folder: pulumi.Output<string | undefined>;
     /**
      * Managed object ID of this datacenter.
      */
-    public /*out*/ readonly moid!: pulumi.Output<string>;
+    declare public /*out*/ readonly moid: pulumi.Output<string>;
     /**
      * The name of the datacenter. This name needs to be unique
      * within the folder. Forces a new resource if changed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Datacenter resource with the given unique name, arguments, and options.
@@ -117,17 +117,17 @@ export class Datacenter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatacenterState | undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["moid"] = state ? state.moid : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["moid"] = state?.moid;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DatacenterArgs | undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["moid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

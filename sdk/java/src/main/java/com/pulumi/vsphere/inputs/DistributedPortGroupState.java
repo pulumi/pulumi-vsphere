@@ -36,16 +36,14 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     @Import(name="allowForgedTransmits")
     private @Nullable Output<Boolean> allowForgedTransmits;
 
     /**
-     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-     * that of its own.
+     * @return Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
      * 
      */
     public Optional<Output<Boolean>> allowForgedTransmits() {
@@ -659,16 +657,14 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     @Import(name="teamingPolicy")
     private @Nullable Output<String> teamingPolicy;
 
     /**
-     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-     * failover_explicit, or loadbalance_loadbased.
+     * @return The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
      * 
      */
     public Optional<Output<String>> teamingPolicy() {
@@ -691,16 +687,14 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
     }
 
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     @Import(name="txUplink")
     private @Nullable Output<Boolean> txUplink;
 
     /**
-     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-     * forwarded done by the switch.
+     * @return If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
      * 
      */
     public Optional<Output<Boolean>> txUplink() {
@@ -887,8 +881,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-         * that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
          * 
          * @return builder
          * 
@@ -899,8 +892,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-         * that of its own.
+         * @param allowForgedTransmits Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
          * 
          * @return builder
          * 
@@ -1764,8 +1756,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-         * failover_explicit, or loadbalance_loadbased.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
          * 
          * @return builder
          * 
@@ -1776,8 +1767,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-         * failover_explicit, or loadbalance_loadbased.
+         * @param teamingPolicy The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
          * 
          * @return builder
          * 
@@ -1808,8 +1798,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-         * forwarded done by the switch.
+         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
          * 
          * @return builder
          * 
@@ -1820,8 +1809,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-         * forwarded done by the switch.
+         * @param txUplink If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
          * 
          * @return builder
          * 

@@ -50,15 +50,15 @@ export class Role extends pulumi.CustomResource {
     /**
      * The display label of the role.
      */
-    public /*out*/ readonly label!: pulumi.Output<string>;
+    declare public /*out*/ readonly label: pulumi.Output<string>;
     /**
      * The name of the role.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The privileges to be associated with this role.
      */
-    public readonly rolePrivileges!: pulumi.Output<string[] | undefined>;
+    declare public readonly rolePrivileges: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -73,13 +73,13 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rolePrivileges"] = state ? state.rolePrivileges : undefined;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rolePrivileges"] = state?.rolePrivileges;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rolePrivileges"] = args ? args.rolePrivileges : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rolePrivileges"] = args?.rolePrivileges;
             resourceInputs["label"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -151,18 +151,18 @@ export class ResourcePool extends pulumi.CustomResource {
      * pool can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    public readonly cpuExpandable!: pulumi.Output<boolean | undefined>;
+    declare public readonly cpuExpandable: pulumi.Output<boolean | undefined>;
     /**
      * The CPU utilization of a resource pool will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      */
-    public readonly cpuLimit!: pulumi.Output<number | undefined>;
+    declare public readonly cpuLimit: pulumi.Output<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the resource pool. Default: `0`
      */
-    public readonly cpuReservation!: pulumi.Output<number | undefined>;
+    declare public readonly cpuReservation: pulumi.Output<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -170,34 +170,34 @@ export class ResourcePool extends pulumi.CustomResource {
      * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
-    public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
+    declare public readonly cpuShareLevel: pulumi.Output<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `cpuShareLevel` must be `custom`.
      */
-    public readonly cpuShares!: pulumi.Output<number>;
+    declare public readonly cpuShares: pulumi.Output<number>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Determines if the reservation on a resource
      * pool can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    public readonly memoryExpandable!: pulumi.Output<boolean | undefined>;
+    declare public readonly memoryExpandable: pulumi.Output<boolean | undefined>;
     /**
      * The CPU utilization of a resource pool will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited. Default: `-1`
      */
-    public readonly memoryLimit!: pulumi.Output<number | undefined>;
+    declare public readonly memoryLimit: pulumi.Output<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the resource pool. Default: `0`
      */
-    public readonly memoryReservation!: pulumi.Output<number | undefined>;
+    declare public readonly memoryReservation: pulumi.Output<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -205,17 +205,17 @@ export class ResourcePool extends pulumi.CustomResource {
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
-    public readonly memoryShareLevel!: pulumi.Output<string | undefined>;
+    declare public readonly memoryShareLevel: pulumi.Output<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `memoryShareLevel` must be `custom`.
      */
-    public readonly memoryShares!: pulumi.Output<number>;
+    declare public readonly memoryShares: pulumi.Output<number>;
     /**
      * The name of the resource pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
@@ -223,18 +223,18 @@ export class ResourcePool extends pulumi.CustomResource {
      * from one parent resource pool to another, both must share a common root
      * resource pool.
      */
-    public readonly parentResourcePoolId!: pulumi.Output<string>;
+    declare public readonly parentResourcePoolId: pulumi.Output<string>;
     /**
      * Determines if the shares of all
      * descendants of the resource pool are scaled up or down when the shares
      * of the resource pool are scaled up or down. Can be one of `disabled` or
      * `scaleCpuAndMemoryShares`. Default: `disabled`.
      */
-    public readonly scaleDescendantsShares!: pulumi.Output<string | undefined>;
+    declare public readonly scaleDescendantsShares: pulumi.Output<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ResourcePool resource with the given unique name, arguments, and options.
@@ -249,41 +249,41 @@ export class ResourcePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcePoolState | undefined;
-            resourceInputs["cpuExpandable"] = state ? state.cpuExpandable : undefined;
-            resourceInputs["cpuLimit"] = state ? state.cpuLimit : undefined;
-            resourceInputs["cpuReservation"] = state ? state.cpuReservation : undefined;
-            resourceInputs["cpuShareLevel"] = state ? state.cpuShareLevel : undefined;
-            resourceInputs["cpuShares"] = state ? state.cpuShares : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["memoryExpandable"] = state ? state.memoryExpandable : undefined;
-            resourceInputs["memoryLimit"] = state ? state.memoryLimit : undefined;
-            resourceInputs["memoryReservation"] = state ? state.memoryReservation : undefined;
-            resourceInputs["memoryShareLevel"] = state ? state.memoryShareLevel : undefined;
-            resourceInputs["memoryShares"] = state ? state.memoryShares : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentResourcePoolId"] = state ? state.parentResourcePoolId : undefined;
-            resourceInputs["scaleDescendantsShares"] = state ? state.scaleDescendantsShares : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["cpuExpandable"] = state?.cpuExpandable;
+            resourceInputs["cpuLimit"] = state?.cpuLimit;
+            resourceInputs["cpuReservation"] = state?.cpuReservation;
+            resourceInputs["cpuShareLevel"] = state?.cpuShareLevel;
+            resourceInputs["cpuShares"] = state?.cpuShares;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["memoryExpandable"] = state?.memoryExpandable;
+            resourceInputs["memoryLimit"] = state?.memoryLimit;
+            resourceInputs["memoryReservation"] = state?.memoryReservation;
+            resourceInputs["memoryShareLevel"] = state?.memoryShareLevel;
+            resourceInputs["memoryShares"] = state?.memoryShares;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentResourcePoolId"] = state?.parentResourcePoolId;
+            resourceInputs["scaleDescendantsShares"] = state?.scaleDescendantsShares;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ResourcePoolArgs | undefined;
-            if ((!args || args.parentResourcePoolId === undefined) && !opts.urn) {
+            if (args?.parentResourcePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentResourcePoolId'");
             }
-            resourceInputs["cpuExpandable"] = args ? args.cpuExpandable : undefined;
-            resourceInputs["cpuLimit"] = args ? args.cpuLimit : undefined;
-            resourceInputs["cpuReservation"] = args ? args.cpuReservation : undefined;
-            resourceInputs["cpuShareLevel"] = args ? args.cpuShareLevel : undefined;
-            resourceInputs["cpuShares"] = args ? args.cpuShares : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["memoryExpandable"] = args ? args.memoryExpandable : undefined;
-            resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
-            resourceInputs["memoryReservation"] = args ? args.memoryReservation : undefined;
-            resourceInputs["memoryShareLevel"] = args ? args.memoryShareLevel : undefined;
-            resourceInputs["memoryShares"] = args ? args.memoryShares : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentResourcePoolId"] = args ? args.parentResourcePoolId : undefined;
-            resourceInputs["scaleDescendantsShares"] = args ? args.scaleDescendantsShares : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["cpuExpandable"] = args?.cpuExpandable;
+            resourceInputs["cpuLimit"] = args?.cpuLimit;
+            resourceInputs["cpuReservation"] = args?.cpuReservation;
+            resourceInputs["cpuShareLevel"] = args?.cpuShareLevel;
+            resourceInputs["cpuShares"] = args?.cpuShares;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["memoryExpandable"] = args?.memoryExpandable;
+            resourceInputs["memoryLimit"] = args?.memoryLimit;
+            resourceInputs["memoryReservation"] = args?.memoryReservation;
+            resourceInputs["memoryShareLevel"] = args?.memoryShareLevel;
+            resourceInputs["memoryShares"] = args?.memoryShares;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentResourcePoolId"] = args?.parentResourcePoolId;
+            resourceInputs["scaleDescendantsShares"] = args?.scaleDescendantsShares;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourcePool.__pulumiType, name, resourceInputs, opts);
