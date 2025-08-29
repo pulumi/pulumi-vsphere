@@ -35,21 +35,21 @@ export class ConfigurationProfile extends pulumi.CustomResource {
     /**
      * The identifier of the cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
      */
-    public readonly configuration!: pulumi.Output<string>;
+    declare public readonly configuration: pulumi.Output<string>;
     /**
      * The identifier of the host to use as a configuration source.
      * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
      * `configuration` is not set.
      */
-    public readonly referenceHostId!: pulumi.Output<string | undefined>;
+    declare public readonly referenceHostId: pulumi.Output<string | undefined>;
     /**
      * The JSON schema for the profile.
      */
-    public /*out*/ readonly schema!: pulumi.Output<string>;
+    declare public /*out*/ readonly schema: pulumi.Output<string>;
 
     /**
      * Create a ConfigurationProfile resource with the given unique name, arguments, and options.
@@ -64,18 +64,18 @@ export class ConfigurationProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigurationProfileState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["referenceHostId"] = state ? state.referenceHostId : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["referenceHostId"] = state?.referenceHostId;
+            resourceInputs["schema"] = state?.schema;
         } else {
             const args = argsOrState as ConfigurationProfileArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["referenceHostId"] = args ? args.referenceHostId : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["referenceHostId"] = args?.referenceHostId;
             resourceInputs["schema"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

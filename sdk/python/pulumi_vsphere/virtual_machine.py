@@ -110,8 +110,7 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: A specification for cloning a virtual machine from template.
         :param pulumi.Input[_builtins.bool] cpu_hot_add_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.bool] cpu_hot_remove_enabled: Allow CPUs to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.bool] cpu_performance_counters_enabled: Enable CPU performance counters on this virtual machine.
         :param pulumi.Input[_builtins.int] cpu_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         :param pulumi.Input[_builtins.int] cpu_share_count: The amount of shares to allocate to cpu for a custom share level.
@@ -119,15 +118,13 @@ class VirtualMachineArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
-        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-               disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-               configuration, such as instance metadata, or configuration data for OVF images.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
         :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the virtual machine in.
@@ -137,25 +134,19 @@ class VirtualMachineArgs:
         :param pulumi.Input[_builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
-        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-               latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-               devices. Can be one of low, normal, medium, or high.
+        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         :param pulumi.Input[_builtins.int] memory: The size of the virtual machine's memory, in MB.
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this virtual machine.
-        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-               must be evenly divisible by this value.
+        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input['VirtualMachineOvfDeployArgs'] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pci_device_ids: A list of PCI passthrough devices
@@ -171,23 +162,17 @@ class VirtualMachineArgs:
         :param pulumi.Input[_builtins.int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[_builtins.str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
         :param pulumi.Input[_builtins.str] swap_placement_policy: The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-               synchronized on startup and resume. Requires VMware Tools to be installed.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-               setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[_builtins.str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input['VirtualMachineVappArgs'] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
         :param pulumi.Input['VirtualMachineVtpmArgs'] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
-        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-               I/O Virtualization (AMD-Vi or IOMMU), is enabled.
-        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
-        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-               a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
-        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
+        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
+        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         pulumi.set(__self__, "resource_pool_id", resource_pool_id)
         if alternate_guest_name is not None:
@@ -467,8 +452,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        resources.
+        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -564,8 +548,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-        disks that are created without datastores.
+        The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -637,8 +620,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="extraConfig")
     def extra_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-        configuration, such as instance metadata, or configuration data for OVF images.
+        Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         """
         return pulumi.get(self, "extra_config")
 
@@ -767,9 +749,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="latencySensitivity")
     def latency_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-        latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-        devices. Can be one of low, normal, medium, or high.
+        Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         """
         return pulumi.get(self, "latency_sensitivity")
 
@@ -805,8 +785,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        resources.
+        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -830,9 +809,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="memoryReservationLockedToMax")
     def memory_reservation_locked_to_max(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-        size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-        may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
@@ -916,8 +893,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="numCoresPerSocket")
     def num_cores_per_socket(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-        must be evenly divisible by this value.
+        The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         """
         return pulumi.get(self, "num_cores_per_socket")
 
@@ -1136,8 +1112,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-        synchronized on startup and resume. Requires VMware Tools to be installed.
+        Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host")
 
@@ -1149,8 +1124,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="syncTimeWithHostPeriodically")
     def sync_time_with_host_periodically(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-        setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host_periodically")
 
@@ -1222,8 +1196,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="vvtdEnabled")
     def vvtd_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-        I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         """
         return pulumi.get(self, "vvtd_enabled")
 
@@ -1235,8 +1208,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="waitForGuestIpTimeout")
     def wait_for_guest_ip_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        disables the waiter.
+        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_ip_timeout")
 
@@ -1248,8 +1220,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="waitForGuestNetRoutable")
     def wait_for_guest_net_routable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-        a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         """
         return pulumi.get(self, "wait_for_guest_net_routable")
 
@@ -1261,8 +1232,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="waitForGuestNetTimeout")
     def wait_for_guest_net_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        disables the waiter.
+        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_net_timeout")
 
@@ -1374,8 +1344,7 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: A specification for cloning a virtual machine from template.
         :param pulumi.Input[_builtins.bool] cpu_hot_add_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.bool] cpu_hot_remove_enabled: Allow CPUs to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.bool] cpu_performance_counters_enabled: Enable CPU performance counters on this virtual machine.
         :param pulumi.Input[_builtins.int] cpu_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         :param pulumi.Input[_builtins.int] cpu_share_count: The amount of shares to allocate to cpu for a custom share level.
@@ -1383,16 +1352,14 @@ class _VirtualMachineState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
-        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-               disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         :param pulumi.Input[_builtins.str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-               configuration, such as instance metadata, or configuration data for OVF images.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
         :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the virtual machine in.
@@ -1404,17 +1371,12 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
         :param pulumi.Input[_builtins.bool] imported: Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
-        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-               latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-               devices. Can be one of low, normal, medium, or high.
+        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         :param pulumi.Input[_builtins.int] memory: The size of the virtual machine's memory, in MB.
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
@@ -1422,8 +1384,7 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this virtual machine.
-        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-               must be evenly divisible by this value.
+        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input['VirtualMachineOvfDeployArgs'] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pci_device_ids: A list of PCI passthrough devices
@@ -1441,10 +1402,8 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[_builtins.str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
         :param pulumi.Input[_builtins.str] swap_placement_policy: The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-               synchronized on startup and resume. Requires VMware Tools to be installed.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-               setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[_builtins.str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input[_builtins.str] uuid: The UUID of the virtual machine. Also exposed as the `id` of the resource.
@@ -1454,14 +1413,10 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.str] vmware_tools_status: The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
         :param pulumi.Input[_builtins.str] vmx_path: The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
         :param pulumi.Input['VirtualMachineVtpmArgs'] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
-        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-               I/O Virtualization (AMD-Vi or IOMMU), is enabled.
-        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
-        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-               a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
-        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
+        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
+        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         if alternate_guest_name is not None:
             pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -1764,8 +1719,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        resources.
+        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -1861,8 +1815,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-        disks that are created without datastores.
+        The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -1946,8 +1899,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="extraConfig")
     def extra_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-        configuration, such as instance metadata, or configuration data for OVF images.
+        Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         """
         return pulumi.get(self, "extra_config")
 
@@ -2100,9 +2052,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="latencySensitivity")
     def latency_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-        latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-        devices. Can be one of low, normal, medium, or high.
+        Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         """
         return pulumi.get(self, "latency_sensitivity")
 
@@ -2138,8 +2088,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        resources.
+        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -2163,9 +2112,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="memoryReservationLockedToMax")
     def memory_reservation_locked_to_max(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-        size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-        may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
@@ -2261,8 +2208,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="numCoresPerSocket")
     def num_cores_per_socket(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-        must be evenly divisible by this value.
+        The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         """
         return pulumi.get(self, "num_cores_per_socket")
 
@@ -2514,8 +2460,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-        synchronized on startup and resume. Requires VMware Tools to be installed.
+        Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host")
 
@@ -2527,8 +2472,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="syncTimeWithHostPeriodically")
     def sync_time_with_host_periodically(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-        setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host_periodically")
 
@@ -2648,8 +2592,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="vvtdEnabled")
     def vvtd_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-        I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         """
         return pulumi.get(self, "vvtd_enabled")
 
@@ -2661,8 +2604,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="waitForGuestIpTimeout")
     def wait_for_guest_ip_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        disables the waiter.
+        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_ip_timeout")
 
@@ -2674,8 +2616,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="waitForGuestNetRoutable")
     def wait_for_guest_net_routable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-        a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         """
         return pulumi.get(self, "wait_for_guest_net_routable")
 
@@ -2687,8 +2628,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="waitForGuestNetTimeout")
     def wait_for_guest_net_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        disables the waiter.
+        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_net_timeout")
 
@@ -2817,8 +2757,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: A specification for cloning a virtual machine from template.
         :param pulumi.Input[_builtins.bool] cpu_hot_add_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.bool] cpu_hot_remove_enabled: Allow CPUs to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.bool] cpu_performance_counters_enabled: Enable CPU performance counters on this virtual machine.
         :param pulumi.Input[_builtins.int] cpu_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         :param pulumi.Input[_builtins.int] cpu_share_count: The amount of shares to allocate to cpu for a custom share level.
@@ -2826,15 +2765,13 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
-        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-               disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-               configuration, such as instance metadata, or configuration data for OVF images.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
         :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the virtual machine in.
@@ -2844,25 +2781,19 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] host_system_id: The ID of an optional host system to pin the virtual machine to.
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
-        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-               latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-               devices. Can be one of low, normal, medium, or high.
+        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         :param pulumi.Input[_builtins.int] memory: The size of the virtual machine's memory, in MB.
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
-        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-               must be evenly divisible by this value.
+        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pci_device_ids: A list of PCI passthrough devices
@@ -2879,23 +2810,17 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[_builtins.str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
         :param pulumi.Input[_builtins.str] swap_placement_policy: The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-               synchronized on startup and resume. Requires VMware Tools to be installed.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-               setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[_builtins.str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input[Union['VirtualMachineVappArgs', 'VirtualMachineVappArgsDict']] vapp: vApp configuration data for this virtual machine. Can be used to provide configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] vbs_enabled: Flag to specify if Virtualization-based security is enabled for this virtual machine.
         :param pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
-        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-               I/O Virtualization (AMD-Vi or IOMMU), is enabled.
-        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
-        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-               a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
-        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
+        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
+        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         ...
     @overload
@@ -3234,8 +3159,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: A specification for cloning a virtual machine from template.
         :param pulumi.Input[_builtins.bool] cpu_hot_add_enabled: Allow CPUs to be added to this virtual machine while it is running.
         :param pulumi.Input[_builtins.bool] cpu_hot_remove_enabled: Allow CPUs to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] cpu_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.bool] cpu_performance_counters_enabled: Enable CPU performance counters on this virtual machine.
         :param pulumi.Input[_builtins.int] cpu_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
         :param pulumi.Input[_builtins.int] cpu_share_count: The amount of shares to allocate to cpu for a custom share level.
@@ -3243,16 +3167,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
-        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-               disks that are created without datastores.
+        :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         :param pulumi.Input[_builtins.str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
         :param pulumi.Input[_builtins.bool] enable_logging: Enable logging on this virtual machine.
         :param pulumi.Input[_builtins.str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for this virtual machine. Can be one of automatic, on, or off.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-               configuration, such as instance metadata, or configuration data for OVF images.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_config: Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         :param pulumi.Input[_builtins.bool] extra_config_reboot_required: Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
         :param pulumi.Input[_builtins.str] firmware: The firmware interface to use on the virtual machine. Can be one of bios or efi.
         :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the virtual machine in.
@@ -3264,17 +3186,12 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] hv_mode: The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an IP
         :param pulumi.Input[_builtins.bool] imported: Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
-        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-               latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-               devices. Can be one of low, normal, medium, or high.
+        :param pulumi.Input[_builtins.str] latency_sensitivity: Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         :param pulumi.Input[_builtins.int] memory: The size of the virtual machine's memory, in MB.
         :param pulumi.Input[_builtins.bool] memory_hot_add_enabled: Allow memory to be added to this virtual machine while it is running.
-        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-               resources.
+        :param pulumi.Input[_builtins.int] memory_limit: The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         :param pulumi.Input[_builtins.int] memory_reservation: The amount of memory (in MB) or CPU (in MHz) that this virtual machine is guaranteed.
-        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-               size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-               may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        :param pulumi.Input[_builtins.bool] memory_reservation_locked_to_max: If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
@@ -3282,8 +3199,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
-        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-               must be evenly divisible by this value.
+        :param pulumi.Input[_builtins.int] num_cores_per_socket: The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         :param pulumi.Input[_builtins.int] num_cpus: The number of virtual processors to assign to this virtual machine.
         :param pulumi.Input[Union['VirtualMachineOvfDeployArgs', 'VirtualMachineOvfDeployArgsDict']] ovf_deploy: A specification for deploying a virtual machine from ovf/ova template.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pci_device_ids: A list of PCI passthrough devices
@@ -3301,10 +3217,8 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] shutdown_wait_timeout: The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
         :param pulumi.Input[_builtins.str] storage_policy_id: The ID of the storage policy to assign to the virtual machine home directory.
         :param pulumi.Input[_builtins.str] swap_placement_policy: The swap file placement policy for this virtual machine. Can be one of inherit, hostLocal, or vmDirectory.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-               synchronized on startup and resume. Requires VMware Tools to be installed.
-        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-               setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host: Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
+        :param pulumi.Input[_builtins.bool] sync_time_with_host_periodically: Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[_builtins.str] tools_upgrade_policy: Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
         :param pulumi.Input[_builtins.str] uuid: The UUID of the virtual machine. Also exposed as the `id` of the resource.
@@ -3314,14 +3228,10 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vmware_tools_status: The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
         :param pulumi.Input[_builtins.str] vmx_path: The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
         :param pulumi.Input[Union['VirtualMachineVtpmArgs', 'VirtualMachineVtpmArgsDict']] vtpm: A specification for a virtual Trusted Platform Module (TPM) device on the virtual machine.
-        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-               I/O Virtualization (AMD-Vi or IOMMU), is enabled.
-        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
-        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-               a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
-        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-               disables the waiter.
+        :param pulumi.Input[_builtins.bool] vvtd_enabled: Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        :param pulumi.Input[_builtins.int] wait_for_guest_ip_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
+        :param pulumi.Input[_builtins.bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        :param pulumi.Input[_builtins.int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3501,8 +3411,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        resources.
+        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -3566,8 +3475,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-        disks that are created without datastores.
+        The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -3623,8 +3531,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="extraConfig")
     def extra_config(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-        configuration, such as instance metadata, or configuration data for OVF images.
+        Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         """
         return pulumi.get(self, "extra_config")
 
@@ -3725,9 +3632,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="latencySensitivity")
     def latency_sensitivity(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-        latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-        devices. Can be one of low, normal, medium, or high.
+        Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         """
         return pulumi.get(self, "latency_sensitivity")
 
@@ -3751,8 +3656,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        resources.
+        The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -3768,9 +3672,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="memoryReservationLockedToMax")
     def memory_reservation_locked_to_max(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-        size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-        may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         """
         return pulumi.get(self, "memory_reservation_locked_to_max")
 
@@ -3834,8 +3736,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="numCoresPerSocket")
     def num_cores_per_socket(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-        must be evenly divisible by this value.
+        The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         """
         return pulumi.get(self, "num_cores_per_socket")
 
@@ -3999,8 +3900,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-        synchronized on startup and resume. Requires VMware Tools to be installed.
+        Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host")
 
@@ -4008,8 +3908,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="syncTimeWithHostPeriodically")
     def sync_time_with_host_periodically(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-        setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         """
         return pulumi.get(self, "sync_time_with_host_periodically")
 
@@ -4089,8 +3988,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="vvtdEnabled")
     def vvtd_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-        I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         """
         return pulumi.get(self, "vvtd_enabled")
 
@@ -4098,8 +3996,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="waitForGuestIpTimeout")
     def wait_for_guest_ip_timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        disables the waiter.
+        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_ip_timeout")
 
@@ -4107,8 +4004,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="waitForGuestNetRoutable")
     def wait_for_guest_net_routable(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-        a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         """
         return pulumi.get(self, "wait_for_guest_net_routable")
 
@@ -4116,8 +4012,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="waitForGuestNetTimeout")
     def wait_for_guest_net_timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        disables the waiter.
+        The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         """
         return pulumi.get(self, "wait_for_guest_net_timeout")
 

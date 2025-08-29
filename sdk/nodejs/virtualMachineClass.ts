@@ -70,27 +70,27 @@ export class VirtualMachineClass extends pulumi.CustomResource {
     /**
      * The percentage of the available CPU capacity which will be reserved.
      */
-    public readonly cpuReservation!: pulumi.Output<number | undefined>;
+    declare public readonly cpuReservation: pulumi.Output<number | undefined>;
     /**
      * The number of CPUs.
      */
-    public readonly cpus!: pulumi.Output<number>;
+    declare public readonly cpus: pulumi.Output<number>;
     /**
      * The amount of memory in MB.
      */
-    public readonly memory!: pulumi.Output<number>;
+    declare public readonly memory: pulumi.Output<number>;
     /**
      * The percentage of memory reservation.
      */
-    public readonly memoryReservation!: pulumi.Output<number | undefined>;
+    declare public readonly memoryReservation: pulumi.Output<number | undefined>;
     /**
      * The name for the class.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
      */
-    public readonly vgpuDevices!: pulumi.Output<string[] | undefined>;
+    declare public readonly vgpuDevices: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a VirtualMachineClass resource with the given unique name, arguments, and options.
@@ -105,26 +105,26 @@ export class VirtualMachineClass extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualMachineClassState | undefined;
-            resourceInputs["cpuReservation"] = state ? state.cpuReservation : undefined;
-            resourceInputs["cpus"] = state ? state.cpus : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["memoryReservation"] = state ? state.memoryReservation : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["vgpuDevices"] = state ? state.vgpuDevices : undefined;
+            resourceInputs["cpuReservation"] = state?.cpuReservation;
+            resourceInputs["cpus"] = state?.cpus;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["memoryReservation"] = state?.memoryReservation;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["vgpuDevices"] = state?.vgpuDevices;
         } else {
             const args = argsOrState as VirtualMachineClassArgs | undefined;
-            if ((!args || args.cpus === undefined) && !opts.urn) {
+            if (args?.cpus === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cpus'");
             }
-            if ((!args || args.memory === undefined) && !opts.urn) {
+            if (args?.memory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memory'");
             }
-            resourceInputs["cpuReservation"] = args ? args.cpuReservation : undefined;
-            resourceInputs["cpus"] = args ? args.cpus : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["memoryReservation"] = args ? args.memoryReservation : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["vgpuDevices"] = args ? args.vgpuDevices : undefined;
+            resourceInputs["cpuReservation"] = args?.cpuReservation;
+            resourceInputs["cpus"] = args?.cpus;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["memoryReservation"] = args?.memoryReservation;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["vgpuDevices"] = args?.vgpuDevices;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualMachineClass.__pulumiType, name, resourceInputs, opts);

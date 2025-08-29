@@ -106,7 +106,7 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId!: pulumi.Output<string>;
+    declare public readonly computeClusterId: pulumi.Output<string>;
     /**
      * The managed object IDs of
      * the hosts to put in the cluster.
@@ -116,12 +116,12 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
      * `vsphere.ComputeClusterVmGroup`
      * resource. Make sure your names are unique across both resources.
      */
-    public readonly hostSystemIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly hostSystemIds: pulumi.Output<string[] | undefined>;
     /**
      * The name of the host group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a ComputeClusterHostGroup resource with the given unique name, arguments, and options.
@@ -136,17 +136,17 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterHostGroupState | undefined;
-            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            resourceInputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["computeClusterId"] = state?.computeClusterId;
+            resourceInputs["hostSystemIds"] = state?.hostSystemIds;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as ComputeClusterHostGroupArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
+            if (args?.computeClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            resourceInputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["computeClusterId"] = args?.computeClusterId;
+            resourceInputs["hostSystemIds"] = args?.hostSystemIds;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeClusterHostGroup.__pulumiType, name, resourceInputs, opts);

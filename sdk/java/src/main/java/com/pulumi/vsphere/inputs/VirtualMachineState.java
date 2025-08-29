@@ -177,16 +177,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     @Import(name="cpuLimit")
     private @Nullable Output<Integer> cpuLimit;
 
     /**
-     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     public Optional<Output<Integer>> cpuLimit() {
@@ -299,16 +297,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
-     * disks that are created without datastores.
+     * The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
-     * disks that are created without datastores.
+     * @return The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -406,16 +402,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata, or configuration data for OVF images.
+     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     @Import(name="extraConfig")
     private @Nullable Output<Map<String,String>> extraConfig;
 
     /**
-     * @return Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata, or configuration data for OVF images.
+     * @return Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     public Optional<Output<Map<String,String>>> extraConfig() {
@@ -595,18 +589,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-     * devices. Can be one of low, normal, medium, or high.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
      * 
      */
     @Import(name="latencySensitivity")
     private @Nullable Output<String> latencySensitivity;
 
     /**
-     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-     * devices. Can be one of low, normal, medium, or high.
+     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
      * 
      */
     public Optional<Output<String>> latencySensitivity() {
@@ -644,16 +634,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     @Import(name="memoryLimit")
     private @Nullable Output<Integer> memoryLimit;
 
     /**
-     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     public Optional<Output<Integer>> memoryLimit() {
@@ -676,18 +664,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
-     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
      * 
      */
     @Import(name="memoryReservationLockedToMax")
     private @Nullable Output<Boolean> memoryReservationLockedToMax;
 
     /**
-     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
-     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
      * 
      */
     public Optional<Output<Boolean>> memoryReservationLockedToMax() {
@@ -800,16 +784,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-     * must be evenly divisible by this value.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
      * 
      */
     @Import(name="numCoresPerSocket")
     private @Nullable Output<Integer> numCoresPerSocket;
 
     /**
-     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-     * must be evenly divisible by this value.
+     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
      * 
      */
     public Optional<Output<Integer>> numCoresPerSocket() {
@@ -1100,16 +1082,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-     * synchronized on startup and resume. Requires VMware Tools to be installed.
+     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     @Import(name="syncTimeWithHost")
     private @Nullable Output<Boolean> syncTimeWithHost;
 
     /**
-     * @return Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-     * synchronized on startup and resume. Requires VMware Tools to be installed.
+     * @return Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     public Optional<Output<Boolean>> syncTimeWithHost() {
@@ -1117,16 +1097,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     @Import(name="syncTimeWithHostPeriodically")
     private @Nullable Output<Boolean> syncTimeWithHostPeriodically;
 
     /**
-     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     public Optional<Output<Boolean>> syncTimeWithHostPeriodically() {
@@ -1269,16 +1247,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     @Import(name="vvtdEnabled")
     private @Nullable Output<Boolean> vvtdEnabled;
 
     /**
-     * @return Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+     * @return Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     public Optional<Output<Boolean>> vvtdEnabled() {
@@ -1286,16 +1262,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     @Import(name="waitForGuestIpTimeout")
     private @Nullable Output<Integer> waitForGuestIpTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     public Optional<Output<Integer>> waitForGuestIpTimeout() {
@@ -1303,16 +1277,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     @Import(name="waitForGuestNetRoutable")
     private @Nullable Output<Boolean> waitForGuestNetRoutable;
 
     /**
-     * @return Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+     * @return Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     public Optional<Output<Boolean>> waitForGuestNetRoutable() {
@@ -1320,16 +1292,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     @Import(name="waitForGuestNetTimeout")
     private @Nullable Output<Integer> waitForGuestNetTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     public Optional<Output<Integer>> waitForGuestNetTimeout() {
@@ -1668,8 +1638,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-         * resources.
+         * @param cpuLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
          * 
          * @return builder
          * 
@@ -1680,8 +1649,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cpuLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-         * resources.
+         * @param cpuLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
          * 
          * @return builder
          * 
@@ -1838,8 +1806,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datastoreId The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
-         * disks that are created without datastores.
+         * @param datastoreId The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
          * 
          * @return builder
          * 
@@ -1850,8 +1817,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datastoreId The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
-         * disks that are created without datastores.
+         * @param datastoreId The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
          * 
          * @return builder
          * 
@@ -1997,8 +1963,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraConfig Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-         * configuration, such as instance metadata, or configuration data for OVF images.
+         * @param extraConfig Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
          * 
          * @return builder
          * 
@@ -2009,8 +1974,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param extraConfig Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-         * configuration, such as instance metadata, or configuration data for OVF images.
+         * @param extraConfig Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
          * 
          * @return builder
          * 
@@ -2280,9 +2244,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-         * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-         * devices. Can be one of low, normal, medium, or high.
+         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
          * 
          * @return builder
          * 
@@ -2293,9 +2255,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-         * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-         * devices. Can be one of low, normal, medium, or high.
+         * @param latencySensitivity Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
          * 
          * @return builder
          * 
@@ -2347,8 +2307,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-         * resources.
+         * @param memoryLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
          * 
          * @return builder
          * 
@@ -2359,8 +2318,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-         * resources.
+         * @param memoryLimit The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
          * 
          * @return builder
          * 
@@ -2391,9 +2349,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
-         * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-         * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
          * 
          * @return builder
          * 
@@ -2404,9 +2360,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
-         * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-         * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+         * @param memoryReservationLockedToMax If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
          * 
          * @return builder
          * 
@@ -2573,8 +2527,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-         * must be evenly divisible by this value.
+         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
          * 
          * @return builder
          * 
@@ -2585,8 +2538,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-         * must be evenly divisible by this value.
+         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
          * 
          * @return builder
          * 
@@ -2999,8 +2951,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHost Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-         * synchronized on startup and resume. Requires VMware Tools to be installed.
+         * @param syncTimeWithHost Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3011,8 +2962,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHost Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-         * synchronized on startup and resume. Requires VMware Tools to be installed.
+         * @param syncTimeWithHost Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3022,8 +2972,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-         * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3034,8 +2983,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-         * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -3254,8 +3202,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vvtdEnabled Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-         * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+         * @param vvtdEnabled Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
          * 
          * @return builder
          * 
@@ -3266,8 +3213,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vvtdEnabled Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-         * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+         * @param vvtdEnabled Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
          * 
          * @return builder
          * 
@@ -3277,8 +3223,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-         * disables the waiter.
+         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
          * 
          * @return builder
          * 
@@ -3289,8 +3234,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-         * disables the waiter.
+         * @param waitForGuestIpTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
          * 
          * @return builder
          * 
@@ -3300,8 +3244,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-         * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
          * 
          * @return builder
          * 
@@ -3312,8 +3255,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-         * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+         * @param waitForGuestNetRoutable Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
          * 
          * @return builder
          * 
@@ -3323,8 +3265,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-         * disables the waiter.
+         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
          * 
          * @return builder
          * 
@@ -3335,8 +3276,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-         * disables the waiter.
+         * @param waitForGuestNetTimeout The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
          * 
          * @return builder
          * 

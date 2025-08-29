@@ -134,43 +134,43 @@ export class Vnic extends pulumi.CustomResource {
     /**
      * Key of the distributed portgroup the nic will connect to.
      */
-    public readonly distributedPortGroup!: pulumi.Output<string | undefined>;
+    declare public readonly distributedPortGroup: pulumi.Output<string | undefined>;
     /**
      * UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
      */
-    public readonly distributedSwitchPort!: pulumi.Output<string | undefined>;
+    declare public readonly distributedSwitchPort: pulumi.Output<string | undefined>;
     /**
      * ESX host the interface belongs to
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      */
-    public readonly ipv4!: pulumi.Output<outputs.VnicIpv4 | undefined>;
+    declare public readonly ipv4: pulumi.Output<outputs.VnicIpv4 | undefined>;
     /**
      * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      */
-    public readonly ipv6!: pulumi.Output<outputs.VnicIpv6 | undefined>;
+    declare public readonly ipv6: pulumi.Output<outputs.VnicIpv6 | undefined>;
     /**
      * MAC address of the interface.
      */
-    public readonly mac!: pulumi.Output<string>;
+    declare public readonly mac: pulumi.Output<string>;
     /**
      * MTU of the interface.
      */
-    public readonly mtu!: pulumi.Output<number>;
+    declare public readonly mtu: pulumi.Output<number>;
     /**
      * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      */
-    public readonly netstack!: pulumi.Output<string | undefined>;
+    declare public readonly netstack: pulumi.Output<string | undefined>;
     /**
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
-    public readonly portgroup!: pulumi.Output<string | undefined>;
+    declare public readonly portgroup: pulumi.Output<string | undefined>;
     /**
      * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      */
-    public readonly services!: pulumi.Output<string[] | undefined>;
+    declare public readonly services: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Vnic resource with the given unique name, arguments, and options.
@@ -185,31 +185,31 @@ export class Vnic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VnicState | undefined;
-            resourceInputs["distributedPortGroup"] = state ? state.distributedPortGroup : undefined;
-            resourceInputs["distributedSwitchPort"] = state ? state.distributedSwitchPort : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["mac"] = state ? state.mac : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["netstack"] = state ? state.netstack : undefined;
-            resourceInputs["portgroup"] = state ? state.portgroup : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["distributedPortGroup"] = state?.distributedPortGroup;
+            resourceInputs["distributedSwitchPort"] = state?.distributedSwitchPort;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["ipv4"] = state?.ipv4;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["mac"] = state?.mac;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["netstack"] = state?.netstack;
+            resourceInputs["portgroup"] = state?.portgroup;
+            resourceInputs["services"] = state?.services;
         } else {
             const args = argsOrState as VnicArgs | undefined;
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            resourceInputs["distributedPortGroup"] = args ? args.distributedPortGroup : undefined;
-            resourceInputs["distributedSwitchPort"] = args ? args.distributedSwitchPort : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["ipv4"] = args ? args.ipv4 : undefined;
-            resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
-            resourceInputs["mac"] = args ? args.mac : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["netstack"] = args ? args.netstack : undefined;
-            resourceInputs["portgroup"] = args ? args.portgroup : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["distributedPortGroup"] = args?.distributedPortGroup;
+            resourceInputs["distributedSwitchPort"] = args?.distributedSwitchPort;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["ipv4"] = args?.ipv4;
+            resourceInputs["ipv6"] = args?.ipv6;
+            resourceInputs["mac"] = args?.mac;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["netstack"] = args?.netstack;
+            resourceInputs["portgroup"] = args?.portgroup;
+            resourceInputs["services"] = args?.services;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Vnic.__pulumiType, name, resourceInputs, opts);

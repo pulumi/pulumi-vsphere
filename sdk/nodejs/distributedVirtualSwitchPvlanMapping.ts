@@ -35,19 +35,19 @@ export class DistributedVirtualSwitchPvlanMapping extends pulumi.CustomResource 
     /**
      * The ID of the distributed virtual switch to attach this mapping to.
      */
-    public readonly distributedVirtualSwitchId!: pulumi.Output<string>;
+    declare public readonly distributedVirtualSwitchId: pulumi.Output<string>;
     /**
      * The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      */
-    public readonly primaryVlanId!: pulumi.Output<number>;
+    declare public readonly primaryVlanId: pulumi.Output<number>;
     /**
      * The private VLAN type. Valid values are promiscuous, community and isolated.
      */
-    public readonly pvlanType!: pulumi.Output<string>;
+    declare public readonly pvlanType: pulumi.Output<string>;
     /**
      * The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
      */
-    public readonly secondaryVlanId!: pulumi.Output<number>;
+    declare public readonly secondaryVlanId: pulumi.Output<number>;
 
     /**
      * Create a DistributedVirtualSwitchPvlanMapping resource with the given unique name, arguments, and options.
@@ -62,28 +62,28 @@ export class DistributedVirtualSwitchPvlanMapping extends pulumi.CustomResource 
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DistributedVirtualSwitchPvlanMappingState | undefined;
-            resourceInputs["distributedVirtualSwitchId"] = state ? state.distributedVirtualSwitchId : undefined;
-            resourceInputs["primaryVlanId"] = state ? state.primaryVlanId : undefined;
-            resourceInputs["pvlanType"] = state ? state.pvlanType : undefined;
-            resourceInputs["secondaryVlanId"] = state ? state.secondaryVlanId : undefined;
+            resourceInputs["distributedVirtualSwitchId"] = state?.distributedVirtualSwitchId;
+            resourceInputs["primaryVlanId"] = state?.primaryVlanId;
+            resourceInputs["pvlanType"] = state?.pvlanType;
+            resourceInputs["secondaryVlanId"] = state?.secondaryVlanId;
         } else {
             const args = argsOrState as DistributedVirtualSwitchPvlanMappingArgs | undefined;
-            if ((!args || args.distributedVirtualSwitchId === undefined) && !opts.urn) {
+            if (args?.distributedVirtualSwitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'distributedVirtualSwitchId'");
             }
-            if ((!args || args.primaryVlanId === undefined) && !opts.urn) {
+            if (args?.primaryVlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'primaryVlanId'");
             }
-            if ((!args || args.pvlanType === undefined) && !opts.urn) {
+            if (args?.pvlanType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pvlanType'");
             }
-            if ((!args || args.secondaryVlanId === undefined) && !opts.urn) {
+            if (args?.secondaryVlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secondaryVlanId'");
             }
-            resourceInputs["distributedVirtualSwitchId"] = args ? args.distributedVirtualSwitchId : undefined;
-            resourceInputs["primaryVlanId"] = args ? args.primaryVlanId : undefined;
-            resourceInputs["pvlanType"] = args ? args.pvlanType : undefined;
-            resourceInputs["secondaryVlanId"] = args ? args.secondaryVlanId : undefined;
+            resourceInputs["distributedVirtualSwitchId"] = args?.distributedVirtualSwitchId;
+            resourceInputs["primaryVlanId"] = args?.primaryVlanId;
+            resourceInputs["pvlanType"] = args?.pvlanType;
+            resourceInputs["secondaryVlanId"] = args?.secondaryVlanId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DistributedVirtualSwitchPvlanMapping.__pulumiType, name, resourceInputs, opts);

@@ -98,8 +98,7 @@ namespace Pulumi.VSphere
         public Output<bool?> CpuHotRemoveEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        /// resources.
+        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         /// </summary>
         [Output("cpuLimit")]
         public Output<int?> CpuLimit { get; private set; } = null!;
@@ -147,8 +146,7 @@ namespace Pulumi.VSphere
         public Output<string?> DatastoreClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-        /// disks that are created without datastores.
+        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         /// </summary>
         [Output("datastoreId")]
         public Output<string> DatastoreId { get; private set; } = null!;
@@ -190,8 +188,7 @@ namespace Pulumi.VSphere
         public Output<string> EptRviMode { get; private set; } = null!;
 
         /// <summary>
-        /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-        /// configuration, such as instance metadata, or configuration data for OVF images.
+        /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         /// </summary>
         [Output("extraConfig")]
         public Output<ImmutableDictionary<string, string>?> ExtraConfig { get; private set; } = null!;
@@ -266,9 +263,7 @@ namespace Pulumi.VSphere
         public Output<bool> Imported { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-        /// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-        /// devices. Can be one of low, normal, medium, or high.
+        /// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         /// </summary>
         [Output("latencySensitivity")]
         public Output<string?> LatencySensitivity { get; private set; } = null!;
@@ -286,8 +281,7 @@ namespace Pulumi.VSphere
         public Output<bool?> MemoryHotAddEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        /// resources.
+        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         /// </summary>
         [Output("memoryLimit")]
         public Output<int?> MemoryLimit { get; private set; } = null!;
@@ -299,9 +293,7 @@ namespace Pulumi.VSphere
         public Output<int?> MemoryReservation { get; private set; } = null!;
 
         /// <summary>
-        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-        /// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-        /// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         /// </summary>
         [Output("memoryReservationLockedToMax")]
         public Output<bool?> MemoryReservationLockedToMax { get; private set; } = null!;
@@ -349,8 +341,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<Outputs.VirtualMachineNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-        /// must be evenly divisible by this value.
+        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         /// </summary>
         [Output("numCoresPerSocket")]
         public Output<int?> NumCoresPerSocket { get; private set; } = null!;
@@ -470,15 +461,13 @@ namespace Pulumi.VSphere
         public Output<string?> SwapPlacementPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-        /// synchronized on startup and resume. Requires VMware Tools to be installed.
+        /// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         /// </summary>
         [Output("syncTimeWithHost")]
         public Output<bool?> SyncTimeWithHost { get; private set; } = null!;
 
         /// <summary>
-        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-        /// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         /// </summary>
         [Output("syncTimeWithHostPeriodically")]
         public Output<bool?> SyncTimeWithHostPeriodically { get; private set; } = null!;
@@ -538,29 +527,25 @@ namespace Pulumi.VSphere
         public Output<Outputs.VirtualMachineVtpm?> Vtpm { get; private set; } = null!;
 
         /// <summary>
-        /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-        /// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         /// </summary>
         [Output("vvtdEnabled")]
         public Output<bool?> VvtdEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        /// disables the waiter.
+        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         /// </summary>
         [Output("waitForGuestIpTimeout")]
         public Output<int?> WaitForGuestIpTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-        /// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        /// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         /// </summary>
         [Output("waitForGuestNetRoutable")]
         public Output<bool?> WaitForGuestNetRoutable { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        /// disables the waiter.
+        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         /// </summary>
         [Output("waitForGuestNetTimeout")]
         public Output<int?> WaitForGuestNetTimeout { get; private set; } = null!;
@@ -672,8 +657,7 @@ namespace Pulumi.VSphere
         public Input<bool>? CpuHotRemoveEnabled { get; set; }
 
         /// <summary>
-        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        /// resources.
+        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         /// </summary>
         [Input("cpuLimit")]
         public Input<int>? CpuLimit { get; set; }
@@ -727,8 +711,7 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-        /// disks that are created without datastores.
+        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -773,8 +756,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _extraConfig;
 
         /// <summary>
-        /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-        /// configuration, such as instance metadata, or configuration data for OVF images.
+        /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         /// </summary>
         public InputMap<string> ExtraConfig
         {
@@ -846,9 +828,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-        /// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-        /// devices. Can be one of low, normal, medium, or high.
+        /// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         /// </summary>
         [Input("latencySensitivity")]
         public Input<string>? LatencySensitivity { get; set; }
@@ -866,8 +846,7 @@ namespace Pulumi.VSphere
         public Input<bool>? MemoryHotAddEnabled { get; set; }
 
         /// <summary>
-        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        /// resources.
+        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
@@ -879,9 +858,7 @@ namespace Pulumi.VSphere
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-        /// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-        /// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         /// </summary>
         [Input("memoryReservationLockedToMax")]
         public Input<bool>? MemoryReservationLockedToMax { get; set; }
@@ -929,8 +906,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-        /// must be evenly divisible by this value.
+        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         /// </summary>
         [Input("numCoresPerSocket")]
         public Input<int>? NumCoresPerSocket { get; set; }
@@ -1047,15 +1023,13 @@ namespace Pulumi.VSphere
         public Input<string>? SwapPlacementPolicy { get; set; }
 
         /// <summary>
-        /// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-        /// synchronized on startup and resume. Requires VMware Tools to be installed.
+        /// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         /// </summary>
         [Input("syncTimeWithHost")]
         public Input<bool>? SyncTimeWithHost { get; set; }
 
         /// <summary>
-        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-        /// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         /// </summary>
         [Input("syncTimeWithHostPeriodically")]
         public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
@@ -1097,29 +1071,25 @@ namespace Pulumi.VSphere
         public Input<Inputs.VirtualMachineVtpmArgs>? Vtpm { get; set; }
 
         /// <summary>
-        /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-        /// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         /// </summary>
         [Input("vvtdEnabled")]
         public Input<bool>? VvtdEnabled { get; set; }
 
         /// <summary>
-        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        /// disables the waiter.
+        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         /// </summary>
         [Input("waitForGuestIpTimeout")]
         public Input<int>? WaitForGuestIpTimeout { get; set; }
 
         /// <summary>
-        /// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-        /// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        /// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         /// </summary>
         [Input("waitForGuestNetRoutable")]
         public Input<bool>? WaitForGuestNetRoutable { get; set; }
 
         /// <summary>
-        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        /// disables the waiter.
+        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         /// </summary>
         [Input("waitForGuestNetTimeout")]
         public Input<int>? WaitForGuestNetTimeout { get; set; }
@@ -1199,8 +1169,7 @@ namespace Pulumi.VSphere
         public Input<bool>? CpuHotRemoveEnabled { get; set; }
 
         /// <summary>
-        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        /// resources.
+        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         /// </summary>
         [Input("cpuLimit")]
         public Input<int>? CpuLimit { get; set; }
@@ -1254,8 +1223,7 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual
-        /// disks that are created without datastores.
+        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -1306,8 +1274,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _extraConfig;
 
         /// <summary>
-        /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-        /// configuration, such as instance metadata, or configuration data for OVF images.
+        /// Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
         /// </summary>
         public InputMap<string> ExtraConfig
         {
@@ -1397,9 +1364,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Imported { get; set; }
 
         /// <summary>
-        /// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-        /// latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-        /// devices. Can be one of low, normal, medium, or high.
+        /// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
         /// </summary>
         [Input("latencySensitivity")]
         public Input<string>? LatencySensitivity { get; set; }
@@ -1417,8 +1382,7 @@ namespace Pulumi.VSphere
         public Input<bool>? MemoryHotAddEnabled { get; set; }
 
         /// <summary>
-        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-        /// resources.
+        /// The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
@@ -1430,9 +1394,7 @@ namespace Pulumi.VSphere
         public Input<int>? MemoryReservation { get; set; }
 
         /// <summary>
-        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory
-        /// size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-        /// may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
+        /// If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine's memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine's memory.
         /// </summary>
         [Input("memoryReservationLockedToMax")]
         public Input<bool>? MemoryReservationLockedToMax { get; set; }
@@ -1486,8 +1448,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-        /// must be evenly divisible by this value.
+        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
         /// </summary>
         [Input("numCoresPerSocket")]
         public Input<int>? NumCoresPerSocket { get; set; }
@@ -1613,15 +1574,13 @@ namespace Pulumi.VSphere
         public Input<string>? SwapPlacementPolicy { get; set; }
 
         /// <summary>
-        /// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-        /// synchronized on startup and resume. Requires VMware Tools to be installed.
+        /// Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
         /// </summary>
         [Input("syncTimeWithHost")]
         public Input<bool>? SyncTimeWithHost { get; set; }
 
         /// <summary>
-        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-        /// setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
         /// </summary>
         [Input("syncTimeWithHostPeriodically")]
         public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
@@ -1693,29 +1652,25 @@ namespace Pulumi.VSphere
         public Input<Inputs.VirtualMachineVtpmGetArgs>? Vtpm { get; set; }
 
         /// <summary>
-        /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-        /// I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+        /// Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
         /// </summary>
         [Input("vvtdEnabled")]
         public Input<bool>? VvtdEnabled { get; set; }
 
         /// <summary>
-        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        /// disables the waiter.
+        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         /// </summary>
         [Input("waitForGuestIpTimeout")]
         public Input<int>? WaitForGuestIpTimeout { get; set; }
 
         /// <summary>
-        /// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-        /// a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+        /// Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
         /// </summary>
         [Input("waitForGuestNetRoutable")]
         public Input<bool>? WaitForGuestNetRoutable { get; set; }
 
         /// <summary>
-        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-        /// disables the waiter.
+        /// The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
         /// </summary>
         [Input("waitForGuestNetTimeout")]
         public Input<int>? WaitForGuestNetTimeout { get; set; }

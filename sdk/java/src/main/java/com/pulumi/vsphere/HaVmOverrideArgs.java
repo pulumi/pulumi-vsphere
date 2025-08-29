@@ -34,16 +34,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
-     * APD event. Can be one of useClusterDefault, none or reset.
+     * Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
      * 
      */
     @Import(name="haDatastoreApdRecoveryAction")
     private @Nullable Output<String> haDatastoreApdRecoveryAction;
 
     /**
-     * @return Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
-     * APD event. Can be one of useClusterDefault, none or reset.
+     * @return Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
      * 
      */
     public Optional<Output<String>> haDatastoreApdRecoveryAction() {
@@ -51,16 +49,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
-     * datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+     * Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     @Import(name="haDatastoreApdResponse")
     private @Nullable Output<String> haDatastoreApdResponse;
 
     /**
-     * @return Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
-     * datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+     * @return Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     public Optional<Output<String>> haDatastoreApdResponse() {
@@ -68,16 +64,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
-     * ha_datastore_apd_response. Specify -1 to use the cluster setting.
+     * Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
      * 
      */
     @Import(name="haDatastoreApdResponseDelay")
     private @Nullable Output<Integer> haDatastoreApdResponseDelay;
 
     /**
-     * @return Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
-     * ha_datastore_apd_response. Specify -1 to use the cluster setting.
+     * @return Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
      * 
      */
     public Optional<Output<Integer>> haDatastoreApdResponseDelay() {
@@ -85,16 +79,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
-     * datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+     * Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
      * 
      */
     @Import(name="haDatastorePdlResponse")
     private @Nullable Output<String> haDatastorePdlResponse;
 
     /**
-     * @return Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
-     * datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+     * @return Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
      * 
      */
     public Optional<Output<String>> haDatastorePdlResponse() {
@@ -102,16 +94,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
-     * clusterIsolationResponse, none, powerOff, or shutdown.
+     * The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
      * 
      */
     @Import(name="haHostIsolationResponse")
     private @Nullable Output<String> haHostIsolationResponse;
 
     /**
-     * @return The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
-     * clusterIsolationResponse, none, powerOff, or shutdown.
+     * @return The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
      * 
      */
     public Optional<Output<String>> haHostIsolationResponse() {
@@ -119,16 +109,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
-     * as failed. The value is in seconds.
+     * If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      * 
      */
     @Import(name="haVmFailureInterval")
     private @Nullable Output<Integer> haVmFailureInterval;
 
     /**
-     * @return If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
-     * as failed. The value is in seconds.
+     * @return If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      * 
      */
     public Optional<Output<Integer>> haVmFailureInterval() {
@@ -136,18 +124,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-     * time is allotted.
+     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     @Import(name="haVmMaximumFailureWindow")
     private @Nullable Output<Integer> haVmMaximumFailureWindow;
 
     /**
-     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-     * time is allotted.
+     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     public Optional<Output<Integer>> haVmMaximumFailureWindow() {
@@ -185,16 +169,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
-     * vmMonitoringOnly, or vmAndAppMonitoring.
+     * The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     @Import(name="haVmMonitoring")
     private @Nullable Output<String> haVmMonitoring;
 
     /**
-     * @return The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
-     * vmMonitoringOnly, or vmAndAppMonitoring.
+     * @return The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     public Optional<Output<String>> haVmMonitoring() {
@@ -202,16 +184,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used
-     * for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+     * Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
      * 
      */
     @Import(name="haVmMonitoringUseClusterDefaults")
     private @Nullable Output<Boolean> haVmMonitoringUseClusterDefaults;
 
     /**
-     * @return Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used
-     * for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+     * @return Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
      * 
      */
     public Optional<Output<Boolean>> haVmMonitoringUseClusterDefaults() {
@@ -219,16 +199,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
-     * lowest, low, medium, high, or highest.
+     * The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
      * 
      */
     @Import(name="haVmRestartPriority")
     private @Nullable Output<String> haVmRestartPriority;
 
     /**
-     * @return The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
-     * lowest, low, medium, high, or highest.
+     * @return The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
      * 
      */
     public Optional<Output<String>> haVmRestartPriority() {
@@ -236,16 +214,14 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
-     * default.
+     * The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
      * 
      */
     @Import(name="haVmRestartTimeout")
     private @Nullable Output<Integer> haVmRestartTimeout;
 
     /**
-     * @return The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
-     * default.
+     * @return The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
      * 
      */
     public Optional<Output<Integer>> haVmRestartTimeout() {
@@ -327,8 +303,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastoreApdRecoveryAction Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
-         * APD event. Can be one of useClusterDefault, none or reset.
+         * @param haDatastoreApdRecoveryAction Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
          * 
          * @return builder
          * 
@@ -339,8 +314,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastoreApdRecoveryAction Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an
-         * APD event. Can be one of useClusterDefault, none or reset.
+         * @param haDatastoreApdRecoveryAction Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
          * 
          * @return builder
          * 
@@ -350,8 +324,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastoreApdResponse Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
-         * datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+         * @param haDatastoreApdResponse Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
          * 
          * @return builder
          * 
@@ -362,8 +335,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastoreApdResponse Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant
-         * datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
+         * @param haDatastoreApdResponse Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
          * 
          * @return builder
          * 
@@ -373,8 +345,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastoreApdResponseDelay Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
-         * ha_datastore_apd_response. Specify -1 to use the cluster setting.
+         * @param haDatastoreApdResponseDelay Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
          * 
          * @return builder
          * 
@@ -385,8 +356,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastoreApdResponseDelay Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in
-         * ha_datastore_apd_response. Specify -1 to use the cluster setting.
+         * @param haDatastoreApdResponseDelay Controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response. Specify -1 to use the cluster setting.
          * 
          * @return builder
          * 
@@ -396,8 +366,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastorePdlResponse Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
-         * datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+         * @param haDatastorePdlResponse Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
          * 
          * @return builder
          * 
@@ -408,8 +377,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haDatastorePdlResponse Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant
-         * datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
+         * @param haDatastorePdlResponse Controls the action to take on this virtual machine when the cluster has detected a permanent device loss to a relevant datastore. Can be one of clusterDefault, disabled, warning, or restartAggressive.
          * 
          * @return builder
          * 
@@ -419,8 +387,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haHostIsolationResponse The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
-         * clusterIsolationResponse, none, powerOff, or shutdown.
+         * @param haHostIsolationResponse The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
          * 
          * @return builder
          * 
@@ -431,8 +398,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haHostIsolationResponse The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of
-         * clusterIsolationResponse, none, powerOff, or shutdown.
+         * @param haHostIsolationResponse The action to take on this virtual machine when a host is isolated from the rest of the cluster. Can be one of clusterIsolationResponse, none, powerOff, or shutdown.
          * 
          * @return builder
          * 
@@ -442,8 +408,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmFailureInterval If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
-         * as failed. The value is in seconds.
+         * @param haVmFailureInterval If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
          * 
          * @return builder
          * 
@@ -454,8 +419,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmFailureInterval If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked
-         * as failed. The value is in seconds.
+         * @param haVmFailureInterval If a heartbeat from this virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
          * 
          * @return builder
          * 
@@ -465,9 +429,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-         * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-         * time is allotted.
+         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
          * 
          * @return builder
          * 
@@ -478,9 +440,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-         * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-         * time is allotted.
+         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
          * 
          * @return builder
          * 
@@ -532,8 +492,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMonitoring The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
-         * vmMonitoringOnly, or vmAndAppMonitoring.
+         * @param haVmMonitoring The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
          * 
          * @return builder
          * 
@@ -544,8 +503,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMonitoring The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled,
-         * vmMonitoringOnly, or vmAndAppMonitoring.
+         * @param haVmMonitoring The type of virtual machine monitoring to use for this virtual machine. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
          * 
          * @return builder
          * 
@@ -555,8 +513,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMonitoringUseClusterDefaults Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used
-         * for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+         * @param haVmMonitoringUseClusterDefaults Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
          * 
          * @return builder
          * 
@@ -567,8 +524,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMonitoringUseClusterDefaults Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used
-         * for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
+         * @param haVmMonitoringUseClusterDefaults Determines whether or not the cluster&#39;s default settings or the VM override settings specified in this resource are used for virtual machine monitoring. The default is true (use cluster defaults) - set to false to have overrides take effect.
          * 
          * @return builder
          * 
@@ -578,8 +534,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmRestartPriority The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
-         * lowest, low, medium, high, or highest.
+         * @param haVmRestartPriority The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
          * 
          * @return builder
          * 
@@ -590,8 +545,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmRestartPriority The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority,
-         * lowest, low, medium, high, or highest.
+         * @param haVmRestartPriority The restart priority for this virtual machine when vSphere detects a host failure. Can be one of clusterRestartPriority, lowest, low, medium, high, or highest.
          * 
          * @return builder
          * 
@@ -601,8 +555,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
-         * default.
+         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
          * 
          * @return builder
          * 
@@ -613,8 +566,7 @@ public final class HaVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster
-         * default.
+         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for the virtual machine to be ready. Use -1 to use the cluster default.
          * 
          * @return builder
          * 

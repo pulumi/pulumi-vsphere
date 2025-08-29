@@ -122,28 +122,28 @@ export class ContentLibraryItem extends pulumi.CustomResource {
     /**
      * A description for the content library item.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * File to import as the content library item.
      */
-    public readonly fileUrl!: pulumi.Output<string | undefined>;
+    declare public readonly fileUrl: pulumi.Output<string | undefined>;
     /**
      * The ID of the content library in which to create the item.
      */
-    public readonly libraryId!: pulumi.Output<string>;
+    declare public readonly libraryId: pulumi.Output<string>;
     /**
      * The name of the item to be created in the content library.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Virtual machine UUID to clone to content library.
      */
-    public readonly sourceUuid!: pulumi.Output<string | undefined>;
+    declare public readonly sourceUuid: pulumi.Output<string | undefined>;
     /**
      * Type of content library item.
      * One of "ovf", "iso", or "vm-template". Default: `ovf`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a ContentLibraryItem resource with the given unique name, arguments, and options.
@@ -158,23 +158,23 @@ export class ContentLibraryItem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContentLibraryItemState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileUrl"] = state ? state.fileUrl : undefined;
-            resourceInputs["libraryId"] = state ? state.libraryId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sourceUuid"] = state ? state.sourceUuid : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileUrl"] = state?.fileUrl;
+            resourceInputs["libraryId"] = state?.libraryId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sourceUuid"] = state?.sourceUuid;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ContentLibraryItemArgs | undefined;
-            if ((!args || args.libraryId === undefined) && !opts.urn) {
+            if (args?.libraryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'libraryId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileUrl"] = args ? args.fileUrl : undefined;
-            resourceInputs["libraryId"] = args ? args.libraryId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sourceUuid"] = args ? args.sourceUuid : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileUrl"] = args?.fileUrl;
+            resourceInputs["libraryId"] = args?.libraryId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sourceUuid"] = args?.sourceUuid;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContentLibraryItem.__pulumiType, name, resourceInputs, opts);

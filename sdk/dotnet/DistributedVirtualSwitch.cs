@@ -102,8 +102,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> ActiveUplinks { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        /// that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         /// </summary>
         [Output("allowForgedTransmits")]
         public Output<bool> AllowForgedTransmits { get; private set; } = null!;
@@ -478,8 +477,7 @@ namespace Pulumi.VSphere
         public Output<int?> NetflowObservationDomainId { get; private set; } = null!;
 
         /// <summary>
-        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-        /// packets are analyzed.
+        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         /// </summary>
         [Output("netflowSamplingRate")]
         public Output<int?> NetflowSamplingRate { get; private set; } = null!;
@@ -551,22 +549,19 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        /// failover_explicit, or loadbalance_loadbased.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         /// </summary>
         [Output("teamingPolicy")]
         public Output<string> TeamingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        /// forwarded done by the switch.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         /// </summary>
         [Output("txUplink")]
         public Output<bool> TxUplink { get; private set; } = null!;
 
         /// <summary>
-        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-        /// across hosts.
+        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         /// </summary>
         [Output("uplinks")]
         public Output<ImmutableArray<string>> Uplinks { get; private set; } = null!;
@@ -746,8 +741,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        /// that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -1127,8 +1121,7 @@ namespace Pulumi.VSphere
         public Input<int>? NetflowObservationDomainId { get; set; }
 
         /// <summary>
-        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-        /// packets are analyzed.
+        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         /// </summary>
         [Input("netflowSamplingRate")]
         public Input<int>? NetflowSamplingRate { get; set; }
@@ -1218,15 +1211,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        /// failover_explicit, or loadbalance_loadbased.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }
 
         /// <summary>
-        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        /// forwarded done by the switch.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -1235,8 +1226,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _uplinks;
 
         /// <summary>
-        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-        /// across hosts.
+        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         /// </summary>
         public InputList<string> Uplinks
         {
@@ -1387,8 +1377,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        /// that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -1775,8 +1764,7 @@ namespace Pulumi.VSphere
         public Input<int>? NetflowObservationDomainId { get; set; }
 
         /// <summary>
-        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-        /// packets are analyzed.
+        /// The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         /// </summary>
         [Input("netflowSamplingRate")]
         public Input<int>? NetflowSamplingRate { get; set; }
@@ -1866,15 +1854,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        /// failover_explicit, or loadbalance_loadbased.
+        /// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }
 
         /// <summary>
-        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        /// forwarded done by the switch.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -1883,8 +1869,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _uplinks;
 
         /// <summary>
-        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-        /// across hosts.
+        /// A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         /// </summary>
         public InputList<string> Uplinks
         {

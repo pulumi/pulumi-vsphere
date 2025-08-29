@@ -130,7 +130,7 @@ export class DrsVmOverride extends pulumi.CustomResource {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId!: pulumi.Output<string>;
+    declare public readonly computeClusterId: pulumi.Output<string>;
     /**
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -140,17 +140,17 @@ export class DrsVmOverride extends pulumi.CustomResource {
      * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
-    public readonly drsAutomationLevel!: pulumi.Output<string | undefined>;
+    declare public readonly drsAutomationLevel: pulumi.Output<string | undefined>;
     /**
      * Overrides the default DRS setting for this virtual
      * machine. Can be either `true` or `false`. Default: `false`.
      */
-    public readonly drsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly drsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    public readonly virtualMachineId!: pulumi.Output<string>;
+    declare public readonly virtualMachineId: pulumi.Output<string>;
 
     /**
      * Create a DrsVmOverride resource with the given unique name, arguments, and options.
@@ -165,22 +165,22 @@ export class DrsVmOverride extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DrsVmOverrideState | undefined;
-            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            resourceInputs["drsAutomationLevel"] = state ? state.drsAutomationLevel : undefined;
-            resourceInputs["drsEnabled"] = state ? state.drsEnabled : undefined;
-            resourceInputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
+            resourceInputs["computeClusterId"] = state?.computeClusterId;
+            resourceInputs["drsAutomationLevel"] = state?.drsAutomationLevel;
+            resourceInputs["drsEnabled"] = state?.drsEnabled;
+            resourceInputs["virtualMachineId"] = state?.virtualMachineId;
         } else {
             const args = argsOrState as DrsVmOverrideArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
+            if (args?.computeClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.virtualMachineId === undefined) && !opts.urn) {
+            if (args?.virtualMachineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
-            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            resourceInputs["drsAutomationLevel"] = args ? args.drsAutomationLevel : undefined;
-            resourceInputs["drsEnabled"] = args ? args.drsEnabled : undefined;
-            resourceInputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
+            resourceInputs["computeClusterId"] = args?.computeClusterId;
+            resourceInputs["drsAutomationLevel"] = args?.drsAutomationLevel;
+            resourceInputs["drsEnabled"] = args?.drsEnabled;
+            resourceInputs["virtualMachineId"] = args?.virtualMachineId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DrsVmOverride.__pulumiType, name, resourceInputs, opts);

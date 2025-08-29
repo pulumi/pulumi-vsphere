@@ -72,19 +72,14 @@ class DatastoreClusterArgs:
         :param pulumi.Input[_builtins.bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
         :param pulumi.Input[_builtins.int] sdrs_free_space_threshold: The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
-        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-               freeSpace, drs_free_space_threshold is used.
-        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-               balance the space.
+        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         :param pulumi.Input[_builtins.str] sdrs_io_balance_automation_level: Overrides the default automation settings when correcting I/O load imbalances.
-        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-               datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         :param pulumi.Input[_builtins.bool] sdrs_io_load_balance_enabled: Enable I/O load balancing for this datastore cluster.
         :param pulumi.Input[_builtins.int] sdrs_io_load_imbalance_threshold: The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-               move VMs off of a datastore.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-               recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         :param pulumi.Input[_builtins.str] sdrs_io_reservable_threshold_mode: The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         :param pulumi.Input[_builtins.int] sdrs_load_balance_interval: The storage DRS poll interval, in minutes.
         :param pulumi.Input[_builtins.str] sdrs_policy_enforcement_automation_level: Overrides the default automation settings when correcting storage and VM policy violations.
@@ -273,8 +268,7 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="sdrsFreeSpaceThresholdMode")
     def sdrs_free_space_threshold_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-        freeSpace, drs_free_space_threshold is used.
+        The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         """
         return pulumi.get(self, "sdrs_free_space_threshold_mode")
 
@@ -286,8 +280,7 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="sdrsFreeSpaceUtilizationDifference")
     def sdrs_free_space_utilization_difference(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-        balance the space.
+        The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         """
         return pulumi.get(self, "sdrs_free_space_utilization_difference")
 
@@ -311,8 +304,7 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="sdrsIoLatencyThreshold")
     def sdrs_io_latency_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-        datastore.
+        The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         """
         return pulumi.get(self, "sdrs_io_latency_threshold")
 
@@ -348,8 +340,7 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="sdrsIoReservableIopsThreshold")
     def sdrs_io_reservable_iops_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-        move VMs off of a datastore.
+        The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 
@@ -361,8 +352,7 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="sdrsIoReservablePercentThreshold")
     def sdrs_io_reservable_percent_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-        recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         """
         return pulumi.get(self, "sdrs_io_reservable_percent_threshold")
 
@@ -523,19 +513,14 @@ class _DatastoreClusterState:
         :param pulumi.Input[_builtins.bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
         :param pulumi.Input[_builtins.int] sdrs_free_space_threshold: The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
-        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-               freeSpace, drs_free_space_threshold is used.
-        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-               balance the space.
+        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         :param pulumi.Input[_builtins.str] sdrs_io_balance_automation_level: Overrides the default automation settings when correcting I/O load imbalances.
-        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-               datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         :param pulumi.Input[_builtins.bool] sdrs_io_load_balance_enabled: Enable I/O load balancing for this datastore cluster.
         :param pulumi.Input[_builtins.int] sdrs_io_load_imbalance_threshold: The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-               move VMs off of a datastore.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-               recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         :param pulumi.Input[_builtins.str] sdrs_io_reservable_threshold_mode: The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         :param pulumi.Input[_builtins.int] sdrs_load_balance_interval: The storage DRS poll interval, in minutes.
         :param pulumi.Input[_builtins.str] sdrs_policy_enforcement_automation_level: Overrides the default automation settings when correcting storage and VM policy violations.
@@ -725,8 +710,7 @@ class _DatastoreClusterState:
     @pulumi.getter(name="sdrsFreeSpaceThresholdMode")
     def sdrs_free_space_threshold_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-        freeSpace, drs_free_space_threshold is used.
+        The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         """
         return pulumi.get(self, "sdrs_free_space_threshold_mode")
 
@@ -738,8 +722,7 @@ class _DatastoreClusterState:
     @pulumi.getter(name="sdrsFreeSpaceUtilizationDifference")
     def sdrs_free_space_utilization_difference(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-        balance the space.
+        The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         """
         return pulumi.get(self, "sdrs_free_space_utilization_difference")
 
@@ -763,8 +746,7 @@ class _DatastoreClusterState:
     @pulumi.getter(name="sdrsIoLatencyThreshold")
     def sdrs_io_latency_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-        datastore.
+        The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         """
         return pulumi.get(self, "sdrs_io_latency_threshold")
 
@@ -800,8 +782,7 @@ class _DatastoreClusterState:
     @pulumi.getter(name="sdrsIoReservableIopsThreshold")
     def sdrs_io_reservable_iops_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-        move VMs off of a datastore.
+        The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 
@@ -813,8 +794,7 @@ class _DatastoreClusterState:
     @pulumi.getter(name="sdrsIoReservablePercentThreshold")
     def sdrs_io_reservable_percent_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-        recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         """
         return pulumi.get(self, "sdrs_io_reservable_percent_threshold")
 
@@ -1053,19 +1033,14 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
         :param pulumi.Input[_builtins.int] sdrs_free_space_threshold: The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
-        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-               freeSpace, drs_free_space_threshold is used.
-        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-               balance the space.
+        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         :param pulumi.Input[_builtins.str] sdrs_io_balance_automation_level: Overrides the default automation settings when correcting I/O load imbalances.
-        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-               datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         :param pulumi.Input[_builtins.bool] sdrs_io_load_balance_enabled: Enable I/O load balancing for this datastore cluster.
         :param pulumi.Input[_builtins.int] sdrs_io_load_imbalance_threshold: The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-               move VMs off of a datastore.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-               recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         :param pulumi.Input[_builtins.str] sdrs_io_reservable_threshold_mode: The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         :param pulumi.Input[_builtins.int] sdrs_load_balance_interval: The storage DRS poll interval, in minutes.
         :param pulumi.Input[_builtins.str] sdrs_policy_enforcement_automation_level: Overrides the default automation settings when correcting storage and VM policy violations.
@@ -1299,19 +1274,14 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
         :param pulumi.Input[_builtins.int] sdrs_free_space_threshold: The threshold, in GB, that storage DRS uses to make decisions to migrate VMs out of a datastore.
-        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-               freeSpace, drs_free_space_threshold is used.
-        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-               balance the space.
+        :param pulumi.Input[_builtins.str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+        :param pulumi.Input[_builtins.int] sdrs_free_space_utilization_difference: The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         :param pulumi.Input[_builtins.str] sdrs_io_balance_automation_level: Overrides the default automation settings when correcting I/O load imbalances.
-        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-               datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_latency_threshold: The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         :param pulumi.Input[_builtins.bool] sdrs_io_load_balance_enabled: Enable I/O load balancing for this datastore cluster.
         :param pulumi.Input[_builtins.int] sdrs_io_load_imbalance_threshold: The difference between load in datastores in the cluster before storage DRS makes recommendations to balance the load.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-               move VMs off of a datastore.
-        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-               recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_iops_threshold: The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
+        :param pulumi.Input[_builtins.int] sdrs_io_reservable_percent_threshold: The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         :param pulumi.Input[_builtins.str] sdrs_io_reservable_threshold_mode: The reservable IOPS threshold to use, percent in the event of automatic, or manual threshold in the event of manual.
         :param pulumi.Input[_builtins.int] sdrs_load_balance_interval: The storage DRS poll interval, in minutes.
         :param pulumi.Input[_builtins.str] sdrs_policy_enforcement_automation_level: Overrides the default automation settings when correcting storage and VM policy violations.
@@ -1445,8 +1415,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="sdrsFreeSpaceThresholdMode")
     def sdrs_free_space_threshold_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
-        freeSpace, drs_free_space_threshold is used.
+        The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
         """
         return pulumi.get(self, "sdrs_free_space_threshold_mode")
 
@@ -1454,8 +1423,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="sdrsFreeSpaceUtilizationDifference")
     def sdrs_free_space_utilization_difference(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to
-        balance the space.
+        The threshold, in percent, of difference between space utilization in datastores before storage DRS makes decisions to balance the space.
         """
         return pulumi.get(self, "sdrs_free_space_utilization_difference")
 
@@ -1471,8 +1439,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="sdrsIoLatencyThreshold")
     def sdrs_io_latency_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this
-        datastore.
+        The I/O latency threshold, in milliseconds, that storage DRS uses to make recommendations to move disks from this datastore.
         """
         return pulumi.get(self, "sdrs_io_latency_threshold")
 
@@ -1496,8 +1463,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="sdrsIoReservableIopsThreshold")
     def sdrs_io_reservable_iops_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to
-        move VMs off of a datastore.
+        The threshold of reservable IOPS of all virtual machines on the datastore before storage DRS makes recommendations to move VMs off of a datastore.
         """
         return pulumi.get(self, "sdrs_io_reservable_iops_threshold")
 
@@ -1505,8 +1471,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="sdrsIoReservablePercentThreshold")
     def sdrs_io_reservable_percent_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make
-        recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
+        The threshold, in percent, of actual estimated performance of the datastore (in IOPS) that storage DRS uses to make recommendations to move VMs off of a datastore when the total reservable IOPS exceeds the threshold.
         """
         return pulumi.get(self, "sdrs_io_reservable_percent_threshold")
 

@@ -120,16 +120,16 @@ export class Tag extends pulumi.CustomResource {
      * The unique identifier of the parent category in
      * which this tag will be created. Forces a new resource if changed.
      */
-    public readonly categoryId!: pulumi.Output<string>;
+    declare public readonly categoryId: pulumi.Output<string>;
     /**
      * A description for the tag.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the tag. The name must be unique
      * within its category.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Tag resource with the given unique name, arguments, and options.
@@ -144,17 +144,17 @@ export class Tag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            resourceInputs["categoryId"] = state ? state.categoryId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["categoryId"] = state?.categoryId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            if ((!args || args.categoryId === undefined) && !opts.urn) {
+            if (args?.categoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'categoryId'");
             }
-            resourceInputs["categoryId"] = args ? args.categoryId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["categoryId"] = args?.categoryId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Tag.__pulumiType, name, resourceInputs, opts);

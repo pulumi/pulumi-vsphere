@@ -91,7 +91,7 @@ export class VirtualDisk extends pulumi.CustomResource {
      *
      * @deprecated this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      */
-    public readonly adapterType!: pulumi.Output<string | undefined>;
+    declare public readonly adapterType: pulumi.Output<string | undefined>;
     /**
      * Tells the resource to create any
      * directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -101,24 +101,24 @@ export class VirtualDisk extends pulumi.CustomResource {
      * `createDirectories` is enabled will not be deleted when the resource is
      * destroyed.
      */
-    public readonly createDirectories!: pulumi.Output<boolean | undefined>;
+    declare public readonly createDirectories: pulumi.Output<boolean | undefined>;
     /**
      * The name of the datacenter in which to create the
      * disk. Can be omitted when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
-    public readonly datacenter!: pulumi.Output<string | undefined>;
+    declare public readonly datacenter: pulumi.Output<string | undefined>;
     /**
      * The name of the datastore in which to create the
      * disk.
      */
-    public readonly datastore!: pulumi.Output<string>;
+    declare public readonly datastore: pulumi.Output<string>;
     /**
      * Size of the disk (in GB). Decreasing the size of a disk is not possible.
      * If a disk of a smaller size is required then the original has to be destroyed along with its data and a new one has to be
      * created.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The type of disk to create. Can be one of
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -127,12 +127,12 @@ export class VirtualDisk extends pulumi.CustomResource {
      *
      * [docs-vmware-vm-disk-provisioning]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-single-host-management-vmware-host-client-8-0/virtual-machine-management-with-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/configuring-virtual-machines-in-the-vsphere-host-client-vSphereSingleHostManagementVMwareHostClient/virtual-disk-configuration-vSphereSingleHostManagementVMwareHostClient/about-virtual-disk-provisioning-policies-vSphereSingleHostManagementVMwareHostClient.html
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The path, including filename, of the virtual disk to
      * be created.  This needs to end in `.vmdk`.
      */
-    public readonly vmdkPath!: pulumi.Output<string>;
+    declare public readonly vmdkPath: pulumi.Output<string>;
 
     /**
      * Create a VirtualDisk resource with the given unique name, arguments, and options.
@@ -147,31 +147,31 @@ export class VirtualDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualDiskState | undefined;
-            resourceInputs["adapterType"] = state ? state.adapterType : undefined;
-            resourceInputs["createDirectories"] = state ? state.createDirectories : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["datastore"] = state ? state.datastore : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vmdkPath"] = state ? state.vmdkPath : undefined;
+            resourceInputs["adapterType"] = state?.adapterType;
+            resourceInputs["createDirectories"] = state?.createDirectories;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["datastore"] = state?.datastore;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vmdkPath"] = state?.vmdkPath;
         } else {
             const args = argsOrState as VirtualDiskArgs | undefined;
-            if ((!args || args.datastore === undefined) && !opts.urn) {
+            if (args?.datastore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.vmdkPath === undefined) && !opts.urn) {
+            if (args?.vmdkPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmdkPath'");
             }
-            resourceInputs["adapterType"] = args ? args.adapterType : undefined;
-            resourceInputs["createDirectories"] = args ? args.createDirectories : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["datastore"] = args ? args.datastore : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vmdkPath"] = args ? args.vmdkPath : undefined;
+            resourceInputs["adapterType"] = args?.adapterType;
+            resourceInputs["createDirectories"] = args?.createDirectories;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["datastore"] = args?.datastore;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vmdkPath"] = args?.vmdkPath;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualDisk.__pulumiType, name, resourceInputs, opts);

@@ -80,16 +80,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-     * machines in the cluster. Requires that DRS be enabled.
+     * Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
      * 
      */
     @Import(name="dpmEnabled")
     private @Nullable Output<Boolean> dpmEnabled;
 
     /**
-     * @return Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-     * machines in the cluster. Requires that DRS be enabled.
+     * @return Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
      * 
      */
     public Optional<Output<Boolean>> dpmEnabled() {
@@ -97,18 +95,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-     * affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-     * setting.
+     * A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
      * 
      */
     @Import(name="dpmThreshold")
     private @Nullable Output<Integer> dpmThreshold;
 
     /**
-     * @return A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-     * affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-     * setting.
+     * @return A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
      * 
      */
     public Optional<Output<Integer>> dpmThreshold() {
@@ -131,16 +125,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-     * fullyAutomated.
+     * The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
      * 
      */
     @Import(name="drsAutomationLevel")
     private @Nullable Output<String> drsAutomationLevel;
 
     /**
-     * @return The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-     * fullyAutomated.
+     * @return The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
      * 
      */
     public Optional<Output<String>> drsAutomationLevel() {
@@ -193,16 +185,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-     * more imbalance while a higher setting will tolerate less.
+     * A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
      * 
      */
     @Import(name="drsMigrationThreshold")
     private @Nullable Output<Integer> drsMigrationThreshold;
 
     /**
-     * @return A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-     * more imbalance while a higher setting will tolerate less.
+     * @return A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
      * 
      */
     public Optional<Output<Integer>> drsMigrationThreshold() {
@@ -250,16 +240,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-     * for testing and is not recommended in normal use.
+     * Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
      * 
      */
     @Import(name="forceEvacuateOnDestroy")
     private @Nullable Output<Boolean> forceEvacuateOnDestroy;
 
     /**
-     * @return Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-     * for testing and is not recommended in normal use.
+     * @return Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
      * 
      */
     public Optional<Output<Boolean>> forceEvacuateOnDestroy() {
@@ -267,18 +255,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-     * failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-     * will ignore the host when making recommendations.
+     * When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
      * 
      */
     @Import(name="haAdmissionControlFailoverHostSystemIds")
     private @Nullable Output<List<String>> haAdmissionControlFailoverHostSystemIds;
 
     /**
-     * @return When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-     * failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-     * will ignore the host when making recommendations.
+     * @return When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
      * 
      */
     public Optional<Output<List<String>>> haAdmissionControlFailoverHostSystemIds() {
@@ -286,16 +270,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-     * machine operations. The maximum is one less than the number of hosts in the cluster.
+     * The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
      * 
      */
     @Import(name="haAdmissionControlHostFailureTolerance")
     private @Nullable Output<Integer> haAdmissionControlHostFailureTolerance;
 
     /**
-     * @return The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-     * machine operations. The maximum is one less than the number of hosts in the cluster.
+     * @return The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
      * 
      */
     public Optional<Output<Integer>> haAdmissionControlHostFailureTolerance() {
@@ -303,16 +285,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-     * warnings only, whereas a value of 100 disables the setting.
+     * The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
      * 
      */
     @Import(name="haAdmissionControlPerformanceTolerance")
     private @Nullable Output<Integer> haAdmissionControlPerformanceTolerance;
 
     /**
-     * @return The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-     * warnings only, whereas a value of 100 disables the setting.
+     * @return The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
      * 
      */
     public Optional<Output<Integer>> haAdmissionControlPerformanceTolerance() {
@@ -320,20 +300,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-     * permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-     * slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-     * issues.
+     * The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
      * 
      */
     @Import(name="haAdmissionControlPolicy")
     private @Nullable Output<String> haAdmissionControlPolicy;
 
     /**
-     * @return The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-     * permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-     * slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-     * issues.
+     * @return The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
      * 
      */
     public Optional<Output<String>> haAdmissionControlPolicy() {
@@ -341,18 +315,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-     * subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-     * from the total amount of resources in the cluster. Disable to supply user-defined values.
+     * When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
      * 
      */
     @Import(name="haAdmissionControlResourcePercentageAutoCompute")
     private @Nullable Output<Boolean> haAdmissionControlResourcePercentageAutoCompute;
 
     /**
-     * @return When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-     * subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-     * from the total amount of resources in the cluster. Disable to supply user-defined values.
+     * @return When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
      * 
      */
     public Optional<Output<Boolean>> haAdmissionControlResourcePercentageAutoCompute() {
@@ -360,16 +330,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-     * the cluster to reserve for failover.
+     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
      * 
      */
     @Import(name="haAdmissionControlResourcePercentageCpu")
     private @Nullable Output<Integer> haAdmissionControlResourcePercentageCpu;
 
     /**
-     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-     * the cluster to reserve for failover.
+     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
      * 
      */
     public Optional<Output<Integer>> haAdmissionControlResourcePercentageCpu() {
@@ -377,16 +345,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-     * the cluster to reserve for failover.
+     * When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
      * 
      */
     @Import(name="haAdmissionControlResourcePercentageMemory")
     private @Nullable Output<Integer> haAdmissionControlResourcePercentageMemory;
 
     /**
-     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-     * the cluster to reserve for failover.
+     * @return When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
      * 
      */
     public Optional<Output<Integer>> haAdmissionControlResourcePercentageMemory() {
@@ -424,18 +390,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-     * to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-     * currently in the cluster.
+     * When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
      * 
      */
     @Import(name="haAdmissionControlSlotPolicyUseExplicitSize")
     private @Nullable Output<Boolean> haAdmissionControlSlotPolicyUseExplicitSize;
 
     /**
-     * @return When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-     * to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-     * currently in the cluster.
+     * @return When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
      * 
      */
     public Optional<Output<Boolean>> haAdmissionControlSlotPolicyUseExplicitSize() {
@@ -458,16 +420,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-     * affected datastore clears in the middle of an APD event. Can be one of none or reset.
+     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
      * 
      */
     @Import(name="haDatastoreApdRecoveryAction")
     private @Nullable Output<String> haDatastoreApdRecoveryAction;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-     * affected datastore clears in the middle of an APD event. Can be one of none or reset.
+     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
      * 
      */
     public Optional<Output<String>> haDatastoreApdRecoveryAction() {
@@ -475,18 +435,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-     * restartAggressive.
+     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     @Import(name="haDatastoreApdResponse")
     private @Nullable Output<String> haDatastoreApdResponse;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-     * restartAggressive.
+     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
      * 
      */
     public Optional<Output<String>> haDatastoreApdResponse() {
@@ -494,16 +450,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-     * the response action defined in ha_datastore_apd_response.
+     * When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
      * 
      */
     @Import(name="haDatastoreApdResponseDelay")
     private @Nullable Output<Integer> haDatastoreApdResponseDelay;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-     * the response action defined in ha_datastore_apd_response.
+     * @return When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
      * 
      */
     public Optional<Output<Integer>> haDatastoreApdResponseDelay() {
@@ -511,16 +465,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+     * When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
      * 
      */
     @Import(name="haDatastorePdlResponse")
     private @Nullable Output<String> haDatastorePdlResponse;
 
     /**
-     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-     * detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+     * @return When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
      * 
      */
     public Optional<Output<String>> haDatastorePdlResponse() {
@@ -543,16 +495,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-     * ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+     * The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
      * 
      */
     @Import(name="haHeartbeatDatastoreIds")
     private @Nullable Output<List<String>> haHeartbeatDatastoreIds;
 
     /**
-     * @return The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-     * ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+     * @return The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
      * 
      */
     public Optional<Output<List<String>>> haHeartbeatDatastoreIds() {
@@ -560,16 +510,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-     * allFeasibleDsWithUserPreference.
+     * The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
      * 
      */
     @Import(name="haHeartbeatDatastorePolicy")
     private @Nullable Output<String> haHeartbeatDatastorePolicy;
 
     /**
-     * @return The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-     * allFeasibleDsWithUserPreference.
+     * @return The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
      * 
      */
     public Optional<Output<String>> haHeartbeatDatastorePolicy() {
@@ -577,16 +525,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-     * Can be one of none, powerOff, or shutdown.
+     * The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
      * 
      */
     @Import(name="haHostIsolationResponse")
     private @Nullable Output<String> haHostIsolationResponse;
 
     /**
-     * @return The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-     * Can be one of none, powerOff, or shutdown.
+     * @return The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
      * 
      */
     public Optional<Output<String>> haHostIsolationResponse() {
@@ -609,16 +555,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-     * failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+     * Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
      * 
      */
     @Import(name="haVmComponentProtection")
     private @Nullable Output<String> haVmComponentProtection;
 
     /**
-     * @return Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-     * failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+     * @return Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
      * 
      */
     public Optional<Output<String>> haVmComponentProtection() {
@@ -626,16 +570,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-     * on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+     * The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
      * 
      */
     @Import(name="haVmDependencyRestartCondition")
     private @Nullable Output<String> haVmDependencyRestartCondition;
 
     /**
-     * @return The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-     * on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+     * @return The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
      * 
      */
     public Optional<Output<String>> haVmDependencyRestartCondition() {
@@ -643,16 +585,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-     * failed. The value is in seconds.
+     * If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      * 
      */
     @Import(name="haVmFailureInterval")
     private @Nullable Output<Integer> haVmFailureInterval;
 
     /**
-     * @return If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-     * failed. The value is in seconds.
+     * @return If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
      * 
      */
     public Optional<Output<Integer>> haVmFailureInterval() {
@@ -660,18 +600,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-     * time is allotted.
+     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     @Import(name="haVmMaximumFailureWindow")
     private @Nullable Output<Integer> haVmMaximumFailureWindow;
 
     /**
-     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-     * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-     * time is allotted.
+     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     public Optional<Output<Integer>> haVmMaximumFailureWindow() {
@@ -709,16 +645,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-     * vmMonitoringOnly, or vmAndAppMonitoring.
+     * The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     @Import(name="haVmMonitoring")
     private @Nullable Output<String> haVmMonitoring;
 
     /**
-     * @return The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-     * vmMonitoringOnly, or vmAndAppMonitoring.
+     * @return The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
      * 
      */
     public Optional<Output<String>> haVmMonitoring() {
@@ -741,16 +675,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-     * high, or highest.
+     * The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
      * 
      */
     @Import(name="haVmRestartPriority")
     private @Nullable Output<String> haVmRestartPriority;
 
     /**
-     * @return The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-     * high, or highest.
+     * @return The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
      * 
      */
     public Optional<Output<String>> haVmRestartPriority() {
@@ -758,16 +690,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-     * proceeding with the next priority.
+     * The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
      * 
      */
     @Import(name="haVmRestartTimeout")
     private @Nullable Output<Integer> haVmRestartTimeout;
 
     /**
-     * @return The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-     * proceeding with the next priority.
+     * @return The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
      * 
      */
     public Optional<Output<Integer>> haVmRestartTimeout() {
@@ -880,16 +810,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-     * this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+     * The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
      * 
      */
     @Import(name="proactiveHaModerateRemediation")
     private @Nullable Output<String> proactiveHaModerateRemediation;
 
     /**
-     * @return The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-     * this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+     * @return The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
      * 
      */
     public Optional<Output<String>> proactiveHaModerateRemediation() {
@@ -912,16 +840,14 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-     * cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+     * The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
      * 
      */
     @Import(name="proactiveHaSevereRemediation")
     private @Nullable Output<String> proactiveHaSevereRemediation;
 
     /**
-     * @return The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-     * cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+     * @return The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
      * 
      */
     public Optional<Output<String>> proactiveHaSevereRemediation() {
@@ -1319,8 +1245,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dpmEnabled Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-         * machines in the cluster. Requires that DRS be enabled.
+         * @param dpmEnabled Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
          * 
          * @return builder
          * 
@@ -1331,8 +1256,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dpmEnabled Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual
-         * machines in the cluster. Requires that DRS be enabled.
+         * @param dpmEnabled Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
          * 
          * @return builder
          * 
@@ -1342,9 +1266,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dpmThreshold A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-         * affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-         * setting.
+         * @param dpmThreshold A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
          * 
          * @return builder
          * 
@@ -1355,9 +1277,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dpmThreshold A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This
-         * affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher
-         * setting.
+         * @param dpmThreshold A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
          * 
          * @return builder
          * 
@@ -1388,8 +1308,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param drsAutomationLevel The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-         * fullyAutomated.
+         * @param drsAutomationLevel The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
          * 
          * @return builder
          * 
@@ -1400,8 +1319,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param drsAutomationLevel The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or
-         * fullyAutomated.
+         * @param drsAutomationLevel The default automation level for all virtual machines in this cluster. Can be one of manual, partiallyAutomated, or fullyAutomated.
          * 
          * @return builder
          * 
@@ -1474,8 +1392,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param drsMigrationThreshold A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-         * more imbalance while a higher setting will tolerate less.
+         * @param drsMigrationThreshold A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
          * 
          * @return builder
          * 
@@ -1486,8 +1403,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param drsMigrationThreshold A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate
-         * more imbalance while a higher setting will tolerate less.
+         * @param drsMigrationThreshold A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
          * 
          * @return builder
          * 
@@ -1549,8 +1465,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceEvacuateOnDestroy Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-         * for testing and is not recommended in normal use.
+         * @param forceEvacuateOnDestroy Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
          * 
          * @return builder
          * 
@@ -1561,8 +1476,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceEvacuateOnDestroy Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-         * for testing and is not recommended in normal use.
+         * @param forceEvacuateOnDestroy Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
          * 
          * @return builder
          * 
@@ -1572,9 +1486,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlFailoverHostSystemIds When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-         * failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-         * will ignore the host when making recommendations.
+         * @param haAdmissionControlFailoverHostSystemIds When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
          * 
          * @return builder
          * 
@@ -1585,9 +1497,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlFailoverHostSystemIds When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-         * failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-         * will ignore the host when making recommendations.
+         * @param haAdmissionControlFailoverHostSystemIds When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
          * 
          * @return builder
          * 
@@ -1597,9 +1507,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlFailoverHostSystemIds When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated
-         * failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS
-         * will ignore the host when making recommendations.
+         * @param haAdmissionControlFailoverHostSystemIds When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
          * 
          * @return builder
          * 
@@ -1609,8 +1517,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlHostFailureTolerance The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-         * machine operations. The maximum is one less than the number of hosts in the cluster.
+         * @param haAdmissionControlHostFailureTolerance The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
          * 
          * @return builder
          * 
@@ -1621,8 +1528,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlHostFailureTolerance The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual
-         * machine operations. The maximum is one less than the number of hosts in the cluster.
+         * @param haAdmissionControlHostFailureTolerance The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
          * 
          * @return builder
          * 
@@ -1632,8 +1538,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlPerformanceTolerance The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-         * warnings only, whereas a value of 100 disables the setting.
+         * @param haAdmissionControlPerformanceTolerance The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
          * 
          * @return builder
          * 
@@ -1644,8 +1549,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlPerformanceTolerance The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces
-         * warnings only, whereas a value of 100 disables the setting.
+         * @param haAdmissionControlPerformanceTolerance The percentage of resource reduction that a cluster of VMs can tolerate in case of a failover. A value of 0 produces warnings only, whereas a value of 100 disables the setting.
          * 
          * @return builder
          * 
@@ -1655,10 +1559,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlPolicy The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-         * permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-         * slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-         * issues.
+         * @param haAdmissionControlPolicy The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
          * 
          * @return builder
          * 
@@ -1669,10 +1570,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlPolicy The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are
-         * permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage,
-         * slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service
-         * issues.
+         * @param haAdmissionControlPolicy The type of admission control policy to use with vSphere HA, which controls whether or not specific VM operations are permitted in the cluster in order to protect the reliability of the cluster. Can be one of resourcePercentage, slotPolicy, failoverHosts, or disabled. Note that disabling admission control is not recommended and can lead to service issues.
          * 
          * @return builder
          * 
@@ -1682,9 +1580,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlResourcePercentageAutoCompute When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-         * subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-         * from the total amount of resources in the cluster. Disable to supply user-defined values.
+         * @param haAdmissionControlResourcePercentageAutoCompute When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
          * 
          * @return builder
          * 
@@ -1695,9 +1591,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlResourcePercentageAutoCompute When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by
-         * subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting
-         * from the total amount of resources in the cluster. Disable to supply user-defined values.
+         * @param haAdmissionControlResourcePercentageAutoCompute When ha_admission_control_policy is resourcePercentage, automatically determine available resource percentages by subtracting the average number of host resources represented by the ha_admission_control_host_failure_tolerance setting from the total amount of resources in the cluster. Disable to supply user-defined values.
          * 
          * @return builder
          * 
@@ -1707,8 +1601,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlResourcePercentageCpu When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-         * the cluster to reserve for failover.
+         * @param haAdmissionControlResourcePercentageCpu When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
          * 
          * @return builder
          * 
@@ -1719,8 +1612,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlResourcePercentageCpu When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in
-         * the cluster to reserve for failover.
+         * @param haAdmissionControlResourcePercentageCpu When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of CPU resources in the cluster to reserve for failover.
          * 
          * @return builder
          * 
@@ -1730,8 +1622,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlResourcePercentageMemory When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-         * the cluster to reserve for failover.
+         * @param haAdmissionControlResourcePercentageMemory When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
          * 
          * @return builder
          * 
@@ -1742,8 +1633,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlResourcePercentageMemory When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in
-         * the cluster to reserve for failover.
+         * @param haAdmissionControlResourcePercentageMemory When ha_admission_control_policy is resourcePercentage, this controls the user-defined percentage of memory resources in the cluster to reserve for failover.
          * 
          * @return builder
          * 
@@ -1795,9 +1685,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlSlotPolicyUseExplicitSize When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-         * to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-         * currently in the cluster.
+         * @param haAdmissionControlSlotPolicyUseExplicitSize When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
          * 
          * @return builder
          * 
@@ -1808,9 +1696,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haAdmissionControlSlotPolicyUseExplicitSize When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values
-         * to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines
-         * currently in the cluster.
+         * @param haAdmissionControlSlotPolicyUseExplicitSize When ha_admission_control_policy is slotPolicy, this setting controls whether or not you wish to supply explicit values to CPU and memory slot sizes. The default is to gather a automatic average based on all powered-on virtual machines currently in the cluster.
          * 
          * @return builder
          * 
@@ -1841,8 +1727,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastoreApdRecoveryAction When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-         * affected datastore clears in the middle of an APD event. Can be one of none or reset.
+         * @param haDatastoreApdRecoveryAction When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
          * 
          * @return builder
          * 
@@ -1853,8 +1738,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastoreApdRecoveryAction When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an
-         * affected datastore clears in the middle of an APD event. Can be one of none or reset.
+         * @param haDatastoreApdRecoveryAction When ha_vm_component_protection is enabled, controls the action to take on virtual machines if an APD status on an affected datastore clears in the middle of an APD event. Can be one of none or reset.
          * 
          * @return builder
          * 
@@ -1864,9 +1748,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastoreApdResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-         * detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-         * restartAggressive.
+         * @param haDatastoreApdResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
          * 
          * @return builder
          * 
@@ -1877,9 +1759,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastoreApdResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-         * detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or
-         * restartAggressive.
+         * @param haDatastoreApdResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected loss to all paths to a relevant datastore. Can be one of disabled, warning, restartConservative, or restartAggressive.
          * 
          * @return builder
          * 
@@ -1889,8 +1769,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastoreApdResponseDelay When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-         * the response action defined in ha_datastore_apd_response.
+         * @param haDatastoreApdResponseDelay When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
          * 
          * @return builder
          * 
@@ -1901,8 +1780,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastoreApdResponseDelay When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute
-         * the response action defined in ha_datastore_apd_response.
+         * @param haDatastoreApdResponseDelay When ha_vm_component_protection is enabled, controls the delay in seconds to wait after an APD timeout event to execute the response action defined in ha_datastore_apd_response.
          * 
          * @return builder
          * 
@@ -1912,8 +1790,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastorePdlResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-         * detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+         * @param haDatastorePdlResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
          * 
          * @return builder
          * 
@@ -1924,8 +1801,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haDatastorePdlResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has
-         * detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
+         * @param haDatastorePdlResponse When ha_vm_component_protection is enabled, controls the action to take on virtual machines when the cluster has detected a permanent device loss to a relevant datastore. Can be one of disabled, warning, or restartAggressive.
          * 
          * @return builder
          * 
@@ -1956,8 +1832,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haHeartbeatDatastoreIds The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-         * ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+         * @param haHeartbeatDatastoreIds The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
          * 
          * @return builder
          * 
@@ -1968,8 +1843,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haHeartbeatDatastoreIds The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-         * ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+         * @param haHeartbeatDatastoreIds The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
          * 
          * @return builder
          * 
@@ -1979,8 +1853,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haHeartbeatDatastoreIds The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when
-         * ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
+         * @param haHeartbeatDatastoreIds The list of managed object IDs for preferred datastores to use for HA heartbeating. This setting is only useful when ha_heartbeat_datastore_policy is set to either userSelectedDs or allFeasibleDsWithUserPreference.
          * 
          * @return builder
          * 
@@ -1990,8 +1863,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haHeartbeatDatastorePolicy The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-         * allFeasibleDsWithUserPreference.
+         * @param haHeartbeatDatastorePolicy The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
          * 
          * @return builder
          * 
@@ -2002,8 +1874,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haHeartbeatDatastorePolicy The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or
-         * allFeasibleDsWithUserPreference.
+         * @param haHeartbeatDatastorePolicy The selection policy for HA heartbeat datastores. Can be one of allFeasibleDs, userSelectedDs, or allFeasibleDsWithUserPreference.
          * 
          * @return builder
          * 
@@ -2013,8 +1884,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haHostIsolationResponse The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-         * Can be one of none, powerOff, or shutdown.
+         * @param haHostIsolationResponse The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
          * 
          * @return builder
          * 
@@ -2025,8 +1895,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haHostIsolationResponse The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster.
-         * Can be one of none, powerOff, or shutdown.
+         * @param haHostIsolationResponse The action to take on virtual machines when a host has detected that it has been isolated from the rest of the cluster. Can be one of none, powerOff, or shutdown.
          * 
          * @return builder
          * 
@@ -2057,8 +1926,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmComponentProtection Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-         * failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+         * @param haVmComponentProtection Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
          * 
          * @return builder
          * 
@@ -2069,8 +1937,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmComponentProtection Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to
-         * failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
+         * @param haVmComponentProtection Controls vSphere VM component protection for virtual machines in this cluster. This allows vSphere HA to react to failures between hosts and specific virtual machine components, such as datastores. Can be one of enabled or disabled.
          * 
          * @return builder
          * 
@@ -2080,8 +1947,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmDependencyRestartCondition The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-         * on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+         * @param haVmDependencyRestartCondition The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
          * 
          * @return builder
          * 
@@ -2092,8 +1958,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmDependencyRestartCondition The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move
-         * on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
+         * @param haVmDependencyRestartCondition The condition used to determine whether or not VMs in a certain restart priority class are online, allowing HA to move on to restarting VMs on the next priority. Can be one of none, poweredOn, guestHbStatusGreen, or appHbStatusGreen.
          * 
          * @return builder
          * 
@@ -2103,8 +1968,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmFailureInterval If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-         * failed. The value is in seconds.
+         * @param haVmFailureInterval If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
          * 
          * @return builder
          * 
@@ -2115,8 +1979,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmFailureInterval If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as
-         * failed. The value is in seconds.
+         * @param haVmFailureInterval If a heartbeat from a virtual machine is not received within this configured interval, the virtual machine is marked as failed. The value is in seconds.
          * 
          * @return builder
          * 
@@ -2126,9 +1989,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-         * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-         * time is allotted.
+         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
          * 
          * @return builder
          * 
@@ -2139,9 +2000,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are
-         * attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset
-         * time is allotted.
+         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
          * 
          * @return builder
          * 
@@ -2193,8 +2052,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmMonitoring The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-         * vmMonitoringOnly, or vmAndAppMonitoring.
+         * @param haVmMonitoring The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
          * 
          * @return builder
          * 
@@ -2205,8 +2063,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmMonitoring The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled,
-         * vmMonitoringOnly, or vmAndAppMonitoring.
+         * @param haVmMonitoring The type of virtual machine monitoring to use when HA is enabled in the cluster. Can be one of vmMonitoringDisabled, vmMonitoringOnly, or vmAndAppMonitoring.
          * 
          * @return builder
          * 
@@ -2237,8 +2094,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmRestartPriority The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-         * high, or highest.
+         * @param haVmRestartPriority The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
          * 
          * @return builder
          * 
@@ -2249,8 +2105,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmRestartPriority The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium,
-         * high, or highest.
+         * @param haVmRestartPriority The default restart priority for affected VMs when vSphere detects a host failure. Can be one of lowest, low, medium, high, or highest.
          * 
          * @return builder
          * 
@@ -2260,8 +2115,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-         * proceeding with the next priority.
+         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
          * 
          * @return builder
          * 
@@ -2272,8 +2126,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before
-         * proceeding with the next priority.
+         * @param haVmRestartTimeout The maximum time, in seconds, that vSphere HA will wait for virtual machines in one priority to be ready before proceeding with the next priority.
          * 
          * @return builder
          * 
@@ -2440,8 +2293,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param proactiveHaModerateRemediation The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-         * this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+         * @param proactiveHaModerateRemediation The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
          * 
          * @return builder
          * 
@@ -2452,8 +2304,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param proactiveHaModerateRemediation The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that
-         * this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
+         * @param proactiveHaModerateRemediation The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
          * 
          * @return builder
          * 
@@ -2494,8 +2345,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param proactiveHaSevereRemediation The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-         * cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+         * @param proactiveHaSevereRemediation The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
          * 
          * @return builder
          * 
@@ -2506,8 +2356,7 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param proactiveHaSevereRemediation The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this
-         * cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
+         * @param proactiveHaSevereRemediation The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
          * 
          * @return builder
          * 

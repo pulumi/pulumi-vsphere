@@ -113,7 +113,7 @@ export class DpmHostOverride extends pulumi.CustomResource {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId!: pulumi.Output<string>;
+    declare public readonly computeClusterId: pulumi.Output<string>;
     /**
      * The automation level for host power
      * operations on this host. Can be one of `manual` or `automated`. Default:
@@ -123,16 +123,16 @@ export class DpmHostOverride extends pulumi.CustomResource {
      * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      */
-    public readonly dpmAutomationLevel!: pulumi.Output<string | undefined>;
+    declare public readonly dpmAutomationLevel: pulumi.Output<string | undefined>;
     /**
      * Enable DPM support for this host. Default:
      * `false`.
      */
-    public readonly dpmEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly dpmEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The managed object ID of the host.
      */
-    public readonly hostSystemId!: pulumi.Output<string>;
+    declare public readonly hostSystemId: pulumi.Output<string>;
 
     /**
      * Create a DpmHostOverride resource with the given unique name, arguments, and options.
@@ -147,22 +147,22 @@ export class DpmHostOverride extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DpmHostOverrideState | undefined;
-            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            resourceInputs["dpmAutomationLevel"] = state ? state.dpmAutomationLevel : undefined;
-            resourceInputs["dpmEnabled"] = state ? state.dpmEnabled : undefined;
-            resourceInputs["hostSystemId"] = state ? state.hostSystemId : undefined;
+            resourceInputs["computeClusterId"] = state?.computeClusterId;
+            resourceInputs["dpmAutomationLevel"] = state?.dpmAutomationLevel;
+            resourceInputs["dpmEnabled"] = state?.dpmEnabled;
+            resourceInputs["hostSystemId"] = state?.hostSystemId;
         } else {
             const args = argsOrState as DpmHostOverrideArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
+            if (args?.computeClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.hostSystemId === undefined) && !opts.urn) {
+            if (args?.hostSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            resourceInputs["dpmAutomationLevel"] = args ? args.dpmAutomationLevel : undefined;
-            resourceInputs["dpmEnabled"] = args ? args.dpmEnabled : undefined;
-            resourceInputs["hostSystemId"] = args ? args.hostSystemId : undefined;
+            resourceInputs["computeClusterId"] = args?.computeClusterId;
+            resourceInputs["dpmAutomationLevel"] = args?.dpmAutomationLevel;
+            resourceInputs["dpmEnabled"] = args?.dpmEnabled;
+            resourceInputs["hostSystemId"] = args?.hostSystemId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DpmHostOverride.__pulumiType, name, resourceInputs, opts);

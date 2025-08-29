@@ -171,15 +171,15 @@ export class VmStoragePolicy extends pulumi.CustomResource {
     /**
      * Description of the storage policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the storage policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of tag rules. The tag category and tags to be associated to this storage policy.
      */
-    public readonly tagRules!: pulumi.Output<outputs.VmStoragePolicyTagRule[]>;
+    declare public readonly tagRules: pulumi.Output<outputs.VmStoragePolicyTagRule[]>;
 
     /**
      * Create a VmStoragePolicy resource with the given unique name, arguments, and options.
@@ -194,17 +194,17 @@ export class VmStoragePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VmStoragePolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tagRules"] = state ? state.tagRules : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tagRules"] = state?.tagRules;
         } else {
             const args = argsOrState as VmStoragePolicyArgs | undefined;
-            if ((!args || args.tagRules === undefined) && !opts.urn) {
+            if (args?.tagRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagRules'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tagRules"] = args ? args.tagRules : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tagRules"] = args?.tagRules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VmStoragePolicy.__pulumiType, name, resourceInputs, opts);

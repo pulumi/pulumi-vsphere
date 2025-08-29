@@ -120,8 +120,7 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VDS will be
                created. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
@@ -192,8 +191,7 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[_builtins.int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
         :param pulumi.Input[_builtins.bool] netflow_internal_flows_only: Whether to limit analysis to traffic that has both source and destination served by the same host.
         :param pulumi.Input[_builtins.int] netflow_observation_domain_id: The observation Domain ID for the netflow collector.
-        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-               packets are analyzed.
+        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         :param pulumi.Input[_builtins.bool] network_resource_control_enabled: Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
         :param pulumi.Input[_builtins.str] network_resource_control_version: The network I/O control version to use. Can be one of version2 or version3.
         :param pulumi.Input[_builtins.int] nfs_maximum_mbit: The maximum allowed usage for the nfs traffic class, in Mbits/sec.
@@ -205,12 +203,9 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-               across hosts.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         :param pulumi.Input[_builtins.int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
@@ -450,8 +445,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -1160,8 +1154,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="netflowSamplingRate")
     def netflow_sampling_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-        packets are analyzed.
+        The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -1305,8 +1298,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        failover_explicit, or loadbalance_loadbased.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -1318,8 +1310,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="txUplink")
     def tx_uplink(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        forwarded done by the switch.
+        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -1331,8 +1322,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter
     def uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-        across hosts.
+        A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         """
         return pulumi.get(self, "uplinks")
 
@@ -1672,8 +1662,7 @@ class _DistributedVirtualSwitchState:
         """
         Input properties used for looking up and filtering DistributedVirtualSwitch resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
@@ -1748,8 +1737,7 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[_builtins.int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
         :param pulumi.Input[_builtins.bool] netflow_internal_flows_only: Whether to limit analysis to traffic that has both source and destination served by the same host.
         :param pulumi.Input[_builtins.int] netflow_observation_domain_id: The observation Domain ID for the netflow collector.
-        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-               packets are analyzed.
+        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         :param pulumi.Input[_builtins.bool] network_resource_control_enabled: Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
         :param pulumi.Input[_builtins.str] network_resource_control_version: The network I/O control version to use. Can be one of version2 or version3.
         :param pulumi.Input[_builtins.int] nfs_maximum_mbit: The maximum allowed usage for the nfs traffic class, in Mbits/sec.
@@ -1761,12 +1749,9 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-               across hosts.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         :param pulumi.Input[_builtins.int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
@@ -1996,8 +1981,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -2732,8 +2716,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="netflowSamplingRate")
     def netflow_sampling_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-        packets are analyzed.
+        The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -2877,8 +2860,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        failover_explicit, or loadbalance_loadbased.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -2890,8 +2872,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="txUplink")
     def tx_uplink(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        forwarded done by the switch.
+        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -2903,8 +2884,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter
     def uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-        across hosts.
+        A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         """
         return pulumi.get(self, "uplinks")
 
@@ -3378,8 +3358,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
@@ -3452,8 +3431,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
         :param pulumi.Input[_builtins.bool] netflow_internal_flows_only: Whether to limit analysis to traffic that has both source and destination served by the same host.
         :param pulumi.Input[_builtins.int] netflow_observation_domain_id: The observation Domain ID for the netflow collector.
-        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-               packets are analyzed.
+        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         :param pulumi.Input[_builtins.bool] network_resource_control_enabled: Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
         :param pulumi.Input[_builtins.str] network_resource_control_version: The network I/O control version to use. Can be one of version2 or version3.
         :param pulumi.Input[_builtins.int] nfs_maximum_mbit: The maximum allowed usage for the nfs traffic class, in Mbits/sec.
@@ -3465,12 +3443,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-               across hosts.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         :param pulumi.Input[_builtins.int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
@@ -3958,8 +3933,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-               that of its own.
+        :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
@@ -4034,8 +4008,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] netflow_idle_flow_timeout: The number of seconds after which idle flows are forced to be exported to the collector.
         :param pulumi.Input[_builtins.bool] netflow_internal_flows_only: Whether to limit analysis to traffic that has both source and destination served by the same host.
         :param pulumi.Input[_builtins.int] netflow_observation_domain_id: The observation Domain ID for the netflow collector.
-        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-               packets are analyzed.
+        :param pulumi.Input[_builtins.int] netflow_sampling_rate: The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         :param pulumi.Input[_builtins.bool] network_resource_control_enabled: Whether or not to enable network resource control, enabling advanced traffic shaping and resource control features.
         :param pulumi.Input[_builtins.str] network_resource_control_version: The network I/O control version to use. Can be one of version2 or version3.
         :param pulumi.Input[_builtins.int] nfs_maximum_mbit: The maximum allowed usage for the nfs traffic class, in Mbits/sec.
@@ -4047,12 +4020,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
-        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-               failover_explicit, or loadbalance_loadbased.
-        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-               forwarded done by the switch.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-               across hosts.
+        :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
+        :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         :param pulumi.Input[_builtins.int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[_builtins.int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
@@ -4188,8 +4158,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="allowForgedTransmits")
     def allow_forged_transmits(self) -> pulumi.Output[_builtins.bool]:
         """
-        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
-        that of its own.
+        Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         """
         return pulumi.get(self, "allow_forged_transmits")
 
@@ -4684,8 +4653,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="netflowSamplingRate")
     def netflow_sampling_rate(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all
-        packets are analyzed.
+        The ratio of total number of packets to the number of packets analyzed. Set to 0 to disable sampling, meaning that all packets are analyzed.
         """
         return pulumi.get(self, "netflow_sampling_rate")
 
@@ -4781,8 +4749,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="teamingPolicy")
     def teaming_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
-        failover_explicit, or loadbalance_loadbased.
+        The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -4790,8 +4757,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="txUplink")
     def tx_uplink(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
-        forwarded done by the switch.
+        If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -4799,8 +4765,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter
     def uplinks(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS
-        across hosts.
+        A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
         """
         return pulumi.get(self, "uplinks")
 

@@ -96,35 +96,35 @@ export class Supervisor extends pulumi.CustomResource {
     /**
      * The identifier of the compute cluster.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * The identifier of the subscribed content library.
      */
-    public readonly contentLibrary!: pulumi.Output<string>;
+    declare public readonly contentLibrary: pulumi.Output<string>;
     /**
      * The UUID of the distributed switch.
      */
-    public readonly dvsUuid!: pulumi.Output<string>;
+    declare public readonly dvsUuid: pulumi.Output<string>;
     /**
      * The identifier of the NSX Edge Cluster.
      */
-    public readonly edgeCluster!: pulumi.Output<string>;
+    declare public readonly edgeCluster: pulumi.Output<string>;
     /**
      * CIDR blocks from which NSX assigns IP addresses used for performing SNAT from container IPs to external IPs.
      */
-    public readonly egressCidrs!: pulumi.Output<outputs.SupervisorEgressCidr[]>;
+    declare public readonly egressCidrs: pulumi.Output<outputs.SupervisorEgressCidr[]>;
     /**
      * CIDR blocks from which NSX assigns IP addresses for Kubernetes Ingresses and Kubernetes Services of type LoadBalancer.
      */
-    public readonly ingressCidrs!: pulumi.Output<outputs.SupervisorIngressCidr[]>;
+    declare public readonly ingressCidrs: pulumi.Output<outputs.SupervisorIngressCidr[]>;
     /**
      * The list of addresses of the primary DNS servers.
      */
-    public readonly mainDns!: pulumi.Output<string[]>;
+    declare public readonly mainDns: pulumi.Output<string[]>;
     /**
      * The list of addresses of the primary NTP servers.
      */
-    public readonly mainNtps!: pulumi.Output<string[]>;
+    declare public readonly mainNtps: pulumi.Output<string[]>;
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
@@ -133,39 +133,39 @@ export class Supervisor extends pulumi.CustomResource {
      * * * `gateway` - Gateway IP address.
      * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      */
-    public readonly managementNetwork!: pulumi.Output<outputs.SupervisorManagementNetwork>;
+    declare public readonly managementNetwork: pulumi.Output<outputs.SupervisorManagementNetwork>;
     /**
      * The list of namespaces to create in the Supervisor cluster
      */
-    public readonly namespaces!: pulumi.Output<outputs.SupervisorNamespace[] | undefined>;
+    declare public readonly namespaces: pulumi.Output<outputs.SupervisorNamespace[] | undefined>;
     /**
      * CIDR blocks from which Kubernetes allocates pod IP addresses. Minimum subnet size is 23.
      */
-    public readonly podCidrs!: pulumi.Output<outputs.SupervisorPodCidr[]>;
+    declare public readonly podCidrs: pulumi.Output<outputs.SupervisorPodCidr[]>;
     /**
      * List of DNS search domains.
      */
-    public readonly searchDomains!: pulumi.Output<string>;
+    declare public readonly searchDomains: pulumi.Output<string>;
     /**
      * CIDR block from which Kubernetes allocates service cluster IP addresses.
      */
-    public readonly serviceCidr!: pulumi.Output<outputs.SupervisorServiceCidr>;
+    declare public readonly serviceCidr: pulumi.Output<outputs.SupervisorServiceCidr>;
     /**
      * The size of the Kubernetes API server.
      */
-    public readonly sizingHint!: pulumi.Output<string>;
+    declare public readonly sizingHint: pulumi.Output<string>;
     /**
      * The name of the storage policy.
      */
-    public readonly storagePolicy!: pulumi.Output<string>;
+    declare public readonly storagePolicy: pulumi.Output<string>;
     /**
      * The list of addresses of the DNS servers to use for the worker nodes.
      */
-    public readonly workerDns!: pulumi.Output<string[]>;
+    declare public readonly workerDns: pulumi.Output<string[]>;
     /**
      * The list of addresses of the NTP servers to use for the worker nodes.
      */
-    public readonly workerNtps!: pulumi.Output<string[]>;
+    declare public readonly workerNtps: pulumi.Output<string[]>;
 
     /**
      * Create a Supervisor resource with the given unique name, arguments, and options.
@@ -180,90 +180,90 @@ export class Supervisor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SupervisorState | undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["contentLibrary"] = state ? state.contentLibrary : undefined;
-            resourceInputs["dvsUuid"] = state ? state.dvsUuid : undefined;
-            resourceInputs["edgeCluster"] = state ? state.edgeCluster : undefined;
-            resourceInputs["egressCidrs"] = state ? state.egressCidrs : undefined;
-            resourceInputs["ingressCidrs"] = state ? state.ingressCidrs : undefined;
-            resourceInputs["mainDns"] = state ? state.mainDns : undefined;
-            resourceInputs["mainNtps"] = state ? state.mainNtps : undefined;
-            resourceInputs["managementNetwork"] = state ? state.managementNetwork : undefined;
-            resourceInputs["namespaces"] = state ? state.namespaces : undefined;
-            resourceInputs["podCidrs"] = state ? state.podCidrs : undefined;
-            resourceInputs["searchDomains"] = state ? state.searchDomains : undefined;
-            resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
-            resourceInputs["sizingHint"] = state ? state.sizingHint : undefined;
-            resourceInputs["storagePolicy"] = state ? state.storagePolicy : undefined;
-            resourceInputs["workerDns"] = state ? state.workerDns : undefined;
-            resourceInputs["workerNtps"] = state ? state.workerNtps : undefined;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["contentLibrary"] = state?.contentLibrary;
+            resourceInputs["dvsUuid"] = state?.dvsUuid;
+            resourceInputs["edgeCluster"] = state?.edgeCluster;
+            resourceInputs["egressCidrs"] = state?.egressCidrs;
+            resourceInputs["ingressCidrs"] = state?.ingressCidrs;
+            resourceInputs["mainDns"] = state?.mainDns;
+            resourceInputs["mainNtps"] = state?.mainNtps;
+            resourceInputs["managementNetwork"] = state?.managementNetwork;
+            resourceInputs["namespaces"] = state?.namespaces;
+            resourceInputs["podCidrs"] = state?.podCidrs;
+            resourceInputs["searchDomains"] = state?.searchDomains;
+            resourceInputs["serviceCidr"] = state?.serviceCidr;
+            resourceInputs["sizingHint"] = state?.sizingHint;
+            resourceInputs["storagePolicy"] = state?.storagePolicy;
+            resourceInputs["workerDns"] = state?.workerDns;
+            resourceInputs["workerNtps"] = state?.workerNtps;
         } else {
             const args = argsOrState as SupervisorArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.contentLibrary === undefined) && !opts.urn) {
+            if (args?.contentLibrary === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentLibrary'");
             }
-            if ((!args || args.dvsUuid === undefined) && !opts.urn) {
+            if (args?.dvsUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dvsUuid'");
             }
-            if ((!args || args.edgeCluster === undefined) && !opts.urn) {
+            if (args?.edgeCluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'edgeCluster'");
             }
-            if ((!args || args.egressCidrs === undefined) && !opts.urn) {
+            if (args?.egressCidrs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'egressCidrs'");
             }
-            if ((!args || args.ingressCidrs === undefined) && !opts.urn) {
+            if (args?.ingressCidrs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ingressCidrs'");
             }
-            if ((!args || args.mainDns === undefined) && !opts.urn) {
+            if (args?.mainDns === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mainDns'");
             }
-            if ((!args || args.mainNtps === undefined) && !opts.urn) {
+            if (args?.mainNtps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mainNtps'");
             }
-            if ((!args || args.managementNetwork === undefined) && !opts.urn) {
+            if (args?.managementNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managementNetwork'");
             }
-            if ((!args || args.podCidrs === undefined) && !opts.urn) {
+            if (args?.podCidrs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'podCidrs'");
             }
-            if ((!args || args.searchDomains === undefined) && !opts.urn) {
+            if (args?.searchDomains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'searchDomains'");
             }
-            if ((!args || args.serviceCidr === undefined) && !opts.urn) {
+            if (args?.serviceCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceCidr'");
             }
-            if ((!args || args.sizingHint === undefined) && !opts.urn) {
+            if (args?.sizingHint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sizingHint'");
             }
-            if ((!args || args.storagePolicy === undefined) && !opts.urn) {
+            if (args?.storagePolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storagePolicy'");
             }
-            if ((!args || args.workerDns === undefined) && !opts.urn) {
+            if (args?.workerDns === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workerDns'");
             }
-            if ((!args || args.workerNtps === undefined) && !opts.urn) {
+            if (args?.workerNtps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workerNtps'");
             }
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["contentLibrary"] = args ? args.contentLibrary : undefined;
-            resourceInputs["dvsUuid"] = args ? args.dvsUuid : undefined;
-            resourceInputs["edgeCluster"] = args ? args.edgeCluster : undefined;
-            resourceInputs["egressCidrs"] = args ? args.egressCidrs : undefined;
-            resourceInputs["ingressCidrs"] = args ? args.ingressCidrs : undefined;
-            resourceInputs["mainDns"] = args ? args.mainDns : undefined;
-            resourceInputs["mainNtps"] = args ? args.mainNtps : undefined;
-            resourceInputs["managementNetwork"] = args ? args.managementNetwork : undefined;
-            resourceInputs["namespaces"] = args ? args.namespaces : undefined;
-            resourceInputs["podCidrs"] = args ? args.podCidrs : undefined;
-            resourceInputs["searchDomains"] = args ? args.searchDomains : undefined;
-            resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
-            resourceInputs["sizingHint"] = args ? args.sizingHint : undefined;
-            resourceInputs["storagePolicy"] = args ? args.storagePolicy : undefined;
-            resourceInputs["workerDns"] = args ? args.workerDns : undefined;
-            resourceInputs["workerNtps"] = args ? args.workerNtps : undefined;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["contentLibrary"] = args?.contentLibrary;
+            resourceInputs["dvsUuid"] = args?.dvsUuid;
+            resourceInputs["edgeCluster"] = args?.edgeCluster;
+            resourceInputs["egressCidrs"] = args?.egressCidrs;
+            resourceInputs["ingressCidrs"] = args?.ingressCidrs;
+            resourceInputs["mainDns"] = args?.mainDns;
+            resourceInputs["mainNtps"] = args?.mainNtps;
+            resourceInputs["managementNetwork"] = args?.managementNetwork;
+            resourceInputs["namespaces"] = args?.namespaces;
+            resourceInputs["podCidrs"] = args?.podCidrs;
+            resourceInputs["searchDomains"] = args?.searchDomains;
+            resourceInputs["serviceCidr"] = args?.serviceCidr;
+            resourceInputs["sizingHint"] = args?.sizingHint;
+            resourceInputs["storagePolicy"] = args?.storagePolicy;
+            resourceInputs["workerDns"] = args?.workerDns;
+            resourceInputs["workerNtps"] = args?.workerNtps;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Supervisor.__pulumiType, name, resourceInputs, opts);

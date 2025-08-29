@@ -194,16 +194,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cpuHotRemoveEnabled);
     }
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     @Export(name="cpuLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuLimit;
 
     /**
-     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     public Output<Optional<Integer>> cpuLimit() {
@@ -308,16 +306,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.datastoreClusterId);
     }
     /**
-     * The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
-     * disks that are created without datastores.
+     * The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      * 
      */
     @Export(name="datastoreId", refs={String.class}, tree="[0]")
     private Output<String> datastoreId;
 
     /**
-     * @return The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual
-     * disks that are created without datastores.
+     * @return The ID of the virtual machine&#39;s datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      * 
      */
     public Output<String> datastoreId() {
@@ -408,16 +404,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.eptRviMode;
     }
     /**
-     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata, or configuration data for OVF images.
+     * Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     @Export(name="extraConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> extraConfig;
 
     /**
-     * @return Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata, or configuration data for OVF images.
+     * @return Extra configuration data for this virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata, or configuration data for OVF images.
      * 
      */
     public Output<Optional<Map<String,String>>> extraConfig() {
@@ -584,18 +578,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.imported;
     }
     /**
-     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-     * devices. Can be one of low, normal, medium, or high.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
      * 
      */
     @Export(name="latencySensitivity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> latencySensitivity;
 
     /**
-     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard
-     * devices. Can be one of low, normal, medium, or high.
+     * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
      * 
      */
     public Output<Optional<String>> latencySensitivity() {
@@ -630,16 +620,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryHotAddEnabled);
     }
     /**
-     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     @Export(name="memoryLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryLimit;
 
     /**
-     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available
-     * resources.
+     * @return The maximum amount of memory (in MB) or CPU (in MHz) that this virtual machine can consume, regardless of available resources.
      * 
      */
     public Output<Optional<Integer>> memoryLimit() {
@@ -660,18 +648,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memoryReservation);
     }
     /**
-     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
-     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
      * 
      */
     @Export(name="memoryReservationLockedToMax", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> memoryReservationLockedToMax;
 
     /**
-     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory
-     * size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature
-     * may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
+     * @return If set true, memory resource reservation for this virtual machine will always be equal to the virtual machine&#39;s memory size;increases in memory size will be rejected when a corresponding reservation increase is not possible. This feature may only be enabled if it is currently possible to reserve all of the virtual machine&#39;s memory.
      * 
      */
     public Output<Optional<Boolean>> memoryReservationLockedToMax() {
@@ -776,16 +760,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkInterfaces);
     }
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-     * must be evenly divisible by this value.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
      * 
      */
     @Export(name="numCoresPerSocket", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numCoresPerSocket;
 
     /**
-     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus
-     * must be evenly divisible by this value.
+     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
      * 
      */
     public Output<Optional<Integer>> numCoresPerSocket() {
@@ -1054,32 +1036,28 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.swapPlacementPolicy);
     }
     /**
-     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-     * synchronized on startup and resume. Requires VMware Tools to be installed.
+     * Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     @Export(name="syncTimeWithHost", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHost;
 
     /**
-     * @return Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is
-     * synchronized on startup and resume. Requires VMware Tools to be installed.
+     * @return Enable guest clock synchronization with the host. On vSphere 7.0 U1 and above, with only this setting the clock is synchronized on startup and resume. Requires VMware Tools to be installed.
      * 
      */
     public Output<Optional<Boolean>> syncTimeWithHost() {
         return Codegen.optional(this.syncTimeWithHost);
     }
     /**
-     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     @Export(name="syncTimeWithHostPeriodically", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHostPeriodically;
 
     /**
-     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions
-     * setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     public Output<Optional<Boolean>> syncTimeWithHostPeriodically() {
@@ -1212,64 +1190,56 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vtpm);
     }
     /**
-     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+     * Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     @Export(name="vvtdEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vvtdEnabled;
 
     /**
-     * @return Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD
-     * I/O Virtualization (AMD-Vi or IOMMU), is enabled.
+     * @return Flag to specify if I/O MMU virtualization, also called Intel Virtualization Technology for Directed I/O (VT-d) and AMD I/O Virtualization (AMD-Vi or IOMMU), is enabled.
      * 
      */
     public Output<Optional<Boolean>> vvtdEnabled() {
         return Codegen.optional(this.vvtdEnabled);
     }
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     @Export(name="waitForGuestIpTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> waitForGuestIpTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     public Output<Optional<Integer>> waitForGuestIpTimeout() {
         return Codegen.optional(this.waitForGuestIpTimeout);
     }
     /**
-     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+     * Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     @Export(name="waitForGuestNetRoutable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForGuestNetRoutable;
 
     /**
-     * @return Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for
-     * a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
+     * @return Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria.
      * 
      */
     public Output<Optional<Boolean>> waitForGuestNetRoutable() {
         return Codegen.optional(this.waitForGuestNetRoutable);
     }
     /**
-     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     @Export(name="waitForGuestNetTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> waitForGuestNetTimeout;
 
     /**
-     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter.
+     * @return The amount of time, in minutes, to wait for an available IP address on this virtual machine. A value less than 1 disables the waiter.
      * 
      */
     public Output<Optional<Integer>> waitForGuestNetTimeout() {
