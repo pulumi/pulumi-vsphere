@@ -8,3 +8,6 @@ plugins:
   - name: terraform
     version: "1.0.16"
     kind: converter
+esc:
+  enabled: true
+  environment: imports/github-secrets # No repo-specific secrets.
