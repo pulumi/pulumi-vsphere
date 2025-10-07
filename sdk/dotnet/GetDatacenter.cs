@@ -103,7 +103,7 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** When used with an ESXi host, this data source _always_ returns the
         /// host's "default" datacenter, which is a special datacenter name unrelated to the
         /// datacenters that exist in the vSphere inventory when managed by a vCenter Server
-        /// instance. Hence, the `name` attribute is completely ignored.
+        /// instance. Hence, the `Name` attribute is completely ignored.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** When used with an ESXi host, this data source _always_ returns the
         /// host's "default" datacenter, which is a special datacenter name unrelated to the
         /// datacenters that exist in the vSphere inventory when managed by a vCenter Server
-        /// instance. Hence, the `name` attribute is completely ignored.
+        /// instance. Hence, the `Name` attribute is completely ignored.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

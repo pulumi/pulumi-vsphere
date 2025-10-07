@@ -14,6 +14,47 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.GuestOsCustomization` data source can be used to discover the
         /// details about a customization specification for a guest operating system.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "windows-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var windows = VSphere.GetGuestOsCustomization.Invoke(new()
+        ///     {
+        ///         Name = "windows",
+        ///     });
+        /// 
+        ///     var vm = new VSphere.VirtualMachine("vm", new()
+        ///     {
+        ///         TemplateUuid = template.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
+        ///         CustomizationSpec = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "id", windows.Apply(getGuestOsCustomizationResult =&gt; getGuestOsCustomizationResult.Id) },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGuestOsCustomizationResult> InvokeAsync(GetGuestOsCustomizationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationArgs(), options.WithDefaults());
@@ -21,6 +62,47 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.GuestOsCustomization` data source can be used to discover the
         /// details about a customization specification for a guest operating system.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "windows-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var windows = VSphere.GetGuestOsCustomization.Invoke(new()
+        ///     {
+        ///         Name = "windows",
+        ///     });
+        /// 
+        ///     var vm = new VSphere.VirtualMachine("vm", new()
+        ///     {
+        ///         TemplateUuid = template.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
+        ///         CustomizationSpec = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "id", windows.Apply(getGuestOsCustomizationResult =&gt; getGuestOsCustomizationResult.Id) },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());
@@ -28,6 +110,47 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.GuestOsCustomization` data source can be used to discover the
         /// details about a customization specification for a guest operating system.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "windows-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var windows = VSphere.GetGuestOsCustomization.Invoke(new()
+        ///     {
+        ///         Name = "windows",
+        ///     });
+        /// 
+        ///     var vm = new VSphere.VirtualMachine("vm", new()
+        ///     {
+        ///         TemplateUuid = template.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
+        ///         CustomizationSpec = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "id", windows.Apply(getGuestOsCustomizationResult =&gt; getGuestOsCustomizationResult.Id) },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());

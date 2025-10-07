@@ -91,14 +91,14 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+     * The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
      * 
      */
     @Import(name="retryInterval")
     private @Nullable Integer retryInterval;
 
     /**
-     * @return The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+     * @return The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
      * 
      */
     public Optional<Integer> retryInterval() {
@@ -226,7 +226,7 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param retryInterval The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+         * @param retryInterval The interval in milliseconds to retry the read operation if `retryTimeout` is set. Default: 500.
          * 
          * @return builder
          * 

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class EntityPermissionsPermission {
     /**
-     * @return Whether `user_or_group` field refers to a user or a
+     * @return Whether `userOrGroup` field refers to a user or a
      * group. True for a group and false for a user.
      * 
      */
@@ -37,7 +37,7 @@ public final class EntityPermissionsPermission {
 
     private EntityPermissionsPermission() {}
     /**
-     * @return Whether `user_or_group` field refers to a user or a
+     * @return Whether `userOrGroup` field refers to a user or a
      * group. True for a group and false for a user.
      * 
      */

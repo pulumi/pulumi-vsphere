@@ -75,9 +75,9 @@ namespace Pulumi.VSphere
     /// 
     /// This example sets the trunk mode VLAN (`4095`, which passes through all tags)
     /// and sets
-    /// `allow_promiscuous`
+    /// `AllowPromiscuous`
     /// to ensure that all traffic is seen on the port. The setting overrides
-    /// the implicit default of `false` set on the standard switch.
+    /// the implicit default of `False` set on the standard switch.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

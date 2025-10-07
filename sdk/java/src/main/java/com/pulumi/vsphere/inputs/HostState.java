@@ -22,7 +22,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster_managed`.
+     * `clusterManaged`.
      * 
      */
     @Import(name="cluster")
@@ -31,7 +31,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster_managed`.
+     * `clusterManaged`.
      * 
      */
     public Optional<Output<String>> cluster() {
@@ -40,7 +40,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Can be set to `true` if compute cluster
-     * membership will be managed through the `compute_cluster` resource rather
+     * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      * 
      */
@@ -49,7 +49,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Can be set to `true` if compute cluster
-     * membership will be managed through the `compute_cluster` resource rather
+     * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      * 
      */
@@ -77,7 +77,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
     /**
      * A map of custom attribute IDs and string
      * values to apply to the resource. Please refer to the
-     * `vsphere_custom_attributes` resource for more information on applying
+     * `vsphereCustomAttributes` resource for more information on applying
      * tags to resources.
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
@@ -92,7 +92,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A map of custom attribute IDs and string
      * values to apply to the resource. Please refer to the
-     * `vsphere_custom_attributes` resource for more information on applying
+     * `vsphereCustomAttributes` resource for more information on applying
      * tags to resources.
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
@@ -343,7 +343,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cluster The ID of the Compute Cluster this host should
          * be added to. This should not be set if `datacenter` is set. Conflicts with:
-         * `cluster_managed`.
+         * `clusterManaged`.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cluster The ID of the Compute Cluster this host should
          * be added to. This should not be set if `datacenter` is set. Conflicts with:
-         * `cluster_managed`.
+         * `clusterManaged`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param clusterManaged Can be set to `true` if compute cluster
-         * membership will be managed through the `compute_cluster` resource rather
+         * membership will be managed through the `computeCluster` resource rather
          * than the`host` resource. Conflicts with: `cluster`.
          * 
          * @return builder
@@ -380,7 +380,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param clusterManaged Can be set to `true` if compute cluster
-         * membership will be managed through the `compute_cluster` resource rather
+         * membership will be managed through the `computeCluster` resource rather
          * than the`host` resource. Conflicts with: `cluster`.
          * 
          * @return builder
@@ -416,7 +416,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param customAttributes A map of custom attribute IDs and string
          * values to apply to the resource. Please refer to the
-         * `vsphere_custom_attributes` resource for more information on applying
+         * `vsphereCustomAttributes` resource for more information on applying
          * tags to resources.
          * 
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
@@ -435,7 +435,7 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param customAttributes A map of custom attribute IDs and string
          * values to apply to the resource. Please refer to the
-         * `vsphere_custom_attributes` resource for more information on applying
+         * `vsphereCustomAttributes` resource for more information on applying
          * tags to resources.
          * 
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host

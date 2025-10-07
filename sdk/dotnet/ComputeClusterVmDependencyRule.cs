@@ -29,10 +29,10 @@ namespace Pulumi.VSphere
     /// The example below creates two virtual machine in a cluster using the
     /// `vsphere.VirtualMachine` resource in a cluster
     /// looked up by the `vsphere.ComputeCluster`
-    /// data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+    /// data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `Vm1` starts before `Vm2`.
     /// 
-    /// &gt; Note how `dependency_vm_group_name` and
-    /// `vm_group_name` are sourced off of the `name` attributes from
+    /// &gt; Note how `DependencyVmGroupName` and
+    /// `VmGroupName` are sourced off of the `Name` attributes from
     /// the `vsphere.ComputeClusterVmGroup`
     /// resource. This is to ensure that the rule is not created before the groups
     /// exist, which may not possibly happen in the event that the names came from a
@@ -184,24 +184,24 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The name of the VM group that this
         /// rule depends on. The VMs defined in the group specified by
-        /// `vm_group_name` will not be started until the VMs in this
+        /// `VmGroupName` will not be started until the VMs in this
         /// group are started.
         /// </summary>
         [Output("dependencyVmGroupName")]
         public Output<string> DependencyVmGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Output("mandatory")]
@@ -218,7 +218,7 @@ namespace Pulumi.VSphere
         /// The name of the VM group that is the subject of
         /// this rule. The VMs defined in this group will not be started until the VMs in
         /// the group specified by
-        /// `dependency_vm_group_name` are started.
+        /// `DependencyVmGroupName` are started.
         /// </summary>
         [Output("vmGroupName")]
         public Output<string> VmGroupName { get; private set; } = null!;
@@ -280,24 +280,24 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The name of the VM group that this
         /// rule depends on. The VMs defined in the group specified by
-        /// `vm_group_name` will not be started until the VMs in this
+        /// `VmGroupName` will not be started until the VMs in this
         /// group are started.
         /// </summary>
         [Input("dependencyVmGroupName", required: true)]
         public Input<string> DependencyVmGroupName { get; set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]
@@ -314,7 +314,7 @@ namespace Pulumi.VSphere
         /// The name of the VM group that is the subject of
         /// this rule. The VMs defined in this group will not be started until the VMs in
         /// the group specified by
-        /// `dependency_vm_group_name` are started.
+        /// `DependencyVmGroupName` are started.
         /// </summary>
         [Input("vmGroupName", required: true)]
         public Input<string> VmGroupName { get; set; } = null!;
@@ -338,24 +338,24 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The name of the VM group that this
         /// rule depends on. The VMs defined in the group specified by
-        /// `vm_group_name` will not be started until the VMs in this
+        /// `VmGroupName` will not be started until the VMs in this
         /// group are started.
         /// </summary>
         [Input("dependencyVmGroupName")]
         public Input<string>? DependencyVmGroupName { get; set; }
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]
@@ -372,7 +372,7 @@ namespace Pulumi.VSphere
         /// The name of the VM group that is the subject of
         /// this rule. The VMs defined in this group will not be started until the VMs in
         /// the group specified by
-        /// `dependency_vm_group_name` are started.
+        /// `DependencyVmGroupName` are started.
         /// </summary>
         [Input("vmGroupName")]
         public Input<string>? VmGroupName { get; set; }

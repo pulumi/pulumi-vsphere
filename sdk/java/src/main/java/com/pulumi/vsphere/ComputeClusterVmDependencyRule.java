@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * looked up by the `vsphere.ComputeCluster`
  * data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
  * 
- * &gt; Note how `dependency_vm_group_name` and
- * `vm_group_name` are sourced off of the `name` attributes from
+ * &gt; Note how `dependencyVmGroupName` and
+ * `vmGroupName` are sourced off of the `name` attributes from
  * the `vsphere.ComputeClusterVmGroup`
  * resource. This is to ensure that the rule is not created before the groups
  * exist, which may not possibly happen in the event that the names came from a
@@ -196,7 +196,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
-     * `vm_group_name` will not be started until the VMs in this
+     * `vmGroupName` will not be started until the VMs in this
      * group are started.
      * 
      */
@@ -206,7 +206,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
     /**
      * @return The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
-     * `vm_group_name` will not be started until the VMs in this
+     * `vmGroupName` will not be started until the VMs in this
      * group are started.
      * 
      */
@@ -271,7 +271,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
-     * `dependency_vm_group_name` are started.
+     * `dependencyVmGroupName` are started.
      * 
      */
     @Export(name="vmGroupName", refs={String.class}, tree="[0]")
@@ -281,7 +281,7 @@ public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomR
      * @return The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
-     * `dependency_vm_group_name` are started.
+     * `dependencyVmGroupName` are started.
      * 
      */
     public Output<String> vmGroupName() {
