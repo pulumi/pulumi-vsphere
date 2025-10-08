@@ -287,7 +287,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
     }
     /**
      * Determines if the VM should be marked as being
-     * started when VMware Tools are ready instead of waiting for `start_delay`. This
+     * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      * 
      */
@@ -296,7 +296,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Determines if the VM should be marked as being
-     * started when VMware Tools are ready instead of waiting for `start_delay`. This
+     * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      * 
      */

@@ -3976,6 +3976,57 @@ public final class VsphereFunctions {
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args) {
         return getGuestOsCustomization(args, InvokeOptions.Empty);
@@ -3983,6 +4034,57 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args) {
@@ -3992,6 +4094,57 @@ public final class VsphereFunctions {
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
@@ -4000,6 +4153,57 @@ public final class VsphereFunctions {
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
@@ -4007,6 +4211,57 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args, InvokeOptions options) {
@@ -4521,7 +4776,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4623,7 +4878,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4725,7 +4980,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4827,7 +5082,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4929,7 +5184,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -5029,7 +5284,7 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHostPciDevice:getHostPciDevice", TypeShape.of(GetHostPciDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5077,7 +5332,7 @@ public final class VsphereFunctions {
         return getHostThumbprint(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5125,7 +5380,7 @@ public final class VsphereFunctions {
         return getHostThumbprintPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5173,7 +5428,7 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5221,7 +5476,7 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 

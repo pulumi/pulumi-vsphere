@@ -174,7 +174,7 @@ public final class VappEntityState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Determines if the VM should be marked as being
-     * started when VMware Tools are ready instead of waiting for `start_delay`. This
+     * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      * 
      */
@@ -183,7 +183,7 @@ public final class VappEntityState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Determines if the VM should be marked as being
-     * started when VMware Tools are ready instead of waiting for `start_delay`. This
+     * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      * 
      */
@@ -443,7 +443,7 @@ public final class VappEntityState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param waitForGuest Determines if the VM should be marked as being
-         * started when VMware Tools are ready instead of waiting for `start_delay`. This
+         * started when VMware Tools are ready instead of waiting for `startDelay`. This
          * property has no effect for vApps. Default: false
          * 
          * @return builder
@@ -456,7 +456,7 @@ public final class VappEntityState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param waitForGuest Determines if the VM should be marked as being
-         * started when VMware Tools are ready instead of waiting for `start_delay`. This
+         * started when VMware Tools are ready instead of waiting for `startDelay`. This
          * property has no effect for vApps. Default: false
          * 
          * @return builder

@@ -51,14 +51,14 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
     }
 
     /**
-     * The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     @Import(name="ipv4Gateway")
     private @Nullable Output<String> ipv4Gateway;
 
     /**
-     * @return The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * @return The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     public Optional<Output<String>> ipv4Gateway() {
@@ -66,14 +66,14 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
     }
 
     /**
-     * The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     @Import(name="ipv6Gateway")
     private @Nullable Output<String> ipv6Gateway;
 
     /**
-     * @return The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * @return The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     public Optional<Output<String>> ipv6Gateway() {
@@ -250,7 +250,7 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipv4Gateway The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * @param ipv4Gateway The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipv4Gateway The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * @param ipv4Gateway The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipv6Gateway The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * @param ipv6Gateway The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class VirtualMachineCloneCustomizeArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipv6Gateway The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+         * @param ipv6Gateway The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
          * 
          * @return builder
          * 

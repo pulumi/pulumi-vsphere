@@ -55,7 +55,7 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
 
     /**
      * The permissions to be given on this entity. Keep
-     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * the permissions sorted alphabetically on `userOrGroup` for a better user
      * experience.
      * 
      */
@@ -64,7 +64,7 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The permissions to be given on this entity. Keep
-     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * the permissions sorted alphabetically on `userOrGroup` for a better user
      * experience.
      * 
      */
@@ -148,7 +148,7 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
 
         /**
          * @param permissions The permissions to be given on this entity. Keep
-         * the permissions sorted alphabetically on `user_or_group` for a better user
+         * the permissions sorted alphabetically on `userOrGroup` for a better user
          * experience.
          * 
          * @return builder
@@ -161,7 +161,7 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
 
         /**
          * @param permissions The permissions to be given on this entity. Keep
-         * the permissions sorted alphabetically on `user_or_group` for a better user
+         * the permissions sorted alphabetically on `userOrGroup` for a better user
          * experience.
          * 
          * @return builder
@@ -173,7 +173,7 @@ public final class EntityPermissionsState extends com.pulumi.resources.ResourceA
 
         /**
          * @param permissions The permissions to be given on this entity. Keep
-         * the permissions sorted alphabetically on `user_or_group` for a better user
+         * the permissions sorted alphabetically on `userOrGroup` for a better user
          * experience.
          * 
          * @return builder

@@ -16,7 +16,7 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// The following example creates storage policies with `tag_rules` base on sets of environment, service level, and replication attributes.
+    /// The following example creates storage policies with `TagRules` base on sets of environment, service level, and replication attributes.
     /// 
     /// In this example, tags are first applied to datastores.
     /// 
@@ -114,7 +114,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// Next, storage policies are created and `tag_rules` are applied.
+    /// Next, storage policies are created and `TagRules` are applied.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -199,7 +199,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
+    /// Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy's `TagsRules`.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -21,8 +21,8 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
     /// can contain the actual running state of the virtual machine, data for all disks
     /// that have not been set to be independent from the snapshot (including ones that
-    /// have been attached via the `attach`
-    /// parameter to the `vsphere.VirtualMachine` `disk` block), and even the
+    /// have been attached via the `Attach`
+    /// parameter to the `vsphere.VirtualMachine` `Disk` block), and even the
     /// configuration of the virtual machine at the time of the snapshot. Virtual
     /// machine, disk activity, and configuration changes post-snapshot are not
     /// included in the original state. Use this resource with care! Neither VMware nor
@@ -60,7 +60,7 @@ namespace Pulumi.VSphere
     public partial class VirtualMachineSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If set to `true`, the delta disks involved in this
+        /// If set to `True`, the delta disks involved in this
         /// snapshot will be consolidated into the parent when this resource is
         /// destroyed.
         /// </summary>
@@ -74,14 +74,14 @@ namespace Pulumi.VSphere
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, a dump of the internal state of the
+        /// If set to `True`, a dump of the internal state of the
         /// virtual machine is included in the snapshot.
         /// </summary>
         [Output("memory")]
         public Output<bool> Memory { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, and the virtual machine is powered
+        /// If set to `True`, and the virtual machine is powered
         /// on when the snapshot is taken, VMware Tools is used to quiesce the file
         /// system in the virtual machine.
         /// </summary>
@@ -89,7 +89,7 @@ namespace Pulumi.VSphere
         public Output<bool> Quiesce { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the entire snapshot subtree
+        /// If set to `True`, the entire snapshot subtree
         /// is removed when this resource is destroyed.
         /// </summary>
         [Output("removeChildren")]
@@ -154,7 +154,7 @@ namespace Pulumi.VSphere
     public sealed class VirtualMachineSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `true`, the delta disks involved in this
+        /// If set to `True`, the delta disks involved in this
         /// snapshot will be consolidated into the parent when this resource is
         /// destroyed.
         /// </summary>
@@ -168,14 +168,14 @@ namespace Pulumi.VSphere
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, a dump of the internal state of the
+        /// If set to `True`, a dump of the internal state of the
         /// virtual machine is included in the snapshot.
         /// </summary>
         [Input("memory", required: true)]
         public Input<bool> Memory { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, and the virtual machine is powered
+        /// If set to `True`, and the virtual machine is powered
         /// on when the snapshot is taken, VMware Tools is used to quiesce the file
         /// system in the virtual machine.
         /// </summary>
@@ -183,7 +183,7 @@ namespace Pulumi.VSphere
         public Input<bool> Quiesce { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the entire snapshot subtree
+        /// If set to `True`, the entire snapshot subtree
         /// is removed when this resource is destroyed.
         /// </summary>
         [Input("removeChildren")]
@@ -210,7 +210,7 @@ namespace Pulumi.VSphere
     public sealed class VirtualMachineSnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `true`, the delta disks involved in this
+        /// If set to `True`, the delta disks involved in this
         /// snapshot will be consolidated into the parent when this resource is
         /// destroyed.
         /// </summary>
@@ -224,14 +224,14 @@ namespace Pulumi.VSphere
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If set to `true`, a dump of the internal state of the
+        /// If set to `True`, a dump of the internal state of the
         /// virtual machine is included in the snapshot.
         /// </summary>
         [Input("memory")]
         public Input<bool>? Memory { get; set; }
 
         /// <summary>
-        /// If set to `true`, and the virtual machine is powered
+        /// If set to `True`, and the virtual machine is powered
         /// on when the snapshot is taken, VMware Tools is used to quiesce the file
         /// system in the virtual machine.
         /// </summary>
@@ -239,7 +239,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Quiesce { get; set; }
 
         /// <summary>
-        /// If set to `true`, the entire snapshot subtree
+        /// If set to `True`, the entire snapshot subtree
         /// is removed when this resource is destroyed.
         /// </summary>
         [Input("removeChildren")]

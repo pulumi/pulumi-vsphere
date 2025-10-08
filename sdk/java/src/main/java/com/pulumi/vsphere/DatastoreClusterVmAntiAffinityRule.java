@@ -213,7 +213,7 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
      * 
-     * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
      * 
      */
     @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
@@ -223,7 +223,7 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
      * @return The UUIDs of the virtual machines to run
      * on different datastores from each other.
      * 
-     * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
      * 
      */
     public Output<List<String>> virtualMachineIds() {

@@ -142,9 +142,9 @@ namespace Pulumi.VSphere
         /// A regular expression to filter the disks against. Only
         /// disks with canonical names that match will be included.
         /// 
-        /// &gt; **NOTE:** Using a `filter` is recommended if there is any chance the host
+        /// &gt; **NOTE:** Using a `Filter` is recommended if there is any chance the host
         /// will have any specific storage devices added to it that may affect the order of
-        /// the output `disks` attribute below, which is lexicographically sorted.
+        /// the output `Disks` attribute below, which is lexicographically sorted.
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Whether or not to rescan storage adapters before
         /// searching for disks. This may lengthen the time it takes to perform the
-        /// search. Default: `false`.
+        /// search. Default: `False`.
         /// </summary>
         [Input("rescan")]
         public bool? Rescan { get; set; }
@@ -176,9 +176,9 @@ namespace Pulumi.VSphere
         /// A regular expression to filter the disks against. Only
         /// disks with canonical names that match will be included.
         /// 
-        /// &gt; **NOTE:** Using a `filter` is recommended if there is any chance the host
+        /// &gt; **NOTE:** Using a `Filter` is recommended if there is any chance the host
         /// will have any specific storage devices added to it that may affect the order of
-        /// the output `disks` attribute below, which is lexicographically sorted.
+        /// the output `Disks` attribute below, which is lexicographically sorted.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Whether or not to rescan storage adapters before
         /// searching for disks. This may lengthen the time it takes to perform the
-        /// search. Default: `false`.
+        /// search. Default: `False`.
         /// </summary>
         [Input("rescan")]
         public Input<bool>? Rescan { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// A lexicographically sorted list of devices discovered by the
-        /// operation, matching the supplied `filter`, if provided.
+        /// operation, matching the supplied `Filter`, if provided.
         /// </summary>
         public readonly ImmutableArray<string> Disks;
         public readonly string? Filter;

@@ -42,7 +42,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly int? Key;
         /// <summary>
-        /// The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+        /// The MAC address of this network interface. Can only be manually set if UseStaticMac is true.
         /// </summary>
         public readonly string? MacAddress;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? PhysicalFunction;
         /// <summary>
-        /// If true, the mac_address field is treated as a static MAC address and set accordingly.
+        /// If true, the MacAddress field is treated as a static MAC address and set accordingly.
         /// </summary>
         public readonly bool? UseStaticMac;
 

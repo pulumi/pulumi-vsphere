@@ -193,8 +193,8 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
      * import section. When importing a VM group, validate that all virtual machines that
-     * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
-     * that are not in `virtual_machine_ids` the included will be removed from the group.
+     * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+     * that are not in `virtualMachineIds` the included will be removed from the group.
      * 
      */
     @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
@@ -211,8 +211,8 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
      * import section. When importing a VM group, validate that all virtual machines that
-     * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
-     * that are not in `virtual_machine_ids` the included will be removed from the group.
+     * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+     * that are not in `virtualMachineIds` the included will be removed from the group.
      * 
      */
     public Output<Optional<List<String>>> virtualMachineIds() {

@@ -9,6 +9,30 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.GuestOsCustomization` data source can be used to discover the
  * details about a customization specification for a guest operating system.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const template = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "windows-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const windows = vsphere.getGuestOsCustomization({
+ *     name: "windows",
+ * });
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     templateUuid: template.then(template => template.id),
+ *     customizationSpec: [{
+ *         id: windows.then(windows => windows.id),
+ *     }],
+ * });
+ * ```
  */
 export function getGuestOsCustomization(args: GetGuestOsCustomizationArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestOsCustomizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,6 +89,30 @@ export interface GetGuestOsCustomizationResult {
 /**
  * The `vsphere.GuestOsCustomization` data source can be used to discover the
  * details about a customization specification for a guest operating system.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const template = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "windows-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const windows = vsphere.getGuestOsCustomization({
+ *     name: "windows",
+ * });
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     templateUuid: template.then(template => template.id),
+ *     customizationSpec: [{
+ *         id: windows.then(windows => windows.id),
+ *     }],
+ * });
+ * ```
  */
 export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGuestOsCustomizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

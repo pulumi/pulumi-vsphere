@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 public final class GetVirtualMachineResult {
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `guestId` is a non-specific operating system, like `otherGuest` or
      * `otherGuest64`.
      * 
      */
@@ -59,7 +59,7 @@ public final class GetVirtualMachineResult {
      * while cloning. This is useful for discovering certain disk settings while
      * performing a linked clone, as all settings that are output by this data source
      * must be the same on the destination virtual machine as the source. Only the
-     * first number of controllers defined by `scsi_controller_scan_count` are
+     * first number of controllers defined by `scsiControllerScanCount` are
      * scanned for disks. The sub-attributes are:
      * 
      */
@@ -161,7 +161,7 @@ public final class GetVirtualMachineResult {
     /**
      * @return Mode for sharing the SCSI bus. The modes are
      * physicalSharing, virtualSharing, and noSharing. Only the first number of
-     * controllers defined by `scsi_controller_scan_count` are scanned.
+     * controllers defined by `scsiControllerScanCount` are scanned.
      * 
      */
     private String scsiBusSharing;
@@ -171,7 +171,7 @@ public final class GetVirtualMachineResult {
      * Will be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic
      * SAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when
      * there are multiple controller types. Only the first number of controllers
-     * defined by `scsi_controller_scan_count` are scanned.
+     * defined by `scsiControllerScanCount` are scanned.
      * 
      */
     private String scsiType;
@@ -194,7 +194,7 @@ public final class GetVirtualMachineResult {
     private GetVirtualMachineResult() {}
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `guestId` is a non-specific operating system, like `otherGuest` or
      * `otherGuest64`.
      * 
      */
@@ -262,7 +262,7 @@ public final class GetVirtualMachineResult {
      * while cloning. This is useful for discovering certain disk settings while
      * performing a linked clone, as all settings that are output by this data source
      * must be the same on the destination virtual machine as the source. Only the
-     * first number of controllers defined by `scsi_controller_scan_count` are
+     * first number of controllers defined by `scsiControllerScanCount` are
      * scanned for disks. The sub-attributes are:
      * 
      */
@@ -442,7 +442,7 @@ public final class GetVirtualMachineResult {
     /**
      * @return Mode for sharing the SCSI bus. The modes are
      * physicalSharing, virtualSharing, and noSharing. Only the first number of
-     * controllers defined by `scsi_controller_scan_count` are scanned.
+     * controllers defined by `scsiControllerScanCount` are scanned.
      * 
      */
     public String scsiBusSharing() {
@@ -456,7 +456,7 @@ public final class GetVirtualMachineResult {
      * Will be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic
      * SAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when
      * there are multiple controller types. Only the first number of controllers
-     * defined by `scsi_controller_scan_count` are scanned.
+     * defined by `scsiControllerScanCount` are scanned.
      * 
      */
     public String scsiType() {
