@@ -20,7 +20,7 @@ namespace Pulumi.VSphere
     /// application cluster scenarios. When configured, Storage DRS will make a best effort to
     /// ensure that the virtual machines run on different datastores, or prevent any
     /// operation that would keep that from happening, depending on the value of the
-    /// `mandatory` flag.
+    /// `Mandatory` flag.
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
@@ -141,14 +141,14 @@ namespace Pulumi.VSphere
         public Output<string> DatastoreClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// </summary>
         [Output("mandatory")]
         public Output<bool?> Mandatory { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.VSphere
         /// The UUIDs of the virtual machines to run
         /// on different datastores from each other.
         /// 
-        /// &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        /// &gt; **NOTE:** The minimum length of `VirtualMachineIds` is 2.
         /// </summary>
         [Output("virtualMachineIds")]
         public Output<ImmutableArray<string>> VirtualMachineIds { get; private set; } = null!;
@@ -223,14 +223,14 @@ namespace Pulumi.VSphere
         public Input<string> DatastoreClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// </summary>
         [Input("mandatory")]
         public Input<bool>? Mandatory { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.VSphere
         /// The UUIDs of the virtual machines to run
         /// on different datastores from each other.
         /// 
-        /// &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        /// &gt; **NOTE:** The minimum length of `VirtualMachineIds` is 2.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {
@@ -273,14 +273,14 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// </summary>
         [Input("mandatory")]
         public Input<bool>? Mandatory { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.VSphere
         /// The UUIDs of the virtual machines to run
         /// on different datastores from each other.
         /// 
-        /// &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        /// &gt; **NOTE:** The minimum length of `VirtualMachineIds` is 2.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {

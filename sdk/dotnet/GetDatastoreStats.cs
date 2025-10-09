@@ -193,7 +193,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The
         /// [managed object reference ID][docs-about-morefs] of the datacenter the
-        /// datastores are located in. For default datacenters, use the `id` attribute
+        /// datastores are located in. For default datacenters, use the `Id` attribute
         /// from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId", required: true)]
@@ -237,7 +237,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The
         /// [managed object reference ID][docs-about-morefs] of the datacenter the
-        /// datastores are located in. For default datacenters, use the `id` attribute
+        /// datastores are located in. For default datacenters, use the `Id` attribute
         /// from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId", required: true)]

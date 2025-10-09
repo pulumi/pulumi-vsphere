@@ -42,6 +42,13 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter and is not available on
  * direct ESXi host connections.
  * 
+ * ## Example Usage
+ * 
+ * The configuration below builds on the example given in the
+ * `vsphere.DistributedVirtualSwitch` resource by
+ * adding the `vsphere.DistributedPortGroup` resource, attaching itself to the
+ * vSphere Distributed Switch and assigning VLAN ID 1000.
+ * 
  * ### Overriding VDS policies
  * 
  * All of the default port policies available in the
@@ -181,11 +188,11 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Allows the port group to create additional ports
-     * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
      * 
-     * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+     * &gt; **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
      * may lead to errors when the port count grows past the amount specified.  If you
-     * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+     * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      * 
      */
     @Export(name="autoExpand", refs={Boolean.class}, tree="[0]")
@@ -193,11 +200,11 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Allows the port group to create additional ports
-     * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
      * 
-     * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+     * &gt; **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
      * may lead to errors when the port count grows past the amount specified.  If you
-     * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+     * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      * 
      */
     public Output<Optional<Boolean>> autoExpand() {

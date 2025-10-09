@@ -54,8 +54,8 @@ namespace Pulumi.VSphere
     /// ### Example with a Virtual Machine
     /// 
     /// The example below builds off the basic example, but includes a virtual machine
-    /// in the new vApp container. To accomplish this, the `resource_pool_id` of the
-    /// virtual machine is set to the `id` of the vApp container.
+    /// in the new vApp container. To accomplish this, the `ResourcePoolId` of the
+    /// virtual machine is set to the `Id` of the vApp container.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -148,7 +148,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Determines if the reservation on a vApp
         /// container can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// unreserved resources. Default: `True`
         /// </summary>
         [Output("cpuExpandable")]
         public Output<bool?> CpuExpandable { get; private set; } = null!;
@@ -172,9 +172,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-        /// ignored.  Default: `normal`
+        /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
+        /// `Low`, `Normal`, or `High` are specified values in `CpuShares` will be
+        /// ignored.  Default: `Normal`
         /// </summary>
         [Output("cpuShareLevel")]
         public Output<string?> CpuShareLevel { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of shares allocated for CPU. Used to
         /// determine resource allocation in case of resource contention. If this is set,
-        /// `cpu_share_level` must be `custom`.
+        /// `CpuShareLevel` must be `Custom`.
         /// </summary>
         [Output("cpuShares")]
         public Output<int> CpuShares { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Determines if the reservation on a vApp
         /// container can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// unreserved resources. Default: `True`
         /// </summary>
         [Output("memoryExpandable")]
         public Output<bool?> MemoryExpandable { get; private set; } = null!;
@@ -219,9 +219,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `memory_shares` will be
-        /// ignored.  Default: `normal`
+        /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
+        /// `Low`, `Normal`, or `High` are specified values in `MemoryShares` will be
+        /// ignored.  Default: `Normal`
         /// </summary>
         [Output("memoryShareLevel")]
         public Output<string?> MemoryShareLevel { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of shares allocated for CPU. Used to
         /// determine resource allocation in case of resource contention. If this is set,
-        /// `memory_share_level` must be `custom`.
+        /// `MemoryShareLevel` must be `Custom`.
         /// </summary>
         [Output("memoryShares")]
         public Output<int> MemoryShares { get; private set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Determines if the reservation on a vApp
         /// container can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// unreserved resources. Default: `True`
         /// </summary>
         [Input("cpuExpandable")]
         public Input<bool>? CpuExpandable { get; set; }
@@ -336,9 +336,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-        /// ignored.  Default: `normal`
+        /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
+        /// `Low`, `Normal`, or `High` are specified values in `CpuShares` will be
+        /// ignored.  Default: `Normal`
         /// </summary>
         [Input("cpuShareLevel")]
         public Input<string>? CpuShareLevel { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of shares allocated for CPU. Used to
         /// determine resource allocation in case of resource contention. If this is set,
-        /// `cpu_share_level` must be `custom`.
+        /// `CpuShareLevel` must be `Custom`.
         /// </summary>
         [Input("cpuShares")]
         public Input<int>? CpuShares { get; set; }
@@ -366,7 +366,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Determines if the reservation on a vApp
         /// container can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// unreserved resources. Default: `True`
         /// </summary>
         [Input("memoryExpandable")]
         public Input<bool>? MemoryExpandable { get; set; }
@@ -389,9 +389,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `memory_shares` will be
-        /// ignored.  Default: `normal`
+        /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
+        /// `Low`, `Normal`, or `High` are specified values in `MemoryShares` will be
+        /// ignored.  Default: `Normal`
         /// </summary>
         [Input("memoryShareLevel")]
         public Input<string>? MemoryShareLevel { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of shares allocated for CPU. Used to
         /// determine resource allocation in case of resource contention. If this is set,
-        /// `memory_share_level` must be `custom`.
+        /// `MemoryShareLevel` must be `Custom`.
         /// </summary>
         [Input("memoryShares")]
         public Input<int>? MemoryShares { get; set; }
@@ -450,7 +450,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Determines if the reservation on a vApp
         /// container can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// unreserved resources. Default: `True`
         /// </summary>
         [Input("cpuExpandable")]
         public Input<bool>? CpuExpandable { get; set; }
@@ -474,9 +474,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-        /// ignored.  Default: `normal`
+        /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
+        /// `Low`, `Normal`, or `High` are specified values in `CpuShares` will be
+        /// ignored.  Default: `Normal`
         /// </summary>
         [Input("cpuShareLevel")]
         public Input<string>? CpuShareLevel { get; set; }
@@ -484,7 +484,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of shares allocated for CPU. Used to
         /// determine resource allocation in case of resource contention. If this is set,
-        /// `cpu_share_level` must be `custom`.
+        /// `CpuShareLevel` must be `Custom`.
         /// </summary>
         [Input("cpuShares")]
         public Input<int>? CpuShares { get; set; }
@@ -504,7 +504,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Determines if the reservation on a vApp
         /// container can grow beyond the specified value if the parent resource pool has
-        /// unreserved resources. Default: `true`
+        /// unreserved resources. Default: `True`
         /// </summary>
         [Input("memoryExpandable")]
         public Input<bool>? MemoryExpandable { get; set; }
@@ -527,9 +527,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU allocation level. The level is a
         /// simplified view of shares. Levels map to a pre-determined set of numeric
-        /// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-        /// `low`, `normal`, or `high` are specified values in `memory_shares` will be
-        /// ignored.  Default: `normal`
+        /// values for shares. Can be one of `Low`, `Normal`, `High`, or `Custom`. When
+        /// `Low`, `Normal`, or `High` are specified values in `MemoryShares` will be
+        /// ignored.  Default: `Normal`
         /// </summary>
         [Input("memoryShareLevel")]
         public Input<string>? MemoryShareLevel { get; set; }
@@ -537,7 +537,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of shares allocated for CPU. Used to
         /// determine resource allocation in case of resource contention. If this is set,
-        /// `memory_share_level` must be `custom`.
+        /// `MemoryShareLevel` must be `Custom`.
         /// </summary>
         [Input("memoryShares")]
         public Input<int>? MemoryShares { get; set; }

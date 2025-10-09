@@ -44,13 +44,20 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter and is not available on
  * direct ESXi host connections.
  * 
+ * ## Example Usage
+ * 
+ * The following example below demonstrates a &#34;standard&#34; example of configuring a
+ * VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
+ * used as active, and two being used as passive. Note that the NIC failover order
+ * propagates to any port groups configured on this VDS and can be overridden.
+ * 
  * ### Uplink name and count control
  * 
  * The following abridged example below demonstrates how you can manage the number
  * of uplinks, and the name of the uplinks via the `uplinks` parameter.
  * 
  * Note that if you change the uplink naming and count after creating the VDS, you
- * may need to explicitly specify `active_uplinks` and `standby_uplinks` as these
+ * may need to explicitly specify `activeUplinks` and `standbyUplinks` as these
  * values are saved to state after creation, regardless of being
  * specified in config, and will drift if not modified, causing errors.
  * 

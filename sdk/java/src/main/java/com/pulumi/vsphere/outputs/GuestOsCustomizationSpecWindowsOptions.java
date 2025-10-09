@@ -26,7 +26,7 @@ public final class GuestOsCustomizationSpecWindowsOptions {
      */
     private @Nullable Boolean autoLogon;
     /**
-     * @return Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+     * @return Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
      * 
      */
     private @Nullable Integer autoLogonCount;
@@ -102,7 +102,7 @@ public final class GuestOsCustomizationSpecWindowsOptions {
         return Optional.ofNullable(this.autoLogon);
     }
     /**
-     * @return Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+     * @return Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
      * 
      */
     public Optional<Integer> autoLogonCount() {

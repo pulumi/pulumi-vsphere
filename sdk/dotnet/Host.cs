@@ -211,23 +211,23 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
-        /// be added to. This should not be set if `datacenter` is set. Conflicts with:
-        /// `cluster_managed`.
+        /// be added to. This should not be set if `Datacenter` is set. Conflicts with:
+        /// `ClusterManaged`.
         /// </summary>
         [Output("cluster")]
         public Output<string?> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// Can be set to `true` if compute cluster
-        /// membership will be managed through the `compute_cluster` resource rather
-        /// than the`host` resource. Conflicts with: `cluster`.
+        /// Can be set to `True` if compute cluster
+        /// membership will be managed through the `ComputeCluster` resource rather
+        /// than the`Host` resource. Conflicts with: `Cluster`.
         /// </summary>
         [Output("clusterManaged")]
         public Output<bool?> ClusterManaged { get; private set; } = null!;
 
         /// <summary>
         /// If set to false then the host will be disconnected.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Output("connected")]
         public Output<bool?> Connected { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A map of custom attribute IDs and string
         /// values to apply to the resource. Please refer to the
-        /// `vsphere_custom_attributes` resource for more information on applying
+        /// `VsphereCustomAttributes` resource for more information on applying
         /// tags to resources.
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
@@ -248,15 +248,15 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The ID of the datacenter this host should
-        /// be added to. This should not be set if `cluster` is set.
+        /// be added to. This should not be set if `Cluster` is set.
         /// </summary>
         [Output("datacenter")]
         public Output<string?> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true` then it will force the host to be added,
+        /// If set to `True` then it will force the host to be added,
         /// even if the host is already connected to a different vCenter Server instance.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -276,14 +276,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Set the lockdown state of the host. Valid options are
-        /// `disabled`, `normal`, and `strict`. Default is `disabled`.
+        /// `Disabled`, `Normal`, and `Strict`. Default is `Disabled`.
         /// </summary>
         [Output("lockdown")]
         public Output<string?> Lockdown { get; private set; } = null!;
 
         /// <summary>
         /// Set the management state of the host.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Output("maintenance")]
         public Output<bool?> Maintenance { get; private set; } = null!;
@@ -380,23 +380,23 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
-        /// be added to. This should not be set if `datacenter` is set. Conflicts with:
-        /// `cluster_managed`.
+        /// be added to. This should not be set if `Datacenter` is set. Conflicts with:
+        /// `ClusterManaged`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// Can be set to `true` if compute cluster
-        /// membership will be managed through the `compute_cluster` resource rather
-        /// than the`host` resource. Conflicts with: `cluster`.
+        /// Can be set to `True` if compute cluster
+        /// membership will be managed through the `ComputeCluster` resource rather
+        /// than the`Host` resource. Conflicts with: `Cluster`.
         /// </summary>
         [Input("clusterManaged")]
         public Input<bool>? ClusterManaged { get; set; }
 
         /// <summary>
         /// If set to false then the host will be disconnected.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Input("connected")]
         public Input<bool>? Connected { get; set; }
@@ -407,7 +407,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A map of custom attribute IDs and string
         /// values to apply to the resource. Please refer to the
-        /// `vsphere_custom_attributes` resource for more information on applying
+        /// `VsphereCustomAttributes` resource for more information on applying
         /// tags to resources.
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
@@ -423,15 +423,15 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The ID of the datacenter this host should
-        /// be added to. This should not be set if `cluster` is set.
+        /// be added to. This should not be set if `Cluster` is set.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// If set to `true` then it will force the host to be added,
+        /// If set to `True` then it will force the host to be added,
         /// even if the host is already connected to a different vCenter Server instance.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -451,14 +451,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Set the lockdown state of the host. Valid options are
-        /// `disabled`, `normal`, and `strict`. Default is `disabled`.
+        /// `Disabled`, `Normal`, and `Strict`. Default is `Disabled`.
         /// </summary>
         [Input("lockdown")]
         public Input<string>? Lockdown { get; set; }
 
         /// <summary>
         /// Set the management state of the host.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Input("maintenance")]
         public Input<bool>? Maintenance { get; set; }
@@ -535,23 +535,23 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
-        /// be added to. This should not be set if `datacenter` is set. Conflicts with:
-        /// `cluster_managed`.
+        /// be added to. This should not be set if `Datacenter` is set. Conflicts with:
+        /// `ClusterManaged`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// Can be set to `true` if compute cluster
-        /// membership will be managed through the `compute_cluster` resource rather
-        /// than the`host` resource. Conflicts with: `cluster`.
+        /// Can be set to `True` if compute cluster
+        /// membership will be managed through the `ComputeCluster` resource rather
+        /// than the`Host` resource. Conflicts with: `Cluster`.
         /// </summary>
         [Input("clusterManaged")]
         public Input<bool>? ClusterManaged { get; set; }
 
         /// <summary>
         /// If set to false then the host will be disconnected.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Input("connected")]
         public Input<bool>? Connected { get; set; }
@@ -562,7 +562,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A map of custom attribute IDs and string
         /// values to apply to the resource. Please refer to the
-        /// `vsphere_custom_attributes` resource for more information on applying
+        /// `VsphereCustomAttributes` resource for more information on applying
         /// tags to resources.
         /// 
         /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
@@ -578,15 +578,15 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The ID of the datacenter this host should
-        /// be added to. This should not be set if `cluster` is set.
+        /// be added to. This should not be set if `Cluster` is set.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// If set to `true` then it will force the host to be added,
+        /// If set to `True` then it will force the host to be added,
         /// even if the host is already connected to a different vCenter Server instance.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -606,14 +606,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Set the lockdown state of the host. Valid options are
-        /// `disabled`, `normal`, and `strict`. Default is `disabled`.
+        /// `Disabled`, `Normal`, and `Strict`. Default is `Disabled`.
         /// </summary>
         [Input("lockdown")]
         public Input<string>? Lockdown { get; set; }
 
         /// <summary>
         /// Set the management state of the host.
-        /// Default is `false`.
+        /// Default is `False`.
         /// </summary>
         [Input("maintenance")]
         public Input<bool>? Maintenance { get; set; }

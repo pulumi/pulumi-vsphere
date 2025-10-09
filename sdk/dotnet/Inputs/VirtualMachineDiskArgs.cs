@@ -49,7 +49,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? DiskSharing { get; set; }
 
         /// <summary>
-        /// The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+        /// The virtual disk file zeroing policy when ThinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
         /// </summary>
         [Input("eagerlyScrub")]
         public Input<bool>? EagerlyScrub { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<int>? UnitNumber { get; set; }
 
         /// <summary>
-        /// The UUID of the virtual machine. Also exposed as the `id` of the resource.
+        /// The UUID of the virtual machine. Also exposed as the `Id` of the resource.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

@@ -34,6 +34,13 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
  * 
+ * ## Example Usage
+ * 
+ * The following example sets up a datastore cluster and enables Storage DRS with
+ * the default settings. It then creates two NAS datastores using the
+ * `vsphere.NasDatastore` resource and assigns them to
+ * the datastore cluster.
+ * 
  * ## Import
  * 
  * An existing datastore cluster can be imported into this resource
@@ -214,14 +221,14 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsFreeSpaceThreshold);
     }
     /**
-     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+     * The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
      * 
      */
     @Export(name="sdrsFreeSpaceThresholdMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsFreeSpaceThresholdMode;
 
     /**
-     * @return The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+     * @return The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
      * 
      */
     public Output<Optional<String>> sdrsFreeSpaceThresholdMode() {
