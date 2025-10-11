@@ -16,9 +16,9 @@ namespace Pulumi.VSphere
     /// and network folders.
     /// 
     /// Paths are always relative to the specific type of folder you are creating.
-    /// A subfolder is discovered by parsing the relative path specified in `path`, so
-    /// `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
-    /// as the folder `foo` exists.
+    /// A subfolder is discovered by parsing the relative path specified in `Path`, so
+    /// `foo/bar` will create a folder named `Bar` in the parent folder `Foo`, as long
+    /// as the folder `Foo` exists.
     /// 
     /// ## Example Usage
     /// 
@@ -53,7 +53,7 @@ namespace Pulumi.VSphere
     /// The below example builds off of the above by first creating a folder named
     /// `test-parent`, and then locating `test-folder` in that
     /// folder. To ensure the parent is created first, we create an interpolation
-    /// dependency off the parent's `path` attribute.
+    /// dependency off the parent's `Path` attribute.
     /// 
     /// Note that if you change parents (for example, went from the above basic
     /// configuration to this one), your folder will be moved to be under the correct
@@ -135,12 +135,12 @@ namespace Pulumi.VSphere
         /// The path of the folder to be created. This is relative to
         /// the root of the type of folder you are creating, and the supplied datacenter.
         /// For example, given a default datacenter of `default-dc`, a folder of type
-        /// `vm` (denoting a virtual machine folder), and a supplied folder of
+        /// `Vm` (denoting a virtual machine folder), and a supplied folder of
         /// `test-folder`, the resulting path would be
         /// `/default-dc/vm/test-folder`.
         /// 
-        /// &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
-        /// what section of `path` you are modifying. If you are modifying the parent (so
+        /// &gt; **NOTE:** `Path` can be modified - the resulting behavior is dependent on
+        /// what section of `Path` you are modifying. If you are modifying the parent (so
         /// any part before the last `/`), your folder will be moved to that new parent. If
         /// modifying the name (the part after the last `/`), your folder will be renamed.
         /// </summary>
@@ -155,9 +155,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The type of folder to create. Allowed options are
-        /// `datacenter` for datacenter folders, `host` for host and cluster folders,
-        /// `vm` for virtual machine folders, `datastore` for datastore folders, and
-        /// `network` for network folders. Forces a new resource if changed.
+        /// `Datacenter` for datacenter folders, `Host` for host and cluster folders,
+        /// `Vm` for virtual machine folders, `Datastore` for datastore folders, and
+        /// `Network` for network folders. Forces a new resource if changed.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -239,12 +239,12 @@ namespace Pulumi.VSphere
         /// The path of the folder to be created. This is relative to
         /// the root of the type of folder you are creating, and the supplied datacenter.
         /// For example, given a default datacenter of `default-dc`, a folder of type
-        /// `vm` (denoting a virtual machine folder), and a supplied folder of
+        /// `Vm` (denoting a virtual machine folder), and a supplied folder of
         /// `test-folder`, the resulting path would be
         /// `/default-dc/vm/test-folder`.
         /// 
-        /// &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
-        /// what section of `path` you are modifying. If you are modifying the parent (so
+        /// &gt; **NOTE:** `Path` can be modified - the resulting behavior is dependent on
+        /// what section of `Path` you are modifying. If you are modifying the parent (so
         /// any part before the last `/`), your folder will be moved to that new parent. If
         /// modifying the name (the part after the last `/`), your folder will be renamed.
         /// </summary>
@@ -265,9 +265,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The type of folder to create. Allowed options are
-        /// `datacenter` for datacenter folders, `host` for host and cluster folders,
-        /// `vm` for virtual machine folders, `datastore` for datastore folders, and
-        /// `network` for network folders. Forces a new resource if changed.
+        /// `Datacenter` for datacenter folders, `Host` for host and cluster folders,
+        /// `Vm` for virtual machine folders, `Datastore` for datastore folders, and
+        /// `Network` for network folders. Forces a new resource if changed.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -311,12 +311,12 @@ namespace Pulumi.VSphere
         /// The path of the folder to be created. This is relative to
         /// the root of the type of folder you are creating, and the supplied datacenter.
         /// For example, given a default datacenter of `default-dc`, a folder of type
-        /// `vm` (denoting a virtual machine folder), and a supplied folder of
+        /// `Vm` (denoting a virtual machine folder), and a supplied folder of
         /// `test-folder`, the resulting path would be
         /// `/default-dc/vm/test-folder`.
         /// 
-        /// &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
-        /// what section of `path` you are modifying. If you are modifying the parent (so
+        /// &gt; **NOTE:** `Path` can be modified - the resulting behavior is dependent on
+        /// what section of `Path` you are modifying. If you are modifying the parent (so
         /// any part before the last `/`), your folder will be moved to that new parent. If
         /// modifying the name (the part after the last `/`), your folder will be renamed.
         /// </summary>
@@ -337,9 +337,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The type of folder to create. Allowed options are
-        /// `datacenter` for datacenter folders, `host` for host and cluster folders,
-        /// `vm` for virtual machine folders, `datastore` for datastore folders, and
-        /// `network` for network folders. Forces a new resource if changed.
+        /// `Datacenter` for datacenter folders, `Host` for host and cluster folders,
+        /// `Vm` for virtual machine folders, `Datastore` for datastore folders, and
+        /// `Network` for network folders. Forces a new resource if changed.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

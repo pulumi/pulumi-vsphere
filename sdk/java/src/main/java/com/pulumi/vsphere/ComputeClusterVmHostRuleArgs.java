@@ -19,7 +19,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
     /**
      * When this field is used, the virtual
-     * machines defined in `vm_group_name` will be run on the
+     * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      * 
      */
@@ -28,7 +28,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
     /**
      * @return When this field is used, the virtual
-     * machines defined in `vm_group_name` will be run on the
+     * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      * 
      */
@@ -38,7 +38,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
     /**
      * When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      * 
      */
@@ -47,7 +47,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
     /**
      * @return When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      * 
      */
@@ -93,8 +93,8 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      * 
-     * &gt; **NOTE:** One of `affinity_host_group_name` or
-     * `anti_affinity_host_group_name` must be
+     * &gt; **NOTE:** One of `affinityHostGroupName` or
+     * `antiAffinityHostGroupName` must be
      * defined, but not both.
      * 
      * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
@@ -109,8 +109,8 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
      * @return When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      * 
-     * &gt; **NOTE:** One of `affinity_host_group_name` or
-     * `anti_affinity_host_group_name` must be
+     * &gt; **NOTE:** One of `affinityHostGroupName` or
+     * `antiAffinityHostGroupName` must be
      * defined, but not both.
      * 
      * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
@@ -188,7 +188,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
         /**
          * @param affinityHostGroupName When this field is used, the virtual
-         * machines defined in `vm_group_name` will be run on the
+         * machines defined in `vmGroupName` will be run on the
          * hosts defined in this host group.
          * 
          * @return builder
@@ -201,7 +201,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
         /**
          * @param affinityHostGroupName When this field is used, the virtual
-         * machines defined in `vm_group_name` will be run on the
+         * machines defined in `vmGroupName` will be run on the
          * hosts defined in this host group.
          * 
          * @return builder
@@ -213,7 +213,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
         /**
          * @param antiAffinityHostGroupName When this field is used, the
-         * virtual machines defined in `vm_group_name` will _not_ be
+         * virtual machines defined in `vmGroupName` will _not_ be
          * run on the hosts defined in this host group.
          * 
          * @return builder
@@ -226,7 +226,7 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
 
         /**
          * @param antiAffinityHostGroupName When this field is used, the
-         * virtual machines defined in `vm_group_name` will _not_ be
+         * virtual machines defined in `vmGroupName` will _not_ be
          * run on the hosts defined in this host group.
          * 
          * @return builder
@@ -286,8 +286,8 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
          * @param mandatory When this value is `true`, prevents any virtual
          * machine operations that may violate this rule. Default: `false`.
          * 
-         * &gt; **NOTE:** One of `affinity_host_group_name` or
-         * `anti_affinity_host_group_name` must be
+         * &gt; **NOTE:** One of `affinityHostGroupName` or
+         * `antiAffinityHostGroupName` must be
          * defined, but not both.
          * 
          * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
@@ -306,8 +306,8 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
          * @param mandatory When this value is `true`, prevents any virtual
          * machine operations that may violate this rule. Default: `false`.
          * 
-         * &gt; **NOTE:** One of `affinity_host_group_name` or
-         * `anti_affinity_host_group_name` must be
+         * &gt; **NOTE:** One of `affinityHostGroupName` or
+         * `antiAffinityHostGroupName` must be
          * defined, but not both.
          * 
          * &gt; **NOTE:** The namespace for rule names on this resource (defined by the

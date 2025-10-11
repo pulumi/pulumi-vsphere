@@ -314,7 +314,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * The provider will place a datastore named `test` in a datastore folder
      * located at `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastore_cluster_id`.
+     * `datastoreClusterId`.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
@@ -327,7 +327,7 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * The provider will place a datastore named `test` in a datastore folder
      * located at `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastore_cluster_id`.
+     * `datastoreClusterId`.
      * 
      */
     public Output<Optional<String>> folder() {

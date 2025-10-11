@@ -26,7 +26,13 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Unlike `vsphere.VmfsDatastore`, a NAS
  * datastore is only mounted on the hosts you choose to mount it on. To mount on
  * multiple hosts, you must specify each host that you want to add in the
- * `host_system_ids` argument.
+ * `hostSystemIds` argument.
+ * 
+ * ## Example Usage
+ * 
+ * The following example would set up a NFS v3 share on 3 hosts connected through
+ * vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+ * is named `nfs` and has `/export/test` exported.
  * 
  * ## Import
  * 
@@ -152,7 +158,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * The provider will place a datastore named `test` in a datastore folder
      * located at `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastore_cluster_id`.
+     * `datastoreClusterId`.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
@@ -165,7 +171,7 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
      * The provider will place a datastore named `test` in a datastore folder
      * located at `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastore_cluster_id`.
+     * `datastoreClusterId`.
      * 
      */
     public Output<Optional<String>> folder() {

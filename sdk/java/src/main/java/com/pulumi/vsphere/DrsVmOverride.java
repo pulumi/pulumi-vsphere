@@ -173,7 +173,7 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * `fullyAutomated`. Default: `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */
@@ -186,7 +186,7 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * `fullyAutomated`. Default: `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */

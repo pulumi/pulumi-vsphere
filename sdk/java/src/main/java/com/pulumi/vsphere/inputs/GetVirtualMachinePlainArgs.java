@@ -20,7 +20,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
     /**
      * The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `guestId` is a non-specific operating system, like `otherGuest` or
      * `otherGuest64`.
      * 
      */
@@ -29,7 +29,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `guestId` is a non-specific operating system, like `otherGuest` or
      * `otherGuest64`.
      * 
      */
@@ -525,7 +525,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Specify this field for a UUID lookup, `name` and `datacenter_id`
+     * Specify this field for a UUID lookup, `name` and `datacenterId`
      * are not required if this is specified.
      * 
      */
@@ -533,7 +533,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
     private @Nullable String uuid;
 
     /**
-     * @return Specify this field for a UUID lookup, `name` and `datacenter_id`
+     * @return Specify this field for a UUID lookup, `name` and `datacenterId`
      * are not required if this is specified.
      * 
      */
@@ -643,7 +643,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param alternateGuestName The alternate guest name of the virtual machine when
-         * `guest_id` is a non-specific operating system, like `otherGuest` or
+         * `guestId` is a non-specific operating system, like `otherGuest` or
          * `otherGuest64`.
          * 
          * @return builder
@@ -999,7 +999,7 @@ public final class GetVirtualMachinePlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param uuid Specify this field for a UUID lookup, `name` and `datacenter_id`
+         * @param uuid Specify this field for a UUID lookup, `name` and `datacenterId`
          * are not required if this is specified.
          * 
          * @return builder

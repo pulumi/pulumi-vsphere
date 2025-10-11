@@ -15,8 +15,8 @@ namespace Pulumi.VSphere.Outputs
     {
         /// <summary>
         /// The network interface types for each network interface found
-        /// on the virtual machine, in device bus order. Will be one of `e1000`,
-        /// `e1000e`, `vmxnet3vrdma`, or `vmxnet3`.
+        /// on the virtual machine, in device bus order. Will be one of `E1000`,
+        /// `E1000e`, `Vmxnet3vrdma`, or `Vmxnet3`.
         /// </summary>
         public readonly string AdapterType;
         /// <summary>
@@ -36,7 +36,7 @@ namespace Pulumi.VSphere.Outputs
         public readonly int BandwidthShareCount;
         /// <summary>
         /// The bandwidth share allocation level for this
-        /// interface. Can be one of `low`, `normal`, `high`, or `custom`.
+        /// interface. Can be one of `Low`, `Normal`, `High`, or `Custom`.
         /// </summary>
         public readonly string? BandwidthShareLevel;
         /// <summary>

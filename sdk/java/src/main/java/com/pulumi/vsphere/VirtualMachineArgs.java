@@ -28,14 +28,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     public static final VirtualMachineArgs Empty = new VirtualMachineArgs();
 
     /**
-     * The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+     * The guest name for the operating system when guestId is otherGuest or otherGuest64.
      * 
      */
     @Import(name="alternateGuestName")
     private @Nullable Output<String> alternateGuestName;
 
     /**
-     * @return The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+     * @return The guest name for the operating system when guestId is otherGuest or otherGuest64.
      * 
      */
     public Optional<Output<String>> alternateGuestName() {
@@ -73,14 +73,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+     * The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      * 
      */
     @Import(name="bootRetryDelay")
     private @Nullable Output<Integer> bootRetryDelay;
 
     /**
-     * @return The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+     * @return The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      * 
      */
     public Optional<Output<Integer>> bootRetryDelay() {
@@ -388,14 +388,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      * 
      */
     @Import(name="extraConfigRebootRequired")
     private @Nullable Output<Boolean> extraConfigRebootRequired;
 
     /**
-     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+     * @return Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      * 
      */
     public Optional<Output<Boolean>> extraConfigRebootRequired() {
@@ -710,14 +710,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      * 
      */
     @Import(name="numCoresPerSocket")
     private @Nullable Output<Integer> numCoresPerSocket;
 
     /**
-     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      * 
      */
     public Optional<Output<Integer>> numCoresPerSocket() {
@@ -1001,14 +1001,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     @Import(name="syncTimeWithHostPeriodically")
     private @Nullable Output<Boolean> syncTimeWithHostPeriodically;
 
     /**
-     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     public Optional<Output<Boolean>> syncTimeWithHostPeriodically() {
@@ -1251,7 +1251,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param alternateGuestName The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+         * @param alternateGuestName The guest name for the operating system when guestId is otherGuest or otherGuest64.
          * 
          * @return builder
          * 
@@ -1262,7 +1262,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param alternateGuestName The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+         * @param alternateGuestName The guest name for the operating system when guestId is otherGuest or otherGuest64.
          * 
          * @return builder
          * 
@@ -1314,7 +1314,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
          * 
          * @return builder
          * 
@@ -1325,7 +1325,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+         * @param bootRetryDelay The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
          * 
          * @return builder
          * 
@@ -1775,7 +1775,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
          * 
          * @return builder
          * 
@@ -1786,7 +1786,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
          * 
          * @return builder
          * 
@@ -2245,7 +2245,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
          * 
          * @return builder
          * 
@@ -2256,7 +2256,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+         * @param numCoresPerSocket The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
          * 
          * @return builder
          * 
@@ -2660,7 +2660,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 
@@ -2671,7 +2671,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+         * @param syncTimeWithHostPeriodically Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
          * 
          * @return builder
          * 

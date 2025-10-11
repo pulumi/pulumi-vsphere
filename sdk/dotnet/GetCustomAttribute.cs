@@ -16,7 +16,7 @@ namespace Pulumi.VSphere
         /// attributes that are not managed by this provider. Its attributes are exactly the
         /// same as the `vsphere.CustomAttribute` resource,
         /// and, like importing, the data source takes a name argument for the search. The
-        /// `id` and other attributes are then populated with the data found by the search.
+        /// `Id` and other attributes are then populated with the data found by the search.
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and require vCenter Server.
@@ -47,7 +47,7 @@ namespace Pulumi.VSphere
         /// attributes that are not managed by this provider. Its attributes are exactly the
         /// same as the `vsphere.CustomAttribute` resource,
         /// and, like importing, the data source takes a name argument for the search. The
-        /// `id` and other attributes are then populated with the data found by the search.
+        /// `Id` and other attributes are then populated with the data found by the search.
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and require vCenter Server.
@@ -78,7 +78,7 @@ namespace Pulumi.VSphere
         /// attributes that are not managed by this provider. Its attributes are exactly the
         /// same as the `vsphere.CustomAttribute` resource,
         /// and, like importing, the data source takes a name argument for the search. The
-        /// `id` and other attributes are then populated with the data found by the search.
+        /// `Id` and other attributes are then populated with the data found by the search.
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and require vCenter Server.

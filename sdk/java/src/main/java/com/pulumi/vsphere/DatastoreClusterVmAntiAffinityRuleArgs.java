@@ -88,7 +88,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
      * 
-     * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
      * 
      */
     @Import(name="virtualMachineIds", required=true)
@@ -98,7 +98,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
      * @return The UUIDs of the virtual machines to run
      * on different datastores from each other.
      * 
-     * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
      * 
      */
     public Output<List<String>> virtualMachineIds() {
@@ -227,7 +227,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
          * @param virtualMachineIds The UUIDs of the virtual machines to run
          * on different datastores from each other.
          * 
-         * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
          * @param virtualMachineIds The UUIDs of the virtual machines to run
          * on different datastores from each other.
          * 
-         * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
          * @param virtualMachineIds The UUIDs of the virtual machines to run
          * on different datastores from each other.
          * 
-         * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
          * 
          * @return builder
          * 

@@ -31,6 +31,13 @@ import (
 // > **NOTE:** This resource requires vCenter and is not available on
 // direct ESXi host connections.
 //
+// ## Example Usage
+//
+// The following example below demonstrates a "standard" example of configuring a
+// VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
+// used as active, and two being used as passive. Note that the NIC failover order
+// propagates to any port groups configured on this VDS and can be overridden.
+//
 // ### Uplink name and count control
 //
 // The following abridged example below demonstrates how you can manage the number

@@ -17,7 +17,13 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** Unlike `vsphere.VmfsDatastore`, a NAS
     /// datastore is only mounted on the hosts you choose to mount it on. To mount on
     /// multiple hosts, you must specify each host that you want to add in the
-    /// `host_system_ids` argument.
+    /// `HostSystemIds` argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example would set up a NFS v3 share on 3 hosts connected through
+    /// vCenter in the same datacenter - `Esxi1`, `Esxi2`, and `Esxi3`. The remote host
+    /// is named `Nfs` and has `/export/test` exported.
     /// 
     /// ## Import
     /// 
@@ -56,7 +62,7 @@ namespace Pulumi.VSphere
         public Output<string?> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// The connectivity status of the datastore. If this is `false`,
+        /// The connectivity status of the datastore. If this is `False`,
         /// some other computed attributes may be out of date.
         /// </summary>
         [Output("accessible")]
@@ -81,7 +87,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object
         /// ID of a datastore cluster to put this datastore in.
-        /// Conflicts with `folder`.
+        /// Conflicts with `Folder`.
         /// </summary>
         [Output("datastoreClusterId")]
         public Output<string?> DatastoreClusterId { get; private set; } = null!;
@@ -89,11 +95,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The relative path to a folder to put this datastore in.
         /// This is a path relative to the datacenter you are deploying the datastore to.
-        /// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        /// The provider will place a datastore named `test` in a datastore folder
+        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
+        /// The provider will place a datastore named `Test` in a datastore folder
         /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
         /// `/dc1/datastore/foo/bar/test`. Conflicts with
-        /// `datastore_cluster_id`.
+        /// `DatastoreClusterId`.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -118,7 +124,7 @@ namespace Pulumi.VSphere
         public Output<string> MaintenanceMode { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, more than one host in the datacenter has
+        /// If `True`, more than one host in the datacenter has
         /// been configured with access to the datastore.
         /// </summary>
         [Output("multipleHostAccess")]
@@ -265,7 +271,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object
         /// ID of a datastore cluster to put this datastore in.
-        /// Conflicts with `folder`.
+        /// Conflicts with `Folder`.
         /// </summary>
         [Input("datastoreClusterId")]
         public Input<string>? DatastoreClusterId { get; set; }
@@ -273,11 +279,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The relative path to a folder to put this datastore in.
         /// This is a path relative to the datacenter you are deploying the datastore to.
-        /// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        /// The provider will place a datastore named `test` in a datastore folder
+        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
+        /// The provider will place a datastore named `Test` in a datastore folder
         /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
         /// `/dc1/datastore/foo/bar/test`. Conflicts with
-        /// `datastore_cluster_id`.
+        /// `DatastoreClusterId`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -372,7 +378,7 @@ namespace Pulumi.VSphere
         public Input<string>? AccessMode { get; set; }
 
         /// <summary>
-        /// The connectivity status of the datastore. If this is `false`,
+        /// The connectivity status of the datastore. If this is `False`,
         /// some other computed attributes may be out of date.
         /// </summary>
         [Input("accessible")]
@@ -403,7 +409,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object
         /// ID of a datastore cluster to put this datastore in.
-        /// Conflicts with `folder`.
+        /// Conflicts with `Folder`.
         /// </summary>
         [Input("datastoreClusterId")]
         public Input<string>? DatastoreClusterId { get; set; }
@@ -411,11 +417,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The relative path to a folder to put this datastore in.
         /// This is a path relative to the datacenter you are deploying the datastore to.
-        /// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        /// The provider will place a datastore named `test` in a datastore folder
+        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
+        /// The provider will place a datastore named `Test` in a datastore folder
         /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
         /// `/dc1/datastore/foo/bar/test`. Conflicts with
-        /// `datastore_cluster_id`.
+        /// `DatastoreClusterId`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -446,7 +452,7 @@ namespace Pulumi.VSphere
         public Input<string>? MaintenanceMode { get; set; }
 
         /// <summary>
-        /// If `true`, more than one host in the datacenter has
+        /// If `True`, more than one host in the datacenter has
         /// been configured with access to the datastore.
         /// </summary>
         [Input("multipleHostAccess")]

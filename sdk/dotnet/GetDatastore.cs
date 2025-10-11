@@ -120,8 +120,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the datastore is located in. This can be omitted if the
-        /// search path used in `name` is an absolute path. For default datacenters, use
-        /// the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// search path used in `Name` is an absolute path. For default datacenters, use
+        /// the `Id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -137,8 +137,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The disk space usage statistics for the specific datastore. The
-        /// total datastore capacity is represented as `capacity` and the free remaining
-        /// disk is represented as `free`.
+        /// total datastore capacity is represented as `Capacity` and the free remaining
+        /// disk is represented as `Free`.
         /// </summary>
         public Dictionary<string, string> Stats
         {
@@ -157,8 +157,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the datastore is located in. This can be omitted if the
-        /// search path used in `name` is an absolute path. For default datacenters, use
-        /// the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// search path used in `Name` is an absolute path. For default datacenters, use
+        /// the `Id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -174,8 +174,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The disk space usage statistics for the specific datastore. The
-        /// total datastore capacity is represented as `capacity` and the free remaining
-        /// disk is represented as `free`.
+        /// total datastore capacity is represented as `Capacity` and the free remaining
+        /// disk is represented as `Free`.
         /// </summary>
         public InputMap<string> Stats
         {
@@ -201,8 +201,8 @@ namespace Pulumi.VSphere
         public readonly string Name;
         /// <summary>
         /// The disk space usage statistics for the specific datastore. The
-        /// total datastore capacity is represented as `capacity` and the free remaining
-        /// disk is represented as `free`.
+        /// total datastore capacity is represented as `Capacity` and the free remaining
+        /// disk is represented as `Free`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Stats;
 
