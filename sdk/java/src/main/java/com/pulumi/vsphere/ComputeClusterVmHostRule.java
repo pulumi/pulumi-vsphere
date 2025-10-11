@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * virtual machine is configured to run specifically on that host via a
  * `vsphere.ComputeClusterVmHostRule` resource.
  * 
- * &gt; Note how `vm_group_name` and
- * `affinity_host_group_name` are sourced off of the
+ * &gt; Note how `vmGroupName` and
+ * `affinityHostGroupName` are sourced off of the
  * `name` attributes from the
  * `vsphere.ComputeClusterVmGroup` and
  * `vsphere.ComputeClusterHostGroup`
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
 public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResource {
     /**
      * When this field is used, the virtual
-     * machines defined in `vm_group_name` will be run on the
+     * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      * 
      */
@@ -186,7 +186,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
 
     /**
      * @return When this field is used, the virtual
-     * machines defined in `vm_group_name` will be run on the
+     * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      * 
      */
@@ -195,7 +195,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
     }
     /**
      * When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      * 
      */
@@ -204,7 +204,7 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
 
     /**
      * @return When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      * 
      */
@@ -247,8 +247,8 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      * 
-     * &gt; **NOTE:** One of `affinity_host_group_name` or
-     * `anti_affinity_host_group_name` must be
+     * &gt; **NOTE:** One of `affinityHostGroupName` or
+     * `antiAffinityHostGroupName` must be
      * defined, but not both.
      * 
      * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
@@ -263,8 +263,8 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
      * @return When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      * 
-     * &gt; **NOTE:** One of `affinity_host_group_name` or
-     * `anti_affinity_host_group_name` must be
+     * &gt; **NOTE:** One of `affinityHostGroupName` or
+     * `antiAffinityHostGroupName` must be
      * defined, but not both.
      * 
      * &gt; **NOTE:** The namespace for rule names on this resource (defined by the

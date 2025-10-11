@@ -39,7 +39,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
-     * `vm_group_name` will not be started until the VMs in this
+     * `vmGroupName` will not be started until the VMs in this
      * group are started.
      * 
      */
@@ -49,7 +49,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
     /**
      * @return The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
-     * `vm_group_name` will not be started until the VMs in this
+     * `vmGroupName` will not be started until the VMs in this
      * group are started.
      * 
      */
@@ -118,7 +118,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
-     * `dependency_vm_group_name` are started.
+     * `dependencyVmGroupName` are started.
      * 
      */
     @Import(name="vmGroupName", required=true)
@@ -128,7 +128,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
      * @return The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
-     * `dependency_vm_group_name` are started.
+     * `dependencyVmGroupName` are started.
      * 
      */
     public Output<String> vmGroupName() {
@@ -192,7 +192,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
         /**
          * @param dependencyVmGroupName The name of the VM group that this
          * rule depends on. The VMs defined in the group specified by
-         * `vm_group_name` will not be started until the VMs in this
+         * `vmGroupName` will not be started until the VMs in this
          * group are started.
          * 
          * @return builder
@@ -206,7 +206,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
         /**
          * @param dependencyVmGroupName The name of the VM group that this
          * rule depends on. The VMs defined in the group specified by
-         * `vm_group_name` will not be started until the VMs in this
+         * `vmGroupName` will not be started until the VMs in this
          * group are started.
          * 
          * @return builder
@@ -295,7 +295,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
          * @param vmGroupName The name of the VM group that is the subject of
          * this rule. The VMs defined in this group will not be started until the VMs in
          * the group specified by
-         * `dependency_vm_group_name` are started.
+         * `dependencyVmGroupName` are started.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
          * @param vmGroupName The name of the VM group that is the subject of
          * this rule. The VMs defined in this group will not be started until the VMs in
          * the group specified by
-         * `dependency_vm_group_name` are started.
+         * `dependencyVmGroupName` are started.
          * 
          * @return builder
          * 

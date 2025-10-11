@@ -45,7 +45,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String diskSharing;
     /**
-     * @return The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+     * @return The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     private @Nullable Boolean eagerlyScrub;
@@ -164,7 +164,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.diskSharing);
     }
     /**
-     * @return The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+     * @return The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     public Optional<Boolean> eagerlyScrub() {

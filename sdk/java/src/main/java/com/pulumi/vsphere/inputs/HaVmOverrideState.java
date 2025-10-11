@@ -123,14 +123,14 @@ public final class HaVmOverrideState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+     * The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     @Import(name="haVmMaximumFailureWindow")
     private @Nullable Output<Integer> haVmMaximumFailureWindow;
 
     /**
-     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+     * @return The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     public Optional<Output<Integer>> haVmMaximumFailureWindow() {
@@ -428,7 +428,7 @@ public final class HaVmOverrideState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+         * @param haVmMaximumFailureWindow The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class HaVmOverrideState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVmMaximumFailureWindow The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+         * @param haVmMaximumFailureWindow The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
          * 
          * @return builder
          * 

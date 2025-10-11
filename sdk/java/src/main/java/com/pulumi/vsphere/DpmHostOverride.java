@@ -29,6 +29,17 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
+ * ## Example Usage
+ * 
+ * The following example creates a compute cluster comprised of three hosts,
+ * making use of the
+ * `vsphere.ComputeCluster` resource. DPM
+ * will be disabled in the cluster as it is the default setting, but we override
+ * the setting of the first host referenced by the
+ * `vsphere.Host` data source (`esxi1`) by using
+ * the `vsphere.DpmHostOverride` resource so it will be powered off when the
+ * cluster does not need it to service virtual machines.
+ * 
  * ## Import
  * 
  * An existing override can be imported into this resource by
@@ -74,7 +85,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+     * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */
@@ -87,7 +98,7 @@ public class DpmHostOverride extends com.pulumi.resources.CustomResource {
      * `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+     * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */

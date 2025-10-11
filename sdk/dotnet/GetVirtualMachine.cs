@@ -221,7 +221,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// `guest_id` is a non-specific operating system, like `otherGuest` or
+        /// `GuestId` is a non-specific operating system, like `otherGuest` or
         /// `otherGuest64`.
         /// </summary>
         [Input("alternateGuestName")]
@@ -266,8 +266,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference
         /// ID of the datacenter the virtual machine is located in.
-        /// This can be omitted if the search path used in `name` is an absolute path.
-        /// For default datacenters, use the `id` attribute from an empty
+        /// This can be omitted if the search path used in `Name` is an absolute path.
+        /// For default datacenters, use the `Id` attribute from an empty
         /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
@@ -297,14 +297,14 @@ namespace Pulumi.VSphere
         public bool? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
-        /// The firmware type for this virtual machine. Can be `bios` or
-        /// `efi`.
+        /// The firmware type for this virtual machine. Can be `Bios` or
+        /// `Efi`.
         /// </summary>
         [Input("firmware")]
         public string? Firmware { get; set; }
 
         /// <summary>
-        /// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+        /// The name of the virtual machine folder where the virtual machine is located. The `Name` argument is limited to 80 characters. If the `Name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `Folder` folder argument can be used.
         /// </summary>
         [Input("folder")]
         public string? Folder { get; set; }
@@ -439,7 +439,7 @@ namespace Pulumi.VSphere
         public string? ToolsUpgradePolicy { get; set; }
 
         /// <summary>
-        /// Specify this field for a UUID lookup, `name` and `datacenter_id`
+        /// Specify this field for a UUID lookup, `Name` and `DatacenterId`
         /// are not required if this is specified.
         /// </summary>
         [Input("uuid")]
@@ -464,7 +464,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// `guest_id` is a non-specific operating system, like `otherGuest` or
+        /// `GuestId` is a non-specific operating system, like `otherGuest` or
         /// `otherGuest64`.
         /// </summary>
         [Input("alternateGuestName")]
@@ -509,8 +509,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference
         /// ID of the datacenter the virtual machine is located in.
-        /// This can be omitted if the search path used in `name` is an absolute path.
-        /// For default datacenters, use the `id` attribute from an empty
+        /// This can be omitted if the search path used in `Name` is an absolute path.
+        /// For default datacenters, use the `Id` attribute from an empty
         /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
@@ -540,14 +540,14 @@ namespace Pulumi.VSphere
         public Input<bool>? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
-        /// The firmware type for this virtual machine. Can be `bios` or
-        /// `efi`.
+        /// The firmware type for this virtual machine. Can be `Bios` or
+        /// `Efi`.
         /// </summary>
         [Input("firmware")]
         public Input<string>? Firmware { get; set; }
 
         /// <summary>
-        /// The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+        /// The name of the virtual machine folder where the virtual machine is located. The `Name` argument is limited to 80 characters. If the `Name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `Folder` folder argument can be used.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -682,7 +682,7 @@ namespace Pulumi.VSphere
         public Input<string>? ToolsUpgradePolicy { get; set; }
 
         /// <summary>
-        /// Specify this field for a UUID lookup, `name` and `datacenter_id`
+        /// Specify this field for a UUID lookup, `Name` and `DatacenterId`
         /// are not required if this is specified.
         /// </summary>
         [Input("uuid")]
@@ -709,7 +709,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// `guest_id` is a non-specific operating system, like `otherGuest` or
+        /// `GuestId` is a non-specific operating system, like `otherGuest` or
         /// `otherGuest64`.
         /// </summary>
         public readonly string? AlternateGuestName;
@@ -744,7 +744,7 @@ namespace Pulumi.VSphere
         /// while cloning. This is useful for discovering certain disk settings while
         /// performing a linked clone, as all settings that are output by this data source
         /// must be the same on the destination virtual machine as the source. Only the
-        /// first number of controllers defined by `scsi_controller_scan_count` are
+        /// first number of controllers defined by `ScsiControllerScanCount` are
         /// scanned for disks. The sub-attributes are:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualMachineDiskResult> Disks;
@@ -755,8 +755,8 @@ namespace Pulumi.VSphere
         public readonly ImmutableDictionary<string, string>? ExtraConfig;
         public readonly bool? ExtraConfigRebootRequired;
         /// <summary>
-        /// The firmware type for this virtual machine. Can be `bios` or
-        /// `efi`.
+        /// The firmware type for this virtual machine. Can be `Bios` or
+        /// `Efi`.
         /// </summary>
         public readonly string? Firmware;
         public readonly string? Folder;
@@ -799,8 +799,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The network interface types for each network
         /// interface found on the virtual machine, in device bus order. Will be one of
-        /// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or
-        /// `vmxnet3`.
+        /// `E1000`, `E1000e`, `Pcnet32`, `Sriov`, `Vmxnet2`, `Vmxnet3vrdma`, or
+        /// `Vmxnet3`.
         /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceTypes;
         /// <summary>
@@ -834,16 +834,16 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Mode for sharing the SCSI bus. The modes are
         /// physicalSharing, virtualSharing, and noSharing. Only the first number of
-        /// controllers defined by `scsi_controller_scan_count` are scanned.
+        /// controllers defined by `ScsiControllerScanCount` are scanned.
         /// </summary>
         public readonly string ScsiBusSharing;
         public readonly int? ScsiControllerScanCount;
         /// <summary>
         /// The common type of all SCSI controllers on this virtual machine.
-        /// Will be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic
-        /// SAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when
+        /// Will be one of `Lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic
+        /// SAS), `Pvscsi` (VMware Paravirtual), `Buslogic` (BusLogic), or `Mixed` when
         /// there are multiple controller types. Only the first number of controllers
-        /// defined by `scsi_controller_scan_count` are scanned.
+        /// defined by `ScsiControllerScanCount` are scanned.
         /// </summary>
         public readonly string ScsiType;
         public readonly string StoragePolicyId;

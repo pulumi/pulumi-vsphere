@@ -14,9 +14,9 @@ namespace Pulumi.VSphere.Outputs
     public sealed class HostService
     {
         /// <summary>
-        /// service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+        /// service has three settings, `Enabled` sets service to running or not running, `Policy` sets service based on setting of `On` which sets service to "Start and stop with host", `Off` which sets service to "Start and stop manually", `Automatic` which sets service to "Start and stop with port usage".
         /// 
-        /// &gt; **NOTE:** `services` only supports ntpd service today.
+        /// &gt; **NOTE:** `Services` only supports ntpd service today.
         /// </summary>
         public readonly Outputs.HostServiceNtpd? Ntpd;
 

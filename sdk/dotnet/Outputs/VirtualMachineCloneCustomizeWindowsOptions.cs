@@ -22,7 +22,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool? AutoLogon;
         /// <summary>
-        /// Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+        /// Specifies how many times the VM should auto-logon the Administrator account when AutoLogon is true.
         /// </summary>
         public readonly int? AutoLogonCount;
         /// <summary>

@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/virtualMachine:VirtualMachine")
 public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
-     * The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+     * The guest name for the operating system when guestId is otherGuest or otherGuest64.
      * 
      */
     @Export(name="alternateGuestName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alternateGuestName;
 
     /**
-     * @return The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+     * @return The guest name for the operating system when guestId is otherGuest or otherGuest64.
      * 
      */
     public Output<Optional<String>> alternateGuestName() {
@@ -96,14 +96,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bootDelay);
     }
     /**
-     * The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+     * The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      * 
      */
     @Export(name="bootRetryDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bootRetryDelay;
 
     /**
-     * @return The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+     * @return The number of milliseconds to wait before retrying the boot sequence. This only valid if bootRetryEnabled is true.
      * 
      */
     public Output<Optional<Integer>> bootRetryDelay() {
@@ -418,14 +418,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.extraConfig);
     }
     /**
-     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      * 
      */
     @Export(name="extraConfigRebootRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> extraConfigRebootRequired;
 
     /**
-     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+     * @return Allow the virtual machine to be rebooted when a change to `extraConfig` occurs.
      * 
      */
     public Output<Optional<Boolean>> extraConfigRebootRequired() {
@@ -488,14 +488,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.guestId;
     }
     /**
-     * The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
+     * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      * 
      */
     @Export(name="guestIpAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> guestIpAddresses;
 
     /**
-     * @return The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
+     * @return The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
      * 
      */
     public Output<List<String>> guestIpAddresses() {
@@ -760,14 +760,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkInterfaces);
     }
     /**
-     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+     * The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      * 
      */
     @Export(name="numCoresPerSocket", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numCoresPerSocket;
 
     /**
-     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+     * @return The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
      * 
      */
     public Output<Optional<Integer>> numCoresPerSocket() {
@@ -1050,14 +1050,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.syncTimeWithHost);
     }
     /**
-     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     @Export(name="syncTimeWithHostPeriodically", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHostPeriodically;
 
     /**
-     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+     * @return Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `syncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
      * 
      */
     public Output<Optional<Boolean>> syncTimeWithHostPeriodically() {

@@ -53,7 +53,7 @@ public class EntityPermissions extends com.pulumi.resources.CustomResource {
     }
     /**
      * The permissions to be given on this entity. Keep
-     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * the permissions sorted alphabetically on `userOrGroup` for a better user
      * experience.
      * 
      */
@@ -62,7 +62,7 @@ public class EntityPermissions extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The permissions to be given on this entity. Keep
-     * the permissions sorted alphabetically on `user_or_group` for a better user
+     * the permissions sorted alphabetically on `userOrGroup` for a better user
      * experience.
      * 
      */

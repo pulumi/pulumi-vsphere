@@ -41,7 +41,7 @@ public final class DrsVmOverrideState extends com.pulumi.resources.ResourceArgs 
      * `fullyAutomated`. Default: `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */
@@ -54,7 +54,7 @@ public final class DrsVmOverrideState extends com.pulumi.resources.ResourceArgs 
      * `fullyAutomated`. Default: `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */
@@ -154,7 +154,7 @@ public final class DrsVmOverrideState extends com.pulumi.resources.ResourceArgs 
          * `fullyAutomated`. Default: `manual`.
          * 
          * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-         * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+         * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
          * for both options.
          * 
          * @return builder
@@ -171,7 +171,7 @@ public final class DrsVmOverrideState extends com.pulumi.resources.ResourceArgs 
          * `fullyAutomated`. Default: `manual`.
          * 
          * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-         * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+         * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
          * for both options.
          * 
          * @return builder

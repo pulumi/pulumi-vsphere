@@ -186,7 +186,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the VDS is located in. This can be omitted if the search
-        /// path used in `name` is an absolute path. For default datacenters, use the `id`
+        /// path used in `Name` is an absolute path. For default datacenters, use the `Id`
         /// attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
@@ -209,7 +209,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the VDS is located in. This can be omitted if the search
-        /// path used in `name` is an absolute path. For default datacenters, use the `id`
+        /// path used in `Name` is an absolute path. For default datacenters, use the `Id`
         /// attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
@@ -239,7 +239,7 @@ namespace Pulumi.VSphere
         public readonly string Name;
         /// <summary>
         /// The list of the uplinks on this vSphere distributed switch, as per the
-        /// `uplinks` argument to the
+        /// `Uplinks` argument to the
         /// `vsphere.DistributedVirtualSwitch`
         /// resource.
         /// </summary>

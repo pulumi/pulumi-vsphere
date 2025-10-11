@@ -32,14 +32,14 @@ public final class ConfigurationProfileArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+     * The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<String> configuration;
 
     /**
-     * @return The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+     * @return The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
      * 
      */
     public Optional<Output<String>> configuration() {
@@ -48,7 +48,7 @@ public final class ConfigurationProfileArgs extends com.pulumi.resources.Resourc
 
     /**
      * The identifier of the host to use as a configuration source.
-     * The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
+     * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
      * `configuration` is not set.
      * 
      */
@@ -57,7 +57,7 @@ public final class ConfigurationProfileArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The identifier of the host to use as a configuration source.
-     * The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
+     * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
      * `configuration` is not set.
      * 
      */
@@ -113,7 +113,7 @@ public final class ConfigurationProfileArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configuration The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+         * @param configuration The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ConfigurationProfileArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configuration The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+         * @param configuration The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ConfigurationProfileArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param referenceHostId The identifier of the host to use as a configuration source.
-         * The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
+         * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
          * `configuration` is not set.
          * 
          * @return builder
@@ -148,7 +148,7 @@ public final class ConfigurationProfileArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param referenceHostId The identifier of the host to use as a configuration source.
-         * The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
+         * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
          * `configuration` is not set.
          * 
          * @return builder

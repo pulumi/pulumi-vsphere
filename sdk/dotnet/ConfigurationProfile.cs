@@ -19,15 +19,15 @@ namespace Pulumi.VSphere
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+        /// The configuration JSON provided as a plain string. This argument can only be specified if `ReferenceHostId` is not set.
         /// </summary>
         [Output("configuration")]
         public Output<string> Configuration { get; private set; } = null!;
 
         /// <summary>
         /// The identifier of the host to use as a configuration source.
-        /// The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
-        /// `configuration` is not set.
+        /// The host needs to be a member of the cluster identified by `ClusterId`. This argument can only be specified if
+        /// `Configuration` is not set.
         /// </summary>
         [Output("referenceHostId")]
         public Output<string?> ReferenceHostId { get; private set; } = null!;
@@ -91,15 +91,15 @@ namespace Pulumi.VSphere
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+        /// The configuration JSON provided as a plain string. This argument can only be specified if `ReferenceHostId` is not set.
         /// </summary>
         [Input("configuration")]
         public Input<string>? Configuration { get; set; }
 
         /// <summary>
         /// The identifier of the host to use as a configuration source.
-        /// The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
-        /// `configuration` is not set.
+        /// The host needs to be a member of the cluster identified by `ClusterId`. This argument can only be specified if
+        /// `Configuration` is not set.
         /// </summary>
         [Input("referenceHostId")]
         public Input<string>? ReferenceHostId { get; set; }
@@ -119,15 +119,15 @@ namespace Pulumi.VSphere
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+        /// The configuration JSON provided as a plain string. This argument can only be specified if `ReferenceHostId` is not set.
         /// </summary>
         [Input("configuration")]
         public Input<string>? Configuration { get; set; }
 
         /// <summary>
         /// The identifier of the host to use as a configuration source.
-        /// The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
-        /// `configuration` is not set.
+        /// The host needs to be a member of the cluster identified by `ClusterId`. This argument can only be specified if
+        /// `Configuration` is not set.
         /// </summary>
         [Input("referenceHostId")]
         public Input<string>? ReferenceHostId { get; set; }

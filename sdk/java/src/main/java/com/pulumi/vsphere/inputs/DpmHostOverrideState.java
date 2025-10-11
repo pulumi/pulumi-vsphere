@@ -41,7 +41,7 @@ public final class DpmHostOverrideState extends com.pulumi.resources.ResourceArg
      * `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+     * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */
@@ -54,7 +54,7 @@ public final class DpmHostOverrideState extends com.pulumi.resources.ResourceArg
      * `manual`.
      * 
      * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-     * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+     * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
      * for both options.
      * 
      */
@@ -152,7 +152,7 @@ public final class DpmHostOverrideState extends com.pulumi.resources.ResourceArg
          * `manual`.
          * 
          * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-         * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+         * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
          * for both options.
          * 
          * @return builder
@@ -169,7 +169,7 @@ public final class DpmHostOverrideState extends com.pulumi.resources.ResourceArg
          * `manual`.
          * 
          * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-         * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+         * `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
          * for both options.
          * 
          * @return builder

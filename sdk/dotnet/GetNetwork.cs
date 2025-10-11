@@ -216,8 +216,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the network is located in. This can be omitted if the
-        /// search path used in `name` is an absolute path. For default datacenters,
-        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// search path used in `Name` is an absolute path. For default datacenters,
+        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.VSphere
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+        /// The interval in milliseconds to retry the read operation if `RetryTimeout` is set. Default: 500.
         /// </summary>
         [Input("retryInterval")]
         public int? RetryInterval { get; set; }
@@ -278,8 +278,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the network is located in. This can be omitted if the
-        /// search path used in `name` is an absolute path. For default datacenters,
-        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// search path used in `Name` is an absolute path. For default datacenters,
+        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.VSphere
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
+        /// The interval in milliseconds to retry the read operation if `RetryTimeout` is set. Default: 500.
         /// </summary>
         [Input("retryInterval")]
         public Input<int>? RetryInterval { get; set; }

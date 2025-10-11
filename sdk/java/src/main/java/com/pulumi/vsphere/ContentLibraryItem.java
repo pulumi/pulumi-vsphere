@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 /**
  * The `vsphere.ContentLibraryItem` resource can be used to create items in a
- * vSphere content library. The `file_url` must be accessible from the vSphere
+ * vSphere content library. The `fileUrl` must be accessible from the vSphere
  * environment as it will be downloaded from the specified location and stored
  * on the content library&#39;s storage backing.
  * 

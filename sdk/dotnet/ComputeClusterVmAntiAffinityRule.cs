@@ -42,17 +42,17 @@ namespace Pulumi.VSphere
         public Output<string> ComputeClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Output("mandatory")]
@@ -126,17 +126,17 @@ namespace Pulumi.VSphere
         public Input<string> ComputeClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]
@@ -178,17 +178,17 @@ namespace Pulumi.VSphere
         public Input<string>? ComputeClusterId { get; set; }
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]

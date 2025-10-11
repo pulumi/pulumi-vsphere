@@ -23,6 +23,17 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example creates a compute cluster comprised of three hosts,
+    /// making use of the
+    /// `vsphere.ComputeCluster` resource. DPM
+    /// will be disabled in the cluster as it is the default setting, but we override
+    /// the setting of the first host referenced by the
+    /// `vsphere.Host` data source (`Esxi1`) by using
+    /// the `vsphere.DpmHostOverride` resource so it will be powered off when the
+    /// cluster does not need it to service virtual machines.
+    /// 
     /// ## Import
     /// 
     /// An existing override can be imported into this resource by
@@ -54,11 +65,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The automation level for host power
-        /// operations on this host. Can be one of `manual` or `automated`. Default:
-        /// `manual`.
+        /// operations on this host. Can be one of `Manual` or `Automated`. Default:
+        /// `Manual`.
         /// 
         /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-        /// `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        /// `DpmEnabled` or `DpmAutomationLevel` is omitted. Take note of the defaults
         /// for both options.
         /// </summary>
         [Output("dpmAutomationLevel")]
@@ -66,7 +77,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enable DPM support for this host. Default:
-        /// `false`.
+        /// `False`.
         /// </summary>
         [Output("dpmEnabled")]
         public Output<bool?> DpmEnabled { get; private set; } = null!;
@@ -133,11 +144,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The automation level for host power
-        /// operations on this host. Can be one of `manual` or `automated`. Default:
-        /// `manual`.
+        /// operations on this host. Can be one of `Manual` or `Automated`. Default:
+        /// `Manual`.
         /// 
         /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-        /// `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        /// `DpmEnabled` or `DpmAutomationLevel` is omitted. Take note of the defaults
         /// for both options.
         /// </summary>
         [Input("dpmAutomationLevel")]
@@ -145,7 +156,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enable DPM support for this host. Default:
-        /// `false`.
+        /// `False`.
         /// </summary>
         [Input("dpmEnabled")]
         public Input<bool>? DpmEnabled { get; set; }
@@ -174,11 +185,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The automation level for host power
-        /// operations on this host. Can be one of `manual` or `automated`. Default:
-        /// `manual`.
+        /// operations on this host. Can be one of `Manual` or `Automated`. Default:
+        /// `Manual`.
         /// 
         /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-        /// `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        /// `DpmEnabled` or `DpmAutomationLevel` is omitted. Take note of the defaults
         /// for both options.
         /// </summary>
         [Input("dpmAutomationLevel")]
@@ -186,7 +197,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enable DPM support for this host. Default:
-        /// `false`.
+        /// `False`.
         /// </summary>
         [Input("dpmEnabled")]
         public Input<bool>? DpmEnabled { get; set; }

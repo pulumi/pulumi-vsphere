@@ -35,7 +35,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? AutoLogon { get; set; }
 
         /// <summary>
-        /// Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+        /// Specifies how many times the VM should auto-logon the Administrator account when AutoLogon is true.
         /// </summary>
         [Input("autoLogonCount")]
         public Input<int>? AutoLogonCount { get; set; }

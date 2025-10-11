@@ -32,6 +32,13 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** This resource requires vCenter and is not available on
     /// direct ESXi host connections.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The configuration below builds on the example given in the
+    /// `vsphere.DistributedVirtualSwitch` resource by
+    /// adding the `vsphere.DistributedPortGroup` resource, attaching itself to the
+    /// vSphere Distributed Switch and assigning VLAN ID 1000.
+    /// 
     /// ### Overriding VDS policies
     /// 
     /// All of the default port policies available in the
@@ -133,11 +140,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Allows the port group to create additional ports
-        /// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+        /// past the limit specified in `NumberOfPorts` if necessary. Default: `True`.
         /// 
-        /// &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+        /// &gt; **NOTE:** Using `AutoExpand` with a statically defined `NumberOfPorts`
         /// may lead to errors when the port count grows past the amount specified.  If you
-        /// specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+        /// specify `NumberOfPorts`, you may wish to set `AutoExpand` to `False`.
         /// </summary>
         [Output("autoExpand")]
         public Output<bool?> AutoExpand { get; private set; } = null!;
@@ -385,7 +392,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The port group type. Can be one of `earlyBinding` (static
-        /// binding) or `ephemeral`. Default: `earlyBinding`.
+        /// binding) or `Ephemeral`. Default: `earlyBinding`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -492,11 +499,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Allows the port group to create additional ports
-        /// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+        /// past the limit specified in `NumberOfPorts` if necessary. Default: `True`.
         /// 
-        /// &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+        /// &gt; **NOTE:** Using `AutoExpand` with a statically defined `NumberOfPorts`
         /// may lead to errors when the port count grows past the amount specified.  If you
-        /// specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+        /// specify `NumberOfPorts`, you may wish to set `AutoExpand` to `False`.
         /// </summary>
         [Input("autoExpand")]
         public Input<bool>? AutoExpand { get; set; }
@@ -749,7 +756,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The port group type. Can be one of `earlyBinding` (static
-        /// binding) or `ephemeral`. Default: `earlyBinding`.
+        /// binding) or `Ephemeral`. Default: `earlyBinding`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -824,11 +831,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Allows the port group to create additional ports
-        /// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+        /// past the limit specified in `NumberOfPorts` if necessary. Default: `True`.
         /// 
-        /// &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+        /// &gt; **NOTE:** Using `AutoExpand` with a statically defined `NumberOfPorts`
         /// may lead to errors when the port count grows past the amount specified.  If you
-        /// specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+        /// specify `NumberOfPorts`, you may wish to set `AutoExpand` to `False`.
         /// </summary>
         [Input("autoExpand")]
         public Input<bool>? AutoExpand { get; set; }
@@ -1094,7 +1101,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The port group type. Can be one of `earlyBinding` (static
-        /// binding) or `ephemeral`. Default: `earlyBinding`.
+        /// binding) or `Ephemeral`. Default: `earlyBinding`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

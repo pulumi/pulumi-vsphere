@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * The following example creates storage policies with `tag_rules` base on sets of environment, service level, and replication attributes.
+ * The following example creates storage policies with `tagRules` base on sets of environment, service level, and replication attributes.
  * 
  * In this example, tags are first applied to datastores.
  * 
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * Next, storage policies are created and `tag_rules` are applied.
+ * Next, storage policies are created and `tagRules` are applied.
  * 
  * <pre>
  * {@code
@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy&#39;s `tags_rules`.
+ * Lastly, when creating a virtual machine resource, a storage policy can be specified to direct virtual machine placement to a datastore which matches the policy&#39;s `tagsRules`.
  * 
  * <pre>
  * {@code

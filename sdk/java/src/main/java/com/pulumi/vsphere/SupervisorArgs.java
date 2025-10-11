@@ -146,10 +146,10 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `starting_address` - Starting address of the management network range.
-     * * * `subnet_mask` - Subnet mask.
+     * * * `startingAddress` - Starting address of the management network range.
+     * * * `subnetMask` - Subnet mask.
      * * * `gateway` - Gateway IP address.
-     * * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
+     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     @Import(name="managementNetwork", required=true)
@@ -158,10 +158,10 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The configuration for the management network which the control plane VMs will be connected to.
      * * * `network` - ID of the network. (e.g. a distributed port group).
-     * * * `starting_address` - Starting address of the management network range.
-     * * * `subnet_mask` - Subnet mask.
+     * * * `startingAddress` - Starting address of the management network range.
+     * * * `subnetMask` - Subnet mask.
      * * * `gateway` - Gateway IP address.
-     * * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
+     * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
      * 
      */
     public Output<SupervisorManagementNetworkArgs> managementNetwork() {
@@ -539,10 +539,10 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param managementNetwork The configuration for the management network which the control plane VMs will be connected to.
          * * * `network` - ID of the network. (e.g. a distributed port group).
-         * * * `starting_address` - Starting address of the management network range.
-         * * * `subnet_mask` - Subnet mask.
+         * * * `startingAddress` - Starting address of the management network range.
+         * * * `subnetMask` - Subnet mask.
          * * * `gateway` - Gateway IP address.
-         * * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
+         * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
          * 
          * @return builder
          * 
@@ -555,10 +555,10 @@ public final class SupervisorArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param managementNetwork The configuration for the management network which the control plane VMs will be connected to.
          * * * `network` - ID of the network. (e.g. a distributed port group).
-         * * * `starting_address` - Starting address of the management network range.
-         * * * `subnet_mask` - Subnet mask.
+         * * * `startingAddress` - Starting address of the management network range.
+         * * * `subnetMask` - Subnet mask.
          * * * `gateway` - Gateway IP address.
-         * * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
+         * * * `addressCount` - Number of addresses to allocate. Starts from `startingAddress`
          * 
          * @return builder
          * 

@@ -132,8 +132,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the cluster is located in.  This can be omitted if the
-        /// search path used in `name` is an absolute path. For default datacenters,
-        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// search path used in `Name` is an absolute path. For default datacenters,
+        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -155,8 +155,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter the cluster is located in.  This can be omitted if the
-        /// search path used in `name` is an absolute path. For default datacenters,
-        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
+        /// search path used in `Name` is an absolute path. For default datacenters,
+        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }

@@ -123,7 +123,7 @@ namespace Pulumi.VSphere
         /// Can be omitted if there is only one host in your inventory.
         /// 
         /// &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
-        /// returns the ESXi host's object ID, regardless of what is entered into `name`.
+        /// returns the ESXi host's object ID, regardless of what is entered into `Name`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.VSphere
         /// Can be omitted if there is only one host in your inventory.
         /// 
         /// &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
-        /// returns the ESXi host's object ID, regardless of what is entered into `name`.
+        /// returns the ESXi host's object ID, regardless of what is entered into `Name`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

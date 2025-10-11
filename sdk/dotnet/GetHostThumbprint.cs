@@ -12,7 +12,7 @@ namespace Pulumi.VSphere
     public static class GetHostThumbprint
     {
         /// <summary>
-        /// The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+        /// The `VsphereThumbprint` data source can be used to discover the host thumbprint
         /// of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
         /// cluster or a vCenter Server instance.
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+        /// The `VsphereThumbprint` data source can be used to discover the host thumbprint
         /// of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
         /// cluster or a vCenter Server instance.
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+        /// The `VsphereThumbprint` data source can be used to discover the host thumbprint
         /// of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
         /// cluster or a vCenter Server instance.
         /// 
@@ -119,7 +119,7 @@ namespace Pulumi.VSphere
         public string Address { get; set; } = null!;
 
         /// <summary>
-        /// Disables SSL certificate verification. Default: `false`
+        /// Disables SSL certificate verification. Default: `False`
         /// </summary>
         [Input("insecure")]
         public bool? Insecure { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.VSphere
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// Disables SSL certificate verification. Default: `false`
+        /// Disables SSL certificate verification. Default: `False`
         /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }

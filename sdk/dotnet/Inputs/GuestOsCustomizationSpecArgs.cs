@@ -37,13 +37,13 @@ namespace Pulumi.VSphere.Inputs
         }
 
         /// <summary>
-        /// The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// The IPv4 default gateway when using NetworkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
         /// </summary>
         [Input("ipv4Gateway")]
         public Input<string>? Ipv4Gateway { get; set; }
 
         /// <summary>
-        /// The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// The IPv6 default gateway when using NetworkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
         /// </summary>
         [Input("ipv6Gateway")]
         public Input<string>? Ipv6Gateway { get; set; }

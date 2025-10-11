@@ -190,14 +190,14 @@ public final class DatastoreClusterArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+     * The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
      * 
      */
     @Import(name="sdrsFreeSpaceThresholdMode")
     private @Nullable Output<String> sdrsFreeSpaceThresholdMode;
 
     /**
-     * @return The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+     * @return The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
      * 
      */
     public Optional<Output<String>> sdrsFreeSpaceThresholdMode() {
@@ -701,7 +701,7 @@ public final class DatastoreClusterArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class DatastoreClusterArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+         * @param sdrsFreeSpaceThresholdMode The free space threshold to use. When set to utilization, drsSpaceUtilizationThreshold is used, and when set to freeSpace, drsFreeSpaceThreshold is used.
          * 
          * @return builder
          * 

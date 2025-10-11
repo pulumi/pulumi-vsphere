@@ -59,8 +59,8 @@ namespace Pulumi.VSphere
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The type for the content library item. One of `ovf`,
-        /// `vm-template`, or `iso`
+        /// The type for the content library item. One of `Ovf`,
+        /// `vm-template`, or `Iso`
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
@@ -87,8 +87,8 @@ namespace Pulumi.VSphere
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type for the content library item. One of `ovf`,
-        /// `vm-template`, or `iso`
+        /// The type for the content library item. One of `Ovf`,
+        /// `vm-template`, or `Iso`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

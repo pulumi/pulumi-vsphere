@@ -29,7 +29,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The permissions to be given on this entity. Keep
-        /// the permissions sorted alphabetically on `user_or_group` for a better user
+        /// the permissions sorted alphabetically on `UserOrGroup` for a better user
         /// experience.
         /// </summary>
         [Output("permissions")]
@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The permissions to be given on this entity. Keep
-        /// the permissions sorted alphabetically on `user_or_group` for a better user
+        /// the permissions sorted alphabetically on `UserOrGroup` for a better user
         /// experience.
         /// </summary>
         public InputList<Inputs.EntityPermissionsPermissionArgs> Permissions
@@ -138,7 +138,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The permissions to be given on this entity. Keep
-        /// the permissions sorted alphabetically on `user_or_group` for a better user
+        /// the permissions sorted alphabetically on `UserOrGroup` for a better user
         /// experience.
         /// </summary>
         public InputList<Inputs.EntityPermissionsPermissionGetArgs> Permissions

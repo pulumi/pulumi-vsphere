@@ -21,7 +21,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `guestId` is a non-specific operating system, like `otherGuest` or
      * `otherGuest64`.
      * 
      */
@@ -30,7 +30,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return The alternate guest name of the virtual machine when
-     * `guest_id` is a non-specific operating system, like `otherGuest` or
+     * `guestId` is a non-specific operating system, like `otherGuest` or
      * `otherGuest64`.
      * 
      */
@@ -526,7 +526,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Specify this field for a UUID lookup, `name` and `datacenter_id`
+     * Specify this field for a UUID lookup, `name` and `datacenterId`
      * are not required if this is specified.
      * 
      */
@@ -534,7 +534,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Specify this field for a UUID lookup, `name` and `datacenter_id`
+     * @return Specify this field for a UUID lookup, `name` and `datacenterId`
      * are not required if this is specified.
      * 
      */
@@ -644,7 +644,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param alternateGuestName The alternate guest name of the virtual machine when
-         * `guest_id` is a non-specific operating system, like `otherGuest` or
+         * `guestId` is a non-specific operating system, like `otherGuest` or
          * `otherGuest64`.
          * 
          * @return builder
@@ -657,7 +657,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param alternateGuestName The alternate guest name of the virtual machine when
-         * `guest_id` is a non-specific operating system, like `otherGuest` or
+         * `guestId` is a non-specific operating system, like `otherGuest` or
          * `otherGuest64`.
          * 
          * @return builder
@@ -1305,7 +1305,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param uuid Specify this field for a UUID lookup, `name` and `datacenter_id`
+         * @param uuid Specify this field for a UUID lookup, `name` and `datacenterId`
          * are not required if this is specified.
          * 
          * @return builder
@@ -1317,7 +1317,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param uuid Specify this field for a UUID lookup, `name` and `datacenter_id`
+         * @param uuid Specify this field for a UUID lookup, `name` and `datacenterId`
          * are not required if this is specified.
          * 
          * @return builder

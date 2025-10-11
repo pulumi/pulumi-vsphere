@@ -14,7 +14,7 @@ namespace Pulumi.VSphere.Outputs
     public sealed class GetVirtualMachineDiskResult
     {
         /// <summary>
-        /// Set to `true` if the disk has been eager zeroed.
+        /// Set to `True` if the disk has been eager zeroed.
         /// </summary>
         public readonly bool EagerlyScrub;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// Set to `true` if the disk has been thin provisioned.
+        /// Set to `True` if the disk has been thin provisioned.
         /// </summary>
         public readonly bool ThinProvisioned;
         /// <summary>

@@ -109,14 +109,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+     * The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     @Import(name="eagerlyScrub")
     private @Nullable Output<Boolean> eagerlyScrub;
 
     /**
-     * @return The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+     * @return The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
      * 
      */
     public Optional<Output<Boolean>> eagerlyScrub() {
@@ -504,7 +504,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param eagerlyScrub The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+         * @param eagerlyScrub The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param eagerlyScrub The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+         * @param eagerlyScrub The virtual disk file zeroing policy when thinProvision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
          * 
          * @return builder
          * 

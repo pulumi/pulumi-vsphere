@@ -37,6 +37,19 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter Server and is not available on
  * direct ESXi host connections.
  * 
+ * ## Example Usage
+ * 
+ * The following example creates two virtual machines in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machines in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source. It
+ * then creates an affinity rule for these two virtual machines, ensuring they
+ * will run on the same host whenever possible.
+ * 
+ * The following example creates an affinity rule for a set of virtual machines
+ * in the cluster by looking up the virtual machine UUIDs from the
+ * `vsphere.VirtualMachine` data source.
+ * 
  * ## Import
  * 
  * An existing rule can be imported into this resource by supplying

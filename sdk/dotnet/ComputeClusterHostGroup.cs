@@ -23,6 +23,8 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// An existing group can be imported into this resource by
@@ -59,7 +61,7 @@ namespace Pulumi.VSphere
         /// the hosts to put in the cluster.
         /// 
         /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
-        /// `name` argument) is shared with the
+        /// `Name` argument) is shared with the
         /// `vsphere.ComputeClusterVmGroup`
         /// resource. Make sure your names are unique across both resources.
         /// </summary>
@@ -135,7 +137,7 @@ namespace Pulumi.VSphere
         /// the hosts to put in the cluster.
         /// 
         /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
-        /// `name` argument) is shared with the
+        /// `Name` argument) is shared with the
         /// `vsphere.ComputeClusterVmGroup`
         /// resource. Make sure your names are unique across both resources.
         /// </summary>
@@ -176,7 +178,7 @@ namespace Pulumi.VSphere
         /// the hosts to put in the cluster.
         /// 
         /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
-        /// `name` argument) is shared with the
+        /// `Name` argument) is shared with the
         /// `vsphere.ComputeClusterVmGroup`
         /// resource. Make sure your names are unique across both resources.
         /// </summary>

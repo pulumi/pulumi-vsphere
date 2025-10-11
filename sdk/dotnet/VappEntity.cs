@@ -185,7 +185,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Determines if the VM should be marked as being
-        /// started when VMware Tools are ready instead of waiting for `start_delay`. This
+        /// started when VMware Tools are ready instead of waiting for `StartDelay`. This
         /// property has no effect for vApps. Default: false
         /// </summary>
         [Output("waitForGuest")]
@@ -314,7 +314,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Determines if the VM should be marked as being
-        /// started when VMware Tools are ready instead of waiting for `start_delay`. This
+        /// started when VMware Tools are ready instead of waiting for `StartDelay`. This
         /// property has no effect for vApps. Default: false
         /// </summary>
         [Input("waitForGuest")]
@@ -405,7 +405,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Determines if the VM should be marked as being
-        /// started when VMware Tools are ready instead of waiting for `start_delay`. This
+        /// started when VMware Tools are ready instead of waiting for `StartDelay`. This
         /// property has no effect for vApps. Default: false
         /// </summary>
         [Input("waitForGuest")]

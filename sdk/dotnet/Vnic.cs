@@ -175,13 +175,13 @@ namespace Pulumi.VSphere
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
+        /// IPv4 settings. Either this or `Ipv6` needs to be set. See IPv4 options below.
         /// </summary>
         [Output("ipv4")]
         public Output<Outputs.VnicIpv4?> Ipv4 { get; private set; } = null!;
 
         /// <summary>
-        /// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
+        /// IPv6 settings. Either this or `Ipv6` needs to be set. See IPv6 options below.
         /// </summary>
         [Output("ipv6")]
         public Output<Outputs.VnicIpv6?> Ipv6 { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.VSphere
         public Output<string?> Portgroup { get; private set; } = null!;
 
         /// <summary>
-        /// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
+        /// Enabled services setting for this interface. Currently support values are `Vmotion`, `Management`, and `Vsan`.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
@@ -281,13 +281,13 @@ namespace Pulumi.VSphere
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
+        /// IPv4 settings. Either this or `Ipv6` needs to be set. See IPv4 options below.
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.VnicIpv4Args>? Ipv4 { get; set; }
 
         /// <summary>
-        /// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
+        /// IPv6 settings. Either this or `Ipv6` needs to be set. See IPv6 options below.
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.VnicIpv6Args>? Ipv6 { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _services;
 
         /// <summary>
-        /// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
+        /// Enabled services setting for this interface. Currently support values are `Vmotion`, `Management`, and `Vsan`.
         /// </summary>
         public InputList<string> Services
         {
@@ -355,13 +355,13 @@ namespace Pulumi.VSphere
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
+        /// IPv4 settings. Either this or `Ipv6` needs to be set. See IPv4 options below.
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.VnicIpv4GetArgs>? Ipv4 { get; set; }
 
         /// <summary>
-        /// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
+        /// IPv6 settings. Either this or `Ipv6` needs to be set. See IPv6 options below.
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.VnicIpv6GetArgs>? Ipv6 { get; set; }
@@ -394,7 +394,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _services;
 
         /// <summary>
-        /// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
+        /// Enabled services setting for this interface. Currently support values are `Vmotion`, `Management`, and `Vsan`.
         /// </summary>
         public InputList<string> Services
         {

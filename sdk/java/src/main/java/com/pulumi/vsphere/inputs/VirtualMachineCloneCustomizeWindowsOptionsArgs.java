@@ -50,14 +50,14 @@ public final class VirtualMachineCloneCustomizeWindowsOptionsArgs extends com.pu
     }
 
     /**
-     * Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+     * Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
      * 
      */
     @Import(name="autoLogonCount")
     private @Nullable Output<Integer> autoLogonCount;
 
     /**
-     * @return Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+     * @return Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
      * 
      */
     public Optional<Output<Integer>> autoLogonCount() {
@@ -309,7 +309,7 @@ public final class VirtualMachineCloneCustomizeWindowsOptionsArgs extends com.pu
         }
 
         /**
-         * @param autoLogonCount Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+         * @param autoLogonCount Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class VirtualMachineCloneCustomizeWindowsOptionsArgs extends com.pu
         }
 
         /**
-         * @param autoLogonCount Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+         * @param autoLogonCount Specifies how many times the VM should auto-logon the Administrator account when autoLogon is true.
          * 
          * @return builder
          * 

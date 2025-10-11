@@ -55,7 +55,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<int>? Key { get; set; }
 
         /// <summary>
-        /// The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+        /// The MAC address of this network interface. Can only be manually set if UseStaticMac is true.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? PhysicalFunction { get; set; }
 
         /// <summary>
-        /// If true, the mac_address field is treated as a static MAC address and set accordingly.
+        /// If true, the MacAddress field is treated as a static MAC address and set accordingly.
         /// </summary>
         [Input("useStaticMac")]
         public Input<bool>? UseStaticMac { get; set; }

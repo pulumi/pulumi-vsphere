@@ -247,7 +247,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster_managed`.
+     * `clusterManaged`.
      * 
      */
     @Export(name="cluster", refs={String.class}, tree="[0]")
@@ -256,7 +256,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster_managed`.
+     * `clusterManaged`.
      * 
      */
     public Output<Optional<String>> cluster() {
@@ -264,7 +264,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     }
     /**
      * Can be set to `true` if compute cluster
-     * membership will be managed through the `compute_cluster` resource rather
+     * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      * 
      */
@@ -273,7 +273,7 @@ public class Host extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Can be set to `true` if compute cluster
-     * membership will be managed through the `compute_cluster` resource rather
+     * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      * 
      */
@@ -299,7 +299,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * A map of custom attribute IDs and string
      * values to apply to the resource. Please refer to the
-     * `vsphere_custom_attributes` resource for more information on applying
+     * `vsphereCustomAttributes` resource for more information on applying
      * tags to resources.
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
@@ -314,7 +314,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * @return A map of custom attribute IDs and string
      * values to apply to the resource. Please refer to the
-     * `vsphere_custom_attributes` resource for more information on applying
+     * `vsphereCustomAttributes` resource for more information on applying
      * tags to resources.
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host

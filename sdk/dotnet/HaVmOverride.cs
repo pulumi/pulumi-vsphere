@@ -34,9 +34,9 @@ namespace Pulumi.VSphere
     /// application or organization for which it does its work, it's been determined in
     /// the event of a host failure, that this should be one of the first virtual
     /// machines to be started by vSphere HA during recovery. Hence, it
-    /// `ha_vm_restart_priority` has been set to `highest`,
-    /// which, assuming that the default restart priority is `medium` and no other
-    /// virtual machine has been assigned the `highest` priority, will mean that this
+    /// `HaVmRestartPriority` has been set to `Highest`,
+    /// which, assuming that the default restart priority is `Medium` and no other
+    /// virtual machine has been assigned the `Highest` priority, will mean that this
     /// VM will be started before any other virtual machine in the event of host
     /// failure.
     /// 
@@ -172,7 +172,7 @@ namespace Pulumi.VSphere
         public Output<int?> HaVmFailureInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+        /// The length of the reset window in which HaVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         /// </summary>
         [Output("haVmMaximumFailureWindow")]
         public Output<int?> HaVmMaximumFailureWindow { get; private set; } = null!;
@@ -308,7 +308,7 @@ namespace Pulumi.VSphere
         public Input<int>? HaVmFailureInterval { get; set; }
 
         /// <summary>
-        /// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+        /// The length of the reset window in which HaVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         /// </summary>
         [Input("haVmMaximumFailureWindow")]
         public Input<int>? HaVmMaximumFailureWindow { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.VSphere
         public Input<int>? HaVmFailureInterval { get; set; }
 
         /// <summary>
-        /// The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+        /// The length of the reset window in which HaVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
         /// </summary>
         [Input("haVmMaximumFailureWindow")]
         public Input<int>? HaVmMaximumFailureWindow { get; set; }

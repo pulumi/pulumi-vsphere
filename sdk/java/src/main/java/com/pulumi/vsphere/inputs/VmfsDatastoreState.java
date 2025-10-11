@@ -115,7 +115,7 @@ public final class VmfsDatastoreState extends com.pulumi.resources.ResourceArgs 
      * The provider will place a datastore named `test` in a datastore folder
      * located at `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastore_cluster_id`.
+     * `datastoreClusterId`.
      * 
      */
     @Import(name="folder")
@@ -128,7 +128,7 @@ public final class VmfsDatastoreState extends com.pulumi.resources.ResourceArgs 
      * The provider will place a datastore named `test` in a datastore folder
      * located at `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastore_cluster_id`.
+     * `datastoreClusterId`.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -448,7 +448,7 @@ public final class VmfsDatastoreState extends com.pulumi.resources.ResourceArgs 
          * The provider will place a datastore named `test` in a datastore folder
          * located at `/dc1/datastore/foo/bar`, with the final inventory path being
          * `/dc1/datastore/foo/bar/test`. Conflicts with
-         * `datastore_cluster_id`.
+         * `datastoreClusterId`.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class VmfsDatastoreState extends com.pulumi.resources.ResourceArgs 
          * The provider will place a datastore named `test` in a datastore folder
          * located at `/dc1/datastore/foo/bar`, with the final inventory path being
          * `/dc1/datastore/foo/bar/test`. Conflicts with
-         * `datastore_cluster_id`.
+         * `datastoreClusterId`.
          * 
          * @return builder
          * 

@@ -79,7 +79,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -90,7 +90,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
      * @return The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -101,7 +101,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * `cpuShareLevel` must be `custom`.
      * 
      */
     @Import(name="cpuShares")
@@ -110,7 +110,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * `cpuShareLevel` must be `custom`.
      * 
      */
     public Optional<Output<Integer>> cpuShares() {
@@ -191,7 +191,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -202,7 +202,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
      * @return The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -213,7 +213,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * `memoryShareLevel` must be `custom`.
      * 
      */
     @Import(name="memoryShares")
@@ -222,7 +222,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * `memoryShareLevel` must be `custom`.
      * 
      */
     public Optional<Output<Integer>> memoryShares() {
@@ -418,7 +418,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param cpuShareLevel The CPU allocation level. The level is a
          * simplified view of shares. Levels map to a pre-determined set of numeric
          * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+         * `low`, `normal`, or `high` are specified values in `cpuShares` will be
          * ignored.  Default: `normal`
          * 
          * @return builder
@@ -433,7 +433,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param cpuShareLevel The CPU allocation level. The level is a
          * simplified view of shares. Levels map to a pre-determined set of numeric
          * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+         * `low`, `normal`, or `high` are specified values in `cpuShares` will be
          * ignored.  Default: `normal`
          * 
          * @return builder
@@ -446,7 +446,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cpuShares The number of shares allocated for CPU. Used to
          * determine resource allocation in case of resource contention. If this is set,
-         * `cpu_share_level` must be `custom`.
+         * `cpuShareLevel` must be `custom`.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cpuShares The number of shares allocated for CPU. Used to
          * determine resource allocation in case of resource contention. If this is set,
-         * `cpu_share_level` must be `custom`.
+         * `cpuShareLevel` must be `custom`.
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param memoryShareLevel The CPU allocation level. The level is a
          * simplified view of shares. Levels map to a pre-determined set of numeric
          * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+         * `low`, `normal`, or `high` are specified values in `memoryShares` will be
          * ignored.  Default: `normal`
          * 
          * @return builder
@@ -581,7 +581,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param memoryShareLevel The CPU allocation level. The level is a
          * simplified view of shares. Levels map to a pre-determined set of numeric
          * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-         * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+         * `low`, `normal`, or `high` are specified values in `memoryShares` will be
          * ignored.  Default: `normal`
          * 
          * @return builder
@@ -594,7 +594,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param memoryShares The number of shares allocated for CPU. Used to
          * determine resource allocation in case of resource contention. If this is set,
-         * `memory_share_level` must be `custom`.
+         * `memoryShareLevel` must be `custom`.
          * 
          * @return builder
          * 
@@ -607,7 +607,7 @@ public final class ResourcePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param memoryShares The number of shares allocated for CPU. Used to
          * determine resource allocation in case of resource contention. If this is set,
-         * `memory_share_level` must be `custom`.
+         * `memoryShareLevel` must be `custom`.
          * 
          * @return builder
          * 

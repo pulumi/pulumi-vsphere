@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * ### Example with a Virtual Machine
  * 
  * The example below builds off the basic example, but includes a virtual machine
- * in the new vApp container. To accomplish this, the `resource_pool_id` of the
+ * in the new vApp container. To accomplish this, the `resourcePoolId` of the
  * virtual machine is set to the `id` of the vApp container.
  * 
  * <pre>
@@ -239,7 +239,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -250,7 +250,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * @return The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -260,7 +260,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * `cpuShareLevel` must be `custom`.
      * 
      */
     @Export(name="cpuShares", refs={Integer.class}, tree="[0]")
@@ -269,7 +269,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     /**
      * @return The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * `cpuShareLevel` must be `custom`.
      * 
      */
     public Output<Integer> cpuShares() {
@@ -345,7 +345,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -356,7 +356,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
      * @return The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      * 
      */
@@ -366,7 +366,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * `memoryShareLevel` must be `custom`.
      * 
      */
     @Export(name="memoryShares", refs={Integer.class}, tree="[0]")
@@ -375,7 +375,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     /**
      * @return The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * `memoryShareLevel` must be `custom`.
      * 
      */
     public Output<Integer> memoryShares() {

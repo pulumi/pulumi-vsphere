@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.GuestOsCustomization` data source can be used to discover the
  * details about a customization specification for a guest operating system.
+ *
+ * ## Example Usage
  */
 export function getGuestOsCustomization(args: GetGuestOsCustomizationArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestOsCustomizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,6 +67,8 @@ export interface GetGuestOsCustomizationResult {
 /**
  * The `vsphere.GuestOsCustomization` data source can be used to discover the
  * details about a customization specification for a guest operating system.
+ *
+ * ## Example Usage
  */
 export function getGuestOsCustomizationOutput(args: GetGuestOsCustomizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGuestOsCustomizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

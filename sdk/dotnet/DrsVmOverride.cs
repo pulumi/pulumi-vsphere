@@ -142,11 +142,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the automation level for this virtual
-        /// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
-        /// `fullyAutomated`. Default: `manual`.
+        /// machine in the cluster. Can be one of `Manual`, `partiallyAutomated`, or
+        /// `fullyAutomated`. Default: `Manual`.
         /// 
         /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-        /// `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        /// `DrsEnabled` or `DrsAutomationLevel` is omitted. Take note of the defaults
         /// for both options.
         /// </summary>
         [Output("drsAutomationLevel")]
@@ -154,7 +154,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the default DRS setting for this virtual
-        /// machine. Can be either `true` or `false`. Default: `false`.
+        /// machine. Can be either `True` or `False`. Default: `False`.
         /// </summary>
         [Output("drsEnabled")]
         public Output<bool?> DrsEnabled { get; private set; } = null!;
@@ -222,11 +222,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the automation level for this virtual
-        /// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
-        /// `fullyAutomated`. Default: `manual`.
+        /// machine in the cluster. Can be one of `Manual`, `partiallyAutomated`, or
+        /// `fullyAutomated`. Default: `Manual`.
         /// 
         /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-        /// `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        /// `DrsEnabled` or `DrsAutomationLevel` is omitted. Take note of the defaults
         /// for both options.
         /// </summary>
         [Input("drsAutomationLevel")]
@@ -234,7 +234,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the default DRS setting for this virtual
-        /// machine. Can be either `true` or `false`. Default: `false`.
+        /// machine. Can be either `True` or `False`. Default: `False`.
         /// </summary>
         [Input("drsEnabled")]
         public Input<bool>? DrsEnabled { get; set; }
@@ -264,11 +264,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the automation level for this virtual
-        /// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
-        /// `fullyAutomated`. Default: `manual`.
+        /// machine in the cluster. Can be one of `Manual`, `partiallyAutomated`, or
+        /// `fullyAutomated`. Default: `Manual`.
         /// 
         /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
-        /// `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        /// `DrsEnabled` or `DrsAutomationLevel` is omitted. Take note of the defaults
         /// for both options.
         /// </summary>
         [Input("drsAutomationLevel")]
@@ -276,7 +276,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the default DRS setting for this virtual
-        /// machine. Can be either `true` or `false`. Default: `false`.
+        /// machine. Can be either `True` or `False`. Default: `False`.
         /// </summary>
         [Input("drsEnabled")]
         public Input<bool>? DrsEnabled { get; set; }

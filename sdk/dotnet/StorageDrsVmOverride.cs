@@ -128,7 +128,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides any Storage DRS automation
-        /// levels for this virtual machine. Can be one of `automated` or `manual`. When
+        /// levels for this virtual machine. Can be one of `Automated` or `Manual`. When
         /// not specified, the datastore cluster's settings are used according to the
         /// specific SDRS subsystem.
         /// </summary>
@@ -145,8 +145,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the intra-VM affinity setting
-        /// for this virtual machine. When `true`, all disks for this virtual machine
-        /// will be kept on the same datastore. When `false`, Storage DRS may locate
+        /// for this virtual machine. When `True`, all disks for this virtual machine
+        /// will be kept on the same datastore. When `False`, Storage DRS may locate
         /// individual disks on different datastores if it helps satisfy cluster
         /// requirements. When not specified, the datastore cluster's settings are used.
         /// </summary>
@@ -216,7 +216,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides any Storage DRS automation
-        /// levels for this virtual machine. Can be one of `automated` or `manual`. When
+        /// levels for this virtual machine. Can be one of `Automated` or `Manual`. When
         /// not specified, the datastore cluster's settings are used according to the
         /// specific SDRS subsystem.
         /// </summary>
@@ -233,8 +233,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the intra-VM affinity setting
-        /// for this virtual machine. When `true`, all disks for this virtual machine
-        /// will be kept on the same datastore. When `false`, Storage DRS may locate
+        /// for this virtual machine. When `True`, all disks for this virtual machine
+        /// will be kept on the same datastore. When `False`, Storage DRS may locate
         /// individual disks on different datastores if it helps satisfy cluster
         /// requirements. When not specified, the datastore cluster's settings are used.
         /// </summary>
@@ -266,7 +266,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides any Storage DRS automation
-        /// levels for this virtual machine. Can be one of `automated` or `manual`. When
+        /// levels for this virtual machine. Can be one of `Automated` or `Manual`. When
         /// not specified, the datastore cluster's settings are used according to the
         /// specific SDRS subsystem.
         /// </summary>
@@ -283,8 +283,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Overrides the intra-VM affinity setting
-        /// for this virtual machine. When `true`, all disks for this virtual machine
-        /// will be kept on the same datastore. When `false`, Storage DRS may locate
+        /// for this virtual machine. When `True`, all disks for this virtual machine
+        /// will be kept on the same datastore. When `False`, Storage DRS may locate
         /// individual disks on different datastores if it helps satisfy cluster
         /// requirements. When not specified, the datastore cluster's settings are used.
         /// </summary>

@@ -18,11 +18,11 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? AuthenticationMethod;
         /// <summary>
-        /// Enable automatic synchronization with the published library. Default `false`.
+        /// Enable automatic synchronization with the published library. Default `False`.
         /// </summary>
         public readonly bool? AutomaticSync;
         /// <summary>
-        /// Download the library from a content only when needed. Default `true`.
+        /// Download the library from a content only when needed. Default `True`.
         /// </summary>
         public readonly bool? OnDemand;
         /// <summary>

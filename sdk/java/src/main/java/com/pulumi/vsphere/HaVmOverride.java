@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  * application or organization for which it does its work, it&#39;s been determined in
  * the event of a host failure, that this should be one of the first virtual
  * machines to be started by vSphere HA during recovery. Hence, it
- * `ha_vm_restart_priority` has been set to `highest`,
+ * `haVmRestartPriority` has been set to `highest`,
  * which, assuming that the default restart priority is `medium` and no other
  * virtual machine has been assigned the `highest` priority, will mean that this
  * VM will be started before any other virtual machine in the event of host
@@ -246,14 +246,14 @@ public class HaVmOverride extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.haVmFailureInterval);
     }
     /**
-     * The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+     * The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     @Export(name="haVmMaximumFailureWindow", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> haVmMaximumFailureWindow;
 
     /**
-     * @return The length of the reset window in which ha_vm_maximum_resets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
+     * @return The length of the reset window in which haVmMaximumResets can operate. When this window expires, no more resets are attempted regardless of the setting configured in ha_vm_maximum_resets. -1 means no window, meaning an unlimited reset time is allotted.
      * 
      */
     public Output<Optional<Integer>> haVmMaximumFailureWindow() {

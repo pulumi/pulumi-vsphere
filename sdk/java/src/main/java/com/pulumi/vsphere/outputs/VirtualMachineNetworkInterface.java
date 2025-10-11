@@ -50,7 +50,7 @@ public final class VirtualMachineNetworkInterface {
      */
     private @Nullable Integer key;
     /**
-     * @return The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+     * @return The MAC address of this network interface. Can only be manually set if useStaticMac is true.
      * 
      */
     private @Nullable String macAddress;
@@ -70,7 +70,7 @@ public final class VirtualMachineNetworkInterface {
      */
     private @Nullable String physicalFunction;
     /**
-     * @return If true, the mac_address field is treated as a static MAC address and set accordingly.
+     * @return If true, the macAddress field is treated as a static MAC address and set accordingly.
      * 
      */
     private @Nullable Boolean useStaticMac;
@@ -126,7 +126,7 @@ public final class VirtualMachineNetworkInterface {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+     * @return The MAC address of this network interface. Can only be manually set if useStaticMac is true.
      * 
      */
     public Optional<String> macAddress() {
@@ -154,7 +154,7 @@ public final class VirtualMachineNetworkInterface {
         return Optional.ofNullable(this.physicalFunction);
     }
     /**
-     * @return If true, the mac_address field is treated as a static MAC address and set accordingly.
+     * @return If true, the macAddress field is treated as a static MAC address and set accordingly.
      * 
      */
     public Optional<Boolean> useStaticMac() {

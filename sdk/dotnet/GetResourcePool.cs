@@ -312,7 +312,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter in which the resource pool is located. This can be omitted
-        /// if the search path used in `name` is an absolute path. For default
+        /// if the search path used in `Name` is an absolute path. For default
         /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
         /// source..
         /// </summary>
@@ -328,7 +328,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The managed object ID
-        /// of the parent resource pool. When specified, the `name` parameter is used to find
+        /// of the parent resource pool. When specified, the `Name` parameter is used to find
         /// a child resource pool with the given name under this parent resource pool.
         /// 
         /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
@@ -349,7 +349,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference ID
         /// of the datacenter in which the resource pool is located. This can be omitted
-        /// if the search path used in `name` is an absolute path. For default
+        /// if the search path used in `Name` is an absolute path. For default
         /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
         /// source..
         /// </summary>
@@ -365,7 +365,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The managed object ID
-        /// of the parent resource pool. When specified, the `name` parameter is used to find
+        /// of the parent resource pool. When specified, the `Name` parameter is used to find
         /// a child resource pool with the given name under this parent resource pool.
         /// 
         /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not

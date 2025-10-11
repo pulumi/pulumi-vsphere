@@ -27,12 +27,12 @@ public final class VirtualMachineCloneCustomize {
      */
     private @Nullable List<String> dnsSuffixLists;
     /**
-     * @return The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * @return The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     private @Nullable String ipv4Gateway;
     /**
-     * @return The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * @return The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     private @Nullable String ipv6Gateway;
@@ -78,14 +78,14 @@ public final class VirtualMachineCloneCustomize {
         return this.dnsSuffixLists == null ? List.of() : this.dnsSuffixLists;
     }
     /**
-     * @return The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * @return The IPv4 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     public Optional<String> ipv4Gateway() {
         return Optional.ofNullable(this.ipv4Gateway);
     }
     /**
-     * @return The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+     * @return The IPv6 default gateway when using networkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
      * 
      */
     public Optional<String> ipv6Gateway() {

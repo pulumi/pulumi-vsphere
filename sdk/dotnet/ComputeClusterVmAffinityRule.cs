@@ -19,7 +19,7 @@ namespace Pulumi.VSphere
     /// same host within a cluster. When configured, DRS will make a best effort to
     /// ensure that the virtual machines run on the same host, or prevent any operation
     /// that would keep that from happening, depending on the value of the
-    /// `mandatory` flag.
+    /// `Mandatory` flag.
     /// 
     /// &gt; An affinity rule can only be used to place virtual machines on the same
     /// _non-specific_ hosts. It cannot be used to pin virtual machines to a host.
@@ -146,17 +146,17 @@ namespace Pulumi.VSphere
         public Output<string> ComputeClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Output("mandatory")]
@@ -230,17 +230,17 @@ namespace Pulumi.VSphere
         public Input<string> ComputeClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]
@@ -282,17 +282,17 @@ namespace Pulumi.VSphere
         public Input<string>? ComputeClusterId { get; set; }
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]

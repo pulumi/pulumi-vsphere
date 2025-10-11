@@ -21,7 +21,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
      * 
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
-     * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
+     * &gt; **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
      * 
      */
     @Import(name="classId")
@@ -32,7 +32,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
      * 
      * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
-     * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
+     * &gt; **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
      * 
      */
     public Optional<Output<String>> classId() {
@@ -120,7 +120,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
          * 
          * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
-         * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
+         * &gt; **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class GetHostPciDeviceArgs extends com.pulumi.resources.InvokeArgs 
          * 
          * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
-         * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
+         * &gt; **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
          * 
          * @return builder
          * 

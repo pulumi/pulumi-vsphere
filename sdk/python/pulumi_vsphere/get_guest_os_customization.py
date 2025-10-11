@@ -129,6 +129,8 @@ def get_guest_os_customization(name: Optional[_builtins.str] = None,
     The `GuestOsCustomization` data source can be used to discover the
     details about a customization specification for a guest operating system.
 
+    ## Example Usage
+
 
     :param _builtins.str name: The name of the customization specification is the unique
            identifier per vCenter Server instance.
@@ -151,6 +153,8 @@ def get_guest_os_customization_output(name: Optional[pulumi.Input[_builtins.str]
     """
     The `GuestOsCustomization` data source can be used to discover the
     details about a customization specification for a guest operating system.
+
+    ## Example Usage
 
 
     :param _builtins.str name: The name of the customization specification is the unique

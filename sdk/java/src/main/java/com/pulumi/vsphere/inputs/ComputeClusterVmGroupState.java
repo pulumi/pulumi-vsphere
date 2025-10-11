@@ -63,8 +63,8 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
      * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
      * import section. When importing a VM group, validate that all virtual machines that
-     * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
-     * that are not in `virtual_machine_ids` the included will be removed from the group.
+     * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+     * that are not in `virtualMachineIds` the included will be removed from the group.
      * 
      */
     @Import(name="virtualMachineIds")
@@ -81,8 +81,8 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
      * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
      * import section. When importing a VM group, validate that all virtual machines that
-     * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
-     * that are not in `virtual_machine_ids` the included will be removed from the group.
+     * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+     * that are not in `virtualMachineIds` the included will be removed from the group.
      * 
      */
     public Optional<Output<List<String>>> virtualMachineIds() {
@@ -174,8 +174,8 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * 
          * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
          * import section. When importing a VM group, validate that all virtual machines that
-         * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
-         * that are not in `virtual_machine_ids` the included will be removed from the group.
+         * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+         * that are not in `virtualMachineIds` the included will be removed from the group.
          * 
          * @return builder
          * 
@@ -196,8 +196,8 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * 
          * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
          * import section. When importing a VM group, validate that all virtual machines that
-         * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
-         * that are not in `virtual_machine_ids` the included will be removed from the group.
+         * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+         * that are not in `virtualMachineIds` the included will be removed from the group.
          * 
          * @return builder
          * 
@@ -217,8 +217,8 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * 
          * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
          * import section. When importing a VM group, validate that all virtual machines that
-         * need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
-         * that are not in `virtual_machine_ids` the included will be removed from the group.
+         * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
+         * that are not in `virtualMachineIds` the included will be removed from the group.
          * 
          * @return builder
          * 

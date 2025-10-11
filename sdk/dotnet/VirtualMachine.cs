@@ -38,7 +38,7 @@ namespace Pulumi.VSphere
     public partial class VirtualMachine : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+        /// The guest name for the operating system when GuestId is otherGuest or otherGuest64.
         /// </summary>
         [Output("alternateGuestName")]
         public Output<string?> AlternateGuestName { get; private set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.VSphere
         public Output<int?> BootDelay { get; private set; } = null!;
 
         /// <summary>
-        /// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+        /// The number of milliseconds to wait before retrying the boot sequence. This only valid if BootRetryEnabled is true.
         /// </summary>
         [Output("bootRetryDelay")]
         public Output<int?> BootRetryDelay { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableDictionary<string, string>?> ExtraConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+        /// Allow the virtual machine to be rebooted when a change to `ExtraConfig` occurs.
         /// </summary>
         [Output("extraConfigRebootRequired")]
         public Output<bool?> ExtraConfigRebootRequired { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.VSphere
         public Output<string> GuestId { get; private set; } = null!;
 
         /// <summary>
-        /// The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
+        /// The current list of IP addresses on this machine, including the value of `DefaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         /// </summary>
         [Output("guestIpAddresses")]
         public Output<ImmutableArray<string>> GuestIpAddresses { get; private set; } = null!;
@@ -341,7 +341,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<Outputs.VirtualMachineNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to NumCpus must be evenly divisible by this value.
         /// </summary>
         [Output("numCoresPerSocket")]
         public Output<int?> NumCoresPerSocket { get; private set; } = null!;
@@ -368,7 +368,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> PciDeviceIds { get; private set; } = null!;
 
         /// <summary>
-        /// A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
+        /// A computed value for the current power state of the virtual machine. One of `On`, `Off`, or `Suspended`.
         /// </summary>
         [Output("powerState")]
         public Output<string> PowerState { get; private set; } = null!;
@@ -467,7 +467,7 @@ namespace Pulumi.VSphere
         public Output<bool?> SyncTimeWithHost { get; private set; } = null!;
 
         /// <summary>
-        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `SyncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
         /// </summary>
         [Output("syncTimeWithHostPeriodically")]
         public Output<bool?> SyncTimeWithHostPeriodically { get; private set; } = null!;
@@ -479,13 +479,13 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
+        /// Set the upgrade policy for VMware Tools. Can be one of `Manual` or `upgradeAtPowerCycle`.
         /// </summary>
         [Output("toolsUpgradePolicy")]
         public Output<string?> ToolsUpgradePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The UUID of the virtual machine. Also exposed as the `id` of the resource.
+        /// The UUID of the virtual machine. Also exposed as the `Id` of the resource.
         /// </summary>
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
@@ -597,7 +597,7 @@ namespace Pulumi.VSphere
     public sealed class VirtualMachineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+        /// The guest name for the operating system when GuestId is otherGuest or otherGuest64.
         /// </summary>
         [Input("alternateGuestName")]
         public Input<string>? AlternateGuestName { get; set; }
@@ -615,7 +615,7 @@ namespace Pulumi.VSphere
         public Input<int>? BootDelay { get; set; }
 
         /// <summary>
-        /// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+        /// The number of milliseconds to wait before retrying the boot sequence. This only valid if BootRetryEnabled is true.
         /// </summary>
         [Input("bootRetryDelay")]
         public Input<int>? BootRetryDelay { get; set; }
@@ -765,7 +765,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+        /// Allow the virtual machine to be rebooted when a change to `ExtraConfig` occurs.
         /// </summary>
         [Input("extraConfigRebootRequired")]
         public Input<bool>? ExtraConfigRebootRequired { get; set; }
@@ -906,7 +906,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to NumCpus must be evenly divisible by this value.
         /// </summary>
         [Input("numCoresPerSocket")]
         public Input<int>? NumCoresPerSocket { get; set; }
@@ -1029,7 +1029,7 @@ namespace Pulumi.VSphere
         public Input<bool>? SyncTimeWithHost { get; set; }
 
         /// <summary>
-        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `SyncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
         /// </summary>
         [Input("syncTimeWithHostPeriodically")]
         public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
@@ -1047,7 +1047,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
+        /// Set the upgrade policy for VMware Tools. Can be one of `Manual` or `upgradeAtPowerCycle`.
         /// </summary>
         [Input("toolsUpgradePolicy")]
         public Input<string>? ToolsUpgradePolicy { get; set; }
@@ -1103,7 +1103,7 @@ namespace Pulumi.VSphere
     public sealed class VirtualMachineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The guest name for the operating system when guest_id is otherGuest or otherGuest64.
+        /// The guest name for the operating system when GuestId is otherGuest or otherGuest64.
         /// </summary>
         [Input("alternateGuestName")]
         public Input<string>? AlternateGuestName { get; set; }
@@ -1121,7 +1121,7 @@ namespace Pulumi.VSphere
         public Input<int>? BootDelay { get; set; }
 
         /// <summary>
-        /// The number of milliseconds to wait before retrying the boot sequence. This only valid if boot_retry_enabled is true.
+        /// The number of milliseconds to wait before retrying the boot sequence. This only valid if BootRetryEnabled is true.
         /// </summary>
         [Input("bootRetryDelay")]
         public Input<int>? BootRetryDelay { get; set; }
@@ -1283,7 +1283,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Allow the virtual machine to be rebooted when a change to `extra_config` occurs.
+        /// Allow the virtual machine to be rebooted when a change to `ExtraConfig` occurs.
         /// </summary>
         [Input("extraConfigRebootRequired")]
         public Input<bool>? ExtraConfigRebootRequired { get; set; }
@@ -1316,7 +1316,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _guestIpAddresses;
 
         /// <summary>
-        /// The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
+        /// The current list of IP addresses on this machine, including the value of `DefaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this list will be empty.
         /// </summary>
         public InputList<string> GuestIpAddresses
         {
@@ -1448,7 +1448,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to num_cpus must be evenly divisible by this value.
+        /// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to NumCpus must be evenly divisible by this value.
         /// </summary>
         [Input("numCoresPerSocket")]
         public Input<int>? NumCoresPerSocket { get; set; }
@@ -1481,7 +1481,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
+        /// A computed value for the current power state of the virtual machine. One of `On`, `Off`, or `Suspended`.
         /// </summary>
         [Input("powerState")]
         public Input<string>? PowerState { get; set; }
@@ -1580,7 +1580,7 @@ namespace Pulumi.VSphere
         public Input<bool>? SyncTimeWithHost { get; set; }
 
         /// <summary>
-        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `sync_time_with_host` is enough for periodic synchronization. Requires VMware Tools to be installed.
+        /// Enable periodic clock synchronization with the host. Supported only on vSphere 7.0 U1 and above. On prior versions setting `SyncTimeWithHost` is enough for periodic synchronization. Requires VMware Tools to be installed.
         /// </summary>
         [Input("syncTimeWithHostPeriodically")]
         public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
@@ -1598,13 +1598,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Set the upgrade policy for VMware Tools. Can be one of `manual` or `upgradeAtPowerCycle`.
+        /// Set the upgrade policy for VMware Tools. Can be one of `Manual` or `upgradeAtPowerCycle`.
         /// </summary>
         [Input("toolsUpgradePolicy")]
         public Input<string>? ToolsUpgradePolicy { get; set; }
 
         /// <summary>
-        /// The UUID of the virtual machine. Also exposed as the `id` of the resource.
+        /// The UUID of the virtual machine. Also exposed as the `Id` of the resource.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

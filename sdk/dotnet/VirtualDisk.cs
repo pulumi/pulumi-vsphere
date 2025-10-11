@@ -13,7 +13,7 @@ namespace Pulumi.VSphere
     /// The `vsphere.VirtualDisk` resource can be used to create virtual disks outside
     /// of any given `vsphere.VirtualMachine`
     /// resource. These disks can be attached to a virtual machine by creating a disk
-    /// block with the `attach` parameter.
+    /// block with the `Attach` parameter.
     /// 
     /// ## Example Usage
     /// 
@@ -71,11 +71,11 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The adapter type for this virtual disk. Can be
-        /// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+        /// one of `Ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
         /// 
-        /// &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+        /// &gt; **NOTE:** `AdapterType` is **deprecated**: it does not dictate the type of
         /// controller that the virtual disk will be attached to on the virtual machine.
-        /// Please see the `scsi_type` parameter
+        /// Please see the `ScsiType` parameter
         /// in the `vsphere.VirtualMachine` resource for information on how to control
         /// disk controller types. This parameter will be removed in future versions of the
         /// vSphere provider.
@@ -85,11 +85,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Tells the resource to create any
-        /// directories that are a part of the `vmdk_path` parameter if they are missing.
-        /// Default: `false`.
+        /// directories that are a part of the `VmdkPath` parameter if they are missing.
+        /// Default: `False`.
         /// 
         /// &gt; **NOTE:** Any directory created as part of the operation when
-        /// `create_directories` is enabled will not be deleted when the resource is
+        /// `CreateDirectories` is enabled will not be deleted when the resource is
         /// destroyed.
         /// </summary>
         [Output("createDirectories")]
@@ -120,7 +120,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The type of disk to create. Can be one of
-        /// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
+        /// `eagerZeroedThick`, `Lazy`, or `Thin`. Default: `eagerZeroedThick`. For
         /// information on what each kind of disk provisioning policy means, click
         /// [here][docs-vmware-vm-disk-provisioning].
         /// 
@@ -184,11 +184,11 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The adapter type for this virtual disk. Can be
-        /// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+        /// one of `Ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
         /// 
-        /// &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+        /// &gt; **NOTE:** `AdapterType` is **deprecated**: it does not dictate the type of
         /// controller that the virtual disk will be attached to on the virtual machine.
-        /// Please see the `scsi_type` parameter
+        /// Please see the `ScsiType` parameter
         /// in the `vsphere.VirtualMachine` resource for information on how to control
         /// disk controller types. This parameter will be removed in future versions of the
         /// vSphere provider.
@@ -198,11 +198,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Tells the resource to create any
-        /// directories that are a part of the `vmdk_path` parameter if they are missing.
-        /// Default: `false`.
+        /// directories that are a part of the `VmdkPath` parameter if they are missing.
+        /// Default: `False`.
         /// 
         /// &gt; **NOTE:** Any directory created as part of the operation when
-        /// `create_directories` is enabled will not be deleted when the resource is
+        /// `CreateDirectories` is enabled will not be deleted when the resource is
         /// destroyed.
         /// </summary>
         [Input("createDirectories")]
@@ -233,7 +233,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The type of disk to create. Can be one of
-        /// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
+        /// `eagerZeroedThick`, `Lazy`, or `Thin`. Default: `eagerZeroedThick`. For
         /// information on what each kind of disk provisioning policy means, click
         /// [here][docs-vmware-vm-disk-provisioning].
         /// 
@@ -259,11 +259,11 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The adapter type for this virtual disk. Can be
-        /// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+        /// one of `Ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
         /// 
-        /// &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+        /// &gt; **NOTE:** `AdapterType` is **deprecated**: it does not dictate the type of
         /// controller that the virtual disk will be attached to on the virtual machine.
-        /// Please see the `scsi_type` parameter
+        /// Please see the `ScsiType` parameter
         /// in the `vsphere.VirtualMachine` resource for information on how to control
         /// disk controller types. This parameter will be removed in future versions of the
         /// vSphere provider.
@@ -273,11 +273,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Tells the resource to create any
-        /// directories that are a part of the `vmdk_path` parameter if they are missing.
-        /// Default: `false`.
+        /// directories that are a part of the `VmdkPath` parameter if they are missing.
+        /// Default: `False`.
         /// 
         /// &gt; **NOTE:** Any directory created as part of the operation when
-        /// `create_directories` is enabled will not be deleted when the resource is
+        /// `CreateDirectories` is enabled will not be deleted when the resource is
         /// destroyed.
         /// </summary>
         [Input("createDirectories")]
@@ -308,7 +308,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The type of disk to create. Can be one of
-        /// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
+        /// `eagerZeroedThick`, `Lazy`, or `Thin`. Default: `eagerZeroedThick`. For
         /// information on what each kind of disk provisioning policy means, click
         /// [here][docs-vmware-vm-disk-provisioning].
         /// 

@@ -25,6 +25,13 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example sets up a datastore cluster and enables Storage DRS with
+    /// the default settings. It then creates two NAS datastores using the
+    /// `vsphere.NasDatastore` resource and assigns them to
+    /// the datastore cluster.
+    /// 
     /// ## Import
     /// 
     /// An existing datastore cluster can be imported into this resource
@@ -69,7 +76,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The relative path to a folder to put this datastore
         /// cluster in.  This is a path relative to the datacenter you are deploying the
-        /// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
         /// `foo/bar`, The provider will place a datastore cluster named
         /// `datastore-cluster-test` in a datastore folder located at
         /// `/dc1/datastore/foo/bar`, with the final inventory path being
@@ -104,7 +111,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enable Storage DRS for this datastore cluster.
-        /// Default: `false`.
+        /// Default: `False`.
         /// </summary>
         [Output("sdrsEnabled")]
         public Output<bool?> SdrsEnabled { get; private set; } = null!;
@@ -116,7 +123,7 @@ namespace Pulumi.VSphere
         public Output<int?> SdrsFreeSpaceThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, DrsSpaceUtilizationThreshold is used, and when set to freeSpace, DrsFreeSpaceThreshold is used.
         /// </summary>
         [Output("sdrsFreeSpaceThresholdMode")]
         public Output<string?> SdrsFreeSpaceThresholdMode { get; private set; } = null!;
@@ -288,7 +295,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The relative path to a folder to put this datastore
         /// cluster in.  This is a path relative to the datacenter you are deploying the
-        /// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
         /// `foo/bar`, The provider will place a datastore cluster named
         /// `datastore-cluster-test` in a datastore folder located at
         /// `/dc1/datastore/foo/bar`, with the final inventory path being
@@ -329,7 +336,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enable Storage DRS for this datastore cluster.
-        /// Default: `false`.
+        /// Default: `False`.
         /// </summary>
         [Input("sdrsEnabled")]
         public Input<bool>? SdrsEnabled { get; set; }
@@ -341,7 +348,7 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, DrsSpaceUtilizationThreshold is used, and when set to freeSpace, DrsFreeSpaceThreshold is used.
         /// </summary>
         [Input("sdrsFreeSpaceThresholdMode")]
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }
@@ -481,7 +488,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The relative path to a folder to put this datastore
         /// cluster in.  This is a path relative to the datacenter you are deploying the
-        /// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
         /// `foo/bar`, The provider will place a datastore cluster named
         /// `datastore-cluster-test` in a datastore folder located at
         /// `/dc1/datastore/foo/bar`, with the final inventory path being
@@ -522,7 +529,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Enable Storage DRS for this datastore cluster.
-        /// Default: `false`.
+        /// Default: `False`.
         /// </summary>
         [Input("sdrsEnabled")]
         public Input<bool>? SdrsEnabled { get; set; }
@@ -534,7 +541,7 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, DrsSpaceUtilizationThreshold is used, and when set to freeSpace, DrsFreeSpaceThreshold is used.
         /// </summary>
         [Input("sdrsFreeSpaceThresholdMode")]
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }

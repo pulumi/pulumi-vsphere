@@ -14,7 +14,7 @@ namespace Pulumi.VSphere.Outputs
     public sealed class EntityPermissionsPermission
     {
         /// <summary>
-        /// Whether `user_or_group` field refers to a user or a
+        /// Whether `UserOrGroup` field refers to a user or a
         /// group. True for a group and false for a user.
         /// </summary>
         public readonly bool IsGroup;

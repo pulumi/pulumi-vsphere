@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  * This example sets the trunk mode VLAN (`4095`, which passes through all tags)
  * and sets
- * `allow_promiscuous`
+ * `allowPromiscuous`
  * to ensure that all traffic is seen on the port. The setting overrides
  * the implicit default of `false` set on the standard switch.
  * 

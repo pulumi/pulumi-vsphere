@@ -16,7 +16,7 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
     public static final EntityPermissionsPermissionArgs Empty = new EntityPermissionsPermissionArgs();
 
     /**
-     * Whether `user_or_group` field refers to a user or a
+     * Whether `userOrGroup` field refers to a user or a
      * group. True for a group and false for a user.
      * 
      */
@@ -24,7 +24,7 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
     private Output<Boolean> isGroup;
 
     /**
-     * @return Whether `user_or_group` field refers to a user or a
+     * @return Whether `userOrGroup` field refers to a user or a
      * group. True for a group and false for a user.
      * 
      */
@@ -109,7 +109,7 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isGroup Whether `user_or_group` field refers to a user or a
+         * @param isGroup Whether `userOrGroup` field refers to a user or a
          * group. True for a group and false for a user.
          * 
          * @return builder
@@ -121,7 +121,7 @@ public final class EntityPermissionsPermissionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isGroup Whether `user_or_group` field refers to a user or a
+         * @param isGroup Whether `userOrGroup` field refers to a user or a
          * group. True for a group and false for a user.
          * 
          * @return builder
