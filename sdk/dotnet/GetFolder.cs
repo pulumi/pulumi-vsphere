@@ -344,17 +344,17 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The absolute path of the folder. For example, given a
-        /// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-        /// of `example-vm-folder`, the resulting `path` would be
+        /// default datacenter of `default-dc`, a folder of type `Vm`, and a folder name
+        /// of `example-vm-folder`, the resulting `Path` would be
         /// `/default-dc/vm/example-vm-folder`.
         /// 
         /// For nested datacenters, include the full hierarchy in the path. For example, if datacenter
         /// `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
         /// `/parent-folder/default-dc/vm/example-vm-folder`.
         /// 
-        /// The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+        /// The valid folder types to be used in a `Path` are: `Vm`, `Host`, `Datacenter`, `Datastore`, or `Network`.
         /// 
-        /// Always include a leading slash in the `path`.
+        /// Always include a leading slash in the `Path`.
         /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
@@ -369,17 +369,17 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The absolute path of the folder. For example, given a
-        /// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-        /// of `example-vm-folder`, the resulting `path` would be
+        /// default datacenter of `default-dc`, a folder of type `Vm`, and a folder name
+        /// of `example-vm-folder`, the resulting `Path` would be
         /// `/default-dc/vm/example-vm-folder`.
         /// 
         /// For nested datacenters, include the full hierarchy in the path. For example, if datacenter
         /// `default-dc` is inside folder `parent-folder`, the path to a VM folder would be
         /// `/parent-folder/default-dc/vm/example-vm-folder`.
         /// 
-        /// The valid folder types to be used in a `path` are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+        /// The valid folder types to be used in a `Path` are: `Vm`, `Host`, `Datacenter`, `Datastore`, or `Network`.
         /// 
-        /// Always include a leading slash in the `path`.
+        /// Always include a leading slash in the `Path`.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

@@ -14,6 +14,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.GuestOsCustomization` data source can be used to discover the
         /// details about a customization specification for a guest operating system.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetGuestOsCustomizationResult> InvokeAsync(GetGuestOsCustomizationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationArgs(), options.WithDefaults());
@@ -21,6 +23,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.GuestOsCustomization` data source can be used to discover the
         /// details about a customization specification for a guest operating system.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());
@@ -28,6 +32,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.GuestOsCustomization` data source can be used to discover the
         /// details about a customization specification for a guest operating system.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGuestOsCustomizationResult> Invoke(GetGuestOsCustomizationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGuestOsCustomizationResult>("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", args ?? new GetGuestOsCustomizationInvokeArgs(), options.WithDefaults());

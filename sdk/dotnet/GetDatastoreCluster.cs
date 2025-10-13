@@ -117,7 +117,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference
         /// ID of the datacenter the datastore cluster is located in.
-        /// This can be omitted if the search path used in `name` is an absolute path.
+        /// This can be omitted if the search path used in `Name` is an absolute path.
         /// For default datacenters, use the id attribute from an empty
         /// `vsphere.Datacenter` data source.
         /// </summary>
@@ -141,7 +141,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object reference
         /// ID of the datacenter the datastore cluster is located in.
-        /// This can be omitted if the search path used in `name` is an absolute path.
+        /// This can be omitted if the search path used in `Name` is an absolute path.
         /// For default datacenters, use the id attribute from an empty
         /// `vsphere.Datacenter` data source.
         /// </summary>

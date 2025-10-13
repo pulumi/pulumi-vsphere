@@ -21,18 +21,18 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
      * 
-     * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+     * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
      * controller that the virtual disk will be attached to on the virtual machine.
-     * Please see the `scsi_type` parameter
+     * Please see the `scsiType` parameter
      * in the `vsphere.VirtualMachine` resource for information on how to control
      * disk controller types. This parameter will be removed in future versions of the
      * vSphere provider.
      * 
      * @deprecated
-     * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
+     * this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      * 
      */
-    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
+    @Deprecated /* this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead */
     @Import(name="adapterType")
     private @Nullable Output<String> adapterType;
 
@@ -40,29 +40,29 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * @return The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
      * 
-     * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+     * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
      * controller that the virtual disk will be attached to on the virtual machine.
-     * Please see the `scsi_type` parameter
+     * Please see the `scsiType` parameter
      * in the `vsphere.VirtualMachine` resource for information on how to control
      * disk controller types. This parameter will be removed in future versions of the
      * vSphere provider.
      * 
      * @deprecated
-     * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
+     * this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
      * 
      */
-    @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
+    @Deprecated /* this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead */
     public Optional<Output<String>> adapterType() {
         return Optional.ofNullable(this.adapterType);
     }
 
     /**
      * Tells the resource to create any
-     * directories that are a part of the `vmdk_path` parameter if they are missing.
+     * directories that are a part of the `vmdkPath` parameter if they are missing.
      * Default: `false`.
      * 
      * &gt; **NOTE:** Any directory created as part of the operation when
-     * `create_directories` is enabled will not be deleted when the resource is
+     * `createDirectories` is enabled will not be deleted when the resource is
      * destroyed.
      * 
      */
@@ -71,11 +71,11 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Tells the resource to create any
-     * directories that are a part of the `vmdk_path` parameter if they are missing.
+     * directories that are a part of the `vmdkPath` parameter if they are missing.
      * Default: `false`.
      * 
      * &gt; **NOTE:** Any directory created as part of the operation when
-     * `create_directories` is enabled will not be deleted when the resource is
+     * `createDirectories` is enabled will not be deleted when the resource is
      * destroyed.
      * 
      */
@@ -214,9 +214,9 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * @param adapterType The adapter type for this virtual disk. Can be
          * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
          * 
-         * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+         * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
          * controller that the virtual disk will be attached to on the virtual machine.
-         * Please see the `scsi_type` parameter
+         * Please see the `scsiType` parameter
          * in the `vsphere.VirtualMachine` resource for information on how to control
          * disk controller types. This parameter will be removed in future versions of the
          * vSphere provider.
@@ -224,10 +224,10 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
+         * this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
          * 
          */
-        @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
+        @Deprecated /* this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead */
         public Builder adapterType(@Nullable Output<String> adapterType) {
             $.adapterType = adapterType;
             return this;
@@ -237,9 +237,9 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * @param adapterType The adapter type for this virtual disk. Can be
          * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
          * 
-         * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+         * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
          * controller that the virtual disk will be attached to on the virtual machine.
-         * Please see the `scsi_type` parameter
+         * Please see the `scsiType` parameter
          * in the `vsphere.VirtualMachine` resource for information on how to control
          * disk controller types. This parameter will be removed in future versions of the
          * vSphere provider.
@@ -247,21 +247,21 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead
+         * this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
          * 
          */
-        @Deprecated /* this attribute has no effect on controller types - please use scsi_type in vsphere.VirtualMachine instead */
+        @Deprecated /* this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead */
         public Builder adapterType(String adapterType) {
             return adapterType(Output.of(adapterType));
         }
 
         /**
          * @param createDirectories Tells the resource to create any
-         * directories that are a part of the `vmdk_path` parameter if they are missing.
+         * directories that are a part of the `vmdkPath` parameter if they are missing.
          * Default: `false`.
          * 
          * &gt; **NOTE:** Any directory created as part of the operation when
-         * `create_directories` is enabled will not be deleted when the resource is
+         * `createDirectories` is enabled will not be deleted when the resource is
          * destroyed.
          * 
          * @return builder
@@ -274,11 +274,11 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param createDirectories Tells the resource to create any
-         * directories that are a part of the `vmdk_path` parameter if they are missing.
+         * directories that are a part of the `vmdkPath` parameter if they are missing.
          * Default: `false`.
          * 
          * &gt; **NOTE:** Any directory created as part of the operation when
-         * `create_directories` is enabled will not be deleted when the resource is
+         * `createDirectories` is enabled will not be deleted when the resource is
          * destroyed.
          * 
          * @return builder

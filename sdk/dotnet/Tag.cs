@@ -59,7 +59,7 @@ namespace Pulumi.VSphere
     /// 
     /// ### Using Tags in a Supported Resource
     /// 
-    /// Tags can be applied to vSphere resources via the `tags` argument
+    /// Tags can be applied to vSphere resources via the `Tags` argument
     /// in any supported resource.
     /// 
     /// The following example builds on the above example by creating a

@@ -82,11 +82,11 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
 
     /**
      * Allows the port group to create additional ports
-     * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
      * 
-     * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+     * &gt; **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
      * may lead to errors when the port count grows past the amount specified.  If you
-     * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+     * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      * 
      */
     @Import(name="autoExpand")
@@ -94,11 +94,11 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
 
     /**
      * @return Allows the port group to create additional ports
-     * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
      * 
-     * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+     * &gt; **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
      * may lead to errors when the port count grows past the amount specified.  If you
-     * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+     * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      * 
      */
     public Optional<Output<Boolean>> autoExpand() {
@@ -945,11 +945,11 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
 
         /**
          * @param autoExpand Allows the port group to create additional ports
-         * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+         * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
          * 
-         * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+         * &gt; **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
          * may lead to errors when the port count grows past the amount specified.  If you
-         * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+         * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
          * 
          * @return builder
          * 
@@ -961,11 +961,11 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
 
         /**
          * @param autoExpand Allows the port group to create additional ports
-         * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+         * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
          * 
-         * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+         * &gt; **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
          * may lead to errors when the port count grows past the amount specified.  If you
-         * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+         * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
          * 
          * @return builder
          * 

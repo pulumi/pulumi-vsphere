@@ -26,11 +26,11 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? PublishUrl;
         /// <summary>
-        /// Publish the content library. Default `false`.
+        /// Publish the content library. Default `False`.
         /// </summary>
         public readonly bool? Published;
         /// <summary>
-        /// Username used by subscribers to authenticate. Currently can only be `vcsp`.
+        /// Username used by subscribers to authenticate. Currently can only be `Vcsp`.
         /// </summary>
         public readonly string? Username;
 

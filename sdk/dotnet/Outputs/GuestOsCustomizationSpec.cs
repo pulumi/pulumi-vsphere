@@ -22,11 +22,11 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixLists;
         /// <summary>
-        /// The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// The IPv4 default gateway when using NetworkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
         /// </summary>
         public readonly string? Ipv4Gateway;
         /// <summary>
-        /// The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+        /// The IPv6 default gateway when using NetworkInterface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
         /// </summary>
         public readonly string? Ipv6Gateway;
         /// <summary>

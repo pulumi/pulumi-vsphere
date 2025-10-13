@@ -3976,6 +3976,8 @@ public final class VsphereFunctions {
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args) {
         return getGuestOsCustomization(args, InvokeOptions.Empty);
@@ -3983,6 +3985,8 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args) {
@@ -3992,6 +3996,8 @@ public final class VsphereFunctions {
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
@@ -4000,6 +4006,8 @@ public final class VsphereFunctions {
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
@@ -4007,6 +4015,8 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.GuestOsCustomization` data source can be used to discover the
      * details about a customization specification for a guest operating system.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args, InvokeOptions options) {
@@ -4521,7 +4531,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4623,7 +4633,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4725,7 +4735,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4827,7 +4837,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -4929,7 +4939,7 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
      * of a vSphere host&#39;s PCI device. This can then be used with
-     * `vsphere.VirtualMachine`&#39;s `pci_device_id`.
+     * `vsphere.VirtualMachine`&#39;s `pciDeviceId`.
      * 
      * ## Example Usage
      * 
@@ -5029,7 +5039,7 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getHostPciDevice:getHostPciDevice", TypeShape.of(GetHostPciDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5077,7 +5087,7 @@ public final class VsphereFunctions {
         return getHostThumbprint(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5125,7 +5135,7 @@ public final class VsphereFunctions {
         return getHostThumbprintPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5173,7 +5183,7 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 
@@ -5221,7 +5231,7 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getHostThumbprint:getHostThumbprint", TypeShape.of(GetHostThumbprintResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere_thumbprint` data source can be used to discover the host thumbprint
+     * The `vsphereThumbprint` data source can be used to discover the host thumbprint
      * of an ESXi host. This can be used when adding the `vsphere.Host` resource to a
      * cluster or a vCenter Server instance.
      * 

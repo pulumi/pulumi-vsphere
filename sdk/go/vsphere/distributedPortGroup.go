@@ -31,6 +31,13 @@ import (
 // > **NOTE:** This resource requires vCenter and is not available on
 // direct ESXi host connections.
 //
+// ## Example Usage
+//
+// The configuration below builds on the example given in the
+// `DistributedVirtualSwitch` resource by
+// adding the `DistributedPortGroup` resource, attaching itself to the
+// vSphere Distributed Switch and assigning VLAN ID 1000.
+//
 // ### Overriding VDS policies
 //
 // All of the default port policies available in the

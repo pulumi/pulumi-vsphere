@@ -31,14 +31,14 @@ public class ConfigurationProfile extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+     * The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
      * 
      */
     @Export(name="configuration", refs={String.class}, tree="[0]")
     private Output<String> configuration;
 
     /**
-     * @return The configuration JSON provided as a plain string. This argument can only be specified if `reference_host_id` is not set.
+     * @return The configuration JSON provided as a plain string. This argument can only be specified if `referenceHostId` is not set.
      * 
      */
     public Output<String> configuration() {
@@ -46,7 +46,7 @@ public class ConfigurationProfile extends com.pulumi.resources.CustomResource {
     }
     /**
      * The identifier of the host to use as a configuration source.
-     * The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
+     * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
      * `configuration` is not set.
      * 
      */
@@ -55,7 +55,7 @@ public class ConfigurationProfile extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The identifier of the host to use as a configuration source.
-     * The host needs to be a member of the cluster identified by `cluster_id`. This argument can only be specified if
+     * The host needs to be a member of the cluster identified by `clusterId`. This argument can only be specified if
      * `configuration` is not set.
      * 
      */

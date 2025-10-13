@@ -21,6 +21,12 @@ import (
 // multiple hosts, you must specify each host that you want to add in the
 // `hostSystemIds` argument.
 //
+// ## Example Usage
+//
+// The following example would set up a NFS v3 share on 3 hosts connected through
+// vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+// is named `nfs` and has `/export/test` exported.
+//
 // ## Import
 //
 // # An existing NAS datastore can be imported into this resource via
