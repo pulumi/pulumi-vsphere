@@ -13,6 +13,8 @@ import (
 
 // The `GuestOsCustomization` data source can be used to discover the
 // details about a customization specification for a guest operating system.
+//
+// ## Example Usage
 func LookupGuestOsCustomization(ctx *pulumi.Context, args *LookupGuestOsCustomizationArgs, opts ...pulumi.InvokeOption) (*LookupGuestOsCustomizationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestOsCustomizationResult

@@ -151,11 +151,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
-        /// * * `network` - ID of the network. (e.g. a distributed port group).
-        /// * * `starting_address` - Starting address of the management network range.
-        /// * * `subnet_mask` - Subnet mask.
-        /// * * `gateway` - Gateway IP address.
-        /// * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
+        /// * * `Network` - ID of the network. (e.g. a distributed port group).
+        /// * * `StartingAddress` - Starting address of the management network range.
+        /// * * `SubnetMask` - Subnet mask.
+        /// * * `Gateway` - Gateway IP address.
+        /// * * `AddressCount` - Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         [Output("managementNetwork")]
         public Output<Outputs.SupervisorManagementNetwork> ManagementNetwork { get; private set; } = null!;
@@ -328,11 +328,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
-        /// * * `network` - ID of the network. (e.g. a distributed port group).
-        /// * * `starting_address` - Starting address of the management network range.
-        /// * * `subnet_mask` - Subnet mask.
-        /// * * `gateway` - Gateway IP address.
-        /// * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
+        /// * * `Network` - ID of the network. (e.g. a distributed port group).
+        /// * * `StartingAddress` - Starting address of the management network range.
+        /// * * `SubnetMask` - Subnet mask.
+        /// * * `Gateway` - Gateway IP address.
+        /// * * `AddressCount` - Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         [Input("managementNetwork", required: true)]
         public Input<Inputs.SupervisorManagementNetworkArgs> ManagementNetwork { get; set; } = null!;
@@ -491,11 +491,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The configuration for the management network which the control plane VMs will be connected to.
-        /// * * `network` - ID of the network. (e.g. a distributed port group).
-        /// * * `starting_address` - Starting address of the management network range.
-        /// * * `subnet_mask` - Subnet mask.
-        /// * * `gateway` - Gateway IP address.
-        /// * * `address_count` - Number of addresses to allocate. Starts from `starting_address`
+        /// * * `Network` - ID of the network. (e.g. a distributed port group).
+        /// * * `StartingAddress` - Starting address of the management network range.
+        /// * * `SubnetMask` - Subnet mask.
+        /// * * `Gateway` - Gateway IP address.
+        /// * * `AddressCount` - Number of addresses to allocate. Starts from `StartingAddress`
         /// </summary>
         [Input("managementNetwork")]
         public Input<Inputs.SupervisorManagementNetworkGetArgs>? ManagementNetwork { get; set; }

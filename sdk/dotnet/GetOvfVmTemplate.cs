@@ -64,7 +64,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The disk provisioning type. If set, all the
         /// disks included in the OVF/OVA will have the same specified policy. Can be
-        /// one of `thin`, `thick`, or `eagerZeroedThick`.
+        /// one of `Thin`, `Thick`, or `eagerZeroedThick`.
         /// </summary>
         [Input("diskProvisioning")]
         public string? DiskProvisioning { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// URL of the remote OVF/OVA file to be deployed.
         /// 
-        /// &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+        /// &gt; **NOTE:** Either `LocalOvfPath` or `RemoteOvfUrl` is required, both can
         /// not be empty.
         /// </summary>
         [Input("remoteOvfUrl")]
@@ -178,7 +178,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The disk provisioning type. If set, all the
         /// disks included in the OVF/OVA will have the same specified policy. Can be
-        /// one of `thin`, `thick`, or `eagerZeroedThick`.
+        /// one of `Thin`, `Thick`, or `eagerZeroedThick`.
         /// </summary>
         [Input("diskProvisioning")]
         public Input<string>? DiskProvisioning { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// URL of the remote OVF/OVA file to be deployed.
         /// 
-        /// &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+        /// &gt; **NOTE:** Either `LocalOvfPath` or `RemoteOvfUrl` is required, both can
         /// not be empty.
         /// </summary>
         [Input("remoteOvfUrl")]

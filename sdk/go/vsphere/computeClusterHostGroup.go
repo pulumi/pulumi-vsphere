@@ -25,6 +25,8 @@ import (
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // # An existing group can be imported into this resource by

@@ -19,13 +19,13 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? AuthenticationMethod { get; set; }
 
         /// <summary>
-        /// Enable automatic synchronization with the published library. Default `false`.
+        /// Enable automatic synchronization with the published library. Default `False`.
         /// </summary>
         [Input("automaticSync")]
         public Input<bool>? AutomaticSync { get; set; }
 
         /// <summary>
-        /// Download the library from a content only when needed. Default `true`.
+        /// Download the library from a content only when needed. Default `True`.
         /// </summary>
         [Input("onDemand")]
         public Input<bool>? OnDemand { get; set; }

@@ -124,14 +124,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+     * The MAC address of this network interface. Can only be manually set if useStaticMac is true.
      * 
      */
     @Import(name="macAddress")
     private @Nullable Output<String> macAddress;
 
     /**
-     * @return The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+     * @return The MAC address of this network interface. Can only be manually set if useStaticMac is true.
      * 
      */
     public Optional<Output<String>> macAddress() {
@@ -184,14 +184,14 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * If true, the mac_address field is treated as a static MAC address and set accordingly.
+     * If true, the macAddress field is treated as a static MAC address and set accordingly.
      * 
      */
     @Import(name="useStaticMac")
     private @Nullable Output<Boolean> useStaticMac;
 
     /**
-     * @return If true, the mac_address field is treated as a static MAC address and set accordingly.
+     * @return If true, the macAddress field is treated as a static MAC address and set accordingly.
      * 
      */
     public Optional<Output<Boolean>> useStaticMac() {
@@ -381,7 +381,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param macAddress The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+         * @param macAddress The MAC address of this network interface. Can only be manually set if useStaticMac is true.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param macAddress The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+         * @param macAddress The MAC address of this network interface. Can only be manually set if useStaticMac is true.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param useStaticMac If true, the mac_address field is treated as a static MAC address and set accordingly.
+         * @param useStaticMac If true, the macAddress field is treated as a static MAC address and set accordingly.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class VirtualMachineNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param useStaticMac If true, the mac_address field is treated as a static MAC address and set accordingly.
+         * @param useStaticMac If true, the macAddress field is treated as a static MAC address and set accordingly.
          * 
          * @return builder
          * 

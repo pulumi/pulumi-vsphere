@@ -23,6 +23,17 @@ import (
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 //
+// ## Example Usage
+//
+// The following example creates a compute cluster comprised of three hosts,
+// making use of the
+// `ComputeCluster` resource. DPM
+// will be disabled in the cluster as it is the default setting, but we override
+// the setting of the first host referenced by the
+// `Host` data source (`esxi1`) by using
+// the `DpmHostOverride` resource so it will be powered off when the
+// cluster does not need it to service virtual machines.
+//
 // ## Import
 //
 // # An existing override can be imported into this resource by

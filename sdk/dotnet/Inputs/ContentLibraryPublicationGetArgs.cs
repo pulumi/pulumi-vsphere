@@ -31,13 +31,13 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? PublishUrl { get; set; }
 
         /// <summary>
-        /// Publish the content library. Default `false`.
+        /// Publish the content library. Default `False`.
         /// </summary>
         [Input("published")]
         public Input<bool>? Published { get; set; }
 
         /// <summary>
-        /// Username used by subscribers to authenticate. Currently can only be `vcsp`.
+        /// Username used by subscribers to authenticate. Currently can only be `Vcsp`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

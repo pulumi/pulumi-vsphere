@@ -11,7 +11,7 @@ namespace Pulumi.VSphere
 {
     /// <summary>
     /// The `vsphere.ContentLibraryItem` resource can be used to create items in a
-    /// vSphere content library. The `file_url` must be accessible from the vSphere
+    /// vSphere content library. The `FileUrl` must be accessible from the vSphere
     /// environment as it will be downloaded from the specified location and stored
     /// on the content library's storage backing.
     /// 
@@ -164,7 +164,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Type of content library item.
-        /// One of "ovf", "iso", or "vm-template". Default: `ovf`.
+        /// One of "ovf", "iso", or "vm-template". Default: `Ovf`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Type of content library item.
-        /// One of "ovf", "iso", or "vm-template". Default: `ovf`.
+        /// One of "ovf", "iso", or "vm-template". Default: `Ovf`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Type of content library item.
-        /// One of "ovf", "iso", or "vm-template". Default: `ovf`.
+        /// One of "ovf", "iso", or "vm-template". Default: `Ovf`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

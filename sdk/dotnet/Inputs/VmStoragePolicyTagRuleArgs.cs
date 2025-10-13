@@ -13,7 +13,7 @@ namespace Pulumi.VSphere.Inputs
     public sealed class VmStoragePolicyTagRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Include datastores with the given tags or exclude. Default `true`.
+        /// Include datastores with the given tags or exclude. Default `True`.
         /// </summary>
         [Input("includeDatastoresWithTags")]
         public Input<bool>? IncludeDatastoresWithTags { get; set; }

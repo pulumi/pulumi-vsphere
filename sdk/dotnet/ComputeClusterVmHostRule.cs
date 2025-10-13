@@ -37,9 +37,9 @@ namespace Pulumi.VSphere
     /// virtual machine is configured to run specifically on that host via a
     /// `vsphere.ComputeClusterVmHostRule` resource.
     /// 
-    /// &gt; Note how `vm_group_name` and
-    /// `affinity_host_group_name` are sourced off of the
-    /// `name` attributes from the
+    /// &gt; Note how `VmGroupName` and
+    /// `AffinityHostGroupName` are sourced off of the
+    /// `Name` attributes from the
     /// `vsphere.ComputeClusterVmGroup` and
     /// `vsphere.ComputeClusterHostGroup`
     /// resources. This is to ensure that the rule is not created before the groups
@@ -164,7 +164,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// When this field is used, the virtual
-        /// machines defined in `vm_group_name` will be run on the
+        /// machines defined in `VmGroupName` will be run on the
         /// hosts defined in this host group.
         /// </summary>
         [Output("affinityHostGroupName")]
@@ -172,7 +172,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When this field is used, the
-        /// virtual machines defined in `vm_group_name` will _not_ be
+        /// virtual machines defined in `VmGroupName` will _not_ be
         /// run on the hosts defined in this host group.
         /// </summary>
         [Output("antiAffinityHostGroupName")]
@@ -187,21 +187,21 @@ namespace Pulumi.VSphere
         public Output<string> ComputeClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
-        /// &gt; **NOTE:** One of `affinity_host_group_name` or
-        /// `anti_affinity_host_group_name` must be
+        /// &gt; **NOTE:** One of `AffinityHostGroupName` or
+        /// `AntiAffinityHostGroupName` must be
         /// defined, but not both.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Output("mandatory")]
@@ -269,7 +269,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// When this field is used, the virtual
-        /// machines defined in `vm_group_name` will be run on the
+        /// machines defined in `VmGroupName` will be run on the
         /// hosts defined in this host group.
         /// </summary>
         [Input("affinityHostGroupName")]
@@ -277,7 +277,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When this field is used, the
-        /// virtual machines defined in `vm_group_name` will _not_ be
+        /// virtual machines defined in `VmGroupName` will _not_ be
         /// run on the hosts defined in this host group.
         /// </summary>
         [Input("antiAffinityHostGroupName")]
@@ -292,21 +292,21 @@ namespace Pulumi.VSphere
         public Input<string> ComputeClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
-        /// &gt; **NOTE:** One of `affinity_host_group_name` or
-        /// `anti_affinity_host_group_name` must be
+        /// &gt; **NOTE:** One of `AffinityHostGroupName` or
+        /// `AntiAffinityHostGroupName` must be
         /// defined, but not both.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]
@@ -336,7 +336,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// When this field is used, the virtual
-        /// machines defined in `vm_group_name` will be run on the
+        /// machines defined in `VmGroupName` will be run on the
         /// hosts defined in this host group.
         /// </summary>
         [Input("affinityHostGroupName")]
@@ -344,7 +344,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When this field is used, the
-        /// virtual machines defined in `vm_group_name` will _not_ be
+        /// virtual machines defined in `VmGroupName` will _not_ be
         /// run on the hosts defined in this host group.
         /// </summary>
         [Input("antiAffinityHostGroupName")]
@@ -359,21 +359,21 @@ namespace Pulumi.VSphere
         public Input<string>? ComputeClusterId { get; set; }
 
         /// <summary>
-        /// Enable this rule in the cluster. Default: `true`.
+        /// Enable this rule in the cluster. Default: `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When this value is `true`, prevents any virtual
-        /// machine operations that may violate this rule. Default: `false`.
+        /// When this value is `True`, prevents any virtual
+        /// machine operations that may violate this rule. Default: `False`.
         /// 
-        /// &gt; **NOTE:** One of `affinity_host_group_name` or
-        /// `anti_affinity_host_group_name` must be
+        /// &gt; **NOTE:** One of `AffinityHostGroupName` or
+        /// `AntiAffinityHostGroupName` must be
         /// defined, but not both.
         /// 
         /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
-        /// `name` argument) is shared with all rules in the cluster - consider
+        /// `Name` argument) is shared with all rules in the cluster - consider
         /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]

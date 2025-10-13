@@ -25,6 +25,13 @@ import (
 //
 // > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
 //
+// ## Example Usage
+//
+// The following example sets up a datastore cluster and enables Storage DRS with
+// the default settings. It then creates two NAS datastores using the
+// `NasDatastore` resource and assigns them to
+// the datastore cluster.
+//
 // ## Import
 //
 // # An existing datastore cluster can be imported into this resource

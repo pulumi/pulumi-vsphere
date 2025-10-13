@@ -15,7 +15,7 @@ namespace Pulumi.VSphere
         /// The `vsphere.TagCategory` data source can be used to reference tag categories
         /// that are not managed by this provider. Its attributes are the same as the
         /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source uses a name and category as search criteria. The `id` and other
+        /// the data source uses a name and category as search criteria. The `Id` and other
         /// attributes are populated with the data found by the search.
         /// 
         /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
@@ -46,7 +46,7 @@ namespace Pulumi.VSphere
         /// The `vsphere.TagCategory` data source can be used to reference tag categories
         /// that are not managed by this provider. Its attributes are the same as the
         /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source uses a name and category as search criteria. The `id` and other
+        /// the data source uses a name and category as search criteria. The `Id` and other
         /// attributes are populated with the data found by the search.
         /// 
         /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
@@ -77,7 +77,7 @@ namespace Pulumi.VSphere
         /// The `vsphere.TagCategory` data source can be used to reference tag categories
         /// that are not managed by this provider. Its attributes are the same as the
         /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source uses a name and category as search criteria. The `id` and other
+        /// the data source uses a name and category as search criteria. The `Id` and other
         /// attributes are populated with the data found by the search.
         /// 
         /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and

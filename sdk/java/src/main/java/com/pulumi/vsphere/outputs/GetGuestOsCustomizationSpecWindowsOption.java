@@ -26,7 +26,7 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
      */
     private Boolean autoLogon;
     /**
-     * @return Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
+     * @return Specifies how many times the guest operating system should auto-logon the Administrator account when `autoLogon` is `true`.
      * 
      */
     private Integer autoLogonCount;
@@ -102,7 +102,7 @@ public final class GetGuestOsCustomizationSpecWindowsOption {
         return this.autoLogon;
     }
     /**
-     * @return Specifies how many times the guest operating system should auto-logon the Administrator account when `auto_logon` is `true`.
+     * @return Specifies how many times the guest operating system should auto-logon the Administrator account when `autoLogon` is `true`.
      * 
      */
     public Integer autoLogonCount() {
