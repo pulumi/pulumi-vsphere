@@ -3978,6 +3978,55 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args) {
         return getGuestOsCustomization(args, InvokeOptions.Empty);
@@ -3987,6 +4036,55 @@ public final class VsphereFunctions {
      * details about a customization specification for a guest operating system.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args) {
@@ -3998,6 +4096,55 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
@@ -4008,6 +4155,55 @@ public final class VsphereFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGuestOsCustomizationResult> getGuestOsCustomization(GetGuestOsCustomizationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getGuestOsCustomization:getGuestOsCustomization", TypeShape.of(GetGuestOsCustomizationResult.class), args, Utilities.withVersion(options));
@@ -4017,6 +4213,55 @@ public final class VsphereFunctions {
      * details about a customization specification for a guest operating system.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.VsphereFunctions;
+     * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+     * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+     * import com.pulumi.vsphere.inputs.GetGuestOsCustomizationArgs;
+     * import com.pulumi.vsphere.VirtualMachine;
+     * import com.pulumi.vsphere.VirtualMachineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+     *             .name("dc-01")
+     *             .build());
+     * 
+     *         final var template = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+     *             .name("windows-template")
+     *             .datacenterId(datacenter.id())
+     *             .build());
+     * 
+     *         final var windows = VsphereFunctions.getGuestOsCustomization(GetGuestOsCustomizationArgs.builder()
+     *             .name("windows")
+     *             .build());
+     * 
+     *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
+     *             .templateUuid(template.id())
+     *             .customizationSpec(List.of(Map.of("id", windows.id())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGuestOsCustomizationResult> getGuestOsCustomizationPlain(GetGuestOsCustomizationPlainArgs args, InvokeOptions options) {
