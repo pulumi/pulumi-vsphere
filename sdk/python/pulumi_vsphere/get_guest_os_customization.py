@@ -131,6 +131,21 @@ def get_guest_os_customization(name: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    template = vsphere.get_virtual_machine(name="windows-template",
+        datacenter_id=datacenter.id)
+    windows = vsphere.get_guest_os_customization(name="windows")
+    vm = vsphere.VirtualMachine("vm",
+        template_uuid=template.id,
+        customization_spec=[{
+            "id": windows.id,
+        }])
+    ```
+
 
     :param _builtins.str name: The name of the customization specification is the unique
            identifier per vCenter Server instance.
@@ -155,6 +170,21 @@ def get_guest_os_customization_output(name: Optional[pulumi.Input[_builtins.str]
     details about a customization specification for a guest operating system.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    template = vsphere.get_virtual_machine(name="windows-template",
+        datacenter_id=datacenter.id)
+    windows = vsphere.get_guest_os_customization(name="windows")
+    vm = vsphere.VirtualMachine("vm",
+        template_uuid=template.id,
+        customization_spec=[{
+            "id": windows.id,
+        }])
+    ```
 
 
     :param _builtins.str name: The name of the customization specification is the unique

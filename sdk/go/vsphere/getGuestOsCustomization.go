@@ -15,6 +15,54 @@ import (
 // details about a customization specification for a guest operating system.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			template, err := vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
+//				Name:         pulumi.StringRef("windows-template"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			windows, err := vsphere.LookupGuestOsCustomization(ctx, &vsphere.LookupGuestOsCustomizationArgs{
+//				Name: "windows",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				TemplateUuid: template.Id,
+//				CustomizationSpec: []map[string]interface{}{
+//					map[string]interface{}{
+//						"id": windows.Id,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGuestOsCustomization(ctx *pulumi.Context, args *LookupGuestOsCustomizationArgs, opts ...pulumi.InvokeOption) (*LookupGuestOsCustomizationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestOsCustomizationResult
