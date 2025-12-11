@@ -1,0 +1,2 @@
+[tools]
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "latest"
