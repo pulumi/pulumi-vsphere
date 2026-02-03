@@ -34,6 +34,86 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** This resource requires vCenter and is not available on
     /// direct ESXi connections.
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example sets up a cluster and enables DRS and vSphere HA with the
+    /// default settings. The hosts have to exist already in vSphere and should not
+    /// already be members of clusters - it's best to add these as standalone hosts
+    /// before adding them to a cluster.
+    /// 
+    /// Note that the following example assumes each host has been configured correctly
+    /// according to the requirements of vSphere HA. For more information, click
+    /// [here][ref-vsphere-ha-checklist].
+    /// 
+    /// [ref-vsphere-ha-checklist]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Std = Pulumi.Std;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var datacenter = config.Get("datacenter") ?? "dc-01";
+    ///     var hosts = config.GetObject&lt;dynamic&gt;("hosts") ?? new[]
+    ///     {
+    ///         "esxi-01.example.com",
+    ///         "esxi-02.example.com",
+    ///         "esxi-03.example.com",
+    ///     };
+    ///     var datacenterGetDatacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = datacenter,
+    ///     });
+    /// 
+    ///     var host = .ToDictionary(item =&gt; {
+    ///         var __key = item.Key;
+    ///         return __key;
+    ///     }, item =&gt; {
+    ///         var __value = item.Value;
+    ///         return VSphere.GetHost.Invoke(new()
+    ///         {
+    ///             Name = __value,
+    ///             DatacenterId = _arg0_.Id,
+    ///         });
+    ///     });
+    /// 
+    ///     var computeCluster = new VSphere.ComputeCluster("compute_cluster", new()
+    ///     {
+    ///         Name = "compute-cluster-test",
+    ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///         HostSystemIds = (host).Values.Select(host =&gt; 
+    ///         {
+    ///             return host.Id;
+    ///         }).ToList(),
+    ///         DrsEnabled = true,
+    ///         DrsAutomationLevel = "fullyAutomated",
+    ///         HaEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## vSphere Version Requirements
+    /// 
+    /// Some settings in the `vsphere.ComputeCluster` resource may require a
+    /// specific version of vSphere.
+    /// 
+    /// ### Settings that Require vSphere 7.0 or higher
+    /// 
+    /// These settings require vSphere 7.0 or higher:
+    /// 
+    /// * `DrsScaleDescendantsShares`
+    /// 
+    /// ### Settings that Require vSphere 8.0 or higher
+    /// 
+    /// These settings require vSphere 8.0 or higher:
+    /// 
+    /// * `VsanEsaEnabled`
+    /// 
     /// ## Import
     /// 
     /// An existing cluster can be imported into this resource via the

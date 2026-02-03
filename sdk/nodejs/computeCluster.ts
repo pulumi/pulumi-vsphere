@@ -31,6 +31,65 @@ import * as utilities from "./utilities";
  * > **NOTE:** This resource requires vCenter and is not available on
  * direct ESXi connections.
  *
+ * ## Example Usage
+ *
+ * The following example sets up a cluster and enables DRS and vSphere HA with the
+ * default settings. The hosts have to exist already in vSphere and should not
+ * already be members of clusters - it's best to add these as standalone hosts
+ * before adding them to a cluster.
+ *
+ * Note that the following example assumes each host has been configured correctly
+ * according to the requirements of vSphere HA. For more information, click
+ * [here][ref-vsphere-ha-checklist].
+ *
+ * [ref-vsphere-ha-checklist]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const config = new pulumi.Config();
+ * const datacenter = config.get("datacenter") || "dc-01";
+ * const hosts = config.getObject<any>("hosts") || [
+ *     "esxi-01.example.com",
+ *     "esxi-02.example.com",
+ *     "esxi-03.example.com",
+ * ];
+ * const datacenterGetDatacenter = vsphere.getDatacenter({
+ *     name: datacenter,
+ * });
+ * const host = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: vsphere.getHost({
+ *     name: __value,
+ *     datacenterId: _arg0_.id,
+ * }) }));
+ * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     name: "compute-cluster-test",
+ *     datacenterId: datacenterGetDatacenter.then(datacenterGetDatacenter => datacenterGetDatacenter.id),
+ *     hostSystemIds: Object.values(host).map(host => (host.id)),
+ *     drsEnabled: true,
+ *     drsAutomationLevel: "fullyAutomated",
+ *     haEnabled: true,
+ * });
+ * ```
+ *
+ * ## vSphere Version Requirements
+ *
+ * Some settings in the `vsphere.ComputeCluster` resource may require a
+ * specific version of vSphere.
+ *
+ * ### Settings that Require vSphere 7.0 or higher
+ *
+ * These settings require vSphere 7.0 or higher:
+ *
+ * * `drsScaleDescendantsShares`
+ *
+ * ### Settings that Require vSphere 8.0 or higher
+ *
+ * These settings require vSphere 8.0 or higher:
+ *
+ * * `vsanEsaEnabled`
+ *
  * ## Import
  *
  * An existing cluster can be imported into this resource via the

@@ -6688,6 +6688,8 @@ public final class VsphereFunctions {
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOvfVmTemplateResult> getOvfVmTemplate(GetOvfVmTemplateArgs args) {
         return getOvfVmTemplate(args, InvokeOptions.Empty);
@@ -6696,6 +6698,8 @@ public final class VsphereFunctions {
      * The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetOvfVmTemplateResult> getOvfVmTemplatePlain(GetOvfVmTemplatePlainArgs args) {
@@ -6706,6 +6710,8 @@ public final class VsphereFunctions {
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOvfVmTemplateResult> getOvfVmTemplate(GetOvfVmTemplateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", TypeShape.of(GetOvfVmTemplateResult.class), args, Utilities.withVersion(options));
@@ -6715,6 +6721,8 @@ public final class VsphereFunctions {
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetOvfVmTemplateResult> getOvfVmTemplate(GetOvfVmTemplateArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", TypeShape.of(GetOvfVmTemplateResult.class), args, Utilities.withVersion(options));
@@ -6723,6 +6731,8 @@ public final class VsphereFunctions {
      * The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
      * vSphere and extract its hardware settings in a form that can be then used as
      * inputs for a `vsphere.VirtualMachine` resource.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetOvfVmTemplateResult> getOvfVmTemplatePlain(GetOvfVmTemplatePlainArgs args, InvokeOptions options) {

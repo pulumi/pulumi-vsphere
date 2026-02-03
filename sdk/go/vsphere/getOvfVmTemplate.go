@@ -14,6 +14,8 @@ import (
 // The `getOvfVmTemplate` data source can be used to submit an OVF to
 // vSphere and extract its hardware settings in a form that can be then used as
 // inputs for a `VirtualMachine` resource.
+//
+// ## Example Usage
 func GetOvfVmTemplate(ctx *pulumi.Context, args *GetOvfVmTemplateArgs, opts ...pulumi.InvokeOption) (*GetOvfVmTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOvfVmTemplateResult

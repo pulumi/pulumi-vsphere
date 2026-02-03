@@ -390,6 +390,120 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[_builtins.bool] = No
     vSphere and extract its hardware settings in a form that can be then used as
     inputs for a `VirtualMachine` resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_std as std
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    datastore = vsphere.get_datastore(name="datastore-01",
+        datacenter_id=datacenter.id)
+    cluster = vsphere.get_compute_cluster(name="cluster-01",
+        datacenter_id=datacenter.id)
+    default = vsphere.get_resource_pool(name=std.index.format(input="%s%s",
+            args=[
+                cluster.name,
+                "/Resources",
+            ])["result"],
+        datacenter_id=datacenter.id)
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    network = vsphere.get_network(name="172.16.11.0",
+        datacenter_id=datacenter.id)
+    ## Remote OVF/OVA Source
+    ovf_remote = vsphere.get_ovf_vm_template(name="ubuntu-server-cloud-image-01",
+        disk_provisioning="thin",
+        resource_pool_id=default.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        remote_ovf_url="https://cloud-images.ubuntu.com/releases/xx.xx/release/ubuntu-xx.xx-server-cloudimg-amd64.ova",
+        ovf_network_map={
+            "VM Network": network.id,
+        })
+    ## Local OVF/OVA Source
+    ovf_local = vsphere.get_ovf_vm_template(name="ubuntu-server-cloud-image-02",
+        disk_provisioning="thin",
+        resource_pool_id=default.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        local_ovf_path="/Volume/Storage/OVA/ubuntu-xx-xx-server-cloudimg-amd64.ova",
+        ovf_network_map={
+            "VM Network": network.id,
+        })
+    ## Deployment of VM from Remote OVF
+    vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
+        network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map].apply(lambda entries: [{
+            "networkId": entry["value"],
+        } for entry in entries]),
+        name="ubuntu-server-cloud-image-01",
+        datacenter_id=datacenter.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        resource_pool_id=default.id,
+        num_cpus=ovf_remote.num_cpus,
+        num_cores_per_socket=ovf_remote.num_cores_per_socket,
+        memory=ovf_remote.memory,
+        guest_id=ovf_remote.guest_id,
+        firmware=ovf_remote.firmware,
+        scsi_type=ovf_remote.scsi_type,
+        wait_for_guest_net_timeout=0,
+        wait_for_guest_ip_timeout=0,
+        ovf_deploy={
+            "remote_ovf_url": "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova",
+            "ovf_network_map": ovf_remote.ovf_network_map,
+        },
+        cdroms=[{
+            "client_device": True,
+        }],
+        vapp={
+            "properties": {
+                "hostname": remote_ovf_name,
+                "instance-id": remote_ovf_uuid,
+                "public-keys": remote_ovf_public_keys,
+                "password": remote_ovf_password,
+                "user-data": std.index.base64encode(input=remote_ovf_user_data)["result"],
+            },
+        })
+    ## Deployment of VM from Local OVF
+    vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
+        network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map].apply(lambda entries: [{
+            "networkId": entry["value"],
+        } for entry in entries]),
+        name="ubuntu-server-cloud-image-02",
+        datacenter_id=datacenter.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        resource_pool_id=default.id,
+        num_cpus=ovf_local.num_cpus,
+        num_cores_per_socket=ovf_local.num_cores_per_socket,
+        memory=ovf_local.memory,
+        guest_id=ovf_local.guest_id,
+        firmware=ovf_local.firmware,
+        scsi_type=ovf_local.scsi_type,
+        wait_for_guest_net_timeout=0,
+        wait_for_guest_ip_timeout=0,
+        ovf_deploy={
+            "allow_unverified_ssl_cert": False,
+            "local_ovf_path": ovf_local.local_ovf_path,
+            "disk_provisioning": ovf_local.disk_provisioning,
+            "ovf_network_map": ovf_local.ovf_network_map,
+        },
+        cdroms=[{
+            "client_device": True,
+        }],
+        vapp={
+            "properties": {
+                "hostname": local_ovf_name,
+                "instance-id": local_ovf_uuid,
+                "public-keys": local_ovf_public_keys,
+                "password": local_ovf_password,
+                "user-data": std.index.base64encode(input=local_ovf_user_data)["result"],
+            },
+        })
+    ```
+
 
     :param _builtins.bool allow_unverified_ssl_cert: Allow unverified SSL certificates
            when deploying OVF/OVA from a URL.
@@ -492,6 +606,120 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
     The `get_ovf_vm_template` data source can be used to submit an OVF to
     vSphere and extract its hardware settings in a form that can be then used as
     inputs for a `VirtualMachine` resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_std as std
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    datastore = vsphere.get_datastore(name="datastore-01",
+        datacenter_id=datacenter.id)
+    cluster = vsphere.get_compute_cluster(name="cluster-01",
+        datacenter_id=datacenter.id)
+    default = vsphere.get_resource_pool(name=std.index.format(input="%s%s",
+            args=[
+                cluster.name,
+                "/Resources",
+            ])["result"],
+        datacenter_id=datacenter.id)
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    network = vsphere.get_network(name="172.16.11.0",
+        datacenter_id=datacenter.id)
+    ## Remote OVF/OVA Source
+    ovf_remote = vsphere.get_ovf_vm_template(name="ubuntu-server-cloud-image-01",
+        disk_provisioning="thin",
+        resource_pool_id=default.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        remote_ovf_url="https://cloud-images.ubuntu.com/releases/xx.xx/release/ubuntu-xx.xx-server-cloudimg-amd64.ova",
+        ovf_network_map={
+            "VM Network": network.id,
+        })
+    ## Local OVF/OVA Source
+    ovf_local = vsphere.get_ovf_vm_template(name="ubuntu-server-cloud-image-02",
+        disk_provisioning="thin",
+        resource_pool_id=default.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        local_ovf_path="/Volume/Storage/OVA/ubuntu-xx-xx-server-cloudimg-amd64.ova",
+        ovf_network_map={
+            "VM Network": network.id,
+        })
+    ## Deployment of VM from Remote OVF
+    vm_from_remote_ovf = vsphere.VirtualMachine("vmFromRemoteOvf",
+        network_interfaces=[{"key": k, "value": v} for k, v in ovf_remote.ovf_network_map].apply(lambda entries: [{
+            "networkId": entry["value"],
+        } for entry in entries]),
+        name="ubuntu-server-cloud-image-01",
+        datacenter_id=datacenter.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        resource_pool_id=default.id,
+        num_cpus=ovf_remote.num_cpus,
+        num_cores_per_socket=ovf_remote.num_cores_per_socket,
+        memory=ovf_remote.memory,
+        guest_id=ovf_remote.guest_id,
+        firmware=ovf_remote.firmware,
+        scsi_type=ovf_remote.scsi_type,
+        wait_for_guest_net_timeout=0,
+        wait_for_guest_ip_timeout=0,
+        ovf_deploy={
+            "remote_ovf_url": "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova",
+            "ovf_network_map": ovf_remote.ovf_network_map,
+        },
+        cdroms=[{
+            "client_device": True,
+        }],
+        vapp={
+            "properties": {
+                "hostname": remote_ovf_name,
+                "instance-id": remote_ovf_uuid,
+                "public-keys": remote_ovf_public_keys,
+                "password": remote_ovf_password,
+                "user-data": std.index.base64encode(input=remote_ovf_user_data)["result"],
+            },
+        })
+    ## Deployment of VM from Local OVF
+    vm_from_local_ovf = vsphere.VirtualMachine("vmFromLocalOvf",
+        network_interfaces=[{"key": k, "value": v} for k, v in ovf_local.ovf_network_map].apply(lambda entries: [{
+            "networkId": entry["value"],
+        } for entry in entries]),
+        name="ubuntu-server-cloud-image-02",
+        datacenter_id=datacenter.id,
+        datastore_id=datastore.id,
+        host_system_id=host.id,
+        resource_pool_id=default.id,
+        num_cpus=ovf_local.num_cpus,
+        num_cores_per_socket=ovf_local.num_cores_per_socket,
+        memory=ovf_local.memory,
+        guest_id=ovf_local.guest_id,
+        firmware=ovf_local.firmware,
+        scsi_type=ovf_local.scsi_type,
+        wait_for_guest_net_timeout=0,
+        wait_for_guest_ip_timeout=0,
+        ovf_deploy={
+            "allow_unverified_ssl_cert": False,
+            "local_ovf_path": ovf_local.local_ovf_path,
+            "disk_provisioning": ovf_local.disk_provisioning,
+            "ovf_network_map": ovf_local.ovf_network_map,
+        },
+        cdroms=[{
+            "client_device": True,
+        }],
+        vapp={
+            "properties": {
+                "hostname": local_ovf_name,
+                "instance-id": local_ovf_uuid,
+                "public-keys": local_ovf_public_keys,
+                "password": local_ovf_password,
+                "user-data": std.index.base64encode(input=local_ovf_user_data)["result"],
+            },
+        })
+    ```
 
 
     :param _builtins.bool allow_unverified_ssl_cert: Allow unverified SSL certificates
