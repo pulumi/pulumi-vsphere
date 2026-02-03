@@ -47,6 +47,36 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** This resource requires vCenter and is not available on
  * direct ESXi connections.
  * 
+ * ## Example Usage
+ * 
+ * The following example sets up a cluster and enables DRS and vSphere HA with the
+ * default settings. The hosts have to exist already in vSphere and should not
+ * already be members of clusters - it&#39;s best to add these as standalone hosts
+ * before adding them to a cluster.
+ * 
+ * Note that the following example assumes each host has been configured correctly
+ * according to the requirements of vSphere HA. For more information, click
+ * [here][ref-vsphere-ha-checklist].
+ * 
+ * [ref-vsphere-ha-checklist]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+ * 
+ * ## vSphere Version Requirements
+ * 
+ * Some settings in the `vsphere.ComputeCluster` resource may require a
+ * specific version of vSphere.
+ * 
+ * ### Settings that Require vSphere 7.0 or higher
+ * 
+ * These settings require vSphere 7.0 or higher:
+ * 
+ * * `drsScaleDescendantsShares`
+ * 
+ * ### Settings that Require vSphere 8.0 or higher
+ * 
+ * These settings require vSphere 8.0 or higher:
+ * 
+ * * `vsanEsaEnabled`
+ * 
  * ## Import
  * 
  * An existing cluster can be imported into this resource via the

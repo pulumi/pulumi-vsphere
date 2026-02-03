@@ -2406,6 +2406,64 @@ class ComputeCluster(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on
         direct ESXi connections.
 
+        ## Example Usage
+
+        The following example sets up a cluster and enables DRS and vSphere HA with the
+        default settings. The hosts have to exist already in vSphere and should not
+        already be members of clusters - it's best to add these as standalone hosts
+        before adding them to a cluster.
+
+        Note that the following example assumes each host has been configured correctly
+        according to the requirements of vSphere HA. For more information, click
+        [here][ref-vsphere-ha-checklist].
+
+        [ref-vsphere-ha-checklist]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+
+        ```python
+        import pulumi
+        import pulumi_std as std
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        host = {__key: vsphere.get_host(name=__value,
+            datacenter_id=datacenter_get_datacenter.id) for __key, __value in std.index.toset(input=hosts)["result"]}
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="compute-cluster-test",
+            datacenter_id=datacenter_get_datacenter.id,
+            host_system_ids=[host.id for host in host],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated",
+            ha_enabled=True)
+        ```
+
+        ## vSphere Version Requirements
+
+        Some settings in the `ComputeCluster` resource may require a
+        specific version of vSphere.
+
+        ### Settings that Require vSphere 7.0 or higher
+
+        These settings require vSphere 7.0 or higher:
+
+        * `drs_scale_descendants_shares`
+
+        ### Settings that Require vSphere 8.0 or higher
+
+        These settings require vSphere 8.0 or higher:
+
+        * `vsan_esa_enabled`
+
         ## Import
 
         An existing cluster can be imported into this resource via the
@@ -2582,6 +2640,64 @@ class ComputeCluster(pulumi.CustomResource):
 
         > **NOTE:** This resource requires vCenter and is not available on
         direct ESXi connections.
+
+        ## Example Usage
+
+        The following example sets up a cluster and enables DRS and vSphere HA with the
+        default settings. The hosts have to exist already in vSphere and should not
+        already be members of clusters - it's best to add these as standalone hosts
+        before adding them to a cluster.
+
+        Note that the following example assumes each host has been configured correctly
+        according to the requirements of vSphere HA. For more information, click
+        [here][ref-vsphere-ha-checklist].
+
+        [ref-vsphere-ha-checklist]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+
+        ```python
+        import pulumi
+        import pulumi_std as std
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        host = {__key: vsphere.get_host(name=__value,
+            datacenter_id=datacenter_get_datacenter.id) for __key, __value in std.index.toset(input=hosts)["result"]}
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="compute-cluster-test",
+            datacenter_id=datacenter_get_datacenter.id,
+            host_system_ids=[host.id for host in host],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated",
+            ha_enabled=True)
+        ```
+
+        ## vSphere Version Requirements
+
+        Some settings in the `ComputeCluster` resource may require a
+        specific version of vSphere.
+
+        ### Settings that Require vSphere 7.0 or higher
+
+        These settings require vSphere 7.0 or higher:
+
+        * `drs_scale_descendants_shares`
+
+        ### Settings that Require vSphere 8.0 or higher
+
+        These settings require vSphere 8.0 or higher:
+
+        * `vsan_esa_enabled`
 
         ## Import
 
