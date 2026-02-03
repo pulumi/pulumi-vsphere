@@ -15,6 +15,185 @@ namespace Pulumi.VSphere
         /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
         /// vSphere and extract its hardware settings in a form that can be then used as
         /// inputs for a `vsphere.VirtualMachine` resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Std = Pulumi.Std;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     {
+        ///         Name = "datastore-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var @default = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = Std.Index.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s%s",
+        ///             Args = new[]
+        ///             {
+        ///                 cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Name),
+        ///                 "/Resources",
+        ///             },
+        ///         }).Result,
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     {
+        ///         Name = "172.16.11.0",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     //# Remote OVF/OVA Source
+        ///     var ovfRemote = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-cloud-image-01",
+        ///         DiskProvisioning = "thin",
+        ///         ResourcePoolId = @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         RemoteOvfUrl = "https://cloud-images.ubuntu.com/releases/xx.xx/release/ubuntu-xx.xx-server-cloudimg-amd64.ova",
+        ///         OvfNetworkMap = 
+        ///         {
+        ///             { "VM Network", network.Apply(getNetworkResult =&gt; getNetworkResult.Id) },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Local OVF/OVA Source
+        ///     var ovfLocal = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-cloud-image-02",
+        ///         DiskProvisioning = "thin",
+        ///         ResourcePoolId = @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         LocalOvfPath = "/Volume/Storage/OVA/ubuntu-xx-xx-server-cloudimg-amd64.ova",
+        ///         OvfNetworkMap = 
+        ///         {
+        ///             { "VM Network", network.Apply(getNetworkResult =&gt; getNetworkResult.Id) },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Deployment of VM from Remote OVF
+        ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
+        ///     {
+        ///         NetworkInterfaces = ,
+        ///         Name = "ubuntu-server-cloud-image-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ResourcePoolId = @default.Apply(@default =&gt; @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id)),
+        ///         NumCpus = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCpus),
+        ///         NumCoresPerSocket = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCoresPerSocket),
+        ///         Memory = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Memory),
+        ///         GuestId = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.GuestId),
+        ///         Firmware = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Firmware),
+        ///         ScsiType = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.ScsiType),
+        ///         WaitForGuestNetTimeout = 0,
+        ///         WaitForGuestIpTimeout = 0,
+        ///         OvfDeploy = new VSphere.Inputs.VirtualMachineOvfDeployArgs
+        ///         {
+        ///             RemoteOvfUrl = "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova",
+        ///             OvfNetworkMap = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.OvfNetworkMap),
+        ///         },
+        ///         Cdroms = new[]
+        ///         {
+        ///             new VSphere.Inputs.VirtualMachineCdromArgs
+        ///             {
+        ///                 ClientDevice = true,
+        ///             },
+        ///         },
+        ///         Vapp = new VSphere.Inputs.VirtualMachineVappArgs
+        ///         {
+        ///             Properties = 
+        ///             {
+        ///                 { "hostname", remoteOvfName },
+        ///                 { "instance-id", remoteOvfUuid },
+        ///                 { "public-keys", remoteOvfPublicKeys },
+        ///                 { "password", remoteOvfPassword },
+        ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+        ///                 {
+        ///                     Input = remoteOvfUserData,
+        ///                 }).Result },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Deployment of VM from Local OVF
+        ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
+        ///     {
+        ///         NetworkInterfaces = ,
+        ///         Name = "ubuntu-server-cloud-image-02",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ResourcePoolId = @default.Apply(@default =&gt; @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id)),
+        ///         NumCpus = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCpus),
+        ///         NumCoresPerSocket = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCoresPerSocket),
+        ///         Memory = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Memory),
+        ///         GuestId = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.GuestId),
+        ///         Firmware = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Firmware),
+        ///         ScsiType = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.ScsiType),
+        ///         WaitForGuestNetTimeout = 0,
+        ///         WaitForGuestIpTimeout = 0,
+        ///         OvfDeploy = new VSphere.Inputs.VirtualMachineOvfDeployArgs
+        ///         {
+        ///             AllowUnverifiedSslCert = false,
+        ///             LocalOvfPath = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.LocalOvfPath),
+        ///             DiskProvisioning = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.DiskProvisioning),
+        ///             OvfNetworkMap = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.OvfNetworkMap),
+        ///         },
+        ///         Cdroms = new[]
+        ///         {
+        ///             new VSphere.Inputs.VirtualMachineCdromArgs
+        ///             {
+        ///                 ClientDevice = true,
+        ///             },
+        ///         },
+        ///         Vapp = new VSphere.Inputs.VirtualMachineVappArgs
+        ///         {
+        ///             Properties = 
+        ///             {
+        ///                 { "hostname", localOvfName },
+        ///                 { "instance-id", localOvfUuid },
+        ///                 { "public-keys", localOvfPublicKeys },
+        ///                 { "password", localOvfPassword },
+        ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+        ///                 {
+        ///                     Input = localOvfUserData,
+        ///                 }).Result },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOvfVmTemplateResult> InvokeAsync(GetOvfVmTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateArgs(), options.WithDefaults());
@@ -23,6 +202,185 @@ namespace Pulumi.VSphere
         /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
         /// vSphere and extract its hardware settings in a form that can be then used as
         /// inputs for a `vsphere.VirtualMachine` resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Std = Pulumi.Std;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     {
+        ///         Name = "datastore-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var @default = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = Std.Index.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s%s",
+        ///             Args = new[]
+        ///             {
+        ///                 cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Name),
+        ///                 "/Resources",
+        ///             },
+        ///         }).Result,
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     {
+        ///         Name = "172.16.11.0",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     //# Remote OVF/OVA Source
+        ///     var ovfRemote = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-cloud-image-01",
+        ///         DiskProvisioning = "thin",
+        ///         ResourcePoolId = @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         RemoteOvfUrl = "https://cloud-images.ubuntu.com/releases/xx.xx/release/ubuntu-xx.xx-server-cloudimg-amd64.ova",
+        ///         OvfNetworkMap = 
+        ///         {
+        ///             { "VM Network", network.Apply(getNetworkResult =&gt; getNetworkResult.Id) },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Local OVF/OVA Source
+        ///     var ovfLocal = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-cloud-image-02",
+        ///         DiskProvisioning = "thin",
+        ///         ResourcePoolId = @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         LocalOvfPath = "/Volume/Storage/OVA/ubuntu-xx-xx-server-cloudimg-amd64.ova",
+        ///         OvfNetworkMap = 
+        ///         {
+        ///             { "VM Network", network.Apply(getNetworkResult =&gt; getNetworkResult.Id) },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Deployment of VM from Remote OVF
+        ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
+        ///     {
+        ///         NetworkInterfaces = ,
+        ///         Name = "ubuntu-server-cloud-image-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ResourcePoolId = @default.Apply(@default =&gt; @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id)),
+        ///         NumCpus = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCpus),
+        ///         NumCoresPerSocket = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCoresPerSocket),
+        ///         Memory = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Memory),
+        ///         GuestId = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.GuestId),
+        ///         Firmware = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Firmware),
+        ///         ScsiType = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.ScsiType),
+        ///         WaitForGuestNetTimeout = 0,
+        ///         WaitForGuestIpTimeout = 0,
+        ///         OvfDeploy = new VSphere.Inputs.VirtualMachineOvfDeployArgs
+        ///         {
+        ///             RemoteOvfUrl = "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova",
+        ///             OvfNetworkMap = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.OvfNetworkMap),
+        ///         },
+        ///         Cdroms = new[]
+        ///         {
+        ///             new VSphere.Inputs.VirtualMachineCdromArgs
+        ///             {
+        ///                 ClientDevice = true,
+        ///             },
+        ///         },
+        ///         Vapp = new VSphere.Inputs.VirtualMachineVappArgs
+        ///         {
+        ///             Properties = 
+        ///             {
+        ///                 { "hostname", remoteOvfName },
+        ///                 { "instance-id", remoteOvfUuid },
+        ///                 { "public-keys", remoteOvfPublicKeys },
+        ///                 { "password", remoteOvfPassword },
+        ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+        ///                 {
+        ///                     Input = remoteOvfUserData,
+        ///                 }).Result },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Deployment of VM from Local OVF
+        ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
+        ///     {
+        ///         NetworkInterfaces = ,
+        ///         Name = "ubuntu-server-cloud-image-02",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ResourcePoolId = @default.Apply(@default =&gt; @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id)),
+        ///         NumCpus = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCpus),
+        ///         NumCoresPerSocket = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCoresPerSocket),
+        ///         Memory = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Memory),
+        ///         GuestId = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.GuestId),
+        ///         Firmware = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Firmware),
+        ///         ScsiType = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.ScsiType),
+        ///         WaitForGuestNetTimeout = 0,
+        ///         WaitForGuestIpTimeout = 0,
+        ///         OvfDeploy = new VSphere.Inputs.VirtualMachineOvfDeployArgs
+        ///         {
+        ///             AllowUnverifiedSslCert = false,
+        ///             LocalOvfPath = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.LocalOvfPath),
+        ///             DiskProvisioning = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.DiskProvisioning),
+        ///             OvfNetworkMap = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.OvfNetworkMap),
+        ///         },
+        ///         Cdroms = new[]
+        ///         {
+        ///             new VSphere.Inputs.VirtualMachineCdromArgs
+        ///             {
+        ///                 ClientDevice = true,
+        ///             },
+        ///         },
+        ///         Vapp = new VSphere.Inputs.VirtualMachineVappArgs
+        ///         {
+        ///             Properties = 
+        ///             {
+        ///                 { "hostname", localOvfName },
+        ///                 { "instance-id", localOvfUuid },
+        ///                 { "public-keys", localOvfPublicKeys },
+        ///                 { "password", localOvfPassword },
+        ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+        ///                 {
+        ///                     Input = localOvfUserData,
+        ///                 }).Result },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOvfVmTemplateResult> Invoke(GetOvfVmTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithDefaults());
@@ -31,6 +389,185 @@ namespace Pulumi.VSphere
         /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
         /// vSphere and extract its hardware settings in a form that can be then used as
         /// inputs for a `vsphere.VirtualMachine` resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Std = Pulumi.Std;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     {
+        ///         Name = "datastore-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var @default = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = Std.Index.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s%s",
+        ///             Args = new[]
+        ///             {
+        ///                 cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Name),
+        ///                 "/Resources",
+        ///             },
+        ///         }).Result,
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     {
+        ///         Name = "172.16.11.0",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     //# Remote OVF/OVA Source
+        ///     var ovfRemote = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-cloud-image-01",
+        ///         DiskProvisioning = "thin",
+        ///         ResourcePoolId = @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         RemoteOvfUrl = "https://cloud-images.ubuntu.com/releases/xx.xx/release/ubuntu-xx.xx-server-cloudimg-amd64.ova",
+        ///         OvfNetworkMap = 
+        ///         {
+        ///             { "VM Network", network.Apply(getNetworkResult =&gt; getNetworkResult.Id) },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Local OVF/OVA Source
+        ///     var ovfLocal = VSphere.GetOvfVmTemplate.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-cloud-image-02",
+        ///         DiskProvisioning = "thin",
+        ///         ResourcePoolId = @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         LocalOvfPath = "/Volume/Storage/OVA/ubuntu-xx-xx-server-cloudimg-amd64.ova",
+        ///         OvfNetworkMap = 
+        ///         {
+        ///             { "VM Network", network.Apply(getNetworkResult =&gt; getNetworkResult.Id) },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Deployment of VM from Remote OVF
+        ///     var vmFromRemoteOvf = new VSphere.VirtualMachine("vmFromRemoteOvf", new()
+        ///     {
+        ///         NetworkInterfaces = ,
+        ///         Name = "ubuntu-server-cloud-image-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ResourcePoolId = @default.Apply(@default =&gt; @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id)),
+        ///         NumCpus = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCpus),
+        ///         NumCoresPerSocket = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCoresPerSocket),
+        ///         Memory = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Memory),
+        ///         GuestId = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.GuestId),
+        ///         Firmware = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Firmware),
+        ///         ScsiType = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.ScsiType),
+        ///         WaitForGuestNetTimeout = 0,
+        ///         WaitForGuestIpTimeout = 0,
+        ///         OvfDeploy = new VSphere.Inputs.VirtualMachineOvfDeployArgs
+        ///         {
+        ///             RemoteOvfUrl = "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova",
+        ///             OvfNetworkMap = ovfRemote.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.OvfNetworkMap),
+        ///         },
+        ///         Cdroms = new[]
+        ///         {
+        ///             new VSphere.Inputs.VirtualMachineCdromArgs
+        ///             {
+        ///                 ClientDevice = true,
+        ///             },
+        ///         },
+        ///         Vapp = new VSphere.Inputs.VirtualMachineVappArgs
+        ///         {
+        ///             Properties = 
+        ///             {
+        ///                 { "hostname", remoteOvfName },
+        ///                 { "instance-id", remoteOvfUuid },
+        ///                 { "public-keys", remoteOvfPublicKeys },
+        ///                 { "password", remoteOvfPassword },
+        ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+        ///                 {
+        ///                     Input = remoteOvfUserData,
+        ///                 }).Result },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     //# Deployment of VM from Local OVF
+        ///     var vmFromLocalOvf = new VSphere.VirtualMachine("vmFromLocalOvf", new()
+        ///     {
+        ///         NetworkInterfaces = ,
+        ///         Name = "ubuntu-server-cloud-image-02",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ResourcePoolId = @default.Apply(@default =&gt; @default.Apply(getResourcePoolResult =&gt; getResourcePoolResult.Id)),
+        ///         NumCpus = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCpus),
+        ///         NumCoresPerSocket = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.NumCoresPerSocket),
+        ///         Memory = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Memory),
+        ///         GuestId = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.GuestId),
+        ///         Firmware = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.Firmware),
+        ///         ScsiType = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.ScsiType),
+        ///         WaitForGuestNetTimeout = 0,
+        ///         WaitForGuestIpTimeout = 0,
+        ///         OvfDeploy = new VSphere.Inputs.VirtualMachineOvfDeployArgs
+        ///         {
+        ///             AllowUnverifiedSslCert = false,
+        ///             LocalOvfPath = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.LocalOvfPath),
+        ///             DiskProvisioning = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.DiskProvisioning),
+        ///             OvfNetworkMap = ovfLocal.Apply(getOvfVmTemplateResult =&gt; getOvfVmTemplateResult.OvfNetworkMap),
+        ///         },
+        ///         Cdroms = new[]
+        ///         {
+        ///             new VSphere.Inputs.VirtualMachineCdromArgs
+        ///             {
+        ///                 ClientDevice = true,
+        ///             },
+        ///         },
+        ///         Vapp = new VSphere.Inputs.VirtualMachineVappArgs
+        ///         {
+        ///             Properties = 
+        ///             {
+        ///                 { "hostname", localOvfName },
+        ///                 { "instance-id", localOvfUuid },
+        ///                 { "public-keys", localOvfPublicKeys },
+        ///                 { "password", localOvfPassword },
+        ///                 { "user-data", Std.Index.Base64encode.Invoke(new()
+        ///                 {
+        ///                     Input = localOvfUserData,
+        ///                 }).Result },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOvfVmTemplateResult> Invoke(GetOvfVmTemplateInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithDefaults());

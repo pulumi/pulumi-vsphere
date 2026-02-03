@@ -8,6 +8,144 @@ import * as utilities from "./utilities";
  * The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
  * vSphere and extract its hardware settings in a form that can be then used as
  * inputs for a `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const _default = Promise.all([cluster, datacenter]).then(([cluster, datacenter]) => vsphere.getResourcePool({
+ *     name: std.index.format({
+ *         input: "%s%s",
+ *         args: [
+ *             cluster.name,
+ *             "/Resources",
+ *         ],
+ *     }).result,
+ *     datacenterId: datacenter.id,
+ * }));
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "172.16.11.0",
+ *     datacenterId: datacenter.id,
+ * }));
+ * //# Remote OVF/OVA Source
+ * const ovfRemote = Promise.all([_default, datastore, host, network]).then(([_default, datastore, host, network]) => vsphere.getOvfVmTemplate({
+ *     name: "ubuntu-server-cloud-image-01",
+ *     diskProvisioning: "thin",
+ *     resourcePoolId: _default.id,
+ *     datastoreId: datastore.id,
+ *     hostSystemId: host.id,
+ *     remoteOvfUrl: "https://cloud-images.ubuntu.com/releases/xx.xx/release/ubuntu-xx.xx-server-cloudimg-amd64.ova",
+ *     ovfNetworkMap: {
+ *         "VM Network": network.id,
+ *     },
+ * }));
+ * //# Local OVF/OVA Source
+ * const ovfLocal = Promise.all([_default, datastore, host, network]).then(([_default, datastore, host, network]) => vsphere.getOvfVmTemplate({
+ *     name: "ubuntu-server-cloud-image-02",
+ *     diskProvisioning: "thin",
+ *     resourcePoolId: _default.id,
+ *     datastoreId: datastore.id,
+ *     hostSystemId: host.id,
+ *     localOvfPath: "/Volume/Storage/OVA/ubuntu-xx-xx-server-cloudimg-amd64.ova",
+ *     ovfNetworkMap: {
+ *         "VM Network": network.id,
+ *     },
+ * }));
+ * //# Deployment of VM from Remote OVF
+ * const vmFromRemoteOvf = new vsphere.VirtualMachine("vmFromRemoteOvf", {
+ *     networkInterfaces: .map(entry => ({
+ *         networkId: entry.value,
+ *     })),
+ *     name: "ubuntu-server-cloud-image-01",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     hostSystemId: host.then(host => host.id),
+ *     resourcePoolId: _default.then(_default => _default.id),
+ *     numCpus: ovfRemote.then(ovfRemote => ovfRemote.numCpus),
+ *     numCoresPerSocket: ovfRemote.then(ovfRemote => ovfRemote.numCoresPerSocket),
+ *     memory: ovfRemote.then(ovfRemote => ovfRemote.memory),
+ *     guestId: ovfRemote.then(ovfRemote => ovfRemote.guestId),
+ *     firmware: ovfRemote.then(ovfRemote => ovfRemote.firmware),
+ *     scsiType: ovfRemote.then(ovfRemote => ovfRemote.scsiType),
+ *     waitForGuestNetTimeout: 0,
+ *     waitForGuestIpTimeout: 0,
+ *     ovfDeploy: {
+ *         remoteOvfUrl: "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova",
+ *         ovfNetworkMap: ovfRemote.then(ovfRemote => ovfRemote.ovfNetworkMap),
+ *     },
+ *     cdroms: [{
+ *         clientDevice: true,
+ *     }],
+ *     vapp: {
+ *         properties: {
+ *             hostname: remoteOvfName,
+ *             "instance-id": remoteOvfUuid,
+ *             "public-keys": remoteOvfPublicKeys,
+ *             password: remoteOvfPassword,
+ *             "user-data": std.index.base64encode({
+ *                 input: remoteOvfUserData,
+ *             }).result,
+ *         },
+ *     },
+ * });
+ * //# Deployment of VM from Local OVF
+ * const vmFromLocalOvf = new vsphere.VirtualMachine("vmFromLocalOvf", {
+ *     networkInterfaces: .map(entry => ({
+ *         networkId: entry.value,
+ *     })),
+ *     name: "ubuntu-server-cloud-image-02",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     hostSystemId: host.then(host => host.id),
+ *     resourcePoolId: _default.then(_default => _default.id),
+ *     numCpus: ovfLocal.then(ovfLocal => ovfLocal.numCpus),
+ *     numCoresPerSocket: ovfLocal.then(ovfLocal => ovfLocal.numCoresPerSocket),
+ *     memory: ovfLocal.then(ovfLocal => ovfLocal.memory),
+ *     guestId: ovfLocal.then(ovfLocal => ovfLocal.guestId),
+ *     firmware: ovfLocal.then(ovfLocal => ovfLocal.firmware),
+ *     scsiType: ovfLocal.then(ovfLocal => ovfLocal.scsiType),
+ *     waitForGuestNetTimeout: 0,
+ *     waitForGuestIpTimeout: 0,
+ *     ovfDeploy: {
+ *         allowUnverifiedSslCert: false,
+ *         localOvfPath: ovfLocal.then(ovfLocal => ovfLocal.localOvfPath),
+ *         diskProvisioning: ovfLocal.then(ovfLocal => ovfLocal.diskProvisioning),
+ *         ovfNetworkMap: ovfLocal.then(ovfLocal => ovfLocal.ovfNetworkMap),
+ *     },
+ *     cdroms: [{
+ *         clientDevice: true,
+ *     }],
+ *     vapp: {
+ *         properties: {
+ *             hostname: localOvfName,
+ *             "instance-id": localOvfUuid,
+ *             "public-keys": localOvfPublicKeys,
+ *             password: localOvfPassword,
+ *             "user-data": std.index.base64encode({
+ *                 input: localOvfUserData,
+ *             }).result,
+ *         },
+ *     },
+ * });
+ * ```
  */
 export function getOvfVmTemplate(args: GetOvfVmTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetOvfVmTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -193,6 +331,144 @@ export interface GetOvfVmTemplateResult {
  * The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
  * vSphere and extract its hardware settings in a form that can be then used as
  * inputs for a `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const _default = Promise.all([cluster, datacenter]).then(([cluster, datacenter]) => vsphere.getResourcePool({
+ *     name: std.index.format({
+ *         input: "%s%s",
+ *         args: [
+ *             cluster.name,
+ *             "/Resources",
+ *         ],
+ *     }).result,
+ *     datacenterId: datacenter.id,
+ * }));
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "172.16.11.0",
+ *     datacenterId: datacenter.id,
+ * }));
+ * //# Remote OVF/OVA Source
+ * const ovfRemote = Promise.all([_default, datastore, host, network]).then(([_default, datastore, host, network]) => vsphere.getOvfVmTemplate({
+ *     name: "ubuntu-server-cloud-image-01",
+ *     diskProvisioning: "thin",
+ *     resourcePoolId: _default.id,
+ *     datastoreId: datastore.id,
+ *     hostSystemId: host.id,
+ *     remoteOvfUrl: "https://cloud-images.ubuntu.com/releases/xx.xx/release/ubuntu-xx.xx-server-cloudimg-amd64.ova",
+ *     ovfNetworkMap: {
+ *         "VM Network": network.id,
+ *     },
+ * }));
+ * //# Local OVF/OVA Source
+ * const ovfLocal = Promise.all([_default, datastore, host, network]).then(([_default, datastore, host, network]) => vsphere.getOvfVmTemplate({
+ *     name: "ubuntu-server-cloud-image-02",
+ *     diskProvisioning: "thin",
+ *     resourcePoolId: _default.id,
+ *     datastoreId: datastore.id,
+ *     hostSystemId: host.id,
+ *     localOvfPath: "/Volume/Storage/OVA/ubuntu-xx-xx-server-cloudimg-amd64.ova",
+ *     ovfNetworkMap: {
+ *         "VM Network": network.id,
+ *     },
+ * }));
+ * //# Deployment of VM from Remote OVF
+ * const vmFromRemoteOvf = new vsphere.VirtualMachine("vmFromRemoteOvf", {
+ *     networkInterfaces: .map(entry => ({
+ *         networkId: entry.value,
+ *     })),
+ *     name: "ubuntu-server-cloud-image-01",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     hostSystemId: host.then(host => host.id),
+ *     resourcePoolId: _default.then(_default => _default.id),
+ *     numCpus: ovfRemote.then(ovfRemote => ovfRemote.numCpus),
+ *     numCoresPerSocket: ovfRemote.then(ovfRemote => ovfRemote.numCoresPerSocket),
+ *     memory: ovfRemote.then(ovfRemote => ovfRemote.memory),
+ *     guestId: ovfRemote.then(ovfRemote => ovfRemote.guestId),
+ *     firmware: ovfRemote.then(ovfRemote => ovfRemote.firmware),
+ *     scsiType: ovfRemote.then(ovfRemote => ovfRemote.scsiType),
+ *     waitForGuestNetTimeout: 0,
+ *     waitForGuestIpTimeout: 0,
+ *     ovfDeploy: {
+ *         remoteOvfUrl: "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.ova",
+ *         ovfNetworkMap: ovfRemote.then(ovfRemote => ovfRemote.ovfNetworkMap),
+ *     },
+ *     cdroms: [{
+ *         clientDevice: true,
+ *     }],
+ *     vapp: {
+ *         properties: {
+ *             hostname: remoteOvfName,
+ *             "instance-id": remoteOvfUuid,
+ *             "public-keys": remoteOvfPublicKeys,
+ *             password: remoteOvfPassword,
+ *             "user-data": std.index.base64encode({
+ *                 input: remoteOvfUserData,
+ *             }).result,
+ *         },
+ *     },
+ * });
+ * //# Deployment of VM from Local OVF
+ * const vmFromLocalOvf = new vsphere.VirtualMachine("vmFromLocalOvf", {
+ *     networkInterfaces: .map(entry => ({
+ *         networkId: entry.value,
+ *     })),
+ *     name: "ubuntu-server-cloud-image-02",
+ *     datacenterId: datacenter.then(datacenter => datacenter.id),
+ *     datastoreId: datastore.then(datastore => datastore.id),
+ *     hostSystemId: host.then(host => host.id),
+ *     resourcePoolId: _default.then(_default => _default.id),
+ *     numCpus: ovfLocal.then(ovfLocal => ovfLocal.numCpus),
+ *     numCoresPerSocket: ovfLocal.then(ovfLocal => ovfLocal.numCoresPerSocket),
+ *     memory: ovfLocal.then(ovfLocal => ovfLocal.memory),
+ *     guestId: ovfLocal.then(ovfLocal => ovfLocal.guestId),
+ *     firmware: ovfLocal.then(ovfLocal => ovfLocal.firmware),
+ *     scsiType: ovfLocal.then(ovfLocal => ovfLocal.scsiType),
+ *     waitForGuestNetTimeout: 0,
+ *     waitForGuestIpTimeout: 0,
+ *     ovfDeploy: {
+ *         allowUnverifiedSslCert: false,
+ *         localOvfPath: ovfLocal.then(ovfLocal => ovfLocal.localOvfPath),
+ *         diskProvisioning: ovfLocal.then(ovfLocal => ovfLocal.diskProvisioning),
+ *         ovfNetworkMap: ovfLocal.then(ovfLocal => ovfLocal.ovfNetworkMap),
+ *     },
+ *     cdroms: [{
+ *         clientDevice: true,
+ *     }],
+ *     vapp: {
+ *         properties: {
+ *             hostname: localOvfName,
+ *             "instance-id": localOvfUuid,
+ *             "public-keys": localOvfPublicKeys,
+ *             password: localOvfPassword,
+ *             "user-data": std.index.base64encode({
+ *                 input: localOvfUserData,
+ *             }).result,
+ *         },
+ *     },
+ * });
+ * ```
  */
 export function getOvfVmTemplateOutput(args: GetOvfVmTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOvfVmTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
