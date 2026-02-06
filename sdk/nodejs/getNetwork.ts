@@ -64,10 +64,11 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetNetworkArgs {
     /**
-     * The managed object reference ID
-     * of the datacenter the network is located in. This can be omitted if the
-     * search path used in `name` is an absolute path. For default datacenters,
-     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the network
+     * is located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      */
     datacenterId?: string;
     /**
@@ -95,6 +96,7 @@ export interface GetNetworkArgs {
     retryTimeout?: number;
     /**
      * Select a VPC scope for retrieval of VPC subnets.
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     vpcId?: string;
 }
@@ -180,10 +182,11 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
  */
 export interface GetNetworkOutputArgs {
     /**
-     * The managed object reference ID
-     * of the datacenter the network is located in. This can be omitted if the
-     * search path used in `name` is an absolute path. For default datacenters,
-     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the network
+     * is located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      */
     datacenterId?: pulumi.Input<string>;
     /**
@@ -211,6 +214,7 @@ export interface GetNetworkOutputArgs {
     retryTimeout?: pulumi.Input<number>;
     /**
      * Select a VPC scope for retrieval of VPC subnets.
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     vpcId?: pulumi.Input<string>;
 }

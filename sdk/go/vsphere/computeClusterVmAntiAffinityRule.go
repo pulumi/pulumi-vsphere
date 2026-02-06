@@ -34,9 +34,11 @@ import (
 type ComputeClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -90,9 +92,11 @@ func GetComputeClusterVmAntiAffinityRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterVmAntiAffinityRule resources.
 type computeClusterVmAntiAffinityRuleState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled *bool `pulumi:"enabled"`
@@ -111,9 +115,11 @@ type computeClusterVmAntiAffinityRuleState struct {
 }
 
 type ComputeClusterVmAntiAffinityRuleState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringPtrInput
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled pulumi.BoolPtrInput
@@ -136,9 +142,11 @@ func (ComputeClusterVmAntiAffinityRuleState) ElementType() reflect.Type {
 }
 
 type computeClusterVmAntiAffinityRuleArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled *bool `pulumi:"enabled"`
@@ -158,9 +166,11 @@ type computeClusterVmAntiAffinityRuleArgs struct {
 
 // The set of arguments for constructing a ComputeClusterVmAntiAffinityRule resource.
 type ComputeClusterVmAntiAffinityRuleArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled pulumi.BoolPtrInput
@@ -265,9 +275,11 @@ func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRu
 	return o
 }
 
-// The managed object reference
-// ID of the cluster to put the group in.  Forces a new
+// The [managed object reference
+// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o ComputeClusterVmAntiAffinityRuleOutput) ComputeClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeClusterVmAntiAffinityRule) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
 }

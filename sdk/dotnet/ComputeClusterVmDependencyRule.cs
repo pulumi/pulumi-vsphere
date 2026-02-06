@@ -12,14 +12,19 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere.ComputeClusterVmDependencyRule` resource can be used to manage
     /// VM dependency rules in a cluster, either created by the
-    /// `vsphere.ComputeCluster` resource or looked up
-    /// by the `vsphere.ComputeCluster` data source.
+    /// [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+    /// by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+    /// 
+    /// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
     /// 
     /// A virtual machine dependency rule applies to vSphere HA, and allows
     /// user-defined startup orders for virtual machines in the case of host failure.
     /// Virtual machines are supplied via groups, which can be managed via the
-    /// `vsphere.ComputeClusterVmGroup`
+    /// [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
     /// resource.
+    /// 
+    /// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
@@ -27,13 +32,15 @@ namespace Pulumi.VSphere
     /// ## Example Usage
     /// 
     /// The example below creates two virtual machine in a cluster using the
-    /// `vsphere.VirtualMachine` resource in a cluster
-    /// looked up by the `vsphere.ComputeCluster`
+    /// [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+    /// looked up by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source]
     /// data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `Vm1` starts before `Vm2`.
+    /// 
+    /// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
     /// 
     /// &gt; Note how `DependencyVmGroupName` and
     /// `VmGroupName` are sourced off of the `Name` attributes from
-    /// the `vsphere.ComputeClusterVmGroup`
+    /// the [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
     /// resource. This is to ensure that the rule is not created before the groups
     /// exist, which may not possibly happen in the event that the names came from a
     /// "static" source such as a variable.
@@ -71,7 +78,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var vm1 = new VSphere.VirtualMachine("vm1", new()
     ///     {
-    ///         Name = "test1",
+    ///         Name = "pulumi-test1",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
     ///         NumCpus = 2,
@@ -96,7 +103,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var vm2 = new VSphere.VirtualMachine("vm2", new()
     ///     {
-    ///         Name = "test2",
+    ///         Name = "pulumi-test2",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
     ///         NumCpus = 2,
@@ -121,7 +128,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var clusterVmGroup1 = new VSphere.ComputeClusterVmGroup("cluster_vm_group1", new()
     ///     {
-    ///         Name = "test-cluster-vm-group1",
+    ///         Name = "pulumi-test-cluster-vm-group1",
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         VirtualMachineIds = new[]
     ///         {
@@ -131,7 +138,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var clusterVmGroup2 = new VSphere.ComputeClusterVmGroup("cluster_vm_group2", new()
     ///     {
-    ///         Name = "test-cluster-vm-group2",
+    ///         Name = "pulumi-test-cluster-vm-group2",
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         VirtualMachineIds = new[]
     ///         {
@@ -142,7 +149,7 @@ namespace Pulumi.VSphere
     ///     var clusterVmDependencyRule = new VSphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", new()
     ///     {
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
-    ///         Name = "test-cluster-vm-dependency-rule",
+    ///         Name = "pulumi-test-cluster-vm-dependency-rule",
     ///         DependencyVmGroupName = clusterVmGroup1.Name,
     ///         VmGroupName = clusterVmGroup2.Name,
     ///     });
@@ -174,9 +181,11 @@ namespace Pulumi.VSphere
     public partial class ComputeClusterVmDependencyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Output("computeClusterId")]
         public Output<string> ComputeClusterId { get; private set; } = null!;
@@ -270,9 +279,11 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmDependencyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId", required: true)]
         public Input<string> ComputeClusterId { get; set; } = null!;
@@ -328,9 +339,11 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmDependencyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId")]
         public Input<string>? ComputeClusterId { get; set; }

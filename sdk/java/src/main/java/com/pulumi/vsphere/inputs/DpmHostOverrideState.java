@@ -17,18 +17,22 @@ public final class DpmHostOverrideState extends com.pulumi.resources.ResourceArg
     public static final DpmHostOverrideState Empty = new DpmHostOverrideState();
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="computeClusterId")
     private @Nullable Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<String>> computeClusterId() {
@@ -122,9 +126,11 @@ public final class DpmHostOverrideState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the override in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -135,9 +141,11 @@ public final class DpmHostOverrideState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the override in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

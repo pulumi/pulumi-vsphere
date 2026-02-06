@@ -26,9 +26,9 @@ import (
 // ## Example Usage
 //
 // The example below creates a virtual machine in a cluster using the
-// `VirtualMachine` resource, creating the
+// [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
 // virtual machine in the cluster looked up by the
-// `ComputeCluster` data source.
+// [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
 //
 // Considering a scenario where this virtual machine is of high value to the
 // application or organization for which it does its work, it's been determined in
@@ -39,6 +39,9 @@ import (
 // virtual machine has been assigned the `highest` priority, will mean that this
 // VM will be started before any other virtual machine in the event of host
 // failure.
+//
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 //
 // ```go
 // package main
@@ -80,7 +83,7 @@ import (
 //				return err
 //			}
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
-//				Name:           pulumi.String("test"),
+//				Name:           pulumi.String("pulumi-test"),
 //				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
 //				DatastoreId:    pulumi.String(datastore.Id),
 //				NumCpus:        pulumi.Int(2),

@@ -80,15 +80,6 @@ def get_tag(category_id: Optional[_builtins.str] = None,
             name: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
-    The `Tag` data source can be used to reference tags that are not
-    managed by this provider. Its attributes are exactly the same as the `Tag`
-    resource, and, like importing, the data source takes a name and
-    category to search on. The `id` and other attributes are then populated with
-    the data found by the search.
-
-    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-    requires vCenter Server.
-
     ## Example Usage
 
     ```python
@@ -120,15 +111,6 @@ def get_tag_output(category_id: Optional[pulumi.Input[_builtins.str]] = None,
                    name: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
-    The `Tag` data source can be used to reference tags that are not
-    managed by this provider. Its attributes are exactly the same as the `Tag`
-    resource, and, like importing, the data source takes a name and
-    category to search on. The `id` and other attributes are then populated with
-    the data found by the search.
-
-    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-    requires vCenter Server.
-
     ## Example Usage
 
     ```python

@@ -25,9 +25,11 @@ class DrsVmOverrideArgs:
                  drs_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DrsVmOverride resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] drs_automation_level: Overrides the automation level for this virtual
@@ -51,9 +53,11 @@ class DrsVmOverrideArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -115,9 +119,11 @@ class _DrsVmOverrideState:
                  virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DrsVmOverride resources.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] drs_automation_level: Overrides the automation level for this virtual
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
@@ -143,9 +149,11 @@ class _DrsVmOverrideState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -226,15 +234,19 @@ class DrsVmOverride(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates a virtual machine in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machine in the cluster looked up by the
-        `ComputeCluster` data source, but also
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source, but also
         pinning the VM to a host defined by the
-        `Host` data source, which is assumed to
+        [`Host`][tf-vsphere-host-data-source] data source, which is assumed to
         be a host within the cluster. To ensure that the VM stays on this host and does
         not need to be migrated back at any point in time, an override is entered using
         the `DrsVmOverride` resource that disables DRS for this virtual
         machine, ensuring that it does not move.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+        [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 
         ```python
         import pulumi
@@ -250,7 +262,7 @@ class DrsVmOverride(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm = vsphere.VirtualMachine("vm",
-            name="test",
+            name="pulumi-test",
             resource_pool_id=cluster.resource_pool_id,
             host_system_id=host.id,
             datastore_id=datastore.id,
@@ -292,9 +304,11 @@ class DrsVmOverride(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] drs_automation_level: Overrides the automation level for this virtual
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
@@ -330,15 +344,19 @@ class DrsVmOverride(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates a virtual machine in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machine in the cluster looked up by the
-        `ComputeCluster` data source, but also
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source, but also
         pinning the VM to a host defined by the
-        `Host` data source, which is assumed to
+        [`Host`][tf-vsphere-host-data-source] data source, which is assumed to
         be a host within the cluster. To ensure that the VM stays on this host and does
         not need to be migrated back at any point in time, an override is entered using
         the `DrsVmOverride` resource that disables DRS for this virtual
         machine, ensuring that it does not move.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+        [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 
         ```python
         import pulumi
@@ -354,7 +372,7 @@ class DrsVmOverride(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm = vsphere.VirtualMachine("vm",
-            name="test",
+            name="pulumi-test",
             resource_pool_id=cluster.resource_pool_id,
             host_system_id=host.id,
             datastore_id=datastore.id,
@@ -451,9 +469,11 @@ class DrsVmOverride(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] drs_automation_level: Overrides the automation level for this virtual
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
@@ -480,9 +500,11 @@ class DrsVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 

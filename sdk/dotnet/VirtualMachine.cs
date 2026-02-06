@@ -151,9 +151,6 @@ namespace Pulumi.VSphere
         [Output("datastoreId")]
         public Output<string> DatastoreId { get; private set; } = null!;
 
-        /// <summary>
-        /// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-        /// </summary>
         [Output("defaultIpAddress")]
         public Output<string> DefaultIpAddress { get; private set; } = null!;
 
@@ -317,7 +314,7 @@ namespace Pulumi.VSphere
         public Output<int?> MigrateWaitTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object reference ID of the created virtual machine.
+        /// The [managed object reference ID][docs-about-morefs] of the created virtual machine.
         /// </summary>
         [Output("moid")]
         public Output<string> Moid { get; private set; } = null!;
@@ -1228,9 +1225,6 @@ namespace Pulumi.VSphere
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
-        /// <summary>
-        /// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-        /// </summary>
         [Input("defaultIpAddress")]
         public Input<string>? DefaultIpAddress { get; set; }
 
@@ -1418,7 +1412,7 @@ namespace Pulumi.VSphere
         public Input<int>? MigrateWaitTimeout { get; set; }
 
         /// <summary>
-        /// The managed object reference ID of the created virtual machine.
+        /// The [managed object reference ID][docs-about-morefs] of the created virtual machine.
         /// </summary>
         [Input("moid")]
         public Input<string>? Moid { get; set; }

@@ -15,7 +15,9 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// ### Create datacenter on the root folder
+    /// ### S
+    /// 
+    /// **Create datacenter on the root folder:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// ### Create datacenter on a subfolder
+    /// **Create datacenter on a subfolder:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -91,7 +93,7 @@ namespace Pulumi.VSphere
         public Output<string?> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// Managed object ID of this datacenter.
+        /// [Managed object ID][docs-about-morefs] of this datacenter.
         /// </summary>
         [Output("moid")]
         public Output<string> Moid { get; private set; } = null!;
@@ -104,7 +106,10 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -193,7 +198,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {
@@ -237,7 +245,7 @@ namespace Pulumi.VSphere
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// Managed object ID of this datacenter.
+        /// [Managed object ID][docs-about-morefs] of this datacenter.
         /// </summary>
         [Input("moid")]
         public Input<string>? Moid { get; set; }
@@ -253,7 +261,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {

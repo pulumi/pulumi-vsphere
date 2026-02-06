@@ -41,18 +41,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule")
 public class ComputeClusterVmAntiAffinityRule extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {

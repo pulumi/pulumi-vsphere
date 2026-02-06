@@ -14,14 +14,19 @@ import (
 
 // The `ComputeClusterVmDependencyRule` resource can be used to manage
 // VM dependency rules in a cluster, either created by the
-// `ComputeCluster` resource or looked up
-// by the `ComputeCluster` data source.
+// [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+// by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+//
+// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 //
 // A virtual machine dependency rule applies to vSphere HA, and allows
 // user-defined startup orders for virtual machines in the case of host failure.
 // Virtual machines are supplied via groups, which can be managed via the
-// `ComputeClusterVmGroup`
+// [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 // resource.
+//
+// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
@@ -29,13 +34,15 @@ import (
 // ## Example Usage
 //
 // The example below creates two virtual machine in a cluster using the
-// `VirtualMachine` resource in a cluster
-// looked up by the `ComputeCluster`
+// [`VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+// looked up by the [`ComputeCluster`][tf-vsphere-cluster-data-source]
 // data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+//
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // > Note how `dependencyVmGroupName` and
 // `vmGroupName` are sourced off of the `name` attributes from
-// the `ComputeClusterVmGroup`
+// the [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 // resource. This is to ensure that the rule is not created before the groups
 // exist, which may not possibly happen in the event that the names came from a
 // "static" source such as a variable.
@@ -80,7 +87,7 @@ import (
 //				return err
 //			}
 //			vm1, err := vsphere.NewVirtualMachine(ctx, "vm1", &vsphere.VirtualMachineArgs{
-//				Name:           pulumi.String("test1"),
+//				Name:           pulumi.String("pulumi-test1"),
 //				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
 //				DatastoreId:    pulumi.String(datastore.Id),
 //				NumCpus:        pulumi.Int(2),
@@ -102,7 +109,7 @@ import (
 //				return err
 //			}
 //			vm2, err := vsphere.NewVirtualMachine(ctx, "vm2", &vsphere.VirtualMachineArgs{
-//				Name:           pulumi.String("test2"),
+//				Name:           pulumi.String("pulumi-test2"),
 //				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
 //				DatastoreId:    pulumi.String(datastore.Id),
 //				NumCpus:        pulumi.Int(2),
@@ -124,7 +131,7 @@ import (
 //				return err
 //			}
 //			clusterVmGroup1, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group1", &vsphere.ComputeClusterVmGroupArgs{
-//				Name:             pulumi.String("test-cluster-vm-group1"),
+//				Name:             pulumi.String("pulumi-test-cluster-vm-group1"),
 //				ComputeClusterId: pulumi.String(cluster.Id),
 //				VirtualMachineIds: pulumi.StringArray{
 //					vm1.ID(),
@@ -134,7 +141,7 @@ import (
 //				return err
 //			}
 //			clusterVmGroup2, err := vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group2", &vsphere.ComputeClusterVmGroupArgs{
-//				Name:             pulumi.String("test-cluster-vm-group2"),
+//				Name:             pulumi.String("pulumi-test-cluster-vm-group2"),
 //				ComputeClusterId: pulumi.String(cluster.Id),
 //				VirtualMachineIds: pulumi.StringArray{
 //					vm2.ID(),
@@ -145,7 +152,7 @@ import (
 //			}
 //			_, err = vsphere.NewComputeClusterVmDependencyRule(ctx, "cluster_vm_dependency_rule", &vsphere.ComputeClusterVmDependencyRuleArgs{
 //				ComputeClusterId:      pulumi.String(cluster.Id),
-//				Name:                  pulumi.String("test-cluster-vm-dependency-rule"),
+//				Name:                  pulumi.String("pulumi-test-cluster-vm-dependency-rule"),
 //				DependencyVmGroupName: clusterVmGroup1.Name,
 //				VmGroupName:           clusterVmGroup2.Name,
 //			})
@@ -180,9 +187,11 @@ import (
 type ComputeClusterVmDependencyRule struct {
 	pulumi.CustomResourceState
 
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// The name of the VM group that this
 	// rule depends on. The VMs defined in the group specified by
@@ -247,9 +256,11 @@ func GetComputeClusterVmDependencyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterVmDependencyRule resources.
 type computeClusterVmDependencyRuleState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// The name of the VM group that this
 	// rule depends on. The VMs defined in the group specified by
@@ -276,9 +287,11 @@ type computeClusterVmDependencyRuleState struct {
 }
 
 type ComputeClusterVmDependencyRuleState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringPtrInput
 	// The name of the VM group that this
 	// rule depends on. The VMs defined in the group specified by
@@ -309,9 +322,11 @@ func (ComputeClusterVmDependencyRuleState) ElementType() reflect.Type {
 }
 
 type computeClusterVmDependencyRuleArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The name of the VM group that this
 	// rule depends on. The VMs defined in the group specified by
@@ -339,9 +354,11 @@ type computeClusterVmDependencyRuleArgs struct {
 
 // The set of arguments for constructing a ComputeClusterVmDependencyRule resource.
 type ComputeClusterVmDependencyRuleArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput
 	// The name of the VM group that this
 	// rule depends on. The VMs defined in the group specified by
@@ -454,9 +471,11 @@ func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRuleOu
 	return o
 }
 
-// The managed object reference
-// ID of the cluster to put the group in.  Forces a new
+// The [managed object reference
+// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o ComputeClusterVmDependencyRuleOutput) ComputeClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeClusterVmDependencyRule) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
 }

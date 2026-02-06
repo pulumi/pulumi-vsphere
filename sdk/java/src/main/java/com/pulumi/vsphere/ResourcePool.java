@@ -479,7 +479,7 @@ public class ResourcePool extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The managed object ID
+     * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a resource pool
      * from one parent resource pool to another, both must share a common root
@@ -490,7 +490,7 @@ public class ResourcePool extends com.pulumi.resources.CustomResource {
     private Output<String> parentResourcePoolId;
 
     /**
-     * @return The managed object ID
+     * @return The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a resource pool
      * from one parent resource pool to another, both must share a common root
@@ -521,14 +521,22 @@ public class ResourcePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scaleDescendantsShares);
     }
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Output<Optional<List<String>>> tags() {

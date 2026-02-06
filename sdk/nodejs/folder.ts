@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * The basic example below creates a virtual machine folder named
- * `test-folder` in the default datacenter's VM hierarchy.
+ * `example-vm-folder` in the default datacenter's VM hierarchy.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,8 +27,8 @@ import * as utilities from "./utilities";
  * const datacenter = vsphere.getDatacenter({
  *     name: vsphereDatacenter,
  * });
- * const folder = new vsphere.Folder("folder", {
- *     path: "test-folder",
+ * const vmFolder = new vsphere.Folder("vm_folder", {
+ *     path: "example-vm-folder",
  *     type: "vm",
  *     datacenterId: datacenter.then(datacenter => datacenter.id),
  * });
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  * ### Example with Sub-folders
  *
  * The below example builds off of the above by first creating a folder named
- * `test-parent`, and then locating `test-folder` in that
+ * `example-parent-vm-folder`, and then locating `example-child-vm-folder` in that
  * folder. To ensure the parent is created first, we create an interpolation
  * dependency off the parent's `path` attribute.
  *
@@ -53,12 +53,12 @@ import * as utilities from "./utilities";
  *     name: vsphereDatacenter,
  * });
  * const parent = new vsphere.Folder("parent", {
- *     path: "test-parent",
+ *     path: "example-parent-vm-folder",
  *     type: "vm",
  *     datacenterId: datacenter.then(datacenter => datacenter.id),
  * });
- * const folder = new vsphere.Folder("folder", {
- *     path: pulumi.interpolate`${parent.path}/test-folder`,
+ * const child = new vsphere.Folder("child", {
+ *     path: pulumi.interpolate`${parent.path}/example-child-vm-folder`,
  *     type: "vm",
  *     datacenterId: datacenter.then(datacenter => datacenter.id),
  * });
@@ -132,8 +132,12 @@ export class Folder extends pulumi.CustomResource {
      * the root of the type of folder you are creating, and the supplied datacenter.
      * For example, given a default datacenter of `default-dc`, a folder of type
      * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`.
+     * `example-vm-folder`, the resulting path would be
+     * `/default-dc/vm/example-vm-folder`.
+     *
+     * When working with nested datacenters, note that references to these folders in data sources
+     * will require the full path including the parent datacenter folder path, as shown in the
+     * nested datacenter example above.
      *
      * > **NOTE:** `path` can be modified - the resulting behavior is dependent on
      * what section of `path` you are modifying. If you are modifying the parent (so
@@ -142,7 +146,10 @@ export class Folder extends pulumi.CustomResource {
      */
     declare public readonly path: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
@@ -216,8 +223,12 @@ export interface FolderState {
      * the root of the type of folder you are creating, and the supplied datacenter.
      * For example, given a default datacenter of `default-dc`, a folder of type
      * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`.
+     * `example-vm-folder`, the resulting path would be
+     * `/default-dc/vm/example-vm-folder`.
+     *
+     * When working with nested datacenters, note that references to these folders in data sources
+     * will require the full path including the parent datacenter folder path, as shown in the
+     * nested datacenter example above.
      *
      * > **NOTE:** `path` can be modified - the resulting behavior is dependent on
      * what section of `path` you are modifying. If you are modifying the parent (so
@@ -226,7 +237,10 @@ export interface FolderState {
      */
     path?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -264,8 +278,12 @@ export interface FolderArgs {
      * the root of the type of folder you are creating, and the supplied datacenter.
      * For example, given a default datacenter of `default-dc`, a folder of type
      * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`.
+     * `example-vm-folder`, the resulting path would be
+     * `/default-dc/vm/example-vm-folder`.
+     *
+     * When working with nested datacenters, note that references to these folders in data sources
+     * will require the full path including the parent datacenter folder path, as shown in the
+     * nested datacenter example above.
      *
      * > **NOTE:** `path` can be modified - the resulting behavior is dependent on
      * what section of `path` you are modifying. If you are modifying the parent (so
@@ -274,7 +292,10 @@ export interface FolderArgs {
      */
     path: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

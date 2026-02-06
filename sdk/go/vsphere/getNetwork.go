@@ -99,10 +99,11 @@ func GetNetwork(ctx *pulumi.Context, args *GetNetworkArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getNetwork.
 type GetNetworkArgs struct {
-	// The managed object reference ID
-	// of the datacenter the network is located in. This can be omitted if the
-	// search path used in `name` is an absolute path. For default datacenters,
-	// use the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the network
+	// is located in. This can be omitted if the search path used in `name` is an
+	// absolute path. For default datacenters, use the `id` attribute from an empty
+	// `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// For distributed port group type
 	// network objects, the ID of the distributed virtual switch for which the port
@@ -118,6 +119,7 @@ type GetNetworkArgs struct {
 	// The timeout duration in seconds for the data source to retry read operations.
 	RetryTimeout *int `pulumi:"retryTimeout"`
 	// Select a VPC scope for retrieval of VPC subnets.
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -150,10 +152,11 @@ func GetNetworkOutput(ctx *pulumi.Context, args GetNetworkOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getNetwork.
 type GetNetworkOutputArgs struct {
-	// The managed object reference ID
-	// of the datacenter the network is located in. This can be omitted if the
-	// search path used in `name` is an absolute path. For default datacenters,
-	// use the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the network
+	// is located in. This can be omitted if the search path used in `name` is an
+	// absolute path. For default datacenters, use the `id` attribute from an empty
+	// `Datacenter` data source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// For distributed port group type
 	// network objects, the ID of the distributed virtual switch for which the port
@@ -169,6 +172,7 @@ type GetNetworkOutputArgs struct {
 	// The timeout duration in seconds for the data source to retry read operations.
 	RetryTimeout pulumi.IntPtrInput `pulumi:"retryTimeout"`
 	// Select a VPC scope for retrieval of VPC subnets.
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 

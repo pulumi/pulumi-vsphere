@@ -54,9 +54,11 @@ export class ComputeClusterVmAntiAffinityRule extends pulumi.CustomResource {
     }
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly computeClusterId: pulumi.Output<string>;
     /**
@@ -124,9 +126,11 @@ export class ComputeClusterVmAntiAffinityRule extends pulumi.CustomResource {
  */
 export interface ComputeClusterVmAntiAffinityRuleState {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId?: pulumi.Input<string>;
     /**
@@ -158,9 +162,11 @@ export interface ComputeClusterVmAntiAffinityRuleState {
  */
 export interface ComputeClusterVmAntiAffinityRuleArgs {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: pulumi.Input<string>;
     /**

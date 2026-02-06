@@ -20,6 +20,8 @@ import (
 //
 // The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
 //
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
 // ```go
 // package main
 //
@@ -127,7 +129,7 @@ type ContentLibrary struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Options to publish a local content library.
 	Publication ContentLibraryPublicationOutput `pulumi:"publication"`
-	// The managed object reference ID of the datastore on which to store the content library items.
+	// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
 	StorageBackings pulumi.StringArrayOutput `pulumi:"storageBackings"`
 	// Options subscribe to a published content library.
 	Subscription ContentLibrarySubscriptionPtrOutput `pulumi:"subscription"`
@@ -172,7 +174,7 @@ type contentLibraryState struct {
 	Name *string `pulumi:"name"`
 	// Options to publish a local content library.
 	Publication *ContentLibraryPublication `pulumi:"publication"`
-	// The managed object reference ID of the datastore on which to store the content library items.
+	// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
 	StorageBackings []string `pulumi:"storageBackings"`
 	// Options subscribe to a published content library.
 	Subscription *ContentLibrarySubscription `pulumi:"subscription"`
@@ -185,7 +187,7 @@ type ContentLibraryState struct {
 	Name pulumi.StringPtrInput
 	// Options to publish a local content library.
 	Publication ContentLibraryPublicationPtrInput
-	// The managed object reference ID of the datastore on which to store the content library items.
+	// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
 	StorageBackings pulumi.StringArrayInput
 	// Options subscribe to a published content library.
 	Subscription ContentLibrarySubscriptionPtrInput
@@ -202,7 +204,7 @@ type contentLibraryArgs struct {
 	Name *string `pulumi:"name"`
 	// Options to publish a local content library.
 	Publication *ContentLibraryPublication `pulumi:"publication"`
-	// The managed object reference ID of the datastore on which to store the content library items.
+	// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
 	StorageBackings []string `pulumi:"storageBackings"`
 	// Options subscribe to a published content library.
 	Subscription *ContentLibrarySubscription `pulumi:"subscription"`
@@ -216,7 +218,7 @@ type ContentLibraryArgs struct {
 	Name pulumi.StringPtrInput
 	// Options to publish a local content library.
 	Publication ContentLibraryPublicationPtrInput
-	// The managed object reference ID of the datastore on which to store the content library items.
+	// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
 	StorageBackings pulumi.StringArrayInput
 	// Options subscribe to a published content library.
 	Subscription ContentLibrarySubscriptionPtrInput
@@ -324,7 +326,7 @@ func (o ContentLibraryOutput) Publication() ContentLibraryPublicationOutput {
 	return o.ApplyT(func(v *ContentLibrary) ContentLibraryPublicationOutput { return v.Publication }).(ContentLibraryPublicationOutput)
 }
 
-// The managed object reference ID of the datastore on which to store the content library items.
+// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
 func (o ContentLibraryOutput) StorageBackings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ContentLibrary) pulumi.StringArrayOutput { return v.StorageBackings }).(pulumi.StringArrayOutput)
 }

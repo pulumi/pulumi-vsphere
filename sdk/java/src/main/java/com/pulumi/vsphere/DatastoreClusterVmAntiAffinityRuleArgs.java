@@ -19,18 +19,22 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
     public static final DatastoreClusterVmAntiAffinityRuleArgs Empty = new DatastoreClusterVmAntiAffinityRuleArgs();
 
     /**
-     * The managed object reference
-     * ID of the datastore cluster to put the group in.  Forces
+     * The [managed object reference
+     * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="datastoreClusterId", required=true)
     private Output<String> datastoreClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the datastore cluster to put the group in.  Forces
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> datastoreClusterId() {
@@ -85,20 +89,14 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
     }
 
     /**
-     * The UUIDs of the virtual machines to run
-     * on different datastores from each other.
-     * 
-     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
+     * The UUIDs of the virtual machines to run on different datastores from each other.
      * 
      */
     @Import(name="virtualMachineIds", required=true)
     private Output<List<String>> virtualMachineIds;
 
     /**
-     * @return The UUIDs of the virtual machines to run
-     * on different datastores from each other.
-     * 
-     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
+     * @return The UUIDs of the virtual machines to run on different datastores from each other.
      * 
      */
     public Output<List<String>> virtualMachineIds() {
@@ -134,9 +132,11 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param datastoreClusterId The managed object reference
-         * ID of the datastore cluster to put the group in.  Forces
+         * @param datastoreClusterId The [managed object reference
+         * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
          * a new resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -147,9 +147,11 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param datastoreClusterId The managed object reference
-         * ID of the datastore cluster to put the group in.  Forces
+         * @param datastoreClusterId The [managed object reference
+         * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
          * a new resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -224,10 +226,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param virtualMachineIds The UUIDs of the virtual machines to run
-         * on different datastores from each other.
-         * 
-         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
+         * @param virtualMachineIds The UUIDs of the virtual machines to run on different datastores from each other.
          * 
          * @return builder
          * 
@@ -238,10 +237,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param virtualMachineIds The UUIDs of the virtual machines to run
-         * on different datastores from each other.
-         * 
-         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
+         * @param virtualMachineIds The UUIDs of the virtual machines to run on different datastores from each other.
          * 
          * @return builder
          * 
@@ -251,10 +247,7 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param virtualMachineIds The UUIDs of the virtual machines to run
-         * on different datastores from each other.
-         * 
-         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
+         * @param virtualMachineIds The UUIDs of the virtual machines to run on different datastores from each other.
          * 
          * @return builder
          * 

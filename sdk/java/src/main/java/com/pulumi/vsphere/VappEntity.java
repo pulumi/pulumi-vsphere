@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vappContainer = new VappContainer("vappContainer", VappContainerArgs.builder()
- *             .name("vapp-container-test")
+ *             .name("pulumi-vapp-container-test")
  *             .parentResourcePoolId(computeCluster.id())
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
- *             .name("virtual-machine-test")
+ *             .name("pulumi-virtual-machine-test")
  *             .resourcePoolId(vappContainer.id())
  *             .datastoreId(datastore.id())
  *             .numCpus(2)
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/vappEntity:VappEntity")
 public class VappEntity extends com.pulumi.resources.CustomResource {
     /**
-     * Managed object ID of the vApp
+     * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      * 
      */
@@ -150,7 +150,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
     private Output<String> containerId;
 
     /**
-     * @return Managed object ID of the vApp
+     * @return [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      * 
      */
@@ -270,7 +270,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Managed object ID of the entity
+     * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      * 
      */
@@ -278,7 +278,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
     private Output<String> targetId;
 
     /**
-     * @return Managed object ID of the entity
+     * @return [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      * 
      */
@@ -290,6 +290,8 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
      */
     @Export(name="waitForGuest", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForGuest;
@@ -298,6 +300,8 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * @return Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<Optional<Boolean>> waitForGuest() {

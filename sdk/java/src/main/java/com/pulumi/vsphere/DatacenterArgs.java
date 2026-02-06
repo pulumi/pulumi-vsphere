@@ -83,14 +83,20 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -208,7 +214,10 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -219,7 +228,10 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -229,7 +241,10 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 

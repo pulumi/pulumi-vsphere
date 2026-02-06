@@ -12,10 +12,12 @@ namespace Pulumi.VSphere
     public static class GetDatacenter
     {
         /// <summary>
-        /// The `vsphere.Datacenter` data source can be used to discover the ID of a
-        /// vSphere datacenter object. This can then be used with resources or data sources
-        /// that require a datacenter, such as the `vsphere.Host`
+        /// The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+        /// datacenter object. This can then be used with resources or data sources that
+        /// require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
         /// data source.
+        /// 
+        /// [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
         /// 
         /// ## Example Usage
         /// 
@@ -39,10 +41,12 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.Datacenter` data source can be used to discover the ID of a
-        /// vSphere datacenter object. This can then be used with resources or data sources
-        /// that require a datacenter, such as the `vsphere.Host`
+        /// The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+        /// datacenter object. This can then be used with resources or data sources that
+        /// require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
         /// data source.
+        /// 
+        /// [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
         /// 
         /// ## Example Usage
         /// 
@@ -66,10 +70,12 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.Datacenter` data source can be used to discover the ID of a
-        /// vSphere datacenter object. This can then be used with resources or data sources
-        /// that require a datacenter, such as the `vsphere.Host`
+        /// The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+        /// datacenter object. This can then be used with resources or data sources that
+        /// require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
         /// data source.
+        /// 
+        /// [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
         /// 
         /// ## Example Usage
         /// 

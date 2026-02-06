@@ -12,16 +12,6 @@ namespace Pulumi.VSphere
     public static class GetComputeCluster
     {
         /// <summary>
-        /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-        /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-        /// to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
-        /// using the alias available through the `vsphere.ResourcePool`
-        /// data source.
-        /// 
-        /// &gt; You may also wish to see the `vsphere.ComputeCluster`
-        ///  resource for more information about clusters and how to managed the resource
-        ///  in this provider.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -50,16 +40,6 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-        /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-        /// to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
-        /// using the alias available through the `vsphere.ResourcePool`
-        /// data source.
-        /// 
-        /// &gt; You may also wish to see the `vsphere.ComputeCluster`
-        ///  resource for more information about clusters and how to managed the resource
-        ///  in this provider.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -88,16 +68,6 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-        /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-        /// to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
-        /// using the alias available through the `vsphere.ResourcePool`
-        /// data source.
-        /// 
-        /// &gt; You may also wish to see the `vsphere.ComputeCluster`
-        ///  resource for more information about clusters and how to managed the resource
-        ///  in this provider.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -130,10 +100,11 @@ namespace Pulumi.VSphere
     public sealed class GetComputeClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the cluster is located in.  This can be omitted if the
-        /// search path used in `Name` is an absolute path. For default datacenters,
-        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+        /// is located in. This can be omitted if the search path used in `Name` is an
+        /// absolute path. For default datacenters, use the `Id` attribute from an empty
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -153,10 +124,11 @@ namespace Pulumi.VSphere
     public sealed class GetComputeClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the cluster is located in.  This can be omitted if the
-        /// search path used in `Name` is an absolute path. For default datacenters,
-        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+        /// is located in. This can be omitted if the search path used in `Name` is an
+        /// absolute path. For default datacenters, use the `Id` attribute from an empty
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -184,7 +156,7 @@ namespace Pulumi.VSphere
         public readonly string Id;
         public readonly string Name;
         /// <summary>
-        /// The managed object reference ID of
+        /// The [managed object reference ID][docs-about-morefs] of
         /// the root resource pool for the cluster.
         /// </summary>
         public readonly string ResourcePoolId;

@@ -26,6 +26,8 @@ namespace Pulumi.VSphere.Inputs
 
         /// <summary>
         /// Download the library from a content only when needed. Default `True`.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("onDemand")]
         public Input<bool>? OnDemand { get; set; }

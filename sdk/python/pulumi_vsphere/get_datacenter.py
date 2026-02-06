@@ -73,10 +73,12 @@ class AwaitableGetDatacenterResult(GetDatacenterResult):
 def get_datacenter(name: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatacenterResult:
     """
-    The `Datacenter` data source can be used to discover the ID of a
-    vSphere datacenter object. This can then be used with resources or data sources
-    that require a datacenter, such as the `Host`
+    The `Datacenter` data source can be used to discover the ID of a vSphere
+    datacenter object. This can then be used with resources or data sources that
+    require a datacenter, such as the [`Host`][data-source-vsphere-host]
     data source.
+
+    [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
 
     ## Example Usage
 
@@ -108,10 +110,12 @@ def get_datacenter(name: Optional[_builtins.str] = None,
 def get_datacenter_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatacenterResult]:
     """
-    The `Datacenter` data source can be used to discover the ID of a
-    vSphere datacenter object. This can then be used with resources or data sources
-    that require a datacenter, such as the `Host`
+    The `Datacenter` data source can be used to discover the ID of a vSphere
+    datacenter object. This can then be used with resources or data sources that
+    require a datacenter, such as the [`Host`][data-source-vsphere-host]
     data source.
+
+    [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
 
     ## Example Usage
 

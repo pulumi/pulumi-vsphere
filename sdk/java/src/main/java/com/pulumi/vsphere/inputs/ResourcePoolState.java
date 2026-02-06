@@ -244,7 +244,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The managed object ID
+     * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a resource pool
      * from one parent resource pool to another, both must share a common root
@@ -255,7 +255,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> parentResourcePoolId;
 
     /**
-     * @return The managed object ID
+     * @return The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a resource pool
      * from one parent resource pool to another, both must share a common root
@@ -288,14 +288,22 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -637,7 +645,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentResourcePoolId The managed object ID
+         * @param parentResourcePoolId The [managed object ID][docs-about-morefs]
          * of the parent resource pool. This can be the root resource pool for a cluster
          * or standalone host, or a resource pool itself. When moving a resource pool
          * from one parent resource pool to another, both must share a common root
@@ -652,7 +660,7 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentResourcePoolId The managed object ID
+         * @param parentResourcePoolId The [managed object ID][docs-about-morefs]
          * of the parent resource pool. This can be the root resource pool for a cluster
          * or standalone host, or a resource pool itself. When moving a resource pool
          * from one parent resource pool to another, both must share a common root
@@ -693,7 +701,11 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -704,7 +716,11 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -714,7 +730,11 @@ public final class ResourcePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 

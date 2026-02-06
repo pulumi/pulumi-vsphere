@@ -13,9 +13,16 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-        /// vSphere datastore cluster object. This can then be used with resources or data sources
-        /// that require a datastore. For example, to assign datastores using the
-        /// `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+        /// vSphere datastore cluster object. This can then be used with resources or data
+        /// sources that require a datastore. For example, to assign datastores using the
+        /// [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+        /// [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+        /// virtual machines in using the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+        /// [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -46,9 +53,16 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-        /// vSphere datastore cluster object. This can then be used with resources or data sources
-        /// that require a datastore. For example, to assign datastores using the
-        /// `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+        /// vSphere datastore cluster object. This can then be used with resources or data
+        /// sources that require a datastore. For example, to assign datastores using the
+        /// [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+        /// [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+        /// virtual machines in using the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+        /// [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -79,9 +93,16 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-        /// vSphere datastore cluster object. This can then be used with resources or data sources
-        /// that require a datastore. For example, to assign datastores using the
-        /// `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+        /// vSphere datastore cluster object. This can then be used with resources or data
+        /// sources that require a datastore. For example, to assign datastores using the
+        /// [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+        /// [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+        /// virtual machines in using the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+        /// [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -115,8 +136,8 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the datastore cluster is located in.
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
         /// This can be omitted if the search path used in `Name` is an absolute path.
         /// For default datacenters, use the id attribute from an empty
         /// `vsphere.Datacenter` data source.
@@ -139,8 +160,8 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the datastore cluster is located in.
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
         /// This can be omitted if the search path used in `Name` is an absolute path.
         /// For default datacenters, use the id attribute from an empty
         /// `vsphere.Datacenter` data source.

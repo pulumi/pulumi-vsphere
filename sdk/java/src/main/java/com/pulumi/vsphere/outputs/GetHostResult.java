@@ -20,7 +20,7 @@ public final class GetHostResult {
     private String id;
     private @Nullable String name;
     /**
-     * @return The managed object ID of the ESXi
+     * @return The [managed object ID][docs-about-morefs] of the ESXi
      * host&#39;s root resource pool.
      * 
      */
@@ -41,7 +41,7 @@ public final class GetHostResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The managed object ID of the ESXi
+     * @return The [managed object ID][docs-about-morefs] of the ESXi
      * host&#39;s root resource pool.
      * 
      */

@@ -16,22 +16,22 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetResourcePoolArgs Empty = new GetResourcePoolArgs();
 
     /**
-     * The managed object reference ID
-     * of the datacenter in which the resource pool is located. This can be omitted
-     * if the search path used in `name` is an absolute path. For default
-     * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source..
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter in which
+     * the resource pool is located. This can be omitted if the search path used in
+     * `name` is an absolute path. For default datacenters, use the id attribute from
+     * an empty `vsphere.Datacenter` data source.
      * 
      */
     @Import(name="datacenterId")
     private @Nullable Output<String> datacenterId;
 
     /**
-     * @return The managed object reference ID
-     * of the datacenter in which the resource pool is located. This can be omitted
-     * if the search path used in `name` is an absolute path. For default
-     * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-     * source..
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the datacenter in which
+     * the resource pool is located. This can be omitted if the search path used in
+     * `name` is an absolute path. For default datacenters, use the id attribute from
+     * an empty `vsphere.Datacenter` data source.
      * 
      */
     public Optional<Output<String>> datacenterId() {
@@ -56,26 +56,30 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The managed object ID
+     * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. When specified, the `name` parameter is used to find
      * a child resource pool with the given name under this parent resource pool.
      * 
-     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host&#39;s root resource pool.
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not need
+     * to specify either attribute to use this data source. An empty declaration will
+     * load the ESXi host&#39;s root resource pool.
      * 
      */
     @Import(name="parentResourcePoolId")
     private @Nullable Output<String> parentResourcePoolId;
 
     /**
-     * @return The managed object ID
+     * @return The [managed object ID][docs-about-morefs]
      * of the parent resource pool. When specified, the `name` parameter is used to find
      * a child resource pool with the given name under this parent resource pool.
      * 
-     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-     * need to specify either attribute to use this data source. An empty declaration
-     * will load the ESXi host&#39;s root resource pool.
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not need
+     * to specify either attribute to use this data source. An empty declaration will
+     * load the ESXi host&#39;s root resource pool.
      * 
      */
     public Optional<Output<String>> parentResourcePoolId() {
@@ -109,11 +113,11 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter in which the resource pool is located. This can be omitted
-         * if the search path used in `name` is an absolute path. For default
-         * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-         * source..
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter in which
+         * the resource pool is located. This can be omitted if the search path used in
+         * `name` is an absolute path. For default datacenters, use the id attribute from
+         * an empty `vsphere.Datacenter` data source.
          * 
          * @return builder
          * 
@@ -124,11 +128,11 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter in which the resource pool is located. This can be omitted
-         * if the search path used in `name` is an absolute path. For default
-         * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-         * source..
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter in which
+         * the resource pool is located. This can be omitted if the search path used in
+         * `name` is an absolute path. For default datacenters, use the id attribute from
+         * an empty `vsphere.Datacenter` data source.
          * 
          * @return builder
          * 
@@ -161,13 +165,15 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentResourcePoolId The managed object ID
+         * @param parentResourcePoolId The [managed object ID][docs-about-morefs]
          * of the parent resource pool. When specified, the `name` parameter is used to find
          * a child resource pool with the given name under this parent resource pool.
          * 
-         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-         * need to specify either attribute to use this data source. An empty declaration
-         * will load the ESXi host&#39;s root resource pool.
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
+         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not need
+         * to specify either attribute to use this data source. An empty declaration will
+         * load the ESXi host&#39;s root resource pool.
          * 
          * @return builder
          * 
@@ -178,13 +184,15 @@ public final class GetResourcePoolArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentResourcePoolId The managed object ID
+         * @param parentResourcePoolId The [managed object ID][docs-about-morefs]
          * of the parent resource pool. When specified, the `name` parameter is used to find
          * a child resource pool with the given name under this parent resource pool.
          * 
-         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-         * need to specify either attribute to use this data source. An empty declaration
-         * will load the ESXi host&#39;s root resource pool.
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
+         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not need
+         * to specify either attribute to use this data source. An empty declaration will
+         * load the ESXi host&#39;s root resource pool.
          * 
          * @return builder
          * 

@@ -16,16 +16,18 @@ public final class GetHostPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetHostPlainArgs Empty = new GetHostPlainArgs();
 
     /**
-     * The managed object reference ID
-     * of a vSphere datacenter object.
+     * The
+     * [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+     * object.
      * 
      */
     @Import(name="datacenterId", required=true)
     private String datacenterId;
 
     /**
-     * @return The managed object reference ID
-     * of a vSphere datacenter object.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+     * object.
      * 
      */
     public String datacenterId() {
@@ -33,8 +35,10 @@ public final class GetHostPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the ESXI host. This can be a name or path.
-     * Can be omitted if there is only one host in your inventory.
+     * The name of the ESXI host. This can be a name or path. Can
+     * be omitted if there is only one host in your inventory.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      * &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
      * returns the ESXi host&#39;s object ID, regardless of what is entered into `name`.
@@ -44,8 +48,10 @@ public final class GetHostPlainArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable String name;
 
     /**
-     * @return The name of the ESXI host. This can be a name or path.
-     * Can be omitted if there is only one host in your inventory.
+     * @return The name of the ESXI host. This can be a name or path. Can
+     * be omitted if there is only one host in your inventory.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      * &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
      * returns the ESXi host&#39;s object ID, regardless of what is entered into `name`.
@@ -81,8 +87,9 @@ public final class GetHostPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of a vSphere datacenter object.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+         * object.
          * 
          * @return builder
          * 
@@ -93,8 +100,10 @@ public final class GetHostPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the ESXI host. This can be a name or path.
-         * Can be omitted if there is only one host in your inventory.
+         * @param name The name of the ESXI host. This can be a name or path. Can
+         * be omitted if there is only one host in your inventory.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
          * returns the ESXi host&#39;s object ID, regardless of what is entered into `name`.

@@ -13,16 +13,19 @@ namespace Pulumi.VSphere
     /// The `vsphere.HostVirtualSwitch` resource can be used to manage vSphere
     /// standard switches on an ESXi host. These switches can be used as a backing for
     /// standard port groups, which can be managed by the
-    /// `vsphere.HostPortGroup` resource.
+    /// [`vsphere.HostPortGroup`][host-port-group] resource.
     /// 
     /// For an overview on vSphere networking concepts, see [this
     /// page][ref-vsphere-net-concepts].
     /// 
-    /// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+    /// [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
+    /// [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
     /// 
     /// ## Example Usage
     /// 
-    /// ### Create a virtual switch with one active and one standby NIC
+    /// ### S
+    /// 
+    /// **Create a virtual switch with one active and one standby NIC:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,7 +48,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var @switch = new VSphere.HostVirtualSwitch("switch", new()
     ///     {
-    ///         Name = "vSwitchTest",
+    ///         Name = "vSwitchTerraformTest",
     ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
     ///         NetworkAdapters = new[]
     ///         {
@@ -65,7 +68,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// ### Create a virtual switch with extra networking policy options
+    /// **Create a virtual switch with extra networking policy options:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -88,7 +91,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var @switch = new VSphere.HostVirtualSwitch("switch", new()
     ///     {
-    ///         Name = "vSwitchTest",
+    ///         Name = "vSwitchTerraformTest",
     ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
     ///         NetworkAdapters = new[]
     ///         {
@@ -184,7 +187,7 @@ namespace Pulumi.VSphere
         public Output<bool?> Failback { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to set the virtual switch up on. Forces a new resource if changed.
         /// </summary>
         [Output("hostSystemId")]
@@ -229,11 +232,7 @@ namespace Pulumi.VSphere
         public Output<bool?> NotifySwitches { get; private set; } = null!;
 
         /// <summary>
-        /// The number of ports to create with this
-        /// virtual switch. Default: `128`.
-        /// 
-        /// &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-        /// will not restart the host for you.
+        /// The number of ports that this virtual switch is configured to use.
         /// </summary>
         [Output("numberOfPorts")]
         public Output<int?> NumberOfPorts { get; private set; } = null!;
@@ -369,7 +368,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Failback { get; set; }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to set the virtual switch up on. Forces a new resource if changed.
         /// </summary>
         [Input("hostSystemId", required: true)]
@@ -420,11 +419,7 @@ namespace Pulumi.VSphere
         public Input<bool>? NotifySwitches { get; set; }
 
         /// <summary>
-        /// The number of ports to create with this
-        /// virtual switch. Default: `128`.
-        /// 
-        /// &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-        /// will not restart the host for you.
+        /// The number of ports that this virtual switch is configured to use.
         /// </summary>
         [Input("numberOfPorts")]
         public Input<int>? NumberOfPorts { get; set; }
@@ -528,7 +523,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Failback { get; set; }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to set the virtual switch up on. Forces a new resource if changed.
         /// </summary>
         [Input("hostSystemId")]
@@ -579,11 +574,7 @@ namespace Pulumi.VSphere
         public Input<bool>? NotifySwitches { get; set; }
 
         /// <summary>
-        /// The number of ports to create with this
-        /// virtual switch. Default: `128`.
-        /// 
-        /// &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-        /// will not restart the host for you.
+        /// The number of ports that this virtual switch is configured to use.
         /// </summary>
         [Input("numberOfPorts")]
         public Input<int>? NumberOfPorts { get; set; }

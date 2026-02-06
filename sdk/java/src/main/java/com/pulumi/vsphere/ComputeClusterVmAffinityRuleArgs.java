@@ -19,18 +19,22 @@ public final class ComputeClusterVmAffinityRuleArgs extends com.pulumi.resources
     public static final ComputeClusterVmAffinityRuleArgs Empty = new ComputeClusterVmAffinityRuleArgs();
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="computeClusterId", required=true)
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {
@@ -138,9 +142,11 @@ public final class ComputeClusterVmAffinityRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the group in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -151,9 +157,11 @@ public final class ComputeClusterVmAffinityRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the group in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

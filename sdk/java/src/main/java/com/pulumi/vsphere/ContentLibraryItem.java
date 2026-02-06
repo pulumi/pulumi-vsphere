@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * The first example below imports an OVF Template to a content
  * library.
  * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
  * <pre>
  * {@code
  * package generated_program;

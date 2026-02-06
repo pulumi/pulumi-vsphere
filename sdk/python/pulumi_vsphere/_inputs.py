@@ -579,6 +579,8 @@ if not MYPY:
         on_demand: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Download the library from a content only when needed. Default `true`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         password: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -608,6 +610,8 @@ class ContentLibrarySubscriptionArgs:
         :param pulumi.Input[_builtins.str] authentication_method: Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
         :param pulumi.Input[_builtins.bool] automatic_sync: Enable automatic synchronization with the published library. Default `false`.
         :param pulumi.Input[_builtins.bool] on_demand: Download the library from a content only when needed. Default `true`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] password: Password used for authentication.
         :param pulumi.Input[_builtins.str] subscription_url: URL of the published content library.
         :param pulumi.Input[_builtins.str] username: Username used for authentication.
@@ -654,6 +658,8 @@ class ContentLibrarySubscriptionArgs:
     def on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Download the library from a content only when needed. Default `true`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "on_demand")
 

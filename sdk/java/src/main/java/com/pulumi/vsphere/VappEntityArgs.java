@@ -21,7 +21,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
     public static final VappEntityArgs Empty = new VappEntityArgs();
 
     /**
-     * Managed object ID of the vApp
+     * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      * 
      */
@@ -29,7 +29,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> containerId;
 
     /**
-     * @return Managed object ID of the vApp
+     * @return [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      * 
      */
@@ -157,7 +157,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Managed object ID of the entity
+     * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      * 
      */
@@ -165,7 +165,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> targetId;
 
     /**
-     * @return Managed object ID of the entity
+     * @return [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      * 
      */
@@ -178,6 +178,8 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
      */
     @Import(name="waitForGuest")
     private @Nullable Output<Boolean> waitForGuest;
@@ -186,6 +188,8 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
      * @return Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<Boolean>> waitForGuest() {
@@ -226,7 +230,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Managed object ID of the vApp
+         * @param containerId [Managed object ID|docs-about-morefs] of the vApp
          * container the entity is a member of.
          * 
          * @return builder
@@ -238,7 +242,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Managed object ID of the vApp
+         * @param containerId [Managed object ID|docs-about-morefs] of the vApp
          * container the entity is a member of.
          * 
          * @return builder
@@ -420,7 +424,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId Managed object ID of the entity
+         * @param targetId [Managed object ID|docs-about-morefs] of the entity
          * to power on or power off. This can be a virtual machine or a vApp.
          * 
          * @return builder
@@ -432,7 +436,7 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId Managed object ID of the entity
+         * @param targetId [Managed object ID|docs-about-morefs] of the entity
          * to power on or power off. This can be a virtual machine or a vApp.
          * 
          * @return builder
@@ -447,6 +451,8 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
          * started when VMware Tools are ready instead of waiting for `startDelay`. This
          * property has no effect for vApps. Default: false
          * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
          * @return builder
          * 
          */
@@ -459,6 +465,8 @@ public final class VappEntityArgs extends com.pulumi.resources.ResourceArgs {
          * @param waitForGuest Determines if the VM should be marked as being
          * started when VMware Tools are ready instead of waiting for `startDelay`. This
          * property has no effect for vApps. Default: false
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

@@ -29,32 +29,31 @@ class VmfsDatastoreArgs:
         """
         The set of arguments for constructing a VmfsDatastore resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disks: The disks to use with the datastore.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
                only host that the datastore will be set up on - see
                here for more info. Forces a
                new resource if changed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value string to set on datastore resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value string to set on datastore resource. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "host_system_id", host_system_id)
@@ -85,7 +84,7 @@ class VmfsDatastoreArgs:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the datastore up on. Note that this is not necessarily the
         only host that the datastore will be set up on - see
         here for more info. Forces a
@@ -101,8 +100,12 @@ class VmfsDatastoreArgs:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Map of custom attribute ids to attribute 
-        value string to set on datastore resource.
+        Map of custom attribute ids to attribute
+        value string to set on datastore resource. See
+        [here][docs-setting-custom-attributes] for a reference on how to set values
+        for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -117,8 +120,8 @@ class VmfsDatastoreArgs:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object
-        ID of a datastore cluster to put this datastore in.
+        The [managed object
+        ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         Conflicts with `folder`.
         """
         return pulumi.get(self, "datastore_cluster_id")
@@ -131,13 +134,7 @@ class VmfsDatastoreArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore in.
-        This is a path relative to the datacenter you are deploying the datastore to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a datastore named `test` in a datastore folder
-        located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/test`. Conflicts with
-        `datastore_cluster_id`.
+        The path to the datastore folder to put the datastore in.
         """
         return pulumi.get(self, "folder")
 
@@ -162,10 +159,11 @@ class VmfsDatastoreArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
 
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "tags")
 
@@ -196,24 +194,22 @@ class _VmfsDatastoreState:
         :param pulumi.Input[_builtins.bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[_builtins.int] capacity: Maximum capacity of the datastore, in megabytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value string to set on datastore resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value string to set on datastore resource. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disks: The disks to use with the datastore.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[_builtins.int] free_space: Available space of this datastore, in megabytes.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
                only host that the datastore will be set up on - see
                here for more info. Forces a
@@ -223,10 +219,11 @@ class _VmfsDatastoreState:
                been configured with access to the datastore.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.int] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[_builtins.str] url: The unique locator for the datastore.
@@ -289,8 +286,12 @@ class _VmfsDatastoreState:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Map of custom attribute ids to attribute 
-        value string to set on datastore resource.
+        Map of custom attribute ids to attribute
+        value string to set on datastore resource. See
+        [here][docs-setting-custom-attributes] for a reference on how to set values
+        for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -305,8 +306,8 @@ class _VmfsDatastoreState:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object
-        ID of a datastore cluster to put this datastore in.
+        The [managed object
+        ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         Conflicts with `folder`.
         """
         return pulumi.get(self, "datastore_cluster_id")
@@ -331,13 +332,7 @@ class _VmfsDatastoreState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore in.
-        This is a path relative to the datacenter you are deploying the datastore to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a datastore named `test` in a datastore folder
-        located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/test`. Conflicts with
-        `datastore_cluster_id`.
+        The path to the datastore folder to put the datastore in.
         """
         return pulumi.get(self, "folder")
 
@@ -361,7 +356,7 @@ class _VmfsDatastoreState:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the datastore up on. Note that this is not necessarily the
         only host that the datastore will be set up on - see
         here for more info. Forces a
@@ -415,10 +410,11 @@ class _VmfsDatastoreState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
 
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "tags")
 
@@ -467,43 +463,6 @@ class VmfsDatastore(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        The `VmfsDatastore` resource can be used to create and manage VMFS
-        datastores on an ESXi host or a set of hosts. The resource supports using any
-        SCSI device that can generally be used in a datastore, such as local disks, or
-        disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
-        Devices can be specified manually, or discovered using the
-        [`get_vmfs_disks`][data-source-vmfs-disks] data source.
-
-        [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html
-
-        ## Auto-Mounting of Datastores Within vCenter
-
-        Note that the current behavior of this resource will auto-mount any created
-        datastores to any other host within vCenter that has access to the same disk.
-
-        Example: You want to create a datastore with a iSCSI LUN that is visible on 3
-        hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
-        create the datastore on `esxi1`, the datastore will be automatically mounted on
-        `esxi2` and `esxi3`, without the need to configure the resource on either of
-        those two hosts.
-
-        Future versions of this resource may allow you to control the hosts that a
-        datastore is mounted to, but currently, this automatic behavior cannot be
-        changed, so keep this in mind when writing your configurations and deploying
-        your disks.
-
-        ## Increasing Datastore Size
-
-        To increase the size of a datastore, you must add additional disks to the
-        `disks` attribute. Expanding the size of a datastore by increasing the size of
-        an already provisioned disk is currently not supported (but may be in future
-        versions of this resource).
-
-        > **NOTE:** You cannot decrease the size of a datastore. If the resource
-        detects disks removed from the configuration, the provider will give an error.
-
-        [cmd-taint]: /docs/commands/taint.html
-
         ## Example Usage
 
         ### Addition of local disks on a single host
@@ -525,8 +484,8 @@ class VmfsDatastore(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter()
         host = vsphere.get_host(datacenter_id=datacenter.id)
         datastore = vsphere.VmfsDatastore("datastore",
-            name="test",
-            host_system_id=esxi_host["id"],
+            name="pulumi-test",
+            host_system_id=host.id,
             disks=[
                 "mpx.vmhba1:C0:T1:L0",
                 "mpx.vmhba1:C0:T2:L0",
@@ -537,7 +496,7 @@ class VmfsDatastore(pulumi.CustomResource):
         ### Auto-detection of disks via `get_vmfs_disks`
 
         The following example makes use of the
-        `get_vmfs_disks` data source to auto-detect
+        [`get_vmfs_disks`][data-source-vmfs-disks] data source to auto-detect
         exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
         exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
         into `VmfsDatastore`. The datastore is also placed in the
@@ -556,8 +515,8 @@ class VmfsDatastore(pulumi.CustomResource):
             rescan=True,
             filter="naa.60a98000")
         datastore = vsphere.VmfsDatastore("datastore",
-            name="test",
-            host_system_id=esxi_host["id"],
+            name="pulumi-test",
+            host_system_id=host.id,
             folder="datastore-folder",
             disks=[available.disks])
         ```
@@ -604,33 +563,32 @@ class VmfsDatastore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value string to set on datastore resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value string to set on datastore resource. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disks: The disks to use with the datastore.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
                only host that the datastore will be set up on - see
                here for more info. Forces a
                new resource if changed.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         ...
     @overload
@@ -639,43 +597,6 @@ class VmfsDatastore(pulumi.CustomResource):
                  args: VmfsDatastoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `VmfsDatastore` resource can be used to create and manage VMFS
-        datastores on an ESXi host or a set of hosts. The resource supports using any
-        SCSI device that can generally be used in a datastore, such as local disks, or
-        disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
-        Devices can be specified manually, or discovered using the
-        [`get_vmfs_disks`][data-source-vmfs-disks] data source.
-
-        [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html
-
-        ## Auto-Mounting of Datastores Within vCenter
-
-        Note that the current behavior of this resource will auto-mount any created
-        datastores to any other host within vCenter that has access to the same disk.
-
-        Example: You want to create a datastore with a iSCSI LUN that is visible on 3
-        hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
-        create the datastore on `esxi1`, the datastore will be automatically mounted on
-        `esxi2` and `esxi3`, without the need to configure the resource on either of
-        those two hosts.
-
-        Future versions of this resource may allow you to control the hosts that a
-        datastore is mounted to, but currently, this automatic behavior cannot be
-        changed, so keep this in mind when writing your configurations and deploying
-        your disks.
-
-        ## Increasing Datastore Size
-
-        To increase the size of a datastore, you must add additional disks to the
-        `disks` attribute. Expanding the size of a datastore by increasing the size of
-        an already provisioned disk is currently not supported (but may be in future
-        versions of this resource).
-
-        > **NOTE:** You cannot decrease the size of a datastore. If the resource
-        detects disks removed from the configuration, the provider will give an error.
-
-        [cmd-taint]: /docs/commands/taint.html
-
         ## Example Usage
 
         ### Addition of local disks on a single host
@@ -697,8 +618,8 @@ class VmfsDatastore(pulumi.CustomResource):
         datacenter = vsphere.get_datacenter()
         host = vsphere.get_host(datacenter_id=datacenter.id)
         datastore = vsphere.VmfsDatastore("datastore",
-            name="test",
-            host_system_id=esxi_host["id"],
+            name="pulumi-test",
+            host_system_id=host.id,
             disks=[
                 "mpx.vmhba1:C0:T1:L0",
                 "mpx.vmhba1:C0:T2:L0",
@@ -709,7 +630,7 @@ class VmfsDatastore(pulumi.CustomResource):
         ### Auto-detection of disks via `get_vmfs_disks`
 
         The following example makes use of the
-        `get_vmfs_disks` data source to auto-detect
+        [`get_vmfs_disks`][data-source-vmfs-disks] data source to auto-detect
         exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
         exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
         into `VmfsDatastore`. The datastore is also placed in the
@@ -728,8 +649,8 @@ class VmfsDatastore(pulumi.CustomResource):
             rescan=True,
             filter="naa.60a98000")
         datastore = vsphere.VmfsDatastore("datastore",
-            name="test",
-            host_system_id=esxi_host["id"],
+            name="pulumi-test",
+            host_system_id=host.id,
             folder="datastore-folder",
             disks=[available.disks])
         ```
@@ -857,24 +778,22 @@ class VmfsDatastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[_builtins.int] capacity: Maximum capacity of the datastore, in megabytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value string to set on datastore resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value string to set on datastore resource. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disks: The disks to use with the datastore.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[_builtins.int] free_space: Available space of this datastore, in megabytes.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
                only host that the datastore will be set up on - see
                here for more info. Forces a
@@ -884,10 +803,11 @@ class VmfsDatastore(pulumi.CustomResource):
                been configured with access to the datastore.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.int] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[_builtins.str] url: The unique locator for the datastore.
@@ -933,8 +853,12 @@ class VmfsDatastore(pulumi.CustomResource):
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Map of custom attribute ids to attribute 
-        value string to set on datastore resource.
+        Map of custom attribute ids to attribute
+        value string to set on datastore resource. See
+        [here][docs-setting-custom-attributes] for a reference on how to set values
+        for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -945,8 +869,8 @@ class VmfsDatastore(pulumi.CustomResource):
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The managed object
-        ID of a datastore cluster to put this datastore in.
+        The [managed object
+        ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         Conflicts with `folder`.
         """
         return pulumi.get(self, "datastore_cluster_id")
@@ -963,13 +887,7 @@ class VmfsDatastore(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore in.
-        This is a path relative to the datacenter you are deploying the datastore to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a datastore named `test` in a datastore folder
-        located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/test`. Conflicts with
-        `datastore_cluster_id`.
+        The path to the datastore folder to put the datastore in.
         """
         return pulumi.get(self, "folder")
 
@@ -985,7 +903,7 @@ class VmfsDatastore(pulumi.CustomResource):
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the datastore up on. Note that this is not necessarily the
         only host that the datastore will be set up on - see
         here for more info. Forces a
@@ -1023,10 +941,11 @@ class VmfsDatastore(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
 
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "tags")
 

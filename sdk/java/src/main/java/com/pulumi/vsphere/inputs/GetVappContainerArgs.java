@@ -15,16 +15,22 @@ public final class GetVappContainerArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetVappContainerArgs Empty = new GetVappContainerArgs();
 
     /**
-     * The managed object reference ID
-     * of the datacenter in which the vApp container is located.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter in which
+     * the vApp container is located.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="datacenterId", required=true)
     private Output<String> datacenterId;
 
     /**
-     * @return The managed object reference ID
-     * of the datacenter in which the vApp container is located.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the datacenter in which
+     * the vApp container is located.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> datacenterId() {
@@ -74,8 +80,11 @@ public final class GetVappContainerArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter in which the vApp container is located.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter in which
+         * the vApp container is located.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -86,8 +95,11 @@ public final class GetVappContainerArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter in which the vApp container is located.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter in which
+         * the vApp container is located.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

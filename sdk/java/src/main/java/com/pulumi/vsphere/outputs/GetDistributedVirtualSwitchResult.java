@@ -21,9 +21,9 @@ public final class GetDistributedVirtualSwitchResult {
     private String id;
     private String name;
     /**
-     * @return The list of the uplinks on this vSphere distributed switch, as per the
-     * `uplinks` argument to the
-     * `vsphere.DistributedVirtualSwitch`
+     * @return The list of the uplinks on this vSphere distributed switch, as per
+     * the [`uplinks`][distributed-virtual-switch-uplinks] argument to the
+     * [`vsphere.DistributedVirtualSwitch`][distributed-virtual-switch-resource]
      * resource.
      * 
      */
@@ -44,9 +44,9 @@ public final class GetDistributedVirtualSwitchResult {
         return this.name;
     }
     /**
-     * @return The list of the uplinks on this vSphere distributed switch, as per the
-     * `uplinks` argument to the
-     * `vsphere.DistributedVirtualSwitch`
+     * @return The list of the uplinks on this vSphere distributed switch, as per
+     * the [`uplinks`][distributed-virtual-switch-uplinks] argument to the
+     * [`vsphere.DistributedVirtualSwitch`][distributed-virtual-switch-resource]
      * resource.
      * 
      */

@@ -11,10 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getDatastore` data source can be used to discover the ID of a
-// vSphere datastore object. This can then be used with resources or data sources
-// that require a datastore. For example, to create virtual machines in using the
-// `VirtualMachine` resource.
+// The `getDatastore` data source can be used to discover the ID of a vSphere
+// datastore object. This can then be used with resources or data sources that
+// require a datastore. For example, to create virtual machines in using the
+// [`VirtualMachine`][docs-virtual-machine-resource] resource.
+//
+// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // ## Example Usage
 //
@@ -60,10 +62,11 @@ func GetDatastore(ctx *pulumi.Context, args *GetDatastoreArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDatastore.
 type GetDatastoreArgs struct {
-	// The managed object reference ID
-	// of the datacenter the datastore is located in. This can be omitted if the
-	// search path used in `name` is an absolute path. For default datacenters, use
-	// the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the
+	// datastore is located in. This can be omitted if the search path used in `name`
+	// is an absolute path. For default datacenters, use the `id` attribute from an
+	// empty `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the datastore. This can be a name or path.
 	Name string `pulumi:"name"`
@@ -96,10 +99,11 @@ func GetDatastoreOutput(ctx *pulumi.Context, args GetDatastoreOutputArgs, opts .
 
 // A collection of arguments for invoking getDatastore.
 type GetDatastoreOutputArgs struct {
-	// The managed object reference ID
-	// of the datacenter the datastore is located in. This can be omitted if the
-	// search path used in `name` is an absolute path. For default datacenters, use
-	// the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the
+	// datastore is located in. This can be omitted if the search path used in `name`
+	// is an absolute path. For default datacenters, use the `id` attribute from an
+	// empty `Datacenter` data source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name of the datastore. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`

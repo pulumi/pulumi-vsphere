@@ -14,7 +14,9 @@ import (
 // The `ResourcePool` data source can be used to discover the ID of a
 // resource pool in vSphere. This is useful to return the ID of a resource pool
 // that you want to use to create virtual machines in using the
-// `VirtualMachine` resource.
+// [`VirtualMachine`][docs-virtual-machine-resource] resource.
+//
+// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // ## Example Usage
 //
@@ -93,9 +95,11 @@ import (
 //
 // ### Specifying the Root Resource Pool for a Standalone ESXi Host
 //
-// > **NOTE:** Returning the root resource pool for a cluster can be done
-// directly via the `ComputeCluster`
-// data source.
+// > **NOTE:** Returning the root resource pool for a cluster can be done directly
+// via the [`ComputeCluster`][docs-compute-cluster-data-source] data
+// source.
+//
+// [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 //
 // All compute resources in vSphere have a resource pool, even if one has not been
 // explicitly created. This resource pool is referred to as the _root resource
@@ -143,22 +147,24 @@ func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts 
 
 // A collection of arguments for invoking getResourcePool.
 type LookupResourcePoolArgs struct {
-	// The managed object reference ID
-	// of the datacenter in which the resource pool is located. This can be omitted
-	// if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source..
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter in which
+	// the resource pool is located. This can be omitted if the search path used in
+	// `name` is an absolute path. For default datacenters, use the id attribute from
+	// an empty `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.
 	Name *string `pulumi:"name"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. When specified, the `name` parameter is used to find
 	// a child resource pool with the given name under this parent resource pool.
 	//
-	// > **Note:** When using ESXi without a vCenter Server instance, you do not
-	// need to specify either attribute to use this data source. An empty declaration
-	// will load the ESXi host's root resource pool.
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **Note:** When using ESXi without a vCenter Server instance, you do not need
+	// to specify either attribute to use this data source. An empty declaration will
+	// load the ESXi host's root resource pool.
 	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
 }
 
@@ -182,22 +188,24 @@ func LookupResourcePoolOutput(ctx *pulumi.Context, args LookupResourcePoolOutput
 
 // A collection of arguments for invoking getResourcePool.
 type LookupResourcePoolOutputArgs struct {
-	// The managed object reference ID
-	// of the datacenter in which the resource pool is located. This can be omitted
-	// if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source..
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter in which
+	// the resource pool is located. This can be omitted if the search path used in
+	// `name` is an absolute path. For default datacenters, use the id attribute from
+	// an empty `Datacenter` data source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. When specified, the `name` parameter is used to find
 	// a child resource pool with the given name under this parent resource pool.
 	//
-	// > **Note:** When using ESXi without a vCenter Server instance, you do not
-	// need to specify either attribute to use this data source. An empty declaration
-	// will load the ESXi host's root resource pool.
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **Note:** When using ESXi without a vCenter Server instance, you do not need
+	// to specify either attribute to use this data source. An empty declaration will
+	// load the ESXi host's root resource pool.
 	ParentResourcePoolId pulumi.StringPtrInput `pulumi:"parentResourcePoolId"`
 }
 

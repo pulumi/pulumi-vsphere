@@ -24,16 +24,20 @@ class ComputeClusterHostGroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterHostGroup resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to put in the cluster.
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterVmGroup`
+               [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
                resource. Make sure your names are unique across both resources.
+               
+               [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         :param pulumi.Input[_builtins.str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -47,9 +51,11 @@ class ComputeClusterHostGroupArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -61,13 +67,15 @@ class ComputeClusterHostGroupArgs:
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The managed object IDs of
+        The [managed object IDs][docs-about-morefs] of
         the hosts to put in the cluster.
 
         > **NOTE:** The namespace for cluster names on this resource (defined by the
         `name` argument) is shared with the
-        `ComputeClusterVmGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource. Make sure your names are unique across both resources.
+
+        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         """
         return pulumi.get(self, "host_system_ids")
 
@@ -97,16 +105,20 @@ class _ComputeClusterHostGroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterHostGroup resources.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to put in the cluster.
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterVmGroup`
+               [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
                resource. Make sure your names are unique across both resources.
+               
+               [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         :param pulumi.Input[_builtins.str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -121,9 +133,11 @@ class _ComputeClusterHostGroupState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -135,13 +149,15 @@ class _ComputeClusterHostGroupState:
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The managed object IDs of
+        The [managed object IDs][docs-about-morefs] of
         the hosts to put in the cluster.
 
         > **NOTE:** The namespace for cluster names on this resource (defined by the
         `name` argument) is shared with the
-        `ComputeClusterVmGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource. Make sure your names are unique across both resources.
+
+        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         """
         return pulumi.get(self, "host_system_ids")
 
@@ -176,18 +192,31 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         """
         The `ComputeClusterHostGroup` resource can be used to manage groups
         of hosts in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         This resource mainly serves as an input to the
-        `ComputeClusterVmHostRule`
+        [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
         resource - see the documentation for that resource for further details on how
         to use host groups.
+
+        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
         ## Example Usage
+
+        The example below is the exact same configuration as the
+        [example][tf-vsphere-cluster-resource-example] in the
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource, but in
+        addition, it creates a host group with the same hosts that get put into the
+        cluster.
+
+        [tf-vsphere-cluster-resource-example]: /docs/providers/vsphere/r/compute_cluster.html#example-usage
 
         ```python
         import pulumi
@@ -208,14 +237,14 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         hosts_get_host = [vsphere.get_host(name=hosts[__index],
             datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
-            name="compute-cluster-test",
-            datacenter_id=dc["id"],
+            name="pulumi-compute-cluster-test",
+            datacenter_id=datacenter_get_datacenter.id,
             host_system_ids=[[__item.id for __item in hosts_get_host]],
             drs_enabled=True,
             drs_automation_level="fullyAutomated",
             ha_enabled=True)
         cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
-            name="test-cluster-host-group",
+            name="pulumi-test-cluster-host-group",
             compute_cluster_id=compute_cluster.id,
             host_system_ids=[[__item.id for __item in hosts_get_host]])
         ```
@@ -242,16 +271,20 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to put in the cluster.
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterVmGroup`
+               [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
                resource. Make sure your names are unique across both resources.
+               
+               [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         :param pulumi.Input[_builtins.str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -264,18 +297,31 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         """
         The `ComputeClusterHostGroup` resource can be used to manage groups
         of hosts in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         This resource mainly serves as an input to the
-        `ComputeClusterVmHostRule`
+        [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
         resource - see the documentation for that resource for further details on how
         to use host groups.
+
+        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
         ## Example Usage
+
+        The example below is the exact same configuration as the
+        [example][tf-vsphere-cluster-resource-example] in the
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource, but in
+        addition, it creates a host group with the same hosts that get put into the
+        cluster.
+
+        [tf-vsphere-cluster-resource-example]: /docs/providers/vsphere/r/compute_cluster.html#example-usage
 
         ```python
         import pulumi
@@ -296,14 +342,14 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         hosts_get_host = [vsphere.get_host(name=hosts[__index],
             datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
-            name="compute-cluster-test",
-            datacenter_id=dc["id"],
+            name="pulumi-compute-cluster-test",
+            datacenter_id=datacenter_get_datacenter.id,
             host_system_ids=[[__item.id for __item in hosts_get_host]],
             drs_enabled=True,
             drs_automation_level="fullyAutomated",
             ha_enabled=True)
         cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
-            name="test-cluster-host-group",
+            name="pulumi-test-cluster-host-group",
             compute_cluster_id=compute_cluster.id,
             host_system_ids=[[__item.id for __item in hosts_get_host]])
         ```
@@ -380,16 +426,20 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to put in the cluster.
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterVmGroup`
+               [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
                resource. Make sure your names are unique across both resources.
+               
+               [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         :param pulumi.Input[_builtins.str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -406,9 +456,11 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -416,13 +468,15 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The managed object IDs of
+        The [managed object IDs][docs-about-morefs] of
         the hosts to put in the cluster.
 
         > **NOTE:** The namespace for cluster names on this resource (defined by the
         `name` argument) is shared with the
-        `ComputeClusterVmGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource. Make sure your names are unique across both resources.
+
+        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         """
         return pulumi.get(self, "host_system_ids")
 

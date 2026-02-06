@@ -14,7 +14,9 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+    /// ### S
+    /// 
+    /// **Create a vnic attached to a distributed virtual switch using the vMotion TCP/IP stack:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -74,7 +76,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
+    /// **Create a vnic attached to a portgroup using the default TCP/IP stack:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

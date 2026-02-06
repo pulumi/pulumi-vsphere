@@ -14,16 +14,22 @@ public final class GetVappContainerPlainArgs extends com.pulumi.resources.Invoke
     public static final GetVappContainerPlainArgs Empty = new GetVappContainerPlainArgs();
 
     /**
-     * The managed object reference ID
-     * of the datacenter in which the vApp container is located.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter in which
+     * the vApp container is located.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="datacenterId", required=true)
     private String datacenterId;
 
     /**
-     * @return The managed object reference ID
-     * of the datacenter in which the vApp container is located.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the datacenter in which
+     * the vApp container is located.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public String datacenterId() {
@@ -73,8 +79,11 @@ public final class GetVappContainerPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter in which the vApp container is located.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter in which
+         * the vApp container is located.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

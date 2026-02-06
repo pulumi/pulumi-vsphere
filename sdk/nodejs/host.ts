@@ -12,7 +12,9 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Create a standalone host
+ * ### S
+ *
+ * **Create a standalone host:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,7 +37,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Create host in a compute cluster
+ * **Create host in a compute cluster:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -16,57 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `vsphere.TagCategory` resource can be used to create and manage tag
- * categories, which determine how tags are grouped together and applied to
- * specific objects.
- * 
- * For more information about tags, click [here][ext-tags-general].
- * 
- * [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
- * 
- * ## Example Usage
- * 
- * This example creates a tag category named `test-category`, with
- * single cardinality (meaning that only one tag in this category can be assigned
- * to an object at any given time). Tags in this category can only be assigned to
- * VMs and datastores.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.vsphere.TagCategory;
- * import com.pulumi.vsphere.TagCategoryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var category = new TagCategory("category", TagCategoryArgs.builder()
- *             .name("test-category")
- *             .description("Managed by Pulumi")
- *             .cardinality("SINGLE")
- *             .associableTypes(            
- *                 "VirtualMachine",
- *                 "Datastore")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * An existing tag category can be imported into this resource via

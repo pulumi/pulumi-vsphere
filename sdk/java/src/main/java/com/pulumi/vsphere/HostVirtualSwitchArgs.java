@@ -125,7 +125,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      * 
      */
@@ -133,7 +133,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
     private Output<String> hostSystemId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      * 
      */
@@ -236,22 +236,14 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The number of ports to create with this
-     * virtual switch. Default: `128`.
-     * 
-     * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-     * will not restart the host for you.
+     * The number of ports that this virtual switch is configured to use.
      * 
      */
     @Import(name="numberOfPorts")
     private @Nullable Output<Integer> numberOfPorts;
 
     /**
-     * @return The number of ports to create with this
-     * virtual switch. Default: `128`.
-     * 
-     * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-     * will not restart the host for you.
+     * @return The number of ports that this virtual switch is configured to use.
      * 
      */
     public Optional<Output<Integer>> numberOfPorts() {
@@ -550,7 +542,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostSystemId The managed object ID of
+         * @param hostSystemId The [managed object ID][docs-about-morefs] of
          * the host to set the virtual switch up on. Forces a new resource if changed.
          * 
          * @return builder
@@ -562,7 +554,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostSystemId The managed object ID of
+         * @param hostSystemId The [managed object ID][docs-about-morefs] of
          * the host to set the virtual switch up on. Forces a new resource if changed.
          * 
          * @return builder
@@ -713,11 +705,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numberOfPorts The number of ports to create with this
-         * virtual switch. Default: `128`.
-         * 
-         * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-         * will not restart the host for you.
+         * @param numberOfPorts The number of ports that this virtual switch is configured to use.
          * 
          * @return builder
          * 
@@ -728,11 +716,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numberOfPorts The number of ports to create with this
-         * virtual switch. Default: `128`.
-         * 
-         * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-         * will not restart the host for you.
+         * @param numberOfPorts The number of ports that this virtual switch is configured to use.
          * 
          * @return builder
          * 

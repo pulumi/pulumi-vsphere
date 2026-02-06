@@ -18,14 +18,19 @@ import javax.annotation.Nullable;
 /**
  * The `vsphere.ComputeClusterVmDependencyRule` resource can be used to manage
  * VM dependency rules in a cluster, either created by the
- * `vsphere.ComputeCluster` resource or looked up
- * by the `vsphere.ComputeCluster` data source.
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ * 
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * A virtual machine dependency rule applies to vSphere HA, and allows
  * user-defined startup orders for virtual machines in the case of host failure.
  * Virtual machines are supplied via groups, which can be managed via the
- * `vsphere.ComputeClusterVmGroup`
+ * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
  * resource.
+ * 
+ * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
  * 
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
@@ -33,13 +38,15 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The example below creates two virtual machine in a cluster using the
- * `vsphere.VirtualMachine` resource in a cluster
- * looked up by the `vsphere.ComputeCluster`
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+ * looked up by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source]
  * data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 
  * &gt; Note how `dependencyVmGroupName` and
  * `vmGroupName` are sourced off of the `name` attributes from
- * the `vsphere.ComputeClusterVmGroup`
+ * the [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
  * resource. This is to ensure that the rule is not created before the groups
  * exist, which may not possibly happen in the event that the names came from a
  * &#34;static&#34; source such as a variable.
@@ -97,7 +104,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vm1 = new VirtualMachine("vm1", VirtualMachineArgs.builder()
- *             .name("test1")
+ *             .name("pulumi-test1")
  *             .resourcePoolId(cluster.resourcePoolId())
  *             .datastoreId(datastore.id())
  *             .numCpus(2)
@@ -113,7 +120,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vm2 = new VirtualMachine("vm2", VirtualMachineArgs.builder()
- *             .name("test2")
+ *             .name("pulumi-test2")
  *             .resourcePoolId(cluster.resourcePoolId())
  *             .datastoreId(datastore.id())
  *             .numCpus(2)
@@ -129,20 +136,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var clusterVmGroup1 = new ComputeClusterVmGroup("clusterVmGroup1", ComputeClusterVmGroupArgs.builder()
- *             .name("test-cluster-vm-group1")
+ *             .name("pulumi-test-cluster-vm-group1")
  *             .computeClusterId(cluster.id())
  *             .virtualMachineIds(vm1.id())
  *             .build());
  * 
  *         var clusterVmGroup2 = new ComputeClusterVmGroup("clusterVmGroup2", ComputeClusterVmGroupArgs.builder()
- *             .name("test-cluster-vm-group2")
+ *             .name("pulumi-test-cluster-vm-group2")
  *             .computeClusterId(cluster.id())
  *             .virtualMachineIds(vm2.id())
  *             .build());
  * 
  *         var clusterVmDependencyRule = new ComputeClusterVmDependencyRule("clusterVmDependencyRule", ComputeClusterVmDependencyRuleArgs.builder()
  *             .computeClusterId(cluster.id())
- *             .name("test-cluster-vm-dependency-rule")
+ *             .name("pulumi-test-cluster-vm-dependency-rule")
  *             .dependencyVmGroupName(clusterVmGroup1.name())
  *             .vmGroupName(clusterVmGroup2.name())
  *             .build());
@@ -176,18 +183,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule")
 public class ComputeClusterVmDependencyRule extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {

@@ -25,6 +25,8 @@ public final class ContentLibrarySubscription {
     /**
      * @return Download the library from a content only when needed. Default `true`.
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
      */
     private @Nullable Boolean onDemand;
     /**
@@ -60,6 +62,8 @@ public final class ContentLibrarySubscription {
     }
     /**
      * @return Download the library from a content only when needed. Default `true`.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Boolean> onDemand() {

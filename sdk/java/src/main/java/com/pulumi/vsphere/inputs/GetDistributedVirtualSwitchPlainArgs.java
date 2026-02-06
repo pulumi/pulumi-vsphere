@@ -16,20 +16,22 @@ public final class GetDistributedVirtualSwitchPlainArgs extends com.pulumi.resou
     public static final GetDistributedVirtualSwitchPlainArgs Empty = new GetDistributedVirtualSwitchPlainArgs();
 
     /**
-     * The managed object reference ID
-     * of the datacenter the VDS is located in. This can be omitted if the search
-     * path used in `name` is an absolute path. For default datacenters, use the `id`
-     * attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+     * located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      * 
      */
     @Import(name="datacenterId")
     private @Nullable String datacenterId;
 
     /**
-     * @return The managed object reference ID
-     * of the datacenter the VDS is located in. This can be omitted if the search
-     * path used in `name` is an absolute path. For default datacenters, use the `id`
-     * attribute from an empty `vsphere.Datacenter` data source.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+     * located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      * 
      */
     public Optional<String> datacenterId() {
@@ -77,10 +79,11 @@ public final class GetDistributedVirtualSwitchPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter the VDS is located in. This can be omitted if the search
-         * path used in `name` is an absolute path. For default datacenters, use the `id`
-         * attribute from an empty `vsphere.Datacenter` data source.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+         * located in. This can be omitted if the search path used in `name` is an
+         * absolute path. For default datacenters, use the `id` attribute from an empty
+         * `vsphere.Datacenter` data source.
          * 
          * @return builder
          * 

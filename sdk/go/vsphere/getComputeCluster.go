@@ -11,17 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ComputeCluster` data source can be used to discover the ID of a
-// cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-// to use for virtual machine placement via the `VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
-// using the alias available through the `ResourcePool`
-// data source.
-//
-// > You may also wish to see the `ComputeCluster`
-//
-//	resource for more information about clusters and how to managed the resource
-//	in this provider.
-//
 // ## Example Usage
 //
 // ```go
@@ -66,10 +55,11 @@ func LookupComputeCluster(ctx *pulumi.Context, args *LookupComputeClusterArgs, o
 
 // A collection of arguments for invoking getComputeCluster.
 type LookupComputeClusterArgs struct {
-	// The managed object reference ID
-	// of the datacenter the cluster is located in.  This can be omitted if the
-	// search path used in `name` is an absolute path. For default datacenters,
-	// use the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+	// is located in. This can be omitted if the search path used in `name` is an
+	// absolute path. For default datacenters, use the `id` attribute from an empty
+	// `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name or absolute path to the cluster.
 	Name string `pulumi:"name"`
@@ -81,7 +71,7 @@ type LookupComputeClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
-	// The managed object reference ID of
+	// The [managed object reference ID][docs-about-morefs] of
 	// the root resource pool for the cluster.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
 }
@@ -97,10 +87,11 @@ func LookupComputeClusterOutput(ctx *pulumi.Context, args LookupComputeClusterOu
 
 // A collection of arguments for invoking getComputeCluster.
 type LookupComputeClusterOutputArgs struct {
-	// The managed object reference ID
-	// of the datacenter the cluster is located in.  This can be omitted if the
-	// search path used in `name` is an absolute path. For default datacenters,
-	// use the `id` attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+	// is located in. This can be omitted if the search path used in `name` is an
+	// absolute path. For default datacenters, use the `id` attribute from an empty
+	// `Datacenter` data source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name or absolute path to the cluster.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -138,7 +129,7 @@ func (o LookupComputeClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The managed object reference ID of
+// The [managed object reference ID][docs-about-morefs] of
 // the root resource pool for the cluster.
 func (o LookupComputeClusterResultOutput) ResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeClusterResult) string { return v.ResourcePoolId }).(pulumi.StringOutput)

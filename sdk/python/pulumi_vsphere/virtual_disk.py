@@ -40,10 +40,12 @@ class VirtualDiskArgs:
                
                > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
                controller that the virtual disk will be attached to on the virtual machine.
-               Please see the `scsi_type` parameter
+               Please see the [`scsi_type`][docs-vsphere-virtual-machine-scsi-type] parameter
                in the `VirtualMachine` resource for information on how to control
                disk controller types. This parameter will be removed in future versions of the
                vSphere provider.
+               
+               [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
         :param pulumi.Input[_builtins.bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
@@ -126,10 +128,12 @@ class VirtualDiskArgs:
 
         > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
         controller that the virtual disk will be attached to on the virtual machine.
-        Please see the `scsi_type` parameter
+        Please see the [`scsi_type`][docs-vsphere-virtual-machine-scsi-type] parameter
         in the `VirtualMachine` resource for information on how to control
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
+
+        [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
         """
         return pulumi.get(self, "adapter_type")
 
@@ -204,10 +208,12 @@ class _VirtualDiskState:
                
                > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
                controller that the virtual disk will be attached to on the virtual machine.
-               Please see the `scsi_type` parameter
+               Please see the [`scsi_type`][docs-vsphere-virtual-machine-scsi-type] parameter
                in the `VirtualMachine` resource for information on how to control
                disk controller types. This parameter will be removed in future versions of the
                vSphere provider.
+               
+               [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
         :param pulumi.Input[_builtins.bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
@@ -260,10 +266,12 @@ class _VirtualDiskState:
 
         > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
         controller that the virtual disk will be attached to on the virtual machine.
-        Please see the `scsi_type` parameter
+        Please see the [`scsi_type`][docs-vsphere-virtual-machine-scsi-type] parameter
         in the `VirtualMachine` resource for information on how to control
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
+
+        [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
         """
         return pulumi.get(self, "adapter_type")
 
@@ -377,9 +385,12 @@ class VirtualDisk(pulumi.CustomResource):
                  __props__=None):
         """
         The `VirtualDisk` resource can be used to create virtual disks outside
-        of any given `VirtualMachine`
+        of any given [`VirtualMachine`][docs-vsphere-virtual-machine]
         resource. These disks can be attached to a virtual machine by creating a disk
-        block with the `attach` parameter.
+        block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
+
+        [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
+        [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
 
         ## Example Usage
 
@@ -423,10 +434,12 @@ class VirtualDisk(pulumi.CustomResource):
                
                > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
                controller that the virtual disk will be attached to on the virtual machine.
-               Please see the `scsi_type` parameter
+               Please see the [`scsi_type`][docs-vsphere-virtual-machine-scsi-type] parameter
                in the `VirtualMachine` resource for information on how to control
                disk controller types. This parameter will be removed in future versions of the
                vSphere provider.
+               
+               [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
         :param pulumi.Input[_builtins.bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
@@ -459,9 +472,12 @@ class VirtualDisk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `VirtualDisk` resource can be used to create virtual disks outside
-        of any given `VirtualMachine`
+        of any given [`VirtualMachine`][docs-vsphere-virtual-machine]
         resource. These disks can be attached to a virtual machine by creating a disk
-        block with the `attach` parameter.
+        block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
+
+        [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
+        [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
 
         ## Example Usage
 
@@ -571,10 +587,12 @@ class VirtualDisk(pulumi.CustomResource):
                
                > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
                controller that the virtual disk will be attached to on the virtual machine.
-               Please see the `scsi_type` parameter
+               Please see the [`scsi_type`][docs-vsphere-virtual-machine-scsi-type] parameter
                in the `VirtualMachine` resource for information on how to control
                disk controller types. This parameter will be removed in future versions of the
                vSphere provider.
+               
+               [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
         :param pulumi.Input[_builtins.bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
@@ -622,10 +640,12 @@ class VirtualDisk(pulumi.CustomResource):
 
         > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
         controller that the virtual disk will be attached to on the virtual machine.
-        Please see the `scsi_type` parameter
+        Please see the [`scsi_type`][docs-vsphere-virtual-machine-scsi-type] parameter
         in the `VirtualMachine` resource for information on how to control
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
+
+        [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
         """
         return pulumi.get(self, "adapter_type")
 

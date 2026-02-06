@@ -26,15 +26,19 @@ import (
 // ## Example Usage
 //
 // The example below creates a virtual machine in a cluster using the
-// `VirtualMachine` resource, creating the
+// [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
 // virtual machine in the cluster looked up by the
-// `ComputeCluster` data source, but also
+// [`ComputeCluster`][tf-vsphere-cluster-data-source] data source, but also
 // pinning the VM to a host defined by the
-// `Host` data source, which is assumed to
+// [`Host`][tf-vsphere-host-data-source] data source, which is assumed to
 // be a host within the cluster. To ensure that the VM stays on this host and does
 // not need to be migrated back at any point in time, an override is entered using
 // the `DrsVmOverride` resource that disables DRS for this virtual
 // machine, ensuring that it does not move.
+//
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+// [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 //
 // ```go
 // package main
@@ -83,7 +87,7 @@ import (
 //				return err
 //			}
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
-//				Name:           pulumi.String("test"),
+//				Name:           pulumi.String("pulumi-test"),
 //				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
 //				HostSystemId:   pulumi.String(host.Id),
 //				DatastoreId:    pulumi.String(datastore.Id),
@@ -143,9 +147,11 @@ import (
 type DrsVmOverride struct {
 	pulumi.CustomResourceState
 
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -199,9 +205,11 @@ func GetDrsVmOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DrsVmOverride resources.
 type drsVmOverrideState struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -220,9 +228,11 @@ type drsVmOverrideState struct {
 }
 
 type DrsVmOverrideState struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringPtrInput
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -245,9 +255,11 @@ func (DrsVmOverrideState) ElementType() reflect.Type {
 }
 
 type drsVmOverrideArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -267,9 +279,11 @@ type drsVmOverrideArgs struct {
 
 // The set of arguments for constructing a DrsVmOverride resource.
 type DrsVmOverrideArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
@@ -374,9 +388,11 @@ func (o DrsVmOverrideOutput) ToDrsVmOverrideOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The managed object reference
-// ID of the cluster to put the override in.  Forces a new
+// The [managed object reference
+// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 // resource if changed.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o DrsVmOverrideOutput) ComputeClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DrsVmOverride) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
 }

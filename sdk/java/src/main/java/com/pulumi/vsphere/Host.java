@@ -24,7 +24,9 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Create a standalone host
+ * ### S
+ * 
+ * **Create a standalone host:**
  * 
  * <pre>
  * {@code
@@ -74,7 +76,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Create host in a compute cluster
+ * **Create host in a compute cluster:**
  * 
  * <pre>
  * {@code

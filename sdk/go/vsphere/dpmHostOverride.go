@@ -27,12 +27,15 @@ import (
 //
 // The following example creates a compute cluster comprised of three hosts,
 // making use of the
-// `ComputeCluster` resource. DPM
+// [`ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
 // will be disabled in the cluster as it is the default setting, but we override
 // the setting of the first host referenced by the
-// `Host` data source (`esxi1`) by using
+// [`Host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
 // the `DpmHostOverride` resource so it will be powered off when the
 // cluster does not need it to service virtual machines.
+//
+// [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+// [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 //
 // ## Import
 //
@@ -56,9 +59,11 @@ import (
 type DpmHostOverride struct {
 	pulumi.CustomResourceState
 
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
@@ -111,9 +116,11 @@ func GetDpmHostOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DpmHostOverride resources.
 type dpmHostOverrideState struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
@@ -131,9 +138,11 @@ type dpmHostOverrideState struct {
 }
 
 type DpmHostOverrideState struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringPtrInput
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
@@ -155,9 +164,11 @@ func (DpmHostOverrideState) ElementType() reflect.Type {
 }
 
 type dpmHostOverrideArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
@@ -176,9 +187,11 @@ type dpmHostOverrideArgs struct {
 
 // The set of arguments for constructing a DpmHostOverride resource.
 type DpmHostOverrideArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the override in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
@@ -282,9 +295,11 @@ func (o DpmHostOverrideOutput) ToDpmHostOverrideOutputWithContext(ctx context.Co
 	return o
 }
 
-// The managed object reference
-// ID of the cluster to put the override in.  Forces a new
+// The [managed object reference
+// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 // resource if changed.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o DpmHostOverrideOutput) ComputeClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DpmHostOverride) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
 }

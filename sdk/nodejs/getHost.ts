@@ -6,8 +6,10 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
- * This can then be used with resources or data sources that require an ESX
- * host's managed object reference ID.
+ * This can then be used with resources or data sources that require an ESX host's
+ * [managed object reference ID][docs-about-morefs].
+ *
+ * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
  * ## Example Usage
  *
@@ -37,13 +39,16 @@ export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetHostArgs {
     /**
-     * The managed object reference ID
-     * of a vSphere datacenter object.
+     * The
+     * [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+     * object.
      */
     datacenterId: string;
     /**
-     * The name of the ESXI host. This can be a name or path.
-     * Can be omitted if there is only one host in your inventory.
+     * The name of the ESXI host. This can be a name or path. Can
+     * be omitted if there is only one host in your inventory.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      *
      * > **NOTE:** When used against an ESXi host directly, this data source _always_
      * returns the ESXi host's object ID, regardless of what is entered into `name`.
@@ -62,15 +67,17 @@ export interface GetHostResult {
     readonly id: string;
     readonly name?: string;
     /**
-     * The managed object ID of the ESXi
+     * The [managed object ID][docs-about-morefs] of the ESXi
      * host's root resource pool.
      */
     readonly resourcePoolId: string;
 }
 /**
  * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
- * This can then be used with resources or data sources that require an ESX
- * host's managed object reference ID.
+ * This can then be used with resources or data sources that require an ESX host's
+ * [managed object reference ID][docs-about-morefs].
+ *
+ * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
  * ## Example Usage
  *
@@ -100,13 +107,16 @@ export function getHostOutput(args: GetHostOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetHostOutputArgs {
     /**
-     * The managed object reference ID
-     * of a vSphere datacenter object.
+     * The
+     * [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+     * object.
      */
     datacenterId: pulumi.Input<string>;
     /**
-     * The name of the ESXI host. This can be a name or path.
-     * Can be omitted if there is only one host in your inventory.
+     * The name of the ESXI host. This can be a name or path. Can
+     * be omitted if there is only one host in your inventory.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      *
      * > **NOTE:** When used against an ESXi host directly, this data source _always_
      * returns the ESXi host's object ID, regardless of what is entered into `name`.

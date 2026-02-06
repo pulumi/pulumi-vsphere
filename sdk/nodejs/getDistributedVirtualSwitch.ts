@@ -5,11 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
- * the ID and uplink data of a of a vSphere distributed switch (VDS). This
- * can then be used with resources or data sources that require a VDS, such as the
- * `vsphere.DistributedPortGroup` resource, for which
+ * The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+ * ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+ * used with resources or data sources that require a VDS, such as the
+ * [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
  * an example is shown below.
+ *
+ * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
  *
  * > **NOTE:** This data source requires vCenter Server and is not available on
  * direct ESXi host connections.
@@ -53,10 +55,11 @@ export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArg
  */
 export interface GetDistributedVirtualSwitchArgs {
     /**
-     * The managed object reference ID
-     * of the datacenter the VDS is located in. This can be omitted if the search
-     * path used in `name` is an absolute path. For default datacenters, use the `id`
-     * attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+     * located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      */
     datacenterId?: string;
     /**
@@ -76,19 +79,21 @@ export interface GetDistributedVirtualSwitchResult {
     readonly id: string;
     readonly name: string;
     /**
-     * The list of the uplinks on this vSphere distributed switch, as per the
-     * `uplinks` argument to the
-     * `vsphere.DistributedVirtualSwitch`
+     * The list of the uplinks on this vSphere distributed switch, as per
+     * the [`uplinks`][distributed-virtual-switch-uplinks] argument to the
+     * [`vsphere.DistributedVirtualSwitch`][distributed-virtual-switch-resource]
      * resource.
      */
     readonly uplinks: string[];
 }
 /**
- * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
- * the ID and uplink data of a of a vSphere distributed switch (VDS). This
- * can then be used with resources or data sources that require a VDS, such as the
- * `vsphere.DistributedPortGroup` resource, for which
+ * The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+ * ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+ * used with resources or data sources that require a VDS, such as the
+ * [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
  * an example is shown below.
+ *
+ * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
  *
  * > **NOTE:** This data source requires vCenter Server and is not available on
  * direct ESXi host connections.
@@ -132,10 +137,11 @@ export function getDistributedVirtualSwitchOutput(args: GetDistributedVirtualSwi
  */
 export interface GetDistributedVirtualSwitchOutputArgs {
     /**
-     * The managed object reference ID
-     * of the datacenter the VDS is located in. This can be omitted if the search
-     * path used in `name` is an absolute path. For default datacenters, use the `id`
-     * attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+     * located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      */
     datacenterId?: pulumi.Input<string>;
     /**

@@ -146,69 +146,6 @@ class Tag(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `Tag` resource can be used to create and manage tags, which allow
-        you to attach metadata to objects in the vSphere inventory to make these
-        objects more sortable and searchable.
-
-        For more information about tags, click [here][ext-tags-general].
-
-        [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
-
-        ## Example Usage
-
-        This example creates a tag named `test-tag`. This tag is assigned the
-        `test-category` category, which was created by the
-        `TagCategory` resource. The resulting
-        tag can be assigned to VMs and datastores only, and can be the only value in
-        the category that can be assigned, as per the restrictions defined by the
-        category.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        category = vsphere.TagCategory("category",
-            name="test-category",
-            cardinality="SINGLE",
-            description="Managed by Pulumi",
-            associable_types=[
-                "VirtualMachine",
-                "Datastore",
-            ])
-        tag = vsphere.Tag("tag",
-            name="test-tag",
-            category_id=category.id,
-            description="Managed by Pulumi")
-        ```
-
-        ### Using Tags in a Supported Resource
-
-        Tags can be applied to vSphere resources via the `tags` argument
-        in any supported resource.
-
-        The following example builds on the above example by creating a
-        `VirtualMachine` and applying the
-        created tag to it:
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        category = vsphere.TagCategory("category",
-            name="test-category",
-            cardinality="SINGLE",
-            description="Managed by Pulumi",
-            associable_types=[
-                "VirtualMachine",
-                "Datastore",
-            ])
-        tag = vsphere.Tag("tag",
-            name="test-tag",
-            category_id=category.id,
-            description="Managed by Pulumi")
-        web = vsphere.VirtualMachine("web", tags=[tag.id])
-        ```
-
         ## Import
 
         An existing tag can be imported into this resource by supplying
@@ -240,69 +177,6 @@ class Tag(pulumi.CustomResource):
                  args: TagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Tag` resource can be used to create and manage tags, which allow
-        you to attach metadata to objects in the vSphere inventory to make these
-        objects more sortable and searchable.
-
-        For more information about tags, click [here][ext-tags-general].
-
-        [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
-
-        ## Example Usage
-
-        This example creates a tag named `test-tag`. This tag is assigned the
-        `test-category` category, which was created by the
-        `TagCategory` resource. The resulting
-        tag can be assigned to VMs and datastores only, and can be the only value in
-        the category that can be assigned, as per the restrictions defined by the
-        category.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        category = vsphere.TagCategory("category",
-            name="test-category",
-            cardinality="SINGLE",
-            description="Managed by Pulumi",
-            associable_types=[
-                "VirtualMachine",
-                "Datastore",
-            ])
-        tag = vsphere.Tag("tag",
-            name="test-tag",
-            category_id=category.id,
-            description="Managed by Pulumi")
-        ```
-
-        ### Using Tags in a Supported Resource
-
-        Tags can be applied to vSphere resources via the `tags` argument
-        in any supported resource.
-
-        The following example builds on the above example by creating a
-        `VirtualMachine` and applying the
-        created tag to it:
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        category = vsphere.TagCategory("category",
-            name="test-category",
-            cardinality="SINGLE",
-            description="Managed by Pulumi",
-            associable_types=[
-                "VirtualMachine",
-                "Datastore",
-            ])
-        tag = vsphere.Tag("tag",
-            name="test-tag",
-            category_id=category.id,
-            description="Managed by Pulumi")
-        web = vsphere.VirtualMachine("web", tags=[tag.id])
-        ```
-
         ## Import
 
         An existing tag can be imported into this resource by supplying

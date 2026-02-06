@@ -85,7 +85,10 @@ class DistributedPortGroupArgs:
         :param pulumi.Input[_builtins.bool] block_override_allowed: Allow the blocked setting of an individual port to override the setting in the portgroup.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing on the ports this policy applies to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value string to set for port group.
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -345,7 +348,10 @@ class DistributedPortGroupArgs:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of custom attribute ids to attribute
-        value string to set for port group.
+        value string to set for port group. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -866,7 +872,10 @@ class _DistributedPortGroupState:
         :param pulumi.Input[_builtins.str] config_version: The current version of the port group configuration,
                incremented by subsequent updates to the port group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value string to set for port group.
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -1134,7 +1143,10 @@ class _DistributedPortGroupState:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of custom attribute ids to attribute
-        value string to set for port group.
+        value string to set for port group. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.
@@ -1668,7 +1680,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         The `DistributedPortGroup` resource can be used to manage
         distributed port groups connected to vSphere Distributed Switches (VDS).
         A vSphere Distributed Switch can be managed by the
-        `DistributedVirtualSwitch` resource.
+        [`DistributedVirtualSwitch`][distributed-virtual-switch] resource.
 
         Distributed port groups can be used as networks for virtual machines, allowing
         the virtual machines to use the networking supplied by a vSphere Distributed
@@ -1681,7 +1693,8 @@ class DistributedPortGroup(pulumi.CustomResource):
         * For more information on distributed port groups, refer to the vSphere
         [product documentation][ref-vsphere-dvportgroup].
 
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+        [distributed-virtual-switch]: /docs/providers/vsphere/r/distributed_virtual_switch.html
+        [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
         [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
 
         > **NOTE:** This resource requires vCenter and is not available on
@@ -1690,7 +1703,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         ## Example Usage
 
         The configuration below builds on the example given in the
-        `DistributedVirtualSwitch` resource by
+        [`DistributedVirtualSwitch`][distributed-virtual-switch] resource by
         adding the `DistributedPortGroup` resource, attaching itself to the
         vSphere Distributed Switch and assigning VLAN ID 1000.
 
@@ -1756,9 +1769,11 @@ class DistributedPortGroup(pulumi.CustomResource):
 
         ### Overriding VDS policies
 
-        All of the default port policies available in the
+        All of the [default port policies][vds-default-port-policies] available in the
         `DistributedVirtualSwitch` resource can be overridden on the port
         group level by specifying new settings for them.
+
+        [vds-default-port-policies]: /docs/providers/vsphere/r/distributed_virtual_switch.html#default-port-group-policy-arguments
 
         As an example, we also take this example from the
         `DistributedVirtualSwitch` resource where we manually specify our
@@ -1823,7 +1838,10 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] block_override_allowed: Allow the blocked setting of an individual port to override the setting in the portgroup.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing on the ports this policy applies to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value string to set for port group.
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -1884,7 +1902,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         The `DistributedPortGroup` resource can be used to manage
         distributed port groups connected to vSphere Distributed Switches (VDS).
         A vSphere Distributed Switch can be managed by the
-        `DistributedVirtualSwitch` resource.
+        [`DistributedVirtualSwitch`][distributed-virtual-switch] resource.
 
         Distributed port groups can be used as networks for virtual machines, allowing
         the virtual machines to use the networking supplied by a vSphere Distributed
@@ -1897,7 +1915,8 @@ class DistributedPortGroup(pulumi.CustomResource):
         * For more information on distributed port groups, refer to the vSphere
         [product documentation][ref-vsphere-dvportgroup].
 
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+        [distributed-virtual-switch]: /docs/providers/vsphere/r/distributed_virtual_switch.html
+        [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
         [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
 
         > **NOTE:** This resource requires vCenter and is not available on
@@ -1906,7 +1925,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         ## Example Usage
 
         The configuration below builds on the example given in the
-        `DistributedVirtualSwitch` resource by
+        [`DistributedVirtualSwitch`][distributed-virtual-switch] resource by
         adding the `DistributedPortGroup` resource, attaching itself to the
         vSphere Distributed Switch and assigning VLAN ID 1000.
 
@@ -1972,9 +1991,11 @@ class DistributedPortGroup(pulumi.CustomResource):
 
         ### Overriding VDS policies
 
-        All of the default port policies available in the
+        All of the [default port policies][vds-default-port-policies] available in the
         `DistributedVirtualSwitch` resource can be overridden on the port
         group level by specifying new settings for them.
+
+        [vds-default-port-policies]: /docs/providers/vsphere/r/distributed_virtual_switch.html#default-port-group-policy-arguments
 
         As an example, we also take this example from the
         `DistributedVirtualSwitch` resource where we manually specify our
@@ -2224,7 +2245,10 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_version: The current version of the port group configuration,
                incremented by subsequent updates to the port group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value string to set for port group.
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are not supported on direct ESXi host
                connections and require vCenter Server.
@@ -2413,7 +2437,10 @@ class DistributedPortGroup(pulumi.CustomResource):
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         Map of custom attribute ids to attribute
-        value string to set for port group.
+        value string to set for port group. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are not supported on direct ESXi host
         connections and require vCenter Server.

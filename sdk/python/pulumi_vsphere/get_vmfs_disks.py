@@ -96,8 +96,10 @@ def get_vmfs_disks(filter: Optional[_builtins.str] = None,
     """
     The `get_vmfs_disks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
-    `VmfsDatastore` resource to create VMFS
+    [`VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
     datastores based off a set of discovered disks.
+
+    [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 
     ## Example Usage
 
@@ -120,8 +122,10 @@ def get_vmfs_disks(filter: Optional[_builtins.str] = None,
            > **NOTE:** Using a `filter` is recommended if there is any chance the host
            will have any specific storage devices added to it that may affect the order of
            the output `disks` attribute below, which is lexicographically sorted.
-    :param _builtins.str host_system_id: The managed object ID of
+    :param _builtins.str host_system_id: The [managed object ID][docs-about-morefs] of
            the host to look for disks on.
+           
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param _builtins.bool rescan: Whether or not to rescan storage adapters before
            searching for disks. This may lengthen the time it takes to perform the
            search. Default: `false`.
@@ -146,8 +150,10 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]
     """
     The `get_vmfs_disks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
-    `VmfsDatastore` resource to create VMFS
+    [`VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
     datastores based off a set of discovered disks.
+
+    [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 
     ## Example Usage
 
@@ -170,8 +176,10 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]
            > **NOTE:** Using a `filter` is recommended if there is any chance the host
            will have any specific storage devices added to it that may affect the order of
            the output `disks` attribute below, which is lexicographically sorted.
-    :param _builtins.str host_system_id: The managed object ID of
+    :param _builtins.str host_system_id: The [managed object ID][docs-about-morefs] of
            the host to look for disks on.
+           
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param _builtins.bool rescan: Whether or not to rescan storage adapters before
            searching for disks. This may lengthen the time it takes to perform the
            search. Default: `false`.

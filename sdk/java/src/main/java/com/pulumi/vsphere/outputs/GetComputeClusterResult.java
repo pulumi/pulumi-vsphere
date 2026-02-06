@@ -20,7 +20,7 @@ public final class GetComputeClusterResult {
     private String id;
     private String name;
     /**
-     * @return The managed object reference ID of
+     * @return The [managed object reference ID][docs-about-morefs] of
      * the root resource pool for the cluster.
      * 
      */
@@ -41,7 +41,7 @@ public final class GetComputeClusterResult {
         return this.name;
     }
     /**
-     * @return The managed object reference ID of
+     * @return The [managed object reference ID][docs-about-morefs] of
      * the root resource pool for the cluster.
      * 
      */

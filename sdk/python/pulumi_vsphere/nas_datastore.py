@@ -32,7 +32,7 @@ class NasDatastoreArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NasDatastore resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_hosts: The hostnames or IP addresses of the remote
                servers. Only one element should be present for NFS v3 but multiple
@@ -43,30 +43,28 @@ class NasDatastoreArgs:
                `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
                that the datastore will be read-write depending on the permissions of the
                actual share. Default: `readWrite`. Forces a new resource if changed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value strings to set on datasource resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value strings to set on resource. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
                changed.
         :param pulumi.Input[_builtins.str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
@@ -95,7 +93,7 @@ class NasDatastoreArgs:
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The managed object IDs of
+        The [managed object IDs][docs-about-morefs] of
         the hosts to mount the datastore on.
         """
         return pulumi.get(self, "host_system_ids")
@@ -150,8 +148,11 @@ class NasDatastoreArgs:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Map of custom attribute ids to attribute 
-        value strings to set on datasource resource.
+        Map of custom attribute ids to attribute
+        value strings to set on resource. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -166,8 +167,8 @@ class NasDatastoreArgs:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object
-        ID of a datastore cluster to put this datastore in.
+        The [managed object
+        ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         Conflicts with `folder`.
         """
         return pulumi.get(self, "datastore_cluster_id")
@@ -180,13 +181,7 @@ class NasDatastoreArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore in.
-        This is a path relative to the datacenter you are deploying the datastore to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a datastore named `test` in a datastore folder
-        located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/test`. Conflicts with
-        `datastore_cluster_id`.
+        The path to the datastore folder to put the datastore in.
         """
         return pulumi.get(self, "folder")
 
@@ -225,10 +220,11 @@ class NasDatastoreArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
 
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "tags")
 
@@ -282,23 +278,20 @@ class _NasDatastoreState:
         :param pulumi.Input[_builtins.bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[_builtins.int] capacity: Maximum capacity of the datastore, in megabytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value strings to set on datasource resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value strings to set on resource. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[_builtins.int] free_space: Available space of this datastore, in megabytes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[_builtins.str] maintenance_mode: The current maintenance mode state of the datastore.
         :param pulumi.Input[_builtins.bool] multiple_host_access: If `true`, more than one host in the datacenter has
@@ -315,10 +308,11 @@ class _NasDatastoreState:
         :param pulumi.Input[_builtins.str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
@@ -409,8 +403,11 @@ class _NasDatastoreState:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Map of custom attribute ids to attribute 
-        value strings to set on datasource resource.
+        Map of custom attribute ids to attribute
+        value strings to set on resource. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -425,8 +422,8 @@ class _NasDatastoreState:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object
-        ID of a datastore cluster to put this datastore in.
+        The [managed object
+        ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         Conflicts with `folder`.
         """
         return pulumi.get(self, "datastore_cluster_id")
@@ -439,13 +436,7 @@ class _NasDatastoreState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore in.
-        This is a path relative to the datacenter you are deploying the datastore to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a datastore named `test` in a datastore folder
-        located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/test`. Conflicts with
-        `datastore_cluster_id`.
+        The path to the datastore folder to put the datastore in.
         """
         return pulumi.get(self, "folder")
 
@@ -469,7 +460,7 @@ class _NasDatastoreState:
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The managed object IDs of
+        The [managed object IDs][docs-about-morefs] of
         the hosts to mount the datastore on.
         """
         return pulumi.get(self, "host_system_ids")
@@ -574,10 +565,11 @@ class _NasDatastoreState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
 
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "tags")
 
@@ -644,44 +636,6 @@ class NasDatastore(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `NasDatastore` resource can be used to create and manage NAS
-        datastores on an ESXi host or a set of hosts. The resource supports mounting
-        NFS v3 and v4.1 shares to be used as datastores.
-
-        > **NOTE:** Unlike `VmfsDatastore`, a NAS
-        datastore is only mounted on the hosts you choose to mount it on. To mount on
-        multiple hosts, you must specify each host that you want to add in the
-        `host_system_ids` argument.
-
-        ## Example Usage
-
-        The following example would set up a NFS v3 share on 3 hosts connected through
-        vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
-        is named `nfs` and has `/export/test` exported.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        config = pulumi.Config()
-        hosts = config.get_object("hosts")
-        if hosts is None:
-            hosts = [
-                "esxi-01.example.com",
-                "esxi-02.example.com",
-                "esxi-03.example.com",
-            ]
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        hosts_get_host = [vsphere.get_host(name=hosts[__index],
-            datacenter_id=datacenter.id) for __index in range(len(hosts))]
-        datastore = vsphere.NasDatastore("datastore",
-            name="test",
-            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
-            type="NFS",
-            remote_hosts=["nfs"],
-            remote_path="/export/test")
-        ```
-
         ## Import
 
         An existing NAS datastore can be imported into this resource via
@@ -712,22 +666,19 @@ class NasDatastore(pulumi.CustomResource):
                `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
                that the datastore will be read-write depending on the permissions of the
                actual share. Default: `readWrite`. Forces a new resource if changed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value strings to set on datasource resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value strings to set on resource. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
                changed.
@@ -739,10 +690,11 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
@@ -754,44 +706,6 @@ class NasDatastore(pulumi.CustomResource):
                  args: NasDatastoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `NasDatastore` resource can be used to create and manage NAS
-        datastores on an ESXi host or a set of hosts. The resource supports mounting
-        NFS v3 and v4.1 shares to be used as datastores.
-
-        > **NOTE:** Unlike `VmfsDatastore`, a NAS
-        datastore is only mounted on the hosts you choose to mount it on. To mount on
-        multiple hosts, you must specify each host that you want to add in the
-        `host_system_ids` argument.
-
-        ## Example Usage
-
-        The following example would set up a NFS v3 share on 3 hosts connected through
-        vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
-        is named `nfs` and has `/export/test` exported.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        config = pulumi.Config()
-        hosts = config.get_object("hosts")
-        if hosts is None:
-            hosts = [
-                "esxi-01.example.com",
-                "esxi-02.example.com",
-                "esxi-03.example.com",
-            ]
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        hosts_get_host = [vsphere.get_host(name=hosts[__index],
-            datacenter_id=datacenter.id) for __index in range(len(hosts))]
-        datastore = vsphere.NasDatastore("datastore",
-            name="test",
-            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
-            type="NFS",
-            remote_hosts=["nfs"],
-            remote_path="/export/test")
-        ```
-
         ## Import
 
         An existing NAS datastore can be imported into this resource via
@@ -919,23 +833,20 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[_builtins.int] capacity: Maximum capacity of the datastore, in megabytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute 
-               value strings to set on datasource resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
+               value strings to set on resource. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object
-               ID of a datastore cluster to put this datastore in.
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
+               ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a datastore named `test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/test`. Conflicts with
-               `datastore_cluster_id`.
+        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[_builtins.int] free_space: Available space of this datastore, in megabytes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[_builtins.str] maintenance_mode: The current maintenance mode state of the datastore.
         :param pulumi.Input[_builtins.bool] multiple_host_access: If `true`, more than one host in the datacenter has
@@ -952,10 +863,11 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
                
-               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-               requires vCenter 6.0 or higher.
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
@@ -1020,8 +932,11 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Map of custom attribute ids to attribute 
-        value strings to set on datasource resource.
+        Map of custom attribute ids to attribute
+        value strings to set on resource. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections
         and require vCenter.
@@ -1032,8 +947,8 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The managed object
-        ID of a datastore cluster to put this datastore in.
+        The [managed object
+        ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         Conflicts with `folder`.
         """
         return pulumi.get(self, "datastore_cluster_id")
@@ -1042,13 +957,7 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore in.
-        This is a path relative to the datacenter you are deploying the datastore to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a datastore named `test` in a datastore folder
-        located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/test`. Conflicts with
-        `datastore_cluster_id`.
+        The path to the datastore folder to put the datastore in.
         """
         return pulumi.get(self, "folder")
 
@@ -1064,7 +973,7 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The managed object IDs of
+        The [managed object IDs][docs-about-morefs] of
         the hosts to mount the datastore on.
         """
         return pulumi.get(self, "host_system_ids")
@@ -1137,10 +1046,11 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource. 
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
 
-        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        requires vCenter 6.0 or higher.
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "tags")
 

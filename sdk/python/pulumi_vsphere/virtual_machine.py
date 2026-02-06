@@ -1353,7 +1353,6 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
         :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-        :param pulumi.Input[_builtins.str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
@@ -1380,7 +1379,7 @@ class _VirtualMachineState:
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
-        :param pulumi.Input[_builtins.str] moid: The managed object reference ID of the created virtual machine.
+        :param pulumi.Input[_builtins.str] moid: The [managed object reference ID][docs-about-morefs] of the created virtual machine.
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this virtual machine.
@@ -1826,9 +1825,6 @@ class _VirtualMachineState:
     @_builtins.property
     @pulumi.getter(name="defaultIpAddress")
     def default_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-        """
         return pulumi.get(self, "default_ip_address")
 
     @default_ip_address.setter
@@ -2160,7 +2156,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def moid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference ID of the created virtual machine.
+        The [managed object reference ID][docs-about-morefs] of the created virtual machine.
         """
         return pulumi.get(self, "moid")
 
@@ -3168,7 +3164,6 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VM is to be created.
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The ID of a datastore cluster to put the virtual machine in.
         :param pulumi.Input[_builtins.str] datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-        :param pulumi.Input[_builtins.str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A specification for a virtual disk device on this virtual machine.
         :param pulumi.Input[_builtins.bool] efi_secure_boot_enabled: When the boot type set in firmware is efi, this enables EFI secure boot.
         :param pulumi.Input[_builtins.bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest.
@@ -3195,7 +3190,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] memory_share_count: The amount of shares to allocate to memory for a custom share level.
         :param pulumi.Input[_builtins.str] memory_share_level: The allocation level for memory resources. Can be one of high, low, normal, or custom.
         :param pulumi.Input[_builtins.int] migrate_wait_timeout: The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
-        :param pulumi.Input[_builtins.str] moid: The managed object reference ID of the created virtual machine.
+        :param pulumi.Input[_builtins.str] moid: The [managed object reference ID][docs-about-morefs] of the created virtual machine.
         :param pulumi.Input[_builtins.str] name: The name of this virtual machine.
         :param pulumi.Input[_builtins.bool] nested_hv_enabled: Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineNetworkInterfaceArgs', 'VirtualMachineNetworkInterfaceArgsDict']]]] network_interfaces: A specification for a virtual NIC on this virtual machine.
@@ -3482,9 +3477,6 @@ class VirtualMachine(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="defaultIpAddress")
     def default_ip_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-        """
         return pulumi.get(self, "default_ip_address")
 
     @_builtins.property
@@ -3704,7 +3696,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def moid(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference ID of the created virtual machine.
+        The [managed object reference ID][docs-about-morefs] of the created virtual machine.
         """
         return pulumi.get(self, "moid")
 

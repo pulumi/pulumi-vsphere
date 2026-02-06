@@ -10,7 +10,9 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Create datacenter on the root folder
+ * ### S
+ *
+ * **Create datacenter on the root folder:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,7 +21,7 @@ import * as utilities from "./utilities";
  * const prodDatacenter = new vsphere.Datacenter("prod_datacenter", {name: "my_prod_datacenter"});
  * ```
  *
- * ### Create datacenter on a subfolder
+ * **Create datacenter on a subfolder:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +93,7 @@ export class Datacenter extends pulumi.CustomResource {
      */
     declare public readonly folder: pulumi.Output<string | undefined>;
     /**
-     * Managed object ID of this datacenter.
+     * [Managed object ID][docs-about-morefs] of this datacenter.
      */
     declare public /*out*/ readonly moid: pulumi.Output<string>;
     /**
@@ -100,7 +102,10 @@ export class Datacenter extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
 
@@ -157,7 +162,7 @@ export interface DatacenterState {
      */
     folder?: pulumi.Input<string>;
     /**
-     * Managed object ID of this datacenter.
+     * [Managed object ID][docs-about-morefs] of this datacenter.
      */
     moid?: pulumi.Input<string>;
     /**
@@ -166,7 +171,10 @@ export interface DatacenterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -198,7 +206,10 @@ export interface DatacenterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -110,7 +110,7 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the port group up on. Forces a new resource if changed.
      * 
      */
@@ -118,7 +118,7 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> hostSystemId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the host to set the port group up on. Forces a new resource if changed.
      * 
      */
@@ -271,6 +271,8 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
      * ID of `4095` enables trunk mode, allowing the guest to manage its own
      * tagging. Default: `0`.
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
      */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
@@ -280,6 +282,8 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
      * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
      * ID of `4095` enables trunk mode, allowing the guest to manage its own
      * tagging. Default: `0`.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<Integer>> vlanId() {
@@ -463,7 +467,7 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostSystemId The managed object ID of
+         * @param hostSystemId The [managed object ID][docs-about-morefs] of
          * the host to set the port group up on. Forces a new resource if changed.
          * 
          * @return builder
@@ -475,7 +479,7 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostSystemId The managed object ID of
+         * @param hostSystemId The [managed object ID][docs-about-morefs] of
          * the host to set the port group up on. Forces a new resource if changed.
          * 
          * @return builder
@@ -694,6 +698,8 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
          * ID of `4095` enables trunk mode, allowing the guest to manage its own
          * tagging. Default: `0`.
          * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
          * @return builder
          * 
          */
@@ -707,6 +713,8 @@ public final class HostPortGroupArgs extends com.pulumi.resources.ResourceArgs {
          * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
          * ID of `4095` enables trunk mode, allowing the guest to manage its own
          * tagging. Default: `0`.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

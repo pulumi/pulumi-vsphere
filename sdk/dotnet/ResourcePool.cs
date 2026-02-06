@@ -274,7 +274,7 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object ID
+        /// The [managed object ID][docs-about-morefs]
         /// of the parent resource pool. This can be the root resource pool for a cluster
         /// or standalone host, or a resource pool itself. When moving a resource pool
         /// from one parent resource pool to another, both must share a common root
@@ -293,7 +293,11 @@ namespace Pulumi.VSphere
         public Output<string?> ScaleDescendantsShares { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -445,7 +449,7 @@ namespace Pulumi.VSphere
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The managed object ID
+        /// The [managed object ID][docs-about-morefs]
         /// of the parent resource pool. This can be the root resource pool for a cluster
         /// or standalone host, or a resource pool itself. When moving a resource pool
         /// from one parent resource pool to another, both must share a common root
@@ -467,7 +471,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {
@@ -584,7 +592,7 @@ namespace Pulumi.VSphere
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The managed object ID
+        /// The [managed object ID][docs-about-morefs]
         /// of the parent resource pool. This can be the root resource pool for a cluster
         /// or standalone host, or a resource pool itself. When moving a resource pool
         /// from one parent resource pool to another, both must share a common root
@@ -606,7 +614,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {

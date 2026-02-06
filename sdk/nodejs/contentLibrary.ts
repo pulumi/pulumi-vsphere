@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  *
  * The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
  *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -109,7 +111,7 @@ export class ContentLibrary extends pulumi.CustomResource {
      */
     declare public readonly publication: pulumi.Output<outputs.ContentLibraryPublication>;
     /**
-     * The managed object reference ID of the datastore on which to store the content library items.
+     * The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      */
     declare public readonly storageBackings: pulumi.Output<string[]>;
     /**
@@ -168,7 +170,7 @@ export interface ContentLibraryState {
      */
     publication?: pulumi.Input<inputs.ContentLibraryPublication>;
     /**
-     * The managed object reference ID of the datastore on which to store the content library items.
+     * The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      */
     storageBackings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -194,7 +196,7 @@ export interface ContentLibraryArgs {
      */
     publication?: pulumi.Input<inputs.ContentLibraryPublication>;
     /**
-     * The managed object reference ID of the datastore on which to store the content library items.
+     * The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      */
     storageBackings: pulumi.Input<pulumi.Input<string>[]>;
     /**

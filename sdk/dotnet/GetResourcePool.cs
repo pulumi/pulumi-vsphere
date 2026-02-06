@@ -15,7 +15,9 @@ namespace Pulumi.VSphere
         /// The `vsphere.ResourcePool` data source can be used to discover the ID of a
         /// resource pool in vSphere. This is useful to return the ID of a resource pool
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -75,9 +77,11 @@ namespace Pulumi.VSphere
         /// 
         /// ### Specifying the Root Resource Pool for a Standalone ESXi Host
         /// 
-        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-        /// directly via the `vsphere.ComputeCluster`
-        /// data source.
+        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+        /// via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+        /// source.
+        /// 
+        /// [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
         /// 
         /// All compute resources in vSphere have a resource pool, even if one has not been
         /// explicitly created. This resource pool is referred to as the _root resource
@@ -113,7 +117,9 @@ namespace Pulumi.VSphere
         /// The `vsphere.ResourcePool` data source can be used to discover the ID of a
         /// resource pool in vSphere. This is useful to return the ID of a resource pool
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -173,9 +179,11 @@ namespace Pulumi.VSphere
         /// 
         /// ### Specifying the Root Resource Pool for a Standalone ESXi Host
         /// 
-        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-        /// directly via the `vsphere.ComputeCluster`
-        /// data source.
+        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+        /// via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+        /// source.
+        /// 
+        /// [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
         /// 
         /// All compute resources in vSphere have a resource pool, even if one has not been
         /// explicitly created. This resource pool is referred to as the _root resource
@@ -211,7 +219,9 @@ namespace Pulumi.VSphere
         /// The `vsphere.ResourcePool` data source can be used to discover the ID of a
         /// resource pool in vSphere. This is useful to return the ID of a resource pool
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -271,9 +281,11 @@ namespace Pulumi.VSphere
         /// 
         /// ### Specifying the Root Resource Pool for a Standalone ESXi Host
         /// 
-        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-        /// directly via the `vsphere.ComputeCluster`
-        /// data source.
+        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+        /// via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+        /// source.
+        /// 
+        /// [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
         /// 
         /// All compute resources in vSphere have a resource pool, even if one has not been
         /// explicitly created. This resource pool is referred to as the _root resource
@@ -310,11 +322,11 @@ namespace Pulumi.VSphere
     public sealed class GetResourcePoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter in which the resource pool is located. This can be omitted
-        /// if the search path used in `Name` is an absolute path. For default
-        /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-        /// source..
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter in which
+        /// the resource pool is located. This can be omitted if the search path used in
+        /// `Name` is an absolute path. For default datacenters, use the id attribute from
+        /// an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -327,13 +339,15 @@ namespace Pulumi.VSphere
         public string? Name { get; set; }
 
         /// <summary>
-        /// The managed object ID
+        /// The [managed object ID][docs-about-morefs]
         /// of the parent resource pool. When specified, the `Name` parameter is used to find
         /// a child resource pool with the given name under this parent resource pool.
         /// 
-        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-        /// need to specify either attribute to use this data source. An empty declaration
-        /// will load the ESXi host's root resource pool.
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
+        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not need
+        /// to specify either attribute to use this data source. An empty declaration will
+        /// load the ESXi host's root resource pool.
         /// </summary>
         [Input("parentResourcePoolId")]
         public string? ParentResourcePoolId { get; set; }
@@ -347,11 +361,11 @@ namespace Pulumi.VSphere
     public sealed class GetResourcePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter in which the resource pool is located. This can be omitted
-        /// if the search path used in `Name` is an absolute path. For default
-        /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-        /// source..
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter in which
+        /// the resource pool is located. This can be omitted if the search path used in
+        /// `Name` is an absolute path. For default datacenters, use the id attribute from
+        /// an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -364,13 +378,15 @@ namespace Pulumi.VSphere
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The managed object ID
+        /// The [managed object ID][docs-about-morefs]
         /// of the parent resource pool. When specified, the `Name` parameter is used to find
         /// a child resource pool with the given name under this parent resource pool.
         /// 
-        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
-        /// need to specify either attribute to use this data source. An empty declaration
-        /// will load the ESXi host's root resource pool.
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
+        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not need
+        /// to specify either attribute to use this data source. An empty declaration will
+        /// load the ESXi host's root resource pool.
         /// </summary>
         [Input("parentResourcePoolId")]
         public Input<string>? ParentResourcePoolId { get; set; }

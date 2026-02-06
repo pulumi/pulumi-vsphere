@@ -26,9 +26,11 @@ class ComputeClusterVmAffinityRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmAffinityRule resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on the same host together.
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
@@ -53,9 +55,11 @@ class ComputeClusterVmAffinityRuleArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -128,9 +132,11 @@ class _ComputeClusterVmAffinityRuleState:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmAffinityRule resources.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -157,9 +163,11 @@ class _ComputeClusterVmAffinityRuleState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -237,8 +245,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         """
         The `ComputeClusterVmAffinityRule` resource can be used to
         manage virtual machine affinity rules in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         This rule can be used to tell a set of virtual machines to run together on the
         same host within a cluster. When configured, DRS will make a best effort to
@@ -249,20 +260,24 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         > An affinity rule can only be used to place virtual machines on the same
         _non-specific_ hosts. It cannot be used to pin virtual machines to a host.
         To enable this capability, use the
-        `ComputeClusterVmHostRule`
+        [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
         resource.
 
-        > **NOTE:** This resource requires vCenter Server and is not available on
+        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
         direct ESXi host connections.
 
         ## Example Usage
 
         The following example creates two virtual machines in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machines in the cluster looked up by the
-        `ComputeCluster` data source. It
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
         then creates an affinity rule for these two virtual machines, ensuring they
         will run on the same host whenever possible.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -299,7 +314,9 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         The following example creates an affinity rule for a set of virtual machines
         in the cluster by looking up the virtual machine UUIDs from the
-        `VirtualMachine` data source.
+        [`VirtualMachine`][tf-vsphere-vm-data-source] data source.
+
+        [tf-vsphere-vm-data-source]: /docs/providers/vsphere/d/virtual_machine.html
 
         ```python
         import pulumi
@@ -331,6 +348,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         example is below:
 
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
         ```sh
         $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \\
         ```
@@ -341,9 +360,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -364,8 +385,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         """
         The `ComputeClusterVmAffinityRule` resource can be used to
         manage virtual machine affinity rules in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         This rule can be used to tell a set of virtual machines to run together on the
         same host within a cluster. When configured, DRS will make a best effort to
@@ -376,20 +400,24 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         > An affinity rule can only be used to place virtual machines on the same
         _non-specific_ hosts. It cannot be used to pin virtual machines to a host.
         To enable this capability, use the
-        `ComputeClusterVmHostRule`
+        [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
         resource.
 
-        > **NOTE:** This resource requires vCenter Server and is not available on
+        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
         direct ESXi host connections.
 
         ## Example Usage
 
         The following example creates two virtual machines in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machines in the cluster looked up by the
-        `ComputeCluster` data source. It
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
         then creates an affinity rule for these two virtual machines, ensuring they
         will run on the same host whenever possible.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -426,7 +454,9 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         The following example creates an affinity rule for a set of virtual machines
         in the cluster by looking up the virtual machine UUIDs from the
-        `VirtualMachine` data source.
+        [`VirtualMachine`][tf-vsphere-vm-data-source] data source.
+
+        [tf-vsphere-vm-data-source]: /docs/providers/vsphere/d/virtual_machine.html
 
         ```python
         import pulumi
@@ -457,6 +487,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         not found, or if the rule is of a different type, an error will be returned. An
 
         example is below:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
         $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \\
@@ -526,9 +558,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -555,9 +589,11 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 

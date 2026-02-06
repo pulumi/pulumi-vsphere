@@ -5,43 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.VmfsDatastore` resource can be used to create and manage VMFS
- * datastores on an ESXi host or a set of hosts. The resource supports using any
- * SCSI device that can generally be used in a datastore, such as local disks, or
- * disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
- * Devices can be specified manually, or discovered using the
- * [`vsphere.getVmfsDisks`][data-source-vmfs-disks] data source.
- *
- * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html
- *
- * ## Auto-Mounting of Datastores Within vCenter
- *
- * Note that the current behavior of this resource will auto-mount any created
- * datastores to any other host within vCenter that has access to the same disk.
- *
- * Example: You want to create a datastore with a iSCSI LUN that is visible on 3
- * hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
- * create the datastore on `esxi1`, the datastore will be automatically mounted on
- * `esxi2` and `esxi3`, without the need to configure the resource on either of
- * those two hosts.
- *
- * Future versions of this resource may allow you to control the hosts that a
- * datastore is mounted to, but currently, this automatic behavior cannot be
- * changed, so keep this in mind when writing your configurations and deploying
- * your disks.
- *
- * ## Increasing Datastore Size
- *
- * To increase the size of a datastore, you must add additional disks to the
- * `disks` attribute. Expanding the size of a datastore by increasing the size of
- * an already provisioned disk is currently not supported (but may be in future
- * versions of this resource).
- *
- * > **NOTE:** You cannot decrease the size of a datastore. If the resource
- * detects disks removed from the configuration, the provider will give an error.
- *
- * [cmd-taint]: /docs/commands/taint.html
- *
  * ## Example Usage
  *
  * ### Addition of local disks on a single host
@@ -65,8 +28,8 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * const datastore = new vsphere.VmfsDatastore("datastore", {
- *     name: "test",
- *     hostSystemId: esxiHost.id,
+ *     name: "pulumi-test",
+ *     hostSystemId: host.then(host => host.id),
  *     disks: [
  *         "mpx.vmhba1:C0:T1:L0",
  *         "mpx.vmhba1:C0:T2:L0",
@@ -78,7 +41,7 @@ import * as utilities from "./utilities";
  * ### Auto-detection of disks via `vsphere.getVmfsDisks`
  *
  * The following example makes use of the
- * `vsphere.getVmfsDisks` data source to auto-detect
+ * [`vsphere.getVmfsDisks`][data-source-vmfs-disks] data source to auto-detect
  * exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
  * exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
  * into `vsphere.VmfsDatastore`. The datastore is also placed in the
@@ -103,8 +66,8 @@ import * as utilities from "./utilities";
  *     filter: "naa.60a98000",
  * }));
  * const datastore = new vsphere.VmfsDatastore("datastore", {
- *     name: "test",
- *     hostSystemId: esxiHost.id,
+ *     name: "pulumi-test",
+ *     hostSystemId: host.then(host => host.id),
  *     folder: "datastore-folder",
  *     disks: [available.then(available => available.disks)],
  * });
@@ -188,16 +151,20 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly capacity: pulumi.Output<number>;
     /**
-     * Map of custom attribute ids to attribute 
-     * value string to set on datastore resource.
+     * Map of custom attribute ids to attribute
+     * value string to set on datastore resource. See
+     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
     declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The managed object
-     * ID of a datastore cluster to put this datastore in.
+     * The [managed object
+     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     declare public readonly datastoreClusterId: pulumi.Output<string | undefined>;
@@ -206,13 +173,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     declare public readonly disks: pulumi.Output<string[]>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a datastore named `test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastoreClusterId`.
+     * The path to the datastore folder to put the datastore in.
      */
     declare public readonly folder: pulumi.Output<string | undefined>;
     /**
@@ -220,7 +181,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly freeSpace: pulumi.Output<number>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the datastore up on. Note that this is not necessarily the
      * only host that the datastore will be set up on - see
      * here for more info. Forces a
@@ -242,10 +203,11 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
      *
-     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
@@ -327,16 +289,20 @@ export interface VmfsDatastoreState {
      */
     capacity?: pulumi.Input<number>;
     /**
-     * Map of custom attribute ids to attribute 
-     * value string to set on datastore resource.
+     * Map of custom attribute ids to attribute
+     * value string to set on datastore resource. See
+     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The managed object
-     * ID of a datastore cluster to put this datastore in.
+     * The [managed object
+     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     datastoreClusterId?: pulumi.Input<string>;
@@ -345,13 +311,7 @@ export interface VmfsDatastoreState {
      */
     disks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a datastore named `test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastoreClusterId`.
+     * The path to the datastore folder to put the datastore in.
      */
     folder?: pulumi.Input<string>;
     /**
@@ -359,7 +319,7 @@ export interface VmfsDatastoreState {
      */
     freeSpace?: pulumi.Input<number>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the datastore up on. Note that this is not necessarily the
      * only host that the datastore will be set up on - see
      * here for more info. Forces a
@@ -381,10 +341,11 @@ export interface VmfsDatastoreState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
      *
-     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -403,16 +364,20 @@ export interface VmfsDatastoreState {
  */
 export interface VmfsDatastoreArgs {
     /**
-     * Map of custom attribute ids to attribute 
-     * value string to set on datastore resource.
+     * Map of custom attribute ids to attribute
+     * value string to set on datastore resource. See
+     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      *
      * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The managed object
-     * ID of a datastore cluster to put this datastore in.
+     * The [managed object
+     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     datastoreClusterId?: pulumi.Input<string>;
@@ -421,17 +386,11 @@ export interface VmfsDatastoreArgs {
      */
     disks: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a datastore named `test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastoreClusterId`.
+     * The path to the datastore folder to put the datastore in.
      */
     folder?: pulumi.Input<string>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the datastore up on. Note that this is not necessarily the
      * only host that the datastore will be set up on - see
      * here for more info. Forces a
@@ -444,10 +403,11 @@ export interface VmfsDatastoreArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
      *
-     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

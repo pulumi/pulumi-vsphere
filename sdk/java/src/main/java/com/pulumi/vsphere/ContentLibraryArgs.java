@@ -65,14 +65,14 @@ public final class ContentLibraryArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The managed object reference ID of the datastore on which to store the content library items.
+     * The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      * 
      */
     @Import(name="storageBackings", required=true)
     private Output<List<String>> storageBackings;
 
     /**
-     * @return The managed object reference ID of the datastore on which to store the content library items.
+     * @return The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      * 
      */
     public Output<List<String>> storageBackings() {
@@ -186,7 +186,7 @@ public final class ContentLibraryArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storageBackings The managed object reference ID of the datastore on which to store the content library items.
+         * @param storageBackings The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class ContentLibraryArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storageBackings The managed object reference ID of the datastore on which to store the content library items.
+         * @param storageBackings The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class ContentLibraryArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storageBackings The managed object reference ID of the datastore on which to store the content library items.
+         * @param storageBackings The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
          * 
          * @return builder
          * 

@@ -102,16 +102,6 @@ import java.util.concurrent.CompletableFuture;
 
 public final class VsphereFunctions {
     /**
-     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-     * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster&#39;s root resource pool directly versus
-     * using the alias available through the `vsphere.ResourcePool`
-     * data source.
-     * 
-     * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -156,16 +146,6 @@ public final class VsphereFunctions {
         return getComputeCluster(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-     * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster&#39;s root resource pool directly versus
-     * using the alias available through the `vsphere.ResourcePool`
-     * data source.
-     * 
-     * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -210,16 +190,6 @@ public final class VsphereFunctions {
         return getComputeClusterPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-     * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster&#39;s root resource pool directly versus
-     * using the alias available through the `vsphere.ResourcePool`
-     * data source.
-     * 
-     * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -264,16 +234,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getComputeCluster:getComputeCluster", TypeShape.of(GetComputeClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-     * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster&#39;s root resource pool directly versus
-     * using the alias available through the `vsphere.ResourcePool`
-     * data source.
-     * 
-     * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -318,16 +278,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getComputeCluster:getComputeCluster", TypeShape.of(GetComputeClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
-     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-     * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster&#39;s root resource pool directly versus
-     * using the alias available through the `vsphere.ResourcePool`
-     * data source.
-     * 
-     * &gt; You may also wish to see the `vsphere.ComputeCluster`
-     *  resource for more information about clusters and how to managed the resource
-     *  in this provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1222,15 +1172,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getContentLibraryItem:getContentLibraryItem", TypeShape.of(GetContentLibraryItemResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.CustomAttribute` data source can be used to reference custom
-     * attributes that are not managed by this provider. Its attributes are exactly the
-     * same as the `vsphere.CustomAttribute` resource,
-     * and, like importing, the data source takes a name argument for the search. The
-     * `id` and other attributes are then populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
-     * and require vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1256,7 +1197,7 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name("test-attribute")
+     *             .name("pulumi-test-attribute")
      *             .build());
      * 
      *     }
@@ -1269,15 +1210,6 @@ public final class VsphereFunctions {
         return getCustomAttribute(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.CustomAttribute` data source can be used to reference custom
-     * attributes that are not managed by this provider. Its attributes are exactly the
-     * same as the `vsphere.CustomAttribute` resource,
-     * and, like importing, the data source takes a name argument for the search. The
-     * `id` and other attributes are then populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
-     * and require vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1303,7 +1235,7 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name("test-attribute")
+     *             .name("pulumi-test-attribute")
      *             .build());
      * 
      *     }
@@ -1316,15 +1248,6 @@ public final class VsphereFunctions {
         return getCustomAttributePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.CustomAttribute` data source can be used to reference custom
-     * attributes that are not managed by this provider. Its attributes are exactly the
-     * same as the `vsphere.CustomAttribute` resource,
-     * and, like importing, the data source takes a name argument for the search. The
-     * `id` and other attributes are then populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
-     * and require vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1350,7 +1273,7 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name("test-attribute")
+     *             .name("pulumi-test-attribute")
      *             .build());
      * 
      *     }
@@ -1363,15 +1286,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getCustomAttribute:getCustomAttribute", TypeShape.of(GetCustomAttributeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.CustomAttribute` data source can be used to reference custom
-     * attributes that are not managed by this provider. Its attributes are exactly the
-     * same as the `vsphere.CustomAttribute` resource,
-     * and, like importing, the data source takes a name argument for the search. The
-     * `id` and other attributes are then populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
-     * and require vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1397,7 +1311,7 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name("test-attribute")
+     *             .name("pulumi-test-attribute")
      *             .build());
      * 
      *     }
@@ -1410,15 +1324,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getCustomAttribute:getCustomAttribute", TypeShape.of(GetCustomAttributeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.CustomAttribute` data source can be used to reference custom
-     * attributes that are not managed by this provider. Its attributes are exactly the
-     * same as the `vsphere.CustomAttribute` resource,
-     * and, like importing, the data source takes a name argument for the search. The
-     * `id` and other attributes are then populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
-     * and require vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1444,7 +1349,7 @@ public final class VsphereFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attribute = VsphereFunctions.getCustomAttribute(GetCustomAttributeArgs.builder()
-     *             .name("test-attribute")
+     *             .name("pulumi-test-attribute")
      *             .build());
      * 
      *     }
@@ -1457,10 +1362,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getCustomAttribute:getCustomAttribute", TypeShape.of(GetCustomAttributeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Datacenter` data source can be used to discover the ID of a
-     * vSphere datacenter object. This can then be used with resources or data sources
-     * that require a datacenter, such as the `vsphere.Host`
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+     * datacenter object. This can then be used with resources or data sources that
+     * require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
      * data source.
+     * 
+     * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
      * 
      * ## Example Usage
      * 
@@ -1500,10 +1407,12 @@ public final class VsphereFunctions {
         return getDatacenter(GetDatacenterArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Datacenter` data source can be used to discover the ID of a
-     * vSphere datacenter object. This can then be used with resources or data sources
-     * that require a datacenter, such as the `vsphere.Host`
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+     * datacenter object. This can then be used with resources or data sources that
+     * require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
      * data source.
+     * 
+     * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
      * 
      * ## Example Usage
      * 
@@ -1543,10 +1452,12 @@ public final class VsphereFunctions {
         return getDatacenterPlain(GetDatacenterPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Datacenter` data source can be used to discover the ID of a
-     * vSphere datacenter object. This can then be used with resources or data sources
-     * that require a datacenter, such as the `vsphere.Host`
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+     * datacenter object. This can then be used with resources or data sources that
+     * require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
      * data source.
+     * 
+     * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
      * 
      * ## Example Usage
      * 
@@ -1586,10 +1497,12 @@ public final class VsphereFunctions {
         return getDatacenter(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Datacenter` data source can be used to discover the ID of a
-     * vSphere datacenter object. This can then be used with resources or data sources
-     * that require a datacenter, such as the `vsphere.Host`
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+     * datacenter object. This can then be used with resources or data sources that
+     * require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
      * data source.
+     * 
+     * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
      * 
      * ## Example Usage
      * 
@@ -1629,10 +1542,12 @@ public final class VsphereFunctions {
         return getDatacenterPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Datacenter` data source can be used to discover the ID of a
-     * vSphere datacenter object. This can then be used with resources or data sources
-     * that require a datacenter, such as the `vsphere.Host`
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+     * datacenter object. This can then be used with resources or data sources that
+     * require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
      * data source.
+     * 
+     * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
      * 
      * ## Example Usage
      * 
@@ -1672,10 +1587,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDatacenter:getDatacenter", TypeShape.of(GetDatacenterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Datacenter` data source can be used to discover the ID of a
-     * vSphere datacenter object. This can then be used with resources or data sources
-     * that require a datacenter, such as the `vsphere.Host`
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+     * datacenter object. This can then be used with resources or data sources that
+     * require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
      * data source.
+     * 
+     * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
      * 
      * ## Example Usage
      * 
@@ -1715,10 +1632,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDatacenter:getDatacenter", TypeShape.of(GetDatacenterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Datacenter` data source can be used to discover the ID of a
-     * vSphere datacenter object. This can then be used with resources or data sources
-     * that require a datacenter, such as the `vsphere.Host`
+     * The `vsphere.Datacenter` data source can be used to discover the ID of a vSphere
+     * datacenter object. This can then be used with resources or data sources that
+     * require a datacenter, such as the [`vsphere.Host`][data-source-vsphere-host]
      * data source.
+     * 
+     * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
      * 
      * ## Example Usage
      * 
@@ -1758,10 +1677,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDatacenter:getDatacenter", TypeShape.of(GetDatacenterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getDatastore` data source can be used to discover the ID of a
-     * vSphere datastore object. This can then be used with resources or data sources
-     * that require a datastore. For example, to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+     * datastore object. This can then be used with resources or data sources that
+     * require a datastore. For example, to create virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -1807,10 +1728,12 @@ public final class VsphereFunctions {
         return getDatastore(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getDatastore` data source can be used to discover the ID of a
-     * vSphere datastore object. This can then be used with resources or data sources
-     * that require a datastore. For example, to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+     * datastore object. This can then be used with resources or data sources that
+     * require a datastore. For example, to create virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -1856,10 +1779,12 @@ public final class VsphereFunctions {
         return getDatastorePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.getDatastore` data source can be used to discover the ID of a
-     * vSphere datastore object. This can then be used with resources or data sources
-     * that require a datastore. For example, to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+     * datastore object. This can then be used with resources or data sources that
+     * require a datastore. For example, to create virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -1905,10 +1830,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getDatastore` data source can be used to discover the ID of a
-     * vSphere datastore object. This can then be used with resources or data sources
-     * that require a datastore. For example, to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+     * datastore object. This can then be used with resources or data sources that
+     * require a datastore. For example, to create virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -1954,10 +1881,12 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.getDatastore` data source can be used to discover the ID of a
-     * vSphere datastore object. This can then be used with resources or data sources
-     * that require a datastore. For example, to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+     * datastore object. This can then be used with resources or data sources that
+     * require a datastore. For example, to create virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -2004,9 +1933,16 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-     * vSphere datastore cluster object. This can then be used with resources or data sources
-     * that require a datastore. For example, to assign datastores using the
-     * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+     * vSphere datastore cluster object. This can then be used with resources or data
+     * sources that require a datastore. For example, to assign datastores using the
+     * [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+     * [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+     * virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+     * [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -2053,9 +1989,16 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-     * vSphere datastore cluster object. This can then be used with resources or data sources
-     * that require a datastore. For example, to assign datastores using the
-     * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+     * vSphere datastore cluster object. This can then be used with resources or data
+     * sources that require a datastore. For example, to assign datastores using the
+     * [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+     * [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+     * virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+     * [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -2102,9 +2045,16 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-     * vSphere datastore cluster object. This can then be used with resources or data sources
-     * that require a datastore. For example, to assign datastores using the
-     * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+     * vSphere datastore cluster object. This can then be used with resources or data
+     * sources that require a datastore. For example, to assign datastores using the
+     * [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+     * [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+     * virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+     * [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -2151,9 +2101,16 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-     * vSphere datastore cluster object. This can then be used with resources or data sources
-     * that require a datastore. For example, to assign datastores using the
-     * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+     * vSphere datastore cluster object. This can then be used with resources or data
+     * sources that require a datastore. For example, to assign datastores using the
+     * [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+     * [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+     * virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+     * [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -2200,9 +2157,16 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-     * vSphere datastore cluster object. This can then be used with resources or data sources
-     * that require a datastore. For example, to assign datastores using the
-     * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+     * vSphere datastore cluster object. This can then be used with resources or data
+     * sources that require a datastore. For example, to assign datastores using the
+     * [`vsphere.NasDatastore`][docs-nas-datastore-resource] or
+     * [`vsphere.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+     * virtual machines in using the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+     * [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -2658,11 +2622,13 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getDatastoreStats:getDatastoreStats", TypeShape.of(GetDatastoreStatsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-     * the ID and uplink data of a of a vSphere distributed switch (VDS). This
-     * can then be used with resources or data sources that require a VDS, such as the
-     * `vsphere.DistributedPortGroup` resource, for which
+     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+     * ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+     * used with resources or data sources that require a VDS, such as the
+     * [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
      * an example is shown below.
+     * 
+     * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
      * 
      * &gt; **NOTE:** This data source requires vCenter Server and is not available on
      * direct ESXi host connections.
@@ -2725,11 +2691,13 @@ public final class VsphereFunctions {
         return getDistributedVirtualSwitch(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-     * the ID and uplink data of a of a vSphere distributed switch (VDS). This
-     * can then be used with resources or data sources that require a VDS, such as the
-     * `vsphere.DistributedPortGroup` resource, for which
+     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+     * ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+     * used with resources or data sources that require a VDS, such as the
+     * [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
      * an example is shown below.
+     * 
+     * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
      * 
      * &gt; **NOTE:** This data source requires vCenter Server and is not available on
      * direct ESXi host connections.
@@ -2792,11 +2760,13 @@ public final class VsphereFunctions {
         return getDistributedVirtualSwitchPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-     * the ID and uplink data of a of a vSphere distributed switch (VDS). This
-     * can then be used with resources or data sources that require a VDS, such as the
-     * `vsphere.DistributedPortGroup` resource, for which
+     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+     * ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+     * used with resources or data sources that require a VDS, such as the
+     * [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
      * an example is shown below.
+     * 
+     * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
      * 
      * &gt; **NOTE:** This data source requires vCenter Server and is not available on
      * direct ESXi host connections.
@@ -2859,11 +2829,13 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", TypeShape.of(GetDistributedVirtualSwitchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-     * the ID and uplink data of a of a vSphere distributed switch (VDS). This
-     * can then be used with resources or data sources that require a VDS, such as the
-     * `vsphere.DistributedPortGroup` resource, for which
+     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+     * ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+     * used with resources or data sources that require a VDS, such as the
+     * [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
      * an example is shown below.
+     * 
+     * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
      * 
      * &gt; **NOTE:** This data source requires vCenter Server and is not available on
      * direct ESXi host connections.
@@ -2926,11 +2898,13 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", TypeShape.of(GetDistributedVirtualSwitchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-     * the ID and uplink data of a of a vSphere distributed switch (VDS). This
-     * can then be used with resources or data sources that require a VDS, such as the
-     * `vsphere.DistributedPortGroup` resource, for which
+     * The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+     * ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+     * used with resources or data sources that require a VDS, such as the
+     * [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
      * an example is shown below.
+     * 
+     * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
      * 
      * &gt; **NOTE:** This data source requires vCenter Server and is not available on
      * direct ESXi host connections.
@@ -4269,8 +4243,10 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
-     * This can then be used with resources or data sources that require an ESX
-     * host&#39;s managed object reference ID.
+     * This can then be used with resources or data sources that require an ESX host&#39;s
+     * [managed object reference ID][docs-about-morefs].
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      * ## Example Usage
      * 
@@ -4317,8 +4293,10 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
-     * This can then be used with resources or data sources that require an ESX
-     * host&#39;s managed object reference ID.
+     * This can then be used with resources or data sources that require an ESX host&#39;s
+     * [managed object reference ID][docs-about-morefs].
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      * ## Example Usage
      * 
@@ -4365,8 +4343,10 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
-     * This can then be used with resources or data sources that require an ESX
-     * host&#39;s managed object reference ID.
+     * This can then be used with resources or data sources that require an ESX host&#39;s
+     * [managed object reference ID][docs-about-morefs].
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      * ## Example Usage
      * 
@@ -4413,8 +4393,10 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
-     * This can then be used with resources or data sources that require an ESX
-     * host&#39;s managed object reference ID.
+     * This can then be used with resources or data sources that require an ESX host&#39;s
+     * [managed object reference ID][docs-about-morefs].
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      * ## Example Usage
      * 
@@ -4461,8 +4443,10 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
-     * This can then be used with resources or data sources that require an ESX
-     * host&#39;s managed object reference ID.
+     * This can then be used with resources or data sources that require an ESX host&#39;s
+     * [managed object reference ID][docs-about-morefs].
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      * ## Example Usage
      * 
@@ -6987,7 +6971,9 @@ public final class VsphereFunctions {
      * The `vsphere.ResourcePool` data source can be used to discover the ID of a
      * resource pool in vSphere. This is useful to return the ID of a resource pool
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -7076,9 +7062,11 @@ public final class VsphereFunctions {
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
-     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-     * directly via the `vsphere.ComputeCluster`
-     * data source.
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+     * via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+     * source.
+     * 
+     * [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the _root resource
@@ -7130,7 +7118,9 @@ public final class VsphereFunctions {
      * The `vsphere.ResourcePool` data source can be used to discover the ID of a
      * resource pool in vSphere. This is useful to return the ID of a resource pool
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -7219,9 +7209,11 @@ public final class VsphereFunctions {
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
-     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-     * directly via the `vsphere.ComputeCluster`
-     * data source.
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+     * via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+     * source.
+     * 
+     * [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the _root resource
@@ -7273,7 +7265,9 @@ public final class VsphereFunctions {
      * The `vsphere.ResourcePool` data source can be used to discover the ID of a
      * resource pool in vSphere. This is useful to return the ID of a resource pool
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -7362,9 +7356,11 @@ public final class VsphereFunctions {
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
-     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-     * directly via the `vsphere.ComputeCluster`
-     * data source.
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+     * via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+     * source.
+     * 
+     * [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the _root resource
@@ -7416,7 +7412,9 @@ public final class VsphereFunctions {
      * The `vsphere.ResourcePool` data source can be used to discover the ID of a
      * resource pool in vSphere. This is useful to return the ID of a resource pool
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -7505,9 +7503,11 @@ public final class VsphereFunctions {
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
-     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-     * directly via the `vsphere.ComputeCluster`
-     * data source.
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+     * via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+     * source.
+     * 
+     * [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the _root resource
@@ -7559,7 +7559,9 @@ public final class VsphereFunctions {
      * The `vsphere.ResourcePool` data source can be used to discover the ID of a
      * resource pool in vSphere. This is useful to return the ID of a resource pool
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -7648,9 +7650,11 @@ public final class VsphereFunctions {
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
-     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-     * directly via the `vsphere.ComputeCluster`
-     * data source.
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+     * via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+     * source.
+     * 
+     * [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the _root resource
@@ -7702,7 +7706,9 @@ public final class VsphereFunctions {
      * The `vsphere.ResourcePool` data source can be used to discover the ID of a
      * resource pool in vSphere. This is useful to return the ID of a resource pool
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -7791,9 +7797,11 @@ public final class VsphereFunctions {
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
-     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-     * directly via the `vsphere.ComputeCluster`
-     * data source.
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+     * via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+     * source.
+     * 
+     * [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the _root resource
@@ -7845,7 +7853,9 @@ public final class VsphereFunctions {
      * The `vsphere.ResourcePool` data source can be used to discover the ID of a
      * resource pool in vSphere. This is useful to return the ID of a resource pool
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -7934,9 +7944,11 @@ public final class VsphereFunctions {
      * 
      * ### Specifying the Root Resource Pool for a Standalone ESXi Host
      * 
-     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done
-     * directly via the `vsphere.ComputeCluster`
-     * data source.
+     * &gt; **NOTE:** Returning the root resource pool for a cluster can be done directly
+     * via the [`vsphere.ComputeCluster`][docs-compute-cluster-data-source] data
+     * source.
+     * 
+     * [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
      * 
      * All compute resources in vSphere have a resource pool, even if one has not been
      * explicitly created. This resource pool is referred to as the _root resource
@@ -8190,15 +8202,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Tag` data source can be used to reference tags that are not
-     * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
-     * resource, and, like importing, the data source takes a name and
-     * category to search on. The `id` and other attributes are then populated with
-     * the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8243,15 +8246,6 @@ public final class VsphereFunctions {
         return getTag(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Tag` data source can be used to reference tags that are not
-     * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
-     * resource, and, like importing, the data source takes a name and
-     * category to search on. The `id` and other attributes are then populated with
-     * the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8296,15 +8290,6 @@ public final class VsphereFunctions {
         return getTagPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.Tag` data source can be used to reference tags that are not
-     * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
-     * resource, and, like importing, the data source takes a name and
-     * category to search on. The `id` and other attributes are then populated with
-     * the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8349,15 +8334,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Tag` data source can be used to reference tags that are not
-     * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
-     * resource, and, like importing, the data source takes a name and
-     * category to search on. The `id` and other attributes are then populated with
-     * the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8402,15 +8378,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.Tag` data source can be used to reference tags that are not
-     * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
-     * resource, and, like importing, the data source takes a name and
-     * category to search on. The `id` and other attributes are then populated with
-     * the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8455,15 +8422,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.TagCategory` data source can be used to reference tag categories
-     * that are not managed by this provider. Its attributes are the same as the
-     * `vsphere.TagCategory` resource, and, like importing,
-     * the data source uses a name and category as search criteria. The `id` and other
-     * attributes are populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8502,15 +8460,6 @@ public final class VsphereFunctions {
         return getTagCategory(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.TagCategory` data source can be used to reference tag categories
-     * that are not managed by this provider. Its attributes are the same as the
-     * `vsphere.TagCategory` resource, and, like importing,
-     * the data source uses a name and category as search criteria. The `id` and other
-     * attributes are populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8549,15 +8498,6 @@ public final class VsphereFunctions {
         return getTagCategoryPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `vsphere.TagCategory` data source can be used to reference tag categories
-     * that are not managed by this provider. Its attributes are the same as the
-     * `vsphere.TagCategory` resource, and, like importing,
-     * the data source uses a name and category as search criteria. The `id` and other
-     * attributes are populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8596,15 +8536,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTagCategory:getTagCategory", TypeShape.of(GetTagCategoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.TagCategory` data source can be used to reference tag categories
-     * that are not managed by this provider. Its attributes are the same as the
-     * `vsphere.TagCategory` resource, and, like importing,
-     * the data source uses a name and category as search criteria. The `id` and other
-     * attributes are populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8643,15 +8574,6 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTagCategory:getTagCategory", TypeShape.of(GetTagCategoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `vsphere.TagCategory` data source can be used to reference tag categories
-     * that are not managed by this provider. Its attributes are the same as the
-     * `vsphere.TagCategory` resource, and, like importing,
-     * the data source uses a name and category as search criteria. The `id` and other
-     * attributes are populated with the data found by the search.
-     * 
-     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-     * requires vCenter Server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8693,7 +8615,9 @@ public final class VsphereFunctions {
      * The `vsphere.VappContainer` data source can be used to discover the ID of a
      * vApp container in vSphere. This is useful to return the ID of a vApp container
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -8742,7 +8666,9 @@ public final class VsphereFunctions {
      * The `vsphere.VappContainer` data source can be used to discover the ID of a
      * vApp container in vSphere. This is useful to return the ID of a vApp container
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -8791,7 +8717,9 @@ public final class VsphereFunctions {
      * The `vsphere.VappContainer` data source can be used to discover the ID of a
      * vApp container in vSphere. This is useful to return the ID of a vApp container
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -8840,7 +8768,9 @@ public final class VsphereFunctions {
      * The `vsphere.VappContainer` data source can be used to discover the ID of a
      * vApp container in vSphere. This is useful to return the ID of a vApp container
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -8889,7 +8819,9 @@ public final class VsphereFunctions {
      * The `vsphere.VappContainer` data source can be used to discover the ID of a
      * vApp container in vSphere. This is useful to return the ID of a vApp container
      * that you want to use to create virtual machines in using the
-     * `vsphere.VirtualMachine` resource.
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -8936,10 +8868,12 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-     * existing virtual machine or template. The most common purpose is for finding
-     * the UUID of a template to be used as the source for cloning to a new
-     * `vsphere.VirtualMachine` resource. It also
+     * existing virtual machine or template. The most common purpose is for finding the
+     * UUID of a template to be used as the source for cloning to a new
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
      * reads the guest ID so that can be supplied as well.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -9034,10 +8968,12 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-     * existing virtual machine or template. The most common purpose is for finding
-     * the UUID of a template to be used as the source for cloning to a new
-     * `vsphere.VirtualMachine` resource. It also
+     * existing virtual machine or template. The most common purpose is for finding the
+     * UUID of a template to be used as the source for cloning to a new
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
      * reads the guest ID so that can be supplied as well.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -9132,10 +9068,12 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-     * existing virtual machine or template. The most common purpose is for finding
-     * the UUID of a template to be used as the source for cloning to a new
-     * `vsphere.VirtualMachine` resource. It also
+     * existing virtual machine or template. The most common purpose is for finding the
+     * UUID of a template to be used as the source for cloning to a new
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
      * reads the guest ID so that can be supplied as well.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -9230,10 +9168,12 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-     * existing virtual machine or template. The most common purpose is for finding
-     * the UUID of a template to be used as the source for cloning to a new
-     * `vsphere.VirtualMachine` resource. It also
+     * existing virtual machine or template. The most common purpose is for finding the
+     * UUID of a template to be used as the source for cloning to a new
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
      * reads the guest ID so that can be supplied as well.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -9328,10 +9268,12 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-     * existing virtual machine or template. The most common purpose is for finding
-     * the UUID of a template to be used as the source for cloning to a new
-     * `vsphere.VirtualMachine` resource. It also
+     * existing virtual machine or template. The most common purpose is for finding the
+     * UUID of a template to be used as the source for cloning to a new
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
      * reads the guest ID so that can be supplied as well.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -9426,10 +9368,12 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-     * existing virtual machine or template. The most common purpose is for finding
-     * the UUID of a template to be used as the source for cloning to a new
-     * `vsphere.VirtualMachine` resource. It also
+     * existing virtual machine or template. The most common purpose is for finding the
+     * UUID of a template to be used as the source for cloning to a new
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
      * reads the guest ID so that can be supplied as well.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -9524,10 +9468,12 @@ public final class VsphereFunctions {
     }
     /**
      * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-     * existing virtual machine or template. The most common purpose is for finding
-     * the UUID of a template to be used as the source for cloning to a new
-     * `vsphere.VirtualMachine` resource. It also
+     * existing virtual machine or template. The most common purpose is for finding the
+     * UUID of a template to be used as the source for cloning to a new
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
      * reads the guest ID so that can be supplied as well.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
      * 
      * ## Example Usage
      * 
@@ -9623,8 +9569,10 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getVmfsDisks` data source can be used to discover the storage
      * devices available on an ESXi host. This data source can be combined with the
-     * `vsphere.VmfsDatastore` resource to create VMFS
+     * [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
      * datastores based off a set of discovered disks.
+     * 
+     * [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
      * 
      * ## Example Usage
      * 
@@ -9679,8 +9627,10 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getVmfsDisks` data source can be used to discover the storage
      * devices available on an ESXi host. This data source can be combined with the
-     * `vsphere.VmfsDatastore` resource to create VMFS
+     * [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
      * datastores based off a set of discovered disks.
+     * 
+     * [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
      * 
      * ## Example Usage
      * 
@@ -9735,8 +9685,10 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getVmfsDisks` data source can be used to discover the storage
      * devices available on an ESXi host. This data source can be combined with the
-     * `vsphere.VmfsDatastore` resource to create VMFS
+     * [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
      * datastores based off a set of discovered disks.
+     * 
+     * [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
      * 
      * ## Example Usage
      * 
@@ -9791,8 +9743,10 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getVmfsDisks` data source can be used to discover the storage
      * devices available on an ESXi host. This data source can be combined with the
-     * `vsphere.VmfsDatastore` resource to create VMFS
+     * [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
      * datastores based off a set of discovered disks.
+     * 
+     * [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
      * 
      * ## Example Usage
      * 
@@ -9847,8 +9801,10 @@ public final class VsphereFunctions {
     /**
      * The `vsphere.getVmfsDisks` data source can be used to discover the storage
      * devices available on an ESXi host. This data source can be combined with the
-     * `vsphere.VmfsDatastore` resource to create VMFS
+     * [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
      * datastores based off a set of discovered disks.
+     * 
+     * [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
      * 
      * ## Example Usage
      * 

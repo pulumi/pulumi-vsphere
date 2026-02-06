@@ -12,14 +12,17 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere.HostPortGroup` resource can be used to manage port groups on
     /// ESXi hosts. These port groups are connected to standard switches, which
-    /// can be managed by the `vsphere.HostVirtualSwitch`
+    /// can be managed by the [`vsphere.HostVirtualSwitch`][host-virtual-switch]
     /// resource.
     /// 
     /// For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
     /// 
-    /// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+    /// [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
+    /// [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
     /// 
     /// ## Example Usage
+    /// 
+    /// ### S
     /// 
     /// **Create a Virtual Switch and Bind a Port Group:**
     /// 
@@ -75,7 +78,7 @@ namespace Pulumi.VSphere
     /// 
     /// This example sets the trunk mode VLAN (`4095`, which passes through all tags)
     /// and sets
-    /// `AllowPromiscuous`
+    /// [`AllowPromiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
     /// to ensure that all traffic is seen on the port. The setting overrides
     /// the implicit default of `False` set on the standard switch.
     /// 
@@ -135,6 +138,8 @@ namespace Pulumi.VSphere
     /// 
     /// using the host port group's ID. An example is below:
     /// 
+    /// [docs-import]: /docs/import/index.html
+    /// 
     /// ```sh
     /// $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
     /// ```
@@ -175,8 +180,8 @@ namespace Pulumi.VSphere
         public Output<bool?> CheckBeacon { get; private set; } = null!;
 
         /// <summary>
-        /// A map with a full set of the policy
-        /// options computed from defaults and overrides,
+        /// A map with a full set of the [policy
+        /// options][host-vswitch-policy-options] computed from defaults and overrides,
         /// explaining the effective policy for this port group.
         /// </summary>
         [Output("computedPolicy")]
@@ -189,7 +194,7 @@ namespace Pulumi.VSphere
         public Output<bool?> Failback { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to set the port group up on. Forces a new resource if changed.
         /// </summary>
         [Output("hostSystemId")]
@@ -268,6 +273,8 @@ namespace Pulumi.VSphere
         /// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
         /// ID of `4095` enables trunk mode, allowing the guest to manage its own
         /// tagging. Default: `0`.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Output("vlanId")]
         public Output<int?> VlanId { get; private set; } = null!;
@@ -361,7 +368,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Failback { get; set; }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to set the port group up on. Forces a new resource if changed.
         /// </summary>
         [Input("hostSystemId", required: true)]
@@ -434,6 +441,8 @@ namespace Pulumi.VSphere
         /// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
         /// ID of `4095` enables trunk mode, allowing the guest to manage its own
         /// tagging. Default: `0`.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
@@ -486,8 +495,8 @@ namespace Pulumi.VSphere
         private InputMap<string>? _computedPolicy;
 
         /// <summary>
-        /// A map with a full set of the policy
-        /// options computed from defaults and overrides,
+        /// A map with a full set of the [policy
+        /// options][host-vswitch-policy-options] computed from defaults and overrides,
         /// explaining the effective policy for this port group.
         /// </summary>
         public InputMap<string> ComputedPolicy
@@ -503,7 +512,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Failback { get; set; }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to set the port group up on. Forces a new resource if changed.
         /// </summary>
         [Input("hostSystemId")]
@@ -594,6 +603,8 @@ namespace Pulumi.VSphere
         /// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
         /// ID of `4095` enables trunk mode, allowing the guest to manage its own
         /// tagging. Default: `0`.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

@@ -26,9 +26,9 @@ namespace Pulumi.VSphere
     /// ## Example Usage
     /// 
     /// The example below creates a virtual machine in a cluster using the
-    /// `vsphere.VirtualMachine` resource, creating the
+    /// [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
     /// virtual machine in the cluster looked up by the
-    /// `vsphere.ComputeCluster` data source.
+    /// [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
     /// 
     /// Considering a scenario where this virtual machine is of high value to the
     /// application or organization for which it does its work, it's been determined in
@@ -39,6 +39,9 @@ namespace Pulumi.VSphere
     /// virtual machine has been assigned the `Highest` priority, will mean that this
     /// VM will be started before any other virtual machine in the event of host
     /// failure.
+    /// 
+    /// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -73,7 +76,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
-    ///         Name = "test",
+    ///         Name = "pulumi-test",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
     ///         NumCpus = 2,

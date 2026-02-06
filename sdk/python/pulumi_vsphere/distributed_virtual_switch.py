@@ -134,7 +134,10 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[_builtins.str] contact_name: The name of the person who is responsible for the
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for VDS.
+               value strings to set for VDS. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
                and requires vCenter Server.
@@ -202,7 +205,10 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[_builtins.int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
@@ -580,7 +586,10 @@ class DistributedVirtualSwitchArgs:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of custom attribute ids to attribute
-        value strings to set for VDS.
+        value strings to set for VDS. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         and requires vCenter Server.
@@ -1286,7 +1295,10 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -1678,7 +1690,10 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[_builtins.str] contact_name: The name of the person who is responsible for the
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for VDS.
+               value strings to set for VDS. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
                and requires vCenter Server.
@@ -1748,7 +1763,10 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[_builtins.int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
@@ -2129,7 +2147,10 @@ class _DistributedVirtualSwitchState:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of custom attribute ids to attribute
-        value strings to set for VDS.
+        value strings to set for VDS. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         and requires vCenter Server.
@@ -2848,7 +2869,10 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -3225,120 +3249,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  vsan_share_level: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `DistributedVirtualSwitch` resource can be used to manage vSphere
-        Distributed Switches (VDS).
-
-        An essential component of a distributed, scalable vSphere infrastructure, the
-        VDS provides centralized management and monitoring of the networking
-        configuration for all the hosts that are associated with the switch.
-        In addition to adding distributed port groups
-        (see the `DistributedPortGroup` resource)
-        that can be used as networks for virtual machines, a VDS can be configured to
-        perform advanced high availability, traffic shaping, network monitoring, etc.
-
-        For an overview on vSphere networking concepts, see
-        [this page][ref-vsphere-net-concepts].
-
-        For more information on the VDS, see [this page][ref-vsphere-vds].
-
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
-        [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
-
-        > **NOTE:** This resource requires vCenter and is not available on
-        direct ESXi host connections.
-
-        ## Example Usage
-
-        The following example below demonstrates a "standard" example of configuring a
-        VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
-        used as active, and two being used as passive. Note that the NIC failover order
-        propagates to any port groups configured on this VDS and can be overridden.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        config = pulumi.Config()
-        hosts = config.get_object("hosts")
-        if hosts is None:
-            hosts = [
-                "esxi-01.example.com",
-                "esxi-02.example.com",
-                "esxi-03.example.com",
-            ]
-        network_interfaces = config.get_object("networkInterfaces")
-        if network_interfaces is None:
-            network_interfaces = [
-                "vmnic0",
-                "vmnic1",
-                "vmnic2",
-                "vmnic3",
-            ]
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        host = [vsphere.get_host(name=hosts[__index],
-            datacenter_id=datacenter.id) for __index in range(len(hosts))]
-        vds = vsphere.DistributedVirtualSwitch("vds",
-            name="vds-01",
-            datacenter_id=datacenter.id,
-            uplinks=[
-                "uplink1",
-                "uplink2",
-                "uplink3",
-                "uplink4",
-            ],
-            active_uplinks=[
-                "uplink1",
-                "uplink2",
-            ],
-            standby_uplinks=[
-                "uplink3",
-                "uplink4",
-            ],
-            hosts=[
-                {
-                    "host_system_id": host[0].id,
-                    "devices": [network_interfaces],
-                },
-                {
-                    "host_system_id": host[1].id,
-                    "devices": [network_interfaces],
-                },
-                {
-                    "host_system_id": host[2].id,
-                    "devices": [network_interfaces],
-                },
-            ])
-        ```
-
-        ### Uplink name and count control
-
-        The following abridged example below demonstrates how you can manage the number
-        of uplinks, and the name of the uplinks via the `uplinks` parameter.
-
-        Note that if you change the uplink naming and count after creating the VDS, you
-        may need to explicitly specify `active_uplinks` and `standby_uplinks` as these
-        values are saved to state after creation, regardless of being
-        specified in config, and will drift if not modified, causing errors.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        vds = vsphere.DistributedVirtualSwitch("vds",
-            name="vds-01",
-            datacenter_id=datacenter["id"],
-            uplinks=[
-                "uplink1",
-                "uplink2",
-            ],
-            active_uplinks=["uplink1"],
-            standby_uplinks=["uplink2"])
-        ```
-
-        > **NOTE:** The default uplink names when a VDS is created are `uplink1`
-        through to `uplink4`, however this default is not guaranteed to be stable and
-        you are encouraged to set your own.
-
         ## Import
 
         An existing VDS can be imported into this resource via the path
@@ -3372,7 +3282,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] contact_name: The name of the person who is responsible for the
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for VDS.
+               value strings to set for VDS. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
                and requires vCenter Server.
@@ -3442,7 +3355,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
@@ -3475,120 +3391,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  args: DistributedVirtualSwitchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `DistributedVirtualSwitch` resource can be used to manage vSphere
-        Distributed Switches (VDS).
-
-        An essential component of a distributed, scalable vSphere infrastructure, the
-        VDS provides centralized management and monitoring of the networking
-        configuration for all the hosts that are associated with the switch.
-        In addition to adding distributed port groups
-        (see the `DistributedPortGroup` resource)
-        that can be used as networks for virtual machines, a VDS can be configured to
-        perform advanced high availability, traffic shaping, network monitoring, etc.
-
-        For an overview on vSphere networking concepts, see
-        [this page][ref-vsphere-net-concepts].
-
-        For more information on the VDS, see [this page][ref-vsphere-vds].
-
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
-        [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
-
-        > **NOTE:** This resource requires vCenter and is not available on
-        direct ESXi host connections.
-
-        ## Example Usage
-
-        The following example below demonstrates a "standard" example of configuring a
-        VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
-        used as active, and two being used as passive. Note that the NIC failover order
-        propagates to any port groups configured on this VDS and can be overridden.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        config = pulumi.Config()
-        hosts = config.get_object("hosts")
-        if hosts is None:
-            hosts = [
-                "esxi-01.example.com",
-                "esxi-02.example.com",
-                "esxi-03.example.com",
-            ]
-        network_interfaces = config.get_object("networkInterfaces")
-        if network_interfaces is None:
-            network_interfaces = [
-                "vmnic0",
-                "vmnic1",
-                "vmnic2",
-                "vmnic3",
-            ]
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        host = [vsphere.get_host(name=hosts[__index],
-            datacenter_id=datacenter.id) for __index in range(len(hosts))]
-        vds = vsphere.DistributedVirtualSwitch("vds",
-            name="vds-01",
-            datacenter_id=datacenter.id,
-            uplinks=[
-                "uplink1",
-                "uplink2",
-                "uplink3",
-                "uplink4",
-            ],
-            active_uplinks=[
-                "uplink1",
-                "uplink2",
-            ],
-            standby_uplinks=[
-                "uplink3",
-                "uplink4",
-            ],
-            hosts=[
-                {
-                    "host_system_id": host[0].id,
-                    "devices": [network_interfaces],
-                },
-                {
-                    "host_system_id": host[1].id,
-                    "devices": [network_interfaces],
-                },
-                {
-                    "host_system_id": host[2].id,
-                    "devices": [network_interfaces],
-                },
-            ])
-        ```
-
-        ### Uplink name and count control
-
-        The following abridged example below demonstrates how you can manage the number
-        of uplinks, and the name of the uplinks via the `uplinks` parameter.
-
-        Note that if you change the uplink naming and count after creating the VDS, you
-        may need to explicitly specify `active_uplinks` and `standby_uplinks` as these
-        values are saved to state after creation, regardless of being
-        specified in config, and will drift if not modified, causing errors.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        vds = vsphere.DistributedVirtualSwitch("vds",
-            name="vds-01",
-            datacenter_id=datacenter["id"],
-            uplinks=[
-                "uplink1",
-                "uplink2",
-            ],
-            active_uplinks=["uplink1"],
-            standby_uplinks=["uplink2"])
-        ```
-
-        > **NOTE:** The default uplink names when a VDS is created are `uplink1`
-        through to `uplink4`, however this default is not guaranteed to be stable and
-        you are encouraged to set your own.
-
         ## Import
 
         An existing VDS can be imported into this resource via the path
@@ -3949,7 +3751,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] contact_name: The name of the person who is responsible for the
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for VDS.
+               value strings to set for VDS. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
                and requires vCenter Server.
@@ -4019,7 +3824,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DistributedVirtualSwitchPvlanMappingArgs', 'DistributedVirtualSwitchPvlanMappingArgsDict']]]] pvlan_mappings: A private VLAN (PVLAN) mapping.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[_builtins.bool] tx_uplink: If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet forwarded done by the switch.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uplinks: A list of uplink ports. The contents of this list control both the uplink count and names of the uplinks on the DVS across hosts.
@@ -4258,7 +4066,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         Map of custom attribute ids to attribute
-        value strings to set for VDS.
+        value strings to set for VDS. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 
         > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         and requires vCenter Server.
@@ -4741,7 +4552,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 

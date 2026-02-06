@@ -11,15 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Tag` data source can be used to reference tags that are not
-// managed by this provider. Its attributes are exactly the same as the `Tag`
-// resource, and, like importing, the data source takes a name and
-// category to search on. The `id` and other attributes are then populated with
-// the data found by the search.
-//
-// > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-// requires vCenter Server.
-//
 // ## Example Usage
 //
 // ```go

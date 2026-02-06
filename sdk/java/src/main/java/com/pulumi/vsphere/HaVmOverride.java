@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The example below creates a virtual machine in a cluster using the
- * `vsphere.VirtualMachine` resource, creating the
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machine in the cluster looked up by the
- * `vsphere.ComputeCluster` data source.
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
  * Considering a scenario where this virtual machine is of high value to the
  * application or organization for which it does its work, it&#39;s been determined in
@@ -46,6 +46,9 @@ import javax.annotation.Nullable;
  * virtual machine has been assigned the `highest` priority, will mean that this
  * VM will be started before any other virtual machine in the event of host
  * failure.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * <pre>
  * {@code
@@ -98,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
- *             .name("test")
+ *             .name("pulumi-test")
  *             .resourcePoolId(cluster.resourcePoolId())
  *             .datastoreId(datastore.id())
  *             .numCpus(2)

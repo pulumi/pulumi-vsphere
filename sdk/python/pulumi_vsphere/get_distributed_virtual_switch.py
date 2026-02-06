@@ -62,9 +62,9 @@ class GetDistributedVirtualSwitchResult:
     @pulumi.getter
     def uplinks(self) -> Sequence[_builtins.str]:
         """
-        The list of the uplinks on this vSphere distributed switch, as per the
-        `uplinks` argument to the
-        `DistributedVirtualSwitch`
+        The list of the uplinks on this vSphere distributed switch, as per
+        the [`uplinks`][distributed-virtual-switch-uplinks] argument to the
+        [`DistributedVirtualSwitch`][distributed-virtual-switch-resource]
         resource.
         """
         return pulumi.get(self, "uplinks")
@@ -86,11 +86,13 @@ def get_distributed_virtual_switch(datacenter_id: Optional[_builtins.str] = None
                                    name: Optional[_builtins.str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDistributedVirtualSwitchResult:
     """
-    The `DistributedVirtualSwitch` data source can be used to discover
-    the ID and uplink data of a of a vSphere distributed switch (VDS). This
-    can then be used with resources or data sources that require a VDS, such as the
-    `DistributedPortGroup` resource, for which
+    The `DistributedVirtualSwitch` data source can be used to discover the
+    ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+    used with resources or data sources that require a VDS, such as the
+    [`DistributedPortGroup`][distributed-port-group] resource, for which
     an example is shown below.
+
+    [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
 
     > **NOTE:** This data source requires vCenter Server and is not available on
     direct ESXi host connections.
@@ -117,10 +119,11 @@ def get_distributed_virtual_switch(datacenter_id: Optional[_builtins.str] = None
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the VDS is located in. This can be omitted if the search
-           path used in `name` is an absolute path. For default datacenters, use the `id`
-           attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+           located in. This can be omitted if the search path used in `name` is an
+           absolute path. For default datacenters, use the `id` attribute from an empty
+           `Datacenter` data source.
     :param _builtins.str name: The name of the VDS. This can be a name or path.
     """
     __args__ = dict()
@@ -138,11 +141,13 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
                                           name: Optional[pulumi.Input[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDistributedVirtualSwitchResult]:
     """
-    The `DistributedVirtualSwitch` data source can be used to discover
-    the ID and uplink data of a of a vSphere distributed switch (VDS). This
-    can then be used with resources or data sources that require a VDS, such as the
-    `DistributedPortGroup` resource, for which
+    The `DistributedVirtualSwitch` data source can be used to discover the
+    ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+    used with resources or data sources that require a VDS, such as the
+    [`DistributedPortGroup`][distributed-port-group] resource, for which
     an example is shown below.
+
+    [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
 
     > **NOTE:** This data source requires vCenter Server and is not available on
     direct ESXi host connections.
@@ -169,10 +174,11 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the VDS is located in. This can be omitted if the search
-           path used in `name` is an absolute path. For default datacenters, use the `id`
-           attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+           located in. This can be omitted if the search path used in `name` is an
+           absolute path. For default datacenters, use the `id` attribute from an empty
+           `Datacenter` data source.
     :param _builtins.str name: The name of the VDS. This can be a name or path.
     """
     __args__ = dict()

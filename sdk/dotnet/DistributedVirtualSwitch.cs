@@ -10,79 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// The `vsphere.DistributedVirtualSwitch` resource can be used to manage vSphere
-    /// Distributed Switches (VDS).
-    /// 
-    /// An essential component of a distributed, scalable vSphere infrastructure, the
-    /// VDS provides centralized management and monitoring of the networking
-    /// configuration for all the hosts that are associated with the switch.
-    /// In addition to adding distributed port groups
-    /// (see the `vsphere.DistributedPortGroup` resource)
-    /// that can be used as networks for virtual machines, a VDS can be configured to
-    /// perform advanced high availability, traffic shaping, network monitoring, etc.
-    /// 
-    /// For an overview on vSphere networking concepts, see
-    /// [this page][ref-vsphere-net-concepts].
-    /// 
-    /// For more information on the VDS, see [this page][ref-vsphere-vds].
-    /// 
-    /// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
-    /// [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
-    /// 
-    /// &gt; **NOTE:** This resource requires vCenter and is not available on
-    /// direct ESXi host connections.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// The following example below demonstrates a "standard" example of configuring a
-    /// VDS in a 3-node vSphere datacenter named `Dc1`, across 4 NICs with two being
-    /// used as active, and two being used as passive. Note that the NIC failover order
-    /// propagates to any port groups configured on this VDS and can be overridden.
-    /// 
-    /// ### Uplink name and count control
-    /// 
-    /// The following abridged example below demonstrates how you can manage the number
-    /// of uplinks, and the name of the uplinks via the `Uplinks` parameter.
-    /// 
-    /// Note that if you change the uplink naming and count after creating the VDS, you
-    /// may need to explicitly specify `ActiveUplinks` and `StandbyUplinks` as these
-    /// values are saved to state after creation, regardless of being
-    /// specified in config, and will drift if not modified, causing errors.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
-    ///     {
-    ///         Name = "vds-01",
-    ///         DatacenterId = datacenter.Id,
-    ///         Uplinks = new[]
-    ///         {
-    ///             "uplink1",
-    ///             "uplink2",
-    ///         },
-    ///         ActiveUplinks = new[]
-    ///         {
-    ///             "uplink1",
-    ///         },
-    ///         StandbyUplinks = new[]
-    ///         {
-    ///             "uplink2",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// &gt; **NOTE:** The default uplink names when a VDS is created are `Uplink1`
-    /// through to `Uplink4`, however this default is not guaranteed to be stable and
-    /// you are encouraged to set your own.
-    /// 
     /// ## Import
     /// 
     /// An existing VDS can be imported into this resource via the path
@@ -185,7 +112,10 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for VDS.
+        /// value strings to set for VDS. See [here][docs-setting-custom-attributes]
+        /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and requires vCenter Server.
@@ -550,7 +480,10 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> StandbyUplinks { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -820,7 +753,10 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for VDS.
+        /// value strings to set for VDS. See [here][docs-setting-custom-attributes]
+        /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and requires vCenter Server.
@@ -1209,7 +1145,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {
@@ -1463,7 +1402,10 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for VDS.
+        /// value strings to set for VDS. See [here][docs-setting-custom-attributes]
+        /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and requires vCenter Server.
@@ -1852,7 +1794,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {

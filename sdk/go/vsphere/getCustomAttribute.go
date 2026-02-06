@@ -11,15 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `CustomAttribute` data source can be used to reference custom
-// attributes that are not managed by this provider. Its attributes are exactly the
-// same as the `CustomAttribute` resource,
-// and, like importing, the data source takes a name argument for the search. The
-// `id` and other attributes are then populated with the data found by the search.
-//
-// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
-// and require vCenter Server.
-//
 // ## Example Usage
 //
 // ```go
@@ -35,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vsphere.LookupCustomAttribute(ctx, &vsphere.LookupCustomAttributeArgs{
-//				Name: "test-attribute",
+//				Name: "pulumi-test-attribute",
 //			}, nil)
 //			if err != nil {
 //				return err

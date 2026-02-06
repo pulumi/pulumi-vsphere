@@ -23,7 +23,7 @@ namespace Pulumi.VSphere
     /// ## Example Usage
     /// 
     /// The basic example below creates a virtual machine folder named
-    /// `test-folder` in the default datacenter's VM hierarchy.
+    /// `example-vm-folder` in the default datacenter's VM hierarchy.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -38,9 +38,9 @@ namespace Pulumi.VSphere
     ///         Name = vsphereDatacenter,
     ///     });
     /// 
-    ///     var folder = new VSphere.Folder("folder", new()
+    ///     var vmFolder = new VSphere.Folder("vm_folder", new()
     ///     {
-    ///         Path = "test-folder",
+    ///         Path = "example-vm-folder",
     ///         Type = "vm",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
@@ -51,7 +51,7 @@ namespace Pulumi.VSphere
     /// ### Example with Sub-folders
     /// 
     /// The below example builds off of the above by first creating a folder named
-    /// `test-parent`, and then locating `test-folder` in that
+    /// `example-parent-vm-folder`, and then locating `example-child-vm-folder` in that
     /// folder. To ensure the parent is created first, we create an interpolation
     /// dependency off the parent's `Path` attribute.
     /// 
@@ -74,14 +74,14 @@ namespace Pulumi.VSphere
     /// 
     ///     var parent = new VSphere.Folder("parent", new()
     ///     {
-    ///         Path = "test-parent",
+    ///         Path = "example-parent-vm-folder",
     ///         Type = "vm",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
     /// 
-    ///     var folder = new VSphere.Folder("folder", new()
+    ///     var child = new VSphere.Folder("child", new()
     ///     {
-    ///         Path = parent.Path.Apply(path =&gt; $"{path}/test-folder"),
+    ///         Path = parent.Path.Apply(path =&gt; $"{path}/example-child-vm-folder"),
     ///         Type = "vm",
     ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///     });
@@ -136,8 +136,12 @@ namespace Pulumi.VSphere
         /// the root of the type of folder you are creating, and the supplied datacenter.
         /// For example, given a default datacenter of `default-dc`, a folder of type
         /// `Vm` (denoting a virtual machine folder), and a supplied folder of
-        /// `test-folder`, the resulting path would be
-        /// `/default-dc/vm/test-folder`.
+        /// `example-vm-folder`, the resulting path would be
+        /// `/default-dc/vm/example-vm-folder`.
+        /// 
+        /// When working with nested datacenters, note that references to these folders in data sources
+        /// will require the full path including the parent datacenter folder path, as shown in the
+        /// nested datacenter example above.
         /// 
         /// &gt; **NOTE:** `Path` can be modified - the resulting behavior is dependent on
         /// what section of `Path` you are modifying. If you are modifying the parent (so
@@ -148,7 +152,10 @@ namespace Pulumi.VSphere
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -240,8 +247,12 @@ namespace Pulumi.VSphere
         /// the root of the type of folder you are creating, and the supplied datacenter.
         /// For example, given a default datacenter of `default-dc`, a folder of type
         /// `Vm` (denoting a virtual machine folder), and a supplied folder of
-        /// `test-folder`, the resulting path would be
-        /// `/default-dc/vm/test-folder`.
+        /// `example-vm-folder`, the resulting path would be
+        /// `/default-dc/vm/example-vm-folder`.
+        /// 
+        /// When working with nested datacenters, note that references to these folders in data sources
+        /// will require the full path including the parent datacenter folder path, as shown in the
+        /// nested datacenter example above.
         /// 
         /// &gt; **NOTE:** `Path` can be modified - the resulting behavior is dependent on
         /// what section of `Path` you are modifying. If you are modifying the parent (so
@@ -255,7 +266,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {
@@ -312,8 +326,12 @@ namespace Pulumi.VSphere
         /// the root of the type of folder you are creating, and the supplied datacenter.
         /// For example, given a default datacenter of `default-dc`, a folder of type
         /// `Vm` (denoting a virtual machine folder), and a supplied folder of
-        /// `test-folder`, the resulting path would be
-        /// `/default-dc/vm/test-folder`.
+        /// `example-vm-folder`, the resulting path would be
+        /// `/default-dc/vm/example-vm-folder`.
+        /// 
+        /// When working with nested datacenters, note that references to these folders in data sources
+        /// will require the full path including the parent datacenter folder path, as shown in the
+        /// nested datacenter example above.
         /// 
         /// &gt; **NOTE:** `Path` can be modified - the resulting behavior is dependent on
         /// what section of `Path` you are modifying. If you are modifying the parent (so
@@ -327,7 +345,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {

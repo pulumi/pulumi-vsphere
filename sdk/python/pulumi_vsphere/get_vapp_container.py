@@ -74,7 +74,9 @@ def get_vapp_container(datacenter_id: Optional[_builtins.str] = None,
     The `VappContainer` data source can be used to discover the ID of a
     vApp container in vSphere. This is useful to return the ID of a vApp container
     that you want to use to create virtual machines in using the
-    `VirtualMachine` resource.
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -88,8 +90,11 @@ def get_vapp_container(datacenter_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter in which the vApp container is located.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter in which
+           the vApp container is located.
+           
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param _builtins.str name: The name of the vApp container. This can be a name or
            path.
     """
@@ -110,7 +115,9 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[_builtins.str
     The `VappContainer` data source can be used to discover the ID of a
     vApp container in vSphere. This is useful to return the ID of a vApp container
     that you want to use to create virtual machines in using the
-    `VirtualMachine` resource.
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -124,8 +131,11 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[_builtins.str
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter in which the vApp container is located.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter in which
+           the vApp container is located.
+           
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     :param _builtins.str name: The name of the vApp container. This can be a name or
            path.
     """

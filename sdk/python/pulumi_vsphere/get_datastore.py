@@ -86,10 +86,12 @@ def get_datastore(datacenter_id: Optional[_builtins.str] = None,
                   stats: Optional[Mapping[str, _builtins.str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreResult:
     """
-    The `get_datastore` data source can be used to discover the ID of a
-    vSphere datastore object. This can then be used with resources or data sources
-    that require a datastore. For example, to create virtual machines in using the
-    `VirtualMachine` resource.
+    The `get_datastore` data source can be used to discover the ID of a vSphere
+    datastore object. This can then be used with resources or data sources that
+    require a datastore. For example, to create virtual machines in using the
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -103,10 +105,11 @@ def get_datastore(datacenter_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the datastore is located in. This can be omitted if the
-           search path used in `name` is an absolute path. For default datacenters, use
-           the `id` attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the
+           datastore is located in. This can be omitted if the search path used in `name`
+           is an absolute path. For default datacenters, use the `id` attribute from an
+           empty `Datacenter` data source.
     :param _builtins.str name: The name of the datastore. This can be a name or path.
     :param Mapping[str, _builtins.str] stats: The disk space usage statistics for the specific datastore. The
            total datastore capacity is represented as `capacity` and the free remaining
@@ -129,10 +132,12 @@ def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[_builtins
                          stats: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreResult]:
     """
-    The `get_datastore` data source can be used to discover the ID of a
-    vSphere datastore object. This can then be used with resources or data sources
-    that require a datastore. For example, to create virtual machines in using the
-    `VirtualMachine` resource.
+    The `get_datastore` data source can be used to discover the ID of a vSphere
+    datastore object. This can then be used with resources or data sources that
+    require a datastore. For example, to create virtual machines in using the
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -146,10 +151,11 @@ def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[_builtins
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the datastore is located in. This can be omitted if the
-           search path used in `name` is an absolute path. For default datacenters, use
-           the `id` attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the
+           datastore is located in. This can be omitted if the search path used in `name`
+           is an absolute path. For default datacenters, use the `id` attribute from an
+           empty `Datacenter` data source.
     :param _builtins.str name: The name of the datastore. This can be a name or path.
     :param Mapping[str, _builtins.str] stats: The disk space usage statistics for the specific datastore. The
            total datastore capacity is represented as `capacity` and the free remaining

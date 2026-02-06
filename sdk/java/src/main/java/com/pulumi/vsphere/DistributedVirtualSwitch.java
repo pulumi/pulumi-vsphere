@@ -22,86 +22,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `vsphere.DistributedVirtualSwitch` resource can be used to manage vSphere
- * Distributed Switches (VDS).
- * 
- * An essential component of a distributed, scalable vSphere infrastructure, the
- * VDS provides centralized management and monitoring of the networking
- * configuration for all the hosts that are associated with the switch.
- * In addition to adding distributed port groups
- * (see the `vsphere.DistributedPortGroup` resource)
- * that can be used as networks for virtual machines, a VDS can be configured to
- * perform advanced high availability, traffic shaping, network monitoring, etc.
- * 
- * For an overview on vSphere networking concepts, see
- * [this page][ref-vsphere-net-concepts].
- * 
- * For more information on the VDS, see [this page][ref-vsphere-vds].
- * 
- * [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
- * [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
- * 
- * &gt; **NOTE:** This resource requires vCenter and is not available on
- * direct ESXi host connections.
- * 
- * ## Example Usage
- * 
- * The following example below demonstrates a &#34;standard&#34; example of configuring a
- * VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
- * used as active, and two being used as passive. Note that the NIC failover order
- * propagates to any port groups configured on this VDS and can be overridden.
- * 
- * ### Uplink name and count control
- * 
- * The following abridged example below demonstrates how you can manage the number
- * of uplinks, and the name of the uplinks via the `uplinks` parameter.
- * 
- * Note that if you change the uplink naming and count after creating the VDS, you
- * may need to explicitly specify `activeUplinks` and `standbyUplinks` as these
- * values are saved to state after creation, regardless of being
- * specified in config, and will drift if not modified, causing errors.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.vsphere.DistributedVirtualSwitch;
- * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var vds = new DistributedVirtualSwitch("vds", DistributedVirtualSwitchArgs.builder()
- *             .name("vds-01")
- *             .datacenterId(datacenter.id())
- *             .uplinks(            
- *                 "uplink1",
- *                 "uplink2")
- *             .activeUplinks("uplink1")
- *             .standbyUplinks("uplink2")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * &gt; **NOTE:** The default uplink names when a VDS is created are `uplink1`
- * through to `uplink4`, however this default is not guaranteed to be stable and
- * you are encouraged to set your own.
- * 
  * ## Import
  * 
  * An existing VDS can be imported into this resource via the path
@@ -311,7 +231,10 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
     }
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for VDS.
+     * value strings to set for VDS. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
      * and requires vCenter Server.
@@ -322,7 +245,10 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
 
     /**
      * @return Map of custom attribute ids to attribute
-     * value strings to set for VDS.
+     * value strings to set for VDS. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
      * and requires vCenter Server.
@@ -1160,14 +1086,20 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
         return this.standbyUplinks;
     }
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Output<Optional<List<String>>> tags() {

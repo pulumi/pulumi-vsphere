@@ -60,13 +60,13 @@ namespace Pulumi.VSphere
     /// 
     ///     var vappContainer = new VSphere.VappContainer("vapp_container", new()
     ///     {
-    ///         Name = "vapp-container-test",
+    ///         Name = "pulumi-vapp-container-test",
     ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///     });
     /// 
     ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
-    ///         Name = "virtual-machine-test",
+    ///         Name = "pulumi-virtual-machine-test",
     ///         ResourcePoolId = vappContainer.Id,
     ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
     ///         NumCpus = 2,
@@ -121,7 +121,7 @@ namespace Pulumi.VSphere
     public partial class VappEntity : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Managed object ID of the vApp
+        /// [Managed object ID|docs-about-morefs] of the vApp
         /// container the entity is a member of.
         /// </summary>
         [Output("containerId")]
@@ -177,7 +177,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Managed object ID of the entity
+        /// [Managed object ID|docs-about-morefs] of the entity
         /// to power on or power off. This can be a virtual machine or a vApp.
         /// </summary>
         [Output("targetId")]
@@ -187,6 +187,8 @@ namespace Pulumi.VSphere
         /// Determines if the VM should be marked as being
         /// started when VMware Tools are ready instead of waiting for `StartDelay`. This
         /// property has no effect for vApps. Default: false
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Output("waitForGuest")]
         public Output<bool?> WaitForGuest { get; private set; } = null!;
@@ -238,7 +240,7 @@ namespace Pulumi.VSphere
     public sealed class VappEntityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Managed object ID of the vApp
+        /// [Managed object ID|docs-about-morefs] of the vApp
         /// container the entity is a member of.
         /// </summary>
         [Input("containerId", required: true)]
@@ -306,7 +308,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Managed object ID of the entity
+        /// [Managed object ID|docs-about-morefs] of the entity
         /// to power on or power off. This can be a virtual machine or a vApp.
         /// </summary>
         [Input("targetId", required: true)]
@@ -316,6 +318,8 @@ namespace Pulumi.VSphere
         /// Determines if the VM should be marked as being
         /// started when VMware Tools are ready instead of waiting for `StartDelay`. This
         /// property has no effect for vApps. Default: false
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("waitForGuest")]
         public Input<bool>? WaitForGuest { get; set; }
@@ -329,7 +333,7 @@ namespace Pulumi.VSphere
     public sealed class VappEntityState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Managed object ID of the vApp
+        /// [Managed object ID|docs-about-morefs] of the vApp
         /// container the entity is a member of.
         /// </summary>
         [Input("containerId")]
@@ -397,7 +401,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Managed object ID of the entity
+        /// [Managed object ID|docs-about-morefs] of the entity
         /// to power on or power off. This can be a virtual machine or a vApp.
         /// </summary>
         [Input("targetId")]
@@ -407,6 +411,8 @@ namespace Pulumi.VSphere
         /// Determines if the VM should be marked as being
         /// started when VMware Tools are ready instead of waiting for `StartDelay`. This
         /// property has no effect for vApps. Default: false
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("waitForGuest")]
         public Input<bool>? WaitForGuest { get; set; }

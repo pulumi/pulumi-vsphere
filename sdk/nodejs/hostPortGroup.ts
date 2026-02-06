@@ -9,14 +9,17 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.HostPortGroup` resource can be used to manage port groups on
  * ESXi hosts. These port groups are connected to standard switches, which
- * can be managed by the `vsphere.HostVirtualSwitch`
+ * can be managed by the [`vsphere.HostVirtualSwitch`][host-virtual-switch]
  * resource.
  *
  * For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
  *
- * [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+ * [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
+ * [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
  *
  * ## Example Usage
+ *
+ * ### S
  *
  * **Create a Virtual Switch and Bind a Port Group:**
  *
@@ -52,7 +55,7 @@ import * as utilities from "./utilities";
  *
  * This example sets the trunk mode VLAN (`4095`, which passes through all tags)
  * and sets
- * `allowPromiscuous`
+ * [`allowPromiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
  * to ensure that all traffic is seen on the port. The setting overrides
  * the implicit default of `false` set on the standard switch.
  *
@@ -91,6 +94,8 @@ import * as utilities from "./utilities";
  * An existing host port group can be imported into this resource
  *
  * using the host port group's ID. An example is below:
+ *
+ * [docs-import]: /docs/import/index.html
  *
  * ```sh
  * $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
@@ -147,8 +152,8 @@ export class HostPortGroup extends pulumi.CustomResource {
      */
     declare public readonly checkBeacon: pulumi.Output<boolean | undefined>;
     /**
-     * A map with a full set of the policy
-     * options computed from defaults and overrides,
+     * A map with a full set of the [policy
+     * options][host-vswitch-policy-options] computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
     declare public /*out*/ readonly computedPolicy: pulumi.Output<{[key: string]: string}>;
@@ -157,7 +162,7 @@ export class HostPortGroup extends pulumi.CustomResource {
      */
     declare public readonly failback: pulumi.Output<boolean | undefined>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the port group up on. Forces a new resource if changed.
      */
     declare public readonly hostSystemId: pulumi.Output<string>;
@@ -212,6 +217,8 @@ export class HostPortGroup extends pulumi.CustomResource {
      * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
      * ID of `4095` enables trunk mode, allowing the guest to manage its own
      * tagging. Default: `0`.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly vlanId: pulumi.Output<number | undefined>;
 
@@ -307,8 +314,8 @@ export interface HostPortGroupState {
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
-     * A map with a full set of the policy
-     * options computed from defaults and overrides,
+     * A map with a full set of the [policy
+     * options][host-vswitch-policy-options] computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
     computedPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -317,7 +324,7 @@ export interface HostPortGroupState {
      */
     failback?: pulumi.Input<boolean>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the port group up on. Forces a new resource if changed.
      */
     hostSystemId?: pulumi.Input<string>;
@@ -372,6 +379,8 @@ export interface HostPortGroupState {
      * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
      * ID of `4095` enables trunk mode, allowing the guest to manage its own
      * tagging. Default: `0`.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     vlanId?: pulumi.Input<number>;
 }
@@ -405,7 +414,7 @@ export interface HostPortGroupArgs {
      */
     failback?: pulumi.Input<boolean>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the port group up on. Forces a new resource if changed.
      */
     hostSystemId: pulumi.Input<string>;
@@ -452,6 +461,8 @@ export interface HostPortGroupArgs {
      * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
      * ID of `4095` enables trunk mode, allowing the guest to manage its own
      * tagging. Default: `0`.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     vlanId?: pulumi.Input<number>;
 }

@@ -23,6 +23,8 @@ namespace Pulumi.VSphere.Outputs
         public readonly bool? AutomaticSync;
         /// <summary>
         /// Download the library from a content only when needed. Default `True`.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         public readonly bool? OnDemand;
         /// <summary>

@@ -17,20 +17,22 @@ public final class GetComputeClusterArgs extends com.pulumi.resources.InvokeArgs
     public static final GetComputeClusterArgs Empty = new GetComputeClusterArgs();
 
     /**
-     * The managed object reference ID
-     * of the datacenter the cluster is located in.  This can be omitted if the
-     * search path used in `name` is an absolute path. For default datacenters,
-     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+     * is located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      * 
      */
     @Import(name="datacenterId")
     private @Nullable Output<String> datacenterId;
 
     /**
-     * @return The managed object reference ID
-     * of the datacenter the cluster is located in.  This can be omitted if the
-     * search path used in `name` is an absolute path. For default datacenters,
-     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+     * is located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      * 
      */
     public Optional<Output<String>> datacenterId() {
@@ -78,10 +80,11 @@ public final class GetComputeClusterArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter the cluster is located in.  This can be omitted if the
-         * search path used in `name` is an absolute path. For default datacenters,
-         * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+         * is located in. This can be omitted if the search path used in `name` is an
+         * absolute path. For default datacenters, use the `id` attribute from an empty
+         * `vsphere.Datacenter` data source.
          * 
          * @return builder
          * 
@@ -92,10 +95,11 @@ public final class GetComputeClusterArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter the cluster is located in.  This can be omitted if the
-         * search path used in `name` is an absolute path. For default datacenters,
-         * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+         * is located in. This can be omitted if the search path used in `name` is an
+         * absolute path. For default datacenters, use the `id` attribute from an empty
+         * `vsphere.Datacenter` data source.
          * 
          * @return builder
          * 

@@ -28,7 +28,7 @@ class ContentLibraryArgs:
                  subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
         """
         The set of arguments for constructing a ContentLibrary resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         :param pulumi.Input[_builtins.str] description: A description for the content library.
         :param pulumi.Input[_builtins.str] name: The name of the content library.
         :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local content library.
@@ -48,7 +48,7 @@ class ContentLibraryArgs:
     @pulumi.getter(name="storageBackings")
     def storage_backings(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The managed object reference ID of the datastore on which to store the content library items.
+        The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         """
         return pulumi.get(self, "storage_backings")
 
@@ -118,7 +118,7 @@ class _ContentLibraryState:
         :param pulumi.Input[_builtins.str] description: A description for the content library.
         :param pulumi.Input[_builtins.str] name: The name of the content library.
         :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local content library.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options subscribe to a published content library.
         """
         if description is not None:
@@ -172,7 +172,7 @@ class _ContentLibraryState:
     @pulumi.getter(name="storageBackings")
     def storage_backings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The managed object reference ID of the datastore on which to store the content library items.
+        The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         """
         return pulumi.get(self, "storage_backings")
 
@@ -213,6 +213,8 @@ class ContentLibrary(pulumi.CustomResource):
         ## Example Usage
 
         The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -262,7 +264,7 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description for the content library.
         :param pulumi.Input[_builtins.str] name: The name of the content library.
         :param pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']] publication: Options to publish a local content library.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         :param pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']] subscription: Options subscribe to a published content library.
         """
         ...
@@ -279,6 +281,8 @@ class ContentLibrary(pulumi.CustomResource):
         ## Example Usage
 
         The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -384,7 +388,7 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description for the content library.
         :param pulumi.Input[_builtins.str] name: The name of the content library.
         :param pulumi.Input[Union['ContentLibraryPublicationArgs', 'ContentLibraryPublicationArgsDict']] publication: Options to publish a local content library.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         :param pulumi.Input[Union['ContentLibrarySubscriptionArgs', 'ContentLibrarySubscriptionArgsDict']] subscription: Options subscribe to a published content library.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -426,7 +430,7 @@ class ContentLibrary(pulumi.CustomResource):
     @pulumi.getter(name="storageBackings")
     def storage_backings(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The managed object reference ID of the datastore on which to store the content library items.
+        The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         """
         return pulumi.get(self, "storage_backings")
 

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The basic example below creates a virtual machine folder named
- * `test-folder` in the default datacenter&#39;s VM hierarchy.
+ * `example-vm-folder` in the default datacenter&#39;s VM hierarchy.
  * 
  * <pre>
  * {@code
@@ -60,8 +60,8 @@ import javax.annotation.Nullable;
  *             .name(vsphereDatacenter)
  *             .build());
  * 
- *         var folder = new Folder("folder", FolderArgs.builder()
- *             .path("test-folder")
+ *         var vmFolder = new Folder("vmFolder", FolderArgs.builder()
+ *             .path("example-vm-folder")
  *             .type("vm")
  *             .datacenterId(datacenter.id())
  *             .build());
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * ### Example with Sub-folders
  * 
  * The below example builds off of the above by first creating a folder named
- * `test-parent`, and then locating `test-folder` in that
+ * `example-parent-vm-folder`, and then locating `example-child-vm-folder` in that
  * folder. To ensure the parent is created first, we create an interpolation
  * dependency off the parent&#39;s `path` attribute.
  * 
@@ -111,13 +111,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var parent = new Folder("parent", FolderArgs.builder()
- *             .path("test-parent")
+ *             .path("example-parent-vm-folder")
  *             .type("vm")
  *             .datacenterId(datacenter.id())
  *             .build());
  * 
- *         var folder = new Folder("folder", FolderArgs.builder()
- *             .path(parent.path().applyValue(_path -> String.format("%s/test-folder", _path)))
+ *         var child = new Folder("child", FolderArgs.builder()
+ *             .path(parent.path().applyValue(_path -> String.format("%s/example-child-vm-folder", _path)))
  *             .type("vm")
  *             .datacenterId(datacenter.id())
  *             .build());
@@ -199,8 +199,12 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * the root of the type of folder you are creating, and the supplied datacenter.
      * For example, given a default datacenter of `default-dc`, a folder of type
      * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`.
+     * `example-vm-folder`, the resulting path would be
+     * `/default-dc/vm/example-vm-folder`.
+     * 
+     * When working with nested datacenters, note that references to these folders in data sources
+     * will require the full path including the parent datacenter folder path, as shown in the
+     * nested datacenter example above.
      * 
      * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
      * what section of `path` you are modifying. If you are modifying the parent (so
@@ -216,8 +220,12 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * the root of the type of folder you are creating, and the supplied datacenter.
      * For example, given a default datacenter of `default-dc`, a folder of type
      * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`.
+     * `example-vm-folder`, the resulting path would be
+     * `/default-dc/vm/example-vm-folder`.
+     * 
+     * When working with nested datacenters, note that references to these folders in data sources
+     * will require the full path including the parent datacenter folder path, as shown in the
+     * nested datacenter example above.
      * 
      * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
      * what section of `path` you are modifying. If you are modifying the parent (so
@@ -229,14 +237,20 @@ public class Folder extends com.pulumi.resources.CustomResource {
         return this.path;
     }
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Output<Optional<List<String>>> tags() {

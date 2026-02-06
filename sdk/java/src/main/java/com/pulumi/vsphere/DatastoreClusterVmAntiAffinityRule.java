@@ -19,8 +19,11 @@ import javax.annotation.Nullable;
 /**
  * The `vsphere.DatastoreClusterVmAntiAffinityRule` resource can be used to
  * manage VM anti-affinity rules in a datastore cluster, either created by the
- * `vsphere.DatastoreCluster` resource or looked up
- * by the `vsphere.DatastoreCluster` data source.
+ * [`vsphere.DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
+ * by the [`vsphere.DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
+ * 
+ * [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
+ * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
  * 
  * This rule can be used to tell a set to virtual machines to run on different
  * datastores within a cluster, useful for preventing single points of failure in
@@ -37,11 +40,13 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The example below creates two virtual machines in a cluster using the
- * `vsphere.VirtualMachine` resource, creating the
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machines in the datastore cluster looked up by the
- * `vsphere.DatastoreCluster` data
+ * [`vsphere.DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data
  * source. It then creates an anti-affinity rule for these two virtual machines,
  * ensuring they will run on different datastores whenever possible.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 
  * <pre>
  * {@code
@@ -96,7 +101,7 @@ import javax.annotation.Nullable;
  * 
  *         for (var i = 0; i < 2; i++) {
  *             new VirtualMachine("vm-" + i, VirtualMachineArgs.builder()
- *                 .name(String.format("test-%s", range.value()))
+ *                 .name(String.format("pulumi-test-%s", range.value()))
  *                 .resourcePoolId(cluster.resourcePoolId())
  *                 .datastoreClusterId(datastoreCluster.id())
  *                 .numCpus(2)
@@ -114,7 +119,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var clusterVmAntiAffinityRule = new DatastoreClusterVmAntiAffinityRule("clusterVmAntiAffinityRule", DatastoreClusterVmAntiAffinityRuleArgs.builder()
- *             .name("test-datastore-cluster-vm-anti-affinity-rule")
+ *             .name("pulumi-test-datastore-cluster-vm-anti-affinity-rule")
  *             .datastoreClusterId(datastoreCluster.id())
  *             .virtualMachineIds(vm.stream().map(element -> element.id()).collect(toList()))
  *             .build());
@@ -148,18 +153,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")
 public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the datastore cluster to put the group in.  Forces
+     * The [managed object reference
+     * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output<String> datastoreClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the datastore cluster to put the group in.  Forces
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> datastoreClusterId() {
@@ -210,20 +219,14 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
         return this.name;
     }
     /**
-     * The UUIDs of the virtual machines to run
-     * on different datastores from each other.
-     * 
-     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
+     * The UUIDs of the virtual machines to run on different datastores from each other.
      * 
      */
     @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> virtualMachineIds;
 
     /**
-     * @return The UUIDs of the virtual machines to run
-     * on different datastores from each other.
-     * 
-     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2.
+     * @return The UUIDs of the virtual machines to run on different datastores from each other.
      * 
      */
     public Output<List<String>> virtualMachineIds() {

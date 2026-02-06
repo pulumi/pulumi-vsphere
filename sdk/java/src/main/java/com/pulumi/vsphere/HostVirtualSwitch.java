@@ -21,16 +21,19 @@ import javax.annotation.Nullable;
  * The `vsphere.HostVirtualSwitch` resource can be used to manage vSphere
  * standard switches on an ESXi host. These switches can be used as a backing for
  * standard port groups, which can be managed by the
- * `vsphere.HostPortGroup` resource.
+ * [`vsphere.HostPortGroup`][host-port-group] resource.
  * 
  * For an overview on vSphere networking concepts, see [this
  * page][ref-vsphere-net-concepts].
  * 
- * [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+ * [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
+ * [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
  * 
  * ## Example Usage
  * 
- * ### Create a virtual switch with one active and one standby NIC
+ * ### S
+ * 
+ * **Create a virtual switch with one active and one standby NIC:**
  * 
  * <pre>
  * {@code
@@ -67,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var switch_ = new HostVirtualSwitch("switch", HostVirtualSwitchArgs.builder()
- *             .name("vSwitchTest")
+ *             .name("vSwitchTerraformTest")
  *             .hostSystemId(host.id())
  *             .networkAdapters(            
  *                 "vmnic0",
@@ -81,7 +84,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Create a virtual switch with extra networking policy options
+ * **Create a virtual switch with extra networking policy options:**
  * 
  * <pre>
  * {@code
@@ -118,7 +121,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var switch_ = new HostVirtualSwitch("switch", HostVirtualSwitchArgs.builder()
- *             .name("vSwitchTest")
+ *             .name("vSwitchTerraformTest")
  *             .hostSystemId(host.id())
  *             .networkAdapters(            
  *                 "vmnic0",
@@ -264,7 +267,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.failback);
     }
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      * 
      */
@@ -272,7 +275,7 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
     private Output<String> hostSystemId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      * 
      */
@@ -368,22 +371,14 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notifySwitches);
     }
     /**
-     * The number of ports to create with this
-     * virtual switch. Default: `128`.
-     * 
-     * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-     * will not restart the host for you.
+     * The number of ports that this virtual switch is configured to use.
      * 
      */
     @Export(name="numberOfPorts", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numberOfPorts;
 
     /**
-     * @return The number of ports to create with this
-     * virtual switch. Default: `128`.
-     * 
-     * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
-     * will not restart the host for you.
+     * @return The number of ports that this virtual switch is configured to use.
      * 
      */
     public Output<Optional<Integer>> numberOfPorts() {

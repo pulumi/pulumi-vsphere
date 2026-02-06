@@ -28,6 +28,22 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * The example below builds on the [Storage DRS
+ * example][tf-vsphere-vm-storage-drs-example] in the `vsphere.VirtualMachine`
+ * resource. However, rather than use the output of the
+ * [`vsphere.DatastoreCluster` data
+ * source][tf-vsphere-datastore-cluster-data-source] for the location of the
+ * virtual machine, we instead get what is assumed to be a member datastore using
+ * the [`vsphere.getDatastore` data source][tf-vsphere-datastore-data-source] and put
+ * the virtual machine there instead. We then use the
+ * `vsphere.StorageDrsVmOverride` resource to ensure that Storage DRS does not
+ * apply to this virtual machine, and hence the VM will never be migrated off of
+ * the datastore.
+ * 
+ * [tf-vsphere-vm-storage-drs-example]: /docs/providers/vsphere/r/virtual_machine.html#using-storage-drs
+ * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+ * [tf-vsphere-datastore-data-source]: /docs/providers/vsphere/d/datastore.html
+ * 
  * <pre>
  * {@code
  * package generated_program;
@@ -85,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
- *             .name("test")
+ *             .name("pulumi-test")
  *             .resourcePoolId(pool.id())
  *             .datastoreId(memberDatastore.id())
  *             .numCpus(2)
@@ -135,18 +151,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/storageDrsVmOverride:StorageDrsVmOverride")
 public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the datastore cluster to put the override in.
+     * The [managed object reference
+     * ID][docs-about-morefs] of the datastore cluster to put the override in.
      * Forces a new resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output<String> datastoreClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the datastore cluster to put the override in.
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the datastore cluster to put the override in.
      * Forces a new resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> datastoreClusterId() {
@@ -156,7 +176,9 @@ public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster&#39;s settings are used according to the
-     * specific SDRS subsystem.
+     * [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+     * 
+     * [tf-vsphere-datastore-cluster-sdrs-levels]: /docs/providers/vsphere/r/datastore_cluster.html#storage-drs-automation-options
      * 
      */
     @Export(name="sdrsAutomationLevel", refs={String.class}, tree="[0]")
@@ -166,7 +188,9 @@ public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
      * @return Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster&#39;s settings are used according to the
-     * specific SDRS subsystem.
+     * [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+     * 
+     * [tf-vsphere-datastore-cluster-sdrs-levels]: /docs/providers/vsphere/r/datastore_cluster.html#storage-drs-automation-options
      * 
      */
     public Output<Optional<String>> sdrsAutomationLevel() {

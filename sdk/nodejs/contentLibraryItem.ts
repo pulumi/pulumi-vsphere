@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  * The first example below imports an OVF Template to a content
  * library.
  *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";

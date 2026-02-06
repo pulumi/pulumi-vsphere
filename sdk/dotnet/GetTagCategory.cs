@@ -12,15 +12,6 @@ namespace Pulumi.VSphere
     public static class GetTagCategory
     {
         /// <summary>
-        /// The `vsphere.TagCategory` data source can be used to reference tag categories
-        /// that are not managed by this provider. Its attributes are the same as the
-        /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source uses a name and category as search criteria. The `Id` and other
-        /// attributes are populated with the data found by the search.
-        /// 
-        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-        /// requires vCenter Server.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,15 +34,6 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.TagCategory` data source can be used to reference tag categories
-        /// that are not managed by this provider. Its attributes are the same as the
-        /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source uses a name and category as search criteria. The `Id` and other
-        /// attributes are populated with the data found by the search.
-        /// 
-        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-        /// requires vCenter Server.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -74,15 +56,6 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.TagCategory` data source can be used to reference tag categories
-        /// that are not managed by this provider. Its attributes are the same as the
-        /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source uses a name and category as search criteria. The `Id` and other
-        /// attributes are populated with the data found by the search.
-        /// 
-        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
-        /// requires vCenter Server.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

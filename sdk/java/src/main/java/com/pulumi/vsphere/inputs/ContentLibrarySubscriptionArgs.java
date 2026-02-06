@@ -49,12 +49,16 @@ public final class ContentLibrarySubscriptionArgs extends com.pulumi.resources.R
     /**
      * Download the library from a content only when needed. Default `true`.
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
      */
     @Import(name="onDemand")
     private @Nullable Output<Boolean> onDemand;
 
     /**
      * @return Download the library from a content only when needed. Default `true`.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<Boolean>> onDemand() {
@@ -180,6 +184,8 @@ public final class ContentLibrarySubscriptionArgs extends com.pulumi.resources.R
         /**
          * @param onDemand Download the library from a content only when needed. Default `true`.
          * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
          * @return builder
          * 
          */
@@ -190,6 +196,8 @@ public final class ContentLibrarySubscriptionArgs extends com.pulumi.resources.R
 
         /**
          * @param onDemand Download the library from a content only when needed. Default `true`.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

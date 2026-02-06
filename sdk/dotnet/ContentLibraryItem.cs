@@ -20,6 +20,8 @@ namespace Pulumi.VSphere
     /// The first example below imports an OVF Template to a content
     /// library.
     /// 
+    /// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

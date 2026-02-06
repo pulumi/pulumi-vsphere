@@ -20,20 +20,22 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNetworkArgs Empty = new GetNetworkArgs();
 
     /**
-     * The managed object reference ID
-     * of the datacenter the network is located in. This can be omitted if the
-     * search path used in `name` is an absolute path. For default datacenters,
-     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the network
+     * is located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      * 
      */
     @Import(name="datacenterId")
     private @Nullable Output<String> datacenterId;
 
     /**
-     * @return The managed object reference ID
-     * of the datacenter the network is located in. This can be omitted if the
-     * search path used in `name` is an absolute path. For default datacenters,
-     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+     * @return The
+     * [managed object reference ID][docs-about-morefs] of the datacenter the network
+     * is located in. This can be omitted if the search path used in `name` is an
+     * absolute path. For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
      * 
      */
     public Optional<Output<String>> datacenterId() {
@@ -123,6 +125,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Select a VPC scope for retrieval of VPC subnets.
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="vpcId")
@@ -130,6 +133,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Select a VPC scope for retrieval of VPC subnets.
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -167,10 +171,11 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter the network is located in. This can be omitted if the
-         * search path used in `name` is an absolute path. For default datacenters,
-         * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter the network
+         * is located in. This can be omitted if the search path used in `name` is an
+         * absolute path. For default datacenters, use the `id` attribute from an empty
+         * `vsphere.Datacenter` data source.
          * 
          * @return builder
          * 
@@ -181,10 +186,11 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param datacenterId The managed object reference ID
-         * of the datacenter the network is located in. This can be omitted if the
-         * search path used in `name` is an absolute path. For default datacenters,
-         * use the `id` attribute from an empty `vsphere.Datacenter` data source.
+         * @param datacenterId The
+         * [managed object reference ID][docs-about-morefs] of the datacenter the network
+         * is located in. This can be omitted if the search path used in `name` is an
+         * absolute path. For default datacenters, use the `id` attribute from an empty
+         * `vsphere.Datacenter` data source.
          * 
          * @return builder
          * 
@@ -316,6 +322,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param vpcId Select a VPC scope for retrieval of VPC subnets.
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -327,6 +334,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param vpcId Select a VPC scope for retrieval of VPC subnets.
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

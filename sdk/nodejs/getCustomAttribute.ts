@@ -5,15 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.CustomAttribute` data source can be used to reference custom
- * attributes that are not managed by this provider. Its attributes are exactly the
- * same as the `vsphere.CustomAttribute` resource,
- * and, like importing, the data source takes a name argument for the search. The
- * `id` and other attributes are then populated with the data found by the search.
- *
- * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
- * and require vCenter Server.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -21,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const attribute = vsphere.getCustomAttribute({
- *     name: "test-attribute",
+ *     name: "pulumi-test-attribute",
  * });
  * ```
  */
@@ -54,15 +45,6 @@ export interface GetCustomAttributeResult {
     readonly name: string;
 }
 /**
- * The `vsphere.CustomAttribute` data source can be used to reference custom
- * attributes that are not managed by this provider. Its attributes are exactly the
- * same as the `vsphere.CustomAttribute` resource,
- * and, like importing, the data source takes a name argument for the search. The
- * `id` and other attributes are then populated with the data found by the search.
- *
- * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
- * and require vCenter Server.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -70,7 +52,7 @@ export interface GetCustomAttributeResult {
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const attribute = vsphere.getCustomAttribute({
- *     name: "test-attribute",
+ *     name: "pulumi-test-attribute",
  * });
  * ```
  */

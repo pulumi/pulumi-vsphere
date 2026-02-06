@@ -62,7 +62,7 @@ class GetHostResult:
     @pulumi.getter(name="resourcePoolId")
     def resource_pool_id(self) -> _builtins.str:
         """
-        The managed object ID of the ESXi
+        The [managed object ID][docs-about-morefs] of the ESXi
         host's root resource pool.
         """
         return pulumi.get(self, "resource_pool_id")
@@ -85,8 +85,10 @@ def get_host(datacenter_id: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostResult:
     """
     The `Host` data source can be used to discover the ID of an ESXi host.
-    This can then be used with resources or data sources that require an ESX
-    host's managed object reference ID.
+    This can then be used with resources or data sources that require an ESX host's
+    [managed object reference ID][docs-about-morefs].
+
+    [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
     ## Example Usage
 
@@ -100,10 +102,13 @@ def get_host(datacenter_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of a vSphere datacenter object.
-    :param _builtins.str name: The name of the ESXI host. This can be a name or path.
-           Can be omitted if there is only one host in your inventory.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+           object.
+    :param _builtins.str name: The name of the ESXI host. This can be a name or path. Can
+           be omitted if there is only one host in your inventory.
+           
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
            
            > **NOTE:** When used against an ESXi host directly, this data source _always_
            returns the ESXi host's object ID, regardless of what is entered into `name`.
@@ -124,8 +129,10 @@ def get_host_output(datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostResult]:
     """
     The `Host` data source can be used to discover the ID of an ESXi host.
-    This can then be used with resources or data sources that require an ESX
-    host's managed object reference ID.
+    This can then be used with resources or data sources that require an ESX host's
+    [managed object reference ID][docs-about-morefs].
+
+    [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
     ## Example Usage
 
@@ -139,10 +146,13 @@ def get_host_output(datacenter_id: Optional[pulumi.Input[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of a vSphere datacenter object.
-    :param _builtins.str name: The name of the ESXI host. This can be a name or path.
-           Can be omitted if there is only one host in your inventory.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+           object.
+    :param _builtins.str name: The name of the ESXI host. This can be a name or path. Can
+           be omitted if there is only one host in your inventory.
+           
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
            
            > **NOTE:** When used against an ESXi host directly, this data source _always_
            returns the ESXi host's object ID, regardless of what is entered into `name`.

@@ -1018,6 +1018,8 @@ type ContentLibrarySubscription struct {
 	// Enable automatic synchronization with the published library. Default `false`.
 	AutomaticSync *bool `pulumi:"automaticSync"`
 	// Download the library from a content only when needed. Default `true`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	OnDemand *bool `pulumi:"onDemand"`
 	// Password used for authentication.
 	Password *string `pulumi:"password"`
@@ -1044,6 +1046,8 @@ type ContentLibrarySubscriptionArgs struct {
 	// Enable automatic synchronization with the published library. Default `false`.
 	AutomaticSync pulumi.BoolPtrInput `pulumi:"automaticSync"`
 	// Download the library from a content only when needed. Default `true`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	OnDemand pulumi.BoolPtrInput `pulumi:"onDemand"`
 	// Password used for authentication.
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -1141,6 +1145,8 @@ func (o ContentLibrarySubscriptionOutput) AutomaticSync() pulumi.BoolPtrOutput {
 }
 
 // Download the library from a content only when needed. Default `true`.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o ContentLibrarySubscriptionOutput) OnDemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContentLibrarySubscription) *bool { return v.OnDemand }).(pulumi.BoolPtrOutput)
 }
@@ -1205,6 +1211,8 @@ func (o ContentLibrarySubscriptionPtrOutput) AutomaticSync() pulumi.BoolPtrOutpu
 }
 
 // Download the library from a content only when needed. Default `true`.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o ContentLibrarySubscriptionPtrOutput) OnDemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContentLibrarySubscription) *bool {
 		if v == nil {

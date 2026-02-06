@@ -29,8 +29,10 @@ import (
 //
 // The following example sets up a datastore cluster and enables Storage DRS with
 // the default settings. It then creates two NAS datastores using the
-// `NasDatastore` resource and assigns them to
+// [`NasDatastore` resource][ref-tf-nas-datastore] and assigns them to
 // the datastore cluster.
+//
+// [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
 //
 // ## Import
 //
@@ -62,17 +64,11 @@ type DatastoreCluster struct {
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringOutput `pulumi:"datacenterId"`
-	// The relative path to a folder to put this datastore
-	// cluster in.  This is a path relative to the datacenter you are deploying the
-	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-	// `foo/bar`, The provider will place a datastore cluster named
-	// `datastore-cluster-test` in a datastore folder located at
-	// `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the datastore cluster in.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -117,7 +113,11 @@ type DatastoreCluster struct {
 	SdrsSpaceUtilizationThreshold pulumi.IntPtrOutput `pulumi:"sdrsSpaceUtilizationThreshold"`
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrOutput `pulumi:"sdrsVmEvacuationAutomationLevel"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -164,17 +164,11 @@ type datastoreClusterState struct {
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The relative path to a folder to put this datastore
-	// cluster in.  This is a path relative to the datacenter you are deploying the
-	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-	// `foo/bar`, The provider will place a datastore cluster named
-	// `datastore-cluster-test` in a datastore folder located at
-	// `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the datastore cluster in.
 	Folder *string `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name *string `pulumi:"name"`
@@ -219,7 +213,11 @@ type datastoreClusterState struct {
 	SdrsSpaceUtilizationThreshold *int `pulumi:"sdrsSpaceUtilizationThreshold"`
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -234,17 +232,11 @@ type DatastoreClusterState struct {
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringPtrInput
-	// The relative path to a folder to put this datastore
-	// cluster in.  This is a path relative to the datacenter you are deploying the
-	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-	// `foo/bar`, The provider will place a datastore cluster named
-	// `datastore-cluster-test` in a datastore folder located at
-	// `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the datastore cluster in.
 	Folder pulumi.StringPtrInput
 	// The name of the datastore cluster.
 	Name pulumi.StringPtrInput
@@ -289,7 +281,11 @@ type DatastoreClusterState struct {
 	SdrsSpaceUtilizationThreshold pulumi.IntPtrInput
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -308,17 +304,11 @@ type datastoreClusterArgs struct {
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId string `pulumi:"datacenterId"`
-	// The relative path to a folder to put this datastore
-	// cluster in.  This is a path relative to the datacenter you are deploying the
-	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-	// `foo/bar`, The provider will place a datastore cluster named
-	// `datastore-cluster-test` in a datastore folder located at
-	// `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the datastore cluster in.
 	Folder *string `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name *string `pulumi:"name"`
@@ -363,7 +353,11 @@ type datastoreClusterArgs struct {
 	SdrsSpaceUtilizationThreshold *int `pulumi:"sdrsSpaceUtilizationThreshold"`
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -379,17 +373,11 @@ type DatastoreClusterArgs struct {
 	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringInput
-	// The relative path to a folder to put this datastore
-	// cluster in.  This is a path relative to the datacenter you are deploying the
-	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-	// `foo/bar`, The provider will place a datastore cluster named
-	// `datastore-cluster-test` in a datastore folder located at
-	// `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the datastore cluster in.
 	Folder pulumi.StringPtrInput
 	// The name of the datastore cluster.
 	Name pulumi.StringPtrInput
@@ -434,7 +422,11 @@ type DatastoreClusterArgs struct {
 	SdrsSpaceUtilizationThreshold pulumi.IntPtrInput
 	// Overrides the default automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -538,20 +530,14 @@ func (o DatastoreClusterOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
 
-// The managed object ID of
+// The [managed object ID][docs-about-morefs] of
 // the datacenter to create the datastore cluster in. Forces a new resource if
 // changed.
 func (o DatastoreClusterOutput) DatacenterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringOutput { return v.DatacenterId }).(pulumi.StringOutput)
 }
 
-// The relative path to a folder to put this datastore
-// cluster in.  This is a path relative to the datacenter you are deploying the
-// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-// `foo/bar`, The provider will place a datastore cluster named
-// `datastore-cluster-test` in a datastore folder located at
-// `/dc1/datastore/foo/bar`, with the final inventory path being
-// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+// The name of the folder to locate the datastore cluster in.
 func (o DatastoreClusterOutput) Folder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
 }
@@ -662,7 +648,11 @@ func (o DatastoreClusterOutput) SdrsVmEvacuationAutomationLevel() pulumi.StringP
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringPtrOutput { return v.SdrsVmEvacuationAutomationLevel }).(pulumi.StringPtrOutput)
 }
 
-// The IDs of any tags to attach to this resource.
+// The IDs of any tags to attach to this resource. See
+// [here][docs-applying-tags] for a reference on how to apply tags.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 func (o DatastoreClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

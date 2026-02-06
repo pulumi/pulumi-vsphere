@@ -15,7 +15,9 @@ namespace Pulumi.VSphere
         /// The `vsphere.VappContainer` data source can be used to discover the ID of a
         /// vApp container in vSphere. This is useful to return the ID of a vApp container
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +50,9 @@ namespace Pulumi.VSphere
         /// The `vsphere.VappContainer` data source can be used to discover the ID of a
         /// vApp container in vSphere. This is useful to return the ID of a vApp container
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -81,7 +85,9 @@ namespace Pulumi.VSphere
         /// The `vsphere.VappContainer` data source can be used to discover the ID of a
         /// vApp container in vSphere. This is useful to return the ID of a vApp container
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -115,8 +121,11 @@ namespace Pulumi.VSphere
     public sealed class GetVappContainerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter in which the vApp container is located.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter in which
+        /// the vApp container is located.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("datacenterId", required: true)]
         public string DatacenterId { get; set; } = null!;
@@ -137,8 +146,11 @@ namespace Pulumi.VSphere
     public sealed class GetVappContainerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter in which the vApp container is located.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter in which
+        /// the vApp container is located.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("datacenterId", required: true)]
         public Input<string> DatacenterId { get; set; } = null!;

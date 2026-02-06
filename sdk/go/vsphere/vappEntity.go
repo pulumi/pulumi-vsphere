@@ -74,14 +74,14 @@ import (
 //				return err
 //			}
 //			vappContainer, err := vsphere.NewVappContainer(ctx, "vapp_container", &vsphere.VappContainerArgs{
-//				Name:                 pulumi.String("vapp-container-test"),
+//				Name:                 pulumi.String("pulumi-vapp-container-test"),
 //				ParentResourcePoolId: pulumi.String(computeCluster.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vm, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
-//				Name:           pulumi.String("virtual-machine-test"),
+//				Name:           pulumi.String("pulumi-virtual-machine-test"),
 //				ResourcePoolId: vappContainer.ID(),
 //				DatastoreId:    pulumi.String(datastore.Id),
 //				NumCpus:        pulumi.Int(2),
@@ -138,7 +138,7 @@ import (
 type VappEntity struct {
 	pulumi.CustomResourceState
 
-	// Managed object ID of the vApp
+	// [Managed object ID|docs-about-morefs] of the vApp
 	// container the entity is a member of.
 	ContainerId pulumi.StringOutput `pulumi:"containerId"`
 	// A list of custom attributes to set on this resource.
@@ -162,12 +162,14 @@ type VappEntity struct {
 	StopDelay pulumi.IntPtrOutput `pulumi:"stopDelay"`
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Managed object ID of the entity
+	// [Managed object ID|docs-about-morefs] of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 	// Determines if the VM should be marked as being
 	// started when VMware Tools are ready instead of waiting for `startDelay`. This
 	// property has no effect for vApps. Default: false
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	WaitForGuest pulumi.BoolPtrOutput `pulumi:"waitForGuest"`
 }
 
@@ -207,7 +209,7 @@ func GetVappEntity(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VappEntity resources.
 type vappEntityState struct {
-	// Managed object ID of the vApp
+	// [Managed object ID|docs-about-morefs] of the vApp
 	// container the entity is a member of.
 	ContainerId *string `pulumi:"containerId"`
 	// A list of custom attributes to set on this resource.
@@ -231,17 +233,19 @@ type vappEntityState struct {
 	StopDelay *int `pulumi:"stopDelay"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
-	// Managed object ID of the entity
+	// [Managed object ID|docs-about-morefs] of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId *string `pulumi:"targetId"`
 	// Determines if the VM should be marked as being
 	// started when VMware Tools are ready instead of waiting for `startDelay`. This
 	// property has no effect for vApps. Default: false
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	WaitForGuest *bool `pulumi:"waitForGuest"`
 }
 
 type VappEntityState struct {
-	// Managed object ID of the vApp
+	// [Managed object ID|docs-about-morefs] of the vApp
 	// container the entity is a member of.
 	ContainerId pulumi.StringPtrInput
 	// A list of custom attributes to set on this resource.
@@ -265,12 +269,14 @@ type VappEntityState struct {
 	StopDelay pulumi.IntPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
-	// Managed object ID of the entity
+	// [Managed object ID|docs-about-morefs] of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId pulumi.StringPtrInput
 	// Determines if the VM should be marked as being
 	// started when VMware Tools are ready instead of waiting for `startDelay`. This
 	// property has no effect for vApps. Default: false
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	WaitForGuest pulumi.BoolPtrInput
 }
 
@@ -279,7 +285,7 @@ func (VappEntityState) ElementType() reflect.Type {
 }
 
 type vappEntityArgs struct {
-	// Managed object ID of the vApp
+	// [Managed object ID|docs-about-morefs] of the vApp
 	// container the entity is a member of.
 	ContainerId string `pulumi:"containerId"`
 	// A list of custom attributes to set on this resource.
@@ -303,18 +309,20 @@ type vappEntityArgs struct {
 	StopDelay *int `pulumi:"stopDelay"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
-	// Managed object ID of the entity
+	// [Managed object ID|docs-about-morefs] of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId string `pulumi:"targetId"`
 	// Determines if the VM should be marked as being
 	// started when VMware Tools are ready instead of waiting for `startDelay`. This
 	// property has no effect for vApps. Default: false
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	WaitForGuest *bool `pulumi:"waitForGuest"`
 }
 
 // The set of arguments for constructing a VappEntity resource.
 type VappEntityArgs struct {
-	// Managed object ID of the vApp
+	// [Managed object ID|docs-about-morefs] of the vApp
 	// container the entity is a member of.
 	ContainerId pulumi.StringInput
 	// A list of custom attributes to set on this resource.
@@ -338,12 +346,14 @@ type VappEntityArgs struct {
 	StopDelay pulumi.IntPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
-	// Managed object ID of the entity
+	// [Managed object ID|docs-about-morefs] of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId pulumi.StringInput
 	// Determines if the VM should be marked as being
 	// started when VMware Tools are ready instead of waiting for `startDelay`. This
 	// property has no effect for vApps. Default: false
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	WaitForGuest pulumi.BoolPtrInput
 }
 
@@ -434,7 +444,7 @@ func (o VappEntityOutput) ToVappEntityOutputWithContext(ctx context.Context) Vap
 	return o
 }
 
-// Managed object ID of the vApp
+// [Managed object ID|docs-about-morefs] of the vApp
 // container the entity is a member of.
 func (o VappEntityOutput) ContainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VappEntity) pulumi.StringOutput { return v.ContainerId }).(pulumi.StringOutput)
@@ -482,7 +492,7 @@ func (o VappEntityOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VappEntity) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Managed object ID of the entity
+// [Managed object ID|docs-about-morefs] of the entity
 // to power on or power off. This can be a virtual machine or a vApp.
 func (o VappEntityOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VappEntity) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
@@ -491,6 +501,8 @@ func (o VappEntityOutput) TargetId() pulumi.StringOutput {
 // Determines if the VM should be marked as being
 // started when VMware Tools are ready instead of waiting for `startDelay`. This
 // property has no effect for vApps. Default: false
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o VappEntityOutput) WaitForGuest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VappEntity) pulumi.BoolPtrOutput { return v.WaitForGuest }).(pulumi.BoolPtrOutput)
 }

@@ -66,14 +66,14 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Managed object ID of this datacenter.
+     * [Managed object ID][docs-about-morefs] of this datacenter.
      * 
      */
     @Import(name="moid")
     private @Nullable Output<String> moid;
 
     /**
-     * @return Managed object ID of this datacenter.
+     * @return [Managed object ID][docs-about-morefs] of this datacenter.
      * 
      */
     public Optional<Output<String>> moid() {
@@ -98,14 +98,20 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -201,7 +207,7 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param moid Managed object ID of this datacenter.
+         * @param moid [Managed object ID][docs-about-morefs] of this datacenter.
          * 
          * @return builder
          * 
@@ -212,7 +218,7 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param moid Managed object ID of this datacenter.
+         * @param moid [Managed object ID][docs-about-morefs] of this datacenter.
          * 
          * @return builder
          * 
@@ -245,7 +251,10 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -256,7 +265,10 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -266,7 +278,10 @@ public final class DatacenterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 

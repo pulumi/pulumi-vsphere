@@ -294,6 +294,8 @@ class File(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ### S
+
         ### Uploading a File
 
         ```python
@@ -348,6 +350,8 @@ class File(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ### S
 
         ### Uploading a File
 

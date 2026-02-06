@@ -7,14 +7,19 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.ComputeClusterVmDependencyRule` resource can be used to manage
  * VM dependency rules in a cluster, either created by the
- * `vsphere.ComputeCluster` resource or looked up
- * by the `vsphere.ComputeCluster` data source.
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ *
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  *
  * A virtual machine dependency rule applies to vSphere HA, and allows
  * user-defined startup orders for virtual machines in the case of host failure.
  * Virtual machines are supplied via groups, which can be managed via the
- * `vsphere.ComputeClusterVmGroup`
+ * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
  * resource.
+ *
+ * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
  *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
@@ -22,13 +27,15 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * The example below creates two virtual machine in a cluster using the
- * `vsphere.VirtualMachine` resource in a cluster
- * looked up by the `vsphere.ComputeCluster`
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+ * looked up by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source]
  * data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+ *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  *
  * > Note how `dependencyVmGroupName` and
  * `vmGroupName` are sourced off of the `name` attributes from
- * the `vsphere.ComputeClusterVmGroup`
+ * the [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
  * resource. This is to ensure that the rule is not created before the groups
  * exist, which may not possibly happen in the event that the names came from a
  * "static" source such as a variable.
@@ -53,7 +60,7 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * const vm1 = new vsphere.VirtualMachine("vm1", {
- *     name: "test1",
+ *     name: "pulumi-test1",
  *     resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
  *     datastoreId: datastore.then(datastore => datastore.id),
  *     numCpus: 2,
@@ -68,7 +75,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const vm2 = new vsphere.VirtualMachine("vm2", {
- *     name: "test2",
+ *     name: "pulumi-test2",
  *     resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
  *     datastoreId: datastore.then(datastore => datastore.id),
  *     numCpus: 2,
@@ -83,18 +90,18 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const clusterVmGroup1 = new vsphere.ComputeClusterVmGroup("cluster_vm_group1", {
- *     name: "test-cluster-vm-group1",
+ *     name: "pulumi-test-cluster-vm-group1",
  *     computeClusterId: cluster.then(cluster => cluster.id),
  *     virtualMachineIds: [vm1.id],
  * });
  * const clusterVmGroup2 = new vsphere.ComputeClusterVmGroup("cluster_vm_group2", {
- *     name: "test-cluster-vm-group2",
+ *     name: "pulumi-test-cluster-vm-group2",
  *     computeClusterId: cluster.then(cluster => cluster.id),
  *     virtualMachineIds: [vm2.id],
  * });
  * const clusterVmDependencyRule = new vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
- *     name: "test-cluster-vm-dependency-rule",
+ *     name: "pulumi-test-cluster-vm-dependency-rule",
  *     dependencyVmGroupName: clusterVmGroup1.name,
  *     vmGroupName: clusterVmGroup2.name,
  * });
@@ -149,9 +156,11 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     }
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly computeClusterId: pulumi.Output<string>;
     /**
@@ -234,9 +243,11 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
  */
 export interface ComputeClusterVmDependencyRuleState {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId?: pulumi.Input<string>;
     /**
@@ -278,9 +289,11 @@ export interface ComputeClusterVmDependencyRuleState {
  */
 export interface ComputeClusterVmDependencyRuleArgs {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: pulumi.Input<string>;
     /**

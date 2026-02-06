@@ -43,16 +43,20 @@ public final class GetVmfsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the host to look for disks on.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="hostSystemId", required=true)
     private Output<String> hostSystemId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the host to look for disks on.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> hostSystemId() {
@@ -136,8 +140,10 @@ public final class GetVmfsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostSystemId The managed object ID of
+         * @param hostSystemId The [managed object ID][docs-about-morefs] of
          * the host to look for disks on.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -148,8 +154,10 @@ public final class GetVmfsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostSystemId The managed object ID of
+         * @param hostSystemId The [managed object ID][docs-about-morefs] of
          * the host to look for disks on.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

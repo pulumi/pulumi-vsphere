@@ -319,17 +319,9 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     public Output<String> datastoreId() {
         return this.datastoreId;
     }
-    /**
-     * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-     * 
-     */
     @Export(name="defaultIpAddress", refs={String.class}, tree="[0]")
     private Output<String> defaultIpAddress;
 
-    /**
-     * @return The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-     * 
-     */
     public Output<String> defaultIpAddress() {
         return this.defaultIpAddress;
     }
@@ -704,14 +696,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.migrateWaitTimeout);
     }
     /**
-     * The managed object reference ID of the created virtual machine.
+     * The [managed object reference ID][docs-about-morefs] of the created virtual machine.
      * 
      */
     @Export(name="moid", refs={String.class}, tree="[0]")
     private Output<String> moid;
 
     /**
-     * @return The managed object reference ID of the created virtual machine.
+     * @return The [managed object reference ID][docs-about-morefs] of the created virtual machine.
      * 
      */
     public Output<String> moid() {

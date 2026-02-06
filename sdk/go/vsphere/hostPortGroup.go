@@ -14,12 +14,17 @@ import (
 
 // The `HostPortGroup` resource can be used to manage port groups on
 // ESXi hosts. These port groups are connected to standard switches, which
-// can be managed by the `HostVirtualSwitch`
+// can be managed by the [`HostVirtualSwitch`][host-virtual-switch]
 // resource.
 //
 // For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
 //
+// [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
+// [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+//
 // ## Example Usage
+//
+// ### S
 //
 // **Create a Virtual Switch and Bind a Port Group:**
 //
@@ -83,7 +88,7 @@ import (
 //
 // This example sets the trunk mode VLAN (`4095`, which passes through all tags)
 // and sets
-// `allowPromiscuous`
+// [`allowPromiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
 // to ensure that all traffic is seen on the port. The setting overrides
 // the implicit default of `false` set on the standard switch.
 //
@@ -151,13 +156,13 @@ import (
 //
 // using the host port group's ID. An example is below:
 //
+// [docs-import]: /docs/import/index.html
+//
 // ```sh
 // $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
 // ```
 //
 // The above would import the `management` host port group from host with ID `host-123`.
-//
-// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 type HostPortGroup struct {
 	pulumi.CustomResourceState
 
@@ -171,13 +176,13 @@ type HostPortGroup struct {
 	AllowPromiscuous pulumi.BoolPtrOutput `pulumi:"allowPromiscuous"`
 	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon pulumi.BoolPtrOutput `pulumi:"checkBeacon"`
-	// A map with a full set of the policy
-	// options computed from defaults and overrides,
+	// A map with a full set of the [policy
+	// options][host-vswitch-policy-options] computed from defaults and overrides,
 	// explaining the effective policy for this port group.
 	ComputedPolicy pulumi.StringMapOutput `pulumi:"computedPolicy"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrOutput `pulumi:"failback"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
 	// The key for this port group as returned from the vSphere API.
@@ -208,6 +213,8 @@ type HostPortGroup struct {
 	// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
 	// ID of `4095` enables trunk mode, allowing the guest to manage its own
 	// tagging. Default: `0`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VlanId pulumi.IntPtrOutput `pulumi:"vlanId"`
 }
 
@@ -257,13 +264,13 @@ type hostPortGroupState struct {
 	AllowPromiscuous *bool `pulumi:"allowPromiscuous"`
 	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
-	// A map with a full set of the policy
-	// options computed from defaults and overrides,
+	// A map with a full set of the [policy
+	// options][host-vswitch-policy-options] computed from defaults and overrides,
 	// explaining the effective policy for this port group.
 	ComputedPolicy map[string]string `pulumi:"computedPolicy"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId *string `pulumi:"hostSystemId"`
 	// The key for this port group as returned from the vSphere API.
@@ -294,6 +301,8 @@ type hostPortGroupState struct {
 	// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
 	// ID of `4095` enables trunk mode, allowing the guest to manage its own
 	// tagging. Default: `0`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VlanId *int `pulumi:"vlanId"`
 }
 
@@ -308,13 +317,13 @@ type HostPortGroupState struct {
 	AllowPromiscuous pulumi.BoolPtrInput
 	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
 	CheckBeacon pulumi.BoolPtrInput
-	// A map with a full set of the policy
-	// options computed from defaults and overrides,
+	// A map with a full set of the [policy
+	// options][host-vswitch-policy-options] computed from defaults and overrides,
 	// explaining the effective policy for this port group.
 	ComputedPolicy pulumi.StringMapInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringPtrInput
 	// The key for this port group as returned from the vSphere API.
@@ -345,6 +354,8 @@ type HostPortGroupState struct {
 	// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
 	// ID of `4095` enables trunk mode, allowing the guest to manage its own
 	// tagging. Default: `0`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VlanId pulumi.IntPtrInput
 }
 
@@ -365,7 +376,7 @@ type hostPortGroupArgs struct {
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId string `pulumi:"hostSystemId"`
 	// The name of the port group.  Forces a new resource if
@@ -392,6 +403,8 @@ type hostPortGroupArgs struct {
 	// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
 	// ID of `4095` enables trunk mode, allowing the guest to manage its own
 	// tagging. Default: `0`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VlanId *int `pulumi:"vlanId"`
 }
 
@@ -409,7 +422,7 @@ type HostPortGroupArgs struct {
 	CheckBeacon pulumi.BoolPtrInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringInput
 	// The name of the port group.  Forces a new resource if
@@ -436,6 +449,8 @@ type HostPortGroupArgs struct {
 	// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
 	// ID of `4095` enables trunk mode, allowing the guest to manage its own
 	// tagging. Default: `0`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	VlanId pulumi.IntPtrInput
 }
 
@@ -551,8 +566,8 @@ func (o HostPortGroupOutput) CheckBeacon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.CheckBeacon }).(pulumi.BoolPtrOutput)
 }
 
-// A map with a full set of the policy
-// options computed from defaults and overrides,
+// A map with a full set of the [policy
+// options][host-vswitch-policy-options] computed from defaults and overrides,
 // explaining the effective policy for this port group.
 func (o HostPortGroupOutput) ComputedPolicy() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HostPortGroup) pulumi.StringMapOutput { return v.ComputedPolicy }).(pulumi.StringMapOutput)
@@ -563,7 +578,7 @@ func (o HostPortGroupOutput) Failback() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.Failback }).(pulumi.BoolPtrOutput)
 }
 
-// The managed object ID of
+// The [managed object ID][docs-about-morefs] of
 // the host to set the port group up on. Forces a new resource if changed.
 func (o HostPortGroupOutput) HostSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostPortGroup) pulumi.StringOutput { return v.HostSystemId }).(pulumi.StringOutput)
@@ -630,6 +645,8 @@ func (o HostPortGroupOutput) VirtualSwitchName() pulumi.StringOutput {
 // `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
 // ID of `4095` enables trunk mode, allowing the guest to manage its own
 // tagging. Default: `0`.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o HostPortGroupOutput) VlanId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HostPortGroup) pulumi.IntPtrOutput { return v.VlanId }).(pulumi.IntPtrOutput)
 }
