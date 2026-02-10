@@ -14,8 +14,11 @@ import (
 
 // The `DatastoreClusterVmAntiAffinityRule` resource can be used to
 // manage VM anti-affinity rules in a datastore cluster, either created by the
-// `DatastoreCluster` resource or looked up
-// by the `DatastoreCluster` data source.
+// [`DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
+// by the [`DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
+//
+// [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
+// [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
 //
 // This rule can be used to tell a set to virtual machines to run on different
 // datastores within a cluster, useful for preventing single points of failure in
@@ -32,11 +35,13 @@ import (
 // ## Example Usage
 //
 // The example below creates two virtual machines in a cluster using the
-// `VirtualMachine` resource, creating the
+// [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
 // virtual machines in the datastore cluster looked up by the
-// `DatastoreCluster` data
+// [`DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data
 // source. It then creates an anti-affinity rule for these two virtual machines,
 // ensuring they will run on different datastores whenever possible.
+//
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // ```go
 // package main
@@ -85,7 +90,7 @@ import (
 //	    val0 := index
 //
 // __res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
-// Name: pulumi.Sprintf("test-%v", val0),
+// Name: pulumi.Sprintf("pulumi-test-%v", val0),
 // ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
 // DatastoreClusterId: pulumi.String(datastoreCluster.Id),
 // NumCpus: pulumi.Int(2),
@@ -109,7 +114,7 @@ import (
 // vm = append(vm, __res)
 // }
 // _, err = vsphere.NewDatastoreClusterVmAntiAffinityRule(ctx, "cluster_vm_anti_affinity_rule", &vsphere.DatastoreClusterVmAntiAffinityRuleArgs{
-// Name: pulumi.String("test-datastore-cluster-vm-anti-affinity-rule"),
+// Name: pulumi.String("pulumi-test-datastore-cluster-vm-anti-affinity-rule"),
 // DatastoreClusterId: pulumi.String(datastoreCluster.Id),
 // VirtualMachineIds: pulumi.StringArray{
 // pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:42,28-36)),
@@ -145,9 +150,11 @@ import (
 type DatastoreClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 
-	// The managed object reference
-	// ID of the datastore cluster to put the group in.  Forces
+	// The [managed object reference
+	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatastoreClusterId pulumi.StringOutput `pulumi:"datastoreClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -156,10 +163,7 @@ type DatastoreClusterVmAntiAffinityRule struct {
 	Mandatory pulumi.BoolPtrOutput `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The UUIDs of the virtual machines to run
-	// on different datastores from each other.
-	//
-	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
+	// The UUIDs of the virtual machines to run on different datastores from each other.
 	VirtualMachineIds pulumi.StringArrayOutput `pulumi:"virtualMachineIds"`
 }
 
@@ -199,9 +203,11 @@ func GetDatastoreClusterVmAntiAffinityRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatastoreClusterVmAntiAffinityRule resources.
 type datastoreClusterVmAntiAffinityRuleState struct {
-	// The managed object reference
-	// ID of the datastore cluster to put the group in.  Forces
+	// The [managed object reference
+	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled *bool `pulumi:"enabled"`
@@ -210,17 +216,16 @@ type datastoreClusterVmAntiAffinityRuleState struct {
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name *string `pulumi:"name"`
-	// The UUIDs of the virtual machines to run
-	// on different datastores from each other.
-	//
-	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
+	// The UUIDs of the virtual machines to run on different datastores from each other.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
 type DatastoreClusterVmAntiAffinityRuleState struct {
-	// The managed object reference
-	// ID of the datastore cluster to put the group in.  Forces
+	// The [managed object reference
+	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatastoreClusterId pulumi.StringPtrInput
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled pulumi.BoolPtrInput
@@ -229,10 +234,7 @@ type DatastoreClusterVmAntiAffinityRuleState struct {
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringPtrInput
-	// The UUIDs of the virtual machines to run
-	// on different datastores from each other.
-	//
-	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
+	// The UUIDs of the virtual machines to run on different datastores from each other.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -241,9 +243,11 @@ func (DatastoreClusterVmAntiAffinityRuleState) ElementType() reflect.Type {
 }
 
 type datastoreClusterVmAntiAffinityRuleArgs struct {
-	// The managed object reference
-	// ID of the datastore cluster to put the group in.  Forces
+	// The [managed object reference
+	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatastoreClusterId string `pulumi:"datastoreClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled *bool `pulumi:"enabled"`
@@ -252,18 +256,17 @@ type datastoreClusterVmAntiAffinityRuleArgs struct {
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name *string `pulumi:"name"`
-	// The UUIDs of the virtual machines to run
-	// on different datastores from each other.
-	//
-	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
+	// The UUIDs of the virtual machines to run on different datastores from each other.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
 // The set of arguments for constructing a DatastoreClusterVmAntiAffinityRule resource.
 type DatastoreClusterVmAntiAffinityRuleArgs struct {
-	// The managed object reference
-	// ID of the datastore cluster to put the group in.  Forces
+	// The [managed object reference
+	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatastoreClusterId pulumi.StringInput
 	// Enable this rule in the cluster. Default: `true`.
 	Enabled pulumi.BoolPtrInput
@@ -272,10 +275,7 @@ type DatastoreClusterVmAntiAffinityRuleArgs struct {
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringPtrInput
-	// The UUIDs of the virtual machines to run
-	// on different datastores from each other.
-	//
-	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
+	// The UUIDs of the virtual machines to run on different datastores from each other.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -366,9 +366,11 @@ func (o DatastoreClusterVmAntiAffinityRuleOutput) ToDatastoreClusterVmAntiAffini
 	return o
 }
 
-// The managed object reference
-// ID of the datastore cluster to put the group in.  Forces
+// The [managed object reference
+// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
 // a new resource if changed.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o DatastoreClusterVmAntiAffinityRuleOutput) DatastoreClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringOutput { return v.DatastoreClusterId }).(pulumi.StringOutput)
 }
@@ -389,10 +391,7 @@ func (o DatastoreClusterVmAntiAffinityRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The UUIDs of the virtual machines to run
-// on different datastores from each other.
-//
-// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
+// The UUIDs of the virtual machines to run on different datastores from each other.
 func (o DatastoreClusterVmAntiAffinityRuleOutput) VirtualMachineIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
 }

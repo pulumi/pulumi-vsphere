@@ -29,8 +29,10 @@ namespace Pulumi.VSphere
     /// 
     /// The following example sets up a datastore cluster and enables Storage DRS with
     /// the default settings. It then creates two NAS datastores using the
-    /// `vsphere.NasDatastore` resource and assigns them to
+    /// [`vsphere.NasDatastore` resource][ref-tf-nas-datastore] and assigns them to
     /// the datastore cluster.
+    /// 
+    /// [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
     /// 
     /// ## Import
     /// 
@@ -66,7 +68,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the datacenter to create the datastore cluster in. Forces a new resource if
         /// changed.
         /// </summary>
@@ -74,13 +76,7 @@ namespace Pulumi.VSphere
         public Output<string> DatacenterId { get; private set; } = null!;
 
         /// <summary>
-        /// The relative path to a folder to put this datastore
-        /// cluster in.  This is a path relative to the datacenter you are deploying the
-        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
-        /// `foo/bar`, The provider will place a datastore cluster named
-        /// `datastore-cluster-test` in a datastore folder located at
-        /// `/dc1/datastore/foo/bar`, with the final inventory path being
-        /// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        /// The name of the folder to locate the datastore cluster in.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -213,7 +209,11 @@ namespace Pulumi.VSphere
         public Output<string?> SdrsVmEvacuationAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the datacenter to create the datastore cluster in. Forces a new resource if
         /// changed.
         /// </summary>
@@ -293,13 +293,7 @@ namespace Pulumi.VSphere
         public Input<string> DatacenterId { get; set; } = null!;
 
         /// <summary>
-        /// The relative path to a folder to put this datastore
-        /// cluster in.  This is a path relative to the datacenter you are deploying the
-        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
-        /// `foo/bar`, The provider will place a datastore cluster named
-        /// `datastore-cluster-test` in a datastore folder located at
-        /// `/dc1/datastore/foo/bar`, with the final inventory path being
-        /// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        /// The name of the folder to locate the datastore cluster in.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -441,7 +435,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {
@@ -478,7 +476,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the datacenter to create the datastore cluster in. Forces a new resource if
         /// changed.
         /// </summary>
@@ -486,13 +484,7 @@ namespace Pulumi.VSphere
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// The relative path to a folder to put this datastore
-        /// cluster in.  This is a path relative to the datacenter you are deploying the
-        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
-        /// `foo/bar`, The provider will place a datastore cluster named
-        /// `datastore-cluster-test` in a datastore folder located at
-        /// `/dc1/datastore/foo/bar`, with the final inventory path being
-        /// `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        /// The name of the folder to locate the datastore cluster in.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -634,7 +626,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {

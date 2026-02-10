@@ -135,9 +135,6 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      */
     declare public readonly datastoreId: pulumi.Output<string>;
-    /**
-     * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-     */
     declare public /*out*/ readonly defaultIpAddress: pulumi.Output<string>;
     /**
      * A specification for a virtual disk device on this virtual machine.
@@ -245,7 +242,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly migrateWaitTimeout: pulumi.Output<number | undefined>;
     /**
-     * The managed object reference ID of the created virtual machine.
+     * The [managed object reference ID][docs-about-morefs] of the created virtual machine.
      */
     declare public /*out*/ readonly moid: pulumi.Output<string>;
     /**
@@ -677,9 +674,6 @@ export interface VirtualMachineState {
      * The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
      */
     datastoreId?: pulumi.Input<string>;
-    /**
-     * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-     */
     defaultIpAddress?: pulumi.Input<string>;
     /**
      * A specification for a virtual disk device on this virtual machine.
@@ -787,7 +781,7 @@ export interface VirtualMachineState {
      */
     migrateWaitTimeout?: pulumi.Input<number>;
     /**
-     * The managed object reference ID of the created virtual machine.
+     * The [managed object reference ID][docs-about-morefs] of the created virtual machine.
      */
     moid?: pulumi.Input<string>;
     /**

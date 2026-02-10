@@ -25,7 +25,7 @@ import (
 // ## Example Usage
 //
 // The basic example below creates a virtual machine folder named
-// `test-folder` in the default datacenter's VM hierarchy.
+// `example-vm-folder` in the default datacenter's VM hierarchy.
 //
 // ```go
 // package main
@@ -45,8 +45,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.NewFolder(ctx, "folder", &vsphere.FolderArgs{
-//				Path:         pulumi.String("test-folder"),
+//			_, err = vsphere.NewFolder(ctx, "vm_folder", &vsphere.FolderArgs{
+//				Path:         pulumi.String("example-vm-folder"),
 //				Type:         pulumi.String("vm"),
 //				DatacenterId: pulumi.String(datacenter.Id),
 //			})
@@ -62,7 +62,7 @@ import (
 // ### Example with Sub-folders
 //
 // The below example builds off of the above by first creating a folder named
-// `test-parent`, and then locating `test-folder` in that
+// `example-parent-vm-folder`, and then locating `example-child-vm-folder` in that
 // folder. To ensure the parent is created first, we create an interpolation
 // dependency off the parent's `path` attribute.
 //
@@ -91,16 +91,16 @@ import (
 //				return err
 //			}
 //			parent, err := vsphere.NewFolder(ctx, "parent", &vsphere.FolderArgs{
-//				Path:         pulumi.String("test-parent"),
+//				Path:         pulumi.String("example-parent-vm-folder"),
 //				Type:         pulumi.String("vm"),
 //				DatacenterId: pulumi.String(datacenter.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.NewFolder(ctx, "folder", &vsphere.FolderArgs{
+//			_, err = vsphere.NewFolder(ctx, "child", &vsphere.FolderArgs{
 //				Path: parent.Path.ApplyT(func(path string) (string, error) {
-//					return fmt.Sprintf("%v/test-folder", path), nil
+//					return fmt.Sprintf("%v/example-child-vm-folder", path), nil
 //				}).(pulumi.StringOutput),
 //				Type:         pulumi.String("vm"),
 //				DatacenterId: pulumi.String(datacenter.Id),
@@ -151,15 +151,22 @@ type Folder struct {
 	// the root of the type of folder you are creating, and the supplied datacenter.
 	// For example, given a default datacenter of `default-dc`, a folder of type
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
-	// `test-folder`, the resulting path would be
-	// `/default-dc/vm/test-folder`.
+	// `example-vm-folder`, the resulting path would be
+	// `/default-dc/vm/example-vm-folder`.
+	//
+	// When working with nested datacenters, note that references to these folders in data sources
+	// will require the full path including the parent datacenter folder path, as shown in the
+	// nested datacenter example above.
 	//
 	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
 	// what section of `path` you are modifying. If you are modifying the parent (so
 	// any part before the last `/`), your folder will be moved to that new parent. If
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringOutput `pulumi:"path"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -221,15 +228,22 @@ type folderState struct {
 	// the root of the type of folder you are creating, and the supplied datacenter.
 	// For example, given a default datacenter of `default-dc`, a folder of type
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
-	// `test-folder`, the resulting path would be
-	// `/default-dc/vm/test-folder`.
+	// `example-vm-folder`, the resulting path would be
+	// `/default-dc/vm/example-vm-folder`.
+	//
+	// When working with nested datacenters, note that references to these folders in data sources
+	// will require the full path including the parent datacenter folder path, as shown in the
+	// nested datacenter example above.
 	//
 	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
 	// what section of `path` you are modifying. If you are modifying the parent (so
 	// any part before the last `/`), your folder will be moved to that new parent. If
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path *string `pulumi:"path"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -256,15 +270,22 @@ type FolderState struct {
 	// the root of the type of folder you are creating, and the supplied datacenter.
 	// For example, given a default datacenter of `default-dc`, a folder of type
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
-	// `test-folder`, the resulting path would be
-	// `/default-dc/vm/test-folder`.
+	// `example-vm-folder`, the resulting path would be
+	// `/default-dc/vm/example-vm-folder`.
+	//
+	// When working with nested datacenters, note that references to these folders in data sources
+	// will require the full path including the parent datacenter folder path, as shown in the
+	// nested datacenter example above.
 	//
 	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
 	// what section of `path` you are modifying. If you are modifying the parent (so
 	// any part before the last `/`), your folder will be moved to that new parent. If
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -295,15 +316,22 @@ type folderArgs struct {
 	// the root of the type of folder you are creating, and the supplied datacenter.
 	// For example, given a default datacenter of `default-dc`, a folder of type
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
-	// `test-folder`, the resulting path would be
-	// `/default-dc/vm/test-folder`.
+	// `example-vm-folder`, the resulting path would be
+	// `/default-dc/vm/example-vm-folder`.
+	//
+	// When working with nested datacenters, note that references to these folders in data sources
+	// will require the full path including the parent datacenter folder path, as shown in the
+	// nested datacenter example above.
 	//
 	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
 	// what section of `path` you are modifying. If you are modifying the parent (so
 	// any part before the last `/`), your folder will be moved to that new parent. If
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path string `pulumi:"path"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -331,15 +359,22 @@ type FolderArgs struct {
 	// the root of the type of folder you are creating, and the supplied datacenter.
 	// For example, given a default datacenter of `default-dc`, a folder of type
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
-	// `test-folder`, the resulting path would be
-	// `/default-dc/vm/test-folder`.
+	// `example-vm-folder`, the resulting path would be
+	// `/default-dc/vm/example-vm-folder`.
+	//
+	// When working with nested datacenters, note that references to these folders in data sources
+	// will require the full path including the parent datacenter folder path, as shown in the
+	// nested datacenter example above.
 	//
 	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
 	// what section of `path` you are modifying. If you are modifying the parent (so
 	// any part before the last `/`), your folder will be moved to that new parent. If
 	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -458,8 +493,12 @@ func (o FolderOutput) DatacenterId() pulumi.StringPtrOutput {
 // the root of the type of folder you are creating, and the supplied datacenter.
 // For example, given a default datacenter of `default-dc`, a folder of type
 // `vm` (denoting a virtual machine folder), and a supplied folder of
-// `test-folder`, the resulting path would be
-// `/default-dc/vm/test-folder`.
+// `example-vm-folder`, the resulting path would be
+// `/default-dc/vm/example-vm-folder`.
+//
+// When working with nested datacenters, note that references to these folders in data sources
+// will require the full path including the parent datacenter folder path, as shown in the
+// nested datacenter example above.
 //
 // > **NOTE:** `path` can be modified - the resulting behavior is dependent on
 // what section of `path` you are modifying. If you are modifying the parent (so
@@ -469,7 +508,10 @@ func (o FolderOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
-// The IDs of any tags to attach to this resource.
+// The IDs of any tags to attach to this resource. See
+// [here][docs-applying-tags] for a reference on how to apply tags.
+//
+// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 func (o FolderOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

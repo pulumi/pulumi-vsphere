@@ -170,10 +170,11 @@ def get_network(datacenter_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the network is located in. This can be omitted if the
-           search path used in `name` is an absolute path. For default datacenters,
-           use the `id` attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the network
+           is located in. This can be omitted if the search path used in `name` is an
+           absolute path. For default datacenters, use the `id` attribute from an empty
+           `Datacenter` data source.
     :param _builtins.str distributed_virtual_switch_uuid: For distributed port group type
            network objects, the ID of the distributed virtual switch for which the port
            group belongs. It is useful to differentiate port groups with same name using
@@ -183,6 +184,7 @@ def get_network(datacenter_id: Optional[_builtins.str] = None,
     :param _builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
     :param _builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.
     :param _builtins.str vpc_id: Select a VPC scope for retrieval of VPC subnets.
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
@@ -246,10 +248,11 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[_builtins.s
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the network is located in. This can be omitted if the
-           search path used in `name` is an absolute path. For default datacenters,
-           use the `id` attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the network
+           is located in. This can be omitted if the search path used in `name` is an
+           absolute path. For default datacenters, use the `id` attribute from an empty
+           `Datacenter` data source.
     :param _builtins.str distributed_virtual_switch_uuid: For distributed port group type
            network objects, the ID of the distributed virtual switch for which the port
            group belongs. It is useful to differentiate port groups with same name using
@@ -259,6 +262,7 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[_builtins.s
     :param _builtins.int retry_interval: The interval in milliseconds to retry the read operation if `retry_timeout` is set. Default: 500.
     :param _builtins.int retry_timeout: The timeout duration in seconds for the data source to retry read operations.
     :param _builtins.str vpc_id: Select a VPC scope for retrieval of VPC subnets.
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id

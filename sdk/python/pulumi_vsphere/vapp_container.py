@@ -36,7 +36,7 @@ class VappContainerArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VappContainer resource.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
@@ -76,9 +76,13 @@ class VappContainerArgs:
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
-        :param pulumi.Input[_builtins.str] parent_folder_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
         if cpu_expandable is not None:
@@ -114,7 +118,7 @@ class VappContainerArgs:
     @pulumi.getter(name="parentResourcePoolId")
     def parent_resource_pool_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object ID
+        The [managed object ID][docs-about-morefs]
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a vApp container
         from one parent resource pool to another, both must share a common root
@@ -297,7 +301,7 @@ class VappContainerArgs:
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the vApp container's parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
@@ -310,7 +314,11 @@ class VappContainerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -374,14 +382,18 @@ class _VappContainerState:
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
-        :param pulumi.Input[_builtins.str] parent_folder_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         if cpu_expandable is not None:
             pulumi.set(__self__, "cpu_expandable", cpu_expandable)
@@ -585,7 +597,7 @@ class _VappContainerState:
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the vApp container's parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
@@ -598,7 +610,7 @@ class _VappContainerState:
     @pulumi.getter(name="parentResourcePoolId")
     def parent_resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID
+        The [managed object ID][docs-about-morefs]
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a vApp container
         from one parent resource pool to another, both must share a common root
@@ -614,7 +626,11 @@ class _VappContainerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -764,14 +780,18 @@ class VappContainer(pulumi.CustomResource):
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
-        :param pulumi.Input[_builtins.str] parent_folder_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         ...
     @overload
@@ -984,14 +1004,18 @@ class VappContainer(pulumi.CustomResource):
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the vApp container.
-        :param pulumi.Input[_builtins.str] parent_folder_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] parent_folder_id: The [managed object ID][docs-about-morefs] of
                the vApp container's parent folder.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1137,7 +1161,7 @@ class VappContainer(pulumi.CustomResource):
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the vApp container's parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
@@ -1146,7 +1170,7 @@ class VappContainer(pulumi.CustomResource):
     @pulumi.getter(name="parentResourcePoolId")
     def parent_resource_pool_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID
+        The [managed object ID][docs-about-morefs]
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a vApp container
         from one parent resource pool to another, both must share a common root
@@ -1158,7 +1182,11 @@ class VappContainer(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 

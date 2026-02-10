@@ -42,11 +42,11 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenterGetDatacenter.id,
  * }));
  * const vappContainer = new vsphere.VappContainer("vapp_container", {
- *     name: "vapp-container-test",
+ *     name: "pulumi-vapp-container-test",
  *     parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.id),
  * });
  * const vm = new vsphere.VirtualMachine("vm", {
- *     name: "virtual-machine-test",
+ *     name: "pulumi-virtual-machine-test",
  *     resourcePoolId: vappContainer.id,
  *     datastoreId: datastore.then(datastore => datastore.id),
  *     numCpus: 2,
@@ -114,7 +114,7 @@ export class VappEntity extends pulumi.CustomResource {
     }
 
     /**
-     * Managed object ID of the vApp
+     * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      */
     declare public readonly containerId: pulumi.Output<string>;
@@ -154,7 +154,7 @@ export class VappEntity extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
-     * Managed object ID of the entity
+     * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
     declare public readonly targetId: pulumi.Output<string>;
@@ -162,6 +162,8 @@ export class VappEntity extends pulumi.CustomResource {
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly waitForGuest: pulumi.Output<boolean | undefined>;
 
@@ -217,7 +219,7 @@ export class VappEntity extends pulumi.CustomResource {
  */
 export interface VappEntityState {
     /**
-     * Managed object ID of the vApp
+     * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      */
     containerId?: pulumi.Input<string>;
@@ -257,7 +259,7 @@ export interface VappEntityState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Managed object ID of the entity
+     * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
     targetId?: pulumi.Input<string>;
@@ -265,6 +267,8 @@ export interface VappEntityState {
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     waitForGuest?: pulumi.Input<boolean>;
 }
@@ -274,7 +278,7 @@ export interface VappEntityState {
  */
 export interface VappEntityArgs {
     /**
-     * Managed object ID of the vApp
+     * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      */
     containerId: pulumi.Input<string>;
@@ -314,7 +318,7 @@ export interface VappEntityArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Managed object ID of the entity
+     * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
     targetId: pulumi.Input<string>;
@@ -322,6 +326,8 @@ export interface VappEntityArgs {
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     waitForGuest?: pulumi.Input<boolean>;
 }

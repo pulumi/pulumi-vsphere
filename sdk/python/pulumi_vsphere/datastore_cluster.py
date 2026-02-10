@@ -46,7 +46,7 @@ class DatastoreClusterArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DatastoreCluster resource.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
@@ -58,13 +58,7 @@ class DatastoreClusterArgs:
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
-               cluster in.  This is a path relative to the datacenter you are deploying the
-               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-               `foo/bar`, The provider will place a datastore cluster named
-               `datastore-cluster-test` in a datastore folder located at
-               `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -87,7 +81,11 @@ class DatastoreClusterArgs:
         :param pulumi.Input[_builtins.str] sdrs_space_balance_automation_level: Overrides the default automation settings when correcting disk space imbalances.
         :param pulumi.Input[_builtins.int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[_builtins.str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         pulumi.set(__self__, "datacenter_id", datacenter_id)
         if custom_attributes is not None:
@@ -143,7 +141,7 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the datacenter to create the datastore cluster in. Forces a new resource if
         changed.
         """
@@ -177,13 +175,7 @@ class DatastoreClusterArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore
-        cluster in.  This is a path relative to the datacenter you are deploying the
-        datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-        `foo/bar`, The provider will place a datastore cluster named
-        `datastore-cluster-test` in a datastore folder located at
-        `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        The name of the folder to locate the datastore cluster in.
         """
         return pulumi.get(self, "folder")
 
@@ -448,7 +440,11 @@ class DatastoreClusterArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -496,16 +492,10 @@ class _DatastoreClusterState:
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
-               cluster in.  This is a path relative to the datacenter you are deploying the
-               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-               `foo/bar`, The provider will place a datastore cluster named
-               `datastore-cluster-test` in a datastore folder located at
-               `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -528,7 +518,11 @@ class _DatastoreClusterState:
         :param pulumi.Input[_builtins.str] sdrs_space_balance_automation_level: Overrides the default automation settings when correcting disk space imbalances.
         :param pulumi.Input[_builtins.int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[_builtins.str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -605,7 +599,7 @@ class _DatastoreClusterState:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the datacenter to create the datastore cluster in. Forces a new resource if
         changed.
         """
@@ -619,13 +613,7 @@ class _DatastoreClusterState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore
-        cluster in.  This is a path relative to the datacenter you are deploying the
-        datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-        `foo/bar`, The provider will place a datastore cluster named
-        `datastore-cluster-test` in a datastore folder located at
-        `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        The name of the folder to locate the datastore cluster in.
         """
         return pulumi.get(self, "folder")
 
@@ -890,7 +878,11 @@ class _DatastoreClusterState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -951,8 +943,10 @@ class DatastoreCluster(pulumi.CustomResource):
 
         The following example sets up a datastore cluster and enables Storage DRS with
         the default settings. It then creates two NAS datastores using the
-        `NasDatastore` resource and assigns them to
+        [`NasDatastore` resource][ref-tf-nas-datastore] and assigns them to
         the datastore cluster.
+
+        [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
 
         ```python
         import pulumi
@@ -970,23 +964,23 @@ class DatastoreCluster(pulumi.CustomResource):
         hosts_get_host = [vsphere.get_host(name=hosts[__index],
             datacenter_id=datacenter.id) for __index in range(len(hosts))]
         datastore_cluster = vsphere.DatastoreCluster("datastore_cluster",
-            name="datastore-cluster-test",
+            name="pulumi-datastore-cluster-test",
             datacenter_id=datacenter.id,
             sdrs_enabled=True)
         datastore1 = vsphere.NasDatastore("datastore1",
-            name="datastore-test1",
-            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            name="pulumi-datastore-test1",
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
             datastore_cluster_id=datastore_cluster.id,
             type="NFS",
             remote_hosts=["nfs"],
-            remote_path="/export/test1")
+            remote_path="/export/terraform-test1")
         datastore2 = vsphere.NasDatastore("datastore2",
-            name="datastore-test2",
-            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            name="pulumi-datastore-test2",
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
             datastore_cluster_id=datastore_cluster.id,
             type="NFS",
             remote_hosts=["nfs"],
-            remote_path="/export/test2")
+            remote_path="/export/terraform-test2")
         ```
 
         ## Import
@@ -1016,16 +1010,10 @@ class DatastoreCluster(pulumi.CustomResource):
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
-               cluster in.  This is a path relative to the datacenter you are deploying the
-               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-               `foo/bar`, The provider will place a datastore cluster named
-               `datastore-cluster-test` in a datastore folder located at
-               `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -1048,7 +1036,11 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] sdrs_space_balance_automation_level: Overrides the default automation settings when correcting disk space imbalances.
         :param pulumi.Input[_builtins.int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[_builtins.str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         ...
     @overload
@@ -1076,8 +1068,10 @@ class DatastoreCluster(pulumi.CustomResource):
 
         The following example sets up a datastore cluster and enables Storage DRS with
         the default settings. It then creates two NAS datastores using the
-        `NasDatastore` resource and assigns them to
+        [`NasDatastore` resource][ref-tf-nas-datastore] and assigns them to
         the datastore cluster.
+
+        [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
 
         ```python
         import pulumi
@@ -1095,23 +1089,23 @@ class DatastoreCluster(pulumi.CustomResource):
         hosts_get_host = [vsphere.get_host(name=hosts[__index],
             datacenter_id=datacenter.id) for __index in range(len(hosts))]
         datastore_cluster = vsphere.DatastoreCluster("datastore_cluster",
-            name="datastore-cluster-test",
+            name="pulumi-datastore-cluster-test",
             datacenter_id=datacenter.id,
             sdrs_enabled=True)
         datastore1 = vsphere.NasDatastore("datastore1",
-            name="datastore-test1",
-            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            name="pulumi-datastore-test1",
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
             datastore_cluster_id=datastore_cluster.id,
             type="NFS",
             remote_hosts=["nfs"],
-            remote_path="/export/test1")
+            remote_path="/export/terraform-test1")
         datastore2 = vsphere.NasDatastore("datastore2",
-            name="datastore-test2",
-            host_system_ids=[[__item["id"] for __item in esxi_hosts]],
+            name="pulumi-datastore-test2",
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
             datastore_cluster_id=datastore_cluster.id,
             type="NFS",
             remote_hosts=["nfs"],
-            remote_path="/export/test2")
+            remote_path="/export/terraform-test2")
         ```
 
         ## Import
@@ -1257,16 +1251,10 @@ class DatastoreCluster(pulumi.CustomResource):
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
-               cluster in.  This is a path relative to the datacenter you are deploying the
-               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-               `foo/bar`, The provider will place a datastore cluster named
-               `datastore-cluster-test` in a datastore folder located at
-               `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -1289,7 +1277,11 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] sdrs_space_balance_automation_level: Overrides the default automation settings when correcting disk space imbalances.
         :param pulumi.Input[_builtins.int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[_builtins.str] sdrs_vm_evacuation_automation_level: Overrides the default automation settings when generating recommendations for datastore evacuation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1342,7 +1334,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the datacenter to create the datastore cluster in. Forces a new resource if
         changed.
         """
@@ -1352,13 +1344,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The relative path to a folder to put this datastore
-        cluster in.  This is a path relative to the datacenter you are deploying the
-        datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-        `foo/bar`, The provider will place a datastore cluster named
-        `datastore-cluster-test` in a datastore folder located at
-        `/dc1/datastore/foo/bar`, with the final inventory path being
-        `/dc1/datastore/foo/bar/datastore-cluster-test`.
+        The name of the folder to locate the datastore cluster in.
         """
         return pulumi.get(self, "folder")
 
@@ -1535,7 +1521,11 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 

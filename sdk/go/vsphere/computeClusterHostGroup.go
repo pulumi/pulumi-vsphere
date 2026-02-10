@@ -14,18 +14,31 @@ import (
 
 // The `ComputeClusterHostGroup` resource can be used to manage groups
 // of hosts in a cluster, either created by the
-// `ComputeCluster` resource or looked up
-// by the `ComputeCluster` data source.
+// [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+// by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+//
+// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 //
 // This resource mainly serves as an input to the
-// `ComputeClusterVmHostRule`
+// [`ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
 // resource - see the documentation for that resource for further details on how
 // to use host groups.
+//
+// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 //
 // ## Example Usage
+//
+// The example below is the exact same configuration as the
+// [example][tf-vsphere-cluster-resource-example] in the
+// [`ComputeCluster`][tf-vsphere-cluster-resource] resource, but in
+// addition, it creates a host group with the same hosts that get put into the
+// cluster.
+//
+// [tf-vsphere-cluster-resource-example]: /docs/providers/vsphere/r/compute_cluster.html#example-usage
 //
 // ## Import
 //
@@ -49,17 +62,21 @@ import (
 type ComputeClusterHostGroup struct {
 	pulumi.CustomResourceState
 
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
-	// The managed object IDs of
+	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster.
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterVmGroup`
+	// [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 	// resource. Make sure your names are unique across both resources.
+	//
+	// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 	HostSystemIds pulumi.StringArrayOutput `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -99,17 +116,21 @@ func GetComputeClusterHostGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterHostGroup resources.
 type computeClusterHostGroupState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId *string `pulumi:"computeClusterId"`
-	// The managed object IDs of
+	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster.
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterVmGroup`
+	// [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 	// resource. Make sure your names are unique across both resources.
+	//
+	// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -117,17 +138,21 @@ type computeClusterHostGroupState struct {
 }
 
 type ComputeClusterHostGroupState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringPtrInput
-	// The managed object IDs of
+	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster.
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterVmGroup`
+	// [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 	// resource. Make sure your names are unique across both resources.
+	//
+	// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -139,17 +164,21 @@ func (ComputeClusterHostGroupState) ElementType() reflect.Type {
 }
 
 type computeClusterHostGroupArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
-	// The managed object IDs of
+	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster.
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterVmGroup`
+	// [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 	// resource. Make sure your names are unique across both resources.
+	//
+	// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -158,17 +187,21 @@ type computeClusterHostGroupArgs struct {
 
 // The set of arguments for constructing a ComputeClusterHostGroup resource.
 type ComputeClusterHostGroupArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput
-	// The managed object IDs of
+	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster.
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterVmGroup`
+	// [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 	// resource. Make sure your names are unique across both resources.
+	//
+	// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -262,20 +295,24 @@ func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupOutputWithContex
 	return o
 }
 
-// The managed object reference
-// ID of the cluster to put the group in.  Forces a new
+// The [managed object reference
+// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o ComputeClusterHostGroupOutput) ComputeClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeClusterHostGroup) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
 }
 
-// The managed object IDs of
+// The [managed object IDs][docs-about-morefs] of
 // the hosts to put in the cluster.
 //
 // > **NOTE:** The namespace for cluster names on this resource (defined by the
 // `name` argument) is shared with the
-// `ComputeClusterVmGroup`
+// [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 // resource. Make sure your names are unique across both resources.
+//
+// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 func (o ComputeClusterHostGroupOutput) HostSystemIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeClusterHostGroup) pulumi.StringArrayOutput { return v.HostSystemIds }).(pulumi.StringArrayOutput)
 }

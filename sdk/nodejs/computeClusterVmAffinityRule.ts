@@ -7,8 +7,11 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.ComputeClusterVmAffinityRule` resource can be used to
  * manage virtual machine affinity rules in a cluster, either created by the
- * `vsphere.ComputeCluster` resource or looked up
- * by the `vsphere.ComputeCluster` data source.
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ *
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  *
  * This rule can be used to tell a set of virtual machines to run together on the
  * same host within a cluster. When configured, DRS will make a best effort to
@@ -19,20 +22,24 @@ import * as utilities from "./utilities";
  * > An affinity rule can only be used to place virtual machines on the same
  * _non-specific_ hosts. It cannot be used to pin virtual machines to a host.
  * To enable this capability, use the
- * `vsphere.ComputeClusterVmHostRule`
+ * [`vsphere.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
  * resource.
  *
- * > **NOTE:** This resource requires vCenter Server and is not available on
+ * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+ *
+ * > **NOTE:** This resource requires vCenter and is not available on
  * direct ESXi host connections.
  *
  * ## Example Usage
  *
  * The following example creates two virtual machines in a cluster using the
- * `vsphere.VirtualMachine` resource, creating the
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machines in the cluster looked up by the
- * `vsphere.ComputeCluster` data source. It
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
  * then creates an affinity rule for these two virtual machines, ensuring they
  * will run on the same host whenever possible.
+ *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -80,7 +87,9 @@ import * as utilities from "./utilities";
  *
  * The following example creates an affinity rule for a set of virtual machines
  * in the cluster by looking up the virtual machine UUIDs from the
- * `vsphere.VirtualMachine` data source.
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-data-source] data source.
+ *
+ * [tf-vsphere-vm-data-source]: /docs/providers/vsphere/d/virtual_machine.html
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -119,6 +128,8 @@ import * as utilities from "./utilities";
  *
  * example is below:
  *
+ * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+ *
  * ```sh
  * $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \
  * ```
@@ -156,9 +167,11 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
     }
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly computeClusterId: pulumi.Output<string>;
     /**
@@ -226,9 +239,11 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
  */
 export interface ComputeClusterVmAffinityRuleState {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId?: pulumi.Input<string>;
     /**
@@ -260,9 +275,11 @@ export interface ComputeClusterVmAffinityRuleState {
  */
 export interface ComputeClusterVmAffinityRuleArgs {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: pulumi.Input<string>;
     /**

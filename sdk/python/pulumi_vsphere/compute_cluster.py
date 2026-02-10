@@ -92,13 +92,17 @@ class ComputeClusterArgs:
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ComputeCluster resource.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
-               value strings to set for the datastore cluster.
+               value strings to set for the datastore cluster. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-               and require vCenter Server.
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and requires vCenter Server.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
         :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
         :param pulumi.Input[_builtins.int] dpm_threshold: A value between 1 and 5 indicating the threshold of load within the cluster that influences host power operations. This affects both power on and power off operations - a lower setting will tolerate more of a surplus/deficit than a higher setting.
@@ -109,12 +113,7 @@ class ComputeClusterArgs:
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
-               This is a path relative to the datacenter you are deploying the cluster to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a cluster named `compute-cluster-test` in a
-               host folder located at `/dc1/host/foo/bar`, with the final inventory path
-               being `/dc1/host/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -156,7 +155,11 @@ class ComputeClusterArgs:
         :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[_builtins.bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
@@ -314,7 +317,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the datacenter to create the cluster in. Forces a new resource if changed.
         """
         return pulumi.get(self, "datacenter_id")
@@ -328,10 +331,14 @@ class ComputeClusterArgs:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute ids to attribute
-        value strings to set for the datastore cluster.
+        value strings to set for the datastore cluster. See
+        [here][docs-setting-custom-attributes] for a reference on how to set values
+        for custom attributes.
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-        and require vCenter Server.
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are not supported on direct ESXi host
+        connections and requires vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -463,12 +470,7 @@ class ComputeClusterArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this cluster in.
-        This is a path relative to the datacenter you are deploying the cluster to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a cluster named `compute-cluster-test` in a
-        host folder located at `/dc1/host/foo/bar`, with the final inventory path
-        being `/dc1/host/foo/bar/datastore-cluster-test`.
+        The name of the folder to locate the cluster in.
         """
         return pulumi.get(self, "folder")
 
@@ -972,7 +974,11 @@ class ComputeClusterArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -1225,11 +1231,15 @@ class _ComputeClusterState:
         """
         Input properties used for looking up and filtering ComputeCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
-               value strings to set for the datastore cluster.
+               value strings to set for the datastore cluster. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-               and require vCenter Server.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and requires vCenter Server.
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
         :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
@@ -1241,12 +1251,7 @@ class _ComputeClusterState:
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
-               This is a path relative to the datacenter you are deploying the cluster to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a cluster named `compute-cluster-test` in a
-               host folder located at `/dc1/host/foo/bar`, with the final inventory path
-               being `/dc1/host/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -1288,12 +1293,16 @@ class _ComputeClusterState:
         :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
-        :param pulumi.Input[_builtins.str] resource_pool_id: The managed object ID of the primary
+        :param pulumi.Input[_builtins.str] resource_pool_id: The [managed object ID][docs-about-morefs] of the primary
                resource pool for this cluster. This can be passed directly to the
-               `resource_pool_id`
-               attribute of the
-               `VirtualMachine` resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+               [`resource_pool_id`
+               attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+               [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[_builtins.bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
@@ -1455,10 +1464,14 @@ class _ComputeClusterState:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom attribute ids to attribute
-        value strings to set for the datastore cluster.
+        value strings to set for the datastore cluster. See
+        [here][docs-setting-custom-attributes] for a reference on how to set values
+        for custom attributes.
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-        and require vCenter Server.
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are not supported on direct ESXi host
+        connections and requires vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -1470,7 +1483,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the datacenter to create the cluster in. Forces a new resource if changed.
         """
         return pulumi.get(self, "datacenter_id")
@@ -1603,12 +1616,7 @@ class _ComputeClusterState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The relative path to a folder to put this cluster in.
-        This is a path relative to the datacenter you are deploying the cluster to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a cluster named `compute-cluster-test` in a
-        host folder located at `/dc1/host/foo/bar`, with the final inventory path
-        being `/dc1/host/foo/bar/datastore-cluster-test`.
+        The name of the folder to locate the cluster in.
         """
         return pulumi.get(self, "folder")
 
@@ -2112,11 +2120,11 @@ class _ComputeClusterState:
     @pulumi.getter(name="resourcePoolId")
     def resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of the primary
+        The [managed object ID][docs-about-morefs] of the primary
         resource pool for this cluster. This can be passed directly to the
-        `resource_pool_id`
-        attribute of the
-        `VirtualMachine` resource.
+        [`resource_pool_id`
+        attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+        [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
         """
         return pulumi.get(self, "resource_pool_id")
 
@@ -2128,7 +2136,11 @@ class _ComputeClusterState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -2382,30 +2394,6 @@ class ComputeCluster(pulumi.CustomResource):
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        > **A note on the naming of this resource:** VMware refers to clusters of
-        hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
-        clusters_. All of these refer to the same kind of resource (with the latter two
-        referring to specific features of clustering). We use
-        `ComputeCluster` to differentiate host clusters from _datastore
-        clusters_, which are clusters of datastores that can be used to distribute load
-        and ensure fault tolerance via distribution of virtual machines. Datastore
-        clusters can also be managed through the provider, via the
-        `DatastoreCluster` resource.
-
-        The `ComputeCluster` resource can be used to create and manage
-        clusters of hosts allowing for resource control of compute resources, load
-        balancing through DRS, and high availability through vSphere HA.
-
-        For more information on vSphere clusters and DRS, see [this
-        page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
-        page][ref-vsphere-ha-clusters].
-
-        [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
-        [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
-
-        > **NOTE:** This resource requires vCenter and is not available on
-        direct ESXi connections.
-
         ## Example Usage
 
         The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -2439,7 +2427,7 @@ class ComputeCluster(pulumi.CustomResource):
         host = {__key: vsphere.get_host(name=__value,
             datacenter_id=datacenter_get_datacenter.id) for __key, __value in std.index.toset(input=hosts)["result"]}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
-            name="compute-cluster-test",
+            name="pulumi-compute-cluster-test",
             datacenter_id=datacenter_get_datacenter.id,
             host_system_ids=[host.id for host in host],
             drs_enabled=True,
@@ -2531,11 +2519,15 @@ class ComputeCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
-               value strings to set for the datastore cluster.
+               value strings to set for the datastore cluster. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-               and require vCenter Server.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and requires vCenter Server.
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
         :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
@@ -2547,12 +2539,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
-               This is a path relative to the datacenter you are deploying the cluster to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a cluster named `compute-cluster-test` in a
-               host folder located at `/dc1/host/foo/bar`, with the final inventory path
-               being `/dc1/host/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -2594,7 +2581,11 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[_builtins.bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
@@ -2617,30 +2608,6 @@ class ComputeCluster(pulumi.CustomResource):
                  args: ComputeClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **A note on the naming of this resource:** VMware refers to clusters of
-        hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
-        clusters_. All of these refer to the same kind of resource (with the latter two
-        referring to specific features of clustering). We use
-        `ComputeCluster` to differentiate host clusters from _datastore
-        clusters_, which are clusters of datastores that can be used to distribute load
-        and ensure fault tolerance via distribution of virtual machines. Datastore
-        clusters can also be managed through the provider, via the
-        `DatastoreCluster` resource.
-
-        The `ComputeCluster` resource can be used to create and manage
-        clusters of hosts allowing for resource control of compute resources, load
-        balancing through DRS, and high availability through vSphere HA.
-
-        For more information on vSphere clusters and DRS, see [this
-        page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
-        page][ref-vsphere-ha-clusters].
-
-        [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
-        [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
-
-        > **NOTE:** This resource requires vCenter and is not available on
-        direct ESXi connections.
-
         ## Example Usage
 
         The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -2674,7 +2641,7 @@ class ComputeCluster(pulumi.CustomResource):
         host = {__key: vsphere.get_host(name=__value,
             datacenter_id=datacenter_get_datacenter.id) for __key, __value in std.index.toset(input=hosts)["result"]}
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
-            name="compute-cluster-test",
+            name="pulumi-compute-cluster-test",
             datacenter_id=datacenter_get_datacenter.id,
             host_system_ids=[host.id for host in host],
             drs_enabled=True,
@@ -3016,11 +2983,15 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
-               value strings to set for the datastore cluster.
+               value strings to set for the datastore cluster. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
                
-               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-               and require vCenter Server.
-        :param pulumi.Input[_builtins.str] datacenter_id: The managed object ID of
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and requires vCenter Server.
+        :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power operations in this cluster. Can be one of manual or automated.
         :param pulumi.Input[_builtins.bool] dpm_enabled: Enable DPM support for DRS. This allows you to dynamically control the power of hosts depending on the needs of virtual machines in the cluster. Requires that DRS be enabled.
@@ -3032,12 +3003,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
-               This is a path relative to the datacenter you are deploying the cluster to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               The provider will place a cluster named `compute-cluster-test` in a
-               host folder located at `/dc1/host/foo/bar`, with the final inventory path
-               being `/dc1/host/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -3079,12 +3045,16 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proactive_ha_moderate_remediation: The configured remediation for moderately degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to MaintenanceMode when proactive_ha_severe_remediation is set to QuarantineMode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] proactive_ha_provider_ids: The list of IDs for health update providers configured for this cluster.
         :param pulumi.Input[_builtins.str] proactive_ha_severe_remediation: The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactive_ha_moderate_remediation is set to MaintenanceMode.
-        :param pulumi.Input[_builtins.str] resource_pool_id: The managed object ID of the primary
+        :param pulumi.Input[_builtins.str] resource_pool_id: The [managed object ID][docs-about-morefs] of the primary
                resource pool for this cluster. This can be passed directly to the
-               `resource_pool_id`
-               attribute of the
-               `VirtualMachine` resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+               [`resource_pool_id`
+               attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+               [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         :param pulumi.Input[_builtins.bool] vsan_compression_enabled: Whether the vSAN compression service is enabled for the cluster.
         :param pulumi.Input[_builtins.bool] vsan_dedup_enabled: Whether the vSAN deduplication service is enabled for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ComputeClusterVsanDiskGroupArgs', 'ComputeClusterVsanDiskGroupArgsDict']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
@@ -3181,10 +3151,14 @@ class ComputeCluster(pulumi.CustomResource):
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         A map of custom attribute ids to attribute
-        value strings to set for the datastore cluster.
+        value strings to set for the datastore cluster. See
+        [here][docs-setting-custom-attributes] for a reference on how to set values
+        for custom attributes.
 
-        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-        and require vCenter Server.
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are not supported on direct ESXi host
+        connections and requires vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -3192,7 +3166,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the datacenter to create the cluster in. Forces a new resource if changed.
         """
         return pulumi.get(self, "datacenter_id")
@@ -3281,12 +3255,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The relative path to a folder to put this cluster in.
-        This is a path relative to the datacenter you are deploying the cluster to.
-        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-        The provider will place a cluster named `compute-cluster-test` in a
-        host folder located at `/dc1/host/foo/bar`, with the final inventory path
-        being `/dc1/host/foo/bar/datastore-cluster-test`.
+        The name of the folder to locate the cluster in.
         """
         return pulumi.get(self, "folder")
 
@@ -3622,11 +3591,11 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="resourcePoolId")
     def resource_pool_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID of the primary
+        The [managed object ID][docs-about-morefs] of the primary
         resource pool for this cluster. This can be passed directly to the
-        `resource_pool_id`
-        attribute of the
-        `VirtualMachine` resource.
+        [`resource_pool_id`
+        attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+        [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
         """
         return pulumi.get(self, "resource_pool_id")
 
@@ -3634,7 +3603,11 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 

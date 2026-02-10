@@ -25,10 +25,14 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
 
     /**
      * A map of custom attribute ids to attribute
-     * value strings to set for the datastore cluster.
+     * value strings to set for the datastore cluster. See
+     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * for custom attributes.
      * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-     * and require vCenter Server.
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and requires vCenter Server.
      * 
      */
     @Import(name="customAttributes")
@@ -36,10 +40,14 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A map of custom attribute ids to attribute
-     * value strings to set for the datastore cluster.
+     * value strings to set for the datastore cluster. See
+     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * for custom attributes.
      * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-     * and require vCenter Server.
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and requires vCenter Server.
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -47,7 +55,7 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the cluster in. Forces a new resource if changed.
      * 
      */
@@ -55,7 +63,7 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> datacenterId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the datacenter to create the cluster in. Forces a new resource if changed.
      * 
      */
@@ -214,24 +222,14 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The relative path to a folder to put this cluster in.
-     * This is a path relative to the datacenter you are deploying the cluster to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a cluster named `compute-cluster-test` in a
-     * host folder located at `/dc1/host/foo/bar`, with the final inventory path
-     * being `/dc1/host/foo/bar/datastore-cluster-test`.
+     * The name of the folder to locate the cluster in.
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return The relative path to a folder to put this cluster in.
-     * This is a path relative to the datacenter you are deploying the cluster to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a cluster named `compute-cluster-test` in a
-     * host folder located at `/dc1/host/foo/bar`, with the final inventory path
-     * being `/dc1/host/foo/bar/datastore-cluster-test`.
+     * @return The name of the folder to locate the cluster in.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -854,22 +852,22 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The managed object ID of the primary
+     * The [managed object ID][docs-about-morefs] of the primary
      * resource pool for this cluster. This can be passed directly to the
-     * `resourcePoolId`
-     * attribute of the
-     * `vsphere.VirtualMachine` resource.
+     * [`resourcePoolId`
+     * attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+     * [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
      * 
      */
     @Import(name="resourcePoolId")
     private @Nullable Output<String> resourcePoolId;
 
     /**
-     * @return The managed object ID of the primary
+     * @return The [managed object ID][docs-about-morefs] of the primary
      * resource pool for this cluster. This can be passed directly to the
-     * `resourcePoolId`
-     * attribute of the
-     * `vsphere.VirtualMachine` resource.
+     * [`resourcePoolId`
+     * attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+     * [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
      * 
      */
     public Optional<Output<String>> resourcePoolId() {
@@ -877,14 +875,22 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -1196,10 +1202,14 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param customAttributes A map of custom attribute ids to attribute
-         * value strings to set for the datastore cluster.
+         * value strings to set for the datastore cluster. See
+         * [here][docs-setting-custom-attributes] for a reference on how to set values
+         * for custom attributes.
          * 
-         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-         * and require vCenter Server.
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+         * 
+         * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+         * connections and requires vCenter Server.
          * 
          * @return builder
          * 
@@ -1211,10 +1221,14 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param customAttributes A map of custom attribute ids to attribute
-         * value strings to set for the datastore cluster.
+         * value strings to set for the datastore cluster. See
+         * [here][docs-setting-custom-attributes] for a reference on how to set values
+         * for custom attributes.
          * 
-         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-         * and require vCenter Server.
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+         * 
+         * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+         * connections and requires vCenter Server.
          * 
          * @return builder
          * 
@@ -1224,7 +1238,7 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datacenterId The managed object ID of
+         * @param datacenterId The [managed object ID][docs-about-morefs] of
          * the datacenter to create the cluster in. Forces a new resource if changed.
          * 
          * @return builder
@@ -1236,7 +1250,7 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param datacenterId The managed object ID of
+         * @param datacenterId The [managed object ID][docs-about-morefs] of
          * the datacenter to create the cluster in. Forces a new resource if changed.
          * 
          * @return builder
@@ -1457,12 +1471,7 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param folder The relative path to a folder to put this cluster in.
-         * This is a path relative to the datacenter you are deploying the cluster to.
-         * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-         * The provider will place a cluster named `compute-cluster-test` in a
-         * host folder located at `/dc1/host/foo/bar`, with the final inventory path
-         * being `/dc1/host/foo/bar/datastore-cluster-test`.
+         * @param folder The name of the folder to locate the cluster in.
          * 
          * @return builder
          * 
@@ -1473,12 +1482,7 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param folder The relative path to a folder to put this cluster in.
-         * This is a path relative to the datacenter you are deploying the cluster to.
-         * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-         * The provider will place a cluster named `compute-cluster-test` in a
-         * host folder located at `/dc1/host/foo/bar`, with the final inventory path
-         * being `/dc1/host/foo/bar/datastore-cluster-test`.
+         * @param folder The name of the folder to locate the cluster in.
          * 
          * @return builder
          * 
@@ -2389,11 +2393,11 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourcePoolId The managed object ID of the primary
+         * @param resourcePoolId The [managed object ID][docs-about-morefs] of the primary
          * resource pool for this cluster. This can be passed directly to the
-         * `resourcePoolId`
-         * attribute of the
-         * `vsphere.VirtualMachine` resource.
+         * [`resourcePoolId`
+         * attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+         * [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
          * 
          * @return builder
          * 
@@ -2404,11 +2408,11 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourcePoolId The managed object ID of the primary
+         * @param resourcePoolId The [managed object ID][docs-about-morefs] of the primary
          * resource pool for this cluster. This can be passed directly to the
-         * `resourcePoolId`
-         * attribute of the
-         * `vsphere.VirtualMachine` resource.
+         * [`resourcePoolId`
+         * attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+         * [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
          * 
          * @return builder
          * 
@@ -2418,7 +2422,11 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -2429,7 +2437,11 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -2439,7 +2451,11 @@ public final class ComputeClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 

@@ -18,18 +18,22 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
     public static final ComputeClusterHostGroupArgs Empty = new ComputeClusterHostGroupArgs();
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="computeClusterId", required=true)
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {
@@ -37,26 +41,30 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The managed object IDs of
+     * The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster.
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterVmGroup`
+     * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
      * resource. Make sure your names are unique across both resources.
+     * 
+     * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
      * 
      */
     @Import(name="hostSystemIds")
     private @Nullable Output<List<String>> hostSystemIds;
 
     /**
-     * @return The managed object IDs of
+     * @return The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster.
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterVmGroup`
+     * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
      * resource. Make sure your names are unique across both resources.
+     * 
+     * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
      * 
      */
     public Optional<Output<List<String>>> hostSystemIds() {
@@ -107,9 +115,11 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the group in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -120,9 +130,11 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the group in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -132,13 +144,15 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostSystemIds The managed object IDs of
+         * @param hostSystemIds The [managed object IDs][docs-about-morefs] of
          * the hosts to put in the cluster.
          * 
          * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
          * `name` argument) is shared with the
-         * `vsphere.ComputeClusterVmGroup`
+         * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
          * resource. Make sure your names are unique across both resources.
+         * 
+         * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
          * 
          * @return builder
          * 
@@ -149,13 +163,15 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostSystemIds The managed object IDs of
+         * @param hostSystemIds The [managed object IDs][docs-about-morefs] of
          * the hosts to put in the cluster.
          * 
          * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
          * `name` argument) is shared with the
-         * `vsphere.ComputeClusterVmGroup`
+         * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
          * resource. Make sure your names are unique across both resources.
+         * 
+         * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
          * 
          * @return builder
          * 
@@ -165,13 +181,15 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostSystemIds The managed object IDs of
+         * @param hostSystemIds The [managed object IDs][docs-about-morefs] of
          * the hosts to put in the cluster.
          * 
          * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
          * `name` argument) is shared with the
-         * `vsphere.ComputeClusterVmGroup`
+         * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
          * resource. Make sure your names are unique across both resources.
+         * 
+         * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
          * 
          * @return builder
          * 

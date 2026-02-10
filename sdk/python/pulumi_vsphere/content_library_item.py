@@ -251,6 +251,8 @@ class ContentLibraryItem(pulumi.CustomResource):
         The first example below imports an OVF Template to a content
         library.
 
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+
         ```python
         import pulumi
         import pulumi_vsphere as vsphere
@@ -338,6 +340,8 @@ class ContentLibraryItem(pulumi.CustomResource):
 
         The first example below imports an OVF Template to a content
         library.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi

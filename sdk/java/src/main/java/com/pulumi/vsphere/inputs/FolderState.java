@@ -70,8 +70,12 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
      * the root of the type of folder you are creating, and the supplied datacenter.
      * For example, given a default datacenter of `default-dc`, a folder of type
      * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`.
+     * `example-vm-folder`, the resulting path would be
+     * `/default-dc/vm/example-vm-folder`.
+     * 
+     * When working with nested datacenters, note that references to these folders in data sources
+     * will require the full path including the parent datacenter folder path, as shown in the
+     * nested datacenter example above.
      * 
      * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
      * what section of `path` you are modifying. If you are modifying the parent (so
@@ -87,8 +91,12 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
      * the root of the type of folder you are creating, and the supplied datacenter.
      * For example, given a default datacenter of `default-dc`, a folder of type
      * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `test-folder`, the resulting path would be
-     * `/default-dc/vm/test-folder`.
+     * `example-vm-folder`, the resulting path would be
+     * `/default-dc/vm/example-vm-folder`.
+     * 
+     * When working with nested datacenters, note that references to these folders in data sources
+     * will require the full path including the parent datacenter folder path, as shown in the
+     * nested datacenter example above.
      * 
      * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
      * what section of `path` you are modifying. If you are modifying the parent (so
@@ -101,14 +109,20 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -229,8 +243,12 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
          * the root of the type of folder you are creating, and the supplied datacenter.
          * For example, given a default datacenter of `default-dc`, a folder of type
          * `vm` (denoting a virtual machine folder), and a supplied folder of
-         * `test-folder`, the resulting path would be
-         * `/default-dc/vm/test-folder`.
+         * `example-vm-folder`, the resulting path would be
+         * `/default-dc/vm/example-vm-folder`.
+         * 
+         * When working with nested datacenters, note that references to these folders in data sources
+         * will require the full path including the parent datacenter folder path, as shown in the
+         * nested datacenter example above.
          * 
          * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
          * what section of `path` you are modifying. If you are modifying the parent (so
@@ -250,8 +268,12 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
          * the root of the type of folder you are creating, and the supplied datacenter.
          * For example, given a default datacenter of `default-dc`, a folder of type
          * `vm` (denoting a virtual machine folder), and a supplied folder of
-         * `test-folder`, the resulting path would be
-         * `/default-dc/vm/test-folder`.
+         * `example-vm-folder`, the resulting path would be
+         * `/default-dc/vm/example-vm-folder`.
+         * 
+         * When working with nested datacenters, note that references to these folders in data sources
+         * will require the full path including the parent datacenter folder path, as shown in the
+         * nested datacenter example above.
          * 
          * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
          * what section of `path` you are modifying. If you are modifying the parent (so
@@ -266,7 +288,10 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -277,7 +302,10 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -287,7 +315,10 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 

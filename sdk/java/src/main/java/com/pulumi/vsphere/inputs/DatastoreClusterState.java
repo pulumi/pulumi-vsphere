@@ -51,7 +51,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      * 
@@ -60,7 +60,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> datacenterId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      * 
@@ -70,26 +70,14 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, The provider will place a datastore cluster named
-     * `datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, The provider will place a datastore cluster named
-     * `datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+     * @return The name of the folder to locate the datastore cluster in.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -414,14 +402,22 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -514,7 +510,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param datacenterId The managed object ID of
+         * @param datacenterId The [managed object ID][docs-about-morefs] of
          * the datacenter to create the datastore cluster in. Forces a new resource if
          * changed.
          * 
@@ -527,7 +523,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param datacenterId The managed object ID of
+         * @param datacenterId The [managed object ID][docs-about-morefs] of
          * the datacenter to create the datastore cluster in. Forces a new resource if
          * changed.
          * 
@@ -539,13 +535,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param folder The relative path to a folder to put this datastore
-         * cluster in.  This is a path relative to the datacenter you are deploying the
-         * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-         * `foo/bar`, The provider will place a datastore cluster named
-         * `datastore-cluster-test` in a datastore folder located at
-         * `/dc1/datastore/foo/bar`, with the final inventory path being
-         * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+         * @param folder The name of the folder to locate the datastore cluster in.
          * 
          * @return builder
          * 
@@ -556,13 +546,7 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param folder The relative path to a folder to put this datastore
-         * cluster in.  This is a path relative to the datacenter you are deploying the
-         * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-         * `foo/bar`, The provider will place a datastore cluster named
-         * `datastore-cluster-test` in a datastore folder located at
-         * `/dc1/datastore/foo/bar`, with the final inventory path being
-         * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+         * @param folder The name of the folder to locate the datastore cluster in.
          * 
          * @return builder
          * 
@@ -1015,7 +999,11 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -1026,7 +1014,11 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -1036,7 +1028,11 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 

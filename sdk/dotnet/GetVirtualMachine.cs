@@ -13,10 +13,12 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-        /// existing virtual machine or template. The most common purpose is for finding
-        /// the UUID of a template to be used as the source for cloning to a new
-        /// `vsphere.VirtualMachine` resource. It also
+        /// existing virtual machine or template. The most common purpose is for finding the
+        /// UUID of a template to be used as the source for cloning to a new
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
         /// reads the guest ID so that can be supplied as well.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -81,10 +83,12 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-        /// existing virtual machine or template. The most common purpose is for finding
-        /// the UUID of a template to be used as the source for cloning to a new
-        /// `vsphere.VirtualMachine` resource. It also
+        /// existing virtual machine or template. The most common purpose is for finding the
+        /// UUID of a template to be used as the source for cloning to a new
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
         /// reads the guest ID so that can be supplied as well.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -149,10 +153,12 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-        /// existing virtual machine or template. The most common purpose is for finding
-        /// the UUID of a template to be used as the source for cloning to a new
-        /// `vsphere.VirtualMachine` resource. It also
+        /// existing virtual machine or template. The most common purpose is for finding the
+        /// UUID of a template to be used as the source for cloning to a new
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
         /// reads the guest ID so that can be supplied as well.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -264,11 +270,11 @@ namespace Pulumi.VSphere
         public string? CpuShareLevel { get; set; }
 
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the virtual machine is located in.
-        /// This can be omitted if the search path used in `Name` is an absolute path.
-        /// For default datacenters, use the `Id` attribute from an empty
-        /// `vsphere.Datacenter` data source.
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+        /// This can be omitted if the search path used in `Name` is an absolute path. For
+        /// default datacenters, use the `Id` attribute from an empty `vsphere.Datacenter`
+        /// data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -304,7 +310,10 @@ namespace Pulumi.VSphere
         public string? Firmware { get; set; }
 
         /// <summary>
-        /// The name of the virtual machine folder where the virtual machine is located. The `Name` argument is limited to 80 characters. If the `Name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `Folder` folder argument can be used.
+        /// The name of the virtual machine folder where the virtual
+        /// machine is located. The `Name` argument is limited to 80 characters. If the
+        /// `Name` argument includes the full path to the virtual machine and exceeds the
+        /// 80 characters limit, the `Folder` folder argument can be used.
         /// </summary>
         [Input("folder")]
         public string? Folder { get; set; }
@@ -358,9 +367,9 @@ namespace Pulumi.VSphere
         public string? Moid { get; set; }
 
         /// <summary>
-        /// The name of the virtual machine. This can be a name or
-        /// the full path relative to the datacenter. This is required if a UUID lookup
-        /// is not performed.
+        /// The name of the virtual machine. This can be a name or the
+        /// full path relative to the datacenter. This is required if a UUID lookup is not
+        /// performed.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -386,11 +395,17 @@ namespace Pulumi.VSphere
         /// The number of NVMe controllers to
         /// scan for disk attributes and controller types on. Default: `1`.
         /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
         /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-        /// use with this data source reside on the primary controller, and leave this
-        /// value at the default. See the `vsphere.VirtualMachine`
-        /// resource documentation for the significance of this setting, specifically the
-        /// additional requirements and notes for cloning section.
+        /// use with this data source reside on the primary controller, and leave this value
+        /// at the default. See the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+        /// documentation for the significance of this setting, specifically the
+        /// [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+        /// section.
+        /// 
+        /// [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
         /// </summary>
         [Input("nvmeControllerScanCount")]
         public int? NvmeControllerScanCount { get; set; }
@@ -439,8 +454,8 @@ namespace Pulumi.VSphere
         public string? ToolsUpgradePolicy { get; set; }
 
         /// <summary>
-        /// Specify this field for a UUID lookup, `Name` and `DatacenterId`
-        /// are not required if this is specified.
+        /// Specify this field for a UUID lookup, `Name` and
+        /// `DatacenterId` are not required if this is specified.
         /// </summary>
         [Input("uuid")]
         public string? Uuid { get; set; }
@@ -507,11 +522,11 @@ namespace Pulumi.VSphere
         public Input<string>? CpuShareLevel { get; set; }
 
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the virtual machine is located in.
-        /// This can be omitted if the search path used in `Name` is an absolute path.
-        /// For default datacenters, use the `Id` attribute from an empty
-        /// `vsphere.Datacenter` data source.
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+        /// This can be omitted if the search path used in `Name` is an absolute path. For
+        /// default datacenters, use the `Id` attribute from an empty `vsphere.Datacenter`
+        /// data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -547,7 +562,10 @@ namespace Pulumi.VSphere
         public Input<string>? Firmware { get; set; }
 
         /// <summary>
-        /// The name of the virtual machine folder where the virtual machine is located. The `Name` argument is limited to 80 characters. If the `Name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `Folder` folder argument can be used.
+        /// The name of the virtual machine folder where the virtual
+        /// machine is located. The `Name` argument is limited to 80 characters. If the
+        /// `Name` argument includes the full path to the virtual machine and exceeds the
+        /// 80 characters limit, the `Folder` folder argument can be used.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -601,9 +619,9 @@ namespace Pulumi.VSphere
         public Input<string>? Moid { get; set; }
 
         /// <summary>
-        /// The name of the virtual machine. This can be a name or
-        /// the full path relative to the datacenter. This is required if a UUID lookup
-        /// is not performed.
+        /// The name of the virtual machine. This can be a name or the
+        /// full path relative to the datacenter. This is required if a UUID lookup is not
+        /// performed.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -629,11 +647,17 @@ namespace Pulumi.VSphere
         /// The number of NVMe controllers to
         /// scan for disk attributes and controller types on. Default: `1`.
         /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
         /// &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-        /// use with this data source reside on the primary controller, and leave this
-        /// value at the default. See the `vsphere.VirtualMachine`
-        /// resource documentation for the significance of this setting, specifically the
-        /// additional requirements and notes for cloning section.
+        /// use with this data source reside on the primary controller, and leave this value
+        /// at the default. See the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+        /// documentation for the significance of this setting, specifically the
+        /// [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+        /// section.
+        /// 
+        /// [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
         /// </summary>
         [Input("nvmeControllerScanCount")]
         public Input<int>? NvmeControllerScanCount { get; set; }
@@ -682,8 +706,8 @@ namespace Pulumi.VSphere
         public Input<string>? ToolsUpgradePolicy { get; set; }
 
         /// <summary>
-        /// Specify this field for a UUID lookup, `Name` and `DatacenterId`
-        /// are not required if this is specified.
+        /// Specify this field for a UUID lookup, `Name` and
+        /// `DatacenterId` are not required if this is specified.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

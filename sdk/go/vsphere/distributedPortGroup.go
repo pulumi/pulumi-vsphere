@@ -15,7 +15,7 @@ import (
 // The `DistributedPortGroup` resource can be used to manage
 // distributed port groups connected to vSphere Distributed Switches (VDS).
 // A vSphere Distributed Switch can be managed by the
-// `DistributedVirtualSwitch` resource.
+// [`DistributedVirtualSwitch`][distributed-virtual-switch] resource.
 //
 // Distributed port groups can be used as networks for virtual machines, allowing
 // the virtual machines to use the networking supplied by a vSphere Distributed
@@ -28,21 +28,27 @@ import (
 // * For more information on distributed port groups, refer to the vSphere
 // [product documentation][ref-vsphere-dvportgroup].
 //
+// [distributed-virtual-switch]: /docs/providers/vsphere/r/distributed_virtual_switch.html
+// [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+// [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+//
 // > **NOTE:** This resource requires vCenter and is not available on
 // direct ESXi host connections.
 //
 // ## Example Usage
 //
 // The configuration below builds on the example given in the
-// `DistributedVirtualSwitch` resource by
+// [`DistributedVirtualSwitch`][distributed-virtual-switch] resource by
 // adding the `DistributedPortGroup` resource, attaching itself to the
 // vSphere Distributed Switch and assigning VLAN ID 1000.
 //
 // ### Overriding VDS policies
 //
-// All of the default port policies available in the
+// All of the [default port policies][vds-default-port-policies] available in the
 // `DistributedVirtualSwitch` resource can be overridden on the port
 // group level by specifying new settings for them.
+//
+// [vds-default-port-policies]: /docs/providers/vsphere/r/distributed_virtual_switch.html#default-port-group-policy-arguments
 //
 // As an example, we also take this example from the
 // `DistributedVirtualSwitch` resource where we manually specify our
@@ -113,9 +119,6 @@ import (
 //
 // datacenter.
 //
-// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
-// [ref-vsphere-dvportgroup]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
-//
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type DistributedPortGroup struct {
 	pulumi.CustomResourceState
@@ -145,7 +148,10 @@ type DistributedPortGroup struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
-	// value string to set for port group.
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -295,7 +301,10 @@ type distributedPortGroupState struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion *string `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
-	// value string to set for port group.
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -413,7 +422,10 @@ type DistributedPortGroupState struct {
 	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value string to set for port group.
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -532,7 +544,10 @@ type distributedPortGroupArgs struct {
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// Map of custom attribute ids to attribute
-	// value string to set for port group.
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -646,7 +661,10 @@ type DistributedPortGroupArgs struct {
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolPtrInput
 	// Map of custom attribute ids to attribute
-	// value string to set for port group.
+	// value string to set for port group. See [here][docs-setting-custom-attributes]
+	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 	//
 	// > **NOTE:** Custom attributes are not supported on direct ESXi host
 	// connections and require vCenter Server.
@@ -875,7 +893,10 @@ func (o DistributedPortGroupOutput) ConfigVersion() pulumi.StringOutput {
 }
 
 // Map of custom attribute ids to attribute
-// value string to set for port group.
+// value string to set for port group. See [here][docs-setting-custom-attributes]
+// for a reference on how to set values for custom attributes.
+//
+// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
 //
 // > **NOTE:** Custom attributes are not supported on direct ESXi host
 // connections and require vCenter Server.

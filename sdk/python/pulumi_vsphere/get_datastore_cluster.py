@@ -85,9 +85,16 @@ def get_datastore_cluster(datacenter_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreClusterResult:
     """
     The `DatastoreCluster` data source can be used to discover the ID of a
-    vSphere datastore cluster object. This can then be used with resources or data sources
-    that require a datastore. For example, to assign datastores using the
-    `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
+    vSphere datastore cluster object. This can then be used with resources or data
+    sources that require a datastore. For example, to assign datastores using the
+    [`NasDatastore`][docs-nas-datastore-resource] or
+    [`VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+    virtual machines in using the
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+    [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -101,8 +108,8 @@ def get_datastore_cluster(datacenter_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference
-           ID of the datacenter the datastore cluster is located in.
+    :param _builtins.str datacenter_id: The [managed object reference
+           ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the id attribute from an empty
            `Datacenter` data source.
@@ -124,9 +131,16 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[_
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreClusterResult]:
     """
     The `DatastoreCluster` data source can be used to discover the ID of a
-    vSphere datastore cluster object. This can then be used with resources or data sources
-    that require a datastore. For example, to assign datastores using the
-    `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
+    vSphere datastore cluster object. This can then be used with resources or data
+    sources that require a datastore. For example, to assign datastores using the
+    [`NasDatastore`][docs-nas-datastore-resource] or
+    [`VmfsDatastore`][docs-vmfs-datastore-resource] resources, or to create
+    virtual machines in using the
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+    [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -140,8 +154,8 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[_
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference
-           ID of the datacenter the datastore cluster is located in.
+    :param _builtins.str datacenter_id: The [managed object reference
+           ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the id attribute from an empty
            `Datacenter` data source.

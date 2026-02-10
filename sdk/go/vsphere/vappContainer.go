@@ -212,16 +212,20 @@ type VappContainer struct {
 	MemoryShares pulumi.IntOutput `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the vApp container's parent folder.
 	ParentFolderId pulumi.StringPtrOutput `pulumi:"parentFolderId"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringOutput `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -305,16 +309,20 @@ type vappContainerState struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name *string `pulumi:"name"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the vApp container's parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -366,16 +374,20 @@ type VappContainerState struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the vApp container.
 	Name pulumi.StringPtrInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the vApp container's parent folder.
 	ParentFolderId pulumi.StringPtrInput
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -431,16 +443,20 @@ type vappContainerArgs struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name *string `pulumi:"name"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the vApp container's parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId string `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -493,16 +509,20 @@ type VappContainerArgs struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the vApp container.
 	Name pulumi.StringPtrInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the vApp container's parent folder.
 	ParentFolderId pulumi.StringPtrInput
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -676,13 +696,13 @@ func (o VappContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The managed object ID of
+// The [managed object ID][docs-about-morefs] of
 // the vApp container's parent folder.
 func (o VappContainerOutput) ParentFolderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.StringPtrOutput { return v.ParentFolderId }).(pulumi.StringPtrOutput)
 }
 
-// The managed object ID
+// The [managed object ID][docs-about-morefs]
 // of the parent resource pool. This can be the root resource pool for a cluster
 // or standalone host, or a resource pool itself. When moving a vApp container
 // from one parent resource pool to another, both must share a common root
@@ -691,7 +711,11 @@ func (o VappContainerOutput) ParentResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.StringOutput { return v.ParentResourcePoolId }).(pulumi.StringOutput)
 }
 
-// The IDs of any tags to attach to this resource.
+// The IDs of any tags to attach to this resource. See
+// [here][docs-applying-tags] for a reference on how to apply tags.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 func (o VappContainerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VappContainer) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -13,8 +13,10 @@ import (
 
 // The `getVmfsDisks` data source can be used to discover the storage
 // devices available on an ESXi host. This data source can be combined with the
-// `VmfsDatastore` resource to create VMFS
+// [`VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
 // datastores based off a set of discovered disks.
+//
+// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 //
 // ## Example Usage
 //
@@ -75,8 +77,10 @@ type GetVmfsDisksArgs struct {
 	// will have any specific storage devices added to it that may affect the order of
 	// the output `disks` attribute below, which is lexicographically sorted.
 	Filter *string `pulumi:"filter"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to look for disks on.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	HostSystemId string `pulumi:"hostSystemId"`
 	// Whether or not to rescan storage adapters before
 	// searching for disks. This may lengthen the time it takes to perform the
@@ -114,8 +118,10 @@ type GetVmfsDisksOutputArgs struct {
 	// will have any specific storage devices added to it that may affect the order of
 	// the output `disks` attribute below, which is lexicographically sorted.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to look for disks on.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	HostSystemId pulumi.StringInput `pulumi:"hostSystemId"`
 	// Whether or not to rescan storage adapters before
 	// searching for disks. This may lengthen the time it takes to perform the

@@ -11,11 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `DistributedVirtualSwitch` data source can be used to discover
-// the ID and uplink data of a of a vSphere distributed switch (VDS). This
-// can then be used with resources or data sources that require a VDS, such as the
-// `DistributedPortGroup` resource, for which
+// The `DistributedVirtualSwitch` data source can be used to discover the
+// ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+// used with resources or data sources that require a VDS, such as the
+// [`DistributedPortGroup`][distributed-port-group] resource, for which
 // an example is shown below.
+//
+// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
 //
 // > **NOTE:** This data source requires vCenter Server and is not available on
 // direct ESXi host connections.
@@ -82,10 +84,11 @@ func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *LookupDistributed
 
 // A collection of arguments for invoking getDistributedVirtualSwitch.
 type LookupDistributedVirtualSwitchArgs struct {
-	// The managed object reference ID
-	// of the datacenter the VDS is located in. This can be omitted if the search
-	// path used in `name` is an absolute path. For default datacenters, use the `id`
-	// attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+	// located in. This can be omitted if the search path used in `name` is an
+	// absolute path. For default datacenters, use the `id` attribute from an empty
+	// `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the VDS. This can be a name or path.
 	Name string `pulumi:"name"`
@@ -97,9 +100,9 @@ type LookupDistributedVirtualSwitchResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
-	// The list of the uplinks on this vSphere distributed switch, as per the
-	// `uplinks` argument to the
-	// `DistributedVirtualSwitch`
+	// The list of the uplinks on this vSphere distributed switch, as per
+	// the [`uplinks`][distributed-virtual-switch-uplinks] argument to the
+	// [`DistributedVirtualSwitch`][distributed-virtual-switch-resource]
 	// resource.
 	Uplinks []string `pulumi:"uplinks"`
 }
@@ -115,10 +118,11 @@ func LookupDistributedVirtualSwitchOutput(ctx *pulumi.Context, args LookupDistri
 
 // A collection of arguments for invoking getDistributedVirtualSwitch.
 type LookupDistributedVirtualSwitchOutputArgs struct {
-	// The managed object reference ID
-	// of the datacenter the VDS is located in. This can be omitted if the search
-	// path used in `name` is an absolute path. For default datacenters, use the `id`
-	// attribute from an empty `Datacenter` data source.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+	// located in. This can be omitted if the search path used in `name` is an
+	// absolute path. For default datacenters, use the `id` attribute from an empty
+	// `Datacenter` data source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name of the VDS. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -156,9 +160,9 @@ func (o LookupDistributedVirtualSwitchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of the uplinks on this vSphere distributed switch, as per the
-// `uplinks` argument to the
-// `DistributedVirtualSwitch`
+// The list of the uplinks on this vSphere distributed switch, as per
+// the [`uplinks`][distributed-virtual-switch-uplinks] argument to the
+// [`DistributedVirtualSwitch`][distributed-virtual-switch-resource]
 // resource.
 func (o LookupDistributedVirtualSwitchResultOutput) Uplinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) []string { return v.Uplinks }).(pulumi.StringArrayOutput)

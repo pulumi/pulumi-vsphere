@@ -18,6 +18,8 @@ namespace Pulumi.VSphere
     /// 
     /// The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
     /// 
+    /// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -122,7 +124,7 @@ namespace Pulumi.VSphere
         public Output<Outputs.ContentLibraryPublication> Publication { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object reference ID of the datastore on which to store the content library items.
+        /// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         /// </summary>
         [Output("storageBackings")]
         public Output<ImmutableArray<string>> StorageBackings { get; private set; } = null!;
@@ -201,7 +203,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _storageBackings;
 
         /// <summary>
-        /// The managed object reference ID of the datastore on which to store the content library items.
+        /// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         /// </summary>
         public InputList<string> StorageBackings
         {
@@ -245,7 +247,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _storageBackings;
 
         /// <summary>
-        /// The managed object reference ID of the datastore on which to store the content library items.
+        /// The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         /// </summary>
         public InputList<string> StorageBackings
         {

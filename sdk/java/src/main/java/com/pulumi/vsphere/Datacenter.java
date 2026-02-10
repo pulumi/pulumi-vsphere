@@ -22,7 +22,9 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Create datacenter on the root folder
+ * ### S
+ * 
+ * **Create datacenter on the root folder:**
  * 
  * <pre>
  * {@code
@@ -55,7 +57,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Create datacenter on a subfolder
+ * **Create datacenter on a subfolder:**
  * 
  * <pre>
  * {@code
@@ -153,14 +155,14 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.folder);
     }
     /**
-     * Managed object ID of this datacenter.
+     * [Managed object ID][docs-about-morefs] of this datacenter.
      * 
      */
     @Export(name="moid", refs={String.class}, tree="[0]")
     private Output<String> moid;
 
     /**
-     * @return Managed object ID of this datacenter.
+     * @return [Managed object ID][docs-about-morefs] of this datacenter.
      * 
      */
     public Output<String> moid() {
@@ -183,14 +185,20 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Output<Optional<List<String>>> tags() {

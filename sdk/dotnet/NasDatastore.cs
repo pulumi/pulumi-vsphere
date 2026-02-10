@@ -10,21 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// The `vsphere.NasDatastore` resource can be used to create and manage NAS
-    /// datastores on an ESXi host or a set of hosts. The resource supports mounting
-    /// NFS v3 and v4.1 shares to be used as datastores.
-    /// 
-    /// &gt; **NOTE:** Unlike `vsphere.VmfsDatastore`, a NAS
-    /// datastore is only mounted on the hosts you choose to mount it on. To mount on
-    /// multiple hosts, you must specify each host that you want to add in the
-    /// `HostSystemIds` argument.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// The following example would set up a NFS v3 share on 3 hosts connected through
-    /// vCenter in the same datacenter - `Esxi1`, `Esxi2`, and `Esxi3`. The remote host
-    /// is named `Nfs` and has `/export/test` exported.
-    /// 
     /// ## Import
     /// 
     /// An existing NAS datastore can be imported into this resource via
@@ -75,8 +60,11 @@ namespace Pulumi.VSphere
         public Output<int> Capacity { get; private set; } = null!;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute 
-        /// value strings to set on datasource resource.
+        /// Map of custom attribute ids to attribute
+        /// value strings to set on resource. See [here][docs-setting-custom-attributes]
+        /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
         /// and require vCenter.
@@ -85,21 +73,15 @@ namespace Pulumi.VSphere
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object
-        /// ID of a datastore cluster to put this datastore in.
+        /// The [managed object
+        /// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         /// Conflicts with `Folder`.
         /// </summary>
         [Output("datastoreClusterId")]
         public Output<string?> DatastoreClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The relative path to a folder to put this datastore in.
-        /// This is a path relative to the datacenter you are deploying the datastore to.
-        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
-        /// The provider will place a datastore named `Test` in a datastore folder
-        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        /// `/dc1/datastore/foo/bar/test`. Conflicts with
-        /// `DatastoreClusterId`.
+        /// The path to the datastore folder to put the datastore in.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -111,7 +93,7 @@ namespace Pulumi.VSphere
         public Output<int> FreeSpace { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object IDs of
+        /// The [managed object IDs][docs-about-morefs] of
         /// the hosts to mount the datastore on.
         /// </summary>
         [Output("hostSystemIds")]
@@ -168,10 +150,11 @@ namespace Pulumi.VSphere
         public Output<string?> SecurityType { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
         /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -256,8 +239,11 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute 
-        /// value strings to set on datasource resource.
+        /// Map of custom attribute ids to attribute
+        /// value strings to set on resource. See [here][docs-setting-custom-attributes]
+        /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
         /// and require vCenter.
@@ -269,21 +255,15 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The managed object
-        /// ID of a datastore cluster to put this datastore in.
+        /// The [managed object
+        /// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         /// Conflicts with `Folder`.
         /// </summary>
         [Input("datastoreClusterId")]
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The relative path to a folder to put this datastore in.
-        /// This is a path relative to the datacenter you are deploying the datastore to.
-        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
-        /// The provider will place a datastore named `Test` in a datastore folder
-        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        /// `/dc1/datastore/foo/bar/test`. Conflicts with
-        /// `DatastoreClusterId`.
+        /// The path to the datastore folder to put the datastore in.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -292,7 +272,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The managed object IDs of
+        /// The [managed object IDs][docs-about-morefs] of
         /// the hosts to mount the datastore on.
         /// </summary>
         public InputList<string> HostSystemIds
@@ -341,10 +321,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
         /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         public InputList<string> Tags
         {
@@ -394,8 +375,11 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute 
-        /// value strings to set on datasource resource.
+        /// Map of custom attribute ids to attribute
+        /// value strings to set on resource. See [here][docs-setting-custom-attributes]
+        /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
         /// and require vCenter.
@@ -407,21 +391,15 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The managed object
-        /// ID of a datastore cluster to put this datastore in.
+        /// The [managed object
+        /// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
         /// Conflicts with `Folder`.
         /// </summary>
         [Input("datastoreClusterId")]
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The relative path to a folder to put this datastore in.
-        /// This is a path relative to the datacenter you are deploying the datastore to.
-        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
-        /// The provider will place a datastore named `Test` in a datastore folder
-        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-        /// `/dc1/datastore/foo/bar/test`. Conflicts with
-        /// `DatastoreClusterId`.
+        /// The path to the datastore folder to put the datastore in.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -436,7 +414,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The managed object IDs of
+        /// The [managed object IDs][docs-about-morefs] of
         /// the hosts to mount the datastore on.
         /// </summary>
         public InputList<string> HostSystemIds
@@ -505,10 +483,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
         /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         public InputList<string> Tags
         {

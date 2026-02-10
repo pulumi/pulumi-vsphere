@@ -12,18 +12,31 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere.ComputeClusterHostGroup` resource can be used to manage groups
     /// of hosts in a cluster, either created by the
-    /// `vsphere.ComputeCluster` resource or looked up
-    /// by the `vsphere.ComputeCluster` data source.
+    /// [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+    /// by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+    /// 
+    /// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
     /// 
     /// This resource mainly serves as an input to the
-    /// `vsphere.ComputeClusterVmHostRule`
+    /// [`vsphere.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
     /// resource - see the documentation for that resource for further details on how
     /// to use host groups.
+    /// 
+    /// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
     /// 
     /// ## Example Usage
+    /// 
+    /// The example below is the exact same configuration as the
+    /// [example][tf-vsphere-cluster-resource-example] in the
+    /// [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource, but in
+    /// addition, it creates a host group with the same hosts that get put into the
+    /// cluster.
+    /// 
+    /// [tf-vsphere-cluster-resource-example]: /docs/providers/vsphere/r/compute_cluster.html#example-usage
     /// 
     /// ## Import
     /// 
@@ -49,21 +62,25 @@ namespace Pulumi.VSphere
     public partial class ComputeClusterHostGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Output("computeClusterId")]
         public Output<string> ComputeClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object IDs of
+        /// The [managed object IDs][docs-about-morefs] of
         /// the hosts to put in the cluster.
         /// 
         /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
         /// `Name` argument) is shared with the
-        /// `vsphere.ComputeClusterVmGroup`
+        /// [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         /// resource. Make sure your names are unique across both resources.
+        /// 
+        /// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         /// </summary>
         [Output("hostSystemIds")]
         public Output<ImmutableArray<string>> HostSystemIds { get; private set; } = null!;
@@ -122,9 +139,11 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterHostGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId", required: true)]
         public Input<string> ComputeClusterId { get; set; } = null!;
@@ -133,13 +152,15 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The managed object IDs of
+        /// The [managed object IDs][docs-about-morefs] of
         /// the hosts to put in the cluster.
         /// 
         /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
         /// `Name` argument) is shared with the
-        /// `vsphere.ComputeClusterVmGroup`
+        /// [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         /// resource. Make sure your names are unique across both resources.
+        /// 
+        /// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         /// </summary>
         public InputList<string> HostSystemIds
         {
@@ -163,9 +184,11 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterHostGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId")]
         public Input<string>? ComputeClusterId { get; set; }
@@ -174,13 +197,15 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The managed object IDs of
+        /// The [managed object IDs][docs-about-morefs] of
         /// the hosts to put in the cluster.
         /// 
         /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
         /// `Name` argument) is shared with the
-        /// `vsphere.ComputeClusterVmGroup`
+        /// [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         /// resource. Make sure your names are unique across both resources.
+        /// 
+        /// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         /// </summary>
         public InputList<string> HostSystemIds
         {

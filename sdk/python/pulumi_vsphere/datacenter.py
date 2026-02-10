@@ -38,7 +38,10 @@ class DatacenterArgs:
                Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -99,7 +102,10 @@ class DatacenterArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -129,10 +135,13 @@ class _DatacenterState:
                and require vCenter.
         :param pulumi.Input[_builtins.str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
-        :param pulumi.Input[_builtins.str] moid: Managed object ID of this datacenter.
+        :param pulumi.Input[_builtins.str] moid: [Managed object ID][docs-about-morefs] of this datacenter.
         :param pulumi.Input[_builtins.str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -182,7 +191,7 @@ class _DatacenterState:
     @pulumi.getter
     def moid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Managed object ID of this datacenter.
+        [Managed object ID][docs-about-morefs] of this datacenter.
         """
         return pulumi.get(self, "moid")
 
@@ -207,7 +216,10 @@ class _DatacenterState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -233,7 +245,9 @@ class Datacenter(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Create datacenter on the root folder
+        ### S
+
+        **Create datacenter on the root folder:**
 
         ```python
         import pulumi
@@ -242,7 +256,7 @@ class Datacenter(pulumi.CustomResource):
         prod_datacenter = vsphere.Datacenter("prod_datacenter", name="my_prod_datacenter")
         ```
 
-        ### Create datacenter on a subfolder
+        **Create datacenter on a subfolder:**
 
         ```python
         import pulumi
@@ -282,7 +296,10 @@ class Datacenter(pulumi.CustomResource):
                Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         ...
     @overload
@@ -296,7 +313,9 @@ class Datacenter(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Create datacenter on the root folder
+        ### S
+
+        **Create datacenter on the root folder:**
 
         ```python
         import pulumi
@@ -305,7 +324,7 @@ class Datacenter(pulumi.CustomResource):
         prod_datacenter = vsphere.Datacenter("prod_datacenter", name="my_prod_datacenter")
         ```
 
-        ### Create datacenter on a subfolder
+        **Create datacenter on a subfolder:**
 
         ```python
         import pulumi
@@ -396,10 +415,13 @@ class Datacenter(pulumi.CustomResource):
                and require vCenter.
         :param pulumi.Input[_builtins.str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
-        :param pulumi.Input[_builtins.str] moid: Managed object ID of this datacenter.
+        :param pulumi.Input[_builtins.str] moid: [Managed object ID][docs-about-morefs] of this datacenter.
         :param pulumi.Input[_builtins.str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -441,7 +463,7 @@ class Datacenter(pulumi.CustomResource):
     @pulumi.getter
     def moid(self) -> pulumi.Output[_builtins.str]:
         """
-        Managed object ID of this datacenter.
+        [Managed object ID][docs-about-morefs] of this datacenter.
         """
         return pulumi.get(self, "moid")
 
@@ -458,7 +480,10 @@ class Datacenter(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 

@@ -15,55 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `vsphere.CustomAttribute` resource can be used to create and manage custom
- * attributes, which allow users to associate user-specific meta-information with
- * vSphere managed objects. Custom attribute values must be strings and are stored
- * on the vCenter Server and not the managed object.
- * 
- * For more information about custom attributes, click [here][ext-custom-attributes].
- * 
- * [ext-custom-attributes]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/custom-attributes-in-the-vsphere-client-host-management.html
- * 
- * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
- * and require vCenter Server.
- * 
- * ## Example Usage
- * 
- * This example creates a custom attribute named `test-attribute`. The
- * resulting custom attribute can be assigned to VMs only.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.vsphere.CustomAttribute;
- * import com.pulumi.vsphere.CustomAttributeArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var attribute = new CustomAttribute("attribute", CustomAttributeArgs.builder()
- *             .name("test-attribute")
- *             .managedObjectType("VirtualMachine")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * An existing custom attribute can be imported into this resource

@@ -12,8 +12,10 @@ import (
 )
 
 // The `Host` data source can be used to discover the ID of an ESXi host.
-// This can then be used with resources or data sources that require an ESX
-// host's managed object reference ID.
+// This can then be used with resources or data sources that require an ESX host's
+// [managed object reference ID][docs-about-morefs].
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 //
 // ## Example Usage
 //
@@ -59,11 +61,14 @@ func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getHost.
 type LookupHostArgs struct {
-	// The managed object reference ID
-	// of a vSphere datacenter object.
+	// The
+	// [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+	// object.
 	DatacenterId string `pulumi:"datacenterId"`
-	// The name of the ESXI host. This can be a name or path.
-	// Can be omitted if there is only one host in your inventory.
+	// The name of the ESXI host. This can be a name or path. Can
+	// be omitted if there is only one host in your inventory.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	//
 	// > **NOTE:** When used against an ESXi host directly, this data source _always_
 	// returns the ESXi host's object ID, regardless of what is entered into `name`.
@@ -76,7 +81,7 @@ type LookupHostResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
-	// The managed object ID of the ESXi
+	// The [managed object ID][docs-about-morefs] of the ESXi
 	// host's root resource pool.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
 }
@@ -92,11 +97,14 @@ func LookupHostOutput(ctx *pulumi.Context, args LookupHostOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getHost.
 type LookupHostOutputArgs struct {
-	// The managed object reference ID
-	// of a vSphere datacenter object.
+	// The
+	// [managed object reference ID][docs-about-morefs] of a vSphere datacenter
+	// object.
 	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
-	// The name of the ESXI host. This can be a name or path.
-	// Can be omitted if there is only one host in your inventory.
+	// The name of the ESXI host. This can be a name or path. Can
+	// be omitted if there is only one host in your inventory.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	//
 	// > **NOTE:** When used against an ESXi host directly, this data source _always_
 	// returns the ESXi host's object ID, regardless of what is entered into `name`.
@@ -135,7 +143,7 @@ func (o LookupHostResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHostResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The managed object ID of the ESXi
+// The [managed object ID][docs-about-morefs] of the ESXi
 // host's root resource pool.
 func (o LookupHostResultOutput) ResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.ResourcePoolId }).(pulumi.StringOutput)

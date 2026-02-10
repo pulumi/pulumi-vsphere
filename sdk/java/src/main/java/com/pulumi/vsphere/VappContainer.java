@@ -396,7 +396,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the vApp container&#39;s parent folder.
      * 
      */
@@ -404,7 +404,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> parentFolderId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the vApp container&#39;s parent folder.
      * 
      */
@@ -412,7 +412,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parentFolderId);
     }
     /**
-     * The managed object ID
+     * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a vApp container
      * from one parent resource pool to another, both must share a common root
@@ -423,7 +423,7 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
     private Output<String> parentResourcePoolId;
 
     /**
-     * @return The managed object ID
+     * @return The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a vApp container
      * from one parent resource pool to another, both must share a common root
@@ -434,14 +434,22 @@ public class VappContainer extends com.pulumi.resources.CustomResource {
         return this.parentResourcePoolId;
     }
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Output<Optional<List<String>>> tags() {

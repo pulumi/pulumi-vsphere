@@ -12,11 +12,12 @@ namespace Pulumi.VSphere
     public static class GetDatastore
     {
         /// <summary>
-        /// The `vsphere.getDatastore` data source can be used to discover the ID of a
-        /// vSphere datastore object. This can then be used with resources or data sources
-        /// that require a datastore. For example, to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+        /// datastore object. This can then be used with resources or data sources that
+        /// require a datastore. For example, to create virtual machines in using the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
         /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -46,11 +47,12 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getDatastore` data source can be used to discover the ID of a
-        /// vSphere datastore object. This can then be used with resources or data sources
-        /// that require a datastore. For example, to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+        /// datastore object. This can then be used with resources or data sources that
+        /// require a datastore. For example, to create virtual machines in using the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
         /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -80,11 +82,12 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getDatastore` data source can be used to discover the ID of a
-        /// vSphere datastore object. This can then be used with resources or data sources
-        /// that require a datastore. For example, to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource.
+        /// The `vsphere.getDatastore` data source can be used to discover the ID of a vSphere
+        /// datastore object. This can then be used with resources or data sources that
+        /// require a datastore. For example, to create virtual machines in using the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource.
         /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// ## Example Usage
         /// 
@@ -118,10 +121,11 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the datastore is located in. This can be omitted if the
-        /// search path used in `Name` is an absolute path. For default datacenters, use
-        /// the `Id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the
+        /// datastore is located in. This can be omitted if the search path used in `Name`
+        /// is an absolute path. For default datacenters, use the `Id` attribute from an
+        /// empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -155,10 +159,11 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the datastore is located in. This can be omitted if the
-        /// search path used in `Name` is an absolute path. For default datacenters, use
-        /// the `Id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the
+        /// datastore is located in. This can be omitted if the search path used in `Name`
+        /// is an absolute path. For default datacenters, use the `Id` attribute from an
+        /// empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }

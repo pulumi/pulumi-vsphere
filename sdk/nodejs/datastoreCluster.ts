@@ -24,8 +24,10 @@ import * as utilities from "./utilities";
  *
  * The following example sets up a datastore cluster and enables Storage DRS with
  * the default settings. It then creates two NAS datastores using the
- * `vsphere.NasDatastore` resource and assigns them to
+ * [`vsphere.NasDatastore` resource][ref-tf-nas-datastore] and assigns them to
  * the datastore cluster.
+ *
+ * [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,25 +45,25 @@ import * as utilities from "./utilities";
  *     datacenterId: _arg0_.id,
  * })));
  * const datastoreCluster = new vsphere.DatastoreCluster("datastore_cluster", {
- *     name: "datastore-cluster-test",
+ *     name: "pulumi-datastore-cluster-test",
  *     datacenterId: datacenter.then(datacenter => datacenter.id),
  *     sdrsEnabled: true,
  * });
  * const datastore1 = new vsphere.NasDatastore("datastore1", {
- *     name: "datastore-test1",
- *     hostSystemIds: [esxiHosts.map(__item => __item.id)],
+ *     name: "pulumi-datastore-test1",
+ *     hostSystemIds: [hostsGetHost.map(__item => __item.id)],
  *     datastoreClusterId: datastoreCluster.id,
  *     type: "NFS",
  *     remoteHosts: ["nfs"],
- *     remotePath: "/export/test1",
+ *     remotePath: "/export/terraform-test1",
  * });
  * const datastore2 = new vsphere.NasDatastore("datastore2", {
- *     name: "datastore-test2",
- *     hostSystemIds: [esxiHosts.map(__item => __item.id)],
+ *     name: "pulumi-datastore-test2",
+ *     hostSystemIds: [hostsGetHost.map(__item => __item.id)],
  *     datastoreClusterId: datastoreCluster.id,
  *     type: "NFS",
  *     remoteHosts: ["nfs"],
- *     remotePath: "/export/test2",
+ *     remotePath: "/export/terraform-test2",
  * });
  * ```
  *
@@ -122,19 +124,13 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
     declare public readonly datacenterId: pulumi.Output<string>;
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, The provider will place a datastore cluster named
-     * `datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      */
     declare public readonly folder: pulumi.Output<string | undefined>;
     /**
@@ -223,7 +219,11 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     declare public readonly sdrsVmEvacuationAutomationLevel: pulumi.Output<string | undefined>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
 
@@ -318,19 +318,13 @@ export interface DatastoreClusterState {
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
     datacenterId?: pulumi.Input<string>;
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, The provider will place a datastore cluster named
-     * `datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      */
     folder?: pulumi.Input<string>;
     /**
@@ -419,7 +413,11 @@ export interface DatastoreClusterState {
      */
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -441,19 +439,13 @@ export interface DatastoreClusterArgs {
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
     datacenterId: pulumi.Input<string>;
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, The provider will place a datastore cluster named
-     * `datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      */
     folder?: pulumi.Input<string>;
     /**
@@ -542,7 +534,11 @@ export interface DatastoreClusterArgs {
      */
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -75,8 +75,7 @@ type VirtualMachine struct {
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
 	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
-	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
+	DatastoreId      pulumi.StringOutput `pulumi:"datastoreId"`
 	DefaultIpAddress pulumi.StringOutput `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on this virtual machine.
 	Disks VirtualMachineDiskArrayOutput `pulumi:"disks"`
@@ -131,7 +130,7 @@ type VirtualMachine struct {
 	MemoryShareLevel pulumi.StringPtrOutput `pulumi:"memoryShareLevel"`
 	// The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
 	MigrateWaitTimeout pulumi.IntPtrOutput `pulumi:"migrateWaitTimeout"`
-	// The managed object reference ID of the created virtual machine.
+	// The [managed object reference ID][docs-about-morefs] of the created virtual machine.
 	Moid pulumi.StringOutput `pulumi:"moid"`
 	// The name of this virtual machine.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -281,8 +280,7 @@ type virtualMachineState struct {
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-	DatastoreId *string `pulumi:"datastoreId"`
-	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
+	DatastoreId      *string `pulumi:"datastoreId"`
 	DefaultIpAddress *string `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on this virtual machine.
 	Disks []VirtualMachineDisk `pulumi:"disks"`
@@ -337,7 +335,7 @@ type virtualMachineState struct {
 	MemoryShareLevel *string `pulumi:"memoryShareLevel"`
 	// The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
 	MigrateWaitTimeout *int `pulumi:"migrateWaitTimeout"`
-	// The managed object reference ID of the created virtual machine.
+	// The [managed object reference ID][docs-about-morefs] of the created virtual machine.
 	Moid *string `pulumi:"moid"`
 	// The name of this virtual machine.
 	Name *string `pulumi:"name"`
@@ -455,8 +453,7 @@ type VirtualMachineState struct {
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId pulumi.StringPtrInput
 	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-	DatastoreId pulumi.StringPtrInput
-	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
+	DatastoreId      pulumi.StringPtrInput
 	DefaultIpAddress pulumi.StringPtrInput
 	// A specification for a virtual disk device on this virtual machine.
 	Disks VirtualMachineDiskArrayInput
@@ -511,7 +508,7 @@ type VirtualMachineState struct {
 	MemoryShareLevel pulumi.StringPtrInput
 	// The amount of time, in minutes, to wait for a vMotion operation to complete before failing.
 	MigrateWaitTimeout pulumi.IntPtrInput
-	// The managed object reference ID of the created virtual machine.
+	// The [managed object reference ID][docs-about-morefs] of the created virtual machine.
 	Moid pulumi.StringPtrInput
 	// The name of this virtual machine.
 	Name pulumi.StringPtrInput
@@ -1084,7 +1081,6 @@ func (o VirtualMachineOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
 
-// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 func (o VirtualMachineOutput) DefaultIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DefaultIpAddress }).(pulumi.StringOutput)
 }
@@ -1223,7 +1219,7 @@ func (o VirtualMachineOutput) MigrateWaitTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.MigrateWaitTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The managed object reference ID of the created virtual machine.
+// The [managed object reference ID][docs-about-morefs] of the created virtual machine.
 func (o VirtualMachineOutput) Moid() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Moid }).(pulumi.StringOutput)
 }

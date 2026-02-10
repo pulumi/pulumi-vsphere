@@ -16,8 +16,8 @@ public final class GetDatastoreClusterPlainArgs extends com.pulumi.resources.Inv
     public static final GetDatastoreClusterPlainArgs Empty = new GetDatastoreClusterPlainArgs();
 
     /**
-     * The managed object reference
-     * ID of the datacenter the datastore cluster is located in.
+     * The [managed object reference
+     * ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
      * This can be omitted if the search path used in `name` is an absolute path.
      * For default datacenters, use the id attribute from an empty
      * `vsphere.Datacenter` data source.
@@ -27,8 +27,8 @@ public final class GetDatastoreClusterPlainArgs extends com.pulumi.resources.Inv
     private @Nullable String datacenterId;
 
     /**
-     * @return The managed object reference
-     * ID of the datacenter the datastore cluster is located in.
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
      * This can be omitted if the search path used in `name` is an absolute path.
      * For default datacenters, use the id attribute from an empty
      * `vsphere.Datacenter` data source.
@@ -79,8 +79,8 @@ public final class GetDatastoreClusterPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param datacenterId The managed object reference
-         * ID of the datacenter the datastore cluster is located in.
+         * @param datacenterId The [managed object reference
+         * ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
          * This can be omitted if the search path used in `name` is an absolute path.
          * For default datacenters, use the id attribute from an empty
          * `vsphere.Datacenter` data source.

@@ -12,16 +12,22 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere.ComputeClusterVmHostRule` resource can be used to manage
     /// VM-to-host rules in a cluster, either created by the
-    /// `vsphere.ComputeCluster` resource or looked up
-    /// by the `vsphere.ComputeCluster` data source.
+    /// [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+    /// by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+    /// 
+    /// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
     /// 
     /// This resource can create both _affinity rules_, where virtual machines run on
     /// specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
     /// outside of the ones specified in the rule. Virtual machines and hosts are
     /// supplied via groups, which can be managed via the
-    /// `vsphere.ComputeClusterVmGroup` and
-    /// `vsphere.ComputeClusterHostGroup`
+    /// [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+    /// [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
     /// resources.
+    /// 
+    /// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
+    /// [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
@@ -29,19 +35,22 @@ namespace Pulumi.VSphere
     /// ## Example Usage
     /// 
     /// The example below creates a virtual machine in a cluster using the
-    /// `vsphere.VirtualMachine` resource in a cluster
-    /// looked up by the `vsphere.ComputeCluster`
+    /// [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+    /// looked up by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source]
     /// data source. It then creates a group with this virtual machine. It also creates
     /// a host group off of the host looked up via the
-    /// `vsphere.Host` data source. Finally, this
+    /// [`vsphere.Host`][tf-vsphere-host-data-source] data source. Finally, this
     /// virtual machine is configured to run specifically on that host via a
     /// `vsphere.ComputeClusterVmHostRule` resource.
+    /// 
+    /// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    /// [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
     /// 
     /// &gt; Note how `VmGroupName` and
     /// `AffinityHostGroupName` are sourced off of the
     /// `Name` attributes from the
-    /// `vsphere.ComputeClusterVmGroup` and
-    /// `vsphere.ComputeClusterHostGroup`
+    /// [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+    /// [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
     /// resources. This is to ensure that the rule is not created before the groups
     /// exist, which may not possibly happen in the event that the names came from a
     /// "static" source such as a variable.
@@ -85,7 +94,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
-    ///         Name = "test",
+    ///         Name = "pulumi-test",
     ///         ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
     ///         DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
     ///         NumCpus = 2,
@@ -110,7 +119,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var clusterVmGroup = new VSphere.ComputeClusterVmGroup("cluster_vm_group", new()
     ///     {
-    ///         Name = "test-cluster-vm-group",
+    ///         Name = "pulumi-test-cluster-vm-group",
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         VirtualMachineIds = new[]
     ///         {
@@ -120,7 +129,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var clusterHostGroup = new VSphere.ComputeClusterHostGroup("cluster_host_group", new()
     ///     {
-    ///         Name = "test-cluster-vm-group",
+    ///         Name = "pulumi-test-cluster-vm-group",
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         HostSystemIds = new[]
     ///         {
@@ -131,7 +140,7 @@ namespace Pulumi.VSphere
     ///     var clusterVmHostRule = new VSphere.ComputeClusterVmHostRule("cluster_vm_host_rule", new()
     ///     {
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
-    ///         Name = "test-cluster-vm-host-rule",
+    ///         Name = "pulumi-test-cluster-vm-host-rule",
     ///         VmGroupName = clusterVmGroup.Name,
     ///         AffinityHostGroupName = clusterHostGroup.Name,
     ///     });
@@ -179,9 +188,11 @@ namespace Pulumi.VSphere
         public Output<string?> AntiAffinityHostGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Output("computeClusterId")]
         public Output<string> ComputeClusterId { get; private set; } = null!;
@@ -284,9 +295,11 @@ namespace Pulumi.VSphere
         public Input<string>? AntiAffinityHostGroupName { get; set; }
 
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId", required: true)]
         public Input<string> ComputeClusterId { get; set; } = null!;
@@ -351,9 +364,11 @@ namespace Pulumi.VSphere
         public Input<string>? AntiAffinityHostGroupName { get; set; }
 
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId")]
         public Input<string>? ComputeClusterId { get; set; }

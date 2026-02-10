@@ -8,10 +8,12 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
- * existing virtual machine or template. The most common purpose is for finding
- * the UUID of a template to be used as the source for cloning to a new
- * `vsphere.VirtualMachine` resource. It also
+ * existing virtual machine or template. The most common purpose is for finding the
+ * UUID of a template to be used as the source for cloning to a new
+ * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
  * reads the guest ID so that can be supplied as well.
+ *
+ * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
  *
  * ## Example Usage
  *
@@ -139,11 +141,11 @@ export interface GetVirtualMachineArgs {
     cpuShareCount?: number;
     cpuShareLevel?: string;
     /**
-     * The managed object reference
-     * ID of the datacenter the virtual machine is located in.
-     * This can be omitted if the search path used in `name` is an absolute path.
-     * For default datacenters, use the `id` attribute from an empty
-     * `vsphere.Datacenter` data source.
+     * The [managed object reference
+     * ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+     * This can be omitted if the search path used in `name` is an absolute path. For
+     * default datacenters, use the `id` attribute from an empty `vsphere.Datacenter`
+     * data source.
      */
     datacenterId?: string;
     efiSecureBootEnabled?: boolean;
@@ -158,7 +160,10 @@ export interface GetVirtualMachineArgs {
      */
     firmware?: string;
     /**
-     * The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * The name of the virtual machine folder where the virtual
+     * machine is located. The `name` argument is limited to 80 characters. If the
+     * `name` argument includes the full path to the virtual machine and exceeds the
+     * 80 characters limit, the `folder` folder argument can be used.
      */
     folder?: string;
     /**
@@ -184,9 +189,9 @@ export interface GetVirtualMachineArgs {
     memoryShareLevel?: string;
     moid?: string;
     /**
-     * The name of the virtual machine. This can be a name or
-     * the full path relative to the datacenter. This is required if a UUID lookup
-     * is not performed.
+     * The name of the virtual machine. This can be a name or the
+     * full path relative to the datacenter. This is required if a UUID lookup is not
+     * performed.
      */
     name?: string;
     nestedHvEnabled?: boolean;
@@ -204,11 +209,17 @@ export interface GetVirtualMachineArgs {
      * The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     *
      * > **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
+     * use with this data source reside on the primary controller, and leave this value
+     * at the default. See the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+     * documentation for the significance of this setting, specifically the
+     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+     * section.
+     *
+     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      */
     nvmeControllerScanCount?: number;
     replaceTrigger?: string;
@@ -229,8 +240,8 @@ export interface GetVirtualMachineArgs {
     syncTimeWithHostPeriodically?: boolean;
     toolsUpgradePolicy?: string;
     /**
-     * Specify this field for a UUID lookup, `name` and `datacenterId`
-     * are not required if this is specified.
+     * Specify this field for a UUID lookup, `name` and
+     * `datacenterId` are not required if this is specified.
      */
     uuid?: string;
     vapp?: inputs.GetVirtualMachineVapp;
@@ -398,10 +409,12 @@ export interface GetVirtualMachineResult {
 }
 /**
  * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
- * existing virtual machine or template. The most common purpose is for finding
- * the UUID of a template to be used as the source for cloning to a new
- * `vsphere.VirtualMachine` resource. It also
+ * existing virtual machine or template. The most common purpose is for finding the
+ * UUID of a template to be used as the source for cloning to a new
+ * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource. It also
  * reads the guest ID so that can be supplied as well.
+ *
+ * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
  *
  * ## Example Usage
  *
@@ -529,11 +542,11 @@ export interface GetVirtualMachineOutputArgs {
     cpuShareCount?: pulumi.Input<number>;
     cpuShareLevel?: pulumi.Input<string>;
     /**
-     * The managed object reference
-     * ID of the datacenter the virtual machine is located in.
-     * This can be omitted if the search path used in `name` is an absolute path.
-     * For default datacenters, use the `id` attribute from an empty
-     * `vsphere.Datacenter` data source.
+     * The [managed object reference
+     * ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+     * This can be omitted if the search path used in `name` is an absolute path. For
+     * default datacenters, use the `id` attribute from an empty `vsphere.Datacenter`
+     * data source.
      */
     datacenterId?: pulumi.Input<string>;
     efiSecureBootEnabled?: pulumi.Input<boolean>;
@@ -548,7 +561,10 @@ export interface GetVirtualMachineOutputArgs {
      */
     firmware?: pulumi.Input<string>;
     /**
-     * The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * The name of the virtual machine folder where the virtual
+     * machine is located. The `name` argument is limited to 80 characters. If the
+     * `name` argument includes the full path to the virtual machine and exceeds the
+     * 80 characters limit, the `folder` folder argument can be used.
      */
     folder?: pulumi.Input<string>;
     /**
@@ -574,9 +590,9 @@ export interface GetVirtualMachineOutputArgs {
     memoryShareLevel?: pulumi.Input<string>;
     moid?: pulumi.Input<string>;
     /**
-     * The name of the virtual machine. This can be a name or
-     * the full path relative to the datacenter. This is required if a UUID lookup
-     * is not performed.
+     * The name of the virtual machine. This can be a name or the
+     * full path relative to the datacenter. This is required if a UUID lookup is not
+     * performed.
      */
     name?: pulumi.Input<string>;
     nestedHvEnabled?: pulumi.Input<boolean>;
@@ -594,11 +610,17 @@ export interface GetVirtualMachineOutputArgs {
      * The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     *
      * > **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
+     * use with this data source reside on the primary controller, and leave this value
+     * at the default. See the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+     * documentation for the significance of this setting, specifically the
+     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+     * section.
+     *
+     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      */
     nvmeControllerScanCount?: pulumi.Input<number>;
     replaceTrigger?: pulumi.Input<string>;
@@ -619,8 +641,8 @@ export interface GetVirtualMachineOutputArgs {
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     toolsUpgradePolicy?: pulumi.Input<string>;
     /**
-     * Specify this field for a UUID lookup, `name` and `datacenterId`
-     * are not required if this is specified.
+     * Specify this field for a UUID lookup, `name` and
+     * `datacenterId` are not required if this is specified.
      */
     uuid?: pulumi.Input<string>;
     vapp?: pulumi.Input<inputs.GetVirtualMachineVappArgs>;

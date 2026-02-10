@@ -41,7 +41,10 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set on datasource resource.
+     * value strings to set on resource. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -52,7 +55,10 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Map of custom attribute ids to attribute
-     * value strings to set on datasource resource.
+     * value strings to set on resource. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
      * and require vCenter.
@@ -63,8 +69,8 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The managed object
-     * ID of a datastore cluster to put this datastore in.
+     * The [managed object
+     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      * 
      */
@@ -72,8 +78,8 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> datastoreClusterId;
 
     /**
-     * @return The managed object
-     * ID of a datastore cluster to put this datastore in.
+     * @return The [managed object
+     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      * 
      */
@@ -82,26 +88,14 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a datastore named `test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastoreClusterId`.
+     * The path to the datastore folder to put the datastore in.
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a datastore named `test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/test`. Conflicts with
-     * `datastoreClusterId`.
+     * @return The path to the datastore folder to put the datastore in.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -109,7 +103,7 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The managed object IDs of
+     * The [managed object IDs][docs-about-morefs] of
      * the hosts to mount the datastore on.
      * 
      */
@@ -117,7 +111,7 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
     private Output<List<String>> hostSystemIds;
 
     /**
-     * @return The managed object IDs of
+     * @return The [managed object IDs][docs-about-morefs] of
      * the hosts to mount the datastore on.
      * 
      */
@@ -198,20 +192,22 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
      * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
      * 
-     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-     * requires vCenter 6.0 or higher.
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -300,7 +296,10 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customAttributes Map of custom attribute ids to attribute
-         * value strings to set on datasource resource.
+         * value strings to set on resource. See [here][docs-setting-custom-attributes]
+         * for a reference on how to set values for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
          * and require vCenter.
@@ -315,7 +314,10 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customAttributes Map of custom attribute ids to attribute
-         * value strings to set on datasource resource.
+         * value strings to set on resource. See [here][docs-setting-custom-attributes]
+         * for a reference on how to set values for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
          * and require vCenter.
@@ -328,8 +330,8 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datastoreClusterId The managed object
-         * ID of a datastore cluster to put this datastore in.
+         * @param datastoreClusterId The [managed object
+         * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
          * Conflicts with `folder`.
          * 
          * @return builder
@@ -341,8 +343,8 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datastoreClusterId The managed object
-         * ID of a datastore cluster to put this datastore in.
+         * @param datastoreClusterId The [managed object
+         * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
          * Conflicts with `folder`.
          * 
          * @return builder
@@ -353,13 +355,7 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folder The relative path to a folder to put this datastore in.
-         * This is a path relative to the datacenter you are deploying the datastore to.
-         * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-         * The provider will place a datastore named `test` in a datastore folder
-         * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-         * `/dc1/datastore/foo/bar/test`. Conflicts with
-         * `datastoreClusterId`.
+         * @param folder The path to the datastore folder to put the datastore in.
          * 
          * @return builder
          * 
@@ -370,13 +366,7 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folder The relative path to a folder to put this datastore in.
-         * This is a path relative to the datacenter you are deploying the datastore to.
-         * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-         * The provider will place a datastore named `test` in a datastore folder
-         * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-         * `/dc1/datastore/foo/bar/test`. Conflicts with
-         * `datastoreClusterId`.
+         * @param folder The path to the datastore folder to put the datastore in.
          * 
          * @return builder
          * 
@@ -386,7 +376,7 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostSystemIds The managed object IDs of
+         * @param hostSystemIds The [managed object IDs][docs-about-morefs] of
          * the hosts to mount the datastore on.
          * 
          * @return builder
@@ -398,7 +388,7 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostSystemIds The managed object IDs of
+         * @param hostSystemIds The [managed object IDs][docs-about-morefs] of
          * the hosts to mount the datastore on.
          * 
          * @return builder
@@ -409,7 +399,7 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostSystemIds The managed object IDs of
+         * @param hostSystemIds The [managed object IDs][docs-about-morefs] of
          * the hosts to mount the datastore on.
          * 
          * @return builder
@@ -528,10 +518,11 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
          * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-         * requires vCenter 6.0 or higher.
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -542,10 +533,11 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
          * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-         * requires vCenter 6.0 or higher.
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -555,10 +547,11 @@ public final class NasDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
          * 
-         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-         * requires vCenter 6.0 or higher.
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 

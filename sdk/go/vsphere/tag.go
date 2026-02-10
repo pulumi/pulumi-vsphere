@@ -12,114 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Tag` resource can be used to create and manage tags, which allow
-// you to attach metadata to objects in the vSphere inventory to make these
-// objects more sortable and searchable.
-//
-// For more information about tags, click [here][ext-tags-general].
-//
-// ## Example Usage
-//
-// This example creates a tag named `test-tag`. This tag is assigned the
-// `test-category` category, which was created by the
-// `TagCategory` resource. The resulting
-// tag can be assigned to VMs and datastores only, and can be the only value in
-// the category that can be assigned, as per the restrictions defined by the
-// category.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			category, err := vsphere.NewTagCategory(ctx, "category", &vsphere.TagCategoryArgs{
-//				Name:        pulumi.String("test-category"),
-//				Cardinality: pulumi.String("SINGLE"),
-//				Description: pulumi.String("Managed by Pulumi"),
-//				AssociableTypes: pulumi.StringArray{
-//					pulumi.String("VirtualMachine"),
-//					pulumi.String("Datastore"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vsphere.NewTag(ctx, "tag", &vsphere.TagArgs{
-//				Name:        pulumi.String("test-tag"),
-//				CategoryId:  category.ID(),
-//				Description: pulumi.String("Managed by Pulumi"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Using Tags in a Supported Resource
-//
-// Tags can be applied to vSphere resources via the `tags` argument
-// in any supported resource.
-//
-// The following example builds on the above example by creating a
-// `VirtualMachine` and applying the
-// created tag to it:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			category, err := vsphere.NewTagCategory(ctx, "category", &vsphere.TagCategoryArgs{
-//				Name:        pulumi.String("test-category"),
-//				Cardinality: pulumi.String("SINGLE"),
-//				Description: pulumi.String("Managed by Pulumi"),
-//				AssociableTypes: pulumi.StringArray{
-//					pulumi.String("VirtualMachine"),
-//					pulumi.String("Datastore"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			tag, err := vsphere.NewTag(ctx, "tag", &vsphere.TagArgs{
-//				Name:        pulumi.String("test-tag"),
-//				CategoryId:  category.ID(),
-//				Description: pulumi.String("Managed by Pulumi"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vsphere.NewVirtualMachine(ctx, "web", &vsphere.VirtualMachineArgs{
-//				Tags: pulumi.StringArray{
-//					tag.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # An existing tag can be imported into this resource by supplying
@@ -133,8 +25,6 @@ import (
 // ```
 //
 //	'{"category_name": "pulumi-test-category", "tag_name": "pulumi-test-tag"}'
-//
-// [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
 //
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type Tag struct {

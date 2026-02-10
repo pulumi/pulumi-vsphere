@@ -35,10 +35,12 @@ import (
 // ## Example Usage
 //
 // The example below creates two virtual machines in a cluster using the
-// `VirtualMachine` resource, creating the
+// [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
 // virtual machine in the cluster looked up by the
-// `ComputeCluster` data source. It
+// [`ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
 // then creates a group from these two virtual machines.
+//
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // ```go
 // package main
@@ -87,7 +89,7 @@ import (
 //	    val0 := index
 //
 // __res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
-// Name: pulumi.Sprintf("test-%v", val0),
+// Name: pulumi.Sprintf("pulumi-test-%v", val0),
 // ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
 // DatastoreId: pulumi.String(datastore.Id),
 // NumCpus: pulumi.Int(2),
@@ -111,7 +113,7 @@ import (
 // vm = append(vm, __res)
 // }
 // _, err = vsphere.NewComputeClusterVmGroup(ctx, "cluster_vm_group", &vsphere.ComputeClusterVmGroupArgs{
-// Name: pulumi.String("test-cluster-vm-group"),
+// Name: pulumi.String("pulumi-test-cluster-vm-group"),
 // ComputeClusterId: pulumi.String(cluster.Id),
 // VirtualMachineIds: pulumi.StringArray{
 // pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:42,27-35)),
@@ -147,9 +149,11 @@ import (
 type ComputeClusterVmGroup struct {
 	pulumi.CustomResourceState
 
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// The name of the VM group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -159,11 +163,13 @@ type ComputeClusterVmGroup struct {
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterHostGroup`
+	// [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
 	// resource. Make sure your names are unique across both resources.
 	//
+	// [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+	//
 	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-	// import section. When importing a VM group, validate that all virtual machines that
+	// Importing section. When importing a VM group, validate that all virtual machines that
 	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
 	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds pulumi.StringArrayOutput `pulumi:"virtualMachineIds"`
@@ -202,9 +208,11 @@ func GetComputeClusterVmGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterVmGroup resources.
 type computeClusterVmGroupState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// The name of the VM group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -214,20 +222,24 @@ type computeClusterVmGroupState struct {
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterHostGroup`
+	// [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
 	// resource. Make sure your names are unique across both resources.
 	//
+	// [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+	//
 	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-	// import section. When importing a VM group, validate that all virtual machines that
+	// Importing section. When importing a VM group, validate that all virtual machines that
 	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
 	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
 type ComputeClusterVmGroupState struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringPtrInput
 	// The name of the VM group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -237,11 +249,13 @@ type ComputeClusterVmGroupState struct {
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterHostGroup`
+	// [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
 	// resource. Make sure your names are unique across both resources.
 	//
+	// [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+	//
 	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-	// import section. When importing a VM group, validate that all virtual machines that
+	// Importing section. When importing a VM group, validate that all virtual machines that
 	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
 	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds pulumi.StringArrayInput
@@ -252,9 +266,11 @@ func (ComputeClusterVmGroupState) ElementType() reflect.Type {
 }
 
 type computeClusterVmGroupArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The name of the VM group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -264,11 +280,13 @@ type computeClusterVmGroupArgs struct {
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterHostGroup`
+	// [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
 	// resource. Make sure your names are unique across both resources.
 	//
+	// [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+	//
 	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-	// import section. When importing a VM group, validate that all virtual machines that
+	// Importing section. When importing a VM group, validate that all virtual machines that
 	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
 	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
@@ -276,9 +294,11 @@ type computeClusterVmGroupArgs struct {
 
 // The set of arguments for constructing a ComputeClusterVmGroup resource.
 type ComputeClusterVmGroupArgs struct {
-	// The managed object reference
-	// ID of the cluster to put the group in.  Forces a new
+	// The [managed object reference
+	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 	// resource if changed.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	ComputeClusterId pulumi.StringInput
 	// The name of the VM group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -288,11 +308,13 @@ type ComputeClusterVmGroupArgs struct {
 	//
 	// > **NOTE:** The namespace for cluster names on this resource (defined by the
 	// `name` argument) is shared with the
-	// `ComputeClusterHostGroup`
+	// [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
 	// resource. Make sure your names are unique across both resources.
 	//
+	// [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+	//
 	// > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-	// import section. When importing a VM group, validate that all virtual machines that
+	// Importing section. When importing a VM group, validate that all virtual machines that
 	// need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
 	// that are not in `virtualMachineIds` the included will be removed from the group.
 	VirtualMachineIds pulumi.StringArrayInput
@@ -385,9 +407,11 @@ func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupOutputWithContext(ct
 	return o
 }
 
-// The managed object reference
-// ID of the cluster to put the group in.  Forces a new
+// The [managed object reference
+// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 func (o ComputeClusterVmGroupOutput) ComputeClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeClusterVmGroup) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
 }
@@ -403,11 +427,13 @@ func (o ComputeClusterVmGroupOutput) Name() pulumi.StringOutput {
 //
 // > **NOTE:** The namespace for cluster names on this resource (defined by the
 // `name` argument) is shared with the
-// `ComputeClusterHostGroup`
+// [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
 // resource. Make sure your names are unique across both resources.
 //
+// [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+//
 // > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-// import section. When importing a VM group, validate that all virtual machines that
+// Importing section. When importing a VM group, validate that all virtual machines that
 // need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
 // that are not in `virtualMachineIds` the included will be removed from the group.
 func (o ComputeClusterVmGroupOutput) VirtualMachineIds() pulumi.StringArrayOutput {

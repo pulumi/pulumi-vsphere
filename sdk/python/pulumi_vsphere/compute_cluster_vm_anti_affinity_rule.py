@@ -26,9 +26,11 @@ class ComputeClusterVmAntiAffinityRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmAntiAffinityRule resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on hosts different from each other.
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
@@ -53,9 +55,11 @@ class ComputeClusterVmAntiAffinityRuleArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -128,9 +132,11 @@ class _ComputeClusterVmAntiAffinityRuleState:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmAntiAffinityRule resources.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -157,9 +163,11 @@ class _ComputeClusterVmAntiAffinityRuleState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -257,9 +265,11 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -358,9 +368,11 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -387,9 +399,11 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 

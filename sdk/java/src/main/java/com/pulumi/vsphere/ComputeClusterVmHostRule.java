@@ -18,16 +18,22 @@ import javax.annotation.Nullable;
 /**
  * The `vsphere.ComputeClusterVmHostRule` resource can be used to manage
  * VM-to-host rules in a cluster, either created by the
- * `vsphere.ComputeCluster` resource or looked up
- * by the `vsphere.ComputeCluster` data source.
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ * 
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * This resource can create both _affinity rules_, where virtual machines run on
  * specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
  * outside of the ones specified in the rule. Virtual machines and hosts are
  * supplied via groups, which can be managed via the
- * `vsphere.ComputeClusterVmGroup` and
- * `vsphere.ComputeClusterHostGroup`
+ * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+ * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
  * resources.
+ * 
+ * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
+ * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
  * 
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
@@ -35,19 +41,22 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The example below creates a virtual machine in a cluster using the
- * `vsphere.VirtualMachine` resource in a cluster
- * looked up by the `vsphere.ComputeCluster`
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+ * looked up by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source]
  * data source. It then creates a group with this virtual machine. It also creates
  * a host group off of the host looked up via the
- * `vsphere.Host` data source. Finally, this
+ * [`vsphere.Host`][tf-vsphere-host-data-source] data source. Finally, this
  * virtual machine is configured to run specifically on that host via a
  * `vsphere.ComputeClusterVmHostRule` resource.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
  * 
  * &gt; Note how `vmGroupName` and
  * `affinityHostGroupName` are sourced off of the
  * `name` attributes from the
- * `vsphere.ComputeClusterVmGroup` and
- * `vsphere.ComputeClusterHostGroup`
+ * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+ * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
  * resources. This is to ensure that the rule is not created before the groups
  * exist, which may not possibly happen in the event that the names came from a
  * &#34;static&#34; source such as a variable.
@@ -113,7 +122,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vm = new VirtualMachine("vm", VirtualMachineArgs.builder()
- *             .name("test")
+ *             .name("pulumi-test")
  *             .resourcePoolId(cluster.resourcePoolId())
  *             .datastoreId(datastore.id())
  *             .numCpus(2)
@@ -129,20 +138,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var clusterVmGroup = new ComputeClusterVmGroup("clusterVmGroup", ComputeClusterVmGroupArgs.builder()
- *             .name("test-cluster-vm-group")
+ *             .name("pulumi-test-cluster-vm-group")
  *             .computeClusterId(cluster.id())
  *             .virtualMachineIds(vm.id())
  *             .build());
  * 
  *         var clusterHostGroup = new ComputeClusterHostGroup("clusterHostGroup", ComputeClusterHostGroupArgs.builder()
- *             .name("test-cluster-vm-group")
+ *             .name("pulumi-test-cluster-vm-group")
  *             .computeClusterId(cluster.id())
  *             .hostSystemIds(host.id())
  *             .build());
  * 
  *         var clusterVmHostRule = new ComputeClusterVmHostRule("clusterVmHostRule", ComputeClusterVmHostRuleArgs.builder()
  *             .computeClusterId(cluster.id())
- *             .name("test-cluster-vm-host-rule")
+ *             .name("pulumi-test-cluster-vm-host-rule")
  *             .vmGroupName(clusterVmGroup.name())
  *             .affinityHostGroupName(clusterHostGroup.name())
  *             .build());
@@ -212,18 +221,22 @@ public class ComputeClusterVmHostRule extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.antiAffinityHostGroupName);
     }
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {

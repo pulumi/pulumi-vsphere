@@ -34,9 +34,11 @@ namespace Pulumi.VSphere
     public partial class ComputeClusterVmAntiAffinityRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Output("computeClusterId")]
         public Output<string> ComputeClusterId { get; private set; } = null!;
@@ -118,9 +120,11 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmAntiAffinityRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId", required: true)]
         public Input<string> ComputeClusterId { get; set; } = null!;
@@ -170,9 +174,11 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmAntiAffinityRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the cluster to put the group in.  Forces a new
+        /// The [managed object reference
+        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         /// resource if changed.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("computeClusterId")]
         public Input<string>? ComputeClusterId { get; set; }

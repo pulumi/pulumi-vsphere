@@ -655,7 +655,9 @@ class Host(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Create a standalone host
+        ### S
+
+        **Create a standalone host:**
 
         ```python
         import pulumi
@@ -673,7 +675,7 @@ class Host(pulumi.CustomResource):
             datacenter=datacenter.id)
         ```
 
-        ### Create host in a compute cluster
+        **Create host in a compute cluster:**
 
         ```python
         import pulumi
@@ -861,7 +863,9 @@ class Host(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Create a standalone host
+        ### S
+
+        **Create a standalone host:**
 
         ```python
         import pulumi
@@ -879,7 +883,7 @@ class Host(pulumi.CustomResource):
             datacenter=datacenter.id)
         ```
 
-        ### Create host in a compute cluster
+        **Create host in a compute cluster:**
 
         ```python
         import pulumi

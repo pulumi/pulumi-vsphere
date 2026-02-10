@@ -39,10 +39,12 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * The example below creates two virtual machines in a cluster using the
- * `vsphere.VirtualMachine` resource, creating the
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machine in the cluster looked up by the
- * `vsphere.ComputeCluster` data source. It
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
  * then creates a group from these two virtual machines.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 
  * <pre>
  * {@code
@@ -97,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  *         for (var i = 0; i < 2; i++) {
  *             new VirtualMachine("vm-" + i, VirtualMachineArgs.builder()
- *                 .name(String.format("test-%s", range.value()))
+ *                 .name(String.format("pulumi-test-%s", range.value()))
  *                 .resourcePoolId(cluster.resourcePoolId())
  *                 .datastoreId(datastore.id())
  *                 .numCpus(2)
@@ -115,7 +117,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var clusterVmGroup = new ComputeClusterVmGroup("clusterVmGroup", ComputeClusterVmGroupArgs.builder()
- *             .name("test-cluster-vm-group")
+ *             .name("pulumi-test-cluster-vm-group")
  *             .computeClusterId(cluster.id())
  *             .virtualMachineIds(vm.stream().map(element -> element.id()).collect(toList()))
  *             .build());
@@ -149,18 +151,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup")
 public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {
@@ -188,11 +194,13 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterHostGroup`
+     * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
      * resource. Make sure your names are unique across both resources.
      * 
+     * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+     * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-     * import section. When importing a VM group, validate that all virtual machines that
+     * Importing section. When importing a VM group, validate that all virtual machines that
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      * 
@@ -206,11 +214,13 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterHostGroup`
+     * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
      * resource. Make sure your names are unique across both resources.
      * 
+     * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+     * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-     * import section. When importing a VM group, validate that all virtual machines that
+     * Importing section. When importing a VM group, validate that all virtual machines that
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      * 

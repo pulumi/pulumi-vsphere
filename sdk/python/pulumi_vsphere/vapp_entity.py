@@ -31,9 +31,9 @@ class VappEntityArgs:
                  wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VappEntity resource.
-        :param pulumi.Input[_builtins.str] container_id: Managed object ID of the vApp
+        :param pulumi.Input[_builtins.str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
-        :param pulumi.Input[_builtins.str] target_id: Managed object ID of the entity
+        :param pulumi.Input[_builtins.str] target_id: [Managed object ID|docs-about-morefs] of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] start_action: How to start the entity. Valid settings are none
@@ -52,6 +52,8 @@ class VappEntityArgs:
         :param pulumi.Input[_builtins.bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         pulumi.set(__self__, "container_id", container_id)
         pulumi.set(__self__, "target_id", target_id)
@@ -76,7 +78,7 @@ class VappEntityArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Managed object ID of the vApp
+        [Managed object ID|docs-about-morefs] of the vApp
         container the entity is a member of.
         """
         return pulumi.get(self, "container_id")
@@ -89,7 +91,7 @@ class VappEntityArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Managed object ID of the entity
+        [Managed object ID|docs-about-morefs] of the entity
         to power on or power off. This can be a virtual machine or a vApp.
         """
         return pulumi.get(self, "target_id")
@@ -196,6 +198,8 @@ class VappEntityArgs:
         Determines if the VM should be marked as being
         started when VMware Tools are ready instead of waiting for `start_delay`. This
         property has no effect for vApps. Default: false
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "wait_for_guest")
 
@@ -219,7 +223,7 @@ class _VappEntityState:
                  wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VappEntity resources.
-        :param pulumi.Input[_builtins.str] container_id: Managed object ID of the vApp
+        :param pulumi.Input[_builtins.str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] start_action: How to start the entity. Valid settings are none
@@ -235,11 +239,13 @@ class _VappEntityState:
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[_builtins.str] target_id: Managed object ID of the entity
+        :param pulumi.Input[_builtins.str] target_id: [Managed object ID|docs-about-morefs] of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[_builtins.bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         if container_id is not None:
             pulumi.set(__self__, "container_id", container_id)
@@ -266,7 +272,7 @@ class _VappEntityState:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Managed object ID of the vApp
+        [Managed object ID|docs-about-morefs] of the vApp
         container the entity is a member of.
         """
         return pulumi.get(self, "container_id")
@@ -370,7 +376,7 @@ class _VappEntityState:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Managed object ID of the entity
+        [Managed object ID|docs-about-morefs] of the entity
         to power on or power off. This can be a virtual machine or a vApp.
         """
         return pulumi.get(self, "target_id")
@@ -386,6 +392,8 @@ class _VappEntityState:
         Determines if the VM should be marked as being
         started when VMware Tools are ready instead of waiting for `start_delay`. This
         property has no effect for vApps. Default: false
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "wait_for_guest")
 
@@ -445,10 +453,10 @@ class VappEntity(pulumi.CustomResource):
         datastore = vsphere.get_datastore(name="datastore1",
             datacenter_id=datacenter_get_datacenter.id)
         vapp_container = vsphere.VappContainer("vapp_container",
-            name="vapp-container-test",
+            name="pulumi-vapp-container-test",
             parent_resource_pool_id=compute_cluster.id)
         vm = vsphere.VirtualMachine("vm",
-            name="virtual-machine-test",
+            name="pulumi-virtual-machine-test",
             resource_pool_id=vapp_container.id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -487,7 +495,7 @@ class VappEntity(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] container_id: Managed object ID of the vApp
+        :param pulumi.Input[_builtins.str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] start_action: How to start the entity. Valid settings are none
@@ -503,11 +511,13 @@ class VappEntity(pulumi.CustomResource):
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[_builtins.str] target_id: Managed object ID of the entity
+        :param pulumi.Input[_builtins.str] target_id: [Managed object ID|docs-about-morefs] of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[_builtins.bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         ...
     @overload
@@ -549,10 +559,10 @@ class VappEntity(pulumi.CustomResource):
         datastore = vsphere.get_datastore(name="datastore1",
             datacenter_id=datacenter_get_datacenter.id)
         vapp_container = vsphere.VappContainer("vapp_container",
-            name="vapp-container-test",
+            name="pulumi-vapp-container-test",
             parent_resource_pool_id=compute_cluster.id)
         vm = vsphere.VirtualMachine("vm",
-            name="virtual-machine-test",
+            name="pulumi-virtual-machine-test",
             resource_pool_id=vapp_container.id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -664,7 +674,7 @@ class VappEntity(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] container_id: Managed object ID of the vApp
+        :param pulumi.Input[_builtins.str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[_builtins.str] start_action: How to start the entity. Valid settings are none
@@ -680,11 +690,13 @@ class VappEntity(pulumi.CustomResource):
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[_builtins.str] target_id: Managed object ID of the entity
+        :param pulumi.Input[_builtins.str] target_id: [Managed object ID|docs-about-morefs] of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[_builtins.bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -706,7 +718,7 @@ class VappEntity(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Managed object ID of the vApp
+        [Managed object ID|docs-about-morefs] of the vApp
         container the entity is a member of.
         """
         return pulumi.get(self, "container_id")
@@ -778,7 +790,7 @@ class VappEntity(pulumi.CustomResource):
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Managed object ID of the entity
+        [Managed object ID|docs-about-morefs] of the entity
         to power on or power off. This can be a virtual machine or a vApp.
         """
         return pulumi.get(self, "target_id")
@@ -790,6 +802,8 @@ class VappEntity(pulumi.CustomResource):
         Determines if the VM should be marked as being
         started when VMware Tools are ready instead of waiting for `start_delay`. This
         property has no effect for vApps. Default: false
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "wait_for_guest")
 

@@ -16,7 +16,9 @@ import (
 //
 // ## Example Usage
 //
-// ### Create datacenter on the root folder
+// ### S
+//
+// **Create datacenter on the root folder:**
 //
 // ```go
 // package main
@@ -42,7 +44,7 @@ import (
 //
 // ```
 //
-// ### Create datacenter on a subfolder
+// **Create datacenter on a subfolder:**
 //
 // ```go
 // package main
@@ -98,12 +100,15 @@ type Datacenter struct {
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
-	// Managed object ID of this datacenter.
+	// [Managed object ID][docs-about-morefs] of this datacenter.
 	Moid pulumi.StringOutput `pulumi:"moid"`
 	// The name of the datacenter. This name needs to be unique
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -150,12 +155,15 @@ type datacenterState struct {
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
 	Folder *string `pulumi:"folder"`
-	// Managed object ID of this datacenter.
+	// [Managed object ID][docs-about-morefs] of this datacenter.
 	Moid *string `pulumi:"moid"`
 	// The name of the datacenter. This name needs to be unique
 	// within the folder. Forces a new resource if changed.
 	Name *string `pulumi:"name"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -173,12 +181,15 @@ type DatacenterState struct {
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
 	Folder pulumi.StringPtrInput
-	// Managed object ID of this datacenter.
+	// [Managed object ID][docs-about-morefs] of this datacenter.
 	Moid pulumi.StringPtrInput
 	// The name of the datacenter. This name needs to be unique
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -203,7 +214,10 @@ type datacenterArgs struct {
 	// The name of the datacenter. This name needs to be unique
 	// within the folder. Forces a new resource if changed.
 	Name *string `pulumi:"name"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -225,7 +239,10 @@ type DatacenterArgs struct {
 	// The name of the datacenter. This name needs to be unique
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -335,7 +352,7 @@ func (o DatacenterOutput) Folder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Datacenter) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
 }
 
-// Managed object ID of this datacenter.
+// [Managed object ID][docs-about-morefs] of this datacenter.
 func (o DatacenterOutput) Moid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datacenter) pulumi.StringOutput { return v.Moid }).(pulumi.StringOutput)
 }
@@ -346,7 +363,10 @@ func (o DatacenterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datacenter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The IDs of any tags to attach to this resource.
+// The IDs of any tags to attach to this resource. See
+// [here][docs-applying-tags] for a reference on how to apply tags.
+//
+// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 func (o DatacenterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Datacenter) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

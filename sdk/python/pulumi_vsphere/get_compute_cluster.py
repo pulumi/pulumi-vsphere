@@ -62,7 +62,7 @@ class GetComputeClusterResult:
     @pulumi.getter(name="resourcePoolId")
     def resource_pool_id(self) -> _builtins.str:
         """
-        The managed object reference ID of
+        The [managed object reference ID][docs-about-morefs] of
         the root resource pool for the cluster.
         """
         return pulumi.get(self, "resource_pool_id")
@@ -84,16 +84,6 @@ def get_compute_cluster(datacenter_id: Optional[_builtins.str] = None,
                         name: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeClusterResult:
     """
-    The `ComputeCluster` data source can be used to discover the ID of a
-    cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-    to use for virtual machine placement via the `VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
-    using the alias available through the `ResourcePool`
-    data source.
-
-    > You may also wish to see the `ComputeCluster`
-     resource for more information about clusters and how to managed the resource
-     in this provider.
-
     ## Example Usage
 
     ```python
@@ -106,10 +96,11 @@ def get_compute_cluster(datacenter_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the cluster is located in.  This can be omitted if the
-           search path used in `name` is an absolute path. For default datacenters,
-           use the `id` attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+           is located in. This can be omitted if the search path used in `name` is an
+           absolute path. For default datacenters, use the `id` attribute from an empty
+           `Datacenter` data source.
     :param _builtins.str name: The name or absolute path to the cluster.
     """
     __args__ = dict()
@@ -127,16 +118,6 @@ def get_compute_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[_bu
                                name: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetComputeClusterResult]:
     """
-    The `ComputeCluster` data source can be used to discover the ID of a
-    cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-    to use for virtual machine placement via the `VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
-    using the alias available through the `ResourcePool`
-    data source.
-
-    > You may also wish to see the `ComputeCluster`
-     resource for more information about clusters and how to managed the resource
-     in this provider.
-
     ## Example Usage
 
     ```python
@@ -149,10 +130,11 @@ def get_compute_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[_bu
     ```
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter the cluster is located in.  This can be omitted if the
-           search path used in `name` is an absolute path. For default datacenters,
-           use the `id` attribute from an empty `Datacenter` data source.
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter the cluster
+           is located in. This can be omitted if the search path used in `name` is an
+           absolute path. For default datacenters, use the `id` attribute from an empty
+           `Datacenter` data source.
     :param _builtins.str name: The name or absolute path to the cluster.
     """
     __args__ = dict()

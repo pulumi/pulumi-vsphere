@@ -11,7 +11,9 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+ * ### S
+ *
+ * **Create a vnic attached to a distributed virtual switch using the vMotion TCP/IP stack:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +50,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Create a vnic attached to a portgroup using the default TCP/IP stack
+ * **Create a vnic attached to a portgroup using the default TCP/IP stack:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

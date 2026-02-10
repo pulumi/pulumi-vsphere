@@ -25,9 +25,11 @@ class DpmHostOverrideArgs:
                  dpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DpmHostOverride resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of the host.
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
@@ -50,9 +52,11 @@ class DpmHostOverrideArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -113,9 +117,11 @@ class _DpmHostOverrideState:
                  host_system_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DpmHostOverride resources.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
                `manual`.
@@ -140,9 +146,11 @@ class _DpmHostOverrideState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -223,12 +231,15 @@ class DpmHostOverride(pulumi.CustomResource):
 
         The following example creates a compute cluster comprised of three hosts,
         making use of the
-        `ComputeCluster` resource. DPM
+        [`ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
         will be disabled in the cluster as it is the default setting, but we override
         the setting of the first host referenced by the
-        `Host` data source (`esxi1`) by using
+        [`Host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
         the `DpmHostOverride` resource so it will be powered off when the
         cluster does not need it to service virtual machines.
+
+        [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 
         ```python
         import pulumi
@@ -249,8 +260,8 @@ class DpmHostOverride(pulumi.CustomResource):
         hosts_get_host = [vsphere.get_host(name=hosts[__index],
             datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
-            name="compute-cluster-test",
-            datacenter_id=dc["id"],
+            name="pulumi-compute-cluster-test",
+            datacenter_id=datacenter_get_datacenter.id,
             host_system_ids=[[__item.id for __item in hosts_get_host]],
             drs_enabled=True,
             drs_automation_level="fullyAutomated")
@@ -281,9 +292,11 @@ class DpmHostOverride(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
                `manual`.
@@ -319,12 +332,15 @@ class DpmHostOverride(pulumi.CustomResource):
 
         The following example creates a compute cluster comprised of three hosts,
         making use of the
-        `ComputeCluster` resource. DPM
+        [`ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
         will be disabled in the cluster as it is the default setting, but we override
         the setting of the first host referenced by the
-        `Host` data source (`esxi1`) by using
+        [`Host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
         the `DpmHostOverride` resource so it will be powered off when the
         cluster does not need it to service virtual machines.
+
+        [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 
         ```python
         import pulumi
@@ -345,8 +361,8 @@ class DpmHostOverride(pulumi.CustomResource):
         hosts_get_host = [vsphere.get_host(name=hosts[__index],
             datacenter_id=datacenter_get_datacenter.id) for __index in range(len(hosts))]
         compute_cluster = vsphere.ComputeCluster("compute_cluster",
-            name="compute-cluster-test",
-            datacenter_id=dc["id"],
+            name="pulumi-compute-cluster-test",
+            datacenter_id=datacenter_get_datacenter.id,
             host_system_ids=[[__item.id for __item in hosts_get_host]],
             drs_enabled=True,
             drs_automation_level="fullyAutomated")
@@ -432,9 +448,11 @@ class DpmHostOverride(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
                `manual`.
@@ -460,9 +478,11 @@ class DpmHostOverride(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the override in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 

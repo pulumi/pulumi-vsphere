@@ -113,6 +113,8 @@ export interface ContentLibrarySubscription {
     automaticSync?: pulumi.Input<boolean>;
     /**
      * Download the library from a content only when needed. Default `true`.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     onDemand?: pulumi.Input<boolean>;
     /**

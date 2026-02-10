@@ -795,10 +795,12 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualMachineResult:
     """
     The `VirtualMachine` data source can be used to find the UUID of an
-    existing virtual machine or template. The most common purpose is for finding
-    the UUID of a template to be used as the source for cloning to a new
-    `VirtualMachine` resource. It also
+    existing virtual machine or template. The most common purpose is for finding the
+    UUID of a template to be used as the source for cloning to a new
+    [`VirtualMachine`][docs-virtual-machine-resource] resource. It also
     reads the guest ID so that can be supplied as well.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -833,20 +835,23 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
            `guest_id` is a non-specific operating system, like `otherGuest` or
            `otherGuest64`.
     :param _builtins.str annotation: The user-provided description of this virtual machine.
-    :param _builtins.str datacenter_id: The managed object reference
-           ID of the datacenter the virtual machine is located in.
-           This can be omitted if the search path used in `name` is an absolute path.
-           For default datacenters, use the `id` attribute from an empty
-           `Datacenter` data source.
+    :param _builtins.str datacenter_id: The [managed object reference
+           ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+           This can be omitted if the search path used in `name` is an absolute path. For
+           default datacenters, use the `id` attribute from an empty `Datacenter`
+           data source.
     :param _builtins.str firmware: The firmware type for this virtual machine. Can be `bios` or
            `efi`.
-    :param _builtins.str folder: The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+    :param _builtins.str folder: The name of the virtual machine folder where the virtual
+           machine is located. The `name` argument is limited to 80 characters. If the
+           `name` argument includes the full path to the virtual machine and exceeds the
+           80 characters limit, the `folder` folder argument can be used.
     :param _builtins.str guest_id: The guest ID of the virtual machine or template.
     :param _builtins.int hardware_version: The hardware version number on this virtual machine.
     :param _builtins.int memory: The size of the virtual machine's memory, in MB.
-    :param _builtins.str name: The name of the virtual machine. This can be a name or
-           the full path relative to the datacenter. This is required if a UUID lookup
-           is not performed.
+    :param _builtins.str name: The name of the virtual machine. This can be a name or the
+           full path relative to the datacenter. This is required if a UUID lookup is not
+           performed.
     :param _builtins.int num_cores_per_socket: The number of cores per socket for this virtual
            machine.
     :param _builtins.int num_cpus: The total number of virtual processor cores assigned to this
@@ -854,15 +859,21 @@ def get_virtual_machine(alternate_guest_name: Optional[_builtins.str] = None,
     :param _builtins.int nvme_controller_scan_count: The number of NVMe controllers to
            scan for disk attributes and controller types on. Default: `1`.
            
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+           
            > **NOTE:** For best results, ensure that all the disks on any templates you
-           use with this data source reside on the primary controller, and leave this
-           value at the default. See the `VirtualMachine`
-           resource documentation for the significance of this setting, specifically the
-           additional requirements and notes for cloning section.
+           use with this data source reside on the primary controller, and leave this value
+           at the default. See the
+           [`VirtualMachine`][docs-virtual-machine-resource] resource
+           documentation for the significance of this setting, specifically the
+           [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+           section.
+           
+           [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
     :param _builtins.int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
-    :param _builtins.str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
-           are not required if this is specified.
+    :param _builtins.str uuid: Specify this field for a UUID lookup, `name` and
+           `datacenter_id` are not required if this is specified.
     """
     __args__ = dict()
     __args__['alternateGuestName'] = alternate_guest_name
@@ -1052,10 +1063,12 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualMachineResult]:
     """
     The `VirtualMachine` data source can be used to find the UUID of an
-    existing virtual machine or template. The most common purpose is for finding
-    the UUID of a template to be used as the source for cloning to a new
-    `VirtualMachine` resource. It also
+    existing virtual machine or template. The most common purpose is for finding the
+    UUID of a template to be used as the source for cloning to a new
+    [`VirtualMachine`][docs-virtual-machine-resource] resource. It also
     reads the guest ID so that can be supplied as well.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -1090,20 +1103,23 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
            `guest_id` is a non-specific operating system, like `otherGuest` or
            `otherGuest64`.
     :param _builtins.str annotation: The user-provided description of this virtual machine.
-    :param _builtins.str datacenter_id: The managed object reference
-           ID of the datacenter the virtual machine is located in.
-           This can be omitted if the search path used in `name` is an absolute path.
-           For default datacenters, use the `id` attribute from an empty
-           `Datacenter` data source.
+    :param _builtins.str datacenter_id: The [managed object reference
+           ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+           This can be omitted if the search path used in `name` is an absolute path. For
+           default datacenters, use the `id` attribute from an empty `Datacenter`
+           data source.
     :param _builtins.str firmware: The firmware type for this virtual machine. Can be `bios` or
            `efi`.
-    :param _builtins.str folder: The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+    :param _builtins.str folder: The name of the virtual machine folder where the virtual
+           machine is located. The `name` argument is limited to 80 characters. If the
+           `name` argument includes the full path to the virtual machine and exceeds the
+           80 characters limit, the `folder` folder argument can be used.
     :param _builtins.str guest_id: The guest ID of the virtual machine or template.
     :param _builtins.int hardware_version: The hardware version number on this virtual machine.
     :param _builtins.int memory: The size of the virtual machine's memory, in MB.
-    :param _builtins.str name: The name of the virtual machine. This can be a name or
-           the full path relative to the datacenter. This is required if a UUID lookup
-           is not performed.
+    :param _builtins.str name: The name of the virtual machine. This can be a name or the
+           full path relative to the datacenter. This is required if a UUID lookup is not
+           performed.
     :param _builtins.int num_cores_per_socket: The number of cores per socket for this virtual
            machine.
     :param _builtins.int num_cpus: The total number of virtual processor cores assigned to this
@@ -1111,15 +1127,21 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     :param _builtins.int nvme_controller_scan_count: The number of NVMe controllers to
            scan for disk attributes and controller types on. Default: `1`.
            
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+           
            > **NOTE:** For best results, ensure that all the disks on any templates you
-           use with this data source reside on the primary controller, and leave this
-           value at the default. See the `VirtualMachine`
-           resource documentation for the significance of this setting, specifically the
-           additional requirements and notes for cloning section.
+           use with this data source reside on the primary controller, and leave this value
+           at the default. See the
+           [`VirtualMachine`][docs-virtual-machine-resource] resource
+           documentation for the significance of this setting, specifically the
+           [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+           section.
+           
+           [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
     :param _builtins.int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
-    :param _builtins.str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
-           are not required if this is specified.
+    :param _builtins.str uuid: Specify this field for a UUID lookup, `name` and
+           `datacenter_id` are not required if this is specified.
     """
     __args__ = dict()
     __args__['alternateGuestName'] = alternate_guest_name

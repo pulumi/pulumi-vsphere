@@ -12,6 +12,8 @@ namespace Pulumi.VSphere
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ### S
+    /// 
     /// ### Uploading a File
     /// 
     /// ```csharp

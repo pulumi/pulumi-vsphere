@@ -17,18 +17,22 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
     public static final ComputeClusterVmGroupState Empty = new ComputeClusterVmGroupState();
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Import(name="computeClusterId")
     private @Nullable Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Optional<Output<String>> computeClusterId() {
@@ -58,11 +62,13 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterHostGroup`
+     * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
      * resource. Make sure your names are unique across both resources.
      * 
+     * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+     * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-     * import section. When importing a VM group, validate that all virtual machines that
+     * Importing section. When importing a VM group, validate that all virtual machines that
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      * 
@@ -76,11 +82,13 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterHostGroup`
+     * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
      * resource. Make sure your names are unique across both resources.
      * 
+     * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+     * 
      * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-     * import section. When importing a VM group, validate that all virtual machines that
+     * Importing section. When importing a VM group, validate that all virtual machines that
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      * 
@@ -116,9 +124,11 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the group in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -129,9 +139,11 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param computeClusterId The managed object reference
-         * ID of the cluster to put the group in.  Forces a new
+         * @param computeClusterId The [managed object reference
+         * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
          * resource if changed.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
          * 
          * @return builder
          * 
@@ -169,11 +181,13 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * 
          * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
          * `name` argument) is shared with the
-         * `vsphere.ComputeClusterHostGroup`
+         * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
          * resource. Make sure your names are unique across both resources.
          * 
+         * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+         * 
          * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-         * import section. When importing a VM group, validate that all virtual machines that
+         * Importing section. When importing a VM group, validate that all virtual machines that
          * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
          * that are not in `virtualMachineIds` the included will be removed from the group.
          * 
@@ -191,11 +205,13 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * 
          * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
          * `name` argument) is shared with the
-         * `vsphere.ComputeClusterHostGroup`
+         * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
          * resource. Make sure your names are unique across both resources.
          * 
+         * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+         * 
          * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-         * import section. When importing a VM group, validate that all virtual machines that
+         * Importing section. When importing a VM group, validate that all virtual machines that
          * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
          * that are not in `virtualMachineIds` the included will be removed from the group.
          * 
@@ -212,11 +228,13 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * 
          * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
          * `name` argument) is shared with the
-         * `vsphere.ComputeClusterHostGroup`
+         * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
          * resource. Make sure your names are unique across both resources.
          * 
+         * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+         * 
          * &gt; **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-         * import section. When importing a VM group, validate that all virtual machines that
+         * Importing section. When importing a VM group, validate that all virtual machines that
          * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
          * that are not in `virtualMachineIds` the included will be removed from the group.
          * 

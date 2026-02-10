@@ -5,15 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.Tag` data source can be used to reference tags that are not
- * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
- * resource, and, like importing, the data source takes a name and
- * category to search on. The `id` and other attributes are then populated with
- * the data found by the search.
- *
- * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
- * requires vCenter Server.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -65,15 +56,6 @@ export interface GetTagResult {
     readonly name: string;
 }
 /**
- * The `vsphere.Tag` data source can be used to reference tags that are not
- * managed by this provider. Its attributes are exactly the same as the `vsphere.Tag`
- * resource, and, like importing, the data source takes a name and
- * category to search on. The `id` and other attributes are then populated with
- * the data found by the search.
- *
- * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
- * requires vCenter Server.
- *
  * ## Example Usage
  *
  * ```typescript

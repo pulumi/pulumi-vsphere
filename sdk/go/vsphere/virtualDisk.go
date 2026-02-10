@@ -13,9 +13,12 @@ import (
 )
 
 // The `VirtualDisk` resource can be used to create virtual disks outside
-// of any given `VirtualMachine`
+// of any given [`VirtualMachine`][docs-vsphere-virtual-machine]
 // resource. These disks can be attached to a virtual machine by creating a disk
-// block with the `attach` parameter.
+// block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
+//
+// [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
+// [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
 //
 // ## Example Usage
 //
@@ -85,10 +88,12 @@ type VirtualDisk struct {
 	//
 	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
 	// controller that the virtual disk will be attached to on the virtual machine.
-	// Please see the `scsiType` parameter
+	// Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
 	// in the `VirtualMachine` resource for information on how to control
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
+	//
+	// [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
 	//
 	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
 	AdapterType pulumi.StringPtrOutput `pulumi:"adapterType"`
@@ -167,10 +172,12 @@ type virtualDiskState struct {
 	//
 	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
 	// controller that the virtual disk will be attached to on the virtual machine.
-	// Please see the `scsiType` parameter
+	// Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
 	// in the `VirtualMachine` resource for information on how to control
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
+	//
+	// [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
 	//
 	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
 	AdapterType *string `pulumi:"adapterType"`
@@ -211,10 +218,12 @@ type VirtualDiskState struct {
 	//
 	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
 	// controller that the virtual disk will be attached to on the virtual machine.
-	// Please see the `scsiType` parameter
+	// Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
 	// in the `VirtualMachine` resource for information on how to control
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
+	//
+	// [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
 	//
 	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
 	AdapterType pulumi.StringPtrInput
@@ -259,10 +268,12 @@ type virtualDiskArgs struct {
 	//
 	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
 	// controller that the virtual disk will be attached to on the virtual machine.
-	// Please see the `scsiType` parameter
+	// Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
 	// in the `VirtualMachine` resource for information on how to control
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
+	//
+	// [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
 	//
 	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
 	AdapterType *string `pulumi:"adapterType"`
@@ -304,10 +315,12 @@ type VirtualDiskArgs struct {
 	//
 	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
 	// controller that the virtual disk will be attached to on the virtual machine.
-	// Please see the `scsiType` parameter
+	// Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
 	// in the `VirtualMachine` resource for information on how to control
 	// disk controller types. This parameter will be removed in future versions of the
 	// vSphere provider.
+	//
+	// [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
 	//
 	// Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
 	AdapterType pulumi.StringPtrInput
@@ -434,10 +447,12 @@ func (o VirtualDiskOutput) ToVirtualDiskOutputWithContext(ctx context.Context) V
 //
 // > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
 // controller that the virtual disk will be attached to on the virtual machine.
-// Please see the `scsiType` parameter
+// Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
 // in the `VirtualMachine` resource for information on how to control
 // disk controller types. This parameter will be removed in future versions of the
 // vSphere provider.
+//
+// [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
 //
 // Deprecated: this attribute has no effect on controller types - please use scsiType in VirtualMachine instead
 func (o VirtualDiskOutput) AdapterType() pulumi.StringPtrOutput {

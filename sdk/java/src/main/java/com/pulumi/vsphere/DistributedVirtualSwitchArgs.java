@@ -209,7 +209,10 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
 
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for VDS.
+     * value strings to set for VDS. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
      * and requires vCenter Server.
@@ -220,7 +223,10 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
 
     /**
      * @return Map of custom attribute ids to attribute
-     * value strings to set for VDS.
+     * value strings to set for VDS. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
      * and requires vCenter Server.
@@ -1117,14 +1123,20 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -1850,7 +1862,10 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
 
         /**
          * @param customAttributes Map of custom attribute ids to attribute
-         * value strings to set for VDS.
+         * value strings to set for VDS. See [here][docs-setting-custom-attributes]
+         * for a reference on how to set values for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
          * and requires vCenter Server.
@@ -1865,7 +1880,10 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
 
         /**
          * @param customAttributes Map of custom attribute ids to attribute
-         * value strings to set for VDS.
+         * value strings to set for VDS. See [here][docs-setting-custom-attributes]
+         * for a reference on how to set values for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
          * and requires vCenter Server.
@@ -3142,7 +3160,10 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -3153,7 +3174,10 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 
@@ -3163,7 +3187,10 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags The IDs of any tags to attach to this resource.
+         * @param tags The IDs of any tags to attach to this resource. See
+         * [here][docs-applying-tags] for a reference on how to apply tags.
+         * 
+         * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
          * 
          * @return builder
          * 

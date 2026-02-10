@@ -12,27 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **A note on the naming of this resource:** VMware refers to clusters of
-// hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
-// clusters_. All of these refer to the same kind of resource (with the latter two
-// referring to specific features of clustering). We use
-// `ComputeCluster` to differentiate host clusters from _datastore
-// clusters_, which are clusters of datastores that can be used to distribute load
-// and ensure fault tolerance via distribution of virtual machines. Datastore
-// clusters can also be managed through the provider, via the
-// `DatastoreCluster` resource.
-//
-// The `ComputeCluster` resource can be used to create and manage
-// clusters of hosts allowing for resource control of compute resources, load
-// balancing through DRS, and high availability through vSphere HA.
-//
-// For more information on vSphere clusters and DRS, see [this
-// page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
-// page][ref-vsphere-ha-clusters].
-//
-// > **NOTE:** This resource requires vCenter and is not available on
-// direct ESXi connections.
-//
 // ## Example Usage
 //
 // The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -123,8 +102,6 @@ import (
 //
 // the `dc-01` datacenter.
 //
-// [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
-// [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
 // [ref-vsphere-ha-checklist]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
 //
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -132,12 +109,16 @@ type ComputeCluster struct {
 	pulumi.CustomResourceState
 
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster.
+	// value strings to set for the datastore cluster. See
+	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// for custom attributes.
 	//
-	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-	// and require vCenter Server.
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and requires vCenter Server.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId pulumi.StringOutput `pulumi:"datacenterId"`
 	// The automation level for host power operations in this cluster. Can be one of manual or automated.
@@ -160,12 +141,7 @@ type ComputeCluster struct {
 	DrsMigrationThreshold pulumi.IntPtrOutput `pulumi:"drsMigrationThreshold"`
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares pulumi.StringPtrOutput `pulumi:"drsScaleDescendantsShares"`
-	// The relative path to a folder to put this cluster in.
-	// This is a path relative to the datacenter you are deploying the cluster to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// The provider will place a cluster named `compute-cluster-test` in a
-	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-	// being `/dc1/host/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the cluster in.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy pulumi.BoolPtrOutput `pulumi:"forceEvacuateOnDestroy"`
@@ -249,13 +225,17 @@ type ComputeCluster struct {
 	ProactiveHaProviderIds pulumi.StringArrayOutput `pulumi:"proactiveHaProviderIds"`
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation pulumi.StringPtrOutput `pulumi:"proactiveHaSevereRemediation"`
-	// The managed object ID of the primary
+	// The [managed object ID][docs-about-morefs] of the primary
 	// resource pool for this cluster. This can be passed directly to the
-	// `resourcePoolId`
-	// attribute of the
-	// `VirtualMachine` resource.
+	// [`resourcePoolId`
+	// attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+	// [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
 	ResourcePoolId pulumi.StringOutput `pulumi:"resourcePoolId"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Whether the vSAN compression service is enabled for the cluster.
 	VsanCompressionEnabled pulumi.BoolPtrOutput `pulumi:"vsanCompressionEnabled"`
@@ -321,12 +301,16 @@ func GetComputeCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ComputeCluster resources.
 type computeClusterState struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster.
+	// value strings to set for the datastore cluster. See
+	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// for custom attributes.
 	//
-	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-	// and require vCenter Server.
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and requires vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The automation level for host power operations in this cluster. Can be one of manual or automated.
@@ -349,12 +333,7 @@ type computeClusterState struct {
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares *string `pulumi:"drsScaleDescendantsShares"`
-	// The relative path to a folder to put this cluster in.
-	// This is a path relative to the datacenter you are deploying the cluster to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// The provider will place a cluster named `compute-cluster-test` in a
-	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-	// being `/dc1/host/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the cluster in.
 	Folder *string `pulumi:"folder"`
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
@@ -438,13 +417,17 @@ type computeClusterState struct {
 	ProactiveHaProviderIds []string `pulumi:"proactiveHaProviderIds"`
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
-	// The managed object ID of the primary
+	// The [managed object ID][docs-about-morefs] of the primary
 	// resource pool for this cluster. This can be passed directly to the
-	// `resourcePoolId`
-	// attribute of the
-	// `VirtualMachine` resource.
+	// [`resourcePoolId`
+	// attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+	// [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 	// Whether the vSAN compression service is enabled for the cluster.
 	VsanCompressionEnabled *bool `pulumi:"vsanCompressionEnabled"`
@@ -478,12 +461,16 @@ type computeClusterState struct {
 
 type ComputeClusterState struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster.
+	// value strings to set for the datastore cluster. See
+	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// for custom attributes.
 	//
-	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-	// and require vCenter Server.
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and requires vCenter Server.
 	CustomAttributes pulumi.StringMapInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId pulumi.StringPtrInput
 	// The automation level for host power operations in this cluster. Can be one of manual or automated.
@@ -506,12 +493,7 @@ type ComputeClusterState struct {
 	DrsMigrationThreshold pulumi.IntPtrInput
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares pulumi.StringPtrInput
-	// The relative path to a folder to put this cluster in.
-	// This is a path relative to the datacenter you are deploying the cluster to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// The provider will place a cluster named `compute-cluster-test` in a
-	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-	// being `/dc1/host/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the cluster in.
 	Folder pulumi.StringPtrInput
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
@@ -595,13 +577,17 @@ type ComputeClusterState struct {
 	ProactiveHaProviderIds pulumi.StringArrayInput
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
-	// The managed object ID of the primary
+	// The [managed object ID][docs-about-morefs] of the primary
 	// resource pool for this cluster. This can be passed directly to the
-	// `resourcePoolId`
-	// attribute of the
-	// `VirtualMachine` resource.
+	// [`resourcePoolId`
+	// attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+	// [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
 	ResourcePoolId pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 	// Whether the vSAN compression service is enabled for the cluster.
 	VsanCompressionEnabled pulumi.BoolPtrInput
@@ -639,12 +625,16 @@ func (ComputeClusterState) ElementType() reflect.Type {
 
 type computeClusterArgs struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster.
+	// value strings to set for the datastore cluster. See
+	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// for custom attributes.
 	//
-	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-	// and require vCenter Server.
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and requires vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId string `pulumi:"datacenterId"`
 	// The automation level for host power operations in this cluster. Can be one of manual or automated.
@@ -667,12 +657,7 @@ type computeClusterArgs struct {
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares *string `pulumi:"drsScaleDescendantsShares"`
-	// The relative path to a folder to put this cluster in.
-	// This is a path relative to the datacenter you are deploying the cluster to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// The provider will place a cluster named `compute-cluster-test` in a
-	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-	// being `/dc1/host/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the cluster in.
 	Folder *string `pulumi:"folder"`
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
@@ -756,7 +741,11 @@ type computeClusterArgs struct {
 	ProactiveHaProviderIds []string `pulumi:"proactiveHaProviderIds"`
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 	// Whether the vSAN compression service is enabled for the cluster.
 	VsanCompressionEnabled *bool `pulumi:"vsanCompressionEnabled"`
@@ -791,12 +780,16 @@ type computeClusterArgs struct {
 // The set of arguments for constructing a ComputeCluster resource.
 type ComputeClusterArgs struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster.
+	// value strings to set for the datastore cluster. See
+	// [here][docs-setting-custom-attributes] for a reference on how to set values
+	// for custom attributes.
 	//
-	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-	// and require vCenter Server.
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and requires vCenter Server.
 	CustomAttributes pulumi.StringMapInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId pulumi.StringInput
 	// The automation level for host power operations in this cluster. Can be one of manual or automated.
@@ -819,12 +812,7 @@ type ComputeClusterArgs struct {
 	DrsMigrationThreshold pulumi.IntPtrInput
 	// Enable scalable shares for all descendants of this cluster.
 	DrsScaleDescendantsShares pulumi.StringPtrInput
-	// The relative path to a folder to put this cluster in.
-	// This is a path relative to the datacenter you are deploying the cluster to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// The provider will place a cluster named `compute-cluster-test` in a
-	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-	// being `/dc1/host/foo/bar/datastore-cluster-test`.
+	// The name of the folder to locate the cluster in.
 	Folder pulumi.StringPtrInput
 	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
@@ -908,7 +896,11 @@ type ComputeClusterArgs struct {
 	ProactiveHaProviderIds pulumi.StringArrayInput
 	// The configured remediation for severely degraded hosts. Can be one of MaintenanceMode or QuarantineMode. Note that this cannot be set to QuarantineMode when proactiveHaModerateRemediation is set to MaintenanceMode.
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 	// Whether the vSAN compression service is enabled for the cluster.
 	VsanCompressionEnabled pulumi.BoolPtrInput
@@ -1028,15 +1020,19 @@ func (o ComputeClusterOutput) ToComputeClusterOutputWithContext(ctx context.Cont
 }
 
 // A map of custom attribute ids to attribute
-// value strings to set for the datastore cluster.
+// value strings to set for the datastore cluster. See
+// [here][docs-setting-custom-attributes] for a reference on how to set values
+// for custom attributes.
 //
-// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-// and require vCenter Server.
+// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+//
+// > **NOTE:** Custom attributes are not supported on direct ESXi host
+// connections and requires vCenter Server.
 func (o ComputeClusterOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
 
-// The managed object ID of
+// The [managed object ID][docs-about-morefs] of
 // the datacenter to create the cluster in. Forces a new resource if changed.
 func (o ComputeClusterOutput) DatacenterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringOutput { return v.DatacenterId }).(pulumi.StringOutput)
@@ -1092,12 +1088,7 @@ func (o ComputeClusterOutput) DrsScaleDescendantsShares() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.DrsScaleDescendantsShares }).(pulumi.StringPtrOutput)
 }
 
-// The relative path to a folder to put this cluster in.
-// This is a path relative to the datacenter you are deploying the cluster to.
-// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-// The provider will place a cluster named `compute-cluster-test` in a
-// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-// being `/dc1/host/foo/bar/datastore-cluster-test`.
+// The name of the folder to locate the cluster in.
 func (o ComputeClusterOutput) Folder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
 }
@@ -1307,16 +1298,20 @@ func (o ComputeClusterOutput) ProactiveHaSevereRemediation() pulumi.StringPtrOut
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.ProactiveHaSevereRemediation }).(pulumi.StringPtrOutput)
 }
 
-// The managed object ID of the primary
+// The [managed object ID][docs-about-morefs] of the primary
 // resource pool for this cluster. This can be passed directly to the
-// `resourcePoolId`
-// attribute of the
-// `VirtualMachine` resource.
+// [`resourcePoolId`
+// attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+// [`VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
 func (o ComputeClusterOutput) ResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringOutput { return v.ResourcePoolId }).(pulumi.StringOutput)
 }
 
-// The IDs of any tags to attach to this resource.
+// The IDs of any tags to attach to this resource. See
+// [here][docs-applying-tags] for a reference on how to apply tags.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 func (o ComputeClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

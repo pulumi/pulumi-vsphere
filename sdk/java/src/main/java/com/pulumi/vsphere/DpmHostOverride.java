@@ -33,12 +33,15 @@ import javax.annotation.Nullable;
  * 
  * The following example creates a compute cluster comprised of three hosts,
  * making use of the
- * `vsphere.ComputeCluster` resource. DPM
+ * [`vsphere.ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
  * will be disabled in the cluster as it is the default setting, but we override
  * the setting of the first host referenced by the
- * `vsphere.Host` data source (`esxi1`) by using
+ * [`vsphere.Host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
  * the `vsphere.DpmHostOverride` resource so it will be powered off when the
  * cluster does not need it to service virtual machines.
+ * 
+ * [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
  * 
  * ## Import
  * 
@@ -62,18 +65,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/dpmHostOverride:DpmHostOverride")
 public class DpmHostOverride extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {

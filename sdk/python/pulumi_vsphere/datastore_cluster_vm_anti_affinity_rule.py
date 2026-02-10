@@ -26,13 +26,12 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatastoreClusterVmAntiAffinityRule resource.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object reference
-               ID of the datastore cluster to put the group in.  Forces
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
                a new resource if changed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
-               on different datastores from each other.
                
-               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -51,9 +50,11 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the datastore cluster to put the group in.  Forces
+        The [managed object reference
+        ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
         a new resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "datastore_cluster_id")
 
@@ -65,10 +66,7 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
     @pulumi.getter(name="virtualMachineIds")
     def virtual_machine_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The UUIDs of the virtual machines to run
-        on different datastores from each other.
-
-        > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        The UUIDs of the virtual machines to run on different datastores from each other.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -124,17 +122,16 @@ class _DatastoreClusterVmAntiAffinityRuleState:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DatastoreClusterVmAntiAffinityRule resources.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object reference
-               ID of the datastore cluster to put the group in.  Forces
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
                a new resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[_builtins.str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
-               on different datastores from each other.
-               
-               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
         """
         if datastore_cluster_id is not None:
             pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
@@ -151,9 +148,11 @@ class _DatastoreClusterVmAntiAffinityRuleState:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the datastore cluster to put the group in.  Forces
+        The [managed object reference
+        ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
         a new resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "datastore_cluster_id")
 
@@ -202,10 +201,7 @@ class _DatastoreClusterVmAntiAffinityRuleState:
     @pulumi.getter(name="virtualMachineIds")
     def virtual_machine_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The UUIDs of the virtual machines to run
-        on different datastores from each other.
-
-        > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        The UUIDs of the virtual machines to run on different datastores from each other.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -229,8 +225,11 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         """
         The `DatastoreClusterVmAntiAffinityRule` resource can be used to
         manage VM anti-affinity rules in a datastore cluster, either created by the
-        `DatastoreCluster` resource or looked up
-        by the `DatastoreCluster` data source.
+        [`DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
+        by the [`DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
+
+        [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
+        [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
 
         This rule can be used to tell a set to virtual machines to run on different
         datastores within a cluster, useful for preventing single points of failure in
@@ -247,11 +246,13 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates two virtual machines in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machines in the datastore cluster looked up by the
-        `DatastoreCluster` data
+        [`DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data
         source. It then creates an anti-affinity rule for these two virtual machines,
         ensuring they will run on different datastores whenever possible.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -267,7 +268,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         vm = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
-                name=f"test-{range['value']}",
+                name=f"pulumi-test-{range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_cluster_id=datastore_cluster.id,
                 num_cpus=2,
@@ -281,7 +282,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
                     "size": 20,
                 }]))
         cluster_vm_anti_affinity_rule = vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule",
-            name="test-datastore-cluster-vm-anti-affinity-rule",
+            name="pulumi-test-datastore-cluster-vm-anti-affinity-rule",
             datastore_cluster_id=datastore_cluster.id,
             virtual_machine_ids=[[__item.id for __item in vm]])
         ```
@@ -308,17 +309,16 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object reference
-               ID of the datastore cluster to put the group in.  Forces
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
                a new resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[_builtins.str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
-               on different datastores from each other.
-               
-               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
         """
         ...
     @overload
@@ -329,8 +329,11 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         """
         The `DatastoreClusterVmAntiAffinityRule` resource can be used to
         manage VM anti-affinity rules in a datastore cluster, either created by the
-        `DatastoreCluster` resource or looked up
-        by the `DatastoreCluster` data source.
+        [`DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
+        by the [`DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
+
+        [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
+        [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
 
         This rule can be used to tell a set to virtual machines to run on different
         datastores within a cluster, useful for preventing single points of failure in
@@ -347,11 +350,13 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates two virtual machines in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machines in the datastore cluster looked up by the
-        `DatastoreCluster` data
+        [`DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data
         source. It then creates an anti-affinity rule for these two virtual machines,
         ensuring they will run on different datastores whenever possible.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -367,7 +372,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         vm = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
-                name=f"test-{range['value']}",
+                name=f"pulumi-test-{range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_cluster_id=datastore_cluster.id,
                 num_cpus=2,
@@ -381,7 +386,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
                     "size": 20,
                 }]))
         cluster_vm_anti_affinity_rule = vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule",
-            name="test-datastore-cluster-vm-anti-affinity-rule",
+            name="pulumi-test-datastore-cluster-vm-anti-affinity-rule",
             datastore_cluster_id=datastore_cluster.id,
             virtual_machine_ids=[[__item.id for __item in vm]])
         ```
@@ -466,17 +471,16 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] datastore_cluster_id: The managed object reference
-               ID of the datastore cluster to put the group in.  Forces
+        :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
                a new resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[_builtins.str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
-               on different datastores from each other.
-               
-               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -493,9 +497,11 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the datastore cluster to put the group in.  Forces
+        The [managed object reference
+        ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
         a new resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "datastore_cluster_id")
 
@@ -528,10 +534,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     @pulumi.getter(name="virtualMachineIds")
     def virtual_machine_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The UUIDs of the virtual machines to run
-        on different datastores from each other.
-
-        > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+        The UUIDs of the virtual machines to run on different datastores from each other.
         """
         return pulumi.get(self, "virtual_machine_ids")
 

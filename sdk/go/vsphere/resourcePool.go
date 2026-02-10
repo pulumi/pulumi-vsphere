@@ -274,7 +274,7 @@ type ResourcePool struct {
 	MemoryShares pulumi.IntOutput `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
@@ -285,7 +285,11 @@ type ResourcePool struct {
 	// of the resource pool are scaled up or down. Can be one of `disabled` or
 	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares pulumi.StringPtrOutput `pulumi:"scaleDescendantsShares"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -368,7 +372,7 @@ type resourcePoolState struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name *string `pulumi:"name"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
@@ -379,7 +383,11 @@ type resourcePoolState struct {
 	// of the resource pool are scaled up or down. Can be one of `disabled` or
 	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares *string `pulumi:"scaleDescendantsShares"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -430,7 +438,7 @@ type ResourcePoolState struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the resource pool.
 	Name pulumi.StringPtrInput
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
@@ -441,7 +449,11 @@ type ResourcePoolState struct {
 	// of the resource pool are scaled up or down. Can be one of `disabled` or
 	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -496,7 +508,7 @@ type resourcePoolArgs struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name *string `pulumi:"name"`
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
@@ -507,7 +519,11 @@ type resourcePoolArgs struct {
 	// of the resource pool are scaled up or down. Can be one of `disabled` or
 	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares *string `pulumi:"scaleDescendantsShares"`
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags []string `pulumi:"tags"`
 }
 
@@ -559,7 +575,7 @@ type ResourcePoolArgs struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the resource pool.
 	Name pulumi.StringPtrInput
-	// The managed object ID
+	// The [managed object ID][docs-about-morefs]
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
@@ -570,7 +586,11 @@ type ResourcePoolArgs struct {
 	// of the resource pool are scaled up or down. Can be one of `disabled` or
 	// `scaleCpuAndMemoryShares`. Default: `disabled`.
 	ScaleDescendantsShares pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource.
+	// The IDs of any tags to attach to this resource. See
+	// [here][docs-applying-tags] for a reference on how to apply tags.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 	Tags pulumi.StringArrayInput
 }
 
@@ -743,7 +763,7 @@ func (o ResourcePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The managed object ID
+// The [managed object ID][docs-about-morefs]
 // of the parent resource pool. This can be the root resource pool for a cluster
 // or standalone host, or a resource pool itself. When moving a resource pool
 // from one parent resource pool to another, both must share a common root
@@ -760,7 +780,11 @@ func (o ResourcePoolOutput) ScaleDescendantsShares() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringPtrOutput { return v.ScaleDescendantsShares }).(pulumi.StringPtrOutput)
 }
 
-// The IDs of any tags to attach to this resource.
+// The IDs of any tags to attach to this resource. See
+// [here][docs-applying-tags] for a reference on how to apply tags.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
 func (o ResourcePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ResourcePool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

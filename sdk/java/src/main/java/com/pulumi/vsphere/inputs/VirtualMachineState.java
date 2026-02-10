@@ -311,17 +311,9 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.datastoreId);
     }
 
-    /**
-     * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-     * 
-     */
     @Import(name="defaultIpAddress")
     private @Nullable Output<String> defaultIpAddress;
 
-    /**
-     * @return The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-     * 
-     */
     public Optional<Output<String>> defaultIpAddress() {
         return Optional.ofNullable(this.defaultIpAddress);
     }
@@ -724,14 +716,14 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The managed object reference ID of the created virtual machine.
+     * The [managed object reference ID][docs-about-morefs] of the created virtual machine.
      * 
      */
     @Import(name="moid")
     private @Nullable Output<String> moid;
 
     /**
-     * @return The managed object reference ID of the created virtual machine.
+     * @return The [managed object reference ID][docs-about-morefs] of the created virtual machine.
      * 
      */
     public Optional<Output<String>> moid() {
@@ -1826,23 +1818,11 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
             return datastoreId(Output.of(datastoreId));
         }
 
-        /**
-         * @param defaultIpAddress The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultIpAddress(@Nullable Output<String> defaultIpAddress) {
             $.defaultIpAddress = defaultIpAddress;
             return this;
         }
 
-        /**
-         * @param defaultIpAddress The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultIpAddress(String defaultIpAddress) {
             return defaultIpAddress(Output.of(defaultIpAddress));
         }
@@ -2433,7 +2413,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param moid The managed object reference ID of the created virtual machine.
+         * @param moid The [managed object reference ID][docs-about-morefs] of the created virtual machine.
          * 
          * @return builder
          * 
@@ -2444,7 +2424,7 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param moid The managed object reference ID of the created virtual machine.
+         * @param moid The [managed object reference ID][docs-about-morefs] of the created virtual machine.
          * 
          * @return builder
          * 

@@ -14,9 +14,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.getVmfsDisks` data source can be used to discover the storage
         /// devices available on an ESXi host. This data source can be combined with the
-        /// `vsphere.VmfsDatastore` resource to create VMFS
+        /// [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
         /// datastores based off a set of discovered disks.
         /// 
+        /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
         /// 
         /// ## Example Usage
         /// 
@@ -55,9 +56,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.getVmfsDisks` data source can be used to discover the storage
         /// devices available on an ESXi host. This data source can be combined with the
-        /// `vsphere.VmfsDatastore` resource to create VMFS
+        /// [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
         /// datastores based off a set of discovered disks.
         /// 
+        /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
         /// 
         /// ## Example Usage
         /// 
@@ -96,9 +98,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.getVmfsDisks` data source can be used to discover the storage
         /// devices available on an ESXi host. This data source can be combined with the
-        /// `vsphere.VmfsDatastore` resource to create VMFS
+        /// [`vsphere.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
         /// datastores based off a set of discovered disks.
         /// 
+        /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
         /// 
         /// ## Example Usage
         /// 
@@ -150,8 +153,10 @@ namespace Pulumi.VSphere
         public string? Filter { get; set; }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to look for disks on.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("hostSystemId", required: true)]
         public string HostSystemId { get; set; } = null!;
@@ -184,8 +189,10 @@ namespace Pulumi.VSphere
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the host to look for disks on.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("hostSystemId", required: true)]
         public Input<string> HostSystemId { get; set; } = null!;

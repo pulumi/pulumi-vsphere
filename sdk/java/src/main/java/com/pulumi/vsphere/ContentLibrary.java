@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * 
  * The following example creates a publishing content library using the datastore named `publisher-datastore` as the storage backing.
  * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
  * <pre>
  * {@code
  * package generated_program;
@@ -180,14 +182,14 @@ public class ContentLibrary extends com.pulumi.resources.CustomResource {
         return this.publication;
     }
     /**
-     * The managed object reference ID of the datastore on which to store the content library items.
+     * The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      * 
      */
     @Export(name="storageBackings", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> storageBackings;
 
     /**
-     * @return The managed object reference ID of the datastore on which to store the content library items.
+     * @return The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
      * 
      */
     public Output<List<String>> storageBackings() {

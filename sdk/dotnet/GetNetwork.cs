@@ -214,10 +214,11 @@ namespace Pulumi.VSphere
     public sealed class GetNetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the network is located in. This can be omitted if the
-        /// search path used in `Name` is an absolute path. For default datacenters,
-        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the network
+        /// is located in. This can be omitted if the search path used in `Name` is an
+        /// absolute path. For default datacenters, use the `Id` attribute from an empty
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -263,6 +264,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Select a VPC scope for retrieval of VPC subnets.
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -276,10 +278,11 @@ namespace Pulumi.VSphere
     public sealed class GetNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the network is located in. This can be omitted if the
-        /// search path used in `Name` is an absolute path. For default datacenters,
-        /// use the `Id` attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the network
+        /// is located in. This can be omitted if the search path used in `Name` is an
+        /// absolute path. For default datacenters, use the `Id` attribute from an empty
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -325,6 +328,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Select a VPC scope for retrieval of VPC subnets.
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

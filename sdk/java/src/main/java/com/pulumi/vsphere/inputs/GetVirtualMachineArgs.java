@@ -124,22 +124,22 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The managed object reference
-     * ID of the datacenter the virtual machine is located in.
-     * This can be omitted if the search path used in `name` is an absolute path.
-     * For default datacenters, use the `id` attribute from an empty
-     * `vsphere.Datacenter` data source.
+     * The [managed object reference
+     * ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+     * This can be omitted if the search path used in `name` is an absolute path. For
+     * default datacenters, use the `id` attribute from an empty `vsphere.Datacenter`
+     * data source.
      * 
      */
     @Import(name="datacenterId")
     private @Nullable Output<String> datacenterId;
 
     /**
-     * @return The managed object reference
-     * ID of the datacenter the virtual machine is located in.
-     * This can be omitted if the search path used in `name` is an absolute path.
-     * For default datacenters, use the `id` attribute from an empty
-     * `vsphere.Datacenter` data source.
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+     * This can be omitted if the search path used in `name` is an absolute path. For
+     * default datacenters, use the `id` attribute from an empty `vsphere.Datacenter`
+     * data source.
      * 
      */
     public Optional<Output<String>> datacenterId() {
@@ -206,14 +206,20 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * The name of the virtual machine folder where the virtual
+     * machine is located. The `name` argument is limited to 80 characters. If the
+     * `name` argument includes the full path to the virtual machine and exceeds the
+     * 80 characters limit, the `folder` folder argument can be used.
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+     * @return The name of the virtual machine folder where the virtual
+     * machine is located. The `name` argument is limited to 80 characters. If the
+     * `name` argument includes the full path to the virtual machine and exceeds the
+     * 80 characters limit, the `folder` folder argument can be used.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -336,18 +342,18 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The name of the virtual machine. This can be a name or
-     * the full path relative to the datacenter. This is required if a UUID lookup
-     * is not performed.
+     * The name of the virtual machine. This can be a name or the
+     * full path relative to the datacenter. This is required if a UUID lookup is not
+     * performed.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the virtual machine. This can be a name or
-     * the full path relative to the datacenter. This is required if a UUID lookup
-     * is not performed.
+     * @return The name of the virtual machine. This can be a name or the
+     * full path relative to the datacenter. This is required if a UUID lookup is not
+     * performed.
      * 
      */
     public Optional<Output<String>> name() {
@@ -399,11 +405,17 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
      * The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
      * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
+     * use with this data source reside on the primary controller, and leave this value
+     * at the default. See the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+     * documentation for the significance of this setting, specifically the
+     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+     * section.
+     * 
+     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      * 
      */
     @Import(name="nvmeControllerScanCount")
@@ -413,11 +425,17 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
      * @return The number of NVMe controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
      * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-     * use with this data source reside on the primary controller, and leave this
-     * value at the default. See the `vsphere.VirtualMachine`
-     * resource documentation for the significance of this setting, specifically the
-     * additional requirements and notes for cloning section.
+     * use with this data source reside on the primary controller, and leave this value
+     * at the default. See the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+     * documentation for the significance of this setting, specifically the
+     * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+     * section.
+     * 
+     * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
      * 
      */
     public Optional<Output<Integer>> nvmeControllerScanCount() {
@@ -526,16 +544,16 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Specify this field for a UUID lookup, `name` and `datacenterId`
-     * are not required if this is specified.
+     * Specify this field for a UUID lookup, `name` and
+     * `datacenterId` are not required if this is specified.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Specify this field for a UUID lookup, `name` and `datacenterId`
-     * are not required if this is specified.
+     * @return Specify this field for a UUID lookup, `name` and
+     * `datacenterId` are not required if this is specified.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -779,11 +797,11 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param datacenterId The managed object reference
-         * ID of the datacenter the virtual machine is located in.
-         * This can be omitted if the search path used in `name` is an absolute path.
-         * For default datacenters, use the `id` attribute from an empty
-         * `vsphere.Datacenter` data source.
+         * @param datacenterId The [managed object reference
+         * ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+         * This can be omitted if the search path used in `name` is an absolute path. For
+         * default datacenters, use the `id` attribute from an empty `vsphere.Datacenter`
+         * data source.
          * 
          * @return builder
          * 
@@ -794,11 +812,11 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param datacenterId The managed object reference
-         * ID of the datacenter the virtual machine is located in.
-         * This can be omitted if the search path used in `name` is an absolute path.
-         * For default datacenters, use the `id` attribute from an empty
-         * `vsphere.Datacenter` data source.
+         * @param datacenterId The [managed object reference
+         * ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+         * This can be omitted if the search path used in `name` is an absolute path. For
+         * default datacenters, use the `id` attribute from an empty `vsphere.Datacenter`
+         * data source.
          * 
          * @return builder
          * 
@@ -885,7 +903,10 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param folder The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+         * @param folder The name of the virtual machine folder where the virtual
+         * machine is located. The `name` argument is limited to 80 characters. If the
+         * `name` argument includes the full path to the virtual machine and exceeds the
+         * 80 characters limit, the `folder` folder argument can be used.
          * 
          * @return builder
          * 
@@ -896,7 +917,10 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param folder The name of the virtual machine folder where the virtual machine is located. The `name` argument is limited to 80 characters. If the `name` argument includes the full path to the virtual machine and exceeds the 80 characters limit, the `folder` folder argument can be used.
+         * @param folder The name of the virtual machine folder where the virtual
+         * machine is located. The `name` argument is limited to 80 characters. If the
+         * `name` argument includes the full path to the virtual machine and exceeds the
+         * 80 characters limit, the `folder` folder argument can be used.
          * 
          * @return builder
          * 
@@ -1059,9 +1083,9 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param name The name of the virtual machine. This can be a name or
-         * the full path relative to the datacenter. This is required if a UUID lookup
-         * is not performed.
+         * @param name The name of the virtual machine. This can be a name or the
+         * full path relative to the datacenter. This is required if a UUID lookup is not
+         * performed.
          * 
          * @return builder
          * 
@@ -1072,9 +1096,9 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param name The name of the virtual machine. This can be a name or
-         * the full path relative to the datacenter. This is required if a UUID lookup
-         * is not performed.
+         * @param name The name of the virtual machine. This can be a name or the
+         * full path relative to the datacenter. This is required if a UUID lookup is not
+         * performed.
          * 
          * @return builder
          * 
@@ -1142,11 +1166,17 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
          * @param nvmeControllerScanCount The number of NVMe controllers to
          * scan for disk attributes and controller types on. Default: `1`.
          * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
          * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-         * use with this data source reside on the primary controller, and leave this
-         * value at the default. See the `vsphere.VirtualMachine`
-         * resource documentation for the significance of this setting, specifically the
-         * additional requirements and notes for cloning section.
+         * use with this data source reside on the primary controller, and leave this value
+         * at the default. See the
+         * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+         * documentation for the significance of this setting, specifically the
+         * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+         * section.
+         * 
+         * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
          * 
          * @return builder
          * 
@@ -1160,11 +1190,17 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
          * @param nvmeControllerScanCount The number of NVMe controllers to
          * scan for disk attributes and controller types on. Default: `1`.
          * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
          * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
-         * use with this data source reside on the primary controller, and leave this
-         * value at the default. See the `vsphere.VirtualMachine`
-         * resource documentation for the significance of this setting, specifically the
-         * additional requirements and notes for cloning section.
+         * use with this data source reside on the primary controller, and leave this value
+         * at the default. See the
+         * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource
+         * documentation for the significance of this setting, specifically the
+         * [additional requirements and notes for cloning][docs-virtual-machine-resource-cloning]
+         * section.
+         * 
+         * [docs-virtual-machine-resource-cloning]: /docs/providers/vsphere/r/virtual_machine.html#additional-requirements-and-notes-for-cloning
          * 
          * @return builder
          * 
@@ -1305,8 +1341,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param uuid Specify this field for a UUID lookup, `name` and `datacenterId`
-         * are not required if this is specified.
+         * @param uuid Specify this field for a UUID lookup, `name` and
+         * `datacenterId` are not required if this is specified.
          * 
          * @return builder
          * 
@@ -1317,8 +1353,8 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param uuid Specify this field for a UUID lookup, `name` and `datacenterId`
-         * are not required if this is specified.
+         * @param uuid Specify this field for a UUID lookup, `name` and
+         * `datacenterId` are not required if this is specified.
          * 
          * @return builder
          * 

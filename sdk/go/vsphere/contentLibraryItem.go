@@ -22,6 +22,8 @@ import (
 // The first example below imports an OVF Template to a content
 // library.
 //
+// [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
 // ```go
 // package main
 //

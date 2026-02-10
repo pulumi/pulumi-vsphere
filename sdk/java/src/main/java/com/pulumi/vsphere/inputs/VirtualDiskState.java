@@ -23,10 +23,12 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
      * controller that the virtual disk will be attached to on the virtual machine.
-     * Please see the `scsiType` parameter
+     * Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
      * in the `vsphere.VirtualMachine` resource for information on how to control
      * disk controller types. This parameter will be removed in future versions of the
      * vSphere provider.
+     * 
+     * [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
      * 
      * @deprecated
      * this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
@@ -42,10 +44,12 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
      * controller that the virtual disk will be attached to on the virtual machine.
-     * Please see the `scsiType` parameter
+     * Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
      * in the `vsphere.VirtualMachine` resource for information on how to control
      * disk controller types. This parameter will be removed in future versions of the
      * vSphere provider.
+     * 
+     * [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
      * 
      * @deprecated
      * this attribute has no effect on controller types - please use scsiType in vsphere.VirtualMachine instead
@@ -216,10 +220,12 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
          * controller that the virtual disk will be attached to on the virtual machine.
-         * Please see the `scsiType` parameter
+         * Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
          * in the `vsphere.VirtualMachine` resource for information on how to control
          * disk controller types. This parameter will be removed in future versions of the
          * vSphere provider.
+         * 
+         * [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
          * 
          * @return builder
          * 
@@ -239,10 +245,12 @@ public final class VirtualDiskState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
          * controller that the virtual disk will be attached to on the virtual machine.
-         * Please see the `scsiType` parameter
+         * Please see the [`scsiType`][docs-vsphere-virtual-machine-scsi-type] parameter
          * in the `vsphere.VirtualMachine` resource for information on how to control
          * disk controller types. This parameter will be removed in future versions of the
          * vSphere provider.
+         * 
+         * [docs-vsphere-virtual-machine-scsi-type]: /docs/providers/vsphere/r/virtual_machine.html#scsi_type
          * 
          * @return builder
          * 

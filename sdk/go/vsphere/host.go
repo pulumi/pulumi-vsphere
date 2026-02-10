@@ -17,7 +17,9 @@ import (
 //
 // ## Example Usage
 //
-// ### Create a standalone host
+// ### S
+//
+// **Create a standalone host:**
 //
 // ```go
 // package main
@@ -61,7 +63,7 @@ import (
 //
 // ```
 //
-// ### Create host in a compute cluster
+// **Create host in a compute cluster:**
 //
 // ```go
 // package main

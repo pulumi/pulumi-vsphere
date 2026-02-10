@@ -15,14 +15,19 @@ import (
 // The `HostVirtualSwitch` resource can be used to manage vSphere
 // standard switches on an ESXi host. These switches can be used as a backing for
 // standard port groups, which can be managed by the
-// `HostPortGroup` resource.
+// [`HostPortGroup`][host-port-group] resource.
 //
 // For an overview on vSphere networking concepts, see [this
 // page][ref-vsphere-net-concepts].
 //
+// [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
+// [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+//
 // ## Example Usage
 //
-// ### Create a virtual switch with one active and one standby NIC
+// ### S
+//
+// **Create a virtual switch with one active and one standby NIC:**
 //
 // ```go
 // package main
@@ -50,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
-//				Name:         pulumi.String("vSwitchTest"),
+//				Name:         pulumi.String("vSwitchTerraformTest"),
 //				HostSystemId: pulumi.String(host.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
@@ -72,7 +77,7 @@ import (
 //
 // ```
 //
-// ### Create a virtual switch with extra networking policy options
+// **Create a virtual switch with extra networking policy options:**
 //
 // ```go
 // package main
@@ -100,7 +105,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
-//				Name:         pulumi.String("vSwitchTest"),
+//				Name:         pulumi.String("vSwitchTerraformTest"),
 //				HostSystemId: pulumi.String(host.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
@@ -150,8 +155,6 @@ import (
 //
 // vSphere host.
 //
-// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
-//
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type HostVirtualSwitch struct {
 	pulumi.CustomResourceState
@@ -170,7 +173,7 @@ type HostVirtualSwitch struct {
 	CheckBeacon pulumi.BoolPtrOutput `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrOutput `pulumi:"failback"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the virtual switch up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
 	// Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
@@ -187,11 +190,7 @@ type HostVirtualSwitch struct {
 	NetworkAdapters pulumi.StringArrayOutput `pulumi:"networkAdapters"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrOutput `pulumi:"notifySwitches"`
-	// The number of ports to create with this
-	// virtual switch. Default: `128`.
-	//
-	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
-	// will not restart the host for you.
+	// The number of ports that this virtual switch is configured to use.
 	NumberOfPorts pulumi.IntPtrOutput `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrOutput `pulumi:"shapingAverageBandwidth"`
@@ -260,7 +259,7 @@ type hostVirtualSwitchState struct {
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the virtual switch up on. Forces a new resource if changed.
 	HostSystemId *string `pulumi:"hostSystemId"`
 	// Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
@@ -277,11 +276,7 @@ type hostVirtualSwitchState struct {
 	NetworkAdapters []string `pulumi:"networkAdapters"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches *bool `pulumi:"notifySwitches"`
-	// The number of ports to create with this
-	// virtual switch. Default: `128`.
-	//
-	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
-	// will not restart the host for you.
+	// The number of ports that this virtual switch is configured to use.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth *int `pulumi:"shapingAverageBandwidth"`
@@ -312,7 +307,7 @@ type HostVirtualSwitchState struct {
 	CheckBeacon pulumi.BoolPtrInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the virtual switch up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringPtrInput
 	// Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
@@ -329,11 +324,7 @@ type HostVirtualSwitchState struct {
 	NetworkAdapters pulumi.StringArrayInput
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrInput
-	// The number of ports to create with this
-	// virtual switch. Default: `128`.
-	//
-	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
-	// will not restart the host for you.
+	// The number of ports that this virtual switch is configured to use.
 	NumberOfPorts pulumi.IntPtrInput
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrInput
@@ -368,7 +359,7 @@ type hostVirtualSwitchArgs struct {
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the virtual switch up on. Forces a new resource if changed.
 	HostSystemId string `pulumi:"hostSystemId"`
 	// Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
@@ -385,11 +376,7 @@ type hostVirtualSwitchArgs struct {
 	NetworkAdapters []string `pulumi:"networkAdapters"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches *bool `pulumi:"notifySwitches"`
-	// The number of ports to create with this
-	// virtual switch. Default: `128`.
-	//
-	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
-	// will not restart the host for you.
+	// The number of ports that this virtual switch is configured to use.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth *int `pulumi:"shapingAverageBandwidth"`
@@ -421,7 +408,7 @@ type HostVirtualSwitchArgs struct {
 	CheckBeacon pulumi.BoolPtrInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
-	// The managed object ID of
+	// The [managed object ID][docs-about-morefs] of
 	// the host to set the virtual switch up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringInput
 	// Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
@@ -438,11 +425,7 @@ type HostVirtualSwitchArgs struct {
 	NetworkAdapters pulumi.StringArrayInput
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrInput
-	// The number of ports to create with this
-	// virtual switch. Default: `128`.
-	//
-	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
-	// will not restart the host for you.
+	// The number of ports that this virtual switch is configured to use.
 	NumberOfPorts pulumi.IntPtrInput
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrInput
@@ -580,7 +563,7 @@ func (o HostVirtualSwitchOutput) Failback() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.Failback }).(pulumi.BoolPtrOutput)
 }
 
-// The managed object ID of
+// The [managed object ID][docs-about-morefs] of
 // the host to set the virtual switch up on. Forces a new resource if changed.
 func (o HostVirtualSwitchOutput) HostSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringOutput { return v.HostSystemId }).(pulumi.StringOutput)
@@ -618,11 +601,7 @@ func (o HostVirtualSwitchOutput) NotifySwitches() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.NotifySwitches }).(pulumi.BoolPtrOutput)
 }
 
-// The number of ports to create with this
-// virtual switch. Default: `128`.
-//
-// > **NOTE:** Changing the port count requires a reboot of the host. This provider
-// will not restart the host for you.
+// The number of ports that this virtual switch is configured to use.
 func (o HostVirtualSwitchOutput) NumberOfPorts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.NumberOfPorts }).(pulumi.IntPtrOutput)
 }

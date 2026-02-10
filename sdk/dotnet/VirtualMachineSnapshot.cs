@@ -21,7 +21,7 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
     /// can contain the actual running state of the virtual machine, data for all disks
     /// that have not been set to be independent from the snapshot (including ones that
-    /// have been attached via the `Attach`
+    /// have been attached via the [attach][docs-vsphere-virtual-machine-disk-attach]
     /// parameter to the `vsphere.VirtualMachine` `Disk` block), and even the
     /// configuration of the virtual machine at the time of the snapshot. Virtual
     /// machine, disk activity, and configuration changes post-snapshot are not
@@ -30,6 +30,7 @@ namespace Pulumi.VSphere
     /// NOT recommend using them as as backup feature. For more information on the
     /// limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
     /// 
+    /// [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
     /// [ext-vm-snap-limitations]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/using-snapshots-to-manage-virtual-machinesvsphere-vm-admin/snapshot-file-names-and-descriptionvsphere-vm-admin.html
     /// 
     /// ## Example Usage

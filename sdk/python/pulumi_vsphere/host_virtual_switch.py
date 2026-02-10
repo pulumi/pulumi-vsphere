@@ -43,7 +43,7 @@ class HostVirtualSwitchArgs:
         """
         The set of arguments for constructing a HostVirtualSwitch resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_nics: List of active network adapters used for load balancing.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the virtual switch up on. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_adapters: The list of network adapters to bind to this virtual switch.
         :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
@@ -59,11 +59,7 @@ class HostVirtualSwitchArgs:
         :param pulumi.Input[_builtins.str] name: The name of the virtual switch. Forces a new resource if
                changed.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
-               virtual switch. Default: `128`.
-               
-               > **NOTE:** Changing the port count requires a reboot of the host. This provider
-               will not restart the host for you.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -127,7 +123,7 @@ class HostVirtualSwitchArgs:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the virtual switch up on. Forces a new resource if changed.
         """
         return pulumi.get(self, "host_system_id")
@@ -286,11 +282,7 @@ class HostVirtualSwitchArgs:
     @pulumi.getter(name="numberOfPorts")
     def number_of_ports(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of ports to create with this
-        virtual switch. Default: `128`.
-
-        > **NOTE:** Changing the port count requires a reboot of the host. This provider
-        will not restart the host for you.
+        The number of ports that this virtual switch is configured to use.
         """
         return pulumi.get(self, "number_of_ports")
 
@@ -404,7 +396,7 @@ class _HostVirtualSwitchState:
         :param pulumi.Input[_builtins.int] beacon_interval: Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the virtual switch up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] link_discovery_operation: Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
         :param pulumi.Input[_builtins.str] link_discovery_protocol: The discovery protocol type. Valid values are cdp and lldp.
@@ -414,11 +406,7 @@ class _HostVirtualSwitchState:
                changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_adapters: The list of network adapters to bind to this virtual switch.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
-               virtual switch. Default: `128`.
-               
-               > **NOTE:** Changing the port count requires a reboot of the host. This provider
-               will not restart the host for you.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -557,7 +545,7 @@ class _HostVirtualSwitchState:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the virtual switch up on. Forces a new resource if changed.
         """
         return pulumi.get(self, "host_system_id")
@@ -644,11 +632,7 @@ class _HostVirtualSwitchState:
     @pulumi.getter(name="numberOfPorts")
     def number_of_ports(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of ports to create with this
-        virtual switch. Default: `128`.
-
-        > **NOTE:** Changing the port count requires a reboot of the host. This provider
-        will not restart the host for you.
+        The number of ports that this virtual switch is configured to use.
         """
         return pulumi.get(self, "number_of_ports")
 
@@ -761,16 +745,19 @@ class HostVirtualSwitch(pulumi.CustomResource):
         The `HostVirtualSwitch` resource can be used to manage vSphere
         standard switches on an ESXi host. These switches can be used as a backing for
         standard port groups, which can be managed by the
-        `HostPortGroup` resource.
+        [`HostPortGroup`][host-port-group] resource.
 
         For an overview on vSphere networking concepts, see [this
         page][ref-vsphere-net-concepts].
 
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+        [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
+        [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 
         ## Example Usage
 
-        ### Create a virtual switch with one active and one standby NIC
+        ### S
+
+        **Create a virtual switch with one active and one standby NIC:**
 
         ```python
         import pulumi
@@ -780,7 +767,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
         switch = vsphere.HostVirtualSwitch("switch",
-            name="vSwitchTest",
+            name="vSwitchTerraformTest",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -790,7 +777,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
             standby_nics=["vmnic1"])
         ```
 
-        ### Create a virtual switch with extra networking policy options
+        **Create a virtual switch with extra networking policy options:**
 
         ```python
         import pulumi
@@ -800,7 +787,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
         switch = vsphere.HostVirtualSwitch("switch",
-            name="vSwitchTest",
+            name="vSwitchTerraformTest",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -849,7 +836,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] beacon_interval: Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the virtual switch up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] link_discovery_operation: Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
         :param pulumi.Input[_builtins.str] link_discovery_protocol: The discovery protocol type. Valid values are cdp and lldp.
@@ -859,11 +846,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
                changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_adapters: The list of network adapters to bind to this virtual switch.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
-               virtual switch. Default: `128`.
-               
-               > **NOTE:** Changing the port count requires a reboot of the host. This provider
-               will not restart the host for you.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -881,16 +864,19 @@ class HostVirtualSwitch(pulumi.CustomResource):
         The `HostVirtualSwitch` resource can be used to manage vSphere
         standard switches on an ESXi host. These switches can be used as a backing for
         standard port groups, which can be managed by the
-        `HostPortGroup` resource.
+        [`HostPortGroup`][host-port-group] resource.
 
         For an overview on vSphere networking concepts, see [this
         page][ref-vsphere-net-concepts].
 
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+        [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
+        [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 
         ## Example Usage
 
-        ### Create a virtual switch with one active and one standby NIC
+        ### S
+
+        **Create a virtual switch with one active and one standby NIC:**
 
         ```python
         import pulumi
@@ -900,7 +886,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
         switch = vsphere.HostVirtualSwitch("switch",
-            name="vSwitchTest",
+            name="vSwitchTerraformTest",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -910,7 +896,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
             standby_nics=["vmnic1"])
         ```
 
-        ### Create a virtual switch with extra networking policy options
+        **Create a virtual switch with extra networking policy options:**
 
         ```python
         import pulumi
@@ -920,7 +906,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         host = vsphere.get_host(name="esxi-01.example.com",
             datacenter_id=datacenter.id)
         switch = vsphere.HostVirtualSwitch("switch",
-            name="vSwitchTest",
+            name="vSwitchTerraformTest",
             host_system_id=host.id,
             network_adapters=[
                 "vmnic0",
@@ -1077,7 +1063,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] beacon_interval: Determines how often, in seconds, a beacon should be sent to probe for the validity of a link.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the virtual switch up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] link_discovery_operation: Whether to advertise or listen for link discovery. Valid values are advertise, both, listen, and none.
         :param pulumi.Input[_builtins.str] link_discovery_protocol: The discovery protocol type. Valid values are cdp and lldp.
@@ -1087,11 +1073,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
                changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_adapters: The list of network adapters to bind to this virtual switch.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
-               virtual switch. Default: `128`.
-               
-               > **NOTE:** Changing the port count requires a reboot of the host. This provider
-               will not restart the host for you.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -1186,7 +1168,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the virtual switch up on. Forces a new resource if changed.
         """
         return pulumi.get(self, "host_system_id")
@@ -1245,11 +1227,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="numberOfPorts")
     def number_of_ports(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The number of ports to create with this
-        virtual switch. Default: `128`.
-
-        > **NOTE:** Changing the port count requires a reboot of the host. This provider
-        will not restart the host for you.
+        The number of ports that this virtual switch is configured to use.
         """
         return pulumi.get(self, "number_of_ports")
 

@@ -15,7 +15,9 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// ### Create a standalone host
+    /// ### S
+    /// 
+    /// **Create a standalone host:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -49,7 +51,7 @@ namespace Pulumi.VSphere
     /// });
     /// ```
     /// 
-    /// ### Create host in a compute cluster
+    /// **Create host in a compute cluster:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

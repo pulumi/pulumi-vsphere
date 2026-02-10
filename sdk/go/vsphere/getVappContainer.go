@@ -14,7 +14,9 @@ import (
 // The `VappContainer` data source can be used to discover the ID of a
 // vApp container in vSphere. This is useful to return the ID of a vApp container
 // that you want to use to create virtual machines in using the
-// `VirtualMachine` resource.
+// [`VirtualMachine`][docs-virtual-machine-resource] resource.
+//
+// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // ## Example Usage
 //
@@ -60,8 +62,11 @@ func LookupVappContainer(ctx *pulumi.Context, args *LookupVappContainerArgs, opt
 
 // A collection of arguments for invoking getVappContainer.
 type LookupVappContainerArgs struct {
-	// The managed object reference ID
-	// of the datacenter in which the vApp container is located.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter in which
+	// the vApp container is located.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId string `pulumi:"datacenterId"`
 	// The name of the vApp container. This can be a name or
 	// path.
@@ -87,8 +92,11 @@ func LookupVappContainerOutput(ctx *pulumi.Context, args LookupVappContainerOutp
 
 // A collection of arguments for invoking getVappContainer.
 type LookupVappContainerOutputArgs struct {
-	// The managed object reference ID
-	// of the datacenter in which the vApp container is located.
+	// The
+	// [managed object reference ID][docs-about-morefs] of the datacenter in which
+	// the vApp container is located.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
 	// The name of the vApp container. This can be a name or
 	// path.

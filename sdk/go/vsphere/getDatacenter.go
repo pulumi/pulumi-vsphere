@@ -11,10 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Datacenter` data source can be used to discover the ID of a
-// vSphere datacenter object. This can then be used with resources or data sources
-// that require a datacenter, such as the `Host`
+// The `Datacenter` data source can be used to discover the ID of a vSphere
+// datacenter object. This can then be used with resources or data sources that
+// require a datacenter, such as the [`Host`][data-source-vsphere-host]
 // data source.
+//
+// [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
 //
 // ## Example Usage
 //

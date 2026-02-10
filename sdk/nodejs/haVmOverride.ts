@@ -21,9 +21,9 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * The example below creates a virtual machine in a cluster using the
- * `vsphere.VirtualMachine` resource, creating the
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machine in the cluster looked up by the
- * `vsphere.ComputeCluster` data source.
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  *
  * Considering a scenario where this virtual machine is of high value to the
  * application or organization for which it does its work, it's been determined in
@@ -34,6 +34,9 @@ import * as utilities from "./utilities";
  * virtual machine has been assigned the `highest` priority, will mean that this
  * VM will be started before any other virtual machine in the event of host
  * failure.
+ *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +58,7 @@ import * as utilities from "./utilities";
  *     datacenterId: datacenter.id,
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
- *     name: "test",
+ *     name: "pulumi-test",
  *     resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
  *     datastoreId: datastore.then(datastore => datastore.id),
  *     numCpus: 2,

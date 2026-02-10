@@ -23,30 +23,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **A note on the naming of this resource:** VMware refers to clusters of
- * hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
- * clusters_. All of these refer to the same kind of resource (with the latter two
- * referring to specific features of clustering). We use
- * `vsphere.ComputeCluster` to differentiate host clusters from _datastore
- * clusters_, which are clusters of datastores that can be used to distribute load
- * and ensure fault tolerance via distribution of virtual machines. Datastore
- * clusters can also be managed through the provider, via the
- * `vsphere.DatastoreCluster` resource.
- * 
- * The `vsphere.ComputeCluster` resource can be used to create and manage
- * clusters of hosts allowing for resource control of compute resources, load
- * balancing through DRS, and high availability through vSphere HA.
- * 
- * For more information on vSphere clusters and DRS, see [this
- * page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
- * page][ref-vsphere-ha-clusters].
- * 
- * [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
- * [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
- * 
- * &gt; **NOTE:** This resource requires vCenter and is not available on
- * direct ESXi connections.
- * 
  * ## Example Usage
  * 
  * The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -146,10 +122,14 @@ import javax.annotation.Nullable;
 public class ComputeCluster extends com.pulumi.resources.CustomResource {
     /**
      * A map of custom attribute ids to attribute
-     * value strings to set for the datastore cluster.
+     * value strings to set for the datastore cluster. See
+     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * for custom attributes.
      * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-     * and require vCenter Server.
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and requires vCenter Server.
      * 
      */
     @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -157,17 +137,21 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A map of custom attribute ids to attribute
-     * value strings to set for the datastore cluster.
+     * value strings to set for the datastore cluster. See
+     * [here][docs-setting-custom-attributes] for a reference on how to set values
+     * for custom attributes.
      * 
-     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-     * and require vCenter Server.
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and requires vCenter Server.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
         return Codegen.optional(this.customAttributes);
     }
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the cluster in. Forces a new resource if changed.
      * 
      */
@@ -175,7 +159,7 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
     private Output<String> datacenterId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the datacenter to create the cluster in. Forces a new resource if changed.
      * 
      */
@@ -323,24 +307,14 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.drsScaleDescendantsShares);
     }
     /**
-     * The relative path to a folder to put this cluster in.
-     * This is a path relative to the datacenter you are deploying the cluster to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a cluster named `compute-cluster-test` in a
-     * host folder located at `/dc1/host/foo/bar`, with the final inventory path
-     * being `/dc1/host/foo/bar/datastore-cluster-test`.
+     * The name of the folder to locate the cluster in.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
-     * @return The relative path to a folder to put this cluster in.
-     * This is a path relative to the datacenter you are deploying the cluster to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * The provider will place a cluster named `compute-cluster-test` in a
-     * host folder located at `/dc1/host/foo/bar`, with the final inventory path
-     * being `/dc1/host/foo/bar/datastore-cluster-test`.
+     * @return The name of the folder to locate the cluster in.
      * 
      */
     public Output<Optional<String>> folder() {
@@ -921,36 +895,44 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.proactiveHaSevereRemediation);
     }
     /**
-     * The managed object ID of the primary
+     * The [managed object ID][docs-about-morefs] of the primary
      * resource pool for this cluster. This can be passed directly to the
-     * `resourcePoolId`
-     * attribute of the
-     * `vsphere.VirtualMachine` resource.
+     * [`resourcePoolId`
+     * attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+     * [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
      * 
      */
     @Export(name="resourcePoolId", refs={String.class}, tree="[0]")
     private Output<String> resourcePoolId;
 
     /**
-     * @return The managed object ID of the primary
+     * @return The [managed object ID][docs-about-morefs] of the primary
      * resource pool for this cluster. This can be passed directly to the
-     * `resourcePoolId`
-     * attribute of the
-     * `vsphere.VirtualMachine` resource.
+     * [`resourcePoolId`
+     * attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+     * [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
      * 
      */
     public Output<String> resourcePoolId() {
         return this.resourcePoolId;
     }
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Output<Optional<List<String>>> tags() {

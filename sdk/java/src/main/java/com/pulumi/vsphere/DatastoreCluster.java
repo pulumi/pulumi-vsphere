@@ -38,8 +38,10 @@ import javax.annotation.Nullable;
  * 
  * The following example sets up a datastore cluster and enables Storage DRS with
  * the default settings. It then creates two NAS datastores using the
- * `vsphere.NasDatastore` resource and assigns them to
+ * [`vsphere.NasDatastore` resource][ref-tf-nas-datastore] and assigns them to
  * the datastore cluster.
+ * 
+ * [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
  * 
  * ## Import
  * 
@@ -91,7 +93,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customAttributes);
     }
     /**
-     * The managed object ID of
+     * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      * 
@@ -100,7 +102,7 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
     private Output<String> datacenterId;
 
     /**
-     * @return The managed object ID of
+     * @return The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      * 
@@ -109,26 +111,14 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return this.datacenterId;
     }
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, The provider will place a datastore cluster named
-     * `datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
-     * @return The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, The provider will place a datastore cluster named
-     * `datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
+     * @return The name of the folder to locate the datastore cluster in.
      * 
      */
     public Output<Optional<String>> folder() {
@@ -431,14 +421,22 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsVmEvacuationAutomationLevel);
     }
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The IDs of any tags to attach to this resource.
+     * @return The IDs of any tags to attach to this resource. See
+     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
      * 
      */
     public Output<Optional<List<String>>> tags() {

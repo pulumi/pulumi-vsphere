@@ -12,11 +12,13 @@ namespace Pulumi.VSphere
     public static class GetDistributedVirtualSwitch
     {
         /// <summary>
-        /// The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-        /// the ID and uplink data of a of a vSphere distributed switch (VDS). This
-        /// can then be used with resources or data sources that require a VDS, such as the
-        /// `vsphere.DistributedPortGroup` resource, for which
+        /// The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+        /// ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+        /// used with resources or data sources that require a VDS, such as the
+        /// [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
         /// an example is shown below.
+        /// 
+        /// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
         /// 
         /// &gt; **NOTE:** This data source requires vCenter Server and is not available on
         /// direct ESXi host connections.
@@ -68,11 +70,13 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-        /// the ID and uplink data of a of a vSphere distributed switch (VDS). This
-        /// can then be used with resources or data sources that require a VDS, such as the
-        /// `vsphere.DistributedPortGroup` resource, for which
+        /// The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+        /// ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+        /// used with resources or data sources that require a VDS, such as the
+        /// [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
         /// an example is shown below.
+        /// 
+        /// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
         /// 
         /// &gt; **NOTE:** This data source requires vCenter Server and is not available on
         /// direct ESXi host connections.
@@ -124,11 +128,13 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.DistributedVirtualSwitch` data source can be used to discover
-        /// the ID and uplink data of a of a vSphere distributed switch (VDS). This
-        /// can then be used with resources or data sources that require a VDS, such as the
-        /// `vsphere.DistributedPortGroup` resource, for which
+        /// The `vsphere.DistributedVirtualSwitch` data source can be used to discover the
+        /// ID and uplink data of a of a vSphere distributed switch (VDS). This can then be
+        /// used with resources or data sources that require a VDS, such as the
+        /// [`vsphere.DistributedPortGroup`][distributed-port-group] resource, for which
         /// an example is shown below.
+        /// 
+        /// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
         /// 
         /// &gt; **NOTE:** This data source requires vCenter Server and is not available on
         /// direct ESXi host connections.
@@ -184,10 +190,11 @@ namespace Pulumi.VSphere
     public sealed class GetDistributedVirtualSwitchArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the VDS is located in. This can be omitted if the search
-        /// path used in `Name` is an absolute path. For default datacenters, use the `Id`
-        /// attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+        /// located in. This can be omitted if the search path used in `Name` is an
+        /// absolute path. For default datacenters, use the `Id` attribute from an empty
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -207,10 +214,11 @@ namespace Pulumi.VSphere
     public sealed class GetDistributedVirtualSwitchInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference ID
-        /// of the datacenter the VDS is located in. This can be omitted if the search
-        /// path used in `Name` is an absolute path. For default datacenters, use the `Id`
-        /// attribute from an empty `vsphere.Datacenter` data source.
+        /// The
+        /// [managed object reference ID][docs-about-morefs] of the datacenter the VDS is
+        /// located in. This can be omitted if the search path used in `Name` is an
+        /// absolute path. For default datacenters, use the `Id` attribute from an empty
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
@@ -238,9 +246,9 @@ namespace Pulumi.VSphere
         public readonly string Id;
         public readonly string Name;
         /// <summary>
-        /// The list of the uplinks on this vSphere distributed switch, as per the
-        /// `Uplinks` argument to the
-        /// `vsphere.DistributedVirtualSwitch`
+        /// The list of the uplinks on this vSphere distributed switch, as per
+        /// the [`Uplinks`][distributed-virtual-switch-uplinks] argument to the
+        /// [`vsphere.DistributedVirtualSwitch`][distributed-virtual-switch-resource]
         /// resource.
         /// </summary>
         public readonly ImmutableArray<string> Uplinks;

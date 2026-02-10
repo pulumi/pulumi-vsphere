@@ -84,7 +84,9 @@ def get_resource_pool(datacenter_id: Optional[_builtins.str] = None,
     The `ResourcePool` data source can be used to discover the ID of a
     resource pool in vSphere. This is useful to return the ID of a resource pool
     that you want to use to create virtual machines in using the
-    `VirtualMachine` resource.
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -114,9 +116,11 @@ def get_resource_pool(datacenter_id: Optional[_builtins.str] = None,
 
     ### Specifying the Root Resource Pool for a Standalone ESXi Host
 
-    > **NOTE:** Returning the root resource pool for a cluster can be done
-    directly via the `ComputeCluster`
-    data source.
+    > **NOTE:** Returning the root resource pool for a cluster can be done directly
+    via the [`ComputeCluster`][docs-compute-cluster-data-source] data
+    source.
+
+    [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
     All compute resources in vSphere have a resource pool, even if one has not been
     explicitly created. This resource pool is referred to as the _root resource
@@ -137,20 +141,22 @@ def get_resource_pool(datacenter_id: Optional[_builtins.str] = None,
     [vmware-docs-resource-pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter in which the resource pool is located. This can be omitted
-           if the search path used in `name` is an absolute path. For default
-           datacenters, use the id attribute from an empty `Datacenter` data
-           source..
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter in which
+           the resource pool is located. This can be omitted if the search path used in
+           `name` is an absolute path. For default datacenters, use the id attribute from
+           an empty `Datacenter` data source.
     :param _builtins.str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
-    :param _builtins.str parent_resource_pool_id: The managed object ID
+    :param _builtins.str parent_resource_pool_id: The [managed object ID][docs-about-morefs]
            of the parent resource pool. When specified, the `name` parameter is used to find
            a child resource pool with the given name under this parent resource pool.
            
-           > **Note:** When using ESXi without a vCenter Server instance, you do not
-           need to specify either attribute to use this data source. An empty declaration
-           will load the ESXi host's root resource pool.
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+           
+           > **Note:** When using ESXi without a vCenter Server instance, you do not need
+           to specify either attribute to use this data source. An empty declaration will
+           load the ESXi host's root resource pool.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
@@ -172,7 +178,9 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[_buil
     The `ResourcePool` data source can be used to discover the ID of a
     resource pool in vSphere. This is useful to return the ID of a resource pool
     that you want to use to create virtual machines in using the
-    `VirtualMachine` resource.
+    [`VirtualMachine`][docs-virtual-machine-resource] resource.
+
+    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -202,9 +210,11 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[_buil
 
     ### Specifying the Root Resource Pool for a Standalone ESXi Host
 
-    > **NOTE:** Returning the root resource pool for a cluster can be done
-    directly via the `ComputeCluster`
-    data source.
+    > **NOTE:** Returning the root resource pool for a cluster can be done directly
+    via the [`ComputeCluster`][docs-compute-cluster-data-source] data
+    source.
+
+    [docs-compute-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
     All compute resources in vSphere have a resource pool, even if one has not been
     explicitly created. This resource pool is referred to as the _root resource
@@ -225,20 +235,22 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[_buil
     [vmware-docs-resource-pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
 
 
-    :param _builtins.str datacenter_id: The managed object reference ID
-           of the datacenter in which the resource pool is located. This can be omitted
-           if the search path used in `name` is an absolute path. For default
-           datacenters, use the id attribute from an empty `Datacenter` data
-           source..
+    :param _builtins.str datacenter_id: The
+           [managed object reference ID][docs-about-morefs] of the datacenter in which
+           the resource pool is located. This can be omitted if the search path used in
+           `name` is an absolute path. For default datacenters, use the id attribute from
+           an empty `Datacenter` data source.
     :param _builtins.str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
-    :param _builtins.str parent_resource_pool_id: The managed object ID
+    :param _builtins.str parent_resource_pool_id: The [managed object ID][docs-about-morefs]
            of the parent resource pool. When specified, the `name` parameter is used to find
            a child resource pool with the given name under this parent resource pool.
            
-           > **Note:** When using ESXi without a vCenter Server instance, you do not
-           need to specify either attribute to use this data source. An empty declaration
-           will load the ESXi host's root resource pool.
+           [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+           
+           > **Note:** When using ESXi without a vCenter Server instance, you do not need
+           to specify either attribute to use this data source. An empty declaration will
+           load the ESXi host's root resource pool.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id

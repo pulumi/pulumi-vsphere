@@ -18,18 +18,31 @@ import javax.annotation.Nullable;
 /**
  * The `vsphere.ComputeClusterHostGroup` resource can be used to manage groups
  * of hosts in a cluster, either created by the
- * `vsphere.ComputeCluster` resource or looked up
- * by the `vsphere.ComputeCluster` data source.
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ * 
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * This resource mainly serves as an input to the
- * `vsphere.ComputeClusterVmHostRule`
+ * [`vsphere.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
  * resource - see the documentation for that resource for further details on how
  * to use host groups.
+ * 
+ * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
  * 
  * &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
  * ## Example Usage
+ * 
+ * The example below is the exact same configuration as the
+ * [example][tf-vsphere-cluster-resource-example] in the
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource, but in
+ * addition, it creates a host group with the same hosts that get put into the
+ * cluster.
+ * 
+ * [tf-vsphere-cluster-resource-example]: /docs/providers/vsphere/r/compute_cluster.html#example-usage
  * 
  * ## Import
  * 
@@ -55,44 +68,52 @@ import javax.annotation.Nullable;
 @ResourceType(type="vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup")
 public class ComputeClusterHostGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
-     * @return The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * @return The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      * 
      */
     public Output<String> computeClusterId() {
         return this.computeClusterId;
     }
     /**
-     * The managed object IDs of
+     * The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster.
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterVmGroup`
+     * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
      * resource. Make sure your names are unique across both resources.
+     * 
+     * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
      * 
      */
     @Export(name="hostSystemIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> hostSystemIds;
 
     /**
-     * @return The managed object IDs of
+     * @return The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster.
      * 
      * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterVmGroup`
+     * [`vsphere.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
      * resource. Make sure your names are unique across both resources.
+     * 
+     * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
      * 
      */
     public Output<Optional<List<String>>> hostSystemIds() {

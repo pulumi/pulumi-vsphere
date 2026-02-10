@@ -27,9 +27,11 @@ class ComputeClusterVmDependencyRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmDependencyRule resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] dependency_vm_group_name: The name of the VM group that this
                rule depends on. The VMs defined in the group specified by
                `vm_group_name` will not be started until the VMs in this
@@ -62,9 +64,11 @@ class ComputeClusterVmDependencyRuleArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -156,9 +160,11 @@ class _ComputeClusterVmDependencyRuleState:
                  vm_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmDependencyRule resources.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] dependency_vm_group_name: The name of the VM group that this
                rule depends on. The VMs defined in the group specified by
                `vm_group_name` will not be started until the VMs in this
@@ -194,9 +200,11 @@ class _ComputeClusterVmDependencyRuleState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -293,14 +301,19 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         """
         The `ComputeClusterVmDependencyRule` resource can be used to manage
         VM dependency rules in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         A virtual machine dependency rule applies to vSphere HA, and allows
         user-defined startup orders for virtual machines in the case of host failure.
         Virtual machines are supplied via groups, which can be managed via the
-        `ComputeClusterVmGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource.
+
+        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
@@ -308,13 +321,15 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates two virtual machine in a cluster using the
-        `VirtualMachine` resource in a cluster
-        looked up by the `ComputeCluster`
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+        looked up by the [`ComputeCluster`][tf-vsphere-cluster-data-source]
         data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         > Note how `dependency_vm_group_name` and
         `vm_group_name` are sourced off of the `name` attributes from
-        the `ComputeClusterVmGroup`
+        the [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource. This is to ensure that the rule is not created before the groups
         exist, which may not possibly happen in the event that the names came from a
         "static" source such as a variable.
@@ -331,7 +346,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm1 = vsphere.VirtualMachine("vm1",
-            name="test1",
+            name="pulumi-test1",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -345,7 +360,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                 "size": 20,
             }])
         vm2 = vsphere.VirtualMachine("vm2",
-            name="test2",
+            name="pulumi-test2",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -359,16 +374,16 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                 "size": 20,
             }])
         cluster_vm_group1 = vsphere.ComputeClusterVmGroup("cluster_vm_group1",
-            name="test-cluster-vm-group1",
+            name="pulumi-test-cluster-vm-group1",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[vm1.id])
         cluster_vm_group2 = vsphere.ComputeClusterVmGroup("cluster_vm_group2",
-            name="test-cluster-vm-group2",
+            name="pulumi-test-cluster-vm-group2",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[vm2.id])
         cluster_vm_dependency_rule = vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule",
             compute_cluster_id=cluster.id,
-            name="test-cluster-vm-dependency-rule",
+            name="pulumi-test-cluster-vm-dependency-rule",
             dependency_vm_group_name=cluster_vm_group1.name,
             vm_group_name=cluster_vm_group2.name)
         ```
@@ -395,9 +410,11 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] dependency_vm_group_name: The name of the VM group that this
                rule depends on. The VMs defined in the group specified by
                `vm_group_name` will not be started until the VMs in this
@@ -425,14 +442,19 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         """
         The `ComputeClusterVmDependencyRule` resource can be used to manage
         VM dependency rules in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         A virtual machine dependency rule applies to vSphere HA, and allows
         user-defined startup orders for virtual machines in the case of host failure.
         Virtual machines are supplied via groups, which can be managed via the
-        `ComputeClusterVmGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource.
+
+        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
@@ -440,13 +462,15 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates two virtual machine in a cluster using the
-        `VirtualMachine` resource in a cluster
-        looked up by the `ComputeCluster`
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+        looked up by the [`ComputeCluster`][tf-vsphere-cluster-data-source]
         data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         > Note how `dependency_vm_group_name` and
         `vm_group_name` are sourced off of the `name` attributes from
-        the `ComputeClusterVmGroup`
+        the [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource. This is to ensure that the rule is not created before the groups
         exist, which may not possibly happen in the event that the names came from a
         "static" source such as a variable.
@@ -463,7 +487,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm1 = vsphere.VirtualMachine("vm1",
-            name="test1",
+            name="pulumi-test1",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -477,7 +501,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                 "size": 20,
             }])
         vm2 = vsphere.VirtualMachine("vm2",
-            name="test2",
+            name="pulumi-test2",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -491,16 +515,16 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                 "size": 20,
             }])
         cluster_vm_group1 = vsphere.ComputeClusterVmGroup("cluster_vm_group1",
-            name="test-cluster-vm-group1",
+            name="pulumi-test-cluster-vm-group1",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[vm1.id])
         cluster_vm_group2 = vsphere.ComputeClusterVmGroup("cluster_vm_group2",
-            name="test-cluster-vm-group2",
+            name="pulumi-test-cluster-vm-group2",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[vm2.id])
         cluster_vm_dependency_rule = vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule",
             compute_cluster_id=cluster.id,
-            name="test-cluster-vm-dependency-rule",
+            name="pulumi-test-cluster-vm-dependency-rule",
             dependency_vm_group_name=cluster_vm_group1.name,
             vm_group_name=cluster_vm_group2.name)
         ```
@@ -590,9 +614,11 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] dependency_vm_group_name: The name of the VM group that this
                rule depends on. The VMs defined in the group specified by
                `vm_group_name` will not be started until the VMs in this
@@ -627,9 +653,11 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 

@@ -153,7 +153,10 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
 
     /**
      * Map of custom attribute ids to attribute
-     * value string to set for port group.
+     * value string to set for port group. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
@@ -164,7 +167,10 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Map of custom attribute ids to attribute
-     * value string to set for port group.
+     * value string to set for port group. See [here][docs-setting-custom-attributes]
+     * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
      * 
      * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
      * connections and require vCenter Server.
@@ -1006,7 +1012,10 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param customAttributes Map of custom attribute ids to attribute
-         * value string to set for port group.
+         * value string to set for port group. See [here][docs-setting-custom-attributes]
+         * for a reference on how to set values for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
          * connections and require vCenter Server.
@@ -1021,7 +1030,10 @@ public final class DistributedPortGroupArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param customAttributes Map of custom attribute ids to attribute
-         * value string to set for port group.
+         * value string to set for port group. See [here][docs-setting-custom-attributes]
+         * for a reference on how to set values for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
          * 
          * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
          * connections and require vCenter Server.

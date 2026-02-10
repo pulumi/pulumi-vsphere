@@ -24,9 +24,11 @@ class ComputeClusterVmGroupArgs:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmGroup resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
@@ -34,11 +36,13 @@ class ComputeClusterVmGroupArgs:
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterHostGroup`
+               [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
                resource. Make sure your names are unique across both resources.
                
+               [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+               
                > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-               import section. When importing a VM group, validate that all virtual machines that
+               Importing section. When importing a VM group, validate that all virtual machines that
                need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
                that are not in `virtual_machine_ids` the included will be removed from the group.
         """
@@ -52,9 +56,11 @@ class ComputeClusterVmGroupArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -84,11 +90,13 @@ class ComputeClusterVmGroupArgs:
 
         > **NOTE:** The namespace for cluster names on this resource (defined by the
         `name` argument) is shared with the
-        `ComputeClusterHostGroup`
+        [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resource. Make sure your names are unique across both resources.
 
+        [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+
         > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-        import section. When importing a VM group, validate that all virtual machines that
+        Importing section. When importing a VM group, validate that all virtual machines that
         need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
         that are not in `virtual_machine_ids` the included will be removed from the group.
         """
@@ -107,9 +115,11 @@ class _ComputeClusterVmGroupState:
                  virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ComputeClusterVmGroup resources.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
@@ -117,11 +127,13 @@ class _ComputeClusterVmGroupState:
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterHostGroup`
+               [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
                resource. Make sure your names are unique across both resources.
                
+               [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+               
                > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-               import section. When importing a VM group, validate that all virtual machines that
+               Importing section. When importing a VM group, validate that all virtual machines that
                need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
                that are not in `virtual_machine_ids` the included will be removed from the group.
         """
@@ -136,9 +148,11 @@ class _ComputeClusterVmGroupState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -168,11 +182,13 @@ class _ComputeClusterVmGroupState:
 
         > **NOTE:** The namespace for cluster names on this resource (defined by the
         `name` argument) is shared with the
-        `ComputeClusterHostGroup`
+        [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resource. Make sure your names are unique across both resources.
 
+        [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+
         > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-        import section. When importing a VM group, validate that all virtual machines that
+        Importing section. When importing a VM group, validate that all virtual machines that
         need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
         that are not in `virtual_machine_ids` the included will be removed from the group.
         """
@@ -217,10 +233,12 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates two virtual machines in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machine in the cluster looked up by the
-        `ComputeCluster` data source. It
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
         then creates a group from these two virtual machines.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -236,7 +254,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         vm = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
-                name=f"test-{range['value']}",
+                name=f"pulumi-test-{range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_id=datastore.id,
                 num_cpus=2,
@@ -250,7 +268,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                     "size": 20,
                 }]))
         cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
-            name="test-cluster-vm-group",
+            name="pulumi-test-cluster-vm-group",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[[__item.id for __item in vm]])
         ```
@@ -277,9 +295,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
@@ -287,11 +307,13 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterHostGroup`
+               [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
                resource. Make sure your names are unique across both resources.
                
+               [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+               
                > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-               import section. When importing a VM group, validate that all virtual machines that
+               Importing section. When importing a VM group, validate that all virtual machines that
                need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
                that are not in `virtual_machine_ids` the included will be removed from the group.
         """
@@ -325,10 +347,12 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates two virtual machines in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machine in the cluster looked up by the
-        `ComputeCluster` data source. It
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
         then creates a group from these two virtual machines.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
         ```python
         import pulumi
@@ -344,7 +368,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         vm = []
         for range in [{"value": i} for i in range(0, 2)]:
             vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
-                name=f"test-{range['value']}",
+                name=f"pulumi-test-{range['value']}",
                 resource_pool_id=cluster.resource_pool_id,
                 datastore_id=datastore.id,
                 num_cpus=2,
@@ -358,7 +382,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                     "size": 20,
                 }]))
         cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
-            name="test-cluster-vm-group",
+            name="pulumi-test-cluster-vm-group",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[[__item.id for __item in vm]])
         ```
@@ -435,9 +459,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
@@ -445,11 +471,13 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                
                > **NOTE:** The namespace for cluster names on this resource (defined by the
                `name` argument) is shared with the
-               `ComputeClusterHostGroup`
+               [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
                resource. Make sure your names are unique across both resources.
                
+               [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+               
                > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-               import section. When importing a VM group, validate that all virtual machines that
+               Importing section. When importing a VM group, validate that all virtual machines that
                need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
                that are not in `virtual_machine_ids` the included will be removed from the group.
         """
@@ -466,9 +494,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -490,11 +520,13 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         > **NOTE:** The namespace for cluster names on this resource (defined by the
         `name` argument) is shared with the
-        `ComputeClusterHostGroup`
+        [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resource. Make sure your names are unique across both resources.
 
+        [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+
         > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-        import section. When importing a VM group, validate that all virtual machines that
+        Importing section. When importing a VM group, validate that all virtual machines that
         need to be in the group are included in the `virtual_machine_ids`; otherwise, any virtual machines
         that are not in `virtual_machine_ids` the included will be removed from the group.
         """

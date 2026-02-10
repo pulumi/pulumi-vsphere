@@ -40,7 +40,7 @@ class HostPortGroupArgs:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HostPortGroup resource.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
@@ -63,6 +63,8 @@ class HostPortGroupArgs:
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         pulumi.set(__self__, "host_system_id", host_system_id)
         pulumi.set(__self__, "virtual_switch_name", virtual_switch_name)
@@ -101,7 +103,7 @@ class HostPortGroupArgs:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the port group up on. Forces a new resource if changed.
         """
         return pulumi.get(self, "host_system_id")
@@ -300,6 +302,8 @@ class HostPortGroupArgs:
         `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
         ID of `4095` enables trunk mode, allowing the guest to manage its own
         tagging. Default: `0`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "vlan_id")
 
@@ -338,11 +342,11 @@ class _HostPortGroupState:
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] computed_policy: A map with a full set of the policy
-               options computed from defaults and overrides,
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] computed_policy: A map with a full set of the [policy
+               options][host-vswitch-policy-options] computed from defaults and overrides,
                explaining the effective policy for this port group.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] key: The key for this port group as returned from the vSphere API.
         :param pulumi.Input[_builtins.str] name: The name of the port group.  Forces a new resource if
@@ -361,6 +365,8 @@ class _HostPortGroupState:
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         if active_nics is not None:
             pulumi.set(__self__, "active_nics", active_nics)
@@ -467,8 +473,8 @@ class _HostPortGroupState:
     @pulumi.getter(name="computedPolicy")
     def computed_policy(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A map with a full set of the policy
-        options computed from defaults and overrides,
+        A map with a full set of the [policy
+        options][host-vswitch-policy-options] computed from defaults and overrides,
         explaining the effective policy for this port group.
         """
         return pulumi.get(self, "computed_policy")
@@ -493,7 +499,7 @@ class _HostPortGroupState:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the port group up on. Forces a new resource if changed.
         """
         return pulumi.get(self, "host_system_id")
@@ -644,6 +650,8 @@ class _HostPortGroupState:
         `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
         ID of `4095` enables trunk mode, allowing the guest to manage its own
         tagging. Default: `0`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "vlan_id")
 
@@ -679,14 +687,17 @@ class HostPortGroup(pulumi.CustomResource):
         """
         The `HostPortGroup` resource can be used to manage port groups on
         ESXi hosts. These port groups are connected to standard switches, which
-        can be managed by the `HostVirtualSwitch`
+        can be managed by the [`HostVirtualSwitch`][host-virtual-switch]
         resource.
 
         For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
 
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+        [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
+        [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 
         ## Example Usage
+
+        ### S
 
         **Create a Virtual Switch and Bind a Port Group:**
 
@@ -716,7 +727,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         This example sets the trunk mode VLAN (`4095`, which passes through all tags)
         and sets
-        `allow_promiscuous`
+        [`allow_promiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
         to ensure that all traffic is seen on the port. The setting overrides
         the implicit default of `false` set on the standard switch.
 
@@ -750,6 +761,8 @@ class HostPortGroup(pulumi.CustomResource):
 
         using the host port group's ID. An example is below:
 
+        [docs-import]: /docs/import/index.html
+
         ```sh
         $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
         ```
@@ -764,7 +777,7 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] name: The name of the port group.  Forces a new resource if
                changed.
@@ -781,6 +794,8 @@ class HostPortGroup(pulumi.CustomResource):
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         ...
     @overload
@@ -791,14 +806,17 @@ class HostPortGroup(pulumi.CustomResource):
         """
         The `HostPortGroup` resource can be used to manage port groups on
         ESXi hosts. These port groups are connected to standard switches, which
-        can be managed by the `HostVirtualSwitch`
+        can be managed by the [`HostVirtualSwitch`][host-virtual-switch]
         resource.
 
         For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
 
-        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
+        [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
+        [ref-vsphere-net-concepts]: hhttps://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/introduction-to-vsphere-networking.html
 
         ## Example Usage
+
+        ### S
 
         **Create a Virtual Switch and Bind a Port Group:**
 
@@ -828,7 +846,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         This example sets the trunk mode VLAN (`4095`, which passes through all tags)
         and sets
-        `allow_promiscuous`
+        [`allow_promiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
         to ensure that all traffic is seen on the port. The setting overrides
         the implicit default of `false` set on the standard switch.
 
@@ -861,6 +879,8 @@ class HostPortGroup(pulumi.CustomResource):
         An existing host port group can be imported into this resource
 
         using the host port group's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
 
         ```sh
         $ pulumi import vsphere:index/hostPortGroup:HostPortGroup management tf-HostPortGroup:host-123:management
@@ -975,11 +995,11 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
         :param pulumi.Input[_builtins.bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[_builtins.bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used only.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] computed_policy: A map with a full set of the policy
-               options computed from defaults and overrides,
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] computed_policy: A map with a full set of the [policy
+               options][host-vswitch-policy-options] computed from defaults and overrides,
                explaining the effective policy for this port group.
         :param pulumi.Input[_builtins.bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[_builtins.str] host_system_id: The managed object ID of
+        :param pulumi.Input[_builtins.str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] key: The key for this port group as returned from the vSphere API.
         :param pulumi.Input[_builtins.str] name: The name of the port group.  Forces a new resource if
@@ -998,6 +1018,8 @@ class HostPortGroup(pulumi.CustomResource):
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1069,8 +1091,8 @@ class HostPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="computedPolicy")
     def computed_policy(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
-        A map with a full set of the policy
-        options computed from defaults and overrides,
+        A map with a full set of the [policy
+        options][host-vswitch-policy-options] computed from defaults and overrides,
         explaining the effective policy for this port group.
         """
         return pulumi.get(self, "computed_policy")
@@ -1087,7 +1109,7 @@ class HostPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID of
+        The [managed object ID][docs-about-morefs] of
         the host to set the port group up on. Forces a new resource if changed.
         """
         return pulumi.get(self, "host_system_id")
@@ -1190,6 +1212,8 @@ class HostPortGroup(pulumi.CustomResource):
         `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
         ID of `4095` enables trunk mode, allowing the guest to manage its own
         tagging. Default: `0`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "vlan_id")
 

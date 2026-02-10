@@ -22,12 +22,15 @@ import * as utilities from "./utilities";
  *
  * The following example creates a compute cluster comprised of three hosts,
  * making use of the
- * `vsphere.ComputeCluster` resource. DPM
+ * [`vsphere.ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
  * will be disabled in the cluster as it is the default setting, but we override
  * the setting of the first host referenced by the
- * `vsphere.Host` data source (`esxi1`) by using
+ * [`vsphere.Host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
  * the `vsphere.DpmHostOverride` resource so it will be powered off when the
  * cluster does not need it to service virtual machines.
+ *
+ * [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,8 +51,8 @@ import * as utilities from "./utilities";
  *     datacenterId: _arg0_.id,
  * })));
  * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
- *     name: "compute-cluster-test",
- *     datacenterId: dc.id,
+ *     name: "pulumi-compute-cluster-test",
+ *     datacenterId: datacenterGetDatacenter.then(datacenterGetDatacenter => datacenterGetDatacenter.id),
  *     hostSystemIds: [hostsGetHost.map(__item => __item.id)],
  *     drsEnabled: true,
  *     drsAutomationLevel: "fullyAutomated",
@@ -109,9 +112,11 @@ export class DpmHostOverride extends pulumi.CustomResource {
     }
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly computeClusterId: pulumi.Output<string>;
     /**
@@ -174,9 +179,11 @@ export class DpmHostOverride extends pulumi.CustomResource {
  */
 export interface DpmHostOverrideState {
     /**
-     * The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId?: pulumi.Input<string>;
     /**
@@ -205,9 +212,11 @@ export interface DpmHostOverrideState {
  */
 export interface DpmHostOverrideArgs {
     /**
-     * The managed object reference
-     * ID of the cluster to put the override in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: pulumi.Input<string>;
     /**

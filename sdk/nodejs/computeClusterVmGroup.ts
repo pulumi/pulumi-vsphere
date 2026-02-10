@@ -28,10 +28,12 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * The example below creates two virtual machines in a cluster using the
- * `vsphere.VirtualMachine` resource, creating the
+ * [`vsphere.VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machine in the cluster looked up by the
- * `vsphere.ComputeCluster` data source. It
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
  * then creates a group from these two virtual machines.
+ *
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +57,7 @@ import * as utilities from "./utilities";
  * const vm: vsphere.VirtualMachine[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     vm.push(new vsphere.VirtualMachine(`vm-${range.value}`, {
- *         name: `test-${range.value}`,
+ *         name: `pulumi-test-${range.value}`,
  *         resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
  *         datastoreId: datastore.then(datastore => datastore.id),
  *         numCpus: 2,
@@ -71,7 +73,7 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
- *     name: "test-cluster-vm-group",
+ *     name: "pulumi-test-cluster-vm-group",
  *     computeClusterId: cluster.then(cluster => cluster.id),
  *     virtualMachineIds: [vm.map(__item => __item.id)],
  * });
@@ -126,9 +128,11 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     declare public readonly computeClusterId: pulumi.Output<string>;
     /**
@@ -142,11 +146,13 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
      *
      * > **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterHostGroup`
+     * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
      * resource. Make sure your names are unique across both resources.
      *
+     * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+     *
      * > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-     * import section. When importing a VM group, validate that all virtual machines that
+     * Importing section. When importing a VM group, validate that all virtual machines that
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      */
@@ -187,9 +193,11 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
  */
 export interface ComputeClusterVmGroupState {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId?: pulumi.Input<string>;
     /**
@@ -203,11 +211,13 @@ export interface ComputeClusterVmGroupState {
      *
      * > **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterHostGroup`
+     * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
      * resource. Make sure your names are unique across both resources.
      *
+     * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+     *
      * > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-     * import section. When importing a VM group, validate that all virtual machines that
+     * Importing section. When importing a VM group, validate that all virtual machines that
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      */
@@ -219,9 +229,11 @@ export interface ComputeClusterVmGroupState {
  */
 export interface ComputeClusterVmGroupArgs {
     /**
-     * The managed object reference
-     * ID of the cluster to put the group in.  Forces a new
+     * The [managed object reference
+     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
      */
     computeClusterId: pulumi.Input<string>;
     /**
@@ -235,11 +247,13 @@ export interface ComputeClusterVmGroupArgs {
      *
      * > **NOTE:** The namespace for cluster names on this resource (defined by the
      * `name` argument) is shared with the
-     * `vsphere.ComputeClusterHostGroup`
+     * [`vsphere.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
      * resource. Make sure your names are unique across both resources.
      *
+     * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
+     *
      * > **NOTE:** To update a existing VM group, you must first import the group with `import` command in
-     * import section. When importing a VM group, validate that all virtual machines that
+     * Importing section. When importing a VM group, validate that all virtual machines that
      * need to be in the group are included in the `virtualMachineIds`; otherwise, any virtual machines
      * that are not in `virtualMachineIds` the included will be removed from the group.
      */

@@ -36,7 +36,7 @@ class ResourcePoolArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourcePool resource.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
@@ -79,7 +79,11 @@ class ResourcePoolArgs:
                descendants of the resource pool are scaled up or down when the shares
                of the resource pool are scaled up or down. Can be one of `disabled` or
                `scaleCpuAndMemoryShares`. Default: `disabled`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
         if cpu_expandable is not None:
@@ -115,7 +119,7 @@ class ResourcePoolArgs:
     @pulumi.getter(name="parentResourcePoolId")
     def parent_resource_pool_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object ID
+        The [managed object ID][docs-about-morefs]
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a resource pool
         from one parent resource pool to another, both must share a common root
@@ -312,7 +316,11 @@ class ResourcePoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -375,7 +383,7 @@ class _ResourcePoolState:
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the resource pool.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
@@ -384,7 +392,11 @@ class _ResourcePoolState:
                descendants of the resource pool are scaled up or down when the shares
                of the resource pool are scaled up or down. Can be one of `disabled` or
                `scaleCpuAndMemoryShares`. Default: `disabled`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         if cpu_expandable is not None:
             pulumi.set(__self__, "cpu_expandable", cpu_expandable)
@@ -587,7 +599,7 @@ class _ResourcePoolState:
     @pulumi.getter(name="parentResourcePoolId")
     def parent_resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object ID
+        The [managed object ID][docs-about-morefs]
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a resource pool
         from one parent resource pool to another, both must share a common root
@@ -618,7 +630,11 @@ class _ResourcePoolState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 
@@ -780,7 +796,7 @@ class ResourcePool(pulumi.CustomResource):
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the resource pool.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
@@ -789,7 +805,11 @@ class ResourcePool(pulumi.CustomResource):
                descendants of the resource pool are scaled up or down when the shares
                of the resource pool are scaled up or down. Can be one of `disabled` or
                `scaleCpuAndMemoryShares`. Default: `disabled`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         ...
     @overload
@@ -1014,7 +1034,7 @@ class ResourcePool(pulumi.CustomResource):
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[_builtins.str] name: The name of the resource pool.
-        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The managed object ID
+        :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
@@ -1023,7 +1043,11 @@ class ResourcePool(pulumi.CustomResource):
                descendants of the resource pool are scaled up or down when the shares
                of the resource pool are scaled up or down. Can be one of `disabled` or
                `scaleCpuAndMemoryShares`. Default: `disabled`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1168,7 +1192,7 @@ class ResourcePool(pulumi.CustomResource):
     @pulumi.getter(name="parentResourcePoolId")
     def parent_resource_pool_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object ID
+        The [managed object ID][docs-about-morefs]
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a resource pool
         from one parent resource pool to another, both must share a common root
@@ -1191,7 +1215,11 @@ class ResourcePool(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of any tags to attach to this resource.
+        The IDs of any tags to attach to this resource. See
+        [here][docs-applying-tags] for a reference on how to apply tags.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         """
         return pulumi.get(self, "tags")
 

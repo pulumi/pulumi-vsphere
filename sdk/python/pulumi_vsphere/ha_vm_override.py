@@ -549,9 +549,9 @@ class HaVmOverride(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates a virtual machine in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machine in the cluster looked up by the
-        `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
 
         Considering a scenario where this virtual machine is of high value to the
         application or organization for which it does its work, it's been determined in
@@ -562,6 +562,9 @@ class HaVmOverride(pulumi.CustomResource):
         virtual machine has been assigned the `highest` priority, will mean that this
         VM will be started before any other virtual machine in the event of host
         failure.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         ```python
         import pulumi
@@ -575,7 +578,7 @@ class HaVmOverride(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm = vsphere.VirtualMachine("vm",
-            name="test",
+            name="pulumi-test",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -655,9 +658,9 @@ class HaVmOverride(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates a virtual machine in a cluster using the
-        `VirtualMachine` resource, creating the
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
         virtual machine in the cluster looked up by the
-        `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
 
         Considering a scenario where this virtual machine is of high value to the
         application or organization for which it does its work, it's been determined in
@@ -668,6 +671,9 @@ class HaVmOverride(pulumi.CustomResource):
         virtual machine has been assigned the `highest` priority, will mean that this
         VM will be started before any other virtual machine in the event of host
         failure.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         ```python
         import pulumi
@@ -681,7 +687,7 @@ class HaVmOverride(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm = vsphere.VirtualMachine("vm",
-            name="test",
+            name="pulumi-test",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,

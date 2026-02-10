@@ -10,30 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// &gt; **A note on the naming of this resource:** VMware refers to clusters of
-    /// hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
-    /// clusters_. All of these refer to the same kind of resource (with the latter two
-    /// referring to specific features of clustering). We use
-    /// `vsphere.ComputeCluster` to differentiate host clusters from _datastore
-    /// clusters_, which are clusters of datastores that can be used to distribute load
-    /// and ensure fault tolerance via distribution of virtual machines. Datastore
-    /// clusters can also be managed through the provider, via the
-    /// `vsphere.DatastoreCluster` resource.
-    /// 
-    /// The `vsphere.ComputeCluster` resource can be used to create and manage
-    /// clusters of hosts allowing for resource control of compute resources, load
-    /// balancing through DRS, and high availability through vSphere HA.
-    /// 
-    /// For more information on vSphere clusters and DRS, see [this
-    /// page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
-    /// page][ref-vsphere-ha-clusters].
-    /// 
-    /// [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
-    /// [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
-    /// 
-    /// &gt; **NOTE:** This resource requires vCenter and is not available on
-    /// direct ESXi connections.
-    /// 
     /// ## Example Usage
     /// 
     /// The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -83,7 +59,7 @@ namespace Pulumi.VSphere
     /// 
     ///     var computeCluster = new VSphere.ComputeCluster("compute_cluster", new()
     ///     {
-    ///         Name = "compute-cluster-test",
+    ///         Name = "pulumi-compute-cluster-test",
     ///         DatacenterId = datacenterGetDatacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
     ///         HostSystemIds = (host).Values.Select(host =&gt; 
     ///         {
@@ -183,16 +159,20 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// A map of custom attribute ids to attribute
-        /// value strings to set for the datastore cluster.
+        /// value strings to set for the datastore cluster. See
+        /// [here][docs-setting-custom-attributes] for a reference on how to set values
+        /// for custom attributes.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-        /// and require vCenter Server.
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+        /// connections and requires vCenter Server.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the datacenter to create the cluster in. Forces a new resource if changed.
         /// </summary>
         [Output("datacenterId")]
@@ -259,12 +239,7 @@ namespace Pulumi.VSphere
         public Output<string?> DrsScaleDescendantsShares { get; private set; } = null!;
 
         /// <summary>
-        /// The relative path to a folder to put this cluster in.
-        /// This is a path relative to the datacenter you are deploying the cluster to.
-        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
-        /// The provider will place a cluster named `compute-cluster-test` in a
-        /// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-        /// being `/dc1/host/foo/bar/datastore-cluster-test`.
+        /// The name of the folder to locate the cluster in.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -516,17 +491,21 @@ namespace Pulumi.VSphere
         public Output<string?> ProactiveHaSevereRemediation { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object ID of the primary
+        /// The [managed object ID][docs-about-morefs] of the primary
         /// resource pool for this cluster. This can be passed directly to the
-        /// `ResourcePoolId`
-        /// attribute of the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`ResourcePoolId`
+        /// attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+        /// [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
         /// </summary>
         [Output("resourcePoolId")]
         public Output<string> ResourcePoolId { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -666,10 +645,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A map of custom attribute ids to attribute
-        /// value strings to set for the datastore cluster.
+        /// value strings to set for the datastore cluster. See
+        /// [here][docs-setting-custom-attributes] for a reference on how to set values
+        /// for custom attributes.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-        /// and require vCenter Server.
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+        /// connections and requires vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -678,7 +661,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the datacenter to create the cluster in. Forces a new resource if changed.
         /// </summary>
         [Input("datacenterId", required: true)]
@@ -751,12 +734,7 @@ namespace Pulumi.VSphere
         public Input<string>? DrsScaleDescendantsShares { get; set; }
 
         /// <summary>
-        /// The relative path to a folder to put this cluster in.
-        /// This is a path relative to the datacenter you are deploying the cluster to.
-        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
-        /// The provider will place a cluster named `compute-cluster-test` in a
-        /// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-        /// being `/dc1/host/foo/bar/datastore-cluster-test`.
+        /// The name of the folder to locate the cluster in.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -1041,7 +1019,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {
@@ -1164,10 +1146,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A map of custom attribute ids to attribute
-        /// value strings to set for the datastore cluster.
+        /// value strings to set for the datastore cluster. See
+        /// [here][docs-setting-custom-attributes] for a reference on how to set values
+        /// for custom attributes.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
-        /// and require vCenter Server.
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+        /// connections and requires vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -1176,7 +1162,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The managed object ID of
+        /// The [managed object ID][docs-about-morefs] of
         /// the datacenter to create the cluster in. Forces a new resource if changed.
         /// </summary>
         [Input("datacenterId")]
@@ -1249,12 +1235,7 @@ namespace Pulumi.VSphere
         public Input<string>? DrsScaleDescendantsShares { get; set; }
 
         /// <summary>
-        /// The relative path to a folder to put this cluster in.
-        /// This is a path relative to the datacenter you are deploying the cluster to.
-        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
-        /// The provider will place a cluster named `compute-cluster-test` in a
-        /// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-        /// being `/dc1/host/foo/bar/datastore-cluster-test`.
+        /// The name of the folder to locate the cluster in.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -1536,11 +1517,11 @@ namespace Pulumi.VSphere
         public Input<string>? ProactiveHaSevereRemediation { get; set; }
 
         /// <summary>
-        /// The managed object ID of the primary
+        /// The [managed object ID][docs-about-morefs] of the primary
         /// resource pool for this cluster. This can be passed directly to the
-        /// `ResourcePoolId`
-        /// attribute of the
-        /// `vsphere.VirtualMachine` resource.
+        /// [`ResourcePoolId`
+        /// attribute][docs-r-vsphere-virtual-machine-resource-pool-id] of the
+        /// [`vsphere.VirtualMachine`][docs-r-vsphere-virtual-machine] resource.
         /// </summary>
         [Input("resourcePoolId")]
         public Input<string>? ResourcePoolId { get; set; }
@@ -1549,7 +1530,11 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource.
+        /// The IDs of any tags to attach to this resource. See
+        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// [docs-applying-tags]: /docs/providers/vsphere/r/tag.html#using-tags-in-a-supported-resource
         /// </summary>
         public InputList<string> Tags
         {

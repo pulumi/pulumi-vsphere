@@ -28,9 +28,11 @@ class ComputeClusterVmHostRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputeClusterVmHostRule resource.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.str] vm_group_name: The name of the virtual machine group to use
                with this rule.
         :param pulumi.Input[_builtins.str] affinity_host_group_name: When this field is used, the virtual
@@ -70,9 +72,11 @@ class ComputeClusterVmHostRuleArgs:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -186,9 +190,11 @@ class _ComputeClusterVmHostRuleState:
         :param pulumi.Input[_builtins.str] anti_affinity_host_group_name: When this field is used, the
                virtual machines defined in `vm_group_name` will _not_ be
                run on the hosts defined in this host group.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -252,9 +258,11 @@ class _ComputeClusterVmHostRuleState:
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
@@ -339,16 +347,22 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         """
         The `ComputeClusterVmHostRule` resource can be used to manage
         VM-to-host rules in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         This resource can create both _affinity rules_, where virtual machines run on
         specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
         outside of the ones specified in the rule. Virtual machines and hosts are
         supplied via groups, which can be managed via the
-        `ComputeClusterVmGroup` and
-        `ComputeClusterHostGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+        [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resources.
+
+        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
+        [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
@@ -356,19 +370,22 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates a virtual machine in a cluster using the
-        `VirtualMachine` resource in a cluster
-        looked up by the `ComputeCluster`
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+        looked up by the [`ComputeCluster`][tf-vsphere-cluster-data-source]
         data source. It then creates a group with this virtual machine. It also creates
         a host group off of the host looked up via the
-        `Host` data source. Finally, this
+        [`Host`][tf-vsphere-host-data-source] data source. Finally, this
         virtual machine is configured to run specifically on that host via a
         `ComputeClusterVmHostRule` resource.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 
         > Note how `vm_group_name` and
         `affinity_host_group_name` are sourced off of the
         `name` attributes from the
-        `ComputeClusterVmGroup` and
-        `ComputeClusterHostGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+        [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resources. This is to ensure that the rule is not created before the groups
         exist, which may not possibly happen in the event that the names came from a
         "static" source such as a variable.
@@ -387,7 +404,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm = vsphere.VirtualMachine("vm",
-            name="test",
+            name="pulumi-test",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -401,16 +418,16 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                 "size": 20,
             }])
         cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
-            name="test-cluster-vm-group",
+            name="pulumi-test-cluster-vm-group",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[vm.id])
         cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
-            name="test-cluster-vm-group",
+            name="pulumi-test-cluster-vm-group",
             compute_cluster_id=cluster.id,
             host_system_ids=[host.id])
         cluster_vm_host_rule = vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule",
             compute_cluster_id=cluster.id,
-            name="test-cluster-vm-host-rule",
+            name="pulumi-test-cluster-vm-host-rule",
             vm_group_name=cluster_vm_group.name,
             affinity_host_group_name=cluster_host_group.name)
         ```
@@ -443,9 +460,11 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] anti_affinity_host_group_name: When this field is used, the
                virtual machines defined in `vm_group_name` will _not_ be
                run on the hosts defined in this host group.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -471,16 +490,22 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         """
         The `ComputeClusterVmHostRule` resource can be used to manage
         VM-to-host rules in a cluster, either created by the
-        `ComputeCluster` resource or looked up
-        by the `ComputeCluster` data source.
+        [`ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+        by the [`ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+
+        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         This resource can create both _affinity rules_, where virtual machines run on
         specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
         outside of the ones specified in the rule. Virtual machines and hosts are
         supplied via groups, which can be managed via the
-        `ComputeClusterVmGroup` and
-        `ComputeClusterHostGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+        [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resources.
+
+        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
+        [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
@@ -488,19 +513,22 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         ## Example Usage
 
         The example below creates a virtual machine in a cluster using the
-        `VirtualMachine` resource in a cluster
-        looked up by the `ComputeCluster`
+        [`VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+        looked up by the [`ComputeCluster`][tf-vsphere-cluster-data-source]
         data source. It then creates a group with this virtual machine. It also creates
         a host group off of the host looked up via the
-        `Host` data source. Finally, this
+        [`Host`][tf-vsphere-host-data-source] data source. Finally, this
         virtual machine is configured to run specifically on that host via a
         `ComputeClusterVmHostRule` resource.
+
+        [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
 
         > Note how `vm_group_name` and
         `affinity_host_group_name` are sourced off of the
         `name` attributes from the
-        `ComputeClusterVmGroup` and
-        `ComputeClusterHostGroup`
+        [`ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+        [`ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resources. This is to ensure that the rule is not created before the groups
         exist, which may not possibly happen in the event that the names came from a
         "static" source such as a variable.
@@ -519,7 +547,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         network = vsphere.get_network(name="network1",
             datacenter_id=datacenter.id)
         vm = vsphere.VirtualMachine("vm",
-            name="test",
+            name="pulumi-test",
             resource_pool_id=cluster.resource_pool_id,
             datastore_id=datastore.id,
             num_cpus=2,
@@ -533,16 +561,16 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                 "size": 20,
             }])
         cluster_vm_group = vsphere.ComputeClusterVmGroup("cluster_vm_group",
-            name="test-cluster-vm-group",
+            name="pulumi-test-cluster-vm-group",
             compute_cluster_id=cluster.id,
             virtual_machine_ids=[vm.id])
         cluster_host_group = vsphere.ComputeClusterHostGroup("cluster_host_group",
-            name="test-cluster-vm-group",
+            name="pulumi-test-cluster-vm-group",
             compute_cluster_id=cluster.id,
             host_system_ids=[host.id])
         cluster_vm_host_rule = vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule",
             compute_cluster_id=cluster.id,
-            name="test-cluster-vm-host-rule",
+            name="pulumi-test-cluster-vm-host-rule",
             vm_group_name=cluster_vm_group.name,
             affinity_host_group_name=cluster_host_group.name)
         ```
@@ -639,9 +667,11 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] anti_affinity_host_group_name: When this field is used, the
                virtual machines defined in `vm_group_name` will _not_ be
                run on the hosts defined in this host group.
-        :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object reference
-               ID of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -695,9 +725,11 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
     @pulumi.getter(name="computeClusterId")
     def compute_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The managed object reference
-        ID of the cluster to put the group in.  Forces a new
+        The [managed object reference
+        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
         resource if changed.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         """
         return pulumi.get(self, "compute_cluster_id")
 
