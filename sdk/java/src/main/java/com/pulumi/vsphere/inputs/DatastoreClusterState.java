@@ -70,14 +70,26 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, Terraform will place a datastore cluster named
+     * `terraform-datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return The name of the folder to locate the datastore cluster in.
+     * @return The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, Terraform will place a datastore cluster named
+     * `terraform-datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -535,7 +547,13 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param folder The name of the folder to locate the datastore cluster in.
+         * @param folder The relative path to a folder to put this datastore
+         * cluster in.  This is a path relative to the datacenter you are deploying the
+         * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+         * `foo/bar`, Terraform will place a datastore cluster named
+         * `terraform-datastore-cluster-test` in a datastore folder located at
+         * `/dc1/datastore/foo/bar`, with the final inventory path being
+         * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
          * 
          * @return builder
          * 
@@ -546,7 +564,13 @@ public final class DatastoreClusterState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param folder The name of the folder to locate the datastore cluster in.
+         * @param folder The relative path to a folder to put this datastore
+         * cluster in.  This is a path relative to the datacenter you are deploying the
+         * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+         * `foo/bar`, Terraform will place a datastore cluster named
+         * `terraform-datastore-cluster-test` in a datastore folder located at
+         * `/dc1/datastore/foo/bar`, with the final inventory path being
+         * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
          * 
          * @return builder
          * 

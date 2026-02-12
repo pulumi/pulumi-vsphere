@@ -12,6 +12,17 @@ namespace Pulumi.VSphere
     public static class GetTag
     {
         /// <summary>
+        /// The `vsphere.Tag` data source can be used to reference tags that are not managed
+        /// by Terraform. Its attributes are exactly the same as the
+        /// [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+        /// uses a name and category as search criteria. The `Id` and other attributes are
+        /// populated with the data found by the search.
+        /// 
+        /// [resource-tag]: /docs/providers/vsphere/r/tag.html
+        /// 
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,6 +51,17 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
 
         /// <summary>
+        /// The `vsphere.Tag` data source can be used to reference tags that are not managed
+        /// by Terraform. Its attributes are exactly the same as the
+        /// [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+        /// uses a name and category as search criteria. The `Id` and other attributes are
+        /// populated with the data found by the search.
+        /// 
+        /// [resource-tag]: /docs/providers/vsphere/r/tag.html
+        /// 
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -68,6 +90,17 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// The `vsphere.Tag` data source can be used to reference tags that are not managed
+        /// by Terraform. Its attributes are exactly the same as the
+        /// [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+        /// uses a name and category as search criteria. The `Id` and other attributes are
+        /// populated with the data found by the search.
+        /// 
+        /// [resource-tag]: /docs/providers/vsphere/r/tag.html
+        /// 
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

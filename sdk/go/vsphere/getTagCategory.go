@@ -11,6 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `TagCategory` data source can be used to reference tag categories
+// that are not managed by Terraform. Its attributes are the same as the
+// [`TagCategory` resource][resource-tag-category], and, like importing,
+// the data source uses a name and category as search criteria. The `id` and other
+// attributes are populated with the data found by the search.
+//
+// [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+//
+// > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+// requires vCenter Server.
+//
 // ## Example Usage
 //
 // ```go

@@ -117,22 +117,17 @@ namespace Pulumi.VSphere
     /// ## Import
     /// 
     /// An existing rule can be imported into this resource by supplying
-    /// 
     /// both the path to the cluster, and the name the rule. If the name or cluster is
-    /// 
     /// not found, or if the rule is of a different type, an error will be returned. An
-    /// 
     /// example is below:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
     /// 
     /// ```sh
-    /// $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
-    /// ```
-    /// 
+    /// terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule \
     ///   '{"compute_cluster_path": "/dc1/datastore/cluster1", \
-    /// 
     ///   "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")]
     public partial class DatastoreClusterVmAntiAffinityRule : global::Pulumi.CustomResource
@@ -167,7 +162,13 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The UUIDs of the virtual machines to run on different datastores from each other.
+        /// The UUIDs of the virtual machines to run
+        /// on different datastores from each other.
+        /// 
+        /// &gt; **NOTE:** The minimum length of `VirtualMachineIds` is 2, and due to
+        /// current limitations in Terraform Core, the value is currently checked during
+        /// the apply phase, not the validation or plan phases. Ensure proper length of
+        /// this value to prevent failures mid-apply.
         /// </summary>
         [Output("virtualMachineIds")]
         public Output<ImmutableArray<string>> VirtualMachineIds { get; private set; } = null!;
@@ -251,7 +252,13 @@ namespace Pulumi.VSphere
         private InputList<string>? _virtualMachineIds;
 
         /// <summary>
-        /// The UUIDs of the virtual machines to run on different datastores from each other.
+        /// The UUIDs of the virtual machines to run
+        /// on different datastores from each other.
+        /// 
+        /// &gt; **NOTE:** The minimum length of `VirtualMachineIds` is 2, and due to
+        /// current limitations in Terraform Core, the value is currently checked during
+        /// the apply phase, not the validation or plan phases. Ensure proper length of
+        /// this value to prevent failures mid-apply.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {
@@ -300,7 +307,13 @@ namespace Pulumi.VSphere
         private InputList<string>? _virtualMachineIds;
 
         /// <summary>
-        /// The UUIDs of the virtual machines to run on different datastores from each other.
+        /// The UUIDs of the virtual machines to run
+        /// on different datastores from each other.
+        /// 
+        /// &gt; **NOTE:** The minimum length of `VirtualMachineIds` is 2, and due to
+        /// current limitations in Terraform Core, the value is currently checked during
+        /// the apply phase, not the validation or plan phases. Ensure proper length of
+        /// this value to prevent failures mid-apply.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {

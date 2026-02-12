@@ -81,15 +81,11 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing vSwitch can be imported into this resource by its ID.
- *
  * The convention of the id is a prefix, the host system [managed objectID][docs-about-morefs], and the virtual switch
- *
  * name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
- *
  * Import can the be done via the following command:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
- *
  * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
  * ```sh
@@ -97,7 +93,6 @@ import * as utilities from "./utilities";
  * ```
  *
  * The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
- *
  * vSphere host.
  */
 export class HostVirtualSwitch extends pulumi.CustomResource {
@@ -188,7 +183,13 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      */
     declare public readonly notifySwitches: pulumi.Output<boolean | undefined>;
     /**
-     * The number of ports that this virtual switch is configured to use.
+     * The number of ports to create with this
+     * virtual switch. Default: `128`.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     *
+     * > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+     * will not restart the host for you.
      */
     declare public readonly numberOfPorts: pulumi.Output<number | undefined>;
     /**
@@ -352,7 +353,13 @@ export interface HostVirtualSwitchState {
      */
     notifySwitches?: pulumi.Input<boolean>;
     /**
-     * The number of ports that this virtual switch is configured to use.
+     * The number of ports to create with this
+     * virtual switch. Default: `128`.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     *
+     * > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+     * will not restart the host for you.
      */
     numberOfPorts?: pulumi.Input<number>;
     /**
@@ -445,7 +452,13 @@ export interface HostVirtualSwitchArgs {
      */
     notifySwitches?: pulumi.Input<boolean>;
     /**
-     * The number of ports that this virtual switch is configured to use.
+     * The number of ports to create with this
+     * virtual switch. Default: `128`.
+     *
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     *
+     * > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+     * will not restart the host for you.
      */
     numberOfPorts?: pulumi.Input<number>;
     /**

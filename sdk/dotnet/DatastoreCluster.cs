@@ -37,7 +37,6 @@ namespace Pulumi.VSphere
     /// ## Import
     /// 
     /// An existing datastore cluster can be imported into this resource
-    /// 
     /// via the path to the cluster, via the following command:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -47,8 +46,7 @@ namespace Pulumi.VSphere
     /// ```
     /// 
     /// The above would import the datastore cluster named `ds-cluster` that is located
-    /// 
-    /// in the `dc1` datacenter.
+    /// in the `Dc1` datacenter.
     /// </summary>
     [VSphereResourceType("vsphere:index/datastoreCluster:DatastoreCluster")]
     public partial class DatastoreCluster : global::Pulumi.CustomResource
@@ -76,7 +74,13 @@ namespace Pulumi.VSphere
         public Output<string> DatacenterId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the folder to locate the datastore cluster in.
+        /// The relative path to a folder to put this datastore
+        /// cluster in.  This is a path relative to the datacenter you are deploying the
+        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
+        /// `foo/bar`, Terraform will place a datastore cluster named
+        /// `terraform-datastore-cluster-test` in a datastore folder located at
+        /// `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -293,7 +297,13 @@ namespace Pulumi.VSphere
         public Input<string> DatacenterId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the folder to locate the datastore cluster in.
+        /// The relative path to a folder to put this datastore
+        /// cluster in.  This is a path relative to the datacenter you are deploying the
+        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
+        /// `foo/bar`, Terraform will place a datastore cluster named
+        /// `terraform-datastore-cluster-test` in a datastore folder located at
+        /// `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -484,7 +494,13 @@ namespace Pulumi.VSphere
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// The name of the folder to locate the datastore cluster in.
+        /// The relative path to a folder to put this datastore
+        /// cluster in.  This is a path relative to the datacenter you are deploying the
+        /// datastore to.  Example: for the `Dc1` datacenter, and a provided `Folder` of
+        /// `foo/bar`, Terraform will place a datastore cluster named
+        /// `terraform-datastore-cluster-test` in a datastore folder located at
+        /// `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }

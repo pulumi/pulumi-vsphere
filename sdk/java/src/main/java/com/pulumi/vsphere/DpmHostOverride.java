@@ -46,20 +46,16 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing override can be imported into this resource by
- * 
  * supplying both the path to the cluster, and the path to the host, to `terraform
- * 
  * import`. If no override exists, an error will be given.  An example is below:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \
- * ```
- * 
+ * terraform import vsphere_dpm_host_override.dpm_host_override \
  *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
- * 
  *   &#34;host_path&#34;: &#34;/dc1/host/esxi1&#34;}&#39;
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/dpmHostOverride:DpmHostOverride")

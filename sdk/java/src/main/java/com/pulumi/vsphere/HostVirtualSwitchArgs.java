@@ -236,14 +236,26 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The number of ports that this virtual switch is configured to use.
+     * The number of ports to create with this
+     * virtual switch. Default: `128`.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **NOTE:** Changing the port count requires a reboot of the host. Terraform
+     * will not restart the host for you.
      * 
      */
     @Import(name="numberOfPorts")
     private @Nullable Output<Integer> numberOfPorts;
 
     /**
-     * @return The number of ports that this virtual switch is configured to use.
+     * @return The number of ports to create with this
+     * virtual switch. Default: `128`.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **NOTE:** Changing the port count requires a reboot of the host. Terraform
+     * will not restart the host for you.
      * 
      */
     public Optional<Output<Integer>> numberOfPorts() {
@@ -705,7 +717,13 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numberOfPorts The number of ports that this virtual switch is configured to use.
+         * @param numberOfPorts The number of ports to create with this
+         * virtual switch. Default: `128`.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
+         * &gt; **NOTE:** Changing the port count requires a reboot of the host. Terraform
+         * will not restart the host for you.
          * 
          * @return builder
          * 
@@ -716,7 +734,13 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param numberOfPorts The number of ports that this virtual switch is configured to use.
+         * @param numberOfPorts The number of ports to create with this
+         * virtual switch. Default: `128`.
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
+         * &gt; **NOTE:** Changing the port count requires a reboot of the host. Terraform
+         * will not restart the host for you.
          * 
          * @return builder
          * 

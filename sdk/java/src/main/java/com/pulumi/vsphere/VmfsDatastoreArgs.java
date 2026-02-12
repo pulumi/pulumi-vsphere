@@ -84,14 +84,26 @@ public final class VmfsDatastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a datastore named `terraform-test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+     * `datastoreClusterId`.
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return The path to the datastore folder to put the datastore in.
+     * @return The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a datastore named `terraform-test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+     * `datastoreClusterId`.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -285,7 +297,13 @@ public final class VmfsDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folder The path to the datastore folder to put the datastore in.
+         * @param folder The relative path to a folder to put this datastore in.
+         * This is a path relative to the datacenter you are deploying the datastore to.
+         * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+         * Terraform will place a datastore named `terraform-test` in a datastore folder
+         * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+         * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+         * `datastoreClusterId`.
          * 
          * @return builder
          * 
@@ -296,7 +314,13 @@ public final class VmfsDatastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folder The path to the datastore folder to put the datastore in.
+         * @param folder The relative path to a folder to put this datastore in.
+         * This is a path relative to the datacenter you are deploying the datastore to.
+         * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+         * Terraform will place a datastore named `terraform-test` in a datastore folder
+         * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+         * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+         * `datastoreClusterId`.
          * 
          * @return builder
          * 

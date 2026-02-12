@@ -107,8 +107,7 @@ import (
 //
 // ## Import
 //
-// # An existing port group can be imported into this resource using
-//
+// An existing port group can be imported into this resource using
 // the managed object id of the port group, via the following command:
 //
 // ```sh
@@ -116,7 +115,6 @@ import (
 // ```
 //
 // The above would import the port group named `pg-01` that is located in the `dc-01`
-//
 // datacenter.
 //
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import

@@ -24,7 +24,7 @@ public final class VirtualMachineCdrom {
      */
     private @Nullable String datastoreId;
     /**
-     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * @return An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      * 
      */
     private @Nullable String deviceAddress;
@@ -55,7 +55,7 @@ public final class VirtualMachineCdrom {
         return Optional.ofNullable(this.datastoreId);
     }
     /**
-     * @return The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * @return An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      * 
      */
     public Optional<String> deviceAddress() {

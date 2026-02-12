@@ -70,7 +70,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing datastore cluster can be imported into this resource
- *
  * via the path to the cluster, via the following command:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -80,7 +79,6 @@ import * as utilities from "./utilities";
  * ```
  *
  * The above would import the datastore cluster named `ds-cluster` that is located
- *
  * in the `dc1` datacenter.
  */
 export class DatastoreCluster extends pulumi.CustomResource {
@@ -130,7 +128,13 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     declare public readonly datacenterId: pulumi.Output<string>;
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, Terraform will place a datastore cluster named
+     * `terraform-datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      */
     declare public readonly folder: pulumi.Output<string | undefined>;
     /**
@@ -324,7 +328,13 @@ export interface DatastoreClusterState {
      */
     datacenterId?: pulumi.Input<string>;
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, Terraform will place a datastore cluster named
+     * `terraform-datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      */
     folder?: pulumi.Input<string>;
     /**
@@ -445,7 +455,13 @@ export interface DatastoreClusterArgs {
      */
     datacenterId: pulumi.Input<string>;
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, Terraform will place a datastore cluster named
+     * `terraform-datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      */
     folder?: pulumi.Input<string>;
     /**

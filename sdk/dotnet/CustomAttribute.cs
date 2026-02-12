@@ -10,10 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
+    /// The `vsphere.CustomAttribute` resource can be used to create and manage custom
+    /// attributes, which allow users to associate user-specific meta-information with
+    /// vSphere managed objects. Custom attribute values must be strings and are stored
+    /// on the vCenter Server and not the managed object.
+    /// 
+    /// For more information about custom attributes, click [here][ext-custom-attributes].
+    /// 
+    /// [ext-custom-attributes]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/vsphere-tags-and-attributes-host-management/custom-attributes-in-the-vsphere-client-host-management.html
+    /// 
+    /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+    /// and require vCenter Server.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// This example creates a custom attribute named `terraform-test-attribute`. The
+    /// resulting custom attribute can be assigned to VMs only.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var attribute = new VSphere.CustomAttribute("attribute", new()
+    ///     {
+    ///         Name = "pulumi-test-attribute",
+    ///         ManagedObjectType = "VirtualMachine",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An existing custom attribute can be imported into this resource
-    /// 
     /// via its name, using the following command:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import

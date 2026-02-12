@@ -754,11 +754,23 @@ class ResourcePool(pulumi.CustomResource):
 
         ## Import
 
+        An existing resource pool can be imported into this resource via
+        the path to the resource pool, using the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
+        ```sh
+        $ pulumi import vsphere:index/resourcePool:ResourcePool resource_pool /dc-01/host/cluster-01/Resources/resource-pool-01
+        ```
+
+        The above would import the resource pool named `resource-pool-01` that is located
+        in the compute cluster `cluster-01` in the `dc-01` datacenter.
+
         ### Settings that Require vSphere 7.0 or higher
 
         These settings require vSphere 7.0 or higher:
 
-        * [`scale_descendants_shares`](#scale_descendants_shares)
+        * `scale_descendants_shares`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -906,11 +918,23 @@ class ResourcePool(pulumi.CustomResource):
 
         ## Import
 
+        An existing resource pool can be imported into this resource via
+        the path to the resource pool, using the following command:
+
+        [docs-import]: https://developer.hashicorp.com/terraform/cli/import
+
+        ```sh
+        $ pulumi import vsphere:index/resourcePool:ResourcePool resource_pool /dc-01/host/cluster-01/Resources/resource-pool-01
+        ```
+
+        The above would import the resource pool named `resource-pool-01` that is located
+        in the compute cluster `cluster-01` in the `dc-01` datacenter.
+
         ### Settings that Require vSphere 7.0 or higher
 
         These settings require vSphere 7.0 or higher:
 
-        * [`scale_descendants_shares`](#scale_descendants_shares)
+        * `scale_descendants_shares`
 
         :param str resource_name: The name of the resource.
         :param ResourcePoolArgs args: The arguments to use to populate this resource's properties.

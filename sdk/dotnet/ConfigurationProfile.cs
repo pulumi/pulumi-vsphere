@@ -9,6 +9,127 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.ConfigurationProfile` resource can be used to configure profile-based host management on a vSphere compute cluster.
+    /// The source for the configuration can either be a ESXi host that is part of the compute cluster or a JSON file, but not both at the same time.
+    /// 
+    /// It is allowed to switch from one type of configuration source to the other at any time.
+    /// 
+    /// Deleting a `vsphere.ConfigurationProfile` resource has no effect on the compute cluster. Once management via configuration
+    /// profiles is turned ot it is not possible to disable it.
+    /// 
+    /// &gt; **NOTE:** This resource requires a vCenter 8 or higher and will not work on
+    /// direct ESXi connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Creating a profile using an ESXi host as a reference
+    /// 
+    /// The following example sets up a configuration profile on a compute cluster using one of its hosts as a reference
+    /// and then propagates that configuration to two additional clusters.
+    /// 
+    /// Note that this example assumes that the hosts across all three clusters are compatible with the source configuration.
+    /// This includes but is not limited to their ESXi versions and hardware capabilities.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var cluster1 = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster2 = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-02",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster3 = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-03",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     // This host is assumed to be part of "cluster-01"
+    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi-01.example.com",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     // Configure a profile on "cluster-01" using one of its hosts as a reference
+    ///     var profile1 = new VSphere.ConfigurationProfile("profile1", new()
+    ///     {
+    ///         ClusterId = cluster1.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         ReferenceHostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///     });
+    /// 
+    ///     // Copy the configuration of "cluster-01" onto "cluster-02"
+    ///     var profile2 = new VSphere.ConfigurationProfile("profile2", new()
+    ///     {
+    ///         ClusterId = cluster2.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         Configuration = profile1.Configuration,
+    ///     });
+    /// 
+    ///     // Copy the configuration of "cluster-01" onto "cluster-03"
+    ///     var profile3 = new VSphere.ConfigurationProfile("profile3", new()
+    ///     {
+    ///         ClusterId = cluster3.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         Configuration = profile1.Configuration,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating a profile using a configuration file
+    /// 
+    /// This example sets up a configuration profile on a cluster by reading a configuration from a JSON
+    /// file on the local filesystem. Reading files is natively supported by Terraform.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Std = Pulumi.Std;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var cluster1 = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var profile1 = new VSphere.ConfigurationProfile("profile1", new()
+    ///     {
+    ///         ClusterId = cluster1.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         Configuration = Std.Index.File.Invoke(new()
+    ///         {
+    ///             Input = "/path/to/cluster_config_1.json",
+    ///         }).Result,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [VSphereResourceType("vsphere:index/configurationProfile:ConfigurationProfile")]
     public partial class ConfigurationProfile : global::Pulumi.CustomResource
     {

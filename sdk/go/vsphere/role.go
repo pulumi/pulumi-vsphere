@@ -11,6 +11,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Role` resource can be used to create and manage roles. Using this resource, privileges can be
+// associated with the roles. The role can be used while granting permissions to an entity.
+//
+// ## Example Usage
+//
+// This example creates a role with name myTerraformRole and privileges create, acknowledge for Alarm and
+// create, move for Datacenter. While providing `rolePrivileges`, the id of the privilege has to be provided.
+// The format of the privilege id is privilege name preceded by its categories joined by a `.`.
+// For example a privilege with path `category->subcategory->privilege` should be provided as
+// `category.subcategory.privilege`. Keep the `rolePrivileges` sorted alphabetically for a better user experience.
+//
+// > **NOTE:** While providing `rolePrivileges`, the id of the privilege and its categories are to be provided
+// joined by a `.` .
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewRole(ctx, "role1", &vsphere.RoleArgs{
+//				Name: pulumi.String("my_terraform_role"),
+//				RolePrivileges: pulumi.StringArray{
+//					pulumi.String("Alarm.Acknowledge"),
+//					pulumi.String("Alarm.Create"),
+//					pulumi.String("Datacenter.Create"),
+//					pulumi.String("Datacenter.Move"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // An existing role can be imported into this resource by supplying the role id. An example is below:
@@ -19,8 +63,8 @@ import (
 // $ pulumi import vsphere:index/role:Role role1 -709298051
 // ```
 //
-// Use [`vsphere_role` data source][ref-vsphere-role-data-source]
-//
+// > **NOTE:** System roles can't be imported because they can't be modified or deleted.
+// Use [`Role` data source][ref-vsphere-role-data-source]
 // to read information about system roles.
 //
 // [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html

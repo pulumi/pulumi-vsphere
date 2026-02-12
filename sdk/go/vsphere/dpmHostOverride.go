@@ -39,19 +39,17 @@ import (
 //
 // ## Import
 //
-// # An existing override can be imported into this resource by
-//
+// An existing override can be imported into this resource by
 // supplying both the path to the cluster, and the path to the host, to `terraform
-//
 // import`. If no override exists, an error will be given.  An example is below:
 //
 // ```sh
-// $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \
+//
+//	terraform import vsphere_dpm_host_override.dpm_host_override \
+//	  '{"compute_cluster_path": "/dc1/host/cluster1", \
+//	  "host_path": "/dc1/host/esxi1"}'
+//
 // ```
-//
-//	'{"compute_cluster_path": "/dc1/host/cluster1", \
-//
-//	"host_path": "/dc1/host/esxi1"}'
 //
 // [ref-vsphere-cluster-dpm]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/using-drs-clusters-to-manage-resources/managing-power-resources.html
 //

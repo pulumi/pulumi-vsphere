@@ -116,18 +116,15 @@ import (
 //
 // ## Import
 //
-// # An existing folder can be imported into this resource via
-//
+// An existing folder can be imported into this resource via
 // its full path, via the following command:
 //
 // ```sh
 // $ pulumi import vsphere:index/folder:Folder folder /default-dc/vm/example-vm-folder
 // ```
 //
-// # The above command would import the folder from our examples above, the VM
-//
+// The above command would import the folder from our examples above, the VM
 // folder named `example-vm-folder` located in the datacenter named
-//
 // `default-dc`.
 //
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import

@@ -127,99 +127,129 @@ import (
 //
 // ## Import
 //
-// # An existing host can be imported into this resource by supplying
-//
+// An existing host can be imported into this resource by supplying
 // the host's ID.
 //
 // [docs-import]: /docs/import/index.html
 //
 // Obtain the host's ID using the data source. For example:
 //
-// hcl
+// ```go
+// package main
 //
-// data "vsphere_datacenter" "datacenter" {
+// import (
 //
-//	name = "dc-01"
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
-// }
+// )
 //
-// data "vsphere_host" "host" {
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("hostId", host.Id)
+//			return nil
+//		})
+//	}
 //
-//	name          = "esxi-01.example.com"
-//
-//	datacenter_id = data.vsphere_datacenter.datacenter.id
-//
-// }
-//
-// output "host_id" {
-//
-//	value = data.vsphere_host.host.id
-//
-// }
+// ```
 //
 // Next, create a resource configuration, For example:
 //
-// hcl
+// ```go
+// package main
 //
-// data "vsphere_datacenter" "datacenter" {
+// import (
 //
-//	name = "dc-01"
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
-// }
+// )
 //
-// data "vsphere_host_thumbprint" "thumbprint" {
-//
-//	address  = "esxi-01.example.com"
-//
-//	insecure = true
-//
-// }
-//
-// resource "vsphere_host" "esx-01" {
-//
-//	hostname   = "esxi-01.example.com"
-//
-//	username   = "root"
-//
-//	password   = "password"
-//
-//	thumbprint = data.vsphere_host_thumbprint.thumbprint.id
-//
-//	datacenter = data.vsphere_datacenter.datacenter.id
-//
-// }
-//
-// hcl
-//
-// resource "vsphere_host" "esx-01" {
-//
-//	hostname   = "esxi-01.example.com"
-//
-//	username   = "root"
-//
-//	password   = "password"
-//
-//	license    = "00000-00000-00000-00000-00000"
-//
-//	thumbprint = data.vsphere_host_thumbprint.thumbprint.id
-//
-//	cluster    = data.vsphere_compute_cluster.cluster.id
-//
-//	services {
-//
-//	  ntpd {
-//
-//	    enabled     = true
-//
-//	    policy      = "on"
-//
-//	    ntp_servers = ["pool.ntp.org"]
-//
-//	  }
-//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
+//				Address:  "esxi-01.example.com",
+//				Insecure: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+//				Hostname:   pulumi.String("esxi-01.example.com"),
+//				Username:   pulumi.String("root"),
+//				Password:   pulumi.String("password"),
+//				Thumbprint: pulumi.String(thumbprint.Id),
+//				Datacenter: pulumi.String(datacenter.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
 //	}
 //
-// }
+// ```
+//
+// > **NOTE:** When you import hosts, all managed settings are returned. Ensure all settings are set correctly in resource. For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+//				Hostname:   pulumi.String("esxi-01.example.com"),
+//				Username:   pulumi.String("root"),
+//				Password:   pulumi.String("password"),
+//				License:    pulumi.String("00000-00000-00000-00000-00000"),
+//				Thumbprint: pulumi.Any(thumbprint.Id),
+//				Cluster:    pulumi.Any(cluster.Id),
+//				Services: vsphere.HostServiceArray{
+//					&vsphere.HostServiceArgs{
+//						Ntpd: &vsphere.HostServiceNtpdArgs{
+//							Enabled: pulumi.Bool(true),
+//							Policy:  pulumi.String("on"),
+//							NtpServers: pulumi.StringArray{
+//								pulumi.String("pool.ntp.org"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ```sh
 // $ pulumi import vsphere:index/host:Host esx-01 host-123

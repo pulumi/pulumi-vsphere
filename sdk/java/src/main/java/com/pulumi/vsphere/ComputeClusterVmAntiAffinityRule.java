@@ -17,25 +17,46 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `vsphere.ComputeClusterVmAntiAffinityRule` resource can be used to
+ * manage virtual machine anti-affinity rules in a cluster, either created by the
+ * [`vsphere.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ * 
+ * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+ * 
+ * An anti-affinity rule places a group of virtual machines across different
+ * hosts within a cluster, and is useful for preventing single points of failure in
+ * application cluster scenarios. When configured, vSphere DRS will make a best effort
+ * to ensure that the virtual machines run on different hosts, or prevent any
+ * operation that would keep that from happening, depending on the value of the
+ * `mandatory` flag.
+ * 
+ * &gt; An anti-affinity rule can only be used to place virtual machines on separate
+ * _non-specific_ hosts. Specific hosts cannot be specified with this rule.
+ * To enable this capability, use VM-Host Groups, see the
+ * [`vsphere.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * resource.
+ * 
+ * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
+ * 
+ * &gt; **NOTE:** This resource requires vCenter and is not available on
+ * direct ESXi host connections.
+ * 
  * ## Import
  * 
  * An existing rule can be imported into this resource by supplying
- * 
  * both the path to the cluster, and the name the rule. If the name or cluster is
- * 
  * not found, or if the rule is of a different type, an error will be returned. An
- * 
  * example is below:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * $ pulumi import vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule vm_anti_affinity_rule \
- * ```
- * 
+ * terraform import vsphere_compute_cluster_vm_anti_affinity_rule.vm_anti_affinity_rule \
  *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc-01/host/cluster-01&#34;, \
- * 
  *   &#34;name&#34;: &#34;vm-anti-affinity-rule&#34;}&#39;
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule")

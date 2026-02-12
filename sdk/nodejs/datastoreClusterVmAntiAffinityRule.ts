@@ -83,22 +83,17 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing rule can be imported into this resource by supplying
- *
  * both the path to the cluster, and the name the rule. If the name or cluster is
- *
  * not found, or if the rule is of a different type, an error will be returned. An
- *
  * example is below:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
- * $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
- * ```
- *
+ * terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule \
  *   '{"compute_cluster_path": "/dc1/datastore/cluster1", \
- *
  *   "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+ * ```
  */
 export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     /**
@@ -150,7 +145,13 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The UUIDs of the virtual machines to run on different datastores from each other.
+     * The UUIDs of the virtual machines to run
+     * on different datastores from each other.
+     *
+     * > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+     * current limitations in Terraform Core, the value is currently checked during
+     * the apply phase, not the validation or plan phases. Ensure proper length of
+     * this value to prevent failures mid-apply.
      */
     declare public readonly virtualMachineIds: pulumi.Output<string[]>;
 
@@ -217,7 +218,13 @@ export interface DatastoreClusterVmAntiAffinityRuleState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The UUIDs of the virtual machines to run on different datastores from each other.
+     * The UUIDs of the virtual machines to run
+     * on different datastores from each other.
+     *
+     * > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+     * current limitations in Terraform Core, the value is currently checked during
+     * the apply phase, not the validation or plan phases. Ensure proper length of
+     * this value to prevent failures mid-apply.
      */
     virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -248,7 +255,13 @@ export interface DatastoreClusterVmAntiAffinityRuleArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The UUIDs of the virtual machines to run on different datastores from each other.
+     * The UUIDs of the virtual machines to run
+     * on different datastores from each other.
+     *
+     * > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+     * current limitations in Terraform Core, the value is currently checked during
+     * the apply phase, not the validation or plan phases. Ensure proper length of
+     * this value to prevent failures mid-apply.
      */
     virtualMachineIds: pulumi.Input<pulumi.Input<string>[]>;
 }

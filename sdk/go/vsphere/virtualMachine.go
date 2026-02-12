@@ -12,29 +12,1317 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `VirtualMachine` resource is used to manage the lifecycle of a virtual machine.
+//
+// For details on working with virtual machines in VMware vSphere, please refer to the [product documentation][vmware-docs-vm-management].
+//
+// ## About Working with Virtual Machines in Terraform
+//
+// A high degree of control and flexibility is available to a vSphere administrator to configure, deploy, and manage virtual machines. The Terraform provider enables you to manage the desired state of virtual machine resources.
+//
+// This section provides information on configurations you should consider when setting up virtual machines, creating templates for cloning, and more.
+//
+// ### Disks
+//
+// The `VirtualMachine` resource supports standard VMDK-backed virtual disks. It **does not** support raw device mappings (RDMs) to proxy use of raw physical storage device
+//
+// Disks are managed by a label supplied to the `label` attribute in a `disk` block. This is separate from the automatic naming that vSphere assigns when a virtual machine is created. Control of the name for a virtual disk is not supported unless you are attaching an external disk with the `attach` attribute.
+//
+// Virtual disks can be SCSI, SATA, NVMe or IDE. The storage controllers managed by the Terraform provider can vary, depending on the value supplied to `scsiControllerCount`, `sataControllerCount`, `nvmeControllerCount`, or `ideControllerCount`. This also dictates the controllers that are checked when looking for disks during a cloning process. SCSI controllers are all configured with the controller type defined by the  `scsiType` setting. If you are cloning from a template, devices will be added or re-configured as necessary.
+//
+// When cloning from a template, you must specify disks of either the same or greater size than the disks in the source template or the same size when cloning from a snapshot (also known as a linked clone).
+//
+// See the section on Creating a Virtual Machine from a Template for more information.
+//
+// ### Customization and Network Waiters
+//
+// Terraform waits during various parts of a virtual machine deployment to ensure that the virtual machine is in an expected state before proceeding. These events occur when a virtual machine is created or updated, depending on the waiter.
+//
+// The waiters include the following:
+//
+// * **Customization Waiter**:
+//
+//	This waiter watches events in vSphere to monitor when customization on a virtual machine completes during creation. Depending on your vSphere or virtual machine configuration, it may be necessary to change the timeout or turn off the waiter. This can be controlled by using the `timeout` setting in the customization settings block.
+//
+// * **Network Waiter**:
+//
+//	This waiter waits for interfaces to appear on a virtual machine guest operating system and occurs close to the end of both virtual machine creation and update. This waiter ensures that the IP information gets reported to the guest operating system, mainly to facilitate the availability of a valid, reachable default IP address for any provisioners.
+//
+//	The behavior of the waiter can be controlled with the `waitForGuestNetTimeout`, `waitForGuestNetRoutable`, `waitForGuestIpTimeout`, and `ignoredGuestIps` settings.
+//
+// ## Example Usage
+//
+// ### Creating a Virtual Machine
+//
+// The following block contains the option necessary to create a virtual machine, with a single disk and network interface.
+//
+// In this example, the resource makes use of the following data sources:
+//
+// * [`Datacenter`][tf-vsphere-datacenter] to locate the datacenter,
+//
+// * [`getDatastore`][tf-vsphere-datastore] to locate the default datastore to place the virtual machine files,
+//
+// * [`vsphere_compute-cluster`][tf-vsphere-compute-cluster] to locate a resource pool located in a cluster or standalone host, and
+//
+// * [`getNetwork`][tf-vsphere-network] to locate the network.
+//
+// [tf-vsphere-datacenter]: /docs/providers/vsphere/d/datacenter.html
+// [tf-vsphere-datastore]: /docs/providers/vsphere/d/datastore.html
+// [tf-vsphere-compute-cluster]: /docs/providers/vsphere/d/compute-cluster.html
+// [tf-vsphere-network]: /docs/providers/vsphere/d/network.html
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "VM Network",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("foo"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(1),
+//				Memory:         pulumi.Int(1024),
+//				GuestId:        pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("Hard Disk 1"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Cloning and Customization
+//
+// Building on the above example, the below configuration creates a virtual machine by cloning it from a template, fetched using the [`VirtualMachine`][tf-vsphere-virtual-machine-ds] data source. This option allows you to locate the UUID of the template to clone, along with settings for network interface type, SCSI bus type, and disk attributes.
+//
+// [tf-vsphere-virtual-machine-ds]: /docs/providers/vsphere/d/virtual_machine.html
+//
+// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+//
+// **Examples**:
+//
+// This example clones a Linux template and customizes with the provided settings:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "VM Network",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			template, err := vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
+//				Name:         pulumi.StringRef("linux-template"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("foo"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(1),
+//				Memory:         pulumi.Int(1024),
+//				GuestId:        pulumi.String(template.GuestId),
+//				ScsiType:       pulumi.String(template.ScsiType),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId:   pulumi.String(network.Id),
+//						AdapterType: pulumi.String(template.NetworkInterfaceTypes[0]),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label:           pulumi.String("Hard Disk 1"),
+//						Size:            pulumi.Int(template.Disks[0].Size),
+//						ThinProvisioned: pulumi.Bool(template.Disks[0].ThinProvisioned),
+//					},
+//				},
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					TemplateUuid: pulumi.String(template.Id),
+//					Customize: &vsphere.VirtualMachineCloneCustomizeArgs{
+//						LinuxOptions: &vsphere.VirtualMachineCloneCustomizeLinuxOptionsArgs{
+//							HostName: pulumi.String("foo"),
+//							Domain:   pulumi.String("example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// This example uses the same structure as the previous example, but customizes with an existing guest customization specification:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ... other configuration ...
+//			linux, err := vsphere.LookupGuestOsCustomization(ctx, &vsphere.LookupGuestOsCustomizationArgs{
+//				Name: "linux",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				TemplateUuid: template.Id,
+//				CustomizationSpec: []map[string]interface{}{
+//					map[string]interface{}{
+//						"id": linux.Id,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deploying Virtual Machines from OVF/OVA
+//
+// Virtual machines can be deployed from OVF/OVA using either the local path and remote URL and the `ovfDeploy` property. When deploying from a local path, the path to the OVF/OVA must be provided. While deploying OVF, all other necessary files (_e.g._ `.vmdk`, `.mf`, etc) must be present in the same directory as the `.ovf` file.
+//
+// > **NOTE:** The vApp properties which are pre-defined in an OVF template can be overwritten. New vApp properties can not be created for an existing OVF template.
+//
+// > **NOTE:** An OVF/OVA deployment requires vCenter Server and is not supported on direct ESXi host connections.
+//
+// The following example demonstrates a scenario deploying a simple OVF/OVA, using both the local path and remote URL options.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//				Name: pulumi.StringRef(std.Format(ctx, map[string]interface{}{
+//					"input": "%s%s",
+//					"args": []*string{
+//						cluster.Name,
+//						"/Resources",
+//					},
+//				}, nil).Result),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "172.16.11.0",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// # Deployment of VM from Remote OVF
+//			_, err = vsphere.NewVirtualMachine(ctx, "vmFromRemoteOvf", &vsphere.VirtualMachineArgs{
+//				Name:                   pulumi.String("remote-foo"),
+//				DatacenterId:           pulumi.String(datacenter.Id),
+//				DatastoreId:            pulumi.Any(datastore.I),
+//				ResourcePoolId:         pulumi.String(_default.Id),
+//				WaitForGuestNetTimeout: pulumi.Int(0),
+//				WaitForGuestIpTimeout:  pulumi.Int(0),
+//				OvfDeploy: &vsphere.VirtualMachineOvfDeployArgs{
+//					AllowUnverifiedSslCert: pulumi.Bool(false),
+//					RemoteOvfUrl:           pulumi.String("https://example.com/foo.ova"),
+//					DiskProvisioning:       pulumi.String("thin"),
+//					IpProtocol:             pulumi.String("IPV4"),
+//					IpAllocationPolicy:     pulumi.String("STATIC_MANUAL"),
+//					OvfNetworkMap: pulumi.StringMap{
+//						"Network 1": pulumi.String(network.Id),
+//						"Network 2": pulumi.String(network.Id),
+//					},
+//				},
+//				Vapp: &vsphere.VirtualMachineVappArgs{
+//					Properties: pulumi.StringMap{
+//						"guestinfo.hostname":  pulumi.String("remote-foo.example.com"),
+//						"guestinfo.ipaddress": pulumi.String("172.16.11.101"),
+//						"guestinfo.netmask":   pulumi.String("255.255.255.0"),
+//						"guestinfo.gateway":   pulumi.String("172.16.11.1"),
+//						"guestinfo.dns":       pulumi.String("172.16.11.4"),
+//						"guestinfo.domain":    pulumi.String("example.com"),
+//						"guestinfo.ntp":       pulumi.String("ntp.example.com"),
+//						"guestinfo.password":  pulumi.String("VMware1!"),
+//						"guestinfo.ssh":       pulumi.String("True"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// # Deployment of VM from Local OVF
+//			_, err = vsphere.NewVirtualMachine(ctx, "vmFromLocalOvf", &vsphere.VirtualMachineArgs{
+//				Name:                   pulumi.String("local-foo"),
+//				DatacenterId:           pulumi.String(datacenter.Id),
+//				DatastoreId:            pulumi.String(datastore.Id),
+//				ResourcePoolId:         pulumi.String(_default.Id),
+//				WaitForGuestNetTimeout: pulumi.Int(0),
+//				WaitForGuestIpTimeout:  pulumi.Int(0),
+//				OvfDeploy: &vsphere.VirtualMachineOvfDeployArgs{
+//					AllowUnverifiedSslCert: pulumi.Bool(false),
+//					LocalOvfPath:           pulumi.String("/Volume/Storage/OVAs/foo.ova"),
+//					DiskProvisioning:       pulumi.String("thin"),
+//					IpProtocol:             pulumi.String("IPV4"),
+//					IpAllocationPolicy:     pulumi.String("STATIC_MANUAL"),
+//					OvfNetworkMap: pulumi.StringMap{
+//						"Network 1": pulumi.String(network.Id),
+//						"Network 2": pulumi.String(network.Id),
+//					},
+//				},
+//				Vapp: &vsphere.VirtualMachineVappArgs{
+//					Properties: pulumi.StringMap{
+//						"guestinfo.hostname":  pulumi.String("local-foo.example.com"),
+//						"guestinfo.ipaddress": pulumi.String("172.16.11.101"),
+//						"guestinfo.netmask":   pulumi.String("255.255.255.0"),
+//						"guestinfo.gateway":   pulumi.String("172.16.11.1"),
+//						"guestinfo.dns":       pulumi.String("172.16.11.4"),
+//						"guestinfo.domain":    pulumi.String("example.com"),
+//						"guestinfo.ntp":       pulumi.String("ntp.example.com"),
+//						"guestinfo.password":  pulumi.String("VMware1!"),
+//						"guestinfo.ssh":       pulumi.String("True"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In some scenarios, the Terraform provider may attempt to apply only the default settings. A virtual machine deployed directly from an OVF/OVA may not match the OVF specification. For example, if the `scsiType` option is not included in a `VirtualMachine` resource, the provider will apply a default value of `pvscsi` and the virtual machine may not boot. In this scenario, use the `getOvfVmTemplate` data source to parse the OVF properties and use the property value as parameters for the `VirtualMachine` resource.
+//
+// The following example demonstrates a scenario deploying a nested ESXi host from an OVF/OVA, using the remote URL and local path options.
+//
+// **Example**:
+//
+// ### Cloning from an OVF/OVA with vApp Properties
+//
+// This alternate example illustrates how to clone a virtual machine from a template that originated from an OVF/OVA. This leverages the resource's vApp properties capabilities to set appropriate keys that control various configuration settings on the virtual machine or virtual appliance. In this scenario, using `customize` is not recommended as the functionality tends to overlap.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//				Name: pulumi.StringRef(std.Format(ctx, map[string]interface{}{
+//					"input": "%s%s",
+//					"args": []*string{
+//						cluster.Name,
+//						"/Resources",
+//					},
+//				}, nil).Result),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "172.16.11.0",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			templateFromOvf, err := vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
+//				Name:         pulumi.StringRef("ubuntu-server-template-from-ova"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:           pulumi.String("foo"),
+//				ResourcePoolId: pulumi.String(cluster.ResourcePoolId),
+//				DatastoreId:    pulumi.String(datastore.Id),
+//				NumCpus:        pulumi.Int(2),
+//				Memory:         pulumi.Int(1024),
+//				GuestId:        pulumi.Any(template.GuestId),
+//				ScsiType:       pulumi.Any(template.ScsiType),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId:   pulumi.String(network.Id),
+//						AdapterType: pulumi.Any(template.NetworkInterfaceTypes[0]),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Name:            "Hard Disk 1",
+//						Size:            pulumi.Int(templateFromOvf.Disks[0].Size),
+//						ThinProvisioned: pulumi.Bool(templateFromOvf.Disks[0].ThinProvisioned),
+//					},
+//				},
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					TemplateUuid: pulumi.String(templateFromOvf.Id),
+//				},
+//				Vapp: &vsphere.VirtualMachineVappArgs{
+//					Properties: pulumi.StringMap{
+//						"guestinfo.hostname":  pulumi.String("foo.example.com"),
+//						"guestinfo.ipaddress": pulumi.String("172.16.11.101"),
+//						"guestinfo.netmask":   pulumi.String("255.255.255.0"),
+//						"guestinfo.gateway":   pulumi.String("172.16.11.1"),
+//						"guestinfo.dns":       pulumi.String("172.16.11.4"),
+//						"guestinfo.domain":    pulumi.String("example.com"),
+//						"guestinfo.ntp":       pulumi.String("ntp.example.com"),
+//						"guestinfo.password":  pulumi.String("VMware1!"),
+//						"guestinfo.ssh":       pulumi.String("True"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Using vSphere Storage DRS
+//
+// The `VirtualMachine` resource also supports vSphere Storage DRS, allowing the assignment of virtual machines to datastore clusters. When assigned to a datastore cluster, changes to a virtual machine's underlying datastores are ignored unless disks drift outside of the datastore cluster. Note that the [`DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource also exists to allow for management of datastore clusters using the Terraform provider.
+//
+// The following example demonstrates the use of the [`DatastoreCluster`] data source[tf-vsphere-datastore-cluster-data-source], and the `datastoreClusterId` configuration setting.
+//
+// [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
+// [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+//
+// > **NOTE:** When managing datastore clusters, member datastores, and virtual machines within the same Terraform configuration, race conditions can apply. This is because datastore clusters must be created before datastores can be assigned to them, and the respective `VirtualMachine` resources will no longer have an implicit dependency on the specific datastore resources. Use [`dependsOn`][tf-docs-depends-on] to create an explicit dependency on the datastores in the cluster, or manage datastore clusters and datastores in a separate configuration.
+//
+// [tf-docs-depends-on]: /docs/configuration/resources.html#depends_on
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastoreCluster, err := vsphere.LookupDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
+//				Name:         "datastore-cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "VM Network",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Name:               pulumi.String("foo"),
+//				ResourcePoolId:     pulumi.String(cluster.ResourcePoolId),
+//				DatastoreClusterId: pulumi.String(datastoreCluster.Id),
+//				NumCpus:            pulumi.Int(1),
+//				Memory:             pulumi.Int(1024),
+//				GuestId:            pulumi.String("otherLinux64Guest"),
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.String(network.Id),
+//					},
+//				},
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("Hard Disk 1"),
+//						Size:  pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Creating a Virtual Machine from a Template
+//
+// The `clone` block can be used to create a new virtual machine from an existing virtual machine or template. The resource supports both making a complete copy of a virtual machine, or cloning from a snapshot (also known as a linked clone).
+//
+// See the section on cloning and customization for more information.
+//
+// > **NOTE:** Changing any option in `clone` after creation forces a new resource.
+//
+// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+//
+// The options available in the `clone` block are:
+//
+// * `templateUuid` - (Required) The UUID of the source virtual machine or template.
+//
+// * `linkedClone` - (Optional) Clone the virtual machine from a snapshot or a template. Default: `false`.
+//
+// * `timeout` - (Optional) The timeout, in minutes, to wait for the cloning process to complete. Default: 30 minutes.
+//
+// * `customize` - (Optional) The customization spec for this clone. This allows the user to configure the virtual machine post-clone. For more details, see virtual machine customizations.
+//
+// ### Virtual Machine Customizations
+//
+// As part of the `clone` operation, a virtual machine can be [customized][vmware-docs-customize] to configure host, network, or licensing settings.
+//
+// To perform virtual machine customization as a part of the clone process,
+// specify the `customize` block with the respective customization options, nested within the `clone` block. Windows guests are customized using Sysprep, which will result in the machine SID being reset. Before using customization, check is that your source virtual machine meets the [requirements](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/customizing-guest-operating-systemsvsphere-vm-admin.html) for guest OS customization on vSphere. See the section on cloning and customization for a usage synopsis.
+//
+// The settings for `customize` are as follows:
+//
+// #### Customization Timeout Settings
+//
+// * `timeout` - (Optional) The time, in minutes, that the provider waits for customization to complete before failing. The default is `10` minutes. Setting the value to `0` or a negative value disables the waiter.
+//
+// #### Network Interface Settings
+//
+// These settings, which should be specified in nested `networkInterface` blocks within `customize` block, configure network interfaces on a per-interface basis and are matched up to `networkInterface` devices in the order declared.
+//
+// Static IP Address Example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.Any(public.Id),
+//					},
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.Any(private.Id),
+//					},
+//				},
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					Customize: &vsphere.VirtualMachineCloneCustomizeArgs{
+//						NetworkInterfaces: vsphere.VirtualMachineCloneCustomizeNetworkInterfaceArray{
+//							&vsphere.VirtualMachineCloneCustomizeNetworkInterfaceArgs{
+//								Ipv4Address: pulumi.String("10.0.0.10"),
+//								Ipv4Netmask: pulumi.Int(24),
+//							},
+//							&vsphere.VirtualMachineCloneCustomizeNetworkInterfaceArgs{
+//								Ipv4Address: pulumi.String("172.16.0.10"),
+//								Ipv4Netmask: pulumi.Int(24),
+//							},
+//						},
+//						Ipv4Gateway: pulumi.String("10.0.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The first `networkInterface` would be assigned to the `public` interface, and the second to the `private` interface.
+//
+// To use DHCP, declare an empty `networkInterface` block for each interface.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.Any(public.Id),
+//					},
+//					&vsphere.VirtualMachineNetworkInterfaceArgs{
+//						NetworkId: pulumi.Any(private.Id),
+//					},
+//				},
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					Customize: &vsphere.VirtualMachineCloneCustomizeArgs{
+//						NetworkInterfaces: vsphere.VirtualMachineCloneCustomizeNetworkInterfaceArray{
+//							&vsphere.VirtualMachineCloneCustomizeNetworkInterfaceArgs{},
+//							&vsphere.VirtualMachineCloneCustomizeNetworkInterfaceArgs{},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The options are:
+//
+// * `dnsServerList` - (Optional) DNS servers for the network interface. Used by Windows guest operating systems, but ignored by Linux distribution guest operating systems. For Linux, please refer to the section on the global DNS settings.
+//
+// * `dnsDomain` - (Optional) DNS search domain for the network interface. Used by Windows guest operating systems, but ignored by Linux distribution guest operating systems. For Linux, please refer to the section on the global DNS settings.
+//
+// * `ipv4Address` - (Optional) The IPv4 address assigned to the network adapter. If blank or not included, DHCP is used.
+//
+// * `ipv4Netmask` The IPv4 subnet mask, in bits (_e.g._ `24` for 255.255.255.0).
+//
+// * `ipv6Address` - (Optional) The IPv6 address assigned to the network adapter. If blank or not included, auto-configuration is used.
+//
+// * `ipv6Netmask` - (Optional) The IPv6 subnet mask, in bits (_e.g._  `32`).
+//
+// > **NOTE:** The minimum setting for IPv4 in a customization specification is DHCP. If you are setting up an IPv6-exclusive network without DHCP, you may need to set `waitForGuestNetTimeout` to a high enough value to cover the DHCP timeout of your virtual machine, or disable by supplying a zero or negative value. Disabling `waitForGuestNetTimeout` may result in IP addresses not being reported to any provisioners you may have configured on the resource.
+//
+// #### Global Routing Settings
+//
+// Virtual machine customization for the `VirtualMachine` resource does not take a per-interface gateway setting. Default routes are configured on a global basis. See the section on network interface settings for more information.
+//
+// The settings must match the IP address and netmask of at least one `networkInterface` supplied to customization.
+//
+// The options are:
+//
+// * `ipv4Gateway` - (Optional) The IPv4 default gateway when using `networkInterface` customization on the virtual machine.
+//
+// * `ipv6Gateway` - (Optional) The IPv6 default gateway when using `networkInterface` customization on the virtual machine.
+//
+// #### Global DNS Settings
+//
+// The following settings configure DNS globally, generally for Linux distribution guest operating systems. For Windows guest operating systems, this is performer per-interface. See the section on network interface settings for more information.
+//
+// * `dnsServerList` - The list of DNS servers to configure on the virtual machine.
+//
+// * `dnsSuffixList` - A list of DNS search domains to add to the DNS configuration on the virtual machine.
+//
+// #### Linux Customization Options
+//
+// The settings in the `linuxOptions` block pertain to Linux distribution guest operating system customization. If you are customizing a Linux guest operating system, this section must be included.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					Customize: &vsphere.VirtualMachineCloneCustomizeArgs{
+//						LinuxOptions: &vsphere.VirtualMachineCloneCustomizeLinuxOptionsArgs{
+//							HostName: pulumi.String("foo"),
+//							Domain:   pulumi.String("example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The options are:
+//
+// * `hostName` - (Required) The host name for this machine. This, along with `domain`, make up the FQDN of the virtual machine.
+//
+// * `domain` - (Required) The domain name for this machine. This, along with `hostName`, make up the FQDN of the virtual machine.
+//
+// * `hwClockUtc` - (Optional) Tells the operating system that the hardware clock is set to UTC. Default: `true`.
+//
+// * `scriptText` - (Optional) The customization script for the virtual machine that will be applied before and / or after guest customization. For more information on enabling and using a customization script, please refer to [VMware KB 74880][kb-74880]. The [Heredoc style][tf-heredoc-strings] of string literal is recommended.
+//
+// * `timeZone` - (Optional) Sets the time zone. For a list of possible combinations, please refer to [VMware KB 2145518][kb-2145518]. The default is UTC.
+//
+// #### Windows Customization Options
+//
+// The settings in the `windowsOptions` block pertain to Windows guest OS customization. If you are customizing a Windows operating system, this section must be included.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					Customize: &vsphere.VirtualMachineCloneCustomizeArgs{
+//						WindowsOptions: &vsphere.VirtualMachineCloneCustomizeWindowsOptionsArgs{
+//							ComputerName:  pulumi.String("foo"),
+//							Workgroup:     pulumi.String("BAR"),
+//							AdminPassword: pulumi.String("VMware1!"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The options are:
+//
+// * `computerName` - (Required) The computer name of the virtual machine.
+//
+// * `adminPassword` - (Optional) The administrator password for the virtual machine.
+//
+// > **NOTE:** `adminPassword` is a sensitive field and will not be output on-screen, but is stored in state and sent to the virtual machine in plain text.
+//
+// * `workgroup` - (Optional) The workgroup name for the virtual machine. One of this or `joinDomain` must be included.
+//
+// * `joinDomain` - (Optional) The domain name in which to join  the virtual machine. One of this or `workgroup` must be included.
+//
+// * `domainOu` - (Optional) The `MachineObjectOU` which specifies the full LDAP path name of the OU to which the virtual machine belongs (_e.g._, OU=bar,OU=foo,DC=example,DC=com").
+//
+// > **NOTE:** `domainOu` is only available on vSphere 8.0 Update 2 and later.
+//
+// > **NOTE:** `domainOu` must **not** contain a spaces in the `MachineObjectOU` path (_e.g._, OU=foo bar,DC=example,DC=com").
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					Customize: &vsphere.VirtualMachineCloneCustomizeArgs{
+//						WindowsOptions: &vsphere.VirtualMachineCloneCustomizeWindowsOptionsArgs{
+//							DomainOu: pulumi.String("OU=bar,OU=foo,DC=example,DC=com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// * `domainAdminUser` - (Optional) The user account with administrative privileges to use to join the guest operating system to the domain. Required if setting `joinDomain`.
+//
+// * `domainAdminPassword` - (Optional) The password user account with administrative privileges used to join the virtual machine to the domain. Required if setting `joinDomain`.
+//
+// > **NOTE:** `domainAdminPassword` is a sensitive field and will not be output on-screen, but is stored in state and sent to the virtual machine in plain text
+//
+// * `fullName` - (Optional) The full name of the organization owner of the virtual machine. This populates the "user" field in the general Windows system information. Default: `Administrator`.
+//
+// * `organizationName` - (Optional) The name of the organization for the virtual machine.  This option populates the "organization" field in the general Windows system information. Default: `Managed by Terraform`.
+//
+// * `productKey` - (Optional) The product key for the virtual machine Windows guest operating system. The default is no key.
+//
+// * `runOnceCommandList` - (Optional) A list of commands to run at first user logon, after guest customization. Each run once command is limited by the API to 260 characters.
+//
+// * `autoLogon` - (Optional) Specifies whether or not the virtual machine automatically logs on as Administrator. Default: `false`.
+//
+// * `autoLogonCount` - (Optional) Specifies how many times the virtual machine should auto-logon the Administrator account when `autoLogon` is `true`. This option should be set accordingly to ensure that all of your commands that run in `runOnceCommandList` can log in to run. Default: `1`.
+//
+// * `timeZone` - (Optional) The time zone for the virtual machine. For a list of supported codes, please refer to the [MIcrosoft documentation][ms-docs-valid-sysprep-tzs]. The default is `85` (GMT/UTC).
+//
+// ### Using vApp Properties for OVF/OVA Configuration
+//
+// You can use the `properties` section of the `vapp` block to supply configuration parameters to a virtual machine cloned from a template that originated from an imported OVF/OVA file. Both GuestInfo and ISO transport methods are supported.
+//
+// For templates that use ISO transport, a CD-ROM backed by a client device must be included.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					TemplateUuid: pulumi.Any(templateFromOvf.Id),
+//				},
+//				Cdroms: vsphere.VirtualMachineCdromArray{
+//					&vsphere.VirtualMachineCdromArgs{
+//						ClientDevice: pulumi.Bool(true),
+//					},
+//				},
+//				Vapp: &vsphere.VirtualMachineVappArgs{
+//					Properties: pulumi.StringMap{
+//						terraform.Id: "foo",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// See the section on CD-ROM options for more information.
+//
+// > **NOTE:** The only supported usage path for vApp properties is for existing user-configurable keys. These generally come from an existing template created by importing an OVF or OVA file. You cannot set values for vApp properties on virtual machines created from scratch, virtual machines lacking a vApp configuration, or on property keys that do not exist.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Clone: &vsphere.VirtualMachineCloneArgs{
+//					TemplateUuid: pulumi.Any(templateFromOvf.Id),
+//				},
+//				Vapp: &vsphere.VirtualMachineVappArgs{
+//					Properties: pulumi.StringMap{
+//						terraform.Id: "foo",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The vApp Properties for some OVF/OVA may require boolean values.
+//
+// In Terraform a boolean is defined as `bool` with a value of either `true` or `false`.
+//
+// **Example**: A boolean variable type for the Terraform provider configuration.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Allow insecure connections. Set to `true` for self-signed certificates.
+//			vsphereInsecure := false
+//			if param := cfg.GetBool("vsphereInsecure"); param {
+//				vsphereInsecure = param
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// However, for OVF properties, even though the type is boolean, the vApp Options in vSphere only accepts the values of `"True"` or `"False"`.
+//
+// In these instances, it is recommended to define the variable as a string and pass the value in title case.
+//
+// **Example**: A string variable for to pass to an OVF/OVA boolean OVF property.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Enable SSH on the virtual appliance. One of `True` or `False`.
+//			sshEnabled := "False"
+//			if param := cfg.Get("sshEnabled"); param != "" {
+//				sshEnabled = param
+//			}
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Vapp: &vsphere.VirtualMachineVappArgs{
+//					Properties: pulumi.StringMap{
+//						"ssh_enabled": pulumi.String(sshEnabled),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Additional Requirements for Cloning
+//
+// When cloning from a template, there are additional requirements in both the resource configuration and source template:
+//
+// * The virtual machine must not be powered on at the time of cloning.
+// * All disks on the virtual machine must be SCSI disks.
+// * You must specify at least the same number of `disk` devices as there are disks that exist in the template. These devices are ordered and lined up by the `unitNumber` attribute. Additional disks can be added past this.
+// * The `size` of a virtual disk must be at least the same size as its counterpart disk in the source template.
+// * When using `linkedClone`, the `size`, `thinProvisioned`, and `eagerlyScrub` settings for each disk must be an exact match to the individual disk's counterpart in the source template.
+// * The storage controller count settings should be configured as necessary to cover all of the disks on the template. For best results, only configure this setting for the number of controllers you will need to cover your disk quantity and bandwidth needs, and configure your template accordingly. For most workloads, this setting should be kept at the default of `1` SCSI controller, and all disks in the template should reside on the single, primary controller.
+// * Some operating systems do not respond well to a change in disk controller type. Ensure that `scsiType` is set to an exact match of the template's controller set. For maximum compatibility, make sure the SCSI controllers on the source template are all the same type.
+//
+// You can use the [`VirtualMachine`][tf-vsphere-virtual-machine-ds] data source, which provides disk attributes, network interface types, SCSI bus types, and the guest ID of the source template, to return this information. See the section on cloning and customization for more information.
+//
+// ## Trusted Platform Module
+//
+// When creating a virtual machine or cloning one from a template, you have the option to add a virtual Trusted Platform Module device. Refer to the requirements in the VMware vSphere [product documentation](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/configuring-virtual-machine-hardwarevsphere-vm-admin/securing-virtual-machines-with-virtual-trusted-platform-modulevsphere-vm-admin/vtpm-overviewvsphere-vm-admin.html).
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				Vtpm: &vsphere.VirtualMachineVtpmArgs{
+//					Version: pulumi.String("2.0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **NOTE:** Supported versions include 1.2 or 2.0.
+//
+// ## Virtual Machine Migration
+//
+// The `VirtualMachine` resource supports live migration both on the host and storage level. You can migrate the virtual machine to another host, cluster, resource pool, or datastore. You can also migrate or pin a virtual disk to a specific datastore.
+//
+// ### Host, Cluster, and Resource Pool Migration
+//
+// To migrate the virtual machine to another host or resource pool, change the `hostSystemId` or `resourcePoolId` to the managed object IDs of the new host or resource pool. To change the virtual machine's cluster or standalone host, select a resource pool within the specific target.
+//
+// The same rules apply for migration as they do for virtual machine creation - any host specified must contribute the resource pool supplied. When moving a virtual machine to a resource pool in another cluster (or standalone host), ensure that all hosts in the cluster (or the single standalone host) have access to the datastore on which the virtual machine is placed.
+//
+// ### Storage Migration
+//
+// Storage migration can be done on two levels:
+//
+// * Global datastore migration can be handled by changing the global `datastoreId` attribute. This triggers a storage migration for all disks that do not have an explicit `datastoreId` specified.
+// * When using Storage DRS through the `datastoreClusterId` attribute, the entire virtual machine can be migrated from one datastore cluster to another by changing the value of this setting. In addition, when `datastoreClusterId` is in use, any disks that drift to datastores outside of the datastore cluster via such actions as manual modification will be migrated back to the datastore cluster on the next apply.
+// * An individual `disk` device can be migrated by manually specifying the `datastoreId` in its configuration block. This also pins it to the specific datastore that is specified - if at a later time the virtual machine and any unpinned disks migrate to another host, the disk will stay on the specified datastore.
+//
+// An example of datastore pinning is below. As long as the datastore in the `pinnedDatastore` data source does not change, any change to the standard `vmDatastore` data source will not affect the data disk - the disk will stay where it is.
+//
+// **Example**:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				DatastoreId: pulumi.Any(vmDatastore.Id),
+//				Disks: vsphere.VirtualMachineDiskArray{
+//					&vsphere.VirtualMachineDiskArgs{
+//						Label: pulumi.String("Hard Disk 1"),
+//						Size:  pulumi.Int(10),
+//					},
+//					&vsphere.VirtualMachineDiskArgs{
+//						DatastoreId: pulumi.Any(pinnedDatastore.Id),
+//						Label:       pulumi.String("Hard Disk 2"),
+//						Size:        pulumi.Int(100),
+//						UnitNumber:  pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// #### Storage Migration Restrictions
+//
+// You cannot migrate external disks added with the `attach` parameter. Typically, these disks are created and assigned to a datastore outside the scope of the `VirtualMachine` resource. For example, using the [`VirtualDisk`][tf-vsphere-virtual-disk] resource, management of the disks would render their configuration unstable.
+//
+// [tf-vsphere-virtual-disk]: /docs/providers/vsphere/r/virtual_disk.html
+//
+// ## Virtual Machine Reboot
+//
+// The virtual machine will be rebooted if any of the following parameters are changed:
+//
+// * `alternateGuestName`
+// * `cpuHotAddEnabled`
+// * `cpuHotRemoveEnabled`
+// * `cpuPerformanceCountersEnabled`
+// * `disk.controller_type`
+// * `disk.unit_number`
+// * `disk.disk_mode`
+// * `disk.write_through`
+// * `disk.disk_sharing`
+// * `efiSecureBootEnabled`
+// * `eptRviMode`
+// * `enableDiskUuid`
+// * `enableLogging`
+// * `extraConfig`
+// * `firmware`
+// * `guestId`
+// * `hardwareVersion`
+// * `hvMode`
+// * `memory` -  When reducing the memory size, or when increasing the memory size and `memoryHotAddEnabled` is set to `false`
+// * `memoryHotAddEnabled`
+// * `nestedHvEnabled`
+// * `networkInterface` - When deleting a network interface and VMware Tools is not running.
+// * `network_interface.adapter_type` - When VMware Tools is not running.
+// * `numCoresPerSocket`
+// * `pciDeviceId`
+// * `runToolsScriptsAfterPowerOn`
+// * `runToolsScriptsAfterResume`
+// * `runToolsScriptsBeforeGuestStandby`
+// * `runToolsScriptsBeforeGuestShutdown`
+// * `runToolsScriptsBeforeGuestReboot`
+// * `swapPlacementPolicy`
+// * `toolsUpgradePolicy`
+// * `vbsEnabled`
+// * `vvtdEnabled`
+// * `vtpm`
+//
+// ## Migrating from a Previous Version of the Resource
+//
+// > **NOTE:** This section only applies this resource available in v0.4.2 or earlier of this provider.
+//
+// The path for migrating to the current version of this resource is very similar to the import path; however, with the exception that the `pulumi import` command does not need to be run. See that section for details on what is required before you run `pulumi preview` on a provider resource that must be migrated.
+//
+// A successful migration usually only results in a configuration-only diff - that is, Terraform reconciles the configuration settings that can not be set during the migration process with he Terraform state. In this event, no reconfiguration operations are sent to vSphere during the next `pulumi up`. For more information, see the importing section.
+//
 // ## Import
+//
+// An existing virtual machine can be imported into the Terraform state by providing the full path to the virtual machine.
+//
+// [docs-import]: /docs/import/index.html
+//
+// **Examples**:
+//
+// Import a virtual machine resource named `foo` located in the `dc-01` datacenter.
+//
+// ```sh
+// $ pulumi import vsphere:index/virtualMachine:VirtualMachine vm /dc-01/vm/foo
+// ```
+//
+// > **NOTE:** The `vm` portion of the path is required by vSphere. If the virtual machine is located in a folder, the folder path needs to be included. This is because vSphere organizes virtual machines within a datacenter under the `vm` folder, and any additional folders created within the `vm` folder must be included in the path.
+//
+// If the virtual machine `foo` is in a folder named `bar`, the import command would be:
+//
+// ```sh
+// $ pulumi import vsphere:index/virtualMachine:VirtualMachine vm /dc-01/vm/bar/foo
+// ```
 //
 // ### Additional Importing Requirements
 //
-// Many of the requirements for [cloning](#additional-requirements-and-notes-for-cloning) apply to importing. Although importing writes directly to the Terraform state, some rules can not be enforced during import time, so every effort should be made to ensure the correctness of the configuration before the import.
+// Many of the requirements for cloning apply to importing. Although importing writes directly to the Terraform state, some rules can not be enforced during import time, so every effort should be made to ensure the correctness of the configuration before the import.
 //
 // The following requirements apply to import:
 //
-// * The disks must have a [`label`](#label) argument assigned in a convention matching `Hard Disk`, starting with disk number 0, based on each virtual disk order on the SCSI bus. As an example, a disk on SCSI controller `0` with a unit number of `0` would be labeled as `Hard Disk 0`, a disk on the same controller with a unit number of `1` would be `Hard Disk 1`, but the next disk, which is on SCSI controller `1` with a unit number of `0`, still becomes `Hard Disk 2`.
+// * The disks must have a `label` argument assigned in a convention matching `Hard Disk`, starting with disk number 0, based on each virtual disk order on the SCSI bus. As an example, a disk on SCSI controller `0` with a unit number of `0` would be labeled as `Hard Disk 0`, a disk on the same controller with a unit number of `1` would be `Hard Disk 1`, but the next disk, which is on SCSI controller `1` with a unit number of `0`, still becomes `Hard Disk 2`.
 //
-// * Disks are always imported with [`keep_on_remove`](#keep_on_remove) enabled until the first `pulumi up` run which will remove the setting for known disks. This process safeguards against naming or accounting mistakes in the disk configuration.
+// > **NOTE:** Any custom `label` set at deployment of machine through Terraform, on import will not have the custom `label` and will default to `Hard Disk _x_`.
+//
+// * Disks are always imported with `keepOnRemove` enabled until the first `pulumi up` run which will remove the setting for known disks. This process safeguards against naming or accounting mistakes in the disk configuration.
 //
 // * The storage controller count for the resource is set to the number of contiguous storage controllers found, starting with the controller at SCSI bus number `0`. If no storage controllers are discovered, the virtual machine is not eligible for import. For maximum compatibility, ensure that the virtual machine has the exact number of storage controllers needed and set the storage controller count accordingly.
 //
 // After importing, you should run `pulumi preview`. Unless you have changed anything else in the configuration that would cause other attributes to change. The only difference should be configuration-only changes, which are typically comprised of:
 //
-// * The [`imported`](#imported) flag will transition from `true` to `false`.
+// * The `imported` flag will transition from `true` to `false`.
 //
-// * The [`keep_on_remove`](#keep_on_remove) of known disks will transition from `true` to `false`.
+// * The `keepOnRemove` of known disks will transition from `true` to `false`.
 //
-// * Configuration supplied in the [`clone`](#clone) block, if present, will be persisted to state. This initial persistence operation does not perform any cloning or customization actions, nor does it force a new resource. After the first apply operation, further changes to `clone` will force the creation of a new resource.
+// * Configuration supplied in the `clone` block, if present, will be persisted to state. This initial persistence operation does not perform any cloning or customization actions, nor does it force a new resource. After the first apply operation, further changes to `clone` will force the creation of a new resource.
+//
+// > **NOTE:** Do not make any configuration changes to `clone` after importing or upgrading from a legacy version of the provider before doing an initial `pulumi up` as these changes will not correctly force a new resource and your changes will have persisted to state, preventing further plans from correctly triggering a diff.
 //
 // These changes only update Terraform state when applied. Hence, it is safe to run when the virtual machine is running. If more settings are modified, you may need to plan maintenance accordingly for any necessary virtual machine re-configurations.
+//
+// [vmware-docs-vm-management]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0.html
+// [vmware-docs-customize]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/customizing-guest-operating-systemsvsphere-vm-admin.html
+// [kb-74880]: https://knowledge.broadcom.com/external/article?articleNumber=313048
+// [tf-heredoc-strings]: https://www.terraform.io/language/expressions/strings#heredoc-strings
+// [kb-2145518]: https://knowledge.broadcom.com/external/article?articleNumber=320212
+// [ms-docs-valid-sysprep-tzs]: https://msdn.microsoft.com/en-us/library/ms912391(v=winembedded.11).aspx
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -75,7 +1363,8 @@ type VirtualMachine struct {
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
 	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-	DatastoreId      pulumi.StringOutput `pulumi:"datastoreId"`
+	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
+	// The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringOutput `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on this virtual machine.
 	Disks VirtualMachineDiskArrayOutput `pulumi:"disks"`
@@ -106,7 +1395,8 @@ type VirtualMachine struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode             pulumi.StringOutput `pulumi:"hvMode"`
+	HvMode pulumi.StringOutput `pulumi:"hvMode"`
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	IdeControllerCount pulumi.IntPtrOutput `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayOutput `pulumi:"ignoredGuestIps"`
@@ -141,7 +1431,8 @@ type VirtualMachine struct {
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrOutput `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus             pulumi.IntPtrOutput `pulumi:"numCpus"`
+	NumCpus pulumi.IntPtrOutput `pulumi:"numCpus"`
+	// The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	NvmeControllerCount pulumi.IntPtrOutput `pulumi:"nvmeControllerCount"`
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy VirtualMachineOvfDeployPtrOutput `pulumi:"ovfDeploy"`
@@ -151,7 +1442,8 @@ type VirtualMachine struct {
 	PowerState pulumi.StringOutput `pulumi:"powerState"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrOutput `pulumi:"poweronTimeout"`
-	RebootRequired pulumi.BoolOutput   `pulumi:"rebootRequired"`
+	// Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
+	RebootRequired pulumi.BoolOutput `pulumi:"rebootRequired"`
 	// Triggers replacement of resource whenever it changes.
 	ReplaceTrigger pulumi.StringPtrOutput `pulumi:"replaceTrigger"`
 	// The ID of a resource pool to put the virtual machine in.
@@ -166,10 +1458,12 @@ type VirtualMachine struct {
 	RunToolsScriptsBeforeGuestShutdown pulumi.BoolPtrOutput `pulumi:"runToolsScriptsBeforeGuestShutdown"`
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrOutput `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	SataControllerCount               pulumi.IntPtrOutput  `pulumi:"sataControllerCount"`
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	SataControllerCount pulumi.IntPtrOutput `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing      pulumi.StringPtrOutput `pulumi:"scsiBusSharing"`
-	ScsiControllerCount pulumi.IntPtrOutput    `pulumi:"scsiControllerCount"`
+	ScsiBusSharing pulumi.StringPtrOutput `pulumi:"scsiBusSharing"`
+	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	ScsiControllerCount pulumi.IntPtrOutput `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType pulumi.StringPtrOutput `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
@@ -280,7 +1574,8 @@ type virtualMachineState struct {
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-	DatastoreId      *string `pulumi:"datastoreId"`
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress *string `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on this virtual machine.
 	Disks []VirtualMachineDisk `pulumi:"disks"`
@@ -311,8 +1606,9 @@ type virtualMachineState struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId *string `pulumi:"hostSystemId"`
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode             *string `pulumi:"hvMode"`
-	IdeControllerCount *int    `pulumi:"ideControllerCount"`
+	HvMode *string `pulumi:"hvMode"`
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	IdeControllerCount *int `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps []string `pulumi:"ignoredGuestIps"`
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
@@ -346,7 +1642,8 @@ type virtualMachineState struct {
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus             *int `pulumi:"numCpus"`
+	NumCpus *int `pulumi:"numCpus"`
+	// The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	NvmeControllerCount *int `pulumi:"nvmeControllerCount"`
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
@@ -355,7 +1652,8 @@ type virtualMachineState struct {
 	// A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
 	PowerState *string `pulumi:"powerState"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
-	PoweronTimeout *int  `pulumi:"poweronTimeout"`
+	PoweronTimeout *int `pulumi:"poweronTimeout"`
+	// Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
 	RebootRequired *bool `pulumi:"rebootRequired"`
 	// Triggers replacement of resource whenever it changes.
 	ReplaceTrigger *string `pulumi:"replaceTrigger"`
@@ -371,10 +1669,12 @@ type virtualMachineState struct {
 	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	SataControllerCount               *int  `pulumi:"sataControllerCount"`
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	SataControllerCount *int `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing      *string `pulumi:"scsiBusSharing"`
-	ScsiControllerCount *int    `pulumi:"scsiControllerCount"`
+	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
+	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	ScsiControllerCount *int `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType *string `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
@@ -453,7 +1753,8 @@ type VirtualMachineState struct {
 	// The ID of a datastore cluster to put the virtual machine in.
 	DatastoreClusterId pulumi.StringPtrInput
 	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-	DatastoreId      pulumi.StringPtrInput
+	DatastoreId pulumi.StringPtrInput
+	// The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringPtrInput
 	// A specification for a virtual disk device on this virtual machine.
 	Disks VirtualMachineDiskArrayInput
@@ -484,7 +1785,8 @@ type VirtualMachineState struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringPtrInput
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode             pulumi.StringPtrInput
+	HvMode pulumi.StringPtrInput
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	IdeControllerCount pulumi.IntPtrInput
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayInput
@@ -519,7 +1821,8 @@ type VirtualMachineState struct {
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus             pulumi.IntPtrInput
+	NumCpus pulumi.IntPtrInput
+	// The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	NvmeControllerCount pulumi.IntPtrInput
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
@@ -529,6 +1832,7 @@ type VirtualMachineState struct {
 	PowerState pulumi.StringPtrInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
+	// Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
 	RebootRequired pulumi.BoolPtrInput
 	// Triggers replacement of resource whenever it changes.
 	ReplaceTrigger pulumi.StringPtrInput
@@ -544,9 +1848,11 @@ type VirtualMachineState struct {
 	RunToolsScriptsBeforeGuestShutdown pulumi.BoolPtrInput
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrInput
-	SataControllerCount               pulumi.IntPtrInput
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	SataControllerCount pulumi.IntPtrInput
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing      pulumi.StringPtrInput
+	ScsiBusSharing pulumi.StringPtrInput
+	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	ScsiControllerCount pulumi.IntPtrInput
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType pulumi.StringPtrInput
@@ -656,8 +1962,9 @@ type virtualMachineArgs struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId *string `pulumi:"hostSystemId"`
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode             *string `pulumi:"hvMode"`
-	IdeControllerCount *int    `pulumi:"ideControllerCount"`
+	HvMode *string `pulumi:"hvMode"`
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	IdeControllerCount *int `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps []string `pulumi:"ignoredGuestIps"`
 	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. Can be one of low, normal, medium, or high.
@@ -687,7 +1994,8 @@ type virtualMachineArgs struct {
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus             *int `pulumi:"numCpus"`
+	NumCpus *int `pulumi:"numCpus"`
+	// The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	NvmeControllerCount *int `pulumi:"nvmeControllerCount"`
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
@@ -709,10 +2017,12 @@ type virtualMachineArgs struct {
 	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	SataControllerCount               *int  `pulumi:"sataControllerCount"`
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	SataControllerCount *int `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing      *string `pulumi:"scsiBusSharing"`
-	ScsiControllerCount *int    `pulumi:"scsiControllerCount"`
+	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
+	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	ScsiControllerCount *int `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType *string `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for shutdown when making necessary updates to the virtual machine.
@@ -810,7 +2120,8 @@ type VirtualMachineArgs struct {
 	// The ID of an optional host system to pin the virtual machine to.
 	HostSystemId pulumi.StringPtrInput
 	// The (non-nested) hardware virtualization setting for this virtual machine. Can be one of hvAuto, hvOn, or hvOff.
-	HvMode             pulumi.StringPtrInput
+	HvMode pulumi.StringPtrInput
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	IdeControllerCount pulumi.IntPtrInput
 	// List of IP addresses and CIDR networks to ignore while waiting for an IP
 	IgnoredGuestIps pulumi.StringArrayInput
@@ -841,7 +2152,8 @@ type VirtualMachineArgs struct {
 	// The number of cores to distribute amongst the CPUs in this virtual machine. If specified, the value supplied to numCpus must be evenly divisible by this value.
 	NumCoresPerSocket pulumi.IntPtrInput
 	// The number of virtual processors to assign to this virtual machine.
-	NumCpus             pulumi.IntPtrInput
+	NumCpus pulumi.IntPtrInput
+	// The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	NvmeControllerCount pulumi.IntPtrInput
 	// A specification for deploying a virtual machine from ovf/ova template.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
@@ -863,9 +2175,11 @@ type VirtualMachineArgs struct {
 	RunToolsScriptsBeforeGuestShutdown pulumi.BoolPtrInput
 	// Enable the run of scripts before guest operating system standby when VMware Tools is installed.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrInput
-	SataControllerCount               pulumi.IntPtrInput
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+	SataControllerCount pulumi.IntPtrInput
 	// Mode for sharing the SCSI bus. The modes are physicalSharing, virtualSharing, and noSharing.
-	ScsiBusSharing      pulumi.StringPtrInput
+	ScsiBusSharing pulumi.StringPtrInput
+	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 	ScsiControllerCount pulumi.IntPtrInput
 	// The type of SCSI bus this virtual machine will have. Can be one of lsilogic, lsilogic-sas or pvscsi.
 	ScsiType pulumi.StringPtrInput
@@ -1081,6 +2395,7 @@ func (o VirtualMachineOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
 
+// The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 func (o VirtualMachineOutput) DefaultIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DefaultIpAddress }).(pulumi.StringOutput)
 }
@@ -1160,6 +2475,7 @@ func (o VirtualMachineOutput) HvMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.HvMode }).(pulumi.StringOutput)
 }
 
+// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 func (o VirtualMachineOutput) IdeControllerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.IdeControllerCount }).(pulumi.IntPtrOutput)
 }
@@ -1249,6 +2565,7 @@ func (o VirtualMachineOutput) NumCpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.NumCpus }).(pulumi.IntPtrOutput)
 }
 
+// The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 func (o VirtualMachineOutput) NvmeControllerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.NvmeControllerCount }).(pulumi.IntPtrOutput)
 }
@@ -1273,6 +2590,7 @@ func (o VirtualMachineOutput) PoweronTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.PoweronTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
 func (o VirtualMachineOutput) RebootRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolOutput { return v.RebootRequired }).(pulumi.BoolOutput)
 }
@@ -1312,6 +2630,7 @@ func (o VirtualMachineOutput) RunToolsScriptsBeforeGuestStandby() pulumi.BoolPtr
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.RunToolsScriptsBeforeGuestStandby }).(pulumi.BoolPtrOutput)
 }
 
+// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 func (o VirtualMachineOutput) SataControllerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.SataControllerCount }).(pulumi.IntPtrOutput)
 }
@@ -1321,6 +2640,7 @@ func (o VirtualMachineOutput) ScsiBusSharing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.ScsiBusSharing }).(pulumi.StringPtrOutput)
 }
 
+// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
 func (o VirtualMachineOutput) ScsiControllerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.ScsiControllerCount }).(pulumi.IntPtrOutput)
 }

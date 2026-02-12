@@ -143,7 +143,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing port group can be imported into this resource using
- *
  * the managed object id of the port group, via the following command:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -153,7 +152,6 @@ import * as utilities from "./utilities";
  * ```
  *
  * The above would import the port group named `pg-01` that is located in the `dc-01`
- *
  * datacenter.
  */
 export class DistributedPortGroup extends pulumi.CustomResource {

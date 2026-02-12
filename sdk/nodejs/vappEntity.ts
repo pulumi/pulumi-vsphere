@@ -70,7 +70,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing vApp entity can be imported into this resource via
- *
  * the ID of the vApp Entity.
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -80,9 +79,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * The above would import the vApp entity that governs the behavior of the virtual
- *
  * machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
- *
  * container with the [managed object ID][docs-about-morefs] res-456.
  */
 export class VappEntity extends pulumi.CustomResource {

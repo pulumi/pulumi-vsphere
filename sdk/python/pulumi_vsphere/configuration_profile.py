@@ -162,7 +162,73 @@ class ConfigurationProfile(pulumi.CustomResource):
                  reference_host_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ConfigurationProfile resource with the given unique name, props, and options.
+        The `ConfigurationProfile` resource can be used to configure profile-based host management on a vSphere compute cluster.
+        The source for the configuration can either be a ESXi host that is part of the compute cluster or a JSON file, but not both at the same time.
+
+        It is allowed to switch from one type of configuration source to the other at any time.
+
+        Deleting a `ConfigurationProfile` resource has no effect on the compute cluster. Once management via configuration
+        profiles is turned ot it is not possible to disable it.
+
+        > **NOTE:** This resource requires a vCenter 8 or higher and will not work on
+        direct ESXi connections.
+
+        ## Example Usage
+
+        ### Creating a profile using an ESXi host as a reference
+
+        The following example sets up a configuration profile on a compute cluster using one of its hosts as a reference
+        and then propagates that configuration to two additional clusters.
+
+        Note that this example assumes that the hosts across all three clusters are compatible with the source configuration.
+        This includes but is not limited to their ESXi versions and hardware capabilities.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster1 = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        cluster2 = vsphere.get_compute_cluster(name="cluster-02",
+            datacenter_id=datacenter.id)
+        cluster3 = vsphere.get_compute_cluster(name="cluster-03",
+            datacenter_id=datacenter.id)
+        # This host is assumed to be part of "cluster-01"
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        # Configure a profile on "cluster-01" using one of its hosts as a reference
+        profile1 = vsphere.ConfigurationProfile("profile1",
+            cluster_id=cluster1.id,
+            reference_host_id=host.id)
+        # Copy the configuration of "cluster-01" onto "cluster-02"
+        profile2 = vsphere.ConfigurationProfile("profile2",
+            cluster_id=cluster2.id,
+            configuration=profile1.configuration)
+        # Copy the configuration of "cluster-01" onto "cluster-03"
+        profile3 = vsphere.ConfigurationProfile("profile3",
+            cluster_id=cluster3.id,
+            configuration=profile1.configuration)
+        ```
+
+        ### Creating a profile using a configuration file
+
+        This example sets up a configuration profile on a cluster by reading a configuration from a JSON
+        file on the local filesystem. Reading files is natively supported by Terraform.
+
+        ```python
+        import pulumi
+        import pulumi_std as std
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster1 = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        profile1 = vsphere.ConfigurationProfile("profile1",
+            cluster_id=cluster1.id,
+            configuration=std.index.file(input="/path/to/cluster_config_1.json")["result"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The identifier of the cluster.
@@ -178,7 +244,73 @@ class ConfigurationProfile(pulumi.CustomResource):
                  args: ConfigurationProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ConfigurationProfile resource with the given unique name, props, and options.
+        The `ConfigurationProfile` resource can be used to configure profile-based host management on a vSphere compute cluster.
+        The source for the configuration can either be a ESXi host that is part of the compute cluster or a JSON file, but not both at the same time.
+
+        It is allowed to switch from one type of configuration source to the other at any time.
+
+        Deleting a `ConfigurationProfile` resource has no effect on the compute cluster. Once management via configuration
+        profiles is turned ot it is not possible to disable it.
+
+        > **NOTE:** This resource requires a vCenter 8 or higher and will not work on
+        direct ESXi connections.
+
+        ## Example Usage
+
+        ### Creating a profile using an ESXi host as a reference
+
+        The following example sets up a configuration profile on a compute cluster using one of its hosts as a reference
+        and then propagates that configuration to two additional clusters.
+
+        Note that this example assumes that the hosts across all three clusters are compatible with the source configuration.
+        This includes but is not limited to their ESXi versions and hardware capabilities.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster1 = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        cluster2 = vsphere.get_compute_cluster(name="cluster-02",
+            datacenter_id=datacenter.id)
+        cluster3 = vsphere.get_compute_cluster(name="cluster-03",
+            datacenter_id=datacenter.id)
+        # This host is assumed to be part of "cluster-01"
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        # Configure a profile on "cluster-01" using one of its hosts as a reference
+        profile1 = vsphere.ConfigurationProfile("profile1",
+            cluster_id=cluster1.id,
+            reference_host_id=host.id)
+        # Copy the configuration of "cluster-01" onto "cluster-02"
+        profile2 = vsphere.ConfigurationProfile("profile2",
+            cluster_id=cluster2.id,
+            configuration=profile1.configuration)
+        # Copy the configuration of "cluster-01" onto "cluster-03"
+        profile3 = vsphere.ConfigurationProfile("profile3",
+            cluster_id=cluster3.id,
+            configuration=profile1.configuration)
+        ```
+
+        ### Creating a profile using a configuration file
+
+        This example sets up a configuration profile on a cluster by reading a configuration from a JSON
+        file on the local filesystem. Reading files is natively supported by Terraform.
+
+        ```python
+        import pulumi
+        import pulumi_std as std
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster1 = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        profile1 = vsphere.ConfigurationProfile("profile1",
+            cluster_id=cluster1.id,
+            configuration=std.index.file(input="/path/to/cluster_config_1.json")["result"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param ConfigurationProfileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

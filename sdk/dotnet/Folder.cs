@@ -92,7 +92,6 @@ namespace Pulumi.VSphere
     /// ## Import
     /// 
     /// An existing folder can be imported into this resource via
-    /// 
     /// its full path, via the following command:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -102,9 +101,7 @@ namespace Pulumi.VSphere
     /// ```
     /// 
     /// The above command would import the folder from our examples above, the VM
-    /// 
     /// folder named `example-vm-folder` located in the datacenter named
-    /// 
     /// `default-dc`.
     /// </summary>
     [VSphereResourceType("vsphere:index/folder:Folder")]

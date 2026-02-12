@@ -10,10 +10,47 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
+    /// The `vsphere.TagCategory` resource can be used to create and manage tag
+    /// categories, which determine how tags are grouped together and applied to
+    /// specific objects.
+    /// 
+    /// For more information about tags, click [here][ext-tags-general].
+    /// 
+    /// [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// This example creates a tag category named `terraform-test-category`, with
+    /// single cardinality (meaning that only one tag in this category can be assigned
+    /// to an object at any given time). Tags in this category can only be assigned to
+    /// VMs and datastores.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var category = new VSphere.TagCategory("category", new()
+    ///     {
+    ///         Name = "pulumi-test-category",
+    ///         Description = "Managed by Pulumi",
+    ///         Cardinality = "SINGLE",
+    ///         AssociableTypes = new[]
+    ///         {
+    ///             "VirtualMachine",
+    ///             "Datastore",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An existing tag category can be imported into this resource via
-    /// 
     /// its name, using the following command:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import

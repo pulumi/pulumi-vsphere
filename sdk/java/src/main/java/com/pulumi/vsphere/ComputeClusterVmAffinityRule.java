@@ -62,22 +62,17 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing rule can be imported into this resource by supplying
- * 
  * both the path to the cluster, and the name the rule. If the name or cluster is
- * 
  * not found, or if the rule is of a different type, an error will be returned. An
- * 
  * example is below:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \
- * ```
- * 
+ * terraform import vsphere_compute_cluster_vm_affinity_rule.vm_affinity_rule \
  *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc-01/host/cluster-01&#34;, \
- * 
  *   &#34;name&#34;: &#34;vm-affinity-rule&#34;}&#39;
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule")

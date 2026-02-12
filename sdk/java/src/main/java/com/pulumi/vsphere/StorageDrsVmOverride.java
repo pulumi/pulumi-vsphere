@@ -130,22 +130,17 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing override can be imported into this resource by
- * 
  * supplying both the path to the datastore cluster and the path to the virtual
- * 
  * machine to `pulumi import`. If no override exists, an error will be given.
- * 
  * An example is below:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * $ pulumi import vsphere:index/storageDrsVmOverride:StorageDrsVmOverride drs_vm_override \
- * ```
- * 
+ * terraform import vsphere_storage_drs_vm_override.drs_vm_override \
  *   &#39;{&#34;datastore_cluster_path&#34;: &#34;/dc1/datastore/ds-cluster&#34;, \
- * 
  *   &#34;virtual_machine_path&#34;: &#34;/dc1/vm/srv1&#34;}&#39;
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/storageDrsVmOverride:StorageDrsVmOverride")

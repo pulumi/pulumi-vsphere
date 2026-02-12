@@ -311,9 +311,17 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.datastoreId);
     }
 
+    /**
+     * The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
+     * 
+     */
     @Import(name="defaultIpAddress")
     private @Nullable Output<String> defaultIpAddress;
 
+    /**
+     * @return The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
+     * 
+     */
     public Optional<Output<String>> defaultIpAddress() {
         return Optional.ofNullable(this.defaultIpAddress);
     }
@@ -543,9 +551,17 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.hvMode);
     }
 
+    /**
+     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     @Import(name="ideControllerCount")
     private @Nullable Output<Integer> ideControllerCount;
 
+    /**
+     * @return The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     public Optional<Output<Integer>> ideControllerCount() {
         return Optional.ofNullable(this.ideControllerCount);
     }
@@ -805,9 +821,17 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.numCpus);
     }
 
+    /**
+     * The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     @Import(name="nvmeControllerCount")
     private @Nullable Output<Integer> nvmeControllerCount;
 
+    /**
+     * @return The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     public Optional<Output<Integer>> nvmeControllerCount() {
         return Optional.ofNullable(this.nvmeControllerCount);
     }
@@ -872,9 +896,17 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.poweronTimeout);
     }
 
+    /**
+     * Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
+     * 
+     */
     @Import(name="rebootRequired")
     private @Nullable Output<Boolean> rebootRequired;
 
+    /**
+     * @return Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
+     * 
+     */
     public Optional<Output<Boolean>> rebootRequired() {
         return Optional.ofNullable(this.rebootRequired);
     }
@@ -984,9 +1016,17 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.runToolsScriptsBeforeGuestStandby);
     }
 
+    /**
+     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     @Import(name="sataControllerCount")
     private @Nullable Output<Integer> sataControllerCount;
 
+    /**
+     * @return The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     public Optional<Output<Integer>> sataControllerCount() {
         return Optional.ofNullable(this.sataControllerCount);
     }
@@ -1006,9 +1046,17 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.scsiBusSharing);
     }
 
+    /**
+     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     @Import(name="scsiControllerCount")
     private @Nullable Output<Integer> scsiControllerCount;
 
+    /**
+     * @return The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+     * 
+     */
     public Optional<Output<Integer>> scsiControllerCount() {
         return Optional.ofNullable(this.scsiControllerCount);
     }
@@ -1818,11 +1866,23 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
             return datastoreId(Output.of(datastoreId));
         }
 
+        /**
+         * @param defaultIpAddress The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultIpAddress(@Nullable Output<String> defaultIpAddress) {
             $.defaultIpAddress = defaultIpAddress;
             return this;
         }
 
+        /**
+         * @param defaultIpAddress The IP address selected by Terraform to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultIpAddress(String defaultIpAddress) {
             return defaultIpAddress(Output.of(defaultIpAddress));
         }
@@ -2162,11 +2222,23 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
             return hvMode(Output.of(hvMode));
         }
 
+        /**
+         * @param ideControllerCount The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ideControllerCount(@Nullable Output<Integer> ideControllerCount) {
             $.ideControllerCount = ideControllerCount;
             return this;
         }
 
+        /**
+         * @param ideControllerCount The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ideControllerCount(Integer ideControllerCount) {
             return ideControllerCount(Output.of(ideControllerCount));
         }
@@ -2548,11 +2620,23 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
             return numCpus(Output.of(numCpus));
         }
 
+        /**
+         * @param nvmeControllerCount The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nvmeControllerCount(@Nullable Output<Integer> nvmeControllerCount) {
             $.nvmeControllerCount = nvmeControllerCount;
             return this;
         }
 
+        /**
+         * @param nvmeControllerCount The number of NVMe controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nvmeControllerCount(Integer nvmeControllerCount) {
             return nvmeControllerCount(Output.of(nvmeControllerCount));
         }
@@ -2651,11 +2735,23 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
             return poweronTimeout(Output.of(poweronTimeout));
         }
 
+        /**
+         * @param rebootRequired Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rebootRequired(@Nullable Output<Boolean> rebootRequired) {
             $.rebootRequired = rebootRequired;
             return this;
         }
 
+        /**
+         * @param rebootRequired Value internal to Terraform used to determine if a configuration set change requires a reboot. This value is most useful during an update process and gets reset on refresh.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rebootRequired(Boolean rebootRequired) {
             return rebootRequired(Output.of(rebootRequired));
         }
@@ -2807,11 +2903,23 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
             return runToolsScriptsBeforeGuestStandby(Output.of(runToolsScriptsBeforeGuestStandby));
         }
 
+        /**
+         * @param sataControllerCount The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sataControllerCount(@Nullable Output<Integer> sataControllerCount) {
             $.sataControllerCount = sataControllerCount;
             return this;
         }
 
+        /**
+         * @param sataControllerCount The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sataControllerCount(Integer sataControllerCount) {
             return sataControllerCount(Output.of(sataControllerCount));
         }
@@ -2837,11 +2945,23 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
             return scsiBusSharing(Output.of(scsiBusSharing));
         }
 
+        /**
+         * @param scsiControllerCount The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scsiControllerCount(@Nullable Output<Integer> scsiControllerCount) {
             $.scsiControllerCount = scsiControllerCount;
             return this;
         }
 
+        /**
+         * @param scsiControllerCount The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scsiControllerCount(Integer scsiControllerCount) {
             return scsiControllerCount(Output.of(scsiControllerCount));
         }

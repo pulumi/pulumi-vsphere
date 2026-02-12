@@ -11,6 +11,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ComputeCluster` data source can be used to discover the ID of a
+// cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+// use for virtual machine placement via the
+// [`VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+// specify the cluster's root resource pool directly versus using the alias
+// available through the [`ResourcePool`][docs-resource-pool-data-source]
+// data source.
+//
+// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+// [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+//
+// > You may also wish to see the [`ComputeCluster`][docs-compute-cluster-resource]
+//
+//	resource for more information about clusters and how to managed the resource
+//	in Terraform.
+//
+// [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+//
 // ## Example Usage
 //
 // ```go

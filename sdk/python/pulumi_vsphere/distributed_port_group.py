@@ -1809,7 +1809,6 @@ class DistributedPortGroup(pulumi.CustomResource):
         ## Import
 
         An existing port group can be imported into this resource using
-
         the managed object id of the port group, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -1819,7 +1818,6 @@ class DistributedPortGroup(pulumi.CustomResource):
         ```
 
         The above would import the port group named `pg-01` that is located in the `dc-01`
-
         datacenter.
 
         :param str resource_name: The name of the resource.
@@ -2031,7 +2029,6 @@ class DistributedPortGroup(pulumi.CustomResource):
         ## Import
 
         An existing port group can be imported into this resource using
-
         the managed object id of the port group, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -2041,7 +2038,6 @@ class DistributedPortGroup(pulumi.CustomResource):
         ```
 
         The above would import the port group named `pg-01` that is located in the `dc-01`
-
         datacenter.
 
         :param str resource_name: The name of the resource.

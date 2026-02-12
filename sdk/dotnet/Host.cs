@@ -109,98 +109,108 @@ namespace Pulumi.VSphere
     /// ## Import
     /// 
     /// An existing host can be imported into this resource by supplying
-    /// 
     /// the host's ID.
     /// 
     /// [docs-import]: /docs/import/index.html
     /// 
     /// Obtain the host's ID using the data source. For example:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
     /// 
-    /// data "vsphere_datacenter" "datacenter" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    ///   name = "dc-01"
+    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi-01.example.com",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
     /// 
-    /// }
-    /// 
-    /// data "vsphere_host" "host" {
-    /// 
-    ///   name          = "esxi-01.example.com"
-    /// 
-    ///   datacenter_id = data.vsphere_datacenter.datacenter.id
-    /// 
-    /// }
-    /// 
-    /// output "host_id" {
-    /// 
-    ///   value = data.vsphere_host.host.id
-    /// 
-    /// }
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["hostId"] = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///     };
+    /// });
+    /// ```
     /// 
     /// Next, create a resource configuration, For example:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
     /// 
-    /// data "vsphere_datacenter" "datacenter" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    ///   name = "dc-01"
+    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     {
+    ///         Address = "esxi-01.example.com",
+    ///         Insecure = true,
+    ///     });
     /// 
-    /// }
+    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     {
+    ///         Hostname = "esxi-01.example.com",
+    ///         Username = "root",
+    ///         Password = "password",
+    ///         Thumbprint = thumbprint.Apply(getHostThumbprintResult =&gt; getHostThumbprintResult.Id),
+    ///         Datacenter = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
     /// 
-    /// data "vsphere_host_thumbprint" "thumbprint" {
+    /// });
+    /// ```
     /// 
-    ///   address  = "esxi-01.example.com"
+    /// &gt; **NOTE:** When you import hosts, all managed settings are returned. Ensure all settings are set correctly in resource. For example:
     /// 
-    ///   insecure = true
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
     /// 
-    /// }
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     {
+    ///         Hostname = "esxi-01.example.com",
+    ///         Username = "root",
+    ///         Password = "password",
+    ///         License = "00000-00000-00000-00000-00000",
+    ///         Thumbprint = thumbprint.Id,
+    ///         Cluster = cluster.Id,
+    ///         Services = new[]
+    ///         {
+    ///             new VSphere.Inputs.HostServiceArgs
+    ///             {
+    ///                 Ntpd = new VSphere.Inputs.HostServiceNtpdArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Policy = "on",
+    ///                     NtpServers = new[]
+    ///                     {
+    ///                         "pool.ntp.org",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// resource "vsphere_host" "esx-01" {
-    /// 
-    ///   hostname   = "esxi-01.example.com"
-    /// 
-    ///   username   = "root"
-    /// 
-    ///   password   = "password"
-    /// 
-    ///   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
-    /// 
-    ///   datacenter = data.vsphere_datacenter.datacenter.id
-    /// 
-    /// }
-    /// 
-    /// hcl
-    /// 
-    /// resource "vsphere_host" "esx-01" {
-    /// 
-    ///   hostname   = "esxi-01.example.com"
-    /// 
-    ///   username   = "root"
-    /// 
-    ///   password   = "password"
-    /// 
-    ///   license    = "00000-00000-00000-00000-00000"
-    /// 
-    ///   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
-    /// 
-    ///   cluster    = data.vsphere_compute_cluster.cluster.id
-    /// 
-    ///   services {
-    /// 
-    ///     ntpd {
-    ///     
-    ///       enabled     = true
-    ///     
-    ///       policy      = "on"
-    ///     
-    ///       ntp_servers = ["pool.ntp.org"]
-    ///     
-    ///     }
-    /// 
-    ///   }
-    /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// ```sh
     /// $ pulumi import vsphere:index/host:Host esx-01 host-123

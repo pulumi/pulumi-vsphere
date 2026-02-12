@@ -19,6 +19,45 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `vsphere.VmfsDatastore` resource can be used to create and manage VMFS
+ * datastores on an ESXi host or a set of hosts. The resource supports using any
+ * SCSI device that can generally be used in a datastore, such as local disks, or
+ * disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
+ * Devices can be specified manually, or discovered using the
+ * [`vsphere.getVmfsDisks`][data-source-vmfs-disks] data source.
+ * 
+ * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html
+ * 
+ * ## Auto-Mounting of Datastores Within vCenter
+ * 
+ * Note that the current behavior of this resource will auto-mount any created
+ * datastores to any other host within vCenter that has access to the same disk.
+ * 
+ * Example: You want to create a datastore with a iSCSI LUN that is visible on 3
+ * hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
+ * create the datastore on `esxi1`, the datastore will be automatically mounted on
+ * `esxi2` and `esxi3`, without the need to configure the resource on either of
+ * those two hosts.
+ * 
+ * Future versions of this resource may allow you to control the hosts that a
+ * datastore is mounted to, but currently, this automatic behavior cannot be
+ * changed, so keep this in mind when writing your configurations and deploying
+ * your disks.
+ * 
+ * ## Increasing Datastore Size
+ * 
+ * To increase the size of a datastore, you must add additional disks to the
+ * `disks` attribute. Expanding the size of a datastore by increasing the size of
+ * an already provisioned disk is currently not supported (but may be in future
+ * versions of this resource).
+ * 
+ * &gt; **NOTE:** You cannot decrease the size of a datastore. If the resource
+ * detects disks removed from the configuration, Terraform will give an error. To
+ * reduce the size of the datastore, the resource needs to be re-created - run
+ * [`terraform taint`][cmd-taint] to taint the resource so it can be re-created.
+ * 
+ * [cmd-taint]: /docs/commands/taint.html
+ * 
  * ## Example Usage
  * 
  * ### Addition of local disks on a single host
@@ -146,9 +185,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing VMFS datastore can be imported into this resource
- * 
  * via its managed object ID, via the command below. You also need the host system
- * 
  * ID.
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -162,26 +199,23 @@ import javax.annotation.Nullable;
  * [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
  * 
  * In the case of govc, you can locate a managed object ID from an inventory path
- * 
  * by doing the following:
  * 
+ * ```sh
  * $ govc ls -i /dc/datastore/terraform-test
- * 
  * Datastore:datastore-123
+ * ```
  * 
  * To locate host IDs, it might be a good idea to supply the `-l` flag as well so
- * 
  * that you can line up the names with the IDs:
  * 
+ * ```sh
  * $ govc ls -l -i /dc/host/cluster1
- * 
  * ResourcePool:resgroup-10 /dc/host/cluster1/Resources
- * 
  * HostSystem:host-10 /dc/host/cluster1/esxi1
- * 
  * HostSystem:host-11 /dc/host/cluster1/esxi2
- * 
  * HostSystem:host-12 /dc/host/cluster1/esxi3
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/vmfsDatastore:VmfsDatastore")
@@ -279,14 +313,26 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
         return this.disks;
     }
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a datastore named `terraform-test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+     * `datastoreClusterId`.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
-     * @return The path to the datastore folder to put the datastore in.
+     * @return The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a datastore named `terraform-test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+     * `datastoreClusterId`.
      * 
      */
     public Output<Optional<String>> folder() {

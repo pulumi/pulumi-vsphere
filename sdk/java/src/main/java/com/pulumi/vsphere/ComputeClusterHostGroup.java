@@ -47,22 +47,17 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing group can be imported into this resource by
- * 
  * supplying both the path to the cluster, and the name of the host group. If the
- * 
  * name or cluster is not found, or if the group is of a different type, an error
- * 
  * will be returned. An example is below:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \
- * ```
- * 
+ * terraform import vsphere_compute_cluster_host_group.cluster_host_group \
  *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/host/cluster1&#34;, \
- * 
  *   &#34;name&#34;: &#34;pulumi-test-cluster-host-group&#34;}&#39;
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup")

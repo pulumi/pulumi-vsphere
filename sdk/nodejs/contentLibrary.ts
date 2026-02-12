@@ -67,7 +67,7 @@ import * as utilities from "./utilities";
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
- * $ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
+ * terraform import vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
  * ```
  */
 export class ContentLibrary extends pulumi.CustomResource {

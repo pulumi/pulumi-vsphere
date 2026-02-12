@@ -23,6 +23,32 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **A note on the naming of this resource:** VMware refers to clusters of
+ * hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
+ * clusters_. All of these refer to the same kind of resource (with the latter two
+ * referring to specific features of clustering). In Terraform, we use
+ * `vsphere.ComputeCluster` to differentiate host clusters from _datastore
+ * clusters_, which are clusters of datastores that can be used to distribute load
+ * and ensure fault tolerance via distribution of virtual machines. Datastore
+ * clusters can also be managed through Terraform, via the
+ * [`vsphere.DatastoreCluster` resource][docs-r-vsphere-datastore-cluster].
+ * 
+ * [docs-r-vsphere-datastore-cluster]: /docs/providers/vsphere/r/datastore_cluster.html
+ * 
+ * The `vsphere.ComputeCluster` resource can be used to create and manage
+ * clusters of hosts allowing for resource control of compute resources, load
+ * balancing through DRS, and high availability through vSphere HA.
+ * 
+ * For more information on vSphere clusters and DRS, see [this
+ * page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
+ * page][ref-vsphere-ha-clusters].
+ * 
+ * [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
+ * [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+ * 
+ * &gt; **NOTE:** This resource requires vCenter and is not available on
+ * direct ESXi connections.
+ * 
  * ## Example Usage
  * 
  * The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -56,65 +82,57 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing cluster can be imported into this resource via the
- * 
  * path to the cluster, via the following command:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
- * hcl
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- * variable &#34;datacenter&#34; {
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.ComputeCluster;
+ * import com.pulumi.vsphere.ComputeClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- *   default = &#34;dc-01&#34;
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
  * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var datacenter = config.get("datacenter").orElse("dc-01");
+ *         final var datacenterGetDatacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(datacenter)
+ *             .build());
+ * 
+ *         var computeCluster = new ComputeCluster("computeCluster", ComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenterGetDatacenter.id())
+ *             .build());
+ * 
+ *     }
  * }
- * 
- * data &#34;vsphere_datacenter&#34; &#34;datacenter&#34; {
- * 
- *   name = var.datacenter
- * 
  * }
+ * </pre>
  * 
- * resource &#34;vsphere_compute_cluster&#34; &#34;compute_cluster&#34; {
- * 
- *   name          = &#34;cluster-01&#34;
- * 
- *   datacenter_id = data.vsphere_datacenter.datacenter.id
- * 
- * }
- * 
- * hcl
- * 
- * resource &#34;vsphere_compute_cluster&#34; &#34;compute_cluster&#34; {
- * 
- *   name                      = &#34;cluster-01&#34;
- * 
- *   datacenter_id             = data.vsphere_datacenter.datacenter.id
- * 
- *   vsan_enabled              = true
- * 
- *   vsan_performance_enabled  = true
- * 
- *   host_system_ids           = [for host in data.vsphere_host.host : host.id]
- * 
- *   dpm_automation_level      = &#34;automated&#34;
- * 
- *   drs_automation_level      = &#34;fullyAutomated&#34;
- * 
- *   drs_enabled               = true
- * 
- *   ha_datastore_apd_response = &#34;restartConservative&#34;
- * 
- *   ha_datastore_pdl_response = &#34;restartAggressive&#34;
- * 
- * }
+ * &gt; **NOTE:** When you import a cluster, all managed settings are returned. Ensure all settings are set correctly in resource. For example:
  * 
  * ```sh
  * $ pulumi import vsphere:index/computeCluster:ComputeCluster compute_cluster /dc-01/host/cluster-01
  * ```
  * 
  * The above would import the cluster named `cluster-01` that is located in
- * 
  * the `dc-01` datacenter.
  * 
  */
@@ -307,14 +325,24 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.drsScaleDescendantsShares);
     }
     /**
-     * The name of the folder to locate the cluster in.
+     * The relative path to a folder to put this cluster in.
+     * This is a path relative to the datacenter you are deploying the cluster to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a cluster named `terraform-compute-cluster-test` in a
+     * host folder located at `/dc1/host/foo/bar`, with the final inventory path
+     * being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
-     * @return The name of the folder to locate the cluster in.
+     * @return The relative path to a folder to put this cluster in.
+     * This is a path relative to the datacenter you are deploying the cluster to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a cluster named `terraform-compute-cluster-test` in a
+     * host folder located at `/dc1/host/foo/bar`, with the final inventory path
+     * being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
      * 
      */
     public Output<Optional<String>> folder() {

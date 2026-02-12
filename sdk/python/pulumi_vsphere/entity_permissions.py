@@ -158,7 +158,55 @@ class EntityPermissions(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityPermissionsPermissionArgs', 'EntityPermissionsPermissionArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a EntityPermissions resource with the given unique name, props, and options.
+        The `EntityPermissions` resource can be used to create and manage
+        entity permissions. Permissions can be created on an entity for a given user or
+        group with the specified role.
+
+        ## Example Usage
+
+        This example creates entity permissions on the virtual machine VM1 for the user
+        group DCClients with role Datastore consumer and for user group ExternalIDPUsers
+        with role my_terraform_role. The `entity_id` can be the managed object id (or
+        uuid for some resources). The `entity_type` is one of the managed object types
+        which can be found from the managed object types section
+        [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
+        Keep the permissions sorted alphabetically, ignoring case on `user_or_group` for
+        a better user experience.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="Sample_DC_2")
+        vm = vsphere.get_virtual_machine(name="VM1",
+            datacenter_id=datacenter.id)
+        role1 = vsphere.get_role(label="Datastore consumer (sample)")
+        role2 = vsphere.Role("role2",
+            name="my_terraform_role",
+            role_privileges=[
+                "Alarm.Acknowledge",
+                "Alarm.Create",
+                "Datacenter.Move",
+            ])
+        p1 = vsphere.EntityPermissions("p1",
+            entity_id=vm.id,
+            entity_type="VirtualMachine",
+            permissions=[
+                {
+                    "user_or_group": "vsphere.local\\\\DCClients",
+                    "propagate": True,
+                    "is_group": True,
+                    "role_id": role1.id,
+                },
+                {
+                    "user_or_group": "vsphere.local\\\\ExternalIDPUsers",
+                    "propagate": True,
+                    "is_group": True,
+                    "role_id": role2.id,
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_id: The managed object id (uuid for some entities) on
@@ -177,7 +225,55 @@ class EntityPermissions(pulumi.CustomResource):
                  args: EntityPermissionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a EntityPermissions resource with the given unique name, props, and options.
+        The `EntityPermissions` resource can be used to create and manage
+        entity permissions. Permissions can be created on an entity for a given user or
+        group with the specified role.
+
+        ## Example Usage
+
+        This example creates entity permissions on the virtual machine VM1 for the user
+        group DCClients with role Datastore consumer and for user group ExternalIDPUsers
+        with role my_terraform_role. The `entity_id` can be the managed object id (or
+        uuid for some resources). The `entity_type` is one of the managed object types
+        which can be found from the managed object types section
+        [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
+        Keep the permissions sorted alphabetically, ignoring case on `user_or_group` for
+        a better user experience.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="Sample_DC_2")
+        vm = vsphere.get_virtual_machine(name="VM1",
+            datacenter_id=datacenter.id)
+        role1 = vsphere.get_role(label="Datastore consumer (sample)")
+        role2 = vsphere.Role("role2",
+            name="my_terraform_role",
+            role_privileges=[
+                "Alarm.Acknowledge",
+                "Alarm.Create",
+                "Datacenter.Move",
+            ])
+        p1 = vsphere.EntityPermissions("p1",
+            entity_id=vm.id,
+            entity_type="VirtualMachine",
+            permissions=[
+                {
+                    "user_or_group": "vsphere.local\\\\DCClients",
+                    "propagate": True,
+                    "is_group": True,
+                    "role_id": role1.id,
+                },
+                {
+                    "user_or_group": "vsphere.local\\\\ExternalIDPUsers",
+                    "propagate": True,
+                    "is_group": True,
+                    "role_id": role2.id,
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param EntityPermissionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

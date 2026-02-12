@@ -68,20 +68,16 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing override can be imported into this resource by
- *
  * supplying both the path to the cluster, and the path to the host, to `terraform
- *
  * import`. If no override exists, an error will be given.  An example is below:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
- * $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \
- * ```
- *
+ * terraform import vsphere_dpm_host_override.dpm_host_override \
  *   '{"compute_cluster_path": "/dc1/host/cluster1", \
- *
  *   "host_path": "/dc1/host/esxi1"}'
+ * ```
  */
 export class DpmHostOverride extends pulumi.CustomResource {
     /**

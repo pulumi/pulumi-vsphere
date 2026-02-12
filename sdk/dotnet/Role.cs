@@ -10,6 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
+    /// The `vsphere.Role` resource can be used to create and manage roles. Using this resource, privileges can be
+    /// associated with the roles. The role can be used while granting permissions to an entity.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// This example creates a role with name MyTerraformRole and privileges create, acknowledge for Alarm and
+    /// create, move for Datacenter. While providing `RolePrivileges`, the id of the privilege has to be provided.
+    /// The format of the privilege id is privilege name preceded by its categories joined by a `.`.
+    /// For example a privilege with path `category-&gt;subcategory-&gt;privilege` should be provided as
+    /// `category.subcategory.privilege`. Keep the `RolePrivileges` sorted alphabetically for a better user experience.
+    /// 
+    /// &gt; **NOTE:** While providing `RolePrivileges`, the id of the privilege and its categories are to be provided
+    /// joined by a `.` .
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var role1 = new VSphere.Role("role1", new()
+    ///     {
+    ///         Name = "my_terraform_role",
+    ///         RolePrivileges = new[]
+    ///         {
+    ///             "Alarm.Acknowledge",
+    ///             "Alarm.Create",
+    ///             "Datacenter.Create",
+    ///             "Datacenter.Move",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An existing role can be imported into this resource by supplying the role id. An example is below:
@@ -18,8 +55,8 @@ namespace Pulumi.VSphere
     /// $ pulumi import vsphere:index/role:Role role1 -709298051
     /// ```
     /// 
-    /// Use [`vsphere_role` data source][ref-vsphere-role-data-source]
-    /// 
+    /// &gt; **NOTE:** System roles can't be imported because they can't be modified or deleted.
+    /// Use [`vsphere.Role` data source][ref-vsphere-role-data-source]
     /// to read information about system roles.
     /// 
     /// [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html

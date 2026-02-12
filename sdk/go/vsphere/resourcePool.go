@@ -218,13 +218,25 @@ import (
 //
 // ## Import
 //
+// An existing resource pool can be imported into this resource via
+// the path to the resource pool, using the following command:
+//
+// ```sh
+// $ pulumi import vsphere:index/resourcePool:ResourcePool resource_pool /dc-01/host/cluster-01/Resources/resource-pool-01
+// ```
+//
+// The above would import the resource pool named `resource-pool-01` that is located
+// in the compute cluster `cluster-01` in the `dc-01` datacenter.
+//
 // ### Settings that Require vSphere 7.0 or higher
 //
 // These settings require vSphere 7.0 or higher:
 //
-// * [`scale_descendants_shares`](#scale_descendants_shares)
+// * `scaleDescendantsShares`
 //
 // [ref-vsphere-resource_pools]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/managing-resource-pools.html
+//
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type ResourcePool struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,83 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere.EntityPermissions` resource can be used to create and manage
+    /// entity permissions. Permissions can be created on an entity for a given user or
+    /// group with the specified role.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// This example creates entity permissions on the virtual machine VM1 for the user
+    /// group DCClients with role Datastore consumer and for user group ExternalIDPUsers
+    /// with role my_terraform_role. The `EntityId` can be the managed object id (or
+    /// uuid for some resources). The `EntityType` is one of the managed object types
+    /// which can be found from the managed object types section
+    /// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
+    /// Keep the permissions sorted alphabetically, ignoring case on `UserOrGroup` for
+    /// a better user experience.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "Sample_DC_2",
+    ///     });
+    /// 
+    ///     var vm = VSphere.GetVirtualMachine.Invoke(new()
+    ///     {
+    ///         Name = "VM1",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var role1 = VSphere.GetRole.Invoke(new()
+    ///     {
+    ///         Label = "Datastore consumer (sample)",
+    ///     });
+    /// 
+    ///     var role2 = new VSphere.Role("role2", new()
+    ///     {
+    ///         Name = "my_terraform_role",
+    ///         RolePrivileges = new[]
+    ///         {
+    ///             "Alarm.Acknowledge",
+    ///             "Alarm.Create",
+    ///             "Datacenter.Move",
+    ///         },
+    ///     });
+    /// 
+    ///     var p1 = new VSphere.EntityPermissions("p1", new()
+    ///     {
+    ///         EntityId = vm.Apply(getVirtualMachineResult =&gt; getVirtualMachineResult.Id),
+    ///         EntityType = "VirtualMachine",
+    ///         Permissions = new[]
+    ///         {
+    ///             new VSphere.Inputs.EntityPermissionsPermissionArgs
+    ///             {
+    ///                 UserOrGroup = "vsphere.local\\DCClients",
+    ///                 Propagate = true,
+    ///                 IsGroup = true,
+    ///                 RoleId = role1.Apply(getRoleResult =&gt; getRoleResult.Id),
+    ///             },
+    ///             new VSphere.Inputs.EntityPermissionsPermissionArgs
+    ///             {
+    ///                 UserOrGroup = "vsphere.local\\ExternalIDPUsers",
+    ///                 Propagate = true,
+    ///                 IsGroup = true,
+    ///                 RoleId = role2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [VSphereResourceType("vsphere:index/entityPermissions:EntityPermissions")]
     public partial class EntityPermissions : global::Pulumi.CustomResource
     {

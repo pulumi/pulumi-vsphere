@@ -10,10 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
+    /// The `vsphere.NasDatastore` resource can be used to create and manage NAS
+    /// datastores on an ESXi host or a set of hosts. The resource supports mounting
+    /// NFS v3 and v4.1 shares to be used as datastores.
+    /// 
+    /// &gt; **NOTE:** Unlike [`vsphere.VmfsDatastore`][resource-vmfs-datastore], a NAS
+    /// datastore is only mounted on the hosts you choose to mount it on. To mount on
+    /// multiple hosts, you must specify each host that you want to add in the
+    /// `HostSystemIds` argument.
+    /// 
+    /// [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example would set up a NFS v3 share on 3 hosts connected through
+    /// vCenter in the same datacenter - `Esxi1`, `Esxi2`, and `Esxi3`. The remote host
+    /// is named `Nfs` and has `/export/terraform-test` exported.
+    /// 
     /// ## Import
     /// 
     /// An existing NAS datastore can be imported into this resource via
-    /// 
     /// its managed object ID, via the following command:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -22,17 +38,17 @@ namespace Pulumi.VSphere
     /// $ pulumi import vsphere:index/nasDatastore:NasDatastore datastore datastore-123
     /// ```
     /// 
-    /// You need a tool like [`govc`][ext-govc] that can display managed object IDs.
+    /// You need a tool like [`Govc`][ext-govc] that can display managed object IDs.
     /// 
     /// [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
     /// 
     /// In the case of govc, you can locate a managed object ID from an inventory path
-    /// 
     /// by doing the following:
     /// 
+    /// ```sh
     /// $ govc ls -i /dc/datastore/terraform-test
-    /// 
     /// Datastore:datastore-123
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/nasDatastore:NasDatastore")]
     public partial class NasDatastore : global::Pulumi.CustomResource
@@ -81,7 +97,13 @@ namespace Pulumi.VSphere
         public Output<string?> DatastoreClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The path to the datastore folder to put the datastore in.
+        /// The relative path to a folder to put this datastore in.
+        /// This is a path relative to the datacenter you are deploying the datastore to.
+        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
+        /// Terraform will place a datastore named `terraform-test` in a datastore folder
+        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+        /// `DatastoreClusterId`.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -263,7 +285,13 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The path to the datastore folder to put the datastore in.
+        /// The relative path to a folder to put this datastore in.
+        /// This is a path relative to the datacenter you are deploying the datastore to.
+        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
+        /// Terraform will place a datastore named `terraform-test` in a datastore folder
+        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+        /// `DatastoreClusterId`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -399,7 +427,13 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The path to the datastore folder to put the datastore in.
+        /// The relative path to a folder to put this datastore in.
+        /// This is a path relative to the datacenter you are deploying the datastore to.
+        /// Example: for the `Dc1` datacenter, and a provided `Folder` of `foo/bar`,
+        /// Terraform will place a datastore named `terraform-test` in a datastore folder
+        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+        /// `DatastoreClusterId`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }

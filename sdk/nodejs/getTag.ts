@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `vsphere.Tag` data source can be used to reference tags that are not managed
+ * by Terraform. Its attributes are exactly the same as the
+ * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+ * uses a name and category as search criteria. The `id` and other attributes are
+ * populated with the data found by the search.
+ *
+ * [resource-tag]: /docs/providers/vsphere/r/tag.html
+ *
+ * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+ * requires vCenter Server.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -56,6 +67,17 @@ export interface GetTagResult {
     readonly name: string;
 }
 /**
+ * The `vsphere.Tag` data source can be used to reference tags that are not managed
+ * by Terraform. Its attributes are exactly the same as the
+ * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+ * uses a name and category as search criteria. The `id` and other attributes are
+ * populated with the data found by the search.
+ *
+ * [resource-tag]: /docs/providers/vsphere/r/tag.html
+ *
+ * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+ * requires vCenter Server.
+ *
  * ## Example Usage
  *
  * ```typescript

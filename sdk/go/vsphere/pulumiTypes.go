@@ -4140,7 +4140,7 @@ type VirtualMachineCdrom struct {
 	ClientDevice *bool `pulumi:"clientDevice"`
 	// The datastore ID the ISO is located on.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
@@ -4164,7 +4164,7 @@ type VirtualMachineCdromArgs struct {
 	ClientDevice pulumi.BoolPtrInput `pulumi:"clientDevice"`
 	// The datastore ID the ISO is located on.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
@@ -4233,7 +4233,7 @@ func (o VirtualMachineCdromOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
-// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 func (o VirtualMachineCdromOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -5714,7 +5714,7 @@ type VirtualMachineDisk struct {
 	ControllerType *string `pulumi:"controllerType"`
 	// The datastore ID for this virtual disk, if different than the virtual machine.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
 	DiskMode *string `pulumi:"diskMode"`
@@ -5770,7 +5770,7 @@ type VirtualMachineDiskArgs struct {
 	ControllerType pulumi.StringPtrInput `pulumi:"controllerType"`
 	// The datastore ID for this virtual disk, if different than the virtual machine.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
 	DiskMode pulumi.StringPtrInput `pulumi:"diskMode"`
@@ -5874,7 +5874,7 @@ func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
-// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 func (o VirtualMachineDiskOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -5995,7 +5995,7 @@ type VirtualMachineNetworkInterface struct {
 	BandwidthShareCount *int `pulumi:"bandwidthShareCount"`
 	// The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
-	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
@@ -6033,7 +6033,7 @@ type VirtualMachineNetworkInterfaceArgs struct {
 	BandwidthShareCount pulumi.IntPtrInput `pulumi:"bandwidthShareCount"`
 	// The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
-	// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+	// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
@@ -6125,7 +6125,7 @@ func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.Strin
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
 }
 
-// The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+// An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
 func (o VirtualMachineNetworkInterfaceOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }

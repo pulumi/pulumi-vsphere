@@ -4,6 +4,94 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere.ConfigurationProfile` resource can be used to configure profile-based host management on a vSphere compute cluster.
+ * The source for the configuration can either be a ESXi host that is part of the compute cluster or a JSON file, but not both at the same time.
+ *
+ * It is allowed to switch from one type of configuration source to the other at any time.
+ *
+ * Deleting a `vsphere.ConfigurationProfile` resource has no effect on the compute cluster. Once management via configuration
+ * profiles is turned ot it is not possible to disable it.
+ *
+ * > **NOTE:** This resource requires a vCenter 8 or higher and will not work on
+ * direct ESXi connections.
+ *
+ * ## Example Usage
+ *
+ * ### Creating a profile using an ESXi host as a reference
+ *
+ * The following example sets up a configuration profile on a compute cluster using one of its hosts as a reference
+ * and then propagates that configuration to two additional clusters.
+ *
+ * Note that this example assumes that the hosts across all three clusters are compatible with the source configuration.
+ * This includes but is not limited to their ESXi versions and hardware capabilities.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const cluster1 = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster2 = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-02",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster3 = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-03",
+ *     datacenterId: datacenter.id,
+ * }));
+ * // This host is assumed to be part of "cluster-01"
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * // Configure a profile on "cluster-01" using one of its hosts as a reference
+ * const profile1 = new vsphere.ConfigurationProfile("profile1", {
+ *     clusterId: cluster1.then(cluster1 => cluster1.id),
+ *     referenceHostId: host.then(host => host.id),
+ * });
+ * // Copy the configuration of "cluster-01" onto "cluster-02"
+ * const profile2 = new vsphere.ConfigurationProfile("profile2", {
+ *     clusterId: cluster2.then(cluster2 => cluster2.id),
+ *     configuration: profile1.configuration,
+ * });
+ * // Copy the configuration of "cluster-01" onto "cluster-03"
+ * const profile3 = new vsphere.ConfigurationProfile("profile3", {
+ *     clusterId: cluster3.then(cluster3 => cluster3.id),
+ *     configuration: profile1.configuration,
+ * });
+ * ```
+ *
+ * ### Creating a profile using a configuration file
+ *
+ * This example sets up a configuration profile on a cluster by reading a configuration from a JSON
+ * file on the local filesystem. Reading files is natively supported by Terraform.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as std from "@pulumi/std";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const cluster1 = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const profile1 = new vsphere.ConfigurationProfile("profile1", {
+ *     clusterId: cluster1.then(cluster1 => cluster1.id),
+ *     configuration: std.index.file({
+ *         input: "/path/to/cluster_config_1.json",
+ *     }).result,
+ * });
+ * ```
+ */
 export class ConfigurationProfile extends pulumi.CustomResource {
     /**
      * Get an existing ConfigurationProfile resource's state with the given name, ID, and optional extra

@@ -16,6 +16,56 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `vsphere.Role` resource can be used to create and manage roles. Using this resource, privileges can be
+ * associated with the roles. The role can be used while granting permissions to an entity.
+ * 
+ * ## Example Usage
+ * 
+ * This example creates a role with name myTerraformRole and privileges create, acknowledge for Alarm and
+ * create, move for Datacenter. While providing `rolePrivileges`, the id of the privilege has to be provided.
+ * The format of the privilege id is privilege name preceded by its categories joined by a `.`.
+ * For example a privilege with path `category-&gt;subcategory-&gt;privilege` should be provided as
+ * `category.subcategory.privilege`. Keep the `rolePrivileges` sorted alphabetically for a better user experience.
+ * 
+ * &gt; **NOTE:** While providing `rolePrivileges`, the id of the privilege and its categories are to be provided
+ * joined by a `.` .
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.Role;
+ * import com.pulumi.vsphere.RoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var role1 = new Role("role1", RoleArgs.builder()
+ *             .name("my_terraform_role")
+ *             .rolePrivileges(            
+ *                 "Alarm.Acknowledge",
+ *                 "Alarm.Create",
+ *                 "Datacenter.Create",
+ *                 "Datacenter.Move")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * An existing role can be imported into this resource by supplying the role id. An example is below:
@@ -24,8 +74,8 @@ import javax.annotation.Nullable;
  * $ pulumi import vsphere:index/role:Role role1 -709298051
  * ```
  * 
- * Use [`vsphere_role` data source][ref-vsphere-role-data-source]
- * 
+ * &gt; **NOTE:** System roles can&#39;t be imported because they can&#39;t be modified or deleted.
+ * Use [`vsphere.Role` data source][ref-vsphere-role-data-source]
  * to read information about system roles.
  * 
  * [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html

@@ -82,22 +82,17 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing override can be imported into this resource by
- *
  * supplying both the path to the cluster, and the path to the virtual machine, to
- *
  * `pulumi import`. If no override exists, an error will be given.  An example
- *
  * is below:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
- * $ pulumi import vsphere:index/haVmOverride:HaVmOverride ha_vm_override \
- * ```
- *
+ * terraform import vsphere_ha_vm_override.ha_vm_override \
  *   '{"compute_cluster_path": "/dc1/host/cluster1", \
- *
  *   "virtual_machine_path": "/dc1/vm/srv1"}'
+ * ```
  */
 export class HaVmOverride extends pulumi.CustomResource {
     /**

@@ -113,7 +113,12 @@ class ComputeClusterArgs:
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
+               This is a path relative to the datacenter you are deploying the cluster to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a cluster named `terraform-compute-cluster-test` in a
+               host folder located at `/dc1/host/foo/bar`, with the final inventory path
+               being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -470,7 +475,12 @@ class ComputeClusterArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the folder to locate the cluster in.
+        The relative path to a folder to put this cluster in.
+        This is a path relative to the datacenter you are deploying the cluster to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        Terraform will place a cluster named `terraform-compute-cluster-test` in a
+        host folder located at `/dc1/host/foo/bar`, with the final inventory path
+        being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
         """
         return pulumi.get(self, "folder")
 
@@ -1251,7 +1261,12 @@ class _ComputeClusterState:
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
+               This is a path relative to the datacenter you are deploying the cluster to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a cluster named `terraform-compute-cluster-test` in a
+               host folder located at `/dc1/host/foo/bar`, with the final inventory path
+               being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -1616,7 +1631,12 @@ class _ComputeClusterState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the folder to locate the cluster in.
+        The relative path to a folder to put this cluster in.
+        This is a path relative to the datacenter you are deploying the cluster to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        Terraform will place a cluster named `terraform-compute-cluster-test` in a
+        host folder located at `/dc1/host/foo/bar`, with the final inventory path
+        being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
         """
         return pulumi.get(self, "folder")
 
@@ -2394,6 +2414,32 @@ class ComputeCluster(pulumi.CustomResource):
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        > **A note on the naming of this resource:** VMware refers to clusters of
+        hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
+        clusters_. All of these refer to the same kind of resource (with the latter two
+        referring to specific features of clustering). In Terraform, we use
+        `ComputeCluster` to differentiate host clusters from _datastore
+        clusters_, which are clusters of datastores that can be used to distribute load
+        and ensure fault tolerance via distribution of virtual machines. Datastore
+        clusters can also be managed through Terraform, via the
+        [`DatastoreCluster` resource][docs-r-vsphere-datastore-cluster].
+
+        [docs-r-vsphere-datastore-cluster]: /docs/providers/vsphere/r/datastore_cluster.html
+
+        The `ComputeCluster` resource can be used to create and manage
+        clusters of hosts allowing for resource control of compute resources, load
+        balancing through DRS, and high availability through vSphere HA.
+
+        For more information on vSphere clusters and DRS, see [this
+        page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
+        page][ref-vsphere-ha-clusters].
+
+        [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
+        [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
+        direct ESXi connections.
+
         ## Example Usage
 
         The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -2455,65 +2501,48 @@ class ComputeCluster(pulumi.CustomResource):
         ## Import
 
         An existing cluster can be imported into this resource via the
-
         path to the cluster, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
 
-        variable "datacenter" {
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="cluster-01",
+            datacenter_id=datacenter_get_datacenter.id)
+        ```
 
-          default = "dc-01"
+        > **NOTE:** When you import a cluster, all managed settings are returned. Ensure all settings are set correctly in resource. For example:
 
-        }
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
 
-        data "vsphere_datacenter" "datacenter" {
-
-          name = var.datacenter
-
-        }
-
-        resource "vsphere_compute_cluster" "compute_cluster" {
-
-          name          = "cluster-01"
-
-          datacenter_id = data.vsphere_datacenter.datacenter.id
-
-        }
-
-        hcl
-
-        resource "vsphere_compute_cluster" "compute_cluster" {
-
-          name                      = "cluster-01"
-
-          datacenter_id             = data.vsphere_datacenter.datacenter.id
-
-          vsan_enabled              = true
-
-          vsan_performance_enabled  = true
-
-          host_system_ids           = [for host in data.vsphere_host.host : host.id]
-
-          dpm_automation_level      = "automated"
-
-          drs_automation_level      = "fullyAutomated"
-
-          drs_enabled               = true
-
-          ha_datastore_apd_response = "restartConservative"
-
-          ha_datastore_pdl_response = "restartAggressive"
-
-        }
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="cluster-01",
+            datacenter_id=datacenter["id"],
+            vsan_enabled=True,
+            vsan_performance_enabled=True,
+            host_system_ids=[host["id"] for host in host],
+            dpm_automation_level="automated",
+            drs_automation_level="fullyAutomated",
+            drs_enabled=True,
+            ha_datastore_apd_response="restartConservative",
+            ha_datastore_pdl_response="restartAggressive")
+        ```
 
         ```sh
         $ pulumi import vsphere:index/computeCluster:ComputeCluster compute_cluster /dc-01/host/cluster-01
         ```
 
         The above would import the cluster named `cluster-01` that is located in
-
         the `dc-01` datacenter.
 
         :param str resource_name: The name of the resource.
@@ -2539,7 +2568,12 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
+               This is a path relative to the datacenter you are deploying the cluster to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a cluster named `terraform-compute-cluster-test` in a
+               host folder located at `/dc1/host/foo/bar`, with the final inventory path
+               being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -2608,6 +2642,32 @@ class ComputeCluster(pulumi.CustomResource):
                  args: ComputeClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **A note on the naming of this resource:** VMware refers to clusters of
+        hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
+        clusters_. All of these refer to the same kind of resource (with the latter two
+        referring to specific features of clustering). In Terraform, we use
+        `ComputeCluster` to differentiate host clusters from _datastore
+        clusters_, which are clusters of datastores that can be used to distribute load
+        and ensure fault tolerance via distribution of virtual machines. Datastore
+        clusters can also be managed through Terraform, via the
+        [`DatastoreCluster` resource][docs-r-vsphere-datastore-cluster].
+
+        [docs-r-vsphere-datastore-cluster]: /docs/providers/vsphere/r/datastore_cluster.html
+
+        The `ComputeCluster` resource can be used to create and manage
+        clusters of hosts allowing for resource control of compute resources, load
+        balancing through DRS, and high availability through vSphere HA.
+
+        For more information on vSphere clusters and DRS, see [this
+        page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
+        page][ref-vsphere-ha-clusters].
+
+        [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
+        [ref-vsphere-ha-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-availability.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
+        direct ESXi connections.
+
         ## Example Usage
 
         The following example sets up a cluster and enables DRS and vSphere HA with the
@@ -2669,65 +2729,48 @@ class ComputeCluster(pulumi.CustomResource):
         ## Import
 
         An existing cluster can be imported into this resource via the
-
         path to the cluster, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
 
-        variable "datacenter" {
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc-01"
+        datacenter_get_datacenter = vsphere.get_datacenter(name=datacenter)
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="cluster-01",
+            datacenter_id=datacenter_get_datacenter.id)
+        ```
 
-          default = "dc-01"
+        > **NOTE:** When you import a cluster, all managed settings are returned. Ensure all settings are set correctly in resource. For example:
 
-        }
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
 
-        data "vsphere_datacenter" "datacenter" {
-
-          name = var.datacenter
-
-        }
-
-        resource "vsphere_compute_cluster" "compute_cluster" {
-
-          name          = "cluster-01"
-
-          datacenter_id = data.vsphere_datacenter.datacenter.id
-
-        }
-
-        hcl
-
-        resource "vsphere_compute_cluster" "compute_cluster" {
-
-          name                      = "cluster-01"
-
-          datacenter_id             = data.vsphere_datacenter.datacenter.id
-
-          vsan_enabled              = true
-
-          vsan_performance_enabled  = true
-
-          host_system_ids           = [for host in data.vsphere_host.host : host.id]
-
-          dpm_automation_level      = "automated"
-
-          drs_automation_level      = "fullyAutomated"
-
-          drs_enabled               = true
-
-          ha_datastore_apd_response = "restartConservative"
-
-          ha_datastore_pdl_response = "restartAggressive"
-
-        }
+        compute_cluster = vsphere.ComputeCluster("compute_cluster",
+            name="cluster-01",
+            datacenter_id=datacenter["id"],
+            vsan_enabled=True,
+            vsan_performance_enabled=True,
+            host_system_ids=[host["id"] for host in host],
+            dpm_automation_level="automated",
+            drs_automation_level="fullyAutomated",
+            drs_enabled=True,
+            ha_datastore_apd_response="restartConservative",
+            ha_datastore_pdl_response="restartAggressive")
+        ```
 
         ```sh
         $ pulumi import vsphere:index/computeCluster:ComputeCluster compute_cluster /dc-01/host/cluster-01
         ```
 
         The above would import the cluster named `cluster-01` that is located in
-
         the `dc-01` datacenter.
 
         :param str resource_name: The name of the resource.
@@ -3003,7 +3046,12 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] drs_enabled: Enable DRS for this cluster.
         :param pulumi.Input[_builtins.int] drs_migration_threshold: A value between 1 and 5 indicating the threshold of imbalance tolerated between hosts. A lower setting will tolerate more imbalance while a higher setting will tolerate less.
         :param pulumi.Input[_builtins.str] drs_scale_descendants_shares: Enable scalable shares for all descendants of this cluster.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this cluster in.
+               This is a path relative to the datacenter you are deploying the cluster to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a cluster named `terraform-compute-cluster-test` in a
+               host folder located at `/dc1/host/foo/bar`, with the final inventory path
+               being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists for testing and is not recommended in normal use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ha_admission_control_failover_host_system_ids: When ha_admission_control_policy is failoverHosts, this defines the managed object IDs of hosts to use as dedicated failover hosts. These hosts are kept as available as possible - admission control will block access to the host, and DRS will ignore the host when making recommendations.
         :param pulumi.Input[_builtins.int] ha_admission_control_host_failure_tolerance: The maximum number of failed hosts that admission control tolerates when making decisions on whether to permit virtual machine operations. The maximum is one less than the number of hosts in the cluster.
@@ -3255,7 +3303,12 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the folder to locate the cluster in.
+        The relative path to a folder to put this cluster in.
+        This is a path relative to the datacenter you are deploying the cluster to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        Terraform will place a cluster named `terraform-compute-cluster-test` in a
+        host folder located at `/dc1/host/foo/bar`, with the final inventory path
+        being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
         """
         return pulumi.get(self, "folder")
 

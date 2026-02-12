@@ -116,22 +116,17 @@ namespace Pulumi.VSphere
     /// ## Import
     /// 
     /// An existing group can be imported into this resource by
-    /// 
     /// supplying both the path to the cluster, and the name of the VM group. If the
-    /// 
     /// name or cluster is not found, or if the group is of a different type, an error
-    /// 
     /// will be returned. An example is below:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
     /// 
     /// ```sh
-    /// $ pulumi import vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup cluster_vm_group \
-    /// ```
-    /// 
+    /// terraform import vsphere_compute_cluster_vm_group.cluster_vm_group \
     ///   '{"compute_cluster_path": "/dc1/host/cluster1", \
-    /// 
     ///   "name": "pulumi-test-cluster-vm-group"}'
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup")]
     public partial class ComputeClusterVmGroup : global::Pulumi.CustomResource

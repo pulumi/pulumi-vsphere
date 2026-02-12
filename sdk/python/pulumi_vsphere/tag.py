@@ -146,21 +146,85 @@ class Tag(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `Tag` resource can be used to create and manage tags, which allow
+        you to attach metadata to objects in the vSphere inventory to make these
+        objects more sortable and searchable.
+
+        For more information about tags, click [here][ext-tags-general].
+
+        [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
+
+        ## Example Usage
+
+        This example creates a tag named `terraform-test-tag`. This tag is assigned the
+        `terraform-test-category` category, which was created by the
+        [`TagCategory` resource][docs-tag-category-resource]. The resulting
+        tag can be assigned to VMs and datastores only, and can be the only value in
+        the category that can be assigned, as per the restrictions defined by the
+        category.
+
+        [docs-tag-category-resource]: /docs/providers/vsphere/r/tag_category.html
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        category = vsphere.TagCategory("category",
+            name="pulumi-test-category",
+            cardinality="SINGLE",
+            description="Managed by Pulumi",
+            associable_types=[
+                "VirtualMachine",
+                "Datastore",
+            ])
+        tag = vsphere.Tag("tag",
+            name="pulumi-test-tag",
+            category_id=category.id,
+            description="Managed by Pulumi")
+        ```
+
+        ## Using Tags in a Supported Resource
+
+        Tags can be applied to vSphere resources in Terraform via the `tags` argument
+        in any supported resource.
+
+        The following example builds on the above example by creating a
+        [`VirtualMachine`][docs-virtual-machine-resource] and applying the
+        created tag to it:
+
+        [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        category = vsphere.TagCategory("category",
+            name="pulumi-test-category",
+            cardinality="SINGLE",
+            description="Managed by Pulumi",
+            associable_types=[
+                "VirtualMachine",
+                "Datastore",
+            ])
+        tag = vsphere.Tag("tag",
+            name="pulumi-test-tag",
+            category_id=category.id,
+            description="Managed by Pulumi")
+        web = vsphere.VirtualMachine("web", tags=[tag.id])
+        ```
+
         ## Import
 
         An existing tag can be imported into this resource by supplying
-
         both the tag's category name and the name of the tag as a JSON string to
-
         `pulumi import`, as per the example below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/tag:Tag tag \\
-        ```
-
+        terraform import vsphere_tag.tag \\
           '{"category_name": "pulumi-test-category", "tag_name": "pulumi-test-tag"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -177,21 +241,85 @@ class Tag(pulumi.CustomResource):
                  args: TagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `Tag` resource can be used to create and manage tags, which allow
+        you to attach metadata to objects in the vSphere inventory to make these
+        objects more sortable and searchable.
+
+        For more information about tags, click [here][ext-tags-general].
+
+        [ext-tags-general]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-tags-and-attributes.html
+
+        ## Example Usage
+
+        This example creates a tag named `terraform-test-tag`. This tag is assigned the
+        `terraform-test-category` category, which was created by the
+        [`TagCategory` resource][docs-tag-category-resource]. The resulting
+        tag can be assigned to VMs and datastores only, and can be the only value in
+        the category that can be assigned, as per the restrictions defined by the
+        category.
+
+        [docs-tag-category-resource]: /docs/providers/vsphere/r/tag_category.html
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        category = vsphere.TagCategory("category",
+            name="pulumi-test-category",
+            cardinality="SINGLE",
+            description="Managed by Pulumi",
+            associable_types=[
+                "VirtualMachine",
+                "Datastore",
+            ])
+        tag = vsphere.Tag("tag",
+            name="pulumi-test-tag",
+            category_id=category.id,
+            description="Managed by Pulumi")
+        ```
+
+        ## Using Tags in a Supported Resource
+
+        Tags can be applied to vSphere resources in Terraform via the `tags` argument
+        in any supported resource.
+
+        The following example builds on the above example by creating a
+        [`VirtualMachine`][docs-virtual-machine-resource] and applying the
+        created tag to it:
+
+        [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        category = vsphere.TagCategory("category",
+            name="pulumi-test-category",
+            cardinality="SINGLE",
+            description="Managed by Pulumi",
+            associable_types=[
+                "VirtualMachine",
+                "Datastore",
+            ])
+        tag = vsphere.Tag("tag",
+            name="pulumi-test-tag",
+            category_id=category.id,
+            description="Managed by Pulumi")
+        web = vsphere.VirtualMachine("web", tags=[tag.id])
+        ```
+
         ## Import
 
         An existing tag can be imported into this resource by supplying
-
         both the tag's category name and the name of the tag as a JSON string to
-
         `pulumi import`, as per the example below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/tag:Tag tag \\
-        ```
-
+        terraform import vsphere_tag.tag \\
           '{"category_name": "pulumi-test-category", "tag_name": "pulumi-test-tag"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param TagArgs args: The arguments to use to populate this resource's properties.
