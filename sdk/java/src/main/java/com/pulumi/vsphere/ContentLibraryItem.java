@@ -175,13 +175,12 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing content library item can be imported into this resource by
- * 
  * supplying the content library ID. An example is below:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * $ pulumi import vsphere:index/contentLibraryItem:ContentLibraryItem vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ * terraform import vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
  * ```
  * 
  */

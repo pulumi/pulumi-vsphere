@@ -54,7 +54,13 @@ class NasDatastoreArgs:
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
+               This is a path relative to the datacenter you are deploying the datastore to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a datastore named `terraform-test` in a datastore folder
+               located at `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+               `datastore_cluster_id`.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
                changed.
         :param pulumi.Input[_builtins.str] security_type: The security type to use when using NFS v4.1.
@@ -181,7 +187,13 @@ class NasDatastoreArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The path to the datastore folder to put the datastore in.
+        The relative path to a folder to put this datastore in.
+        This is a path relative to the datacenter you are deploying the datastore to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        Terraform will place a datastore named `terraform-test` in a datastore folder
+        located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+        `datastore_cluster_id`.
         """
         return pulumi.get(self, "folder")
 
@@ -289,7 +301,13 @@ class _NasDatastoreState:
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
+               This is a path relative to the datacenter you are deploying the datastore to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a datastore named `terraform-test` in a datastore folder
+               located at `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+               `datastore_cluster_id`.
         :param pulumi.Input[_builtins.int] free_space: Available space of this datastore, in megabytes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
@@ -436,7 +454,13 @@ class _NasDatastoreState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The path to the datastore folder to put the datastore in.
+        The relative path to a folder to put this datastore in.
+        This is a path relative to the datacenter you are deploying the datastore to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        Terraform will place a datastore named `terraform-test` in a datastore folder
+        located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+        `datastore_cluster_id`.
         """
         return pulumi.get(self, "folder")
 
@@ -636,10 +660,49 @@ class NasDatastore(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `NasDatastore` resource can be used to create and manage NAS
+        datastores on an ESXi host or a set of hosts. The resource supports mounting
+        NFS v3 and v4.1 shares to be used as datastores.
+
+        > **NOTE:** Unlike [`VmfsDatastore`][resource-vmfs-datastore], a NAS
+        datastore is only mounted on the hosts you choose to mount it on. To mount on
+        multiple hosts, you must specify each host that you want to add in the
+        `host_system_ids` argument.
+
+        [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+
+        ## Example Usage
+
+        The following example would set up a NFS v3 share on 3 hosts connected through
+        vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+        is named `nfs` and has `/export/terraform-test` exported.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        datastore = vsphere.NasDatastore("datastore",
+            name="pulumi-test",
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
+            type="NFS",
+            remote_hosts=["nfs"],
+            remote_path="/export/terraform-test")
+        ```
+
         ## Import
 
         An existing NAS datastore can be imported into this resource via
-
         its managed object ID, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -653,12 +716,12 @@ class NasDatastore(pulumi.CustomResource):
         [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
 
         In the case of govc, you can locate a managed object ID from an inventory path
-
         by doing the following:
 
+        ```sh
         $ govc ls -i /dc/datastore/terraform-test
-
         Datastore:datastore-123
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -677,7 +740,13 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
+               This is a path relative to the datacenter you are deploying the datastore to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a datastore named `terraform-test` in a datastore folder
+               located at `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+               `datastore_cluster_id`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[_builtins.str] name: The name of the datastore. Forces a new resource if
@@ -706,10 +775,49 @@ class NasDatastore(pulumi.CustomResource):
                  args: NasDatastoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `NasDatastore` resource can be used to create and manage NAS
+        datastores on an ESXi host or a set of hosts. The resource supports mounting
+        NFS v3 and v4.1 shares to be used as datastores.
+
+        > **NOTE:** Unlike [`VmfsDatastore`][resource-vmfs-datastore], a NAS
+        datastore is only mounted on the hosts you choose to mount it on. To mount on
+        multiple hosts, you must specify each host that you want to add in the
+        `host_system_ids` argument.
+
+        [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+
+        ## Example Usage
+
+        The following example would set up a NFS v3 share on 3 hosts connected through
+        vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+        is named `nfs` and has `/export/terraform-test` exported.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        hosts_get_host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        datastore = vsphere.NasDatastore("datastore",
+            name="pulumi-test",
+            host_system_ids=[[__item.id for __item in hosts_get_host]],
+            type="NFS",
+            remote_hosts=["nfs"],
+            remote_path="/export/terraform-test")
+        ```
+
         ## Import
 
         An existing NAS datastore can be imported into this resource via
-
         its managed object ID, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -723,12 +831,12 @@ class NasDatastore(pulumi.CustomResource):
         [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
 
         In the case of govc, you can locate a managed object ID from an inventory path
-
         by doing the following:
 
+        ```sh
         $ govc ls -i /dc/datastore/terraform-test
-
         Datastore:datastore-123
+        ```
 
         :param str resource_name: The name of the resource.
         :param NasDatastoreArgs args: The arguments to use to populate this resource's properties.
@@ -844,7 +952,13 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datastore_cluster_id: The [managed object
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[_builtins.str] folder: The path to the datastore folder to put the datastore in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore in.
+               This is a path relative to the datacenter you are deploying the datastore to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               Terraform will place a datastore named `terraform-test` in a datastore folder
+               located at `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+               `datastore_cluster_id`.
         :param pulumi.Input[_builtins.int] free_space: Available space of this datastore, in megabytes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
@@ -957,7 +1071,13 @@ class NasDatastore(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The path to the datastore folder to put the datastore in.
+        The relative path to a folder to put this datastore in.
+        This is a path relative to the datacenter you are deploying the datastore to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        Terraform will place a datastore named `terraform-test` in a datastore folder
+        located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+        `datastore_cluster_id`.
         """
         return pulumi.get(self, "folder")
 

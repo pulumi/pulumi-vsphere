@@ -138,13 +138,11 @@ import (
 // ## Import
 //
 // An existing vSwitch can be imported into this resource by its ID.
-//
 // The convention of the id is a prefix, the host system [managed objectID][docs-about-morefs], and the virtual switch
-//
 // name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
-//
 // Import can the be done via the following command:
 //
+// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 // [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 //
 // ```sh
@@ -152,10 +150,7 @@ import (
 // ```
 //
 // The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
-//
 // vSphere host.
-//
-// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type HostVirtualSwitch struct {
 	pulumi.CustomResourceState
 
@@ -190,7 +185,13 @@ type HostVirtualSwitch struct {
 	NetworkAdapters pulumi.StringArrayOutput `pulumi:"networkAdapters"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrOutput `pulumi:"notifySwitches"`
-	// The number of ports that this virtual switch is configured to use.
+	// The number of ports to create with this
+	// virtual switch. Default: `128`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+	// will not restart the host for you.
 	NumberOfPorts pulumi.IntPtrOutput `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrOutput `pulumi:"shapingAverageBandwidth"`
@@ -276,7 +277,13 @@ type hostVirtualSwitchState struct {
 	NetworkAdapters []string `pulumi:"networkAdapters"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches *bool `pulumi:"notifySwitches"`
-	// The number of ports that this virtual switch is configured to use.
+	// The number of ports to create with this
+	// virtual switch. Default: `128`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+	// will not restart the host for you.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth *int `pulumi:"shapingAverageBandwidth"`
@@ -324,7 +331,13 @@ type HostVirtualSwitchState struct {
 	NetworkAdapters pulumi.StringArrayInput
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrInput
-	// The number of ports that this virtual switch is configured to use.
+	// The number of ports to create with this
+	// virtual switch. Default: `128`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+	// will not restart the host for you.
 	NumberOfPorts pulumi.IntPtrInput
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrInput
@@ -376,7 +389,13 @@ type hostVirtualSwitchArgs struct {
 	NetworkAdapters []string `pulumi:"networkAdapters"`
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches *bool `pulumi:"notifySwitches"`
-	// The number of ports that this virtual switch is configured to use.
+	// The number of ports to create with this
+	// virtual switch. Default: `128`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+	// will not restart the host for you.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth *int `pulumi:"shapingAverageBandwidth"`
@@ -425,7 +444,13 @@ type HostVirtualSwitchArgs struct {
 	NetworkAdapters pulumi.StringArrayInput
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrInput
-	// The number of ports that this virtual switch is configured to use.
+	// The number of ports to create with this
+	// virtual switch. Default: `128`.
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+	// will not restart the host for you.
 	NumberOfPorts pulumi.IntPtrInput
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrInput
@@ -601,7 +626,13 @@ func (o HostVirtualSwitchOutput) NotifySwitches() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.NotifySwitches }).(pulumi.BoolPtrOutput)
 }
 
-// The number of ports that this virtual switch is configured to use.
+// The number of ports to create with this
+// virtual switch. Default: `128`.
+//
+// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+//
+// > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+// will not restart the host for you.
 func (o HostVirtualSwitchOutput) NumberOfPorts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.NumberOfPorts }).(pulumi.IntPtrOutput)
 }

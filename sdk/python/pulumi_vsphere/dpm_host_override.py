@@ -275,20 +275,16 @@ class DpmHostOverride(pulumi.CustomResource):
         ## Import
 
         An existing override can be imported into this resource by
-
         supplying both the path to the cluster, and the path to the host, to `terraform
-
         import`. If no override exists, an error will be given.  An example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \\
-        ```
-
+        terraform import vsphere_dpm_host_override.dpm_host_override \\
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
-
           "host_path": "/dc1/host/esxi1"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -376,20 +372,16 @@ class DpmHostOverride(pulumi.CustomResource):
         ## Import
 
         An existing override can be imported into this resource by
-
         supplying both the path to the cluster, and the path to the host, to `terraform
-
         import`. If no override exists, an error will be given.  An example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/dpmHostOverride:DpmHostOverride dpm_host_override \\
-        ```
-
+        terraform import vsphere_dpm_host_override.dpm_host_override \\
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
-
           "host_path": "/dc1/host/esxi1"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param DpmHostOverrideArgs args: The arguments to use to populate this resource's properties.

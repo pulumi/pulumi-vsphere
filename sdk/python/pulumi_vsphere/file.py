@@ -292,6 +292,19 @@ class File(pulumi.CustomResource):
                  source_file: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `File` resource can be used to upload files (such as ISOs and
+        virtual disk files) from the host machine that Terraform is running on to a
+        datastore.  The resource can also be used to copy files between datastores, or
+        from one location to another on the same datastore.
+
+        Updates to destination parameters such as `datacenter`, `datastore`, or
+        `destination_file` will move the managed file a new destination based on the
+        values of the new settings.  If any source parameter is changed, such as
+        `source_datastore`, `source_datacenter`, or `source_file`), the resource will
+        be re-created. Depending on if destination parameters are being changed,
+        this may result in the destination file either being overwritten or
+        deleted from the previous location.
+
         ## Example Usage
 
         ### S
@@ -349,6 +362,19 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `File` resource can be used to upload files (such as ISOs and
+        virtual disk files) from the host machine that Terraform is running on to a
+        datastore.  The resource can also be used to copy files between datastores, or
+        from one location to another on the same datastore.
+
+        Updates to destination parameters such as `datacenter`, `datastore`, or
+        `destination_file` will move the managed file a new destination based on the
+        values of the new settings.  If any source parameter is changed, such as
+        `source_datastore`, `source_datacenter`, or `source_file`), the resource will
+        be re-created. Depending on if destination parameters are being changed,
+        this may result in the destination file either being overwritten or
+        deleted from the previous location.
+
         ## Example Usage
 
         ### S

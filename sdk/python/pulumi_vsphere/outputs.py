@@ -1858,7 +1858,7 @@ class VirtualMachineCdrom(dict):
         """
         :param _builtins.bool client_device: Indicates whether the device should be mapped to a remote client device
         :param _builtins.str datastore_id: The datastore ID the ISO is located on.
-        :param _builtins.str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param _builtins.str device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         :param _builtins.int key: The ID of the device within the virtual machine.
         :param _builtins.str path: The path to the ISO file on the datastore.
         """
@@ -1893,7 +1893,7 @@ class VirtualMachineCdrom(dict):
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[_builtins.str]:
         """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         """
         return pulumi.get(self, "device_address")
 
@@ -2688,7 +2688,7 @@ class VirtualMachineDisk(dict):
         :param _builtins.bool attach: If this is true, the disk is attached instead of created. Implies keep_on_remove.
         :param _builtins.str controller_type: The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         :param _builtins.str datastore_id: The datastore ID for this virtual disk, if different than the virtual machine.
-        :param _builtins.str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param _builtins.str device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         :param _builtins.str disk_mode: The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
         :param _builtins.str disk_sharing: The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
         :param _builtins.bool eagerly_scrub: The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
@@ -2784,7 +2784,7 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[_builtins.str]:
         """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         """
         return pulumi.get(self, "device_address")
 
@@ -2976,7 +2976,7 @@ class VirtualMachineNetworkInterface(dict):
         :param _builtins.int bandwidth_reservation: The bandwidth reservation of this network interface, in Mbits/sec.
         :param _builtins.int bandwidth_share_count: The share count for this network interface when the share level is custom.
         :param _builtins.str bandwidth_share_level: The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
-        :param _builtins.str device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param _builtins.str device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         :param _builtins.int key: The ID of the device within the virtual machine.
         :param _builtins.str mac_address: The MAC address of this network interface. Can only be manually set if use_static_mac is true.
         :param _builtins.str ovf_mapping: Mapping of network interface to OVF network.
@@ -3059,7 +3059,7 @@ class VirtualMachineNetworkInterface(dict):
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[_builtins.str]:
         """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         """
         return pulumi.get(self, "device_address")
 

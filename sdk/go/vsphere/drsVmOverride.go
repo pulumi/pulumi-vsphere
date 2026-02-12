@@ -125,21 +125,18 @@ import (
 //
 // ## Import
 //
-// # An existing override can be imported into this resource by
-//
+// An existing override can be imported into this resource by
 // supplying both the path to the cluster, and the path to the virtual machine, to
-//
 // `pulumi import`. If no override exists, an error will be given.  An example
-//
 // is below:
 //
 // ```sh
-// $ pulumi import vsphere:index/drsVmOverride:DrsVmOverride drs_vm_override \
+//
+//	terraform import vsphere_drs_vm_override.drs_vm_override \
+//	  '{"compute_cluster_path": "/dc1/host/cluster1", \
+//	  "virtual_machine_path": "/dc1/vm/srv1"}'
+//
 // ```
-//
-//	'{"compute_cluster_path": "/dc1/host/cluster1", \
-//
-//	"virtual_machine_path": "/dc1/vm/srv1"}'
 //
 // [ref-vsphere-drs-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-drs-cluster.html
 //

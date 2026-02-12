@@ -70,6 +70,17 @@ class AwaitableGetCustomAttributeResult(GetCustomAttributeResult):
 def get_custom_attribute(name: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomAttributeResult:
     """
+    The `CustomAttribute` data source can be used to reference custom
+    attributes that are not managed by Terraform. Its attributes are exactly the
+    same as the [`CustomAttribute` resource][resource-custom-attribute],
+    and, like importing, the data source takes a name argument for the search. The
+    `id` and other attributes are then populated with the data found by the search.
+
+    [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
+
+    > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+    and require vCenter Server.
+
     ## Example Usage
 
     ```python
@@ -94,6 +105,17 @@ def get_custom_attribute(name: Optional[_builtins.str] = None,
 def get_custom_attribute_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomAttributeResult]:
     """
+    The `CustomAttribute` data source can be used to reference custom
+    attributes that are not managed by Terraform. Its attributes are exactly the
+    same as the [`CustomAttribute` resource][resource-custom-attribute],
+    and, like importing, the data source takes a name argument for the search. The
+    `id` and other attributes are then populated with the data found by the search.
+
+    [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
+
+    > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+    and require vCenter Server.
+
     ## Example Usage
 
     ```python

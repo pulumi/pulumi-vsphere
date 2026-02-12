@@ -144,7 +144,6 @@ namespace Pulumi.VSphere
     /// ## Import
     /// 
     /// An existing vNic can be imported into this resource
-    /// 
     /// via supplying the vNic's ID. An example is below:
     /// 
     /// [docs-import]: /docs/import/index.html
@@ -153,7 +152,7 @@ namespace Pulumi.VSphere
     /// $ pulumi import vsphere:index/vnic:Vnic vnic host-123_vmk2
     /// ```
     /// 
-    /// The above would import the vnic `vmk2` from host with ID `host-123`.
+    /// The above would import the vnic `Vmk2` from host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/vnic:Vnic")]
     public partial class Vnic : global::Pulumi.CustomResource

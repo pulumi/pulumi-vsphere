@@ -15,6 +15,96 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.EntityPermissions` resource can be used to create and manage
+ * entity permissions. Permissions can be created on an entity for a given user or
+ * group with the specified role.
+ * 
+ * ## Example Usage
+ * 
+ * This example creates entity permissions on the virtual machine VM1 for the user
+ * group DCClients with role Datastore consumer and for user group ExternalIDPUsers
+ * with role my_terraform_role. The `entityId` can be the managed object id (or
+ * uuid for some resources). The `entityType` is one of the managed object types
+ * which can be found from the managed object types section
+ * [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
+ * Keep the permissions sorted alphabetically, ignoring case on `userOrGroup` for
+ * a better user experience.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetVirtualMachineArgs;
+ * import com.pulumi.vsphere.inputs.GetRoleArgs;
+ * import com.pulumi.vsphere.Role;
+ * import com.pulumi.vsphere.RoleArgs;
+ * import com.pulumi.vsphere.EntityPermissions;
+ * import com.pulumi.vsphere.EntityPermissionsArgs;
+ * import com.pulumi.vsphere.inputs.EntityPermissionsPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("Sample_DC_2")
+ *             .build());
+ * 
+ *         final var vm = VsphereFunctions.getVirtualMachine(GetVirtualMachineArgs.builder()
+ *             .name("VM1")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         final var role1 = VsphereFunctions.getRole(GetRoleArgs.builder()
+ *             .label("Datastore consumer (sample)")
+ *             .build());
+ * 
+ *         var role2 = new Role("role2", RoleArgs.builder()
+ *             .name("my_terraform_role")
+ *             .rolePrivileges(            
+ *                 "Alarm.Acknowledge",
+ *                 "Alarm.Create",
+ *                 "Datacenter.Move")
+ *             .build());
+ * 
+ *         var p1 = new EntityPermissions("p1", EntityPermissionsArgs.builder()
+ *             .entityId(vm.id())
+ *             .entityType("VirtualMachine")
+ *             .permissions(            
+ *                 EntityPermissionsPermissionArgs.builder()
+ *                     .userOrGroup("vsphere.local\\DCClients")
+ *                     .propagate(true)
+ *                     .isGroup(true)
+ *                     .roleId(role1.id())
+ *                     .build(),
+ *                 EntityPermissionsPermissionArgs.builder()
+ *                     .userOrGroup("vsphere.local\\ExternalIDPUsers")
+ *                     .propagate(true)
+ *                     .isGroup(true)
+ *                     .roleId(role2.id())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ */
 @ResourceType(type="vsphere:index/entityPermissions:EntityPermissions")
 public class EntityPermissions extends com.pulumi.resources.CustomResource {
     /**

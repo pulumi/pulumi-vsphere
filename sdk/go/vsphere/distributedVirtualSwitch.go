@@ -12,10 +12,88 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `DistributedVirtualSwitch` resource can be used to manage vSphere
+// Distributed Switches (VDS).
+//
+// An essential component of a distributed, scalable vSphere infrastructure, the
+// VDS provides centralized management and monitoring of the networking
+// configuration for all the hosts that are associated with the switch.
+// In addition to adding distributed port groups
+// (see the [`DistributedPortGroup`][distributed-port-group] resource)
+// that can be used as networks for virtual machines, a VDS can be configured to
+// perform advanced high availability, traffic shaping, network monitoring, etc.
+//
+// For an overview on vSphere networking concepts, see
+// [this page][ref-vsphere-net-concepts].
+//
+// For more information on the VDS, see [this page][ref-vsphere-vds].
+//
+// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
+// [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+// [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
+//
+// > **NOTE:** This resource requires vCenter and is not available on
+// direct ESXi host connections.
+//
+// ## Example Usage
+//
+// The following example below demonstrates a "standard" example of configuring a
+// VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
+// used as active, and two being used as passive. Note that the NIC failover order
+// propagates to any port groups configured on this VDS and can be overridden.
+//
+// ### Uplink name and count control
+//
+// The following abridged example below demonstrates how you can manage the number
+// of uplinks, and the name of the uplinks via the `uplinks` parameter.
+//
+// Note that if you change the uplink naming and count after creating the VDS, you
+// may need to explicitly specify `activeUplinks` and `standbyUplinks` as these
+// values are saved to Terraform state after creation, regardless of being
+// specified in config, and will drift if not modified, causing errors.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
+//				Name:         pulumi.String("vds-01"),
+//				DatacenterId: pulumi.Any(datacenter.Id),
+//				Uplinks: pulumi.StringArray{
+//					pulumi.String("uplink1"),
+//					pulumi.String("uplink2"),
+//				},
+//				ActiveUplinks: pulumi.StringArray{
+//					pulumi.String("uplink1"),
+//				},
+//				StandbyUplinks: pulumi.StringArray{
+//					pulumi.String("uplink2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **NOTE:** The default uplink names when a VDS is created are `uplink1`
+// through to `uplink4`, however this default is not guaranteed to be stable and
+// you are encouraged to set your own.
+//
 // ## Import
 //
-// # An existing VDS can be imported into this resource via the path
-//
+// An existing VDS can be imported into this resource via the path
 // to the VDS, via the following command:
 //
 // ```sh
@@ -23,7 +101,6 @@ import (
 // ```
 //
 // The above would import the VDS named `vds-01` that is located in the `dc-01`
-//
 // datacenter.
 //
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import

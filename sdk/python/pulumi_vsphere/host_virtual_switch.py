@@ -59,7 +59,13 @@ class HostVirtualSwitchArgs:
         :param pulumi.Input[_builtins.str] name: The name of the virtual switch. Forces a new resource if
                changed.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
+               virtual switch. Default: `128`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+               will not restart the host for you.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -282,7 +288,13 @@ class HostVirtualSwitchArgs:
     @pulumi.getter(name="numberOfPorts")
     def number_of_ports(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of ports that this virtual switch is configured to use.
+        The number of ports to create with this
+        virtual switch. Default: `128`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+
+        > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+        will not restart the host for you.
         """
         return pulumi.get(self, "number_of_ports")
 
@@ -406,7 +418,13 @@ class _HostVirtualSwitchState:
                changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_adapters: The list of network adapters to bind to this virtual switch.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
+               virtual switch. Default: `128`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+               will not restart the host for you.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -632,7 +650,13 @@ class _HostVirtualSwitchState:
     @pulumi.getter(name="numberOfPorts")
     def number_of_ports(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of ports that this virtual switch is configured to use.
+        The number of ports to create with this
+        virtual switch. Default: `128`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+
+        > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+        will not restart the host for you.
         """
         return pulumi.get(self, "number_of_ports")
 
@@ -808,15 +832,11 @@ class HostVirtualSwitch(pulumi.CustomResource):
         ## Import
 
         An existing vSwitch can be imported into this resource by its ID.
-
         The convention of the id is a prefix, the host system [managed objectID][docs-about-morefs], and the virtual switch
-
         name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
-
         Import can the be done via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
-
         [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
         ```sh
@@ -824,7 +844,6 @@ class HostVirtualSwitch(pulumi.CustomResource):
         ```
 
         The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
-
         vSphere host.
 
         :param str resource_name: The name of the resource.
@@ -846,7 +865,13 @@ class HostVirtualSwitch(pulumi.CustomResource):
                changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_adapters: The list of network adapters to bind to this virtual switch.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
+               virtual switch. Default: `128`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+               will not restart the host for you.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -927,15 +952,11 @@ class HostVirtualSwitch(pulumi.CustomResource):
         ## Import
 
         An existing vSwitch can be imported into this resource by its ID.
-
         The convention of the id is a prefix, the host system [managed objectID][docs-about-morefs], and the virtual switch
-
         name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
-
         Import can the be done via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
-
         [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
         ```sh
@@ -943,7 +964,6 @@ class HostVirtualSwitch(pulumi.CustomResource):
         ```
 
         The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
-
         vSphere host.
 
         :param str resource_name: The name of the resource.
@@ -1073,7 +1093,13 @@ class HostVirtualSwitch(pulumi.CustomResource):
                changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_adapters: The list of network adapters to bind to this virtual switch.
         :param pulumi.Input[_builtins.bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports that this virtual switch is configured to use.
+        :param pulumi.Input[_builtins.int] number_of_ports: The number of ports to create with this
+               virtual switch. Default: `128`.
+               
+               [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+               will not restart the host for you.
         :param pulumi.Input[_builtins.int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[_builtins.int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[_builtins.bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -1227,7 +1253,13 @@ class HostVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="numberOfPorts")
     def number_of_ports(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The number of ports that this virtual switch is configured to use.
+        The number of ports to create with this
+        virtual switch. Default: `128`.
+
+        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+
+        > **NOTE:** Changing the port count requires a reboot of the host. Terraform
+        will not restart the host for you.
         """
         return pulumi.get(self, "number_of_ports")
 

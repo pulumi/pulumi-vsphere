@@ -5,6 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `vsphere.Role` resource can be used to create and manage roles. Using this resource, privileges can be
+ * associated with the roles. The role can be used while granting permissions to an entity.
+ *
+ * ## Example Usage
+ *
+ * This example creates a role with name myTerraformRole and privileges create, acknowledge for Alarm and
+ * create, move for Datacenter. While providing `rolePrivileges`, the id of the privilege has to be provided.
+ * The format of the privilege id is privilege name preceded by its categories joined by a `.`.
+ * For example a privilege with path `category->subcategory->privilege` should be provided as
+ * `category.subcategory.privilege`. Keep the `rolePrivileges` sorted alphabetically for a better user experience.
+ *
+ * > **NOTE:** While providing `rolePrivileges`, the id of the privilege and its categories are to be provided
+ * joined by a `.` .
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const role1 = new vsphere.Role("role1", {
+ *     name: "my_terraform_role",
+ *     rolePrivileges: [
+ *         "Alarm.Acknowledge",
+ *         "Alarm.Create",
+ *         "Datacenter.Create",
+ *         "Datacenter.Move",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing role can be imported into this resource by supplying the role id. An example is below:
@@ -13,8 +42,8 @@ import * as utilities from "./utilities";
  * $ pulumi import vsphere:index/role:Role role1 -709298051
  * ```
  *
- * Use [`vsphere_role` data source][ref-vsphere-role-data-source]
- *
+ * > **NOTE:** System roles can't be imported because they can't be modified or deleted.
+ * Use [`vsphere.Role` data source][ref-vsphere-role-data-source]
  * to read information about system roles.
  *
  * [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html

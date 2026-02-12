@@ -341,22 +341,17 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         ## Import
 
         An existing rule can be imported into this resource by supplying
-
         both the path to the cluster, and the name the rule. If the name or cluster is
-
         not found, or if the rule is of a different type, an error will be returned. An
-
         example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \\
-        ```
-
+        terraform import vsphere_compute_cluster_vm_affinity_rule.vm_affinity_rule \\
           '{"compute_cluster_path": "/dc-01/host/cluster-01", \\
-
           "name": "vm-affinity-rule"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -481,22 +476,17 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         ## Import
 
         An existing rule can be imported into this resource by supplying
-
         both the path to the cluster, and the name the rule. If the name or cluster is
-
         not found, or if the rule is of a different type, an error will be returned. An
-
         example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule vm_affinity_rule \\
-        ```
-
+        terraform import vsphere_compute_cluster_vm_affinity_rule.vm_affinity_rule \\
           '{"compute_cluster_path": "/dc-01/host/cluster-01", \\
-
           "name": "vm-affinity-rule"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmAffinityRuleArgs args: The arguments to use to populate this resource's properties.

@@ -67,7 +67,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing folder can be imported into this resource via
- *
  * its full path, via the following command:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -77,9 +76,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * The above command would import the folder from our examples above, the VM
- *
  * folder named `example-vm-folder` located in the datacenter named
- *
  * `default-dc`.
  */
 export class Folder extends pulumi.CustomResource {

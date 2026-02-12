@@ -84,7 +84,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing vApp container can be imported into this resource via
- *
  * the path to the vApp container, using the following command:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -96,9 +95,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * The example above would import the vApp container named `vapp-01` that is
- *
  * located in the resource pool `resource-pool-01` that is part of the host cluster
- *
  * `cluster-01` in the `dc-01` datacenter.
  */
 export class VappContainer extends pulumi.CustomResource {

@@ -116,7 +116,7 @@ import (
 // An existing content library can be imported into this resource by supplying the content library ID. For example:
 //
 // ```sh
-// $ pulumi import vsphere:index/contentLibrary:ContentLibrary vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
+// terraform import vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
 // ```
 //
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import

@@ -160,22 +160,17 @@ namespace Pulumi.VSphere
     /// ## Import
     /// 
     /// An existing rule can be imported into this resource by supplying
-    /// 
     /// both the path to the cluster, and the name the rule. If the name or cluster is
-    /// 
     /// not found, or if the rule is of a different type, an error will be returned. An
-    /// 
     /// example is below:
     /// 
     /// [docs-import]: https://developer.hashicorp.com/terraform/cli/import
     /// 
     /// ```sh
-    /// $ pulumi import vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule cluster_vm_dependency_rule \
-    /// ```
-    /// 
+    /// terraform import vsphere_compute_cluster_vm_dependency_rule.cluster_vm_dependency_rule \
     ///   '{"compute_cluster_path": "/dc1/host/cluster1", \
-    /// 
     ///   "name": "pulumi-test-cluster-vm-dependency-rule"}'
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule")]
     public partial class ComputeClusterVmDependencyRule : global::Pulumi.CustomResource

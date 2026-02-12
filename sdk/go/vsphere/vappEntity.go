@@ -118,18 +118,15 @@ import (
 //
 // ## Import
 //
-// # An existing vApp entity can be imported into this resource via
-//
+// An existing vApp entity can be imported into this resource via
 // the ID of the vApp Entity.
 //
 // ```sh
 // $ pulumi import vsphere:index/vappEntity:VappEntity vapp_entity vm-123:res-456
 // ```
 //
-// # The above would import the vApp entity that governs the behavior of the virtual
-//
+// The above would import the vApp entity that governs the behavior of the virtual
 // machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
-//
 // container with the [managed object ID][docs-about-morefs] res-456.
 //
 // [ref-vsphere-vapp]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/create-a-vapp-h5-and-flex.html

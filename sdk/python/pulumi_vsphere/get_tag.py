@@ -80,6 +80,17 @@ def get_tag(category_id: Optional[_builtins.str] = None,
             name: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
+    The `Tag` data source can be used to reference tags that are not managed
+    by Terraform. Its attributes are exactly the same as the
+    [`Tag` resource][resource-tag], and, like importing, the data source
+    uses a name and category as search criteria. The `id` and other attributes are
+    populated with the data found by the search.
+
+    [resource-tag]: /docs/providers/vsphere/r/tag.html
+
+    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+    requires vCenter Server.
+
     ## Example Usage
 
     ```python
@@ -111,6 +122,17 @@ def get_tag_output(category_id: Optional[pulumi.Input[_builtins.str]] = None,
                    name: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
+    The `Tag` data source can be used to reference tags that are not managed
+    by Terraform. Its attributes are exactly the same as the
+    [`Tag` resource][resource-tag], and, like importing, the data source
+    uses a name and category as search criteria. The `id` and other attributes are
+    populated with the data found by the search.
+
+    [resource-tag]: /docs/providers/vsphere/r/tag.html
+
+    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+    requires vCenter Server.
+
     ## Example Usage
 
     ```python

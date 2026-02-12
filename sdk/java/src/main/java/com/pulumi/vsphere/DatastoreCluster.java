@@ -46,7 +46,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing datastore cluster can be imported into this resource
- * 
  * via the path to the cluster, via the following command:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -56,7 +55,6 @@ import javax.annotation.Nullable;
  * ```
  * 
  * The above would import the datastore cluster named `ds-cluster` that is located
- * 
  * in the `dc1` datacenter.
  * 
  */
@@ -111,14 +109,26 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return this.datacenterId;
     }
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, Terraform will place a datastore cluster named
+     * `terraform-datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
-     * @return The name of the folder to locate the datastore cluster in.
+     * @return The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, Terraform will place a datastore cluster named
+     * `terraform-datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      * 
      */
     public Output<Optional<String>> folder() {

@@ -130,21 +130,18 @@ import (
 //
 // ## Import
 //
-// # An existing rule can be imported into this resource by supplying
-//
+// An existing rule can be imported into this resource by supplying
 // both the path to the cluster, and the name the rule. If the name or cluster is
-//
 // not found, or if the rule is of a different type, an error will be returned. An
-//
 // example is below:
 //
 // ```sh
-// $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
+//
+//	terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule \
+//	  '{"compute_cluster_path": "/dc1/datastore/cluster1", \
+//	  "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+//
 // ```
-//
-//	'{"compute_cluster_path": "/dc1/datastore/cluster1", \
-//
-//	"name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
 //
 // [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 type DatastoreClusterVmAntiAffinityRule struct {
@@ -163,7 +160,13 @@ type DatastoreClusterVmAntiAffinityRule struct {
 	Mandatory pulumi.BoolPtrOutput `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The UUIDs of the virtual machines to run on different datastores from each other.
+	// The UUIDs of the virtual machines to run
+	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+	// current limitations in Terraform Core, the value is currently checked during
+	// the apply phase, not the validation or plan phases. Ensure proper length of
+	// this value to prevent failures mid-apply.
 	VirtualMachineIds pulumi.StringArrayOutput `pulumi:"virtualMachineIds"`
 }
 
@@ -216,7 +219,13 @@ type datastoreClusterVmAntiAffinityRuleState struct {
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name *string `pulumi:"name"`
-	// The UUIDs of the virtual machines to run on different datastores from each other.
+	// The UUIDs of the virtual machines to run
+	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+	// current limitations in Terraform Core, the value is currently checked during
+	// the apply phase, not the validation or plan phases. Ensure proper length of
+	// this value to prevent failures mid-apply.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -234,7 +243,13 @@ type DatastoreClusterVmAntiAffinityRuleState struct {
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringPtrInput
-	// The UUIDs of the virtual machines to run on different datastores from each other.
+	// The UUIDs of the virtual machines to run
+	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+	// current limitations in Terraform Core, the value is currently checked during
+	// the apply phase, not the validation or plan phases. Ensure proper length of
+	// this value to prevent failures mid-apply.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -256,7 +271,13 @@ type datastoreClusterVmAntiAffinityRuleArgs struct {
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name *string `pulumi:"name"`
-	// The UUIDs of the virtual machines to run on different datastores from each other.
+	// The UUIDs of the virtual machines to run
+	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+	// current limitations in Terraform Core, the value is currently checked during
+	// the apply phase, not the validation or plan phases. Ensure proper length of
+	// this value to prevent failures mid-apply.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -275,7 +296,13 @@ type DatastoreClusterVmAntiAffinityRuleArgs struct {
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringPtrInput
-	// The UUIDs of the virtual machines to run on different datastores from each other.
+	// The UUIDs of the virtual machines to run
+	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+	// current limitations in Terraform Core, the value is currently checked during
+	// the apply phase, not the validation or plan phases. Ensure proper length of
+	// this value to prevent failures mid-apply.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -391,7 +418,13 @@ func (o DatastoreClusterVmAntiAffinityRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The UUIDs of the virtual machines to run on different datastores from each other.
+// The UUIDs of the virtual machines to run
+// on different datastores from each other.
+//
+// > **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+// current limitations in Terraform Core, the value is currently checked during
+// the apply phase, not the validation or plan phases. Ensure proper length of
+// this value to prevent failures mid-apply.
 func (o DatastoreClusterVmAntiAffinityRuleOutput) VirtualMachineIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
 }

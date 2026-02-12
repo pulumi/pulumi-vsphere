@@ -132,22 +132,17 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing rule can be imported into this resource by supplying
- * 
  * both the path to the cluster, and the name the rule. If the name or cluster is
- * 
  * not found, or if the rule is of a different type, an error will be returned. An
- * 
  * example is below:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  * 
  * ```sh
- * $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \
- * ```
- * 
+ * terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule \
  *   &#39;{&#34;compute_cluster_path&#34;: &#34;/dc1/datastore/cluster1&#34;, \
- * 
  *   &#34;name&#34;: &#34;pulumi-test-datastore-cluster-vm-anti-affinity-rule&#34;}&#39;
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")
@@ -219,14 +214,26 @@ public class DatastoreClusterVmAntiAffinityRule extends com.pulumi.resources.Cus
         return this.name;
     }
     /**
-     * The UUIDs of the virtual machines to run on different datastores from each other.
+     * The UUIDs of the virtual machines to run
+     * on different datastores from each other.
+     * 
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+     * current limitations in Terraform Core, the value is currently checked during
+     * the apply phase, not the validation or plan phases. Ensure proper length of
+     * this value to prevent failures mid-apply.
      * 
      */
     @Export(name="virtualMachineIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> virtualMachineIds;
 
     /**
-     * @return The UUIDs of the virtual machines to run on different datastores from each other.
+     * @return The UUIDs of the virtual machines to run
+     * on different datastores from each other.
+     * 
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+     * current limitations in Terraform Core, the value is currently checked during
+     * the apply phase, not the validation or plan phases. Ensure proper length of
+     * this value to prevent failures mid-apply.
      * 
      */
     public Output<List<String>> virtualMachineIds() {

@@ -36,16 +36,14 @@ import (
 //
 // ## Import
 //
-// # An existing datastore cluster can be imported into this resource
-//
+// An existing datastore cluster can be imported into this resource
 // via the path to the cluster, via the following command:
 //
 // ```sh
 // $ pulumi import vsphere:index/datastoreCluster:DatastoreCluster datastore_cluster /dc1/datastore/ds-cluster
 // ```
 //
-// # The above would import the datastore cluster named `ds-cluster` that is located
-//
+// The above would import the datastore cluster named `ds-cluster` that is located
 // in the `dc1` datacenter.
 //
 // [ref-vsphere-datastore-clusters]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-resource-management-8-0/creating-a-datastore-cluster.html
@@ -68,7 +66,13 @@ type DatastoreCluster struct {
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringOutput `pulumi:"datacenterId"`
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, Terraform will place a datastore cluster named
+	// `terraform-datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -168,7 +172,13 @@ type datastoreClusterState struct {
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, Terraform will place a datastore cluster named
+	// `terraform-datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
 	Folder *string `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name *string `pulumi:"name"`
@@ -236,7 +246,13 @@ type DatastoreClusterState struct {
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringPtrInput
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, Terraform will place a datastore cluster named
+	// `terraform-datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
 	Folder pulumi.StringPtrInput
 	// The name of the datastore cluster.
 	Name pulumi.StringPtrInput
@@ -308,7 +324,13 @@ type datastoreClusterArgs struct {
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId string `pulumi:"datacenterId"`
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, Terraform will place a datastore cluster named
+	// `terraform-datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
 	Folder *string `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name *string `pulumi:"name"`
@@ -377,7 +399,13 @@ type DatastoreClusterArgs struct {
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringInput
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, Terraform will place a datastore cluster named
+	// `terraform-datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
 	Folder pulumi.StringPtrInput
 	// The name of the datastore cluster.
 	Name pulumi.StringPtrInput
@@ -537,7 +565,13 @@ func (o DatastoreClusterOutput) DatacenterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringOutput { return v.DatacenterId }).(pulumi.StringOutput)
 }
 
-// The name of the folder to locate the datastore cluster in.
+// The relative path to a folder to put this datastore
+// cluster in.  This is a path relative to the datacenter you are deploying the
+// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+// `foo/bar`, Terraform will place a datastore cluster named
+// `terraform-datastore-cluster-test` in a datastore folder located at
+// `/dc1/datastore/foo/bar`, with the final inventory path being
+// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
 func (o DatastoreClusterOutput) Folder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
 }

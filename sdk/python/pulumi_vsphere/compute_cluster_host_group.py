@@ -252,22 +252,17 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         ## Import
 
         An existing group can be imported into this resource by
-
         supplying both the path to the cluster, and the name of the host group. If the
-
         name or cluster is not found, or if the group is of a different type, an error
-
         will be returned. An example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \\
-        ```
-
+        terraform import vsphere_compute_cluster_host_group.cluster_host_group \\
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
-
           "name": "pulumi-test-cluster-host-group"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -357,22 +352,17 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         ## Import
 
         An existing group can be imported into this resource by
-
         supplying both the path to the cluster, and the name of the host group. If the
-
         name or cluster is not found, or if the group is of a different type, an error
-
         will be returned. An example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup cluster_host_group \\
-        ```
-
+        terraform import vsphere_compute_cluster_host_group.cluster_host_group \\
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
-
           "name": "pulumi-test-cluster-host-group"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param ComputeClusterHostGroupArgs args: The arguments to use to populate this resource's properties.

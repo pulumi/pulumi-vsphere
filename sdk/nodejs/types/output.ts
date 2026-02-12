@@ -731,7 +731,7 @@ export interface VirtualMachineCdrom {
      */
     datastoreId?: string;
     /**
-     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress: string;
     /**
@@ -948,7 +948,7 @@ export interface VirtualMachineDisk {
      */
     datastoreId: string;
     /**
-     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress: string;
     /**
@@ -1043,7 +1043,7 @@ export interface VirtualMachineNetworkInterface {
      */
     bandwidthShareLevel?: string;
     /**
-     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress: string;
     /**

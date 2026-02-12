@@ -12,6 +12,153 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ConfigurationProfile` resource can be used to configure profile-based host management on a vSphere compute cluster.
+// The source for the configuration can either be a ESXi host that is part of the compute cluster or a JSON file, but not both at the same time.
+//
+// It is allowed to switch from one type of configuration source to the other at any time.
+//
+// Deleting a `ConfigurationProfile` resource has no effect on the compute cluster. Once management via configuration
+// profiles is turned ot it is not possible to disable it.
+//
+// > **NOTE:** This resource requires a vCenter 8 or higher and will not work on
+// direct ESXi connections.
+//
+// ## Example Usage
+//
+// ### Creating a profile using an ESXi host as a reference
+//
+// The following example sets up a configuration profile on a compute cluster using one of its hosts as a reference
+// and then propagates that configuration to two additional clusters.
+//
+// Note that this example assumes that the hosts across all three clusters are compatible with the source configuration.
+// This includes but is not limited to their ESXi versions and hardware capabilities.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster1, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster2, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-02",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster3, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-03",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// This host is assumed to be part of "cluster-01"
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Configure a profile on "cluster-01" using one of its hosts as a reference
+//			profile1, err := vsphere.NewConfigurationProfile(ctx, "profile1", &vsphere.ConfigurationProfileArgs{
+//				ClusterId:       pulumi.String(cluster1.Id),
+//				ReferenceHostId: pulumi.String(host.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Copy the configuration of "cluster-01" onto "cluster-02"
+//			_, err = vsphere.NewConfigurationProfile(ctx, "profile2", &vsphere.ConfigurationProfileArgs{
+//				ClusterId:     pulumi.String(cluster2.Id),
+//				Configuration: profile1.Configuration,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Copy the configuration of "cluster-01" onto "cluster-03"
+//			_, err = vsphere.NewConfigurationProfile(ctx, "profile3", &vsphere.ConfigurationProfileArgs{
+//				ClusterId:     pulumi.String(cluster3.Id),
+//				Configuration: profile1.Configuration,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating a profile using a configuration file
+//
+// This example sets up a configuration profile on a cluster by reading a configuration from a JSON
+// file on the local filesystem. Reading files is natively supported by Terraform.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster1, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "/path/to/cluster_config_1.json",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewConfigurationProfile(ctx, "profile1", &vsphere.ConfigurationProfileArgs{
+//				ClusterId:     pulumi.String(cluster1.Id),
+//				Configuration: invokeFile.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ConfigurationProfile struct {
 	pulumi.CustomResourceState
 

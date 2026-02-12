@@ -144,98 +144,145 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing host can be imported into this resource by supplying
- * 
  * the host&#39;s ID.
  * 
  * [docs-import]: /docs/import/index.html
  * 
  * Obtain the host&#39;s ID using the data source. For example:
  * 
- * hcl
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- * data &#34;vsphere_datacenter&#34; &#34;datacenter&#34; {
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- *   name = &#34;dc-01&#34;
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
  * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         ctx.export("hostId", host.id());
+ *     }
  * }
- * 
- * data &#34;vsphere_host&#34; &#34;host&#34; {
- * 
- *   name          = &#34;esxi-01.example.com&#34;
- * 
- *   datacenter_id = data.vsphere_datacenter.datacenter.id
- * 
  * }
- * 
- * output &#34;host_id&#34; {
- * 
- *   value = data.vsphere_host.host.id
- * 
- * }
+ * </pre>
  * 
  * Next, create a resource configuration, For example:
  * 
- * hcl
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- * data &#34;vsphere_datacenter&#34; &#34;datacenter&#34; {
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
+ * import com.pulumi.vsphere.Host;
+ * import com.pulumi.vsphere.HostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- *   name = &#34;dc-01&#34;
- * 
- * }
- * 
- * data &#34;vsphere_host_thumbprint&#34; &#34;thumbprint&#34; {
- * 
- *   address  = &#34;esxi-01.example.com&#34;
- * 
- *   insecure = true
- * 
- * }
- * 
- * resource &#34;vsphere_host&#34; &#34;esx-01&#34; {
- * 
- *   hostname   = &#34;esxi-01.example.com&#34;
- * 
- *   username   = &#34;root&#34;
- * 
- *   password   = &#34;password&#34;
- * 
- *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
- * 
- *   datacenter = data.vsphere_datacenter.datacenter.id
- * 
- * }
- * 
- * hcl
- * 
- * resource &#34;vsphere_host&#34; &#34;esx-01&#34; {
- * 
- *   hostname   = &#34;esxi-01.example.com&#34;
- * 
- *   username   = &#34;root&#34;
- * 
- *   password   = &#34;password&#34;
- * 
- *   license    = &#34;00000-00000-00000-00000-00000&#34;
- * 
- *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
- * 
- *   cluster    = data.vsphere_compute_cluster.cluster.id
- * 
- *   services {
- * 
- *     ntpd {
- *     
- *       enabled     = true
- *     
- *       policy      = &#34;on&#34;
- *     
- *       ntp_servers = [&#34;pool.ntp.org&#34;]
- *     
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
  *     }
  * 
- *   }
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
  * 
+ *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
+ *             .address("esxi-01.example.com")
+ *             .insecure(true)
+ *             .build());
+ * 
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()
+ *             .hostname("esxi-01.example.com")
+ *             .username("root")
+ *             .password("password")
+ *             .thumbprint(thumbprint.id())
+ *             .datacenter(datacenter.id())
+ *             .build());
+ * 
+ *     }
  * }
+ * }
+ * </pre>
+ * 
+ * &gt; **NOTE:** When you import hosts, all managed settings are returned. Ensure all settings are set correctly in resource. For example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.Host;
+ * import com.pulumi.vsphere.HostArgs;
+ * import com.pulumi.vsphere.inputs.HostServiceArgs;
+ * import com.pulumi.vsphere.inputs.HostServiceNtpdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var esx_01 = new Host("esx-01", HostArgs.builder()
+ *             .hostname("esxi-01.example.com")
+ *             .username("root")
+ *             .password("password")
+ *             .license("00000-00000-00000-00000-00000")
+ *             .thumbprint(thumbprint.id())
+ *             .cluster(cluster.id())
+ *             .services(HostServiceArgs.builder()
+ *                 .ntpd(HostServiceNtpdArgs.builder()
+ *                     .enabled(true)
+ *                     .policy("on")
+ *                     .ntpServers("pool.ntp.org")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ```sh
  * $ pulumi import vsphere:index/host:Host esx-01 host-123

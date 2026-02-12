@@ -14,6 +14,153 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `vsphere.ConfigurationProfile` resource can be used to configure profile-based host management on a vSphere compute cluster.
+ * The source for the configuration can either be a ESXi host that is part of the compute cluster or a JSON file, but not both at the same time.
+ * 
+ * It is allowed to switch from one type of configuration source to the other at any time.
+ * 
+ * Deleting a `vsphere.ConfigurationProfile` resource has no effect on the compute cluster. Once management via configuration
+ * profiles is turned ot it is not possible to disable it.
+ * 
+ * &gt; **NOTE:** This resource requires a vCenter 8 or higher and will not work on
+ * direct ESXi connections.
+ * 
+ * ## Example Usage
+ * 
+ * ### Creating a profile using an ESXi host as a reference
+ * 
+ * The following example sets up a configuration profile on a compute cluster using one of its hosts as a reference
+ * and then propagates that configuration to two additional clusters.
+ * 
+ * Note that this example assumes that the hosts across all three clusters are compatible with the source configuration.
+ * This includes but is not limited to their ESXi versions and hardware capabilities.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.ConfigurationProfile;
+ * import com.pulumi.vsphere.ConfigurationProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var cluster1 = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         final var cluster2 = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-02")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         final var cluster3 = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-03")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         // This host is assumed to be part of "cluster-01"
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name("esxi-01.example.com")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         // Configure a profile on "cluster-01" using one of its hosts as a reference
+ *         var profile1 = new ConfigurationProfile("profile1", ConfigurationProfileArgs.builder()
+ *             .clusterId(cluster1.id())
+ *             .referenceHostId(host.id())
+ *             .build());
+ * 
+ *         // Copy the configuration of "cluster-01" onto "cluster-02"
+ *         var profile2 = new ConfigurationProfile("profile2", ConfigurationProfileArgs.builder()
+ *             .clusterId(cluster2.id())
+ *             .configuration(profile1.configuration())
+ *             .build());
+ * 
+ *         // Copy the configuration of "cluster-01" onto "cluster-03"
+ *         var profile3 = new ConfigurationProfile("profile3", ConfigurationProfileArgs.builder()
+ *             .clusterId(cluster3.id())
+ *             .configuration(profile1.configuration())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Creating a profile using a configuration file
+ * 
+ * This example sets up a configuration profile on a cluster by reading a configuration from a JSON
+ * file on the local filesystem. Reading files is natively supported by Terraform.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.ConfigurationProfile;
+ * import com.pulumi.vsphere.ConfigurationProfileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name("dc-01")
+ *             .build());
+ * 
+ *         final var cluster1 = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name("cluster-01")
+ *             .datacenterId(datacenter.id())
+ *             .build());
+ * 
+ *         var profile1 = new ConfigurationProfile("profile1", ConfigurationProfileArgs.builder()
+ *             .clusterId(cluster1.id())
+ *             .configuration(StdFunctions.file(Map.of("input", "/path/to/cluster_config_1.json")).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ */
 @ResourceType(type="vsphere:index/configurationProfile:ConfigurationProfile")
 public class ConfigurationProfile extends com.pulumi.resources.CustomResource {
     /**

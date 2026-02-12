@@ -146,15 +146,11 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing vSwitch can be imported into this resource by its ID.
- * 
  * The convention of the id is a prefix, the host system [managed objectID][docs-about-morefs], and the virtual switch
- * 
  * name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
- * 
  * Import can the be done via the following command:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
- * 
  * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  * 
  * ```sh
@@ -162,7 +158,6 @@ import javax.annotation.Nullable;
  * ```
  * 
  * The above would import the vSwitch named `vSwitchTerraformTest` that is located in the `host-10`
- * 
  * vSphere host.
  * 
  */
@@ -371,14 +366,26 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notifySwitches);
     }
     /**
-     * The number of ports that this virtual switch is configured to use.
+     * The number of ports to create with this
+     * virtual switch. Default: `128`.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **NOTE:** Changing the port count requires a reboot of the host. Terraform
+     * will not restart the host for you.
      * 
      */
     @Export(name="numberOfPorts", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numberOfPorts;
 
     /**
-     * @return The number of ports that this virtual switch is configured to use.
+     * @return The number of ports to create with this
+     * virtual switch. Default: `128`.
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **NOTE:** Changing the port count requires a reboot of the host. Terraform
+     * will not restart the host for you.
      * 
      */
     public Output<Optional<Integer>> numberOfPorts() {

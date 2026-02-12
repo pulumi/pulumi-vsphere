@@ -74,98 +74,70 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing host can be imported into this resource by supplying
- *
  * the host's ID.
  *
  * [docs-import]: /docs/import/index.html
  *
  * Obtain the host's ID using the data source. For example:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
  *
- * data "vsphere_datacenter" "datacenter" {
- *
- *   name = "dc-01"
- *
- * }
- *
- * data "vsphere_host" "host" {
- *
- *   name          = "esxi-01.example.com"
- *
- *   datacenter_id = data.vsphere_datacenter.datacenter.id
- *
- * }
- *
- * output "host_id" {
- *
- *   value = data.vsphere_host.host.id
- *
- * }
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * export const hostId = host.then(host => host.id);
+ * ```
  *
  * Next, create a resource configuration, For example:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
  *
- * data "vsphere_datacenter" "datacenter" {
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const thumbprint = vsphere.getHostThumbprint({
+ *     address: "esxi-01.example.com",
+ *     insecure: true,
+ * });
+ * const esx_01 = new vsphere.Host("esx-01", {
+ *     hostname: "esxi-01.example.com",
+ *     username: "root",
+ *     password: "password",
+ *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
+ *     datacenter: datacenter.then(datacenter => datacenter.id),
+ * });
+ * ```
  *
- *   name = "dc-01"
+ * > **NOTE:** When you import hosts, all managed settings are returned. Ensure all settings are set correctly in resource. For example:
  *
- * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
  *
- * data "vsphere_host_thumbprint" "thumbprint" {
- *
- *   address  = "esxi-01.example.com"
- *
- *   insecure = true
- *
- * }
- *
- * resource "vsphere_host" "esx-01" {
- *
- *   hostname   = "esxi-01.example.com"
- *
- *   username   = "root"
- *
- *   password   = "password"
- *
- *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
- *
- *   datacenter = data.vsphere_datacenter.datacenter.id
- *
- * }
- *
- * hcl
- *
- * resource "vsphere_host" "esx-01" {
- *
- *   hostname   = "esxi-01.example.com"
- *
- *   username   = "root"
- *
- *   password   = "password"
- *
- *   license    = "00000-00000-00000-00000-00000"
- *
- *   thumbprint = data.vsphere_host_thumbprint.thumbprint.id
- *
- *   cluster    = data.vsphere_compute_cluster.cluster.id
- *
- *   services {
- *
- *     ntpd {
- *     
- *       enabled     = true
- *     
- *       policy      = "on"
- *     
- *       ntp_servers = ["pool.ntp.org"]
- *     
- *     }
- *
- *   }
- *
- * }
+ * const esx_01 = new vsphere.Host("esx-01", {
+ *     hostname: "esxi-01.example.com",
+ *     username: "root",
+ *     password: "password",
+ *     license: "00000-00000-00000-00000-00000",
+ *     thumbprint: thumbprint.id,
+ *     cluster: cluster.id,
+ *     services: [{
+ *         ntpd: {
+ *             enabled: true,
+ *             policy: "on",
+ *             ntpServers: ["pool.ntp.org"],
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ```sh
  * $ pulumi import vsphere:index/host:Host esx-01 host-123

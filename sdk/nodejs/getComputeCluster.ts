@@ -5,6 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+ * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+ * use for virtual machine placement via the
+ * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+ * specify the cluster's root resource pool directly versus using the alias
+ * available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+ * data source.
+ *
+ * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+ *
+ * > You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+ *  resource for more information about clusters and how to managed the resource
+ *  in Terraform.
+ *
+ * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -63,6 +80,23 @@ export interface GetComputeClusterResult {
     readonly resourcePoolId: string;
 }
 /**
+ * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+ * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+ * use for virtual machine placement via the
+ * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+ * specify the cluster's root resource pool directly versus using the alias
+ * available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+ * data source.
+ *
+ * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+ *
+ * > You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+ *  resource for more information about clusters and how to managed the resource
+ *  in Terraform.
+ *
+ * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ *
  * ## Example Usage
  *
  * ```typescript

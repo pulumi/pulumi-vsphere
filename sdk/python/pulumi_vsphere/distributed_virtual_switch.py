@@ -3249,10 +3249,124 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  vsan_share_level: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `DistributedVirtualSwitch` resource can be used to manage vSphere
+        Distributed Switches (VDS).
+
+        An essential component of a distributed, scalable vSphere infrastructure, the
+        VDS provides centralized management and monitoring of the networking
+        configuration for all the hosts that are associated with the switch.
+        In addition to adding distributed port groups
+        (see the [`DistributedPortGroup`][distributed-port-group] resource)
+        that can be used as networks for virtual machines, a VDS can be configured to
+        perform advanced high availability, traffic shaping, network monitoring, etc.
+
+        For an overview on vSphere networking concepts, see
+        [this page][ref-vsphere-net-concepts].
+
+        For more information on the VDS, see [this page][ref-vsphere-vds].
+
+        [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
+        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+        [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
+        direct ESXi host connections.
+
+        ## Example Usage
+
+        The following example below demonstrates a "standard" example of configuring a
+        VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
+        used as active, and two being used as passive. Note that the NIC failover order
+        propagates to any port groups configured on this VDS and can be overridden.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        network_interfaces = config.get_object("networkInterfaces")
+        if network_interfaces is None:
+            network_interfaces = [
+                "vmnic0",
+                "vmnic1",
+                "vmnic2",
+                "vmnic3",
+            ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter.id,
+            uplinks=[
+                "uplink1",
+                "uplink2",
+                "uplink3",
+                "uplink4",
+            ],
+            active_uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            standby_uplinks=[
+                "uplink3",
+                "uplink4",
+            ],
+            hosts=[
+                {
+                    "host_system_id": host[0].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[1].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[2].id,
+                    "devices": [network_interfaces],
+                },
+            ])
+        ```
+
+        ### Uplink name and count control
+
+        The following abridged example below demonstrates how you can manage the number
+        of uplinks, and the name of the uplinks via the `uplinks` parameter.
+
+        Note that if you change the uplink naming and count after creating the VDS, you
+        may need to explicitly specify `active_uplinks` and `standby_uplinks` as these
+        values are saved to Terraform state after creation, regardless of being
+        specified in config, and will drift if not modified, causing errors.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter["id"],
+            uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            active_uplinks=["uplink1"],
+            standby_uplinks=["uplink2"])
+        ```
+
+        > **NOTE:** The default uplink names when a VDS is created are `uplink1`
+        through to `uplink4`, however this default is not guaranteed to be stable and
+        you are encouraged to set your own.
+
         ## Import
 
         An existing VDS can be imported into this resource via the path
-
         to the VDS, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -3262,7 +3376,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         ```
 
         The above would import the VDS named `vds-01` that is located in the `dc-01`
-
         datacenter.
 
         :param str resource_name: The name of the resource.
@@ -3391,10 +3504,124 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  args: DistributedVirtualSwitchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `DistributedVirtualSwitch` resource can be used to manage vSphere
+        Distributed Switches (VDS).
+
+        An essential component of a distributed, scalable vSphere infrastructure, the
+        VDS provides centralized management and monitoring of the networking
+        configuration for all the hosts that are associated with the switch.
+        In addition to adding distributed port groups
+        (see the [`DistributedPortGroup`][distributed-port-group] resource)
+        that can be used as networks for virtual machines, a VDS can be configured to
+        perform advanced high availability, traffic shaping, network monitoring, etc.
+
+        For an overview on vSphere networking concepts, see
+        [this page][ref-vsphere-net-concepts].
+
+        For more information on the VDS, see [this page][ref-vsphere-vds].
+
+        [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
+        [ref-vsphere-net-concepts]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches/dvport-groups.html
+        [ref-vsphere-vds]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-networking-8-0/basic-networking-with-vnetwork-distributed-switches.html
+
+        > **NOTE:** This resource requires vCenter and is not available on
+        direct ESXi host connections.
+
+        ## Example Usage
+
+        The following example below demonstrates a "standard" example of configuring a
+        VDS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two being
+        used as active, and two being used as passive. Note that the NIC failover order
+        propagates to any port groups configured on this VDS and can be overridden.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        hosts = config.get_object("hosts")
+        if hosts is None:
+            hosts = [
+                "esxi-01.example.com",
+                "esxi-02.example.com",
+                "esxi-03.example.com",
+            ]
+        network_interfaces = config.get_object("networkInterfaces")
+        if network_interfaces is None:
+            network_interfaces = [
+                "vmnic0",
+                "vmnic1",
+                "vmnic2",
+                "vmnic3",
+            ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = [vsphere.get_host(name=hosts[__index],
+            datacenter_id=datacenter.id) for __index in range(len(hosts))]
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter.id,
+            uplinks=[
+                "uplink1",
+                "uplink2",
+                "uplink3",
+                "uplink4",
+            ],
+            active_uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            standby_uplinks=[
+                "uplink3",
+                "uplink4",
+            ],
+            hosts=[
+                {
+                    "host_system_id": host[0].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[1].id,
+                    "devices": [network_interfaces],
+                },
+                {
+                    "host_system_id": host[2].id,
+                    "devices": [network_interfaces],
+                },
+            ])
+        ```
+
+        ### Uplink name and count control
+
+        The following abridged example below demonstrates how you can manage the number
+        of uplinks, and the name of the uplinks via the `uplinks` parameter.
+
+        Note that if you change the uplink naming and count after creating the VDS, you
+        may need to explicitly specify `active_uplinks` and `standby_uplinks` as these
+        values are saved to Terraform state after creation, regardless of being
+        specified in config, and will drift if not modified, causing errors.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds",
+            name="vds-01",
+            datacenter_id=datacenter["id"],
+            uplinks=[
+                "uplink1",
+                "uplink2",
+            ],
+            active_uplinks=["uplink1"],
+            standby_uplinks=["uplink2"])
+        ```
+
+        > **NOTE:** The default uplink names when a VDS is created are `uplink1`
+        through to `uplink4`, however this default is not guaranteed to be stable and
+        you are encouraged to set your own.
+
         ## Import
 
         An existing VDS can be imported into this resource via the path
-
         to the VDS, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -3404,7 +3631,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         ```
 
         The above would import the VDS named `vds-01` that is located in the `dc-01`
-
         datacenter.
 
         :param str resource_name: The name of the resource.

@@ -89,14 +89,26 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
     }
 
     /**
-     * The UUIDs of the virtual machines to run on different datastores from each other.
+     * The UUIDs of the virtual machines to run
+     * on different datastores from each other.
+     * 
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+     * current limitations in Terraform Core, the value is currently checked during
+     * the apply phase, not the validation or plan phases. Ensure proper length of
+     * this value to prevent failures mid-apply.
      * 
      */
     @Import(name="virtualMachineIds", required=true)
     private Output<List<String>> virtualMachineIds;
 
     /**
-     * @return The UUIDs of the virtual machines to run on different datastores from each other.
+     * @return The UUIDs of the virtual machines to run
+     * on different datastores from each other.
+     * 
+     * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+     * current limitations in Terraform Core, the value is currently checked during
+     * the apply phase, not the validation or plan phases. Ensure proper length of
+     * this value to prevent failures mid-apply.
      * 
      */
     public Output<List<String>> virtualMachineIds() {
@@ -226,7 +238,13 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param virtualMachineIds The UUIDs of the virtual machines to run on different datastores from each other.
+         * @param virtualMachineIds The UUIDs of the virtual machines to run
+         * on different datastores from each other.
+         * 
+         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+         * current limitations in Terraform Core, the value is currently checked during
+         * the apply phase, not the validation or plan phases. Ensure proper length of
+         * this value to prevent failures mid-apply.
          * 
          * @return builder
          * 
@@ -237,7 +255,13 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param virtualMachineIds The UUIDs of the virtual machines to run on different datastores from each other.
+         * @param virtualMachineIds The UUIDs of the virtual machines to run
+         * on different datastores from each other.
+         * 
+         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+         * current limitations in Terraform Core, the value is currently checked during
+         * the apply phase, not the validation or plan phases. Ensure proper length of
+         * this value to prevent failures mid-apply.
          * 
          * @return builder
          * 
@@ -247,7 +271,13 @@ public final class DatastoreClusterVmAntiAffinityRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param virtualMachineIds The UUIDs of the virtual machines to run on different datastores from each other.
+         * @param virtualMachineIds The UUIDs of the virtual machines to run
+         * on different datastores from each other.
+         * 
+         * &gt; **NOTE:** The minimum length of `virtualMachineIds` is 2, and due to
+         * current limitations in Terraform Core, the value is currently checked during
+         * the apply phase, not the validation or plan phases. Ensure proper length of
+         * this value to prevent failures mid-apply.
          * 
          * @return builder
          * 

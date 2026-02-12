@@ -12,6 +12,89 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `EntityPermissions` resource can be used to create and manage
+// entity permissions. Permissions can be created on an entity for a given user or
+// group with the specified role.
+//
+// ## Example Usage
+//
+// This example creates entity permissions on the virtual machine VM1 for the user
+// group DCClients with role Datastore consumer and for user group ExternalIDPUsers
+// with role my_terraform_role. The `entityId` can be the managed object id (or
+// uuid for some resources). The `entityType` is one of the managed object types
+// which can be found from the managed object types section
+// [here](https://developer.broadcom.com/xapis/vsphere-web-services-api/latest/).
+// Keep the permissions sorted alphabetically, ignoring case on `userOrGroup` for
+// a better user experience.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("Sample_DC_2"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
+//				Name:         pulumi.StringRef("VM1"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			role1, err := vsphere.LookupRole(ctx, &vsphere.LookupRoleArgs{
+//				Label: "Datastore consumer (sample)",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			role2, err := vsphere.NewRole(ctx, "role2", &vsphere.RoleArgs{
+//				Name: pulumi.String("my_terraform_role"),
+//				RolePrivileges: pulumi.StringArray{
+//					pulumi.String("Alarm.Acknowledge"),
+//					pulumi.String("Alarm.Create"),
+//					pulumi.String("Datacenter.Move"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewEntityPermissions(ctx, "p1", &vsphere.EntityPermissionsArgs{
+//				EntityId:   pulumi.String(vm.Id),
+//				EntityType: pulumi.String("VirtualMachine"),
+//				Permissions: vsphere.EntityPermissionsPermissionArray{
+//					&vsphere.EntityPermissionsPermissionArgs{
+//						UserOrGroup: pulumi.String("vsphere.local\\DCClients"),
+//						Propagate:   pulumi.Bool(true),
+//						IsGroup:     pulumi.Bool(true),
+//						RoleId:      pulumi.String(role1.Id),
+//					},
+//					&vsphere.EntityPermissionsPermissionArgs{
+//						UserOrGroup: pulumi.String("vsphere.local\\ExternalIDPUsers"),
+//						Propagate:   pulumi.Bool(true),
+//						IsGroup:     pulumi.Bool(true),
+//						RoleId:      role2.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type EntityPermissions struct {
 	pulumi.CustomResourceState
 

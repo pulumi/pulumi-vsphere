@@ -58,7 +58,13 @@ class DatastoreClusterArgs:
                
                > **NOTE:** Custom attributes are unsupported on direct ESXi connections
                and require vCenter.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
+               cluster in.  This is a path relative to the datacenter you are deploying the
+               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+               `foo/bar`, Terraform will place a datastore cluster named
+               `terraform-datastore-cluster-test` in a datastore folder located at
+               `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -175,7 +181,13 @@ class DatastoreClusterArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the folder to locate the datastore cluster in.
+        The relative path to a folder to put this datastore
+        cluster in.  This is a path relative to the datacenter you are deploying the
+        datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        `foo/bar`, Terraform will place a datastore cluster named
+        `terraform-datastore-cluster-test` in a datastore folder located at
+        `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         """
         return pulumi.get(self, "folder")
 
@@ -495,7 +507,13 @@ class _DatastoreClusterState:
         :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
+               cluster in.  This is a path relative to the datacenter you are deploying the
+               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+               `foo/bar`, Terraform will place a datastore cluster named
+               `terraform-datastore-cluster-test` in a datastore folder located at
+               `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -613,7 +631,13 @@ class _DatastoreClusterState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the folder to locate the datastore cluster in.
+        The relative path to a folder to put this datastore
+        cluster in.  This is a path relative to the datacenter you are deploying the
+        datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        `foo/bar`, Terraform will place a datastore cluster named
+        `terraform-datastore-cluster-test` in a datastore folder located at
+        `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         """
         return pulumi.get(self, "folder")
 
@@ -986,7 +1010,6 @@ class DatastoreCluster(pulumi.CustomResource):
         ## Import
 
         An existing datastore cluster can be imported into this resource
-
         via the path to the cluster, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -996,7 +1019,6 @@ class DatastoreCluster(pulumi.CustomResource):
         ```
 
         The above would import the datastore cluster named `ds-cluster` that is located
-
         in the `dc1` datacenter.
 
         :param str resource_name: The name of the resource.
@@ -1013,7 +1035,13 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
+               cluster in.  This is a path relative to the datacenter you are deploying the
+               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+               `foo/bar`, Terraform will place a datastore cluster named
+               `terraform-datastore-cluster-test` in a datastore folder located at
+               `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -1111,7 +1139,6 @@ class DatastoreCluster(pulumi.CustomResource):
         ## Import
 
         An existing datastore cluster can be imported into this resource
-
         via the path to the cluster, via the following command:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -1121,7 +1148,6 @@ class DatastoreCluster(pulumi.CustomResource):
         ```
 
         The above would import the datastore cluster named `ds-cluster` that is located
-
         in the `dc1` datacenter.
 
         :param str resource_name: The name of the resource.
@@ -1254,7 +1280,13 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
-        :param pulumi.Input[_builtins.str] folder: The name of the folder to locate the datastore cluster in.
+        :param pulumi.Input[_builtins.str] folder: The relative path to a folder to put this datastore
+               cluster in.  This is a path relative to the datacenter you are deploying the
+               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+               `foo/bar`, Terraform will place a datastore cluster named
+               `terraform-datastore-cluster-test` in a datastore folder located at
+               `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[_builtins.str] name: The name of the datastore cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[_builtins.str] sdrs_automation_level: The default automation level for all virtual machines in this storage cluster.
@@ -1344,7 +1376,13 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the folder to locate the datastore cluster in.
+        The relative path to a folder to put this datastore
+        cluster in.  This is a path relative to the datacenter you are deploying the
+        datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        `foo/bar`, Terraform will place a datastore cluster named
+        `terraform-datastore-cluster-test` in a datastore folder located at
+        `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         """
         return pulumi.get(self, "folder")
 

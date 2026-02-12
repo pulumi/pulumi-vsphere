@@ -38,20 +38,19 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing virtual disk can be imported into this resource
- *
  * via supplying the full datastore path to the virtual disk. An example is below:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
- * $ pulumi import vsphere:index/virtualDisk:VirtualDisk virtual_disk \
+ * terraform import vsphere_virtual_disk.virtual_disk \
+ *   '{"virtual_disk_path": "/dc-01/[datastore-01]foo/bar.vmdk", \ "create_directories": "true"}'
  * ```
  *
- *   '{"virtual_disk_path": "/dc-01/[datastore-01]foo/bar.vmdk", \ "create_directories": "true"}'
- *
  * The above would import the virtual disk located at `foo/bar.vmdk` in the `datastore-01`
+ * datastore of the `dc-01` datacenter with `createDirectories` set as `true`.
  *
- * datastore of the `dc-01` datacenter with `create_directories` set as `true`.
+ * > **NOTE:** Import is not supported if using the **deprecated** `adapterType` field.
  */
 export class VirtualDisk extends pulumi.CustomResource {
     /**

@@ -516,7 +516,7 @@ export interface VirtualMachineCdrom {
      */
     datastoreId?: pulumi.Input<string>;
     /**
-     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress?: pulumi.Input<string>;
     /**
@@ -733,7 +733,7 @@ export interface VirtualMachineDisk {
      */
     datastoreId?: pulumi.Input<string>;
     /**
-     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress?: pulumi.Input<string>;
     /**
@@ -828,7 +828,7 @@ export interface VirtualMachineNetworkInterface {
      */
     bandwidthShareLevel?: pulumi.Input<string>;
     /**
-     * The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+     * An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
      */
     deviceAddress?: pulumi.Input<string>;
     /**

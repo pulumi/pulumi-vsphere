@@ -102,6 +102,23 @@ import java.util.concurrent.CompletableFuture;
 
 public final class VsphereFunctions {
     /**
+     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+     * use for virtual machine placement via the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+     * specify the cluster&#39;s root resource pool directly versus using the alias
+     * available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+     * data source.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+     * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+     * 
+     * &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+     *  resource for more information about clusters and how to managed the resource
+     *  in Terraform.
+     * 
+     * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -146,6 +163,23 @@ public final class VsphereFunctions {
         return getComputeCluster(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+     * use for virtual machine placement via the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+     * specify the cluster&#39;s root resource pool directly versus using the alias
+     * available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+     * data source.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+     * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+     * 
+     * &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+     *  resource for more information about clusters and how to managed the resource
+     *  in Terraform.
+     * 
+     * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -190,6 +224,23 @@ public final class VsphereFunctions {
         return getComputeClusterPlain(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+     * use for virtual machine placement via the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+     * specify the cluster&#39;s root resource pool directly versus using the alias
+     * available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+     * data source.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+     * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+     * 
+     * &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+     *  resource for more information about clusters and how to managed the resource
+     *  in Terraform.
+     * 
+     * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -234,6 +285,23 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getComputeCluster:getComputeCluster", TypeShape.of(GetComputeClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+     * use for virtual machine placement via the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+     * specify the cluster&#39;s root resource pool directly versus using the alias
+     * available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+     * data source.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+     * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+     * 
+     * &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+     *  resource for more information about clusters and how to managed the resource
+     *  in Terraform.
+     * 
+     * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -278,6 +346,23 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getComputeCluster:getComputeCluster", TypeShape.of(GetComputeClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+     * cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+     * use for virtual machine placement via the
+     * [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+     * specify the cluster&#39;s root resource pool directly versus using the alias
+     * available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+     * data source.
+     * 
+     * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+     * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+     * 
+     * &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+     *  resource for more information about clusters and how to managed the resource
+     *  in Terraform.
+     * 
+     * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1172,6 +1257,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getContentLibraryItem:getContentLibraryItem", TypeShape.of(GetContentLibraryItemResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.CustomAttribute` data source can be used to reference custom
+     * attributes that are not managed by Terraform. Its attributes are exactly the
+     * same as the [`vsphere.CustomAttribute` resource][resource-custom-attribute],
+     * and, like importing, the data source takes a name argument for the search. The
+     * `id` and other attributes are then populated with the data found by the search.
+     * 
+     * [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and require vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1210,6 +1306,17 @@ public final class VsphereFunctions {
         return getCustomAttribute(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.CustomAttribute` data source can be used to reference custom
+     * attributes that are not managed by Terraform. Its attributes are exactly the
+     * same as the [`vsphere.CustomAttribute` resource][resource-custom-attribute],
+     * and, like importing, the data source takes a name argument for the search. The
+     * `id` and other attributes are then populated with the data found by the search.
+     * 
+     * [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and require vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1248,6 +1355,17 @@ public final class VsphereFunctions {
         return getCustomAttributePlain(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.CustomAttribute` data source can be used to reference custom
+     * attributes that are not managed by Terraform. Its attributes are exactly the
+     * same as the [`vsphere.CustomAttribute` resource][resource-custom-attribute],
+     * and, like importing, the data source takes a name argument for the search. The
+     * `id` and other attributes are then populated with the data found by the search.
+     * 
+     * [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and require vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1286,6 +1404,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getCustomAttribute:getCustomAttribute", TypeShape.of(GetCustomAttributeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.CustomAttribute` data source can be used to reference custom
+     * attributes that are not managed by Terraform. Its attributes are exactly the
+     * same as the [`vsphere.CustomAttribute` resource][resource-custom-attribute],
+     * and, like importing, the data source takes a name argument for the search. The
+     * `id` and other attributes are then populated with the data found by the search.
+     * 
+     * [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and require vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1324,6 +1453,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getCustomAttribute:getCustomAttribute", TypeShape.of(GetCustomAttributeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.CustomAttribute` data source can be used to reference custom
+     * attributes that are not managed by Terraform. Its attributes are exactly the
+     * same as the [`vsphere.CustomAttribute` resource][resource-custom-attribute],
+     * and, like importing, the data source takes a name argument for the search. The
+     * `id` and other attributes are then populated with the data found by the search.
+     * 
+     * [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and require vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8202,6 +8342,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not managed
+     * by Terraform. Its attributes are exactly the same as the
+     * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+     * uses a name and category as search criteria. The `id` and other attributes are
+     * populated with the data found by the search.
+     * 
+     * [resource-tag]: /docs/providers/vsphere/r/tag.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8246,6 +8397,17 @@ public final class VsphereFunctions {
         return getTag(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not managed
+     * by Terraform. Its attributes are exactly the same as the
+     * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+     * uses a name and category as search criteria. The `id` and other attributes are
+     * populated with the data found by the search.
+     * 
+     * [resource-tag]: /docs/providers/vsphere/r/tag.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8290,6 +8452,17 @@ public final class VsphereFunctions {
         return getTagPlain(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not managed
+     * by Terraform. Its attributes are exactly the same as the
+     * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+     * uses a name and category as search criteria. The `id` and other attributes are
+     * populated with the data found by the search.
+     * 
+     * [resource-tag]: /docs/providers/vsphere/r/tag.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8334,6 +8507,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not managed
+     * by Terraform. Its attributes are exactly the same as the
+     * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+     * uses a name and category as search criteria. The `id` and other attributes are
+     * populated with the data found by the search.
+     * 
+     * [resource-tag]: /docs/providers/vsphere/r/tag.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8378,6 +8562,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.Tag` data source can be used to reference tags that are not managed
+     * by Terraform. Its attributes are exactly the same as the
+     * [`vsphere.Tag` resource][resource-tag], and, like importing, the data source
+     * uses a name and category as search criteria. The `id` and other attributes are
+     * populated with the data found by the search.
+     * 
+     * [resource-tag]: /docs/providers/vsphere/r/tag.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8422,6 +8617,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invokeAsync("vsphere:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by Terraform. Its attributes are the same as the
+     * [`vsphere.TagCategory` resource][resource-tag-category], and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8460,6 +8666,17 @@ public final class VsphereFunctions {
         return getTagCategory(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by Terraform. Its attributes are the same as the
+     * [`vsphere.TagCategory` resource][resource-tag-category], and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8498,6 +8715,17 @@ public final class VsphereFunctions {
         return getTagCategoryPlain(args, InvokeOptions.Empty);
     }
     /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by Terraform. Its attributes are the same as the
+     * [`vsphere.TagCategory` resource][resource-tag-category], and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8536,6 +8764,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTagCategory:getTagCategory", TypeShape.of(GetTagCategoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by Terraform. Its attributes are the same as the
+     * [`vsphere.TagCategory` resource][resource-tag-category], and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8574,6 +8813,17 @@ public final class VsphereFunctions {
         return Deployment.getInstance().invoke("vsphere:index/getTagCategory:getTagCategory", TypeShape.of(GetTagCategoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `vsphere.TagCategory` data source can be used to reference tag categories
+     * that are not managed by Terraform. Its attributes are the same as the
+     * [`vsphere.TagCategory` resource][resource-tag-category], and, like importing,
+     * the data source uses a name and category as search criteria. The `id` and other
+     * attributes are populated with the data found by the search.
+     * 
+     * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
+     * 
+     * &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+     * requires vCenter Server.
+     * 
      * ## Example Usage
      * 
      * <pre>

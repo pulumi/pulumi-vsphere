@@ -109,22 +109,17 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing rule can be imported into this resource by supplying
- *
  * both the path to the cluster, and the name the rule. If the name or cluster is
- *
  * not found, or if the rule is of a different type, an error will be returned. An
- *
  * example is below:
  *
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
  *
  * ```sh
- * $ pulumi import vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule cluster_vm_host_rule \
- * ```
- *
+ * terraform import vsphere_compute_cluster_vm_host_rule.cluster_vm_host_rule \
  *   '{"compute_cluster_path": "/dc1/host/cluster1", \
- *
  *   "name": "pulumi-test-cluster-vm-host-rule"}'
+ * ```
  */
 export class ComputeClusterVmHostRule extends pulumi.CustomResource {
     /**

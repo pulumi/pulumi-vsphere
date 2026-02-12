@@ -92,7 +92,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * An existing host port group can be imported into this resource
- *
  * using the host port group's ID. An example is below:
  *
  * [docs-import]: /docs/import/index.html

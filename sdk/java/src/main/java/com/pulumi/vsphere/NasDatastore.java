@@ -19,10 +19,26 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `vsphere.NasDatastore` resource can be used to create and manage NAS
+ * datastores on an ESXi host or a set of hosts. The resource supports mounting
+ * NFS v3 and v4.1 shares to be used as datastores.
+ * 
+ * &gt; **NOTE:** Unlike [`vsphere.VmfsDatastore`][resource-vmfs-datastore], a NAS
+ * datastore is only mounted on the hosts you choose to mount it on. To mount on
+ * multiple hosts, you must specify each host that you want to add in the
+ * `hostSystemIds` argument.
+ * 
+ * [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+ * 
+ * ## Example Usage
+ * 
+ * The following example would set up a NFS v3 share on 3 hosts connected through
+ * vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+ * is named `nfs` and has `/export/terraform-test` exported.
+ * 
  * ## Import
  * 
  * An existing NAS datastore can be imported into this resource via
- * 
  * its managed object ID, via the following command:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -36,12 +52,12 @@ import javax.annotation.Nullable;
  * [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
  * 
  * In the case of govc, you can locate a managed object ID from an inventory path
- * 
  * by doing the following:
  * 
+ * ```sh
  * $ govc ls -i /dc/datastore/terraform-test
- * 
  * Datastore:datastore-123
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/nasDatastore:NasDatastore")
@@ -143,14 +159,26 @@ public class NasDatastore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.datastoreClusterId);
     }
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a datastore named `terraform-test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+     * `datastoreClusterId`.
      * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
-     * @return The path to the datastore folder to put the datastore in.
+     * @return The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * Terraform will place a datastore named `terraform-test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+     * `datastoreClusterId`.
      * 
      */
     public Output<Optional<String>> folder() {

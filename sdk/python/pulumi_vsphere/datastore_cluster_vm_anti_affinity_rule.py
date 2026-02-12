@@ -31,7 +31,13 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
                a new resource if changed.
                
                [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
+               on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2, and due to
+               current limitations in Terraform Core, the value is currently checked during
+               the apply phase, not the validation or plan phases. Ensure proper length of
+               this value to prevent failures mid-apply.
         :param pulumi.Input[_builtins.bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -66,7 +72,13 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
     @pulumi.getter(name="virtualMachineIds")
     def virtual_machine_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The UUIDs of the virtual machines to run on different datastores from each other.
+        The UUIDs of the virtual machines to run
+        on different datastores from each other.
+
+        > **NOTE:** The minimum length of `virtual_machine_ids` is 2, and due to
+        current limitations in Terraform Core, the value is currently checked during
+        the apply phase, not the validation or plan phases. Ensure proper length of
+        this value to prevent failures mid-apply.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -131,7 +143,13 @@ class _DatastoreClusterVmAntiAffinityRuleState:
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[_builtins.str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
+               on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2, and due to
+               current limitations in Terraform Core, the value is currently checked during
+               the apply phase, not the validation or plan phases. Ensure proper length of
+               this value to prevent failures mid-apply.
         """
         if datastore_cluster_id is not None:
             pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
@@ -201,7 +219,13 @@ class _DatastoreClusterVmAntiAffinityRuleState:
     @pulumi.getter(name="virtualMachineIds")
     def virtual_machine_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The UUIDs of the virtual machines to run on different datastores from each other.
+        The UUIDs of the virtual machines to run
+        on different datastores from each other.
+
+        > **NOTE:** The minimum length of `virtual_machine_ids` is 2, and due to
+        current limitations in Terraform Core, the value is currently checked during
+        the apply phase, not the validation or plan phases. Ensure proper length of
+        this value to prevent failures mid-apply.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -290,22 +314,17 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         ## Import
 
         An existing rule can be imported into this resource by supplying
-
         both the path to the cluster, and the name the rule. If the name or cluster is
-
         not found, or if the rule is of a different type, an error will be returned. An
-
         example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \\
-        ```
-
+        terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule \\
           '{"compute_cluster_path": "/dc1/datastore/cluster1", \\
-
           "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,7 +337,13 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[_builtins.str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
+               on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2, and due to
+               current limitations in Terraform Core, the value is currently checked during
+               the apply phase, not the validation or plan phases. Ensure proper length of
+               this value to prevent failures mid-apply.
         """
         ...
     @overload
@@ -394,22 +419,17 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         ## Import
 
         An existing rule can be imported into this resource by supplying
-
         both the path to the cluster, and the name the rule. If the name or cluster is
-
         not found, or if the rule is of a different type, an error will be returned. An
-
         example is below:
 
         [docs-import]: https://developer.hashicorp.com/terraform/cli/import
 
         ```sh
-        $ pulumi import vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule cluster_vm_anti_affinity_rule \\
-        ```
-
+        terraform import vsphere_datastore_cluster_vm_anti_affinity_rule.cluster_vm_anti_affinity_rule \\
           '{"compute_cluster_path": "/dc1/datastore/cluster1", \\
-
           "name": "pulumi-test-datastore-cluster-vm-anti-affinity-rule"}'
+        ```
 
         :param str resource_name: The name of the resource.
         :param DatastoreClusterVmAntiAffinityRuleArgs args: The arguments to use to populate this resource's properties.
@@ -480,7 +500,13 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[_builtins.str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run on different datastores from each other.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
+               on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2, and due to
+               current limitations in Terraform Core, the value is currently checked during
+               the apply phase, not the validation or plan phases. Ensure proper length of
+               this value to prevent failures mid-apply.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -534,7 +560,13 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     @pulumi.getter(name="virtualMachineIds")
     def virtual_machine_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The UUIDs of the virtual machines to run on different datastores from each other.
+        The UUIDs of the virtual machines to run
+        on different datastores from each other.
+
+        > **NOTE:** The minimum length of `virtual_machine_ids` is 2, and due to
+        current limitations in Terraform Core, the value is currently checked during
+        the apply phase, not the validation or plan phases. Ensure proper length of
+        this value to prevent failures mid-apply.
         """
         return pulumi.get(self, "virtual_machine_ids")
 

@@ -105,20 +105,15 @@ __all__ = [
     'GetVirtualMachineVappArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ComputeClusterHostImageArgsDict(TypedDict):
-        components: NotRequired[pulumi.Input[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgsDict']]]]
-        """
-        List of custom components.
-        """
-        esx_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ESXi version which the image is based on.
-        """
-elif False:
-    ComputeClusterHostImageArgsDict: TypeAlias = Mapping[str, Any]
+class ComputeClusterHostImageArgsDict(TypedDict):
+    components: NotRequired[pulumi.Input[Sequence[pulumi.Input['ComputeClusterHostImageComponentArgsDict']]]]
+    """
+    List of custom components.
+    """
+    esx_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ESXi version which the image is based on.
+    """
 
 @pulumi.input_type
 class ComputeClusterHostImageArgs:
@@ -159,18 +154,15 @@ class ComputeClusterHostImageArgs:
         pulumi.set(self, "esx_version", value)
 
 
-if not MYPY:
-    class ComputeClusterHostImageComponentArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The identifier for the component.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version to use.
-        """
-elif False:
-    ComputeClusterHostImageComponentArgsDict: TypeAlias = Mapping[str, Any]
+class ComputeClusterHostImageComponentArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The identifier for the component.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version to use.
+    """
 
 @pulumi.input_type
 class ComputeClusterHostImageComponentArgs:
@@ -211,18 +203,15 @@ class ComputeClusterHostImageComponentArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ComputeClusterVsanDiskGroupArgsDict(TypedDict):
-        cache: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cache disk.
-        """
-        storages: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of storage disks.
-        """
-elif False:
-    ComputeClusterVsanDiskGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ComputeClusterVsanDiskGroupArgsDict(TypedDict):
+    cache: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cache disk.
+    """
+    storages: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of storage disks.
+    """
 
 @pulumi.input_type
 class ComputeClusterVsanDiskGroupArgs:
@@ -263,14 +252,11 @@ class ComputeClusterVsanDiskGroupArgs:
         pulumi.set(self, "storages", value)
 
 
-if not MYPY:
-    class ComputeClusterVsanFaultDomainArgsDict(TypedDict):
-        fault_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgsDict']]]]
-        """
-        The configuration for single fault domain.
-        """
-elif False:
-    ComputeClusterVsanFaultDomainArgsDict: TypeAlias = Mapping[str, Any]
+class ComputeClusterVsanFaultDomainArgsDict(TypedDict):
+    fault_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanFaultDomainFaultDomainArgsDict']]]]
+    """
+    The configuration for single fault domain.
+    """
 
 @pulumi.input_type
 class ComputeClusterVsanFaultDomainArgs:
@@ -295,18 +281,15 @@ class ComputeClusterVsanFaultDomainArgs:
         pulumi.set(self, "fault_domains", value)
 
 
-if not MYPY:
-    class ComputeClusterVsanFaultDomainFaultDomainArgsDict(TypedDict):
-        host_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The managed object IDs of the hosts to put in the fault domain.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the cluster.
-        """
-elif False:
-    ComputeClusterVsanFaultDomainFaultDomainArgsDict: TypeAlias = Mapping[str, Any]
+class ComputeClusterVsanFaultDomainFaultDomainArgsDict(TypedDict):
+    host_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The managed object IDs of the hosts to put in the fault domain.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the cluster.
+    """
 
 @pulumi.input_type
 class ComputeClusterVsanFaultDomainFaultDomainArgs:
@@ -345,30 +328,27 @@ class ComputeClusterVsanFaultDomainFaultDomainArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ComputeClusterVsanStretchedClusterArgsDict(TypedDict):
-        preferred_fault_domain_host_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The managed object IDs of the hosts to put in the first fault domain.
-        """
-        secondary_fault_domain_host_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The managed object IDs of the hosts to put in the second fault domain.
-        """
-        witness_node: pulumi.Input[_builtins.str]
-        """
-        The managed object IDs of the host selected as witness node when enable stretched cluster.
-        """
-        preferred_fault_domain_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of prepferred fault domain.
-        """
-        secondary_fault_domain_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of secondary fault domain.
-        """
-elif False:
-    ComputeClusterVsanStretchedClusterArgsDict: TypeAlias = Mapping[str, Any]
+class ComputeClusterVsanStretchedClusterArgsDict(TypedDict):
+    preferred_fault_domain_host_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The managed object IDs of the hosts to put in the first fault domain.
+    """
+    secondary_fault_domain_host_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The managed object IDs of the hosts to put in the second fault domain.
+    """
+    witness_node: pulumi.Input[_builtins.str]
+    """
+    The managed object IDs of the host selected as witness node when enable stretched cluster.
+    """
+    preferred_fault_domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of prepferred fault domain.
+    """
+    secondary_fault_domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of secondary fault domain.
+    """
 
 @pulumi.input_type
 class ComputeClusterVsanStretchedClusterArgs:
@@ -454,30 +434,27 @@ class ComputeClusterVsanStretchedClusterArgs:
         pulumi.set(self, "secondary_fault_domain_name", value)
 
 
-if not MYPY:
-    class ContentLibraryPublicationArgsDict(TypedDict):
-        authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Method to authenticate users. Must be `NONE` or `BASIC`.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password used by subscribers to authenticate.
-        """
-        publish_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of the published content library.
-        """
-        published: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Publish the content library. Default `false`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Username used by subscribers to authenticate. Currently can only be `vcsp`.
-        """
-elif False:
-    ContentLibraryPublicationArgsDict: TypeAlias = Mapping[str, Any]
+class ContentLibraryPublicationArgsDict(TypedDict):
+    authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Method to authenticate users. Must be `NONE` or `BASIC`.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password used by subscribers to authenticate.
+    """
+    publish_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of the published content library.
+    """
+    published: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Publish the content library. Default `false`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Username used by subscribers to authenticate. Currently can only be `vcsp`.
+    """
 
 @pulumi.input_type
 class ContentLibraryPublicationArgs:
@@ -566,36 +543,33 @@ class ContentLibraryPublicationArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ContentLibrarySubscriptionArgsDict(TypedDict):
-        authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
-        """
-        automatic_sync: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable automatic synchronization with the published library. Default `false`.
-        """
-        on_demand: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Download the library from a content only when needed. Default `true`.
+class ContentLibrarySubscriptionArgsDict(TypedDict):
+    authentication_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+    """
+    automatic_sync: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable automatic synchronization with the published library. Default `false`.
+    """
+    on_demand: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Download the library from a content only when needed. Default `true`.
 
-        [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password used for authentication.
-        """
-        subscription_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the published content library.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Username used for authentication.
-        """
-elif False:
-    ContentLibrarySubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+    [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password used for authentication.
+    """
+    subscription_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the published content library.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Username used for authentication.
+    """
 
 @pulumi.input_type
 class ContentLibrarySubscriptionArgs:
@@ -704,18 +678,15 @@ class ContentLibrarySubscriptionArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class DistributedPortGroupVlanRangeArgsDict(TypedDict):
-        max_vlan: pulumi.Input[_builtins.int]
-        """
-        The minimum VLAN to use in the range.
-        """
-        min_vlan: pulumi.Input[_builtins.int]
-        """
-        The minimum VLAN to use in the range.
-        """
-elif False:
-    DistributedPortGroupVlanRangeArgsDict: TypeAlias = Mapping[str, Any]
+class DistributedPortGroupVlanRangeArgsDict(TypedDict):
+    max_vlan: pulumi.Input[_builtins.int]
+    """
+    The minimum VLAN to use in the range.
+    """
+    min_vlan: pulumi.Input[_builtins.int]
+    """
+    The minimum VLAN to use in the range.
+    """
 
 @pulumi.input_type
 class DistributedPortGroupVlanRangeArgs:
@@ -754,18 +725,15 @@ class DistributedPortGroupVlanRangeArgs:
         pulumi.set(self, "min_vlan", value)
 
 
-if not MYPY:
-    class DistributedVirtualSwitchHostArgsDict(TypedDict):
-        host_system_id: pulumi.Input[_builtins.str]
-        """
-        The managed object ID of the host this specification applies to.
-        """
-        devices: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Name of the physical NIC to be added to the proxy switch.
-        """
-elif False:
-    DistributedVirtualSwitchHostArgsDict: TypeAlias = Mapping[str, Any]
+class DistributedVirtualSwitchHostArgsDict(TypedDict):
+    host_system_id: pulumi.Input[_builtins.str]
+    """
+    The managed object ID of the host this specification applies to.
+    """
+    devices: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Name of the physical NIC to be added to the proxy switch.
+    """
 
 @pulumi.input_type
 class DistributedVirtualSwitchHostArgs:
@@ -805,22 +773,19 @@ class DistributedVirtualSwitchHostArgs:
         pulumi.set(self, "devices", value)
 
 
-if not MYPY:
-    class DistributedVirtualSwitchPvlanMappingArgsDict(TypedDict):
-        primary_vlan_id: pulumi.Input[_builtins.int]
-        """
-        The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
-        """
-        pvlan_type: pulumi.Input[_builtins.str]
-        """
-        The private VLAN type. Valid values are promiscuous, community and isolated.
-        """
-        secondary_vlan_id: pulumi.Input[_builtins.int]
-        """
-        The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
-        """
-elif False:
-    DistributedVirtualSwitchPvlanMappingArgsDict: TypeAlias = Mapping[str, Any]
+class DistributedVirtualSwitchPvlanMappingArgsDict(TypedDict):
+    primary_vlan_id: pulumi.Input[_builtins.int]
+    """
+    The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
+    """
+    pvlan_type: pulumi.Input[_builtins.str]
+    """
+    The private VLAN type. Valid values are promiscuous, community and isolated.
+    """
+    secondary_vlan_id: pulumi.Input[_builtins.int]
+    """
+    The secondary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
+    """
 
 @pulumi.input_type
 class DistributedVirtualSwitchPvlanMappingArgs:
@@ -874,18 +839,15 @@ class DistributedVirtualSwitchPvlanMappingArgs:
         pulumi.set(self, "secondary_vlan_id", value)
 
 
-if not MYPY:
-    class DistributedVirtualSwitchVlanRangeArgsDict(TypedDict):
-        max_vlan: pulumi.Input[_builtins.int]
-        """
-        The minimum VLAN to use in the range.
-        """
-        min_vlan: pulumi.Input[_builtins.int]
-        """
-        The minimum VLAN to use in the range.
-        """
-elif False:
-    DistributedVirtualSwitchVlanRangeArgsDict: TypeAlias = Mapping[str, Any]
+class DistributedVirtualSwitchVlanRangeArgsDict(TypedDict):
+    max_vlan: pulumi.Input[_builtins.int]
+    """
+    The minimum VLAN to use in the range.
+    """
+    min_vlan: pulumi.Input[_builtins.int]
+    """
+    The minimum VLAN to use in the range.
+    """
 
 @pulumi.input_type
 class DistributedVirtualSwitchVlanRangeArgs:
@@ -924,29 +886,26 @@ class DistributedVirtualSwitchVlanRangeArgs:
         pulumi.set(self, "min_vlan", value)
 
 
-if not MYPY:
-    class EntityPermissionsPermissionArgsDict(TypedDict):
-        is_group: pulumi.Input[_builtins.bool]
-        """
-        Whether `user_or_group` field refers to a user or a
-        group. True for a group and false for a user.
-        """
-        propagate: pulumi.Input[_builtins.bool]
-        """
-        Whether or not this permission propagates down the
-        hierarchy to sub-entities.
-        """
-        role_id: pulumi.Input[_builtins.str]
-        """
-        The role id of the role to be given to the user on
-        the specified entity.
-        """
-        user_or_group: pulumi.Input[_builtins.str]
-        """
-        The user/group getting the permission.
-        """
-elif False:
-    EntityPermissionsPermissionArgsDict: TypeAlias = Mapping[str, Any]
+class EntityPermissionsPermissionArgsDict(TypedDict):
+    is_group: pulumi.Input[_builtins.bool]
+    """
+    Whether `user_or_group` field refers to a user or a
+    group. True for a group and false for a user.
+    """
+    propagate: pulumi.Input[_builtins.bool]
+    """
+    Whether or not this permission propagates down the
+    hierarchy to sub-entities.
+    """
+    role_id: pulumi.Input[_builtins.str]
+    """
+    The role id of the role to be given to the user on
+    the specified entity.
+    """
+    user_or_group: pulumi.Input[_builtins.str]
+    """
+    The user/group getting the permission.
+    """
 
 @pulumi.input_type
 class EntityPermissionsPermissionArgs:
@@ -1021,42 +980,39 @@ class EntityPermissionsPermissionArgs:
         pulumi.set(self, "user_or_group", value)
 
 
-if not MYPY:
-    class GuestOsCustomizationSpecArgsDict(TypedDict):
-        dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of DNS servers for a virtual network adapter with a static IP address.
-        """
-        dns_suffix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of DNS search domains to add to the DNS configuration on the virtual machine.
-        """
-        ipv4_gateway: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
-        """
-        ipv6_gateway: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
-        """
-        linux_options: NotRequired[pulumi.Input['GuestOsCustomizationSpecLinuxOptionsArgsDict']]
-        """
-        A list of configuration options specific to Linux virtual machines.
-        """
-        network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestOsCustomizationSpecNetworkInterfaceArgsDict']]]]
-        """
-        A specification of network interface configuration options.
-        """
-        windows_options: NotRequired[pulumi.Input['GuestOsCustomizationSpecWindowsOptionsArgsDict']]
-        """
-        A list of configuration options specific to Windows virtual machines.
-        """
-        windows_sysprep_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this option to specify a windows sysprep file directly.
-        """
-elif False:
-    GuestOsCustomizationSpecArgsDict: TypeAlias = Mapping[str, Any]
+class GuestOsCustomizationSpecArgsDict(TypedDict):
+    dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of DNS servers for a virtual network adapter with a static IP address.
+    """
+    dns_suffix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of DNS search domains to add to the DNS configuration on the virtual machine.
+    """
+    ipv4_gateway: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+    """
+    ipv6_gateway: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+    """
+    linux_options: NotRequired[pulumi.Input['GuestOsCustomizationSpecLinuxOptionsArgsDict']]
+    """
+    A list of configuration options specific to Linux virtual machines.
+    """
+    network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestOsCustomizationSpecNetworkInterfaceArgsDict']]]]
+    """
+    A specification of network interface configuration options.
+    """
+    windows_options: NotRequired[pulumi.Input['GuestOsCustomizationSpecWindowsOptionsArgsDict']]
+    """
+    A list of configuration options specific to Windows virtual machines.
+    """
+    windows_sysprep_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this option to specify a windows sysprep file directly.
+    """
 
 @pulumi.input_type
 class GuestOsCustomizationSpecArgs:
@@ -1193,30 +1149,27 @@ class GuestOsCustomizationSpecArgs:
         pulumi.set(self, "windows_sysprep_text", value)
 
 
-if not MYPY:
-    class GuestOsCustomizationSpecLinuxOptionsArgsDict(TypedDict):
-        domain: pulumi.Input[_builtins.str]
-        """
-        The domain name for this virtual machine.
-        """
-        host_name: pulumi.Input[_builtins.str]
-        """
-        The hostname for this virtual machine.
-        """
-        hw_clock_utc: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether or not the hardware clock should be in UTC or not.
-        """
-        script_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The customization script to run before and or after guest customization
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
-        """
-elif False:
-    GuestOsCustomizationSpecLinuxOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class GuestOsCustomizationSpecLinuxOptionsArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The domain name for this virtual machine.
+    """
+    host_name: pulumi.Input[_builtins.str]
+    """
+    The hostname for this virtual machine.
+    """
+    hw_clock_utc: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether or not the hardware clock should be in UTC or not.
+    """
+    script_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The customization script to run before and or after guest customization
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+    """
 
 @pulumi.input_type
 class GuestOsCustomizationSpecLinuxOptionsArgs:
@@ -1303,34 +1256,31 @@ class GuestOsCustomizationSpecLinuxOptionsArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class GuestOsCustomizationSpecNetworkInterfaceArgsDict(TypedDict):
-        dns_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A DNS search domain to add to the DNS configuration on the virtual machine.
-        """
-        dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
-        """
-        ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
-        """
-        ipv4_netmask: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
-        """
-        ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
-        """
-        ipv6_netmask: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
-        """
-elif False:
-    GuestOsCustomizationSpecNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+class GuestOsCustomizationSpecNetworkInterfaceArgsDict(TypedDict):
+    dns_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A DNS search domain to add to the DNS configuration on the virtual machine.
+    """
+    dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+    """
+    ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+    """
+    ipv4_netmask: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+    """
+    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+    """
+    ipv6_netmask: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+    """
 
 @pulumi.input_type
 class GuestOsCustomizationSpecNetworkInterfaceArgs:
@@ -1435,66 +1385,63 @@ class GuestOsCustomizationSpecNetworkInterfaceArgs:
         pulumi.set(self, "ipv6_netmask", value)
 
 
-if not MYPY:
-    class GuestOsCustomizationSpecWindowsOptionsArgsDict(TypedDict):
-        computer_name: pulumi.Input[_builtins.str]
-        """
-        The host name for this virtual machine.
-        """
-        admin_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new administrator password for this virtual machine.
-        """
-        auto_logon: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether or not the VM automatically logs on as Administrator.
-        """
-        auto_logon_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
-        """
-        domain_admin_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password of the domain administrator used to join this virtual machine to the domain.
-        """
-        domain_admin_user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user account of the domain administrator used to join this virtual machine to the domain.
-        """
-        domain_ou: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
-        """
-        full_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the user of this virtual machine.
-        """
-        join_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain that the virtual machine should join.
-        """
-        organization_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organization name this virtual machine is being installed for.
-        """
-        product_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The product key for this virtual machine.
-        """
-        run_once_command_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of commands to run at first user logon, after guest customization.
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
-        """
-        workgroup: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The workgroup for this virtual machine if not joining a domain.
-        """
-elif False:
-    GuestOsCustomizationSpecWindowsOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class GuestOsCustomizationSpecWindowsOptionsArgsDict(TypedDict):
+    computer_name: pulumi.Input[_builtins.str]
+    """
+    The host name for this virtual machine.
+    """
+    admin_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new administrator password for this virtual machine.
+    """
+    auto_logon: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether or not the VM automatically logs on as Administrator.
+    """
+    auto_logon_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+    """
+    domain_admin_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password of the domain administrator used to join this virtual machine to the domain.
+    """
+    domain_admin_user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user account of the domain administrator used to join this virtual machine to the domain.
+    """
+    domain_ou: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+    """
+    full_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the user of this virtual machine.
+    """
+    join_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain that the virtual machine should join.
+    """
+    organization_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organization name this virtual machine is being installed for.
+    """
+    product_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The product key for this virtual machine.
+    """
+    run_once_command_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of commands to run at first user logon, after guest customization.
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+    """
+    workgroup: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The workgroup for this virtual machine if not joining a domain.
+    """
 
 @pulumi.input_type
 class GuestOsCustomizationSpecWindowsOptionsArgs:
@@ -1726,22 +1673,19 @@ class GuestOsCustomizationSpecWindowsOptionsArgs:
         pulumi.set(self, "workgroup", value)
 
 
-if not MYPY:
-    class HostPortGroupPortArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key for this port group as returned from the vSphere API.
-        """
-        mac_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The MAC addresses of the network service of the virtual machine connected on this port.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
-        """
-elif False:
-    HostPortGroupPortArgsDict: TypeAlias = Mapping[str, Any]
+class HostPortGroupPortArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key for this port group as returned from the vSphere API.
+    """
+    mac_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The MAC addresses of the network service of the virtual machine connected on this port.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type type of the entity connected on this port. Possible values are host (VMKkernel), systemManagement (service console), virtualMachine, or unknown.
+    """
 
 @pulumi.input_type
 class HostPortGroupPortArgs:
@@ -1798,16 +1742,13 @@ class HostPortGroupPortArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class HostServiceArgsDict(TypedDict):
-        ntpd: NotRequired[pulumi.Input['HostServiceNtpdArgsDict']]
-        """
-        service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
+class HostServiceArgsDict(TypedDict):
+    ntpd: NotRequired[pulumi.Input['HostServiceNtpdArgsDict']]
+    """
+    service has three settings, `enabled` sets service to running or not running, `policy` sets service based on setting of `on` which sets service to "Start and stop with host", `off` which sets service to "Start and stop manually", `automatic` which sets service to "Start and stop with port usage".
 
-        > **NOTE:** `services` only supports ntpd service today.
-        """
-elif False:
-    HostServiceArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** `services` only supports ntpd service today.
+    """
 
 @pulumi.input_type
 class HostServiceArgs:
@@ -1836,19 +1777,16 @@ class HostServiceArgs:
         pulumi.set(self, "ntpd", value)
 
 
-if not MYPY:
-    class HostServiceNtpdArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the NTP service is enabled. Default is false.
-        """
-        ntp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
-        """
-elif False:
-    HostServiceNtpdArgsDict: TypeAlias = Mapping[str, Any]
+class HostServiceNtpdArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the NTP service is enabled. Default is false.
+    """
+    ntp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The policy for the NTP service. Valid values are 'Start and stop with host', 'Start and stop manually', 'Start and stop with port usage'.
+    """
 
 @pulumi.input_type
 class HostServiceNtpdArgs:
@@ -1901,22 +1839,19 @@ class HostServiceNtpdArgs:
         pulumi.set(self, "policy", value)
 
 
-if not MYPY:
-    class OfflineSoftwareDepotComponentArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the component. Useful for easier identification.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The identifier of the component.
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of available versions of the component.
-        """
-elif False:
-    OfflineSoftwareDepotComponentArgsDict: TypeAlias = Mapping[str, Any]
+class OfflineSoftwareDepotComponentArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the component. Useful for easier identification.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The identifier of the component.
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of available versions of the component.
+    """
 
 @pulumi.input_type
 class OfflineSoftwareDepotComponentArgs:
@@ -1973,18 +1908,15 @@ class OfflineSoftwareDepotComponentArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class SupervisorEgressCidrArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        Network address.
-        """
-        prefix: pulumi.Input[_builtins.int]
-        """
-        Subnet prefix.
-        """
-elif False:
-    SupervisorEgressCidrArgsDict: TypeAlias = Mapping[str, Any]
+class SupervisorEgressCidrArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    Network address.
+    """
+    prefix: pulumi.Input[_builtins.int]
+    """
+    Subnet prefix.
+    """
 
 @pulumi.input_type
 class SupervisorEgressCidrArgs:
@@ -2023,18 +1955,15 @@ class SupervisorEgressCidrArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class SupervisorIngressCidrArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        Network address.
-        """
-        prefix: pulumi.Input[_builtins.int]
-        """
-        Subnet prefix.
-        """
-elif False:
-    SupervisorIngressCidrArgsDict: TypeAlias = Mapping[str, Any]
+class SupervisorIngressCidrArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    Network address.
+    """
+    prefix: pulumi.Input[_builtins.int]
+    """
+    Subnet prefix.
+    """
 
 @pulumi.input_type
 class SupervisorIngressCidrArgs:
@@ -2073,30 +2002,27 @@ class SupervisorIngressCidrArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class SupervisorManagementNetworkArgsDict(TypedDict):
-        address_count: pulumi.Input[_builtins.int]
-        """
-        Number of addresses to allocate. Starts from 'starting_address'
-        """
-        gateway: pulumi.Input[_builtins.str]
-        """
-        Gateway IP address.
-        """
-        network: pulumi.Input[_builtins.str]
-        """
-        ID of the network. (e.g. a distributed port group).
-        """
-        starting_address: pulumi.Input[_builtins.str]
-        """
-        Starting address of the management network range.
-        """
-        subnet_mask: pulumi.Input[_builtins.str]
-        """
-        Subnet mask.
-        """
-elif False:
-    SupervisorManagementNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class SupervisorManagementNetworkArgsDict(TypedDict):
+    address_count: pulumi.Input[_builtins.int]
+    """
+    Number of addresses to allocate. Starts from 'starting_address'
+    """
+    gateway: pulumi.Input[_builtins.str]
+    """
+    Gateway IP address.
+    """
+    network: pulumi.Input[_builtins.str]
+    """
+    ID of the network. (e.g. a distributed port group).
+    """
+    starting_address: pulumi.Input[_builtins.str]
+    """
+    Starting address of the management network range.
+    """
+    subnet_mask: pulumi.Input[_builtins.str]
+    """
+    Subnet mask.
+    """
 
 @pulumi.input_type
 class SupervisorManagementNetworkArgs:
@@ -2180,22 +2106,19 @@ class SupervisorManagementNetworkArgs:
         pulumi.set(self, "subnet_mask", value)
 
 
-if not MYPY:
-    class SupervisorNamespaceArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the namespace.
-        """
-        content_libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of content libraries.
-        """
-        vm_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of virtual machine classes.
-        """
-elif False:
-    SupervisorNamespaceArgsDict: TypeAlias = Mapping[str, Any]
+class SupervisorNamespaceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the namespace.
+    """
+    content_libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of content libraries.
+    """
+    vm_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of virtual machine classes.
+    """
 
 @pulumi.input_type
 class SupervisorNamespaceArgs:
@@ -2251,18 +2174,15 @@ class SupervisorNamespaceArgs:
         pulumi.set(self, "vm_classes", value)
 
 
-if not MYPY:
-    class SupervisorPodCidrArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        Network address.
-        """
-        prefix: pulumi.Input[_builtins.int]
-        """
-        Subnet prefix.
-        """
-elif False:
-    SupervisorPodCidrArgsDict: TypeAlias = Mapping[str, Any]
+class SupervisorPodCidrArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    Network address.
+    """
+    prefix: pulumi.Input[_builtins.int]
+    """
+    Subnet prefix.
+    """
 
 @pulumi.input_type
 class SupervisorPodCidrArgs:
@@ -2301,18 +2221,15 @@ class SupervisorPodCidrArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class SupervisorServiceCidrArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        Network address.
-        """
-        prefix: pulumi.Input[_builtins.int]
-        """
-        Subnet prefix.
-        """
-elif False:
-    SupervisorServiceCidrArgsDict: TypeAlias = Mapping[str, Any]
+class SupervisorServiceCidrArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    Network address.
+    """
+    prefix: pulumi.Input[_builtins.int]
+    """
+    Subnet prefix.
+    """
 
 @pulumi.input_type
 class SupervisorServiceCidrArgs:
@@ -2351,30 +2268,27 @@ class SupervisorServiceCidrArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class VirtualMachineCdromArgsDict(TypedDict):
-        client_device: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the device should be mapped to a remote client device
-        """
-        datastore_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The datastore ID the ISO is located on.
-        """
-        device_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
-        """
-        key: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the device within the virtual machine.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to the ISO file on the datastore.
-        """
-elif False:
-    VirtualMachineCdromArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineCdromArgsDict(TypedDict):
+    client_device: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the device should be mapped to a remote client device
+    """
+    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The datastore ID the ISO is located on.
+    """
+    device_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
+    """
+    key: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the device within the virtual machine.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to the ISO file on the datastore.
+    """
 
 @pulumi.input_type
 class VirtualMachineCdromArgs:
@@ -2387,7 +2301,7 @@ class VirtualMachineCdromArgs:
         """
         :param pulumi.Input[_builtins.bool] client_device: Indicates whether the device should be mapped to a remote client device
         :param pulumi.Input[_builtins.str] datastore_id: The datastore ID the ISO is located on.
-        :param pulumi.Input[_builtins.str] device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param pulumi.Input[_builtins.str] device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         :param pulumi.Input[_builtins.int] key: The ID of the device within the virtual machine.
         :param pulumi.Input[_builtins.str] path: The path to the ISO file on the datastore.
         """
@@ -2430,7 +2344,7 @@ class VirtualMachineCdromArgs:
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         """
         return pulumi.get(self, "device_address")
 
@@ -2463,38 +2377,35 @@ class VirtualMachineCdromArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class VirtualMachineCloneArgsDict(TypedDict):
-        template_uuid: pulumi.Input[_builtins.str]
-        """
-        The UUID of the source virtual machine or template.
-        """
-        customization_spec: NotRequired[pulumi.Input['VirtualMachineCloneCustomizationSpecArgsDict']]
-        """
-        The customization specification for the virtual machine post-clone.
-        """
-        customize: NotRequired[pulumi.Input['VirtualMachineCloneCustomizeArgsDict']]
-        """
-        The customization specification for the virtual machine post-clone.
-        """
-        linked_clone: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
-        """
-        ovf_network_map: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of ovf networks to the networks to use in vSphere.
-        """
-        ovf_storage_map: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of ovf storage to the datastores to use in vSphere.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout, in minutes, to wait for the virtual machine clone to complete.
-        """
-elif False:
-    VirtualMachineCloneArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineCloneArgsDict(TypedDict):
+    template_uuid: pulumi.Input[_builtins.str]
+    """
+    The UUID of the source virtual machine or template.
+    """
+    customization_spec: NotRequired[pulumi.Input['VirtualMachineCloneCustomizationSpecArgsDict']]
+    """
+    The customization specification for the virtual machine post-clone.
+    """
+    customize: NotRequired[pulumi.Input['VirtualMachineCloneCustomizeArgsDict']]
+    """
+    The customization specification for the virtual machine post-clone.
+    """
+    linked_clone: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not to create a linked clone when cloning. When this option is used, the source VM must have a single snapshot associated with it.
+    """
+    ovf_network_map: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of ovf networks to the networks to use in vSphere.
+    """
+    ovf_storage_map: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of ovf storage to the datastores to use in vSphere.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout, in minutes, to wait for the virtual machine clone to complete.
+    """
 
 @pulumi.input_type
 class VirtualMachineCloneArgs:
@@ -2614,18 +2525,15 @@ class VirtualMachineCloneArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class VirtualMachineCloneCustomizationSpecArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The UUID of the virtual machine.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
-        """
-elif False:
-    VirtualMachineCloneCustomizationSpecArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineCloneCustomizationSpecArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The UUID of the virtual machine.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+    """
 
 @pulumi.input_type
 class VirtualMachineCloneCustomizationSpecArgs:
@@ -2665,46 +2573,43 @@ class VirtualMachineCloneCustomizationSpecArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class VirtualMachineCloneCustomizeArgsDict(TypedDict):
-        dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of DNS servers for a virtual network adapter with a static IP address.
-        """
-        dns_suffix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of DNS search domains to add to the DNS configuration on the virtual machine.
-        """
-        ipv4_gateway: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
-        """
-        ipv6_gateway: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
-        """
-        linux_options: NotRequired[pulumi.Input['VirtualMachineCloneCustomizeLinuxOptionsArgsDict']]
-        """
-        A list of configuration options specific to Linux virtual machines.
-        """
-        network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgsDict']]]]
-        """
-        A specification of network interface configuration options.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
-        """
-        windows_options: NotRequired[pulumi.Input['VirtualMachineCloneCustomizeWindowsOptionsArgsDict']]
-        """
-        A list of configuration options specific to Windows virtual machines.
-        """
-        windows_sysprep_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this option to specify a windows sysprep file directly.
-        """
-elif False:
-    VirtualMachineCloneCustomizeArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineCloneCustomizeArgsDict(TypedDict):
+    dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of DNS servers for a virtual network adapter with a static IP address.
+    """
+    dns_suffix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of DNS search domains to add to the DNS configuration on the virtual machine.
+    """
+    ipv4_gateway: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv4 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+    """
+    ipv6_gateway: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 default gateway when using network_interface customization on the virtual machine. This address must be local to a static IPv4 address configured in an interface sub-resource.
+    """
+    linux_options: NotRequired[pulumi.Input['VirtualMachineCloneCustomizeLinuxOptionsArgsDict']]
+    """
+    A list of configuration options specific to Linux virtual machines.
+    """
+    network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgsDict']]]]
+    """
+    A specification of network interface configuration options.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of time, in minutes, to wait for guest OS customization to complete before returning with an error. Setting this value to 0 or a negative value skips the waiter. Default: 10.
+    """
+    windows_options: NotRequired[pulumi.Input['VirtualMachineCloneCustomizeWindowsOptionsArgsDict']]
+    """
+    A list of configuration options specific to Windows virtual machines.
+    """
+    windows_sysprep_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this option to specify a windows sysprep file directly.
+    """
 
 @pulumi.input_type
 class VirtualMachineCloneCustomizeArgs:
@@ -2857,30 +2762,27 @@ class VirtualMachineCloneCustomizeArgs:
         pulumi.set(self, "windows_sysprep_text", value)
 
 
-if not MYPY:
-    class VirtualMachineCloneCustomizeLinuxOptionsArgsDict(TypedDict):
-        domain: pulumi.Input[_builtins.str]
-        """
-        The domain name for this virtual machine.
-        """
-        host_name: pulumi.Input[_builtins.str]
-        """
-        The hostname for this virtual machine.
-        """
-        hw_clock_utc: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether or not the hardware clock should be in UTC or not.
-        """
-        script_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The customization script to run before and or after guest customization
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
-        """
-elif False:
-    VirtualMachineCloneCustomizeLinuxOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineCloneCustomizeLinuxOptionsArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The domain name for this virtual machine.
+    """
+    host_name: pulumi.Input[_builtins.str]
+    """
+    The hostname for this virtual machine.
+    """
+    hw_clock_utc: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether or not the hardware clock should be in UTC or not.
+    """
+    script_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The customization script to run before and or after guest customization
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Customize the time zone on the VM. This should be a time zone-style entry, like America/Los_Angeles.
+    """
 
 @pulumi.input_type
 class VirtualMachineCloneCustomizeLinuxOptionsArgs:
@@ -2967,34 +2869,31 @@ class VirtualMachineCloneCustomizeLinuxOptionsArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class VirtualMachineCloneCustomizeNetworkInterfaceArgsDict(TypedDict):
-        dns_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A DNS search domain to add to the DNS configuration on the virtual machine.
-        """
-        dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
-        """
-        ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
-        """
-        ipv4_netmask: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
-        """
-        ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
-        """
-        ipv6_netmask: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
-        """
-elif False:
-    VirtualMachineCloneCustomizeNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineCloneCustomizeNetworkInterfaceArgsDict(TypedDict):
+    dns_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A DNS search domain to add to the DNS configuration on the virtual machine.
+    """
+    dns_server_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Network-interface specific DNS settings for Windows operating systems. Ignored on Linux.
+    """
+    ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv4 address assigned to this network adapter. If left blank, DHCP is used.
+    """
+    ipv4_netmask: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The IPv4 CIDR netmask for the supplied IP address. Ignored if DHCP is selected.
+    """
+    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 address assigned to this network adapter. If left blank, default auto-configuration is used.
+    """
+    ipv6_netmask: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The IPv6 CIDR netmask for the supplied IP address. Ignored if auto-configuration is selected.
+    """
 
 @pulumi.input_type
 class VirtualMachineCloneCustomizeNetworkInterfaceArgs:
@@ -3099,66 +2998,63 @@ class VirtualMachineCloneCustomizeNetworkInterfaceArgs:
         pulumi.set(self, "ipv6_netmask", value)
 
 
-if not MYPY:
-    class VirtualMachineCloneCustomizeWindowsOptionsArgsDict(TypedDict):
-        computer_name: pulumi.Input[_builtins.str]
-        """
-        The host name for this virtual machine.
-        """
-        admin_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new administrator password for this virtual machine.
-        """
-        auto_logon: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether or not the VM automatically logs on as Administrator.
-        """
-        auto_logon_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
-        """
-        domain_admin_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password of the domain administrator used to join this virtual machine to the domain.
-        """
-        domain_admin_user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user account of the domain administrator used to join this virtual machine to the domain.
-        """
-        domain_ou: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
-        """
-        full_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the user of this virtual machine.
-        """
-        join_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain that the virtual machine should join.
-        """
-        organization_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organization name this virtual machine is being installed for.
-        """
-        product_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The product key for this virtual machine.
-        """
-        run_once_command_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of commands to run at first user logon, after guest customization.
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
-        """
-        workgroup: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The workgroup for this virtual machine if not joining a domain.
-        """
-elif False:
-    VirtualMachineCloneCustomizeWindowsOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineCloneCustomizeWindowsOptionsArgsDict(TypedDict):
+    computer_name: pulumi.Input[_builtins.str]
+    """
+    The host name for this virtual machine.
+    """
+    admin_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new administrator password for this virtual machine.
+    """
+    auto_logon: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether or not the VM automatically logs on as Administrator.
+    """
+    auto_logon_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies how many times the VM should auto-logon the Administrator account when auto_logon is true.
+    """
+    domain_admin_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password of the domain administrator used to join this virtual machine to the domain.
+    """
+    domain_admin_user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user account of the domain administrator used to join this virtual machine to the domain.
+    """
+    domain_ou: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The MachineObjectOU which specifies the full LDAP path name of the OU to which the virtual machine belongs.
+    """
+    full_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the user of this virtual machine.
+    """
+    join_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain that the virtual machine should join.
+    """
+    organization_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organization name this virtual machine is being installed for.
+    """
+    product_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The product key for this virtual machine.
+    """
+    run_once_command_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of commands to run at first user logon, after guest customization.
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The new time zone for the virtual machine. This is a sysprep-dictated timezone code.
+    """
+    workgroup: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The workgroup for this virtual machine if not joining a domain.
+    """
 
 @pulumi.input_type
 class VirtualMachineCloneCustomizeWindowsOptionsArgs:
@@ -3390,94 +3286,91 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
         pulumi.set(self, "workgroup", value)
 
 
-if not MYPY:
-    class VirtualMachineDiskArgsDict(TypedDict):
-        label: pulumi.Input[_builtins.str]
-        """
-        A unique label for this disk.
-        """
-        attach: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If this is true, the disk is attached instead of created. Implies keep_on_remove.
-        """
-        controller_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
-        """
-        datastore_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The datastore ID for this virtual disk, if different than the virtual machine.
-        """
-        device_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
-        """
-        disk_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
-        """
-        disk_sharing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
-        """
-        eagerly_scrub: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
-        """
-        io_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The upper limit of IOPS that this disk can use.
-        """
-        io_reservation: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The I/O guarantee that this disk has, in IOPS.
-        """
-        io_share_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The share count for this disk when the share level is custom.
-        """
-        io_share_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The share allocation level for this disk. Can be one of low, normal, high, or custom.
-        """
-        keep_on_remove: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
-        """
-        key: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the device within the virtual machine.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the disk, in GB.
-        """
-        storage_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the storage policy to assign to the virtual disk in VM.
-        """
-        thin_provisioned: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
-        """
-        unit_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The UUID of the virtual machine. Also exposed as the `id` of the resource.
-        """
-        write_through: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
-        """
-elif False:
-    VirtualMachineDiskArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineDiskArgsDict(TypedDict):
+    label: pulumi.Input[_builtins.str]
+    """
+    A unique label for this disk.
+    """
+    attach: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If this is true, the disk is attached instead of created. Implies keep_on_remove.
+    """
+    controller_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
+    """
+    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The datastore ID for this virtual disk, if different than the virtual machine.
+    """
+    device_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
+    """
+    disk_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
+    """
+    disk_sharing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
+    """
+    eagerly_scrub: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
+    """
+    io_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The upper limit of IOPS that this disk can use.
+    """
+    io_reservation: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The I/O guarantee that this disk has, in IOPS.
+    """
+    io_share_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The share count for this disk when the share level is custom.
+    """
+    io_share_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The share allocation level for this disk. Can be one of low, normal, high, or custom.
+    """
+    keep_on_remove: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to true to keep the underlying VMDK file when removing this virtual disk from configuration.
+    """
+    key: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the device within the virtual machine.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full path of the virtual disk. This can only be provided if attach is set to true, otherwise it is a read-only value.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the disk, in GB.
+    """
+    storage_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the storage policy to assign to the virtual disk in VM.
+    """
+    thin_provisioned: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this disk is thin provisioned, with space for the file being allocated on an as-needed basis.
+    """
+    unit_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The unique device number for this disk. This number determines where on the SCSI bus this device will be attached.
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The UUID of the virtual machine. Also exposed as the `id` of the resource.
+    """
+    write_through: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, writes for this disk are sent directly to the filesystem immediately instead of being buffered.
+    """
 
 @pulumi.input_type
 class VirtualMachineDiskArgs:
@@ -3508,7 +3401,7 @@ class VirtualMachineDiskArgs:
         :param pulumi.Input[_builtins.bool] attach: If this is true, the disk is attached instead of created. Implies keep_on_remove.
         :param pulumi.Input[_builtins.str] controller_type: The type of controller the disk should be connected to. Must be 'scsi', 'sata', 'nvme', or 'ide'.
         :param pulumi.Input[_builtins.str] datastore_id: The datastore ID for this virtual disk, if different than the virtual machine.
-        :param pulumi.Input[_builtins.str] device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param pulumi.Input[_builtins.str] device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         :param pulumi.Input[_builtins.str] disk_mode: The mode of this this virtual disk for purposes of writes and snapshotting. Can be one of append, independent_nonpersistent, independent_persistent, nonpersistent, persistent, or undoable.
         :param pulumi.Input[_builtins.str] disk_sharing: The sharing mode of this virtual disk. Can be one of sharingMultiWriter or sharingNone.
         :param pulumi.Input[_builtins.bool] eagerly_scrub: The virtual disk file zeroing policy when thin_provision is not true. The default is false, which lazily-zeros the disk, speeding up thick-provisioned disk creation time.
@@ -3620,7 +3513,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         """
         return pulumi.get(self, "device_address")
 
@@ -3821,58 +3714,55 @@ class VirtualMachineDiskArgs:
         pulumi.set(self, "write_through", value)
 
 
-if not MYPY:
-    class VirtualMachineNetworkInterfaceArgsDict(TypedDict):
-        network_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the network to connect this network interface to.
-        """
-        adapter_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
-        """
-        bandwidth_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The upper bandwidth limit of this network interface, in Mbits/sec.
-        """
-        bandwidth_reservation: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The bandwidth reservation of this network interface, in Mbits/sec.
-        """
-        bandwidth_share_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The share count for this network interface when the share level is custom.
-        """
-        bandwidth_share_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
-        """
-        device_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
-        """
-        key: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the device within the virtual machine.
-        """
-        mac_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MAC address of this network interface. Can only be manually set if use_static_mac is true.
-        """
-        ovf_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mapping of network interface to OVF network.
-        """
-        physical_function: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
-        """
-        use_static_mac: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, the mac_address field is treated as a static MAC address and set accordingly.
-        """
-elif False:
-    VirtualMachineNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineNetworkInterfaceArgsDict(TypedDict):
+    network_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the network to connect this network interface to.
+    """
+    adapter_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The controller type. Can be one of e1000, e1000e, sriov, vmxnet3, or vrdma.
+    """
+    bandwidth_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The upper bandwidth limit of this network interface, in Mbits/sec.
+    """
+    bandwidth_reservation: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The bandwidth reservation of this network interface, in Mbits/sec.
+    """
+    bandwidth_share_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The share count for this network interface when the share level is custom.
+    """
+    bandwidth_share_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
+    """
+    device_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
+    """
+    key: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the device within the virtual machine.
+    """
+    mac_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The MAC address of this network interface. Can only be manually set if use_static_mac is true.
+    """
+    ovf_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mapping of network interface to OVF network.
+    """
+    physical_function: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Physical SR-IOV NIC to attach to, e.g. '0000:d8:00.0'
+    """
+    use_static_mac: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the mac_address field is treated as a static MAC address and set accordingly.
+    """
 
 @pulumi.input_type
 class VirtualMachineNetworkInterfaceArgs:
@@ -3896,7 +3786,7 @@ class VirtualMachineNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.int] bandwidth_reservation: The bandwidth reservation of this network interface, in Mbits/sec.
         :param pulumi.Input[_builtins.int] bandwidth_share_count: The share count for this network interface when the share level is custom.
         :param pulumi.Input[_builtins.str] bandwidth_share_level: The bandwidth share allocation level for this interface. Can be one of low, normal, high, or custom.
-        :param pulumi.Input[_builtins.str] device_address: The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        :param pulumi.Input[_builtins.str] device_address: An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         :param pulumi.Input[_builtins.int] key: The ID of the device within the virtual machine.
         :param pulumi.Input[_builtins.str] mac_address: The MAC address of this network interface. Can only be manually set if use_static_mac is true.
         :param pulumi.Input[_builtins.str] ovf_mapping: Mapping of network interface to OVF network.
@@ -4003,7 +3893,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The internally-computed address of this device, such as scsi:0:1, denoting scsi bus #0 and device unit 1.
+        An address internal to Terraform that helps locate the device when `key` is unavailable. This follows a convention of `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device unit `1` on SCSI bus `0`.
         """
         return pulumi.get(self, "device_address")
 
@@ -4072,46 +3962,43 @@ class VirtualMachineNetworkInterfaceArgs:
         pulumi.set(self, "use_static_mac", value)
 
 
-if not MYPY:
-    class VirtualMachineOvfDeployArgsDict(TypedDict):
-        allow_unverified_ssl_cert: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow unverified ssl certificates while deploying ovf/ova from url.
-        """
-        deployment_option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Deployment option to be chosen. If empty, the default option is used.
-        """
-        disk_provisioning: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
-        """
-        enable_hidden_properties: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow properties with ovf:userConfigurable=false to be set.
-        """
-        ip_allocation_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP allocation policy.
-        """
-        ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP protocol.
-        """
-        local_ovf_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The absolute path to the ovf/ova file in the local system.
-        """
-        ovf_network_map: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
-        """
-        remote_ovf_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL to the remote ovf/ova file to be deployed.
-        """
-elif False:
-    VirtualMachineOvfDeployArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineOvfDeployArgsDict(TypedDict):
+    allow_unverified_ssl_cert: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow unverified ssl certificates while deploying ovf/ova from url.
+    """
+    deployment_option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Deployment option to be chosen. If empty, the default option is used.
+    """
+    disk_provisioning: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional disk provisioning. If set, all the disks in the deployed ovf will have the same specified disk type (e.g., thin provisioned).
+    """
+    enable_hidden_properties: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow properties with ovf:userConfigurable=false to be set.
+    """
+    ip_allocation_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP allocation policy.
+    """
+    ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP protocol.
+    """
+    local_ovf_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The absolute path to the ovf/ova file in the local system.
+    """
+    ovf_network_map: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The mapping of name of network identifiers from the ovf descriptor to network UUID in the VI infrastructure.
+    """
+    remote_ovf_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL to the remote ovf/ova file to be deployed.
+    """
 
 @pulumi.input_type
 class VirtualMachineOvfDeployArgs:
@@ -4264,14 +4151,11 @@ class VirtualMachineOvfDeployArgs:
         pulumi.set(self, "remote_ovf_url", value)
 
 
-if not MYPY:
-    class VirtualMachineVappArgsDict(TypedDict):
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
-        """
-elif False:
-    VirtualMachineVappArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineVappArgsDict(TypedDict):
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+    """
 
 @pulumi.input_type
 class VirtualMachineVappArgs:
@@ -4296,14 +4180,11 @@ class VirtualMachineVappArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class VirtualMachineVtpmArgsDict(TypedDict):
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the TPM device. Default is 2.0.
-        """
-elif False:
-    VirtualMachineVtpmArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualMachineVtpmArgsDict(TypedDict):
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the TPM device. Default is 2.0.
+    """
 
 @pulumi.input_type
 class VirtualMachineVtpmArgs:
@@ -4328,22 +4209,19 @@ class VirtualMachineVtpmArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class VmStoragePolicyTagRuleArgsDict(TypedDict):
-        tag_category: pulumi.Input[_builtins.str]
-        """
-        Name of the tag category.
-        """
-        tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of Name of tags to select from the given category.
-        """
-        include_datastores_with_tags: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Include datastores with the given tags or exclude. Default `true`.
-        """
-elif False:
-    VmStoragePolicyTagRuleArgsDict: TypeAlias = Mapping[str, Any]
+class VmStoragePolicyTagRuleArgsDict(TypedDict):
+    tag_category: pulumi.Input[_builtins.str]
+    """
+    Name of the tag category.
+    """
+    tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of Name of tags to select from the given category.
+    """
+    include_datastores_with_tags: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Include datastores with the given tags or exclude. Default `true`.
+    """
 
 @pulumi.input_type
 class VmStoragePolicyTagRuleArgs:
@@ -4398,26 +4276,23 @@ class VmStoragePolicyTagRuleArgs:
         pulumi.set(self, "include_datastores_with_tags", value)
 
 
-if not MYPY:
-    class VnicIpv4ArgsDict(TypedDict):
-        dhcp: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use DHCP to configure the interface's IPv4 stack.
-        """
-        gw: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP address of the default gateway, if DHCP is not set.
-        """
-        ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        address of the interface, if DHCP is not set.
-        """
-        netmask: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        netmask of the interface, if DHCP is not set.
-        """
-elif False:
-    VnicIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+class VnicIpv4ArgsDict(TypedDict):
+    dhcp: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use DHCP to configure the interface's IPv4 stack.
+    """
+    gw: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP address of the default gateway, if DHCP is not set.
+    """
+    ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    address of the interface, if DHCP is not set.
+    """
+    netmask: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    netmask of the interface, if DHCP is not set.
+    """
 
 @pulumi.input_type
 class VnicIpv4Args:
@@ -4490,26 +4365,23 @@ class VnicIpv4Args:
         pulumi.set(self, "netmask", value)
 
 
-if not MYPY:
-    class VnicIpv6ArgsDict(TypedDict):
-        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of IPv6 addresses
-        """
-        autoconfig: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use IPv6 Autoconfiguration (RFC2462).
-        """
-        dhcp: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use DHCP to configure the interface's IPv4 stack.
-        """
-        gw: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP address of the default gateway, if DHCP or autoconfig is not set.
-        """
-elif False:
-    VnicIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+class VnicIpv6ArgsDict(TypedDict):
+    addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of IPv6 addresses
+    """
+    autoconfig: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use IPv6 Autoconfiguration (RFC2462).
+    """
+    dhcp: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use DHCP to configure the interface's IPv4 stack.
+    """
+    gw: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP address of the default gateway, if DHCP or autoconfig is not set.
+    """
 
 @pulumi.input_type
 class VnicIpv6Args:
@@ -4582,14 +4454,11 @@ class VnicIpv6Args:
         pulumi.set(self, "gw", value)
 
 
-if not MYPY:
-    class GetNetworkFilterArgsDict(TypedDict):
-        network_type: NotRequired[_builtins.str]
-        """
-        This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
-        """
-elif False:
-    GetNetworkFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNetworkFilterArgsDict(TypedDict):
+    network_type: NotRequired[_builtins.str]
+    """
+    This is required if you have multiple port groups with the same name. This will be one of `DistributedVirtualPortgroup` for distributed port groups, `Network` for standard (host-based) port groups, or `OpaqueNetwork` for networks managed externally, such as those managed by NSX.
+    """
 
 @pulumi.input_type
 class GetNetworkFilterArgs:
@@ -4614,14 +4483,11 @@ class GetNetworkFilterArgs:
         pulumi.set(self, "network_type", value)
 
 
-if not MYPY:
-    class GetVirtualMachineVappArgsDict(TypedDict):
-        properties: NotRequired[Mapping[str, _builtins.str]]
-        """
-        A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
-        """
-elif False:
-    GetVirtualMachineVappArgsDict: TypeAlias = Mapping[str, Any]
+class GetVirtualMachineVappArgsDict(TypedDict):
+    properties: NotRequired[Mapping[str, _builtins.str]]
+    """
+    A map of customizable vApp properties and their values. Allows customization of VMs cloned from OVF templates which have customizable vApp properties.
+    """
 
 @pulumi.input_type
 class GetVirtualMachineVappArgs:

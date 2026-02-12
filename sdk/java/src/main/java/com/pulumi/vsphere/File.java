@@ -16,6 +16,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `vsphere.File` resource can be used to upload files (such as ISOs and
+ * virtual disk files) from the host machine that Terraform is running on to a
+ * datastore.  The resource can also be used to copy files between datastores, or
+ * from one location to another on the same datastore.
+ * 
+ * Updates to destination parameters such as `datacenter`, `datastore`, or
+ * `destinationFile` will move the managed file a new destination based on the
+ * values of the new settings.  If any source parameter is changed, such as
+ * `sourceDatastore`, `sourceDatacenter`, or `sourceFile`), the resource will
+ * be re-created. Depending on if destination parameters are being changed,
+ * this may result in the destination file either being overwritten or
+ * deleted from the previous location.
+ * 
  * ## Example Usage
  * 
  * ### S

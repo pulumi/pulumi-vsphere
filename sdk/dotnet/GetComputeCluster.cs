@@ -12,6 +12,23 @@ namespace Pulumi.VSphere
     public static class GetComputeCluster
     {
         /// <summary>
+        /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+        /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+        /// use for virtual machine placement via the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+        /// specify the cluster's root resource pool directly versus using the alias
+        /// available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+        /// data source.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+        /// 
+        /// &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+        ///  resource for more information about clusters and how to managed the resource
+        ///  in Terraform.
+        /// 
+        /// [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,6 +57,23 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterArgs(), options.WithDefaults());
 
         /// <summary>
+        /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+        /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+        /// use for virtual machine placement via the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+        /// specify the cluster's root resource pool directly versus using the alias
+        /// available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+        /// data source.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+        /// 
+        /// &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+        ///  resource for more information about clusters and how to managed the resource
+        ///  in Terraform.
+        /// 
+        /// [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -68,6 +102,23 @@ namespace Pulumi.VSphere
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+        /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want to
+        /// use for virtual machine placement via the
+        /// [`vsphere.VirtualMachine`][docs-virtual-machine-resource] resource, allowing to
+        /// specify the cluster's root resource pool directly versus using the alias
+        /// available through the [`vsphere.ResourcePool`][docs-resource-pool-data-source]
+        /// data source.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
+        /// 
+        /// &gt; You may also wish to see the [`vsphere.ComputeCluster`][docs-compute-cluster-resource]
+        ///  resource for more information about clusters and how to managed the resource
+        ///  in Terraform.
+        /// 
+        /// [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

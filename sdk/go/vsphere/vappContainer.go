@@ -143,8 +143,7 @@ import (
 //
 // ## Import
 //
-// # An existing vApp container can be imported into this resource via
-//
+// An existing vApp container can be imported into this resource via
 // the path to the vApp container, using the following command:
 //
 // Example:
@@ -153,10 +152,8 @@ import (
 // $ pulumi import vsphere:index/vappContainer:VappContainer vapp_container /dc-01/host/cluster-01/Resources/resource-pool-01/vapp-01
 // ```
 //
-// # The example above would import the vApp container named `vapp-01` that is
-//
+// The example above would import the vApp container named `vapp-01` that is
 // located in the resource pool `resource-pool-01` that is part of the host cluster
-//
 // `cluster-01` in the `dc-01` datacenter.
 //
 // [ref-vsphere-vapp]: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-multi-tiered-applications-with-vsphere-vapp-in-the-vsphere-web-clientvsphere-vm-admin.html

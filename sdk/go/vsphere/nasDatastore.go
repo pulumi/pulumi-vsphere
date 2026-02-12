@@ -12,10 +12,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `NasDatastore` resource can be used to create and manage NAS
+// datastores on an ESXi host or a set of hosts. The resource supports mounting
+// NFS v3 and v4.1 shares to be used as datastores.
+//
+// > **NOTE:** Unlike [`VmfsDatastore`][resource-vmfs-datastore], a NAS
+// datastore is only mounted on the hosts you choose to mount it on. To mount on
+// multiple hosts, you must specify each host that you want to add in the
+// `hostSystemIds` argument.
+//
+// [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+//
+// ## Example Usage
+//
+// The following example would set up a NFS v3 share on 3 hosts connected through
+// vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+// is named `nfs` and has `/export/terraform-test` exported.
+//
 // ## Import
 //
-// # An existing NAS datastore can be imported into this resource via
-//
+// An existing NAS datastore can be imported into this resource via
 // its managed object ID, via the following command:
 //
 // ```sh
@@ -24,13 +40,13 @@ import (
 //
 // You need a tool like [`govc`][ext-govc] that can display managed object IDs.
 //
-// # In the case of govc, you can locate a managed object ID from an inventory path
-//
+// In the case of govc, you can locate a managed object ID from an inventory path
 // by doing the following:
 //
+// ```sh
 // $ govc ls -i /dc/datastore/terraform-test
-//
 // Datastore:datastore-123
+// ```
 //
 // [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
 //
@@ -61,7 +77,13 @@ type NasDatastore struct {
 	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// Terraform will place a datastore named `terraform-test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// Available space of this datastore, in megabytes.
 	FreeSpace pulumi.IntOutput `pulumi:"freeSpace"`
@@ -169,7 +191,13 @@ type nasDatastoreState struct {
 	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// Terraform will place a datastore named `terraform-test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder *string `pulumi:"folder"`
 	// Available space of this datastore, in megabytes.
 	FreeSpace *int `pulumi:"freeSpace"`
@@ -239,7 +267,13 @@ type NasDatastoreState struct {
 	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// Terraform will place a datastore named `terraform-test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrInput
 	// Available space of this datastore, in megabytes.
 	FreeSpace pulumi.IntPtrInput
@@ -308,7 +342,13 @@ type nasDatastoreArgs struct {
 	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// Terraform will place a datastore named `terraform-test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder *string `pulumi:"folder"`
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to mount the datastore on.
@@ -359,7 +399,13 @@ type NasDatastoreArgs struct {
 	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// Terraform will place a datastore named `terraform-test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrInput
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to mount the datastore on.
@@ -515,7 +561,13 @@ func (o NasDatastoreOutput) DatastoreClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasDatastore) pulumi.StringPtrOutput { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
 }
 
-// The path to the datastore folder to put the datastore in.
+// The relative path to a folder to put this datastore in.
+// This is a path relative to the datacenter you are deploying the datastore to.
+// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+// Terraform will place a datastore named `terraform-test` in a datastore folder
+// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
+// `datastoreClusterId`.
 func (o NasDatastoreOutput) Folder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasDatastore) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
 }

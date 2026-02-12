@@ -117,7 +117,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * An existing port group can be imported into this resource using
- * 
  * the managed object id of the port group, via the following command:
  * 
  * [docs-import]: https://developer.hashicorp.com/terraform/cli/import
@@ -127,7 +126,6 @@ import javax.annotation.Nullable;
  * ```
  * 
  * The above would import the port group named `pg-01` that is located in the `dc-01`
- * 
  * datacenter.
  * 
  */

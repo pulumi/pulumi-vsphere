@@ -11,6 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Tag` data source can be used to reference tags that are not managed
+// by Terraform. Its attributes are exactly the same as the
+// [`Tag` resource][resource-tag], and, like importing, the data source
+// uses a name and category as search criteria. The `id` and other attributes are
+// populated with the data found by the search.
+//
+// [resource-tag]: /docs/providers/vsphere/r/tag.html
+//
+// > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+// requires vCenter Server.
+//
 // ## Example Usage
 //
 // ```go
