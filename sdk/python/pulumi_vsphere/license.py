@@ -23,6 +23,7 @@ class LicenseArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a License resource.
+
         :param pulumi.Input[_builtins.str] license_key: The license key value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of labels to be applied to the license key.
                
@@ -70,6 +71,7 @@ class _LicenseState:
                  used: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering License resources.
+
         :param pulumi.Input[_builtins.str] edition_key: The product edition of the license key.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of labels to be applied to the license key.
                
@@ -192,6 +194,7 @@ class License(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of labels to be applied to the license key.
@@ -220,6 +223,7 @@ class License(pulumi.CustomResource):
                 "VpxClientLicenseLabel": "example",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.

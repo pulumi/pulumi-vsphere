@@ -36,6 +36,7 @@ class HaVmOverrideArgs:
                  ha_vm_restart_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HaVmOverride resource.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object ID of the cluster.
         :param pulumi.Input[_builtins.str] virtual_machine_id: The managed object ID of the virtual machine.
         :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
@@ -282,6 +283,7 @@ class _HaVmOverrideState:
                  virtual_machine_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HaVmOverride resources.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object ID of the cluster.
         :param pulumi.Input[_builtins.str] ha_datastore_apd_recovery_action: Controls the action to take on this virtual machine if an APD status on an affected datastore clears in the middle of an APD event. Can be one of useClusterDefault, none or reset.
         :param pulumi.Input[_builtins.str] ha_datastore_apd_response: Controls the action to take on this virtual machine when the cluster has detected loss to all paths to a relevant datastore. Can be one of clusterDefault, disabled, warning, restartConservative, or restartAggressive.
@@ -612,6 +614,7 @@ class HaVmOverride(pulumi.CustomResource):
           "virtual_machine_path": "/dc1/vm/srv1"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compute_cluster_id: The managed object ID of the cluster.
@@ -715,6 +718,7 @@ class HaVmOverride(pulumi.CustomResource):
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
           "virtual_machine_path": "/dc1/vm/srv1"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HaVmOverrideArgs args: The arguments to use to populate this resource's properties.

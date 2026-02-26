@@ -25,6 +25,7 @@ class DpmHostOverrideArgs:
                  dpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DpmHostOverride resource.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
@@ -117,6 +118,7 @@ class _DpmHostOverrideState:
                  host_system_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DpmHostOverride resources.
+
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
                resource if changed.
@@ -286,6 +288,7 @@ class DpmHostOverride(pulumi.CustomResource):
           "host_path": "/dc1/host/esxi1"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compute_cluster_id: The [managed object reference
@@ -382,6 +385,7 @@ class DpmHostOverride(pulumi.CustomResource):
           '{"compute_cluster_path": "/dc1/host/cluster1", \\
           "host_path": "/dc1/host/esxi1"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DpmHostOverrideArgs args: The arguments to use to populate this resource's properties.

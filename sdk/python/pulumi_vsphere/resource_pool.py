@@ -36,6 +36,7 @@ class ResourcePoolArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourcePool resource.
+
         :param pulumi.Input[_builtins.str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
@@ -349,6 +350,7 @@ class _ResourcePoolState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourcePool resources.
+
         :param pulumi.Input[_builtins.bool] cpu_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
@@ -772,6 +774,7 @@ class ResourcePool(pulumi.CustomResource):
 
         * `scale_descendants_shares`
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] cpu_expandable: Determines if the reservation on a resource
@@ -935,6 +938,7 @@ class ResourcePool(pulumi.CustomResource):
         These settings require vSphere 7.0 or higher:
 
         * `scale_descendants_shares`
+
 
         :param str resource_name: The name of the resource.
         :param ResourcePoolArgs args: The arguments to use to populate this resource's properties.

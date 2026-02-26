@@ -33,6 +33,7 @@ class VnicArgs:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Vnic resource.
+
         :param pulumi.Input[_builtins.str] host: ESX host the interface belongs to
         :param pulumi.Input[_builtins.str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[_builtins.str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
@@ -200,6 +201,7 @@ class _VnicState:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Vnic resources.
+
         :param pulumi.Input[_builtins.str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[_builtins.str] distributed_switch_port: UUID of the vdswitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[_builtins.str] host: ESX host the interface belongs to
@@ -454,6 +456,7 @@ class Vnic(pulumi.CustomResource):
 
         The above would import the vnic `vmk2` from host with ID `host-123`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
@@ -556,6 +559,7 @@ class Vnic(pulumi.CustomResource):
         ```
 
         The above would import the vnic `vmk2` from host with ID `host-123`.
+
 
         :param str resource_name: The name of the resource.
         :param VnicArgs args: The arguments to use to populate this resource's properties.

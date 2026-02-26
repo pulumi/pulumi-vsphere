@@ -34,6 +34,7 @@ class ProviderArgs:
                  vsphere_server: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
         :param pulumi.Input[_builtins.bool] allow_unverified_ssl: If set, VMware vSphere client will permit unverifiable SSL certificates.
         :param pulumi.Input[_builtins.int] api_timeout: API timeout in minutes (Default: 5)
         :param pulumi.Input[_builtins.bool] client_debug: govmomi debug
@@ -274,6 +275,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_unverified_ssl: If set, VMware vSphere client will permit unverifiable SSL certificates.
@@ -300,6 +302,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.

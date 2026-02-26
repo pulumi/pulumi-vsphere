@@ -23,6 +23,7 @@ class RoleArgs:
                  role_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Role resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the role.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_privileges: The privileges to be associated with this role.
         """
@@ -64,6 +65,7 @@ class _RoleState:
                  role_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+
         :param pulumi.Input[_builtins.str] label: The display label of the role.
         :param pulumi.Input[_builtins.str] name: The name of the role.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_privileges: The privileges to be associated with this role.
@@ -164,6 +166,7 @@ class Role(pulumi.CustomResource):
 
         [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the role.
@@ -217,6 +220,7 @@ class Role(pulumi.CustomResource):
         to read information about system roles.
 
         [ref-vsphere-role-data-source]: /docs/providers/vsphere/d/vsphere_role.html
+
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

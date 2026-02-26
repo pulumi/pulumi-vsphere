@@ -25,6 +25,7 @@ class DatacenterArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Datacenter resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to value
                strings to set for datacenter resource. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
@@ -124,6 +125,7 @@ class _DatacenterState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Datacenter resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to value
                strings to set for datacenter resource. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
@@ -280,6 +282,7 @@ class Datacenter(pulumi.CustomResource):
 
         The above would import the datacenter named `dc1`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: Map of custom attribute ids to value
@@ -346,6 +349,7 @@ class Datacenter(pulumi.CustomResource):
         ```
 
         The above would import the datacenter named `dc1`.
+
 
         :param str resource_name: The name of the resource.
         :param DatacenterArgs args: The arguments to use to populate this resource's properties.

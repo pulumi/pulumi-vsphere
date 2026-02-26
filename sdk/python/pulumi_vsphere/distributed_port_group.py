@@ -69,6 +69,7 @@ class DistributedPortGroupArgs:
                  vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None):
         """
         The set of arguments for constructing a DistributedPortGroup resource.
+
         :param pulumi.Input[_builtins.str] distributed_virtual_switch_uuid: The ID of the VDS to add the
                port group to. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
@@ -856,6 +857,7 @@ class _DistributedPortGroupState:
                  vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None):
         """
         Input properties used for looking up and filtering DistributedPortGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -1820,6 +1822,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         The above would import the port group named `pg-01` that is located in the `dc-01`
         datacenter.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
@@ -2039,6 +2042,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
         The above would import the port group named `pg-01` that is located in the `dc-01`
         datacenter.
+
 
         :param str resource_name: The name of the resource.
         :param DistributedPortGroupArgs args: The arguments to use to populate this resource's properties.

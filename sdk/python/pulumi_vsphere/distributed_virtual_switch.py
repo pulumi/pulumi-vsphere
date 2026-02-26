@@ -117,6 +117,7 @@ class DistributedVirtualSwitchArgs:
                  vsan_share_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DistributedVirtualSwitch resource.
+
         :param pulumi.Input[_builtins.str] datacenter_id: The ID of the datacenter where the VDS will be
                created. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
@@ -1673,6 +1674,7 @@ class _DistributedVirtualSwitchState:
                  vsan_share_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DistributedVirtualSwitch resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[_builtins.bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than that of its own.
         :param pulumi.Input[_builtins.bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -3378,6 +3380,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         The above would import the VDS named `vds-01` that is located in the `dc-01`
         datacenter.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
@@ -3632,6 +3635,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
         The above would import the VDS named `vds-01` that is located in the `dc-01`
         datacenter.
+
 
         :param str resource_name: The name of the resource.
         :param DistributedVirtualSwitchArgs args: The arguments to use to populate this resource's properties.

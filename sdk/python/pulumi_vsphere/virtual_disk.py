@@ -28,6 +28,7 @@ class VirtualDiskArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualDisk resource.
+
         :param pulumi.Input[_builtins.str] datastore: The name of the datastore in which to create the
                disk.
         :param pulumi.Input[_builtins.int] size: Size of the disk (in GB). Decreasing the size of a disk is not possible.
@@ -203,6 +204,7 @@ class _VirtualDiskState:
                  vmdk_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualDisk resources.
+
         :param pulumi.Input[_builtins.str] adapter_type: The adapter type for this virtual disk. Can be
                one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
                
@@ -426,6 +428,7 @@ class VirtualDisk(pulumi.CustomResource):
 
         > **NOTE:** Import is not supported if using the **deprecated** `adapter_type` field.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] adapter_type: The adapter type for this virtual disk. Can be
@@ -511,6 +514,7 @@ class VirtualDisk(pulumi.CustomResource):
         datastore of the `dc-01` datacenter with `create_directories` set as `true`.
 
         > **NOTE:** Import is not supported if using the **deprecated** `adapter_type` field.
+
 
         :param str resource_name: The name of the resource.
         :param VirtualDiskArgs args: The arguments to use to populate this resource's properties.

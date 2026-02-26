@@ -31,6 +31,7 @@ class VappEntityArgs:
                  wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VappEntity resource.
+
         :param pulumi.Input[_builtins.str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
         :param pulumi.Input[_builtins.str] target_id: [Managed object ID|docs-about-morefs] of the entity
@@ -223,6 +224,7 @@ class _VappEntityState:
                  wait_for_guest: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VappEntity resources.
+
         :param pulumi.Input[_builtins.str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A list of custom attributes to set on this resource.
@@ -490,6 +492,7 @@ class VappEntity(pulumi.CustomResource):
         machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
         container with the [managed object ID][docs-about-morefs] res-456.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] container_id: [Managed object ID|docs-about-morefs] of the vApp
@@ -592,6 +595,7 @@ class VappEntity(pulumi.CustomResource):
         The above would import the vApp entity that governs the behavior of the virtual
         machine with a [managed object ID][docs-about-morefs] of vm-123 in the vApp
         container with the [managed object ID][docs-about-morefs] res-456.
+
 
         :param str resource_name: The name of the resource.
         :param VappEntityArgs args: The arguments to use to populate this resource's properties.

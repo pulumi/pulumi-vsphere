@@ -25,6 +25,7 @@ class DistributedVirtualSwitchPvlanMappingInitArgs:
                  secondary_vlan_id: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a DistributedVirtualSwitchPvlanMapping resource.
+
         :param pulumi.Input[_builtins.str] distributed_virtual_switch_id: The ID of the distributed virtual switch to attach this mapping to.
         :param pulumi.Input[_builtins.int] primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         :param pulumi.Input[_builtins.str] pvlan_type: The private VLAN type. Valid values are promiscuous, community and isolated.
@@ -93,6 +94,7 @@ class _DistributedVirtualSwitchPvlanMappingState:
                  secondary_vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DistributedVirtualSwitchPvlanMapping resources.
+
         :param pulumi.Input[_builtins.str] distributed_virtual_switch_id: The ID of the distributed virtual switch to attach this mapping to.
         :param pulumi.Input[_builtins.int] primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and 4095 are reserved and cannot be used in this property.
         :param pulumi.Input[_builtins.str] pvlan_type: The private VLAN type. Valid values are promiscuous, community and isolated.
@@ -169,6 +171,7 @@ class DistributedVirtualSwitchPvlanMapping(pulumi.CustomResource):
                  __props__=None):
         """
         Create a DistributedVirtualSwitchPvlanMapping resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] distributed_virtual_switch_id: The ID of the distributed virtual switch to attach this mapping to.
@@ -184,6 +187,7 @@ class DistributedVirtualSwitchPvlanMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a DistributedVirtualSwitchPvlanMapping resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param DistributedVirtualSwitchPvlanMappingInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

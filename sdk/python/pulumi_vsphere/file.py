@@ -28,6 +28,7 @@ class FileArgs:
                  source_datastore: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a File resource.
+
         :param pulumi.Input[_builtins.str] datastore: The name of the datastore to which to upload the
                file.
         :param pulumi.Input[_builtins.str] destination_file: The path to where the file should be uploaded
@@ -157,6 +158,7 @@ class _FileState:
                  source_file: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering File resources.
+
         :param pulumi.Input[_builtins.bool] create_directories: Specifies whether to create the parent directories of the destination file if they do not exist.
         :param pulumi.Input[_builtins.str] datacenter: The name of a datacenter to which the file will be
                uploaded.
@@ -339,6 +341,7 @@ class File(pulumi.CustomResource):
             create_directories=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_directories: Specifies whether to create the parent directories of the destination file if they do not exist.
@@ -408,6 +411,7 @@ class File(pulumi.CustomResource):
             destination_file="/my/dst/path/custom_ubuntu.vmdk",
             create_directories=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class GuestOsCustomizationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GuestOsCustomization resource.
+
         :param pulumi.Input['GuestOsCustomizationSpecArgs'] spec: Container object for the Guest OS properties about to be customized . See virtual machine customizations
         :param pulumi.Input[_builtins.str] type: The type of customization specification: One among: Windows, Linux.
         :param pulumi.Input[_builtins.str] description: The description for the customization specification.
@@ -99,6 +100,7 @@ class _GuestOsCustomizationState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GuestOsCustomization resources.
+
         :param pulumi.Input[_builtins.str] change_version: The number of last changed version to the customization specification.
         :param pulumi.Input[_builtins.str] description: The description for the customization specification.
         :param pulumi.Input[_builtins.str] last_update_time: The time of last modification to the customization specification.
@@ -233,6 +235,7 @@ class GuestOsCustomization(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description for the customization specification.
@@ -275,6 +278,7 @@ class GuestOsCustomization(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GuestOsCustomizationArgs args: The arguments to use to populate this resource's properties.

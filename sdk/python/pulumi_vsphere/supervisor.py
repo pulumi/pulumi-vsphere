@@ -40,6 +40,7 @@ class SupervisorArgs:
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input['SupervisorNamespaceArgs']]]] = None):
         """
         The set of arguments for constructing a Supervisor resource.
+
         :param pulumi.Input[_builtins.str] cluster: The identifier of the compute cluster.
         :param pulumi.Input[_builtins.str] content_library: The identifier of the subscribed content library.
         :param pulumi.Input[_builtins.str] dvs_uuid: The UUID of the distributed switch.
@@ -314,6 +315,7 @@ class _SupervisorState:
                  worker_ntps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Supervisor resources.
+
         :param pulumi.Input[_builtins.str] cluster: The identifier of the compute cluster.
         :param pulumi.Input[_builtins.str] content_library: The identifier of the subscribed content library.
         :param pulumi.Input[_builtins.str] dvs_uuid: The UUID of the distributed switch.
@@ -663,6 +665,7 @@ class Supervisor(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: The identifier of the compute cluster.
@@ -750,6 +753,7 @@ class Supervisor(pulumi.CustomResource):
                 "vm_classes": [vm_class.id],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SupervisorArgs args: The arguments to use to populate this resource's properties.

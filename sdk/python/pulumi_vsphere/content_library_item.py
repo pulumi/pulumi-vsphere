@@ -27,6 +27,7 @@ class ContentLibraryItemArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContentLibraryItem resource.
+
         :param pulumi.Input[_builtins.str] library_id: The ID of the content library in which to create the item.
         :param pulumi.Input[_builtins.str] description: A description for the content library item.
         :param pulumi.Input[_builtins.str] file_url: File to import as the content library item.
@@ -132,6 +133,7 @@ class _ContentLibraryItemState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentLibraryItem resources.
+
         :param pulumi.Input[_builtins.str] description: A description for the content library item.
         :param pulumi.Input[_builtins.str] file_url: File to import as the content library item.
         :param pulumi.Input[_builtins.str] library_id: The ID of the content library in which to create the item.
@@ -313,6 +315,7 @@ class ContentLibraryItem(pulumi.CustomResource):
         terraform import vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description for the content library item.
@@ -401,6 +404,7 @@ class ContentLibraryItem(pulumi.CustomResource):
         ```sh
         terraform import vsphere_content_library_item iso-linux-ubuntu-server-lts xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ContentLibraryItemArgs args: The arguments to use to populate this resource's properties.

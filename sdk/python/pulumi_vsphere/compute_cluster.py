@@ -92,6 +92,7 @@ class ComputeClusterArgs:
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ComputeCluster resource.
+
         :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
@@ -1240,6 +1241,7 @@ class _ComputeClusterState:
                  vsan_verbose_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ComputeCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
@@ -2545,6 +2547,7 @@ class ComputeCluster(pulumi.CustomResource):
         The above would import the cluster named `cluster-01` that is located in
         the `dc-01` datacenter.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
@@ -2772,6 +2775,7 @@ class ComputeCluster(pulumi.CustomResource):
 
         The above would import the cluster named `cluster-01` that is located in
         the `dc-01` datacenter.
+
 
         :param str resource_name: The name of the resource.
         :param ComputeClusterArgs args: The arguments to use to populate this resource's properties.

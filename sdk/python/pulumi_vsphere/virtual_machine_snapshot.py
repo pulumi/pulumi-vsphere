@@ -28,6 +28,7 @@ class VirtualMachineSnapshotArgs:
                  remove_children: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VirtualMachineSnapshot resource.
+
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
         :param pulumi.Input[_builtins.bool] memory: If set to `true`, a dump of the internal state of the
                virtual machine is included in the snapshot.
@@ -155,6 +156,7 @@ class _VirtualMachineSnapshotState:
                  virtual_machine_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualMachineSnapshot resources.
+
         :param pulumi.Input[_builtins.bool] consolidate: If set to `true`, the delta disks involved in this
                snapshot will be consolidated into the parent when this resource is
                destroyed.
@@ -329,6 +331,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
             consolidate=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] consolidate: If set to `true`, the delta disks involved in this
@@ -390,6 +393,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
             remove_children=False,
             consolidate=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VirtualMachineSnapshotArgs args: The arguments to use to populate this resource's properties.

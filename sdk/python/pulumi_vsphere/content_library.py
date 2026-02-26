@@ -28,6 +28,7 @@ class ContentLibraryArgs:
                  subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
         """
         The set of arguments for constructing a ContentLibrary resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_backings: The [managed object reference ID][docs-about-morefs] of the datastore on which to store the content library items.
         :param pulumi.Input[_builtins.str] description: A description for the content library.
         :param pulumi.Input[_builtins.str] name: The name of the content library.
@@ -115,6 +116,7 @@ class _ContentLibraryState:
                  subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
         """
         Input properties used for looking up and filtering ContentLibrary resources.
+
         :param pulumi.Input[_builtins.str] description: A description for the content library.
         :param pulumi.Input[_builtins.str] name: The name of the content library.
         :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local content library.
@@ -259,6 +261,7 @@ class ContentLibrary(pulumi.CustomResource):
         terraform import vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description for the content library.
@@ -326,6 +329,7 @@ class ContentLibrary(pulumi.CustomResource):
         ```sh
         terraform import vsphere_content_library publisher_content_library f42a4b25-844a-44ec-9063-a3a5e9cc88c7
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ContentLibraryArgs args: The arguments to use to populate this resource's properties.

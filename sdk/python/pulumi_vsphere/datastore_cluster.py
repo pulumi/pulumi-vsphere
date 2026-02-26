@@ -46,6 +46,7 @@ class DatastoreClusterArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DatastoreCluster resource.
+
         :param pulumi.Input[_builtins.str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
@@ -495,6 +496,7 @@ class _DatastoreClusterState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DatastoreCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
@@ -1021,6 +1023,7 @@ class DatastoreCluster(pulumi.CustomResource):
         The above would import the datastore cluster named `ds-cluster` that is located
         in the `dc1` datacenter.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_attributes: A map of custom attribute ids to attribute
@@ -1149,6 +1152,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
         The above would import the datastore cluster named `ds-cluster` that is located
         in the `dc1` datacenter.
+
 
         :param str resource_name: The name of the resource.
         :param DatastoreClusterArgs args: The arguments to use to populate this resource's properties.

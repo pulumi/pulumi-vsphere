@@ -24,6 +24,7 @@ class TagArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tag resource.
+
         :param pulumi.Input[_builtins.str] category_id: The unique identifier of the parent category in
                which this tag will be created. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] description: A description for the tag.
@@ -83,6 +84,7 @@ class _TagState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tag resources.
+
         :param pulumi.Input[_builtins.str] category_id: The unique identifier of the parent category in
                which this tag will be created. Forces a new resource if changed.
         :param pulumi.Input[_builtins.str] description: A description for the tag.
@@ -226,6 +228,7 @@ class Tag(pulumi.CustomResource):
           '{"category_name": "pulumi-test-category", "tag_name": "pulumi-test-tag"}'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category_id: The unique identifier of the parent category in
@@ -320,6 +323,7 @@ class Tag(pulumi.CustomResource):
         terraform import vsphere_tag.tag \\
           '{"category_name": "pulumi-test-category", "tag_name": "pulumi-test-tag"}'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TagArgs args: The arguments to use to populate this resource's properties.

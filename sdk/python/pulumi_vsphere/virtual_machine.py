@@ -100,6 +100,7 @@ class VirtualMachineArgs:
                  wait_for_guest_net_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a VirtualMachine resource.
+
         :param pulumi.Input[_builtins.str] resource_pool_id: The ID of a resource pool to put the virtual machine in.
         :param pulumi.Input[_builtins.str] alternate_guest_name: The guest name for the operating system when guest_id is otherGuest or otherGuest64.
         :param pulumi.Input[_builtins.str] annotation: User-provided description of the virtual machine.
@@ -1350,6 +1351,7 @@ class _VirtualMachineState:
                  wait_for_guest_net_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VirtualMachine resources.
+
         :param pulumi.Input[_builtins.str] alternate_guest_name: The guest name for the operating system when guest_id is otherGuest or otherGuest64.
         :param pulumi.Input[_builtins.str] annotation: User-provided description of the virtual machine.
         :param pulumi.Input[_builtins.int] boot_delay: The number of milliseconds to wait before starting the boot sequence.
@@ -3742,6 +3744,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         These changes only update Terraform state when applied. Hence, it is safe to run when the virtual machine is running. If more settings are modified, you may need to plan maintenance accordingly for any necessary virtual machine re-configurations.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alternate_guest_name: The guest name for the operating system when guest_id is otherGuest or otherGuest64.
@@ -4812,6 +4815,7 @@ class VirtualMachine(pulumi.CustomResource):
         > **NOTE:** Do not make any configuration changes to `clone` after importing or upgrading from a legacy version of the provider before doing an initial `pulumi up` as these changes will not correctly force a new resource and your changes will have persisted to state, preventing further plans from correctly triggering a diff.
 
         These changes only update Terraform state when applied. Hence, it is safe to run when the virtual machine is running. If more settings are modified, you may need to plan maintenance accordingly for any necessary virtual machine re-configurations.
+
 
         :param str resource_name: The name of the resource.
         :param VirtualMachineArgs args: The arguments to use to populate this resource's properties.
